@@ -1,0 +1,1 @@
+# Standing feed list (from Wedge)\n\n_Status: awaiting Wedge feed list._\n\n## Sources\n\n(none yet)\n\n## Followed X accounts\n\n(none yet)\n\n## Followed channels\n\n(none yet)\n\n## Chinese-dictionary competitors\n\n(none yet)\n

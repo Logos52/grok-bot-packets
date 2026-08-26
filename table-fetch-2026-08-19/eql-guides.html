@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EQ Legends Combo Builder — Best Class Combos Ranked | EverQuest Legends</title>
+    <meta
+      name="description"
+      content="Find the best class combos in EverQuest Legends. All 560 three-class builds scored and ranked by difficulty tier — filter by class, playstyle, and D0–D4."
+    />
+    <meta property="og:title" content="EQ Legends Combo Builder — Best Class Combos Ranked | EverQuest Legends" />
+    <meta
+      property="og:description"
+      content="Find the best class combos in EverQuest Legends. All 560 three-class builds scored and ranked by difficulty tier — filter by class, playstyle, and D0–D4."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.everquestguides.com/legends/" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VE9GZSTKJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-3VE9GZSTKJ");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5516494260399456"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <aside class="sidebar sidebar--panel" aria-label="Site and build">
+        <a class="link-home" href="https://everquestguides.com/">← EverQuest Guides</a>
+
+        <div class="sidebar-brand">
+          <img
+            src="assets/eq-legends-logo.png"
+            alt="EQ Legends"
+            class="sidebar-logo"
+          />
+          <p class="sidebar-brand-sub">Class Combo Builder</p>
+          <p class="sidebar-tagline">Find your perfect 3-class solo build</p>
+          <p class="version-label">v4.1 · Updated August 10, 2026</p>
+          <div class="sidebar-rule" aria-hidden="true"></div>
+        </div>
+
+        <div id="your-build-root" class="your-build" aria-labelledby="your-build-heading">
+          <h3 id="your-build-heading" class="your-build-title">Your Build</h3>
+          <p class="your-build-hint" data-your-build-hint>
+            Add classes from the slots below
+          </p>
+          <div class="your-build-slots" data-your-build-slots>
+            <div class="your-build-slot your-build-slot--empty" data-slot="0">
+              <button type="button" class="your-build-slot-main" data-slot-main>
+                <span class="your-build-slot-ph" aria-hidden="true"></span>
+                <span class="your-build-slot-add">Add a class</span>
+              </button>
+            </div>
+            <div class="your-build-slot your-build-slot--empty" data-slot="1">
+              <button type="button" class="your-build-slot-main" data-slot-main>
+                <span class="your-build-slot-ph" aria-hidden="true"></span>
+                <span class="your-build-slot-add">Add a class</span>
+              </button>
+            </div>
+            <div class="your-build-slot your-build-slot--empty" data-slot="2">
+              <button type="button" class="your-build-slot-main" data-slot-main>
+                <span class="your-build-slot-ph" aria-hidden="true"></span>
+                <span class="your-build-slot-add">Add a class</span>
+              </button>
+            </div>
+          </div>
+          <details class="your-build-exclude" data-exclude-section>
+            <summary class="your-build-exclude-summary">
+              <span data-exclude-title>Exclude Classes</span>
+            </summary>
+            <div class="your-build-exclude-chips" data-exclude-chips></div>
+          </details>
+          <div class="your-build-grade-wrap" data-your-build-grade hidden>
+            <span class="your-build-grade-badge" data-grade-badge>S</span>
+            <span class="your-build-grade-score" data-grade-score>94</span>
+          </div>
+          <button type="button" class="your-build-startover" data-your-build-startover hidden>
+            Start Over
+          </button>
+        </div>
+
+        <div class="sidebar-rule sidebar-rule--nav" aria-hidden="true"></div>
+
+        <nav class="sidebar-nav" aria-label="Actions">
+          <button type="button" class="sidebar-nav-build" data-nav-build>
+            Your Build
+          </button>
+          <button type="button" class="sidebar-nav-quiz" data-nav-quiz>
+            Take the Quiz
+          </button>
+          <button type="button" class="sidebar-bravery-btn" id="btn-bravery">
+            🎲 Random Roll
+          </button>
+        </nav>
+
+        <div
+          class="affiliate-sidebar"
+          data-affiliate-sidebar
+          aria-label="Recommended gear"
+        >
+          <div class="ads-slot ads-slot--sidebar" data-ads-sidebar-static hidden aria-label="Advertisement">
+            <ins
+              class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-5516494260399456"
+              data-ad-slot="2018250710"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+          </div>
+        </div>
+
+        <section class="sidebar-beta-watch" aria-labelledby="sidebar-beta-watch-title">
+          <h3 id="sidebar-beta-watch-title" class="your-build-title">⚗️ Beta Watch</h3>
+          <p class="sidebar-beta-watch-faq-note">
+            The official FAQ notes: nothing is set in stone until Dev confirms it. This list will update as beta reveals more.
+          </p>
+          <div class="sidebar-beta-watch-scroll">
+
+            <!-- ===== BUILDER UPDATE ===== -->
+            <div class="sidebar-beta-watch-block">
+              <div class="sidebar-beta-watch-cat-head">Builder Update</div>
+              <ul class="sidebar-beta-watch-ul">
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="August 10, 2026 (Builder Update) — Leveling mode now uses its own pillar weight curve: high durability + low healing at D0 so plate tanks lead, healing ramps hard by D3–D4. Endgame curve unchanged."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Leveling Pillar Weight Curve (v4.1)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="August 10, 2026 (Builder Update) — Leveling mode: scores front-loaded burst damage for trash kills, and scales slow value with fight length. Endgame mode is unchanged (default)."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Leveling Mode — Burst Scoring (v4.0)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="August 6, 2026 (Builder Update) — Pet scoring pass 2: Shaman pet gains damage representation (12, below Necro 26), Shaman pet-tank durability 50→58 and Enchanter pet-tank durability 70→78 post June pet buff (HTG / Brutal Static / Catch footage)."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Pet Scoring Pass 2 — Shaman + Enchanter (v3.9)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="July 30, 2026 (Builder Update) — Retired three leftover caster penalties from before Channeler Stance and Inviable: Wizard no longer takes half damage when paired with melee, haste now amps melee classes even when a caster leads the damage lane, and melee signatures (Cleave, Frenzy, Backstab, Kick) are no longer cut to 10% under a caster primary. Also fixed Shadow Knight missing armor_tier, which was failing the plate check whenever SK was the only plate class in a trio."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Caster Penalty Retirement + SK Plate Fix (v3.8)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="July 24, 2026 (Builder Update) — Launch patch pass, nine changes. Ranger damage raised after a developer confirmed Rangers are consistently one of the strongest endgame parses; the class was rated below where it performs because people judge it by the bow, which is weak in the classic era. Warrior now counts as a damage class in your second and third slots — Cleave was never credited at all, and it's a free area attack on a short cooldown. It scales off raw weapon damage, so two-handers cleave far harder. Monk damage up for Unbound Alacrity. Paladin healing up for Unbound Life. Rogue sustain up for Unbound Lethality, which extends poison duration and cuts enemy poison resistance — Rogue self-sustain runs on Blood Siphon uptime and both halves improve it. Shadow Knight damage up: Harm Touch now applies damage over time and Leech Touch turns it into a lifetap. Beastlord pet contribution up and player contribution down — the warder gets improved mana regeneration and a flurry chance, while the class's own melee stays behind Monk's. Bard survivability and slow both up for Unbound Versatility; Bard slow was rated lowest of the four slow classes specifically because singing gets interrupted."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Launch Patch Pass — Ranger, Warrior Cleave, AA Rescores (v3.7)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="July 16, 2026 (Builder Update) — Beastlord pet scoring lowered, reversing the July 8 bump. That bump rode on spell-tier scaling and a warder melee buff; post-patch testing contradicted both. The warder starts at a lower base level than the shaman pet and stays behind at equal upgrades, it stops meleeing to cast spells it hasn't the mana to sustain, and its procs don't scale with the rest. Pet order became Magician, Necromancer, Beastlord. Note this was partly reversed again on July 24 — the launch patch gives warders improved mana regeneration and a flurry chance."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Beastlord Pet Rescore (v3.6)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="July 8, 2026 (Builder Update) — Scoring pass off the July 7 patch. Magician and Beastlord pets moved up: Spell Tiering Phase 2 levels your pet alongside you (+6% HP, +1 base damage, +5 skill per level). The Necromancer pet moved up too — the same scaling lifts every summoned pet. Paladin self-heal nudged up for viability past 50, still well below the true healers. Warrior gained durability for Innate Fighter's Tenacity."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Pet Scaling, Paladin Self-Heal, Warrior Frenzy (v3.5)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="June 25, 2026 (Builder Update) — Three changes. Rangers now get sustain credit for their self-heal proc, which the builder used to ignore. Beastlord's slow moved up after the level 35 slow buff — slow counts as survival here. And the old caster-interruption penalty was dropped: Channeler Stance gives every class a flat damage cut and the Inviable invocation makes casts uninterruptible, so caster trios are no longer docked for standing in melee."><span class="sidebar-beta-watch-prefix" aria-hidden="true">🔧</span><span class="sidebar-beta-watch-li-text">Ranger Sustain, Beastlord Slow, Caster Cleanup (v3.3)</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+              </ul>
+            </div>
+
+            <!-- ===== LAUNCH WEEK ===== -->
+            <div class="sidebar-beta-watch-block">
+              <div class="sidebar-beta-watch-cat-head sidebar-beta-watch-cat-head--confirmed">LAUNCH WEEK ✅</div>
+              <p class="sidebar-beta-watch-source">(Source: EQL dev posts and official announcements, July 20–24, 2026.)</p>
+              <ul class="sidebar-beta-watch-ul">
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Servers come up at noon Pacific on Tuesday, July 28. Entry is batched with queues while the team watches server stability, the same process used for open beta. Pre-orders stay open through launch week for the name reservation and the exclusive in-game title. Launch is a full wipe — nothing from beta carries over, and everything made from the 28th is permanent."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Launch is noon PT Tuesday July 28 — queued entry, full wipe</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Every class gets a new autogranted alternate advancement ability at launch — no points spent, you simply have it. Rogue gets up to twenty percent longer poison duration and seventy-five points of enemy poison resistance removed. Monk gets up to ten percent more current and maximum attack speed. Beastlord gets up to a nine percent chance for the pet to flurry. Bard gets up to a fifteen percent chance to keep casting through stuns. Paladin gets up to six percent more direct healing. Shadow Knight gets up to six percent more lifetap damage. Frenzy and Cleave now reduce Rampage's cooldown. Enchanter abilities are still being written — early notes describe charm that can't be broken or dispelled, and a decoy that inherits your aggro."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">New autogranted AA per class at launch — the Unbound line</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Fifteen races at launch: the twelve original EverQuest races plus Kerran, Iksar, and Froglok. Kerrans are the one to watch — as of the week before launch there were no previews, no racial abilities announced, and no class list. Race locks at level 11 along with your primary and deity, and race unlocks are faction grinds rather than quests."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Fifteen races at launch including Kerran, Iksar, Froglok</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Group experience was the loudest complaint of the beta — multiple creators independently called the penalty their single biggest issue with the game. The devs say they're broadly happy with the rates but are adding extra experience for individuals in two, three, and four person groups at launch, which they describe as enough to close the gap between expectations and reality. Raids cap at eight players, with a stiff experience penalty for any group beyond four."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Group XP adjusted at launch — bonus for 2–4 player groups</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Chain-stunning at difficulty 3 and 4 was the worst part of the difficulty spike, and the devs have confirmed the cause: a diminishing-returns system for stuns, mezzes, and fears was in the game but not working as intended. Repeated hits of the same effect are supposed to give progressively shorter durations and eventually immunity within an encounter. It was fixed internally after beta closed and ships at launch."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Chain-stun fixed — stun/mez/fear diminishing returns ships at launch</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Your first raid boss kill each week gives full loot, and after that you can return once a day for one bonus item. The weekly lockout resets on Tuesday and Alt+Z shows where your timers stand. The daily bonus item was returning gems and junk roughly eighty-five percent of the time during beta — the devs reworked how it's selected, and it now pulls something of value from the target."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Raid lockouts reset Tuesday — daily bonus loot fixed for launch</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="The devs have said the intent is to have the Marketplace in for launch, barring technical issues, which reverses an earlier stream comment calling it a lower priority. Items attune on first trade, which the devs say prevents buyers cornering the market and relisting at higher prices. They've also noted an economy is hard to run on things players can farm solo."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Marketplace intended to be live at launch</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="The shop currency is Aridium ($4.99 = 500, up to $100 = 12,000). It sells more than cosmetics: class unlock tokens 1,500, race unlocks 1,000, deity tokens 500, loadout slots 500, storage and inventory expansions 500, weight-reduction bags 500 to 1,000, an AA potion that doubles points on your next five, name changes 1,000, and item reclamation 100. Devs have stated nothing is pay-to-win and that race, class, and deity unlocks all have free achievement paths — but the paid path exists at launch and some of the free ones arrive after. Inventory expansion caps at four extra bags."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Cash shop sells unlocks and convenience, not just cosmetics</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Your deity locks at level 11 with your race and primary class, but the devs have confirmed a Deity Token that changes it afterward. Deity sets your starting faction across the world — who's kill-on-sight and who lets you shop — and gates some deity-locked items. Type /faction to see your standing list at any time."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Deity locks at 11 but a Deity Token can change it later</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Keyrings are a game system rather than a shop item. The devs have confirmed they're already live in some dungeons and are being added across the rest over time, because they don't want players carrying a bag of keys. Until your dungeon has one, carry the keys, and don't destroy anything you had to camp for. Separately, bash currently requires a two-hander — the plan is to let it work with dual wield gated behind an AA purchase."><span class="sidebar-beta-watch-prefix" aria-hidden="true">✅</span><span class="sidebar-beta-watch-li-text">Keyrings rolling out dungeon by dungeon; bash + dual wield coming</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+              </ul>
+            </div>
+
+            <!-- ===== BALANCE — PENDING RE-VERIFY ===== -->
+            <div class="sidebar-beta-watch-block">
+              <div class="sidebar-beta-watch-cat-head">BALANCE — PENDING RE-VERIFY ⚖️</div>
+              <p class="sidebar-beta-watch-source">(Everything here is a beta-era observation. Beta ended July 21 and the launch patch touches nine classes — treat these as starting points to re-test, not settled facts.)</p>
+              <ul class="sidebar-beta-watch-ul">
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Cleric was the consensus strongest class through beta, and Promise Renewal is why — roughly 6,000 health for 500 mana at a quarter-second cast, delayed eighteen seconds. Pre-cast it, take the damage, let it land while you do something else. Multiple creators described taking a Cleric as the default safe pick. One dissent worth knowing: at least one endgame creator considers Clerics dull and not strictly necessary now that so many builds self-sustain."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Cleric was the strongest class in beta — Promise Renewal</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Monk was the top melee damage class through beta and out-hit Berserker on high-level bosses. A side-by-side of the skill panels shows Monk ahead of Beastlord in every melee skill, several by fifty points, plus Monk gets double and triple attack where Beastlord gets neither. Monk also gains a new autogranted AA at launch raising both current and maximum attack speed."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Monk top melee damage — out-hits Berserker on bosses</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Symphonic Aura auto-plays songs from your bottom gem slots and refreshes every six seconds, so there's no manual twisting. That plus the best haste in the game, real slow, mez, and damage-shield songs made Bard the most recommended support pick across beta by a wide margin — multiple creators called it the launch meta. New at launch: Unbound Versatility, an autogranted chance to keep casting through stuns, which addresses the class's main weakness."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Bard was the most-picked support class in beta</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Early beta parses put two-handers well behind dual-wield on raw autoattack, and that's still roughly true. Three things push the other way. Two-handers take fewer damage-shield reflections, which matters against shielded mobs at higher difficulty. Warrior Cleave scales off raw weapon damage, so a big slow weapon cleaves far harder. And plenty of builds run a one-hander and shield purely for the armor class, since their damage comes from dots and procs anyway. Check it against your own numbers. Current bug: Cleave does not work with one-handed blunt weapons."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Two-handers vs dual-wield is build-dependent, not settled</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Raid bosses were being killed solo at the top difficulty during beta — Master Yael at difficulty 4 by a level 40 player on stream, and Innoruuk at tier 2 by a level 50. The pattern is the same across kills: outlast the boss's mana, strip its buffs, keep a slow landed, and expect a long fight. Every raid instance comes in the full difficulty spread and you can queue solo."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Raid bosses were solo-killable in beta, including at D4</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="You don't need a plate tank to function. Pet classes can hold a group together, lifetap builds tank through their own healing, and Channeler Stance lets a caster take a flat damage cut and hold aggro without plate. Beta creators cleared difficulty 4 content with no traditional tank in the trio at all. A real tank is still stronger — it's just no longer required."><span class="sidebar-beta-watch-prefix" aria-hidden="true">⚖️</span><span class="sidebar-beta-watch-li-text">Tankless builds are viable — no plate tank required</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+              </ul>
+            </div>
+
+            <!-- ===== STILL UNKNOWN ===== -->
+            <div class="sidebar-beta-watch-block">
+              <div class="sidebar-beta-watch-cat-head">STILL UNKNOWN ❓</div>
+              <ul class="sidebar-beta-watch-ul">
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Balance is still moving. Nine classes got changes in the launch patch alone, and the devs have described the game as a live service where tuning is always underway. Anything you read about class strength from beta is a snapshot of a build that no longer exists."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❓</span><span class="sidebar-beta-watch-li-text">Balance still in flux — the meta will move after launch</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Kunark is targeted for the end of 2026, and the devs have said this is a separate timeline for EverQuest rather than a repeat of the original release order — they can customise what comes next and in what order. A dungeon revamp cadence is running alongside that; Splitpaw and Crushbone both landed in July with no advance notice."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❓</span><span class="sidebar-beta-watch-li-text">Post-Kunark roadmap open — expansion order is theirs to choose</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Race, class, and deity unlocks all have free achievement paths announced, and your first class to 50 grants an unlock token plus a one-time storage bundle. But the paid path exists at launch while some of the free ones arrive after — deity unlocks specifically were described as coming shortly after launch. Worth watching how quickly the earn paths actually land."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❓</span><span class="sidebar-beta-watch-li-text">Free unlock paths announced — but arriving after the paid ones</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+              </ul>
+            </div>
+
+            <!-- ===== NOT COMING ===== -->
+            <div class="sidebar-beta-watch-block">
+              <div class="sidebar-beta-watch-cat-head">NOT COMING ❌</div>
+              <ul class="sidebar-beta-watch-ul">
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="True Box is enforced — one client per machine. Multiboxing isn't supported by design, and the whole point of running three classes at once is that you don't need a second account to cover a missing role."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❌</span><span class="sidebar-beta-watch-li-text">Multiboxing — True Box enforced</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Automation tools like MacroQuest are against the terms of service. Community parsers that read your log file are a separate thing and are in wide use."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❌</span><span class="sidebar-beta-watch-li-text">Automation (MacroQuest etc.) — against ToS</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="No mercenaries and no Krono. Your three classes are the party, and there's no in-game currency you can buy with real money and resell to other players."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❌</span><span class="sidebar-beta-watch-li-text">Mercenaries &amp; Krono — not in EQL</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+                <li class="sidebar-beta-watch-item" tabindex="0" data-tooltip="Guild halls aren't in at launch. Alts work differently rather than being absent — one character per world server across eight servers gives you eight per account, each with its own loadout slots."><span class="sidebar-beta-watch-prefix" aria-hidden="true">❌</span><span class="sidebar-beta-watch-li-text">Guild halls — not at launch</span><span class="beta-item-info" aria-hidden="true">ⓘ</span></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <p class="sidebar-beta-watch-source">Recent coverage: EQL July 14, 2026 patch notes; in-game logs and creator streams June–July 2026 — Broken Stoic, Brutal Static, Higher Thought Gaming, hammackj, Krause, Phlinger, Chaz and Omaha, Commander Cyrious, Gaming After Bedtime, Misty Katherine, Doc Legendary, Slayheim, Gymnastic Goldfish, Kesson TV, Variety Void, Italian Spartacus, Azeroth After Bedtime, Gregg2g.</p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <div class="main-content-panel">
+          <div id="main-build-root" class="main-build"></div>
+          <div id="ads-browse-holding" aria-hidden="true" hidden>
+            <div
+              class="ads-slot ads-slot--browse-below"
+              data-ads-browse-below-static
+              aria-label="Advertisement"
+            >
+              <ins
+                class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5516494260399456"
+                data-ad-slot="4644414059"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
+          </div>
+          <div id="quiz-panel" class="quiz-panel" hidden>
+            <div id="questionnaire-root"></div>
+            <div
+              class="ads-slot ads-slot--quiz"
+              data-ads-quiz-static
+              hidden
+              aria-label="Advertisement"
+            >
+              <ins
+                class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5516494260399456"
+                data-ad-slot="7624810935"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-sources-divider" aria-hidden="true"></div>
+
+        <section
+          class="data-sources data-sources-section"
+          id="data-sources-section"
+          aria-labelledby="data-sources-heading"
+        >
+          <h2 id="data-sources-heading" class="data-sources-title">
+            The score, and the history behind it
+          </h2>
+          <p class="data-sources-subtitle">Combos are ranked by the Legends score alone. The classic and THJ columns are history, shown for reference — they don't feed the ranking.</p>
+
+          <div class="data-sources-grid">
+            <article class="data-sources-card">
+              <div class="data-sources-card-head">
+                <span class="data-sources-icon" aria-hidden="true">⚔️</span>
+                <h3 class="data-sources-card-title">Classic EQ Wisdom</h3>
+                <p class="data-sources-card-sub">
+                  The proven 3-box combinations from 20+ years of EverQuest
+                </p>
+                <p class="data-sources-card-sub" style="color:#d9a441;font-weight:600;">Reference only — not used in scoring</p>
+              </div>
+              <p class="data-sources-card-sub">Standard non-charm 3-box</p>
+              <ol class="data-sources-list">
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#1</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Shadow Knight / Shaman / Monk</span
+                    >
+                    <span class="data-sources-reason"
+                      >SK tanks and lifetaps, Shaman slows and heals, Monk
+                      delivers the best melee DPS in classic EQ</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#2</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Warrior / Cleric / Monk</span
+                    >
+                    <span class="data-sources-reason"
+                      >Warrior holds aggro, Cleric keeps the box alive, Monk
+                      brings top-tier sustained melee DPS</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#3</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Shadow Knight / Shaman / Bard</span
+                    >
+                    <span class="data-sources-reason"
+                      >SK tanks and lifetaps, Shaman slows and heals, Bard songs
+                      round out mana, haste, and utility</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#4</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Warrior / Shaman / Monk</span
+                    >
+                    <span class="data-sources-reason"
+                      >Classic steel wall: Warrior tanks, Shaman slows and heals,
+                      Monk shreds from the flank</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#5</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Shadow Knight / Shaman / Berserker</span
+                    >
+                    <span class="data-sources-reason"
+                      >SK and Shaman anchor survival, Berserker ramps damage as
+                      fights go long</span
+                    >
+                  </div>
+                </li>
+              </ol>
+              <p class="data-sources-card-sub">Charm classics (Enchanter — separate tier)</p>
+              <ol class="data-sources-list">
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#1</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Shadow Knight / Shaman / Enchanter</span
+                    >
+                    <span class="data-sources-reason"
+                      >SK tanks and lifetaps, Shaman slows and heals, Enchanter
+                      charm DPS is the highest in the game — the definitive charm trio</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#2</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Warrior / Cleric / Enchanter</span
+                    >
+                    <span class="data-sources-reason"
+                      >Unkillable tank with best healer, Enchanter charm turns any
+                      mob into your highest DPS dealer</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#3</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Monk / Shaman / Enchanter</span
+                    >
+                    <span class="data-sources-reason"
+                      >Monk DPS plus charm DPS, Shaman keeps everyone alive — fast
+                      and lethal</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#4</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Magician / Shaman / Enchanter</span
+                    >
+                    <span class="data-sources-reason"
+                      >Double pet plus charm, Shaman slow keeps charm pet
+                      manageable</span
+                    >
+                  </div>
+                </li>
+                <li class="data-sources-item">
+                  <span class="data-sources-rank">#5</span>
+                  <div class="data-sources-item-body">
+                    <span class="data-sources-combo"
+                      >Paladin / Druid / Enchanter</span
+                    >
+                    <span class="data-sources-reason"
+                      >Self-sustaining trio — Paladin tanks and heals, Druid heals
+                      and ports, Enchanter charm and CC</span
+                    >
+                  </div>
+                </li>
+              </ol>
+              <p class="data-sources-foot">
+                Source: EverQuest Guides multibox tool, classic era. Two tiers:
+                standard non-charm 3-box rankings plus a separate Enchanter charm
+                list. Shown for historical reference — these classic rankings don't feed the Legends score.
+              </p>
+            </article>
+
+            <article class="data-sources-card">
+              <div class="data-sources-card-head">
+                <span class="data-sources-icon" aria-hidden="true">🔥</span>
+                <h3 class="data-sources-card-title">The Heroes Journey Data</h3>
+                <p class="data-sources-card-sub">
+                  161,588 level-up events from real players on the EQ multiclass
+                  emu that inspired EQ Legends
+                </p>
+                <p class="data-sources-card-sub" style="color:#d9a441;font-weight:600;">Reference only — not used in scoring</p>
+                <p class="data-sources-source">
+                  Mar–Jul 2025, PoP era, 560 unique combos tracked
+                </p>
+              </div>
+              <div
+                id="data-sources-thj-top10"
+                class="data-sources-rows"
+                data-score-loading
+              >
+                <p class="data-sources-loading">Loading THJ data…</p>
+              </div>
+              <p class="data-sources-foot">
+                THJ had 3 simultaneous pets and faster cast times, so its rankings don't carry over. Shown for historical reference — this data doesn't feed the Legends score.
+              </p>
+            </article>
+
+            <article class="data-sources-card">
+              <div class="data-sources-card-head">
+                <span class="data-sources-icon" aria-hidden="true">🧮</span>
+                <h3 class="data-sources-card-title">EQ Legends Combo Score</h3>
+                <p class="data-sources-card-sub">
+                  The live ranking at D2 — Balanced difficulty. Built only on confirmed Legends mechanics and beta data.
+                </p>
+              </div>
+              <div
+                id="data-sources-score-top5"
+                class="data-sources-rows"
+                data-score-loading
+              >
+                <p class="data-sources-loading">Loading scores…</p>
+              </div>
+              <p class="data-sources-foot">
+                Updated as beta confirms mechanics. Stance system, pet inventory
+                stacking, pet tanking, and defensive skill
+                access all factored in.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="site-footer site-disclaimer">
+          <p>Unofficial fan tool. Game rules and balance may change.</p>
+        </footer>
+      </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
