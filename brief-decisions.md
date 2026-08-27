@@ -5,4 +5,4 @@
 - Recap: enable the MWF clock after three manual runs?
 - Intake: pin sources or retire (dark since 08-12)?
 
-Last written: 2026-08-26 (ICT). Brief run 2026-08-26 has not used this set yet.
+Last written: 2026-08-26 (ICT). Brief run 2026-08-27 read this; four open calls surfaced.
