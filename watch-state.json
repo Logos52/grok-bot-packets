@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-26",
+  "last_run": "2026-08-28",
   "hosting": {
     "tsumugu.cc": "cloudflare",
     "tsumugu-ed.com": "cloudflare",
@@ -20,8 +20,8 @@
   "reach_baselines_clean": 6,
   "audience": {
     "ed": {
-      "v7": 12,
-      "pv7": 12,
+      "v7": 10,
+      "pv7": 10,
       "ext_ref": 0,
       "prev_v7": 20,
       "prev_pv7": 20,
@@ -29,8 +29,8 @@
     },
     "cc": {
       "v7": 3,
-      "pv7": 3,
-      "ext_ref": 2,
+      "pv7": 4,
+      "ext_ref": 3,
       "prev_v7": 0,
       "prev_pv7": 0,
       "prev_ext_ref": 0
@@ -45,11 +45,12 @@
     },
     "cc": {
       "clicks14": 0,
-      "impr14": 7,
+      "impr14": 6,
       "prev_clicks14": 0,
-      "prev_impr14": 3
+      "prev_impr14": 4
     },
-    "window": "2026-08-10..2026-08-23",
+    "window": "2026-08-12..2026-08-25",
+    "prev_window": "2026-07-29..2026-08-11",
     "sitemaps": {
       "ed": {
         "path": "https://tsumugu-ed.com/sitemap.xml",
@@ -67,8 +68,7 @@
         "errors": 0,
         "warnings": 0
       }
-    },
-    "prev_window": "2026-07-27..2026-08-09"
+    }
   },
   "canaries": {
     "https://tsumugu-ed.com/": {
@@ -108,7 +108,7 @@
     "github": true,
     "goatcounter": true
   },
-  "run_count": 11,
+  "run_count": 12,
   "cf_cache_samples": {
     "https://tsumugu.cc/": "EXPIRED",
     "https://tsumugu.cc/blog/": "EXPIRED",
@@ -121,24 +121,24 @@
     "cc": "9c65e7983e994d3f865d700dc95dfe41"
   },
   "audience_window": {
-    "cur": "2026-08-19..2026-08-25",
-    "prev": "2026-08-12..2026-08-18"
+    "cur": "2026-08-21..2026-08-27",
+    "prev": "2026-08-14..2026-08-20"
   },
   "goatcounter": {
     "site": "logos52",
     "host": "logos52.goatcounter.com",
     "pv7": 1,
     "prev_pv7": 4,
-    "window": "2026-08-19..2026-08-25",
-    "prev_window": "2026-08-12..2026-08-18"
+    "window": "2026-08-21..2026-08-27",
+    "prev_window": "2026-08-14..2026-08-20"
   },
-  "last_run_at": "2026-08-26T08:07:13+08:00",
+  "last_run_at": "2026-08-28T08:13:36+08:00",
   "reach_actions": {
-    "id": 32838269078,
+    "id": 33060284126,
     "name": "Deploy Astro site to GitHub Pages",
     "status": "completed",
     "conclusion": "success",
-    "updated_at": "2026-08-25T10:40:48Z"
+    "updated_at": "2026-08-27T09:51:25Z"
   },
   "cf_dynamic_streak": {
     "https://tsumugu.cc/": 0,
@@ -196,5 +196,20 @@
     "errors": 0
   },
   "overlay_completed": "2026-08-21",
-  "crawled_after_0818": 6
+  "crawled_after_0818": 6,
+  "gold_12_note": {
+    "at": "2026-08-28",
+    "used": [
+      "CF RUM primary audience",
+      "REACH exception-only after baselines",
+      "Actions conclusion",
+      "GSC optional gold",
+      "GoatCounter cc-home secondary"
+    ],
+    "drop_candidates": [
+      "GSC ed still 0/0 (keep optional)",
+      "sitemaps.indexed never cite"
+    ],
+    "cadence": "Mon/Wed/Fri 08:00 Asia/Taipei confirmed"
+  }
 }
