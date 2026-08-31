@@ -1,2 +1,1 @@
-Cursor Cloud Agents no longer need GitHub: Start from scratch mints an Origin repo, with live browser preview and optional Vercel publish. https://cursor.com/changelog
-Claude Code 2.1.248 adds --restricted (or CLAUDE_CODE_RESTRICTED=1): drops shell/code tools and WebFetch unless named in --tools, keeps file tools in-cwd, refuses bypassPermissions. https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md
+Nothing that changes today.

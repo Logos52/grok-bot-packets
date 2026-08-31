@@ -149,3 +149,24 @@ Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源，�
 4. 寫 **整包繁體**。
 5. 更新 `/workspace/yuedu-seen.json`。60 天內不重複 URL。
 6. 同一內容覆寫 `/workspace/yuedu/latest.md`（Steward 備份）。
+
+---
+
+## BANK — 讀過、用過的全文，進 shared bank 一次
+
+從 2026-08-28 起：每一篇讀完全文且用進 packet 的文章／貼文／頁，進 `/workspace/bank` **一次、一個檔**。Packet 檔本體（`/workspace/yuedu/latest.md` 等）和 Tue/Fri routine 的產出形狀不變。
+
+**抓之前：** `rg -F '<url>' /workspace/bank/INDEX.md`。已在 → 讀對應 `raw/yuedu/<id>.md`，不要再抓。
+
+**抓完、用進 packet 之後：**
+
+```
+python3 /workspace/bank/scripts/bank.py --root /workspace/bank --text --lane yuedu --via grok-bot/Yuedu --source "<url>" --title "<title>" --author "<author>" --published <date> < body.txt
+```
+
+腳本不在時，手寫 `/workspace/bank/raw/yuedu/<id>.md`：`SCHEMA.md` 的 block、空一行、正文，別的都不要。
+
+- Dcard 來源（從 `/workspace/dcard/latest.md` 讀來的）加 `--private`。CNA／iThome／X 公開稿不加。
+- `/workspace/bank/cards/` 是 Mac 的摘要：能讀、不寫。
+- 永不寫 `raw/private/`。永不碰 `/workspace/cast/`。
+- 只 bank **讀完全文且用進 packet** 的。掃過標題、未讀正文的不要 bank。
