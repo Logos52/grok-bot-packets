@@ -1,0 +1,3036 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatterCheck</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --bg: oklch(98% 0.006 80);
+  --surface: oklch(99% 0.003 80);
+  --surface-2: oklch(96% 0.007 80);
+  --border: oklch(90% 0.01 260);
+  --border-soft: oklch(93% 0.008 260);
+  --text: oklch(24% 0.02 260);
+  --text-2: oklch(46% 0.02 260);
+  --text-3: oklch(60% 0.015 260);
+  --accent: oklch(46% 0.15 260);
+  --accent-ink: oklch(35% 0.13 260);
+  --accent-tint: oklch(94% 0.025 260);
+  --accent-strong: oklch(46% 0.16 260);
+  --gold: oklch(58% 0.13 80);
+  --gold-ink: oklch(45% 0.1 75);
+  --gold-tint: oklch(94% 0.03 80);
+  --good: oklch(52% 0.13 145);
+  --good-tint: oklch(94% 0.035 145);
+  --bad: oklch(54% 0.16 25);
+  --bad-tint: oklch(94% 0.035 25);
+  --warn: oklch(58% 0.13 80);
+  --cat-grammar: oklch(52% 0.13 260); --cat-grammar-tint: oklch(94% 0.02 260);
+  --cat-vocab: oklch(52% 0.14 330);   --cat-vocab-tint: oklch(94% 0.025 330);
+  --cat-pron: oklch(55% 0.14 75);     --cat-pron-tint: oklch(94% 0.03 75);
+  --cat-usage: oklch(53% 0.15 20);    --cat-usage-tint: oklch(94% 0.03 20);
+  --type-vocabulary: var(--accent-strong); --type-vocabulary-tint: var(--accent-tint);
+  --type-phrasal: oklch(50% 0.13 255);   --type-phrasal-tint: oklch(94% 0.02 255);
+  --type-collocation: oklch(48% 0.13 300); --type-collocation-tint: oklch(94% 0.02 300);
+  --type-idiom: oklch(56% 0.13 70);      --type-idiom-tint: oklch(94% 0.03 70);
+  --type-metaphor: oklch(52% 0.15 10);   --type-metaphor-tint: oklch(94% 0.03 10);
+  --shadow-sm: 0 1px 2px oklch(20% 0.02 260 / 0.06);
+  --shadow-md: 0 4px 16px oklch(20% 0.02 260 / 0.07), 0 1px 3px oklch(20% 0.02 260 / 0.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg: oklch(21% 0.015 260); --surface: oklch(25% 0.015 260); --surface-2: oklch(28% 0.017 260);
+    --border: oklch(37% 0.02 260); --border-soft: oklch(32% 0.018 260);
+    --text: oklch(94% 0.006 80); --text-2: oklch(76% 0.012 260); --text-3: oklch(62% 0.012 260);
+    --accent: oklch(70% 0.13 260); --accent-ink: oklch(88% 0.06 260); --accent-tint: oklch(32% 0.08 260); --accent-strong: oklch(72% 0.14 260);
+    --gold: oklch(78% 0.12 85); --gold-ink: oklch(85% 0.1 85); --gold-tint: oklch(32% 0.06 80);
+    --good: oklch(72% 0.14 145); --good-tint: oklch(32% 0.06 145);
+    --bad: oklch(72% 0.15 25); --bad-tint: oklch(34% 0.08 25);
+    --warn: oklch(76% 0.12 80);
+    --cat-grammar: oklch(76% 0.1 260); --cat-grammar-tint: oklch(30% 0.05 260);
+    --cat-vocab: oklch(76% 0.11 330); --cat-vocab-tint: oklch(30% 0.06 330);
+    --cat-pron: oklch(78% 0.11 75); --cat-pron-tint: oklch(32% 0.06 75);
+    --cat-usage: oklch(76% 0.12 20); --cat-usage-tint: oklch(32% 0.06 20);
+    --type-vocabulary: var(--accent-strong); --type-vocabulary-tint: var(--accent-tint);
+    --type-phrasal: oklch(76% 0.09 255); --type-phrasal-tint: oklch(30% 0.05 255);
+    --type-collocation: oklch(76% 0.1 300); --type-collocation-tint: oklch(30% 0.05 300);
+    --type-idiom: oklch(80% 0.11 70); --type-idiom-tint: oklch(32% 0.06 70);
+    --type-metaphor: oklch(76% 0.12 10); --type-metaphor-tint: oklch(32% 0.06 10);
+    --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3); --shadow-md: 0 4px 16px oklch(0% 0 0 / 0.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg: oklch(21% 0.015 260); --surface: oklch(25% 0.015 260); --surface-2: oklch(28% 0.017 260);
+  --border: oklch(37% 0.02 260); --border-soft: oklch(32% 0.018 260);
+  --text: oklch(94% 0.006 80); --text-2: oklch(76% 0.012 260); --text-3: oklch(62% 0.012 260);
+  --accent: oklch(70% 0.13 260); --accent-ink: oklch(88% 0.06 260); --accent-tint: oklch(32% 0.08 260); --accent-strong: oklch(72% 0.14 260);
+  --gold: oklch(78% 0.12 85); --gold-ink: oklch(85% 0.1 85); --gold-tint: oklch(32% 0.06 80);
+  --good: oklch(72% 0.14 145); --good-tint: oklch(32% 0.06 145);
+  --bad: oklch(72% 0.15 25); --bad-tint: oklch(34% 0.08 25);
+  --warn: oklch(76% 0.12 80);
+  --cat-grammar: oklch(76% 0.1 260); --cat-grammar-tint: oklch(30% 0.05 260);
+  --cat-vocab: oklch(76% 0.11 330); --cat-vocab-tint: oklch(30% 0.06 330);
+  --cat-pron: oklch(78% 0.11 75); --cat-pron-tint: oklch(32% 0.06 75);
+  --cat-usage: oklch(76% 0.12 20); --cat-usage-tint: oklch(32% 0.06 20);
+  --type-vocabulary: var(--accent-strong); --type-vocabulary-tint: var(--accent-tint);
+  --type-phrasal: oklch(76% 0.09 255); --type-phrasal-tint: oklch(30% 0.05 255);
+  --type-collocation: oklch(76% 0.1 300); --type-collocation-tint: oklch(30% 0.05 300);
+  --type-idiom: oklch(80% 0.11 70); --type-idiom-tint: oklch(32% 0.06 70);
+  --type-metaphor: oklch(76% 0.12 10); --type-metaphor-tint: oklch(32% 0.06 10);
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3); --shadow-md: 0 4px 16px oklch(0% 0 0 / 0.35);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:14px; line-height:1.5;
+}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+button{font-family:inherit;font-size:inherit;cursor:pointer;background:none}
+input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+::selection{background:var(--accent-tint)}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+a{color:var(--accent-strong)}
+:focus-visible{outline:2px solid var(--accent-strong);outline-offset:2px;border-radius:4px}
+
+.shell{max-width:1180px;margin:0 auto;padding:22px 24px 64px}
+.topbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--border-soft)}
+.brand{display:flex;align-items:center;gap:10px;margin-right:auto}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;flex:0 0 auto}
+.brand-name{font-size:16px;font-weight:600;letter-spacing:-0.01em}
+.brand-tag{font-size:11.5px;color:var(--text-3)}
+
+.studentbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.studentchip{display:flex;align-items:center;gap:7px;padding:5px 10px 5px 5px;border-radius:100px;border:1px solid var(--border);background:var(--surface);transition:border-color .15s,box-shadow .15s}
+.studentchip.active{border-color:var(--accent-strong);box-shadow:0 0 0 1px var(--accent-strong) inset}
+.studentchip:hover{border-color:var(--text-3)}
+.avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:white;flex:0 0 auto}
+.studentchip .name{font-size:12.5px;font-weight:500}
+.livepip{width:6px;height:6px;border-radius:50%;background:var(--bad);flex:0 0 auto;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){.livepip{animation:none}}
+
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;font-weight:500;transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--text-3)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:white}
+.btn-primary:hover{opacity:.9;border-color:var(--accent)}
+.btn-danger{background:var(--bad);border-color:var(--bad);color:white}
+.btn-ghost{border-color:transparent;background:transparent;padding:8px 10px}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-sm{padding:5px 10px;font-size:12px;border-radius:7px}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.icon{width:14px;height:14px;flex:0 0 auto}
+
+.tabs{display:flex;gap:4px;margin-bottom:18px;border-bottom:1px solid var(--border-soft);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs .tab{flex:0 0 auto}
+.tab{padding:9px 4px;margin-right:22px;font-size:13.5px;font-weight:500;color:var(--text-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+@media (max-width:480px){ .tab{margin-right:14px;font-size:12.5px} }
+.tab.active{color:var(--text);border-color:var(--accent)}
+
+.card{background:var(--surface);border:1px solid var(--border-soft);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm)}
+.grid2{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;align-items:start}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+
+.eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.07em;color:var(--text-3);text-transform:uppercase}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11.5px;font-weight:600;color:var(--text-2)}
+.field input,.field select,.field textarea{padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text)}
+.field input[type="range"]{padding:0;accent-color:var(--accent)}
+.field textarea{resize:vertical;min-height:52px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent-strong)}
+.formrow{display:flex;gap:10px;flex-wrap:wrap}
+.formrow>.field{flex:1 1 140px}
+
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:3px 8px;border-radius:100px}
+.emptystate{text-align:center;padding:70px 20px;color:var(--text-2)}
+.emptystate h2{font-size:19px;margin-bottom:8px;color:var(--text)}
+.emptystate .btn{margin-top:16px}
+.emptystate .bigicon{font-size:34px;margin-bottom:6px}
+
+.herocard{background:linear-gradient(160deg, var(--accent-tint), var(--surface) 55%);border-color:color-mix(in oklch, var(--accent-strong) 22%, var(--border-soft))}
+.avatarlg{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:white;flex:0 0 auto}
+
+.mistakecard{border-radius:11px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;border:1px solid var(--border-soft);background:var(--surface)}
+.mistakecard.flagged{border-color:color-mix(in oklch, var(--warn) 45%, var(--border-soft))}
+.mistakecard .row{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.mistakecard .txt{font-size:13px;line-height:1.5}
+.mistakecard .fix{font-size:12px;color:var(--text-2)}
+.count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;padding:3px 7px;border-radius:100px;background:var(--warn);color:white;white-space:nowrap}
+.mini{font-size:11.5px;color:var(--text-3)}
+.quietlist{display:flex;flex-direction:column;gap:4px}
+.quietrow{display:flex;align-items:center;gap:8px;padding:6px 2px;font-size:12.5px;color:var(--text-2);border-bottom:1px dashed var(--border-soft)}
+.quietrow:last-child{border-bottom:none}
+.xbtn{margin-left:auto;color:var(--text-3);font-size:15px;line-height:1;flex:0 0 auto}
+.xbtn:hover{color:var(--bad)}
+
+.statrow{display:flex;gap:14px;flex-wrap:wrap}
+.stat{flex:1 1 120px;background:var(--surface-2);border-radius:11px;padding:12px 14px}
+.stat .num{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;line-height:1.1}
+.stat .lbl{font-size:11px;color:var(--text-2);margin-top:2px}
+.stat-hero{padding:16px 16px}
+.stat-hero .num{font-size:30px}
+.stat-hero .lbl{font-size:12px}
+.deltabadge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:100px}
+.delta-up{background:var(--good-tint);color:var(--good)}
+.delta-down{background:var(--bad-tint);color:var(--bad)}
+.delta-flat{background:var(--surface-2);color:var(--text-2)}
+@media (prefers-reduced-motion: no-preference){
+  @keyframes fadeSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+  @keyframes flamePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+  @keyframes flipReveal{from{opacity:0;transform:rotateX(90deg)}to{opacity:1;transform:rotateX(0)}}
+  .factcard-content{animation:fadeSlideIn .45s cubic-bezier(.2,.7,.3,1)}
+  .badgechip{animation:popIn .35s cubic-bezier(.34,1.56,.64,1) backwards}
+  .streak-flame{display:inline-block;animation:flamePulse 1.8s ease-in-out infinite}
+  .reveal{animation:flipReveal .35s ease}
+  .tabfade{animation:fadeSlideIn .3s ease}
+  .dashcard:hover{transform:translateY(-2px)}
+}
+.dashcard{transition:transform .15s ease, box-shadow .15s ease}
+.badgechip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;background:var(--surface-2);border:1px solid var(--border-soft);font-size:13px;font-weight:600}
+.badgechip.earned{background:var(--gold-tint);color:var(--gold-ink);border-color:color-mix(in oklch, var(--gold) 30%, var(--border-soft))}
+
+.spotlight{
+  background: radial-gradient(130% 150% at 100% 0%, oklch(24% 0.1 292) 0%, oklch(19% 0.08 270) 45%, oklch(12% 0.02 260) 100%);
+  border: 1px solid oklch(55% 0.1 85 / 0.4);
+  border-radius: 20px;
+  padding: 28px 30px;
+  color: oklch(96% 0.006 80);
+  box-shadow: 0 20px 50px oklch(15% 0.02 260 / 0.35);
+}
+.spotlight .eyebrow{background:oklch(45% 0.09 85 / 0.3);color:oklch(84% 0.1 85)}
+.spotlight-headline{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-0.02em;line-height:1.1;margin:10px 0 4px}
+.spotlight-sub{color:oklch(78% 0.015 260);font-size:14px}
+.spotlight-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px;margin-top:20px;padding-top:20px;border-top:1px solid oklch(55% 0.1 85 / 0.3)}
+.spotlight-stat .num{font-size:clamp(26px,3.4vw,36px);font-weight:800;font-family:'IBM Plex Mono',monospace;letter-spacing:-0.02em;color:oklch(96% 0.01 260)}
+.spotlight-stat .num.accent{color:oklch(78% 0.12 85)}
+.spotlight-stat .lbl{font-size:12px;color:oklch(70% 0.015 260);margin-top:2px}
+.glossgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.dashgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.dashcard{cursor:pointer;display:flex;flex-direction:column;gap:10px;transition:border-color .15s,box-shadow .15s}
+.dashcard:hover{border-color:var(--text-3);box-shadow:var(--shadow-md)}
+.dashflags{display:flex;flex-wrap:wrap;gap:6px;min-height:22px}
+.glosscard{border:1px solid var(--border-soft);border-radius:11px;padding:12px 13px;display:flex;flex-direction:column;gap:6px}
+.glosscard .term{font-size:14px;font-weight:600}
+.glosscard .meaning{font-size:12.5px;color:var(--text-2)}
+.glosscard .example{font-size:12px;color:var(--text-3);font-style:italic}
+
+.flash{display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px 20px}
+.flashcard{width:100%;max-width:420px;min-height:190px;border-radius:16px;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center}
+.flashcard .term{font-size:22px;font-weight:700}
+.flashcard .reveal{display:flex;flex-direction:column;gap:8px}
+.flashcard .meaning{font-size:14px;color:var(--text-2)}
+.flashcard .example{font-size:13px;color:var(--text-3);font-style:italic}
+.flashcard .tap{font-size:11.5px;color:var(--text-3)}
+.flashctrl{display:flex;gap:8px;align-items:center}
+.pronbox{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 14px;border-radius:11px;background:var(--surface-2);width:100%;max-width:320px}
+.pronrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+.recdotsm{width:7px;height:7px;border-radius:50%;background:var(--bad);animation:pulse 1.2s ease-in-out infinite}
+
+.timerbox{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:100px;background:var(--bad-tint)}
+.timerbox .dot{width:7px;height:7px;border-radius:50%;background:var(--bad);animation:pulse 1.6s ease-in-out infinite}
+.timerbox .t{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;color:var(--bad)}
+
+.overlay{position:fixed;inset:0;background:oklch(15% 0.01 260 / 0.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;width:100%;max-width:420px;box-shadow:var(--shadow-md);display:flex;flex-direction:column;gap:14px}
+.modal h3{font-size:16px}
+.modalrow{display:flex;justify-content:flex-end;gap:8px;margin-top:4px}
+
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);font-size:12.5px;font-weight:500;padding:9px 16px;border-radius:100px;box-shadow:var(--shadow-md);z-index:200}
+
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px}
+.sectionhead h3{font-size:14px}
+.help{font-size:12px;color:var(--text-3);line-height:1.55}
+.briefitem{font-size:13.5px;line-height:1.5}
+.stack{display:flex;flex-direction:column;gap:14px}
+.divider{height:1px;background:var(--border-soft);margin:16px 0}
+table.sess{width:100%;border-collapse:collapse;font-size:12.5px}
+table.sess th{text-align:left;font-size:10.5px;letter-spacing:.05em;color:var(--text-3);font-weight:600;padding:0 8px 6px 8px;text-transform:uppercase}
+table.sess td{padding:7px 8px;border-top:1px solid var(--border-soft);vertical-align:top}
+table.sess td.notes{color:var(--text-2);max-width:280px}
+
+@media print{
+  body{background:white;color:black}
+  .no-print{display:none!important}
+  .shell{max-width:100%;padding:0 8px}
+  .card{box-shadow:none;border-color:#ccc}
+}
+
+.recbtn{background:var(--bad);border-color:var(--bad);color:white}
+.recbtn:hover{opacity:.9}
+.recbtn.off{background:var(--surface);border-color:var(--border);color:var(--text)}
+.recbanner{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:9px;font-size:12.5px;font-weight:600;margin-bottom:10px}
+.recbanner .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto;animation:pulse 1.6s ease-in-out infinite}
+.recbanner.live{background:var(--good-tint);color:var(--good)}
+.recbanner.stalled{background:var(--bad-tint);color:var(--bad)}
+.recbanner.off{background:var(--surface-2);color:var(--text-3);font-weight:500}
+.translog{display:flex;flex-direction:column;gap:4px;max-height:280px;overflow-y:auto;margin-top:6px;padding:10px;border-radius:12px;background:linear-gradient(180deg, var(--accent-tint), var(--surface-2) 70%)}
+.transline{display:flex;align-items:flex-start;gap:8px;padding:7px 8px;border-radius:8px;border-left:3px solid transparent;font-size:12.5px}
+.transline.tag-repair{border-color:var(--warn);background:color-mix(in oklch, var(--warn) 8%, transparent)}
+.transline.tag-watch{border-color:var(--accent-strong);background:var(--accent-tint)}
+.transline.tag-filler{border-color:var(--border);opacity:.72}
+.transline .txt{flex:1 1 auto;line-height:1.5}
+.transline .tagpill{font-size:9.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;margin-right:6px}
+.transline .acts{display:flex;gap:4px;flex:0 0 auto}
+.linkbtn{font-size:11px;font-weight:600;color:var(--accent-strong);white-space:nowrap;padding:2px 5px;border-radius:5px}
+.linkbtn:hover{background:var(--accent-tint)}
+.linkbtn.muted{color:var(--text-3)}
+.watchchips{display:flex;flex-wrap:wrap;gap:6px}
+.watchchip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;padding:4px 8px;border-radius:100px;background:var(--surface-2);border:1px solid var(--border-soft)}
+.reviewbadge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;border-radius:100px;background:var(--warn);color:white;font-size:10px;font-weight:700}
+.tier-label-lib{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3);margin:4px 0 8px}
+.tier-label-lib.deep{color:var(--gold-ink)}
+.glossgrid.deep .glosscard{border-color:color-mix(in oklch, var(--gold) 35%, var(--border-soft))}
+.lib-questions{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.lib-questions li{font-size:13px;line-height:1.5;padding-left:18px;position:relative;color:var(--text-2)}
+.lib-questions li::before{content:"?";position:absolute;left:0;top:0;color:var(--gold-ink);font-weight:700;font-size:11px}
+.lib-questions.deep li::before{content:"→";color:var(--gold-ink)}
+</style>
+
+<div id="app"></div>
+<div id="toastHost"></div>
+
+<script>
+/* ---------- data ---------- */
+const STORE_KEY = 'lessoncopilot_v1';
+const COLORS = ['#3f8c80','#5b7fb5','#8a6fb0','#c98a4b','#b0555b','#5a9b6a','#a17f3f'];
+const CATS = {
+  grammar: {label:'Grammar', v:'--cat-grammar', t:'--cat-grammar-tint'},
+  vocab:   {label:'Word choice', v:'--cat-vocab', t:'--cat-vocab-tint'},
+  pron:    {label:'Pronunciation', v:'--cat-pron', t:'--cat-pron-tint'},
+  usage:   {label:'Usage', v:'--cat-usage', t:'--cat-usage-tint'}
+};
+const GTYPES = {
+  vocabulary:  {label:'Vocabulary', v:'--type-vocabulary', t:'--type-vocabulary-tint'},
+  phrasal:     {label:'Phrasal verb', v:'--type-phrasal', t:'--type-phrasal-tint'},
+  collocation: {label:'Collocation', v:'--type-collocation', t:'--type-collocation-tint'},
+  idiom:       {label:'Idiom', v:'--type-idiom', t:'--type-idiom-tint'},
+  metaphor:    {label:'Metaphor', v:'--type-metaphor', t:'--type-metaphor-tint'}
+};
+const LANGMAP = {
+  english:'en-US', spanish:'es-ES', french:'fr-FR', german:'de-DE', italian:'it-IT',
+  portuguese:'pt-PT', mandarin:'zh-CN', chinese:'zh-CN', japanese:'ja-JP', korean:'ko-KR',
+  russian:'ru-RU', arabic:'ar-SA', polish:'pl-PL'
+};
+const LANGOPTS = [
+  ['en-US','English'],['es-ES','Spanish'],['fr-FR','French'],['de-DE','German'],['it-IT','Italian'],
+  ['pt-PT','Portuguese'],['zh-CN','Mandarin'],['ja-JP','Japanese'],['ko-KR','Korean'],['ru-RU','Russian'],['ar-SA','Arabic'],['pl-PL','Polish']
+];
+function guessLangCode(langName){ return LANGMAP[norm(langName).replace(/\s+/g,'')] || 'en-US'; }
+const TAGMETA = {
+  repair: {label:'Possible self-correction'},
+  watch:  {label:'Watchlist match'},
+  filler: {label:'Filler / hesitation'}
+};
+const FUN_FACTS = [
+  "English has borrowed words from over 350 other languages — 'ketchup' comes from a Chinese word for fish sauce.",
+  "The longest word in most major dictionaries without repeating a letter is 'uncopyrightable' — 15 letters, all different.",
+  "Shakespeare is credited with inventing or popularizing over 1,700 English words, including 'eyeball' and 'lonely'.",
+  "There are roughly 7,000 languages spoken in the world today, but about 40% of them are at risk of disappearing.",
+  "The word 'set' has the most dictionary definitions of any English word — over 400 in the Oxford English Dictionary.",
+  "In Icelandic, new technology words are often invented from old roots instead of borrowed — a computer is 'tölva', literally 'number prophet'.",
+  "The dot over a lowercase 'i' or 'j' has a name: it's called a tittle.",
+  "Finnish has a word, 'kalsarikännit', that means getting drunk at home alone in your underwear with no intention of going out.",
+  "English is one of the few languages where the subject usually comes before the verb before the object (SVO) — most of the world's languages actually put the object before the verb.",
+  "'Dreamt' is one of the only English words that ends in the letters 'mt'.",
+  "Papua New Guinea has more languages than any other country — over 800.",
+  "The Spanish word 'esposas' means both 'wives' and 'handcuffs'.",
+  "In Japanese, there are different words for 'I' depending on your gender, age, and how formal the situation is.",
+  "The word 'alphabet' comes from the first two letters of the Greek alphabet: alpha and beta.",
+  "German can build enormous compound words on the fly — like 'Kummerspeck', literally 'grief bacon', meaning weight gained from emotional overeating.",
+  "The Hawaiian alphabet has only 13 letters.",
+  "The '-ing' sound doesn't exist as a single letter combination in most Romance languages, which is part of why it's tricky for many learners of English.",
+  "Idioms rarely translate directly — the English 'it's raining cats and dogs' becomes 'it's raining ropes' in French ('il pleut des cordes').",
+  "The word 'OK' is one of the most recognized words on Earth, understood in nearly every country regardless of native language.",
+  "In Welsh, the longest place name in Europe has 58 letters: Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.",
+  "Mandarin Chinese has no verb tenses at all — time is shown with context words instead of changing the verb.",
+  "The word 'nice' originally meant 'foolish' or 'silly' in Middle English — its meaning has flipped almost completely.",
+  "Portuguese has a word, 'saudade', often described as untranslatable — a deep emotional longing for someone or something absent.",
+  "English 'goodbye' is a contraction of 'God be with ye'.",
+  "In French, you can't just say 'I am 30 years old' — grammatically you say 'I have 30 years' ('j'ai 30 ans').",
+  "The word 'set' aside, 'go' has the second-most definitions of any English word.",
+  "Arabic is written right to left, but numbers within Arabic text are still written left to right.",
+  "There's no word for 'blue' in some languages' oldest vocabularies — Ancient Greek famously never used a dedicated word for it.",
+  "Korean's writing system, Hangul, was designed in the 1440s by a king specifically to be easy to learn.",
+  "The English word 'robot' comes from the Czech word 'robota', meaning forced labor.",
+  "Collocations aren't random — native speakers say 'make a decision' but 'do homework', and there's rarely a logical reason why, just convention.",
+  "Phrasal verbs like 'give up' and 'give in' can have completely unrelated meanings despite sharing the same base verb.",
+  "The average adult native speaker knows around 20,000–35,000 words in their own language, but uses a much smaller set day to day."
+];
+let funFactIdx = null;
+function pickFunFact(){
+  if(FUN_FACTS.length<2){ funFactIdx=0; return; }
+  let next;
+  do{ next = Math.floor(Math.random()*FUN_FACTS.length); }while(next===funFactIdx);
+  funFactIdx = next;
+}
+if(funFactIdx===null) pickFunFact();
+
+/* ---------- everyday useful phrases (student-facing, broader than the tutor's construct library) ---------- */
+const USEFUL_PHRASES = [
+  {term:"to be honest", meaning:"used to introduce a candid opinion, even if it's blunt", example:"To be honest, I don't think that's a great idea."},
+  {term:"no worries", meaning:"a casual, friendly way to say it's okay or no problem", example:"No worries, we can reschedule for tomorrow."},
+  {term:"I guess so", meaning:"a soft, slightly uncertain way to agree", example:"\"Do you want to go?\" \"I guess so, why not.\""},
+  {term:"that makes sense", meaning:"showing you understand someone's reasoning", example:"Oh, that makes sense — I didn't know that."},
+  {term:"I'm not sure about that", meaning:"a polite way to express doubt or disagreement", example:"I'm not sure about that, actually — let's double check."},
+  {term:"let's see", meaning:"used when you're thinking, or about to check something", example:"Let's see... I think it's on the second shelf."},
+  {term:"by the way", meaning:"used to introduce a new, loosely related topic", example:"By the way, did you finish that report?"},
+  {term:"I was wondering if...", meaning:"a polite, indirect way to ask for something", example:"I was wondering if you could help me with this."},
+  {term:"it depends", meaning:"used when there's no simple yes-or-no answer", example:"\"Do you like spicy food?\" \"It depends on the dish.\""},
+  {term:"sounds good", meaning:"a casual way to agree to a plan", example:"\"Let's meet at noon.\" \"Sounds good!\""},
+  {term:"I mean...", meaning:"used to clarify, rephrase, or soften what you just said", example:"It's fine, I mean, it's not perfect, but it works."},
+  {term:"anyway", meaning:"used to return to an earlier topic or wrap up what you're saying", example:"Anyway, as I was saying before..."},
+  {term:"I'd rather not", meaning:"a polite way to decline something", example:"\"Want to go out tonight?\" \"I'd rather not, I'm exhausted.\""},
+  {term:"give it a shot", meaning:"to try something, even if you're not sure it'll work", example:"I've never done this before, but I'll give it a shot."},
+  {term:"long story short", meaning:"used to summarize something briefly, skipping the details", example:"Long story short, we missed the flight."},
+  {term:"I couldn't agree more", meaning:"a strong, enthusiastic way to agree", example:"I couldn't agree more with what you just said."},
+  {term:"not a big deal", meaning:"downplaying how important or serious something is", example:"Don't worry about it — it's really not a big deal."},
+  {term:"off the top of my head", meaning:"saying something from memory, without checking first", example:"Off the top of my head, I'd guess around fifty people."},
+  {term:"I see what you mean", meaning:"showing you now understand someone's point", example:"Ah, I see what you mean — that changes things."},
+  {term:"let's play it by ear", meaning:"to decide what to do as things happen, rather than planning ahead", example:"We don't have a fixed plan — let's just play it by ear."},
+];
+let phraseIdx = null;
+function pickUsefulPhrase(){
+  if(USEFUL_PHRASES.length<2){ phraseIdx=0; return; }
+  let next;
+  do{ next = Math.floor(Math.random()*USEFUL_PHRASES.length); }while(next===phraseIdx);
+  phraseIdx = next;
+}
+if(phraseIdx===null) pickUsefulPhrase();
+
+/* ---------- lesson library: browsable topics for students, with or without the tutor ---------- */
+// No topic is locked to a level — each has a "core" layer everyone uses and a "deep" layer
+// for students who want to push further. Grouped into categories, each with 2+ subcategories.
+const LESSON_LIBRARY = [
+  { id:'dining-out', category:'Everyday Life', title:'Ordering Food & Dining Out',
+    intro:"Practical language for restaurants and cafés — ordering, special requests, and paying. Low-stakes and immediately useful, which makes it a good early or warm-up topic.",
+    coreVocab:[{term:'reservation',def:'a table booked in advance'},{term:'"Could I get...?"',def:'polite way to order'},{term:'the bill / check',def:'what you pay at the end'},{term:'to go / takeaway',def:'food to eat elsewhere'}],
+    deepVocab:[{term:'to split the bill',def:'share the cost between people'},{term:'allergic to',def:"can't eat something safely"},{term:'starter / appetizer',def:'a small dish before the main course'},{term:'rare / medium / well done',def:'how cooked meat is'}],
+    dialogue:[{who:'Waiter',text:'Are you ready to order, or do you need another minute?'},{who:'You',text:"I think we're ready — I'll have the grilled chicken, please. Could I get that without onions? I'm not a huge fan."},{who:'Waiter',text:'Of course. And for you?'},{who:'Friend',text:'Could we also split an appetizer to start? Maybe the bruschetta.'}],
+    coreQuestions:["What's your favorite restaurant, and what do you usually order there?",'Have you ever had a problem with an order? What happened?',"What's a popular dish from your country you'd recommend to a visitor?"],
+    deepQuestions:['Do you think tipping culture makes sense? Why or why not?','How has eating out changed since you were younger?'] },
+
+  { id:'your-weekend', category:'Everyday Life', title:'Talking About Your Weekend',
+    intro:"Simple past tense in the most natural context there is — this is one of the most common real conversation openers in English, so it's worth being fluent and relaxed with it.",
+    coreVocab:[{term:'"How was your weekend?"',def:'the standard opener'},{term:'to relax',def:'rest, unwind'},{term:'to hang out',def:'spend casual time with someone'},{term:'"Nothing much."',def:'a casual, low-key answer'}],
+    deepVocab:[{term:'to catch up on sleep',def:'get rest you missed'},{term:'to run errands',def:'small tasks like shopping'},{term:'exhausting',def:'very tiring'}],
+    dialogue:[{who:'A',text:'Hey! How was your weekend?'},{who:'B',text:'Pretty good, actually. I finally caught up on some sleep, and I hung out with a few friends on Saturday night. What about you?'},{who:'A',text:'Nothing too exciting — just ran some errands and relaxed. Honestly needed it.'}],
+    coreQuestions:['What did you do last weekend?',"What's your ideal way to spend a Saturday?",'Do you prefer busy weekends or quiet ones? Why?'],
+    deepQuestions:['Do you think how someone spends their weekend says something about their values?','Has your idea of a "good weekend" changed as you\'ve gotten older?'] },
+
+  { id:'small-talk', category:'Conversation & Social Skills', title:'Small Talk & Making Conversation',
+    intro:'The unwritten rules of small talk — safe topics, how to keep a conversation going without it feeling forced, and how to exit politely. Useful for students who find casual conversation harder than formal English.',
+    coreVocab:[{term:'to break the ice',def:'start a conversation easily'},{term:'small talk',def:'light, casual conversation'},{term:'"So, what do you do?"',def:"asking about someone's job"}],
+    deepVocab:[{term:'awkward silence',def:'an uncomfortable pause'},{term:'to keep the conversation going',def:'avoid it dying out'},{term:'"Anyway, I should get going."',def:'a polite way to leave'}],
+    dialogue:[{who:'A',text:'This line is taking forever, huh?'},{who:'B',text:"Tell me about it. At least the weather's nice today."},{who:'A',text:'Yeah, definitely better than yesterday. So, are you from around here?'}],
+    coreQuestions:['What topics count as "small talk" in your culture — are they different from English-speaking ones?','Do you find small talk easy or difficult? Why?','What\'s a good way to start a conversation with a stranger?'],
+    deepQuestions:['Do you think small talk is a waste of time, or genuinely useful?','Is making small talk different for you in English compared to your first language?'] },
+
+  { id:'your-job', category:'Work & Career', title:'Describing Your Job',
+    intro:'Vocabulary and structures for describing responsibilities, opinions about work, and career history — a topic almost every adult student needs sooner or later.',
+    coreVocab:[{term:'coworker',def:'someone you work with'},{term:'day-to-day tasks',def:'regular daily work'},{term:'deadline',def:'the time something is due'}],
+    deepVocab:[{term:'to be in charge of',def:'responsible for something'},{term:'to get promoted',def:'move to a higher position'},{term:'work-life balance',def:'time split between job and life'}],
+    dialogue:[{who:'A',text:'So what do you do?'},{who:'B',text:"I work in marketing — basically, I'm in charge of our social media accounts. Day-to-day, it's a lot of planning posts and hitting deadlines."},{who:'A',text:'Sounds busy. Do you like it?'},{who:'B',text:'Mostly, yeah. The work-life balance could be better, but I like my coworkers a lot.'}],
+    coreQuestions:['What do you like most — and least — about your job?','What was your very first job?','If you could switch careers completely, what would you do?'],
+    deepQuestions:['Do you think your job matches your personality? Why or why not?','How do you think your career or industry will change in the next ten years?'] },
+
+  { id:'travel-stories', category:'Travel', title:'Travel Stories & Past Experiences',
+    intro:'Practices past simple vs. past continuous through natural storytelling — travel mishaps and highlights give students a reason to narrate rather than just answer questions.',
+    coreVocab:[{term:'to get lost',def:'not know where you are'},{term:'to miss a flight',def:'arrive too late to board'},{term:'unforgettable',def:'impossible to forget'}],
+    deepVocab:[{term:'a once-in-a-lifetime experience',def:'something rare and special'},{term:'culture shock',def:'disorientation in a new culture'},{term:'itinerary',def:'a planned travel schedule'}],
+    dialogue:[{who:'A',text:'Has a trip ever gone completely wrong for you?'},{who:'B',text:'Oh, definitely. I was backpacking through Portugal, and I missed my train because I was waiting on the wrong platform. I ended up getting lost trying to find another way there.'},{who:'A',text:'That sounds stressful. How did it end up?'},{who:'B',text:"Actually, it turned into one of the best days of the trip — I found this tiny restaurant I never would've found otherwise."}],
+    coreQuestions:["Tell me about a trip that didn't go as planned.","What's the most beautiful place you've ever visited?",'Where do you want to travel next, and why?'],
+    deepQuestions:['Do you think travel actually changes people, or is that overstated?',"Is there a place you'd never want to visit? Why?"] },
+
+  { id:'opinions', category:'Opinions & Society', title:'Giving Opinions & Agreeing / Disagreeing',
+    intro:'Functional language for discussion and light debate — how to state an opinion, disagree politely, and soften strong statements. Useful groundwork before any "hot topic" conversation.',
+    coreVocab:[{term:'"In my opinion..."',def:'stating a view'},{term:'"I couldn\'t agree more."',def:'strong agreement'},{term:'"I\'m not so sure about that."',def:'gentle doubt'}],
+    deepVocab:[{term:'"I see your point, but..."',def:'softened disagreement'},{term:"to play devil's advocate",def:'argue the other side on purpose'}],
+    dialogue:[{who:'A',text:'In my opinion, remote work is way more productive than being in an office.'},{who:'B',text:'I see your point, but I think it really depends on the person. Some people need that structure.'},{who:'A',text:"That's fair, actually — I hadn't thought about it that way."}],
+    coreQuestions:['Do you think social media does more good or more harm?',"What's an opinion you hold that most people around you disagree with?",'Is it better to work from home or in an office?'],
+    deepQuestions:['Is it ever okay to avoid stating your opinion?','Do you change your mind easily when someone makes a good argument?'] },
+
+  { id:'tech-social-media', category:'Opinions & Society', title:'Technology & Social Media',
+    intro:'A high-frequency modern topic with vocabulary students often know passively but haven\'t practiced saying out loud — good for building confidence with everyday tech vocabulary.',
+    coreVocab:[{term:'to scroll through',def:'browse a feed'},{term:'addicted to my phone',def:"can't put it down"},{term:'screen time',def:'time spent on a device'}],
+    deepVocab:[{term:'to go viral',def:'spread rapidly online'},{term:'doom-scrolling',def:'endlessly scrolling bad news'},{term:'the algorithm',def:'what decides what you see'}],
+    dialogue:[{who:'A',text:"Honestly, I think I'm addicted to my phone. My screen time report last week was terrifying."},{who:'B',text:"Same. I catch myself doom-scrolling right before bed and then wondering why I can't sleep."},{who:'A',text:'Right? The algorithm just knows exactly what to show you.'}],
+    coreQuestions:['How much time do you spend on your phone each day? Does it surprise you?','Has social media changed how you communicate with friends?','Do you think AI will change your job in the next few years?'],
+    deepQuestions:["Do you think we've lost something by communicating mostly through screens?",'Should there be an age limit for social media?'] },
+
+  { id:'future-plans', category:'Future & Goals', title:'Future Plans & Goals',
+    intro:'Practices going to / will / present continuous for the future inside a natural goal-setting conversation, rather than as isolated grammar drills.',
+    coreVocab:[{term:'"I\'m planning to..."',def:'a decided future plan'},{term:'to set a goal',def:'decide on a target'},{term:'to put something off',def:'delay doing it'}],
+    deepVocab:[{term:'in the long run',def:'over a long period of time'},{term:'a five-year plan',def:'longer-term life planning'}],
+    dialogue:[{who:'A',text:'Any plans for this year?'},{who:'B',text:"Actually, yeah — I'm planning to start learning to code. I keep putting it off, but I think it'll be worth it in the long run."},{who:'A',text:"That's a great goal. I'll probably just try to travel more."}],
+    coreQuestions:["What's a goal you're working toward right now?",'Where do you see yourself in five years?',"Is there something you've been putting off that you should just start?"],
+    deepQuestions:["Do you think it's better to have a fixed plan or stay flexible?","How do you usually handle it when things don't go according to plan?"] },
+
+  { id:'health-wellness', category:'Health & Wellness', title:'Health & Wellness',
+    intro:'Everyday vocabulary for talking about health, habits, and stress — practical for describing symptoms, making appointments, or just discussing lifestyle.',
+    coreVocab:[{term:'to work out',def:'exercise'},{term:'under the weather',def:'feeling slightly unwell'},{term:'a check-up',def:'a routine doctor visit'}],
+    deepVocab:[{term:'to come down with something',def:'start getting sick'},{term:'burnt out',def:'exhausted from stress'},{term:'to cut back on',def:'reduce something'}],
+    dialogue:[{who:'A',text:"You've seemed a bit under the weather lately — everything okay?"},{who:'B',text:"Yeah, I think I'm just a little burnt out. I've been meaning to cut back on coffee and actually start working out again."},{who:'A',text:'Honestly, same. Maybe we should hold each other accountable.'}],
+    coreQuestions:['How do you usually deal with stress?',"What's a healthy habit you're proud of keeping up?",'Have you made any changes to your lifestyle recently?'],
+    deepQuestions:['Do you think society is more health-conscious now, or does it just seem that way online?','Is there a health or wellness trend you\'re skeptical of?'] },
+
+  { id:'cultural-differences', category:'Culture & Identity', title:'Cultural Differences',
+    intro:'Every student can discuss this, just at their own depth. A beginner can talk about greetings and food; a strong student can get into generalization and identity. Same topic, same conversation, adjustable depth.',
+    coreVocab:[{term:'custom',def:'a traditional way of doing something'},{term:'tradition',def:'something passed down over time'},{term:'greeting',def:'how you say hello'},{term:'polite / rude',def:'socially acceptable or not'},{term:'different from / similar to',def:'comparing two things'}],
+    deepVocab:[{term:'a generalization',def:'a broad, simplified claim'},{term:'"it varies from person to person"',def:'hedging a claim'},{term:'a cultural norm',def:'an unwritten social rule'},{term:'to take something for granted',def:'not notice its value'},{term:'ethnocentric',def:"judging by your own culture's standards"}],
+    dialogue:[{who:'A',text:'When I moved abroad, the thing that surprised me most was how differently people greeted each other.'},{who:'B',text:"That's interesting — though I think it varies a lot even within one country, not just between them."},{who:'A',text:"True, I probably shouldn't generalize. It definitely broadened my perspective either way."}],
+    coreQuestions:["What's a tradition from your country you like?",'How do people usually greet each other where you\'re from?',"Is there a food that's special or important in your culture?"],
+    deepQuestions:['What\'s a custom from another culture that genuinely surprised you?','Do you think globalization is erasing cultural differences, or just changing them?','What\'s something people often misunderstand about your own culture?'] },
+
+  { id:'shopping-errands', category:'Everyday Life', title:'Shopping & Errands',
+    intro:'Functional shopping vocabulary — trying things on, returns, and payment — plus room to talk about shopping habits more broadly for stronger students.',
+    coreVocab:[{term:'to try something on',def:'test clothing before buying'},{term:'a receipt',def:'proof of purchase'},{term:'on sale',def:'reduced in price'},{term:'cash / card',def:'ways to pay'}],
+    deepVocab:[{term:'to return something',def:'give back for a refund'},{term:'a refund vs. store credit',def:'money back vs. shop-only credit'},{term:"buyer's remorse",def:'regret after purchasing'}],
+    dialogue:[{who:'You',text:'Excuse me, can I try this on?'},{who:'Assistant',text:'Sure, the fitting rooms are right over there.'},{who:'You',text:'Thanks. Actually — do you have this in a different size?'}],
+    coreQuestions:['Do you enjoy shopping, or find it stressful?','Where do you usually buy clothes?','Do you prefer shopping online or in person?'],
+    deepQuestions:['Have you ever had to return something and it was difficult?','Do you think online shopping has changed how people spend money?'] },
+
+  { id:'meeting-new-people', category:'Conversation & Social Skills', title:'Meeting New People',
+    intro:'Introductions and the language around building new connections — a natural companion to the Small Talk topic, focused specifically on first meetings.',
+    coreVocab:[{term:'"Nice to meet you."',def:'standard greeting'},{term:'to introduce yourself',def:'say who you are'},{term:'"How do you know [name]?"',def:'asking about a connection'}],
+    deepVocab:[{term:'to hit it off',def:'get along right away'},{term:'a mutual friend',def:'a friend you both share'},{term:'to lose touch',def:'stop staying in contact'}],
+    dialogue:[{who:'A',text:"Hi, I don't think we've met — I'm Sam."},{who:'B',text:'Nice to meet you, Sam! I\'m Alex. How do you know Maria?'},{who:'A',text:'We used to work together, actually.'}],
+    coreQuestions:['How do you usually meet new people?','Do you find it easy to introduce yourself?',"What's a good icebreaker question?"],
+    deepQuestions:["Do you think it's harder to make friends as an adult?",'Have you ever reconnected with someone after losing touch for years?'] },
+
+  { id:'job-interviews', category:'Work & Career', title:'Job Interviews',
+    intro:'A practical companion to Describing Your Job, focused specifically on interview language — common questions, and how to talk about strengths convincingly.',
+    coreVocab:[{term:'to apply for a job',def:'submit an application'},{term:'a resume / CV',def:'a summary of experience'},{term:'strengths and weaknesses',def:'common interview question'}],
+    deepVocab:[{term:'to negotiate a salary',def:'discuss pay before accepting'},{term:'a follow-up email',def:'a message sent after an interview'},{term:'to stand out',def:'be noticeably better than others'}],
+    dialogue:[{who:'Interviewer',text:'So, tell me a little about yourself.'},{who:'Candidate',text:"Sure — I've been working in customer service for about three years, and I'm really looking to grow into a team lead role."}],
+    coreQuestions:['Have you ever had a job interview? How did it go?','What do you think is your biggest strength at work?','What interview questions do you find hardest to answer?'],
+    deepQuestions:['Have you ever negotiated a job offer? What happened?','What\'s the best way to make yourself stand out to an employer?'] },
+
+  { id:'planning-a-trip', category:'Travel', title:'Planning a Trip',
+    intro:'The "before" to Travel Stories\' "after" — booking, deciding, and the different ways people like to plan (or not plan) a trip.',
+    coreVocab:[{term:'to book a flight',def:'reserve a plane ticket'},{term:'a hotel / hostel',def:'places to stay'},{term:'a suitcase',def:'luggage for a trip'}],
+    deepVocab:[{term:'to be on a budget',def:'limited money to spend'},{term:'a bucket list',def:'things you want to do before you die'},{term:'off the beaten path',def:'not a typical tourist spot'},{term:'to wing it',def:'do something without a plan'}],
+    dialogue:[{who:'A',text:'Have you thought about where we should go this summer?'},{who:'B',text:'Not really — I want somewhere off the beaten path, honestly. Somewhere we can just wing it.'}],
+    coreQuestions:['How do you usually plan a trip?','Do you prefer to book everything in advance?',"What's on your travel bucket list?"],
+    deepQuestions:['Do you prefer planning everything or figuring it out as you go?','Have you ever traveled on a tight budget? How did it go?'] },
+
+  { id:'stress-work-life-balance', category:'Health & Wellness', title:'Stress & Work-Life Balance',
+    intro:'A more focused companion to Health & Wellness — specifically about workload, boundaries, and burnout, which comes up constantly with working adult students.',
+    coreVocab:[{term:'stressed out',def:'feeling a lot of pressure'},{term:'to take a break',def:'pause and rest'},{term:'overwhelmed',def:'unable to cope with too much'}],
+    deepVocab:[{term:'to burn out',def:'become exhausted from stress'},{term:'to set boundaries',def:"limit what you'll accept"},{term:'to unplug',def:'disconnect from work/devices'}],
+    dialogue:[{who:'A',text:'You look a little stressed out today.'},{who:'B',text:"Yeah, honestly, I've been overwhelmed. I think I really need to unplug this weekend."}],
+    coreQuestions:['What do you do when you feel stressed?','Is it easy for you to relax after work?','What helps you take a real break?'],
+    deepQuestions:['Do you find it difficult to set boundaries at work?','Does work ever creep into your personal time? How do you handle it?'] },
+
+  { id:'traditions-celebrations', category:'Culture & Identity', title:'Traditions & Celebrations',
+    intro:'A warmer, more concrete sibling to Cultural Differences — holidays and family traditions are an easy way into identity topics without needing abstract language right away.',
+    coreVocab:[{term:'a holiday',def:'a day of celebration'},{term:'a celebration',def:'an event marking something special'},{term:'a gift',def:'something given to someone'}],
+    deepVocab:[{term:'a ritual',def:'a fixed, repeated practice'},{term:'to pass down',def:'give to the next generation'},{term:'a rite of passage',def:'a ceremony marking a life stage'}],
+    dialogue:[{who:'A',text:"What's your favorite holiday to celebrate?"},{who:'B',text:"Probably New Year's — it's a tradition my family has carried on for generations."}],
+    coreQuestions:["What's your favorite holiday or celebration?",'How do you usually celebrate it?','Is there a gift-giving tradition in your culture?'],
+    deepQuestions:["Is there a tradition in your family that's been passed down for generations?",'Do you think traditions are becoming less important today?'] },
+];
+function libraryCategories(){
+  const order = [];
+  LESSON_LIBRARY.forEach(t=>{ if(!order.includes(t.category)) order.push(t.category); });
+  return order.map(cat=>({ category:cat, topics: LESSON_LIBRARY.filter(t=>t.category===cat) }));
+}
+let libraryExpandedId = null;
+
+/* ---------- phrasal verb / collocation / idiom library ---------- */
+const PHRASE_LIBRARY = [
+  {id:'pv01',type:'phrasal',term:'give up',theme:'motivation',meaning:'to stop trying or quit',example:"Don't give up on your English — you're improving fast."},
+  {id:'pv02',type:'phrasal',term:'give in',theme:'conflict',meaning:'to stop resisting; to submit',example:'After a long argument, she finally gave in.'},
+  {id:'pv03',type:'phrasal',term:'give away',theme:'communication',meaning:'to reveal something, or to give for free',example:'His nervous laugh gave away the secret.'},
+  {id:'pv04',type:'phrasal',term:'put off',theme:'time',meaning:'to postpone',example:'We had to put off the meeting until next week.'},
+  {id:'pv05',type:'phrasal',term:'put up with',theme:'relationships',meaning:'to tolerate',example:"I don't know how she puts up with his rudeness."},
+  {id:'pv06',type:'phrasal',term:'put together',theme:'work',meaning:'to assemble or organize',example:'They put together a great presentation.'},
+  {id:'pv07',type:'phrasal',term:'bring up',theme:'communication',meaning:'to mention a topic, or to raise a child',example:'She brought up an interesting point in the meeting.'},
+  {id:'pv08',type:'phrasal',term:'bring about',theme:'general',meaning:'to cause something to happen',example:'The new policy brought about a lot of change.'},
+  {id:'pv09',type:'phrasal',term:'break down',theme:'emotions',meaning:'to stop working, or to become upset',example:'My car broke down on the highway.'},
+  {id:'pv10',type:'phrasal',term:'break up',theme:'relationships',meaning:'to end a relationship',example:'They broke up after three years together.'},
+  {id:'pv11',type:'phrasal',term:'break out',theme:'general',meaning:'to start suddenly, like a fire or an argument',example:'A fire broke out in the old factory.'},
+  {id:'pv12',type:'phrasal',term:'carry on',theme:'work',meaning:'to continue',example:'Please carry on with your work.'},
+  {id:'pv13',type:'phrasal',term:'carry out',theme:'work',meaning:'to perform or execute a plan',example:'The team carried out the experiment successfully.'},
+  {id:'pv14',type:'phrasal',term:'come across',theme:'general',meaning:'to find by chance, or to seem a certain way',example:'I came across an old photo of us yesterday.'},
+  {id:'pv15',type:'phrasal',term:'come up with',theme:'work',meaning:'to think of an idea or plan',example:'She came up with a brilliant solution.'},
+  {id:'pv16',type:'phrasal',term:'cut down on',theme:'health',meaning:'to reduce the amount of something',example:"He's trying to cut down on sugar."},
+  {id:'pv17',type:'phrasal',term:'cut off',theme:'communication',meaning:'to interrupt or disconnect',example:'Sorry, the call got cut off.'},
+  {id:'pv18',type:'phrasal',term:'figure out',theme:'problem-solving',meaning:'to understand or solve something',example:"I can't figure out how this works."},
+  {id:'pv19',type:'phrasal',term:'fill in',theme:'work',meaning:'to complete a form, or to substitute for someone',example:'Please fill in the application form.'},
+  {id:'pv20',type:'phrasal',term:'find out',theme:'general',meaning:'to discover information',example:'We found out the truth too late.'},
+  {id:'pv21',type:'phrasal',term:'get along with',theme:'relationships',meaning:'to have a good relationship with someone',example:'I get along with all my coworkers.'},
+  {id:'pv22',type:'phrasal',term:'get over',theme:'emotions',meaning:'to recover from something difficult',example:'It took months to get over the breakup.'},
+  {id:'pv23',type:'phrasal',term:'get by',theme:'money',meaning:'to manage with limited resources',example:'We get by on a tight budget.'},
+  {id:'pv24',type:'phrasal',term:'go over',theme:'education',meaning:'to review something',example:"Let's go over the homework together."},
+  {id:'pv25',type:'phrasal',term:'hold on',theme:'communication',meaning:'to wait',example:"Hold on a second, I'll check."},
+  {id:'pv26',type:'phrasal',term:'hold up',theme:'time',meaning:'to delay, or to remain valid over time',example:"Sorry I'm late, traffic held me up."},
+  {id:'pv27',type:'phrasal',term:'look forward to',theme:'emotions',meaning:'to feel excited about something in the future',example:"I'm looking forward to the weekend."},
+  {id:'pv28',type:'phrasal',term:'look into',theme:'problem-solving',meaning:'to investigate',example:"We'll look into the issue right away."},
+  {id:'pv29',type:'phrasal',term:'look up to',theme:'relationships',meaning:'to admire and respect someone',example:'She really looks up to her older sister.'},
+  {id:'pv30',type:'phrasal',term:'make up',theme:'relationships',meaning:'to invent something, or to reconcile after a fight',example:'They had a fight but made up quickly.'},
+  {id:'pv31',type:'phrasal',term:'point out',theme:'communication',meaning:'to indicate or draw attention to something',example:'He pointed out a mistake in my report.'},
+  {id:'pv32',type:'phrasal',term:'run into',theme:'general',meaning:'to meet by chance, or to encounter a problem',example:'I ran into an old friend at the store.'},
+  {id:'pv33',type:'phrasal',term:'run out of',theme:'general',meaning:'to have no more of something',example:'We ran out of milk this morning.'},
+  {id:'pv34',type:'phrasal',term:'set up',theme:'work',meaning:'to arrange or establish something',example:'They set up a new office downtown.'},
+  {id:'pv35',type:'phrasal',term:'show up',theme:'time',meaning:'to arrive',example:'He showed up late again.'},
+  {id:'pv36',type:'phrasal',term:'sort out',theme:'problem-solving',meaning:'to resolve a problem or situation',example:"Let's sort out this misunderstanding."},
+  {id:'pv37',type:'phrasal',term:'take off',theme:'travel',meaning:"for a plane to leave the ground, or for something to become successful",example:'The plane took off on time.'},
+  {id:'pv38',type:'phrasal',term:'turn down',theme:'work',meaning:'to refuse or reject an offer',example:'She turned down the job offer.'},
+  {id:'pv39',type:'phrasal',term:'turn out',theme:'general',meaning:'to result in a particular way',example:'Everything turned out fine in the end.'},
+  {id:'pv40',type:'phrasal',term:'work out',theme:'health',meaning:'to exercise, or to be resolved successfully',example:'I work out three times a week.'},
+  {id:'co01',type:'collocation',term:'make a decision',theme:'problem-solving',meaning:'to decide',example:"It's time to make a decision."},
+  {id:'co02',type:'collocation',term:'make progress',theme:'work',meaning:'to improve or move forward',example:"You're making great progress in your lessons."},
+  {id:'co03',type:'collocation',term:'make an effort',theme:'motivation',meaning:'to try hard',example:'She made an effort to arrive on time.'},
+  {id:'co04',type:'collocation',term:'make a mistake',theme:'education',meaning:'to do something wrong',example:'Everyone makes mistakes while learning.'},
+  {id:'co05',type:'collocation',term:'do homework',theme:'education',meaning:'to complete schoolwork',example:'Did you do your homework last night?'},
+  {id:'co06',type:'collocation',term:'do business',theme:'work',meaning:'to trade or work commercially with someone',example:'They do business with several countries.'},
+  {id:'co07',type:'collocation',term:'do damage',theme:'general',meaning:'to cause harm',example:'The storm did a lot of damage.'},
+  {id:'co08',type:'collocation',term:'take a break',theme:'time',meaning:'to rest for a short period',example:"Let's take a break for ten minutes."},
+  {id:'co09',type:'collocation',term:'take a risk',theme:'problem-solving',meaning:'to do something with a chance of failure',example:'You have to take a risk sometimes.'},
+  {id:'co10',type:'collocation',term:'take responsibility',theme:'work',meaning:'to accept accountability for something',example:'He took responsibility for the mistake.'},
+  {id:'co11',type:'collocation',term:'have a conversation',theme:'communication',meaning:'to talk with someone',example:'We had a long conversation about the future.'},
+  {id:'co12',type:'collocation',term:'have an opinion',theme:'communication',meaning:'to hold a personal view',example:'Everyone has an opinion on this topic.'},
+  {id:'co13',type:'collocation',term:'pay attention',theme:'education',meaning:'to concentrate on something',example:'Please pay attention during the lesson.'},
+  {id:'co14',type:'collocation',term:'pay a compliment',theme:'relationships',meaning:'to say something nice about someone',example:'He paid her a nice compliment.'},
+  {id:'co15',type:'collocation',term:'save money',theme:'money',meaning:'to keep money instead of spending it',example:"We're trying to save money this year."},
+  {id:'co16',type:'collocation',term:'spend time',theme:'time',meaning:'to use time doing something',example:'I like to spend time with my family.'},
+  {id:'co17',type:'collocation',term:'catch a cold',theme:'health',meaning:'to become sick with a cold',example:'I caught a cold last week.'},
+  {id:'co18',type:'collocation',term:'keep a promise',theme:'relationships',meaning:'to do what you said you would do',example:'She always keeps her promises.'},
+  {id:'co19',type:'collocation',term:'break a promise',theme:'relationships',meaning:'to fail to do what you said you would do',example:'He broke his promise again.'},
+  {id:'co20',type:'collocation',term:'reach an agreement',theme:'work',meaning:'to come to a mutual decision',example:'The two sides finally reached an agreement.'},
+  {id:'co21',type:'collocation',term:'raise a question',theme:'communication',meaning:'to bring up a point to discuss',example:'That raises an important question.'},
+  {id:'co22',type:'collocation',term:'set a goal',theme:'motivation',meaning:'to decide on something you want to achieve',example:'Set a realistic goal for this month.'},
+  {id:'co23',type:'collocation',term:'meet a deadline',theme:'work',meaning:'to finish something by the required time',example:'We need to meet the deadline on Friday.'},
+  {id:'co24',type:'collocation',term:'run a business',theme:'work',meaning:'to manage a company',example:'She runs a small business from home.'},
+  {id:'co25',type:'collocation',term:'lose your temper',theme:'emotions',meaning:'to become suddenly angry',example:'Try not to lose your temper in meetings.'},
+  {id:'idm01',type:'idiom',term:'break the ice',theme:'communication',meaning:'to ease tension or start a conversation',example:'He told a joke to break the ice.'},
+  {id:'idm02',type:'idiom',term:'hit the books',theme:'education',meaning:'to study hard',example:'I need to hit the books before the exam.'},
+  {id:'idm03',type:'idiom',term:'once in a blue moon',theme:'time',meaning:'very rarely',example:'We only eat out once in a blue moon.'},
+  {id:'idm04',type:'idiom',term:'under the weather',theme:'health',meaning:'feeling slightly ill',example:"I'm feeling a bit under the weather today."},
+  {id:'idm05',type:'idiom',term:'cost an arm and a leg',theme:'money',meaning:'to be very expensive',example:'That new phone cost an arm and a leg.'},
+  {id:'idm06',type:'idiom',term:'hit the nail on the head',theme:'communication',meaning:'to describe exactly what is true',example:'You hit the nail on the head with that comment.'},
+  {id:'idm07',type:'idiom',term:'piece of cake',theme:'general',meaning:'something very easy',example:'The test was a piece of cake.'},
+  {id:'idm08',type:'idiom',term:'on the same page',theme:'work',meaning:'in agreement or having the same understanding',example:"Let's make sure we're on the same page before we start."},
+  {id:'idm09',type:'idiom',term:'let the cat out of the bag',theme:'communication',meaning:'to reveal a secret, usually by accident',example:'She let the cat out of the bag about the surprise party.'},
+  {id:'idm10',type:'idiom',term:'bite the bullet',theme:'motivation',meaning:'to face something difficult or unpleasant bravely',example:"I'll just bite the bullet and call the dentist."},
+  {id:'idm11',type:'idiom',term:'speak of the devil',theme:'general',meaning:'said when someone appears right after being mentioned',example:'Speak of the devil — here he comes now.'},
+  {id:'idm12',type:'idiom',term:'call it a day',theme:'work',meaning:'to stop working for the day',example:"Let's call it a day, we've done enough."},
+  {id:'idm13',type:'idiom',term:'get cold feet',theme:'emotions',meaning:'to become nervous about doing something you planned',example:'He got cold feet before the wedding.'},
+  {id:'idm14',type:'idiom',term:'see eye to eye',theme:'relationships',meaning:'to agree with someone',example:'They finally saw eye to eye on the plan.'},
+  {id:'idm15',type:'idiom',term:'burn the midnight oil',theme:'work',meaning:'to work late into the night',example:"She's been burning the midnight oil to finish the project."},
+  {id:'idm16',type:'idiom',term:'throw in the towel',theme:'motivation',meaning:'to give up',example:'After three attempts, he threw in the towel.'},
+  {id:'idm17',type:'idiom',term:'spill the beans',theme:'communication',meaning:'to reveal secret information',example:"Don't spill the beans about the surprise!"},
+  {id:'idm18',type:'idiom',term:'a blessing in disguise',theme:'general',meaning:'something that seems bad at first but turns out well',example:'Losing that job was a blessing in disguise.'},
+  {id:'idm19',type:'idiom',term:'hit the road',theme:'travel',meaning:'to leave or start a journey',example:"It's getting late, let's hit the road."},
+  {id:'idm20',type:'idiom',term:'by the book',theme:'work',meaning:'strictly following the rules',example:'The manager always does things by the book.'}
+];
+let suggestPicks = {};
+let libraryQuery = '';
+let libraryTypeFilter = 'all';
+function computeSuggestions(st){
+  const have = new Set(st.glossary.map(g=>norm(g.term)));
+  const themes = new Set();
+  st.glossary.forEach(g=>{
+    const match = PHRASE_LIBRARY.find(p=>norm(p.term)===norm(g.term));
+    if(match) themes.add(match.theme);
+  });
+  const pool = PHRASE_LIBRARY.filter(p=>!have.has(norm(p.term)));
+  const themed = themes.size ? pool.filter(p=>themes.has(p.theme)) : [];
+  const themedSet = new Set(themed);
+  const rest = pool.filter(p=>!themedSet.has(p));
+  const ordered = shuffled(themed).concat(shuffled(rest));
+  suggestPicks[st.id] = ordered.slice(0,6).map(p=>p.id);
+}
+function suggestionsFor(st){
+  if(!suggestPicks[st.id]) computeSuggestions(st);
+  const have = new Set(st.glossary.map(g=>norm(g.term)));
+  return suggestPicks[st.id]
+    .map(id=>PHRASE_LIBRARY.find(p=>p.id===id))
+    .filter(p=>p && !have.has(norm(p.term)));
+}
+function refreshSuggestions(id){
+  const st = state.students.find(s=>s.id===id); if(!st) return;
+  computeSuggestions(st);
+  render();
+}
+function addGlossaryFromLibrary(studentId, libId){
+  const st = state.students.find(s=>s.id===studentId); if(!st) return;
+  const entry = PHRASE_LIBRARY.find(p=>p.id===libId); if(!entry) return;
+  addGlossary(st, null, entry.term, entry.type, entry.meaning, entry.example);
+  save(); render();
+  toast(`Added "${entry.term}" to ${st.name}'s glossary`);
+}
+function renderSuggestPanel(st){
+  const q = norm(libraryQuery);
+  const results = q ? PHRASE_LIBRARY.filter(p=>
+      (libraryTypeFilter==='all'||p.type===libraryTypeFilter) &&
+      (norm(p.term).includes(q) || norm(p.meaning).includes(q) || norm(p.theme).includes(q))
+    ).slice(0,20)
+    : suggestionsFor(st).filter(p=>libraryTypeFilter==='all'||p.type===libraryTypeFilter);
+  return `
+  <div class="card no-print">
+    <div class="sectionhead">
+      <h3>Suggest vocabulary</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <select onchange="libraryTypeFilter=this.value;render()">
+          <option value="all" ${libraryTypeFilter==='all'?'selected':''}>All types</option>
+          <option value="phrasal" ${libraryTypeFilter==='phrasal'?'selected':''}>Phrasal verbs</option>
+          <option value="collocation" ${libraryTypeFilter==='collocation'?'selected':''}>Collocations</option>
+          <option value="idiom" ${libraryTypeFilter==='idiom'?'selected':''}>Idioms</option>
+        </select>
+        ${!q?`<button class="btn btn-ghost btn-sm" onclick="refreshSuggestions('${st.id}')">Shuffle</button>`:''}
+      </div>
+    </div>
+    <input type="text" placeholder="Search phrasal verbs, collocations, idioms…" value="${esc(libraryQuery)}" oninput="libraryQuery=this.value;render()" style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);margin-bottom:10px">
+    ${!q ? `<div class="mini" style="margin-bottom:8px">Based on themes already in ${esc(st.name)}'s glossary — add any of these with one click</div>` : ''}
+    ${results.length ? `<div class="stack" style="gap:8px">${results.map(p=>{
+      const meta = GTYPES[p.type];
+      return `<div class="quietrow" style="align-items:flex-start;gap:10px">
+        <span class="pill" style="background:var(${meta.t});color:var(${meta.v});flex:0 0 auto">${meta.label}</span>
+        <div style="flex:1">
+          <div style="font-weight:600">${esc(p.term)}</div>
+          <div class="mini">${esc(p.meaning)}</div>
+        </div>
+        <button class="btn btn-sm btn-primary" style="flex:0 0 auto" onclick="addGlossaryFromLibrary('${st.id}','${p.id}')">+ Add</button>
+      </div>`;
+    }).join('')}</div>` : `<div class="help">${q?'No matches — try a different search.':'No suggestions right now — try shuffling or search the library above.'}</div>`}
+  </div>`;
+}
+
+function uid(){ return Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-4); }
+function esc(s){ return String(s??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function jsAttr(s){ return esc(String(s??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'")); }
+function norm(s){ return String(s||'').trim().toLowerCase().replace(/\s+/g,' '); }
+function clamp(n,a,b){ return Math.max(a,Math.min(b,n)); }
+function avg(arr){ return arr.reduce((a,b)=>a+b,0)/arr.length; }
+function fmtDate(ts){ return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric'}); }
+function fmtDateFull(ts){ return new Date(ts).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); }
+function colorFor(name){ let h=0; for(const c of name) h=(h*31+c.charCodeAt(0))>>>0; return COLORS[h%COLORS.length]; }
+function initials(name){ return name.trim().split(/\s+/).slice(0,2).map(w=>w[0]?.toUpperCase()||'').join('') || '?'; }
+
+/* ---------- theme ---------- */
+const THEME_KEY = 'lessoncopilot_theme_v1';
+function initTheme(){
+  const saved = localStorage.getItem(THEME_KEY);
+  if(saved==='light' || saved==='dark') document.documentElement.setAttribute('data-theme', saved);
+}
+function currentThemeIsDark(){
+  const forced = document.documentElement.getAttribute('data-theme');
+  if(forced) return forced==='dark';
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+function toggleTheme(){
+  const next = currentThemeIsDark() ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem(THEME_KEY, next);
+  render();
+}
+function themeToggleBtn(){
+  return `<button class="btn btn-ghost btn-sm" onclick="toggleTheme()" title="Switch theme">${currentThemeIsDark()?'☀️':'🌙'}</button>`;
+}
+initTheme();
+
+function load(){
+  try{ const raw = localStorage.getItem(STORE_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return { students: [], activeStudentId: null, liveSession: null };
+}
+function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+
+const STUDENT_MODE = new URLSearchParams(location.search).get('student') === '1';
+const STUDENT_STORE_KEY = 'lessoncopilot_student_v1';
+function loadStudentState(){
+  try{ const raw = localStorage.getItem(STUDENT_STORE_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return { student: null };
+}
+function saveStudentState(){ localStorage.setItem(STUDENT_STORE_KEY, JSON.stringify(studentState)); }
+let studentState = loadStudentState();
+let studentTab = 'progress'; // 'progress' | 'record'
+function loadStudentRecording(){
+  try{ const raw = localStorage.getItem('lessoncopilot_recording_v1'); if(raw) return JSON.parse(raw); }catch(e){}
+  return { startedAt: null, transcript: [] };
+}
+function saveStudentRecording(){ localStorage.setItem('lessoncopilot_recording_v1', JSON.stringify(studentRecording)); }
+let studentRecording = loadStudentRecording();
+
+let state = load();
+
+/* ---------- speaker-separated transcription (opt-in, NVIDIA Riva) ---------- */
+/* Kept in its own localStorage key, deliberately separate from `state`, so the
+   API key never gets swept into exportAll()/exportStudent() and shared with a student. */
+const DIARIZE_SETTINGS_KEY = 'chattercheck_diarize_settings_v1';
+const DIARIZE_PROXY_URL = 'https://chattercheck-riva-proxy.vercel.app/api/diarize';
+const DIARIZE_TESTKEY_URL = 'https://chattercheck-riva-proxy.vercel.app/api/test-key';
+function loadDiarizeSettings(){
+  try{ const raw = localStorage.getItem(DIARIZE_SETTINGS_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return { nvidiaApiKey:'', enabled:false, maxSpeakers:2 };
+}
+function saveDiarizeSettings(){ localStorage.setItem(DIARIZE_SETTINGS_KEY, JSON.stringify(diarizeSettings)); }
+let diarizeSettings = loadDiarizeSettings();
+
+/* ---------- student's own device preferences (never synced from the tutor's file) ---------- */
+const STUDENT_PREFS_KEY = 'chattercheck_student_prefs_v1';
+function loadStudentPrefs(){
+  try{ const raw = localStorage.getItem(STUDENT_PREFS_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return { showCorrections: true };
+}
+function saveStudentPrefs(){ localStorage.setItem(STUDENT_PREFS_KEY, JSON.stringify(studentPrefs)); }
+let studentPrefs = loadStudentPrefs();
+function toggleShowCorrections(){
+  studentPrefs.showCorrections = !studentPrefs.showCorrections;
+  saveStudentPrefs();
+  render();
+}
+function toggleTopicRequest(topicId){
+  studentPrefs.requestedTopics = studentPrefs.requestedTopics || [];
+  const i = studentPrefs.requestedTopics.indexOf(topicId);
+  if(i===-1) studentPrefs.requestedTopics.push(topicId); else studentPrefs.requestedTopics.splice(i,1);
+  saveStudentPrefs();
+  render();
+}
+function copyTopicRequests(){
+  const requested = (studentPrefs.requestedTopics||[]).map(id=>LESSON_LIBRARY.find(t=>t.id===id)).filter(Boolean);
+  if(!requested.length){ toast('Flag a topic first'); return; }
+  const lines = ["Hi! For our next lesson, I'd love to cover:"];
+  requested.forEach(t=>lines.push(`- ${t.title}`));
+  copyText(lines.join('\n'), 'Message copied — paste it to your tutor');
+}
+
+function openDiarizeSettings(){
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Speaker-separated transcription</h3>
+      <p class="help">Beta feature. Uses NVIDIA's free Riva speech AI to reliably tell your voice apart from your student's — more accurate than the built-in guesswork. Requires your own free NVIDIA API key; nothing is stored on any server, your key stays only in this browser. <a href="https://kylo1917.github.io/chattercheck/privacy.html" target="_blank" rel="noopener">Full privacy details</a></p>
+      <div class="field"><label>NVIDIA API key</label><input id="dsKey" type="password" placeholder="nvapi-..." value="${esc(diarizeSettings.nvidiaApiKey)}"></div>
+      <p class="mini" style="color:var(--warn)">Stored only in this browser — avoid pasting it in on a shared or public computer.</p>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="btn btn-sm" onclick="testDiarizeKey()">Test key</button>
+        <span id="dsTestResult" class="mini"></span>
+      </div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">
+        <input type="checkbox" id="dsEnabled" style="width:16px;height:16px" ${diarizeSettings.enabled?'checked':''}> Enable for live sessions
+      </label>
+      <p class="mini">You'll be asked to read a short calibration phrase at the start of each session so it can tell your voice from your student's.</p>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmDiarizeSettings()">Save</button>
+      </div>
+    </div>`;
+  overlay.id = 'modalHost';
+  document.body.appendChild(overlay);
+}
+async function testDiarizeKey(){
+  const key = document.getElementById('dsKey').value.trim();
+  const resultEl = document.getElementById('dsTestResult');
+  if(!key){ resultEl.textContent = 'Add a key first'; resultEl.style.color = 'var(--warn)'; return; }
+  resultEl.textContent = 'Checking…'; resultEl.style.color = '';
+  try{
+    const resp = await fetch(DIARIZE_TESTKEY_URL, { method:'POST', headers:{ 'X-Nvidia-Api-Key': key } });
+    const data = await resp.json();
+    if(data.ok){
+      resultEl.textContent = '✓ Key works — saved';
+      resultEl.style.color = 'var(--good)';
+      diarizeSettings = { ...diarizeSettings, nvidiaApiKey:key };
+      saveDiarizeSettings();
+    }
+    else { resultEl.textContent = data.error || 'Key check failed'; resultEl.style.color = 'var(--bad)'; }
+  }catch(e){
+    resultEl.textContent = 'Could not reach the check service — check your connection';
+    resultEl.style.color = 'var(--bad)';
+  }
+}
+function confirmDiarizeSettings(){
+  const key = document.getElementById('dsKey').value.trim();
+  const enabled = document.getElementById('dsEnabled').checked;
+  if(enabled && !key){ toast('Add your NVIDIA API key first, or leave this switched off'); return; }
+  diarizeSettings = { nvidiaApiKey:key, enabled, maxSpeakers:2 };
+  saveDiarizeSettings();
+  closeModal();
+  toast('Saved');
+  render();
+}
+
+let view = 'dashboard'; // 'dashboard' | 'session' | 'file'
+let showFullLog = false;
+let dashSearch = '';
+let practice = { active:false, idx:0, order:[], revealed:false, typeFilter:'all' };
+document.addEventListener('keydown', (e)=>{
+  if(!practice.active || practice.finished) return;
+  const tag = document.activeElement?.tagName;
+  const typing = tag==='INPUT' || tag==='TEXTAREA';
+  if(!practice.revealed){
+    if(e.key===' ' && !typing){ e.preventDefault(); practiceReveal(); }
+    return;
+  }
+  if(e.key==='ArrowRight'){ e.preventDefault(); practiceGrade(true); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); practiceGrade(false); }
+  else if(e.key===' ' && !typing){ e.preventDefault(); practiceGrade(true); }
+});
+let timerHandle = null;
+let pendingEnd = false;
+let reviewSessionId = null;
+let transcriptShowAll = false;
+let cheatSheetMode = false;
+
+function activeStudent(){ return state.students.find(s=>s.id===state.activeStudentId) || null; }
+
+function toast(msg){
+  const host = document.getElementById('toastHost');
+  host.innerHTML = '<div class="toast">'+esc(msg)+'</div>';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>{ host.innerHTML=''; }, 2600);
+}
+
+/* ---------- student mgmt ---------- */
+function openAddStudent(){
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Add a student</h3>
+      <div class="field"><label>Name</label><input id="nsName" placeholder="e.g. Elena Kowalski" autofocus></div>
+      <div class="formrow">
+        <div class="field"><label>Language</label><input id="nsLang" list="langList" placeholder="Spanish"></div>
+        <div class="field"><label>Level</label>
+          <select id="nsLevel">
+            <option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option>
+          </select>
+        </div>
+      </div>
+      <datalist id="langList">
+        <option>English</option><option>Spanish</option><option>French</option><option>German</option>
+        <option>Italian</option><option>Portuguese</option><option>Mandarin</option><option>Japanese</option>
+        <option>Korean</option><option>Russian</option><option>Arabic</option><option>Polish</option>
+      </datalist>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">
+        <input type="checkbox" id="nsMinor" style="width:16px;height:16px"> This student is under 18
+      </label>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmAddStudent()">Add student</button>
+      </div>
+    </div>`;
+  overlay.id = 'modalHost';
+  document.body.appendChild(overlay);
+  document.getElementById('nsName').focus();
+}
+function closeModal(){ document.getElementById('modalHost')?.remove(); }
+function confirmAddStudent(){
+  const name = document.getElementById('nsName').value.trim();
+  if(!name){ toast('Give the student a name first'); return; }
+  const lang = document.getElementById('nsLang').value.trim() || 'General';
+  const level = document.getElementById('nsLevel').value;
+  const isMinor = document.getElementById('nsMinor').checked;
+  const st = { id:uid(), name, lang, level, isMinor, color:colorFor(name), createdAt:Date.now(), sessions:[], mistakes:[], glossary:[], watchlist:[], topicRequests:[], speechLang: guessLangCode(lang) };
+  state.students.push(st);
+  state.activeStudentId = st.id;
+  closeModal(); save(); view='session'; render();
+  toast('Added '+name);
+}
+function toggleMinor(id, val){
+  const s = state.students.find(x=>x.id===id); if(!s) return;
+  s.isMinor = val; save(); render();
+}
+function selectStudent(id){ state.activeStudentId = id; save(); showFullLog=false; practice.active=false; cheatSheetMode=false; reviewSessionId=null; if(view==='dashboard') view='file'; render(); }
+function deleteStudent(id){
+  const s = state.students.find(x=>x.id===id); if(!s) return;
+  if(!confirm(`Delete ${s.name}'s entire file? This removes their mistake history and glossary permanently and can't be undone.`)) return;
+  if(state.liveSession && state.liveSession.studentId===id) state.liveSession=null;
+  state.students = state.students.filter(x=>x.id!==id);
+  if(state.activeStudentId===id) state.activeStudentId = state.students[0]?.id || null;
+  save(); render();
+}
+
+/* ---------- live session ---------- */
+function startSession(){
+  const st = activeStudent(); if(!st) return;
+  if(state.liveSession && state.liveSession.studentId!==st.id){ toast('Finish the session in progress for the other student first'); return; }
+  state.liveSession = { studentId: st.id, sessionId: uid(), startedAt: Date.now(), transcript: [] };
+  save(); render();
+}
+function liveMistakeFor(st){ return state.liveSession && state.liveSession.studentId===st.id ? state.liveSession : null; }
+function transcriptFor(st, sessionId){
+  if(state.liveSession && state.liveSession.sessionId===sessionId) return state.liveSession.transcript;
+  const sess = st.sessions.find(s=>s.id===sessionId);
+  return sess ? (sess.transcript || (sess.transcript=[])) : null;
+}
+
+/* ---------- recording & heuristic tagging ---------- */
+let recognizer = null, recActive = false, recState = 'off', recFailStreak = 0, recRestartTimer = null, recStartedAt = 0;
+const COALESCE_WINDOW_MS = 2500; // merge speech-recognition fragments finalized this close together into one line
+function speechSupported(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
+function wordOverlap(a,b){
+  const sa = new Set(norm(a).split(' ').filter(Boolean));
+  const sb = new Set(norm(b).split(' ').filter(Boolean));
+  if(!sa.size || !sb.size) return 0;
+  let inter=0; sa.forEach(w=>{ if(sb.has(w)) inter++; });
+  return inter/Math.max(sa.size,sb.size);
+}
+const FILLER_RE = /\b(um+|uh+|erm+|like|you know|i mean|sort of|kind of)\b/i;
+const BACKCHANNEL_RE = /^(yeah|yep|yup|okay|ok|alright|all right|right|hmm+|mm+[\s-]?hm+|uh[\s-]?huh|got it|i see|cool|nice|sure|gotcha|great|good|exactly|correct)[.!,?]*$/i;
+const HIGH_SIGNAL_TAGS = new Set(['repair','watch']);
+function isHighSignal(line){ return line.tags.some(t=>HIGH_SIGNAL_TAGS.has(t)); }
+function tagLine(st, text, prevText){
+  const tags = [];
+  if(FILLER_RE.test(text) || BACKCHANNEL_RE.test(text.trim())) tags.push('filler');
+  if(prevText && norm(prevText)!==norm(text) && wordOverlap(prevText,text) >= 0.5) tags.push('repair');
+  const watch = st.watchlist||[];
+  const lower = text.toLowerCase();
+  if(watch.some(w=> w && lower.includes(w.toLowerCase()))) tags.push('watch');
+  return tags;
+}
+function diarizeReady(){ return diarizeSettings.enabled && !!diarizeSettings.nvidiaApiKey; }
+function toggleRecording(){
+  if(recActive){ diarizeReady() ? stopDiarizedRecording() : stopRecording(); return; }
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  if(!diarizeReady() && !speechSupported()){ toast('Speech recognition needs Chrome'); return; }
+  if(live.consentConfirmedAt){ diarizeReady() ? startDiarizedRecording() : startRecording(); return; }
+  openRecordingConsent();
+}
+function openRecordingConsent(){
+  const st = activeStudent(); if(!st) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Before you record</h3>
+      <p class="help">Confirm ${esc(st.name)} knows this session will be recorded for lesson notes. Recording laws vary by location — some places legally require everyone in the conversation to agree, not just you.</p>
+      ${st.isMinor ? `<p class="help" style="color:var(--warn);font-weight:600">${esc(st.name)} is marked as a minor — make sure a parent or guardian is aware too.</p>` : ''}
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmRecordingConsent()">Yes, they know — start recording</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function confirmRecordingConsent(){
+  const live = state.liveSession; if(!live) return;
+  live.consentConfirmedAt = Date.now();
+  save();
+  closeModal();
+  diarizeReady() ? startDiarizedRecording() : startRecording();
+}
+function startRecording(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  clearTimeout(recRestartTimer);
+  recFailStreak = 0;
+  launchRecognizer(st);
+  recActive = true;
+  recState = 'listening';
+  updateRecUI();
+}
+function launchRecognizer(st){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognizer = new SR();
+  recognizer.continuous = true;
+  recognizer.interimResults = true;
+  recognizer.lang = st.speechLang || guessLangCode(st.lang);
+  recognizer.onresult = handleRecResult;
+  recognizer.onerror = (e) => {
+    if(e.error==='not-allowed' || e.error==='service-not-allowed'){
+      toast('Microphone access was blocked — allow it in the browser to record');
+      recState = 'off'; recActive = false; recognizer = null; updateRecUI();
+      return;
+    }
+    // 'no-speech' and 'network' are routine and expected during quiet moments — onend handles the restart
+  };
+  recognizer.onstart = () => { recStartedAt = Date.now(); };
+  recognizer.onend = () => {
+    if(!recActive) return;
+    const livedFor = Date.now() - recStartedAt;
+    recFailStreak = livedFor < 1500 ? recFailStreak + 1 : 0;
+    if(recFailStreak >= 4){
+      recState = 'stalled'; recActive = false;
+      updateRecUI();
+      return;
+    }
+    recRestartTimer = setTimeout(() => { if(recActive) launchRecognizer(activeStudentForLiveSession()); }, 350);
+  };
+  recStartedAt = Date.now();
+  try{ recognizer.start(); }catch(e){}
+}
+function activeStudentForLiveSession(){
+  return state.liveSession ? state.students.find(s=>s.id===state.liveSession.studentId) : null;
+}
+function resumeRecording(){
+  const st = activeStudentForLiveSession(); if(!st) return;
+  recFailStreak = 0; recState = 'listening'; recActive = true;
+  launchRecognizer(st);
+  updateRecUI();
+}
+function stopRecording(){
+  recActive = false; recState = 'off';
+  clearTimeout(recRestartTimer);
+  try{ recognizer && recognizer.stop(); }catch(e){}
+  recognizer = null;
+  updateRecUI();
+}
+
+/* ---------- diarized recording (speaker-separated transcription via NVIDIA Riva) ---------- */
+const CALIBRATION_PHRASE = "The quick brown fox jumps over the lazy dog while learning a new language.";
+const DIARIZE_CHUNK_MS = 60000;
+let diarizeRec = { stage:'idle', stream:null, calibrationBlob:null, calibrationDurationMs:0, mediaRecorder:null, chunkTimer:null };
+
+function startDiarizedRecording(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  diarizeRec = { stage:'calibrating', stream:null, calibrationBlob:null, calibrationDurationMs:0, mediaRecorder:null, chunkTimer:null };
+  recActive = true;
+  updateRecUI();
+  navigator.mediaDevices.getUserMedia({ audio:true }).then(stream=>{
+    if(!recActive){ stream.getTracks().forEach(t=>t.stop()); return; } // user hit Stop before the mic prompt resolved
+    diarizeRec.stream = stream;
+    recordCalibrationClip();
+  }).catch(()=>{
+    if(!recActive) return;
+    toast('Microphone access was blocked — allow it to record');
+    recActive = false; diarizeRec.stage = 'idle'; updateRecUI();
+  });
+}
+function recordCalibrationClip(){
+  if(!diarizeRec.stream) return;
+  const chunks = [];
+  const mr = new MediaRecorder(diarizeRec.stream, { mimeType:'audio/webm;codecs=opus' });
+  const startedAt = Date.now();
+  mr.ondataavailable = e => { if(e.data.size>0) chunks.push(e.data); };
+  mr.onstop = () => {
+    diarizeRec.calibrationBlob = new Blob(chunks, { type:'audio/webm' });
+    diarizeRec.calibrationDurationMs = Date.now() - startedAt;
+    if(!recActive) return; // stopped during calibration
+    diarizeRec.stage = 'recording';
+    updateRecUI();
+    runDiarizeChunk();
+  };
+  mr.start();
+  diarizeRec.mediaRecorder = mr;
+  setTimeout(()=>{ if(mr.state!=='inactive'){ try{ mr.stop(); }catch(e){} } }, 4000);
+}
+function runDiarizeChunk(){
+  if(!recActive || !diarizeRec.stream) return;
+  const chunks = [];
+  const mr = new MediaRecorder(diarizeRec.stream, { mimeType:'audio/webm;codecs=opus' });
+  diarizeRec.mediaRecorder = mr;
+  mr.ondataavailable = e => { if(e.data.size>0) chunks.push(e.data); };
+  mr.onstop = () => {
+    const blob = new Blob(chunks, { type:'audio/webm' });
+    if(recActive) runDiarizeChunk(); // keep capturing immediately; upload happens alongside
+    if(blob.size > 500) uploadDiarizeChunk(blob);
+  };
+  mr.start();
+  diarizeRec.chunkTimer = setTimeout(()=>{ if(mr.state!=='inactive'){ try{ mr.stop(); }catch(e){} } }, DIARIZE_CHUNK_MS);
+}
+async function uploadDiarizeChunk(blob){
+  const st = activeStudentForLiveSession(); const live = state.liveSession;
+  if(!st || !live || !diarizeRec.calibrationBlob) return;
+  const form = new FormData();
+  form.append('calibration', diarizeRec.calibrationBlob, 'calibration.webm');
+  form.append('chunk', blob, 'chunk.webm');
+  try{
+    const resp = await fetch(DIARIZE_PROXY_URL, {
+      method:'POST',
+      headers:{
+        'X-Nvidia-Api-Key': diarizeSettings.nvidiaApiKey,
+        'X-Max-Speakers': String(diarizeSettings.maxSpeakers||2),
+        'X-Calibration-Duration-Ms': String(diarizeRec.calibrationDurationMs),
+      },
+      body: form,
+    });
+    if(!resp.ok){
+      const err = await resp.json().catch(()=>({}));
+      toast('Speaker separation hiccup: ' + (err.error || resp.status) + ' — still recording');
+      return;
+    }
+    const data = await resp.json();
+    for(const seg of (data.segments||[])){
+      if(seg.text && seg.text.trim()) pushTranscriptLine(st, live, seg.text.trim(), seg.role);
+    }
+  }catch(e){
+    toast('Could not reach the speaker-separation service — still recording, will retry next chunk');
+  }
+}
+function stopDiarizedRecording(){
+  recActive = false;
+  clearTimeout(diarizeRec.chunkTimer);
+  try{ diarizeRec.mediaRecorder && diarizeRec.mediaRecorder.state!=='inactive' && diarizeRec.mediaRecorder.stop(); }catch(e){}
+  try{ diarizeRec.stream && diarizeRec.stream.getTracks().forEach(t=>t.stop()); }catch(e){}
+  diarizeRec = { stage:'idle', stream:null, calibrationBlob:null, calibrationDurationMs:0, mediaRecorder:null, chunkTimer:null };
+  updateRecUI();
+}
+
+function updateRecUI(){
+  const btn = document.getElementById('recToggleBtn');
+  if(btn){ btn.textContent = recActive ? 'Stop recording' : 'Start recording'; btn.classList.toggle('recbtn', recActive); btn.classList.toggle('off', !recActive); }
+  const banner = document.getElementById('recBanner');
+  if(banner){
+    if(diarizeReady()){
+      if(diarizeRec.stage==='calibrating') banner.outerHTML = `<div id="recBanner" class="recbanner live"><span class="dot"></span>Calibrating — please read aloud: "${esc(CALIBRATION_PHRASE)}"</div>`;
+      else if(diarizeRec.stage==='recording') banner.outerHTML = `<div id="recBanner" class="recbanner live"><span class="dot"></span>Recording — speaker-separated</div>`;
+      else banner.outerHTML = `<div id="recBanner" class="recbanner off">Not recording</div>`;
+    }
+    else if(recState==='listening') banner.outerHTML = `<div id="recBanner" class="recbanner live"><span class="dot"></span>Recording — listening</div>`;
+    else if(recState==='stalled') banner.outerHTML = `<div id="recBanner" class="recbanner stalled">Recording stopped unexpectedly<button class="btn btn-sm" style="margin-left:auto" onclick="resumeRecording()">Resume</button></div>`;
+    else banner.outerHTML = `<div id="recBanner" class="recbanner off">Not recording</div>`;
+  }
+}
+function handleRecResult(e){
+  const live = state.liveSession; if(!live) return;
+  const st = state.students.find(s=>s.id===live.studentId); if(!st) return;
+  recFailStreak = 0;
+  let interim = '';
+  for(let i=e.resultIndex;i<e.results.length;i++){
+    const res = e.results[i];
+    const text = res[0].transcript.trim();
+    if(res.isFinal){ if(text) appendOrPushLine(st, live, text); }
+    else interim += text;
+  }
+  if(activeStudent()?.id !== st.id) return;
+  const interimEl = document.getElementById('interimLine');
+  if(interimEl) interimEl.textContent = interim;
+}
+function appendOrPushLine(st, live, text){
+  // Speech recognition (especially on mobile) often finalizes a single sentence as several
+  // separate fragments in quick succession. Merge fragments landing close together into the
+  // same line instead of showing a run of choppy near-duplicate statements. Never merges into a
+  // diarized line (role set) — those are already coherent, speaker-attributed segments.
+  const last = live.transcript[live.transcript.length-1];
+  const now = Date.now() - live.startedAt;
+  if(last && !last.role && !last.done && (now - last.t) < COALESCE_WINDOW_MS){
+    const prev = live.transcript[live.transcript.length-2];
+    last.text = (last.text + ' ' + text).trim();
+    last.tags = tagLine(st, last.text, prev?prev.text:null);
+    save();
+    const el = document.querySelector(`[data-line="${last.id}"]`);
+    if(el) el.outerHTML = transcriptLineHTML(live.sessionId, last);
+    return;
+  }
+  pushTranscriptLine(st, live, text);
+}
+function pushTranscriptLine(st, live, text, role){
+  const prev = live.transcript[live.transcript.length-1];
+  // Diarization already told us who's speaking — never flag the tutor's own lines as mistakes.
+  const tags = role==='tutor' ? [] : tagLine(st, text, prev?prev.text:null);
+  const line = { id:uid(), t: Date.now()-live.startedAt, text, tags, done:false, role: role||null };
+  live.transcript.push(line);
+  save();
+  const log = document.getElementById('transcriptLog');
+  if(log && (transcriptShowAll || isHighSignal(line) || role)){
+    log.insertAdjacentHTML('beforeend', transcriptLineHTML(live.sessionId, line));
+    log.scrollTop = log.scrollHeight;
+  }
+  const hiddenEl = document.getElementById('hiddenCount');
+  if(hiddenEl && !transcriptShowAll){
+    hiddenEl.textContent = live.transcript.filter(l=>!l.done && !isHighSignal(l) && !l.role).length;
+  }
+}
+function transcriptLineHTML(sessionId, line){
+  const tagLabel = line.tags.includes('watch') ? TAGMETA.watch.label : line.tags.includes('repair') ? TAGMETA.repair.label : line.tags.includes('filler') ? TAGMETA.filler.label : '';
+  const cls = line.tags.includes('watch') ? 'tag-watch' : line.tags.includes('repair') ? 'tag-repair' : line.tags.includes('filler') ? 'tag-filler' : '';
+  const roleLabel = line.role==='tutor' ? `<span class="mini mono" style="opacity:.65">You</span> ` : line.role==='student' ? `<span class="mini mono" style="opacity:.65">Student</span> ` : '';
+  return `<div class="transline ${cls}" data-line="${line.id}">
+    <div class="txt">${roleLabel}${tagLabel?`<span class="tagpill">${tagLabel}</span>`:''}${esc(line.text)}</div>
+    <div class="acts no-print">
+      <button class="linkbtn" onclick="openTagAsMistake('${sessionId}','${line.id}')">+ mistake</button>
+      <button class="linkbtn" onclick="openTagAsVocab('${sessionId}','${line.id}')">+ vocab</button>
+      <button class="linkbtn muted" onclick="dismissLine('${sessionId}','${line.id}')">dismiss</button>
+    </div>
+  </div>`;
+}
+function findLine(sessionId, lineId){
+  const st = activeStudent(); if(!st) return null;
+  const t = transcriptFor(st, sessionId); if(!t) return null;
+  return t.find(l=>l.id===lineId) || null;
+}
+function dismissLine(sessionId, lineId){
+  const line = findLine(sessionId, lineId); if(!line) return;
+  line.done = true; save();
+  document.querySelector(`[data-line="${lineId}"]`)?.remove();
+}
+function openTagAsMistake(sessionId, lineId){
+  const line = findLine(sessionId, lineId); if(!line) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Flag as mistake</h3>
+      <div class="field"><label>What they said</label><input id="tmText" value="${esc(line.text)}"></div>
+      <div class="field"><label>Correction (optional)</label><input id="tmFix" placeholder="How it should be said"></div>
+      <div class="field"><label>Category</label>
+        <select id="tmCat">${Object.entries(CATS).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
+      </div>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmTagAsMistake('${sessionId}','${lineId}')">Add to log</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function confirmTagAsMistake(sessionId, lineId){
+  const st = activeStudent(); if(!st) return;
+  const text = document.getElementById('tmText').value.trim();
+  if(!text){ toast('Add what was said first'); return; }
+  const correction = document.getElementById('tmFix').value.trim();
+  const category = document.getElementById('tmCat').value;
+  addMistake(st, sessionId, text, correction, category);
+  const line = findLine(sessionId, lineId); if(line) line.done = true;
+  closeModal(); save();
+  document.querySelector(`[data-line="${lineId}"]`)?.remove();
+  toast('Added to mistake log');
+}
+function openTagAsVocab(sessionId, lineId){
+  const line = findLine(sessionId, lineId); if(!line) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Add to glossary</h3>
+      <div class="field"><label>Term</label><input id="tgTerm" value="${esc(line.text)}"></div>
+      <div class="field"><label>Type</label>
+        <select id="tgType">${Object.entries(GTYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
+      </div>
+      <div class="field"><label>Meaning (optional)</label><input id="tgMean"></div>
+      <div class="field"><label>Example (optional)</label><input id="tgEx"></div>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmTagAsVocab('${sessionId}','${lineId}')">Add to glossary</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function confirmTagAsVocab(sessionId, lineId){
+  const st = activeStudent(); if(!st) return;
+  const term = document.getElementById('tgTerm').value.trim();
+  if(!term){ toast('Add the term first'); return; }
+  const type = document.getElementById('tgType').value;
+  const meaning = document.getElementById('tgMean').value.trim();
+  const example = document.getElementById('tgEx').value.trim();
+  addGlossary(st, sessionId, term, type, meaning, example);
+  const line = findLine(sessionId, lineId); if(line) line.done = true;
+  closeModal(); save();
+  document.querySelector(`[data-line="${lineId}"]`)?.remove();
+  toast('Added to glossary');
+}
+function addWatchTerm(){
+  const st = activeStudent(); if(!st) return;
+  const input = document.getElementById('watchInput');
+  const term = input.value.trim(); if(!term) return;
+  st.watchlist = st.watchlist || [];
+  if(!st.watchlist.some(w=>norm(w)===norm(term))) st.watchlist.push(term);
+  input.value = '';
+  save(); render();
+}
+function removeWatchTerm(term){
+  const st = activeStudent(); if(!st) return;
+  st.watchlist = (st.watchlist||[]).filter(w=>w!==term);
+  save(); render();
+}
+// Topic requests: a student flags a topic in their own Lesson Library tab, then copies a
+// message to send the tutor (same manual, no-server pattern as everything else here — there's
+// no live sync between devices). The tutor logs it here after seeing that message, so it
+// shows up in the pre-lesson brief before the next session.
+function addTopicRequest(){
+  const st = activeStudent(); if(!st) return;
+  const select = document.getElementById('topicRequestSelect');
+  const title = select.value; if(!title) return;
+  st.topicRequests = st.topicRequests || [];
+  if(!st.topicRequests.includes(title)) st.topicRequests.push(title);
+  select.value = '';
+  save(); render();
+}
+function clearTopicRequest(title){
+  const st = activeStudent(); if(!st) return;
+  st.topicRequests = (st.topicRequests||[]).filter(t=>t!==title);
+  save(); render();
+}
+
+function addMistake(st, sessionId, text, correction, category){
+  if(!text) return null;
+  const key = category+'|'+norm(text);
+  let m = st.mistakes.find(x=> (x.category+'|'+norm(x.text))===key );
+  if(m){
+    if(correction && !m.correction) m.correction = correction;
+    m.occurrences.push({sessionId, date: Date.now()});
+  } else {
+    m = { id:uid(), category, text, correction, occurrences:[{sessionId, date: Date.now()}] };
+    st.mistakes.push(m);
+  }
+  return m;
+}
+function addGlossary(st, sessionId, term, type, meaning, example){
+  if(!term) return null;
+  const key = type+'|'+norm(term);
+  let g = st.glossary.find(x=> (x.type+'|'+norm(x.term))===key );
+  if(g){
+    if(meaning) g.meaning = meaning;
+    if(example) g.example = example;
+    g.occurrences.push({sessionId, date: Date.now()});
+  } else {
+    g = { id:uid(), type, term, meaning, example, occurrences:[{sessionId, date: Date.now()}] };
+    st.glossary.push(g);
+  }
+  return g;
+}
+function logMistake(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  const text = document.getElementById('mText').value.trim();
+  if(!text){ toast('Add what was said first'); return; }
+  const correction = document.getElementById('mFix').value.trim();
+  const category = document.getElementById('mCat').value;
+  addMistake(st, live.sessionId, text, correction, category);
+  save(); render();
+}
+function removeMistake(id){
+  const st = activeStudent(); if(!st) return;
+  st.mistakes = st.mistakes.filter(m=>m.id!==id);
+  save(); render();
+}
+function logGlossary(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  const term = document.getElementById('gTerm').value.trim();
+  if(!term){ toast('Add the term first'); return; }
+  const type = document.getElementById('gType').value;
+  const meaning = document.getElementById('gMean').value.trim();
+  const example = document.getElementById('gEx').value.trim();
+  addGlossary(st, live.sessionId, term, type, meaning, example);
+  save(); render();
+}
+function removeGlossary(id){
+  const st = activeStudent(); if(!st) return;
+  st.glossary = st.glossary.filter(g=>g.id!==id);
+  save(); render();
+}
+
+function sessionStats(st, sessionId){
+  const flagged = st.mistakes.filter(m => m.occurrences.some(o=>o.sessionId===sessionId) && m.occurrences.length>1);
+  const firstTime = st.mistakes.filter(m => m.occurrences.some(o=>o.sessionId===sessionId) && m.occurrences.length===1);
+  const vocab = st.glossary.filter(g => g.occurrences.some(o=>o.sessionId===sessionId));
+  return { flagged, firstTime, vocab };
+}
+function autoScore(st, sessionId){
+  const {flagged, firstTime, vocab} = sessionStats(st, sessionId);
+  return clamp(Math.round(100 - flagged.length*9 - firstTime.length*2 + Math.min(vocab.length,5)), 0, 100);
+}
+
+function openEndSession(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  const score = autoScore(st, live.sessionId);
+  const overlay = document.createElement('div');
+  overlay.className='overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Finish session with ${esc(st.name)}</h3>
+      <div class="field">
+        <label>Performance this session <span id="scoreOut" class="mono">${score}%</span></label>
+        <input type="range" min="0" max="100" value="${score}" id="scoreRange"
+          oninput="document.getElementById('scoreOut').textContent=this.value+'%'">
+      </div>
+      <div class="field"><label>Session notes (optional)</label>
+        <textarea id="sessNotes" placeholder="Focus for next time, homework given, wins to mention..."></textarea>
+      </div>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Keep going</button>
+        <button class="btn btn-primary" onclick="confirmEndSession()">Save session</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function stopAnyRecording(){
+  if(diarizeRec.stage !== 'idle') stopDiarizedRecording();
+  else stopRecording();
+}
+function generateSessionSummary(st, session){
+  const parts = [`${session.durationMin}-minute session with ${st.name}, scored ${session.rating}%.`];
+  parts.push(session.recurringCount>0
+    ? `${session.recurringCount} recurring mistake${session.recurringCount===1?'':'s'} flagged.`
+    : `No recurring mistakes flagged today.`);
+  if(session.vocabCount>0) parts.push(`${session.vocabCount} new vocabulary term${session.vocabCount===1?'':'s'} added to the glossary.`);
+  return parts.join(' ');
+}
+function showSessionSummary(st, session, unreviewed){
+  closeModal();
+  const overlay = document.createElement('div');
+  overlay.className='overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Session saved</h3>
+      <p class="help">${esc(generateSessionSummary(st, session))}</p>
+      ${unreviewed ? `<p class="mini">${unreviewed} transcript moment${unreviewed===1?'':'s'} still to review when you have time.</p>` : ''}
+      <div class="modalrow">
+        <button class="btn btn-primary" onclick="closeModal();view='file';render()">Done</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function confirmEndSession(){
+  const st = activeStudent(); const live = liveMistakeFor(st); if(!live) return;
+  stopAnyRecording();
+  const rating = Number(document.getElementById('scoreRange').value);
+  const notes = document.getElementById('sessNotes').value.trim();
+  const {flagged, firstTime, vocab} = sessionStats(st, live.sessionId);
+  const unreviewed = (live.transcript||[]).filter(l=>!l.done && l.tags.length).length;
+  const session = {
+    id: live.sessionId, date: live.startedAt,
+    durationMin: Math.max(1, Math.round((Date.now()-live.startedAt)/60000)),
+    rating, notes, mistakeCount: flagged.length+firstTime.length, recurringCount: flagged.length, vocabCount: vocab.length,
+    transcript: live.transcript||[], consentConfirmedAt: live.consentConfirmedAt||null
+  };
+  st.sessions.push(session);
+  state.liveSession = null;
+  view = 'file';
+  save();
+  render();
+  showSessionSummary(st, session, unreviewed);
+}
+function discardSession(){
+  if(!confirm('Discard this session? Mistakes and vocabulary already logged will stay in the file, but no session record, transcript or score will be saved.')) return;
+  stopAnyRecording();
+  state.liveSession = null; save(); render();
+}
+
+/* ---------- timer ---------- */
+function tickTimer(){
+  const el = document.getElementById('timerDisplay');
+  if(!el || !state.liveSession) return;
+  const sec = Math.floor((Date.now()-state.liveSession.startedAt)/1000);
+  const m = String(Math.floor(sec/60)).padStart(2,'0'), s = String(sec%60).padStart(2,'0');
+  el.textContent = m+':'+s;
+}
+
+/* ---------- progression math ---------- */
+function progression(st){
+  const ratings = st.sessions.map(s=>s.rating);
+  const cum = ratings.map((_,i)=> avg(ratings.slice(0,i+1)));
+  const n = ratings.length;
+  const prevAvg = n>=2 ? avg(ratings.slice(0,n-1)) : null;
+  const delta = (n>=2) ? Math.round(ratings[n-1]-prevAvg) : null;
+  return { ratings, cum, current: n? Math.round(cum[n-1]) : null, delta };
+}
+
+/* ---------- charts ---------- */
+function chartSVG(st, H=170, dark=false){
+  const { ratings, cum } = progression(st);
+  const n = ratings.length;
+  if(n===0) return '<div class="help" style="padding:30px 0;text-align:center">No sessions yet — the progression chart fills in after your first saved session.</div>';
+  const W=640,padL=30,padR=10,padT=10,padB=22;
+  const xStep = n>1 ? (W-padL-padR)/(n-1) : 0;
+  const xFor = i => padL + i*xStep;
+  const yFor = v => padT + (100-v)/100*(H-padT-padB);
+  const linePts = ratings.map((v,i)=> xFor(i)+','+yFor(v)).join(' ');
+  const cumPts = cum.map((v,i)=> xFor(i)+','+yFor(v)).join(' ');
+  const areaPts = cumPts + ' ' + xFor(n-1)+','+(H-padB) + ' ' + xFor(0)+','+(H-padB);
+  const gridStroke = dark ? 'oklch(40% 0.02 260)' : 'var(--border-soft)';
+  const labelFill = dark ? 'oklch(72% 0.015 260)' : 'var(--text-3)';
+  const accentStroke = dark ? 'oklch(75% 0.11 270)' : 'var(--accent)';
+  const areaFill = dark ? 'oklch(40% 0.09 270)' : 'var(--accent-tint)';
+  const dashedStroke = dark ? 'oklch(55% 0.02 260)' : 'var(--text-3)';
+  let grid = '';
+  [0,25,50,75,100].forEach(v=>{
+    const y = yFor(v);
+    grid += `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="${gridStroke}" stroke-width="1"/>`;
+    grid += `<text x="${padL-6}" y="${y+3}" text-anchor="end" font-size="9" fill="${labelFill}" font-family="IBM Plex Mono, monospace">${v}</text>`;
+  });
+  const dots = ratings.map((v,i)=> `<circle cx="${xFor(i)}" cy="${yFor(v)}" r="${i===n-1?4:2.5}" fill="${accentStroke}"/>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H+16}" width="100%" style="overflow:visible">
+    ${grid}
+    <polygon points="${areaPts}" fill="${areaFill}" opacity="${dark?0.55:0.7}"/>
+    <polyline points="${cumPts}" fill="none" stroke="${accentStroke}" stroke-width="2" stroke-linejoin="round"/>
+    <polyline points="${linePts}" fill="none" stroke="${dashedStroke}" stroke-width="1.3" stroke-dasharray="2 3"/>
+    ${dots}
+    <text x="${padL}" y="${H+13}" font-size="9.5" fill="${labelFill}">${esc(fmtDate(st.sessions[0].date))}</text>
+    <text x="${W-padR}" y="${H+13}" text-anchor="end" font-size="9.5" fill="${labelFill}">${esc(fmtDate(st.sessions[n-1].date))}</text>
+  </svg>`;
+}
+
+/* ---------- render: dashboard ---------- */
+function studentUnreviewedCount(st){
+  return st.sessions.reduce((sum,sess)=> sum + (sess.transcript||[]).filter(l=>!l.done && l.tags.length).length, 0);
+}
+function studentNeedsAttentionCount(st){
+  return st.mistakes.filter(m=>m.occurrences.length>1).length;
+}
+function crossStudentInsights(){
+  const byCat = {};
+  state.students.forEach(st=>{
+    const cats = new Set();
+    st.mistakes.filter(m=>m.occurrences.length>1).forEach(m=>cats.add(m.category));
+    cats.forEach(c=>{ byCat[c] = byCat[c] || new Set(); byCat[c].add(st.id); });
+  });
+  return Object.entries(byCat)
+    .filter(([,ids])=>ids.size>=2)
+    .map(([cat,ids])=>({cat, count:ids.size}))
+    .sort((a,b)=>b.count-a.count);
+}
+function buildCrossStudentContext(insights){
+  const lines = [`Teaching prep — patterns across ${state.students.length} students`, ''];
+  insights.forEach(i=>{
+    const c = CATS[i.cat];
+    lines.push(`- ${c?c.label:i.cat}: ${i.count} of ${state.students.length} students have a recurring issue here`);
+  });
+  lines.push('');
+  lines.push('Use this to suggest a general lesson activity or worksheet that would help with these shared problem areas.');
+  return lines.join('\n');
+}
+function copyCrossStudentContext(){
+  const insights = crossStudentInsights();
+  if(!insights.length) return;
+  copyText(buildCrossStudentContext(insights), 'Cross-student insights copied — paste it into Claude');
+}
+function renderCrossStudentInsights(){
+  if(state.students.length<2) return '';
+  const insights = crossStudentInsights();
+  if(!insights.length) return '';
+  return `<div class="card no-print">
+    <div class="sectionhead"><h3>Across your students</h3><button class="btn btn-sm" onclick="copyCrossStudentContext()">Copy for Claude</button></div>
+    <div class="stack" style="gap:8px">${insights.map(i=>{
+      const c = CATS[i.cat];
+      return `<div class="quietrow"><span class="pill" style="background:var(${c.t});color:var(${c.v})">${c.label}</span><span>${i.count} of ${state.students.length} students have a recurring issue here</span></div>`;
+    }).join('')}</div>
+  </div>`;
+}
+function renderDashboard(){
+  const students = state.students;
+  const rows = students.map(st=>{
+    const prog = progression(st);
+    const needsAttn = studentNeedsAttentionCount(st);
+    const due = srsDueCount(st);
+    const unreviewed = studentUnreviewedCount(st);
+    const lastSession = st.sessions.length ? st.sessions[st.sessions.length-1].date : null;
+    const live = state.liveSession && state.liveSession.studentId===st.id;
+    return { st, prog, needsAttn, due, unreviewed, lastSession, live, flagScore: (needsAttn*10)+(unreviewed*5)+(live?1000:0) };
+  }).sort((a,b)=> b.flagScore-a.flagScore);
+
+  const totalNeedsAttn = rows.reduce((s,r)=>s+r.needsAttn,0);
+  const totalUnreviewed = rows.reduce((s,r)=>s+r.unreviewed,0);
+  const totalDue = rows.reduce((s,r)=>s+r.due,0);
+
+  const q = norm(dashSearch);
+  const visibleRows = q ? rows.filter(r => norm(r.st.name).includes(q) || norm(r.st.lang).includes(q)) : rows;
+
+  return `
+  <div class="stack">
+    ${shouldShowBackupReminder() ? `
+    <div id="backupReminder" class="card no-print" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-color:var(--warn)">
+      <span style="font-size:20px">💾</span>
+      <div style="flex:1">
+        <div style="font-weight:600">${daysSinceLastBackup()===Infinity ? "You haven't backed up yet" : `It's been ${Math.floor(daysSinceLastBackup())} days since your last backup`}</div>
+        <div class="mini">Everything here lives only in this browser — if it's cleared or this device is lost, there's no way to recover it without a backup.</div>
+      </div>
+      <button class="btn btn-sm btn-primary" onclick="exportAll()">Backup now</button>
+      <button class="btn btn-sm btn-ghost" onclick="dismissBackupReminder()">Later</button>
+    </div>` : ''}
+    ${(()=>{ const h=new Date().getHours(); const greeting = h<12?'Good morning':h<18?'Good afternoon':'Good evening'; return `
+    <div class="spotlight">
+      <div class="eyebrow" style="margin-bottom:0">Overview</div>
+      <div class="spotlight-headline">${greeting} — here's where things stand</div>
+      <div class="spotlight-sub">${students.length} student${students.length===1?'':'s'} · ${totalDue} flashcard${totalDue===1?'':'s'} due today</div>
+      <div class="spotlight-stats">
+        <div class="spotlight-stat"><div class="num">${students.length}</div><div class="lbl">Student${students.length===1?'':'s'}</div></div>
+        <div class="spotlight-stat"><div class="num accent">${totalNeedsAttn}</div><div class="lbl">Recurring mistakes</div></div>
+        <div class="spotlight-stat"><div class="num">${totalUnreviewed}</div><div class="lbl">Moments to review</div></div>
+        <div class="spotlight-stat"><div class="num">${totalDue}</div><div class="lbl">Flashcards due</div></div>
+      </div>
+    </div>`; })()}
+    ${renderCrossStudentInsights()}
+    ${students.length>5 ? `
+    <input type="text" placeholder="Search students by name or language…" value="${esc(dashSearch)}" oninput="dashSearch=this.value;render()" style="width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text)">
+    ` : ''}
+    ${q && !visibleRows.length ? `<div class="card"><div class="help">No students match "${esc(dashSearch)}".</div></div>` : `
+    <div class="dashgrid">
+      ${visibleRows.map(r=>`
+        <div class="card dashcard" onclick="selectStudent('${r.st.id}')">
+          <div class="row">
+            <div style="display:flex;align-items:center;gap:9px;min-width:0">
+              <span class="avatar" style="background:${r.st.color};flex:0 0 auto">${esc(initials(r.st.name))}</span>
+              <div style="min-width:0">
+                <div style="font-weight:600;display:flex;align-items:center;gap:6px">${esc(r.st.name)} ${r.live?'<span class="livepip"></span>':''}</div>
+                <div class="mini">${esc(r.st.lang)} &middot; ${esc(r.st.level)}</div>
+              </div>
+            </div>
+            <div class="mono" style="font-size:17px;font-weight:600;flex:0 0 auto">${r.prog.current===null?'—':r.prog.current+'%'}</div>
+          </div>
+          <div class="dashflags">
+            ${r.needsAttn?`<span class="pill" style="background:var(--warn-tint);color:var(--warn)">${r.needsAttn} recurring</span>`:''}
+            ${r.unreviewed?`<span class="pill" style="background:var(--bad-tint);color:var(--bad)">${r.unreviewed} to review</span>`:''}
+            ${r.due?`<span class="pill" style="background:var(--accent-tint);color:var(--accent-ink)">${r.due} due</span>`:''}
+            ${!r.needsAttn && !r.unreviewed && !r.due?`<span class="mini">All caught up</span>`:''}
+          </div>
+          <div class="row no-print" style="flex-wrap:wrap;gap:6px;margin-top:2px">
+            <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();copyLessonContext('${r.st.id}')">Copy context</button>
+            <button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();selectStudent('${r.st.id}');cheatSheetMode=true;render()">Cheat sheet</button>
+          </div>
+          <div class="row" style="align-items:center">
+            <div class="mini">${r.lastSession?'Last session '+esc(fmtDate(r.lastSession)):'No sessions yet'}</div>
+            <button class="btn btn-sm no-print" onclick="event.stopPropagation();selectStudent('${r.st.id}');view='session';render()">Start session</button>
+          </div>
+        </div>`).join('')}
+    </div>
+    `}
+  </div>`;
+}
+
+/* ---------- render: header ---------- */
+function renderHeader(){
+  const chips = state.students.map(s=>{
+    const live = state.liveSession && state.liveSession.studentId===s.id;
+    return `<button class="studentchip ${s.id===state.activeStudentId?'active':''}" onclick="selectStudent('${s.id}')">
+      <span class="avatar" style="background:${s.color}">${esc(initials(s.name))}</span>
+      <span class="name">${esc(s.name)}</span>
+      ${live?'<span class="livepip"></span>':''}
+    </button>`;
+  }).join('');
+  return `
+  <div class="topbar no-print">
+    <div class="brand">
+      <div class="brand-mark">🗣️</div>
+      <div><div class="brand-name">ChatterCheck</div><div class="brand-tag">Runs beside any call · your records stay on this device</div></div>
+    </div>
+    <div class="studentbar">
+      ${chips}
+      <button class="btn btn-sm" onclick="openAddStudent()">+ Student</button>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('importFile').click()" title="Import a student file">Import</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none" onchange="handleImport(this.files[0])">
+      <button class="btn btn-ghost btn-sm" onclick="exportAll()" title="Back up everything">Backup all</button>
+      <button class="btn btn-ghost btn-sm" onclick="openDiarizeSettings()" title="Speaker-separated transcription settings">⚙️ Settings</button>
+      ${themeToggleBtn()}
+    </div>
+  </div>`;
+}
+
+/* ---------- render: session view ---------- */
+function renderPreLessonBrief(st){
+  if(!st.sessions.length) return '';
+  const due = srsDueCount(st);
+  const needsAttention = st.mistakes.filter(m=>m.occurrences.length>1).sort((a,b)=>b.occurrences.length-a.occurrences.length).slice(0,3);
+  const watchlist = st.watchlist||[];
+  const topicRequests = st.topicRequests||[];
+  const items = [];
+  if(due>0) items.push(`<div class="briefitem">🗂️ <strong>${due}</strong> flashcard${due===1?'':'s'} due for review</div>`);
+  needsAttention.forEach(m=>items.push(`<div class="briefitem">⚠️ Recurring: "${esc(m.text)}"${m.correction?` → ${esc(m.correction)}`:''} <span class="mini mono">×${m.occurrences.length}</span></div>`));
+  if(watchlist.length) items.push(`<div class="briefitem">👀 Watching: ${watchlist.map(w=>esc(w)).join(', ')}</div>`);
+  if(topicRequests.length) items.push(`<div class="briefitem">📌 ${esc(st.name)} asked to cover: ${topicRequests.map(t=>esc(t)).join(', ')}</div>`);
+  if(!items.length) return '';
+  return `<div class="card" style="max-width:460px;margin:0 auto 14px;text-align:left">
+    <div class="eyebrow" style="margin-bottom:8px">Today's focus</div>
+    <div class="stack" style="gap:6px">${items.join('')}</div>
+    <button class="btn btn-ghost btn-sm no-print" style="margin-top:10px" onclick="copyLessonContext('${st.id}')">Copy context for Claude</button>
+  </div>`;
+}
+function renderDiarizeReminder(){
+  if(diarizeSettings.enabled || !diarizeSettings.nvidiaApiKey) return '';
+  return `<div class="card no-print" style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-color:var(--accent-strong);max-width:460px;margin:0 auto 14px">
+    <span style="font-size:20px">🎙️</span>
+    <div style="flex:1">
+      <div style="font-weight:600">Speaker-separated transcription is set up but off</div>
+      <div class="mini">You added an NVIDIA key earlier — turn it on for this session so you don't need to remember later.</div>
+    </div>
+    <button class="btn btn-sm btn-primary" onclick="enableDiarizeForSession()">Turn on</button>
+  </div>`;
+}
+function enableDiarizeForSession(){
+  diarizeSettings.enabled = true;
+  saveDiarizeSettings();
+  toast('Speaker-separated transcription turned on');
+  render();
+}
+const DRILL_TEMPLATES = {
+  grammar: (name, m) => [
+    `Ask ${name} to say the corrected form three times in new sentences: "${m.correction||m.text}"`,
+    `Read back the mistake and have ${name} fix it on the spot: "${m.text}"`,
+    `Say both forms aloud — "${m.text}" and "${m.correction||m.text}" — and ask ${name} which is correct and why.`,
+  ],
+  vocab: (name, m) => [
+    `Ask ${name} for another way to say "${m.text}".`,
+    `Have ${name} use "${m.correction||m.text}" in a brand new sentence about their day.`,
+    `Give ${name} a short context and ask them to pick the better word choice between "${m.text}" and "${m.correction||m.text}".`,
+  ],
+  pron: (name, m) => [
+    `Isolate the word and have ${name} repeat it three times, exaggerating the correct sound.`,
+    `Find a word that rhymes with the correct pronunciation of "${m.correction||m.text}" and drill both together.`,
+    `Ask ${name} to say "${m.correction||m.text}" slowly, then at normal speed, twice each.`,
+  ],
+  usage: (name, m) => [
+    `Quick role-play: give ${name} a scenario where they must use "${m.correction||m.text}" naturally.`,
+    `Ask ${name} to explain, in their own words, when they'd use "${m.correction||m.text}" instead of "${m.text}".`,
+    `Have ${name} say one new sentence using "${m.correction||m.text}" correctly.`,
+  ],
+};
+const VOCAB_DRILL_TEMPLATES = {
+  vocabulary: (name, g) => [
+    `Ask ${name} to define "${g.term}" in their own words, then use it in a sentence.`,
+    `Give ${name} a quick scenario and have them work "${g.term}" into their response.`,
+    `Ask ${name} for a synonym of "${g.term}" — then check it actually fits.`,
+  ],
+  phrasal: (name, g) => [
+    `Give ${name} a situation and have them respond using the phrasal verb "${g.term}".`,
+    `Ask ${name} to swap "${g.term}" for a single-word synonym, then explain the difference in tone.`,
+  ],
+  collocation: (name, g) => [
+    `Prompt: "Finish this sentence using '${g.term}'..." and let ${name} complete it out loud.`,
+    `Ask ${name} what other word commonly pairs with part of "${g.term}".`,
+  ],
+  idiom: (name, g) => [
+    `Ask ${name} to guess the literal vs. actual meaning of "${g.term}", then use it correctly in a sentence.`,
+    `Give ${name} a short scenario and have them find a moment where "${g.term}" fits.`,
+  ],
+};
+function pickDrill(list){ return list[Math.floor(Math.random()*list.length)]; }
+let quickDrills = {};
+function showQuickDrill(kind, itemId){
+  const st = activeStudent(); if(!st) return;
+  let text;
+  if(kind==='mistake'){
+    const m = st.mistakes.find(x=>x.id===itemId); if(!m) return;
+    const templates = DRILL_TEMPLATES[m.category] || DRILL_TEMPLATES.usage;
+    text = pickDrill(templates(st.name, m));
+  } else {
+    const g = st.glossary.find(x=>x.id===itemId); if(!g) return;
+    const templates = VOCAB_DRILL_TEMPLATES[g.type] || VOCAB_DRILL_TEMPLATES.vocabulary;
+    text = pickDrill(templates(st.name, g));
+  }
+  quickDrills[kind+':'+itemId] = text;
+  render();
+}
+function copyQuickDrill(kind, itemId){
+  const text = quickDrills[kind+':'+itemId];
+  if(!text) return;
+  copyText(text, 'Drill copied');
+}
+function drillBlockHTML(kind, itemId){
+  const text = quickDrills[kind+':'+itemId];
+  if(!text) return `<button class="btn btn-ghost btn-sm no-print" style="margin-top:6px" onclick="showQuickDrill('${kind}','${itemId}')">🎲 Quick drill</button>`;
+  return `<div class="mini" style="margin-top:6px;padding:8px;border-radius:8px;background:var(--surface-2)">🎲 ${esc(text)}</div>
+    <div class="no-print" style="display:flex;gap:10px;margin-top:4px">
+      <button class="linkbtn" onclick="copyQuickDrill('${kind}','${itemId}')">Copy</button>
+      <button class="linkbtn muted" onclick="showQuickDrill('${kind}','${itemId}')">Another</button>
+    </div>`;
+}
+function renderSession(st){
+  const live = liveMistakeFor(st);
+  const otherLive = state.liveSession && state.liveSession.studentId!==st.id;
+
+  if(!live){
+    return `
+    ${renderDiarizeReminder()}
+    ${renderPreLessonBrief(st)}
+    <div class="card" style="text-align:center;padding:34px 20px">
+      <div class="eyebrow">Ready when you are</div>
+      <h2 style="font-size:18px;margin:8px 0 6px">Start a session with ${esc(st.name)}</h2>
+      <p class="help" style="max-width:440px;margin:0 auto 14px">Turn on recording and just teach — the transcript builds itself, with likely moments highlighted for you to tag after class. You can also log anything by hand in the moment if you'd rather.</p>
+      <button class="btn btn-primary" ${otherLive?'disabled':''} onclick="startSession()">Start session</button>
+      ${otherLive?'<div class="mini" style="margin-top:8px">Finish the session already running for another student first.</div>':''}
+      ${st.sessions.length ? `<div class="mini" style="margin-top:14px">${st.sessions.length} session${st.sessions.length>1?'s':''} recorded so far &middot; last on ${esc(fmtDateFull(st.sessions[st.sessions.length-1].date))}</div>` : ''}
+    </div>`;
+  }
+
+  const flagged = st.mistakes.filter(m => m.occurrences.some(o=>o.sessionId===live.sessionId) && m.occurrences.length>1)
+    .sort((a,b)=> b.occurrences.length-a.occurrences.length);
+  const quiet = st.mistakes.filter(m => m.occurrences.some(o=>o.sessionId===live.sessionId) && m.occurrences.length===1);
+  const vocabToday = st.glossary.filter(g => g.occurrences.some(o=>o.sessionId===live.sessionId));
+  const watchlist = st.watchlist||[];
+
+  return `
+  <div class="grid2">
+    <div class="stack">
+      <div class="card">
+        <div class="sectionhead">
+          <h3>Recording</h3>
+          <div class="timerbox"><span class="dot"></span><span class="t mono" id="timerDisplay">00:00</span></div>
+        </div>
+        <label style="display:flex;align-items:center;gap:8px;font-size:12.5px;margin-bottom:10px;cursor:pointer">
+          <input type="checkbox" ${st.isMinor?'checked':''} onchange="toggleMinor('${st.id}', this.checked)" style="width:15px;height:15px">
+          ${esc(st.name)} is under 18
+        </label>
+        ${speechSupported() ? `
+        <p class="help">${diarizeReady()
+          ? `Speaker-separated mode is on — audio is sent to NVIDIA's Riva speech AI to reliably tell your voice from ${esc(st.name)}'s. You'll read a short calibration phrase when you start recording.`
+          : `Uses Chrome's built-in speech recognition — audio is sent to Google to produce text, nothing audio is stored by this app. Works best over speakers; if you're on headphones it can only hear you, not your student. ${diarizeSettings.nvidiaApiKey ? `<button class="linkbtn" onclick="enableDiarizeForSession()">Turn on speaker separation</button>` : `<button class="linkbtn" onclick="openDiarizeSettings()">Turn on more reliable speaker separation</button>`}`}</p>
+        <div id="recBanner" class="recbanner ${recState==='listening'?'live':recState==='stalled'?'stalled':'off'}">
+          ${recState==='listening' ? `<span class="dot"></span>Recording — listening` : recState==='stalled' ? `Recording stopped unexpectedly<button class="btn btn-sm" style="margin-left:auto" onclick="resumeRecording()">Resume</button>` : `Not recording`}
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+          <button id="recToggleBtn" class="btn btn-sm ${recActive?'recbtn':'off'}" onclick="toggleRecording()">${recActive?'Stop recording':'Start recording'}</button>
+          <select onchange="activeStudent().speechLang=this.value;save()">
+            ${LANGOPTS.map(([code,label])=>`<option value="${code}" ${((st.speechLang||guessLangCode(st.lang))===code)?'selected':''}>${label}</option>`).join('')}
+          </select>
+        </div>
+        ${live.consentConfirmedAt ? `<div class="mini">✓ Recording consent confirmed ${esc(fmtDateFull(live.consentConfirmedAt))}</div>` : ''}
+        <div style="margin-bottom:8px"></div>` : `<p class="help">Live transcription needs Chrome — everything else on this page still works.</p>`}
+        <div id="interimLine" class="mini" style="min-height:16px;font-style:italic"></div>
+        <div id="transcriptLog" class="translog">${(live.transcript||[]).filter(l=>!l.done && (transcriptShowAll||isHighSignal(l)||l.role)).map(l=>transcriptLineHTML(live.sessionId,l)).join('')}</div>
+        ${(live.transcript||[]).filter(l=>!l.done && !isHighSignal(l) && !l.role).length ? `<button class="linkbtn muted no-print" style="margin-top:4px" onclick="transcriptShowAll=!transcriptShowAll;render()">${transcriptShowAll?'Hide low-signal lines':`Show everything (<span id="hiddenCount">${(live.transcript||[]).filter(l=>!l.done && !isHighSignal(l) && !l.role).length}</span> hidden)`}</button>` : ''}
+        <div class="divider"></div>
+        <div class="eyebrow" style="margin-bottom:6px">Watchlist — highlight these words when heard</div>
+        <div class="watchchips" style="margin-bottom:8px">${watchlist.map(w=>`<span class="watchchip">${esc(w)}<button class="xbtn" style="margin-left:0" onclick="removeWatchTerm('${jsAttr(w)}')">×</button></span>`).join('') || '<span class="mini">None yet — add terms you are actively working on, like "ser/estar" or "subjunctive"</span>'}</div>
+        <div style="display:flex;gap:6px">
+          <input id="watchInput" placeholder="e.g. subjunctive" style="flex:1 1 auto;padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text)" onkeydown="if(event.key==='Enter')addWatchTerm()">
+          <button class="btn btn-sm" onclick="addWatchTerm()">Add</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionhead"><h3>Log a mistake manually</h3></div>
+        <div class="stack" style="gap:10px">
+          <div class="formrow">
+            <div class="field" style="flex:2 1 220px"><label>What they said</label><input id="mText" placeholder="e.g. soy cansada"></div>
+            <div class="field" style="flex:2 1 220px"><label>Correction (optional)</label><input id="mFix" placeholder="estoy cansada"></div>
+            <div class="field" style="flex:1 1 140px"><label>Category</label>
+              <select id="mCat">${Object.entries(CATS).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
+            </div>
+          </div>
+          <div><button class="btn btn-primary btn-sm" onclick="logMistake()">Log mistake</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionhead"><h3>Add vocabulary or a construct</h3></div>
+        <div class="stack" style="gap:10px">
+          <div class="formrow">
+            <div class="field" style="flex:1 1 160px"><label>Term</label><input id="gTerm" placeholder="e.g. break the ice"></div>
+            <div class="field" style="flex:1 1 130px"><label>Type</label>
+              <select id="gType">${Object.entries(GTYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
+            </div>
+          </div>
+          <div class="formrow">
+            <div class="field"><label>Meaning</label><input id="gMean" placeholder="to ease tension in a social setting"></div>
+            <div class="field"><label>Example (optional)</label><input id="gEx" placeholder="She told a joke to break the ice."></div>
+          </div>
+          <div><button class="btn btn-primary btn-sm" onclick="logGlossary()">Add to glossary</button></div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-primary" onclick="openEndSession()">End session &amp; save</button>
+        <button class="btn btn-ghost" onclick="discardSession()">Discard</button>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="card">
+        <div class="sectionhead">
+          <h3>Patterns this session</h3>
+          <span class="mini mono">${flagged.length}</span>
+        </div>
+        ${flagged.length ? `<div class="stack" style="gap:8px">${flagged.map(m=>{
+          const c = CATS[m.category];
+          return `<div class="mistakecard flagged">
+            <div class="row">
+              <span class="pill" style="background:var(${c.t});color:var(${c.v})">${c.label}</span>
+              <span class="count">×${m.occurrences.length}</span>
+            </div>
+            <div class="txt">${esc(m.text)}</div>
+            ${m.correction?`<div class="fix">→ ${esc(m.correction)}</div>`:''}
+            ${drillBlockHTML('mistake', m.id)}
+          </div>`;
+        }).join('')}</div>` : `<div class="help">Nothing flagged yet — a mistake shows up here only once it repeats.</div>`}
+
+        ${quiet.length ? `
+        <div class="divider"></div>
+        <div class="eyebrow" style="margin-bottom:8px">Logged once so far</div>
+        <div class="quietlist">${quiet.map(m=>`
+          <div class="quietrow">
+            <span>${esc(m.text)}</span>
+            <button class="xbtn" onclick="removeMistake('${m.id}')" title="Remove">×</button>
+          </div>`).join('')}</div>` : ''}
+      </div>
+
+      ${vocabToday.length ? `
+      <div class="card">
+        <div class="sectionhead"><h3>Added this session</h3><span class="mini mono">${vocabToday.length}</span></div>
+        <div class="stack" style="gap:10px">${vocabToday.map(g=>{
+          const t = GTYPES[g.type];
+          return `<div>
+            <div class="quietrow">
+              <span class="pill" style="background:var(${t.t});color:var(${t.v})">${t.label}</span>
+              <span>${esc(g.term)}</span>
+              <button class="xbtn" onclick="removeGlossary('${g.id}')" title="Remove">×</button>
+            </div>
+            ${drillBlockHTML('vocab', g.id)}
+          </div>`;
+        }).join('')}</div>
+      </div>` : ''}
+    </div>
+  </div>`;
+}
+
+/* ---------- render: file view ---------- */
+function renderFile(st){
+  const prog = progression(st);
+  const deltaBadge = prog.delta===null ? `<span class="mini">First session — nothing to compare yet</span>` :
+    prog.delta>0 ? `<span class="deltabadge delta-up">▲ +${prog.delta}% vs recent average</span>` :
+    prog.delta<0 ? `<span class="deltabadge delta-down">▼ ${prog.delta}% vs recent average</span>` :
+    `<span class="deltabadge delta-flat">steady</span>`;
+
+  const needsAttention = st.mistakes.filter(m=>m.occurrences.length>1).sort((a,b)=>b.occurrences.length-a.occurrences.length);
+  const singles = st.mistakes.filter(m=>m.occurrences.length===1);
+
+  const groups = {};
+  Object.keys(GTYPES).forEach(k=>groups[k]=[]);
+  st.glossary.forEach(g=>groups[g.type]?.push(g));
+
+  return `
+  <div class="stack">
+    <div class="card">
+      <div class="sectionhead">
+        <div>
+          <h3 style="font-size:16px">${esc(st.name)}'s progression</h3>
+          <div class="mini">${esc(st.lang)} &middot; ${esc(st.level)} &middot; ${st.sessions.length} session${st.sessions.length===1?'':'s'} logged</div>
+        </div>
+        <div class="no-print" style="display:flex;flex-wrap:wrap;gap:8px">
+          <button class="btn btn-sm" onclick="cheatSheetMode=true;render()">Lesson cheat sheet</button>
+          <button class="btn btn-sm" onclick="copyLessonContext('${st.id}')">Copy lesson context</button>
+          <button class="btn btn-sm" onclick="window.print()">Save as PDF</button>
+          <button class="btn btn-sm" onclick="exportStudent('${st.id}')">Export file (.json)</button>
+          <button class="btn btn-ghost btn-sm" onclick="deleteStudent('${st.id}')">Delete student</button>
+        </div>
+      </div>
+      <div class="statrow" style="margin-bottom:14px">
+        <div class="stat"><div class="num">${prog.current===null?'—':prog.current+'%'}</div><div class="lbl">Current average</div></div>
+        <div class="stat"><div class="num">${needsAttention.length}</div><div class="lbl">Recurring mistakes</div></div>
+        <div class="stat"><div class="num">${st.glossary.length}</div><div class="lbl">Terms in glossary</div></div>
+        <div class="stat" style="display:flex;align-items:center">${deltaBadge}</div>
+      </div>
+      <div class="chart-wrap">${chartSVG(st)}</div>
+      ${st.sessions.length ? `
+      <div class="divider"></div>
+      <div class="eyebrow" style="margin-bottom:8px">Session history</div>
+      <div style="overflow-x:auto">
+      <table class="sess"><thead><tr><th>Date</th><th>Duration</th><th>Score</th><th>Notes</th><th class="no-print">Transcript</th><th class="no-print">Student recording</th></tr></thead><tbody>
+        ${st.sessions.slice().reverse().map(s=>{
+          const unread = (s.transcript||[]).filter(l=>!l.done && l.tags.length).length;
+          return `<tr>
+          <td class="mono">${esc(fmtDateFull(s.date))}</td>
+          <td class="mono">${s.durationMin}m</td>
+          <td class="mono">${s.rating}%</td>
+          <td class="notes">${esc(s.notes)||'—'}</td>
+          <td class="no-print">${(s.transcript&&s.transcript.length) ? `<button class="linkbtn" onclick="openReview('${s.id}')">Review${unread?` <span class="reviewbadge">${unread}</span>`:''}</button>` : '—'}</td>
+          <td class="no-print"><button class="linkbtn muted" onclick="importRecordingForSession('${s.id}')">Import recording</button></td>
+        </tr>`;
+        }).join('')}
+      </tbody></table>
+      </div>` : ''}
+      <input type="file" id="recImportFile" accept="application/json" style="display:none" onchange="handleRecordingImport(this.files[0])">
+    </div>
+
+    <div class="card">
+      <div class="sectionhead"><h3>Needs attention</h3><span class="mini mono">${needsAttention.length}</span></div>
+      ${needsAttention.length ? `<div class="stack" style="gap:8px">${needsAttention.map(m=>{
+        const c = CATS[m.category];
+        const last = m.occurrences[m.occurrences.length-1];
+        return `<div class="mistakecard flagged">
+          <div class="row">
+            <span class="pill" style="background:var(${c.t});color:var(${c.v})">${c.label}</span>
+            <span class="count">×${m.occurrences.length}</span>
+          </div>
+          <div class="txt">${esc(m.text)}</div>
+          ${m.correction?`<div class="fix">→ ${esc(m.correction)}</div>`:''}
+          <div class="mini">last seen ${esc(fmtDate(last.date))}</div>
+        </div>`;
+      }).join('')}</div>` : `<div class="help">No repeat mistakes yet — recurring patterns will collect here as sessions add up.</div>`}
+      ${singles.length ? `<div style="margin-top:12px">
+        <button class="btn btn-ghost btn-sm no-print" onclick="showFullLog=!showFullLog;render()">${showFullLog?'Hide':'Show'} ${singles.length} one-off mistake${singles.length===1?'':'s'}</button>
+        ${showFullLog ? `<div class="quietlist" style="margin-top:8px">${singles.map(m=>`
+          <div class="quietrow"><span>${esc(m.text)}</span>${m.correction?`<span class="mini">→ ${esc(m.correction)}</span>`:''}</div>`).join('')}</div>` : ''}
+      </div>` : ''}
+    </div>
+
+    <div class="card">
+      <div class="sectionhead">
+        <h3>Vocabulary &amp; constructs</h3>
+        <button class="btn btn-sm no-print" ${st.glossary.length?'':'disabled'} onclick="startPractice('${st.id}')">Practice flashcards${st.glossary.length?` (${srsDueCount(st)} due)`:''}</button>
+      </div>
+      ${st.glossary.length ? Object.entries(GTYPES).map(([k,meta])=>{
+        const items = groups[k]; if(!items.length) return '';
+        return `<div style="margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:8px;color:var(${meta.v})">${meta.label} &middot; ${items.length}</div>
+          <div class="glossgrid">${items.map(g=>`
+            <div class="glosscard">
+              <div class="row"><span class="term">${esc(g.term)} <button class="linkbtn no-print" style="font-size:14px;padding:0 2px" title="Hear pronunciation" onclick="speakTerm('${jsAttr(g.term)}','${st.speechLang||guessLangCode(st.lang)}')">🔊</button></span><span class="mini mono no-print">×${g.occurrences.length}</span></div>
+              ${g.meaning?`<div class="meaning">${esc(g.meaning)}</div>`:''}
+              ${g.example?`<div class="example">"${esc(g.example)}"</div>`:''}
+            </div>`).join('')}
+          </div>
+        </div>`;
+      }).join('') : `<div class="help">Nothing taught yet — vocabulary and constructs you add during sessions collect here, grouped by type.</div>`}
+    </div>
+
+    <div class="card no-print">
+      <div class="sectionhead"><h3>Requested topics</h3></div>
+      <p class="help" style="margin-bottom:10px">${esc(st.name)} can browse a lesson topic library on their own device and flag ones they'd like to cover. There's no automatic sync between devices — when they message you about it (or you see it another way), log it here so it shows up in your pre-lesson brief.</p>
+      <div class="watchchips" style="margin-bottom:8px">${(st.topicRequests||[]).map(t=>`<span class="watchchip">${esc(t)}<button class="xbtn" style="margin-left:0" onclick="clearTopicRequest('${jsAttr(t)}')">×</button></span>`).join('') || '<span class="mini">None yet</span>'}</div>
+      <div style="display:flex;gap:6px">
+        <select id="topicRequestSelect" style="flex:1 1 auto;padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text)">
+          <option value="">Choose a topic ${esc(st.name)} asked about…</option>
+          ${LESSON_LIBRARY.filter(t=>!(st.topicRequests||[]).includes(t.title)).map(t=>`<option value="${jsAttr(t.title)}">${esc(t.title)}</option>`).join('')}
+        </select>
+        <button class="btn btn-sm" onclick="addTopicRequest()">Add</button>
+      </div>
+    </div>
+
+    ${renderSuggestPanel(st)}
+
+    <div class="card no-print">
+      <div class="sectionhead">
+        <h3>Share with ${esc(st.name)}</h3>
+        <button class="btn btn-sm" onclick="copyStudentLink()">Copy student link</button>
+      </div>
+      <p class="help">There's a separate, simplified link just for students — no login, no tutor controls, no access to any other student's data. Send ${esc(st.name)} two things: the <strong>student link</strong> (button above) and their <strong>exported file</strong> (button up top). They open the link once, use Import to load their file, and see their own progression, corrections and glossary, with flashcard practice built in. Whenever you export an updated file for them later, importing it again cleanly replaces the old one — no duplicates.</p>
+    </div>
+  </div>`;
+}
+
+/* ---------- transcript review (after the fact) ---------- */
+function openReview(sessionId){ reviewSessionId = sessionId; render(); }
+let recImportSessionId = null;
+function importRecordingForSession(sessionId){
+  recImportSessionId = sessionId;
+  document.getElementById('recImportFile').click();
+}
+function handleRecordingImport(file){
+  if(!file) return;
+  const sessionId = recImportSessionId;
+  const st = activeStudent();
+  const sess = st && st.sessions.find(s=>s.id===sessionId);
+  if(!st || !sess){ toast("Couldn't tell which session that was for — try clicking Import recording again"); document.getElementById('recImportFile').value=''; return; }
+  const reader = new FileReader();
+  reader.onload = () => {
+    let data;
+    try{ data = JSON.parse(reader.result); }catch(e){ toast('That file is not valid JSON'); return; }
+    const lines = Array.isArray(data.transcript) ? data.transcript : null;
+    if(!lines || !lines.length){ toast("Couldn't find a recording in that file"); return; }
+    if(!confirm("Replace this session's transcript with your student's recording? Mistakes and vocabulary you've already logged stay untouched — only the raw transcript left to review changes.")) return;
+    let prev = null;
+    sess.transcript = lines.map(l=>{
+      const tags = tagLine(st, l.text, prev); prev = l.text;
+      return { id:uid(), t:l.t||0, text:l.text, tags, done:false };
+    });
+    save(); render();
+    toast("Swapped in your student's recording — ready to review");
+  };
+  reader.readAsText(file);
+  document.getElementById('recImportFile').value='';
+}
+function renderCheatSheet(st){
+  const needsAttention = st.mistakes.filter(m=>m.occurrences.length>1).sort((a,b)=>b.occurrences.length-a.occurrences.length);
+  const dueVocab = st.glossary.filter(g=>srsOf(g).nextReview<=Date.now());
+  return `
+  <div class="card">
+    <div class="sectionhead">
+      <div><h3>Lesson cheat sheet — ${esc(st.name)}</h3><div class="mini">${esc(fmtDateFull(Date.now()))}</div></div>
+      <div class="no-print" style="display:flex;gap:8px">
+        <button class="btn btn-sm" onclick="cheatSheetMode=false;render()">Back</button>
+        <button class="btn btn-sm" onclick="copyLessonContext('${st.id}')">Copy for Claude</button>
+        <button class="btn btn-sm btn-primary" onclick="window.print()">Print</button>
+      </div>
+    </div>
+    <div class="eyebrow" style="margin:14px 0 8px">Active recurring mistakes</div>
+    ${needsAttention.length ? `<div class="stack" style="gap:8px">${needsAttention.map(m=>{
+      const c = CATS[m.category];
+      return `<div class="mistakecard flagged">
+        <div class="row"><span class="pill" style="background:var(${c.t});color:var(${c.v})">${c.label}</span><span class="count">×${m.occurrences.length}</span></div>
+        <div class="txt">${esc(m.text)}</div>
+        ${m.correction?`<div class="fix">→ ${esc(m.correction)}</div>`:''}
+      </div>`;
+    }).join('')}</div>` : `<div class="help">Nothing active right now — no repeat mistakes flagged yet.</div>`}
+    <div class="eyebrow" style="margin:18px 0 8px">Vocabulary due for review</div>
+    ${dueVocab.length ? `<div class="glossgrid">${dueVocab.map(g=>`
+      <div class="glosscard">
+        <div class="row"><span class="term">${esc(g.term)}</span></div>
+        ${g.meaning?`<div class="meaning">${esc(g.meaning)}</div>`:''}
+      </div>`).join('')}</div>` : `<div class="help">Nothing due right now.</div>`}
+  </div>`;
+}
+function renderReview(st){
+  const sess = st.sessions.find(s=>s.id===reviewSessionId);
+  if(!sess){ reviewSessionId=null; return renderFile(st); }
+  const all = (sess.transcript||[]).filter(l=>!l.done);
+  const lines = all.filter(l=>transcriptShowAll || isHighSignal(l));
+  const hiddenCount = all.length - lines.length;
+  return `
+  <div class="card">
+    <div class="sectionhead">
+      <div><h3>Reviewing session from ${esc(fmtDateFull(sess.date))}</h3><div class="mini">${all.length} moment${all.length===1?'':'s'} left to review</div></div>
+      <button class="btn btn-sm" onclick="reviewSessionId=null;render()">Back to file</button>
+    </div>
+    ${all.length ? `<div class="translog" style="max-height:none">${lines.map(l=>transcriptLineHTML(sess.id,l)).join('')}</div>` : `<div class="help">Nothing left to review in this session — everything's been tagged or dismissed.</div>`}
+    ${hiddenCount ? `<button class="linkbtn muted no-print" style="margin-top:4px" onclick="transcriptShowAll=!transcriptShowAll;render()">${transcriptShowAll?'Hide low-signal lines':`Show everything (${hiddenCount} hidden)`}</button>` : ''}
+  </div>`;
+}
+
+/* ---------- flashcards ---------- */
+/* ---------- spaced repetition ---------- */
+const SRS_INTERVALS_DAYS = [0, 1, 3, 7, 14, 30, 60];
+function srsOf(g){ return g.srs || (g.srs = { box:0, nextReview:0, lastReviewed:null }); }
+function srsGrade(g, gotIt){
+  const s = srsOf(g);
+  s.box = gotIt ? Math.min(s.box+1, SRS_INTERVALS_DAYS.length-1) : 0;
+  s.lastReviewed = Date.now();
+  s.nextReview = Date.now() + SRS_INTERVALS_DAYS[s.box]*86400000;
+}
+function srsDueCount(st){ const now=Date.now(); return st.glossary.filter(g=>srsOf(g).nextReview<=now).length; }
+function srsMasteredCount(st){ return st.glossary.filter(g=>srsOf(g).box>=4).length; }
+function currentPracticeStudent(){ return STUDENT_MODE ? studentState.student : activeStudent(); }
+
+/* ---------- practice streaks ---------- */
+function bumpStreak(st){
+  st.streak = st.streak || { current:0, longest:0, lastDate:null };
+  const today = new Date().toDateString();
+  if(st.streak.lastDate === today) return;
+  const yesterday = new Date(Date.now()-86400000).toDateString();
+  st.streak.current = (st.streak.lastDate === yesterday) ? st.streak.current+1 : 1;
+  st.streak.longest = Math.max(st.streak.longest, st.streak.current);
+  st.streak.lastDate = today;
+}
+function streakIsLive(st){
+  if(!st.streak || !st.streak.current) return false;
+  const today = new Date().toDateString();
+  const yesterday = new Date(Date.now()-86400000).toDateString();
+  return st.streak.lastDate===today || st.streak.lastDate===yesterday;
+}
+function streakAtRisk(st){
+  if(!st.streak || !st.streak.current) return false;
+  const yesterday = new Date(Date.now()-86400000).toDateString();
+  return st.streak.lastDate === yesterday;
+}
+
+/* ---------- pronunciation ---------- */
+function speakTerm(text, lang){
+  if(!window.speechSynthesis) return;
+  try{
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang || 'en-US';
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function shuffled(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* ---------- self-recording pronunciation practice (ephemeral, never saved or sent) ---------- */
+let pronRecorder = null, pronChunks = [], pronBlobUrl = null, pronRecording = false;
+function micRecordingSupported(){ return !!(navigator.mediaDevices && window.MediaRecorder); }
+function resetPronRecording(){
+  if(pronRecorder && pronRecording){ try{ pronRecorder.stop(); }catch(e){} }
+  if(pronBlobUrl){ URL.revokeObjectURL(pronBlobUrl); pronBlobUrl = null; }
+  pronRecorder = null; pronChunks = []; pronRecording = false;
+}
+async function togglePronRecording(){
+  if(pronRecording){ try{ pronRecorder.stop(); }catch(e){} return; }
+  if(!micRecordingSupported()){ toast('Recording your own voice needs a modern browser'); return; }
+  if(pronBlobUrl){ URL.revokeObjectURL(pronBlobUrl); pronBlobUrl = null; }
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    pronChunks = [];
+    pronRecorder = new MediaRecorder(stream);
+    pronRecorder.ondataavailable = e => { if(e.data.size>0) pronChunks.push(e.data); };
+    pronRecorder.onstop = () => {
+      stream.getTracks().forEach(t=>t.stop());
+      const blob = new Blob(pronChunks, { type:'audio/webm' });
+      pronBlobUrl = blob.size ? URL.createObjectURL(blob) : null;
+      pronRecording = false;
+      render();
+    };
+    pronRecorder.start();
+    pronRecording = true;
+    render();
+  }catch(e){
+    toast('Microphone access was blocked — allow it to record yourself');
+  }
+}
+function playPronRecording(){ if(pronBlobUrl) new Audio(pronBlobUrl).play().catch(()=>{}); }
+
+function startPractice(id){
+  startPracticeFor(state.students.find(s=>s.id===id));
+}
+function startPracticeFor(st){
+  if(!st || !st.glossary.length) return;
+  practice = { active:true, queue:[], pos:0, revealed:false, typedAnswer:'', typeFilter:'all', pool:'due', finished:false, stats:{right:0,wrong:0} };
+  rebuildPracticeQueue();
+  render();
+}
+function rebuildPracticeQueue(){
+  const st = currentPracticeStudent(); if(!st) return;
+  const filtered = practice.typeFilter==='all' ? st.glossary : st.glossary.filter(g=>g.type===practice.typeFilter);
+  const now = Date.now();
+  const items = practice.pool==='due' ? filtered.filter(g=>srsOf(g).nextReview<=now) : filtered;
+  practice.queue = shuffled(items.map(g=>g.id));
+  practice.pos = 0;
+  practice.revealed = false;
+  practice.typedAnswer = '';
+  resetPronRecording();
+}
+function practiceSetFilter(val){ practice.typeFilter=val; practice.pool='due'; practice.finished=false; rebuildPracticeQueue(); render(); }
+function practicePracticeAnyway(){ practice.pool='all'; practice.finished=false; practice.stats={right:0,wrong:0}; rebuildPracticeQueue(); render(); }
+function practiceReveal(){
+  const el = document.getElementById('practiceTyped');
+  practice.typedAnswer = el ? el.value.trim() : '';
+  practice.revealed = true;
+  render();
+}
+function practiceGrade(gotIt){
+  const st = currentPracticeStudent(); if(!st) return;
+  const g = st.glossary.find(x=>x.id===practice.queue[practice.pos]);
+  if(g){ srsGrade(g, gotIt); practice.stats[gotIt?'right':'wrong']++; }
+  bumpStreak(st);
+  if(STUDENT_MODE) saveStudentState(); else save();
+  practice.pos++;
+  practice.revealed = false;
+  practice.typedAnswer = '';
+  resetPronRecording();
+  if(practice.pos >= practice.queue.length) practice.finished = true;
+  render();
+}
+function renderPractice(st){
+  const head = `
+    <div class="sectionhead">
+      <h3>Practice: ${esc(st.name)}'s glossary</h3>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <select onchange="practiceSetFilter(this.value)">
+          <option value="all" ${practice.typeFilter==='all'?'selected':''}>All types</option>
+          ${Object.entries(GTYPES).map(([k,v])=>`<option value="${k}" ${practice.typeFilter===k?'selected':''}>${v.label}</option>`).join('')}
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="resetPronRecording();practice.active=false;render()">Back to file</button>
+      </div>
+    </div>`;
+
+  if(practice.finished){
+    const {right,wrong} = practice.stats;
+    return `<div class="card">${head}
+      <div class="flash">
+        <div style="font-size:32px">✓</div>
+        <h3 style="font-size:18px">Session complete</h3>
+        <div class="mini">${right+wrong} reviewed · ${right} you knew · ${wrong} need more practice</div>
+        <div class="flashctrl"><button class="btn btn-primary" onclick="practicePracticeAnyway()">Practice more</button></div>
+      </div>
+    </div>`;
+  }
+
+  if(!practice.queue.length){
+    const filtered = practice.typeFilter==='all' ? st.glossary : st.glossary.filter(g=>g.type===practice.typeFilter);
+    if(!filtered.length) return `<div class="card">${head}<div class="help" style="padding:20px 0;text-align:center">No vocabulary saved yet for this filter.</div></div>`;
+    return `<div class="card">${head}
+      <div class="flash">
+        <div style="font-size:32px">🎉</div>
+        <div class="help" style="text-align:center;max-width:320px">All caught up — nothing's due for review right now.</div>
+        <button class="btn btn-primary" onclick="practicePracticeAnyway()">Practice anyway</button>
+      </div>
+    </div>`;
+  }
+
+  const g = st.glossary.find(x=>x.id===practice.queue[practice.pos]);
+  if(!g){ practice.pos++; if(practice.pos>=practice.queue.length) practice.finished=true; render(); return ''; }
+  const meta = GTYPES[g.type];
+  const box = srsOf(g).box;
+  const stageLabel = box===0 ? 'New' : box>=4 ? 'Mastered' : 'Learning';
+  const speechLang = st.speechLang || guessLangCode(st.lang);
+  const streakLabel = streakIsLive(st) && st.streak.current>1 ? ` · 🔥 ${st.streak.current} day streak` : '';
+  return `
+  <div class="card">
+    ${head}
+    <div class="flash">
+      <div class="mini">${practice.pos+1} of ${practice.queue.length} · ${stageLabel}${streakLabel}</div>
+      <div class="flashcard">
+        <span class="pill" style="background:var(${meta.t});color:var(${meta.v})">${meta.label}</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="term">${esc(g.term)}</div>
+          <button class="linkbtn" style="font-size:18px;padding:2px 6px" title="Hear pronunciation" onclick="speakTerm('${jsAttr(g.term)}','${speechLang}')">🔊</button>
+        </div>
+        ${!practice.revealed ? `
+          <input id="practiceTyped" placeholder="Type what you think it means (optional)" style="width:100%;max-width:280px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);text-align:center" onkeydown="if(event.key==='Enter')practiceReveal()">
+          <button class="btn btn-sm btn-primary" onclick="practiceReveal()">Reveal</button>
+        ` : `
+          <div class="reveal">
+            ${practice.typedAnswer ? `<div class="mini">You said: "${esc(practice.typedAnswer)}"</div>` : ''}
+            ${g.meaning?`<div class="meaning">${esc(g.meaning)}</div>`:''}
+            ${g.example?`<div class="example">"${esc(g.example)}"</div>`:''}
+          </div>
+        `}
+      </div>
+      ${practice.revealed && micRecordingSupported() ? `
+      <div class="pronbox">
+        <div class="eyebrow">Practice saying it</div>
+        <div class="pronrow">
+          <button class="btn btn-sm ${pronRecording?'recbtn':''}" onclick="togglePronRecording()">${pronRecording?'⏹ Stop':'🎙️ Record yourself'}</button>
+          ${pronRecording?'<span class="recdotsm"></span>':''}
+          ${pronBlobUrl?`<button class="btn btn-sm btn-primary" onclick="playPronRecording()">▶ Play yours</button>`:''}
+        </div>
+        <div class="mini">Nothing is saved — this is just for you, right now.</div>
+      </div>` : ''}
+      ${practice.revealed ? `
+      <div class="flashctrl">
+        <button class="btn btn-sm" style="background:var(--bad);border-color:var(--bad);color:white" onclick="practiceGrade(false)">Didn't know it</button>
+        <button class="btn btn-sm btn-primary" onclick="practiceGrade(true)">Knew it</button>
+      </div>
+      <div class="mini no-print">Keyboard: ← didn't know it · → / space knew it</div>` : `
+      <div class="mini no-print">Keyboard: space to reveal</div>`}
+    </div>
+  </div>`;
+}
+
+/* ---------- import / export ---------- */
+function downloadFile(filename, data, mime){
+  if(window.claude?.downloads){
+    return window.claude.downloads.save({ filename, data })
+      .then(()=>toast('Saved '+filename))
+      .catch(err=>toast(err?.code==='declined' ? 'Save cancelled' : 'Could not save the file'));
+  }
+  try{
+    const blob = new Blob([data], { type: mime||'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    toast('Saved '+filename);
+  }catch(e){
+    toast('Could not save the file');
+  }
+}
+function slugify(name){ return String(name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+function exportStudent(id){
+  const st = state.students.find(s=>s.id===id); if(!st) return;
+  const data = JSON.stringify({ kind:'lesson-copilot-student', exportedAt: Date.now(), student: st }, null, 2);
+  downloadFile(slugify(st.name)+'-lesson-file.json', data);
+}
+function exportAll(){
+  const data = JSON.stringify({ kind:'lesson-copilot-backup', exportedAt: Date.now(), state }, null, 2);
+  downloadFile('lesson-copilot-backup.json', data);
+  localStorage.setItem('chattercheck_last_backup_v1', String(Date.now()));
+}
+const BACKUP_REMINDER_DAYS = 14;
+function daysSinceLastBackup(){
+  const raw = localStorage.getItem('chattercheck_last_backup_v1');
+  if(!raw) return Infinity;
+  return (Date.now() - Number(raw)) / 86400000;
+}
+function totalSessionsLogged(){
+  return state.students.reduce((sum,s)=>sum+s.sessions.length, 0);
+}
+function dismissBackupReminder(){
+  sessionStorage.setItem('chattercheck_backup_reminder_dismissed', '1');
+  document.getElementById('backupReminder')?.remove();
+}
+function shouldShowBackupReminder(){
+  if(sessionStorage.getItem('chattercheck_backup_reminder_dismissed')) return false;
+  if(totalSessionsLogged() < 1) return false;
+  return daysSinceLastBackup() > BACKUP_REMINDER_DAYS;
+}
+function normalizeStudent(s){
+  // A hand-edited, corrupted, or older-format file could be missing any of these fields.
+  // Fill in safe defaults so an import can never crash the page — for a student importing
+  // their own file, there's no way to recover from a blank/broken screen on their own.
+  const copy = JSON.parse(JSON.stringify(s || {}));
+  copy.name = (typeof copy.name==='string' && copy.name.trim()) ? copy.name.trim() : 'Unnamed student';
+  copy.lang = (typeof copy.lang==='string' && copy.lang.trim()) ? copy.lang.trim() : 'General';
+  copy.level = copy.level || 'B1';
+  copy.color = copy.color || colorFor(copy.name);
+  copy.isMinor = !!copy.isMinor;
+  copy.sessions = Array.isArray(copy.sessions) ? copy.sessions : [];
+  copy.mistakes = Array.isArray(copy.mistakes) ? copy.mistakes : [];
+  copy.glossary = Array.isArray(copy.glossary) ? copy.glossary : [];
+  copy.watchlist = Array.isArray(copy.watchlist) ? copy.watchlist : [];
+  copy.topicRequests = Array.isArray(copy.topicRequests) ? copy.topicRequests : [];
+  copy.sessions.forEach(sess=>{ if(!Array.isArray(sess.transcript)) sess.transcript = []; });
+  copy.mistakes.forEach(m=>{ if(!Array.isArray(m.occurrences)) m.occurrences = []; });
+  copy.glossary.forEach(g=>{ if(!Array.isArray(g.occurrences)) g.occurrences = []; });
+  return copy;
+}
+function extractStudents(data){
+  if(data.kind==='lesson-copilot-student' && data.student) return [data.student];
+  if(data.kind==='lesson-copilot-backup' && data.state?.students) return data.state.students;
+  if(data.student) return [data.student];
+  if(Array.isArray(data.students)) return data.students;
+  if(data.id && Array.isArray(data.sessions)) return [data];
+  return [];
+}
+function copyText(text, successMsg){
+  const done = () => toast(successMsg);
+  const fail = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){ toast('Could not copy — select the text and copy it manually'); }
+    ta.remove();
+  };
+  if(navigator.clipboard?.writeText) navigator.clipboard.writeText(text).then(done).catch(fail);
+  else fail();
+}
+function copyStudentLink(){
+  const url = location.origin + location.pathname + '?student=1';
+  copyText(url, 'Student link copied');
+}
+function buildLessonContext(st){
+  const prog = progression(st);
+  const needsAttention = st.mistakes.filter(m=>m.occurrences.length>1).sort((a,b)=>b.occurrences.length-a.occurrences.length);
+  const dueVocab = st.glossary.filter(g=>srsOf(g).nextReview<=Date.now());
+  const lastSession = st.sessions[st.sessions.length-1];
+  const lines = [];
+  lines.push(`Lesson context for ${st.name} — ${st.lang}, level ${st.level}`);
+  lines.push(`${st.sessions.length} session${st.sessions.length===1?'':'s'} logged${prog.current!==null?`, current average ${prog.current}%`:''}.`);
+  if(needsAttention.length){
+    lines.push('');
+    lines.push('Recurring mistakes to address:');
+    needsAttention.forEach(m=>{
+      const c = CATS[m.category];
+      lines.push(`- "${m.text}"${m.correction?` → ${m.correction}`:''} (${c?c.label:m.category}, seen ${m.occurrences.length}×)`);
+    });
+  }
+  if(dueVocab.length){
+    lines.push('');
+    lines.push('Vocabulary due for review:');
+    dueVocab.forEach(g=>{ lines.push(`- ${g.term}${g.meaning?`: ${g.meaning}`:''}`); });
+  }
+  if(st.watchlist && st.watchlist.length){
+    lines.push('');
+    lines.push(`Currently watching for: ${st.watchlist.join(', ')}`);
+  }
+  if(st.topicRequests && st.topicRequests.length){
+    lines.push('');
+    lines.push(`${st.name} asked to cover: ${st.topicRequests.join(', ')}`);
+  }
+  if(lastSession){
+    lines.push('');
+    lines.push(`Last session (${fmtDateFull(lastSession.date)}): ${lastSession.notes || 'no notes recorded'}`);
+  }
+  lines.push('');
+  lines.push(`Use this to help me prepare practice materials, explanations, or exercises for ${st.name}'s next lesson.`);
+  return lines.join('\n');
+}
+function copyLessonContext(studentId){
+  const st = state.students.find(s=>s.id===studentId);
+  if(!st) return;
+  copyText(buildLessonContext(st), `${st.name}'s lesson context copied — paste it into Claude`);
+}
+function handleStudentImport(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    let data;
+    try{ data = JSON.parse(reader.result); }catch(e){ toast('That file is not valid JSON'); return; }
+    const incoming = extractStudents(data)[0];
+    if(!incoming){ toast("Couldn't find your lesson file in there"); return; }
+    studentState.student = normalizeStudent(incoming);
+    saveStudentState();
+    practice.active = false;
+    render();
+    toast('Loaded ' + (incoming.name || 'your file'));
+  };
+  reader.readAsText(file);
+  document.getElementById('studentImportFile').value='';
+}
+function handleImport(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    let data;
+    try{ data = JSON.parse(reader.result); }catch(e){ toast('That file is not valid JSON'); return; }
+    const incoming = extractStudents(data);
+    if(!incoming.length){ toast("Couldn't find a student record in that file"); return; }
+    const imported = incoming.map(s=>{
+      const copy = normalizeStudent(s);
+      copy.id = uid();
+      state.students.push(copy);
+      state.activeStudentId = copy.id;
+      return copy;
+    });
+    save(); view='file'; render();
+    toast(imported.length>1 ? `Imported ${imported.length} students` : `Imported ${imported[0].name}`);
+  };
+  reader.readAsText(file);
+  document.getElementById('importFile').value='';
+}
+
+/* ---------- student mode (separate, simplified view for a student's own device) ---------- */
+function renderStudentHeader(){
+  return `
+  <div class="topbar no-print">
+    <div class="brand">
+      <div class="brand-mark">🗣️</div>
+      <div><div class="brand-name">ChatterCheck</div><div class="brand-tag">Your lesson file · stays on this device</div></div>
+    </div>
+    <div style="display:flex;gap:6px;margin-left:auto">
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('studentImportFile').click()">${studentState.student?'Import updated file':'Import your file'}</button>
+      <input type="file" id="studentImportFile" accept="application/json" style="display:none" onchange="handleStudentImport(this.files[0])">
+      ${themeToggleBtn()}
+    </div>
+  </div>`;
+}
+function renderStudentImportPrompt(){
+  return `
+  <div class="stack">
+    <div class="card herocard" style="text-align:center;padding:30px 24px">
+      <div class="bigicon">👋</div>
+      <h2 style="margin-bottom:6px">Welcome to your lesson space</h2>
+      <p class="help" style="max-width:480px;margin:0 auto">Record lessons, review the corrections your tutor flagged, and practice your vocabulary — all saved right here on this device, never on a server.</p>
+    </div>
+    <div class="dashgrid">
+      <div class="card dashcard" onclick="practice.active=false;studentTab='record';render()">
+        <div class="bigicon" style="font-size:26px;margin-bottom:2px">🎙️</div>
+        <h3 style="font-size:16px">Record today's lesson</h3>
+        <p class="help">No file needed yet — start recording any time and send it to your tutor when you're done.</p>
+        <button class="btn btn-primary btn-sm" style="align-self:flex-start" onclick="event.stopPropagation();practice.active=false;studentTab='record';render()">Go to Record lesson</button>
+      </div>
+      <div class="card dashcard" onclick="document.getElementById('studentImportFile').click()">
+        <div class="bigicon" style="font-size:26px;margin-bottom:2px">📂</div>
+        <h3 style="font-size:16px">Already have a file from your tutor?</h3>
+        <p class="help">Import it to see your progress, review flagged corrections, and practice your vocabulary with flashcards.</p>
+        <button class="btn btn-sm" style="align-self:flex-start" onclick="event.stopPropagation();document.getElementById('studentImportFile').click()">Import your file</button>
+      </div>
+      <div class="card dashcard" onclick="practice.active=false;studentTab='library';render()">
+        <div class="bigicon" style="font-size:26px;margin-bottom:2px">📚</div>
+        <h3 style="font-size:16px">Want to talk about something specific?</h3>
+        <p class="help">Browse real conversation topics and flag ones you'd like to cover in your next lesson.</p>
+        <button class="btn btn-sm" style="align-self:flex-start" onclick="event.stopPropagation();practice.active=false;studentTab='library';render()">Browse the library</button>
+      </div>
+      <div class="card dashcard" onclick="practice.active=false;studentTab='phrases';render()">
+        <div class="bigicon" style="font-size:26px;margin-bottom:2px">💬</div>
+        <h3 style="font-size:16px">Sound more natural</h3>
+        <p class="help">Pick up a genuinely useful everyday phrase — the kind of thing native speakers actually say.</p>
+        <button class="btn btn-sm" style="align-self:flex-start" onclick="event.stopPropagation();practice.active=false;studentTab='phrases';render()">See a useful phrase</button>
+      </div>
+      <div class="card dashcard" onclick="practice.active=false;studentTab='facts';render()">
+        <div class="bigicon" style="font-size:26px;margin-bottom:2px">💡</div>
+        <h3 style="font-size:16px">Just here to kill time?</h3>
+        <p class="help">Read a random fun fact about language while you wait for your next lesson.</p>
+        <button class="btn btn-sm" style="align-self:flex-start" onclick="event.stopPropagation();practice.active=false;studentTab='facts';render()">See a fun fact</button>
+      </div>
+    </div>
+  </div>`;
+}
+function renderMilestones(st){
+  const cats = [
+    { icon:'🔥', suffix:'day streak', val: (st.streak&&st.streak.longest)||0, steps:[3,7,14,30,60,100] },
+    { icon:'🏆', suffix:'words mastered', val: srsMasteredCount(st), steps:[10,25,50,100,200] },
+    { icon:'📅', suffix:'sessions', val: st.sessions.length, steps:[5,10,25,50,100] },
+  ];
+  const chips = cats.map(cat=>{
+    const earned = cat.steps.filter(n=>cat.val>=n);
+    const next = cat.steps.find(n=>cat.val<n);
+    let out = '';
+    if(earned.length) out += `<span class="badgechip earned">${cat.icon} ${earned[earned.length-1]} ${cat.suffix}</span>`;
+    if(next) out += `<span class="badgechip">${cat.icon} ${next} ${cat.suffix} <span class="mini mono">${cat.val}/${next}</span></span>`;
+    return out;
+  }).join('');
+  if(!chips) return '';
+  return `<div class="card">
+    <div class="sectionhead"><h3>Milestones</h3></div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">${chips}</div>
+  </div>`;
+}
+function renderStudentReport(st){
+  const prog = progression(st);
+  const needsAttention = st.mistakes.filter(m=>m.occurrences.length>1).sort((a,b)=>b.occurrences.length-a.occurrences.length);
+  const singles = st.mistakes.filter(m=>m.occurrences.length===1);
+  const groups = {};
+  Object.keys(GTYPES).forEach(k=>groups[k]=[]);
+  st.glossary.forEach(g=>groups[g.type]?.push(g));
+  const trendBadge = prog.delta===null ? `<span class="mini">First session</span>` :
+    prog.delta>0 ? `<span class="deltabadge delta-up">▲ +${prog.delta}%</span>` :
+    prog.delta<0 ? `<span class="deltabadge delta-down">▼ ${prog.delta}%</span>` :
+    `<span class="deltabadge delta-flat">steady</span>`;
+  return `
+  <div class="stack">
+    ${streakAtRisk(st) ? `
+    <div class="card" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-color:var(--warn)">
+      <span class="streak-flame" style="font-size:22px">🔥</span>
+      <div style="flex:1">
+        <div style="font-weight:600">Your ${st.streak.current}-day streak is at risk</div>
+        <div class="mini">Review a word or send today's recording to keep it alive.</div>
+      </div>
+      <button class="btn btn-sm btn-primary" ${st.glossary.length?'':'disabled'} onclick="startPracticeFor(studentModeStudent())">Practice now</button>
+    </div>` : ''}
+    <div class="spotlight">
+      <div class="sectionhead">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="avatarlg" style="background:${colorFor(st.name)}">${esc(initials(st.name))}</span>
+          <div>
+            <div class="spotlight-headline" style="font-size:clamp(19px,2.6vw,24px);margin:0">Hi ${esc(st.name)} — here's your progress</div>
+            <div class="spotlight-sub">${esc(st.lang)} &middot; ${esc(st.level)} &middot; ${st.sessions.length} session${st.sessions.length===1?'':'s'}</div>
+          </div>
+        </div>
+        <div class="no-print" style="display:flex;flex-wrap:wrap;gap:8px">
+          <button class="btn btn-sm" onclick="window.print()">Save as PDF</button>
+          <button class="btn btn-sm btn-primary" ${st.glossary.length?'':'disabled'} onclick="startPracticeFor(studentModeStudent())">Practice flashcards${st.glossary.length?` (${srsDueCount(st)} due)`:''}</button>
+        </div>
+      </div>
+      <div class="spotlight-stats">
+        <div class="spotlight-stat"><div class="num accent">${prog.current===null?'—':prog.current+'%'}</div><div class="lbl">Current average</div></div>
+        <div class="spotlight-stat"><div class="num" style="font-size:20px;padding-top:8px">${trendBadge}</div><div class="lbl">vs your recent average</div></div>
+        <div class="spotlight-stat"><div class="num">${srsMasteredCount(st)}</div><div class="lbl">Words mastered</div></div>
+        <div class="spotlight-stat"><div class="num">${streakIsLive(st)?st.streak.current:0}${streakIsLive(st)&&st.streak.current?' <span class="streak-flame">🔥</span>':''}</div><div class="lbl">Day streak</div></div>
+      </div>
+      <div class="chart-wrap">${chartSVG(st, 260, true)}</div>
+    </div>
+
+    ${renderMilestones(st)}
+
+    <div class="grid2">
+      <div class="card">
+        <div class="sectionhead">
+          <h3>Things to keep working on</h3>
+          <button class="linkbtn muted no-print" style="font-size:11.5px" onclick="toggleShowCorrections()">${studentPrefs.showCorrections?'Hide this section':'Show this section'}</button>
+        </div>
+        ${!studentPrefs.showCorrections ? `<div class="help">Corrections are hidden right now. <button class="linkbtn" onclick="toggleShowCorrections()">Show them</button></div>` : `<div class="mini" style="margin-bottom:8px">${needsAttention.length} flagged</div>
+        ${needsAttention.length ? `<div class="stack" style="gap:8px">${needsAttention.map(m=>{
+          const c = CATS[m.category];
+          return `<div class="mistakecard flagged">
+            <div class="row"><span class="pill" style="background:var(${c.t});color:var(${c.v})">${c.label}</span><span class="count">×${m.occurrences.length}</span></div>
+            <div class="txt">${esc(m.text)}</div>
+            ${m.correction?`<div class="fix">→ ${esc(m.correction)}</div>`:''}
+          </div>`;
+        }).join('')}</div>` : `<div class="help">Nothing repeat-flagged — nice work.</div>`}
+        ${singles.length ? `<div style="margin-top:12px">
+          <button class="btn btn-ghost btn-sm no-print" onclick="showFullLog=!showFullLog;render()">${showFullLog?'Hide':'Show'} ${singles.length} more note${singles.length===1?'':'s'}</button>
+          ${showFullLog ? `<div class="quietlist" style="margin-top:8px">${singles.map(m=>`
+            <div class="quietrow"><span>${esc(m.text)}</span>${m.correction?`<span class="mini">→ ${esc(m.correction)}</span>`:''}</div>`).join('')}</div>` : ''}
+        </div>` : ''}`}
+      </div>
+
+      <div class="card">
+        <div class="sectionhead"><h3>Recent sessions</h3></div>
+        ${st.sessions.length ? `<div class="stack" style="gap:8px">${st.sessions.slice().reverse().slice(0,6).map(s=>`
+          <div class="quietrow" style="align-items:flex-start;flex-direction:column;gap:2px;padding:8px 2px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;width:100%;gap:10px">
+              <span style="font-weight:600">${esc(fmtDateFull(s.date))}</span><span class="mono">${s.rating}%</span>
+            </div>
+            <div class="mini">${s.durationMin}m${s.notes?' · '+esc(s.notes):''}</div>
+          </div>`).join('')}</div>` : `<div class="help">No sessions yet.</div>`}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sectionhead"><h3>Vocabulary &amp; constructs</h3></div>
+      ${st.glossary.length ? Object.entries(GTYPES).map(([k,meta])=>{
+        const items = groups[k]; if(!items.length) return '';
+        return `<div style="margin-bottom:14px">
+          <div class="eyebrow" style="margin-bottom:8px;color:var(${meta.v})">${meta.label} &middot; ${items.length}</div>
+          <div class="glossgrid">${items.map(g=>`
+            <div class="glosscard">
+              <div class="term">${esc(g.term)} <button class="linkbtn no-print" style="font-size:14px;padding:0 2px" title="Hear pronunciation" onclick="speakTerm('${jsAttr(g.term)}','${st.speechLang||guessLangCode(st.lang)}')">🔊</button></div>
+              ${g.meaning?`<div class="meaning">${esc(g.meaning)}</div>`:''}
+              ${g.example?`<div class="example">"${esc(g.example)}"</div>`:''}
+            </div>`).join('')}
+          </div>
+        </div>`;
+      }).join('') : `<div class="help">Nothing here yet.</div>`}
+    </div>
+  </div>`;
+}
+function studentModeStudent(){ return studentState.student; }
+
+/* ---------- student-side lesson recording (record-only; handed to the tutor afterward) ---------- */
+let srec = null, srecActive = false, srecState = 'off', srecFailStreak = 0, srecRestartTimer = null, srecStartedAt = 0;
+function srecLangCode(){
+  const st = studentState.student;
+  return (st && (st.speechLang || guessLangCode(st.lang))) || 'en-US';
+}
+function toggleStudentRecording(){
+  if(srecActive){ stopStudentRecording(); return; }
+  if(!speechSupported()){ toast('Recording needs Chrome'); return; }
+  if(studentRecording.consentConfirmedAt){ startStudentRecording(); return; }
+  openStudentRecordingConsent();
+}
+function openStudentRecordingConsent(){
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  overlay.innerHTML = `
+    <div class="modal">
+      <h3>Before you record</h3>
+      <p class="help">By starting, you're confirming your tutor knows you're recording this lesson, and that you're okay with your own voice being recorded too. If you're under 18, make sure a parent or guardian is okay with this as well.</p>
+      <div class="modalrow">
+        <button class="btn" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmStudentRecordingConsent()">I understand — start recording</button>
+      </div>
+    </div>`;
+  overlay.id='modalHost';
+  document.body.appendChild(overlay);
+}
+function confirmStudentRecordingConsent(){
+  studentRecording.consentConfirmedAt = Date.now();
+  saveStudentRecording();
+  closeModal();
+  startStudentRecording();
+}
+function startStudentRecording(){
+  clearTimeout(srecRestartTimer);
+  srecFailStreak = 0;
+  if(!studentRecording.startedAt){ studentRecording.startedAt = Date.now(); saveStudentRecording(); }
+  launchSRec();
+  srecActive = true; srecState = 'listening';
+  updateSRecUI();
+}
+function launchSRec(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  srec = new SR();
+  srec.continuous = true;
+  srec.interimResults = true;
+  srec.lang = srecLangCode();
+  srec.onresult = (e) => {
+    srecFailStreak = 0;
+    let interim = '';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      const res = e.results[i];
+      const text = res[0].transcript.trim();
+      if(res.isFinal){
+        if(text){
+          const now = Date.now();
+          const last = studentRecording.transcript[studentRecording.transcript.length-1];
+          // Mobile speech recognition tends to finalize far more often than desktop — a single
+          // sentence can arrive as several separate "final" fragments. Merge fragments that land
+          // close together in time into one line instead of showing them as separate statements.
+          if(last && (now - studentRecording.startedAt - last.t) < COALESCE_WINDOW_MS){
+            last.text = (last.text + ' ' + text).trim();
+            saveStudentRecording();
+            const log = document.getElementById('srecLog');
+            if(log && log.lastElementChild) log.lastElementChild.textContent = last.text;
+          } else {
+            studentRecording.transcript.push({ t: now-studentRecording.startedAt, text });
+            saveStudentRecording();
+            const log = document.getElementById('srecLog');
+            if(log){ log.insertAdjacentHTML('beforeend', `<div class="transline">${esc(text)}</div>`); log.scrollTop = log.scrollHeight; }
+          }
+        }
+      } else interim += text;
+    }
+    const el = document.getElementById('srecInterim');
+    if(el) el.textContent = interim;
+  };
+  srec.onerror = (e) => {
+    if(e.error==='not-allowed' || e.error==='service-not-allowed'){
+      toast('Microphone access was blocked — allow it in the browser to record');
+      srecState='off'; srecActive=false; srec=null; updateSRecUI();
+    }
+  };
+  srec.onstart = () => { srecStartedAt = Date.now(); };
+  srec.onend = () => {
+    if(!srecActive) return;
+    const livedFor = Date.now() - srecStartedAt;
+    srecFailStreak = livedFor < 1500 ? srecFailStreak + 1 : 0;
+    if(srecFailStreak >= 4){ srecState = 'stalled'; srecActive = false; updateSRecUI(); return; }
+    srecRestartTimer = setTimeout(()=>{ if(srecActive) launchSRec(); }, 350);
+  };
+  srecStartedAt = Date.now();
+  try{ srec.start(); }catch(e){}
+}
+function resumeStudentRecording(){
+  srecFailStreak = 0; srecState = 'listening'; srecActive = true;
+  launchSRec(); updateSRecUI();
+}
+function stopStudentRecording(){
+  srecActive = false; srecState = 'off';
+  clearTimeout(srecRestartTimer);
+  try{ srec && srec.stop(); }catch(e){}
+  srec = null;
+  updateSRecUI();
+}
+function updateSRecUI(){
+  const btn = document.getElementById('srecToggleBtn');
+  if(btn){ btn.textContent = srecActive ? 'Stop recording' : 'Start recording'; btn.classList.toggle('recbtn', srecActive); btn.classList.toggle('off', !srecActive); }
+  const banner = document.getElementById('srecBanner');
+  if(banner){
+    if(srecState==='listening') banner.outerHTML = `<div id="srecBanner" class="recbanner live"><span class="dot"></span>Recording — listening</div>`;
+    else if(srecState==='stalled') banner.outerHTML = `<div id="srecBanner" class="recbanner stalled">Recording stopped unexpectedly<button class="btn btn-sm" style="margin-left:auto" onclick="resumeStudentRecording()">Resume</button></div>`;
+    else banner.outerHTML = `<div id="srecBanner" class="recbanner off">Ready when you are</div>`;
+  }
+}
+function discardStudentRecording(){
+  if(!confirm('Clear this recording? This cannot be undone.')) return;
+  stopStudentRecording();
+  studentRecording = { startedAt: null, transcript: [] };
+  saveStudentRecording();
+  render();
+}
+async function sendStudentRecording(){
+  if(!studentRecording.transcript.length){ toast('Nothing recorded yet'); return; }
+  const data = JSON.stringify({ kind:'lesson-copilot-recording', recordedAt: studentRecording.startedAt, studentName: studentState.student?.name||'', consentConfirmedAt: studentRecording.consentConfirmedAt||null, transcript: studentRecording.transcript }, null, 2);
+  const prefix = studentState.student?.name ? slugify(studentState.student.name)+'-' : '';
+  const filename = prefix+'recording-'+new Date(studentRecording.startedAt||Date.now()).toISOString().slice(0,10)+'.json';
+  const file = new File([data], filename, { type:'application/json' });
+  if(navigator.canShare && navigator.canShare({ files:[file] })){
+    try{
+      await navigator.share({ files:[file], title:'Lesson recording', text:'Here’s my ChatterCheck lesson recording for you to import.' });
+      toast('Sent!');
+      return;
+    }catch(e){
+      if(e && e.name==='AbortError') return;
+    }
+  }
+  downloadFile(filename, data);
+}
+function renderStudentRecordTab(){
+  const hasData = studentRecording.transcript.length>0;
+  return `
+  <div class="card">
+    <div class="sectionhead"><h3>Record this lesson</h3></div>
+    ${speechSupported() ? `
+    <p class="help">Click start at the beginning of your lesson and just talk normally — there's nothing else to do. Your tutor will use this afterward; it isn't sent anywhere automatically.</p>
+    <div id="srecBanner" class="recbanner ${srecState==='listening'?'live':srecState==='stalled'?'stalled':'off'}">
+      ${srecState==='listening' ? `<span class="dot"></span>Recording — listening` : srecState==='stalled' ? `Recording stopped unexpectedly<button class="btn btn-sm" style="margin-left:auto" onclick="resumeStudentRecording()">Resume</button>` : `Ready when you are`}
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      <button id="srecToggleBtn" class="btn ${srecActive?'recbtn':'off'}" onclick="toggleStudentRecording()">${srecActive?'Stop recording':'Start recording'}</button>
+      ${hasData ? `<button class="btn btn-primary" onclick="sendStudentRecording()">Send to your tutor</button>` : ''}
+      ${hasData ? `<button class="btn btn-ghost" onclick="discardStudentRecording()">Clear</button>` : ''}
+    </div>
+    ${studentRecording.consentConfirmedAt ? `<div class="mini" style="margin-bottom:6px">✓ Recording consent confirmed</div>` : ''}
+    <div id="srecInterim" class="mini" style="min-height:16px;font-style:italic"></div>
+    <div id="srecLog" class="translog">${studentRecording.transcript.map(l=>`<div class="transline">${esc(l.text)}</div>`).join('')}</div>
+    ${(!hasData && !srecActive) ? `
+    <div class="statrow" style="margin-top:16px">
+      <div class="stat"><div class="num">1</div><div class="lbl">Press start</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Talk normally</div></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">Send to your tutor</div></div>
+    </div>` : ''}
+    ` : `<p class="help">Recording needs Chrome — everything else on this page still works.</p>`}
+  </div>`;
+}
+
+function renderStudentFunFacts(){
+  return `
+  <div class="card" style="text-align:center;padding:34px 24px">
+    <div class="eyebrow">Fun fact</div>
+    <div class="factcard-content" style="font-size:19px;line-height:1.5;max-width:520px;margin:14px auto 20px">${esc(FUN_FACTS[funFactIdx])}</div>
+    <button class="btn btn-primary" onclick="pickFunFact();render()">Show me another</button>
+  </div>`;
+}
+function renderUsefulPhrase(){
+  const p = USEFUL_PHRASES[phraseIdx];
+  return `
+  <div class="card" style="text-align:center;padding:34px 24px">
+    <div class="eyebrow">Useful phrase</div>
+    <div class="factcard-content">
+      <div style="font-size:23px;font-weight:800;margin:14px auto 8px">${esc(p.term)}</div>
+      <div style="font-size:15px;color:var(--text-2);max-width:480px;margin:0 auto 10px">${esc(p.meaning)}</div>
+      <div style="font-size:14px;font-style:italic;color:var(--text-3);max-width:480px;margin:0 auto 20px">${esc(p.example)}</div>
+    </div>
+    <button class="btn btn-primary" onclick="pickUsefulPhrase();render()">Show me another</button>
+  </div>`;
+}
+function renderLibraryTopicCard(t, isRequested){
+  const expanded = libraryExpandedId === t.id;
+  return `
+  <div class="card">
+    <div class="row" style="align-items:flex-start;cursor:pointer" onclick="libraryExpandedId=libraryExpandedId==='${t.id}'?null:'${t.id}';render()">
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700;font-size:15px">${esc(t.title)}</div>
+        ${!expanded ? `<div class="mini" style="margin-top:2px">${esc(t.intro)}</div>` : ''}
+      </div>
+      <button class="btn btn-ghost btn-sm no-print" style="flex:0 0 auto" onclick="event.stopPropagation();toggleTopicRequest('${t.id}')">${isRequested?'★ Requested':'☆ Request this'}</button>
+    </div>
+    ${expanded ? `
+    <div class="factcard-content" style="margin-top:14px">
+      <p class="help" style="margin-bottom:16px">${esc(t.intro)}</p>
+      <div class="tier-label-lib">Core vocabulary — everyone</div>
+      <div class="glossgrid" style="margin-bottom:16px">${t.coreVocab.map(v=>`<div class="glosscard"><div class="term">${esc(v.term)}</div><div class="meaning">${esc(v.def)}</div></div>`).join('')}</div>
+      <div class="tier-label-lib deep">Go deeper</div>
+      <div class="glossgrid deep" style="margin-bottom:16px">${t.deepVocab.map(v=>`<div class="glosscard"><div class="term">${esc(v.term)}</div><div class="meaning">${esc(v.def)}</div></div>`).join('')}</div>
+      <div class="eyebrow" style="margin-bottom:8px">Model exchange</div>
+      <div class="translog" style="margin-bottom:16px">${t.dialogue.map(d=>`<div class="transline"><span class="txt"><strong>${esc(d.who)}:</strong> ${esc(d.text)}</span></div>`).join('')}</div>
+      <div class="tier-label-lib">Warm-up questions — everyone</div>
+      <ul class="lib-questions">${t.coreQuestions.map(q=>`<li>${esc(q)}</li>`).join('')}</ul>
+      <div class="tier-label-lib deep" style="margin-top:14px">Go deeper</div>
+      <ul class="lib-questions deep">${t.deepQuestions.map(q=>`<li>${esc(q)}</li>`).join('')}</ul>
+    </div>` : ''}
+  </div>`;
+}
+function renderLibrary(){
+  const requested = studentPrefs.requestedTopics || [];
+  const groups = libraryCategories();
+  return `
+  <div class="stack">
+    <div class="card" style="text-align:center;padding:24px">
+      <div class="eyebrow">Lesson library</div>
+      <h2 style="margin:8px 0 6px;font-size:19px">Pick a topic to explore</h2>
+      <p class="help" style="max-width:480px;margin:0 auto">Real conversation topics — vocabulary, an example exchange, and questions to think about. Every topic works at any level: start with the core basics, or push into "go deeper" for more of a challenge.</p>
+    </div>
+    ${requested.length ? `
+    <div class="card no-print">
+      <div class="sectionhead"><h3>Your requested topics</h3><span class="mini mono">${requested.length}</span></div>
+      <div class="watchchips" style="margin-bottom:10px">${requested.map(id=>{
+        const t = LESSON_LIBRARY.find(x=>x.id===id); if(!t) return '';
+        return `<span class="watchchip">${esc(t.title)}<button class="xbtn" style="margin-left:0" onclick="toggleTopicRequest('${jsAttr(id)}')">×</button></span>`;
+      }).join('')}</div>
+      <button class="btn btn-primary btn-sm" onclick="copyTopicRequests()">Copy message for your tutor</button>
+      <p class="mini" style="margin-top:8px">There's no automatic sync — this copies a short message you can paste to your tutor yourself.</p>
+    </div>` : ''}
+    ${groups.map(g=>`
+      <div class="eyebrow" style="margin:10px 0 2px">${esc(g.category)}</div>
+      <div class="stack" style="gap:10px">${g.topics.map(t=>renderLibraryTopicCard(t, requested.includes(t.id))).join('')}</div>
+    `).join('')}
+  </div>`;
+}
+function renderStudentApp(){
+  const st = studentState.student;
+  const body = practice.active ? renderPractice(st) :
+    studentTab==='record' ? renderStudentRecordTab() :
+    studentTab==='library' ? renderLibrary() :
+    studentTab==='facts' ? renderStudentFunFacts() :
+    studentTab==='phrases' ? renderUsefulPhrase() :
+    !st ? renderStudentImportPrompt() : renderStudentReport(st);
+  document.getElementById('app').innerHTML = renderStudentHeader() + `
+    <div class="shell" style="padding-top:0">
+      <div class="tabs no-print">
+        <button class="tab ${studentTab==='progress'?'active':''}" onclick="practice.active=false;studentTab='progress';render()">My progress</button>
+        <button class="tab ${studentTab==='record'?'active':''}" onclick="practice.active=false;studentTab='record';render()">Record lesson ${srecActive?'<span class=\"livepip\"></span>':''}</button>
+        <button class="tab ${studentTab==='library'?'active':''}" onclick="practice.active=false;studentTab='library';render()">Lesson library</button>
+        <button class="tab ${studentTab==='phrases'?'active':''}" onclick="practice.active=false;studentTab='phrases';render()">Useful phrases</button>
+        <button class="tab ${studentTab==='facts'?'active':''}" onclick="practice.active=false;studentTab='facts';render()">Fun facts</button>
+      </div>
+      <div class="tabfade">${body}</div>
+    </div>`;
+}
+
+/* ---------- main render ---------- */
+function render(){
+  if(STUDENT_MODE) return renderStudentApp();
+  clearInterval(timerHandle); timerHandle=null;
+
+  if(state.students.length===0){
+    document.getElementById('app').innerHTML = renderHeader() + `
+    <div class="shell" style="padding-top:0">
+      <div class="emptystate">
+        <h2>Set up your first student</h2>
+        <p>ChatterCheck sits beside your call. Turn on recording and it transcribes the session live, highlighting moments worth a look — you review and tag them whenever you have time. It keeps a running file per student with their progression and glossary.</p>
+        <button class="btn btn-primary" onclick="openAddStudent()">Add a student</button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const st = activeStudent();
+  const live = st ? liveMistakeFor(st) : null;
+  const body =
+    view==='dashboard' ? renderDashboard() :
+    practice.active ? renderPractice(st) :
+    (view==='file' && reviewSessionId) ? renderReview(st) :
+    (view==='file' && cheatSheetMode) ? renderCheatSheet(st) :
+    view==='session' ? renderSession(st) : renderFile(st);
+
+  document.getElementById('app').innerHTML = renderHeader() + `
+    <div class="shell" style="padding-top:0">
+      <div class="tabs no-print">
+        <button class="tab ${view==='dashboard'?'active':''}" onclick="practice.active=false;reviewSessionId=null;cheatSheetMode=false;view='dashboard';render()">Dashboard</button>
+        <button class="tab ${view==='session'?'active':''}" onclick="practice.active=false;reviewSessionId=null;cheatSheetMode=false;view='session';render()">Live session ${live?'<span class=\"livepip\"></span>':''}</button>
+        <button class="tab ${view==='file'?'active':''}" onclick="practice.active=false;reviewSessionId=null;cheatSheetMode=false;view='file';render()">Student file</button>
+      </div>
+      ${body}
+    </div>`;
+
+  if(live && view==='session' && !practice.active){
+    tickTimer();
+    timerHandle = setInterval(tickTimer, 1000);
+  }
+}
+
+if(state.students.length && !state.activeStudentId) state.activeStudentId = state.students[0].id;
+render();
+</script>

@@ -1,0 +1,44 @@
+---
+id: 2026-09-01-hermione-jojoclaw-authorization-death-by-1000-clicks-always
+kind: article
+title: Authorization death by 1000 clicks — Always-allow is host-desktop
+source: "https://forum.cursor.com/t/authorization-death-by-1000-clicks/170087"
+author: Hermione Jojoclaw
+published: 2026-08-31
+captured: 2026-09-01
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+Authorization death by 1000 clicks
+
+<h3><a name="p-479094-where-does-the-bug-appear-featureproduct-1" class="anchor" href="#p-479094-where-does-the-bug-appear-featureproduct-1" aria-label="Heading link"></a>Where does the bug appear (feature/product)?</h3>
+<p>Grok Bot</p>
+<h3><a name="p-479094-describe-the-bug-2" class="anchor" href="#p-479094-describe-the-bug-2" aria-label="Heading link"></a>Describe the Bug</h3>
+<p>I have a Mac mini that wa fully set up for openclaw and is a full service computer for developing via coded programs and other things.  When I interact on the Mac mini grok bot - it executes - only occasionally asking for permission.  When I do the same request from the IOS grok bot - I get 10000 approve once requests, no always approve options and it is harming my workflow and very frustrating. it seems like this just started in the last day or 2.</p>
+<h3><a name="p-479094-steps-to-reproduce-3" class="anchor" href="#p-479094-steps-to-reproduce-3" aria-label="Heading link"></a>Steps to Reproduce</h3>
+<p>It happens over and over and over again</p>
+<h3><a name="p-479094-expected-behavior-4" class="anchor" href="#p-479094-expected-behavior-4" aria-label="Heading link"></a>Expected Behavior</h3>
+<p>I have asked the main agent and the bu agents to stop this and do always approve and keep getting told it is not a iOS feature or some other nonsense like that.  These are the SAME AGENTS and it should work no matter how I input the prompt.</p>
+<h3><a name="p-479094-operating-system-5" class="anchor" href="#p-479094-operating-system-5" aria-label="Heading link"></a>Operating System</h3>
+<p>MacOS</p>
+<h3><a name="p-479094-version-information-6" class="anchor" href="#p-479094-version-information-6" aria-label="Heading link"></a>Version Information</h3>
+<p>Grok Bot IOS Grok Bot Mac OS</p>
+<h3><a name="p-479094-additional-information-7" class="anchor" href="#p-479094-additional-information-7" aria-label="Heading link"></a>Additional Information</h3>
+<p>This is frustrating enough - I would go back to openclaw vs death by 1000 clicks</p>
+<h3><a name="p-479094-does-this-stop-you-from-using-cursor-8" class="anchor" href="#p-479094-does-this-stop-you-from-using-cursor-8" aria-label="Heading link"></a>Does this stop you from using Cursor</h3>
+<p>No - Cursor works, but with this issue</p>
+
+<p>Hey <a class="mention" href="/u/hermione_jojoclaw">@Hermione_Jojoclaw</a>, thanks for the report!</p>
+<p>What you are seeing is how approvals currently work across the two apps. The “always allow” control for actions on your Mac mini lives in the desktop app on that machine, not in the iOS app. On the phone, each action can only be approved once, and those one-time approvals are cleared whenever you send a new message, which is why it keeps asking.</p>
+<p>To fix it:</p>
+<ol>
+<li>On the Mac mini, open the Grok Bot desktop app.</li>
+<li>Open Settings and find Execution on Local Computer.</li>
+<li>Set it to Always allow for that machine.</li>
+<li>Keep the desktop app running on the Mac mini, since it re-applies this setting whenever it reconnects.</li>
+</ol>
+<p>Once that is set, requests you send from the iOS app should run on the Mac mini without asking each time. If a permission card still shows up on the desktop, choosing Always allow on the card also makes it stick.</p>
+<p><strong>Please also make sure both apps are up to date.</strong> There was a recent issue where an existing Always allow setting was not being honored, and that has been fixed.</p>
