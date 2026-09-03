@@ -32,7 +32,7 @@ Clock times above are from `automation.json` on disk. Last-run is converted to I
 
 | Bot | Id | Duty | Pins / notes | Packets |
 |---|---|---|---|---|
-| Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. | All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern (`@fern-tv` English). Naval parked (last own episode 2026-07-02). Clock proposed MWF 22:00 Taipei after three manual days — still off. | `/workspace/recap/` |
+| Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. | All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern (`@fern-tv` English), Moon (`@Moon-Real`). Naval parked (last own episode 2026-07-02). Clock proposed MWF 22:00 Taipei after three manual days — still off. | `/workspace/recap/` |
 | Arguments | `678df0e5-698a-40e4-a1a0-e5c993f049dc` | Argument ingest. | TRIGGERnometry full; a16z Show/AI full; Asmongold talk VODs only (arguments + one sentence). No clock yet. | `/workspace/arguments/` |
 | Intake | `f4e8cbbd-5fb4-4df5-8999-c2f9714d9222` | Research feeder (AI, learning science, wiki-craft). | Sources pinned (`intake-sources.md`). Routine never created. | `/workspace/intake/` |
 | 星野遙香 | `b1256a6d-ab0f-4efd-9a32-77da7a3e933b` | LINE-facing cast. Speaks only to 沈文. | No routines. 後台 owns the clocks. | (cast, not packets) |
@@ -64,6 +64,7 @@ Confirmed **no agent folder** on 2026-09-03. Leftover packet dirs are archive, n
 - All-In, Maxinomics, Justin Sung
 - Elon sit-down interviews (the interview, not wraps; daily Elon X is not Recap)
 - Fern · `https://www.youtube.com/@fern-tv`
+- Moon · `https://www.youtube.com/@Moon-Real` (first ingest: George Orwell Tried To Warn You, `daQAhruFG40`)
 - Naval parked
 
 ### Arguments — `/workspace/arguments-sources.md`
