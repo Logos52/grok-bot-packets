@@ -12,3 +12,5 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-08-30 | xAI: Grok Bot now works with X. Connect the X connector (paid users get free API credits); a Bot can search posts, read your timeline, or check mentions. https://x.ai/news/grok-bot-and-x |  |
 | 2026-08-31 | Nothing that changes today. |  |
 | 2026-09-01 | Nothing that changes today. |  |
+| 2026-09-02 | Anthropic Claude Fable 5.1 is live (coding frontier; ~25% cheaper typical / up to ~45% agentic via cheaper cache reads; Mythos 5.1 = trusted-access twin). Try this week. https://www.anthropic.com/claude-fable-and-mythos-5-1 |  |
+| 2026-09-03 | Nothing that changes today. |  |
