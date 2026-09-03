@@ -22,7 +22,7 @@ Standing laws (Steward): report only to Wedge; never modify other bots or their 
 | Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-02 07:04 ICT | `/workspace/watch/` |
 | Corpus | `9b18c6e9-c273-4156-b09f-2282cc8abb79` | Weekly audit of logos52.github.io. | Mon 09:00 **ICT** (no CRON_TZ) · last 2026-08-31 09:04 ICT | `/workspace/corpus/` |
 | Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-08-28 10:51 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
-| 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-03 09:16 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 16:51 ICT | `/workspace/cast/` |
+| 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-03 09:16 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 16:51 ICT. **`xingye weather` missing** (profile claims 13:00 Taipei; no `automations/xingye-weather/`). Do not rebuild unless 沈文 says so. | `/workspace/cast/` |
 
 Clock times above are from `automation.json` on disk. Last-run is converted to ICT (UTC+7).
 
@@ -87,6 +87,12 @@ Confirmed **no agent folder** on 2026-09-03. Leftover packet dirs are archive, n
 - Unarmed
 
 ---
+
+
+## Stale pointers (not live)
+
+- `yuedu-sources.md` still says “Agent Dcard owns that site.” Dcard is down. Steward did not edit Yuedu’s file.
+- 後台 profile CLOCK section still lists `xingye weather`. Disk has draw + window only.
 
 ## How to update this file
 
