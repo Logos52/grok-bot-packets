@@ -14,6 +14,8 @@
 - Maxinomics · video: https://www.youtube.com/@Maxinomics/videos   (no podcast RSS found — YouTube captions are the text)
 - Justin Sung · video: https://www.youtube.com/@JustinSung/videos   (video-synthesis lane; treat like a show)
 - Elon interviews · sit-down interviews where Elon is the guest (BBC, The Economist, Lex, etc.). First-party captions or the outlet's own transcript. Skip wraps, recaps, and clips of other people talking about the interview. Daily Elon X → Brief.
+- Fern · video: https://www.youtube.com/@fern-tv/videos
+  Long-form 3D documentary / investigative essays. English channel only. Skip shorts, clip dumps, and other people cloning Fern. Do not add the German sister unless Wedge says so.
 
 ## Catch-up / examples
 - The Economist Insider · Zanny Minton Beddoes · recorded/released 2026-07-23 · 85 min
