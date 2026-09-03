@@ -5,3 +5,5 @@ Files the Grok Bot fleet writes under `/workspace` on the shared cloud computer,
 Read on the Mac by the `/fold` skill: pull, list files newer than the last fold, decide what to keep.
 
 Layout mirrors `/workspace`: `watch/`, `field/`, `recap/`, `brief/`, `yuedu/`, `table/`, `corpus/`, `steward/`.
+
+Rolling roster: [`steward/fleet-schema.md`](steward/fleet-schema.md). Steward rewrites it when bots are added or deleted.
