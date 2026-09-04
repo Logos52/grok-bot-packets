@@ -2,7 +2,7 @@
 
 Rolling roster. Steward rewrites this file when a bot is added, deleted, or its clock changes. Census is agent folders on disk (`/home/box/agent-data/agents`), not leftover packet directories.
 
-**Updated:** 2026-09-03 (ICT)
+**Updated:** 2026-09-04 (ICT)
 
 Packets live on the shared computer under `/workspace`, mirrored to https://github.com/Logos52/grok-bot-packets (weekday 18:00 Asia/Taipei). They do not auto-download to the Mac.
 
@@ -14,15 +14,15 @@ Standing laws (Steward): report only to Wedge; never modify other bots or their 
 
 | Bot | Id | Duty | Clock | Packets |
 |---|---|---|---|---|
-| Field | `256b9d7e-82b5-470b-8b56-0259408ee3cf` | Named practice (setups, gates, failures). Education standing lane. | Daily 08:00 Taipei · last 2026-09-03 07:05 ICT | `/workspace/field/` + `field-packet-*.md` |
-| 多恩刊 | `54630e9e-7b50-49ea-a831-7a0c9f65510c` | Midnight harvest, then ping. | Daily 00:00 Taipei · last 2026-09-02 23:29 ICT | `/workspace/duoenkan/` |
-| Yuedu | `674e666e-0f0b-44ba-8f3d-e1cdef2e3027` | Chinese reading queue + learning-meta. | Tue/Fri 07:30 Taipei · last 2026-09-01 06:49 ICT | `/workspace/yuedu/` |
-| Brief | `695c37f1-a711-4478-b7f1-c6047d3c625b` | Five-line morning push. Product changelogs. | Daily 07:00 Taipei · last 2026-09-03 06:11 ICT | `/workspace/brief/` |
+| Field | `256b9d7e-82b5-470b-8b56-0259408ee3cf` | Named practice (setups, gates, failures). Education standing lane. | Daily 08:00 Taipei · last 2026-09-04 07:23 ICT | `/workspace/field/` + `field-packet-*.md` |
+| 多恩刊 | `54630e9e-7b50-49ea-a831-7a0c9f65510c` | Midnight harvest, then ping. | Daily 00:00 Taipei · last 2026-09-03 23:13 ICT | `/workspace/duoenkan/` |
+| Yuedu | `674e666e-0f0b-44ba-8f3d-e1cdef2e3027` | Chinese reading queue + learning-meta. | Tue/Fri 07:30 Taipei · last 2026-09-04 07:23 ICT | `/workspace/yuedu/` |
+| Brief | `695c37f1-a711-4478-b7f1-c6047d3c625b` | Five-line morning push. Product changelogs. | Daily 07:00 Taipei · last 2026-09-04 07:37 ICT | `/workspace/brief/` |
 | Table | `6de5dee2-1ace-4174-b6df-287ad8a79100` | Public calendar: EQL, WoW, FFXIV. | Wed/Sat 09:00 Taipei · last 2026-09-02 08:08 ICT | `/workspace/table/` |
-| Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-02 07:04 ICT | `/workspace/watch/` |
+| Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-04 08:00 ICT | `/workspace/watch/` |
 | Corpus | `9b18c6e9-c273-4156-b09f-2282cc8abb79` | Weekly audit of logos52.github.io. | Mon 09:00 **ICT** (no CRON_TZ) · last 2026-08-31 09:04 ICT | `/workspace/corpus/` |
-| Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-08-28 10:51 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
-| 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-03 09:16 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 16:51 ICT. **`xingye weather` missing** (profile claims 13:00 Taipei; no `automations/xingye-weather/`). Do not rebuild unless 沈文 says so. | `/workspace/cast/` |
+| Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-09-04 10:48 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
+| 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-04 09:00 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 23:01 ICT. **`xingye weather` missing** (profile claims 13:00 Taipei; no `automations/xingye-weather/`). Do not rebuild unless 沈文 says so. | `/workspace/cast/` |
 
 Clock times above are from `automation.json` on disk. Last-run is converted to ICT (UTC+7).
 
