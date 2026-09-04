@@ -1,1 +1,1 @@
-Nothing that changes today.
+xAI: Grok Bot for Enterprise is live. Grok/Cursor Enterprise customers get free usage for two weeks from Sep 3 and can invite the whole org (including people without seats). https://x.ai/news/grok-bot-for-enterprise

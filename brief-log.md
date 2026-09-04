@@ -14,3 +14,4 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-01 | Nothing that changes today. |  |
 | 2026-09-02 | Anthropic Claude Fable 5.1 is live (coding frontier; ~25% cheaper typical / up to ~45% agentic via cheaper cache reads; Mythos 5.1 = trusted-access twin). Try this week. https://www.anthropic.com/claude-fable-and-mythos-5-1 |  |
 | 2026-09-03 | Nothing that changes today. |  |
+| 2026-09-04 | xAI: Grok Bot for Enterprise is live. Grok/Cursor Enterprise customers get free usage for two weeks from Sep 3 and can invite the whole org (including people without seats). https://x.ai/news/grok-bot-for-enterprise |  |
