@@ -21,7 +21,7 @@ Standing laws (Steward): report only to Wedge; never modify other bots or their 
 | Yuedu | `674e666e-0f0b-44ba-8f3d-e1cdef2e3027` | Chinese reading queue + learning-meta. | Tue/Fri 07:30 Taipei · last 2026-09-04 07:23 ICT | `/workspace/yuedu/` |
 | Brief | `695c37f1-a711-4478-b7f1-c6047d3c625b` | Five-line morning push. Product changelogs. | Daily 07:00 Taipei · last 2026-09-04 07:37 ICT | `/workspace/brief/` |
 | Table | `6de5dee2-1ace-4174-b6df-287ad8a79100` | Public calendar: EQL, WoW, FFXIV. | Wed/Sat 09:00 Taipei · last 2026-09-02 08:08 ICT | `/workspace/table/` |
-| Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-04 08:00 ICT | `/workspace/watch/` |
+| Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM + GitHub Actions CI on primary Logos52 repos. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-04 08:00 ICT · CI first pass 2026-09-04 (tsumugu-core + tsumugu-ed red) | `/workspace/watch/` |
 | Corpus | `9b18c6e9-c273-4156-b09f-2282cc8abb79` | Weekly audit of logos52.github.io. | Mon 09:00 **ICT** (no CRON_TZ) · last 2026-08-31 09:04 ICT | `/workspace/corpus/` |
 | Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-09-04 10:48 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
 | Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. Pins: All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern, Moon. Naval parked. | Daily 12:00 Taipei (`recap-daily-noon`) · armed 2026-09-04 · no lastRun yet | `/workspace/recap/` |
