@@ -25,6 +25,7 @@ Standing laws (Steward): report only to Wedge; never modify other bots or their 
 | Corpus | `9b18c6e9-c273-4156-b09f-2282cc8abb79` | Weekly audit of logos52.github.io. | Mon 09:00 **ICT** (no CRON_TZ) · last 2026-08-31 09:04 ICT | `/workspace/corpus/` |
 | Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-09-04 10:48 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
 | Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. Pins: All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern, Moon. Naval parked. | Daily 12:00 Taipei (`recap-daily-noon`) · armed 2026-09-04 · no lastRun yet | `/workspace/recap/` |
+| Arguments | `678df0e5-698a-40e4-a1a0-e5c993f049dc` | Argument ingest. TRIGGERnometry + a16z full; Asmongold thin. | MWF 12:00 Taipei (`arguments-mwf-noon-ingest`) · armed 2026-09-04 · no lastRun yet | `/workspace/arguments/` |
 | 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-04 09:00 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 23:01 ICT. **`xingye weather` missing** (profile claims 13:00 Taipei; no `automations/xingye-weather/`). Do not rebuild unless 沈文 says so. | `/workspace/cast/` |
 
 Clock times above are from `automation.json` on disk. Last-run is converted to ICT (UTC+7).
@@ -35,7 +36,6 @@ Clock times above are from `automation.json` on disk. Last-run is converted to I
 
 | Bot | Id | Duty | Pins / notes | Packets |
 |---|---|---|---|---|
-| Arguments | `678df0e5-698a-40e4-a1a0-e5c993f049dc` | Argument ingest. | TRIGGERnometry full; a16z Show/AI full; Asmongold talk VODs only (arguments + one sentence). No clock yet. | `/workspace/arguments/` |
 | Intake | `f4e8cbbd-5fb4-4df5-8999-c2f9714d9222` | Research feeder (AI, learning science, wiki-craft). | Sources pinned (`intake-sources.md`). Routine never created. | `/workspace/intake/` |
 | 星野遙香 | `b1256a6d-ab0f-4efd-9a32-77da7a3e933b` | LINE-facing cast. Speaks only to 沈文. | No routines. 後台 owns the clocks. | (cast, not packets) |
 
