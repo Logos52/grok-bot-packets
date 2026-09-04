@@ -1,5 +1,6 @@
 # Recap sources — long-form only
-# Clock (not enabled yet): Mon/Wed/Fri 22:00 Asia/Taipei
+# Clock: daily 12:00 Asia/Taipei (CRON_TZ=Asia/Taipei 0 12 * * *) · routine recap-daily-noon
+# Products and cadence lock on his word. No trial / soft launch / N-manuals gate.
 # First-party fetches only · no Firecrawl · no ASR on the box
 # YouTube is first-class for these pins only. Not every YouTube channel.
 

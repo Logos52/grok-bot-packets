@@ -85,15 +85,15 @@
       "coverageState": "Crawled - currently not indexed",
       "lastCrawlTime": "2026-08-19T14:24:50Z"
     },
-    "https://tsumugu-ed.com/c/詢": {
+    "https://tsumugu-ed.com/c/\u8a62": {
       "coverageState": "Crawled - currently not indexed",
       "lastCrawlTime": "2026-08-19T14:24:51Z"
     },
-    "https://tsumugu-ed.com/c/询": {
+    "https://tsumugu-ed.com/c/\u8be2": {
       "coverageState": "Crawled - currently not indexed",
       "lastCrawlTime": "2026-08-19T14:24:51Z"
     },
-    "https://tsumugu-ed.com/w/學院": {
+    "https://tsumugu-ed.com/w/\u5b78\u9662": {
       "coverageState": "Crawled - currently not indexed",
       "lastCrawlTime": "2026-08-19T14:24:52Z"
     },
@@ -151,34 +151,34 @@
   "overlay_complete_when": "all six ed lastCrawlTime >= 2026-08-18",
   "overlay_reach": {
     "7": {
-      "url": "https://tsumugu-ed.com/c/詢",
+      "url": "https://tsumugu-ed.com/c/\u8a62",
       "http": 200,
       "redirects": 0,
-      "title_start": "詢",
+      "title_start": "\u8a62",
       "data_script": "trad",
       "ok": true
     },
     "8": {
-      "url": "https://tsumugu-ed.com/c/询",
+      "url": "https://tsumugu-ed.com/c/\u8be2",
       "http": 200,
       "redirects": 0,
-      "title_start": "询",
+      "title_start": "\u8be2",
       "data_script": "simp",
       "ok": true
     },
     "9": {
-      "url": "https://tsumugu-ed.com/c/後",
+      "url": "https://tsumugu-ed.com/c/\u5f8c",
       "http": 200,
       "redirects": 0,
-      "title_start": "後",
+      "title_start": "\u5f8c",
       "data_script": "trad",
       "ok": true
     },
     "10": {
-      "url": "https://tsumugu-ed.com/c/后",
+      "url": "https://tsumugu-ed.com/c/\u540e",
       "http": 200,
       "redirects": 0,
-      "title_start": "后",
+      "title_start": "\u540e",
       "data_script": "trad",
       "ok": true
     },
@@ -211,5 +211,90 @@
       "sitemaps.indexed never cite"
     ],
     "cadence": "Mon/Wed/Fri 08:00 Asia/Taipei confirmed"
+  },
+  "ci": {
+    "baseline_date": "2026-09-04",
+    "baselines_clean": 0,
+    "repos": {
+      "Logos52/tsumugu-core-dev": {
+        "conclusion": "success",
+        "status": "completed",
+        "name": "CI",
+        "html_url": "https://github.com/Logos52/tsumugu-core-dev/actions/runs/33667264449",
+        "updated_at": "2026-09-02T18:28:48Z",
+        "default_branch": "compaction/2026-07",
+        "alert": false,
+        "error": null
+      },
+      "Logos52/tsumugu-core": {
+        "conclusion": "failure",
+        "status": "completed",
+        "name": "Deploy Tsumugu Core",
+        "html_url": "https://github.com/Logos52/tsumugu-core/actions/runs/28697465339",
+        "updated_at": "2026-07-04T06:18:15Z",
+        "default_branch": "main",
+        "alert": true,
+        "error": null
+      },
+      "Logos52/tsumugu": {
+        "conclusion": "success",
+        "status": "completed",
+        "name": "Deploy reader (GitHub Pages)",
+        "html_url": "https://github.com/Logos52/tsumugu/actions/runs/31265923214",
+        "updated_at": "2026-08-08T16:02:08Z",
+        "default_branch": "main",
+        "alert": false,
+        "error": null
+      },
+      "Logos52/tsumugu-ed": {
+        "conclusion": "failure",
+        "status": "completed",
+        "name": "validate corpus",
+        "html_url": "https://github.com/Logos52/tsumugu-ed/actions/runs/33648836647",
+        "updated_at": "2026-09-02T15:32:06Z",
+        "default_branch": "main",
+        "alert": true,
+        "error": null
+      },
+      "Logos52/tsumugu-wiki": {
+        "conclusion": "success",
+        "status": "completed",
+        "name": "Deploy Tsumugu wiki to GitHub Pages",
+        "html_url": "https://github.com/Logos52/tsumugu-wiki/actions/runs/33648681859",
+        "updated_at": "2026-09-02T15:28:36Z",
+        "default_branch": "main",
+        "alert": false,
+        "error": null
+      },
+      "Logos52/logos52.github.io": {
+        "conclusion": "success",
+        "status": "completed",
+        "name": "Deploy Astro site to GitHub Pages",
+        "html_url": "https://github.com/Logos52/logos52.github.io/actions/runs/33648605809",
+        "updated_at": "2026-09-02T15:29:00Z",
+        "default_branch": "main",
+        "alert": false,
+        "error": null
+      },
+      "Logos52/grok-bot-packets": {
+        "conclusion": null,
+        "status": "no_runs",
+        "name": null,
+        "html_url": null,
+        "updated_at": null,
+        "default_branch": "main",
+        "alert": false,
+        "error": null
+      }
+    },
+    "primary": [
+      "Logos52/tsumugu-core-dev",
+      "Logos52/tsumugu-core",
+      "Logos52/tsumugu",
+      "Logos52/tsumugu-ed",
+      "Logos52/tsumugu-wiki",
+      "Logos52/logos52.github.io",
+      "Logos52/grok-bot-packets"
+    ]
   }
 }

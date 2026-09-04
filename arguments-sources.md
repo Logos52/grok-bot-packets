@@ -1,5 +1,5 @@
 # Arguments sources — ingest only
-# No clock yet. Three manual passes on separate days, then propose a cadence (not daily).
+# Clock: Mon/Wed/Fri 12:00 Asia/Taipei · CRON_TZ=Asia/Taipei 0 12 * * 1,3,5
 # First-party fetches only · no Firecrawl · no ASR on the box · no third-party transcript sites
 # Public only. Weekly included usage only. Never write vault, tan, tsumugu, or GitHub.
 
@@ -17,7 +17,6 @@
   Talk/argument VODs only. Skip highlight dumps, highlight clips, competitions, and clip compilations.
   If a video is not him making or testing an argument, skip it.
   Product: arguments + one-sentence takeaway only (not full INGEST).
-  Do not ingest Asmongold until the filter is proven on a real talk VOD.
 
 ## Not Arguments — Recap owns these
 - All-In
@@ -39,4 +38,5 @@ Never ASR on the box. Never Firecrawl. Never third-party transcript sites (DownS
 - /workspace/arguments-sources.md (this file)
 
 ## Cadence
-No clock yet. Three manual passes on separate days first. Then propose a cadence that is not daily — Asmongold volume will kill the quota if every clip is ingested. Thin Asmongold packets still cost caption fetches; skip clips.
+Live: Mon/Wed/Fri 12:00 noon Asia/Taipei · schedule CRON_TZ=Asia/Taipei 0 12 * * 1,3,5
+Usage hygiene: Asmongold volume will kill the quota if every clip is ingested. Thin packets still cost caption fetches; skip highlight clips. Not daily.

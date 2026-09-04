@@ -24,7 +24,7 @@ Standing laws (Steward): report only to Wedge; never modify other bots or their 
 | Watch | `92991d27-a6b5-4416-897e-250a385653b7` | Estate reachability + CF RUM + GitHub Actions CI on primary Logos52 repos. | Mon/Wed/Fri 08:00 Taipei · last 2026-09-04 08:00 ICT · CI first pass 2026-09-04 (tsumugu-core + tsumugu-ed red) | `/workspace/watch/` |
 | Corpus | `9b18c6e9-c273-4156-b09f-2282cc8abb79` | Weekly audit of logos52.github.io. | Mon 09:00 **ICT** (no CRON_TZ) · last 2026-08-31 09:04 ICT | `/workspace/corpus/` |
 | Steward | `dfaa3c60-cde9-49cf-89f9-6433a5d06ea3` | Fleet honesty. Friday report + packets backup. | Fri 10:41 ICT · last report 2026-09-04 10:48 ICT. Weekday backup 18:00 Taipei · last 2026-09-03 17:01 ICT | `/workspace/steward/` (this file) |
-| Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. Pins: All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern, Moon. Naval parked. | Daily 12:00 Taipei (`recap-daily-noon`) · armed 2026-09-04 · no lastRun yet | `/workspace/recap/` |
+| Recap | `f4eac44f-0c8a-4096-8f2b-9c4fd17faade` | Long-form LIST / INGEST / WIKI-on-demand. Pins: All-In, Maxinomics, Justin Sung, Elon sit-downs, Fern, Moon, Frontpage (`@frontpagechannel`). Naval parked. | Daily 12:00 Taipei (`recap-daily-noon`) · armed 2026-09-04 · no lastRun yet | `/workspace/recap/` |
 | Arguments | `678df0e5-698a-40e4-a1a0-e5c993f049dc` | Argument ingest. TRIGGERnometry + a16z full; Asmongold thin. | MWF 12:00 Taipei (`arguments-mwf-noon-ingest`) · armed 2026-09-04 · no lastRun yet | `/workspace/arguments/` |
 | 後台 | `fc5f395c-4305-4cf7-8c19-efd863d34e0f` | Machine behind the cast. Talks to 沈文 in 1:1. | `xingye draw` daily 10:00 Taipei · last 2026-09-04 09:00 ICT. `xingye window` 12:14–23:44 Taipei (:14/:44) · last 2026-09-03 23:01 ICT. **`xingye weather` missing** (profile claims 13:00 Taipei; no `automations/xingye-weather/`). Do not rebuild unless 沈文 says so. | `/workspace/cast/` |
 
@@ -67,6 +67,7 @@ Confirmed **no agent folder** on 2026-09-03. Leftover packet dirs are archive, n
 - Elon sit-down interviews (the interview, not wraps; daily Elon X is not Recap)
 - Fern · `https://www.youtube.com/@fern-tv`
 - Moon · `https://www.youtube.com/@Moon-Real` (first ingest: George Orwell Tried To Warn You, `daQAhruFG40`)
+- Frontpage · `https://www.youtube.com/@frontpagechannel`
 - Naval parked
 
 ### Arguments — `/workspace/arguments-sources.md`
