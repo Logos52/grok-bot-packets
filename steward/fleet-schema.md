@@ -8,6 +8,8 @@ Packets live on the shared computer under `/workspace`, mirrored to https://gith
 
 Standing laws (Steward): report only to Wedge; never modify other bots or their routines; weekly included usage only; public material only; no Firecrawl.
 
+**Priority (Wedge 2026-09-04):** Recap and Field are highest value. Product lock is fine immediately — no three-manual trial gate.
+
 ---
 
 ## Live
