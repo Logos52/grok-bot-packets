@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hajisensai/Fushi/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hajisensai/Fushi/commits/main.atom"/>
+  <title>Recent Commits to Fushi:main</title>
+  <updated>2026-09-06T15:34:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/505068d56230c5068e1a9264fdf1dbe90d0387bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/505068d56230c5068e1a9264fdf1dbe90d0387bf"/>
+    <title>
+        Merge develop into main（同步新图标：兔子 + 薰衣草底）
+    </title>
+    <updated>2026-09-06T15:34:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge develop into main（同步新图标：兔子 + 薰衣草底）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/50f50e2914e670dd7ea728e52a79c9900012dc15</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/50f50e2914e670dd7ea728e52a79c9900012dc15"/>
+    <title>
+        Merge pull request #1261 from hajisensai/worktree-icon-fushi-bunny
+    </title>
+    <updated>2026-09-06T15:32:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1261 from hajisensai/worktree-icon-fushi-bunny
+
+feat(icon): 应用图标换成兔子（薰衣草底 + 投影），下线立绘与透明 wordmark 两档预设&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/95aee16b2931a0da6c6832d67f26b777329ad003</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/95aee16b2931a0da6c6832d67f26b777329ad003"/>
+    <title>
+        feat(installer): 安装向导 hero 插图里的「F」占位方块也换成兔子图标
+    </title>
+    <updated>2026-09-06T15:30:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(installer): 安装向导 hero 插图里的「F」占位方块也换成兔子图标
+
+wizard_mark_*（向导右上角小标）上一条已经换了，但侧栏大图 wizard_hero_* 里还留着
+蓝紫渐变的「F」占位方块——装机时用户第一眼看到的就是它，和其他地方全不一致。
+
+- 方块位置用浅色版自动量出：取中线整行的饱和深紫像素跨度当宽度（可靠），高度按
+  正方形补齐。四个尺寸量到的 side/宽 分别是 0.457 / 0.458 / 0.459 / 0.460，互相印证
+  是同一套比例布局；深浅两版构图相同，复用同一矩形。
+- 新方块额外垫了一层柔和投影：浅色 hero 的底本身就是浅紫，不垫的话薰衣草底图标
+  会和背景糊在一起（官网 hero 的 logo 出于同样原因也带投影）。
+- 核查旧方块残留：浅色四张在图标外圈 6px 内的「饱和深紫」像素数为 0；深色四张的
+  同一判据会被深紫背景本身命中、不作数，改为把最大尺寸 328x628 的图标区域 2x 放大
+  与原图对照肉眼核，方块被完整覆盖、四角无残边。
+- wizard_back_*（1630x1180 背景大图）只是渐变、不含 logo，未改。
+
+Claude-Session: https://claude.ai/code/session_018eaxozM5YzCpBQ9CRAMXWa&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a32b885d650d96d5719f9ea5101b98db19282286</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/a32b885d650d96d5719f9ea5101b98db19282286"/>
+    <title>
+        feat(icon): 应用图标换成兔子（薰衣草底 + 投影），下线立绘与透明 wordmark 两档预设
+    </title>
+    <updated>2026-09-06T15:11:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(icon): 应用图标换成兔子（薰衣草底 + 投影），下线立绘与透明 wordmark 两档预设
+
+图标本体来自 D:\xiaoxiaobot-img\fushi.png（743x503 透明插画），统一构图：
+薰衣草 #E6E2F6 底（取自插画自身的淡紫阴影色）+ 描边色 #383040 的柔和投影，
+兔子占画布宽 0.95。白兔子在纯白底上只剩描边、在小尺寸会糊，投影是把它和底
+分开的关键，不是装饰。
+
+覆盖面：
+- Flutter 资产 assets/meta/{icon,launcher_icon_squircle}.png
+- Android：5 档密度的 legacy mipmap + 自适应前景 ic_launcher_foreground；
+  自适应前景按 108dp 画布 0.63 内缩，兔子本体落在 72dp 安全区内，因此
+  launcher_icon_squircle.xml 去掉了原来的 inset 16%（那是给满幅 wordmark 前景用的）
+- Android 12+ 系统 splash：ic_splash_minimal_foreground 换成无投影版（投影的羽化
+  会把内容宽占比顶过 splash 几何守卫的 0.60 上限），图标圆背景同步改 #E6E2F6，
+  否则白兔子和白圆糊在一起
+- iOS / macOS / Windows(.ico + 安装向导 mark) / Web(favicon + PWA icons)
+- README 的 docs/static-assets/fushi-logo.png
+
+下线两档备选预设（立绘「响·书本精绘」、透明 Hibiki 字标）：
+- 资源、i18n key（icon_full / icon_transparent）、设置页 tile、presetIconAssets 全部移除
+- manifest 里三个退役 activity-alias 的声明**保留**，只把 android:icon 改指向存活的
+  launcher_icon_squircle：老用户若当前启动器正指向其中之一，删掉声明会让升级后
+  launcher 图标直接消失（zero-LAUNCHER）。这是仓库既有的退役先例
+- IconSwitchHelper 的可选档收成 default 一个，migrateRetiredAliasesIfEnabled 把三个
+  退役 alias 的启用态先启用 default 再逐个禁用，迁回默认档
+- 老用户偏好里残留的 hibiki_* key 由 windowIconAssetForPreset / loadAppIconSelection
+  的未知 key 分支归一化到 default，不会去解码已删除的 asset
+
+验证：flutter analyze 无问题；test/tools + test/utils + test/android 1688 条、
+test/settings 等 393 条、图标相关 29 条全绿。
+
+Claude-Session: https://claude.ai/code/session_018eaxozM5YzCpBQ9CRAMXWa&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f3d60b6aafdd5a1f196000eba014703e80382f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/5f3d60b6aafdd5a1f196000eba014703e80382f0"/>
+    <title>
+        Merge pull request #1237 from W1ght/claude/pack-progress-visible
+    </title>
+    <updated>2026-09-06T04:16:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1237 from W1ght/claude/pack-progress-visible
+
+fix(onboarding): 推荐包下载补首页常驻进度入口 + 半截包可见可续（BUG-2165）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b437c453c5f005a03f1a5f974ae28c6b7f593354</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/b437c453c5f005a03f1a5f974ae28c6b7f593354"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/develop&#39; into mq1237b
+    </title>
+    <updated>2026-09-06T04:15:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/develop&amp;#39; into mq1237b
+
+# Conflicts:
+#	docs/BUGS.md
+#	fushi/lib/i18n/strings.g.dart
+#	fushi/lib/i18n/strings.i18n.json
+#	fushi/lib/i18n/strings_ar.i18n.json
+#	fushi/lib/i18n/strings_de.i18n.json
+#	fushi/lib/i18n/strings_es.i18n.json
+#	fushi/lib/i18n/strings_fr.i18n.json
+#	fushi/lib/i18n/strings_id.i18n.json
+#	fushi/lib/i18n/strings_it.i18n.json
+#	fushi/lib/i18n/strings_ja.i18n.json
+#	fushi/lib/i18n/strings_ko.i18n.json
+#	fushi/lib/i18n/strings_nl.i18n.json
+#	fushi/lib/i18n/strings_pt-BR.i18n.json
+#	fushi/lib/i18n/strings_ru.i18n.json
+#	fushi/lib/i18n/strings_th.i18n.json
+#	fushi/lib/i18n/strings_tr.i18n.json
+#	fushi/lib/i18n/strings_vi.i18n.json
+#	fushi/lib/i18n/strings_zh-CN.i18n.json
+#	fushi/lib/i18n/strings_zh-HK.i18n.json&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/547824e3568779d665eb9c3374532a4a7bba0188</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/547824e3568779d665eb9c3374532a4a7bba0188"/>
+    <title>
+        Merge pull request #1233 from hajisensai/fix/gal-exe-level-identity-g…
+    </title>
+    <updated>2026-09-06T04:14:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1233 from hajisensai/fix/gal-exe-level-identity-gates
+
+fix(gal): 经典 KAG3 游戏内查词从零到端到端可用；四个引擎去掉 exe 名门&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad6b50fc7aaed1c2b16cef626910a89fa6f9008b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/ad6b50fc7aaed1c2b16cef626910a89fa6f9008b"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/develop&#39; into mq1233c
+    </title>
+    <updated>2026-09-06T04:14:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/develop&amp;#39; into mq1233c
+
+# Conflicts:
+#	docs/BUGS.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8ccbe59e1648897263a945c0a5f474a574bca80</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/e8ccbe59e1648897263a945c0a5f474a574bca80"/>
+    <title>
+        Merge pull request #1231 from W1ght/pr/asr-transcribe
+    </title>
+    <updated>2026-09-06T03:12:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1231 from W1ght/pr/asr-transcribe
+
+feat(audiobook): 有声书设备端 ASR 转录生成字幕（日语 ReazonSpeech / 英语 LibriHeavy + DirectML）+ 匹配器起点/PCM 章节轨/schema v96 修复&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b55138d4d0fb3eee116babfacd8699e7625aaaa2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/b55138d4d0fb3eee116babfacd8699e7625aaaa2"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/develop&#39; into mq1237
+    </title>
+    <updated>2026-09-06T01:53:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/develop&amp;#39; into mq1237
+
+# Conflicts:
+#	fushi/lib/i18n/strings.g.dart
+#	fushi/lib/i18n/strings.i18n.json
+#	fushi/lib/i18n/strings_ar.i18n.json
+#	fushi/lib/i18n/strings_de.i18n.json
+#	fushi/lib/i18n/strings_es.i18n.json
+#	fushi/lib/i18n/strings_fr.i18n.json
+#	fushi/lib/i18n/strings_id.i18n.json
+#	fushi/lib/i18n/strings_it.i18n.json
+#	fushi/lib/i18n/strings_ja.i18n.json
+#	fushi/lib/i18n/strings_ko.i18n.json
+#	fushi/lib/i18n/strings_nl.i18n.json
+#	fushi/lib/i18n/strings_pt-BR.i18n.json
+#	fushi/lib/i18n/strings_ru.i18n.json
+#	fushi/lib/i18n/strings_th.i18n.json
+#	fushi/lib/i18n/strings_tr.i18n.json
+#	fushi/lib/i18n/strings_vi.i18n.json
+#	fushi/lib/i18n/strings_zh-CN.i18n.json
+#	fushi/lib/i18n/strings_zh-HK.i18n.json&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d14479ed7bb920d43f5c6c2f1c32c9363ce6129a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/d14479ed7bb920d43f5c6c2f1c32c9363ce6129a"/>
+    <title>
+        fix(onboarding): 取消判据认全三种形态；进度入口守卫从恒真改成真钉
+    </title>
+    <updated>2026-09-06T01:52:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(onboarding): 取消判据认全三种形态；进度入口守卫从恒真改成真钉
+
+审查查出的两条，都在本 PR 自己新增的可见面上。
+
+**① 主线路的「用户取消」被判成失败，而本 PR 恰恰把失败原因做成了常驻可见**
+
+真实下载**默认走分片路**（`recommended_pack.dart`：`_resolvePlan` 能解出计划就
+`_downloadSegmented`，解不出才退单流），而分片路取消抛的是
+`SegmentedDownloadCancelledException`（一个普通 Exception），**不是** `DioError`。
+`start()` 却只在 `on DioError` 分支里放行取消，于是分片路的取消落进兜底 `catch`
+→ `_failWith(e.toString())`。
+
+用户点「取消」→ 红 toast「推荐包下载失败：SegmentedDownloadCancelledException」；
+本 PR 之后阶段落到 `paused`，于是新增的设置行 paused 分支与迷你条 `_failure`
+把这个 Dart 类名当「失败原因」渲染出来。PR 的目标是「失败原因就地显示」，第一个
+显示出来的就是把用户主动取消翻译成一个异常类名。
+
+判据收成 `_isCancellation(error, token)` 三条，缺一不可：分片路的专用异常、
+单流路的 `DioError(type: cancel)`、以及 `cancelToken.isCancelled`（下载体在两条
+已知路径之外响应取消时的兜底）。
+
+测试为什么没抓到：原用例的替身抛的是 `DioError(type: cancel)` —— 那是**兜底单流
+路**的形状，于是「用户取消不算失败」这条断言跑在一个生产上根本走不到的分支上，
+恒绿。补两条：分片路专用异常、以及「token 已取消 + 任意异常形态」。
+变异实测：把判据退回只认 DioError → 新增两条立刻红，原来那条照样绿（正说明它
+覆盖不到真实路径）。
+
+**② 新增守卫里有一条恒真断言**
+
+`recommended_pack_background_download_guard_test.dart` 的「存在跨全部 home tab 的
+常驻进度入口」用 `expect(home.contains(&amp;#39;_bodyWithMiniBar&amp;#39;), isTrue)`，而
+`_bodyWithMiniBar` 在本条 bug 之前就存在——这条在改动前同样为真，一个像素都没守
+住；把 `RecommendedPackDownloadMiniBar()` 挪进只有移动端那一支，两条断言照样全绿。
+
+改成钉「迷你条在那个共用点的**函数体里**」+「共用点至少被三套布局各调用一次」。
+窗口取到函数体结束，不用「锚点 + 固定字符数」——本仓刚在 PR#1230 上因为那种写法
+红过一次 CI。变异实测：把迷你条移出共用点、只留移动端一支 → 该守卫立刻红。
+
+验证：`flutter analyze` 全量 No issues；`test/onboarding` + `test/settings` +
+四条 home 定向共 551 tests 全过。
+
+（审查里另外两条——`dispose()` 对 in-flight 进度回调的收口、半截包没有「删掉/
+别再问」的出口——不在本次修复范围，已在 PR 评论里留作跟进。）
+
+Claude-Session: https://claude.ai/code/session_01J9c2xkytFudNrzzsoZDZzx&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/31be5bd573855f73ea6c1a85709009a9ace60374</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/31be5bd573855f73ea6c1a85709009a9ace60374"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/develop&#39; into mq1233b
+    </title>
+    <updated>2026-09-06T01:46:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/develop&amp;#39; into mq1233b
+
+# Conflicts:
+#	docs/BUGS.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/562e29061d7d1efa57d142cfab28c098a6865931</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/562e29061d7d1efa57d142cfab28c098a6865931"/>
+    <title>
+        fix(gal): 风险门去掉后把三处「守卫还在、被守的行为没了」一并收干净
+    </title>
+    <updated>2026-09-06T01:46:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(gal): 风险门去掉后把三处「守卫还在、被守的行为没了」一并收干净
+
+审查查出的三条阻断（BUG-2154 把逐 exe 裸左击风险门整个去掉之后的收尾）。
+
+**① 打红了一个不在本 PR 内的测试文件（3/3 全挂）**
+`needsUnsafeRiskAcceptance` 被写成硬编码 `false`，而未被本 PR 修改的
+`test/pages/gal_capture_setup_lookup_priority_test.dart` 用的是真 controller、
+断言 `isTrue`。实测 `FLUTTER TEST VERDICT: FAILED - 3 error event(s)`。
+
+改法不是把断言翻个面了事：
+
+- 恒 false 改成**派生自单一真相源** `!_unsafeLeftClickAlwaysAccepted`。硬编码
+  false 会让「改一个常量」变成「先考古哪些分支已经死了」；派生写法下，这道门若
+  将来按引擎/按遮罩层结论重开一部分，索要确认、令牌校验、profile 回写整条链仍
+  然是接好的。
+- 用例 1「风险请求把捕获设置弹窗顶掉」整个前提没了，反向成守新契约：会话活跃后
+  request 恒 null、**用户打开的弹窗留在原地**、确认按钮不出现。这两条正是用户
+  抱怨的症状（每个游戏每次启动都被顶一次，而游戏里没有任何提示指向那个按钮），
+  反向之后就是那道门不许悄悄回来的锚。
+- 用例 2/3 守的是「已经被关掉的弹窗留下的排队自动关闭，不得把它下面那层工作台
+  路由也弹掉」——这个回归与风险门无关，只是原来借它触发。改由**选中文本线程**
+  （这条路径现存的唯一触发者）驱动，覆盖没有随门一起丢。
+- `gal_capture_setup_dialog.dart` 里「风险确认要来了，弹窗自动让位」那条 else-if
+  恒不可达，删掉；`yieldingToRiskConsent` 参数保留（门若重开只是接回一个
+  else-if）。对应守卫同步反向：build 里**不许**再引用 `needsUnsafeRiskAcceptance`、
+  `yieldingToRiskConsent: true` 的调用点数 1 → 0。
+
+**② BUG 文档与代码自相矛盾**
+`docs/bugs/BUG-2154-*.md` 结尾还写着 `[ ] ① 未修复`「先不动手：这三条是产品语义
+决策」，而同一个 PR 已经实现了三个候选之外的第四种。两个 `[ ]` 勾成 `[x]` 并写清
+取了哪条路、为什么不是「删掉这个概念」（`riskAccepted` 要作为 `allow_risk` 走
+IPC 到遮罩层契约）、以及原三条候选没被否定只是不再是本条的前置。
+
+**③ `engine-support.yaml` 的 15 处证据句已成假话**
+每条都写着 &amp;quot;Per-executable risk gating is implemented&amp;quot;，而本 PR 恰恰删掉了它。
+按 CLAUDE.md，这个文件是支持状态的唯一真相源，改了能力语义必须同 PR 更新。
+13 处同形替换 + 2 处单独改写：其中 2026-09-03 那条真机读数保留原文并注明「测的
+是那道门还在时的状态」，且指出唯一那次泄漏坐在「接受风险」这个转换本身上、而该
+转换现在不再发生，被它测到的 shield pair 未变。改完 `docs/engine-support.md`
+由 `tools/generate_engine_support.py` 重新生成（守卫做逐字比对）。
+
+验证：
+- `native/galgame_hook/tests/*_test.py` 全 11 套 OK（含逐字比对生成物那条）；
+- `flutter analyze` 全量 No issues；
+- `test/pages` + `test/lookup` + `test/mining` 共 5417 tests 全过
+  （原先必红的三条现在是 `queued auto-close ...` / `no longer demands ...`）。
+
+Claude-Session: https://claude.ai/code/session_01J9c2xkytFudNrzzsoZDZzx&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b471f4adfd60a4e93694d61f644e195e2a0502ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/b471f4adfd60a4e93694d61f644e195e2a0502ef"/>
+    <title>
+        fix(asr): GPU 静态桶的三条 P0——vendored delta 登记 + 白名单能力门 + 只预热最小桶
+    </title>
+    <updated>2026-09-06T01:19:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(asr): GPU 静态桶的三条 P0——vendored delta 登记 + 白名单能力门 + 只预热最小桶
+
+审查 `d27c7668`（GPU 编码器静态 shape 桶）查出的三条阻断，加两条同轮修的。
+
+**P0-1 vendored delta #8 既没进 PATCHES.md 也没有守卫**，而且让 PATCHES.md
+现有三句变成假话：「The Dart API under `lib/` is byte-for-byte upstream」
+（`lib/src/ort_session.dart` 已改）、「the Windows tree carries deltas 6 and 7」
+（现在三处）、「re-apply deltas #1–#6」（照做会把 delta 7 和 8 一起丢）。
+
+失败形态是**完全静默的性能塌方**：升级上游时只捞回 Dart 那半（不补会编译错，
+很响），漏掉 C++ 那 25 行——Dart 照常把 `freeDimensionOverrides` 塞进 map，
+插件不再读它，会话退回动态 shape；而动态 shape 照单全收静态形状的张量，
+结果逐字正确、`AsrDecodeStats.staticBatches` 照样把这些批记成 static，
+只是编码器慢 5~7 倍。没有异常、没有日志，没有任何别的测试会红。
+
+修：PATCHES.md 补 delta #8 全文（含「为什么必须由 Dart 侧按 EP 门控」）、
+改掉那三句、re-vendor 清单 #1–#6 → #1–#8；新增守卫
+`test/onnx/onnxruntime_free_dimension_override_guard_test.dart` 钉住两半 +
+PATCHES.md 的编号（变异实测：摘掉 C++ 侧调用 → 该守卫立刻红）。
+
+**P0-2 `prewarm()` 让「按需惰性建」这句注释当场失效，且无显存/时长门控。**
+`asr_engine.dart` 上一行注释写「桶按需惰性建，这里只装池子」，下一行就把两个桶
+全建了。每桶常驻一份 fp32 权重 + 融合图一次性分配的全部中间张量（作者实测
+E2E 峰值 6.6~7.6 GB，在 12 GB 卡独占下）。显存不足时 DirectML **不抛异常**——
+它溢出到主机内存，表现是 RSS 暴涨到被系统杀掉（作者自己在 T=2100 那档踩过），
+`markUnavailable` 这条回退路径根本照不到。改成 `prewarmSmallest()`：只预热最小
+桶，大桶留给真出现长段时按需建；短素材因此只建一个会话。
+
+**P0-3 能力门写成黑名单。** `effective != OnnxExecutionProvider.cpu` 改成白名单
+`kAsrStaticBucketProviders.contains(effective)`（当前只有 directml）。
+`freeDimensionOverrides` 只有 vendored 插件的 Windows 半读，别的平台插件收到直接
+忽略。一旦按 BUG-1613 把 CoreML 打开，黑名单写法会让 Apple 端拿到一个「桶建得成、
+run 也不失败（动态 shape 收得下静态形状）、零收益、且永远不触发回退」的池子：
+多占两份编码器权重、x 白 pad 到桶的 T、VAD 还被砍到 10 s。
+
+**P1-4 静态路径的输出契约校验在 try 外**（`asr_transducer_decoder.dart`）：
+try 只包住 `.run()`，紧跟的 `_require(encOut, ...)` 与 `shape[0] != rows` 的
+`StateError` 都在外面。融合图少给一个输出 key 或行数对不上——正是全新代码路径
+最可能出问题的地方——本该「标桶不可用 + 回退动态」，实际会把整条转录任务抛异常
+终止，与设计意图相反。校验并进 try。
+
+**P1-7 段上限与桶容量的余量没有账本**：新增守卫
+`test/asr/asr_static_bucket_segment_budget_guard_test.dart`。
+`kAsrStaticMaxSegmentMs` 在 buckets、`speechPadMs`/`minSilenceMs` 在 VAD、
+桶表又在 buckets，三处分开；当前余量 42 帧（最长段 10782 ms = 1078 帧 vs 桶
+1120 帧）。掉出桶不会崩、不报错、没有日志，只是 5~7 倍收益无声消失。
+守卫把三者钉在一起并顺带钉住「桶表升序」（`prewarmSmallest` 取 `buckets.first`）。
+变异实测：`speechPadMs` 改成 950 → 报 `11232ms = 1123 帧 &amp;gt; 1120 帧`。
+（审查里说 500→550 就会掉出去，实测不对：阈值是 913，注释按实测写。）
+
+验证：`flutter analyze` 全量 No issues；`test/asr` + `test/onnx` + `test/ocr` +
+`test/media/audiobook` 共 1383 tests 全过。
+
+Claude-Session: https://claude.ai/code/session_01J9c2xkytFudNrzzsoZDZzx&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0ad6167225ef3f0b9348f993f390fc1a8971a706</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/0ad6167225ef3f0b9348f993f390fc1a8971a706"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/develop&#39; into mq1231b
+    </title>
+    <updated>2026-09-06T00:08:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/develop&amp;#39; into mq1231b
+
+# Conflicts:
+#	docs/BUGS.md
+#	fushi/lib/i18n/strings.g.dart
+#	fushi/lib/i18n/strings.i18n.json
+#	fushi/lib/i18n/strings_ar.i18n.json
+#	fushi/lib/i18n/strings_de.i18n.json
+#	fushi/lib/i18n/strings_es.i18n.json
+#	fushi/lib/i18n/strings_fr.i18n.json
+#	fushi/lib/i18n/strings_id.i18n.json
+#	fushi/lib/i18n/strings_it.i18n.json
+#	fushi/lib/i18n/strings_ja.i18n.json
+#	fushi/lib/i18n/strings_ko.i18n.json
+#	fushi/lib/i18n/strings_nl.i18n.json
+#	fushi/lib/i18n/strings_pt-BR.i18n.json
+#	fushi/lib/i18n/strings_ru.i18n.json
+#	fushi/lib/i18n/strings_th.i18n.json
+#	fushi/lib/i18n/strings_tr.i18n.json
+#	fushi/lib/i18n/strings_vi.i18n.json
+#	fushi/lib/i18n/strings_zh-CN.i18n.json
+#	fushi/lib/i18n/strings_zh-HK.i18n.json&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d36f915e1e4d2a7c62a38aa10c111a7ff1b6cf11</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/d36f915e1e4d2a7c62a38aa10c111a7ff1b6cf11"/>
+    <title>
+        Merge pull request #1234 from hajisensai/worktree-video-row-thumb-sma…
+    </title>
+    <updated>2026-09-05T22:08:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1234 from hajisensai/worktree-video-row-thumb-smaller
+
+fix(video): 首页横滚行缩略图调小（横卡不再撑到竖卡目标宽的 8/3 倍）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b82712996656b51f7c354ee7e440e2d22bb0b489</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/b82712996656b51f7c354ee7e440e2d22bb0b489"/>
+    <title>
+        Merge pull request #1230 from hajisensai/worktree-mdx-streaming-import
+    </title>
+    <updated>2026-09-05T21:55:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/140939964?s=30&amp;v=4"/>
+    <author>
+      <name>hajisensai</name>
+      <uri>https://github.com/hajisensai</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1230 from hajisensai/worktree-mdx-streaming-import
+
+fix(dict): MDX 导入全程流式化，修 iOS 大词典导入被 jetsam 杀（BUG-2160）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74dc1b3ad781b9ad1cbec759bda456520e34d17c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/74dc1b3ad781b9ad1cbec759bda456520e34d17c"/>
+    <title>
+        ci: 触发 PR 检查（前两次 push 未生成 check-run）
+    </title>
+    <updated>2026-09-05T21:55:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/63065966?s=30&amp;v=4"/>
+    <author>
+      <name>W1ght</name>
+      <uri>https://github.com/W1ght</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: 触发 PR 检查（前两次 push 未生成 check-run）
+
+Claude-Session: https://claude.ai/code/session_01XTrzQH1F4Qi7kZ3FLPbkSU&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d00a2af82d257af8fc5265f81031bafc9edbbde</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/7d00a2af82d257af8fc5265f81031bafc9edbbde"/>
+    <title>
+        fix(asr): 偏好键 asr_transcribe_language 登记进注册表（CI preference_keys_guard 红）
+    </title>
+    <updated>2026-09-05T21:54:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/63065966?s=30&amp;v=4"/>
+    <author>
+      <name>W1ght</name>
+      <uri>https://github.com/W1ght</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(asr): 偏好键 asr_transcribe_language 登记进注册表（CI preference_keys_guard 红）
+
+Claude-Session: https://claude.ai/code/session_01XTrzQH1F4Qi7kZ3FLPbkSU&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d27c7668e484ccc0f9ae36926270b14ea2a656ac</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hajisensai/Fushi/commit/d27c7668e484ccc0f9ae36926270b14ea2a656ac"/>
+    <title>
+        perf(asr): GPU 编码器改静态 shape 桶（DirectML 整图融合），30 分钟英语 7.2 s（约 250×）
+    </title>
+    <updated>2026-09-05T21:51:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/63065966?s=30&amp;v=4"/>
+    <author>
+      <name>W1ght</name>
+      <uri>https://github.com/W1ght</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(asr): GPU 编码器改静态 shape 桶（DirectML 整图融合），30 分钟英语 7.2 s（约 250×）
+
+调查（RTX 4070 Ti，ORT 1.22 DirectML，独占 GPU）：
+- 动态 shape 下 zipformer 编码器每次 Run 有 ~400 ms 固定开销、随 T² 恶化，
+  GPU 利用率只有 11%：图里四千多个节点每次 run 在 CPU 侧重规划，形状算术
+  节点落在 CPU。两个会话并发 Run 在 DML 上直接崩；分块 + 重叠上下文拼接
+  encoder_out 与整段编码不一致（非流式 zipformer 不能拼）；CUDA EP 需随包
+  1.5 GB 且实测无收益——三条路都放弃。
+- `AddFreeDimensionOverrideByName` 把 N/T 钉死后 ORT 能整图融合：N=32/T=550
+  129k 帧/s、N=16/T=1100 117k 帧/s，动态只有 20~35k；输出与动态会话逐元素
+  一致（&amp;lt;1e-5）。
+
+实现：
+- vendored `flutter_onnxruntime` 加 `OrtSessionOptions.freeDimensionOverrides`
+  （Windows C++ 经 `Ort::GetApi().AddFreeDimensionOverrideByName`，C++ wrapper
+  没暴露该方法；其它平台忽略）；`OnnxSessionFactory.createSession` 透传。
+- `asr_encoder_buckets.dart`：惰性建桶的 `AsrStaticEncoderPool`（32×560、
+  16×1120），装载后预热，建失败或运行期失败标不可用并回退动态会话；桶只给
+  GPU EP。
+- 导出图用 `x_lens.max()` 造注意力掩码，静态图下 `max(x_lens) &amp;lt; T` 会让 DML
+  的 Where 报 E_INVALIDARG（T-10 失败、任一行 = T 即过）：每批留一行哨兵填充
+  行 `x_lens = T`，真实行封顶 N-1（`AsrBatchShaper.batchCapFor`，任务侧攒够
+  就发、不再按音频预算切）。
+- 融合图把全部中间张量一次分配、各桶池子常驻，T=2100 的桶跑一次主机 RSS
+  涨 8 GB（测试进程被系统杀掉）：静态模式 VAD 段上限 20 s → 10 s
+  （`kAsrStaticMaxSegmentMs`），桶表只留两档，E2E 峰值显存 6.6~7.6 GB。
+- `AsrDecodeStats.staticBatches` 记走静态桶的批数；E2E bench 打印桶不可用原因。
+
+真机（独占 GPU，块长 300 s）：
+| | 动态（此前） | 静态桶 |
+|---|---|---|
+| 英语 30 分钟 | — | wall 7.2 s，RTF 0.004（约 250×） |
+| 英语 10 分钟 | 4.7 s | 3.5 s（含 ~3 s 建桶） |
+| 日语 10 分钟 | 4.3 s | 4.3 s（含 ~5 s 建桶） |
+匹配率不变：英语 10 分钟 144/145、30 分钟 471/475。
+
+Claude-Session: https://claude.ai/code/session_01XTrzQH1F4Qi7kZ3FLPbkSU
+(cherry picked from commit af6458403fe22ea175ed7a12efdb361379bff81b)&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

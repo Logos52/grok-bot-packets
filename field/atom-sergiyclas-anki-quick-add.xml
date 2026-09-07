@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/sergiyclas/anki-quick-add/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/sergiyclas/anki-quick-add/commits/main.atom"/>
+  <title>Recent Commits to anki-quick-add:main</title>
+  <updated>2026-09-04T19:15:33Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0ddc52cdda0c800a1b83e4e38a36ca5515251380</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/0ddc52cdda0c800a1b83e4e38a36ca5515251380"/>
+    <title>
+        chore: tell a broken language pack from the wrong one
+    </title>
+    <updated>2026-09-04T19:15:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: tell a broken language pack from the wrong one
+
+When the pair is not English, the Test button also translates the English word
+through the same pair. If the English word comes back correct while the source
+one does not, the model in use is not the one that was asked for.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/144075df2750e6cb8866085ea8f30790a26edca5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/144075df2750e6cb8866085ea8f30790a26edca5"/>
+    <title>
+        fix: test the offline translator with a word it can actually read
+    </title>
+    <updated>2026-09-04T19:10:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: test the offline translator with a word it can actually read
+
+The Test button always sent the English &amp;quot;lighthouse&amp;quot;, so with the pair set to
+French it fed a French-to-Ukrainian model an English word and Chrome answered
+&amp;quot;Other generic failures occurred&amp;quot;. Every language in the table now carries a
+sample word, and the button uses the one for the source language.
+
+A device translation that fails also marks the pair as not ready again, so the
+extension stops treating a broken pack as usable.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/81672a7d3f896c2d432da2e116176489c2070f1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/81672a7d3f896c2d432da2e116176489c2070f1f"/>
+    <title>
+        docs: refresh the testing section and the store kit for 2.2.0
+    </title>
+    <updated>2026-09-04T19:05:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: refresh the testing section and the store kit for 2.2.0
+
+The badge and the check line still claimed the old test counts, the e2e
+description predated the queue and the offscreen translator, and the release tag
+in the submission kit still said 2.1.0. The sense evaluation harness is now
+documented next to the other test commands.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bccce0b689954be4591e4642dc24e198c1b4fa5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/2bccce0b689954be4591e4642dc24e198c1b4fa5"/>
+    <title>
+        fix: two defects found by a 100-sentence evaluation
+    </title>
+    <updated>2026-09-04T18:59:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: two defects found by a 100-sentence evaluation
+
+Ran 100 word-in-sentence cases through the extension and read every answer.
+86 were right, and two defects showed up repeatedly:
+
+- a short candidate could not match its own inflected form, so &amp;quot;бас&amp;quot; lost to
+  the derived adjective &amp;quot;басовий&amp;quot; even though the plain translation was
+  already correct. Short words may now take an ending (but &amp;quot;рак&amp;quot; is still not
+  &amp;quot;ракета&amp;quot;), and among stem matches the form closest to the one used in the
+  sentence wins.
+- the window diff kept three-letter function words, turning &amp;quot;flu shot&amp;quot; into
+  &amp;quot;щеплення від&amp;quot;; leftovers now need four letters.
+
+The cases and the harness are kept so the heuristic can be re-measured:
+scripts/sense-eval.mjs with tests/fixtures/sense-cases.json.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ea9a8dfadb5f97c3ca58d700a33a71155a0420c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/1ea9a8dfadb5f97c3ca58d700a33a71155a0420c"/>
+    <title>
+        fix: a word whose sense is not in the dictionary at all
+    </title>
+    <updated>2026-09-04T17:24:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: a word whose sense is not in the dictionary at all
+
+Selecting &amp;quot;facing&amp;quot; in a sentence gave &amp;quot;облицювання&amp;quot;: the dictionary offers
+only nominal senses for that form, so there was no candidate to match and the
+bubble kept the sense-blind translation.
+
+When no candidate fits, the sentence is now asked directly: a window of two
+words on each side is translated with and without the selected word, and what
+the translation loses is the reading in context. Measured, not guessed - a whole
+sentence is useless (the translator rebuilds the missing word) and one neighbour
+is too little (&amp;quot;run for office&amp;quot; falls back to the literal &amp;quot;бігти&amp;quot;). A leftover
+that is just the usual translation is rejected, so &amp;quot;lighthouse&amp;quot; stays &amp;quot;маяк&amp;quot;.
+
+facing -&amp;gt; стикалися, run -&amp;gt; балотуватися, light -&amp;gt; розпалити, book -&amp;gt; забронюйте,
+while bat, spring, harbor and lighthouse keep the answers they already had.
+These readings are inflected forms, so they stay in the bubble and never reach a
+card, which still takes lemmas only.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54f4dcefa658bfad13c9e3c6e3415e2b59b1460c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/54f4dcefa658bfad13c9e3c6e3415e2b59b1460c"/>
+    <title>
+        fix: a language pack that landed is not a failed download
+    </title>
+    <updated>2026-09-04T17:09:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: a language pack that landed is not a failed download
+
+Chrome can reject Translator.create() right after installing the pack, which
+left the settings showing &amp;quot;ready, works offline&amp;quot; next to a download error. The
+state is now what decides: if availability says available afterwards, the
+download counts as done. The offscreen document retries create() once for the
+same reason, and a Test button translates a word through the on-device model so
+the whole offline path can be verified in one click.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c12a3efd9742f0a8b73415c62c79caec12c52e78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/c12a3efd9742f0a8b73415c62c79caec12c52e78"/>
+    <title>
+        docs: refresh the screens and the tour for the contextual bubble
+    </title>
+    <updated>2026-09-04T11:31:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: refresh the screens and the tour for the contextual bubble
+
+- Re-captured the selection bubble (it now shows битка with usually: кажан)
+  and the Generation tab with the offline-translation block; capture.ts waits
+  for the second line so a future run keeps the same shot.
+- Store screenshot 3 tells the sense story and uses the bubble itself.
+- Feature tour segment 04 rewritten around the new bubble; README, the video
+  script and the YouTube kit follow.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8920200e4e181d7ab767091cda6c48c6891860ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/8920200e4e181d7ab767091cda6c48c6891860ca"/>
+    <title>
+        feat: sense in context and on-device translation fallback
+    </title>
+    <updated>2026-09-04T10:33:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: sense in context and on-device translation fallback
+
+- Selecting a word now translates the sentence around it and picks the
+  dictionary sense that shows up in that translation, so &amp;quot;bat&amp;quot; on a baseball
+  page gives the bat you swing. The usual meaning stays on a second line, and
+  the same sense goes first on the card built by the Free provider.
+- The gtx parser keeps the candidate senses (term, back-translations, score)
+  that dt=bd already returned and the old code threw away.
+- Chrome&amp;#39;s built-in Translator API runs in a new offscreen document and answers
+  when the online endpoint cannot be reached; the language pack is downloaded
+  from the options page, which is the only context with a user gesture.
+- ping only reads the cached availability, so opening the popup never creates
+  the offscreen document; the document closes after five idle minutes.
+- e2e now degrades to a clear SKIP when Anki is not running.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6397acca76f90abf459e33cec62cb6702c976716</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/6397acca76f90abf459e33cec62cb6702c976716"/>
+    <title>
+        feat: a proper queue view in the popup
+    </title>
+    <updated>2026-09-01T18:36:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: a proper queue view in the popup
+
+- New Queue tab (with a count badge) lists every waiting card: word,
+  translation, the media it carries, how long it has waited, and a cross to
+  drop one. Add now writes them all; the settings keep only the toggle.
+- The toolbar icon shows the number of waiting cards.
+- Screenshots, store assets and the feature tour cover the queue: the video
+  gains segment 09 (2:06), the store screenshot set swaps the editor for it.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46d15860cd6ba319c8ec49c4e33c1bd847c417b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/46d15860cd6ba319c8ec49c4e33c1bd847c417b7"/>
+    <title>
+        feat: offline queue so cards can be added while Anki is closed
+    </title>
+    <updated>2026-09-01T18:14:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: offline queue so cards can be added while Anki is closed
+
+- A card is generated in full even when AnkiConnect is unreachable and parked
+  in IndexedDB (media as Blobs, ~150 KB per card, 300 max); it is written to
+  Anki on a five-minute alarm, at browser start, or from the new button in the
+  popup and in Settings &amp;gt; General.
+- The duplicate check and the note type are resolved when the card is written,
+  not when it is queued; each item remembers the Anki profile it was meant for
+  and waits for that profile.
+- Fix: an empty deck coming from a popup that had not finished its first ping
+  fell through the ?? fallback and reached AnkiConnect as an empty deck name.
+- Adds the alarms and unlimitedStorage permissions; version 2.1.0.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b301bd2ba7982e2aa7caf20944ec09abb8a095d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/b301bd2ba7982e2aa7caf20944ec09abb8a095d0"/>
+    <title>
+        chore: YouTube channel art and upload kit
+    </title>
+    <updated>2026-09-01T13:45:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: YouTube channel art and upload kit
+
+- art/channel-mark.svg: a jigsaw-piece mark for the channel, distinct from the
+  extension icon.
+- scripts/youtube-assets.mjs renders banner (2560x1440, text inside the 1546x423
+  safe box), avatar, transparent watermark and the 1280x720 video thumbnail.
+- youtube/channel.md: channel description in English and Ukrainian, links,
+  video title, description with chapters, tags and the upload settings.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f6caa097a27c228506d0631f25df2159f7f959b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/f6caa097a27c228506d0631f25df2159f7f959b9"/>
+    <title>
+        chore: Web Store submission kit and key-free store package
+    </title>
+    <updated>2026-09-01T13:29:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: Web Store submission kit and key-free store package
+
+- scripts/zip.mjs packs a copy of dist/ with the manifest key removed: the
+  store rejects a new item whose manifest carries a key and issues its own.
+- store/listing.md restructured into the submission kit: account prerequisites,
+  package notes, every Store listing / Privacy practices / Distribution field
+  with copy-ready values, reviewer notes, post-publish steps.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13212825c577329e66bf2f8767e5c57f2acfefb2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/13212825c577329e66bf2f8767e5c57f2acfefb2"/>
+    <title>
+        chore: store-ready manifest description and privacy policy
+    </title>
+    <updated>2026-09-01T13:18:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: store-ready manifest description and privacy policy
+
+- manifest description shortened to 132 characters or less in all 12 locales
+  (the Web Store rejects longer ones) and now mentions the keyless mode.
+- homepage_url added to the manifest.
+- PRIVACY.md covers the Free provider sources, the instant translation, the
+  selection bubble, promo codes and the optional broad host permission.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab58634b8c1c7b721c3e33023ad3cc8ec11b50e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/ab58634b8c1c7b721c3e33023ad3cc8ec11b50e4"/>
+    <title>
+        docs: re-capture screenshots and the demo video with the General tab
+    </title>
+    <updated>2026-09-01T12:51:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: re-capture screenshots and the demo video with the General tab
+
+- scripts/capture.ts shoots Settings &amp;gt; General twice (schedule row visible,
+  then dark) -&amp;gt; docs/10-options-general.png and the video raw frames.
+- Feature tour gains segment 08 (interface language and theme); batch and CTA
+  renumbered; README gif/mp4, store screenshots and docs/ re-rendered.
+- Instant settings (language, theme, promo code) persist through applyNow and
+  no longer flag the options form as unsaved.
+- README: General section, screenshot, test count and video length.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1e5de4ca0840148752606e2d3166926800245bea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/1e5de4ca0840148752606e2d3166926800245bea"/>
+    <title>
+        feat: interface language override and light/dark/scheduled theme
+    </title>
+    <updated>2026-09-01T12:33:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: interface language override and light/dark/scheduled theme
+
+- Settings &amp;gt; General (renamed from Backup): pick the UI language (auto or any
+  of the 12 bundled locales) and the interface theme (same as browser, light,
+  dark, or dark between two times). Both apply immediately without Save.
+- Own messages.json loader with chrome.i18n-compatible placeholder expansion;
+  the service worker (context menu, toasts) and the selection bubble follow it.
+- base.css tokens resolve from data-theme; the bubble computes its own mode.
+- e2e: language switch to German and forced dark theme; unit tests for the
+  message formatter and the schedule resolver.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b851abbb68bf72608710e1cef4efeaa96ad96d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/2b851abbb68bf72608710e1cef4efeaa96ad96d8"/>
+    <title>
+        feat: keyless Free provider and Pro tier unlocked by promo codes
+    </title>
+    <updated>2026-09-01T12:15:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: keyless Free provider and Pro tier unlocked by promo codes
+
+- Free provider (now the default): cards built without any API key from
+  Google Translate dictionary data (translations, part of speech,
+  synonyms, definitions, examples), dictionaryapi.dev (IPA, definitions,
+  examples for English) and the Tatoeba corpus (example sentences with
+  translations); the structured request now carries word, context,
+  languages and generation settings so non-LLM adapters can work
+- promo codes compared by SHA-256 unlock a Pro tier: mnemonic and
+  etymology slots on cards, TTS audio for every example sentence, three
+  card themes for the built-in note type, parallel additions in List
+  mode (2 on Pro, 3 on Founder)
+- built-in note type gains Mnemonic, Etymology and ExamplesAudio fields;
+  existing installs are upgraded in place (fields added, templates
+  refreshed)
+- options UI: Free provider, Pro block, theme picker, promo code entry
+  and batch concurrency; 26 new strings in all 12 locales
+- e2e adds a real card through the Free provider with no key&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c457d51072560fc0b01fd3aca4e89f9509981ad4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/c457d51072560fc0b01fd3aca4e89f9509981ad4"/>
+    <title>
+        chore: ignore the generated subtitle file
+    </title>
+    <updated>2026-09-01T11:55:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: ignore the generated subtitle file&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab5f15dde84e42a15925a666c5f94865a7660625</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/ab5f15dde84e42a15925a666c5f94865a7660625"/>
+    <title>
+        docs: README in the house style, CI workflow, demo video, store listi…
+    </title>
+    <updated>2026-09-01T11:54:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: README in the house style, CI workflow, demo video, store listing assets
+
+- README rewritten to the repository format: tech stack badges, demo GIF
+  and video, per-screen walkthrough, quick start, features, architecture,
+  configuration, testing
+- GitHub Actions CI: typecheck, unit tests, build, dist checks, zip artifact
+- scripts/capture.ts drives the built extension against a real Anki and a
+  real provider and captures every UI state (docs/ and video/raw/)
+- promo-video pipeline: script, frames, edge-tts narration, ffmpeg build
+  (video/); docs/demo.mp4 (720p) and docs/demo.gif
+- store/: listing text with permission justifications, five 1280x800
+  screenshots, 440x280 and 1400x560 promo tiles, 512/1024 icons
+- http: one retry on transient 502/503/529 with a readable message;
+  Gemini default model switched to gemini-3.5-flash
+- live provider tests behind AQA_LIVE=1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/44f9378812cf5790e7a6b71753d67df98b02963e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/44f9378812cf5790e7a6b71753d67df98b02963e"/>
+    <title>
+        chore: normalize line endings to LF
+    </title>
+    <updated>2026-09-01T11:21:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: normalize line endings to LF&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a954a1eb8b126cdb94e84a126816cadfdbf3208c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sergiyclas/anki-quick-add/commit/a954a1eb8b126cdb94e84a126816cadfdbf3208c"/>
+    <title>
+        feat: Anki Quick Add v2
+    </title>
+    <updated>2026-09-01T11:20:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/142316760?s=30&amp;v=4"/>
+    <author>
+      <name>sergiyclas</name>
+      <uri>https://github.com/sergiyclas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: Anki Quick Add v2
+
+Chrome extension that turns a typed or selected word into a complete Anki
+card via AnkiConnect: translation, transcription, part of speech, examples,
+synonyms and grammar notes from the LLM provider of the user&amp;#39;s choice
+(OpenAI, Gemini, OpenAI-compatible endpoints and more), pronunciation audio
+(dictionary, Wiktionary, Google TTS) and a Wikipedia image with attribution.
+
+- built-in note type plus field mapping for any existing note type
+- popup with instant translation preview, batch mode and history
+- context menu and opt-in selection bubble with instant translation
+- editor window to review and regenerate before adding
+- duplicate policies, CEFR level, ~40 language pairs, settings sync and
+  JSON export/import
+- UI localised into 12 languages
+- Vite + Preact + TypeScript, unit tests, Playwright e2e against the
+  built extension&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

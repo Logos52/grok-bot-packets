@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:https://github.com/ankimcp/anki-mcp-server/releases</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/releases"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ankimcp/anki-mcp-server/releases.atom"/>
+  <title>Release notes from anki-mcp-server</title>
+  <updated>2026-09-04T15:58:30Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.25.0</id>
+    <updated>2026-09-04T16:07:45Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.25.0"/>
+    <title>v0.25.0</title>
+    <content type="html">&lt;h2&gt;&lt;g-emoji class=&quot;g-emoji&quot; alias=&quot;warning&quot;&gt;⚠️&lt;/g-emoji&gt; Breaking change&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;get_due_cards&lt;/code&gt; / &lt;code&gt;get_cards&lt;/code&gt; no longer return card answers by default&lt;/strong&gt; (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5335316174&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/62&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/issues/62/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/issues/62&quot;&gt;#62&lt;/a&gt;, &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5335643265&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/63&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/63/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/63&quot;&gt;#63&lt;/a&gt;). Previously every batch fetch put all answers into the model&#39;s context before you had a chance to self-test — defeating the point of spaced repetition, especially with smaller models where answers reliably leaked into the question turn. Both tools now take an &lt;code&gt;include_answer&lt;/code&gt; parameter (default &lt;code&gt;false&lt;/code&gt;):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Review sessions&lt;/strong&gt;: leave it off; reveal answers per card via &lt;code&gt;present_card&lt;/code&gt; with &lt;code&gt;show_answer: true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content analysis / editing workflows&lt;/strong&gt;: pass &lt;code&gt;include_answer: true&lt;/code&gt; to get &lt;code&gt;back&lt;/code&gt; as before.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;New scheduling tools (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5262897464&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/60&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/60/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/60&quot;&gt;#60&lt;/a&gt;)&lt;/h2&gt;
+&lt;p&gt;Two tools that fix a card&#39;s schedule &lt;strong&gt;without recording a review&lt;/strong&gt; — unlike rating a card &lt;code&gt;Again&lt;/code&gt;, which logs a real lapse and drops its ease factor, permanently skewing scheduling and statistics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;forgetCards&lt;/code&gt;&lt;/strong&gt; — resets cards to the new queue (interval, due date, ease discarded; review log preserved). Reports each card&#39;s prior state (&lt;code&gt;previousState&lt;/code&gt;, &lt;code&gt;previousIntervalDays&lt;/code&gt;, &lt;code&gt;reps&lt;/code&gt;, &lt;code&gt;lapses&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;setDueDate&lt;/code&gt;&lt;/strong&gt; — moves the next review by N days using Anki&#39;s spec format: &lt;code&gt;&quot;0&quot;&lt;/code&gt; (today), &lt;code&gt;&quot;5&quot;&lt;/code&gt;, &lt;code&gt;&quot;3-7&quot;&lt;/code&gt; (random day in range — spreads a batch out), &lt;code&gt;&quot;1!&quot;&lt;/code&gt; (also overwrite the interval). Reads scheduling back so ranges report where each card landed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Both validate every card ID before mutating (AnkiConnect reports success even for nonexistent IDs), cap input at 100 IDs, dedupe duplicates, and require positive integer IDs.&lt;/p&gt;
+&lt;h2&gt;NestJS 12&lt;/h2&gt;
+&lt;p&gt;Upgraded to NestJS 12 (ESM-only upstream). &lt;strong&gt;No user-facing change&lt;/strong&gt; — the runtime Node.js floor stays &lt;code&gt;&amp;gt;=22.12.0&lt;/code&gt;. Development/testing now needs Node 24.9+ (Jest&#39;s &lt;code&gt;require(esm)&lt;/code&gt; support; the required &lt;code&gt;--experimental-vm-modules&lt;/code&gt; flag is baked into the npm test scripts).&lt;/p&gt;
+&lt;h2&gt;Housekeeping&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;All open Dependabot alerts cleared (browserslist, fast-uri, qs, @humanfs/node, fflate — lockfile-only updates).&lt;/li&gt;
+&lt;li&gt;README tool catalog count corrected: &lt;strong&gt;50 tools&lt;/strong&gt; (39 essential + 11 GUI).&lt;/li&gt;
+&lt;li&gt;Port tests use ephemeral ports; misc dev-dep bumps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full changelog&lt;/strong&gt;: &lt;a href=&quot;https://github.com/ankimcp/anki-mcp-server/blob/main/CHANGELOG.md&quot;&gt;CHANGELOG.md&lt;/a&gt; · &lt;strong&gt;Install&lt;/strong&gt;: &lt;code&gt;npm i -g @ankimcp/anki-mcp-server@0.25.0&lt;/code&gt; or grab the &lt;code&gt;.mcpb&lt;/code&gt; bundle below for Claude Desktop.&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.24.2</id>
+    <updated>2026-08-26T08:56:07Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.24.2"/>
+    <title>v0.24.2</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fix(deps): float the whole @nestjs/* set together (v0.24.2) by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5253822567&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/57&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/57/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/57&quot;&gt;#57&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ci: lockfile-free pack smoke test; fix(http): honour PORT/HOST/ANKI_CONNECT_URL env vars by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5254288080&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/59&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/59/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/59&quot;&gt;#59&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.24.1...v0.24.2&quot;&gt;&lt;tt&gt;v0.24.1...v0.24.2&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.24.1</id>
+    <updated>2026-08-16T07:24:23Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.24.1"/>
+    <title>v0.24.1</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fix(tunnel): treat IDLE_TIMEOUT (4010) as a permanent close code by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5159917688&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/55&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/55/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/55&quot;&gt;#55&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.24.0...v0.24.1&quot;&gt;&lt;tt&gt;v0.24.0...v0.24.1&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.24.0</id>
+    <updated>2026-08-13T11:14:28Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.24.0"/>
+    <title>v0.24.0</title>
+    <content type="html">&lt;h2&gt;Fixes Claude Desktop&#39;s Code tab (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5132581753&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/53&quot; data-hovercard-type=&quot;issue&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/issues/53/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/issues/53&quot;&gt;#53&lt;/a&gt;)&lt;/h2&gt;
+&lt;p&gt;If every Anki tool call was failing with this, it&#39;s fixed:&lt;/p&gt;
+&lt;div class=&quot;snippet-clipboard-content notranslate position-relative overflow-auto&quot; data-snippet-clipboard-copy-content=&quot;Tool &#39;listDecks&#39; has an invalid outputSchema: JSON Schema declares an unsupported
+dialect (&amp;quot;$schema&amp;quot;: &amp;quot;http://json-schema.org/draft-07/schema#&amp;quot;). The default
+validator supports JSON Schema 2020-12 only&quot;&gt;&lt;pre class=&quot;notranslate&quot;&gt;&lt;code&gt;Tool &#39;listDecks&#39; has an invalid outputSchema: JSON Schema declares an unsupported
+dialect (&quot;$schema&quot;: &quot;http://json-schema.org/draft-07/schema#&quot;). The default
+validator supports JSON Schema 2020-12 only
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The Code tab validates the schema dialect; regular Desktop chat doesn&#39;t — which is why this only broke for some people, and only in one place. &lt;a href=&quot;https://modelcontextprotocol.io/seps/1613-establish-json-schema-2020-12-as-default-dialect-f&quot; rel=&quot;nofollow&quot;&gt;SEP-1613&lt;/a&gt; made JSON Schema 2020-12 the default, but MCP SDK 1.x hardcodes draft-07 with no way to opt out, so no setting on this server could have worked around it. The server now runs on the v2 SDK and emits 2020-12 for all 96 tool schemas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Upgrading:&lt;/strong&gt; reinstall the &lt;code&gt;.mcpb&lt;/code&gt; bundle below, or &lt;code&gt;npm i -g @ankimcp/anki-mcp-server@0.24.0&lt;/code&gt;. No configuration changes needed.&lt;/p&gt;
+&lt;h2&gt;&lt;g-emoji class=&quot;g-emoji&quot; alias=&quot;warning&quot;&gt;⚠️&lt;/g-emoji&gt; Removed: the &lt;code&gt;env://{name}&lt;/code&gt; resource&lt;/h2&gt;
+&lt;p&gt;This resource returned &lt;strong&gt;any environment variable&lt;/strong&gt; to the connected client with no allowlist. Over tunnel or &lt;code&gt;--ngrok&lt;/code&gt; that exposed your shell&#39;s environment to a remote party; as an MCPB extension it handed the model the &lt;code&gt;ANKI_CONNECT_API_KEY&lt;/code&gt; you&#39;d entered in Claude Desktop&#39;s settings.&lt;/p&gt;
+&lt;p&gt;It was never documented and isn&#39;t in the bundle manifest, so almost certainly nothing you use — but if you did reference &lt;code&gt;env://&lt;/code&gt;, it now returns &quot;Unknown resource&quot;. The &lt;code&gt;system://info&lt;/code&gt; resource is unchanged and still reports &lt;code&gt;NODE_ENV&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Also fixed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tunnel: responses could be delivered to the wrong client.&lt;/strong&gt; Requests were matched to replies using the client-chosen JSON-RPC id, which restarts at 1 on every connection. Two clients on one tunnel — or a single client reconnecting while a request was still in flight — could collide, causing one to receive the other&#39;s response and the other to hang for 25 seconds. Requests are now renumbered internally.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consistent server version.&lt;/strong&gt; STDIO and HTTP reported &lt;code&gt;1.0.0&lt;/code&gt; in &lt;code&gt;serverInfo&lt;/code&gt; while tunnel reported the real one.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quieter startup.&lt;/strong&gt; HTTP mode no longer prints ~50 lines of controller registration on boot.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smaller install&lt;/strong&gt; — five unused OAuth-related dependencies removed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Under the hood&lt;/h2&gt;
+&lt;p&gt;Migrated to &lt;code&gt;@rekog/mcp-nest&lt;/code&gt; v2 and the v2 MCP SDK (&lt;code&gt;@modelcontextprotocol/{core,node,server}&lt;/code&gt;). This is a substantial internal re-platform, but &lt;strong&gt;no tool names, parameters, output schemas, or behavior changed&lt;/strong&gt; — 48 tools before, 48 tools after, verified across STDIO, HTTP and tunnel.&lt;/p&gt;
+&lt;p&gt;One consequence worth knowing: &lt;strong&gt;tunnel mode serves the 2025 MCP protocol revision only&lt;/strong&gt;, while STDIO and HTTP serve both 2025 and 2026-07-28. A client that speaks only the newer revision now gets a clear protocol-version error over the tunnel instead of a confusing &quot;method not found&quot; — use STDIO or HTTP for those clients.&lt;/p&gt;
+&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fix(deps): migrate to mcp-nest v2 + MCP SDK v2 — emit JSON Schema 2020-12 (v0.24.0) by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5140614156&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/54&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/54/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/54&quot;&gt;#54&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.23.0...v0.24.0&quot;&gt;&lt;tt&gt;v0.23.0...v0.24.0&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.23.0</id>
+    <updated>2026-08-12T11:13:40Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.23.0"/>
+    <title>v0.23.0</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;style: apply prettier to media-validation spec by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4950427276&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/47&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/47/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/47&quot;&gt;#47&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fix(stats): honest due-tree vs card-state semantics + true state counts (v0.23.0) by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5117949990&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/51&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/51/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/51&quot;&gt;#51&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Chore/deps security sdk 1.30 by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;5123491779&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/52&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/52/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/52&quot;&gt;#52&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.22.5...v0.23.0&quot;&gt;&lt;tt&gt;v0.22.5...v0.23.0&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.22.5</id>
+    <updated>2026-07-21T19:05:10Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.22.5"/>
+    <title>v0.22.5</title>
+    <content type="html">&lt;h2&gt;🔒 Security release&lt;/h2&gt;
+&lt;p&gt;Fixes &lt;strong&gt;&lt;a href=&quot;https://github.com/ankimcp/anki-mcp-server/security/advisories/GHSA-5286-6cm5-w3qv&quot;&gt;GHSA-5286-6cm5-w3qv&lt;/a&gt;&lt;/strong&gt; — an SSRF guard bypass in media-URL validation (CWE-918). Upgrading is recommended for anyone running the HTTP/tunnel transports, especially on cloud infrastructure.&lt;/p&gt;
+&lt;h3&gt;The issue&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;validateMediaUrl()&lt;/code&gt; used a range &lt;strong&gt;blocklist&lt;/strong&gt; that missed the IPv6 transition ranges &lt;code&gt;ipaddr.js&lt;/code&gt; can return (&lt;code&gt;rfc6052&lt;/code&gt;/NAT64, &lt;code&gt;rfc6145&lt;/code&gt;/SIIT, &lt;code&gt;6to4&lt;/code&gt;, &lt;code&gt;teredo&lt;/code&gt;, &lt;code&gt;benchmarking&lt;/code&gt;, &lt;code&gt;amt&lt;/code&gt;). An attacker could bypass the guard with a literal like &lt;code&gt;http://[64:ff9b::169.254.169.254]/&lt;/code&gt; that encodes a private IPv4 (e.g. cloud metadata) — on a NAT64-enabled network the request would route to the internal target.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Affected:&lt;/strong&gt; &lt;code&gt;&amp;gt;= 0.15.1, &amp;lt;= 0.22.4&lt;/code&gt; · &lt;strong&gt;Patched in:&lt;/strong&gt; &lt;code&gt;0.22.5&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;The fix (and hardening beyond the report)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blocklist → fail-closed allowlist&lt;/strong&gt; — only public &lt;code&gt;unicast&lt;/code&gt; addresses are permitted; the entire transition-range class, and any range future &lt;code&gt;ipaddr.js&lt;/code&gt; versions add, is blocked by default.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embedded-IPv4 extraction&lt;/strong&gt; — IPv4-mapped (&lt;code&gt;::ffff:0:0/96&lt;/code&gt;) &lt;em&gt;and&lt;/em&gt; deprecated IPv4-compatible (&lt;code&gt;::/96&lt;/code&gt;, e.g. &lt;code&gt;::a9fe:a9fe&lt;/code&gt;) addresses are unwrapped and re-checked, so an internal IPv4 wrapped in IPv6 can&#39;t slip through.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;All DNS records validated&lt;/strong&gt; — a host resolving to a public record plus a private sibling is now rejected (previously only the first record was checked).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;allowedHosts&lt;/code&gt;&lt;/strong&gt; now normalizes IPs (embedded-IPv4 + IPv6 form) and handles bracketed IPv6 literals; the IP escape hatch requires every resolved address to be allowlisted.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Reported by &lt;strong&gt;&lt;a href=&quot;https://github.com/tonghuaroot&quot;&gt;tonghuaroot&lt;/a&gt;&lt;/strong&gt; — thank you for the responsible disclosure.&lt;/p&gt;
+&lt;h2&gt;🧹 Maintenance&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Dependency upgrades + security-advisory cleanup (&lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4936943694&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/44&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/44/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/44&quot;&gt;#44&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;chore(deps): dependency upgrades + security advisory cleanup (v0.22.4) by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4936943694&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/44&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/44/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/44&quot;&gt;#44&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;fix(security): harden media-URL SSRF guard against IPv6 transition bypass (v0.22.5) by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4942146704&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/46&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/46/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/46&quot;&gt;#46&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.22.3...v0.22.5&quot;&gt;&lt;tt&gt;v0.22.3...v0.22.5&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.22.3</id>
+    <updated>2026-07-21T07:15:27Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.22.3"/>
+    <title>v0.22.3</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fix(review): render card front/back per card template, not note fields by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4923570667&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/43&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/43/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/43&quot;&gt;#43&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.22.2...v0.22.3&quot;&gt;&lt;tt&gt;v0.22.2...v0.22.3&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.22.2</id>
+    <updated>2026-07-04T17:40:20Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.22.2"/>
+    <title>v0.22.2</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;feat(tunnel): identify CLI to tunnel server on WS handshake by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4809909441&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/41&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/41/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/41&quot;&gt;#41&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.22.1...v0.22.2&quot;&gt;&lt;tt&gt;v0.22.1...v0.22.2&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.22.1</id>
+    <updated>2026-07-01T06:31:26Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.22.1"/>
+    <title>v0.22.1</title>
+    <content type="html">&lt;h2&gt;Tunnel connection reliability&lt;/h2&gt;
+&lt;p&gt;This release hardens the tunnel client&#39;s behavior around expired credentials, so a stale token no longer wedges the connection or forces an unnecessary re-login.&lt;/p&gt;
+&lt;h3&gt;Fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Reconnect wedge fixed.&lt;/strong&gt; An authentication failure (close code &lt;code&gt;4003&lt;/code&gt;) that arrived &lt;em&gt;after&lt;/em&gt; the WebSocket opened but &lt;em&gt;before&lt;/em&gt; the tunnel was established never settled the pending connection. &lt;code&gt;connect()&lt;/code&gt; would hang, the internal &lt;code&gt;isConnecting&lt;/code&gt; guard stayed latched, and the token-refresh reconnect then failed with &lt;code&gt;connection_in_progress&lt;/code&gt; — leaving the client stuck until a full restart. Pre-established closes now reject the pending connection so the client recovers instead of wedging.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Improvements&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;First-connect token refresh.&lt;/strong&gt; When the stored access token is expired but the refresh token is still valid, the very first &lt;code&gt;connect()&lt;/code&gt; now refreshes the token once and retries automatically — instead of failing and making you re-authenticate. Single-shot: a genuinely dead refresh token still fails fast with a clear re-login prompt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automatic re-login on session expiry.&lt;/strong&gt; In an interactive tunnel session (&lt;code&gt;ankimcp --tunnel&lt;/code&gt;), a &lt;code&gt;session_expired&lt;/code&gt; result now triggers the device-flow login automatically (prints the URL + code, opens the browser) and retries the connection once, rather than just printing an error and exiting. Gated to interactive (TTY) sessions and bounded to a single attempt.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;No changes to the stdio or HTTP transports — this is tunnel-mode only.&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix/tunnel first connect auth retry by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/anatoly314/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/anatoly314&quot;&gt;@anatoly314&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4783002946&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/40&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/40/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/40&quot;&gt;#40&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.22.0...v0.22.1&quot;&gt;&lt;tt&gt;v0.22.0...v0.22.1&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1066674289/v0.22.0</id>
+    <updated>2026-06-28T06:45:25Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/ankimcp/anki-mcp-server/releases/tag/v0.22.0"/>
+    <title>v0.22.0</title>
+    <content type="html">&lt;h2&gt;What&#39;s Changed&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;feat(review-stats): support collection-wide analysis when deck is omitted by &lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vadymchan/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vadymchan&quot;&gt;@vadymchan&lt;/a&gt; in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4738391626&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/36&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/36/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/36&quot;&gt;#36&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;New Contributors&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;user-mention notranslate&quot; data-hovercard-type=&quot;user&quot; data-hovercard-url=&quot;/users/vadymchan/hovercard&quot; data-octo-click=&quot;hovercard-link-click&quot; data-octo-dimensions=&quot;link_type:self&quot; href=&quot;https://github.com/vadymchan&quot;&gt;@vadymchan&lt;/a&gt; made their first contribution in &lt;a class=&quot;issue-link js-issue-link&quot; data-error-text=&quot;Failed to load title&quot; data-id=&quot;4738391626&quot; data-permission-text=&quot;Title is private&quot; data-url=&quot;https://github.com/ankimcp/anki-mcp-server/issues/36&quot; data-hovercard-type=&quot;pull_request&quot; data-hovercard-url=&quot;/ankimcp/anki-mcp-server/pull/36/hovercard&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/pull/36&quot;&gt;#36&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Full Changelog&lt;/strong&gt;: &lt;a class=&quot;commit-link&quot; href=&quot;https://github.com/ankimcp/anki-mcp-server/compare/v0.21.0...v0.22.0&quot;&gt;&lt;tt&gt;v0.21.0...v0.22.0&lt;/tt&gt;&lt;/a&gt;&lt;/p&gt;</content>
+    <author>
+      <name>github-actions[bot]</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4"/>
+  </entry>
+</feed>

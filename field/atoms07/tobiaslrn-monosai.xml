@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/tobiaslrn/monosai/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/tobiaslrn/monosai/commits/main.atom"/>
+  <title>Recent Commits to monosai:main</title>
+  <updated>2026-09-06T20:16:42Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a71e55431e694948e9a44c1155943fc7177ed63</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/4a71e55431e694948e9a44c1155943fc7177ed63"/>
+    <title>
+        test(anki): expect suspended package cards to be excluded
+    </title>
+    <updated>2026-09-06T20:16:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(anki): expect suspended package cards to be excluded&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9feff66c0a2c06fefb2c3d030f2b72e289b73b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/d9feff66c0a2c06fefb2c3d030f2b72e289b73b2"/>
+    <title>
+        test(anki): include queue state in browser fixtures
+    </title>
+    <updated>2026-09-06T20:03:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(anki): include queue state in browser fixtures&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/661dd238d0fd16d7efbe3f7e898ab15646a25688</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/661dd238d0fd16d7efbe3f7e898ab15646a25688"/>
+    <title>
+        fix(anki): exclude suspended cards from vocabulary
+    </title>
+    <updated>2026-09-06T19:57:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki): exclude suspended cards from vocabulary&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f304a407bb1c5de65afc8f25dc51cf56e450c71</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/9f304a407bb1c5de65afc8f25dc51cf56e450c71"/>
+    <title>
+        refactor(enrichment): fill the reading in order from one shared reque…
+    </title>
+    <updated>2026-09-06T19:36:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(enrichment): fill the reading in order from one shared request pool
+
+Preparation was three schedulers that happened to share a claim. Translation and
+grammar each ran waves of three and waited for their own slowest request, and
+audio did not start until both text layers had finished the entire reading — so
+on a sixty-sentence story the last sentence&amp;#39;s English arrived before the first
+sentence&amp;#39;s clip.
+
+`PreparationPacer` is a leaf service that knows about order and pressure and
+nothing about aids. Every request any layer wants to make asks it for a permit,
+and permits go to the lowest waiting (sentence position, layer). That one
+comparator is the whole front-to-back rule; the three stores keep everything they
+already own well and gain no dependency on each other.
+
+`PREPARATION_CONCURRENCY = 10` replaces the three per-layer ceilings, so how fast
+a reading fills no longer depends on which layers happen to be outstanding. There
+is still no client-side rate limit: the only reaction to load is a back-off
+driven by a real 429&amp;#39;s own Retry-After, which holds new grants without abandoning
+what is already in flight.
+
+Translation still runs its first batch alone to settle the reading&amp;#39;s English
+names; after that the glossary is a ledger read at permit time and written on
+completion. Grammar loses its wave loop, audio loses its priority queue and fixed
+worker array, and the lane starts every eligible layer at once.
+
+Stopping a long reading now costs more in-flight requests than it did, because
+more were running. Every one of them is still stored.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84dbb0a643114bef0aa47f55f82d22d5250a37b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/84dbb0a643114bef0aa47f55f82d22d5250a37b6"/>
+    <title>
+        fix(enrichment): stop text preparation failing for reasons Monosai ca…
+    </title>
+    <updated>2026-09-06T19:09:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(enrichment): stop text preparation failing for reasons Monosai caused
+
+Four independent causes, none of them a rate limit.
+
+The enrichment JSON Schemas sent `minItems`/`maxItems`, which strict Structured
+Outputs rejects; the 400 mentions `response_format`, so every batch spent its one
+format recovery on a second full-price request, forever. The counts now live in
+the array descriptions, where they were always only guidance — the real
+constraint is enforced in `domain/ai` and `domain/enrichment`.
+
+A refused native schema is now remembered through a `StructuredOutputMemo` port
+and persisted with the text-model settings, so the discovery is paid once per
+model rather than once per batch.
+
+`finish_reason: &amp;#39;length&amp;#39;` was parsed and never read, so a reply that ran out of
+room surfaced as a malformed answer and spent a recovery a different request
+shape could not help. It is now `context-budget-exceeded` with the issue code
+`reply-truncated`, with its own copy and no recovery. Reply budgets are sized
+from the batch, translation and grammar review default to minimal reasoning, and
+enrichment finally uses the 60 s deadline that was defined for it and referenced
+nowhere.
+
+One bad id no longer destroys ten sentences: `partitionTranslations` keeps what
+came back and the run re-asks once for the rest. An id that was never sent still
+voids the reply.
+
+The compatibility probe now sends the shape production sends — an array of
+objects with a nullable field — so a recorded `native-schema` verdict is one the
+model can keep.
+
+Also fixes the translation lane reading `settings()` instead of
+`configForTask(&amp;#39;translation&amp;#39;)`, which made a configured preset request a
+different model than the reader&amp;#39;s popover and write cache keys neither could
+read back.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41cd81382de4156209621d9a4dba1fc0a2204433</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/41cd81382de4156209621d9a4dba1fc0a2204433"/>
+    <title>
+        fix(reader): stop the opening press selecting the sentence sheet
+    </title>
+    <updated>2026-09-06T18:40:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): stop the opening press selecting the sentence sheet
+
+A held line raises the sentence sheet while the finger is still down, and the
+sheet arrives under that finger. The platform then finished the very same press
+as a text selection over the sheet&amp;#39;s own Japanese, so asking to read a sentence
+also handed back a selection nobody asked for — one press carrying two meanings
+again, one step past where ADR 0058 left it.
+
+On touch the sheet now starts inert and arms itself when that press ends, which
+leaves selecting its text a deliberate second hold. A mouse is untouched: it
+selects by dragging, which was already a separate gesture. The rule is named on
+the sheet and repeated on its source, because a descendant that opts into
+selectable text stays selectable under an ancestor that is not.
+
+The end-to-end check holds a line and reads the rule that decides a selection
+rather than asking Chromium for one, since synthetic pointer events cannot
+produce a native selection; longPress is split into hold and release so a test
+can look at the surface mid-gesture.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c8e71e656a72234ce6aab3eee4d1d20be7a5588</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/6c8e71e656a72234ce6aab3eee4d1d20be7a5588"/>
+    <title>
+        test(reader): run the mobile-only reader checks on mobile alone
+    </title>
+    <updated>2026-09-06T18:39:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(reader): run the mobile-only reader checks on mobile alone
+
+Both checks assert behavior that only exists on a phone, but the desktop project
+runs every journey, so each failed there rather than on the device it describes.
+The drag handle is rendered only for a docked sheet, and the bar reaches the
+viewport edge before any scrolling only because a phone pulls the reader into
+the shell&amp;#39;s top padding; a desktop keeps that padding and pins the bar on scroll,
+which the test already asserts separately.
+
+Both now use the isMobile fixture the rest of the file uses to tell the two
+devices apart, rather than comparing viewport widths against the breakpoint.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2cd163e34e4345f3bb7614f46f1377f478ec86f1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/2cd163e34e4345f3bb7614f46f1377f478ec86f1"/>
+    <title>
+        fix(reader): keep mobile controls anchored while scrolling
+    </title>
+    <updated>2026-09-06T16:59:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): keep mobile controls anchored while scrolling&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a4ed755c3bba25dd50872de7f6b2efc3f0bf420</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/0a4ed755c3bba25dd50872de7f6b2efc3f0bf420"/>
+    <title>
+        test(e2e): align regression checks with ux fixes
+    </title>
+    <updated>2026-09-06T16:35:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(e2e): align regression checks with ux fixes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/36c3ab0832d2007ed70d690d68ca234cda25f078</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/36c3ab0832d2007ed70d690d68ca234cda25f078"/>
+    <title>
+        remove skills dir
+    </title>
+    <updated>2026-09-06T16:26:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;remove skills dir&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce66b7e09e4583f9d8486dbcb44562ad274d51d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/ce66b7e09e4583f9d8486dbcb44562ad274d51d0"/>
+    <title>
+        fix(repo): resolve visual and ux audit findings
+    </title>
+    <updated>2026-09-06T16:25:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(repo): resolve visual and ux audit findings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/863474aedfae8222f9428fc741df0d2ae5166ccb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/863474aedfae8222f9428fc741df0d2ae5166ccb"/>
+    <title>
+        chore(repo): adopt noncommercial source licensing
+    </title>
+    <updated>2026-09-06T12:48:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(repo): adopt noncommercial source licensing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bc149fde4bf1ca3ac6272fe08f7b3a184cd0c967</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/bc149fde4bf1ca3ac6272fe08f7b3a184cd0c967"/>
+    <title>
+        merge(reader): integrate the reworked Words screen with the reader ge…
+    </title>
+    <updated>2026-09-05T21:48:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge(reader): integrate the reworked Words screen with the reader gestures
+
+# Conflicts:
+#	docs/arc42/09-architecture-decisions.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/572cb67da195780cfdbc2e75c1c05cb39eb99205</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/572cb67da195780cfdbc2e75c1c05cb39eb99205"/>
+    <title>
+        feat(reader): open a word by tapping and its sentence by holding the …
+    </title>
+    <updated>2026-09-05T21:46:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reader): open a word by tapping and its sentence by holding the line
+
+The double tap carried two meanings resolved after the fact, and the scroll that
+kept a sheet clear of the tapped word cancelled the gesture that same tap had
+begun. A tap is now answered by whatever it landed on, and a 450ms press opens
+sentence details while the finger is still down. Repeats on touch are inert;
+mouse and keyboard behaviour is unchanged.
+
+The reading surface gives up native selection and the platform callout under a
+finger only, because that press is now the application&amp;#39;s gesture. Details are
+quieter with it: an icon route to the sentence, grammar always readable, sheets
+capped at half the viewport with the handle and action tray always reachable,
+and anchored cards closing from their own corner. See ADR 0057.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e5f8552b1000c8949d9c1bdb6e971dc3a7a4d7b3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/e5f8552b1000c8949d9c1bdb6e971dc3a7a4d7b3"/>
+    <title>
+        fix(vocabulary): align the standing line and stop it contradicting th…
+    </title>
+    <updated>2026-09-05T21:02:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(vocabulary): align the standing line and stop it contradicting the list
+
+The count and its detail are two type sizes on one line, and the flex row that
+holds them never set a baseline, so the smaller half rode high against the bold
+number.
+
+With no sources at all the same line read &amp;quot;0 words · from an unrecorded source&amp;quot;
+while the row underneath said there were none. Removing the last source leaves
+an empty snapshot behind, which is the standing of a fresh install; it says so.
+A snapshot that still has words keeps its count whatever the list shows.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d1661b4d434fb8b31f90af442591f506aae0b79</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/9d1661b4d434fb8b31f90af442591f506aae0b79"/>
+    <title>
+        merge(vocabulary): integrate the reworked Words screen with main
+    </title>
+    <updated>2026-09-05T20:50:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge(vocabulary): integrate the reworked Words screen with main&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b1052309ffddaf447d5b153d6dd374592d8a0440</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b1052309ffddaf447d5b153d6dd374592d8a0440"/>
+    <title>
+        feat(vocabulary): one Anki entry, a list, and a page per source
+    </title>
+    <updated>2026-09-05T20:49:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocabulary): one Anki entry, a list, and a page per source
+
+The Words section asked a question the learner could not answer — &amp;quot;Anki&amp;quot; or
+&amp;quot;AnkiDroid bridge&amp;quot;, when the device decides which can work — and asked for the
+AnkiConnect port before anything had failed. Every setting a source has lived in
+its list row, so four sources were four stacked control panels and no list.
+
+The platform is now a port, decided once at the shell edge, so one Anki entry
+picks its own adapter and its own copy; iOS says plainly that a file is its only
+route. A row carries the name, where the words came from and how many, and opens
+a page where the settings are ordered by how often each is touched. Failures are
+told in the sheet the learner pressed Anki in, each with the one link that
+unblocks it and its code beside the doc keyed by those codes. The port moved
+there, behind a fold, next to the retry it changes.
+
+No stored data changes shape.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/419525f714d4724fb4db43a3310d3fdcce53c228</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/419525f714d4724fb4db43a3310d3fdcce53c228"/>
+    <title>
+        chore(repo): streamline checks and repair readme logo
+    </title>
+    <updated>2026-09-05T20:15:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(repo): streamline checks and repair readme logo&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3720a7a4c2ce81410dead4c4e7455f30d1c37ef9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/3720a7a4c2ce81410dead4c4e7455f30d1c37ef9"/>
+    <title>
+        fix(reader): stop sentence playback at exact boundaries
+    </title>
+    <updated>2026-09-05T20:07:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): stop sentence playback at exact boundaries&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c48b467dd18b112c3f504cd0df385bce43288b24</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/c48b467dd18b112c3f504cd0df385bce43288b24"/>
+    <title>
+        fix(repo): make the Gradle wrapper executable
+    </title>
+    <updated>2026-09-05T16:07:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(repo): make the Gradle wrapper executable
+
+Committed from Windows without the executable bit, so the bridge job exited 126
+before Gradle started.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

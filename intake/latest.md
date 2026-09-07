@@ -1,43 +1,51 @@
-# Intake packet — manual 1/3
-canary: window_start 2026-08-19T00:00:00+08:00 (Asia/Taipei) — window_end 2026-08-26T17:45:10+08:00 (Asia/Taipei)
-newest_item: 2026-08-26 (arxiv cs.AI/cs.CL new listings)
+# Intake packet — MWF 1
+canary: window_start 2026-08-26T17:45:10+08:00 (Asia/Taipei) — window_end 2026-09-07T12:12:16+08:00 (Asia/Taipei)
+newest_item: 2026-09-07 (arxiv cs.AI/cs.CL new listings)
 failed sources: none
 
-9 | ai | Patterns and problems in emerging multiagent systems | First-party runs on agent-agent coordination, copycat failure, and conflicting-goal turf wars on shared machines — the same shape as several bots on one computer. | https://www.anthropic.com/research/multiagent-systems
+10 | ai | Runtime-Independent Persistent Agents: Preserving Identity, Memory, and Code Across Models, Harnesses, and Servers | States the portability problem for named bots: keep identity/memory/code when the model or harness changes. | https://arxiv.org/abs/2609.00546
 bank-candidate (agentic)
-9 | learn | Unwanted Ease | Ties generative-AI homework shortcuts to interleaving and spacing: high practice scores, weaker later tests. A constraint for any tutor or study workflow. | https://www.learningscientists.org/blog/2026/8/21
+9 | ai | Designing Grok Bot for a world of persistent agents | First-party design notes on bot roster vs chat history, presence, own-computer, and routines that start without a prompt. | https://x.ai/news/designing-grok-bot
+bank-candidate (agentic)
+9 | ai | Automated researchers can reliably mitigate alignment failures | Claude runs a closed research loop (literature, train, test) with a monitor agent blocking capability-hurting methods; harness open-sourced. | https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures
+bank-candidate (agentic)
+9 | ai | Formalizing Fermat's Last Theorem | Multi-agent Lean campaign over 11 days: theorem DAG, parallel agents, and failure when agents lose project state — long-harness shape. | https://www.anthropic.com/research/formalizing-fermats-last-theorem
+bank-candidate (agentic)
+9 | ai | Facts Without Rules: Boundary Metadata Collapse in Multi-Agent LLM Handoffs | Handoff packets can keep facts while dropping constraint force — same class as constraint-weakening failures. | https://arxiv.org/abs/2608.29028
+bank-candidate (agentic)
+9 | ai | Does Your Agent's Memory Survive a Model Upgrade? | Controlled study of whether agent memory still works after swapping the underlying model. | https://arxiv.org/abs/2609.05339
+bank-candidate (agentic)
+9 | ai | From Interaction Traces to Persistent Skills: Online Evolution for Computer-Use Agents | Turns computer-use traces into durable skills online — standing workflows that improve without a full retrain. | https://arxiv.org/abs/2609.04869
+bank-candidate (agentic)
+9 | wiki | SearchWiki: Learning to Build and Navigate Knowledge Wikis for Active Information Seeking | Agents that build and traverse a wiki while searching — in-window wiki/knowledge-craft hit. | https://arxiv.org/abs/2608.29953
+bank-candidate (wiki-craft)
+9 | ai | Fresh Memory, Stale Plans: Dependency-Scoped Validation for Distributed LLM-Agent Memory | Memory can refresh while plans still assume old state; dependency-scoped validation for multi-agent memory. | https://arxiv.org/abs/2609.03340
+bank-candidate (agentic)
+9 | ai | What Does Multi-Harness RL Learn? Credit Assignment and Portability in Coding Agents | What transfers when the same coding agent is trained across different harnesses. | https://arxiv.org/abs/2609.04518
+bank-candidate (agentic)
+9 | ai | Measure Before You Manage: Evaluating Agent Working Memory in Coding Agents | Eval focused on working memory inside coding agents, not just final patches. | https://arxiv.org/abs/2608.31057
+bank-candidate (agentic)
+9 | ai | Towards a Systems Foundation for Agentic Skills: Architecture, Lifecycle, and Security | Skills as first-class: architecture, lifecycle, security — parallel to shared skill libraries. | https://arxiv.org/abs/2608.29596
+bank-candidate (agentic)
+9 | ai | Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement | Outer harness that improves an inner coding harness across multi-day runs. | https://arxiv.org/abs/2609.01481
+bank-candidate (agentic)
+9 | ai | Dynamic Adaptation of the LLM Context for Generating Routines with Coupled Semantics | Context shaping for generating coupled routines — schedule/event routine authoring. | https://arxiv.org/abs/2609.04570
+bank-candidate (agentic)
+8 | ai | Setting Grok Bot loose on procurement | Standing role bot with permission lines, dossiers, and human gates on vendor sends. | https://x.ai/news/grok-bot-procurement
+bank-candidate (agentic)
+8 | ai | Invalidation Contracts for Cross-Episode Agent Memory | Contracts for when memory must be invalidated across episodes — hygiene for long-lived bots. | https://arxiv.org/abs/2609.00243
+bank-candidate (agentic)
+8 | ai | The Memory Trust Gap: Capability-Dependent Failures in Persistent-Memory Agents | Persistent-memory failures that scale with model capability. | https://arxiv.org/abs/2609.01852
+bank-candidate (agentic)
+8 | ai | Agent Memory Is a Surface for Endogenous Authorization Laundering | Agent memory as an authorization bypass surface — constraint for memory write rules. | https://arxiv.org/abs/2609.01836
+bank-candidate (agentic)
+7 | ai | Grok Bot for Enterprise | Enterprise access, org-wide invite, and governance controls for bots at scale. | https://x.ai/news/grok-bot-for-enterprise
+bank-candidate (agentic)
+7 | learn | How a Chatbot's Response Style Shapes a Classroom | Multi-agent simulation of how tutor tone changes classroom dynamics. | https://arxiv.org/abs/2609.05018
 bank-candidate (learning)
-9 | ai | AgentRoom: Concurrent Multi-Agent Coding in a CRDT-Backed Shared Workspace | Concurrent coding agents on a shared CRDT filesystem instead of serial handoffs; relevant when several bots edit one tree. | https://arxiv.org/abs/2608.23740
-bank-candidate (agentic)
-9 | ai | The Handoff Tax: Continuing Non-Native Trajectories in LLM Agents | Measures the quality/cost hit when a cheaper model’s run is continued by a stronger one (and the reverse). Directly the escalate/downshift pattern. | https://arxiv.org/abs/2608.24358
-bank-candidate (agentic)
-9 | ai | When "Must" Becomes "Maybe": Constraint Weakening in LLM Agent Workflows | Handoff notes and memories can mention a blocker while dropping its force, so the next agent treats a requirement as optional. | https://arxiv.org/abs/2608.24569
-bank-candidate (agentic)
-9 | ai | Recursive Experiential-Working Memory Evolution for Long-Horizon Agent Harnesses | Splits working memory from experiential skill memory so a long-horizon harness picks skills from current state, not the full log. | https://arxiv.org/abs/2608.24876
-bank-candidate (agentic)
-8 | ai | RENDER: Controlling Reader-Facing Evidence in LLM Memory Evaluation | Same history, different packet format (summary vs typed record vs raw) moves memory/RAG scores by tens of points. Evals need to control the render. | https://arxiv.org/abs/2608.23568
-bank-candidate (agentic)
-8 | ai | MemUse: Moving Memory Evaluation from Direct QA to Natural Integration in Long-Term Human-AI Conversation | Tests memory inside long conversation instead of isolated QA, closer to how a named bot actually uses memory. | https://arxiv.org/abs/2608.24189
-bank-candidate (agentic)
-8 | ai | Automata from Agent Traces: Failure and Next-Step Prediction | Collapses many traces into a compact FSM for next-step and failure prediction. A possible monitor on bot runs. | https://arxiv.org/abs/2608.23670
-bank-candidate (agentic)
-7 | ai | Grok Bot is now included with more plans | Dated access expansion (SuperGrok Plus, Cursor Pro+/Teams) for the bot runtime already in use. | https://x.ai/news/grok-bot-more-plans
-bank-candidate (agentic)
-7 | ai | Introducing Grok 4.6 | First-party model post: long-running agents and heavier interactive/visual work. Dated 12 Aug (just outside the 7-day prefer window). | https://x.ai/news/grok-4-6
-bank-candidate (agentic)
-7 | ai | AI Agents Push Humans Out of the Loop | Argues current agent design plus skill atrophy make human oversight fail. A check on how much work to leave unsupervised. | https://arxiv.org/abs/2608.23642
-bank-candidate (none)
-7 | ai | Joint Optimization of Tool Creation and Use for Large Language Model Agents | Trains one policy to write tools and call them, instead of a frozen model inventing schemas it cannot use. | https://arxiv.org/abs/2608.24571
-bank-candidate (agentic)
-7 | ai | PeakBench: Benchmarking Resource-Aware Tool Invocation in LLM Agents | Benchmarks whether agents can parallelize tools without blowing resource limits — the scheduling part most tool evals skip. | https://arxiv.org/abs/2608.24509
-bank-candidate (none)
-7 | ai | From State to Action: OODA-Tool for Reliable Multi-Turn Tool Use | Splits state tracking from the next tool call so multi-turn tool use does not overwrite earlier constraints. | https://arxiv.org/abs/2608.24368
-bank-candidate (agentic)
-7 | ai | A Judge Should Know What Changed: Construct Validity for LLM-as-a-Judge Evaluation | Judges can stay stable under wording changes yet miss real construct changes. A check for any LLM-as-judge eval. | https://arxiv.org/abs/2608.24419
-bank-candidate (none)
-6 | ai | Introducing Grok Bot | Dated 11 Aug launch post (computer, parallel bots, routines). Overview URL already in the seen index; this is the news item. | https://x.ai/news/introducing-grok-bot
-bank-candidate (agentic)
-6 | ai | BrowserForge: Scaling Web Episode via Parallel Browser Sandboxes | Parallel browser sandboxes for web-episode scale. Close to several bots sharing one computer with separate screens. | https://arxiv.org/abs/2608.24848
-bank-candidate (agentic)
 
-48 below threshold
+118 below threshold
+truncation: arxiv titles only (no abs pages); keyword core from pinned /new (today) plus /recent Sep 1–6 for the idle gap; Aug 27–31 not in fetched recent depth; most soft agent/eval titles counted below unscored.
+docs.x.ai/grok-bot/overview: already in seen; not re-queued.
+retrievalpractice.org: no dated new post in window.
+learningscientists 2026/9/3: guest reflective essay — below.

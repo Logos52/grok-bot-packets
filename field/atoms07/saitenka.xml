@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/serjflint/saitenka/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/serjflint/saitenka/commits/main.atom"/>
+  <title>Recent Commits to saitenka:main</title>
+  <updated>2026-09-06T19:31:59Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8be59578e292f7fd2927a3575fc3c326f224c0e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/f8be59578e292f7fd2927a3575fc3c326f224c0e"/>
+    <title>
+        Merge pull request #503 from serjflint/feat/subtitle-provider-languages
+    </title>
+    <updated>2026-09-06T19:31:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #503 from serjflint/feat/subtitle-provider-languages
+
+feat(subtitles): serve every language TsukiHime carries, keyed by the profile&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/59afd594f8bcbba9caa30d908462122818178d7b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/59afd594f8bcbba9caa30d908462122818178d7b"/>
+    <title>
+        fix(subtitles): key the run-path cache and picker picks by profile la…
+    </title>
+    <updated>2026-09-06T19:25:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): key the run-path cache and picker picks by profile language
+
+Two paths kept writing or reading the unmarked (Japanese) cache slot after
+TsukiHime stopped being Japanese-only, each reopening the cross-profile hijack
+the language-keyed slot was added to close.
+
+`launch.run._configured_subtitles` gated the cache read on &amp;quot;some provider serves
+this language&amp;quot; and then read the slot with no language. That gate was sufficient
+only while every provider was Japanese-only; widening TsukiHime made it true for
+every language, so a French run was served the Japanese file a prior run had
+cached. Nothing covered `_configured_subtitles`, so the gap was invisible.
+
+The picker stored a pick under the attachment&amp;#39;s own tag. For an untagged
+attachment — the case the boundary deliberately lets through — that resolved to
+the Japanese slot, orphaning the hand pick for the profile that made it and
+serving it to a Japanese one. Picks are keyed by the profile that chose them;
+the boundary has already established the pick belongs to it.
+
+Also: the picker&amp;#39;s mixed-language test compared display names, so one language
+spelled two ways (fr/fra) labelled every row; it compares language bases now.
+A test comment claimed `fra` as a negative control for `fr` when it is a valid
+alias that matches — the case is now present and asserts what it does.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/998c063270e8a198adf3e5b320c1c23f06820573</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/998c063270e8a198adf3e5b320c1c23f06820573"/>
+    <title>
+        feat(subtitles): serve every language TsukiHime carries, keyed by pro…
+    </title>
+    <updated>2026-09-06T18:52:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(subtitles): serve every language TsukiHime carries, keyed by profile
+
+The provider dropped every non-Japanese attachment while parsing a release
+(`_is_japanese` in `_attachment_from_raw`). A census of 30 releases found 30+
+languages, with French attachments outnumbering Japanese ones — so the filter
+discarded most of what the source serves, and &amp;quot;TsukiHime as a French source&amp;quot;
+was a filter to delete rather than an adapter to write.
+
+Language becomes part of the provider contract: candidates carry their raw
+reported tag, `ProviderContext` carries the profile&amp;#39;s target, and the boundary
+applies the existing `lang_matches` policy to a non-blank tag. An untagged
+result is not auto-attached — it reaches the manual picker instead, since a
+human can judge what a missing tag cannot.
+
+Three things had to move with it:
+
+- The filter runs before `fetch`&amp;#39;s uniqueness guard. A release holds one
+  subtitle per language, so counting all of them made every real multilingual
+  release ambiguous.
+- The cache slot gains a language. It was keyed on (video, title, episode,
+  size, mode), so a French session could be served the Japanese file a previous
+  session stored; the jp-only capability had been the accidental guard.
+  Japanese keeps the unmarked legacy spelling, so existing hand-picked `-raw`
+  and `-retimed` entries stay addressable.
+- `ProviderContext.language` defaults to the target rather than to None, which
+  means &amp;quot;do not filter&amp;quot; — the wrong default for an unattended fetch.
+
+`fetch_provider_path` takes the context whole instead of unpacking seven
+keywords and repacking them one line later.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bec4352903f658dfd5880f15725780b6cea3fd8a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/bec4352903f658dfd5880f15725780b6cea3fd8a"/>
+    <title>
+        Merge pull request #500 from serjflint/issue-346
+    </title>
+    <updated>2026-09-06T00:35:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #500 from serjflint/issue-346
+
+fix(subtitles): remove ASS drawings from cue text&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a67b120a67acee42e60e5d02215cdef95648e474</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/a67b120a67acee42e60e5d02215cdef95648e474"/>
+    <title>
+        Merge pull request #502 from serjflint/issue-417
+    </title>
+    <updated>2026-09-06T00:34:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #502 from serjflint/issue-417
+
+fix(subtitles): restore karaoke interaction&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/63233a3414e6237e9e3509314356486ab7f6ba04</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/63233a3414e6237e9e3509314356486ab7f6ba04"/>
+    <title>
+        Merge pull request #501 from serjflint/issue-338
+    </title>
+    <updated>2026-09-06T00:32:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #501 from serjflint/issue-338
+
+feat(mining): defer card work off interaction loop&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4ecfd4eea44233755937fbaad94e28f6073533b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/4ecfd4eea44233755937fbaad94e28f6073533b4"/>
+    <title>
+        fix(subtitles): preserve zero drawing resets
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): preserve zero drawing resets&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45df02f69c6ccf636fbc6299193994d637032062</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/45df02f69c6ccf636fbc6299193994d637032062"/>
+    <title>
+        fix(subtitles): match mpv ASS text semantics
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): match mpv ASS text semantics&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d9a3d7c1162a527a02cf2e32c3fad2eea793a25</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/8d9a3d7c1162a527a02cf2e32c3fad2eea793a25"/>
+    <title>
+        fix(subtitles): remove ASS drawings from cue text
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): remove ASS drawings from cue text&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab6c83dc486586e11558d5af86fb2fc5fd45d513</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ab6c83dc486586e11558d5af86fb2fc5fd45d513"/>
+    <title>
+        test(subtitles): propagate karaoke oracle contract
+    </title>
+    <updated>2026-09-05T22:04:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(subtitles): propagate karaoke oracle contract&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8519c3eb20787cec380eda95a244da1815ca0ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b8519c3eb20787cec380eda95a244da1815ca0ed"/>
+    <title>
+        fix(subtitles): classify secondary color refusal
+    </title>
+    <updated>2026-09-05T21:57:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): classify secondary color refusal&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/870987d25f043cb5688338ecb5d67c6a0eed91ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/870987d25f043cb5688338ecb5d67c6a0eed91ea"/>
+    <title>
+        fix(subtitles): route karaoke color through raster
+    </title>
+    <updated>2026-09-05T21:57:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): route karaoke color through raster&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e3c005333b85ed60bc6f34ec1b878f2538c91f0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/e3c005333b85ed60bc6f34ec1b878f2538c91f0a"/>
+    <title>
+        fix(subtitles): restore karaoke interaction
+    </title>
+    <updated>2026-09-05T21:57:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): restore karaoke interaction&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ac1e745255218bfba38a7f12b75f1bb12087d279</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ac1e745255218bfba38a7f12b75f1bb12087d279"/>
+    <title>
+        refactor(mining): keep operation complexity bounded
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(mining): keep operation complexity bounded&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5226187d241220be77729a2a02418b16c2ad4b5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/5226187d241220be77729a2a02418b16c2ad4b5e"/>
+    <title>
+        fix(mining): preserve persistence helper seam
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): preserve persistence helper seam&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed670536bedb9730e23018ac7fe7f386515a44d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ed670536bedb9730e23018ac7fe7f386515a44d0"/>
+    <title>
+        fix(mining): publish each commit atomically
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): publish each commit atomically&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8bf6598a78572b4d749422fea32b3e58d077833f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/8bf6598a78572b4d749422fea32b3e58d077833f"/>
+    <title>
+        fix(mining): retain actions across cancellation
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): retain actions across cancellation&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/76ffe1757771d2f1892c3fe2380d8f43cb0d0f45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/76ffe1757771d2f1892c3fe2380d8f43cb0d0f45"/>
+    <title>
+        fix(mining): retain partial bulk commits
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): retain partial bulk commits&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77ef1590f4ae28c6b2801d05a6ee12145c24bdae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/77ef1590f4ae28c6b2801d05a6ee12145c24bdae"/>
+    <title>
+        fix(mining): stage work before Anki commit
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): stage work before Anki commit&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/411e92d1a3176589d9e11de070bc57417c1b986f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/411e92d1a3176589d9e11de070bc57417c1b986f"/>
+    <title>
+        fix(mining): move card work off interaction loop
+    </title>
+    <updated>2026-09-05T21:55:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mining): move card work off interaction loop&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

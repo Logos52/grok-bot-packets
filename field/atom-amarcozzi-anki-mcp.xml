@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/amarcozzi/anki-mcp/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/amarcozzi/anki-mcp/commits/main.atom"/>
+  <title>Recent Commits to anki-mcp:main</title>
+  <updated>2026-09-03T16:50:58Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6294fbc56da7397db4d006597934a0bf56f2366</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/c6294fbc56da7397db4d006597934a0bf56f2366"/>
+    <title>
+        README: tool reference, operations, troubleshooting, security model; …
+    </title>
+    <updated>2026-09-03T16:50:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: tool reference, operations, troubleshooting, security model; add scripts/mcpcall.py
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6db50ae9076ecc861bd1e42449fdfce435dc18b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/6db50ae9076ecc861bd1e42449fdfce435dc18b7"/>
+    <title>
+        Cloud Run: back to 512 MiB now that the media sync leak is fixed (ste…
+    </title>
+    <updated>2026-09-03T16:05:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cloud Run: back to 512 MiB now that the media sync leak is fixed (steady state ~235 MB)
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/91432e2218fca814decf0ff1157fe59a731ea7aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/91432e2218fca814decf0ff1157fe59a731ea7aa"/>
+    <title>
+        docs: set connector tool permissions to Always allow
+    </title>
+    <updated>2026-09-03T15:59:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: set connector tool permissions to Always allow
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7938f1a1da6ff9fe6dca87ba56be0f3965037ad7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/7938f1a1da6ff9fe6dca87ba56be0f3965037ad7"/>
+    <title>
+        Never start a media sync after the full download
+    </title>
+    <updated>2026-09-03T15:56:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Never start a media sync after the full download
+
+Passing server_usn to full_upload_or_download makes the backend sync the whole
+media folder in the background. On Cloud Run that fills the in-memory /tmp at
+~100 MB/min until the instance is killed, which is what the &amp;#39;memory limit
+exceeded&amp;#39; restarts were. Card images come from MediaStore per file instead.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/23f403391eb815f0db054476f433609d6e31b927</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/23f403391eb815f0db054476f433609d6e31b927"/>
+    <title>
+        docs: claude.ai connector and project setup with review instructions
+    </title>
+    <updated>2026-09-03T15:50:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: claude.ai connector and project setup with review instructions
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf3e9c07bd022b2627b6968b1420d831bfb7503e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/bf3e9c07bd022b2627b6968b1420d831bfb7503e"/>
+    <title>
+        Cloud Run: 1 GiB memory (512 MiB was OOM-killing the instance), log R…
+    </title>
+    <updated>2026-09-03T15:45:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cloud Run: 1 GiB memory (512 MiB was OOM-killing the instance), log RSS after tool calls
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe8828f8e470938c1bcb097a716c424ddee162ec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/fe8828f8e470938c1bcb097a716c424ddee162ec"/>
+    <title>
+        Dockerfile: copy LICENSE, hatchling needs it to build the package
+    </title>
+    <updated>2026-09-03T15:38:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dockerfile: copy LICENSE, hatchling needs it to build the package
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4dcb1add75eb60d375ccaaabc3c03440ba0c71bb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/4dcb1add75eb60d375ccaaabc3c03440ba0c71bb"/>
+    <title>
+        Python server on the official anki library with AnkiWeb sync and card…
+    </title>
+    <updated>2026-09-03T15:36:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Python server on the official anki library with AnkiWeb sync and card images
+
+Replaces the Go/AnkiWeb-private-API prototype (kept on branch go-ankiweb) with a
+single Python FastMCP server: disposable collection copy synced with AnkiWeb
+(lag of one, download-only on full sync), real scheduler queue, grade, bury,
+session skip, undo. Card images are fetched per file through the media sync
+downloadFiles call, downscaled, cached, and attached to tool results so the
+agent can see them. Single-user OAuth 2.1 for claude.ai, Cloud Run deploy script.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25e3e88ce2c98c9f5eb42684f25640a37e556cca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/25e3e88ce2c98c9f5eb42684f25640a37e556cca"/>
+    <title>
+        Add design investigation notes and AnkiWeb protocol probe
+    </title>
+    <updated>2026-09-03T13:59:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add design investigation notes and AnkiWeb protocol probe
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BGTT6zQBfHJNVcNmmihtLL&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/02ae57940ca133299dcec1989207735f56faa1a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/amarcozzi/anki-mcp/commit/02ae57940ca133299dcec1989207735f56faa1a9"/>
+    <title>
+        Initial commit
+    </title>
+    <updated>2026-09-02T19:30:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13575005?s=30&amp;v=4"/>
+    <author>
+      <name>amarcozzi</name>
+      <uri>https://github.com/amarcozzi</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

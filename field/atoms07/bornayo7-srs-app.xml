@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bornayo7/srs-app/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bornayo7/srs-app/commits/main.atom"/>
+  <title>Recent Commits to srs-app:main</title>
+  <updated>2026-09-06T03:09:37Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a2b189d3283d9537a30f944bebb9eef5b2bcee5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/1a2b189d3283d9537a30f944bebb9eef5b2bcee5"/>
+    <title>
+        Fix stale UI copy
+    </title>
+    <updated>2026-09-06T03:09:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix stale UI copy
+
+- Settings said media would join backups &amp;quot;in a later phase&amp;quot;; it has since P3
+- the AI panels asked for an Anthropic key although any OpenAI-compatible
+  provider works
+- the Inbox file importer listed only two of the four packet kinds&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad545c0d09eeafc4f82d4f93a9d568077d5b26d3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/ad545c0d09eeafc4f82d4f93a9d568077d5b26d3"/>
+    <title>
+        Add a not-found route
+    </title>
+    <updated>2026-09-06T03:09:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a not-found route
+
+An unknown URL (a stale bookmark, a typo) rendered an empty main area with
+no hint and no way back. A catch-all route now says so and links home.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26644a44ca349091872cdfaf152f6f6184ba8593</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/26644a44ca349091872cdfaf152f6f6184ba8593"/>
+    <title>
+        Store GIFs as uploaded instead of flattening them to one frame
+    </title>
+    <updated>2026-09-06T03:09:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Store GIFs as uploaded instead of flattening them to one frame
+
+Image ingest re-encodes everything but SVG to WebP; for an animated GIF
+that keeps only the first frame. GIFs are now kept as-is, like SVG.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d26c44e6274b07ba693c8ad4cf9f558d03471f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/6d26c44e6274b07ba693c8ad4cf9f558d03471f6"/>
+    <title>
+        Simplify prerequisite cycle cleanup in recomputeUnlocks
+    </title>
+    <updated>2026-09-06T03:09:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Simplify prerequisite cycle cleanup in recomputeUnlocks
+
+The cycle pass rebuilt the whole gate view (and wouldCycle rebuilt its
+lookup map) once per prerequisite edge, and its comment claimed both edges
+of a loop are dropped when the code (and its test) cut exactly one. A single
+reachability walk over the cleaned edges keeps the behaviour, and the
+comment now says what happens.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f1f5bdf22445cdc8911bfc8b952ec8ab8b1ff84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/7f1f5bdf22445cdc8911bfc8b952ec8ab8b1ff84"/>
+    <title>
+        Tell the unit drafter about proposals still awaiting review
+    </title>
+    <updated>2026-09-06T03:09:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Tell the unit drafter about proposals still awaiting review
+
+&amp;quot;Draft more&amp;quot; before reviewing the previous draft handed the model only the
+accepted and rejected rows, so it happily re-drafted the very items sitting
+in the queue. Pending proposals now ride along as a &amp;quot;do not duplicate these
+either&amp;quot; list.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8af5dc7d01a1a8eb222bd77cd88b849ebfb6d7c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/8af5dc7d01a1a8eb222bd77cd88b849ebfb6d7c6"/>
+    <title>
+        Convert captured notes correctly into list and media fields
+    </title>
+    <updated>2026-09-06T03:09:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Convert captured notes correctly into list and media fields
+
+The capture converter stored a list field&amp;#39;s text as a plain string (the
+editor then showed it empty) and demanded text for image/audio fields, which
+cannot be typed. List fields are now parsed into arrays and media fields are
+left empty to attach later, matching the add-item form.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37f18f7f6d3850b1e9e8f4cb73180bd483053533</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/37f18f7f6d3850b1e9e8f4cb73180bd483053533"/>
+    <title>
+        Scope add-item synonyms to one template each
+    </title>
+    <updated>2026-09-06T03:09:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Scope add-item synonyms to one template each
+
+The add-item form applied its &amp;quot;extra accepted answers&amp;quot; to every template of
+the type, so on a Meaning + Reading type a meaning synonym became an
+accepted reading — exactly the wrong-facet leak the packet importer refuses
+and the item editor avoids. Multi-template types now get one synonym box per
+template; single-template types look as before.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2e22e463763ee27c925c49fde075009bdcc3c0b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/2e22e463763ee27c925c49fde075009bdcc3c0b7"/>
+    <title>
+        Keep download object URLs alive until the browser has started saving
+    </title>
+    <updated>2026-09-06T03:09:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep download object URLs alive until the browser has started saving
+
+Both downloads clicked a detached anchor and revoked the object URL
+synchronously afterwards — Firefox and Safari can abort the save before it
+starts in that case. One shared helper attaches the anchor, clicks it, and
+revokes the URL a minute later.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ea790de4a5d53f733efcaea819e951918dbdc27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/1ea790de4a5d53f733efcaea819e951918dbdc27"/>
+    <title>
+        Show a boot-failure screen instead of a blank page
+    </title>
+    <updated>2026-09-06T03:09:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show a boot-failure screen instead of a blank page
+
+boot() had no error handling: if IndexedDB refused to open (another tab on a
+newer schema, private browsing with storage blocked, disk full) the promise
+rejected silently and the user saw an empty page with no explanation. The
+failure is now rendered with the error text and a reload button.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b1a3e553c0660053332628ea27dabf24df1bca7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/9b1a3e553c0660053332628ea27dabf24df1bca7"/>
+    <title>
+        Ignore Enter while a native IME is composing
+    </title>
+    <updated>2026-09-06T03:09:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ignore Enter while a native IME is composing
+
+Anyone answering with a system Japanese/Chinese IME presses Enter to commit
+the composition; the answer box treated that keystroke as submit and graded
+a half-typed answer. The keydown handler now bails out while
+nativeEvent.isComposing is set.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8abd54d4f9592ee08d828116eb5ca61a21b9ca0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/8abd54d4f9592ee08d828116eb5ca61a21b9ca0a"/>
+    <title>
+        Keep an item&#39;s lesson/active status in step with manual stage changes
+    </title>
+    <updated>2026-09-06T03:05:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep an item&amp;#39;s lesson/active status in step with manual stage changes
+
+Setting a stage on every card of a lesson-queue item scheduled the cards but
+left the item in the lesson queue, so the next lesson batch offered an item
+with nothing to teach. Manual updates now reconcile the item through the
+same studyStatus rule the type designer and recomputeUnlocks use: nothing
+left to teach means active, an untaught card means back to lessons.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47673fcb89e80ffa0648fff4342292de9500193d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/47673fcb89e80ffa0648fff4342292de9500193d"/>
+    <title>
+        Stop the rich-text parser marking up plain text chunks
+    </title>
+    <updated>2026-09-06T03:05:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop the rich-text parser marking up plain text chunks
+
+parseRichText classified every chunk from split(), matches and plain text
+alike, by whether it started and ended with a marker. &amp;quot;* 3 *&amp;quot; rendered as
+italic &amp;quot; 3 &amp;quot;, &amp;quot;== a ==&amp;quot; as a highlight, and a lone &amp;quot;`&amp;quot; or &amp;quot;**&amp;quot; vanished as
+an empty mark. split() with one capture group alternates text and match, so
+only the odd chunks are classified now.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41e2d8e936f56809916f842dba873c66b456f23f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/41e2d8e936f56809916f842dba873c66b456f23f"/>
+    <title>
+        Validate hint fields and cloze answer fields in the type designer
+    </title>
+    <updated>2026-09-06T03:05:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Validate hint fields and cloze answer fields in the type designer
+
+Two designs the designer accepted produced broken cards:
+- a hint field that is the answer field: &amp;quot;show a hint&amp;quot; revealed the answer
+- a typed or choice template whose answer field holds cloze sentences: the
+  grader compares against sentence objects, so no answer is ever accepted
+  (the packet importer already refused this; the designer did not)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a3ad9fbc216cefb82c4c2321f4184dbb5323f505</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/a3ad9fbc216cefb82c4c2321f4184dbb5323f505"/>
+    <title>
+        Free a deleted course&#39;s images and audio
+    </title>
+    <updated>2026-09-06T03:05:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Free a deleted course&amp;#39;s images and audio
+
+deleteCourse removed items, cards, logs, plans and proposals but never the
+media its items pointed at, so every deleted picture course kept its blobs
+in IndexedDB — and in every backup after — until someone pressed &amp;quot;Clean up
+unused&amp;quot; in Settings. The ids are collected before the rows go and swept
+after the transaction commits, through the same orphan check item deletion
+uses.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d479c4745d303fbc0a380fe771d29b2235d2338</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/7d479c4745d303fbc0a380fe771d29b2235d2338"/>
+    <title>
+        Remap suspended and burned cards when a ladder is edited
+    </title>
+    <updated>2026-09-06T03:05:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remap suspended and burned cards when a ladder is edited
+
+saveLadderEdit only touched cards in the review state. A suspended card
+keeps its stage so it can resume, so after stages were removed its index
+could sit past the new top — and resume() reads &amp;quot;past the top&amp;quot; as burned,
+retiring the card instead of resuming it. Burned cards are now re-pointed at
+the new top as well, so their stored index stays meaningful as the ladder
+grows or shrinks.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc75e0b99992f21e92bedcad04a3663e1345025a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/fc75e0b99992f21e92bedcad04a3663e1345025a"/>
+    <title>
+        Drop stale session loads instead of letting them clobber a newer one
+    </title>
+    <updated>2026-09-06T03:01:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop stale session loads instead of letting them clobber a newer one
+
+start() awaits the database several times; a load still in flight when the
+user navigated to another course&amp;#39;s reviews (or left the page) would finish
+later and overwrite the newer session with the old course&amp;#39;s cards. A load
+generation counter, bumped by every start() and reset(), lets a stale load
+bail out after each await. The lesson-batch and cram-pool loaders had the
+same shape and get the same guard.
+
+Regression test delays one course&amp;#39;s due-card query and checks the newer
+session survives.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8bc631c373fcf063225c128b262a7758573e44a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/8bc631c373fcf063225c128b262a7758573e44a7"/>
+    <title>
+        Fix comma-separated inputs eating the comma as you type
+    </title>
+    <updated>2026-09-06T02:59:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix comma-separated inputs eating the comma as you type
+
+List fields, and the synonym / block-list boxes in the item editor, were
+controlled inputs whose text was re-derived from the parsed array on every
+keystroke: &amp;quot;cat,&amp;quot; parsed to [&amp;#39;cat&amp;#39;] and rendered back as &amp;quot;cat&amp;quot;, so a second
+entry could only ever be pasted in. A new ListInput owns the raw text and
+hands the parsed list up on each change, re-syncing only when the parent
+supplies a different list.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cb332421ab85c02d6d3af76e96c85deac5947261</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/cb332421ab85c02d6d3af76e96c85deac5947261"/>
+    <title>
+        README: course plans and the review queue
+    </title>
+    <updated>2026-09-01T19:36:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: course plans and the review queue&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18330462d223135e04b689b5cb6fd69e7808d259</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/18330462d223135e04b689b5cb6fd69e7808d259"/>
+    <title>
+        Course plans step 5: MCP tools and plan-aware snapshot
+    </title>
+    <updated>2026-09-01T19:36:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 5: MCP tools and plan-aware snapshot
+
+External assistants (Claude Desktop, Codex, any MCP client) can now do the
+same job as the in-app planner. propose_course_plan writes a course-plan
+packet — ordered units, 1-3 item types, optional proposed items per unit, and
+the source material — and propose_items drops drafts into an existing course&amp;#39;s
+review queue, optionally targeting a unit. Both land in the Inbox and never
+bypass the human gate; add_items/create_course keep their import-as-is
+behaviour and now point at the review-queue tools for drafted content.
+
+snapshot.json exposes each course&amp;#39;s plan (units, what&amp;#39;s open, dates, pending
+proposals per unit), the current level, item levels, and a pending-proposals
+count, so an assistant can see the syllabus structure before proposing.
+list_courses prints the plan summary. 218 tests.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/654f1113972e510f33c58a3686fbfc94c56fa16d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/654f1113972e510f33c58a3686fbfc94c56fa16d"/>
+    <title>
+        Course plans step 4: plan page, review queue UI, entry points
+    </title>
+    <updated>2026-09-01T19:33:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 4: plan page, review queue UI, entry points
+
+Dashboard gains &amp;quot;From my material&amp;quot;: paste a syllabus or notes, pick how units
+release (by progress, by date, by hand), get an editable outline back — course
+name, item types, units with item targets and dates — and create the course
+with nothing in it yet. The new /plan/:courseId page is where the work
+happens: one card per unit showing released/current/locked state, dates in
+schedule mode, item and pass counts, a draft button with count and steer, and
+the review queue with pending/rejected/accepted tabs. Rows show fields,
+alternates, mnemonic, handle and prerequisites, a validation error or a
+duplicate flag; accept, edit in a modal (fields, alternates, note, handle,
+prerequisites), reject with an optional reason, restore, forget; accept-all and
+reject-all per unit; release-mode switch and &amp;quot;Release next unit&amp;quot;; add a unit.
+
+The Course page links to the plan and shows the current unit; the Dashboard
+badges pending proposals; scheduled releases catch up at boot and whenever the
+plan page opens. Verified in the browser against a pasted plan packet.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

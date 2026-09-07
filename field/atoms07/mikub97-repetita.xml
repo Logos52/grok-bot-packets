@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mikub97/repetita/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mikub97/repetita/commits/main.atom"/>
+  <title>Recent Commits to repetita:main</title>
+  <updated>2026-09-06T23:04:52Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e1599c01862afc0e45efa698bb8334a9981c47fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/e1599c01862afc0e45efa698bb8334a9981c47fa"/>
+    <title>
+        fix(ci): repair environment bootstrap and language-neutrality check
+    </title>
+    <updated>2026-09-06T23:04:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ci): repair environment bootstrap and language-neutrality check
+
+Both jobs failed on the first push, for unrelated reasons.
+
+`uv pip install --system` refuses to install: the runner&amp;#39;s system Python is
+externally managed (PEP 668), and `uv python install` does not change which
+interpreter `--system` resolves to. Create a project virtualenv and run the
+tools through `uv run` instead.
+
+The language-neutrality job flagged its own documentation. It grepped the source
+for target-language words, and `core/protocols.py` says, in a comment, that the
+engine folds accents &amp;quot;because a course asked it to, not because it knows about
+Portuguese&amp;quot; — the rule being explained, reported as the rule being broken.
+
+Replaced with `scripts/check_language_neutral.py`, which parses the source and
+inspects identifiers and non-docstring string literals, ignoring comments and
+docstrings entirely. That matches what the rule actually says: an identifier or a
+default value encoding one language&amp;#39;s behaviour is a violation; prose about the
+policy is not. Verified in both directions — it passes the current engine and
+catches a planted `{&amp;quot;vocabulario&amp;quot;: 0.5}` and a `grade_portugues()`.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67bafcd702827621a68015105bab5b32e2f58f58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/67bafcd702827621a68015105bab5b32e2f58f58"/>
+    <title>
+        docs: add agent working context, tuning rationale and label taxonomy
+    </title>
+    <updated>2026-09-06T22:59:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add agent working context, tuning rationale and label taxonomy
+
+Phase 1b of the rebuild plan: make the repository legible to an agent that has
+never seen it, so a task costs three files of reading rather than thirty.
+
+  - docs/tuning.md — every constant with the symptom it treats and, where one
+    exists, the measurement that set it. Marks each as measured, reasoned or
+    conventional, so it is clear which numbers are defensible and which are
+    borrowed and open to being measured properly. Also records the policy
+    constants still in the private predecessor, before that reasoning is lost
+    in the move.
+  - content/CLAUDE.md — the answer-leak rule and why it quarantines rather than
+    warns: the predecessor logged a warning and 70 of 330 items leaked anyway.
+  - courses/CLAUDE.md — id immutability, provenance, and why an unlicensed
+    image is a repository-ending mistake rather than a tidy-up item.
+  - .claude/skills/repetita-issue — turns a rough report into an issue in the
+    definition-of-ready format, with a worked example of the transformation.
+  - .github/labels.yml + scripts/sync-labels.sh — three state labels used as a
+    queue (agent-ready / needs-spec / human-only) plus area labels.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/116e3b35c3fc4579e9c29b659f60fd1d484ce0da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/116e3b35c3fc4579e9c29b659f60fd1d484ce0da"/>
+    <title>
+        chore: rename project to repetita
+    </title>
+    <updated>2026-09-06T22:55:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: rename project to repetita
+
+`roda` was the working name inherited from the private app&amp;#39;s database
+filename. It is unusable as a published name: the PyPI package is taken, Roda
+is an established Ruby web framework, and RODA is a digital-preservation
+repository. All three would have made the project unfindable.
+
+`repetita` is from *repetita iuvant* — &amp;quot;things repeated help&amp;quot;, which states the
+premise of spaced repetition about two thousand years before anyone measured
+it. The root is legible without translation across Polish, English, Portuguese,
+French and Spanish, and it names the mechanism rather than any one subject: the
+engine schedules cards, and cards can be Portuguese verbs or bones of the hand.
+
+Renames the package, the CLI, the RODA_* environment variables and every
+reference in the docs. No behaviour changes.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/451bc5b3a94e2333335e4aba2a1c1ac86896d9ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/451bc5b3a94e2333335e4aba2a1c1ac86896d9ab"/>
+    <title>
+        feat: scaffold engine with core types, graders and scheduler backends
+    </title>
+    <updated>2026-09-06T22:46:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: scaffold engine with core types, graders and scheduler backends
+
+Extracts the spaced-repetition engine from a private app (Research/hub, tab
+`pt`) into a standalone MIT-licensed project. That app stays running and
+untouched; nothing here reads or writes its database.
+
+The structural change is separating three things the old design conflated in
+one YAML `type:` field — what the knowledge is (note), which direction it is
+tested in (card, the unit of scheduling), and how it is asked right now (form).
+See ADR-0001.
+
+Included:
+  - core: Rating, Response, Judgement, and the Grader / SchedulerBackend /
+    Presenter protocols. Response carries an audio channel from the start, so
+    adding speaking practice later does not mean rewriting every grader.
+  - graders: typed, sentence, choice, self. Accent folding, punctuation and
+    sentence slack are course configuration, not engine behaviour — the engine
+    contains no target language, and CI checks that.
+  - srs: sm2 and leitner behind one protocol. Leitner exists to keep the
+    protocol honest; a protocol with one implementation is a description of
+    that implementation.
+  - property tests over interval bounds, due-date monotonicity and purity.
+
+Fixes a scheduling bug carried over from the original: HARD sat below the pass
+threshold and was handled identically to AGAIN, so a missing accent erased a
+45-day interval and recorded a lapse — the exact outcome the grading code&amp;#39;s own
+docstrings said must not happen. No test covered it. HARD now passes with a
+reduced interval and an ease penalty. See ADR-0002.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

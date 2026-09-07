@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/smolkaj/jolito/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/smolkaj/jolito/commits/main.atom"/>
+  <title>Recent Commits to jolito:main</title>
+  <updated>2026-09-06T23:01:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b4b55cd0b35194a0f90f7897dfc9ccaaede2370</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/1b4b55cd0b35194a0f90f7897dfc9ccaaede2370"/>
+    <title>
+        feat(audio): alternate voices across turns, enable dual voice for sho…
+    </title>
+    <updated>2026-09-06T23:01:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): alternate voices across turns, enable dual voice for short words, and remove bundled mp3s (#210)
+
+* feat(audio): alternate voices across turns, enable dual voice for short phrases, and remove bundled mp3s
+
+* fix(audio): address review feedback on answer seed and audio lifecycle
+
+* fix(audio): guard stopped audio callbacks, use persistent card reviews seed, and crisp preview audio
+
+* fix(audio): invalidate speakGeneration in stop and pre-hydrate altVoice
+
+* refactor(audio): extract prehydrateAlternateVoice and add EnhancedBrowserSpeaker unit tests
+
+* chore(audio): apply advisory review cleanups
+
+* style: format files with prettier&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77e20cf985e642ae0251800857ddf1eb7dc8a059</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/77e20cf985e642ae0251800857ddf1eb7dc8a059"/>
+    <title>
+        refactor(study): make filterCards state update pure and return Filter…
+    </title>
+    <updated>2026-09-06T22:53:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(study): make filterCards state update pure and return FilterCardsResult (#215)
+
+* refactor(study): make filterCards state update pure and return FilterCardsResult
+
+* refactor(study): remove legacy onSessionEmpty callback in favor of becameEmpty&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa823dea13ae70cc9852e5d346c7e77edbf6e120</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/fa823dea13ae70cc9852e5d346c7e77edbf6e120"/>
+    <title>
+        refactor(study): encapsulate review session state and progress into d…
+    </title>
+    <updated>2026-09-05T19:49:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(study): encapsulate review session state and progress into domain model and hook (#211)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/796c48ee61b197862837db17e3b85a69c178b607</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/796c48ee61b197862837db17e3b85a69c178b607"/>
+    <title>
+        fix(study): only decrement sessionTotal for buried cards in active qu…
+    </title>
+    <updated>2026-09-05T19:33:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(study): only decrement sessionTotal for buried cards in active queue (#208)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dcc26a3cacc89bd26da5693aedc7c88f3c43c7ad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/dcc26a3cacc89bd26da5693aedc7c88f3c43c7ad"/>
+    <title>
+        fix(study): normalize delimiter spacing and fix whitespace gap penalt…
+    </title>
+    <updated>2026-09-05T19:26:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(study): normalize delimiter spacing and fix whitespace gap penalty in answer diff (#206)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/824bab524efee9e298f169ee8e2f299deeaacf8f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/824bab524efee9e298f169ee8e2f299deeaacf8f"/>
+    <title>
+        fix(css): enforce minmax(0, 1fr) grid containment and enhance create …
+    </title>
+    <updated>2026-09-05T19:19:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(css): enforce minmax(0, 1fr) grid containment and enhance create e2e tests (#205)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9df56c22a8c473d30a8f27694e033e988feb2ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/c9df56c22a8c473d30a8f27694e033e988feb2ce"/>
+    <title>
+        test(e2e): mock rest api calls and stabilize connection pill selector…
+    </title>
+    <updated>2026-09-05T19:03:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(e2e): mock rest api calls and stabilize connection pill selector in sync test (#203)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03324dae42259077da6b37cf40780e9adedf4627</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/03324dae42259077da6b37cf40780e9adedf4627"/>
+    <title>
+        docs: clarify agent follow-up guidance in AGENTS.md (#204)
+    </title>
+    <updated>2026-09-05T19:01:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: clarify agent follow-up guidance in AGENTS.md (#204)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf332a3f8cce335b140befb234805cb4b7484c86</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/bf332a3f8cce335b140befb234805cb4b7484c86"/>
+    <title>
+        fix(create): eliminate horizontal layout jitter on keystrokes across …
+    </title>
+    <updated>2026-09-05T18:56:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(create): eliminate horizontal layout jitter on keystrokes across viewports (#201)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80ba27db074357a366af1e1c0cdf3a70992584f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/80ba27db074357a366af1e1c0cdf3a70992584f6"/>
+    <title>
+        fix(audio): serialize disk key population before pruning unused audio…
+    </title>
+    <updated>2026-09-05T18:47:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(audio): serialize disk key population before pruning unused audio (#202)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb01882b3af0559a00888a11b4e970263f8adc7e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/bb01882b3af0559a00888a11b4e970263f8adc7e"/>
+    <title>
+        feat(audio): sensory reveal stagger, orphaned cache pruning, and voic…
+    </title>
+    <updated>2026-09-05T14:10:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): sensory reveal stagger, orphaned cache pruning, and voice engine refinement (#199)
+
+* feat(audio): sensory reveal stagger, orphaned cache pruning, and voice engine refinement
+
+* fix(audio): resolve dead prune condition, cancel reveal audio on navigation, and add test coverage
+
+* polish(audio): extract REVEAL_AUDIO_STAGGER_MS constant and add defensive audio cancellation on popstate and playAudio&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e55b7745ccb74dc639083b082a5bd5f8fec7c22c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/e55b7745ccb74dc639083b082a5bd5f8fec7c22c"/>
+    <title>
+        docs(agents): suggest natural follow-up work after merging a PR (#200)
+    </title>
+    <updated>2026-09-05T13:58:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(agents): suggest natural follow-up work after merging a PR (#200)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ba405614bca587face5ac829c3c20d6d5296e01</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/9ba405614bca587face5ac829c3c20d6d5296e01"/>
+    <title>
+        feat: enhance visitor experience with contextual card-save modal and …
+    </title>
+    <updated>2026-09-05T13:55:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: enhance visitor experience with contextual card-save modal and &amp;#39;Why Jolito?&amp;#39; landing fold (#197)
+
+* feat(visitor): contextualize guest card creation modal, add &amp;#39;Why Jolito?&amp;#39; value fold, and align noscript copy
+
+* fix(visitor): reconcile remote cloud deck on auth, decouple modal close, and place mascot in-flow
+
+* feat(welcome): full-viewport hero with scroll cue and rich bento visual miniatures
+
+* refactor(welcome): de-frame bento cards, eliminate canvas seams, and hide mobile scroll cue&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/469bb2a767bc899ad2f8cb585cabc103f217492d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/469bb2a767bc899ad2f8cb585cabc103f217492d"/>
+    <title>
+        feat(audio): grace window for disk cache hits and defensive LRU cache…
+    </title>
+    <updated>2026-09-05T06:34:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): grace window for disk cache hits and defensive LRU cache (#198)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d98dc2f01bd5bc52a10824e51061d72880dffce9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/d98dc2f01bd5bc52a10824e51061d72880dffce9"/>
+    <title>
+        feat(audio): hydrate neural audio offline and bound memory with LRU c…
+    </title>
+    <updated>2026-09-05T06:16:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): hydrate neural audio offline and bound memory with LRU cache (#196)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa0b696ac70124271188ac78bcb05ff64c8089c1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/aa0b696ac70124271188ac78bcb05ff64c8089c1"/>
+    <title>
+        refactor: modularize modal components and eliminate build/test warnin…
+    </title>
+    <updated>2026-09-04T18:48:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: modularize modal components and eliminate build/test warnings (#195)
+
+* refactor: modularize modal components and eliminate build/test warnings
+
+- Extract presentation components from monolithic src/jolito.tsx into dedicated ui modules:
+  - src/ui/icons.tsx (SVG icons, brand marks, and flags)
+  - src/ui/modals/EditCardModal.tsx (card editing form, audio previews, conflict detection)
+  - src/ui/modals/SyncModal.tsx (Supabase auth, magic links, OTP verification, sync status)
+  - src/ui/modals/FeedbackModal.tsx (user feedback form, submission feedback)
+- Eliminate Vite build warning for node:path externalization in src/domain/anki-sql.ts
+- Eliminate React 19 act(...) test warnings in src/jolito.test.tsx:
+  - Properly await async operations and event loops during modal interactions
+  - Wrap hidden visibilitychange in try/finally to prevent state mutation leaks across tests
+  - Correctly await in-flight sync resolution promises within act blocks
+- Add comprehensive repository evaluation in docs/REPO_EVALUATION.md
+
+* refactor(ui): extract AudioButton and shared focus utility
+
+- Extract AudioButton into dedicated src/ui/AudioButton.tsx and remove duplicate declaration in src/jolito.tsx
+- Extract handleFocusSelect into src/ui/utils.ts to eliminate helper duplication across modals
+- Clarify anki-sql.ts boundary stages and modal references in docs/REPO_EVALUATION.md
+
+* refactor(ui): clean up imports and remove redundant component re-exports&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/02af02b82f06ca588ed7fa26246aa780a8ed4403</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/02af02b82f06ca588ed7fa26246aa780a8ed4403"/>
+    <title>
+        feat(audio): eagerly prefetch full deck in background and stabilize e…
+    </title>
+    <updated>2026-09-04T16:41:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): eagerly prefetch full deck in background and stabilize edit modal geometry (#192)
+
+* feat(audio): eagerly prefetch full deck in background and stabilize edit modal geometry
+
+* refactor(audio): remove redundant review prefetch hook and solidify in-flight voice matching
+
+* style(modal): align additional context label in field-label-row for uniform vertical rhythm&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a67970a7648c750056a8103e8540e5b57a01a48e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/a67970a7648c750056a8103e8540e5b57a01a48e"/>
+    <title>
+        docs: reframe roadmap and product vision around core v1.0 and strateg…
+    </title>
+    <updated>2026-09-04T16:32:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: reframe roadmap and product vision around core v1.0 and strategic horizons (#193)
+
+* docs: reframe roadmap and product vision around core v1.0 and strategic horizons
+
+* docs: position native iOS app in Horizon 1 beyond v1.0 web platform
+
+* docs: position studio neural voice engine in Horizon 1 beyond baseline speech&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/35f2997489256a96a82ed4beb5944efaf812853f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/35f2997489256a96a82ed4beb5944efaf812853f"/>
+    <title>
+        docs(architecture): codify engineering philosophy and core invariants…
+    </title>
+    <updated>2026-09-04T16:24:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(architecture): codify engineering philosophy and core invariants in ARCHITECTURE.md (#194)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/132affb09308f8369a6fd37c4031ae61f535e254</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/132affb09308f8369a6fd37c4031ae61f535e254"/>
+    <title>
+        docs(copy): align offline-first and account requirements across marke…
+    </title>
+    <updated>2026-09-04T16:11:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(copy): align offline-first and account requirements across marketing and UI (#190)&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/overtonch/ru-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/overtonch/ru-anki/commits/main.atom"/>
+  <title>Recent Commits to ru-anki:main</title>
+  <updated>2026-09-02T00:14:42Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ec7254a6e42a02e3a9086c9b62d1b5ee356cab6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/6ec7254a6e42a02e3a9086c9b62d1b5ee356cab6"/>
+    <title>
+        Card format v2 groundwork: one clean primary meaning + concise altern…
+    </title>
+    <updated>2026-09-02T00:14:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Card format v2 groundwork: one clean primary meaning + concise alternatives
+
+Not yet applied in bulk — this is the plumbing to prototype the new format on one
+card and iterate.
+
+- srs_cards.alt_meanings (other senses / idioms, small text on the back) +
+  sentence_full (original long context, kept when `sentence` is trimmed to the
+  clause with the word).
+- llm.card_meaning(word, dict_form, sentence, current) -&amp;gt; {primary,
+  primary_is_contextual, alt, context}: one cleanest general meaning as `primary`
+  (contextual sense only when the usage is marked/idiomatic, and then `alt` leads
+  with the general meaning); `context` is a substring-faithful trim to ~14 words.
+- _study_card_view returns alt_meanings + a `reformatted` flag. studyReveal shows
+  `.a-alt` under the big translation, and for reformatted cards shows ONLY the
+  trimmed clause (no before/after context lines).
+- Prototyped on card 413 (злоба): &amp;quot;malice / spite&amp;quot; → primary &amp;quot;malice&amp;quot; + alt;
+  633-char paragraph → one clause; front стress fixed зло́ба.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/021eb7f0e5ad67579f4395ab84c07905eb3abb0f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/021eb7f0e5ad67579f4395ab84c07905eb3abb0f"/>
+    <title>
+        LCARD self-cleans against the server flag
+    </title>
+    <updated>2026-09-01T22:06:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LCARD self-cleans against the server flag
+
+applyLocalCards now drops an entry as soon as a fresh /watch or /read payload
+confirms the word&amp;#39;s status (carded or pending), so an offline optimistic-green
+can&amp;#39;t persist wrongly after the card is deleted elsewhere. Matches by lemma too.
+
+SW shell v104 -&amp;gt; v105.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05ab19a5c6b73c6249b2e5de6f6238a3e5a8cd13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/05ab19a5c6b73c6249b2e5de6f6238a3e5a8cd13"/>
+    <title>
+        Fix /srs/queue 500 on a naive last_review timestamp
+    </title>
+    <updated>2026-09-01T22:02:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix /srs/queue 500 on a naive last_review timestamp
+
+srs._row_to_fsrs fed the raw DB string to fsrs.Card.from_dict; a naive datetime
+(from a restored backup, rebuild_db.py, or a hand-edit) made fsrs do
+offset-naive − offset-aware arithmetic → TypeError → the whole study queue 500s.
+`srs._aware()` coerces due/last_review to UTC-aware ISO first.
+
+Verified the full study flow (reveal / rate / again / undo) and reader
+phrase-selection with no console errors.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2c65dd261377425d6b2288217590a40853a4a22</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/e2c65dd261377425d6b2288217590a40853a4a22"/>
+    <title>
+        Fix renderCard name collision (broke the review panel) + offline book…
+    </title>
+    <updated>2026-09-01T21:53:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix renderCard name collision (broke the review panel) + offline book access
+
+- CRITICAL: my new card-detail renderer was named `renderCard`, shadowing the
+  existing candidate renderer that `reconcileCards` calls — every video/reader
+  review panel threw &amp;quot;Cannot read properties of undefined (reading &amp;#39;style&amp;#39;)&amp;quot; on
+  every card. Renamed to `renderCardDetail`.
+- Offline: a saved book showed up in the library as a plain *video* card (the
+  cached /read payload had no `kind`), so tapping it opened the detail view and
+  its &amp;quot;source ↗&amp;quot; link → dead Safari tab on ilibrary.ru. Now: /read ships
+  `kind:&amp;quot;text&amp;quot;`; `offlineVideoList` + `offlineVideoMeta` detect a book from the
+  cached /read entry (`o.blocks`) and tag it `text` → it renders as a book →
+  tap opens the in-app reader. Better &amp;quot;not saved offline yet&amp;quot; message.
+- `a[target=&amp;quot;_blank&amp;quot;]` clicks are swallowed with a toast when offline.
+- Review panel: no `/videos/{id}/frame` request for text/song sources (they have
+  no video frames) — was 404-spamming for every book candidate. Songs get a
+  plain &amp;quot;▶ M:SS&amp;quot; button, text gets none.
+
+SW shell v103 -&amp;gt; v104.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ddec50b88fb1b70d810003a0c8630a7ded671791</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/ddec50b88fb1b70d810003a0c8630a7ded671791"/>
+    <title>
+        Polish: manual-card modal wasn&#39;t a modal; card-detail state label; ra…
+    </title>
+    <updated>2026-09-01T21:18:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Polish: manual-card modal wasn&amp;#39;t a modal; card-detail state label; rank cooldown
+
+- #manualWrap was missing from the overlay CSS rule, so &amp;quot;add a card by hand&amp;quot;
+  rendered as an inline block at the bottom of the page over the video list
+  instead of a centered modal with a backdrop. Added it.
+- Card detail: a brand-new card showed state &amp;quot;learning&amp;quot; next to &amp;quot;not started&amp;quot;;
+  now shows &amp;quot;new&amp;quot; (and &amp;quot;suspended&amp;quot; when suspended). New cards show &amp;quot;next (Good)&amp;quot;
+  instead of a bogus &amp;quot;interval&amp;quot;; stability/difficulty only for started cards.
+- _maybe_rank_new: 90s cooldown so /srs/stats (hit on every home load / card op)
+  doesn&amp;#39;t respawn the ranking thread back-to-back.
+- refreshWatchFlags: fold fresh per-word flags into WCUES + repaint just the
+  classes instead of rebuilding the whole transcript DOM after a card flush.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4741f3bf592ffac7af3389aee11bc79455133fa1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/4741f3bf592ffac7af3389aee11bc79455133fa1"/>
+    <title>
+        Offline mode: translate, make cards, review, and highlighting all wor…
+    </title>
+    <updated>2026-09-01T21:12:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Offline mode: translate, make cards, review, and highlighting all work offline
+
+The offline story was patchy — reader/manual card-making was hard-blocked, there
+was no offline translation, and the SRS bundle could silently be missing.
+
+- OFFLINE TRANSLATION: /watch and /read now ship a `glossary` (lemma -&amp;gt; EN, from
+  the local WikDict `dict_ru`) for the whole piece + a `.l` lemma on every word.
+  The card modal falls back to this local gloss when the LLM is unreachable
+  (`localGloss`); the card still gets a full LLM translation + stress on flush.
+- OFFLINE CARD MAKING: every flow (watch / reader / legacy-text / manual) now
+  queues to IDB and flushes when back online — the reader and manual &amp;quot;connect
+  first&amp;quot; hard-blocks are gone. `FlushItem` gained `kind`/`text_id`/`chapter`/
+  `note`; `_flush_one` dispatches to make-card / text_card / manual_card.
+- OFFLINE HIGHLIGHTING: `LCARD` (localStorage set) remembers words carded/uncarded
+  offline so a re-render from the stale server flag doesn&amp;#39;t lose them
+  (`applyLocalCards` after every transcript/reader render; `forgetLocalCard` on
+  un-card). Verdict/delete/remove ops queue to a new `wordOut` store offline
+  (`flushWordOut`), applied optimistically.
+- OFFLINE REVIEW: `syncOfflineSRS(true)` on every launch (was a throttled 4s
+  timer), 15-min interval; `loadStudyQueue` force-syncs if the bundle is missing
+  instead of dead-ending on &amp;quot;connect once&amp;quot;. Clearer empty message.
+- `onReconnect` flushes cards + reviews + word-ops together, then refreshes the
+  open view. `flushQueue` re-fetches /watch or /read after a successful flush so
+  every inflected form greens. Queue pill counts all three queues.
+- IDB v2 -&amp;gt; v3 (adds `wordOut`). `confirmCard` guards a null MODAL.
+
+SW shell v102 -&amp;gt; v103.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/78f375ee078a4afa2a34e315f5cc0902fe3ad10c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/78f375ee078a4afa2a34e315f5cc0902fe3ad10c"/>
+    <title>
+        Add cards by hand; per-card detail view + issue explanations; bulk-fi…
+    </title>
+    <updated>2026-09-01T20:53:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add cards by hand; per-card detail view + issue explanations; bulk-fix broken cards
+
+- &amp;quot;✏️ add a card by hand&amp;quot; on the home screen (+ #manualWrap modal): word/phrase,
+  optional sentence, optional &amp;quot;where from&amp;quot;. POST /srs/cards -&amp;gt; _translate_ctx +
+  _commit_card(video_id=None, source=&amp;#39;manual&amp;#39;). srs_cards.source column;
+  &amp;#39;manual&amp;#39; cards are NOT orphans (srs._ORPHAN_WHERE excludes them) and get TTS
+  audio like text cards. New list filter ?filter=manual.
+- #cardView: open any card to see it rendered, its FSRS stats (state / due /
+  reps / lapses / interval / stability / difficulty / learn score / source), and
+  a plain-language list of what&amp;#39;s wrong with it (_card_issues). Reached from the
+  ⚠ badge (now a button) and a &amp;quot;⤢ details&amp;quot; action in the card list. Inline edit,
+  jump-to-source, suspend, verdict/remove.
+- The ⚠ (&amp;quot;target not found in the sentence&amp;quot;) is now fixable: per-card
+  &amp;quot;↻ re-check with the LLM&amp;quot; (POST /srs/cards/{id}/recheck) and a bulk
+  &amp;quot;Auto-fix&amp;quot; bar (POST /srs/cards/fix) that strips stray stress marks out of
+  span_text (47 cards had them — a real data bug; update_card now strips too)
+  then re-derives the rest.
+- db.bold(): morphology fallback now unions ALL pymorphy parses, not just the
+  top one (ямы -&amp;gt; pymorphy ranked &amp;#39;ям&amp;#39; over &amp;#39;яма&amp;#39;). Unbolded cards 29 -&amp;gt; 1.
+
+SW shell v101 -&amp;gt; v102.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32437865e564506668b9ab81d118bdc01003ea9e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/32437865e564506668b9ab81d118bdc01003ea9e"/>
+    <title>
+        Introduce new cards learn-first, re-ranked daily by an LLM
+    </title>
+    <updated>2026-09-01T11:04:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Introduce new cards learn-first, re-ranked daily by an LLM
+
+New cards used to enter the queue in creation order. Now a daily batched LLM
+pass scores every not-yet-introduced card 0-100 (higher = a learner should meet
+it sooner — real spoken/written frequency + usefulness, not how the word looks,
+since the built-in freq list misleads), and queue() picks the day&amp;#39;s fresh budget
+by that score. Still shuffled within the day for presentation.
+
+- srs_cards.learn_score column. srs._NEW_ORDER = learn_score DESC (nulls last)
+  used by queue() + offline_bundle(); `list_cards(sort=&amp;quot;learn&amp;quot;)`.
+- llm.learn_priority(items) — one call per 50 words, absolute 0-100 scale so
+  batches are independent. `_LEARN_ORDER_SYSTEM` with an explicit tier rubric.
+- main._rank_new_cards(rescore_all) + _maybe_rank_new() (fires from /srs/queue
+  and /srs/stats when the day rolled over or unranked cards appeared; thread,
+  never blocks; `_RANK_LOCK` dedups) + boot kick + POST /srs/rank-new.
+  `app_settings.learn_rank_day` gates the daily re-rank.
+- Card list gets a &amp;quot;learn-first&amp;quot; sort + an ≈score badge.
+- Ranked the existing 269 un-introduced cards (пятно/платок/угрожать up top;
+  ASR garble, dialect, slang, казуистика at the bottom).
+
+SW shell v100 -&amp;gt; v101.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da3ba0bb4892aa23021dcf6bba5df907f885b92b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/da3ba0bb4892aa23021dcf6bba5df907f885b92b"/>
+    <title>
+        Reading: load more chapters into an existing book
+    </title>
+    <updated>2026-09-01T01:02:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reading: load more chapters into an existing book
+
+Anna Karenina (and any paginated ilibrary.ru book) can now grow in place —
+&amp;quot;＋ load the next chapters&amp;quot; at the end of the reader and in the chapters drawer —
+without disturbing reading position, cards, or highlights.
+
+- web.import_url(url, max_chapters, start=0): `start` skips leading chapters;
+  returns total_chapters so the caller knows when the book ends.
+- store.append_reading_chapters(video_id, chapters, from_num): inserts the new
+  paragraph/heading lines + extends raw_subs VTT, no replace_subtitle_lines.
+- POST /videos/{id}/more-chapters {count}: counts loaded &amp;#39;## &amp;#39; headings, fetches
+  the next batch, appends. /videos/{id}/read now returns chapters_loaded +
+  expandable.
+- Frontend: READER_MORE state, loadMoreChapters() (keeps absolute scroll
+  position), .read-more button + a .toc-more entry.
+
+Pulled Anna Karenina ch. VI–XI (256 lines); 126 cards from it untouched.
+SW shell v99 -&amp;gt; v100.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/188ba60e2f2c4e730eb3781fb887e386ca5cebbf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/188ba60e2f2c4e730eb3781fb887e386ca5cebbf"/>
+    <title>
+        Word verdicts: &quot;learned&quot; vs &quot;not learning&quot; (extensible)
+    </title>
+    <updated>2026-08-31T05:27:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Word verdicts: &amp;quot;learned&amp;quot; vs &amp;quot;not learning&amp;quot; (extensible)
+
+Removing a card / dismissing a highlighted word used to collapse to one outcome
+(&amp;quot;known&amp;quot; — too easy). Now there&amp;#39;s a choice, and the model is a registry so more
+levels can be added later.
+
+- app/wordstate.py — the registry. `learned` + `known` today; add a dict entry to
+  add a level and the API / stats / word page / pick-a-verdict sheet all pick it
+  up. `resolved_words.reason` carries the value (already free-text; any value
+  suppresses re-suggestion, so nothing else in extraction changes).
+- store: `set_word_state(lemma, reason)` (generalises `discard_word`),
+  `clear_word_state` (undo → back in rotation), `word_state_counts`,
+  `words_in_state`; `resolve_candidate(..., reason=)`; `delete_cards_for_lemma`
+  now also returns the Anki note ids.
+- API: `GET /words/states`, `POST|DELETE /words/{lemma}/state`,
+  `GET /words?state=`, `DELETE /srs/cards/{id}?verdict=learned|known`,
+  `word_detail` returns `verdict`, analytics returns `word_states`.
+  `/words/{lemma}/discard` kept as a `state=known` alias.
+- Frontend: one shared `#verdictWrap` sheet (`openVerdict`, registry-driven) wired
+  into the green-word popover, the reader carded-word popover (&amp;quot;remove ▾&amp;quot;), the
+  word page, study delete, and card-list delete. Each also offers &amp;quot;the card&amp;#39;s
+  wrong — remove it, keep suggesting&amp;quot; where a card/candidate id is known.
+  New `#wordsView` list (learned / not-learning), reachable from two new
+  Progress-screen cells.
+
+SW shell v98 -&amp;gt; v99.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3a7878bf38bd228d0f8766f18f043b81e919b5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/d3a7878bf38bd228d0f8766f18f043b81e919b5a"/>
+    <title>
+        Add car mode: oversized glanceable lyrics + screen wake lock
+    </title>
+    <updated>2026-08-30T19:56:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add car mode: oversized glanceable lyrics + screen wake lock
+
+Real CarPlay isn&amp;#39;t possible (needs a native app + an Apple audio entitlement,
+and CarPlay audio templates can&amp;#39;t render synced lyrics anyway). This is the
+workable version for a dash-mounted phone with audio over Bluetooth:
+
+- &amp;quot;🚗 car mode&amp;quot; button in the song player. Fullscreen black, the current lyric
+  line huge/white/bold and auto-centred, surrounding lines dimmed with top/bottom
+  gradient fades. No per-word or per-line tap targets (glance only) — just a big
+  play/pause and a big exit.
+- Screen Wake Lock while playing in car mode; re-acquired on visibilitychange
+  (iOS drops it on background) and released on pause / exit.
+- Exits cleanly on back / closeWatch / stopSong; minimise↔expand restores it.
+- MediaSession metadata (title/artist/artwork + transport controls) was already
+  published for songs, so the car head unit&amp;#39;s Now Playing screen already works.
+
+SW shell v97 -&amp;gt; v98.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/630c3e88e23ba53af55ba2a8d942edb3a3c272ec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/630c3e88e23ba53af55ba2a8d942edb3a3c272ec"/>
+    <title>
+        Calm, functional offline mode; fix downloaded-video playback offline
+    </title>
+    <updated>2026-08-30T16:22:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Calm, functional offline mode; fix downloaded-video playback offline
+
+The red full-bleed &amp;quot;Can&amp;#39;t reach the Mac / check Tailscale&amp;quot; banner fired whenever
+/health failed with navigator.onLine true — i.e. on any captive / dead wifi, not
+just a real server problem — and it overlaid the header, making the whole app
+look broken.
+
+- #connBanner is now a thin, calm, in-flow status line (never a full-bleed
+  alarm, never overlays the header or a playing video). &amp;quot;noserver&amp;quot; while onLine
+  shows the same calm &amp;quot;Offline — downloaded videos &amp;amp; saved reviews work · tap to
+  retry&amp;quot; as true offline; header pill goes amber, not red.
+- api() GETs get an 11s AbortSignal.timeout so a captive network fails fast to
+  the cache instead of hanging the tab (POSTs unchanged — they have offline
+  queues). SW shell fetch: 4s deadline + rejects a captive-portal login page
+  (redirected / non-HTML) so the app always boots from cache.
+- openWatch / startPlayer / openDetail use opfsPlayable() (fully downloaded, or —
+  when there&amp;#39;s no way to stream — a mostly-there partial) instead of the strict
+  opfsHas(), so a stale `msz:` value can&amp;#39;t hide a playable file. Removed the
+  early bail that rejected a playable local file; clearer &amp;quot;not downloaded&amp;quot; vs
+  &amp;quot;check your connection&amp;quot; messaging.
+- openDetail hides the server-only Look-up / Review panels offline and skips the
+  dead &amp;quot;Suggest vocabulary cards&amp;quot; panel; renderMediaRow shows &amp;quot;partly
+  downloaded&amp;quot; instead of nothing. onReconnect re-populates the detail view.
+
+SW shell v96 -&amp;gt; v97.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/33b29f827d950342936c77849e90f92a1215d2a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/33b29f827d950342936c77849e90f92a1215d2a3"/>
+    <title>
+        Shuffle the day&#39;s new cards (still selected in creation order)
+    </title>
+    <updated>2026-08-30T12:39:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Shuffle the day&amp;#39;s new cards (still selected in creation order)
+
+srs._shuffle_new_for_day(rows): after the SQL LIMIT picks the day&amp;#39;s fresh-card
+budget in creation order (&amp;quot;in order encountered&amp;quot;), reorder them by
+md5(day_boundary | card_id) — a per-day-stable permutation. Reloading the queue
+mid-session keeps the same order, and reviewing a card doesn&amp;#39;t reshuffle the
+rest or pull in the next un-budgeted card. Applied in srs.queue() and
+srs.offline_bundle(). Due/review cards keep their due-ASC order.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1bc31ffacaa849bc8f9fe8c75532d4dba3b830ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/1bc31ffacaa849bc8f9fe8c75532d4dba3b830ee"/>
+    <title>
+        Reversible &#39;word only&#39; card front + close chapters drawer on outside tap
+    </title>
+    <updated>2026-08-30T02:39:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reversible &amp;#39;word only&amp;#39; card front + close chapters drawer on outside tap
+
+card_front setting (&amp;#39;sentence&amp;#39; default | &amp;#39;word&amp;#39;): in word mode the review card
+front is just the dictionary form (verbs -&amp;gt; infinitive, nouns -&amp;gt; nom.sg, etc.)
+or a phrase in its common form, and the full sentence moves to the back. Fully
+reversible — the sentence is always stored; flip the setting back to restore.
+Toggle lives in the study-session settings panel.
+
+- srs_cards.front_word column + _backfill_front_words: reuses the cached stressed
+  dict form when there is one (no LLM), else one batched llm.dict_forms call
+  (handles phrases too). Backfilled all 226 existing cards; new cards fill it at
+  creation. POST /srs/backfill-front-words; also auto-runs when the setting flips.
+- _study_card_view returns front_html (per mode) + sentence_html (always) +
+  front_mode; studyReveal shows the sentence prominently in word mode.
+- .apkg export follows the mode.
+
+Chapters drawer: a tap outside the panel now just closes it (capture-phase
+click handler) instead of falling through to card/select the word behind it;
+long-press selection also ignores taps while the drawer is open. Added a scrim.
+
+SW shell v95 -&amp;gt; v96.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b12d060946e1b8f3b3194b4686fbfd705ae4185</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/5b12d060946e1b8f3b3194b4686fbfd705ae4185"/>
+    <title>
+        Inline word popover: fix &quot;all places&quot; from reader, add stress to sugg…
+    </title>
+    <updated>2026-08-29T23:34:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Inline word popover: fix &amp;quot;all places&amp;quot; from reader, add stress to suggested words, fix button sense
+
+- &amp;quot;all places this is said&amp;quot; did nothing when opened from the reader: #wordView
+  and #readView shared z-index 15 and #readView is later in the DOM, so it
+  painted over the word view. #wordView -&amp;gt; z-index 16.
+- Suggested (yellow) words now show the stressed headword too — carried in the
+  /watch + /read `cands` payload when cached, else hydrated via
+  /words/{lemma}(/accent). Shared _hydrateInlinePop() helper for undo/green/decide.
+- Carded-word popover buttons made sensible: &amp;quot;remove card&amp;quot; is now the subdued
+  red action on the left, &amp;quot;keep&amp;quot; is the green primary on the right (was
+  reversed — destructive action was the big green button).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2a8e8c024f2ca015afb2739e93cc8f5ac1f58348</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/2a8e8c024f2ca015afb2739e93cc8f5ac1f58348"/>
+    <title>
+        Show stress in the inline reader/watch popover
+    </title>
+    <updated>2026-08-29T23:29:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show stress in the inline reader/watch popover
+
+Tapping a carded (or word-family green) word now shows the stressed form as the
+headword — уныло -&amp;gt; уны́ло — and the stressed dictionary form after an arrow when
+it differs from the surface form (возда́м → возда́ть).
+
+- store.carded_accents() -&amp;gt; {normalized_text: (accented, dict_accented)}
+- _word_flagger attaches w.ac / w.da to each carded word in /watch + /read
+- _openInlinePop takes an {s,d} accent arg; inlineUndo / inlineGreen pass it,
+  with a /words/{lemma} fallback for family-green words that have no card row
+- SW shell v94 -&amp;gt; v95
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34f81832735e60af8347188f0992df773c2ec276</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/34f81832735e60af8347188f0992df773c2ec276"/>
+    <title>
+        Fix reader words reverting after carding (archaic / irregular surface…
+    </title>
+    <updated>2026-08-29T23:25:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix reader words reverting after carding (archaic / irregular surface forms)
+
+When you card a word whose surface form in the text lemmatises differently than
+the LLM&amp;#39;s citation form — Tolstoy&amp;#39;s &amp;quot;сбирался&amp;quot; -&amp;gt; сбираться vs the card&amp;#39;s
+собираться — the reader flagged it off card_lemmas(), never matched, and the
+word snapped back to un-carded on the next refresh. Tapping again made a fresh
+duplicate card each time (5x собираться in Анна Каренина).
+
+_also_card_surface_lemma(): on every card made from watch/read, if the tapped
+word&amp;#39;s lemma differs from the stored citation lemma, also record the surface
+lemma as has_card so the view actually turns it green. Wired into _make_one_card
+and text_card.
+
+One-off cleanup: removed 7 never-reviewed duplicate cards, recorded сбираться.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ecd869983bc57a96bac8bdbc3ea1391e6cf1cec7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/ecd869983bc57a96bac8bdbc3ea1391e6cf1cec7"/>
+    <title>
+        Add per-content practice mode: flip through a piece&#39;s cards without r…
+    </title>
+    <updated>2026-08-29T23:06:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add per-content practice mode: flip through a piece&amp;#39;s cards without rescheduling
+
+New &amp;quot;Practice N cards from this&amp;quot; button on every content detail page (video,
+song, text) that has cards. Opens the review screen in a pure flip-through mode:
+ratings (&amp;quot;Again&amp;quot; re-queues for later in the session, &amp;quot;Got it&amp;quot; drops the card)
+never call /srs/cards/{id}/review, so nothing is rescheduled and the daily study
+queue is untouched.
+
+- srs.cards_for_video / srs.card_counts_by_video (one grouped query for the home
+  list so each row knows its deck size)
+- GET /videos/{id}/study — shuffled deck of _study_card_view cards + title
+- /videos and /videos/{id} now return card_count
+- frontend: openPractice(), STUDY.practice branches in renderStudyCard /
+  studyReveal / studyRate / studyUndo / studyDelete / renderStudyDone / closeStudy
+- SW shell v93 -&amp;gt; v94
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d81bdf892cfb26b8af1266fe9e15c943c28b55f7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/d81bdf892cfb26b8af1266fe9e15c943c28b55f7"/>
+    <title>
+        Songs: swap the audio source (censored → uncensored)
+    </title>
+    <updated>2026-08-29T22:54:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Songs: swap the audio source (censored → uncensored)
+
+POST /songs/{id}/swap-source {url} repoints a song at a different YouTube video,
+re-downloads the audio, re-syncs the lyrics, and re-snaps its candidates/cards.
+&amp;quot;wrong / censored version?&amp;quot; link on the song&amp;#39;s page (prompts for a link).
+
+Swapped &amp;quot;Noize MC — Из окна&amp;quot; from the censored official clip to the album
+version (GMHdFXq9hUU).
+
+SW v92 → v93.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b555c435e3ca2d30109c80e753ebb322c98d904</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/1b555c435e3ca2d30109c80e753ebb322c98d904"/>
+    <title>
+        Mini player: a playing song follows you around the app
+    </title>
+    <updated>2026-08-29T22:51:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Mini player: a playing song follows you around the app
+
+Backing out of the song view used to stop playback. Now, if a song is playing,
+&amp;quot;back&amp;quot; minimizes it to a bottom bar (art, title, artist, a progress hairline,
+play/pause, a &amp;quot;song page&amp;quot; button, and ✕). Tap the bar to expand back to the
+full lyrics view where you left off; the ✕ stops and dismisses it. The bar rides
+above every screen (list, reader, study, card list, …), which get bottom padding
+so nothing hides behind it.
+
+The &amp;lt;audio&amp;gt; element is never torn down on minimize — only on ✕ or when you
+start different content — so playback and the lock-screen controls keep going.
+
+SW v91 → v92.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

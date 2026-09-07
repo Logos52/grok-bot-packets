@@ -1,0 +1,106 @@
+---
+id: 2026-09-06-stefanz-grok-bot-macos-one-agent-larry
+kind: article
+title: "Grok Bot macOS: one agent (Larry) Failed to send + missing replies; iPhone OK; other agents OK on Mac"
+source: "https://forum.cursor.com/t/grok-bot-macos-one-agent-larry-failed-to-send-missing-replies-iphone-ok-other-agents-ok-on-mac/170710"
+author: StefanZ
+published: 2026-09-05
+captured: 2026-09-06
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Grok Bot macOS: one agent (Larry) Failed to send + missing replies; iPhone OK; other agents OK on Mac
+URL: https://forum.cursor.com/t/grok-bot-macos-one-agent-larry-failed-to-send-missing-replies-iphone-ok-other-agents-ok-on-mac/170710
+Created: 2026-09-05T16:18:35.319Z
+
+## @StefanZ 2026-09-05T16:18:35.385Z staff=False
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+Describe the Bug
+On the macOS Grok Bot app, the agent Larry is broken for me, while other agents (e.g. Heinz) work fine on the same Mac.
+
+Symptoms on Mac in Larry’s chat:
+
+- Many outgoing messages show Failed to send (Resend / Delete).
+- When messages do send, Larry’s replies do not appear on Mac.
+- Same Cursor account on iPhone: Larry’s full thread is there, including his replies (Sync-Check marker, Tailscale answer, etc.).
+
+So Larry is responding; the Mac client is failing to send/render that one thread reliably. Not an empty bot list / total Mac attach failure.
+
+Steps to Reproduce
+
+- Open Grok Bot on Mac, signed in with Cursor account.
+- Open agent Larry and send a short message (e.g. “Hello”).
+- Observe Failed to send, or send succeeds but no assistant reply on Mac.
+- Open the same Larry chat on iPhone (same account) — message and/or replies appear there.
+
+Expected Behavior
+Mac and iPhone show the same Larry conversation; sends succeed; replies appear on both.
+
+What I already tried
+
+- Quit / reopen Mac app
+- Sign out / sign in (same Cursor account)
+- Check for updates (latest Mac app)
+- Cmd-K reopen Larry
+- Full reinstall of Mac Grok Bot app
+- Confirmed Heinz replies do show on Mac
+- Confirmed Larry profile/settings have nothing device-specific
+
+Screenshots
+
+- Mac: Failed to send bubbles in Larry chat
+- iPhone: Larry replies present (Sync-Check, Tailscale, etc.)
+
+Operating System
+macOS (MacBook) + iPhone iOS companion app
+
+Does this stop you from using Cursor
+No — Cursor IDE works. Grok Bot workaround: use Larry on iPhone; other agents on Mac.
+
+Please investigate per-agent chat sync/send on macOS for this bot while others sync normally. Happy to get a support reply.
+
+Steps to Reproduce
+
+- Open Grok Bot on Mac, signed in with Cursor account.
+- Open agent Larry and send a short message (e.g. “Hello”).
+- Observe Failed to send, or send succeeds but no assistant reply on Mac.
+- Open the same Larry chat on iPhone (same account) — message and/or replies appear there.
+
+Expected Behavior
+Mac and iPhone show the same Larry conversation; sends succeed; replies appear on both.
+
+Screenshots / Screen Recordings
+larry-mac-failed-send.png768×1162 52.9 KBlarry-iphone-replies.png1290×2796 388 KB
+
+Operating System
+MacOS
+
+Version Information
+Latest Mac app; exact Grok Bot version not available.
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+## @StefanZ 2026-09-05T16:47:26.143Z staff=False
+Update: Same symptoms when trying to talk to Larry from Omarchy (Linux desktop) — Failed to send / missing replies, while iPhone still shows Larry working. So this is not Mac-only; both desktop environments fail for Larry, iPhone works. (Note: Linux desktop isn’t officially supported for Grok Bot, but the parallel failure may still help narrow desktop vs iOS sync.)
+
+## @bearbones24 2026-09-05T23:53:14.117Z staff=False
+Same pattern on Linux Grok Bot 0.43.0 (Mint 22.3), not Mac-only.
+
+One Bot (Overlord / a copy of it) fails on desktop: sends sit in Failed to send / accepted-awaiting-echo, replies never show. iPhone has the full thread. Other Bots on the same desktop work.
+
+It works until that Bot posts a secret-request widget, then the desktop tail dies. Copying the Bot copies the freeze. Reboot, cache wipe, 0.39.0 ↔ 0.43.0 don’t help.
+
+Launch log every time:
+
+node-agent-coordinator: server transcript tail pinned 7994c850-a510-4e12-9d06-e10971b8f3a3
+
+node-agent-coordinator: agents roster seed skipped: SandGatewayMalformedReplyError: gateway listAgents reply is malformed: 0: pushMessageContent: message: message: secretRequest: target: required field
+
+Looks like the desktop client requires secretRequest.target and the gateway omits it, so that one conversation never hydrates. Mobile parser is fine.

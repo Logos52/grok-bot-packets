@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/joshgummersall/ankix/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/joshgummersall/ankix/commits/main.atom"/>
+  <title>Recent Commits to ankix:main</title>
+  <updated>2026-09-05T21:01:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/463c150c9d9e0e3350d323f3b6e76fad60149da9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/463c150c9d9e0e3350d323f3b6e76fad60149da9"/>
+    <title>
+        Define &quot;gloss&quot; in the README
+    </title>
+    <updated>2026-09-05T21:01:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Define &amp;quot;gloss&amp;quot; in the README
+
+The word carries the distinction the whole project turns on — a translation
+of a word as used in one sentence, not a dictionary entry listing every
+sense — and it&amp;#39;s in the flag names (--no-gloss) and throughout the docs, but
+it was never defined for a reader who doesn&amp;#39;t already know the term.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01RdUi4wFVgtdvjh1UJ7yZFv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ae1306f6f5906d6620fc8f787ea3a6ce29dba4e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/3ae1306f6f5906d6620fc8f787ea3a6ce29dba4e"/>
+    <title>
+        Merge pull request #12 from joshgummersall/warm-model-on-startup
+    </title>
+    <updated>2026-09-05T21:00:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #12 from joshgummersall/warm-model-on-startup
+
+Warm the gloss model at startup, and keep it loaded&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/475eec58144e362d5c856ffbaaf9a4cdefc2f611</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/475eec58144e362d5c856ffbaaf9a4cdefc2f611"/>
+    <title>
+        Keep the gloss model loaded between lookups
+    </title>
+    <updated>2026-09-05T15:05:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep the gloss model loaded between lookups
+
+Warming the model at startup only helps the first word. Ollama unloads an
+idle model after 5 minutes, which is shorter than the gaps between lookups
+when you&amp;#39;re reading a page and then picking a word out of it — so the model
+drops out mid-session and the next word pays the load cost all over again.
+
+Send keep_alive with every request, defaulting to 30 minutes. It goes on
+every request rather than just the warm-up because Ollama restarts the
+unload timer from whatever value it saw last: a Define without it would
+silently put the model back on the 5-minute default.
+
+The right value depends on the machine — a large base model on a laptop is
+worth unloading promptly, on a workstation worth keeping resident — so it&amp;#39;s
+configurable via --ollama-keep-alive and ollama_keep_alive. The value is
+validated at startup, before the Ollama round-trip: it rides on every
+lookup, so a typo Ollama rejects would otherwise fail every word once the
+review screen is already open.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01RdUi4wFVgtdvjh1UJ7yZFv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad149e8fa52cf3bf83c039da0f0a38cb3fbabfff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/ad149e8fa52cf3bf83c039da0f0a38cb3fbabfff"/>
+    <title>
+        Warm the gloss model at startup
+    </title>
+    <updated>2026-09-05T15:04:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Warm the gloss model at startup
+
+Loading the model costs seconds — more since the base model became Qwen —
+and left alone that cost lands on the first word the user picks, after the
+review screen is already open, where the wait is most visible.
+
+Fire a throwaway lookup in a goroutine as soon as the provider is built, so
+the load overlaps the setup still to come (fetching the source, building the
+document, starting the TUI) and the reading the user does before picking
+anything.
+
+It sends a real lookup rather than a bare load request: that makes Ollama
+evaluate the Modelfile&amp;#39;s system prompt and its ~40 few-shot examples as well
+as loading the weights, and both are reused by the lookups that follow.
+Nothing waits on the result — a warm-up that fails costs nothing, because
+the same failure recurs on the first genuine lookup, which reports it
+properly.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01RdUi4wFVgtdvjh1UJ7yZFv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6dc8f3acf53755ff2d2bf47945310b0e7dabc29c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/6dc8f3acf53755ff2d2bf47945310b0e7dabc29c"/>
+    <title>
+        Move by screen row, not document line
+    </title>
+    <updated>2026-09-04T14:04:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move by screen row, not document line
+
+j/k jumped to the first word of the next document line, so on a zoomed-in
+terminal — where one sentence wraps over most of the screen — a single
+press skipped everything in between. The render now reports the row and
+column each word wrapped onto, and j/k walk those rows, keeping the
+cursor&amp;#39;s column like vim&amp;#39;s gj/gk. Scrolling centers on the cursor&amp;#39;s own
+row too, rather than on the row its line began at.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01FGyC4xBuXAVzgueEuhrRV5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ffd25b093676d04ec6d76bd679cee8e6d263a641</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/ffd25b093676d04ec6d76bd679cee8e6d263a641"/>
+    <title>
+        Treat numbers as selectable words
+    </title>
+    <updated>2026-09-04T13:56:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Treat numbers as selectable words
+
+The sentence tokenizer matched letters only, so a numeric token (&amp;quot;lleva
+300&amp;quot;) was never a word: the cursor could not reach it and `l` looked dead
+on the word before it. Match digits too.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01FGyC4xBuXAVzgueEuhrRV5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a27583077f1d59918efbeb470f2715198fe169b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/a27583077f1d59918efbeb470f2715198fe169b6"/>
+    <title>
+        Show reading progress instead of a line count
+    </title>
+    <updated>2026-09-04T13:52:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show reading progress instead of a line count
+
+The header counted the lines the document had, which never changed and
+said nothing about where the reader was. Report the cursor&amp;#39;s line, the
+total, and the percentage through instead.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01FGyC4xBuXAVzgueEuhrRV5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1283172645a10b651d1c8001eb19d418ed13339c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/1283172645a10b651d1c8001eb19d418ed13339c"/>
+    <title>
+        Merge branch &#39;center-cursor-scroll&#39;
+    </title>
+    <updated>2026-09-04T13:41:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;center-cursor-scroll&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/09242f5eef562b31d71c819da9af44cc6f2f143c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/09242f5eef562b31d71c819da9af44cc6f2f143c"/>
+    <title>
+        Help text modal
+    </title>
+    <updated>2026-09-04T13:41:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Help text modal&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13a456acb296f009a6c3d69930284316c9e8a8ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/13a456acb296f009a6c3d69930284316c9e8a8ce"/>
+    <title>
+        Keep the cursor mid-screen while scrolling
+    </title>
+    <updated>2026-09-04T13:36:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep the cursor mid-screen while scrolling
+
+Scrolling only kept the cursor line visible, so reading down a document
+parked it on the bottom row. Constrain the viewport offset instead, so
+the cursor keeps half a screen of context above and below it, and let
+SetYOffset&amp;#39;s clamp hand the cursor back to the top or bottom edge at the
+ends of the document.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014iSmAZNb3Et3P46PYBSAMD&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/93a0ba1a695dd51d9ab2d9b91a801d1e928041b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/93a0ba1a695dd51d9ab2d9b91a801d1e928041b0"/>
+    <title>
+        Merge pull request #11 from joshgummersall/bump-workflow-actions
+    </title>
+    <updated>2026-09-03T18:38:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #11 from joshgummersall/bump-workflow-actions
+
+Bump workflow actions off deprecated Node 20&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a16797909003b5548595d255c2ca8defacc98fca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/a16797909003b5548595d255c2ca8defacc98fca"/>
+    <title>
+        Bump workflow actions off deprecated Node 20
+    </title>
+    <updated>2026-09-03T17:36:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump workflow actions off deprecated Node 20
+
+checkout, setup-go and goreleaser-action all still targeted Node 20, which
+the runners now force onto Node 24 with a deprecation warning. v7 of each
+declares node24 directly. Every input in use here (fetch-depth,
+go-version-file, version, args) is unchanged.
+
+Also pin the GoReleaser CLI to &amp;quot;~&amp;gt; v2&amp;quot; rather than latest. The action
+already resolves latest to exactly that, and says so in a warning each run —
+but left as latest it would silently follow a future major instead.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3fc06c6f7334d19a8fdbced872e0444eb4f684a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/3fc06c6f7334d19a8fdbced872e0444eb4f684a9"/>
+    <title>
+        Merge pull request #10 from joshgummersall/checksum-pinned-model
+    </title>
+    <updated>2026-09-03T17:09:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #10 from joshgummersall/checksum-pinned-model
+
+Pin the Ollama model to the Modelfile&amp;#39;s checksum, and make the base model durable&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c61eb5c9b830939e2b8844e9c555c2b883601a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/6c61eb5c9b830939e2b8844e9c555c2b883601a7"/>
+    <title>
+        install takes no flags; both inputs are config
+    </title>
+    <updated>2026-09-03T17:07:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;install takes no flags; both inputs are config
+
+A --base-model flag isn&amp;#39;t merely redundant with the config key, it&amp;#39;s
+incoherent. install&amp;#39;s output is the durable artifact, so there&amp;#39;s no &amp;quot;just
+this once&amp;quot; for it: a base passed on the command line stays installed until
+the next `ankix install` — which every upgrade now asks you to run — puts
+the default back without saying so. That&amp;#39;s the exact durability trap the
+checksum pinning was added to close, and nothing else reads the value, so
+config is the only place the choice can survive.
+
+install now defines no flags at all. The name it builds is the global
+--ollama-model, the same one every command looks up; the base model is
+`base_model`. A test walks its flag set to keep it that way.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ca4c627a749e6448536cfef1bfda685c73ee763</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/9ca4c627a749e6448536cfef1bfda685c73ee763"/>
+    <title>
+        One flag for the model name, not two
+    </title>
+    <updated>2026-09-03T17:05:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;One flag for the model name, not two
+
+`ankix install --model` and the global `--ollama-model` named the same
+thing: the model install builds is exactly the model every other command
+looks up. Two ways to say it is two ways to disagree — which it already did,
+before the previous commit made both read the same config key.
+
+Drop the install-only flag. `--ollama-model` (config `ollama_model`) is now
+the single name, and a test asserts install doesn&amp;#39;t reintroduce one of its
+own. Breaking for anyone scripting `ankix install --model`, which is nobody.
+
+While auditing for the same duplication elsewhere: the README documented a
+`--model` flag on `kindle vocab` that has never existed, and omitted
+`--limit` and `--headless`, which do. mise&amp;#39;s create task now takes MODEL
+alongside BASE_MODEL rather than hardcoding the name.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab56a0b0c49732907a1386925ad056777fb67b24</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/ab56a0b0c49732907a1386925ad056777fb67b24"/>
+    <title>
+        Make the base model and model name durable config
+    </title>
+    <updated>2026-09-03T17:01:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the base model and model name durable config
+
+Pinning the model to the Modelfile checksum means every upgrade asks for a
+rebuild — which turned --base-model into the same durability bug the pinning
+was meant to fix. Build on qwen2.5:14b once, upgrade, run the `ankix install`
+the error tells you to, and you&amp;#39;re silently back on llama3.2:3b.
+
+base_model belongs in the config file, alongside every other setting that&amp;#39;s
+a property of the install rather than of one invocation. --base-model still
+overrides it for a single run.
+
+The same class of bug was already there between the two model-name flags:
+`ankix install --model` hardcoded &amp;quot;ankix&amp;quot; while every other command read
+ollama_model from config, so setting that key built one model and looked up
+another, and the lookup failed with &amp;quot;no ankix-es model installed&amp;quot; naming a
+model install had never been asked to build. Both now default from the same
+key.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b36004da9918702f770c0437eda00392b6b50ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/0b36004da9918702f770c0437eda00392b6b50ae"/>
+    <title>
+        Pin the Ollama model to the Modelfile&#39;s checksum
+    </title>
+    <updated>2026-09-03T16:57:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pin the Ollama model to the Modelfile&amp;#39;s checksum
+
+ankix&amp;#39;s prompt lives in the Ollama model, not the binary, so the two have to
+agree — a release with new prompt rules is useless against a model an older
+release built. Until now nothing noticed: the refine feature&amp;#39;s Correction:
+turn was simply answered as if it were a new word to translate, and the only
+mitigation was a README note asking people to remember `ankix install`.
+
+Rather than detect staleness after the fact, bind the two by name. `ankix
+install` now tags the model with a short checksum of the Modelfile it was
+built from, and every command asks for exactly that tag. A model built by an
+older release isn&amp;#39;t stale so much as unaddressable — nothing has to compare
+versions, because the wrong model can&amp;#39;t be reached in the first place.
+
+The checksum covers the Modelfile as committed, deliberately not the
+rendered output: the FROM line is the one part that varies per install, and
+a command resolving a model at runtime has no idea which base model was
+used. So the tag names the prompt, and --base-model stays an orthogonal
+choice.
+
+A missing model is now reported before any slow setup work rather than as a
+per-word &amp;quot;lookup failed&amp;quot; once the review screen is already open, so the
+provider is built up front — which also collapses four copies of the
+--no-gloss branch into one helper. The three cases read differently and say
+different things: an upgrade that left an older build behind names both tags
+and the command that fixes it, a first run says to install, and a model
+named explicitly with --ollama-model isn&amp;#39;t something `ankix install` can
+fix, so it doesn&amp;#39;t suggest it.
+
+A name with an explicit tag is used verbatim, which is the escape hatch for
+a hand-built or forked model, and old builds are kept rather than deleted:
+they share their weights, and an older binary keeps working against the tag
+it expects.
+
+Cobra printed the full flag list under these errors, burying the fix.
+Silencing usage from PersistentPreRunE rather than on the command means it
+only applies once args have validated, so a genuine usage error still gets
+usage. SilenceErrors makes main the single place errors are printed.
+
+ollama/vocab/mise.toml&amp;#39;s create task computes the same tag in shell; a test
+checks the two agree, since a mismatch would build a model nothing can find.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8bb3560927eeb3ba9f63e76a9f5f8cba745a7ba1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/8bb3560927eeb3ba9f63e76a9f5f8cba745a7ba1"/>
+    <title>
+        Merge pull request #9 from joshgummersall/refine-translation-prompt
+    </title>
+    <updated>2026-09-03T16:50:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #9 from joshgummersall/refine-translation-prompt
+
+Let the user correct a translation by prompting the model&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7a84140029078340b1065aa52727d67d7313220b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/7a84140029078340b1065aa52727d67d7313220b"/>
+    <title>
+        Let the user correct a translation by prompting the model
+    </title>
+    <updated>2026-09-03T16:35:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let the user correct a translation by prompting the model
+
+Small local models drift: a translation comes back with a neighboring
+adjective attached (&amp;quot;new keys&amp;quot; for &amp;quot;llaves&amp;quot;), or takes the literal sense of
+a word the sentence uses figuratively. Re-scoping the phrase doesn&amp;#39;t help —
+the phrase was right, the answer was wrong — so the only recourse was
+deleting the word and losing the card.
+
+Press r on a marked word in any review screen, type what&amp;#39;s wrong in plain
+language, and the correction goes to the model as a follow-up turn on its
+own answer. Corrections chain off the current value, so a couple of passes
+can narrow in.
+
+dict.Refiner is a separate, optional interface: a provider with nothing to
+re-ask (a plain dictionary lookup) simply doesn&amp;#39;t implement it, and the key
+is inert when the assertion fails — which also covers --no-gloss, where the
+Provider is nil.
+
+Two ways a refinement could be silently thrown away, both fixed here:
+
+  - An ordinary lookup already in flight for the same phrase would land on
+    top of it. Phrase text can&amp;#39;t tell the two apart, because refining
+    doesn&amp;#39;t change the text, so lookups are now tagged with a monotonic
+    generation instead. That also fixes a pre-existing bug where Kindle,
+    which rebuilds its phrases between sentence groups, could apply one
+    group&amp;#39;s result to the next group&amp;#39;s phrase.
+  - Cancelling an expansion reverts lo/hi but not previewText, so the
+    follow-up refresh re-fetched a plain gloss over the correction.
+    Refinements are sticky now, and cleared only when the phrase&amp;#39;s own
+    bounds actually move.
+
+A failed refine keeps the answer it was asked to correct, rather than
+leaving the user with nothing.
+
+Kindle quit on a bare q before dispatching by state; typing &amp;quot;quitar&amp;quot; into a
+correction would have quit mid-review and lost the sentence group. The
+refine prompt joins the sentence editor in that exclusion, and handles
+ctrl+c itself since textinput doesn&amp;#39;t.
+
+Modelfile: rules 12 and 13 define the &amp;quot;Correction:&amp;quot; turn — it revises the
+previous answer, outranks the don&amp;#39;t-include-neighboring-words rules when
+asked to, and a correction about form (&amp;quot;shorter&amp;quot;) must not become part of
+the answer. num_predict 24 -&amp;gt; 48 so a correction can&amp;#39;t truncate the reply
+before the &amp;quot;|&amp;quot;, and num_ctx 4096 -&amp;gt; 8192.
+
+Only one correction few-shot, on a sentence used nowhere else. Measured
+against the existing 48-case eval: three correction examples cost 5 cases,
+mostly because they reused sentences that already had plain examples and
+taught two answers for the same input. One example on a fresh sentence
+costs nothing (39/48, same as before) and still passes all 6 correction
+cases off the prose rules alone.
+
+Requires a one-time `ankix install` rebuild; an older model answers
+&amp;quot;Correction: shorter&amp;quot; as if it were a new word, which ankix can&amp;#39;t detect,
+so the parse error now suggests the rebuild.
+
+Closes #8
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016c17sPrU7j2gMnrgQpSPFB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/98aa8ab4186784107026093abbec6823db5030ac</id>
+    <link type="text/html" rel="alternate" href="https://github.com/joshgummersall/ankix/commit/98aa8ab4186784107026093abbec6823db5030ac"/>
+    <title>
+        Merge pull request #7 from joshgummersall/dedupe-phrase-preview-layer
+    </title>
+    <updated>2026-09-03T16:16:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1235378?s=30&amp;v=4"/>
+    <author>
+      <name>joshgummersall</name>
+      <uri>https://github.com/joshgummersall</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #7 from joshgummersall/dedupe-phrase-preview-layer
+
+Dedupe the preview/expand layer above phraseSet&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

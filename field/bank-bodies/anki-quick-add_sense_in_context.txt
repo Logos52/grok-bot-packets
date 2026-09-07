@@ -1,0 +1,469 @@
+<div align="center">
+
+# 🃏 Anki Quick Add
+
+### One word in. A complete Anki card out.
+
+Type a word, or select it on any page, and a finished flashcard lands in Anki: translation,
+transcription, part of speech, example sentences, synonyms, grammar notes, pronunciation audio and
+a Wikipedia image with its license. Works out of the box with **no API key** (free dictionary
+sources), or with the LLM provider **you** choose and **your** key; the note goes into Anki through
+AnkiConnect. Nothing in between.
+
+[![CI](https://github.com/sergiyclas/anki-quick-add/actions/workflows/ci.yml/badge.svg)](https://github.com/sergiyclas/anki-quick-add/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+</div>
+
+---
+
+<div align="center">
+
+## 🛠 Tech Stack
+
+**Extension**<br>
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178c6?logo=typescript&logoColor=white)
+![Preact](https://img.shields.io/badge/Preact-10-673ab8?logo=preact&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-8-646cff?logo=vite&logoColor=white)
+![Chrome](https://img.shields.io/badge/Chrome-Manifest_V3-4285f4?logo=googlechrome&logoColor=white)
+
+**LLM providers**<br>
+![OpenAI](https://img.shields.io/badge/OpenAI-Responses_API-412991?logo=openai&logoColor=white)
+![Gemini](https://img.shields.io/badge/Google-Gemini-4285f4?logo=google&logoColor=white)
+![Anthropic](https://img.shields.io/badge/Anthropic-Messages_API-d4a27f)
+![OpenAI-compatible](https://img.shields.io/badge/OpenAI--compatible-OpenRouter_·_Groq_·_Ollama_·_…-6c5ce7)
+
+**Anki & media**<br>
+![AnkiConnect](https://img.shields.io/badge/AnkiConnect-v6-0a84ff)
+![Wikimedia](https://img.shields.io/badge/Wikipedia_·_Commons-images_·_audio-006699?logo=wikipedia&logoColor=white)
+![Wiktionary](https://img.shields.io/badge/Wiktionary-recordings-990000?logo=wikipedia&logoColor=white)
+![TTS](https://img.shields.io/badge/Google_TTS-fallback_audio-34a853?logo=google&logoColor=white)
+
+**Quality**<br>
+![Vitest](https://img.shields.io/badge/Vitest-106_tests-6e9f18?logo=vitest&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-e2e_on_the_built_extension-2ead33?logo=playwright&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088ff?logo=githubactions&logoColor=white)
+![i18n](https://img.shields.io/badge/UI-12_languages-ff7a59)
+
+</div>
+
+---
+
+## 🎬 Demo
+
+<div align="center">
+
+![Typing a word, the instant translation, and the finished card](docs/demo.gif)
+
+*A word typed into the popup, the instant translation while typing, and the card the extension made:
+translation, IPA, three examples, synonyms, a grammar note and a Wikipedia photo with its credit.*
+
+**[▶ Watch the feature tour](docs/demo.mp4)** – 2:06, every feature in order
+
+</div>
+
+Nothing in the recording is staged. The cards are what Gemini 3.5 Flash generated on that run, the
+media came from Wikipedia and dictionaryapi.dev, and the notes were written to a real Anki collection
+through AnkiConnect. The whole capture is reproducible with `npx tsx scripts/capture.ts`.
+
+<details>
+<summary><b>Every screen, and what it shows</b></summary>
+
+<br>
+
+**Popup after adding a word** – the status line, the word in the history, and the footer with the
+Anki connection, the model and the target deck.
+
+![Popup](docs/01-popup-added.png)
+
+**The card, as Anki renders it** – the built-in note type's back side: translation, part of speech,
+image, examples, synonyms, grammar note and image credit.
+
+![Card](docs/02-card-back.png)
+
+**Selection bubble** – Shift + select on a Wikipedia page. The bubble reads the sentence around the
+word and shows *битка* (the baseball bat) with *usually: кажан* (the animal) underneath, and the card
+gets the same meaning.
+
+![Bubble](docs/03-bubble.png)
+
+**Editor** – Shift+Enter (or *Edit…* in the bubble) opens the generated card before it is added: every
+field editable, audio and image can be dropped, *Regenerate* takes a hint.
+
+![Editor](docs/04-editor.png)
+
+**Providers** – one key per provider, model list fetched from the provider, reasoning effort.
+
+![Providers](docs/05-options-providers.png)
+
+**Field mapping** – which generated part goes into which field of the note type, the duplicate-check
+field, list formats, duplicate policy.
+
+![Mapping](docs/06-options-mapping.png)
+
+**Languages & generation** – source and target language, CEFR level, counts, what to generate,
+audio source order, image settings.
+
+![Generation](docs/07-options-generation.png)
+
+**Preview** – the note type's real templates and CSS from Anki, rendered with sample data.
+
+![Preview](docs/08-options-preview.png)
+
+**List mode** – a pasted list, added one by one, with a summary.
+
+![Batch](docs/09-batch.png)
+
+**Offline queue** – cards added while Anki was closed, with their translation and the media they are
+carrying; *Add now* writes them, or they go in by themselves within five minutes.
+
+![Queue](docs/11-queue.png)
+
+**General** – interface language (follows the browser, or any of the 12 bundled languages), interface
+theme (light, dark, or dark on a schedule), promo code, export/import.
+
+![General](docs/10-options-general.png)
+
+</details>
+
+---
+
+## 🚀 Quick Start
+
+### Requirements
+
+- Chrome 144+ (or any current Chromium browser)
+- [Anki](https://apps.ankiweb.net/) desktop running with the [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on (code `2055492159`) – no AnkiConnect configuration needed
+- Optional: an API key for an LLM provider, or a local model behind Ollama / LM Studio. Without one,
+  the **Free** provider builds the card from Google Translate's dictionary data, dictionaryapi.dev
+  and Tatoeba.
+
+### Install
+
+*Chrome Web Store listing: coming soon.* Until then, build it yourself:
+
+```bash
+git clone https://github.com/sergiyclas/anki-quick-add.git
+cd anki-quick-add
+npm install
+npm run build          # -> dist/
+```
+
+`chrome://extensions` → **Developer mode** → **Load unpacked** → select `dist/`.
+
+### First run
+
+1. Click the icon → **Settings** → **Providers**: keep **Free** (no key), or pick an LLM provider,
+   paste the key and choose a model.
+2. **Anki**: choose the deck. Keep the built-in note type (created on first use) or pick one of yours
+   and map the fields.
+3. **Languages & Generation**: set the language you learn and the language you translate into.
+4. Press **Alt+A** anywhere, type a word, press **Enter**.
+
+---
+
+## ✨ Features
+
+### 🧠 A whole card from one word
+
+The provider gets a JSON schema built from your settings and returns exactly the parts you asked
+for: translations, IPA, part of speech, definition, synonyms, example sentences at a chosen CEFR
+level (optionally translated), and a grammar note that adapts to the language – gender and plural
+for German, aspect pairs for Slavic languages, irregular forms for English. Ukrainian targets get
+built-in rules against calques from Russian.
+
+### 🆓 No key? No problem
+
+The default **Free** provider needs nothing: translations, part of speech, synonyms and definitions
+come from Google Translate's dictionary data, IPA and examples for English from dictionaryapi.dev,
+example sentences with translations from the Tatoeba corpus. Grammar notes and sense disambiguation
+are the LLM providers' job.
+
+### 🔌 Your provider, your key
+
+Anthropic, OpenAI (Responses API), Google Gemini, or any OpenAI-compatible endpoint with presets
+for OpenRouter, Groq, DeepSeek, xAI, Mistral, Ollama and LM Studio. Every adapter asks for strict
+JSON output and falls back to plain JSON mode when a server does not support it. Keys live in your
+browser and go only to the provider they belong to.
+
+### 🃏 Any note type
+
+A built-in note type with fields for every generated part and a two-card template (the reverse card
+is optional per note), or a mapping table that puts the generated parts into the fields of the note
+type you already use. The preview tab renders your note type's real templates and CSS.
+
+### 🖼 Media that fits the sense
+
+Pronunciation from dictionaryapi.dev or Wiktionary r
+
+---PATCH---
+From 8920200e4e181d7ab767091cda6c48c6891860ca Mon Sep 17 00:00:00 2001
+From: Serhiy <sergiyclas@gmail.com>
+Date: Fri, 4 Sep 2026 13:33:35 +0300
+Subject: [PATCH] feat: sense in context and on-device translation fallback
+
+- Selecting a word now translates the sentence around it and picks the
+  dictionary sense that shows up in that translation, so "bat" on a baseball
+  page gives the bat you swing. The usual meaning stays on a second line, and
+  the same sense goes first on the card built by the Free provider.
+- The gtx parser keeps the candidate senses (term, back-translations, score)
+  that dt=bd already returned and the old code threw away.
+- Chrome's built-in Translator API runs in a new offscreen document and answers
+  when the online endpoint cannot be reached; the language pack is downloaded
+  from the options page, which is the only context with a user gesture.
+- ping only reads the cached availability, so opening the popup never creates
+  the offscreen document; the document closes after five idle minutes.
+- e2e now degrades to a clear SKIP when Anki is not running.
+---
+ PRIVACY.md                                    |  10 +-
+ README.md                                     |  13 ++
+ public/_locales/de/messages.json              |  66 +++++++++
+ public/_locales/en/messages.json              |  66 +++++++++
+ public/_locales/es/messages.json              |  66 +++++++++
+ public/_locales/fr/messages.json              |  66 +++++++++
+ public/_locales/it/messages.json              |  66 +++++++++
+ public/_locales/ja/messages.json              |  66 +++++++++
+ public/_locales/nl/messages.json              |  66 +++++++++
+ public/_locales/pl/messages.json              |  66 +++++++++
+ public/_locales/pt_BR/messages.json           |  66 +++++++++
+ public/_locales/tr/messages.json              |  66 +++++++++
+ public/_locales/uk/messages.json              |  66 +++++++++
+ public/_locales/zh_CN/messages.json           |  66 +++++++++
+ public/manifest.json                          |   5 +-
+ scripts/e2e.mjs                               |  78 ++++++++---
+ scripts/verify-dist.mjs                       |   2 +-
+ src/background/index.ts                       |   9 ++
+ src/background/router.ts                      |  21 ++-
+ src/content/index.ts                          |  22 ++-
+ src/lib/messages.ts                           |  25 +++-
+ src/lib/pipeline/addWord.ts                   |   1 +
+ src/lib/providers/free/gtx.ts                 |  37 ++++-
+ src/lib/providers/free/index.ts               |  18 ++-
+ src/lib/providers/types.ts                    |   1 +
+ src/lib/sense/contextual.ts                   |  78 +++++++++++
+ src/lib/sense/match.ts                        | 128 ++++++++++++++++++
+ src/lib/settings/schema.ts                    |   6 +
+ src/lib/translate/engine.ts                   |  89 ++++++++++++
+ src/lib/translate/offscreen.ts                |  47 +++++++
+ src/lib/translate/protocol.ts                 |  21 +++
+ src/offscreen/index.html                      |  10 ++
+ src/offscreen/main.ts                         |  22 +++
+ src/offscreen/translator.ts                   |  42 ++++++
+ src/options/components/OfflineTranslation.tsx |  77 +++++++++++
+ src/options/tabs/Generation.tsx               |  20 +++
+ src/popup/StatusBar.tsx                       |  13 +-
+ src/popup/popup.css                           |   5 +
+ src/types/ai.d.ts                             |  25 ++++
+ store/listing.md                              |   5 +-
+ tests/free.test.ts                            |   2 +-
+ tests/sense.test.ts                           | 101 ++++++++++++++
+ tests/translateEngine.test.ts                 |  27 ++++
+ vite.config.ts                                |   1 +
+ 44 files changed, 1709 insertions(+), 44 deletions(-)
+ create mode 100644 src/lib/sense/contextual.ts
+ create mode 100644 src/lib/sense/match.ts
+ create mode 100644 src/lib/translate/engine.ts
+ create mode 100644 src/lib/translate/offscreen.ts
+ create mode 100644 src/lib/translate/protocol.ts
+ create mode 100644 src/offscreen/index.html
+ create mode 100644 src/offscreen/main.ts
+ create mode 100644 src/offscreen/translator.ts
+ create mode 100644 src/options/components/OfflineTranslation.tsx
+ create mode 100644 src/types/ai.d.ts
+ create mode 100644 tests/sense.test.ts
+ create mode 100644 tests/translateEngine.test.ts
+
+diff --git a/PRIVACY.md b/PRIVACY.md
+index 3097eca..e95e330 100644
+--- a/PRIVACY.md
++++ b/PRIVACY.md
+@@ -20,6 +20,12 @@ Everything below happens only when you trigger it (typing in the popup, pressing
+ - **Instant translation.** While you type in the popup, and when the selection bubble opens, the
+   text is sent to Google Translate (`translate.googleapis.com`) for the one-line preview. Both can be
+   turned off in the settings.
++- **Sense in context.** When "Pick the meaning that fits the sentence" is on (default), selecting a
++  word also sends the sentence around it to the same endpoint, so the right meaning can be chosen.
++  Turning that setting off keeps the sentence on your device.
++- **On-device translation.** If you download a language pack in the settings, Chrome keeps it on this
++  computer and translations that use it never leave the machine. It is used when the online endpoint
++  cannot be reached.
+ - **Media for the card.** The word is used to look up a pronunciation recording and an image on
+   Wikipedia / Wikimedia Commons, Wiktionary and dictionaryapi.dev, and to request text-to-speech audio
+   from Google Translate (`translate.google.com`). Image author and license are stored on the card.
+@@ -62,7 +68,9 @@ governed by their respective privacy policies. Only the services you enable or c
+ 
+ - `storage`, `unlimitedStorage` – settings, field mappings, keys, history, and the offline queue of
+   cards waiting for Anki (which would not fit in the 10 MB default budget).
+-- `alarms` – retries the offline queue every few minutes.
++- `alarms` – retries the offline queue every few minutes, and closes the translator page when idle.
++- `offscreen` – Chrome's built-in translator is only available to a page, not to the extension's
++  background worker, so a hidden page is opened when an offline translation is needed.
+ - `contextMenus` – the *Add to Anki* menu on selected text.
+ - `activeTab`, `scripting` – reading the selection and showing the confirmation toast on the page
+   where you used the menu; registering the selection-bubble script when you enable it.
+diff --git a/README.md b/README.md
+index ea741d1..17a8505 100644
+--- a/README.md
++++ b/README.md
+@@ -225,6 +225,17 @@ starts, when the popup opens, or from the *Add now* button. The queue lives in I
+ binary, about 150 KB per card, up to 300 cards), survives closing the browser, and remembers which
+ Anki profile each card was meant for, so nothing lands in the wrong collection.
+ 
++### 🌐 Right meaning, and one that survives losing the connection
++
++Select a word and the bubble shows the meaning it has *in that sentence*: "bat" on a baseball page
++becomes *битка*, not *кажан*, with the usual meaning still visible underneath. The same meaning goes
++onto the card. It works by translating the sentence and matching it against the dictionary's candidate
++senses, with stem-tolerant comparison for inflected languages – no extra key, no LLM call.
++
++Chrome can also keep a language pack on the device (Settings → Languages & Generation → *Offline
++translation*). When the online translator cannot be reached, the extension falls back to it, so the
++bubble keeps working with no connection at all.
++
+ ### 🔁 Duplicates, sync, backup
+ 
+ Duplicates are checked in the collection or the target deck before anything is generated; policy:
+@@ -298,6 +309,8 @@ Everything is set in the options page; this is what the settings mean.
+ | Interface language | auto (browser language) or any of the 12 bundled languages | auto |
+ | Interface theme | same as the browser / light / dark / dark on a schedule (from–until) | same as the browser |
+ | Offline queue | keep adding while Anki is closed; up to 300 cards | on |
++| Sense in context | pick the meaning that fits the sentence, in the bubble and on the card | on |
++| Offline translation | on-device language pack, used when the online translator is unreachable | off until downloaded |
+ | Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
+ | Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
+ | Shortcut | `chrome://extensions/shortcuts` | Alt+A |
+diff --git a/public/_locales/de/messages.json b/public/_locales/de/messages.json
+index bfa7ebe..acc6d96 100644
+--- a/public/_locales/de/messages.json
++++ b/public/_locales/de/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki ist weiterhin geschlossen."
++  },
++  "tr_offline_title": {
++    "message": "Offline-Übersetzung"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome kann ein Sprachpaket auf diesem Gerät behalten. Es springt ein, wenn der Online-Übersetzer nicht erreichbar ist, sodass die Blase auch ohne Verbindung funktioniert."
++  },
++  "tr_pair": {
++    "message": "$SRC$ nach $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "bereit, funktioniert offline"
++  },
++  "tr_state_downloadable": {
++    "message": "noch nicht geladen"
++  },
++  "tr_state_downloading": {
++    "message": "wird geladen…"
++  },
++  "tr_state_unavailable": {
++    "message": "für dieses Paar nicht verfügbar"
++  },
++  "tr_unsupported": {
++    "message": "Dieser Browser hat keinen eingebauten Übersetzer."
++  },
++  "tr_download": {
++    "message": "Sprachpaket laden"
++  },
++  "tr_cancel": {
++    "message": "Abbrechen"
++  },
++  "tr_download_failed": {
++    "message": "Laden fehlgeschlagen: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Offline-Übersetzung einrichten"
++  },
++  "tr_context_sense": {
++    "message": "Bedeutung aus dem Satz wählen"
++  },
++  "tr_context_in_card": {
++    "message": "Diese Bedeutung auch auf die Karte"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" auf einer Baseball-Seite wird zum Schläger, nicht zur Fledermaus. Die übliche Bedeutung bleibt darunter sichtbar."
++  },
++  "bubble_usually": {
++    "message": "normalerweise: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/en/messages.json b/public/_locales/en/messages.json
+index 248246a..81f3be4 100644
+--- a/public/_locales/en/messages.json
++++ b/public/_locales/en/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki is still closed."
++  },
++  "tr_offline_title": {
++    "message": "Offline translation"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome can keep a language pack on this device. It is used when the online translator cannot be reached, so the bubble keeps working with no connection."
++  },
++  "tr_pair": {
++    "message": "$SRC$ to $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "ready, works offline"
++  },
++  "tr_state_downloadable": {
++    "message": "not downloaded yet"
++  },
++  "tr_state_downloading": {
++    "message": "downloading…"
++  },
++  "tr_state_unavailable": {
++    "message": "not offered for this pair"
++  },
++  "tr_unsupported": {
++    "message": "This browser has no built-in translator."
++  },
++  "tr_download": {
++    "message": "Download language pack"
++  },
++  "tr_cancel": {
++    "message": "Cancel"
++  },
++  "tr_download_failed": {
++    "message": "Download failed: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Set up offline translation"
++  },
++  "tr_c

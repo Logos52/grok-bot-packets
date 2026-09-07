@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/sammyc2472/due-crew/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/sammyc2472/due-crew/commits/main.atom"/>
+  <title>Recent Commits to due-crew:main</title>
+  <updated>2026-09-06T22:26:48Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f375e14cca1e4632dd765d406be795b1140ce8cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/f375e14cca1e4632dd765d406be795b1140ce8cd"/>
+    <title>
+        README: tighter Share bullet for the listing
+    </title>
+    <updated>2026-09-06T22:26:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: tighter Share bullet for the listing
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c99fa784afc9b62238bc45835a0e5e064164486e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/c99fa784afc9b62238bc45835a0e5e064164486e"/>
+    <title>
+        README: Everyone board in getting started; install-from-file wording
+    </title>
+    <updated>2026-09-06T22:20:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: Everyone board in getting started; install-from-file wording
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/82f802b494ba3144cbffe35ccb7847ca2d31bd77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/82f802b494ba3144cbffe35ccb7847ca2d31bd77"/>
+    <title>
+        rules: keep the v1.x crew-server directory readable during the v2.0 r…
+    </title>
+    <updated>2026-09-06T22:10:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;rules: keep the v1.x crew-server directory readable during the v2.0 rollout
+
+A crew registered on v1.x right as v2.0 closed the directory. Reads
+come back (get/list on server_names, get on servers) so its members&amp;#39;
+v1.x clients can still resolve name+code; creation stays closed and
+anonymous auth is off, so nothing new can appear. Remove once every
+v1.x crew has moved to the hosted backend.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a6f41356bea3d30e7a32b161203109efa695813e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/a6f41356bea3d30e7a32b161203109efa695813e"/>
+    <title>
+        v2.0.0 (unreleased): one hosted backend, the Everyone board
+    </title>
+    <updated>2026-09-06T19:26:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v2.0.0 (unreleased): one hosted backend, the Everyone board
+
+The directory holds exactly two crew-server names — both Sam&amp;#39;s. Nobody
+else ever registered one. So the crew-server layer goes, and with it
+most of yesterday&amp;#39;s crew-scoping work: simplicity is the product rule.
+
+Removed: custom Firebase projects, the server directory (server_names,
+servers), registration, join-by-name+code, custom names, renames, the
+founders&amp;#39; rules dialog and the shipped rules copy, crew keys and
+memberships, server.json. The add-on talks to one hosted project; an
+old server.json is retired on profile open (a custom-project one signs
+the user out so they can sign in again here).
+
+Added — the Everyone board (rules-v4, NOT deployed):
+- boards/{day}/rows/{uid}: one row per sharer per local day. Reading
+  requires the reader to be sharing (symmetric, enforced); writing
+  requires the writer to be sharing, the day id shape, and only the
+  allowed fields with a non-negative reviews int.
+- The view is bounded, never a full listing: top 50 by reviews via a
+  single-field orderBy, plus three aggregations (people, reviews sum,
+  rows above me) for the &amp;quot;2,381 studying today · 1.2M reviews together&amp;quot;
+  headline and your rank. Plain #N ranks, no medals, no cheers; Add on
+  the card. Old rows age out with the daily cleanup.
+- Knocks are back to the simple shape: both people on the board.
+- The v1.8–1.9 server_board collection is closed (owners may delete;
+  the client does, once). Markers stay cumulative; RULES_MARKER is v4.
+- The footer&amp;#39;s rules notice is informational (&amp;quot;server catching up&amp;quot;) —
+  only the maintainer deploys rules now.
+- Shares keep their approved formats; the crew tape&amp;#39;s header comes from
+  a local &amp;quot;Crew name in shares&amp;quot; setting (crew_label) since servers are
+  gone.
+
+Tests: fake backend restates the v2.0 rules (parent-path queries,
+aggregations, method- and field-aware writes); 68 checks green.
+tests/rules/ emulator test rewritten for the global rules — still NOT
+executed here. Docs: README (hosted backend, Everyone board, no
+crew-server section), CLAUDE.md, config.md, checklist, tests README.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43698f4565354d919e96d4048eabee7bb232f219</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/43698f4565354d919e96d4048eabee7bb232f219"/>
+    <title>
+        v1.10.0 (unreleased): crew-scoped server privacy, honest shares, scop…
+    </title>
+    <updated>2026-09-05T11:54:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.10.0 (unreleased): crew-scoped server privacy, honest shares, scoped styling, tracked tests
+
+Privacy — rules-v4 (NOT deployed; see docs and the report):
+- The server board and knocks were scoped only client-side: rules gated
+  reads on the reader&amp;#39;s own openBoard flag, the row&amp;#39;s `server` field was
+  client-written, and knocks needed only two openBoard flags. Any sharer
+  on the shared project could list every crew&amp;#39;s rows and knock anyone.
+- Boundary, now explicit: a crew is the set of accounts holding a
+  membership doc under a crew key = sha1(name:code), the capability the
+  directory already uses. Rows live at servers/{key}/board/{uid}; reads
+  require membership AND sharing; row writes require membership; knocks
+  name the crew and need both memberships. Membership is created by
+  path — nothing freely editable decides it. Aliases (renames) point a
+  new name at an existing crew via `crewKey` on the servers doc; members
+  who joined before v1.6 enter their code once (CrewCodeDialog).
+- The unscoped server_board collection is closed to reads/writes; the
+  client deletes its old row once. Markers stay cumulative
+  ([&amp;#39;rules-v2&amp;#39;,&amp;#39;rules-v3&amp;#39;,&amp;#39;rules-v4&amp;#39;]); this is a breaking change for
+  v1.8–1.9 clients&amp;#39; server board, whose tripwire fires on the next
+  rejected write.
+
+Shares — truthful:
+- &amp;quot;cards&amp;quot; -&amp;gt; &amp;quot;reviews&amp;quot; (answer events). Hourly buckets are anchored on
+  the Anki rollover, and day docs/rows carry `dayStart` so friends&amp;#39;
+  hours are placed by absolute time on the viewer&amp;#39;s day: &amp;quot;we covered N
+  hours&amp;quot; is one shared timeline. People who studied but don&amp;#39;t share
+  hours are counted (&amp;quot;N not sharing hours&amp;quot;), never drawn as idle; a
+  total missing hidden counts says &amp;quot;(partial)&amp;quot;. Older clients&amp;#39; hours
+  (no dayStart) are not misplaced — they are reported as unshared.
+
+Styling — scoped:
+- Dropped `body { overflow-x: hidden !important }` (page-wide). Dropped
+  the `overflow: visible !important` cell rule that defeated the name
+  column&amp;#39;s ellipsis; the column now ellipsizes for real (verified with a
+  long name at 480/400 px: zero table/card/page overflow). Kept: white /
+  near-black card, no border, no shadow, no lines or fills inside the
+  table except the personal-row highlight; Anki 26&amp;#39;s `.fancy table`
+  glass verified defeated in both themes.
+
+Tests — reproducible:
+- Harness moved to tests/ (repo-relative, stdlib only; 76 checks) with
+  a fake that RESTATES rules-v4 and is labeled as such, plus
+  tests/rules/ — an emulator-based rules test (crew scoping, consent,
+  symmetric reads, retraction, retired collection, cumulative markers)
+  that could not be executed here (no firebase-tools/Java). tools/
+  preview.py renders every view/theme with Anki&amp;#39;s glass rule for
+  browser-side CSS checks.
+
+Docs: README (privacy boundary, share semantics, testing), CLAUDE.md
+(marker policy for breaking rules changes), docs/manual-anki-checklist.md.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7a7718c85794fd40e9b6ae72388c41f3acf5ce3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/c7a7718c85794fd40e9b6ae72388c41f3acf5ce3"/>
+    <title>
+        v1.9.3: the card stays, the table&#39;s glass goes
+    </title>
+    <updated>2026-09-03T00:20:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.9.3: the card stays, the table&amp;#39;s glass goes
+
+v1.9.2 fixed the wrong layer. The rounded card around the applet was
+always right — white by day, and now a neutral near-black (#1c1c1c) by
+night instead of a green-tinted one. The &amp;quot;strange background&amp;quot; behind
+the table was Anki 26&amp;#39;s own stylesheet: `.fancy table { background:
+var(--canvas-glass) }` paints a translucent glass fill on every table
+on the deck screen, which the old row lines had disguised.
+
+- Card surface restored: #ffffff light, #1c1c1c dark.
+- Background armor joins the border/radius armor: `#due-crew table,
+  tr, th, td { background: transparent !important }`, with the you-row
+  fill re-asserted (!important) as the one fill inside the card.
+- Verified in both themes against the injected Anki rule: table and
+  cells compute to transparent, card and you-row to their own colors.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e75aaf00c76a0804125c5bf256291d072939d2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/0e75aaf00c76a0804125c5bf256291d072939d2b"/>
+    <title>
+        v1.9.2: night mode — the board is content on the page, not a slab
+    </title>
+    <updated>2026-09-02T15:12:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/f94c255c6ad2ee1f6d12ab5d732f94fc?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@dot1x-nat-10-222-1-64.bumc.bu.edu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.9.2: night mode — the board is content on the page, not a slab
+
+With the table lines gone, the card&amp;#39;s night surface (#23271f, a
+green-black) read as a strange tinted rectangle on Anki&amp;#39;s neutral dark
+canvas. The white card was already invisible on the light canvas, so the
+honest fix is the same in both themes: a transparent surface. The board
+is just content on the Decks page now; the you-row highlight and the
+pills carry the structure.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db1774d0008850401b00b1572146a55a907a44c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/db1774d0008850401b00b1572146a55a907a44c5"/>
+    <title>
+        v1.9.1: shares survive the clipboard — UTF-8 all the way to the paste
+    </title>
+    <updated>2026-09-02T13:03:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/f94c255c6ad2ee1f6d12ab5d732f94fc?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@dot1x-nat-10-222-1-64.bumc.bu.edu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.9.1: shares survive the clipboard — UTF-8 all the way to the paste
+
+Copied shares came out as &amp;#39;?&amp;#39; for every emoji and block glyph, and &amp;#39;∑&amp;#39;
+for &amp;#39;·&amp;#39; — the signature of text squeezed through Latin-1 with &amp;#39;?&amp;#39;
+replacement and read back as Mac Roman. That is Qt&amp;#39;s legacy
+&amp;quot;traditional Mac plain text&amp;quot; pasteboard flavor, which some paste targets
+pick over the UTF-8 one.
+
+- ui/__init__.py gains copy_text(): on macOS, pbcopy under a UTF-8
+  locale (writes only the UTF-8 flavor, nothing lossy to grab); on
+  failure or other platforms, Qt with explicit text/plain;charset=utf-8
+  mime data, then plain setText as the last resort.
+- Every clipboard write in the add-on goes through it — the three
+  shares, the wrap copy, friend code, invite, server name+code, and the
+  rules paste. Direct QApplication.clipboard().setText calls are gone.
+- Tests cover both paths (63 checks).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bde49f728579f7786042b8252bd1587dc1dccd6f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/bde49f728579f7786042b8252bd1587dc1dccd6f"/>
+    <title>
+        v1.9: the share pack — paste-ready days for the group chat
+    </title>
+    <updated>2026-09-02T12:55:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/f94c255c6ad2ee1f6d12ab5d732f94fc?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@dot1x-nat-10-222-1-64.bumc.bu.edu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.9: the share pack — paste-ready days for the group chat
+
+Three copies, designed glyph by glyph with Sam:
+
+- Crew today: everyone&amp;#39;s study hours side by side as an emoji tape
+  (12 two-hour slots, ⬜🟨🟩), names trailing so the edge stays aligned
+  in any chat font, ordered by who started the day. Absence is silent —
+  only people who studied today get a row. Today view footer → Share.
+- My today, sparkline: 24 hourly slots as blocks (░ idle, ▁..█ scaled
+  to the day&amp;#39;s peak) between an effort line (cards, time) and an
+  identity line (🔥 streak, 🎯 retention).
+- My today, tape: the same day as 🌅/🌙 rows of hourly squares.
+  Both live on your own profile card: &amp;quot;Copy for the chat: today · tape&amp;quot;.
+
+Every share signs off &amp;quot;— Due Crew · Anki add-on 2035408484&amp;quot;.
+
+Data: the daily doc gains `hours`, a 24-character intensity string
+written by the same upload under the share_time toggle (off deletes
+it, like every metric). daily_stats has no field whitelist, so the
+rules-v3 paste already covers it — no rules change. Friends&amp;#39; tapes
+read that field; your own row comes from local revlog, always fresh.
+share.py is pure text with no network or collection access; the
+clipboard copy rides pycmd like every other copy in the add-on.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6e2c18f1acda6cdcd3fb03f931b02f4b6014b9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/c6e2c18f1acda6cdcd3fb03f931b02f4b6014b9f"/>
+    <title>
+        v1.8.5: crew renames — the console writes it once, every member follows
+    </title>
+    <updated>2026-09-01T12:54:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/f94c255c6ad2ee1f6d12ab5d732f94fc?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@dot1x-nat-10-222-1-64.bumc.bu.edu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8.5: crew renames — the console writes it once, every member follows
+
+A crew outgrowing its generated name (breezy-newt-6261 → busm) couldn&amp;#39;t
+actually rename: the name lives in each member&amp;#39;s local server.json,
+written at join and never re-read. Now the directory can carry the
+rename and the fleet follows it:
+
+- The founder registers the new name in-app, then adds a `renamedTo`
+  string field to the OLD server_names doc in the Firebase console.
+  No rules change: server_names is client-create-only, so only the
+  project owner can write that field — renames stay hijack-proof.
+- Each member&amp;#39;s add-on checks its server&amp;#39;s doc once a day (riding the
+  rules-probe cadence, one world-readable GET), follows up to three
+  chained hops, adopts the new name on the main thread, and says so
+  with a tooltip. The label, invites, and the server-board scope all
+  travel together. The stored join code belonged to the old name, so
+  it&amp;#39;s dropped; invites use the short form until the founder shares
+  the new code.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9fcbeaf6ad09947cfe9200538f51fad3c9857ec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/b9fcbeaf6ad09947cfe9200538f51fad3c9857ec"/>
+    <title>
+        v1.8.4: flat card, and armor against the neighbors
+    </title>
+    <updated>2026-09-01T12:48:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/f94c255c6ad2ee1f6d12ab5d732f94fc?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@dot1x-nat-10-222-1-64.bumc.bu.edu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8.4: flat card, and armor against the neighbors
+
+The deck screen is shared real estate — Anki&amp;#39;s own styles plus AMBOSS,
+AnkiHub, and Review Heatmap all inject CSS/JS into the same page — so
+politeness isn&amp;#39;t enough:
+
+- Shadow removed: the board is a flat white (or night) surface.
+- Hard resets (!important) on the board and its table: no foreign
+  border, shadow, outline, or radius can ever land on our rows.
+- body overflow-x hidden: no horizontal scrollbar on the deck screen,
+  whichever add-on overflows it — everything of ours already fits any
+  window (the name column ellipsizes).
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b4a5c3853cc98d28255c2d62306fec62e1db418</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/7b4a5c3853cc98d28255c2d62306fec62e1db418"/>
+    <title>
+        No stroke on the card — background, radius, and shadow carry it
+    </title>
+    <updated>2026-09-01T12:19:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;No stroke on the card — background, radius, and shadow carry it
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e1a401f7389423de66d2cd90c0e4fee0510b6e26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/e1a401f7389423de66d2cd90c0e4fee0510b6e26"/>
+    <title>
+        v1.8.3: square highlight, and a table that cannot scroll
+    </title>
+    <updated>2026-09-01T12:18:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8.3: square highlight, and a table that cannot scroll
+
+- The you-row highlight loses its rounded ends — the card is the only
+  thing with corners; nothing inside the table has a radius.
+- Horizontal scrolling is gone at the root: the scroll wrapper is
+  removed and the name column takes the slack (width 100%, max-width 0,
+  ellipsis), so the table fits the card at any window width — long
+  names truncate instead of pushing a scrollbar.
+
+Verified: zero table overflow and zero cell radii down to a 500px
+viewport, across Today/Week/Decks/Server.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b1adc1f86068ca4136d48c2d9d40e6abdf3be0d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/b1adc1f86068ca4136d48c2d9d40e6abdf3be0d8"/>
+    <title>
+        v1.8.2: the white card stays, the lines go
+    </title>
+    <updated>2026-09-01T12:13:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8.2: the white card stays, the lines go
+
+Read the room backwards in 1.8.1 — Sam liked the white framed card and
+disliked the table rules, not the reverse. Final look: the board is one
+rounded card (background, border, shadow), and inside it there are no
+horizontal rules at all — no header underline, no row separators, no
+bordered note lines. Rows separate by spacing, the you-row highlight,
+and typography. The dotted name underlines (click affordance) and the
+wrap/exam banner outlines stay.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9b85968a6ba45c5ba26ccde8bce441f41fb7549</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/b9b85968a6ba45c5ba26ccde8bce441f41fb7549"/>
+    <title>
+        v1.8.1: no frames — lines between rows only; Days view retired
+    </title>
+    <updated>2026-09-01T12:06:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8.1: no frames — lines between rows only; Days view retired
+
+- The board loses its border, background, radius, and shadow; the
+  signed-out/loading card its box; the server board&amp;#39;s opt-in state its
+  rounded outline. The only lines left are the row separators (and the
+  header underline). Simple and clean, per Sam.
+- Days view removed: pill, renderer, and its CSS. The data layer it
+  stood on stays — week backfill and the `studied` flag keep the Week
+  view and welcome-back truthful, and a saved period of &amp;quot;days&amp;quot; falls
+  back to Today.
+- Wrap/exam banners and the you-row highlight keep their spec&amp;#39;d looks.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/12737198004400368641c849c1407f9799dc2df8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/12737198004400368641c849c1407f9799dc2df8"/>
+    <title>
+        README: custom-name note in the right step; privacy section covers th…
+    </title>
+    <updated>2026-09-01T11:55:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: custom-name note in the right step; privacy section covers the server board
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d339455735ab1df283d0eab79631f94cba90a4a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/8d339455735ab1df283d0eab79631f94cba90a4a"/>
+    <title>
+        v1.8: server board, knocks, custom crew names — rules-v3
+    </title>
+    <updated>2026-09-01T11:51:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.8: server board, knocks, custom crew names — rules-v3
+
+The community push. A server (with v1.7&amp;#39;s custom-name provisioning now
+built: founders type &amp;quot;busm&amp;quot; at registration, first come, first named)
+gains an opt-in board of everyone sharing on it:
+
+- Server pill, fifth on the board. Not sharing? An opt-in card — sharing
+  goes both ways and there is no peeking, enforced by rules (reading
+  server_board requires your own openBoard flag).
+- One compact public row per sharer (server_board/{uid}: name, server,
+  day, reviews, time, streak), through the hash-guarded upload — +1
+  write per sync. The view is lazy: one equality-only query on open
+  (no composite index for founders), cached minutes, client-sorted.
+  Today-only; absence is silent.
+- Deliberately spare with strangers: plain #N ranks, no medals, no
+  cheers, no celebration surfaces. Weeks, days, decks, heatmaps, and
+  profile depth stay crew-only.
+- Adding lives on the card, not the row: click a name, the spare
+  stranger card offers &amp;quot;Add to crew&amp;quot;. That writes YOUR friends array
+  and a knock (cheers-shaped doc, sharers-only by rule); they see
+  &amp;quot;wants to be crew — Add back&amp;quot; in Friends and one click makes it
+  mutual. Ignore deletes the knock and mutes re-knocks locally.
+  Nobody ever writes anyone else&amp;#39;s friends array.
+- Knock names render from profiles, not the doc — senders can&amp;#39;t spoof.
+- Account deletion sweeps the public row and knocks.
+- Rules markers are now CUMULATIVE ([&amp;#39;rules-v2&amp;#39;,&amp;#39;rules-v3&amp;#39;]) so v1.7
+  clients stay green on v3 rules; RULES_MARKER bumps to rules-v3 and
+  the v1.7 tripwire rolls the paste out to existing founders.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83246d0e95f3a0b5261b537874474ea5a5ba403a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/83246d0e95f3a0b5261b537874474ea5a5ba403a"/>
+    <title>
+        v1.7: welcome back, duet days, exam-eve assist, crew milestones, rule…
+    </title>
+    <updated>2026-09-01T11:22:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.7: welcome back, duet days, exam-eve assist, crew milestones, rules tripwire
+
+Four crew features, zero extra document reads, plus the drift detector:
+
+- Welcome back: the day a quiet friend&amp;#39;s first sync lands after 7+ days,
+  one toast with the true gap and a 👋 chip on their row for that day.
+  Spoken to the crew, never at the returner — no &amp;quot;you were gone&amp;quot; copy
+  exists. Local prev-state in wrap.json.
+- Duet days: the profile card names the thing only a friendship can
+  have — current and best runs of days both people studied, computed
+  from the heatmap doc the card already fetches, with a two-row week
+  strip. Appears only when their heatmap is shared.
+- Exam-eve assist: the day before a crew member&amp;#39;s shared exam, one
+  dismissible amber line above the board with the 💪 pre-aimed.
+  Multiple exams merge into one line, never a stack.
+- Crew milestones: weekly wrap totals accrue into lifetime crew
+  numbers; crossings (100k/250k/500k/1M reviews, 1,000 hours) toast
+  once, join that week&amp;#39;s banner and its Copy. Whole-crew only — there
+  is no per-person ladder.
+- Rules tripwire: firestore.rules now carry a generation marker
+  (meta/rules-v2, get-only, no data); the client probes it once a day
+  and flips instantly on any rejected write. While stale, the board
+  footer shows &amp;quot;Server rules need an update&amp;quot; opening a dialog with the
+  console steps and a one-click copy of the shipped rules text
+  (due_crew/firestore.rules, kept identical to the root file).
+- Rules also provision custom crew names (proposed, unbuilt): size
+  floor 3, charset pinned, optional `custom` flag on server_names — so
+  that feature can ship later without another founder paste.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b4e70760f183e511a6187d552063e5c818f896d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/9b4e70760f183e511a6187d552063e5c818f896d"/>
+    <title>
+        v1.6.1: truthful dots, loud upload failures, one radius language
+    </title>
+    <updated>2026-09-01T11:12:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/8ad90aeabfc39c86f513fb5a01dad18a?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>samcaplan@Sams-MacBook-Pro.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.6.1: truthful dots, loud upload failures, one radius language
+
+- Days view told the truth badly: a day only existed server-side if a
+  sync ran while it was &amp;quot;today&amp;quot;, so a long streak could sit beside a
+  half-empty dot row. Syncs now backfill the week&amp;#39;s studied days,
+  hash-guarded per day — a no-change sync writes nothing, steady state
+  stays at most one daily write per sync.
+- Day docs carry a numbers-free `studied` flag (shared unless paused),
+  so a friend who shares no numbers still shows up in Days. _showed()
+  prefers it; docs from older versions keep the metric fallback.
+- Rejected writes print their path and status instead of failing
+  silently — a silent False in patch_doc hid the heatmap rules gap.
+  Heatmap retraction keys on a deleted marker so a fresh sign-in with
+  sharing off still clears a stale doc, exactly once.
+- Privacy saves push immediately (upload + refetch) instead of waiting
+  for the next sync; _on_sync_done gathers independently so one failure
+  can&amp;#39;t silently stop the rest.
+- UI: the board is a framed 12px surface like its loading/signed-out
+  cards; the you-row is the spec&amp;#39;s lozenge; tables scroll inside the
+  frame on narrow windows instead of bleeding past the corner; pills
+  full-round; deck counts stopped wrapping; Qt accent/danger colors
+  follow night mode; the friend code got the spec&amp;#39;s well treatment.
+
+Streak base scan is bounded to 60 days per sync (full history still
+cached once per day), so huge collections don&amp;#39;t pay per sync.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e397eac7bfb9967ff1c5840e0b49ccaa67e0196f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/sammyc2472/due-crew/commit/e397eac7bfb9967ff1c5840e0b49ccaa67e0196f"/>
+    <title>
+        Bump version to 1.6.0
+    </title>
+    <updated>2026-09-01T01:43:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump version to 1.6.0
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01TrWGahf8tGX2EtN5aAfESh&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

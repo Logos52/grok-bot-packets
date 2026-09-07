@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/overtonch/ru-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/overtonch/ru-anki/commits/main.atom"/>
+  <title>Recent Commits to ru-anki:main</title>
+  <updated>2026-09-06T16:55:20Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b550b8b7fbc4270515e638251038ba52d4a681b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/0b550b8b7fbc4270515e638251038ba52d4a681b"/>
+    <title>
+        Activate: difficulty is a CEFR slider (a1 → b2+)
+    </title>
+    <updated>2026-09-06T16:55:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Activate: difficulty is a CEFR slider (a1 → b2+)
+
+Replaces gentle/standard/stretch with 6 rungs — a1, a2, b1, b1+, b2, b2+ — each
+with a concrete complexity spec fed to the prompt generator. Acing b2 = being
+able to produce b2-level thoughts on demand, which is the point. Slider in ⚙
+with a live label + hint; old level values migrate.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d67fd808054189e1983a5916a8bddc600ae5168</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/2d67fd808054189e1983a5916a8bddc600ae5168"/>
+    <title>
+        Activate: harder-government verbs first, a &#39;skip — I know this&#39; actio…
+    </title>
+    <updated>2026-09-06T16:52:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Activate: harder-government verbs first, a &amp;#39;skip — I know this&amp;#39; action, stronger stretch
+
+- activate_verbs.hardness (0 plain acc … 3 the government English speakers get
+  wrong); _introduce orders by hardness DESC, rank ASC — so the drill opens on
+  зависеть/бояться/пользоваться/обращаться, not быть/знать/делать.
+- grade rating 5 (&amp;#39;I already know this one&amp;#39;) retires the item (reps 5, +180d),
+  from the front or the reveal — fast-forward through easy verbs.
+- &amp;#39;stretch&amp;#39; level now means a genuinely complex two-clause thought, not a drill
+  line.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/19bebefa2707dc864c586a40b2388958857ab9e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/19bebefa2707dc864c586a40b2388958857ab9e2"/>
+    <title>
+        Activate: the prompt IS the thought to express, not an instruction
+    </title>
+    <updated>2026-09-06T16:48:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Activate: the prompt IS the thought to express, not an instruction
+
+The task is now a plain first-person English sentence (the direct translation of
+what to say), e.g. &amp;#39;I depend on my parents for money.&amp;#39; — not &amp;#39;Tell someone that
+you depend on your parents&amp;#39; where the answer was just the clause. task and model
+say the same thing. Front labels it &amp;#39;say this in Russian:&amp;#39;.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/828c77322da76ce419cb3f33134d3021c62d047d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/828c77322da76ce419cb3f33134d3021c62d047d"/>
+    <title>
+        docs: activate mode + track-3 (frames) plan in TODO
+    </title>
+    <updated>2026-09-06T16:42:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: activate mode + track-3 (frames) plan in TODO&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b4d9b61cafac303de2e0a532f9cd583e3648a29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/1b4d9b61cafac303de2e0a532f9cd583e3648a29"/>
+    <title>
+        Speaking activation: verb-government gym + productive-vocabulary drill
+    </title>
+    <updated>2026-09-06T16:40:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Speaking activation: verb-government gym + productive-vocabulary drill
+
+New silent, phone-first mode (app/activate.py) for turning passive vocabulary
+active — the biggest gap between the learner&amp;#39;s reading (B2+/C1−) and speaking
+(A2/B1). One mode, two tracks:
+
+- verb: a high-frequency verb + its GOVERNMENT (which case/preposition each
+  argument takes). Curriculum: app/data/activate/verbs.json.gz — the 220 most
+  common verbs, each with 1–3 argument patterns + example + the trap an English
+  speaker falls into (built by build_activate_verbs.py). The learner&amp;#39;s stated #1
+  weakness.
+- word: a common content word, introduced newest-frequent-first from the freq
+  list.
+
+Loop: app names a target + a concrete personalised thought to express; learner
+forms the Russian in their head (reveal + self-grade) or types it (focused LLM
+check — is the government right? one more fix, nothing else). SM-2-lite spacing;
+prompt angle varies each time an item recurs. `mix` setting weights verbs/words
+(default 0.65, heavy verbs early); `level` = gentle/standard/stretch.
+
+/activate/{next,items/{id}/grade,stats,settings}. Active-word count on the Level
+tab next to passive known_words, tracked daily (proficiency_snapshots.active_words).
+See LEARNING.md. Frames (track 3) still to come.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4def0ca1308cb784f5a02fa06aed60480cc5dbcf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/4def0ca1308cb784f5a02fa06aed60480cc5dbcf"/>
+    <title>
+        LEARNING.md — the learning-science knowledge base
+    </title>
+    <updated>2026-09-06T16:23:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LEARNING.md — the learning-science knowledge base
+
+SLA principles the app is built on (four strands, comprehensible input + the
+98% threshold, output hypothesis, retrieval practice, spacing, chunking / verb
+government, automatization, fluency development, Levelt&amp;#39;s stages, why silent
+practice is valid for this learner), how each mode maps to a strand, the gaps,
+and a 10-point checklist for designing new practice modes. TODO.md gets the
+speaking-activation mode plan; README points at the key docs.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf27d68d34ca913445f7a8e44a087748efb6d516</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/bf27d68d34ca913445f7a8e44a087748efb6d516"/>
+    <title>
+        TODO: note the Enhanced/Siri voice upgrade path
+    </title>
+    <updated>2026-09-06T15:22:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;TODO: note the Enhanced/Siri voice upgrade path
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/debf24f0f24266d546c3c0f86a76bff5bfa9fe83</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/debf24f0f24266d546c3c0f86a76bff5bfa9fe83"/>
+    <title>
+        TTS: prefer the Apple `say` system voice over Silero
+    </title>
+    <updated>2026-09-06T15:22:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;TTS: prefer the Apple `say` system voice over Silero
+
+tts_hq gains an &amp;#39;apple&amp;#39; backend (macOS `say`, voice from RU_TTS_SAY_VOICE,
+default &amp;quot;Milena&amp;quot;) and auto-picks it when available — more natural than Silero,
+on-device, no bill, ~4x faster to synthesise. Silero stays as the fallback and
+now converts U+0301 stress marks to its &amp;#39;+&amp;#39; hint format internally. Flow-reading
+audio + Speech Lab pick it up automatically; point RU_TTS_SAY_VOICE at an
+Enhanced/Siri Russian voice (System Settings) for a further quality jump.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/21a12e2c86ba6ad62d282cc4130e17d84c340ff7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/21a12e2c86ba6ad62d282cc4130e17d84c340ff7"/>
+    <title>
+        Flow reading: listen (local TTS, background playback)
+    </title>
+    <updated>2026-09-06T15:16:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Flow reading: listen (local TTS, background playback)
+
+- reading_flow.chunk_audio(): Silero synthesises a chunk on first request, with
+  the dictionary stress fed in via Silero&amp;#39;s &amp;#39;+&amp;#39; format (accent.to_silero), cached
+  on reading_flow_chunks.audio_path. GET /reading/sessions/{sid}/chunks/{seq}/audio.
+- 🔊 button in the flow studybar. Plays from the chunk at the top of the screen,
+  auto-advances part to part (pulling the next one if needed), dims the
+  paragraphs not being read. Reuses #loopAudio + Media Session so it keeps
+  playing with the screen locked and shows lock-screen controls; next chunk&amp;#39;s
+  audio is prefetched for gapless playback. Coexists with the Speech Lab loop
+  (audio-element ownership tag).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4501bc048fc516728cf57cc0ee621c3337de27b1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/4501bc048fc516728cf57cc0ee621c3337de27b1"/>
+    <title>
+        Card fronts show the stress; card backs show where the stress moves
+    </title>
+    <updated>2026-09-06T13:25:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Card fronts show the stress; card backs show where the stress moves
+
+- Word-mode study fronts now render the accented headword (audit_card fills
+  dict_accented + upgrades front_word from the bundled stress dictionary), so
+  you see the stress while learning the card, not after.
+- accent.paradigm(): the key inflected forms of a noun/verb, shown on the card
+  back ONLY when the stress actually moves (голова́ · го́ловы · го́лову …;
+  пишу́ · пи́шет …). Fixed-stress words show nothing. Cached.
+- accLine() renders the &amp;quot;stress moves:&amp;quot; block; _stress_for() wires it into the
+  recognition card view.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ff386f5b20dc779687d1f1a5bb2210e63289a6a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/ff386f5b20dc779687d1f1a5bb2210e63289a6a5"/>
+    <title>
+        SRS: card integrity audit + repair, and don&#39;t re-surface cards review…
+    </title>
+    <updated>2026-09-06T13:21:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;SRS: card integrity audit + repair, and don&amp;#39;t re-surface cards reviewed today
+
+- srs.audit_card(): structural check + in-place repair of a card that drifted —
+  front_word that became the whole sentence, phrase/word mismatch, stray stress
+  in the target, stale normalized_text, missing dictionary stress form. Content
+  problems (target not in the sentence, no translation) are flagged for the LLM
+  recheck. Runs in the background on every card create/edit (_audit_card_async),
+  daily (_maybe_card_audit), and on demand (POST /srs/cards/audit).
+- Daily-batch queue now excludes cards already reviewed today — a graduated card
+  you&amp;#39;ve done can&amp;#39;t come back the same day regardless of a sub-day `due`. Fixes
+  &amp;quot;the cards that got added were the same ones I reviewed yesterday&amp;quot;.
+- Study front is derived from the card&amp;#39;s own fields, so a stale front_html can&amp;#39;t
+  show a sentence when the setting says word. setCardFront reloads the queue.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/068bc8d9169f805586b0d181aa9ff4192dfde2a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/068bc8d9169f805586b0d181aa9ff4192dfde2a3"/>
+    <title>
+        Anna Karenina readiness metric, religion domain, richer fiction style…
+    </title>
+    <updated>2026-09-06T13:13:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Anna Karenina readiness metric, religion domain, richer fiction style, reading sources on the word page
+
+- app/books.py + build_book_vocab.py: bundled lemma-frequency profile of the full
+  Anna Karenina (proper nouns / lemmatiser noise filtered). proficiency.book_readiness()
+  turns it + what the learner knows into a token-coverage %, a difficulty read
+  (Hu &amp;amp; Nation thresholds), and the frequent unknowns to target. Tracked daily
+  (proficiency_snapshots.ak_coverage), shown on the Level tab with a sparkline and
+  a &amp;quot;words that would help most&amp;quot; card-maker. reading_flow feeds the gaps into the
+  fiction generator. GET /reading/books/{book} (+ /cards).
+- New &amp;quot;Religion &amp;amp; philosophy&amp;quot; reading domain (Hindu/Buddhist thought, world
+  religions) — essay register, grounded in real figures/texts.
+- Fiction style now names the vocabulary of appearance, rooms, materials,
+  colours, plants, smells, textures and nature — the stuff you only meet in
+  novels.
+- word_occurrences() indexes flow-reading chunks, so a word carded from the
+  reading mode shows its context on the word page (was: &amp;quot;not seen anywhere&amp;quot;).
+- studyUndo: time-debounce + finally re-enables the button — one card per tap.
+  tests/study_undo.test.mjs locks it.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1bc6a88eb05f6658f1b3f558d4013c0e7f15a6db</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/1bc6a88eb05f6658f1b3f558d4013c0e7f15a6db"/>
+    <title>
+        SRS: surface a whole day&#39;s reviews at day start, not hour by hour
+    </title>
+    <updated>2026-09-06T11:17:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;SRS: surface a whole day&amp;#39;s reviews at day start, not hour by hour
+
+Graduated (fsrs_state=2) cards due any time in today&amp;#39;s window (up to the next
+DAY_CUTOFF_HOUR) now appear in the queue from the day&amp;#39;s start — one daily batch
+instead of a trickle. Learning/relearning steps keep their 30-min horizon.
+New _day_end_iso(); applied in queue(), stats(), offline_bundle() (due_now),
+and the &amp;quot;due&amp;quot; card-list filter. stats/bundle expose day_end.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67606ad369473817f36482951b5251a691e6733b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/67606ad369473817f36482951b5251a691e6733b"/>
+    <title>
+        Flow reading: fixed-length pieces with a planned arc, plus sequels
+    </title>
+    <updated>2026-09-06T11:12:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Flow reading: fixed-length pieces with a planned arc, plus sequels
+
+Each piece is now PARTS (5) parts with a real beginning/middle/end instead of
+circling a theme forever. reading_flow_plan() draws a title + hook + per-part
+beats first (a story arc, or an article&amp;#39;s spine); each part is written to its
+beat and the final part resolves. When it ends the reader gets an end card with
+a &amp;quot;continue — a sequel, with a twist&amp;quot; button that spawns a linked session
+(parent_id) whose plan opens on a reversal. Library shows N/5 progress and marks
+sequels.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d39958d804106da04e5bc8b4911fc895deb17337</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/d39958d804106da04e5bc8b4911fc895deb17337"/>
+    <title>
+        Fix &quot;make a card&quot; in flow reading for inflected words
+    </title>
+    <updated>2026-09-06T03:49:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix &amp;quot;make a card&amp;quot; in flow reading for inflected words
+
+FLOW.unknown is keyed by the server lemma; flowShowPop/flowCardWord/flowUntap
+were looking it up by the lowercased surface form, so any inflected word (surface
+!= lemma) silently found nothing and the button did nothing. Add flowUnkEntry()
+resolver + stamp sp.dataset.lem when marking a span unknown.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3cbdbc0b42baf6ff31c4e11d7476bc8379c4f18</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/d3cbdbc0b42baf6ff31c4e11d7476bc8379c4f18"/>
+    <title>
+        Disable ElevenLabs TTS by default — local Silero only, no metered bill
+    </title>
+    <updated>2026-09-06T03:44:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Disable ElevenLabs TTS by default — local Silero only, no metered bill
+
+ELEVENLABS_API_KEY is now ignored unless RU_TTS_ALLOW_ELEVENLABS is also set.
+backend() never dead-ends on &amp;quot;elevenlabs&amp;quot; — always falls back to local.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9307d0560adc109240ab7c0951b1bf2a38c3bfef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/9307d0560adc109240ab7c0951b1bf2a38c3bfef"/>
+    <title>
+        In-app SRS, speaking/reading/conversation modes, proficiency model
+    </title>
+    <updated>2026-09-06T03:40:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;In-app SRS, speaking/reading/conversation modes, proficiency model
+
+Catches the code repo up from the Sept 1 snapshot. Highlights:
+
+- In-app FSRS spaced repetition (app/srs.py) + study UI, offline review,
+  card format v2, refresher
+- Reformulation speaking practice (app/speak.py), grammar drill, verbs of
+  motion, chunk deck, speaking journal
+- Flow reading (app/reading_flow.py): endless level-tuned LLM text, per-domain
+  form/genre (real articles vs 19th-c novel prose), stress marks via a bundled
+  3.2M-form dictionary (app/accent.py) + targeted homograph resolve, reading
+  library, tap-to-gloss, make-card-from-unknown
+- Conversation partner (app/convo.py): code-switch-aware Whisper + in-character
+  LLM + TTS + debrief
+- Proficiency model (app/proficiency.py): known-vocab estimate, per-domain
+  fluency, daily snapshots, Level stats tab
+- Backup: export→rebuild round-trip test, reading/proficiency added to the
+  git export, deploy/BACKUP.md analysis
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ec7254a6e42a02e3a9086c9b62d1b5ee356cab6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/6ec7254a6e42a02e3a9086c9b62d1b5ee356cab6"/>
+    <title>
+        Card format v2 groundwork: one clean primary meaning + concise altern…
+    </title>
+    <updated>2026-09-02T00:14:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Card format v2 groundwork: one clean primary meaning + concise alternatives
+
+Not yet applied in bulk — this is the plumbing to prototype the new format on one
+card and iterate.
+
+- srs_cards.alt_meanings (other senses / idioms, small text on the back) +
+  sentence_full (original long context, kept when `sentence` is trimmed to the
+  clause with the word).
+- llm.card_meaning(word, dict_form, sentence, current) -&amp;gt; {primary,
+  primary_is_contextual, alt, context}: one cleanest general meaning as `primary`
+  (contextual sense only when the usage is marked/idiomatic, and then `alt` leads
+  with the general meaning); `context` is a substring-faithful trim to ~14 words.
+- _study_card_view returns alt_meanings + a `reformatted` flag. studyReveal shows
+  `.a-alt` under the big translation, and for reformatted cards shows ONLY the
+  trimmed clause (no before/after context lines).
+- Prototyped on card 413 (злоба): &amp;quot;malice / spite&amp;quot; → primary &amp;quot;malice&amp;quot; + alt;
+  633-char paragraph → one clause; front стress fixed зло́ба.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/021eb7f0e5ad67579f4395ab84c07905eb3abb0f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/021eb7f0e5ad67579f4395ab84c07905eb3abb0f"/>
+    <title>
+        LCARD self-cleans against the server flag
+    </title>
+    <updated>2026-09-01T22:06:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LCARD self-cleans against the server flag
+
+applyLocalCards now drops an entry as soon as a fresh /watch or /read payload
+confirms the word&amp;#39;s status (carded or pending), so an offline optimistic-green
+can&amp;#39;t persist wrongly after the card is deleted elsewhere. Matches by lemma too.
+
+SW shell v104 -&amp;gt; v105.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05ab19a5c6b73c6249b2e5de6f6238a3e5a8cd13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/overtonch/ru-anki/commit/05ab19a5c6b73c6249b2e5de6f6238a3e5a8cd13"/>
+    <title>
+        Fix /srs/queue 500 on a naive last_review timestamp
+    </title>
+    <updated>2026-09-01T22:02:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161265697?s=30&amp;v=4"/>
+    <author>
+      <name>overtonch</name>
+      <uri>https://github.com/overtonch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix /srs/queue 500 on a naive last_review timestamp
+
+srs._row_to_fsrs fed the raw DB string to fsrs.Card.from_dict; a naive datetime
+(from a restored backup, rebuild_db.py, or a hand-edit) made fsrs do
+offset-naive − offset-aware arithmetic → TypeError → the whole study queue 500s.
+`srs._aware()` coerces due/last_review to UTC-aware ISO first.
+
+Verified the full study flow (reveal / rate / again / undo) and reader
+phrase-selection with no console errors.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KV68DrUfhSyFZizaqL25Th&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

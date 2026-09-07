@@ -1,0 +1,132 @@
+# Grok Bot 0.43 Windows — local PC shows connected but commands fail with “temporarily unreachable”
+URL: https://forum.cursor.com/t/grok-bot-0-43-windows-local-pc-shows-connected-but-commands-fail-with-temporarily-unreachable/170683
+Created: 2026-09-05T09:28:25.269Z
+
+## @Jarri81 2026-09-05T09:28:25.328Z staff=False
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+Windows PC registered as JPA-GranVía.
+
+Since Grok Bot 0.43, local execution is broken in a new way:
+
+- Computer list shows connected
+- Local execution set to Always allow / Permitir siempre
+- Any command from the agent fails with “temporarily unreachable” (sometimes then “disconnected”)
+- Renaming the display label (accented í ↔ plain i) made no difference
+
+Before 0.43 it was also flaky, but different: it would connect for a fraction of a second, then drop. So it never fully worked for me, but 0.43 changed the failure mode from “brief connect then drop” to “listed as connected but never actually reachable.”
+
+Steps to Reproduce
+
+- Open Grok Bot on Windows with a registered local computer (JPA-GranVía)
+- Set Local execution to Always allow
+- Ask an agent to run a simple command on that PC (e.g. hostname)
+- Observe: machine may show as connected in Computers, but the command fails with “temporarily unreachable”
+
+Expected Behavior
+When the PC is registered and Local execution is Always allow, the agent should be able to run commands on it reliably.
+
+Operating System
+Windows 10/11
+
+Version Information
+Grok Bot 0.43
+
+Additional Information
+Local PC label: JPA-GranVía (Windows). List shows connected; live command fails with temporarily unreachable / disconnected. Always allow is on. Accent in the name was ruled out.
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+## @Jarri81 2026-09-05T09:40:58.493Z staff=False
+Update: Task Manager shows a normal Electron tree (9× Grok Bot.exe) with exactly one local-exec-daemon (PID 13096, path …\local-exec-daemon\main.cjs). ListMachines still shows connected; agent Shell still fails with “temporarily unreachable.”
+
+Daemon log keeps looping:
+
+- sand-local-exec-daemon started → desktop ownership lost, shutting down
+- user-computer-provider: ConnectError / DeadlineExceededError
+- occasional {“error”:“cli_unknown_command”}
+
+So local helper is up, but the channel isn’t usable. Happy to provide more log lines / Request ID if useful.
+
+## @deanrie 2026-09-05T09:56:12.778Z staff=True
+Hey, thanks for the report and for moving this into a separate thread like Colin asked.
+
+Your PC is actually connected, and every command reaches it. What we see on our side is that the response from your PC comes back about 11 seconds after the request, and the agent stops waiting at 10 seconds. That’s why the command gets marked as temporarily unreachable even though it did run. That also explains the “shows connected, but nothing works” situation.
+
+This is something we’re already tracking, and I’ve shared your case with the team. The wording change in 0.43 from “disconnected” to “temporarily unreachable” is from a separate improvement, not a sign that things got worse.
+
+To help us figure out what’s delaying the response on your side, could you share a few things if you can:
+
+- In File Explorer, paste %APPDATA%\Grok Bot into the address bar, find local-exec-daemon.log, and attach it here (or the last about 200 lines). Please quickly skim it for anything personal before sending.
+- What antivirus or endpoint security are you using, just Windows Defender or a third-party product?
+- Is your Documents or AppData folder redirected to OneDrive or a network drive?
+- Are you using a VPN or a corporate proxy while using Grok Bot?
+
+No need to rename your computer or toggle Local execution again, it’s not related. I’ll reply in the thread when I have an update.
+
+## @Jarri81 2026-09-05T13:39:48.104Z staff=False
+- Antivirus: Windows Defender + Surfshark Antivirus (real-time protection and web protection were on; exclusion list was empty).
+- VPN / proxy: Surfshark VPN. No corporate proxy.
+- OneDrive / redirects: Documents and Desktop are redirected to OneDrive . AppData is local , not redirected.
+- Test result: After disconnecting Surfshark VPN and turning off Surfshark Antivirus real-time + web protection, local commands started succeeding in about 1.4 seconds (agent could run hostname / whoami successfully). So the ~11s delay looks tied to Surfshark.
+
+Thanks!
+
+## @Jarri81 2026-09-05T14:26:06.606Z staff=False
+Follow-up.
+
+Root cause (confirmed): Surfshark Antivirus real-time protection. Not the VPN, not web protection, not the accented PC name.
+
+Setup
+Result
+
+Surfshark VPN on, AV real-time off
+OK (~1.3s)
+
+Web protection on, real-time off
+OK (~3s)
+
+Real-time on
+temporarily unreachable (matches your ~11s vs 10s timeout)
+
+Real-time on + exclude only C:\Users\user\AppData\Local\Temp
+OK (~1–2s)
+
+Why Temp: each local-exec command writes a fresh ps-script-<uuid>.ps1 under %TEMP% and runs it via PowerShell. Surfshark real-time inspects that create/execute path and adds enough latency to miss the 10s agent wait. Excluding the Grok Bot install folder alone did not help. Surfshark also does not accept wildcard exclusions (e.g. ps-script-*.ps1), so we can’t narrow to just those scripts.
+
+Workaround we have now: exclude all of %TEMP%. That works, but it’s a security trade-off — we don’t want real-time AV to ignore everything created in Temp long-term.
+
+What would actually fix this properly (product side):
+
+- Best: write local-exec scripts to a dedicated folder (e.g. under %APPDATA%\Grok Bot\tmp) so users can exclude only that path while keeping Temp scanned; or
+- Raise the local-exec wait timeout above ~11s so a normal AV scan doesn’t trip temporarily unreachable.
+
+## @deanrie 2026-09-05T16:38:11.657Z staff=True
+Great job debugging this, you basically found the root cause yourself. This is exactly the kind of delay we were looking for. Surfshark (VPN and or real time antivirus) is intercepting and scanning the local daemon channel, so the response from your PC comes back in about 11 seconds instead of a fraction of a second, and the agent stops waiting at 10 seconds. After you disabled it, the delay went away, so the story checks out.
+
+To avoid keeping VPN and antivirus turned off all the time, try a more targeted setup and see if the delay comes back:
+
+- In Surfshark Antivirus, add the folder %APPDATA%\Grok Bot to exclusions (especially the process local-exec-daemon\main.cjs) and also add the Grok Bot executable. Then turn real time protection and web protection back on.
+- If it still only fails when the VPN is on, it is probably Surfshark VPN routing. Check split tunneling and add Grok Bot to the VPN exclusions so its traffic goes directly.
+
+That should help you figure out which one is causing the delay (AV scanning or VPN routing) and keep protection enabled.
+
+This is a really useful signal for this issue. Let me know if the exclusions helped, and I will update the thread if there is anything else.
+
+## @Jarri81 2026-09-05T19:48:28.691Z staff=False
+Thanks Dean — quick clarification so we don’t chase the VPN path.
+
+We already A/B’d this:
+
+- Surfshark VPN on + AV real-time off → OK (~1.3s)
+- Web protection on + real-time off → OK (~3s)
+- Real-time on → temporarily unreachable again
+- Excluding only %LOCALAPPDATA%\Temp (with real-time still on) → OK (~1–2s)
+- Excluding Grok Bot install / %APPDATA%\Grok Bot / exe alone was not enough earlier
+
+So the delay is Surfshark Antivirus real-time on the temp ps-script-*.ps1 create/execute path, not VPN routing. Surfshark also doesn’t accept wildcard excludes (can’t do just ps-script-*.ps1).
+
+Current workaround: exclude all of Temp. It works, but it’s a broad security trade-off. Still hoping for a dedicated Grok Bot tmp folder (or a timeout > ~11s) so we can keep Temp scanned.

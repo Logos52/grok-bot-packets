@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/tobiaslrn/monosai/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/tobiaslrn/monosai/commits/main.atom"/>
+  <title>Recent Commits to monosai:main</title>
+  <updated>2026-09-05T21:48:01Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11754a02d1ec7870da0762638fa6b9e5fdee7124</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/11754a02d1ec7870da0762638fa6b9e5fdee7124"/>
+    <title>
+        merge(reader): integrate the reworked Words screen with the reader ge…
+    </title>
+    <updated>2026-09-05T21:48:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge(reader): integrate the reworked Words screen with the reader gestures
+
+# Conflicts:
+#	docs/arc42/09-architecture-decisions.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/810841c4e8574190b0826a1a2b2df3b574529b17</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/810841c4e8574190b0826a1a2b2df3b574529b17"/>
+    <title>
+        feat(reader): open a word by tapping and its sentence by holding the …
+    </title>
+    <updated>2026-09-05T21:46:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reader): open a word by tapping and its sentence by holding the line
+
+The double tap carried two meanings resolved after the fact, and the scroll that
+kept a sheet clear of the tapped word cancelled the gesture that same tap had
+begun. A tap is now answered by whatever it landed on, and a 450ms press opens
+sentence details while the finger is still down. Repeats on touch are inert;
+mouse and keyboard behaviour is unchanged.
+
+The reading surface gives up native selection and the platform callout under a
+finger only, because that press is now the application&amp;#39;s gesture. Details are
+quieter with it: an icon route to the sentence, grammar always readable, sheets
+capped at half the viewport with the handle and action tray always reachable,
+and anchored cards closing from their own corner. See ADR 0057.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83cfa7aa0545c601d727b9da4b3654dd92cfe403</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/83cfa7aa0545c601d727b9da4b3654dd92cfe403"/>
+    <title>
+        fix(vocabulary): align the standing line and stop it contradicting th…
+    </title>
+    <updated>2026-09-05T21:02:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(vocabulary): align the standing line and stop it contradicting the list
+
+The count and its detail are two type sizes on one line, and the flex row that
+holds them never set a baseline, so the smaller half rode high against the bold
+number.
+
+With no sources at all the same line read &amp;quot;0 words · from an unrecorded source&amp;quot;
+while the row underneath said there were none. Removing the last source leaves
+an empty snapshot behind, which is the standing of a fresh install; it says so.
+A snapshot that still has words keeps its count whatever the list shows.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8a74184f0d1c8c447679d5fadfb4735cbbc8c7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/f8a74184f0d1c8c447679d5fadfb4735cbbc8c7d"/>
+    <title>
+        merge(vocabulary): integrate the reworked Words screen with main
+    </title>
+    <updated>2026-09-05T20:50:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge(vocabulary): integrate the reworked Words screen with main&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ebbeb387c1c298572965bd59d0017ef6decec4c1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/ebbeb387c1c298572965bd59d0017ef6decec4c1"/>
+    <title>
+        feat(vocabulary): one Anki entry, a list, and a page per source
+    </title>
+    <updated>2026-09-05T20:49:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocabulary): one Anki entry, a list, and a page per source
+
+The Words section asked a question the learner could not answer — &amp;quot;Anki&amp;quot; or
+&amp;quot;AnkiDroid bridge&amp;quot;, when the device decides which can work — and asked for the
+AnkiConnect port before anything had failed. Every setting a source has lived in
+its list row, so four sources were four stacked control panels and no list.
+
+The platform is now a port, decided once at the shell edge, so one Anki entry
+picks its own adapter and its own copy; iOS says plainly that a file is its only
+route. A row carries the name, where the words came from and how many, and opens
+a page where the settings are ordered by how often each is touched. Failures are
+told in the sheet the learner pressed Anki in, each with the one link that
+unblocks it and its code beside the doc keyed by those codes. The port moved
+there, behind a fold, next to the retry it changes.
+
+No stored data changes shape.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b16a6e485a6bdab9e972f791025e2ae4022d0824</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b16a6e485a6bdab9e972f791025e2ae4022d0824"/>
+    <title>
+        chore(repo): streamline checks and repair readme logo
+    </title>
+    <updated>2026-09-05T20:15:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(repo): streamline checks and repair readme logo&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f03867282a96f918c742b2bc97197336e4304de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/3f03867282a96f918c742b2bc97197336e4304de"/>
+    <title>
+        fix(reader): stop sentence playback at exact boundaries
+    </title>
+    <updated>2026-09-05T20:07:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): stop sentence playback at exact boundaries&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b65cdb644afe7035cb577386ac4c8a8bbbe2d292</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b65cdb644afe7035cb577386ac4c8a8bbbe2d292"/>
+    <title>
+        fix(repo): make the Gradle wrapper executable
+    </title>
+    <updated>2026-09-05T16:07:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(repo): make the Gradle wrapper executable
+
+Committed from Windows without the executable bit, so the bridge job exited 126
+before Gradle started.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7beca1a2b24f517ae6ffee04234bca1be7600332</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/7beca1a2b24f517ae6ffee04234bca1be7600332"/>
+    <title>
+        feat(vocabulary): let Android connect to Anki through the bridge
+    </title>
+    <updated>2026-09-05T16:02:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocabulary): let Android connect to Anki through the bridge
+
+Provider selection and the connection draft both hardcoded &amp;#39;desktop-connect&amp;#39;, so
+the Android adapter was unreachable and mobile users silently probed the desktop
+one. Carries the provider kind through selection, draft and persistence, gives the
+bridge its own setup panel, names it apart from desktop Anki in the source list,
+implements sampleFields so auto-suggest works, and renders the capability
+limitations that were being collected and dropped. An unrecognised remote error
+after a successful version handshake now reads as unsupported-action rather than
+advising a permission setting that does not exist.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0ffdf3b311e41cbb9ba7e2cd1f60b3f4e6dae46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/f0ffdf3b311e41cbb9ba7e2cd1f60b3f4e6dae46"/>
+    <title>
+        feat(anki): ship a first-party read-only AnkiDroid bridge
+    </title>
+    <updated>2026-09-05T16:02:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anki): ship a first-party read-only AnkiDroid bridge
+
+AnkiconnectAndroid omits requestPermission, findCards and cardsInfo, returns an
+unparseable envelope for unknown actions, and skips the private-network preflight
+header, so Anki vocabulary could never sync on Android. Adds a small Kotlin app in
+android-bridge/ that serves the eight allowed AnkiConnect reads over loopback from
+AnkiDroid&amp;#39;s public ContentProvider, read-only by construction through an allowlist
+router. protocol/ holds the wire contract and the golden fixtures both sides test
+against. The web artifact and its deployment are unchanged; the APK has its own
+gate, its own bridge-v* release lane, and its own resolved-licence check.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9b9960c83a50a9d38c9bef399cffa797a52504d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b9b9960c83a50a9d38c9bef399cffa797a52504d"/>
+    <title>
+        refactor(repo): give the web app its own directory
+    </title>
+    <updated>2026-09-05T15:03:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(repo): give the web app its own directory
+
+Move the Angular app, its scripts, configs, and node_modules into web/, so
+root holds only what spans the system (docs, CI, the android bridge and
+protocol coming next) and web/ holds everything of its own. Keep
+scripts/docs/verify-decision-index.mjs and scripts/licenses/check-licenses.mjs
+at root since docs/ stays at root. Add a thin root package.json that forwards
+every documented command via npm --prefix web, split .prettierignore so
+formatting still runs over the whole tree from root while linting stays
+web-scoped, and re-anchor .gitignore, CI composite actions, workflow artifact
+paths, dependabot, and relative doc/source links to the new layout.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0d0fb8fabba5c5cae107543433f18f16ebfc4d75</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/0d0fb8fabba5c5cae107543433f18f16ebfc4d75"/>
+    <title>
+        feat(generation): let an empty premise ask for a topic of its own
+    </title>
+    <updated>2026-09-05T10:49:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(generation): let an empty premise ask for a topic of its own
+
+Leaving the premise empty now generates rather than blocking the button. The absence has to reach
+the model as an instruction: the story and blueprint prompts say that no premise was supplied and
+that the model chooses one concrete everyday situation, because an empty data block would arrive as
+a premise that says nothing. Repair and segment prompts, which revise a story that already exists,
+omit the block instead, and a story saved without a premise passes none on as translation context.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/024897fa60222766c512fe45bd6757649ac1699e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/024897fa60222766c512fe45bd6757649ac1699e"/>
+    <title>
+        fix(reader): open a word on the tap that asked for it
+    </title>
+    <updated>2026-09-05T10:48:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): open a word on the tap that asked for it
+
+A first touch word tap was held for the sentence gesture window and only then replayed, so every
+ordinary word tap on a phone arrived late enough to feel unanswered and readers learned to tap
+twice. The tap now activates the word immediately; the paragraph remembers where it landed instead
+of holding its click, and a second tap in the same sentence still opens sentence details while
+consuming the click that would otherwise put the word away.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0326ebce1cafc483b0aa0e6ebf73758a77842965</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/0326ebce1cafc483b0aa0e6ebf73758a77842965"/>
+    <title>
+        refactor(reader): give the reader&#39;s selection a store of its own
+    </title>
+    <updated>2026-09-05T10:14:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(reader): give the reader&amp;#39;s selection a store of its own
+
+A sentence is opened by press, by double tap, or from a focused word, and a word
+by press or by keyboard — but once open, the four things that can be asked for
+are the same four every time, and each has to re-read the reading&amp;#39;s summaries
+afterwards. That was in the component beside the code deciding where a popover
+goes. Only the placement is about the page.
+
+The last of the three seams the debt register named. The reader page is now
+1,481 lines and 14 injected dependencies, down from 1,675 and 22, and what is
+left in it is mostly one concern: measurement and placement. No behaviour
+changes; the unit suite, the full browser lane, and the PWA suite all pass.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ca50443a5ae9038b72fb974ada73d1409be6188</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/3ca50443a5ae9038b72fb974ada73d1409be6188"/>
+    <title>
+        refactor(reader): give the aids lane a store of its own
+    </title>
+    <updated>2026-09-05T10:08:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(reader): give the aids lane a store of its own
+
+The reader page held five collaborators to answer one question per aid — the
+whole-reading translation job, the preparation lane, the text model&amp;#39;s readiness,
+the voice&amp;#39;s readiness, and whether there is a network — plus the two failure
+strings a stop can produce, and the order a stop has to happen in for the lane
+not to pick the layer up again. None of that is about the page.
+
+What is left there is the projection: turning a reading, a progress, a readiness,
+and a connection into the row the Story options menu draws.
+
+The second of the three seams. No behaviour changes: 1,576 lines and 18
+dependencies become 1,536 and 13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46171bfa9c9d4b74010f5037c7dd49459cb1b6c4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/46171bfa9c9d4b74010f5037c7dd49459cb1b6c4"/>
+    <title>
+        refactor(reader): give the reading&#39;s audio a store of its own
+    </title>
+    <updated>2026-09-05T10:00:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(reader): give the reading&amp;#39;s audio a store of its own
+
+The reader page wired five audio collaborators — the generation job,
+application-wide playback, this reading&amp;#39;s clip maintenance, the voice settings,
+and the configuration a request is gated on — alongside two unrelated concerns.
+They are now one store, provided by the reader so the player&amp;#39;s open state dies
+with the screen while playback outlives it. The page keeps what is about the
+page: the player&amp;#39;s measured height and the confirmation before clips go.
+
+The first of the three seams the debt register names. No behaviour changes:
+1,675 lines and 22 dependencies become 1,576 and 18.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38637254513458b61a1a1068318d447bf032072d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/38637254513458b61a1a1068318d447bf032072d"/>
+    <title>
+        docs(repo): make the guide and the registers match the application
+    </title>
+    <updated>2026-09-05T09:52:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(repo): make the guide and the registers match the application
+
+Help omitted pasted lists from the one paragraph about word sources, called the
+sentence gesture a long press after it became a double tap, and described marked
+words in Anki&amp;#39;s terms on a screen a pasted list also reaches. The 50-word floor
+is now read from the rule it states, so the three surfaces that say it cannot
+disagree again.
+
+The debt register named the generation store as the largest unit; it is fifth.
+The reader page and its two largest collaborators are now recorded instead, with
+the seams to extract along.
+
+The chapter 9 index listed 54 of 56 records, and one of the missing two was
+linked from another record&amp;#39;s amendment note. A check that every decision file
+appears there now runs in `verify:static` and in CI&amp;#39;s static job, which `gate`
+already requires. It found the second gap on its first run.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/07a0599ac96f66cb59574980b13a324bd6c7270c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/07a0599ac96f66cb59574980b13a324bd6c7270c"/>
+    <title>
+        fix(repo): put the interface back on one measure and one vocabulary
+    </title>
+    <updated>2026-09-05T09:47:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(repo): put the interface back on one measure and one vocabulary
+
+Measured at 1280px, the shelf overhung the app bar by 80px on both sides and
+Help indented 121px past the wordmark, because two pages set a measure of their
+own. Both now use the shared rail; Help keeps its prose readable by holding its
+paragraphs rather than its page. Deep-linked sections carry enough scroll margin
+that the page they landed on is still named above them.
+
+A disabled button was only dimmed, which reads as greyed out over a dark green
+fill and as the loudest thing on the screen over a light sage one, so it now
+takes the sunken surface and secondary text in both themes. Cards stopped
+stretching to their neighbour&amp;#39;s height. An open pasted-list editor no longer
+draws over the Words heading it was refused a row below. Settings rendered one
+fact list three ways and one small-caps label seven ways: each is now defined
+once, and the design system says when the capitals are allowed.
+
+Deletion dialogs stored capitalised phrases and joined them mid-sentence. The
+phrases are lowercase and the sentence is built at render time, in the words the
+rest of the application uses.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a2fe64adfbbf39ced5e97ae59d4fa600611d91b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/6a2fe64adfbbf39ced5e97ae59d4fa600611d91b"/>
+    <title>
+        feat(reading): rename a story and unify what a dead link looks like
+    </title>
+    <updated>2026-09-05T09:19:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reading): rename a story and unify what a dead link looks like
+
+A pasted reading is titled with its own first sentence, and nothing could change
+that afterwards: the title and the opening words stayed the same string, and a
+model-titled story was permanent. Rename now sits in the library card&amp;#39;s overflow
+menu — which held one item and needed opening to reveal it — writing only the
+title through the reading repository, and the shelf shows the new name without
+re-reading the page a learner has scrolled.
+
+Three routes could conclude a link addresses nothing, and each looked like a
+different application: one landed on a bare card with no app identity at all,
+two shared a full-width outlined button used nowhere else. They now render one
+panel with the ordinary action pair. The shell also drops its masthead only for
+the reader itself, decided by classifying the id rather than by matching the
+`/reader/` prefix, so a link that names no reading keeps a way out of the app.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8850480b9332ba2e56c55c742c2b699a200b9eb3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/8850480b9332ba2e56c55c742c2b699a200b9eb3"/>
+    <title>
+        fix(reader): make the reading text traversable by keyboard
+    </title>
+    <updated>2026-09-05T08:55:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): make the reading text traversable by keyboard
+
+A long story put a tab stop on every word, so hundreds of stops separated the
+header from anything after the text. Each sentence now holds one stop; arrow
+keys move between its words, Home and End reach its ends, and the last word
+focused there becomes the sentence&amp;#39;s stop. A skip link reaches the Library
+action past the story, and story titles carry Japanese language metadata in the
+Library card and the reader header.
+
+Focus only: nothing here observes a pointer, so touch selection and the sentence
+double tap are unchanged.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

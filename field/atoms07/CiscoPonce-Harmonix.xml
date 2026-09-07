@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/CiscoPonce/Harmonix/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/CiscoPonce/Harmonix/commits/main.atom"/>
+  <title>Recent Commits to Harmonix:main</title>
+  <updated>2026-09-06T21:16:23Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2e010e28e48e17a1d6b61128ec274467b37ee19d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/2e010e28e48e17a1d6b61128ec274467b37ee19d"/>
+    <title>
+        fix(daily-word): one new song per card and provisional stem glosses
+    </title>
+    <updated>2026-09-06T21:16:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): one new song per card and provisional stem glosses
+
+Same-song extras were filling Next with eight Royals cards; they are last-resort only now. Stem hits like wondering→maravilla stay unverified so lyric-sense polish can replace them.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d83b509ba6d704a9fe44fa1bee931d638b9c08eb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/d83b509ba6d704a9fe44fa1bee931d638b9c08eb"/>
+    <title>
+        docs(phase-17): Play Store remaining steps and local JDK path
+    </title>
+    <updated>2026-09-06T20:42:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(phase-17): Play Store remaining steps and local JDK path
+
+Open Phase 17 with a checklist for keystore, Console listing, and Internal testing. This PC now has Temurin 17 at ~/.local/jdk/jdk-17 (no sudo).
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f6b00f8133dca4bbce5123ebc3f1a1f0060ed24f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/f6b00f8133dca4bbce5123ebc3f1a1f0060ed24f"/>
+    <title>
+        docs(store): Play Console listing pack and domain support mailbox
+    </title>
+    <updated>2026-09-06T20:34:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(store): Play Console listing pack and domain support mailbox
+
+Point privacy, terms and the footer at hello@peeporunclub.co.uk, add the 1024×500 feature graphic and Console copy, and bump Flutter to 1.0.8+11. Login now pops back to home after sign-in.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4bbd65025a44b500d11f14619c13b9268137e4b5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/4bbd65025a44b500d11f14619c13b9268137e4b5"/>
+    <title>
+        fix(tracks): pass iTunes artist name into the preview URL
+    </title>
+    <updated>2026-09-06T20:22:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(tracks): pass iTunes artist name into the preview URL
+
+/api/tracks was stringifying { name } as [object Object] and using Deezer&amp;#39;s mid-track offset. Hear-it still streamed because the itunes_ id is enough; lyrics/artist display and fallback search were wrong.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc525069f2302da8831a6c5de7c69cf0cafaa0f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/dc525069f2302da8831a6c5de7c69cf0cafaa0f3"/>
+    <title>
+        fix(daily-word): translate hand as mano, not cacho
+    </title>
+    <updated>2026-09-06T20:09:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): translate hand as mano, not cacho
+
+The 21k offline dict used a junk first-sense. Override body-part lyric words (hand, skin, arms, ear, neck, chest) so cards show the meaning in the song.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f9735f28671df530849360fd13352cb579a8468</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/3f9735f28671df530849360fd13352cb579a8468"/>
+    <title>
+        fix(daily-word): skip lyric names and pick a translatable hook
+    </title>
+    <updated>2026-09-05T20:37:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): skip lyric names and pick a translatable hook
+
+Title tokens like Jude were winning the heuristic. Reject proper names and light verbs so Hey Jude teaches better, not a person&amp;#39;s name.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce5163bdd6e1011b27ee63e26337d0ce4a3f347b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/ce5163bdd6e1011b27ee63e26337d0ce4a3f347b"/>
+    <title>
+        fix(search): fall back to iTunes when Deezer 403s Discover
+    </title>
+    <updated>2026-09-05T20:19:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(search): fall back to iTunes when Deezer 403s Discover
+
+VPS IPs get Akamai 403 from api.deezer.com, so /api/search returned 502 and the UI showed no songs. Use the same iTunes catalog fallback Word of the Day already uses.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/91918fac2bff97e9900daa1ce550f78239708e94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/91918fac2bff97e9900daa1ce550f78239708e94"/>
+    <title>
+        fix(daily-word): keep lyric sense for &#39;cause after the offline dict
+    </title>
+    <updated>2026-09-05T20:17:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): keep lyric sense for &amp;#39;cause after the offline dict
+
+The 21k map set cause→causa and blocked deploy. Curated override
+keeps pop-lyric &amp;#39;Cause as porque.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f403bbeaa2c18797f0d733a712cee793894ac88e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/f403bbeaa2c18797f0d733a712cee793894ac88e"/>
+    <title>
+        fix(daily-word): ship a 21k-word offline en→es dictionary
+    </title>
+    <updated>2026-09-05T20:07:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): ship a 21k-word offline en→es dictionary
+
+Stop depending on MyMemory/AI quotas for everyday lyric words. Look
+up meanings locally so Next word is not stuck on “meaning on its way”.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e3c0f714e5511a2ff2b03ec2c8596b02f9f77fba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/e3c0f714e5511a2ff2b03ec2c8596b02f9f77fba"/>
+    <title>
+        fix(daily-word): fill blank stored words from the glossary on boot
+    </title>
+    <updated>2026-09-05T20:04:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): fill blank stored words from the glossary on boot
+
+Reload was showing pitch with no meaning because the queue stored a
+null translation and GET is too fast to wait on a dead MyMemory quota.
+Backfill thin daily/queue rows from the offline table at startup.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29a3dc95a853b3d7c4129a6c11c01f0afafe9516</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/29a3dc95a853b3d7c4129a6c11c01f0afafe9516"/>
+    <title>
+        fix(daily-word): offline en→es glossary so cards like until keep a me…
+    </title>
+    <updated>2026-09-05T20:02:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): offline en→es glossary so cards like until keep a meaning
+
+Queued extras were stored with a blank translation whenever AI and
+MyMemory were down. Look up everyday English words locally (until→hasta)
+instead of leaving the web card on “meaning on its way”.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b07d00a07402a8d750bf359f4b5cac97b2d70e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/8b07d00a07402a8d750bf359f4b5cac97b2d70e3"/>
+    <title>
+        fix(ci): include @emnapi 1.11.3 in the web lockfile
+    </title>
+    <updated>2026-09-05T19:53:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ci): include @emnapi 1.11.3 in the web lockfile
+
+npm ci on Node 22 was failing because sharp-wasm32 required those
+optional packages and they were missing from package-lock.json, so
+deploy never ran.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b7f227ee6f5d7727b2846fea20b8ea3ee0bff719</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/b7f227ee6f5d7727b2846fea20b8ea3ee0bff719"/>
+    <title>
+        fix(daily-word): persist glosses so Word of the Day keeps a meaning
+    </title>
+    <updated>2026-09-05T19:46:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): persist glosses so Word of the Day keeps a meaning
+
+When AI and MyMemory are exhausted the card was blank. Cache accepted
+translations, pause MyMemory after quota warnings, fill English
+inflections from the curated table, and refetch the web card until a
+gloss arrives.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee5001710a07d2c923a8af7ad7d9fa614d869f53</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/ee5001710a07d2c923a8af7ad7d9fa614d869f53"/>
+    <title>
+        ci: lockfile in sync for npm ci; Kokoro flag test independent of KOKO…
+    </title>
+    <updated>2026-09-05T18:23:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: lockfile in sync for npm ci; Kokoro flag test independent of KOKORO_DISABLED
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0d76be83c8a52e98685ddc1c45d75a4d1d5667e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/0d76be83c8a52e98685ddc1c45d75a4d1d5667e4"/>
+    <title>
+        docs: changelog, deploy runbook (backups), env example, state
+    </title>
+    <updated>2026-09-05T18:20:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: changelog, deploy runbook (backups), env example, state
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d27c6d6b303a7538eff534c88890c3285e3f2ea3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/d27c6d6b303a7538eff534c88890c3285e3f2ea3"/>
+    <title>
+        flutter: learn a word from search, line translation, i18n parity; CI …
+    </title>
+    <updated>2026-09-05T18:18:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;flutter: learn a word from search, line translation, i18n parity; CI test gate; nightly DB backup
+
+mobile
+- tapping a search result now creates a Word of the Day from that song (POST /daily-word/from-track)
+  like the web app, instead of bouncing out to Spotify; Spotify stays as a trailing icon
+- card back shows the lyric line translation when the payload has one
+- Discover/Settings/nav/flip hints translated via context.tr with {var} interpolation + plurals;
+  i18n parity test added
+- welcome copy no longer promises karaoke; lint clean (unused imports, deprecated value:, doc comment)
+
+ci
+- deploy now waits for server mocha, web node tests and flutter analyze/test; runs on PRs too
+- concurrency no longer cancels an in-flight deploy (Traefik cutover must not be interrupted)
+
+ops
+- scripts/backup-sqlite.sh: online better-sqlite3 backup inside the api container, integrity check,
+  gzip, 14-day retention; systemd service + 03:30 UTC timer under scripts/systemd
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/57cbcaf7175c1b8a9c6664328ad2749b9c0c1383</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/57cbcaf7175c1b8a9c6664328ad2749b9c0c1383"/>
+    <title>
+        web: translate Discover, card, shell and Settings; Next 16.3.4
+    </title>
+    <updated>2026-09-05T18:18:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;web: translate Discover, card, shell and Settings; Next 16.3.4
+
+- every visible string on Discover/Word card/shelf cards/Settings now goes through t(); dictionaries gain
+  ~90 keys in all six languages with {var} interpolation and one/other plurals
+- i18n dictionary split from the React hook so node --test can import it (i18n.test.ts was failing)
+- remove dead &amp;#39;Pro Plan / Upgrade&amp;#39; upsell and non-functional bell; footer Privacy/Terms are real links
+- Next 16.2.9 → 16.3.4 (security release), poweredByHeader off, eslint-config-next aligned
+- tsconfig excludes *.test.ts like .dockerignore so local next build matches the image
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/68714d88d516b6388712cca54ffd1ab346d9c3eb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/68714d88d516b6388712cca54ffd1ab346d9c3eb"/>
+    <title>
+        server: harden API and stop provider storms
+    </title>
+    <updated>2026-09-05T17:50:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;server: harden API and stop provider storms
+
+- CORS allowlist (same-origin, dev hosts, CORS_ORIGINS) instead of reflecting any Origin with credentials
+- security headers (nosniff, frame, referrer, permissions, HSTS over https); x-powered-by off; 256kb JSON limit
+- rate limits on login/register/refresh, public Deezer/LRCLib proxies and pronounce
+- register validation (email format, 8-char min) and case-insensitive email uniqueness
+- OpenRouter circuit breaker: skip for 2 min after a 429 instead of 200+ retries; fast path fails instantly when both providers cool down
+- TTS: Pocket-TTS first when the host daemon serves the language; Kokoro remembers a missing Python runtime
+- daily word: try 3 preview-window picks before accepting an out-of-preview word; extras prefer preview lines
+- tests: await async playlist handlers, gate Kokoro integration test behind KOKORO_INTEGRATION=1
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f4b5dd4e3696809a94f37de101e332a21143e65a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/f4b5dd4e3696809a94f37de101e332a21143e65a"/>
+    <title>
+        test(mobile): match forest brand token and scroll to APPEARANCE in Se…
+    </title>
+    <updated>2026-09-05T17:32:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(mobile): match forest brand token and scroll to APPEARANCE in Settings
+
+Both tests were stale: brand is #0B4D2E to match web, and Settings grew past the test viewport.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d384b5c7c743cb771edf2245e778773b16f01870</id>
+    <link type="text/html" rel="alternate" href="https://github.com/CiscoPonce/Harmonix/commit/d384b5c7c743cb771edf2245e778773b16f01870"/>
+    <title>
+        fix(daily-word): overwrite home/planes/time/rule first-hit glosses
+    </title>
+    <updated>2026-09-05T09:05:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/e6ce93955eae933a762351eb4570c779?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>s4317708@lsbu.ac.uk</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(daily-word): overwrite home/planes/time/rule first-hit glosses
+
+Queued cards were keeping MyMemory senses (inicio, planos, hora, regla). The lyric table now wins on every serve, and those wrong senses are treated as suspicious.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

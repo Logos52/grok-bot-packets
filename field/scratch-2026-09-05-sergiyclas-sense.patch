@@ -1,0 +1,2499 @@
+From 8920200e4e181d7ab767091cda6c48c6891860ca Mon Sep 17 00:00:00 2001
+From: Serhiy <sergiyclas@gmail.com>
+Date: Fri, 4 Sep 2026 13:33:35 +0300
+Subject: [PATCH] feat: sense in context and on-device translation fallback
+
+- Selecting a word now translates the sentence around it and picks the
+  dictionary sense that shows up in that translation, so "bat" on a baseball
+  page gives the bat you swing. The usual meaning stays on a second line, and
+  the same sense goes first on the card built by the Free provider.
+- The gtx parser keeps the candidate senses (term, back-translations, score)
+  that dt=bd already returned and the old code threw away.
+- Chrome's built-in Translator API runs in a new offscreen document and answers
+  when the online endpoint cannot be reached; the language pack is downloaded
+  from the options page, which is the only context with a user gesture.
+- ping only reads the cached availability, so opening the popup never creates
+  the offscreen document; the document closes after five idle minutes.
+- e2e now degrades to a clear SKIP when Anki is not running.
+---
+ PRIVACY.md                                    |  10 +-
+ README.md                                     |  13 ++
+ public/_locales/de/messages.json              |  66 +++++++++
+ public/_locales/en/messages.json              |  66 +++++++++
+ public/_locales/es/messages.json              |  66 +++++++++
+ public/_locales/fr/messages.json              |  66 +++++++++
+ public/_locales/it/messages.json              |  66 +++++++++
+ public/_locales/ja/messages.json              |  66 +++++++++
+ public/_locales/nl/messages.json              |  66 +++++++++
+ public/_locales/pl/messages.json              |  66 +++++++++
+ public/_locales/pt_BR/messages.json           |  66 +++++++++
+ public/_locales/tr/messages.json              |  66 +++++++++
+ public/_locales/uk/messages.json              |  66 +++++++++
+ public/_locales/zh_CN/messages.json           |  66 +++++++++
+ public/manifest.json                          |   5 +-
+ scripts/e2e.mjs                               |  78 ++++++++---
+ scripts/verify-dist.mjs                       |   2 +-
+ src/background/index.ts                       |   9 ++
+ src/background/router.ts                      |  21 ++-
+ src/content/index.ts                          |  22 ++-
+ src/lib/messages.ts                           |  25 +++-
+ src/lib/pipeline/addWord.ts                   |   1 +
+ src/lib/providers/free/gtx.ts                 |  37 ++++-
+ src/lib/providers/free/index.ts               |  18 ++-
+ src/lib/providers/types.ts                    |   1 +
+ src/lib/sense/contextual.ts                   |  78 +++++++++++
+ src/lib/sense/match.ts                        | 128 ++++++++++++++++++
+ src/lib/settings/schema.ts                    |   6 +
+ src/lib/translate/engine.ts                   |  89 ++++++++++++
+ src/lib/translate/offscreen.ts                |  47 +++++++
+ src/lib/translate/protocol.ts                 |  21 +++
+ src/offscreen/index.html                      |  10 ++
+ src/offscreen/main.ts                         |  22 +++
+ src/offscreen/translator.ts                   |  42 ++++++
+ src/options/components/OfflineTranslation.tsx |  77 +++++++++++
+ src/options/tabs/Generation.tsx               |  20 +++
+ src/popup/StatusBar.tsx                       |  13 +-
+ src/popup/popup.css                           |   5 +
+ src/types/ai.d.ts                             |  25 ++++
+ store/listing.md                              |   5 +-
+ tests/free.test.ts                            |   2 +-
+ tests/sense.test.ts                           | 101 ++++++++++++++
+ tests/translateEngine.test.ts                 |  27 ++++
+ vite.config.ts                                |   1 +
+ 44 files changed, 1709 insertions(+), 44 deletions(-)
+ create mode 100644 src/lib/sense/contextual.ts
+ create mode 100644 src/lib/sense/match.ts
+ create mode 100644 src/lib/translate/engine.ts
+ create mode 100644 src/lib/translate/offscreen.ts
+ create mode 100644 src/lib/translate/protocol.ts
+ create mode 100644 src/offscreen/index.html
+ create mode 100644 src/offscreen/main.ts
+ create mode 100644 src/offscreen/translator.ts
+ create mode 100644 src/options/components/OfflineTranslation.tsx
+ create mode 100644 src/types/ai.d.ts
+ create mode 100644 tests/sense.test.ts
+ create mode 100644 tests/translateEngine.test.ts
+
+diff --git a/PRIVACY.md b/PRIVACY.md
+index 3097eca..e95e330 100644
+--- a/PRIVACY.md
++++ b/PRIVACY.md
+@@ -20,6 +20,12 @@ Everything below happens only when you trigger it (typing in the popup, pressing
+ - **Instant translation.** While you type in the popup, and when the selection bubble opens, the
+   text is sent to Google Translate (`translate.googleapis.com`) for the one-line preview. Both can be
+   turned off in the settings.
++- **Sense in context.** When "Pick the meaning that fits the sentence" is on (default), selecting a
++  word also sends the sentence around it to the same endpoint, so the right meaning can be chosen.
++  Turning that setting off keeps the sentence on your device.
++- **On-device translation.** If you download a language pack in the settings, Chrome keeps it on this
++  computer and translations that use it never leave the machine. It is used when the online endpoint
++  cannot be reached.
+ - **Media for the card.** The word is used to look up a pronunciation recording and an image on
+   Wikipedia / Wikimedia Commons, Wiktionary and dictionaryapi.dev, and to request text-to-speech audio
+   from Google Translate (`translate.google.com`). Image author and license are stored on the card.
+@@ -62,7 +68,9 @@ governed by their respective privacy policies. Only the services you enable or c
+ 
+ - `storage`, `unlimitedStorage` – settings, field mappings, keys, history, and the offline queue of
+   cards waiting for Anki (which would not fit in the 10 MB default budget).
+-- `alarms` – retries the offline queue every few minutes.
++- `alarms` – retries the offline queue every few minutes, and closes the translator page when idle.
++- `offscreen` – Chrome's built-in translator is only available to a page, not to the extension's
++  background worker, so a hidden page is opened when an offline translation is needed.
+ - `contextMenus` – the *Add to Anki* menu on selected text.
+ - `activeTab`, `scripting` – reading the selection and showing the confirmation toast on the page
+   where you used the menu; registering the selection-bubble script when you enable it.
+diff --git a/README.md b/README.md
+index ea741d1..17a8505 100644
+--- a/README.md
++++ b/README.md
+@@ -225,6 +225,17 @@ starts, when the popup opens, or from the *Add now* button. The queue lives in I
+ binary, about 150 KB per card, up to 300 cards), survives closing the browser, and remembers which
+ Anki profile each card was meant for, so nothing lands in the wrong collection.
+ 
++### 🌐 Right meaning, and one that survives losing the connection
++
++Select a word and the bubble shows the meaning it has *in that sentence*: "bat" on a baseball page
++becomes *битка*, not *кажан*, with the usual meaning still visible underneath. The same meaning goes
++onto the card. It works by translating the sentence and matching it against the dictionary's candidate
++senses, with stem-tolerant comparison for inflected languages – no extra key, no LLM call.
++
++Chrome can also keep a language pack on the device (Settings → Languages & Generation → *Offline
++translation*). When the online translator cannot be reached, the extension falls back to it, so the
++bubble keeps working with no connection at all.
++
+ ### 🔁 Duplicates, sync, backup
+ 
+ Duplicates are checked in the collection or the target deck before anything is generated; policy:
+@@ -298,6 +309,8 @@ Everything is set in the options page; this is what the settings mean.
+ | Interface language | auto (browser language) or any of the 12 bundled languages | auto |
+ | Interface theme | same as the browser / light / dark / dark on a schedule (from–until) | same as the browser |
+ | Offline queue | keep adding while Anki is closed; up to 300 cards | on |
++| Sense in context | pick the meaning that fits the sentence, in the bubble and on the card | on |
++| Offline translation | on-device language pack, used when the online translator is unreachable | off until downloaded |
+ | Card theme (Pro) | Classic / Paper / Midnight for the built-in note type | Classic |
+ | Pro extras | mnemonic, etymology, example audio, parallel List mode | off |
+ | Shortcut | `chrome://extensions/shortcuts` | Alt+A |
+diff --git a/public/_locales/de/messages.json b/public/_locales/de/messages.json
+index bfa7ebe..acc6d96 100644
+--- a/public/_locales/de/messages.json
++++ b/public/_locales/de/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki ist weiterhin geschlossen."
++  },
++  "tr_offline_title": {
++    "message": "Offline-Übersetzung"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome kann ein Sprachpaket auf diesem Gerät behalten. Es springt ein, wenn der Online-Übersetzer nicht erreichbar ist, sodass die Blase auch ohne Verbindung funktioniert."
++  },
++  "tr_pair": {
++    "message": "$SRC$ nach $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "bereit, funktioniert offline"
++  },
++  "tr_state_downloadable": {
++    "message": "noch nicht geladen"
++  },
++  "tr_state_downloading": {
++    "message": "wird geladen…"
++  },
++  "tr_state_unavailable": {
++    "message": "für dieses Paar nicht verfügbar"
++  },
++  "tr_unsupported": {
++    "message": "Dieser Browser hat keinen eingebauten Übersetzer."
++  },
++  "tr_download": {
++    "message": "Sprachpaket laden"
++  },
++  "tr_cancel": {
++    "message": "Abbrechen"
++  },
++  "tr_download_failed": {
++    "message": "Laden fehlgeschlagen: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Offline-Übersetzung einrichten"
++  },
++  "tr_context_sense": {
++    "message": "Bedeutung aus dem Satz wählen"
++  },
++  "tr_context_in_card": {
++    "message": "Diese Bedeutung auch auf die Karte"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" auf einer Baseball-Seite wird zum Schläger, nicht zur Fledermaus. Die übliche Bedeutung bleibt darunter sichtbar."
++  },
++  "bubble_usually": {
++    "message": "normalerweise: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/en/messages.json b/public/_locales/en/messages.json
+index 248246a..81f3be4 100644
+--- a/public/_locales/en/messages.json
++++ b/public/_locales/en/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki is still closed."
++  },
++  "tr_offline_title": {
++    "message": "Offline translation"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome can keep a language pack on this device. It is used when the online translator cannot be reached, so the bubble keeps working with no connection."
++  },
++  "tr_pair": {
++    "message": "$SRC$ to $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "ready, works offline"
++  },
++  "tr_state_downloadable": {
++    "message": "not downloaded yet"
++  },
++  "tr_state_downloading": {
++    "message": "downloading…"
++  },
++  "tr_state_unavailable": {
++    "message": "not offered for this pair"
++  },
++  "tr_unsupported": {
++    "message": "This browser has no built-in translator."
++  },
++  "tr_download": {
++    "message": "Download language pack"
++  },
++  "tr_cancel": {
++    "message": "Cancel"
++  },
++  "tr_download_failed": {
++    "message": "Download failed: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Set up offline translation"
++  },
++  "tr_context_sense": {
++    "message": "Pick the meaning that fits the sentence"
++  },
++  "tr_context_in_card": {
++    "message": "Use that meaning on the card as well"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" on a baseball page becomes the bat you swing, not the animal. The usual meaning stays visible under it."
++  },
++  "bubble_usually": {
++    "message": "usually: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/es/messages.json b/public/_locales/es/messages.json
+index b4207f7..58a5995 100644
+--- a/public/_locales/es/messages.json
++++ b/public/_locales/es/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki sigue cerrado."
++  },
++  "tr_offline_title": {
++    "message": "Traducción sin conexión"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome puede guardar un paquete de idioma en este dispositivo. Se usa cuando el traductor en línea no responde, así la burbuja sigue funcionando sin conexión."
++  },
++  "tr_pair": {
++    "message": "$SRC$ a $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "listo, funciona sin conexión"
++  },
++  "tr_state_downloadable": {
++    "message": "aún no descargado"
++  },
++  "tr_state_downloading": {
++    "message": "descargando…"
++  },
++  "tr_state_unavailable": {
++    "message": "no disponible para este par"
++  },
++  "tr_unsupported": {
++    "message": "Este navegador no tiene traductor integrado."
++  },
++  "tr_download": {
++    "message": "Descargar el paquete"
++  },
++  "tr_cancel": {
++    "message": "Cancelar"
++  },
++  "tr_download_failed": {
++    "message": "Error al descargar: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Configurar la traducción sin conexión"
++  },
++  "tr_context_sense": {
++    "message": "Elegir el sentido según la frase"
++  },
++  "tr_context_in_card": {
++    "message": "Usar ese sentido también en la tarjeta"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" en una página de béisbol será el bate, no el murciélago. El sentido habitual queda visible debajo."
++  },
++  "bubble_usually": {
++    "message": "normalmente: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/fr/messages.json b/public/_locales/fr/messages.json
+index 3d045c4..88b1885 100644
+--- a/public/_locales/fr/messages.json
++++ b/public/_locales/fr/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki est toujours fermé."
++  },
++  "tr_offline_title": {
++    "message": "Traduction hors ligne"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome peut garder un pack linguistique sur cet appareil. Il prend le relais quand le traducteur en ligne est injoignable, donc la bulle fonctionne sans connexion."
++  },
++  "tr_pair": {
++    "message": "$SRC$ vers $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "prêt, fonctionne hors ligne"
++  },
++  "tr_state_downloadable": {
++    "message": "pas encore téléchargé"
++  },
++  "tr_state_downloading": {
++    "message": "téléchargement…"
++  },
++  "tr_state_unavailable": {
++    "message": "indisponible pour cette paire"
++  },
++  "tr_unsupported": {
++    "message": "Ce navigateur n'a pas de traducteur intégré."
++  },
++  "tr_download": {
++    "message": "Télécharger le pack"
++  },
++  "tr_cancel": {
++    "message": "Annuler"
++  },
++  "tr_download_failed": {
++    "message": "Échec du téléchargement : $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Configurer la traduction hors ligne"
++  },
++  "tr_context_sense": {
++    "message": "Choisir le sens d'après la phrase"
++  },
++  "tr_context_in_card": {
++    "message": "Utiliser ce sens sur la carte aussi"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" sur une page de baseball devient la batte, pas la chauve-souris. Le sens habituel reste visible en dessous."
++  },
++  "bubble_usually": {
++    "message": "d'habitude : $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/it/messages.json b/public/_locales/it/messages.json
+index 72273ed..5aa2b02 100644
+--- a/public/_locales/it/messages.json
++++ b/public/_locales/it/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki è ancora chiuso."
++  },
++  "tr_offline_title": {
++    "message": "Traduzione offline"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome può tenere un pacchetto linguistico su questo dispositivo. Entra in gioco quando il traduttore online non risponde, così la bolla funziona anche senza connessione."
++  },
++  "tr_pair": {
++    "message": "da $SRC$ a $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "pronto, funziona offline"
++  },
++  "tr_state_downloadable": {
++    "message": "non ancora scaricato"
++  },
++  "tr_state_downloading": {
++    "message": "scaricamento…"
++  },
++  "tr_state_unavailable": {
++    "message": "non disponibile per questa coppia"
++  },
++  "tr_unsupported": {
++    "message": "Questo browser non ha un traduttore integrato."
++  },
++  "tr_download": {
++    "message": "Scarica il pacchetto"
++  },
++  "tr_cancel": {
++    "message": "Annulla"
++  },
++  "tr_download_failed": {
++    "message": "Scaricamento non riuscito: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Configura la traduzione offline"
++  },
++  "tr_context_sense": {
++    "message": "Scegliere il senso dalla frase"
++  },
++  "tr_context_in_card": {
++    "message": "Usare quel senso anche sulla scheda"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" in una pagina di baseball diventa la mazza, non il pipistrello. Il senso abituale resta visibile sotto."
++  },
++  "bubble_usually": {
++    "message": "di solito: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/ja/messages.json b/public/_locales/ja/messages.json
+index 3509a2c..5f04bac 100644
+--- a/public/_locales/ja/messages.json
++++ b/public/_locales/ja/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki はまだ閉じています。"
++  },
++  "tr_offline_title": {
++    "message": "オフライン翻訳"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome はこの端末に言語パックを保持できます。オンライン翻訳に接続できないときに使われるため、接続がなくてもバブルが動きます。"
++  },
++  "tr_pair": {
++    "message": "$SRC$ → $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "準備完了、オフラインで動作"
++  },
++  "tr_state_downloadable": {
++    "message": "未ダウンロード"
++  },
++  "tr_state_downloading": {
++    "message": "ダウンロード中…"
++  },
++  "tr_state_unavailable": {
++    "message": "この言語ペアでは利用できません"
++  },
++  "tr_unsupported": {
++    "message": "このブラウザには翻訳機能が内蔵されていません。"
++  },
++  "tr_download": {
++    "message": "言語パックをダウンロード"
++  },
++  "tr_cancel": {
++    "message": "キャンセル"
++  },
++  "tr_download_failed": {
++    "message": "ダウンロードに失敗しました: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "オフライン翻訳を設定"
++  },
++  "tr_context_sense": {
++    "message": "文に合う意味を選ぶ"
++  },
++  "tr_context_in_card": {
++    "message": "その意味をカードにも使う"
++  },
++  "tr_context_sense_hint": {
++    "message": "野球のページの \"bat\" はコウモリではなくバットになります。通常の意味はその下に残ります。"
++  },
++  "bubble_usually": {
++    "message": "通常: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/nl/messages.json b/public/_locales/nl/messages.json
+index 687a289..41ec428 100644
+--- a/public/_locales/nl/messages.json
++++ b/public/_locales/nl/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki is nog steeds gesloten."
++  },
++  "tr_offline_title": {
++    "message": "Offline vertaling"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome kan een taalpakket op dit apparaat bewaren. Het springt bij als de online vertaler onbereikbaar is, zodat de ballon zonder verbinding blijft werken."
++  },
++  "tr_pair": {
++    "message": "$SRC$ naar $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "klaar, werkt offline"
++  },
++  "tr_state_downloadable": {
++    "message": "nog niet gedownload"
++  },
++  "tr_state_downloading": {
++    "message": "downloaden…"
++  },
++  "tr_state_unavailable": {
++    "message": "niet beschikbaar voor dit paar"
++  },
++  "tr_unsupported": {
++    "message": "Deze browser heeft geen ingebouwde vertaler."
++  },
++  "tr_download": {
++    "message": "Taalpakket downloaden"
++  },
++  "tr_cancel": {
++    "message": "Annuleren"
++  },
++  "tr_download_failed": {
++    "message": "Downloaden mislukt: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Offline vertaling instellen"
++  },
++  "tr_context_sense": {
++    "message": "Betekenis uit de zin kiezen"
++  },
++  "tr_context_in_card": {
++    "message": "Die betekenis ook op de kaart"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" op een honkbalpagina wordt de knuppel, niet de vleermuis. De gewone betekenis blijft eronder staan."
++  },
++  "bubble_usually": {
++    "message": "meestal: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/pl/messages.json b/public/_locales/pl/messages.json
+index 5af92ad..42dc805 100644
+--- a/public/_locales/pl/messages.json
++++ b/public/_locales/pl/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki nadal jest zamknięte."
++  },
++  "tr_offline_title": {
++    "message": "Tłumaczenie offline"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome może trzymać pakiet językowy na tym urządzeniu. Włącza się, gdy tłumacz online jest niedostępny, więc dymek działa bez połączenia."
++  },
++  "tr_pair": {
++    "message": "$SRC$ na $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "gotowy, działa offline"
++  },
++  "tr_state_downloadable": {
++    "message": "jeszcze nie pobrany"
++  },
++  "tr_state_downloading": {
++    "message": "pobieranie…"
++  },
++  "tr_state_unavailable": {
++    "message": "niedostępny dla tej pary"
++  },
++  "tr_unsupported": {
++    "message": "Ta przeglądarka nie ma wbudowanego tłumacza."
++  },
++  "tr_download": {
++    "message": "Pobierz pakiet językowy"
++  },
++  "tr_cancel": {
++    "message": "Anuluj"
++  },
++  "tr_download_failed": {
++    "message": "Pobieranie nie powiodło się: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Skonfiguruj tłumaczenie offline"
++  },
++  "tr_context_sense": {
++    "message": "Wybieraj znaczenie na podstawie zdania"
++  },
++  "tr_context_in_card": {
++    "message": "To znaczenie także na karcie"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" na stronie o baseballu stanie się kijem, a nie nietoperzem. Zwykłe znaczenie zostaje widoczne poniżej."
++  },
++  "bubble_usually": {
++    "message": "zwykle: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/pt_BR/messages.json b/public/_locales/pt_BR/messages.json
+index 4b8681a..5bdda07 100644
+--- a/public/_locales/pt_BR/messages.json
++++ b/public/_locales/pt_BR/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "O Anki continua fechado."
++  },
++  "tr_offline_title": {
++    "message": "Tradução offline"
++  },
++  "tr_offline_hint": {
++    "message": "O Chrome pode manter um pacote de idioma neste dispositivo. Ele assume quando o tradutor online não responde, então a bolha continua funcionando sem conexão."
++  },
++  "tr_pair": {
++    "message": "$SRC$ para $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "pronto, funciona offline"
++  },
++  "tr_state_downloadable": {
++    "message": "ainda não baixado"
++  },
++  "tr_state_downloading": {
++    "message": "baixando…"
++  },
++  "tr_state_unavailable": {
++    "message": "indisponível para este par"
++  },
++  "tr_unsupported": {
++    "message": "Este navegador não tem tradutor integrado."
++  },
++  "tr_download": {
++    "message": "Baixar o pacote de idioma"
++  },
++  "tr_cancel": {
++    "message": "Cancelar"
++  },
++  "tr_download_failed": {
++    "message": "Falha ao baixar: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Configurar a tradução offline"
++  },
++  "tr_context_sense": {
++    "message": "Escolher o sentido pela frase"
++  },
++  "tr_context_in_card": {
++    "message": "Usar esse sentido também no cartão"
++  },
++  "tr_context_sense_hint": {
++    "message": "\"bat\" numa página de beisebol vira o taco, não o morcego. O sentido comum continua visível abaixo."
++  },
++  "bubble_usually": {
++    "message": "normalmente: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/tr/messages.json b/public/_locales/tr/messages.json
+index 8b4249a..c466f07 100644
+--- a/public/_locales/tr/messages.json
++++ b/public/_locales/tr/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki hâlâ kapalı."
++  },
++  "tr_offline_title": {
++    "message": "Çevrimdışı çeviri"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome bu cihazda bir dil paketi tutabilir. Çevrimiçi çevirmene ulaşılamadığında devreye girer, böylece baloncuk bağlantısız da çalışır."
++  },
++  "tr_pair": {
++    "message": "$SRC$ → $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "hazır, çevrimdışı çalışır"
++  },
++  "tr_state_downloadable": {
++    "message": "henüz indirilmedi"
++  },
++  "tr_state_downloading": {
++    "message": "indiriliyor…"
++  },
++  "tr_state_unavailable": {
++    "message": "bu çift için yok"
++  },
++  "tr_unsupported": {
++    "message": "Bu tarayıcıda yerleşik çevirmen yok."
++  },
++  "tr_download": {
++    "message": "Dil paketini indir"
++  },
++  "tr_cancel": {
++    "message": "İptal"
++  },
++  "tr_download_failed": {
++    "message": "İndirme başarısız: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Çevrimdışı çeviriyi ayarla"
++  },
++  "tr_context_sense": {
++    "message": "Anlamı cümleye göre seç"
++  },
++  "tr_context_in_card": {
++    "message": "Bu anlamı kartta da kullan"
++  },
++  "tr_context_sense_hint": {
++    "message": "Beyzbol sayfasındaki \"bat\" yarasa değil, sopa olur. Olağan anlam altta görünmeye devam eder."
++  },
++  "bubble_usually": {
++    "message": "genelde: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/uk/messages.json b/public/_locales/uk/messages.json
+index 5c3af94..9f94987 100644
+--- a/public/_locales/uk/messages.json
++++ b/public/_locales/uk/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki досі закритий."
++  },
++  "tr_offline_title": {
++    "message": "Офлайн-переклад"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome може тримати мовний пакет на цьому пристрої. Він вмикається, коли онлайн-перекладач недоступний, тож бульбашка працює й без мережі."
++  },
++  "tr_pair": {
++    "message": "$SRC$ → $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "готовий, працює офлайн"
++  },
++  "tr_state_downloadable": {
++    "message": "ще не завантажений"
++  },
++  "tr_state_downloading": {
++    "message": "завантажується…"
++  },
++  "tr_state_unavailable": {
++    "message": "для цієї пари недоступний"
++  },
++  "tr_unsupported": {
++    "message": "У цьому браузері немає вбудованого перекладача."
++  },
++  "tr_download": {
++    "message": "Завантажити мовний пакет"
++  },
++  "tr_cancel": {
++    "message": "Скасувати"
++  },
++  "tr_download_failed": {
++    "message": "Не вдалося завантажити: $ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "Налаштувати офлайн-переклад"
++  },
++  "tr_context_sense": {
++    "message": "Обирати значення за реченням"
++  },
++  "tr_context_in_card": {
++    "message": "Це саме значення ставити й у картку"
++  },
++  "tr_context_sense_hint": {
++    "message": "«bat» на бейсбольній сторінці стане биткою, а не кажаном. Звичайне значення лишається видимим нижче."
++  },
++  "bubble_usually": {
++    "message": "зазвичай: $BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/_locales/zh_CN/messages.json b/public/_locales/zh_CN/messages.json
+index 5d8e87c..23afc7b 100644
+--- a/public/_locales/zh_CN/messages.json
++++ b/public/_locales/zh_CN/messages.json
+@@ -770,5 +770,71 @@
+   },
+   "queue_still_closed": {
+     "message": "Anki 仍未打开。"
++  },
++  "tr_offline_title": {
++    "message": "离线翻译"
++  },
++  "tr_offline_hint": {
++    "message": "Chrome 可以在本机保存语言包。当在线翻译无法访问时启用，气泡在断网时也能工作。"
++  },
++  "tr_pair": {
++    "message": "$SRC$ → $TGT$",
++    "placeholders": {
++      "SRC": {
++        "content": "$1"
++      },
++      "TGT": {
++        "content": "$2"
++      }
++    }
++  },
++  "tr_state_available": {
++    "message": "已就绪，可离线使用"
++  },
++  "tr_state_downloadable": {
++    "message": "尚未下载"
++  },
++  "tr_state_downloading": {
++    "message": "下载中…"
++  },
++  "tr_state_unavailable": {
++    "message": "该语言对不可用"
++  },
++  "tr_unsupported": {
++    "message": "此浏览器没有内置翻译器。"
++  },
++  "tr_download": {
++    "message": "下载语言包"
++  },
++  "tr_cancel": {
++    "message": "取消"
++  },
++  "tr_download_failed": {
++    "message": "下载失败：$ERR$",
++    "placeholders": {
++      "ERR": {
++        "content": "$1"
++      }
++    }
++  },
++  "tr_setup_link": {
++    "message": "设置离线翻译"
++  },
++  "tr_context_sense": {
++    "message": "按句子选择词义"
++  },
++  "tr_context_in_card": {
++    "message": "卡片上也使用该词义"
++  },
++  "tr_context_sense_hint": {
++    "message": "棒球页面上的 \"bat\" 会变成球棒，而不是蝙蝠。常用词义仍显示在下方。"
++  },
++  "bubble_usually": {
++    "message": "通常：$BASE$",
++    "placeholders": {
++      "BASE": {
++        "content": "$1"
++      }
++    }
+   }
+ }
+diff --git a/public/manifest.json b/public/manifest.json
+index 9c906a9..fbdcb47 100644
+--- a/public/manifest.json
++++ b/public/manifest.json
+@@ -3,7 +3,7 @@
+   "name": "__MSG_extName__",
+   "description": "__MSG_extDescription__",
+   "default_locale": "en",
+-  "version": "2.1.0",
++  "version": "2.2.0",
+   "homepage_url": "https://github.com/sergiyclas/anki-quick-add",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1AzRqIkAQbk6J+9uuiZ+eKWcf8M0L1v/pAXrKipHk/LP15WTb27/NilUgPKJEAUmqnt01vEMLgvBdkcyw3KY8DIQUvkMBTCQ56HCJJORRtkLf5CZiSLaKkAinFPg0vGu6ei379XZJCfOrrmeTy0MSqnv7E3gWHMLtL8mi+qmloake68jxHzqXd+chbOauKTYdpr/RH7ZiNwuxrN0WoN+J3HvqBRQWPDpT5TeK93BsVEy5wL08xbKkm/AvaTL35heGbNvwHKcjvNQgTW/Geg8drfI6aIirknxVFx2NjZbDwbC7D7p6BbTFRsN/UhZE5syMP3SbgyYv+nsDAS65AsysQIDAQAB",
+   "minimum_chrome_version": "144",
+@@ -31,7 +31,8 @@
+     "scripting",
+     "activeTab",
+     "alarms",
+-    "unlimitedStorage"
++    "unlimitedStorage",
++    "offscreen"
+   ],
+   "host_permissions": [
+     "http://127.0.0.1:8765/*",
+diff --git a/scripts/e2e.mjs b/scripts/e2e.mjs
+index 1cb4c1f..808f8cc 100644
+--- a/scripts/e2e.mjs
++++ b/scripts/e2e.mjs
+@@ -1,7 +1,7 @@
+ // Loads dist/ into a headless Chromium as an unpacked extension and exercises the popup and options pages.
+ // Requires a prior `npm run build`. Anki with AnkiConnect should be running for the deck checks.
+ // Optional env: AQA_API_KEY (Anthropic) to run a real add; AQA_WORD (default "queue"); AQA_DECK; AQA_NOTE_TYPE.
+-import { mkdtempSync } from "node:fs";
++import { mkdtempSync, readFileSync } from "node:fs";
+ import { tmpdir } from "node:os";
+ import { resolve } from "node:path";
+ import { chromium } from "playwright";
+@@ -15,6 +15,14 @@ const check = (ok, label) => {
+   console.log(`${ok ? "PASS" : "FAIL"}  ${label}`);
+   if (!ok) failures.push(label);
+ };
++const skip = (label) => console.log(`SKIP  ${label} (Anki is not running)`);
++
++// Everything that writes to a collection needs Anki; the rest of the suite runs without it.
++const ankiUp = await fetch("http://127.0.0.1:8765", { method: "POST", body: '{"action":"version","version":6}' }).then(
++  (r) => r.ok,
++  () => false,
++);
++if (!ankiUp) console.log("NOTE  Anki/AnkiConnect is closed - deck, note type, preview, free-provider and queue checks are skipped");
+ 
+ const context = await chromium.launchPersistentContext(mkdtempSync(resolve(tmpdir(), "aqa-e2e-")), {
+   channel: "chromium",
+@@ -28,6 +36,8 @@ context.on("page", (page) => {
+   page.on("console", (msg) => msg.type() === "error" && pageErrors.push(`${page.url()}: ${msg.text()}`));
+ });
+ 
++const manifestPermissions = JSON.parse(readFileSync(resolve(DIST, "manifest.json"), "utf8")).permissions;
++
+ let [worker] = context.serviceWorkers();
+ if (!worker) worker = await context.waitForEvent("serviceworker");
+ check(worker.url() === url("background.js"), `service worker started: ${worker.url()}`);
+@@ -49,32 +59,37 @@ await popup.goto(url("popup/index.html"));
+ await popup.waitForSelector(".popup-footer span");
+ const footer = await popup.textContent(".popup-footer span");
+ check(footer && footer !== "…", `popup footer: ${footer}`);
+-check(!footer.includes("offline"), "popup reports Anki connected");
++if (ankiUp) check(!footer.includes("offline"), "popup reports Anki connected");
++else skip("popup Anki status");
+ 
+ // Options: tabs render, Anki tab lists decks and note types through the worker.
+ const options = await context.newPage();
+ await options.goto(url("options/index.html"));
+ await options.waitForSelector("nav.tabs button");
+ check((await options.$$("nav.tabs button")).length === 5, "options has 5 tabs");
+-await options.click("nav.tabs button:nth-child(2)");
+-// The selects show the saved value immediately; wait for the lists fetched through the worker.
+-await options.waitForSelector('select >> nth=1 >> option[value="Basic"]', { state: "attached", timeout: 10_000 });
+-const decks = await options.$$eval("select >> nth=0 >> option", (opts) => opts.map((o) => o.value));
+-const models = await options.$$eval("select >> nth=1 >> option", (opts) => opts.map((o) => o.value));
+-check(decks.length > 0, `decks listed via AnkiConnect: ${decks.join(", ")}`);
+-check(models.includes("Basic"), `note types listed: ${models.length} (includes Basic)`);
++if (ankiUp) {
++  await options.click("nav.tabs button:nth-child(2)");
++  // The selects show the saved value immediately; wait for the lists fetched through the worker.
++  await options.waitForSelector('select >> nth=1 >> option[value="Basic"]', { state: "attached", timeout: 10_000 });
++  const decks = await options.$$eval("select >> nth=0 >> option", (opts) => opts.map((o) => o.value));
++  const models = await options.$$eval("select >> nth=1 >> option", (opts) => opts.map((o) => o.value));
++  check(decks.length > 0, `decks listed via AnkiConnect: ${decks.join(", ")}`);
++  check(models.includes("Basic"), `note types listed: ${models.length} (includes Basic)`);
+ 
+-// Field mapping table appears for the configured note type (legacy v1 layout auto-detected).
+-await options.waitForSelector(".mapping table tr", { timeout: 10_000 });
+-const mappedWord = await options.$eval(".mapping table tr:first-child select", (s) => s.value);
+-check(mappedWord === "En", `mapping auto-detected for My cards_en-uk: word -> ${mappedWord}`);
++  // Field mapping table appears for the configured note type (legacy v1 layout auto-detected).
++  await options.waitForSelector(".mapping table tr", { timeout: 10_000 });
++  const mappedWord = await options.$eval(".mapping table tr:first-child select", (s) => s.value);
++  check(mappedWord === "En", `mapping auto-detected for My cards_en-uk: word -> ${mappedWord}`);
+ 
+-// Preview tab renders the note type's real templates with sample data inside a sandboxed iframe.
+-await options.click("nav.tabs button:nth-child(4)");
+-await options.waitForSelector("iframe.preview-frame", { timeout: 10_000 });
+-const previewHtml = await options.$eval("iframe.preview-frame", (f) => f.getAttribute("srcdoc") ?? "");
+-check(previewHtml.includes("queue") && previewHtml.includes("черга"), "preview shows sample word and translation");
+-check(previewHtml.includes("<style>"), "preview embeds the note type CSS");
++  // Preview tab renders the note type's real templates with sample data inside a sandboxed iframe.
++  await options.click("nav.tabs button:nth-child(4)");
++  await options.waitForSelector("iframe.preview-frame", { timeout: 10_000 });
++  const previewHtml = await options.$eval("iframe.preview-frame", (f) => f.getAttribute("srcdoc") ?? "");
++  check(previewHtml.includes("queue") && previewHtml.includes("черга"), "preview shows sample word and translation");
++  check(previewHtml.includes("<style>"), "preview embeds the note type CSS");
++} else {
++  skip("decks, note types, field mapping and preview");
++}
+ 
+ // General tab: language and theme switches take effect immediately, without Save.
+ await options.click("nav.tabs button:nth-child(5)");
+@@ -123,7 +138,8 @@ if (!process.env.AQA_API_KEY) {
+ }
+ 
+ // Free provider: a real add with no API key (Google dictionary data + dictionaryapi + Tatoeba), then clean up.
+-{
++if (!ankiUp) skip("free provider add");
++else {
+   await worker.evaluate(async () => {
+     const { settings } = await chrome.storage.sync.get("settings");
+     await chrome.storage.sync.set({ settings: { ...settings, provider: "free", anki: { ...settings.anki, modelName: "Anki Quick Add" } } });
+@@ -157,7 +173,8 @@ if (!process.env.AQA_API_KEY) {
+ }
+ 
+ // Offline queue: with Anki unreachable the card is still built and parked, and lands once Anki answers.
+-{
++if (!ankiUp) skip("offline queue round trip");
++else {
+   const anki = async (action, params = {}) =>
+     (await (await fetch("http://127.0.0.1:8765", { method: "POST", body: JSON.stringify({ action, version: 6, params }) })).json()).result;
+   const setAnkiUrl = (ankiUrl) =>
+@@ -225,6 +242,25 @@ if (!process.env.AQA_API_KEY) {
+   await popup.waitForSelector(".popup-input");
+ }
+ 
++// Offline translator plumbing: the offscreen document exists in the build and is created lazily.
++{
++  check(manifestPermissions.includes("offscreen"), "manifest declares the offscreen permission");
++  const contexts = await worker.evaluate(() => chrome.runtime.getContexts({ contextTypes: ["OFFSCREEN_DOCUMENT"] }));
++  check(contexts.length === 0, "no offscreen document until something needs the on-device translator");
++  const state = await options.evaluate(() => chrome.runtime.sendMessage({ type: "translate.state" }));
++  const states = ["unavailable", "downloadable", "downloading", "available"];
++  check(state?.ok && states.includes(state.availability), `built-in translator state: ${state?.availability}`);
++}
++
++// Sense in context: "bat" next to a baseball sentence must not stay the animal.
++{
++  const sense = await options.evaluate(() =>
++    chrome.runtime.sendMessage({ type: "translate.sense", text: "bat", block: "He swung the bat and hit a home run in the ninth inning." }),
++  );
++  check(sense?.ok && Boolean(sense.base), `sense lookup answered: base=${sense?.base}`);
++  check(Boolean(sense?.contextual) && sense.contextual !== sense.base, `contextual sense differs from the usual one: ${sense?.contextual}`);
++}
++
+ // Instant translation preview in the popup (free Google endpoint, no LLM).
+ await popup.click(".popup-modes a:nth-child(1)");
+ await popup.fill(".popup-input", "queue");
+diff --git a/scripts/verify-dist.mjs b/scripts/verify-dist.mjs
+index ca0f982..14c2b5f 100644
+--- a/scripts/verify-dist.mjs
++++ b/scripts/verify-dist.mjs
+@@ -11,7 +11,7 @@ if (/^\s*(import|export)\s|\bimport\(/m.test(content)) problems.push("dist/conte
+ // Top-level let/const would throw "already declared" when the script is injected twice into one frame.
+ if (/^\s*(let|const|class)\s/m.test(content)) problems.push("dist/content.js has top-level declarations - keep the code inside the IIFE");
+ 
+-for (const file of ["manifest.json", "background.js", "popup/index.html", "options/index.html", "editor/index.html", "_locales/en/messages.json", "_locales/uk/messages.json"]) {
++for (const file of ["manifest.json", "background.js", "popup/index.html", "options/index.html", "editor/index.html", "offscreen/index.html", "_locales/en/messages.json", "_locales/uk/messages.json"]) {
+   if (!existsSync(resolve(dist, file))) problems.push(`missing dist/${file}`);
+ }
+ 
+diff --git a/src/background/index.ts b/src/background/index.ts
+index 22586f3..50f397f 100644
+--- a/src/background/index.ts
++++ b/src/background/index.ts
+@@ -4,6 +4,8 @@ import { syncBubbleScript } from "./bubble";
+ import { handleMenuClick, rebuildMenus } from "./contextMenu";
+ import { flushQueue } from "../lib/queue/flush";
+ import { refreshBadge } from "../lib/queue/store";
++import { closeTranslatorDocument } from "../lib/translate/offscreen";
++import { isOffscreenRequest } from "../lib/translate/protocol";
+ import { handleMessage } from "./router";
+ 
+ // All listeners are registered synchronously at top level so Chrome can wake the worker for them.
+@@ -18,7 +20,13 @@ chrome.runtime.onInstalled.addListener(() => void Promise.all([rebuildMenus(), s
+ chrome.runtime.onStartup.addListener(() => void Promise.all([rebuildMenus(), syncBubbleScript(), scheduleFlush(), flushQueue()]));
+ chrome.alarms.onAlarm.addListener((alarm) => {
+   if (alarm.name === FLUSH_ALARM) void flushQueue();
++  if (alarm.name === "aqa-translator-idle") void releaseTranslator();
+ });
++
++async function releaseTranslator(): Promise<void> {
++  await chrome.runtime.sendMessage({ target: "offscreen", kind: "translator.release" }).catch(() => undefined);
++  await closeTranslatorDocument();
++}
+ chrome.permissions.onAdded.addListener(() => void syncBubbleScript());
+ chrome.permissions.onRemoved.addListener(() => void syncBubbleScript());
+ 
+@@ -34,6 +42,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
+ chrome.contextMenus.onClicked.addListener((info, tab) => void handleMenuClick(info, tab));
+ 
+ chrome.runtime.onMessage.addListener((request: Request, _sender, sendResponse) => {
++  if (isOffscreenRequest(request)) return false; // answered by the offscreen document itself
+   handleMessage(request).then(sendResponse, (e: unknown) =>
+     sendResponse({ ok: false, error: e instanceof Error ? e.message : String(e) }),
+   );
+diff --git a/src/background/router.ts b/src/background/router.ts
+index 439abe3..2170e83 100644
+--- a/src/background/router.ts
++++ b/src/background/router.ts
+@@ -7,7 +7,8 @@ import { KEYLESS, getAdapter } from "../lib/providers/registry";
+ import { applyTheme } from "../lib/anki/builtinModel";
+ import { getCache, loadKeys, loadSettings, setCache } from "../lib/settings/storage";
+ import { initI18n, t } from "../lib/i18n";
+-import { quickTranslate } from "../lib/quickTranslate";
++import { contextualTranslate } from "../lib/sense/contextual";
++import { cachedAvailability, deviceAvailability, noteDownloaded, translateText } from "../lib/translate/engine";
+ import { flushQueue } from "../lib/queue/flush";
+ import { clearQueue, queueCount, queueStatus, refreshBadge, removeQueued } from "../lib/queue/store";
+ import { extractSentence } from "../lib/text";
+@@ -51,6 +52,7 @@ async function ping(): Promise<PingResponse> {
+     deck: settings.anki.deck,
+     quickTranslate: settings.ui.quickTranslate,
+     queued: await queueCount(),
++    translator: await cachedAvailability(settings.languages.source, settings.languages.target),
+   };
+ }
+ 
+@@ -96,8 +98,23 @@ async function dispatch(request: Request) {
+     }
+     case "translate.quick": {
+       const { source, target } = (await loadSettings()).languages;
+-      return { ok: true, translation: await quickTranslate(request.text, source, target), source, target };
++      const { text, engine } = await translateText(request.text, source, target);
++      return { ok: true, translation: text, source, target, engine };
+     }
++    case "translate.sense": {
++      const settings = await loadSettings();
++      const { source, target } = settings.languages;
++      const sentence = contextOf({ word: request.text, context: request.context, block: request.block }) ?? "";
++      const sense = await contextualTranslate({ word: request.text, sentence, source, target });
++      return { ok: true, ...sense, source, target };
++    }
++    case "translate.state": {
++      const { source, target } = (await loadSettings()).languages;
++      return { ok: true, availability: await deviceAvailability(source, target, request.refresh), source, target };
++    }
++    case "translate.ready":
++      await noteDownloaded(request.source, request.target);
++      return { ok: true };
+     case "job.regenerate":
+       await regenerateJob(request.id, request.hint);
+       return { ok: true };
+diff --git a/src/content/index.ts b/src/content/index.ts
+index 50393ee..13972ab 100644
+--- a/src/content/index.ts
++++ b/src/content/index.ts
+@@ -23,7 +23,7 @@ declare global {
+ 
+   const MAX_LEN = 200;
+   const HOST_ID = "aqa-bubble-host";
+-  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate", "popup_queued"];
++  const STRING_KEYS = ["bubble_add", "bubble_edit", "bubble_no_translation", "popup_adding", "popup_added", "popup_duplicate", "popup_queued", "bubble_usually"];
+   let strings: Record<string, string> = {};
+   const msg = (key: string, subs: string[] = []) => {
+     const template = strings[key] ?? chrome.i18n.getMessage(key, subs.length ? ["$1", "$2"] : undefined) ?? key;
+@@ -63,11 +63,15 @@ declare global {
+   let currentText = "";
+   let requestSeq = 0;
+   let trigger: Trigger = "shift";
++  let contextSense = true;
+ 
+   function readTrigger(settings: unknown): Trigger {
+     const value = (settings as { ui?: { bubbleTrigger?: Trigger } } | undefined)?.ui?.bubbleTrigger;
+     return value === "always" || value === "alt" ? value : "shift";
+   }
++  function readContextSense(settings: unknown): boolean {
++    return (settings as { translation?: { contextSense?: boolean } } | undefined)?.translation?.contextSense !== false;
++  }
+   function readTheme(settings: unknown): UiTheme {
+     const ui = (settings as { ui?: UiTheme } | undefined)?.ui;
+     return { theme: ui?.theme, themeSchedule: ui?.themeSchedule };
+@@ -75,11 +79,13 @@ declare global {
+   chrome.storage.sync.get("settings").then((s) => {
+     trigger = readTrigger(s["settings"]);
+     uiTheme = readTheme(s["settings"]);
++    contextSense = readContextSense(s["settings"]);
+   });
+   chrome.storage.onChanged.addListener((changes, area) => {
+     if (area === "sync" && changes["settings"]) {
+       trigger = readTrigger(changes["settings"].newValue);
+       uiTheme = readTheme(changes["settings"].newValue);
++      contextSense = readContextSense(changes["settings"].newValue);
+       loadStrings();
+     }
+   });
+@@ -96,6 +102,7 @@ declare global {
+ .bubble.dark { background: #1e1f22; color: #e6e6e6; border-color: #3c3f44; }
+ .src { font-weight: 600; word-break: break-word; }
+ .tr { margin-top: 4px; color: #4a7bd0; word-break: break-word; min-height: 1.4em; }
++.tr2 { margin-top: 2px; font-size: 12px; color: #6b7280; word-break: break-word; }
+ .row { display: flex; gap: 6px; margin-top: 8px; align-items: center; }
+ button { font: inherit; font-size: 13px; padding: 5px 10px; border-radius: 6px; cursor: pointer; border: 1px solid #4a7bd0; background: #4a7bd0; color: #fff; }
+ button.secondary { background: transparent; color: #4a7bd0; }
+@@ -132,13 +139,14 @@ button:disabled { opacity: .6; cursor: default; }
+     style.textContent = STYLE;
+     const bubble = document.createElement("div");
+     bubble.className = isDark() ? "bubble dark" : "bubble";
+-    bubble.innerHTML = `<div class="src"></div><div class="tr muted">…</div>
++    bubble.innerHTML = `<div class="src"></div><div class="tr muted">…</div><div class="tr2"></div>
+     <div class="row"><button class="add"></button><button class="secondary edit"></button></div><div class="status"></div>`;
+     root.append(style, bubble);
+     document.documentElement.appendChild(host);
+ 
+     const src = bubble.querySelector<HTMLDivElement>(".src")!;
+     const tr = bubble.querySelector<HTMLDivElement>(".tr")!;
++    const tr2 = bubble.querySelector<HTMLDivElement>(".tr2")!;
+     const addBtn = bubble.querySelector<HTMLButtonElement>(".add")!;
+     const editBtn = bubble.querySelector<HTMLButtonElement>(".edit")!;
+     const status = bubble.querySelector<HTMLDivElement>(".status")!;
+@@ -172,6 +180,16 @@ button:disabled { opacity: .6; cursor: default; }
+       }
+     });
+ 
++    // A second, slower request refines the first line with the sense the sentence points at.
++    if (contextSense && block.length > text.length && text.length <= 40 && text.split(/\s+/).length <= 2) {
++      chrome.runtime.sendMessage({ type: "translate.sense", text, block }, (r?: { ok: boolean; contextual?: string; base?: string }) => {
++        if (seq !== requestSeq || !host || !r?.ok || !r.contextual || !r.base) return;
++        tr.classList.remove("muted");
++        tr.textContent = r.contextual;
++        tr2.textContent = msg("bubble_usually", [r.base]);
++      });
++    }
++
+     addBtn.addEventListener("click", () => {
+       addBtn.disabled = true;
+       editBtn.disabled = true;
+diff --git a/src/lib/messages.ts b/src/lib/messages.ts
+index 9250ca9..ceb68b6 100644
+--- a/src/lib/messages.ts
++++ b/src/lib/messages.ts
+@@ -3,6 +3,7 @@
+ import type { ModelTemplates } from "./anki/types";
+ import type { AddResult, CommitOverrides } from "./pipeline/addWord";
+ import type { BatchState } from "./pipeline/batch";
++import type { ContextSense } from "./sense/contextual";
+ import type { FlushSummary } from "./queue/flush";
+ import type { QueueStatus } from "./queue/store";
+ import type { ModelInfo } from "./providers/types";
+@@ -13,6 +14,9 @@ export type Request =
+   | { type: "add"; word: string; deck?: string; tags?: string[]; context?: string; block?: string }
+   | { type: "editor.open"; word: string; deck?: string; context?: string; block?: string }
+   | { type: "translate.quick"; text: string }
++  | { type: "translate.sense"; text: string; block?: string; context?: string }
++  | { type: "translate.state"; refresh?: boolean }
++  | { type: "translate.ready"; source: string; target: string }
+   | { type: "bubble.status" }
+   | { type: "queue.status" }
+   | { type: "queue.flush" }
+@@ -45,6 +49,7 @@ export interface PingResponse {
+   deck: string;
+   quickTranslate: boolean;
+   queued: number;
++  translator: AIAvailability;
+ }
+ 
+ export interface QueueStatusResponse {
+@@ -94,6 +99,20 @@ export interface TranslateResponse {
+   translation: string;
+   source: string;
+   target: string;
++  engine: "gtx" | "device";
++}
++
++export interface SenseResponse extends ContextSense {
++  ok: true;
++  source: string;
++  target: string;
++}
++
++export interface TranslateStateResponse {
++  ok: true;
++  availability: AIAvailability;
++  source: string;
++  target: string;
+ }
+ 
+ export interface ListResponse {
+@@ -128,7 +147,7 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
+     ? AddResponse
+     : R extends { type: "editor.open" }
+       ? JobResponse
+-      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" | "queue.remove" }
++      : R extends { type: "job.regenerate" | "batch.cancel" | "batch.clear" | "model.applyTheme" | "queue.clear" | "queue.remove" | "translate.ready" }
+         ? OkResponse
+         : R extends { type: "queue.status" }
+           ? QueueStatusResponse
+@@ -140,6 +159,10 @@ export type ResponseFor<R extends Request> = R extends { type: "ping" }
+           ? BubbleStatusResponse
+           : R extends { type: "translate.quick" }
+           ? TranslateResponse
++          : R extends { type: "translate.state" }
++          ? TranslateStateResponse
++          : R extends { type: "translate.sense" }
++          ? SenseResponse
+           : R extends { type: "batch.start" | "batch.status" | "batch.resume" }
+           ? BatchResponse
+           : R extends { type: "decks.list" | "models.list" | "model.fields" }
+diff --git a/src/lib/pipeline/addWord.ts b/src/lib/pipeline/addWord.ts
+index 8905ed4..ac0d378 100644
+--- a/src/lib/pipeline/addWord.ts
++++ b/src/lib/pipeline/addWord.ts
+@@ -175,6 +175,7 @@ export async function prepare(request: AddRequest): Promise<Prepared | PrepareFa
+           maxTokens: 2048,
+           word,
+           context: request.context,
++          senseFromContext: settings.translation.contextInCard,
+           source: settings.languages.source,
+           target: settings.languages.target,
+           generation: settings.generation,
+diff --git a/src/lib/providers/free/gtx.ts b/src/lib/providers/free/gtx.ts
+index 3f78f9c..128be30 100644
+--- a/src/lib/providers/free/gtx.ts
++++ b/src/lib/providers/free/gtx.ts
+@@ -7,9 +7,17 @@ import { languageByCode } from "../../languages";
+ // recognised by its shape rather than its index; anything unrecognised is simply left empty.
+ const ENDPOINT = "https://translate.googleapis.com/translate_a/single";
+ 
++export interface GtxSense {
++  term: string;
++  partOfSpeech: string;
++  backTranslations: string[];
++  score: number;
++}
++
+ export interface GtxResult {
+   translation: string;
+   alternatives: { partOfSpeech: string; terms: string[] }[];
++  senses: GtxSense[];
+   synonyms: string[];
+   definitions: { partOfSpeech: string; text: string }[];
+   examples: string[];
+@@ -23,15 +31,30 @@ function stripTags(s: string): string {
+ }
+ 
+ // dt=bd: [[pos, [term, ...], [[term, [back-translations], null, score], ...], base, posId], ...]
+-function parseDictionary(part: unknown): GtxResult["alternatives"] {
+-  if (!isArr(part)) return [];
+-  const out: GtxResult["alternatives"] = [];
++// The third element carries one entry per candidate sense; the score is missing often enough that the
++// original order (most common first) has to stay the tie-break.
++function parseDictionary(part: unknown): { alternatives: GtxResult["alternatives"]; senses: GtxSense[] } {
++  const alternatives: GtxResult["alternatives"] = [];
++  const senses: GtxSense[] = [];
++  if (!isArr(part)) return { alternatives, senses };
+   for (const entry of part) {
+     if (!isArr(entry) || !isStr(entry[0]) || !isArr(entry[1])) continue;
++    const partOfSpeech = entry[0];
+     const terms = entry[1].filter(isStr);
+-    if (terms.length) out.push({ partOfSpeech: entry[0], terms });
++    if (terms.length) alternatives.push({ partOfSpeech, terms });
++    if (!isArr(entry[2])) continue;
++    for (const candidate of entry[2]) {
++      if (!isArr(candidate) || !isStr(candidate[0])) continue;
++      senses.push({
++        term: candidate[0],
++        partOfSpeech,
++        backTranslations: isArr(candidate[1]) ? candidate[1].filter(isStr) : [],
++        score: typeof candidate[3] === "number" ? candidate[3] : 0,
++      });
++    }
+   }
+-  return out;
++  senses.sort((a, b) => b.score - a.score); // Array.prototype.sort is stable, so ties keep gtx order
++  return { alternatives, senses };
+ }
+ 
+ // dt=ss: [[pos, [[syn, syn, ...], id], ...], ...]
+@@ -91,11 +114,11 @@ function looksLikeSynonyms(part: unknown): boolean {
+ }
+ 
+ export function parseGtxFull(data: unknown): GtxResult {
+-  const result: GtxResult = { translation: "", alternatives: [], synonyms: [], definitions: [], examples: [] };
++  const result: GtxResult = { translation: "", alternatives: [], senses: [], synonyms: [], definitions: [], examples: [] };
+   if (!isArr(data)) return result;
+   const [t, bd, ...rest] = data;
+   if (isArr(t)) result.translation = t.map((s) => (isArr(s) && isStr(s[0]) ? s[0] : "")).join("").trim();
+-  result.alternatives = parseDictionary(bd);
++  ({ alternatives: result.alternatives, senses: result.senses } = parseDictionary(bd));
+   for (const part of rest) {
+     if (!result.examples.length && looksLikeExamples(part)) result.examples = parseExamples(part);
+     else if (!result.synonyms.length && looksLikeSynonyms(part)) result.synonyms = parseSynonyms(part);
+diff --git a/src/lib/providers/free/index.ts b/src/lib/providers/free/index.ts
+index c71c31d..1b3638f 100644
+--- a/src/lib/providers/free/index.ts
++++ b/src/lib/providers/free/index.ts
+@@ -1,5 +1,7 @@
+ import { HttpError, fetchJson } from "../../http";
+ import type { ProviderAdapter } from "../types";
++import { pickSense } from "../../sense/match";
++import { translateText } from "../../translate/engine";
+ import { gtxLookup } from "./gtx";
+ import { tatoebaExamples } from "./tatoeba";
+ 
+@@ -64,7 +66,19 @@ export const free: ProviderAdapter = {
+     const english = source === "en" ? englishFacts(word).catch(() => null) : Promise.resolve(null);
+     const [gtx, facts] = await Promise.all([gtxLookup(word, source, target), english]);
+ 
+-    const translations = dedupe([...gtx.alternatives.flatMap((a) => a.terms), gtx.translation]).slice(0, g.translationsCount);
++    // With a sentence at hand, translate it once: it decides which sense is meant, and it doubles as the
++    // translation of the context example below.
++    let contextTranslation: string | undefined;
++    let ordered = [...gtx.alternatives.flatMap((a) => a.terms), gtx.translation];
++    if (req.context && req.senseFromContext && gtx.senses.length > 1) {
++      const sentence = await translateText(req.context, source, target).catch(() => null);
++      if (sentence?.text) {
++        contextTranslation = sentence.text;
++        const pick = pickSense(gtx.senses, sentence.text, target);
++        if (pick) ordered = [pick.term, ...ordered];
++      }
++    }
++    const translations = dedupe(ordered).slice(0, g.translationsCount);
+     const partOfSpeech = gtx.alternatives[0]?.partOfSpeech ?? facts?.partOfSpeech ?? "";
+     const definition = facts?.definition ?? gtx.definitions[0]?.text ?? "";
+     const synonyms = dedupe([...gtx.synonyms, ...(facts?.synonyms ?? [])]).filter((s) => s.toLowerCase() !== word.toLowerCase()).slice(0, g.synonymsCount);
+@@ -72,7 +86,7 @@ export const free: ProviderAdapter = {
+     // Examples: the sentence the word was selected in first, then Tatoeba (with translations when the pair
+     // has them), then Google's and the dictionary's examples.
+     const examples: { text: string; translation?: string }[] = [];
+-    if (req.context) examples.push({ text: req.context });
++    if (req.context) examples.push({ text: req.context, translation: contextTranslation });
+     if (examples.length < g.examplesCount) {
+       const fromTatoeba = await tatoebaExamples(word, source, target, g.examplesCount - examples.length).catch(() => []);
+       examples.push(...fromTatoeba);
+diff --git a/src/lib/providers/types.ts b/src/lib/providers/types.ts
+index 365fafc..e872908 100644
+--- a/src/lib/providers/types.ts
++++ b/src/lib/providers/types.ts
+@@ -28,6 +28,7 @@ export interface GenerateRequest {
+   // Structured view of the same request, for adapters that do not talk to a language model.
+   word: string;
+   context?: string;
++  senseFromContext?: boolean; // free provider: let the sentence choose the sense
+   source: string;
+   target: string;
+   generation: GenerationSettings;
+diff --git a/src/lib/sense/contextual.ts b/src/lib/sense/contextual.ts
+new file mode 100644
+index 0000000..2a4a1b7
+--- /dev/null
++++ b/src/lib/sense/contextual.ts
+@@ -0,0 +1,78 @@
++// "bat" on a baseball page should say битка, not кажан: the sentence around the word decides which
++// dictionary sense is meant.
++
++import { gtxLookup } from "../providers/free/gtx";
++import { getCache, setCache } from "../settings/storage";
++import { type TranslateEngine, translateText } from "../translate/engine";
++import { type Sense, pickSense, stemEquivalent } from "./match";
++
++export interface ContextSense {
++  translation: string; // what to show as the headline
++  base: string; // the sense-blind translation, i.e. what the extension said before
++  contextual?: string; // set only when the sentence points at a different sense
++  confidence: "exact" | "stem" | "none";
++  alternatives: string[];
++  sentence: string;
++  engine: TranslateEngine;
++}
++
++const CACHE_LIMIT = 200;
++type SenseCache = Record<string, { senses: Sense[]; at: number }>;
++
++const key = (word: string, from: string, to: string) => `${from}|${to}|${word.toLowerCase()}`;
++
++async function cachedSenses(word: string, from: string, to: string): Promise<Sense[] | undefined> {
++  return (await getCache<SenseCache>("senses"))?.items?.[key(word, from, to)]?.senses;
++}
++
++async function rememberSenses(word: string, from: string, to: string, senses: Sense[]): Promise<void> {
++  const all = (await getCache<SenseCache>("senses"))?.items ?? {};
++  const entries = Object.entries({ ...all, [key(word, from, to)]: { senses, at: Date.now() } })
++    .sort((a, b) => b[1].at - a[1].at)
++    .slice(0, CACHE_LIMIT);
++  await setCache("senses", Object.fromEntries(entries));
++}
++
++/**
++ * Looks up the candidates for a word and asks the sentence which one is meant. Any failure degrades to
++ * the plain translation, so the caller can always show something.
++ */
++export async function contextualTranslate(request: {
++  word: string;
++  sentence: string;
++  source: string;
++  target: string;
++}): Promise<ContextSense> {
++  const { word, sentence, source, target } = request;
++
++  let base = "";
++  let senses: Sense[] = [];
++  try {
++    const gtx = await gtxLookup(word, source, target);
++    base = gtx.translation;
++    senses = gtx.senses;
++    if (senses.length) await rememberSenses(word, source, target, senses);
++  } catch {
++    // Offline, or the endpoint refused: fall back to a plain translation plus whatever we saw before.
++    senses = (await cachedSenses(word, source, target)) ?? [];
++  }
++
++  const plain = base ? { text: base, engine: "gtx" as TranslateEngine } : await translateText(word, source, target);
++  base = base || plain.text;
++  const alternatives = senses.map((s) => s.term).filter((term) => term !== base);
++  const result: ContextSense = { translation: base, base, confidence: "none", alternatives: alternatives.slice(0, 5), sentence, engine: plain.engine };
++  if (!sentence || senses.length < 2) return result;
++
++  const translated = await translateText(sentence, source, target).catch(() => null);
++  if (!translated?.text) return result;
++  result.engine = translated.engine;
++
++  const pick = pickSense(senses, translated.text, target);
++  if (!pick) return result;
++  result.confidence = pick.match;
++  // When the common sense is also the one used here, there is nothing to correct.
++  if (stemEquivalent(pick.term, base, target)) return result;
++  result.translation = pick.term;
++  result.contextual = pick.term;
++  return result;
++}
+diff --git a/src/lib/sense/match.ts b/src/lib/sense/match.ts
+new file mode 100644
+index 0000000..4ea94f7
+--- /dev/null
++++ b/src/lib/sense/match.ts
+@@ -0,0 +1,128 @@
++// Picking the sense a word carries in a sentence, without a language model: the sentence is translated
++// as a whole (a translator gets the sense right in context), and the dictionary candidate that shows up
++// in that translation wins. Pure module - no chrome, no DOM, so it can be unit-tested directly.
++
++export interface Sense {
++  term: string;
++  partOfSpeech?: string;
++  backTranslations?: string[];
++  score?: number;
++}
++
++export type MatchKind = "exact" | "stem";
++
++export interface SensePick {
++  term: string;
++  match: MatchKind;
++}
++
++// Targets where a word changes its ending (and sometimes its stem vowel) far too much for equality.
++const INFLECTED = new Set(["uk", "ru", "be", "pl", "cs", "sk", "bg", "hr", "sr", "sl", "lt", "lv", "et", "fi", "hu", "tr"]);
++// Ukrainian and its neighbours alternate these in closed syllables: стіл -> столу, ніч -> ночі.
++const FOLDS: [RegExp, string][] = [
++  [/і/g, "о"],
++  [/і/g, "е"],
++  [/о/g, "і"],
++  [/е/g, "і"],
++];
++
++export function normalize(text: string): string {
++  return text
++    .normalize("NFC")
++    .toLowerCase()
++    .replace(/[’ʼ`']/g, "ʼ")
++    .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}ʼ]+$/gu, "");
++}
++
++export function tokenize(text: string): string[] {
++  return (text.normalize("NFC").toLowerCase().match(/[\p{L}\p{N}’ʼ'-]+/gu) ?? []).map(normalize).filter(Boolean);
++}
++
++export function commonPrefixLength(a: string, b: string): number {
++  const max = Math.min(a.length, b.length);
++  let i = 0;
++  while (i < max && a[i] === b[i]) i++;
++  return i;
++}
++
++/** Levenshtein distance with an early exit: true when the distance is at most `max`. */
++export function levenshteinAtMost(a: string, b: string, max: number): boolean {
++  if (Math.abs(a.length - b.length) > max) return false;
++  let previous = Array.from({ length: b.length + 1 }, (_, i) => i);
++  for (let i = 1; i <= a.length; i++) {
++    const current = [i];
++    let best = i;
++    for (let j = 1; j <= b.length; j++) {
++      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
++      const value = Math.min(previous[j]! + 1, current[j - 1]! + 1, previous[j - 1]! + cost);
++      current.push(value);
++      if (value < best) best = value;
++    }
++    if (best > max) return false;
++    previous = current;
++  }
++  return previous[b.length]! <= max;
++}
++
++function prefixBudget(shortest: number): number {
++  if (shortest <= 4) return 1;
++  if (shortest <= 6) return 2;
++  if (shortest <= 9) return 3;
++  return 4;
++}
++
++function sharesStem(a: string, b: string): boolean {
++  const shortest = Math.min(a.length, b.length);
++  const need = Math.max(3, shortest - prefixBudget(shortest));
++  if (commonPrefixLength(a, b) >= need) return true;
++  return commonPrefixLength(a, b) >= 2 && levenshteinAtMost(a, b, shortest <= 5 ? 1 : 2);
++}
++
++/**
++ * Same word in a different form? Deliberately strict: short words must match exactly, because a loose
++ * prefix rule would happily call "рак" and "ракета" the same word.
++ */
++export function stemEquivalent(a: string, b: string, target = ""): boolean {
++  const left = normalize(a);
++  const right = normalize(b);
++  if (!left || !right) return false;
++  if (left === right) return true;
++  const shortest = Math.min(left.length, right.length);
++  if (shortest <= 3) return false;
++  if (Math.abs(left.length - right.length) > 3) return false;
++  if (sharesStem(left, right)) return true;
++  if (!INFLECTED.has(target)) return false;
++  return FOLDS.some(([from, to]) => sharesStem(left.replace(from, to), right.replace(from, to)));
++}
++
++function findInTokens(term: string, tokens: string[], target: string): MatchKind | null {
++  const words = tokenize(term);
++  if (!words.length) return null;
++  let weakest: MatchKind = "exact";
++  for (const word of words) {
++    if (tokens.includes(word)) continue;
++    // Stem matching needs enough letters to be meaningful.
++    if (word.length >= 4 && tokens.some((t) => stemEquivalent(word, t, target))) {
++      weakest = "stem";
++      continue;
++    }
++    return null;
++  }
++  return weakest;
++}
++
++/**
++ * The first candidate (they arrive in frequency order) that appears in the translated sentence.
++ * An exact hit always beats a stem hit; `null` means the sentence tells us nothing.
++ */
++export function pickSense(senses: Sense[], sentenceTranslation: string, target = ""): SensePick | null {
++  const tokens = tokenize(sentenceTranslation);
++  if (!tokens.length) return null;
++  let fallback: SensePick | null = null;
++  for (const sense of senses) {
++    const match = findInTokens(sense.term, tokens, target);
++    if (match === "exact") return { term: sense.term, match };
++    if (match === "stem" && !fallback) fallback = { term: sense.term, match };
++  }
++  return fallback;
++}
+diff --git a/src/lib/settings/schema.ts b/src/lib/settings/schema.ts
+index fb27da9..7124799 100644
+--- a/src/lib/settings/schema.ts
++++ b/src/lib/settings/schema.ts
+@@ -73,6 +73,10 @@ export interface Settings {
+     themeSchedule: { darkFrom: string; darkUntil: string }; // HH:MM, used when theme = "schedule"
+     offlineQueue: boolean; // park cards while Anki is closed and write them when it comes back
+   };
++  translation: {
++    contextSense: boolean; // pick the sense that fits the sentence in the selection bubble
++    contextInCard: boolean; // and put that sense first on the card built by the Free provider
++  };
+   license: { tier: Tier; redeemedAt?: string };
+ }
+ 
+@@ -141,6 +145,7 @@ export const DEFAULT_SETTINGS: Settings = {
+     themeSchedule: { darkFrom: "20:00", darkUntil: "07:00" },
+     offlineQueue: true,
+   },
++  translation: { contextSense: true, contextInCard: true },
+   license: { tier: "free" },
+ };
+ 
+@@ -167,6 +172,7 @@ export function withDefaults(partial: Partial<Settings> | undefined): Settings {
+     },
+     anki: { ...DEFAULT_SETTINGS.anki, ...p.anki },
+     ui: { ...DEFAULT_SETTINGS.ui, ...p.ui, themeSchedule: { ...DEFAULT_SETTINGS.ui.themeSchedule, ...p.ui?.themeSchedule } },
++    translation: { ...DEFAULT_SETTINGS.translation, ...p.translation },
+     license: { ...DEFAULT_SETTINGS.license, ...p.license },
+   };
+ }
+diff --git a/src/lib/translate/engine.ts b/src/lib/translate/engine.ts
+new file mode 100644
+index 0000000..e1f357a
+--- /dev/null
++++ b/src/lib/translate/engine.ts
+@@ -0,0 +1,89 @@
++// One entry point for "translate this text", with Google's endpoint first and Chrome's on-device
++// translator as the fallback for when the network is gone.
++
++import { quickTranslate } from "../quickTranslate";
++import { getCache, setCache } from "../settings/storage";
++import { askOffscreen } from "./offscreen";
++
++export type TranslateEngine = "gtx" | "device";
++
++export interface TranslateResult {
++  text: string;
++  engine: TranslateEngine;
++}
++
++// Vitest runs in node, where there is no chrome.offscreen: everything then goes through gtx.
++const canUseDevice = (): boolean => typeof chrome !== "undefined" && Boolean(chrome.offscreen);
++
++const DEVICE_TIMEOUT_MS = 8_000; // the first call after a wake-up also loads the model into memory
++const IDLE_ALARM = "aqa-translator-idle";
++const FRESH_AVAILABLE_MS = 7 * 24 * 60 * 60 * 1000;
++const FRESH_OTHER_MS = 24 * 60 * 60 * 1000;
++
++type AvailabilityCache = Record<string, { availability: AIAvailability; at: number }>;
++
++const pairKey = (from: string, to: string) => `${from}|${to}`;
++
++async function readAvailability(from: string, to: string): Promise<{ availability: AIAvailability; at: number } | undefined> {
++  const cached = await getCache<AvailabilityCache>("translator");
++  return cached?.items?.[pairKey(from, to)];
++}
++
++async function writeAvailability(from: string, to: string, availability: AIAvailability): Promise<void> {
++  const cached = (await getCache<AvailabilityCache>("translator"))?.items ?? {};
++  await setCache("translator", { ...cached, [pairKey(from, to)]: { availability, at: Date.now() } });
++}
++
++/** What the cache knows, without ever creating the offscreen document. */
++export async function cachedAvailability(from: string, to: string): Promise<AIAvailability> {
++  return (await readAvailability(from, to))?.availability ?? "unavailable";
++}
++
++/** Cached state of the on-device pack. Only probes the device when the cache is stale or `refresh` is set. */
++export async function deviceAvailability(from: string, to: string, refresh = false): Promise<AIAvailability> {
++  if (!canUseDevice()) return "unavailable";
++  const entry = await readAvailability(from, to);
++  const maxAge = entry?.availability === "available" ? FRESH_AVAILABLE_MS : FRESH_OTHER_MS;
++  if (!refresh && entry && Date.now() - entry.at < maxAge) return entry.availability;
++
++  const response = await askOffscreen({ target: "offscreen", kind: "translator.availability", from, to }).catch(() => null);
++  const availability = response && response.ok && "availability" in response ? response.availability : "unavailable";
++  await writeAvailability(from, to, availability);
++  return availability;
++}
++
++/** Called by the options page once a language pack has finished downloading. */
++export async function noteDownloaded(from: string, to: string): Promise<void> {
++  await writeAvailability(from, to, "available");
++}
++
++async function translateOnDevice(text: string, from: string, to: string): Promise<string> {
++  if ((await deviceAvailability(from, to)) !== "available") throw new Error("No offline language pack");
++  const response = await Promise.race([
++    askOffscreen({ target: "offscreen", kind: "translator.translate", from, to, text }),
++    new Promise<never>((_, reject) => setTimeout(() => reject(new Error("Offline translator timed out")), DEVICE_TIMEOUT_MS)),
++  ]);
++  // Keep the document (and the loaded model) around for a few minutes of continued reading.
++  await chrome.alarms.create(IDLE_ALARM, { delayInMinutes: 5 });
++  if (!response.ok) throw new Error(response.error);
++  if (!("text" in response)) throw new Error("Unexpected offscreen reply");
++  return response.text;
++}
++
++/**
++ * Google first (it is what the extension has always used), the on-device pack when that fails or the
++ * browser reports no connection. Rejects only when neither can answer.
++ */
++export async function translateText(text: string, from: string, to: string): Promise<TranslateResult> {
++  const offline = typeof navigator !== "undefined" && navigator.onLine === false;
++  if (!offline) {
++    try {
++      const translation = await quickTranslate(text, from, to);
++      if (translation) return { text: translation, engine: "gtx" };
++    } catch {
++      // fall through to the device
++    }
++  }
++  if (!canUseDevice()) throw new Error("Translation is unavailable");
++  return { text: await translateOnDevice(text, from, to), engine: "device" };
++}
+diff --git a/src/lib/translate/offscreen.ts b/src/lib/translate/offscreen.ts
+new file mode 100644
+index 0000000..6cc1572
+--- /dev/null
++++ b/src/lib/translate/offscreen.ts
+@@ -0,0 +1,47 @@
++// Service-worker side of the offscreen document: create it on demand, talk to it, close it when idle.
++
++import { OFFSCREEN_PATH, type OffscreenRequest, type OffscreenResponse } from "./protocol";
++
++let creating: Promise<void> | null = null;
++
++async function hasDocument(): Promise<boolean> {
++  const contexts = await chrome.runtime.getContexts({ contextTypes: ["OFFSCREEN_DOCUMENT" as chrome.runtime.ContextType] });
++  return contexts.length > 0;
++}
++
++export async function ensureTranslatorDocument(): Promise<void> {
++  if (await hasDocument()) return;
++  if (creating) return creating;
++  creating = chrome.offscreen
++    .createDocument({
++      url: OFFSCREEN_PATH,
++      reasons: [chrome.offscreen.Reason.WORKERS],
++      justification: "The built-in Translator API is only available to documents, not to the service worker.",
++    })
++    .catch((e: unknown) => {
++      // Another wake-up may have created it in the meantime; anything else is a real failure.
++      if (!String(e).includes("Only a single offscreen document")) throw e;
++    })
++    .finally(() => {
++      creating = null;
++    });
++  return creating;
++}
++
++export async function closeTranslatorDocument(): Promise<void> {
++  if (!(await hasDocument())) return;
++  await chrome.offscreen.closeDocument().catch(() => undefined);
++}
++
++export async function askOffscreen(request: OffscreenRequest): Promise<OffscreenResponse> {
++  await ensureTranslatorDocument();
++  // The document may still be booting when the first message goes out.
++  for (let attempt = 0; ; attempt++) {
++    try {
++      return (await chrome.runtime.sendMessage(request)) as OffscreenResponse;
++    } catch (e) {
++      if (attempt >= 5 || !String(e).includes("Receiving end does not exist")) throw e;
++      await new Promise((resolve) => setTimeout(resolve, 50));
++    }
++  }
++}
+diff --git a/src/lib/translate/protocol.ts b/src/lib/translate/protocol.ts
+new file mode 100644
+index 0000000..d3b1dce
+--- /dev/null
++++ b/src/lib/translate/protocol.ts
+@@ -0,0 +1,21 @@
++// Contract between the service worker and the offscreen document. Deliberately kept out of the
++// `Request` union in lib/messages.ts: the worker's router must never see these, and the offscreen
++// document must never answer the extension's own messages.
++
++export const OFFSCREEN_PATH = "offscreen/index.html";
++export const OFFSCREEN_TARGET = "offscreen";
++
++export type OffscreenRequest =
++  | { target: typeof OFFSCREEN_TARGET; kind: "translator.availability"; from: string; to: string }
++  | { target: typeof OFFSCREEN_TARGET; kind: "translator.translate"; from: string; to: string; text: string }
++  | { target: typeof OFFSCREEN_TARGET; kind: "translator.release" };
++
++export type OffscreenResponse =
++  | { ok: true; availability: AIAvailability }
++  | { ok: true; text: string }
++  | { ok: true }
++  | { ok: false; error: string };
++
++export function isOffscreenRequest(value: unknown): value is OffscreenRequest {
++  return (value as { target?: string } | null)?.target === OFFSCREEN_TARGET;
++}
+diff --git a/src/offscreen/index.html b/src/offscreen/index.html
+new file mode 100644
+index 0000000..a515efa
+--- /dev/null
++++ b/src/offscreen/index.html
+@@ -0,0 +1,10 @@
++<!doctype html>
++<html>
++  <head>
++    <meta charset="utf-8" />
++    <title>Anki Quick Add - offline translator</title>
++  </head>
++  <body>
++    <script type="module" src="./main.ts"></script>
++  </body>
++</html>
+diff --git a/src/offscreen/main.ts b/src/offscreen/main.ts
+new file mode 100644
+index 0000000..456a8a0
+--- /dev/null
++++ b/src/offscreen/main.ts
+@@ -0,0 +1,22 @@
++import { type OffscreenRequest, type OffscreenResponse, isOffscreenRequest } from "../lib/translate/protocol";
++import { availability, releaseAll, translate } from "./translator";
++
++async function handle(request: OffscreenRequest): Promise<OffscreenResponse> {
++  switch (request.kind) {
++    case "translator.availability":
++      return { ok: true, availability: await availability(request.from, request.to) };
++    case "translator.translate":
++      return { ok: true, text: await translate(request.text, request.from, request.to) };
++    case "translator.release":
++      releaseAll();
++      return { ok: true };
++  }
++}
++
++// Returning false for anything else is load-bearing: the popup broadcasts its own messages to every
++// context, and a reply from here would race the service worker's.
++chrome.runtime.onMessage.addListener((request: unknown, _sender, sendResponse) => {
++  if (!isOffscreenRequest(request)) return false;
++  handle(request).then(sendResponse, (e: unknown) => sendResponse({ ok: false, error: e instanceof Error ? e.message : String(e) }));
++  return true;
++});
+diff --git a/src/offscreen/translator.ts b/src/offscreen/translator.ts
+new file mode 100644
+index 0000000..3458eb9
+--- /dev/null
++++ b/src/offscreen/translator.ts
+@@ -0,0 +1,42 @@
++// The Translator API is only exposed to documents, never to workers, so every call to it happens here.
++
++const pool = new Map<string, Promise<Translator>>();
++const key = (from: string, to: string) => `${from}|${to}`;
++
++export async function availability(from: string, to: string): Promise<AIAvailability> {
++  if (!("Translator" in self)) return "unavailable";
++  try {
++    return await Translator.availability({ sourceLanguage: from, targetLanguage: to });
++  } catch {
++    return "unavailable";
++  }
++}
++
++// create() needs a user gesture while the pack is still downloadable, and this document never has one:
++// only an already downloaded pair is opened here. The download itself runs on the options page.
++async function translator(from: string, to: string): Promise<Translator> {
++  const id = key(from, to);
++  const existing = pool.get(id);
++  if (existing) return existing;
++  const created = (async () => {
++    if ((await availability(from, to)) !== "available") throw new Error(`No offline translator for ${from} to ${to}`);
++    return Translator.create({ sourceLanguage: from, targetLanguage: to });
++  })();
++  pool.set(id, created);
++  created.catch(() => pool.delete(id));
++  return created;
++}
++
++export async function translate(text: string, from: string, to: string): Promise<string> {
++  return (await translator(from, to)).translate(text);
++}
++
++export function releaseAll(): void {
++  for (const [id, pending] of pool) {
++    void pending.then(
++      (t) => t.destroy(),
++      () => undefined,
++    );
++    pool.delete(id);
++  }
++}
+diff --git a/src/options/components/OfflineTranslation.tsx b/src/options/components/OfflineTranslation.tsx
+new file mode 100644
+index 0000000..ff04fad
+--- /dev/null
++++ b/src/options/components/OfflineTranslation.tsx
+@@ -0,0 +1,77 @@
++import { useEffect, useState } from "preact/hooks";
++import { t } from "../../lib/i18n";
++import { send } from "../../lib/messages";
++
++// Chrome downloads the language pack only in response to a real click, and only a full extension page
++// gets that gesture - so the download lives here, in the options, not in the popup or the worker.
++export function OfflineTranslation({ source, target }: { source: string; target: string }) {
++  const supported = typeof Translator !== "undefined";
++  const [state, setState] = useState<AIAvailability | null>(null);
++  const [percent, setPercent] = useState<number | null>(null);
++  const [error, setError] = useState("");
++  const [abort, setAbort] = useState<AbortController | null>(null);
++
++  useEffect(() => {
++    if (!supported) return;
++    setPercent(null);
++    setError("");
++    Translator.availability({ sourceLanguage: source, targetLanguage: target }).then(setState, () => setState("unavailable"));
++  }, [source, target]);
++
++  async function download() {
++    const controller = new AbortController();
++    setAbort(controller);
++    setError("");
++    setPercent(0);
++    try {
++      const translator = await Translator.create({
++        sourceLanguage: source,
++        targetLanguage: target,
++        monitor: (m) => m.addEventListener("downloadprogress", (e) => setPercent(Math.round(e.loaded * 100))),
++        signal: controller.signal,
++      });
++      translator.destroy();
++      setState("available");
++      await send({ type: "translate.ready", source, target });
++    } catch (e) {
++      setError(e instanceof Error ? e.message : String(e));
++      setState(await Translator.availability({ sourceLanguage: source, targetLanguage: target }).catch(() => "unavailable" as const));
++    } finally {
++      setPercent(null);
++      setAbort(null);
++    }
++  }
++
++  const pair = t("tr_pair", [source.toUpperCase(), target.toUpperCase()]);
++  return (
++    <div class="field">
++      <span>{t("tr_offline_title")}</span>
++      {!supported ? (
++        <div class="hint">{t("tr_unsupported")}</div>
++      ) : (
++        <>
++          <div class={`hint ${state === "available" ? "ok" : ""}`}>
++            {pair}: {state ? t(`tr_state_${state}`) : "…"}
++          </div>
++          {percent !== null ? (
++            <div class="row">
++              <progress value={percent} max={100} />
++              <span class="hint">{percent}%</span>
++              <button type="button" class="secondary" onClick={() => abort?.abort()}>
++                {t("tr_cancel")}
++              </button>
++            </div>
++          ) : (
++            (state === "downloadable" || state === "downloading") && (
++              <button type="button" class="secondary" onClick={() => void download()}>
++                {t("tr_download")}
++              </button>
++            )
++          )}
++          {error && <div class="hint err">{t("tr_download_failed", [error])}</div>}
++          <div class="hint">{t("tr_offline_hint")}</div>
++        </>
++      )}
++    </div>
++  );
++}
+diff --git a/src/options/tabs/Generation.tsx b/src/options/tabs/Generation.tsx
+index 52bf1ac..f24d23e 100644
+--- a/src/options/tabs/Generation.tsx
++++ b/src/options/tabs/Generation.tsx
+@@ -7,6 +7,7 @@ import { ALL_SITES } from "../../background/bubble";
+ import { tierAtLeast } from "../../lib/license";
+ import type { SettingsState } from "../../ui/useSettings";
+ import { LanguageSelect } from "../components/LanguageSelect";
++import { OfflineTranslation } from "../components/OfflineTranslation";
+ 
+ const LEVELS: Cefr[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
+ const TOGGLES: (keyof GenerationSettings)[] = ["transcription", "partOfSpeech", "definition", "synonyms", "grammar", "exampleTranslations"];
+@@ -147,6 +148,23 @@ export function GenerationTab({ state }: { state: SettingsState }) {
+           <input type="checkbox" checked={settings.ui.quickTranslate} onChange={(e) => setUi({ quickTranslate: e.currentTarget.checked })} />
+           <span>{t("ui_quick_translate")}</span>
+         </label>
++        <label class="check">
++          <input
++            type="checkbox"
++            checked={settings.translation.contextSense}
++            onChange={(e) => update((s) => ({ ...s, translation: { ...s.translation, contextSense: e.currentTarget.checked } }))}
++          />
++          <span>{t("tr_context_sense")}</span>
++        </label>
++        <label class="check">
++          <input
++            type="checkbox"
++            checked={settings.translation.contextInCard}
++            onChange={(e) => update((s) => ({ ...s, translation: { ...s.translation, contextInCard: e.currentTarget.checked } }))}
++          />
++          <span>{t("tr_context_in_card")}</span>
++        </label>
++        <div class="hint">{t("tr_context_sense_hint")}</div>
+         <label class="check">
+           <input type="checkbox" checked={settings.ui.selectionBubble} onChange={(e) => void toggleBubble(e.currentTarget.checked)} />
+           <span>{t("ui_selection_bubble")}</span>
+@@ -170,6 +188,8 @@ export function GenerationTab({ state }: { state: SettingsState }) {
+         <div class="hint">{t("cmd_hint")}</div>
+       </div>
+ 
++      <OfflineTranslation source={settings.languages.source} target={settings.languages.target} />
++
+       <div class="field">
+         <label class="check">
+           <input type="checkbox" checked={audio.enabled} onChange={(e) => setMedia((m) => ({ ...m, audio: { ...m.audio, enabled: e.currentTarget.checked } }))} />
+diff --git a/src/popup/StatusBar.tsx b/src/popup/StatusBar.tsx
+index a9aa077..367712f 100644
+--- a/src/popup/StatusBar.tsx
++++ b/src/popup/StatusBar.tsx
+@@ -7,11 +7,18 @@ export function StatusBar({ ping }: { ping: PingResponse | null }) {
+   if (!ping.anki.ok) problems.push(t("popup_anki_offline"));
+   if (!ping.hasKey) problems.push(t("popup_no_key"));
+   return (
+-    <div class="popup-footer">
++    <>
++      {ping.translator === "downloadable" && (
++        <div class="popup-hint">
++          <a onClick={() => chrome.runtime.openOptionsPage()}>{t("tr_setup_link")}</a>
++        </div>
++      )}
++      <div class="popup-footer">
+       <span class={problems.length ? "err" : ""}>
+         {problems.length ? problems.join(" · ") : `${t("popup_anki_ok")} · ${ping.model} · ${ping.deck}`}
+       </span>
+-      <a onClick={() => chrome.runtime.openOptionsPage()}>{t("popup_settings")}</a>
+-    </div>
++        <a onClick={() => chrome.runtime.openOptionsPage()}>{t("popup_settings")}</a>
++      </div>
++    </>
+   );
+ }
+diff --git a/src/popup/popup.css b/src/popup/popup.css
+index 1aa5d7f..d23be39 100644
+--- a/src/popup/popup.css
++++ b/src/popup/popup.css
+@@ -237,3 +237,8 @@ button.small {
+   margin-top: 8px;
+   font-size: 11px;
+ }
++
++.popup-hint {
++  margin-top: 8px;
++  font-size: 11px;
++}
+diff --git a/src/types/ai.d.ts b/src/types/ai.d.ts
+new file mode 100644
+index 0000000..60069c7
+--- /dev/null
++++ b/src/types/ai.d.ts
+@@ -0,0 +1,25 @@
++// Chrome's built-in Translator API (stable since Chrome 138). Neither lib.dom nor @types/chrome
++// declares it yet. Only the parts this extension uses are typed here.
++// https://developer.chrome.com/docs/ai/translator-api
++
++type AIAvailability = "unavailable" | "downloadable" | "downloading" | "available";
++
++interface AIDownloadMonitor extends EventTarget {
++  addEventListener(type: "downloadprogress", listener: (event: { loaded: number }) => void): void;
++}
++
++interface TranslatorCreateOptions {
++  sourceLanguage: string;
++  targetLanguage: string;
++  monitor?: (monitor: AIDownloadMonitor) => void;
++  signal?: AbortSignal;
++}
++
++declare class Translator {
++  static availability(options: { sourceLanguage: string; targetLanguage: string }): Promise<AIAvailability>;
++  static create(options: TranslatorCreateOptions): Promise<Translator>;
++  readonly sourceLanguage: string;
++  readonly targetLanguage: string;
++  translate(text: string): Promise<string>;
++  destroy(): void;
++}
+diff --git a/store/listing.md b/store/listing.md
+index f44fc28..249ef05 100644
+--- a/store/listing.md
++++ b/store/listing.md
+@@ -78,6 +78,8 @@ WORKS WITH YOUR SETUP
+ 
+ FAST WHEN YOU WANT IT, CAREFUL WHEN YOU NEED IT
+ • Instant Google translation while you type – no LLM tokens spent until you press Enter
++• The meaning that fits the sentence: "bat" on a baseball page becomes the bat you swing, not the animal
++• Optional on-device language pack, so the bubble keeps translating with no connection
+ • Selection bubble on web pages (opt-in, Shift + select): the sentence around the word travels along as context, so "bat" on a baseball page becomes the baseball bat, not the animal
+ • Right-click menu with your decks
+ • Editor window (Shift+Enter) to review, edit, drop the image or regenerate with a hint before anything is added
+@@ -105,7 +107,8 @@ Creating Anki flashcards from words the user types or selects: the card content
+ |---|---|
+ | `storage` | Stores the user's settings, field mappings, API keys (in the browser's extension storage only) and a short history of added words. |
+ | `unlimitedStorage` | Cards added while Anki is closed are held in a local queue until Anki accepts them. Each card carries its pronunciation audio and image, so the 10 MB default budget would hold only about 45 of them; the queue is deleted as soon as the cards are written to Anki. |
+-| `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again. |
++| `alarms` | Retries that queue every few minutes, so the cards land as soon as Anki is running again, and closes the hidden translator page when it has been idle. |
++| `offscreen` | Chrome's built-in on-device translator is only exposed to a document, never to an extension service worker. A hidden page is opened on demand to run offline translations and closed again after a few idle minutes. |
+ | `contextMenus` | Adds the "Add to Anki" entry to the context menu shown on selected text. |
+ | `activeTab` | When the user invokes the context menu, reads the selected text and its paragraph on that tab to extract the sentence used as context, and shows a small confirmation toast on the same page. |
+ | `scripting` | Injects the selection reader and the confirmation toast into the active tab (context-menu flow), and registers the optional selection-bubble content script when the user turns the bubble on in the settings. |
+diff --git a/tests/free.test.ts b/tests/free.test.ts
+index d71eaa0..e1a1fbd 100644
+--- a/tests/free.test.ts
++++ b/tests/free.test.ts
+@@ -39,7 +39,7 @@ test("parseGtxFull recognises translation, dictionary alternatives, synonyms (mi
+ test("parseGtxFull picks up examples when present and tolerates junk", () => {
+   const withExamples = [...GTX_LIGHTHOUSE, [[["The <b>lighthouse</b> keeper waved.", null, null, null, 3, "id"]]]];
+   expect(parseGtxFull(withExamples).examples).toEqual(["The lighthouse keeper waved."]);
+-  expect(parseGtxFull("garbage")).toEqual({ translation: "", alternatives: [], synonyms: [], definitions: [], examples: [] });
++  expect(parseGtxFull("garbage")).toEqual({ translation: "", alternatives: [], senses: [], synonyms: [], definitions: [], examples: [] });
+   expect(parseGtxFull([[["hi", "hello"]], null]).translation).toBe("hi");
+ });
+ 
+diff --git a/tests/sense.test.ts b/tests/sense.test.ts
+new file mode 100644
+index 0000000..6952317
+--- /dev/null
++++ b/tests/sense.test.ts
+@@ -0,0 +1,101 @@
++import { describe, expect, it } from "vitest";
++import { parseGtxFull } from "../src/lib/providers/free/gtx";
++import { levenshteinAtMost, pickSense, stemEquivalent, tokenize } from "../src/lib/sense/match";
++
++// Recorded from the live endpoint for en->uk "bat" (dt=t,bd). The candidate entries carry no score,
++// which is why the parser keeps the order the endpoint returned.
++const GTX_BAT = [
++  [["кажан", "bat", null, null, 10]],
++  [
++    ["adjective", ["нічвидний"], [["нічвидний", ["bat", "ugly", "repulsive"]]], "bat", 3],
++    [
++      "noun",
++      ["сварлива баба", "битка", "нетопир", "кажан", "кийок", "ракетка"],
++      [
++        ["сварлива баба", ["bat"]],
++        ["битка", ["bat"]],
++        ["нетопир", ["bat"]],
++        ["кажан", ["bat", "flittermouse", "vampire"]],
++        ["кийок", ["baton", "club", "bat"]],
++        ["ракетка", ["racket", "bat"]],
++      ],
++      "bat",
++      1,
++    ],
++  ],
++];
++
++describe("stemEquivalent", () => {
++  it("accepts the same word in another form", () => {
++    expect(stemEquivalent("битка", "битою", "uk")).toBe(true);
++    expect(stemEquivalent("битка", "бита", "uk")).toBe(true);
++    expect(stemEquivalent("маяк", "маяком", "uk")).toBe(true);
++    expect(stemEquivalent("ракетка", "ракеткою", "uk")).toBe(true);
++    expect(stemEquivalent("Битка", " битку.", "uk")).toBe(true);
++  });
++
++  it("follows the Slavic stem alternation only for inflected targets", () => {
++    expect(stemEquivalent("стіл", "столу", "uk")).toBe(true);
++    expect(stemEquivalent("стіл", "столу", "de")).toBe(false);
++  });
++
++  it("rejects different words", () => {
++    expect(stemEquivalent("кажан", "битою", "uk")).toBe(false);
++    expect(stemEquivalent("весна", "пружина", "uk")).toBe(false);
++    expect(stemEquivalent("", "битка", "uk")).toBe(false);
++  });
++
++  it("requires short words to match exactly, so рак is not ракета", () => {
++    expect(stemEquivalent("рак", "ракета", "uk")).toBe(false);
++    expect(stemEquivalent("рак", "рак", "uk")).toBe(true);
++    expect(stemEquivalent("кіт", "кота", "uk")).toBe(false);
++  });
++});
++
++describe("levenshteinAtMost", () => {
++  it("measures small edits and bails out early", () => {
++    expect(levenshteinAtMost("битка", "битки", 1)).toBe(true);
++    expect(levenshteinAtMost("битка", "кажан", 2)).toBe(false);
++    expect(levenshteinAtMost("aaa", "aaaaaaa", 2)).toBe(false);
++  });
++});
++
++describe("tokenize", () => {
++  it("splits on punctuation and keeps apostrophes", () => {
++    expect(tokenize("Він змахнув битою, і — хоумран!")).toEqual(["він", "змахнув", "битою", "і", "хоумран"]);
++    expect(tokenize("п'ять")).toEqual(["пʼять"]);
++  });
++});
++
++describe("pickSense", () => {
++  const senses = parseGtxFull(GTX_BAT).senses;
++
++  it("keeps every candidate the endpoint returned", () => {
++    expect(senses.map((s) => s.term)).toContain("битка");
++    expect(senses.map((s) => s.term)).toContain("кажан");
++    expect(senses.every((s) => s.score === 0)).toBe(true); // no scores in the live payload
++  });
++
++  it("picks the baseball sense from the translated sentence", () => {
++    expect(pickSense(senses, "Він змахнув битою і зробив хоумран у дев'ятому інінгу.", "uk")).toEqual({ term: "битка", match: "stem" });
++  });
++
++  it("picks the animal sense from a different sentence", () => {
++    expect(pickSense(senses, "Кажан вилетів із печери в сутінках.", "uk")).toEqual({ term: "кажан", match: "exact" });
++  });
++
++  it("prefers an exact hit over a stem hit regardless of order", () => {
++    expect(pickSense(senses, "Кажан сидів поруч із биткою.", "uk")).toEqual({ term: "кажан", match: "exact" });
++  });
++
++  it("returns null when the sentence says nothing about the senses", () => {
++    expect(pickSense(senses, "Сьогодні тепла й сонячна погода.", "uk")).toBeNull();
++    expect(pickSense(senses, "", "uk")).toBeNull();
++    expect(pickSense([], "Він змахнув битою.", "uk")).toBeNull();
++  });
++
++  it("requires every word of a multi-word candidate", () => {
++    expect(pickSense(senses, "Це сварлива баба з сусіднього будинку.", "uk")).toEqual({ term: "сварлива баба", match: "exact" });
++    expect(pickSense(senses, "Це сварлива жінка.", "uk")).toBeNull();
++  });
++});
+diff --git a/tests/translateEngine.test.ts b/tests/translateEngine.test.ts
+new file mode 100644
+index 0000000..96405e7
+--- /dev/null
++++ b/tests/translateEngine.test.ts
+@@ -0,0 +1,27 @@
++import { afterEach, expect, test, vi } from "vitest";
++import { translateText } from "../src/lib/translate/engine";
++import { mockFetch } from "./helpers/mockFetch";
++
++afterEach(() => vi.unstubAllGlobals());
++
++// There is no chrome.offscreen in node, so these exercise the online path and the failure that would
++// otherwise silently hand the user an empty bubble.
++test("uses the online endpoint and reports which engine answered", async () => {
++  const calls = mockFetch({ status: 200, body: [[["гавань", "harbor", null, null, 10]]] });
++  expect(await translateText("harbor", "en", "uk")).toEqual({ text: "гавань", engine: "gtx" });
++  expect(calls).toHaveLength(1);
++  expect(calls[0]!.url).toContain("translate_a/single");
++});
++
++test("rejects when the endpoint fails and no on-device pack can be reached", async () => {
++  mockFetch({ status: 503, body: "" });
++  // A word the earlier test did not put in the module cache.
++  await expect(translateText("wharf", "en", "uk")).rejects.toThrow(/unavailable/i);
++});
++
++test("caches a translation instead of asking twice", async () => {
++  const calls = mockFetch({ status: 200, body: [[["ліхтар", "lantern", null, null, 10]]] });
++  await translateText("lantern", "en", "uk");
++  await translateText("lantern", "en", "uk");
++  expect(calls).toHaveLength(1);
++});
+diff --git a/vite.config.ts b/vite.config.ts
+index 55815b9..b5818ff 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -19,6 +19,7 @@ export default defineConfig({
+         editor: resolve(root, "editor/index.html"),
+         background: resolve(root, "background/index.ts"),
+         content: resolve(root, "content/index.ts"),
++        offscreen: resolve(root, "offscreen/index.html"),
+       },
+       output: {
+         entryFileNames: "[name].js",

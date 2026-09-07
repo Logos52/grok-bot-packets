@@ -1,0 +1,110 @@
+From 18b9289e3cd95ddd671aa1ad72ccb3faa23f76a9 Mon Sep 17 00:00:00 2001
+From: Serhiy <sergiyclas@gmail.com>
+Date: Sat, 5 Sep 2026 07:46:33 +0300
+Subject: [PATCH] fix: stop refusing an offline translation the browser is
+ ready to do
+
+Two defects, both mine:
+
+- A single failed device translation wrote the pair back as "downloadable", and
+  that cached state is trusted for a day - so every later attempt answered "No
+  offline language pack" without ever asking the browser again. A cached "not
+  ready" is now re-checked before refusing, and the settings page pushes the
+  state it just measured into the same cache.
+- Theme, interface language and a redeemed promo code persist the moment they
+  change, and they wrote the whole settings object from the page's own snapshot.
+  With two options tabs open, flipping the theme in the older one silently
+  restored the language pair it had loaded minutes earlier. These writes now
+  apply their patch on top of what is stored at that moment.
+---
+ src/lib/translate/engine.ts                   |  6 +++++-
+ src/options/components/OfflineTranslation.tsx |  6 +++++-
+ src/options/tabs/General.tsx                  |  4 ++--
+ src/ui/useSettings.ts                         | 11 +++++++----
+ 4 files changed, 19 insertions(+), 8 deletions(-)
+
+diff --git a/src/lib/translate/engine.ts b/src/lib/translate/engine.ts
+index d532ac4..76cbe99 100644
+--- a/src/lib/translate/engine.ts
++++ b/src/lib/translate/engine.ts
+@@ -58,7 +58,11 @@ export async function noteDownloaded(from: string, to: string): Promise<void> {
+ }
+ 
+ export async function translateOnDevice(text: string, from: string, to: string): Promise<string> {
+-  if ((await deviceAvailability(from, to)) !== "available") throw new Error("No offline language pack");
++  // A cached "not ready" is never the last word: the pack may have been installed since, or a single
++  // failed translation may have written that state. Ask the browser again before refusing.
++  if ((await deviceAvailability(from, to)) !== "available" && (await deviceAvailability(from, to, true)) !== "available") {
++    throw new Error("No offline language pack");
++  }
+   const response = await Promise.race([
+     askOffscreen({ target: "offscreen", kind: "translator.translate", from, to, text }),
+     new Promise<never>((_, reject) => setTimeout(() => reject(new Error("Offline translator timed out")), DEVICE_TIMEOUT_MS)),
+diff --git a/src/options/components/OfflineTranslation.tsx b/src/options/components/OfflineTranslation.tsx
+index 04f4936..79629a5 100644
+--- a/src/options/components/OfflineTranslation.tsx
++++ b/src/options/components/OfflineTranslation.tsx
+@@ -17,7 +17,11 @@ export function OfflineTranslation({ source, target }: { source: string; target:
+     if (!supported) return;
+     setPercent(null);
+     setError("");
+-    Translator.availability({ sourceLanguage: source, targetLanguage: target }).then(setState, () => setState("unavailable"));
++    Translator.availability({ sourceLanguage: source, targetLanguage: target }).then(async (availability) => {
++      setState(availability);
++      // The worker caches this state for its own fallback; the page is the one that just measured it.
++      if (availability === "available") await send({ type: "translate.ready", source, target });
++    }, () => setState("unavailable"));
+   }, [source, target]);
+ 
+   async function download() {
+diff --git a/src/options/tabs/General.tsx b/src/options/tabs/General.tsx
+index 8da47fc..e826bb7 100644
+--- a/src/options/tabs/General.tsx
++++ b/src/options/tabs/General.tsx
+@@ -34,7 +34,7 @@ export function GeneralTab({ state }: { state: SettingsState }) {
+ 
+   // Language and theme take effect immediately (persisted right away); bootPage reacts to the change.
+   function setUiNow(patch: Partial<Settings["ui"]>) {
+-    return applyNow({ ...settings, ui: { ...settings.ui, ...patch } });
++    return applyNow((s) => ({ ...s, ui: { ...s.ui, ...patch } }));
+   }
+ 
+   async function redeem() {
+@@ -43,7 +43,7 @@ export function GeneralTab({ state }: { state: SettingsState }) {
+       setPromo({ text: t("promo_invalid"), cls: "err" });
+       return;
+     }
+-    await applyNow({ ...settings, license: { tier: unlocked, redeemedAt: new Date().toISOString() } });
++    await applyNow((s) => ({ ...s, license: { tier: unlocked, redeemedAt: new Date().toISOString() } }));
+     setPromo({ text: t("promo_success", [t(`tier_${unlocked}`)]), cls: "ok" });
+     setCode("");
+   }
+diff --git a/src/ui/useSettings.ts b/src/ui/useSettings.ts
+index 85cb336..922c23e 100644
+--- a/src/ui/useSettings.ts
++++ b/src/ui/useSettings.ts
+@@ -12,7 +12,7 @@ export interface SettingsState {
+   modelFieldsError: string;
+   dirty: boolean;
+   update(patch: (s: Settings) => Settings): void;
+-  applyNow(next: Settings): Promise<void>; // persist immediately, without marking the form dirty
++  applyNow(patch: (s: Settings) => Settings): Promise<void>; // persist one change at once, without marking the form dirty
+   updateKeys(patch: (k: ApiKeys) => ApiKeys): void;
+   updateMapping(patch: (m: FieldMapping) => FieldMapping): void;
+   reloadModelFields(): Promise<void>;
+@@ -57,9 +57,12 @@ export function useSettings(): SettingsState | null {
+     setDirty(true);
+   }, []);
+ 
+-  const applyNow = useCallback(async (next: Settings) => {
+-    setSettings(next);
+-    await saveSettings(next);
++  // Writes the patch on top of what is stored right now, not on top of this page's snapshot: another
++  // options tab may have saved something since this one was opened, and it must not be rolled back.
++  const applyNow = useCallback(async (patch: (s: Settings) => Settings) => {
++    const stored = await loadSettings();
++    setSettings((current) => (current ? patch(current) : patch(stored)));
++    await saveSettings(patch(stored));
+   }, []);
+ 
+   const updateKeys = useCallback((patch: (k: ApiKeys) => ApiKeys) => {

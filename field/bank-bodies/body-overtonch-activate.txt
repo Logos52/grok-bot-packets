@@ -1,0 +1,25 @@
+# overtonch/ru-anki — Speaking Activate mode (shipped 2026-09-06)
+
+Source files: LEARNING.md + app/activate.py (main branch).
+
+## Mechanism (activate.py)
+Silent phone-friendly drill: app names a TARGET + concrete English thought to express;
+learner forms Russian in head/types it and checks. SM-2-lite scheduling. Tracks by kind:
+- verb — high-frequency verb + GOVERNMENT (case/preposition); 220-verb bundled curriculum
+  (verbs.json.gz); hardness-ranked so English-speaker traps come first
+- word — productive vocab from frequency list, newest-frequent first
+- frame — not built yet
+
+Settings: CEFR ladder a1→b2+ for English prompt pitch; mix (verb/word ratio, default 0.65);
+per_day new-item budget. Prompt IS the thought to express (not an instruction). Typed
+attempts get focused LLM check. Skip/"I know this" + active-word count on Level tab.
+
+## LEARNING.md learner profile (2026-09)
+Reading B2+/C1−; speaking A2/B1 ability, A1 confidence. Central problem: passive→active gap.
+Nation four strands; output+fluency thin. Design checklist: retrieval not recognition;
+meaningful/personalized; spaced; focused feedback; 5-minute silent pocket; graded CEFR;
+finite curriculum (~150 government verbs, ~2.5k content words).
+
+## Distinct from prior ru-anki keep
+Prior keep = YouTube→candidates→Make/Discard Anki. Activate = production tutor-loop over
+finite verb-government + productive-vocab curriculum with CEFR prompt ladder.

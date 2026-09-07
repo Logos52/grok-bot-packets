@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/diotima-garden/anki-mcp/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/diotima-garden/anki-mcp/commits/main.atom"/>
+  <title>Recent Commits to anki-mcp:main</title>
+  <updated>2026-07-26T20:38:52Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/363d63ed2af8027f404517ed2710636ff622830e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/363d63ed2af8027f404517ed2710636ff622830e"/>
+    <title>
+        Add card-generation skills relocated from the orchestrator
+    </title>
+    <updated>2026-07-26T20:38:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add card-generation skills relocated from the orchestrator
+
+add-cards-to-deck (pipeline worker) + generate-cards (pure fork), both
+grove-blind and Anki-domain only, moved in from the monorepo&amp;#39;s .claude/skills.
+Update the plugin description and README so the plugin honestly reflects that it
+now owns card generation alongside feedback-driven edits.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f657316279a5472d306fc6ebd7e177563f8d0311</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/f657316279a5472d306fc6ebd7e177563f8d0311"/>
+    <title>
+        README: add real 18-card feedback batch to the loop-in-action example
+    </title>
+    <updated>2026-07-23T17:18:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: add real 18-card feedback batch to the loop-in-action example
+
+The existing walkthrough used a 2-card toy run; append the closing report
+from an actual production batch to show the loop holding up at real scale.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/280e543d6b4a272f2b21f633ff47ef1500f0402c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/280e543d6b4a272f2b21f633ff47ef1500f0402c"/>
+    <title>
+        Switch python-utils submodule URL from SSH to HTTPS
+    </title>
+    <updated>2026-07-14T17:01:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Switch python-utils submodule URL from SSH to HTTPS
+
+SSH URLs in a tracked .gitmodules block anonymous clones of this public
+repo. HTTPS works for strangers with no GitHub SSH key, and contributors
+who prefer SSH can add a url.insteadOf rewrite in their own global
+gitconfig without touching the tracked file.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7a9be1ae8a96ed7972a14c683bdec3185840df22</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/7a9be1ae8a96ed7972a14c683bdec3185840df22"/>
+    <title>
+        Restructure README as an adoption-facing landing page
+    </title>
+    <updated>2026-07-12T18:43:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restructure README as an adoption-facing landing page
+
+Reorder for an evaluating reader: pitch + Diotima breadcrumb first,
+feedback-loop walkthrough second, setup (now with prerequisites and a
+copy-pasteable .mcp.json snippet) before the tool reference, and
+contributor-facing material collected under Internals. Fix the stale
+/pipe:anki-process-flags name in the Skills table.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8324628035a444af2a4f199cc04df601d0ebc6c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/d8324628035a444af2a4f199cc04df601d0ebc6c"/>
+    <title>
+        Replace feedback-loop example with a session-sourced walkthrough
+    </title>
+    <updated>2026-07-12T18:37:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Replace feedback-loop example with a session-sourced walkthrough
+
+Swap the illustrative Plato/override example for one drawn from an
+actual run: a one-line request resolving through the pipeline, a
+confirm-diff step with casual approval, and the applied result
+rendered live in Anki.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1026db984db0b4372df066bcc9eb9d87b1a79258</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/1026db984db0b4372df066bcc9eb9d87b1a79258"/>
+    <title>
+        Bump utils submodule to latest (Apache-2.0 license)
+    </title>
+    <updated>2026-07-12T14:32:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump utils submodule to latest (Apache-2.0 license)
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a90fd44e5bdea62641f5618b5d7f8fe791277bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/1a90fd44e5bdea62641f5618b5d7f8fe791277bf"/>
+    <title>
+        Add Apache-2.0 license
+    </title>
+    <updated>2026-07-12T14:24:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Apache-2.0 license&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/619a1069b8187c100cf43a5caaa593a076bf515a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/619a1069b8187c100cf43a5caaa593a076bf515a"/>
+    <title>
+        docs(readme): add feedback-loop demo with screenshots
+    </title>
+    <updated>2026-07-10T17:04:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): add feedback-loop demo with screenshots
+
+Follows one card through a real /pipe:anki-process-flags run — raw
+user_feedback, confirm.py&amp;#39;s proposed diff, a user follow-up overriding
+part of it, the manual apply, and the final rendered card in Anki.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae66281a5977efe63b5ae22592b5b28cc82c9965</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/ae66281a5977efe63b5ae22592b5b28cc82c9965"/>
+    <title>
+        fix(managed-note-types): render feedback marker as inline SVG, pin z-…
+    </title>
+    <updated>2026-07-10T15:28:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(managed-note-types): render feedback marker as inline SVG, pin z-index
+
+Emoji glyphs depend on the host having a color-emoji font, which Anki&amp;#39;s bundled
+Qt WebEngine often lacks on Linux (renders as a tofu box). Inline SVG needs no
+font and no media file, so it&amp;#39;s self-contained and device-independent like the
+rest of the injector.
+
+Also pins z-index explicitly: position:fixed alone only happened to float on
+top because nothing else in Production&amp;#39;s CSS used position — not guaranteed
+once more managed fragments or hand-authored positioned elements show up.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/745747fe19aa9d44ea12602526aed213401a0930</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/745747fe19aa9d44ea12602526aed213401a0930"/>
+    <title>
+        feat(managed-note-types): red-apple feedback marker via deterministic…
+    </title>
+    <updated>2026-07-10T15:19:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(managed-note-types): red-apple feedback marker via deterministic styling injection
+
+Renders a small apple on cards whose user_feedback field is populated, so users
+stop opening the edit window just to discover they already left feedback. The
+RED/GREEN flag mechanics in feedback.py/edits.py are untouched — this is a
+render-only visual substitute for checking the flag by hand.
+
+Enrichment is a deterministic sentinel-block injector (styling_infrastructure/),
+not an LLM call: stamping a known fragment into CSS/templates is closed-form and
+idempotent, so an LLM would only add nondeterminism and corruption risk. Isolated
+in its own package/tests dir ahead of the anticipated unified test-approach
+refactor for this MCP.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3fe43568c5b7ff3be2d51e9b22b631b5bcbf859c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/3fe43568c5b7ff3be2d51e9b22b631b5bcbf859c"/>
+    <title>
+        refactor(feedback): explicit --skip flag, shared feedback_log_path he…
+    </title>
+    <updated>2026-07-10T13:36:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(feedback): explicit --skip flag, shared feedback_log_path helper, fuller Confirm output
+
+apply.py now takes note_ids to skip via an explicit --skip flag instead of bare
+positional args, resolving ambiguity between &amp;quot;ids to apply&amp;quot; and &amp;quot;ids to skip&amp;quot;.
+feedback_log_path() centralizes the &amp;lt;context&amp;gt;.feedback.jsonl naming convention so
+extract.py and reset-test-deck.py can&amp;#39;t drift. confirm.py now prints every field
+on a card (not just the diff) so a reviewer has full context before approving.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e358f0554f41ce3cc79e655bdc71bd4aabc3707b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/e358f0554f41ce3cc79e655bdc71bd4aabc3707b"/>
+    <title>
+        feat(feedback): working prototype of the deterministic feedback pipeline
+    </title>
+    <updated>2026-07-10T08:15:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(feedback): working prototype of the deterministic feedback pipeline
+
+Package process-user-feedback-on-deck as a chain of deterministic Python
+steps with a single LLM call, replacing the edit-card-batch fork.
+
+- edit.py: new Edit step. Drives a fresh &amp;#39;claude -p&amp;#39; (utils.call_isolated,
+  prompt over stdin) to apply each card&amp;#39;s user_feedback, returning changed
+  fields as JSON on stdout. Python validates against the input note_ids,
+  strips fences, and retries once before failing non-zero. No Write-tool
+  call means no file-overwrite permission prompt and no spawn-time staleness.
+- Remove edit-card-batch skill and dump-input.py: the pre-seed-output dance
+  backfired (an existing file turned the creation prompt into an overwrite
+  prompt) and is no longer needed.
+- confirm.py / reset-test-deck.py: deterministic diff-print and standalone
+  test fixture.
+- Align the wire shape on &amp;#39;fields&amp;#39; (was &amp;#39;new_fields&amp;#39;) across feedback.py,
+  edits.py, and the batch tool.
+- gitignore .artifacts/ (in-tree pipeline handoff files).
+- Archive the initial design docs under initial-conceptions-and-aspirations/.
+
+Verified end-to-end on zz-test-feedback: extract -&amp;gt; edit -&amp;gt; confirm -&amp;gt; apply
+runs prompt-free, edits are reductive and correct, and the skip branch
+retains a skipped card&amp;#39;s pending feedback.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d393304d5a6675b7f4738f1868f5437cee4853e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/2d393304d5a6675b7f4738f1868f5437cee4853e"/>
+    <title>
+        chore(utils): bump python-utils to 00fc297 for stdin call_isolated
+    </title>
+    <updated>2026-07-10T07:59:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(utils): bump python-utils to 00fc297 for stdin call_isolated
+
+Picks up the fix that passes the claude -p prompt over stdin instead of
+argv (argv caps a single argument at 128 KiB on Linux). Unblocks moving
+the feedback Edit step into a Python-driven claude -p call over large
+compiled deck contexts.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb3db1312f613df1243ca8634ac3e0835f99b6ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/eb3db1312f613df1243ca8634ac3e0835f99b6ea"/>
+    <title>
+        chore: point nested utils submodule at diotima-garden org
+    </title>
+    <updated>2026-07-10T06:28:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: point nested utils submodule at diotima-garden org&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65f5a7a42bbc3d9f6a890ec5aac4850a4743a428</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/65f5a7a42bbc3d9f6a890ec5aac4850a4743a428"/>
+    <title>
+        refactor(feedback): move extract_feedback and update_note_fields_batc…
+    </title>
+    <updated>2026-07-09T16:20:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(feedback): move extract_feedback and update_note_fields_batch off the MCP tool list
+
+Both had exactly one caller (this skill) and sat in every session&amp;#39;s tool list for no
+benefit. extract_feedback_records() and update_note_fields_batch() are now plain
+functions, exposed to the pipeline via two new skill-local CLI scripts
+(extract.py, apply.py) instead of @mcp.tool(). update_note_fields stays a tool —
+it&amp;#39;s useful ad hoc, outside the pipeline.
+
+The record payload between Extract/Edit/Apply now passes through two static files
+under /tmp instead of round-tripping through the orchestrator&amp;#39;s and fork&amp;#39;s context,
+removing an LLM copy-drift vector. apply.py also now owns clearing user_feedback
+deterministically (applying == processed), so edit-card-batch no longer has to
+remember to emit it.
+
+feedback.py moves out of managed_note_types/tools/ since it no longer registers any
+MCP tools.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/624108067261a3dda984bf12d02ed7ff90a52a79</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/624108067261a3dda984bf12d02ed7ff90a52a79"/>
+    <title>
+        docs: rewrite README for the plugin restructure and feedback pipeline
+    </title>
+    <updated>2026-07-09T11:02:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: rewrite README for the plugin restructure and feedback pipeline
+
+Documents the .claude-plugin/skills/ layout, condenses the AnkiConnect-
+mirroring tool tables into one compact reference, and pulls out
+aggregation/analytics and managed note types (user_feedback/log fields,
+bootstrap, extract_feedback, update_note_fields(_batch)) as the actual
+value-add over a plain AnkiConnect passthrough. Adds a Skills section
+for process-user-feedback-on-deck and edit-card-batch.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b3feee2ca099eefc2b1e19d3eb696afc3ba1df1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/0b3feee2ca099eefc2b1e19d3eb696afc3ba1df1"/>
+    <title>
+        feat(plugin): package anki-mcp as a Claude Code plugin with its own s…
+    </title>
+    <updated>2026-07-09T10:52:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(plugin): package anki-mcp as a Claude Code plugin with its own skills
+
+Adds .claude-plugin/plugin.json and relocates edit-card-batch and the
+renamed process-user-feedback-on-deck (formerly anki-process-red-edit)
+skills into skills/, colocating them with the MCP tools they depend on.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb81ec38ab35f5a235f9aea845158b4e48716bf8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/fb81ec38ab35f5a235f9aea845158b4e48716bf8"/>
+    <title>
+        feat(feedback): align extract_feedback output with update_note_fields…
+    </title>
+    <updated>2026-07-09T10:26:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(feedback): align extract_feedback output with update_note_fields_batch input (D10)
+
+extract_feedback now returns records shaped as {note_id, new_fields, model},
+new_fields being every field except log (feedback in place, never stripped/
+reattached). Lets red-edit&amp;#39;s LLM step emit only changed fields plus
+user_feedback: &amp;quot;&amp;quot; so unchanged values never round-trip the model.
+
+Also relocates the managed-notes-and-feedback-extraction planning docs from
+the monorepo root into memory/ here, since anki-mcp now owns this feature&amp;#39;s
+policy and implementation going forward.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f26c72956f296534624cb036a910fbcb4e2d6bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/1f26c72956f296534624cb036a910fbcb4e2d6bf"/>
+    <title>
+        feat(managed-note-types): diff-inside-write semantics + batch update …
+    </title>
+    <updated>2026-07-09T08:53:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(managed-note-types): diff-inside-write semantics + batch update tool
+
+update_note_fields now accepts any subset of a note&amp;#39;s fields — including all
+of them — and filters to only actually-changed values before writing or
+logging, rather than trusting the caller to pre-diff. This lets an LLM caller
+(e.g. edit-card) round-trip full field dicts without polluting the log with
+old==new entries or spuriously flipping the flag.
+
+Adds update_note_fields_batch: loops the same logic over a list of updates,
+continuing past per-note failures and returning a per-note changed/error
+report instead of aborting the whole batch.
+
+Also fixes a pre-existing bug: notesInfo returns [{}] (not []) for an unknown
+note_id, so the old `if not info` check never caught missing notes — it fell
+through to a KeyError on info[0][&amp;quot;fields&amp;quot;] instead of a clean ValueError.
+
+Verified live against Anki: unchanged fields dropped from diff and log,
+pure no-op calls write nothing, batch continues past a bad note_id, and the
+bad-note_id case now raises a clean &amp;quot;not found&amp;quot; error.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/458362c9387163d55ac267bcec2763b1e3196260</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diotima-garden/anki-mcp/commit/458362c9387163d55ac267bcec2763b1e3196260"/>
+    <title>
+        feat(managed-note-types): update_note_fields override with log diffin…
+    </title>
+    <updated>2026-07-09T08:03:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44236584?s=30&amp;v=4"/>
+    <author>
+      <name>baturevychvitalii</name>
+      <uri>https://github.com/baturevychvitalii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(managed-note-types): update_note_fields override with log diffing and RED→GREEN flip
+
+Managed notes (carrying user_feedback + log) now get every field change diffed
+and appended to log automatically. Clearing user_feedback via this tool also
+flips the note&amp;#39;s cards from RED to GREEN. Non-managed notes fall through to
+the old plain update behavior unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

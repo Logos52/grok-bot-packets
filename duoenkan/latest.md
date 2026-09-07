@@ -1,6 +1,6 @@
 ===== PASTE INTO GROK BUILD =====
 多恩刊 · 2026-09-07 · 收成好了
-Standing assignment: tan handoff HANDOFF-DUOEN-KAN (path redacted)
+Standing assignment: HANDOFF-DUOEN-KAN
 
 window: 00:00 Asia/Taipei → 00:05
 canary: 2026-09-06 OpenAI research-acceleration（同日 CNA 愛的手鍊 17:57）

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/0x00000024/korean-anki-pro/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/0x00000024/korean-anki-pro/commits/main.atom"/>
+  <title>Recent Commits to korean-anki-pro:main</title>
+  <updated>2026-09-06T23:20:36Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd49b5017a427d9208916554d430fd9b88373507</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commit/dd49b5017a427d9208916554d430fd9b88373507"/>
+    <title>
+        feat: add illustration salvage script
+    </title>
+    <updated>2026-09-06T23:20:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/39816199?s=30&amp;v=4"/>
+    <author>
+      <name>0x00000024</name>
+      <uri>https://github.com/0x00000024</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add illustration salvage script
+
+The hub finishes an image even when the client&amp;#39;s queuing POST times out,
+so a failed word usually has a finished picture waiting. Map those runs
+back to their word through the example sentence and drop the PNG where
+--resume will find it. Recovered 11 of 100 words in the top-100 run.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4253156efdadc681fb5a67aff33213fe2a47de10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commit/4253156efdadc681fb5a67aff33213fe2a47de10"/>
+    <title>
+        feat: add a french column and drop the breakdown column
+    </title>
+    <updated>2026-09-06T23:20:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/39816199?s=30&amp;v=4"/>
+    <author>
+      <name>0x00000024</name>
+      <uri>https://github.com/0x00000024</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add a french column and drop the breakdown column
+
+The grammar table carried a Breakdown cell splitting each eojeol into
+stem and particle. Fold that into the Explanation prose instead, and
+carry 한국어 / English / Français / 繁體中文 across both language tables.
+
+The model reintroduces a morphology column unless told not to, so the
+instruction says so explicitly.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/557416ae25c6069dd71b940bf8505931d7a9a6df</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commit/557416ae25c6069dd71b940bf8505931d7a9a6df"/>
+    <title>
+        fix: keep card text readable in dark mode
+    </title>
+    <updated>2026-09-06T23:20:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/39816199?s=30&amp;v=4"/>
+    <author>
+      <name>0x00000024</name>
+      <uri>https://github.com/0x00000024</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: keep card text readable in dark mode
+
+The card hard-codes light backgrounds but let its body text inherit a
+colour. Anki&amp;#39;s night mode recolours that text to white and leaves the
+white card background alone, so on a phone in dark mode every table cell
+rendered white-on-white. Headers survived only because they set a colour
+explicitly. Reported on AnkiMobile, iPhone, system dark mode.
+
+Pin the text colours and opt the card out of dark-mode inversion rather
+than half-supporting it, since the design is a light paper card.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a833fda2ba297754718cfa4c86859abb648ceb1c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commit/a833fda2ba297754718cfa4c86859abb648ceb1c"/>
+    <title>
+        docs: add the MIT license file declared in pyproject
+    </title>
+    <updated>2026-09-06T03:29:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/39816199?s=30&amp;v=4"/>
+    <author>
+      <name>0x00000024</name>
+      <uri>https://github.com/0x00000024</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add the MIT license file declared in pyproject
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61044124e005b3930539914f5b733da96766cdd6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0x00000024/korean-anki-pro/commit/61044124e005b3930539914f5b733da96766cdd6"/>
+    <title>
+        feat: add korean deck generator ported from french-anki-pro
+    </title>
+    <updated>2026-09-06T03:28:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/39816199?s=30&amp;v=4"/>
+    <author>
+      <name>0x00000024</name>
+      <uri>https://github.com/0x00000024</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add korean deck generator ported from french-anki-pro
+
+Mirrors the French project so fixes port between the two, with the
+language-specific parts rewritten rather than translated:
+
+- frequency list built from the OPUS OpenSubtitles v2024 Korean corpus
+  (175M tokens); rows are eojeol, a word plus its attached particle or
+  ending, matching the French lists choice to keep cest whole
+- keep one-character words, which the French loader drops: many of the
+  most frequent Korean words are single syllables
+- keep Hangul through filename sanitizing, or every clip collapses onto
+  one stem and overwrites itself
+- bound eojeol matching with explicit lookarounds, since \b never fires
+  between two Hangul syllables and 이 would match inside 이거예요
+- card prompt covers romanization, dictionary form, word origin, Hanja,
+  attached particle/ending, politeness level, and sound changes
+
+Deck ids differ from the French project so both can share one collection.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

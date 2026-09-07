@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bornayo7/srs-app/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bornayo7/srs-app/commits/main.atom"/>
+  <title>Recent Commits to srs-app:main</title>
+  <updated>2026-09-01T19:36:36Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2195eef570a2eac9f9b5066002d9c1c0b2e42818</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/2195eef570a2eac9f9b5066002d9c1c0b2e42818"/>
+    <title>
+        README: course plans and the review queue
+    </title>
+    <updated>2026-09-01T19:36:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: course plans and the review queue
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb6344169cd8c290d2f9b93f6ed31f39ab5553b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/fb6344169cd8c290d2f9b93f6ed31f39ab5553b4"/>
+    <title>
+        Course plans step 5: MCP tools and plan-aware snapshot
+    </title>
+    <updated>2026-09-01T19:36:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 5: MCP tools and plan-aware snapshot
+
+External assistants (Claude Desktop, Codex, any MCP client) can now do the
+same job as the in-app planner. propose_course_plan writes a course-plan
+packet — ordered units, 1-3 item types, optional proposed items per unit, and
+the source material — and propose_items drops drafts into an existing course&amp;#39;s
+review queue, optionally targeting a unit. Both land in the Inbox and never
+bypass the human gate; add_items/create_course keep their import-as-is
+behaviour and now point at the review-queue tools for drafted content.
+
+snapshot.json exposes each course&amp;#39;s plan (units, what&amp;#39;s open, dates, pending
+proposals per unit), the current level, item levels, and a pending-proposals
+count, so an assistant can see the syllabus structure before proposing.
+list_courses prints the plan summary. 218 tests.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a713b1d07207527cc97645eacf0e15268ed38f35</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/a713b1d07207527cc97645eacf0e15268ed38f35"/>
+    <title>
+        Course plans step 4: plan page, review queue UI, entry points
+    </title>
+    <updated>2026-09-01T19:33:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 4: plan page, review queue UI, entry points
+
+Dashboard gains &amp;quot;From my material&amp;quot;: paste a syllabus or notes, pick how units
+release (by progress, by date, by hand), get an editable outline back — course
+name, item types, units with item targets and dates — and create the course
+with nothing in it yet. The new /plan/:courseId page is where the work
+happens: one card per unit showing released/current/locked state, dates in
+schedule mode, item and pass counts, a draft button with count and steer, and
+the review queue with pending/rejected/accepted tabs. Rows show fields,
+alternates, mnemonic, handle and prerequisites, a validation error or a
+duplicate flag; accept, edit in a modal (fields, alternates, note, handle,
+prerequisites), reject with an optional reason, restore, forget; accept-all and
+reject-all per unit; release-mode switch and &amp;quot;Release next unit&amp;quot;; add a unit.
+
+The Course page links to the plan and shows the current unit; the Dashboard
+badges pending proposals; scheduled releases catch up at boot and whenever the
+plan page opens. Verified in the browser against a pasted plan packet.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa840e7643f24126d9149e6b13497a04f1ddc6d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/fa840e7643f24126d9149e6b13497a04f1ddc6d0"/>
+    <title>
+        Course plans step 3: two-stage AI pipeline
+    </title>
+    <updated>2026-09-01T19:20:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 3: two-stage AI pipeline
+
+ai/plan.ts reads the learner&amp;#39;s own material in two stages. planCourse returns
+an OUTLINE for review — ordered units with topics, target counts, and any
+dates the material gives, plus 1-3 item types (typed or multiple-choice
+templates) — and writes nothing. generateUnitItems drafts items for ONE unit
+on demand into the review queue, sending what is already in the course (with
+keys usable as prerequisites) and what the learner rejected (with reasons) so
+the model avoids both. A rerun costs one unit, not the course.
+
+The material rides as a second system block: on Anthropic it carries a cache
+breakpoint so consecutive unit calls pay a fraction for it; on
+OpenAI-compatible endpoints it is appended. Material past 150k characters is
+cut with a visible flag, never silently. outlineProblems catches dangling
+field references before a course is created. The model is mocked in tests;
+216 tests.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bf8e3244dfea83c641f0baa76ea827608047468</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/2bf8e3244dfea83c641f0baa76ea827608047468"/>
+    <title>
+        Course plans step 2: review-queue verbs and release modes
+    </title>
+    <updated>2026-09-01T19:15:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 2: review-queue verbs and release modes
+
+services/proposals.ts is the human gate: accept turns pending proposals into
+real items at their unit&amp;#39;s level (locked until the unit is released, otherwise
+straight into the lesson queue), resolving prerequisite handles to accepted
+items across batches and in any order within one; a handle that points at a
+still-pending row holds the item with a message, a rejected one is dropped
+with a warning, and a row that fails validation is skipped with the error
+written onto it rather than thrown. Reject with a reason, restore, edit before
+accepting, accept-all-valid per unit, and a recheck after type edits.
+
+services/plans.ts owns release: manual (release next unit), schedule (the
+level floor follows unit dates, never backwards), and progress (hands the
+level to the existing engine). Plus unit edits, appending a unit, a per-unit
+progress read for the plan page, and the in-app createPlannedCourse that
+routes through the same packet path as MCP. 206 tests.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b99031d84b010d66a869ba60409ad377d1f6a315</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/b99031d84b010d66a869ba60409ad377d1f6a315"/>
+    <title>
+        Course plans step 1: storage, packet kinds, autoAdvance
+    </title>
+    <updated>2026-09-01T19:10:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Course plans step 1: storage, packet kinds, autoAdvance
+
+Progressive AI courses need a place for a syllabus and a human gate in front
+of the AI. Two additive Dexie v3 tables: plans (units that map 1:1 onto course
+levels, release mode, source material) and proposals (the review queue —
+pending/accepted/rejected items carrying validation errors and duplicate
+flags, so a generation is never lost by closing a panel).
+
+The packet format gains two kinds: course-plan (course + types + ordered
+units; unit items land in the review queue, not the course) and propose-items
+(items into an existing course&amp;#39;s queue). Level config gains autoAdvance so a
+plan in manual or scheduled release mode can hold the level while
+prerequisite unlocks keep working. Backups round-trip both tables; deleting a
+course removes them; the Inbox summarizes the new kinds. 190 tests.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61adbc0506e35d5a291fa41a0058e5edd378c854</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/61adbc0506e35d5a291fa41a0058e5edd378c854"/>
+    <title>
+        Multiple choice reviews
+    </title>
+    <updated>2026-09-01T03:29:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Multiple choice reviews
+
+Any template can now be answered by clicking an option (or pressing 1-6)
+instead of typing. Wrong options come from the same question asked of sibling
+items, preferring items within one level so the odd one out isn&amp;#39;t a giveaway.
+
+Every candidate distractor is run through the real grading pipeline first and
+kept only if it grades incorrect — so an accepted synonym, something inside the
+typo budget, or a guidance answer can never be offered as a wrong option.
+Choosing an option submits its text down the same path a typed answer takes,
+so grading, ghosts, gating and the SRS commit are identical.
+
+Templates with too few siblings fall back to the typed box rather than showing
+a giveaway. Packets (and the MCP create_course tool) can declare mode &amp;quot;choice&amp;quot;
+with an option count.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e82b4fbc033f3fd885fe56b1ce0ece546dbbcf5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/8e82b4fbc033f3fd885fe56b1ce0ece546dbbcf5"/>
+    <title>
+        Phase 3: content-model UI, media, manual SRS control
+    </title>
+    <updated>2026-09-01T03:07:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Phase 3: content-model UI, media, manual SRS control
+
+Item-type designer: fields (text/rich text/list/image/audio/cloze) with kinds
+and reordering, a template editor (prompt/answer/hints, typed vs sentence-cloze,
+kana IME, typo tolerance), live validation, and an impact preview. Saving
+migrates every item of the type in one transaction: new templates create cards
+and send the item back to lessons, removed templates delete their cards and
+history, removed or retyped fields convert their values.
+
+Item editor: field values, rich-text mnemonics, prerequisites (cycle-guarded),
+per-template synonyms / block lists / guidance answers, and manual SRS control
+(set stage, reset, suspend, resume, burn) written as kind:&amp;quot;manual&amp;quot; logs with
+the previous snapshot and undoable as a group.
+
+Media: images downscaled to 1024px and re-encoded to WebP on ingest, rendered
+in lessons and reviews, carried through JSON backups as base64, and swept when
+nothing references them.
+
+Also: Alt+H progressive hints, an empty-prompt guard, and lesson/active status
+healing in recomputeUnlocks. 166 tests.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a57473e2badb2479b1836c01f16b64838d54217b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/a57473e2badb2479b1836c01f16b64838d54217b"/>
+    <title>
+        Update
+    </title>
+    <updated>2026-09-01T02:58:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85e118f587fce4f31945e6737905108fa16bff19</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/85e118f587fce4f31945e6737905108fa16bff19"/>
+    <title>
+        Phase 2: prerequisite gating, levels, kana IME, Japanese course
+    </title>
+    <updated>2026-08-31T21:48:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Phase 2: prerequisite gating, levels, kana IME, Japanese course
+
+- engine/gating.ts + engine/levels.ts: pure unlock/level math (chains,
+  diamonds, sticky passes, cycle guard, level thresholds)
+- services/gating.ts: applyGatingAfterReview runs inside commitReview&amp;#39;s
+  transaction (item passes -&amp;gt; unlock dependents -&amp;gt; cascade level-ups);
+  recomputeUnlocks repairs graphs and re-evaluates levels; one-time
+  backfill derives passedAt for pre-Phase-2 courses
+- items/packets/seeds carry level + prereqs; packets use local keys with
+  an earlier-definition rule (also guarantees acyclicity); export is
+  topologically sorted and never emits out-of-packet edges
+- Japanese seed: radical -&amp;gt; kanji -&amp;gt; vocab across two levels, kanji as
+  the level gate, kana-typed reading cards
+- wanakana kana IME in the answer box (moku -&amp;gt; もく), katakana answers
+  accept hiragana, kanji blanks never switch to kana mode
+- CoursePage Progress panel (level bar, lock tallies, stage distribution,
+  Recheck unlocks), lock badges with reasons, prereq/level pickers,
+  level-mode settings; session summary shows unlocks and level-ups
+- 15 adversarial-review fixes: flat courses no longer enforce a level
+  gate, deleteItem scrubs dangling prereq edges, recompute re-evaluates
+  level-ups, IME preserves the caret, seeds fail loudly
+- 120 tests passing
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/580631c08ab11f45b70bc0adee3c328e3862f6f8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/580631c08ab11f45b70bc0adee3c328e3862f6f8"/>
+    <title>
+        Feature batch: multi-provider AI, ghosts, sentence-cloze, cram, stats…
+    </title>
+    <updated>2026-08-31T18:37:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Feature batch: multi-provider AI, ghosts, sentence-cloze, cram, stats, capture, Anki import, TTS
+
+- AI providers: Anthropic or any OpenAI-compatible API (OpenAI, Gemini,
+  OpenRouter, keyless Ollama) with JSON-mode fallback + zod validation
+- Ghost reviews (Bunpro-style): policy-gated drill copies on a short
+  ladder; graduation deletes, undo resurrects from the log
+- Sentence-cloze: rotating example sentences with masked blanks, cloze
+  seed course, editor + packet + export/import support
+- Cram/extra study (learned / leeches / missed-this-week), zero SRS effect
+- Stats: DST-safe review heatmap, true all-time retention, per-course bars
+- Quick capture inbox (Dexie v2) with convert-to-item flow
+- Anki .apkg import (legacy schema) with field mapping + kana detection
+- Browser TTS on cards and lessons (user-initiated, unmount-cancelled)
+- AI leech rescue in the session summary
+- 21 adversarial-review fixes incl. cloze export kind, degenerate blanks,
+  ghost/ladder-edit isolation, commit-failure surfacing
+- 89 tests passing
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2ae91a9986d47e2d3c4ec8fdafa5558ecbcb2a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bornayo7/srs-app/commit/c2ae91a9986d47e2d3c4ec8fdafa5558ecbcb2a1"/>
+    <title>
+        Initial release: WaniKani-style SRS engine, AI generation, MCP server
+    </title>
+    <updated>2026-08-31T14:22:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178798885?s=30&amp;v=4"/>
+    <author>
+      <name>bornayo7</name>
+      <uri>https://github.com/bornayo7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial release: WaniKani-style SRS engine, AI generation, MCP server
+
+Local-first spaced-repetition PWA: editable SRS ladders, typed reviews
+with typo tolerance, lessons with daily limits, forecast, JSON backup.
+AI layer (Claude, browser-direct) for course/item/mnemonic generation,
+plus the srs-mcp stdio server and exchange-folder Inbox pipeline.
+68 tests passing; adversarially reviewed.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

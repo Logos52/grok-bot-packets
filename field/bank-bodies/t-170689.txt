@@ -1,0 +1,47 @@
+# Grokbot Bricked, wont reset
+URL: https://forum.cursor.com/t/grokbot-bricked-wont-reset/170689
+Created: 2026-09-05T10:17:04.335Z
+
+## @Benjamin_Barber 2026-09-05T10:17:04.387Z staff=False
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+I was generating huggingface dataset graphrag indexes, something bricked the system, and not even a reset will work. Not sure if it was a result of disk pressure, or a bad controller, but I am unable to reload the VM from the client side.
+
+Steps to Reproduce
+just generate a graphrag database of a bunch of laws using vector embedding models and knowledge graph tools
+
+Expected Behavior
+it should automatically reset the OS when i click on the reset button
+
+Operating System
+Linux
+
+Version Information
+Grokbot 0.30.0
+
+For AI issues: which model did you use?
+grok
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+## @Benjamin_Barber 2026-09-05T10:31:43.944Z staff=False
+updated to 0.43.0 issue remains
+
+## @deanrie 2026-09-05T11:25:26.090Z staff=True
+Hey, thanks for the report. I dug into what’s going on with your computer.
+
+It’s not disk pressure, there was enough free space. The issue is memory. The graphrag embedding job is hitting the VM’s RAM limit, and when memory runs out, the job crashes and the machine’s system services crash too. That’s what makes it look bricked. Each time indexing auto-resumed on a fresh computer, the same thing happened again after a couple of minutes.
+
+Reset did work, it was just very slow that day. Re-creating the machine took close to an hour. If you click Reset again while the previous one is still running, the timer restarts from the beginning. Your data about 12 GB was restored each time. Anything installed via apt or pip outside your working files needs to be reinstalled after a Reset.
+
+To stabilize things:
+
+- When the computer comes back up, don’t start indexing right away. If it starts automatically routine or the bot picks it up on its own, stop it first.
+- In the bot shell, check memory with free -h before running anything heavy.
+- Run embedding and graph build in smaller batches. Fewer documents per run, fewer parallel workers, or a smaller embedding model, so memory use stays well below the limit. As long as total usage stays reasonable, the machine won’t crash.
+- If you need another Reset, click it once and give it up to an hour before doing anything else.
+
+You’ve already updated to 0.43.0, that’s the right move. If the computer still crashes after keeping memory under control, send the approximate time and your timezone, and I’ll take another look.

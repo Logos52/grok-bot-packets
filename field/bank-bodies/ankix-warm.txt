@@ -1,0 +1,162 @@
+From ad149e8fa52cf3bf83c039da0f0a38cb3fbabfff Mon Sep 17 00:00:00 2001
+From: Joshua Gummersall <josh@standardlabs.dev>
+Date: Sat, 5 Sep 2026 08:04:06 -0700
+Subject: [PATCH] Warm the gloss model at startup
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Loading the model costs seconds — more since the base model became Qwen —
+and left alone that cost lands on the first word the user picks, after the
+review screen is already open, where the wait is most visible.
+
+Fire a throwaway lookup in a goroutine as soon as the provider is built, so
+the load overlaps the setup still to come (fetching the source, building the
+document, starting the TUI) and the reading the user does before picking
+anything.
+
+It sends a real lookup rather than a bare load request: that makes Ollama
+evaluate the Modelfile's system prompt and its ~40 few-shot examples as well
+as loading the weights, and both are reused by the lookups that follow.
+Nothing waits on the result — a warm-up that fails costs nothing, because
+the same failure recurs on the first genuine lookup, which reports it
+properly.
+
+Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01RdUi4wFVgtdvjh1UJ7yZFv
+---
+ README.md                           | 15 ++++++++++++++
+ cmd/ankix/model.go                  | 15 ++++++++++++--
+ internal/dict/ollama/ollama.go      | 23 +++++++++++++++++++++
+ internal/dict/ollama/ollama_test.go | 31 +++++++++++++++++++++++++++++
+ 4 files changed, 82 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index 0af75b1..a88c4f9 100644
+--- a/README.md
++++ b/README.md
+@@ -212,6 +212,21 @@ Flags:
+ - `--ollama-model` — Ollama gloss model name (default `ankix`; see [Keeping the model in sync](#keeping-the-model-in-sync))
+ - `--no-gloss` — skip Ollama gloss lookups
+ 
++## Model warm-up
++
++Loading a gloss model costs seconds — more with a larger base model like
++Qwen — and that cost lands on whatever request arrives first. Left alone,
++that's the first word you pick, after the review screen is already open,
++where the wait is the most visible.
++
++So every command that glosses fires a throwaway lookup in the background as
++soon as it starts, before fetching the source or building the document. It's
++a real lookup rather than a bare load, which makes Ollama evaluate the
++Modelfile's system prompt and few-shot examples too; both the weights and
++that prompt prefix are then reused by real lookups. Nothing waits on it —
++if it fails, the same failure resurfaces on the first genuine lookup, which
++reports it properly. `--no-gloss` skips it along with everything else.
++
+ ## Fixing a translation
+ 
+ Small local models drift: a translation comes back with an extra adjective
+diff --git a/cmd/ankix/model.go b/cmd/ankix/model.go
+index 30c3e47..b2d4936 100644
+--- a/cmd/ankix/model.go
++++ b/cmd/ankix/model.go
+@@ -17,7 +17,8 @@ import (
+ // nil when glossing is switched off. Call it before any slow setup work
+ // (downloading subtitles, fetching an article): it checks the model is
+ // installed, and a missing one should be reported before a yt-dlp download,
+-// not after.
++// not after. It also starts warming the model — the other reason to call it
++// first, since everything after it is time Ollama can spend loading.
+ func newDictProvider() (dict.Provider, error) {
+ 	if noGloss {
+ 		return nil, nil
+@@ -26,7 +27,17 @@ func newDictProvider() (dict.Provider, error) {
+ 	if err != nil {
+ 		return nil, err
+ 	}
+-	return ollama.New(ollamaURL, model), nil
++	p := ollama.New(ollamaURL, model)
++	// Loading a large base model takes seconds, and left alone it happens
++	// on the first word the user picks — after the review screen is already
++	// open, where the wait is visible. Start it here instead, so it overlaps
++	// the setup still to come (fetching the source, building the document,
++	// starting the TUI) and the reading the user does before picking
++	// anything. Nothing waits on it: the result is discarded, and a real
++	// problem resurfaces on the first genuine lookup, which reports it
++	// properly.
++	go p.Warm()
++	return p, nil
+ }
+ 
+ // resolveModel returns the exact Ollama tag to use for the configured model
+diff --git a/internal/dict/ollama/ollama.go b/internal/dict/ollama/ollama.go
+index 8f13436..836fa54 100644
+--- a/internal/dict/ollama/ollama.go
++++ b/internal/dict/ollama/ollama.go
+@@ -170,3 +170,26 @@ func (p *Provider) chat(msgs []chatMessage) (string, error) {
+ 	}
+ 	return result, nil
+ }
++
++// warmWord and warmUsage are the throwaway lookup Warm sends. Any word
++// would do — what matters is that the request is shaped exactly like a real
++// one, so Ollama evaluates the same Modelfile system prompt and few-shot
++// examples every later lookup starts from.
++const (
++	warmWord  = "banco"
++	warmUsage = "Nos sentamos en el banco del parque."
++)
++
++// Warm sends a throwaway lookup so Ollama loads the model and evaluates the
++// prompt prefix now, rather than on the user's first real word. With a large
++// base model most of a cold lookup is that one-time cost — loading the
++// weights, then evaluating the Modelfile's system prompt and few-shot
++// examples — and Ollama reuses both for subsequent requests.
++//
++// Callers run this in the background and ignore its result: a warm-up that
++// fails costs nothing, because the failure recurs on the first real lookup,
++// where it is reported properly.
++func (p *Provider) Warm() error {
++	_, err := p.chat([]chatMessage{{Role: "user", Content: askContent(warmWord, warmUsage)}})
++	return err
++}
+diff --git a/internal/dict/ollama/ollama_test.go b/internal/dict/ollama/ollama_test.go
+index acb45c1..fa7dc75 100644
+--- a/internal/dict/ollama/ollama_test.go
++++ b/internal/dict/ollama/ollama_test.go
+@@ -168,3 +168,34 @@ func TestParseReply(t *testing.T) {
+ 		})
+ 	}
+ }
++
++// Warm has to look like a real lookup, not a bare load: the point is to make
++// Ollama evaluate the Modelfile's system prompt and few-shot examples, which
++// only happens for a request carrying an actual question.
++func TestWarm_SendsALookupShapedLikeARealOne(t *testing.T) {
++	p, sent := newTestProvider(t, "TRANSLATION: bench | LEMMA: bench")
++
++	if err := p.Warm(); err != nil {
++		t.Fatalf("Warm: %v", err)
++	}
++
++	if len(*sent) != 1 {
++		t.Fatalf("sent %d messages, want 1: %+v", len(*sent), *sent)
++	}
++	if (*sent)[0].Role != "user" {
++		t.Errorf("message role = %q, want \"user\"", (*sent)[0].Role)
++	}
++	if want := askContent(warmWord, warmUsage); (*sent)[0].Content != want {
++		t.Errorf("message content = %q, want %q", (*sent)[0].Content, want)
++	}
++}
++
++// Callers fire Warm in the background and ignore it, so it must never panic
++// or block on an Ollama that isn't there — the first real lookup reports that.
++func TestWarm_ReturnsTheErrorFromAnUnreachableOllama(t *testing.T) {
++	p := New("http://127.0.0.1:1", "ankix")
++
++	if err := p.Warm(); err == nil {
++		t.Fatal("Warm succeeded against an unreachable Ollama")
++	}
++}

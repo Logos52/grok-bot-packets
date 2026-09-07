@@ -19,6 +19,8 @@
   Long-form 3D documentary / investigative essays. English channel only. Skip shorts, clip dumps, and other people cloning Fern. Do not add the German sister unless Wedge says so.
 - Moon · video: https://www.youtube.com/@Moon-Real/videos
   Long-form deep-dive essays. English channel only. Skip shorts, clip dumps, and clones of Moon.
+- Frontpage · video: https://www.youtube.com/@frontpagechannel/videos
+  Long-form, well-sourced. English channel only. Skip shorts, clip dumps, and clones of Frontpage.
 
 ## Catch-up / examples
 - The Economist Insider · Zanny Minton Beddoes · recorded/released 2026-07-23 · 85 min
