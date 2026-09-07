@@ -4,7 +4,7 @@
 
 **2026-08-28:** Dcard.tw is **not a live harvest**. Agent Dcard owns that site. Do not open dcard.tw. If 口語 shape is still needed, read `/workspace/dcard/latest.md` after that bot writes it. Own sources stay CNA / iThome / X.
 
-**2026-08-13:** this file is the **source pin for tan channel 15 閱讀**, not a chat-packet recipe. The lesson is a graded rewrite + reader + 金多恩 in `/Users/n1/Projects/tan/library/yuedu/`. Spec: `/Users/n1/Projects/tan/docs/CHANNEL-YUEDU.md`. Partner-pack work stays a session product. The Grok Bot does not teach.
+**2026-08-13:** this file is the **source pin for tan channel 15 閱讀**, not a chat-packet recipe. The lesson is a graded rewrite + reader + 金多恩 in the tan yuedu library (Mac path redacted). Spec: tan CHANNEL-YUEDU doc (path redacted). Partner-pack work stays a session product. The Grok Bot does not teach.
 
 Cadence: Tue/Fri 07:30 Asia/Taipei. First-party fetches only. No Firecrawl. Personal-use volume.
 

@@ -8,7 +8,7 @@ Paste the fenced block BELOW the existing 後台 Instructions (the cast block st
 
 ```text
 BANK. You also keep /workspace/bank/, the shared research bank on this
-computer. It mirrors /Users/n1/Research/ on Wedge's Mac: same folders,
+computer. It mirrors Wedge's Mac Research mirror (path redacted)/ on Wedge's Mac: same folders,
 same frontmatter block, same script.
 
 Layout:
