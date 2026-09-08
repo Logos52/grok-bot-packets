@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/AndroEhab/fsrs/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/AndroEhab/fsrs/commits/main.atom"/>
+  <title>Recent Commits to fsrs:main</title>
+  <updated>2026-09-08T00:21:03Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e7192efb2eb49ed0f33e8f63458542079257cba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/3e7192efb2eb49ed0f33e8f63458542079257cba"/>
+    <title>
+        fix(security): harden auth gate, identity propagation, and deploy-tim…
+    </title>
+    <updated>2026-09-08T00:21:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(security): harden auth gate, identity propagation, and deploy-time safety
+
+- Functions: fix isProductionRuntime() to detect GCF via FUNCTIONS_EMULATOR
+  instead of NODE_ENV (which GCF never sets), closing the fail-open auth gate
+- Functions: verify X-API-Key + Auth0 JWT on all production requests
+- MCP server: enforce Auth0 on public HTTP /mcp, fail-closed deploy guard
+- MCP server: forward caller Bearer token for backend identity propagation&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bb55a83faf73b2a2d5f7e86ce27c94825c13551</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/2bb55a83faf73b2a2d5f7e86ce27c94825c13551"/>
+    <title>
+        Make Functions lint and rules tests runnable
+    </title>
+    <updated>2026-09-07T01:15:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make Functions lint and rules tests runnable&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69e20410ea1dba268b2520ec220a5b9fa0a6db76</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/69e20410ea1dba268b2520ec220a5b9fa0a6db76"/>
+    <title>
+        Align review session output contract
+    </title>
+    <updated>2026-09-06T17:46:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Align review session output contract&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1e423ee971215e45835503b00d9abec05a2ffe58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/1e423ee971215e45835503b00d9abec05a2ffe58"/>
+    <title>
+        Test health tool metadata
+    </title>
+    <updated>2026-09-06T12:58:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Test health tool metadata&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88a9b5696e4b19aa0eec5fe350867d26ac6403f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/88a9b5696e4b19aa0eec5fe350867d26ac6403f4"/>
+    <title>
+        Fix bulk flashcard updates and health metadata
+    </title>
+    <updated>2026-09-06T12:58:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix bulk flashcard updates and health metadata&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13dc8f82f0bb291d868ee36c4c9d59a53932b22c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/13dc8f82f0bb291d868ee36c4c9d59a53932b22c"/>
+    <title>
+        Fix due flashcard filtering
+    </title>
+    <updated>2026-09-06T12:45:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix due flashcard filtering&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/882cb0fda7b7a4bc5823e4cb0cf2d92d55b467be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/882cb0fda7b7a4bc5823e4cb0cf2d92d55b467be"/>
+    <title>
+        Fix flashcard listing queries
+    </title>
+    <updated>2026-09-06T12:22:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix flashcard listing queries&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4c439eac1d5ef8f7b5a968fab4b188175b1133e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndroEhab/fsrs/commit/4c439eac1d5ef8f7b5a968fab4b188175b1133e6"/>
+    <title>
+        Initial commit
+    </title>
+    <updated>2026-09-06T12:11:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8320384?s=30&amp;v=4"/>
+    <author>
+      <name>AndroEhab</name>
+      <uri>https://github.com/AndroEhab</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

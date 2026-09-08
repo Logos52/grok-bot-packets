@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/cehbz/thai-language-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/cehbz/thai-language-anki/commits/main.atom"/>
+  <title>Recent Commits to thai-language-anki:main</title>
+  <updated>2026-09-08T00:29:51Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/02ace066802802727d19d85dde1f5727eacc2c30</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/02ace066802802727d19d85dde1f5727eacc2c30"/>
+    <title>
+        Record the arcs&#39; deferred items; drop the cutover steps that ran
+    </title>
+    <updated>2026-09-08T00:29:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Record the arcs&amp;#39; deferred items; drop the cutover steps that ran
+
+Deferred: the escalation anchor&amp;#39;s tie, the review screen&amp;#39;s double
+listing, marker-stored custom ids, inline duplicate questions,
+unreported assess-first exclusions. Runs 1-6 and the re-migration are
+done.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d712ab852aca6702121eb51130c2b30c1ace79d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/d712ab852aca6702121eb51130c2b30c1ace79d5"/>
+    <title>
+        Warn when assess-first excludes every awaiting candidate
+    </title>
+    <updated>2026-09-07T15:04:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Warn when assess-first excludes every awaiting candidate
+
+assess_first logs the subject and the excluded shas before returning
+None and the attempt asks a source; the exclusions were dropped
+without a trace. A test docstring&amp;#39;s rationale clause is removed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/761da63e2d128f4b2c40f32b47014931fcb7411b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/761da63e2d128f4b2c40f32b47014931fcb7411b"/>
+    <title>
+        Warn when a resolved batch&#39;s answers match none of its questions
+    </title>
+    <updated>2026-09-07T15:04:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Warn when a resolved batch&amp;#39;s answers match none of its questions
+
+Assessor.resolve counts the marker&amp;#39;s questions with no result and the
+results matching no question, and logs both with the batch id when
+either is non-zero. A batch whose custom ids no longer match its
+questions read like an expired one.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42f9cdc2096e040062e871f85e150aea8a9e1dba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/42f9cdc2096e040062e871f85e150aea8a9e1dba"/>
+    <title>
+        Rank by the newest verdict per backend and artifact
+    </title>
+    <updated>2026-09-07T15:04:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rank by the newest verdict per backend and artifact
+
+_machine_ranks takes each backend&amp;#39;s newest verdict row on an artifact,
+by ts; an older pass under a newer fail no longer ranks (spec 3 r13 §6).
+The fold took the highest rank across rows.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2457b1c66f491eae6c13112f72e2d62539bac154</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/2457b1c66f491eae6c13112f72e2d62539bac154"/>
+    <title>
+        Revise spec 3 to r13: the newest verdict per backend and artifact ranks
+    </title>
+    <updated>2026-09-07T15:01:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revise spec 3 to r13: the newest verdict per backend and artifact ranks
+
+§6 current_best: of several verdicts by one backend on one artifact, the
+newest ranks. Evidence: the judge-key arc&amp;#39;s final review (a re-keyed
+verdict re-asked once leaves two rows per artifact; the fold took the
+higher).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e7276028b2b9d2bb9107a928fb8ca453dd676101</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/e7276028b2b9d2bb9107a928fb8ca453dd676101"/>
+    <title>
+        Key a judge verdict by subject and artifact; keep legacy verdicts on …
+    </title>
+    <updated>2026-09-07T14:35:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Key a judge verdict by subject and artifact; keep legacy verdicts on their own key
+
+JudgeKey gains a subject part (judge:RUBRIC_SHA:SUBJECT:IDENTITY:ROLE);
+for_question and for_rule set it from the question&amp;#39;s subject and the
+rule&amp;#39;s note id, so a judged Rule and the judge backend still meet on
+one row. A fit verdict cached for one word no longer answers another
+word&amp;#39;s question. Migrated legacy verdicts keep the old shape through
+LegacyVerdictKey, and a migrate re-run still finds them. submit refuses
+two prepared questions sharing one key (spec 3 r12 §4, spec 2 r8 §4).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee6ba58cc6e2238475b48ccdea2ee18e4212c4a4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/ee6ba58cc6e2238475b48ccdea2ee18e4212c4a4"/>
+    <title>
+        Break a current-best tie by artifact sha
+    </title>
+    <updated>2026-09-07T14:17:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Break a current-best tie by artifact sha
+
+Among candidates tied at the top rank after the provenance prior,
+current_best returns the lowest artifact sha; the fold answers the same
+in every process (spec 3 r12 §6). Ties broke by set iteration order.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7887cf53a68c5f315d22aa55667c853e266a7f84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/7887cf53a68c5f315d22aa55667c853e266a7f84"/>
+    <title>
+        Count legacy-current as a candidate&#39;s provenance, never a Source ask
+    </title>
+    <updated>2026-09-07T14:08:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Count legacy-current as a candidate&amp;#39;s provenance, never a Source ask
+
+record.source_asks excludes the migrated current-picture row: it is
+never tried, budgeted, or listed as asked, and latest_query reads past
+it to the newest real search (spec 3 r12 §3).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bec652bf9f285dcd6aec9ebfba05fff66389cff9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/bec652bf9f285dcd6aec9ebfba05fff66389cff9"/>
+    <title>
+        Revise spec 3 to r12 and spec 2 to r8: a judge key names its subject
+    </title>
+    <updated>2026-09-07T14:05:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revise spec 3 to r12 and spec 2 to r8: a judge key names its subject
+
+Spec 3 §4: judge:sha(RUBRIC):SUBJECT:IDENTITY:ROLE; a migrated legacy
+verdict keeps the old shape on its own key (LegacyVerdictKey, spec 2 §4).
+§3: legacy-current is a candidate&amp;#39;s provenance, never a Source ask.
+§6: a current-best tie among equals breaks by the lower artifact sha.
+
+Evidence: the assess-first arc&amp;#39;s final review. A fit verdict cached for
+one word answered another word&amp;#39;s question and made assess-first a
+permanent no-op; three migrated word pairs share one picture; the
+feedback screen lost the search phrase behind the migrated row; a tie
+broke by set iteration order.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9f5066662ab7656805f8efd6e942a4f69a9df1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/f9f5066662ab7656805f8efd6e942a4f69a9df1b"/>
+    <title>
+        Migrate the current picture as a candidate
+    </title>
+    <updated>2026-09-07T12:43:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Migrate the current picture as a candidate
+
+One provide row per joined picture-word note, backend legacy-current,
+key ProvideKey(legacy-current, picture, word id), items = the
+normalized sha and ext; no attempt-outcome row. Idempotent: a re-run
+counts already_present[&amp;quot;current_picture&amp;quot;]. The first run to queue the
+word&amp;#39;s picture need judges it under the current rubric (spec 2 r7 §4).
+
+TODO: the assess-first item is closed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da6ee38e48886097a43dc960076af7e66e738dbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/da6ee38e48886097a43dc960076af7e66e738dbd"/>
+    <title>
+        Judge a need&#39;s unjudged candidates before asking any source
+    </title>
+    <updated>2026-09-07T12:37:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Judge a need&amp;#39;s unjudged candidates before asking any source
+
+attempts.assess_first(ctx, need) asks the fit questions on the need&amp;#39;s
+candidates with no verdict under the current rubric and nothing else:
+no source ask, no outcome row. None when none awaits or every awaiting
+question was excluded; the run loop then falls through to the source.
+Assess-first runs before source selection, the budget check and the
+exhausted check (spec 3 r11 §5, §7).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f8d657882b304eb7f3c117bf10511e401ed6fd5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/0f8d657882b304eb7f3c117bf10511e401ed6fd5"/>
+    <title>
+        Fold the candidates awaiting a current verdict; make that the queue&#39;s…
+    </title>
+    <updated>2026-09-07T12:26:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fold the candidates awaiting a current verdict; make that the queue&amp;#39;s rubric lever
+
+unjudged_candidates(cache, subject, kind, current_rubric) names a need&amp;#39;s
+candidate shas with no judge verdict under the current rubric for its
+role. The queue&amp;#39;s bucket-2 rubric lever is that fold: a stale verdict on
+a sha that is not a candidate is no lever. An exhausted need with such a
+candidate stays queued (spec 3 r11 §6).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cf4495b65a852b925b5cc7b707cd3f58506e41bb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/cf4495b65a852b925b5cc7b707cd3f58506e41bb"/>
+    <title>
+        Revise spec 2 to r7 and spec 3 to r11: assess-first
+    </title>
+    <updated>2026-09-07T12:15:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revise spec 2 to r7 and spec 3 to r11: assess-first
+
+Spec 3 §5: a need with a candidate unjudged under the current rubric
+is judged before any source is asked; no source ask, no outcome row.
+§6: the queue&amp;#39;s rubric lever is that same fold, and an exhausted need
+with such a candidate stays queued. §7 and §10 follow.
+
+Spec 2 §4: the deck&amp;#39;s current picture migrates as a candidate, one
+provide row per joined word (backend legacy-current), no outcome row.
+
+Evidence: smoke run 3 re-sourced five candidates per picture word while
+the migrated picture sat unjudged; a stale legacy verdict on a
+non-candidate sha read as an untried lever.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01VkmZ8UWkWvHpPPdoQhenNT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c2288045749a7cfd13ed69012338fd6ab4632f1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/6c2288045749a7cfd13ed69012338fd6ab4632f1"/>
+    <title>
+        Queue the assess-first gap: migrated pictures are never candidates
+    </title>
+    <updated>2026-09-07T09:52:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Queue the assess-first gap: migrated pictures are never candidates
+
+A migrated picture has a media row and no provide row, so no fold sees
+it and no run judges it; the cutover note and an r11 item say so.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74f10120278d3ba65c50f96cb1ba99367c484168</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/74f10120278d3ba65c50f96cb1ba99367c484168"/>
+    <title>
+        Correct spec 3&#39;s batch release sentences; queue r11 decisions
+    </title>
+    <updated>2026-09-07T09:11:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Correct spec 3&amp;#39;s batch release sentences; queue r11 decisions
+
+A batch marker is released when the batch ends; expired or errored
+results re-ask. TODO lists the five r11 candidates the arc raised.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8205e7f88369848bd157de60c2d3488bcd87410</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/f8205e7f88369848bd157de60c2d3488bcd87410"/>
+    <title>
+        Strip judge answer fences; refuse a drafter answer with no drafts
+    </title>
+    <updated>2026-09-07T09:10:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Strip judge answer fences; refuse a drafter answer with no drafts
+
+The fit, sentence and preference parsers accept a fenced JSON body
+through the helper the drafter already used. LlmBackend appends only
+a completion its producer recognizes; the sentence drafter recognizes
+a body with drafts. A Forvo re-lookup that fails after an item stored
+is a transient fetch. Stale prose on transient outcomes, the batch
+status values, and the duration backend&amp;#39;s contract corrected; a
+negative test for judge.max_tokens.
+
+Evidence: whole-branch review 2026-09-07.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47b7f61c7392f187f04ac54dc93a0788467c896f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/47b7f61c7392f187f04ac54dc93a0788467c896f"/>
+    <title>
+        Configure judge.max_tokens; adaptive thinking needs at least 16000
+    </title>
+    <updated>2026-09-07T08:26:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Configure judge.max_tokens; adaptive thinking needs at least 16000
+
+Both paid transports send judge.max_tokens (4096 by default). The
+loader refuses thinking: adaptive below 16000.
+
+Evidence: the first cutover run&amp;#39;s 4096 tokens went entirely to thinking.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c25fd0f9342e3e7d6bea9fe2d25975aac3beb71</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/2c25fd0f9342e3e7d6bea9fe2d25975aac3beb71"/>
+    <title>
+        Name the curated and tokenizer version in the fills key
+    </title>
+    <updated>2026-09-07T08:20:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Name the curated and tokenizer version in the fills key
+
+A fills verdict depends on words.yaml, targets.yaml and the tokenizer;
+its key carries a sha of the two files and the tokenizer&amp;#39;s name and
+version, so an edit to any of them is a new ask.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb1e6ad6b6c6e0267fda9ba516125f0e8ee9063c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/bb1e6ad6b6c6e0267fda9ba516125f0e8ee9063c"/>
+    <title>
+        Send Openverse searches through search_proxy as a forward proxy
+    </title>
+    <updated>2026-09-07T08:08:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Send Openverse searches through search_proxy as a forward proxy
+
+The search keeps its real url and requests tunnels it through the
+proxy; wikimedia and pexels are searched directly.
+
+Evidence: tinyproxy answered 400 to the base-url request; curl -x
+through it reaches api.openverse.org.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8ecab4bb3b50e25e01e06e97ef2a82f311b5495c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cehbz/thai-language-anki/commit/8ecab4bb3b50e25e01e06e97ef2a82f311b5495c"/>
+    <title>
+        Exclude a recording the duration check cannot read
+    </title>
+    <updated>2026-09-07T07:58:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1069981?s=30&amp;v=4"/>
+    <author>
+      <name>cehbz</name>
+      <uri>https://github.com/cehbz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Exclude a recording the duration check cannot read
+
+A missing artifact, or one ffprobe rejects, is a PreparationError:
+excluded for the run, never cached, never unreachable. Only an ffprobe
+that cannot run is a transport error.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

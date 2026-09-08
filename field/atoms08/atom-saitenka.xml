@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/serjflint/saitenka/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/serjflint/saitenka/commits/main.atom"/>
+  <title>Recent Commits to saitenka:main</title>
+  <updated>2026-09-07T18:34:26Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ef78b65a5ba022536ef7dd80f3b81c6f119724e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ef78b65a5ba022536ef7dd80f3b81c6f119724e5"/>
+    <title>
+        Merge pull request #505 from serjflint/fix/overprint-anchor
+    </title>
+    <updated>2026-09-07T18:34:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #505 from serjflint/fix/overprint-anchor
+
+fix(subtitles): anchor the overprint where the token&amp;#39;s ink actually lands&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f471e2b5a519037355933fa9ca3f008619a65c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/7f471e2b5a519037355933fa9ca3f008619a65c5"/>
+    <title>
+        fix(subtitles): key anchors by event, normalize the probed text, reme…
+    </title>
+    <updated>2026-09-07T18:20:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): key anchors by event, normalize the probed text, remember failures
+
+Second review pass. None of the three fires through today&amp;#39;s producer, and each
+is inside a contract the package already states.
+
+The offset was looked up by token index alone. `_validate_palette` requires only
+the (event, index) PAIR to be unique, so two events in one frame both answer to
+index 0 — a frame with two events routinely has two first tokens — and the last
+one measured hands its correction to the other word. Keyed by both now.
+
+`_token_surface` sliced the raw text while every offset in that module is
+defined against the normalized form (`\r` dropped, literal `\N` folded to one
+newline). Past a break, every token read one character late and probed a
+neighbour&amp;#39;s string.
+
+A probe that measures nothing is not retried forever. `extract_token_geometry`
+refuses a palette colour that drew nothing, so one inkless token — text the
+overprint would refuse anyway — fails the whole batch; with nothing recording
+the attempt, the batch re-rendered once per geometry render for the session.
+
+Smaller, from the same pass: the probe renders under the cue&amp;#39;s own style, since
+hinting and blur change a glyph&amp;#39;s extent and measuring without them returns an
+offset for a render nobody performs; at timestamp 0, since its events start
+there and a long file would silently draw nothing; probe renderers evict
+most-recently-used last like the cue&amp;#39;s; and the row pitch is imported rather
+than restated beside the frame it has to agree with.
+
+`fragments`&amp;#39; docstring claimed extent-based routing to the raster device. That
+is not implemented — `Fragment.matches` exists so the decision has a measurement
+to stand on, and the docstring now says which of the two it is.
+
+The first of these had a test that could not fail: it gave the two events
+different token indices, so index-only keying passed it. Planting the defect is
+what showed that, not reading it.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0aff7e7285e301782aad41ae21f48e966f59353</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b0aff7e7285e301782aad41ae21f48e966f59353"/>
+    <title>
+        fix(subtitles): bound the anchor cache and cover the probe wiring
+    </title>
+    <updated>2026-09-07T18:13:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): bound the anchor cache and cover the probe wiring
+
+Review findings on the anchor fix, both real.
+
+The cache was unbounded, and its key is not stable the way its docstring
+claimed. The size in it is the FRAME&amp;#39;s, not the document&amp;#39;s — `_palette_in_frame
+_units` multiplies by `frame_height / play_res_y` — so dragging a window edge
+mints a distinct float per pixel of height, every one of them a miss, every miss
+a second libass render, and none of it ever reclaimed. &amp;quot;A repeated cue costs a
+dict lookup&amp;quot; holds while the window is still and nowhere else. Now LRU, bounded,
+and the comment says which case the bound is for.
+
+The wiring had no coverage outside the `live` tier, which does not run in CI. A
+wrong sign, a key that never matches, or a probe failing forever would all have
+shipped green: the unit tests covered the pure arithmetic in `fragments` and
+nothing that decides whether it is reached. Six tests over the backend probe —
+offset carried, unprobed token left alone, measured once per cue, the cue&amp;#39;s
+renderer never pointed at a probe document, probe renderers closed, cache
+bounded — and two over the subtraction itself in `test_overprint`.
+
+Writing them exposed a fake that answered the cue&amp;#39;s palette whatever document it
+was handed, which made the probe&amp;#39;s own colours unrecoverable and hid the whole
+path behind the swallowed exception below. It answers the document now.
+
+That exception no longer swallows silently: the first failure logs at warning,
+since a probe that never succeeds disables the correction for the session with
+nothing on screen to show it, and the rest stay at debug so a bad face cannot
+flood the log.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9343ae208903ec78b32a6348e3761e88fddcfbed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/9343ae208903ec78b32a6348e3761e88fddcfbed"/>
+    <title>
+        fix(subtitles): anchor the overprint where the token&#39;s ink actually l…
+    </title>
+    <updated>2026-09-07T17:59:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): anchor the overprint where the token&amp;#39;s ink actually lands
+
+`\an7` positions the line box; a measured box is ink. Passing the ink origin to
+`\pos` planted every redraw an ascent-gap low — 39% of the colour on the glyphs,
+the rest on empty frame, with mpv&amp;#39;s own subtitle showing through above it.
+
+The offset cannot be derived from the box (libass reports no baseline) and is
+not a constant: it depends on the token&amp;#39;s tallest glyph, so it differs per word
+in the same cue. It is measured instead, by rendering the fragmented layout the
+overprint will ask for through the renderer that produced the boxes, and reading
+where each token&amp;#39;s ink lands.
+
+    39% -&amp;gt; 99.9% of the overprint on a glyph mpv drew
+
+Cost is one probe render per unseen (text, face, size). A repeated cue, a redraw,
+and a recurring word all cost a dict lookup; a session&amp;#39;s second and third render
+of the same cue probe nothing. The probe uses its own renderer per font
+environment so it never evicts the cue document from the renderer drawing the
+cue, and a probe that fails leaves the offsets unrecorded — every redraw keeps
+the origin it had before, which is today&amp;#39;s behaviour.
+
+The live oracle now drives `overprint_payload` rather than assembling paints
+itself: the placement under test is a decision `_assign_rung` makes, and a test
+that re-implements it would have kept passing while the shipped path was wrong.
+That is not hypothetical — this commit&amp;#39;s first two attempts passed the anchor
+through a palette that dropped the text and through a field order that put
+`coverage` into `anchor_dx`, and only the end-to-end pixel count caught either.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f73c819a402791d4c7ad2c3e686984bcbbeeee7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/4f73c819a402791d4c7ad2c3e686984bcbbeeee7"/>
+    <title>
+        Merge branch &#39;main&#39; into fix/overprint-anchor
+    </title>
+    <updated>2026-09-07T17:11:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;main&amp;#39; into fix/overprint-anchor&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4213ad33b2aa2675b6cea6aba577e0db7de26673</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/4213ad33b2aa2675b6cea6aba577e0db7de26673"/>
+    <title>
+        Merge pull request #506 from serjflint/chore/gate-d-self-diagnosing
+    </title>
+    <updated>2026-09-07T16:30:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #506 from serjflint/chore/gate-d-self-diagnosing
+
+chore(gate-d): make the geometry matrix report why a cell failed&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/57958365fd46014dfcd4e022a3c9c955a7eb559e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/57958365fd46014dfcd4e022a3c9c955a7eb559e"/>
+    <title>
+        chore(gate-d): make the geometry matrix report why a cell failed
+    </title>
+    <updated>2026-09-07T16:22:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(gate-d): make the geometry matrix report why a cell failed
+
+A failing cell reported every criterion in its assessment as green, beside
+`passed: false`. Nothing was wrong with either: `passed` is overwritten after
+the mask comparison by four more criteria — the unsafe low-delta total, its
+largest component, and nine render-input checks — and none of them is
+serialized. So the number that decided the run was not in the run&amp;#39;s own report,
+and each investigation started by re-deriving it.
+
+On a real macOS failure the answer turns out to be three pixels of slack:
+
+    unsafe-low-delta-pixels 67 &amp;gt; 64
+    unsafe-low-delta-component 34 &amp;gt; 23
+
+with mask IoU 0.9609 against a 0.95 floor, bounds equal, and every input check
+passing. `rejected_by` now carries that, quantified, per cell.
+
+`sub-add` gets the same treatment for the other fault this job produces.
+`cmd_track_add` (mpv, player/command.c) answers &amp;quot;error running command&amp;quot; for both
+of its failure paths — playback already stopping, and the file not opening — so
+the reply alone cannot tell them apart. mpv&amp;#39;s log can, and the session already
+keeps one; the constructor above reads it on the IPC path and this did not.
+
+No threshold moves here. The 67-vs-64 and 34-vs-23 overshoot is a real
+disagreement on one interaction (wrapping under a wide pixel aspect) and wants
+its own look, which is easier now that the run says so itself.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b34c0ae80cc51f8ab13f86da0757d1ced9e3ffcf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b34c0ae80cc51f8ab13f86da0757d1ced9e3ffcf"/>
+    <title>
+        Merge pull request #504 from serjflint/docs/rtd-canonical-urls
+    </title>
+    <updated>2026-09-07T15:58:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #504 from serjflint/docs/rtd-canonical-urls
+
+docs: derive the canonical URL from Read the Docs&amp;#39; published base&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ebb368ce5572277e46961d465b6d0314e443648</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/2ebb368ce5572277e46961d465b6d0314e443648"/>
+    <title>
+        test(subtitles): measure whether the overprint colours the glyphs
+    </title>
+    <updated>2026-09-07T10:53:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(subtitles): measure whether the overprint colours the glyphs
+
+The boxes are hit targets, and the existing differential proves they are good
+ones: a rectangle over a word, within a pixel of mpv&amp;#39;s ink. The overprint asks a
+second thing of the same rectangle — that redrawing the token there reproduces
+the glyphs mpv drew — and nothing checked it. The two are not the same claim,
+and only the first was true.
+
+Measured by rendering the cue, then the cue plus our overprint events, through
+one renderer, and asking what share of the colour landed on a glyph:
+
+    39% on the glyphs, 916 coloured pixels on empty frame
+
+`\an7` anchors the line box; the measured rectangle is ink. Handing the ink
+origin to `\pos` plants the redraw an ascent-gap low — ~6px at fs40, growing
+with the cue. Production agrees: its own drift log reads t=+14 b=+27 at
+fs89.775 and t=+28 b=+37 at fs144.9, left ≈ 0 throughout, which is a
+translation and nothing else.
+
+Nobody sees it because the calibration catches it every time and demotes to the
+raster device (`demotions[reason=measured-layout-drift]` in a real report). The
+colour is correct; the fast path has been dead, disabled by a detector that
+attributes our anchoring to the OSD library&amp;#39;s font reach.
+
+`fragments` measures the correction with the renderer that produced the boxes:
+render the fragmented layout the overprint will ask for, read where each token&amp;#39;s
+ink lands, subtract. Applying it takes the same cue from 39% to 99.9%. It also
+answers the second question — a token whose extent changes when drawn alone
+cannot be redrawn faithfully and belongs on the raster device — which no
+positional fix reaches.
+
+The wiring is not here. It costs a second render per cue on a path that touches
+every frame, and the test above is what it has to prove itself against.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b73b6b30248b8a638871a5c2a3e5d36f16c80b2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b73b6b30248b8a638871a5c2a3e5d36f16c80b2b"/>
+    <title>
+        docs: derive the canonical URL from Read the Docs&#39; published base
+    </title>
+    <updated>2026-09-06T19:50:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: derive the canonical URL from Read the Docs&amp;#39; published base
+
+`site_url` was the bare host root, but RTD serves every page under a version
+prefix. So each nested page declared a canonical one path segment short of
+anything RTD serves: `/start/install/` returns 404 while the page itself lives
+at `/en/latest/start/install/`. Search engines are entitled to drop or mis-rank
+a page whose canonical does not resolve.
+
+RTD publishes the correct base per build in READTHEDOCS_CANONICAL_URL. The
+fallback keeps a local `poe docs` build deterministic when that variable is
+absent, and carries a version prefix so the local build and the published one
+agree about the shape of a canonical.
+
+`poe docs-canonical` pins both failure modes, since neither is visible in a
+built page without fetching the URL: a base at the host root, and a base with no
+trailing slash — `urljoin` drops the last segment of that one, so a
+version-looking base silently canonicalises without its version.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8be59578e292f7fd2927a3575fc3c326f224c0e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/f8be59578e292f7fd2927a3575fc3c326f224c0e"/>
+    <title>
+        Merge pull request #503 from serjflint/feat/subtitle-provider-languages
+    </title>
+    <updated>2026-09-06T19:31:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #503 from serjflint/feat/subtitle-provider-languages
+
+feat(subtitles): serve every language TsukiHime carries, keyed by the profile&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/59afd594f8bcbba9caa30d908462122818178d7b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/59afd594f8bcbba9caa30d908462122818178d7b"/>
+    <title>
+        fix(subtitles): key the run-path cache and picker picks by profile la…
+    </title>
+    <updated>2026-09-06T19:25:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): key the run-path cache and picker picks by profile language
+
+Two paths kept writing or reading the unmarked (Japanese) cache slot after
+TsukiHime stopped being Japanese-only, each reopening the cross-profile hijack
+the language-keyed slot was added to close.
+
+`launch.run._configured_subtitles` gated the cache read on &amp;quot;some provider serves
+this language&amp;quot; and then read the slot with no language. That gate was sufficient
+only while every provider was Japanese-only; widening TsukiHime made it true for
+every language, so a French run was served the Japanese file a prior run had
+cached. Nothing covered `_configured_subtitles`, so the gap was invisible.
+
+The picker stored a pick under the attachment&amp;#39;s own tag. For an untagged
+attachment — the case the boundary deliberately lets through — that resolved to
+the Japanese slot, orphaning the hand pick for the profile that made it and
+serving it to a Japanese one. Picks are keyed by the profile that chose them;
+the boundary has already established the pick belongs to it.
+
+Also: the picker&amp;#39;s mixed-language test compared display names, so one language
+spelled two ways (fr/fra) labelled every row; it compares language bases now.
+A test comment claimed `fra` as a negative control for `fr` when it is a valid
+alias that matches — the case is now present and asserts what it does.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/998c063270e8a198adf3e5b320c1c23f06820573</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/998c063270e8a198adf3e5b320c1c23f06820573"/>
+    <title>
+        feat(subtitles): serve every language TsukiHime carries, keyed by pro…
+    </title>
+    <updated>2026-09-06T18:52:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(subtitles): serve every language TsukiHime carries, keyed by profile
+
+The provider dropped every non-Japanese attachment while parsing a release
+(`_is_japanese` in `_attachment_from_raw`). A census of 30 releases found 30+
+languages, with French attachments outnumbering Japanese ones — so the filter
+discarded most of what the source serves, and &amp;quot;TsukiHime as a French source&amp;quot;
+was a filter to delete rather than an adapter to write.
+
+Language becomes part of the provider contract: candidates carry their raw
+reported tag, `ProviderContext` carries the profile&amp;#39;s target, and the boundary
+applies the existing `lang_matches` policy to a non-blank tag. An untagged
+result is not auto-attached — it reaches the manual picker instead, since a
+human can judge what a missing tag cannot.
+
+Three things had to move with it:
+
+- The filter runs before `fetch`&amp;#39;s uniqueness guard. A release holds one
+  subtitle per language, so counting all of them made every real multilingual
+  release ambiguous.
+- The cache slot gains a language. It was keyed on (video, title, episode,
+  size, mode), so a French session could be served the Japanese file a previous
+  session stored; the jp-only capability had been the accidental guard.
+  Japanese keeps the unmarked legacy spelling, so existing hand-picked `-raw`
+  and `-retimed` entries stay addressable.
+- `ProviderContext.language` defaults to the target rather than to None, which
+  means &amp;quot;do not filter&amp;quot; — the wrong default for an unattended fetch.
+
+`fetch_provider_path` takes the context whole instead of unpacking seven
+keywords and repacking them one line later.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bec4352903f658dfd5880f15725780b6cea3fd8a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/bec4352903f658dfd5880f15725780b6cea3fd8a"/>
+    <title>
+        Merge pull request #500 from serjflint/issue-346
+    </title>
+    <updated>2026-09-06T00:35:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #500 from serjflint/issue-346
+
+fix(subtitles): remove ASS drawings from cue text&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a67b120a67acee42e60e5d02215cdef95648e474</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/a67b120a67acee42e60e5d02215cdef95648e474"/>
+    <title>
+        Merge pull request #502 from serjflint/issue-417
+    </title>
+    <updated>2026-09-06T00:34:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #502 from serjflint/issue-417
+
+fix(subtitles): restore karaoke interaction&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/63233a3414e6237e9e3509314356486ab7f6ba04</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/63233a3414e6237e9e3509314356486ab7f6ba04"/>
+    <title>
+        Merge pull request #501 from serjflint/issue-338
+    </title>
+    <updated>2026-09-06T00:32:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #501 from serjflint/issue-338
+
+feat(mining): defer card work off interaction loop&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4ecfd4eea44233755937fbaad94e28f6073533b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/4ecfd4eea44233755937fbaad94e28f6073533b4"/>
+    <title>
+        fix(subtitles): preserve zero drawing resets
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): preserve zero drawing resets&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45df02f69c6ccf636fbc6299193994d637032062</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/45df02f69c6ccf636fbc6299193994d637032062"/>
+    <title>
+        fix(subtitles): match mpv ASS text semantics
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): match mpv ASS text semantics&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d9a3d7c1162a527a02cf2e32c3fad2eea793a25</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/8d9a3d7c1162a527a02cf2e32c3fad2eea793a25"/>
+    <title>
+        fix(subtitles): remove ASS drawings from cue text
+    </title>
+    <updated>2026-09-05T22:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): remove ASS drawings from cue text&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab6c83dc486586e11558d5af86fb2fc5fd45d513</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ab6c83dc486586e11558d5af86fb2fc5fd45d513"/>
+    <title>
+        test(subtitles): propagate karaoke oracle contract
+    </title>
+    <updated>2026-09-05T22:04:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(subtitles): propagate karaoke oracle contract&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

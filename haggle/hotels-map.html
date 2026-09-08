@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hanoi Old Quarter hotel buy-off (indicative)</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="" />
+  <style>
+    :root {
+      --ink: #1a1a1a;
+      --muted: #555;
+      --paper: #f7f4ef;
+      --accent: #c45c26;
+      --ctx: #5b6b7a;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--ink); background: var(--paper);
+    }
+    header {
+      padding: 0.75rem 1rem 0.5rem;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+    }
+    header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.15rem;
+      font-weight: 650;
+    }
+    header p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    #map { height: calc(100% - 4.5rem); width: 100%; }
+    .legend {
+      position: absolute; z-index: 1000;
+      right: 12px; bottom: 28px;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid #ccc; border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.75rem; line-height: 1.4;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      max-width: 220px;
+    }
+    .legend strong { display: block; margin-bottom: 0.2rem; }
+    .swatch {
+      display: inline-block; width: 10px; height: 10px;
+      border-radius: 50%; margin-right: 6px; vertical-align: middle;
+    }
+    .swatch.main { background: var(--accent); }
+    .swatch.ctx { background: var(--ctx); }
+    .leaflet-popup-content { font-size: 0.9rem; line-height: 1.35; margin: 0.6rem 0.75rem; }
+    .leaflet-popup-content .name { font-weight: 650; font-size: 1rem; margin-bottom: 0.2rem; }
+    .leaflet-popup-content .price {
+      color: var(--accent); font-weight: 650; margin: 0.15rem 0 0.35rem;
+    }
+    .leaflet-popup-content .price.ctx { color: var(--ctx); }
+    .leaflet-popup-content .addr { color: var(--muted); font-size: 0.82rem; }
+    .leaflet-popup-content .note {
+      margin-top: 0.4rem; font-size: 0.75rem; color: #777; font-style: italic;
+    }
+    .price-label {
+      background: var(--accent); color: #fff;
+      border: 2px solid #fff; border-radius: 4px;
+      padding: 2px 6px; font-size: 11px; font-weight: 700;
+      white-space: nowrap; box-shadow: 0 1px 3px rgba(0,0,0,0.35);
+    }
+    .price-label.ctx { background: var(--ctx); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hanoi Old Quarter hotel buy-off (indicative)</h1>
+    <p>Steward buy-off · private hotel/guesthouse · ~10–11 nights from ~11 Sep 2026 · prices as of Haggle 2026-09-08 · verify OTA before book</p>
+  </header>
+  <div id="map"></div>
+  <div class="legend">
+    <strong>Legend</strong>
+    <div><span class="swatch main"></span>Buy-off shortlist (4)</div>
+    <div><span class="swatch ctx"></span>Optional context pins</div>
+    <div style="margin-top:0.35rem;color:#666">OSM tiles · Leaflet · public addresses</div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+  <script>
+    const hotels = [
+      {
+        name: "Tung Trang Hotel",
+        price: "~$24/nt",
+        address: "13 Tam Thuong Lane (Ngõ Tạm Thương, btwn 38–40 Hàng Bông), Hoàn Kiếm, Hanoi",
+        lat: 21.03137,
+        lng: 105.84783,
+        role: "main",
+        extra: "★ ask class · alley off Hàng Bông"
+      },
+      {
+        name: "Silk Castle Hotel (Hanoi)",
+        price: "~$26–39/nt",
+        address: "52 Cầu Gỗ St, Hoàn Kiếm, Hanoi",
+        lat: 21.03234,
+        lng: 105.85275,
+        role: "main",
+        extra: "BF options on some rates"
+      },
+      {
+        name: "Central Park Hotel Hanoi",
+        price: "~$19–25/nt",
+        address: "58 Hàng Bè St, Old Quarter, Hoàn Kiếm, Hanoi",
+        lat: 21.03243,
+        lng: 105.85371,
+        role: "main",
+        extra: "Pin ≈ OSM node at #58 Hàng Bè"
+      },
+      {
+        name: "Bella Rosa Hotel (Boutique)",
+        price: "~$42/nt",
+        address: "21 Cầu Gỗ St, Hoàn Kiếm, Hanoi",
+        lat: 21.03216,
+        lng: 105.85332,
+        role: "main",
+        extra: "Best-known Bella Rosa near lake (OSM: Hanoi Bella Rosa). Also: Bella Rosa Trendy @ 11 Lương Ngọc Quyến — confirm which OTA listing. Trivago sample 11→21 ~$460/10n"
+      },
+      {
+        name: "Imperial Hotel & Spa Hanoi",
+        price: "earlier ~$107 (short stay)",
+        address: "44 Hàng Hành St, Hoàn Kiếm, Hanoi",
+        lat: 21.03152,
+        lng: 105.85047,
+        role: "ctx",
+        extra: "Off brief now · location reference only · pin ≈ Hàng Hành street"
+      },
+      {
+        name: "Hanoi Nostalgia Hotel",
+        price: "~1.43M VND/nt (official tariff)",
+        address: "13–15 Lương Ngọc Quyến, Hoàn Kiếm, Hanoi",
+        lat: 21.03478,
+        lng: 105.85303,
+        role: "ctx",
+        extra: "Official list rate (excl. tax context on site) · location ref"
+      }
+    ];
+
+    const map = L.map("map", { scrollWheelZoom: true });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    function makeIcon(role, priceText) {
+      const cls = role === "main" ? "price-label" : "price-label ctx";
+      const short = priceText.replace(/ \(.*\)/, "").replace("earlier ", "");
+      return L.divIcon({
+        className: "",
+        html: `<div class="${cls}">${short}</div>`,
+        iconSize: [1, 1],
+        iconAnchor: [40, 12]
+      });
+    }
+
+    const group = L.featureGroup();
+    hotels.forEach((h) => {
+      const priceClass = h.role === "main" ? "price" : "price ctx";
+      const html =
+        `<div class="name">${h.name}</div>` +
+        `<div class="${priceClass}">${h.price}</div>` +
+        `<div class="addr">${h.address}</div>` +
+        (h.extra ? `<div class="addr" style="margin-top:0.25rem">${h.extra}</div>` : "") +
+        `<div class="note">indicative — verify OTA</div>`;
+      const m = L.marker([h.lat, h.lng], { icon: makeIcon(h.role, h.price) })
+        .bindPopup(html, { maxWidth: 280 });
+      m.addTo(group);
+    });
+    group.addTo(map);
+    map.fitBounds(group.getBounds().pad(0.18));
+  </script>
+</body>
+</html>

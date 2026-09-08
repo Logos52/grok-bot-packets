@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/giuniperoo/flashcards/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/giuniperoo/flashcards/commits/main.atom"/>
+  <title>Recent Commits to flashcards:main</title>
+  <updated>2026-09-08T00:19:39Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/acff86e03c418a76b3b6d03e06ef1ded063aad54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/acff86e03c418a76b3b6d03e06ef1ded063aad54"/>
+    <title>
+        Merge pull request #16 from giuniperoo/readme-live-url
+    </title>
+    <updated>2026-09-08T00:19:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #16 from giuniperoo/readme-live-url
+
+Review the README end to end&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd229f30ac9aaeb43e3f7c36dbbb0414e3087d2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/bd229f30ac9aaeb43e3f7c36dbbb0414e3087d2e"/>
+    <title>
+        Revert to the stacked masthead
+    </title>
+    <updated>2026-09-08T00:18:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revert to the stacked masthead&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c20be90e545c6ef7e1a63c61bc6600b79243f625</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/c20be90e545c6ef7e1a63c61bc6600b79243f625"/>
+    <title>
+        Set the URL beside the mark rather than under it
+    </title>
+    <updated>2026-09-08T00:13:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Set the URL beside the mark rather than under it
+
+Both go in the one h2 with `align=&amp;quot;middle&amp;quot;` on the image, so the link
+sits vertically centred against the wordmark and GitHub&amp;#39;s heading rule
+runs under the pair. Compared against a float and an inline plain link
+under GitHub&amp;#39;s own stylesheet; the float does not hold its rule, and a
+body-weight link beside a 265px mark reads as a caption.
+
+`align` is one of the few layout attributes GitHub&amp;#39;s sanitiser keeps —
+`style` is not, so there is no flexbox route to this.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6297d2ed883f71860d4c4e8055bd09565c513cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/b6297d2ed883f71860d4c4e8055bd09565c513cd"/>
+    <title>
+        Put the live URL under the mark
+    </title>
+    <updated>2026-09-08T00:05:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Put the live URL under the mark
+
+Moves it out of the intro prose and into the masthead, where someone
+looking for &amp;quot;where is this running&amp;quot; will actually look. GitHub gives an
+h2 a rule underneath, so the logo and the link read as one block.
+
+Dropped `target=&amp;quot;_blank&amp;quot;` — GitHub&amp;#39;s sanitiser strips it from README
+links, confirmed against the render API, so it would sit in the file
+doing nothing.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f44c774dd0f6e0d46849d5f2f1585a5f3184d5a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/f44c774dd0f6e0d46849d5f2f1585a5f3184d5a5"/>
+    <title>
+        Review the README end to end
+    </title>
+    <updated>2026-09-08T00:00:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Review the README end to end
+
+Going public makes this the front door, so every claim in it wanted
+checking against the code. Three were wrong or stale.
+
+- The built-in decks section was written as though they start visible.
+  `DEFAULT_PREFS` has `showBuiltIns: false`, so the index opens empty.
+  Reframed, and the intro now says so rather than promising twelve decks
+  to someone about to meet an empty screen
+- &amp;quot;Thirteen study and print routes&amp;quot; is thirteen slugs on each of two
+  route trees, so twenty-six
+- The file tree omitted `new/page.tsx`, the importer and the generator
+  while the prose discussed all three at length
+
+Adds what was missing: the deck generator, which is a real feature
+touching the reader&amp;#39;s own API key and had no mention at all; the build,
+lint and test commands; and a Storage section that names the four
+localStorage keys and is honest that browsers clear them.
+
+Also folds &amp;quot;imported decks live in one browser&amp;quot; into Storage, where it
+belongs beside the same caveat for progress.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/744d709fcf3c310951738524422dd2040d0dcd54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/744d709fcf3c310951738524422dd2040d0dcd54"/>
+    <title>
+        Link the live site from the README
+    </title>
+    <updated>2026-09-07T23:55:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Link the live site from the README
+
+Says where the deployed app is, and warns that a first visit lands on an
+empty index. `DEFAULT_PREFS` has `showBuiltIns: false`, so a reader who
+has just been told &amp;quot;twelve decks, 264 cards&amp;quot; and clicks straight through
+would otherwise meet &amp;quot;No decks yet&amp;quot;.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f3b63100cb9a208f238d7d90e505da6a5c12b6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/8f3b63100cb9a208f238d7d90e505da6a5c12b6d"/>
+    <title>
+        Merge pull request #15 from giuniperoo/landing-measure
+    </title>
+    <updated>2026-09-07T23:48:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #15 from giuniperoo/landing-measure
+
+Widen the index headline and lift the footer off the grid&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88ce9f669fc89870a01cee5bbaf0eeb3483d2a48</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/88ce9f669fc89870a01cee5bbaf0eeb3483d2a48"/>
+    <title>
+        Merge pull request #14 from giuniperoo/mit-license
+    </title>
+    <updated>2026-09-07T23:47:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #14 from giuniperoo/mit-license
+
+Add an MIT licence&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e595a6d6d3a057cfcf76f533a6426700d76734b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/e595a6d6d3a057cfcf76f533a6426700d76734b4"/>
+    <title>
+        Widen the index headline and lift the footer off the grid
+    </title>
+    <updated>2026-09-07T23:42:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Widen the index headline and lift the footer off the grid
+
+Measured on a 1512px desktop, where the headline was breaking earlier
+than it needed to and the footer sat too close to the grid above it.
+
+- h1 to 40rem, so &amp;quot;when you add one:&amp;quot; stays on the first line
+- lead paragraph to 33rem, one rem past max-w-lg, which lands the wrap
+  after &amp;quot;the part&amp;quot;
+- the footer row to 100px of clearance, as `sm:mt-25`
+
+Neither max-width binds below its own value, so both are no-ops on a
+phone. The margin would not be: 100px of dead space above the fold on a
+375px screen is a lot, so it is held at the existing 40px until the sm
+breakpoint.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/399697209fe5c3c2f754c7240dd6190ad52f872f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/399697209fe5c3c2f754c7240dd6190ad52f872f"/>
+    <title>
+        Add an MIT licence
+    </title>
+    <updated>2026-09-07T23:36:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add an MIT licence
+
+The repo is about to go public and had no licence, which by default means
+all rights reserved — readable on GitHub, but not usable by anyone.
+
+Covers the card content as well as the code. The decks are original; the
+four that also exist as printed cards were written for those cards, so
+there is nothing here that isn&amp;#39;t ours to license.
+
+Also sets `license` in package.json, which said nothing.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/86f588db4f0937a8b9189212074d153527fce9f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/86f588db4f0937a8b9189212074d153527fce9f6"/>
+    <title>
+        Merge pull request #13 from giuniperoo/spaced-repetition-plan
+    </title>
+    <updated>2026-09-07T23:32:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #13 from giuniperoo/spaced-repetition-plan
+
+Replan TASKS.md around spaced repetition&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de388214cbe9ca3c0c39497c2020ba1ed67cfc55</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/de388214cbe9ca3c0c39497c2020ba1ed67cfc55"/>
+    <title>
+        Replan TASKS.md around spaced repetition
+    </title>
+    <updated>2026-09-07T23:25:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Replan TASKS.md around spaced repetition
+
+Adds the seven tasks that bring Leitner scheduling to the reviewer, and
+regroups the file now that it holds two unrelated tracks.
+
+The scheduling tasks are ordered and interdependent: one progress store,
+boxes and due dates, the queue builder, the reviewer studying the queue,
+due counts, the cross-deck due queue, docs. Task 1 is worth landing on
+its own merits — `progress:all` and `progress:{slug}` hold the same
+`{deckSlug}:{cardId}` key with different values today, so a draft written
+on one route reads as empty on the other.
+
+Removes tasks 1 and 2, both long since shipped, and defers &amp;quot;in rotation&amp;quot;
+to Not now. Rotation is postponed as premature rather than dropped: it
+scopes by goal where the due queue scopes by time, and you cannot tell
+whether the queue needs a goal filter until you have lived with one that
+has none.
+
+Records two rejected options in Not now so they are not rediscovered:
+progress export/import, and the rotation deferral above.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9459f875edfcd824f53b2dd629d36ce948d04733</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/9459f875edfcd824f53b2dd629d36ce948d04733"/>
+    <title>
+        Merge pull request #12 from giuniperoo/built-ins-off
+    </title>
+    <updated>2026-09-07T22:29:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #12 from giuniperoo/built-ins-off
+
+Start with the built-in decks off&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8aaa71ff8f03597349794d13fbfd3d95856d1999</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/8aaa71ff8f03597349794d13fbfd3d95856d1999"/>
+    <title>
+        Start with the built-in decks off
+    </title>
+    <updated>2026-09-07T22:27:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Start with the built-in decks off
+
+The decks in content/ are mine, and somebody arriving at this app has
+not asked for them. DEFAULT_PREFS now says so: showBuiltIns is false,
+and loadPrefs takes only a stored true for an answer, so a missing or
+half-written value reads as a first visit rather than as consent. A
+reader who ever pressed the switch has their choice stored either way,
+so the new default only ever describes somebody who has not made one.
+
+That default is also what the server prerenders, which is what lets the
+pre-paint script in app/layout.tsx go. It had a job only while the
+server rendered decks the reader did not want: it hid them before they
+could flash. The index now renders no built-in grid at all, so there is
+nothing to paint and then take away, and the grid arrives with the
+preferences the same way the imported decks always have. The `built-ins`
+class and the data-deck attributes go with it, being the selectors it
+wrote and nothing else read. CLAUDE.md records why it existed, so it
+comes back if the default is ever flipped again.
+
+The trade is the mirror of the old one: a reader who has turned the
+decks on sees them appear on hydration. That is the smaller flicker,
+and it falls on somebody who has chosen the decks rather than on
+everybody who has not.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0465e5f1ed8e978b4487ff50d51a52688a53542a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/0465e5f1ed8e978b4487ff50d51a52688a53542a"/>
+    <title>
+        Merge pull request #11 from giuniperoo/logo-sun
+    </title>
+    <updated>2026-09-07T01:28:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #11 from giuniperoo/logo-sun
+
+Turn the mark into a sun on the index&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43fb86f19b600a37c9dc1f6d8f84be8a23acce6b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/43fb86f19b600a37c9dc1f6d8f84be8a23acce6b"/>
+    <title>
+        Merge pull request #10 from giuniperoo/card-ids
+    </title>
+    <updated>2026-09-07T01:26:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #10 from giuniperoo/card-ids
+
+Keep card ids stable, at both ends of the export&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f6186b2ea6538e248e4c6c86e2622aa438fb869e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/f6186b2ea6538e248e4c6c86e2622aa438fb869e"/>
+    <title>
+        Turn the mark into a sun on the index
+    </title>
+    <updated>2026-09-07T01:10:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Turn the mark into a sun on the index
+
+A WebGL sunburst behind the wordmark: twenty rays out of the mark&amp;#39;s own
+frame, turning clockwise, a full circuit every three minutes or so.
+They are one flat colour — the mark&amp;#39;s cream, a fifth of the way from
+the paper — so the whole figure is two tones and a clean edge, cut
+rather than faded.
+
+Rendered by app/page.tsx rather than by the layout, so the shader and
+its loop stay in the index&amp;#39;s chunk: a page you have come to in order to
+study should not have something moving at the top of it, nor carry the
+code for it. The canvas is fixed and full-window on a negative
+z-index, which is what the shell&amp;#39;s new `relative z-10` is for — it
+opens the stacking context that keeps the canvas behind the page and
+still in front of the paper.
+
+The rays leave a rounded rectangle six pixels outside the mark&amp;#39;s frame,
+using the frame&amp;#39;s own corner radius from tools/wordmark.py so the hole
+stays the shape of the thing it is a hole for. Colours come from the
+theme, --color-mark being the cream the mark is printed on.
+
+Written premultiplied, to match how the canvas is composited: straight
+alpha turned every softened pixel white rather than a step between the
+two tones. Reduced motion keeps the light and drops the rotation.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/be20fff231fd2495e6b6b56cb11355e4cd2a6dbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/be20fff231fd2495e6b6b56cb11355e4cd2a6dbd"/>
+    <title>
+        Put a blank line between the cards in the decks that lack one
+    </title>
+    <updated>2026-09-07T01:10:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Put a blank line between the cards in the decks that lack one
+
+These eight decks were added from the app&amp;#39;s export, which wrote its
+cards without one. They parse correctly either way now, but the four
+older decks are written with the blank line and this is the shape the
+format guide describes, so the decks in content/ should not be of two
+minds about it.
+
+Whitespace only: every deck&amp;#39;s parse — ids, questions, answers, tint,
+ink, warnings — is unchanged, and `git diff --ignore-blank-lines` over
+content/ is empty.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b7dc052e1975c520b0ff9046213c86d0597af08</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/5b7dc052e1975c520b0ff9046213c86d0597af08"/>
+    <title>
+        Separate the cards the export writes, and only pin an overriding ink
+    </title>
+    <updated>2026-09-07T01:10:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Separate the cards the export writes, and only pin an overriding ink
+
+toDeckText joined its cards with a single newline, so every card&amp;#39;s
+`id:` landed directly under the answer above it — the exact shape the
+parser used to misread, and the origin of the decks in content/ that
+carry it. A deck exported from the app is what gets kept and read back,
+so the two ends have to agree. There is a blank line between the cards
+now.
+
+`ink:` was left out of the front matter altogether, though it is a
+required field on a Deck and the parser reads it. Exporting a built-in
+deck lost the colour its text and progress bars are drawn in. It is
+written now, but only when the tint would not give it: an ink is
+derived from its tint&amp;#39;s hue, and writing one for every deck would
+freeze today&amp;#39;s shade into decks that are meant to keep tracking
+shadeForTint. The four that do carry one are the built-ins, whose inks
+came from the print spec and sit up to 21 points of saturation and 20
+of lightness off the formula, in both directions.
+
+The round-trip test alone would not have held any of this: with the
+parser now reading a uuid id line mid-answer, the old export parses
+back correctly too. The cases that bite assert on the exported text.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc1a1abfadbe9cd664b2bc6d898d290a4958ff6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/giuniperoo/flashcards/commit/dc1a1abfadbe9cd664b2bc6d898d290a4958ff6a"/>
+    <title>
+        Read a card id that follows an answer directly
+    </title>
+    <updated>2026-09-07T01:10:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1241353?s=30&amp;v=4"/>
+    <author>
+      <name>giuniperoo</name>
+      <uri>https://github.com/giuniperoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read a card id that follows an answer directly
+
+An `id:` line was only recognised when the parser was not part-way
+through an answer, so that an answer happening to begin &amp;quot;id:&amp;quot; stayed
+part of that answer. But `field` only clears on a blank line, and eight
+of the decks in content/ are written with none between their cards, so
+every id after the first arrived mid-answer: it was appended to the
+answer above it, and the card it belonged to was given a generated one
+instead.
+
+That is not cosmetic. loadDecks parses at build time, so those cards
+were rekeyed on every build, and progress is kept by card id. On
+next-js-app-router.md, 1 id of 24 came from the file and 23 changed on
+every parse.
+
+An id line whose value is a uuid now closes the card above it wherever
+it appears. A non-uuid still stays in the answer, which is the case the
+guard was there for.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

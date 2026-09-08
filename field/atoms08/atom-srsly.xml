@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/xyzqm/srsly/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/xyzqm/srsly/commits/main.atom"/>
+  <title>Recent Commits to srsly:main</title>
+  <updated>2026-09-08T00:31:19Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf7aaf50cedb9811062fc03d570585e0b1e45306</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/bf7aaf50cedb9811062fc03d570585e0b1e45306"/>
+    <title>
+        fix(state): the two bugs that survived their own fix, and a Write-mod…
+    </title>
+    <updated>2026-09-08T00:31:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(state): the two bugs that survived their own fix, and a Write-mode dead end
+
+The report was that 631f169 did not hold. It did not, and neither fix was an edge
+case — both were wrong in the same way, having been written against the wrong
+signal.
+
+TOAST. The re-seed latched on the render where `language` changed. The new
+language&amp;#39;s deck arrives one or more renders LATER, because useVocabDeck has to
+read storage first — so the guard was spent against the OUTGOING deck, and by the
+time the incoming one landed the diff had nothing left protecting it. Its backstop
+compared `loadSeq` across languages, and that counter is per-language: Chinese&amp;#39;s
+third load against Spanish&amp;#39;s third load is two unrelated facts that are both 3.
+The two effects are now one, keyed on the language and counter the ids were
+RECORDED WITH, and gated on `deckLoaded` — the same fix Flashcards already carries.
+
+TYPE ANSWERS. Declaring `typedRecall` on `UserPrefs` was necessary and not
+sufficient: a type is erased at runtime, and the write path never changed.
+`setTypedRecall` wrote to localStorage and stopped, so the field never once reached
+the row — and `SupabaseStorage.getPrefs()` mirrors the cloud&amp;#39;s prefs down over local
+wholesale, which app/page.tsx triggers on every language change for the pool
+activation. Toggle on, switch language, and the blob was replaced by a copy that had
+never heard of the field. It is invisible signed OUT, because LocalStorage reads back
+what it just wrote — which is why it survived a fix and was only ever seen live.
+
+WRITE MODE HAD NO EXIT. `mode` outlives a language switch; the toggle is gated on
+`hasHandwriting`. So Chinese → Write → Spanish left mode on &amp;#39;write&amp;#39; with no control
+rendered to leave it: &amp;quot;Nothing to write yet&amp;quot;, and a reload was the only way out.
+
+LAG. The deck could not paint until `syncDeckGlosses` had fetched the language&amp;#39;s
+dictionary — 7.98 MB for Chinese, 5.45 MB for Spanish — so a language switch waited
+on a multi-megabyte download before showing anything. The gloss repair now runs
+behind the paint. `pruneDeckToCurriculum` stays in front, because its whole job is
+stopping an off-curriculum word flashing into a review surface on its way out.
+
+Verified in a browser, signed out: four language switches, zero toasts, typed mode
+still on. The control matters as much — adding 水 through the Vocab tab still fires
+&amp;quot;Added 水 to your deck&amp;quot;, so the test bites rather than having silenced the toast.
+Chinese → Write → Spanish now lands on Spanish flashcards.
+
+733 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d2dc43e8e8e3a9d661365b9b0a23a87ec0c4a251</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/d2dc43e8e8e3a9d661365b9b0a23a87ec0c4a251"/>
+    <title>
+        feat(practice): typed recall asks one question now — meaning in, word…
+    </title>
+    <updated>2026-09-07T20:07:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(practice): typed recall asks one question now — meaning in, word out, your own IME
+
+Pivots typed recall so all four languages behave identically: English meaning on
+the front, the word typed on the back. Chinese and Japanese are entered with the
+learner&amp;#39;s own OS IME, so the answer is the characters rather than a romanisation.
+
+WANAKANA IS GONE, and that is the pivot rather than a side effect. It rewrote the
+input&amp;#39;s value to turn romaji into kana as you typed — which with a real Japanese
+keyboard means two things transforming the same keystrokes, fighting over every
+character. The app no longer touches the field: no library, no binding, and
+lib/typedAnswer.ts stays synchronous because every comparison left is a codepoint
+operation. The dependency is uninstalled and lib/kana.ts deleted.
+
+THE OLD ARGUMENT WAS NOT WRONG AND IS KEPT IN THE DOCS. Facing zh/ja forward —
+character shown, reading typed — rested on a real measurement: a multi-character
+HSK word has a median of ONE homophone in all of CC-CEDICT, so pinyin→characters
+is near deterministic and typing 朋友 tests less than it looks. What it missed is
+that producing a word from its meaning and choosing the right characters is what
+writing Chinese on a keyboard actually is.
+
+The `close` tier is now the FORGOTTEN-KEYBOARD tier, which is what makes the
+pinyin and kana work worth keeping. Type `pengyou` with the IME off, or press
+Enter on たべる before converting to 食べる, and that grades Good showing the right
+form instead of a lapse. Toneless on the Chinese side deliberately, because
+toneless pinyin is what an IME is driven with; for Japanese the realistic miss is
+unconverted kana, not romaji, so no romaji table is needed at all.
+
+A katakana loanword typed in hiragana lands there too — こーひー is not an
+alternative spelling of コーヒー, it is the reading in the wrong script. My test
+asserted `exact` for that and the test was wrong, not the grader.
+
+The bespoke &amp;quot;I was actually right&amp;quot; override is removed: Again/Hard/Good/Easy are
+already on screen and pressing Good does exactly what it did.
+
+isComposing stays and is load-bearing — Enter during composition commits the IME
+candidate and must not also submit; the input stays uncontrolled so React cannot
+re-render mid-composition and drop the candidate window.
+
+CLAUDE.md&amp;#39;s typed-recall section rewritten rather than left contradicting the
+code, which is the failure its own opening section calls out.
+
+733 tests, lint and typecheck clean. Not yet driven in a browser with a real IME.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/631f16955f6d6344e6bbd551b5103c93b781f025</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/631f16955f6d6344e6bbd551b5103c93b781f025"/>
+    <title>
+        fix(practice): three state bugs — a discarded pref, a deck mistaken f…
+    </title>
+    <updated>2026-09-07T19:47:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(practice): three state bugs — a discarded pref, a deck mistaken for an addition, a rewound counter
+
+TOGGLE AMNESIA IS NOT A LIFECYCLE BUG. `typedRecall` was written straight
+into the `srsly-prefs` blob by lib/flashcardPrefs.ts without being a field on
+`UserPrefs`, so it existed only in the LOCAL copy. `getPrefs()` mirrors the
+cloud row down over local wholesale, and the cloud blob never carried it — so
+the next read wiped it. `handleLanguageChange` calls `getPrefs()`, which is
+exactly why switching language turned the toggle off and nothing else did.
+
+A field the storage layer does not know about is a field it will discard.
+Declaring it on UserPrefs is the whole fix. `reverseCards` was declared from
+the start and never had this problem, which is why the two behaved differently
+and made it look like an unmount issue.
+
+THE &amp;quot;ADDED 711 WORDS&amp;quot; TOAST is the sixth failure mode in CLAUDE.md wearing a
+new face. ToastHost re-seeds silently on `loadSeq`, which counts loads from
+STORAGE and so covers signing in — but a language switch replaces the deck
+wholesale, often from the in-memory cache with no load at all. The diff then
+saw 711 unfamiliar ids and announced them as additions. Re-seeding on either
+signal fixes it; the toast now fires only for words actually saved.
+
+SESSION COUNTER continuity across a language switch, DERIVED rather than
+stored: a card graded today already carries `lastReview === today`, so the
+count of work done before this mount is a read over the deck, not a new
+per-day counter that would drift the first time either was written alone.
+Captured once at the queue latch so it keeps meaning &amp;quot;before this session&amp;quot;,
+with `results.length` carrying the rest. 3 of 34 no longer rewinds to 1 of 32.
+
+743 tests, lint and typecheck clean. Not yet driven in a browser.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d5cddba975c8cb66186a0db11e24f85a6587eb3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/9d5cddba975c8cb66186a0db11e24f85a6587eb3"/>
+    <title>
+        feat(zh): the writing canvas — draw the character, graded by its strokes
+    </title>
+    <updated>2026-09-07T06:48:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): the writing canvas — draw the character, graded by its strokes
+
+The frontend for Phase 5. A Cards/Write toggle in SrsTab, gated on the new
+`hasHandwriting` config flag rather than a `language === &amp;#39;zh&amp;#39;` check, opening a
+drawing surface that grades what you drew and feeds lib/writingState.ts.
+
+touch-action: none on the surface is the whole mobile story. hanzi-writer
+listens for pointer moves and preventDefaults them, but the browser decides
+whether a touch is a SCROLL before delivering any move event — so without that
+one property a finger drag scrolls the page and the library receives almost
+nothing. The feature would not work at all on the hardware it exists for.
+
+The library has no destroy(): it appends an SVG to the host and leaves it, so
+the cleanup clears the host by hand. Verified by advancing a card and counting —
+one SVG before, one after, not two.
+
+Colours resolve from CSS variables at runtime. hanzi-writer parses hex into
+rgba and cannot read var(--ink), so its defaults would make this the one screen
+that ignores all six themes; a MutationObserver on data-theme pushes changes
+through updateColor so a mid-session theme switch is not stale until the next
+character.
+
+Lazily imported, and checked rather than asserted: the library lands in its own
+36 kB chunk, and .next/app-build-manifest.json lists seven chunks for / and not
+that one. Stroke data comes from srsly&amp;#39;s own public/strokes/, never a CDN — a
+CDN would make the feature depend on a third party being up and would leak which
+characters a learner is practising to a host they never chose.
+
+Typed against a five-method `WriterHandle` rather than `any`, so the dependency
+surface is visible — including the one private field (`_quiz._currentStrokeIndex`)
+the hint button needs, which now shows up as a type to update if upstream renames
+it rather than as a hint that silently animates the wrong stroke.
+
+VERIFIED BY DRIVING IT, not by reading it. Dispatching all 8 strokes of 朋 along
+their real medians produced &amp;quot;Clean.&amp;quot;, revealed the character and persisted
+{&amp;quot;朋&amp;quot;:{&amp;quot;phase&amp;quot;:&amp;quot;learning&amp;quot;,&amp;quot;learningStep&amp;quot;:1,...}} — scheduling fields only, no
+gloss. And the firewall held in the running app: srsly-activity-log and
+srsly-review-counts stayed null, srs_state kept todayScore 0 with empty sessions,
+and no deck word gained a `reviews` or `dueAt`. Writing graded; reading untouched.
+
+/ first-load JS is 305 kB, up from the 287 kB recorded before typed recall, the
+phonetic series, the PWA and this — CLAUDE.md&amp;#39;s figures updated to match rather
+than left to drift.
+
+743 tests, lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03df05c19b05c6da59c7c4ded886e22768c7f1e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/03df05c19b05c6da59c7c4ded886e22768c7f1e7"/>
+    <title>
+        feat(zh): handwriting foundation — stroke data, per-character schedul…
+    </title>
+    <updated>2026-09-07T06:10:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): handwriting foundation — stroke data, per-character schedule, its own column
+
+The data pipeline and schema for Phase 5. No UI yet: nothing in the app reaches
+this code and the new column is written by nobody.
+
+WHAT IS KEYED BY WHAT is the whole design. A deck card is a WORD; writing is a
+character skill. 朋友 is one card and two things to learn to draw, and 朋 turns
+up again in every other word the learner owns that contains it — so keyed by
+word, one character&amp;#39;s schedule would exist in as many copies as it has words and
+they would disagree from the first review. Keyed by character it is also a
+SMALLER set than the deck rather than a doubling of it: HSK&amp;#39;s 4,991 words are
+built from 2,663 distinct characters.
+
+That is what forces the project&amp;#39;s first schema change. A second FSRS block on
+DeckWord would have been free — it lives inside the `decks` jsonb and the
+on-load strip is a denylist — but it is the wrong key. Hence `writing_state`,
+in UserDataRow, schema.sql and migrations/0003. Control-checked: removing it
+from schema.sql fails tests/sync.test.ts by name.
+
+IT FEEDS NOTHING ELSE, and a test pins that. Not isDueToday, not the reading
+streak, not the daily budget, not the heatmap. Writing is a gym, not a daily
+requirement, so being a month behind on it must never read as a broken reading
+streak. The test strips comments first, because this module&amp;#39;s prose names
+isDueToday repeatedly to explain what it is walled off FROM — a raw substring
+check would fail on the documentation and push the next person to delete the
+explanation to get CI green.
+
+A card is owned WHOLE on merge. Stability, difficulty, lapses and due date
+describe one review history, so a per-field max composes a state neither device
+was ever in — the argument srsStateMerge makes about the streak. Ties fall
+through to canonical JSON order because the rule must be COMMUTATIVE, not just
+deterministic: a device writes its merged copy back, so &amp;quot;mine wins ties&amp;quot; makes
+two devices ping-pong for ever, invisibly from either one.
+
+CHINESE ONLY, for data honesty rather than scope. Measured: 88.7% of JLPT kanji
+appear in hanzi-writer-data, but the 223 missing are exactly the shinjitai
+(厳倹権鉱渉沢団読売楽児発), and among those present are characters whose Japanese
+stroke order differs (直, 令, 骨). It would teach confidently wrong stroke order
+for a subset nobody could identify. hanzi-writer-data-jp is not the answer
+either — experimental, and its npm package ships no data files at all.
+
+One file per character rather than one bundle, which breaks this repo&amp;#39;s usual
+rule deliberately: a session practises a handful of characters, so ~2.4 kB each
+means ~48 kB against 1.41 MB for a level shard and 7.00 MB for the lot. The cost
+is 2,663 files — identical bytes, worse file count.
+
+The Arphic Public License is an obligation, not a footnote: ARPHICPL.TXT travels
+verbatim (§1), and because subsetting DELETES characters from the glyph table,
+MODIFICATIONS.txt states what changed and when (§2a) with the build script
+reproducing it exactly (§2b). Nothing inside a character file is touched.
+
+fsrsSchedule now takes a `Schedulable` rather than a whole DeckWord — it only
+ever read the scheduling fields, and requiring a word meant a character card
+would have had to invent a gloss to satisfy a type. DeckWord satisfies the
+narrower type structurally, so no caller changed.
+
+743 tests (+27), lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3aaacb2b77cd360689f075ffb7b871a211cec124</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/3aaacb2b77cd360689f075ffb7b871a211cec124"/>
+    <title>
+        feat(practice): type the answer, and ask each language what it can ac…
+    </title>
+    <updated>2026-09-06T18:11:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(practice): type the answer, and ask each language what it can actually test
+
+Typed recall as a toggle on the existing flashcard — no new tab, no new card
+type, no schema change, gradeCard untouched.
+
+The mode is NOT one exercise in four languages. Spanish and French have
+`hasReadings: false`, so their forward card has nothing to type and the
+exercise is meaning → word. Chinese and Japanese cannot be typed at all
+without an IME handing over the characters, so theirs is word → reading.
+Opposite orientations, decided by the flag that already encodes the
+difference rather than by a new one.
+
+Typing therefore PINS the orientation and disables Flip. That is a
+correctness fix: reverse + typed in Chinese asks &amp;quot;the word for friend?&amp;quot; and
+demands one romanisation, so a learner answering with another correct word
+takes a real FSRS lapse for a card they knew.
+
+wanakana (MIT, 21 kB, lazily imported) converts romaji on the INPUT and is
+never used for grading, because measuring it showed it disagrees with itself:
+`toHiragana(&amp;#39;コーヒー&amp;#39;)` is こうひい while typing `ko-hi-` gives こーひー, across
+the 10.4% of JMdict readings written in katakana. The grader shifts codepoints
+and resolves ー to the vowel it lengthens, one rule on both sides — so it stays
+synchronous, mock-free, and out of every Spanish learner&amp;#39;s bundle. The input&amp;#39;s
+IME mode is chosen from the answer&amp;#39;s own script, which is what makes `ko-hi-`
+land on コーヒー exactly.
+
+Three tiers. `close` is &amp;quot;right skeleton, wrong layer on top&amp;quot; — tone, accent,
+sloppy kana — and grades Good showing the correct form. Marks that carry a
+contrast are not folded: ü (女 nǚ ≠ 努 nǔ) and ñ (año ≠ ano). ç is folded,
+since no French pair turns on a cedilla. A doubled vowel is never collapsed:
+おばさん and おばあさん are different words.
+
+The &amp;quot;I was actually right&amp;quot; override is es/fr only, where synonyms make the
+question genuinely ambiguous. zh/ja ask for this card&amp;#39;s reading, which is
+determined; a polyphone gets a sentence naming the reading they hit instead.
+
+A card with no stored pinyin is not typed at all — grading an absent answer
+marks the learner wrong for a hole in our data. Audio hides until reveal in
+typed mode, or every zh/ja card was solvable by pressing play.
+
+Verified in a browser, not just compiled: `ko-hi-` → コーヒー and `taberu` →
+たべる live, per-card IME mode, Flip disabled, `ano` for `año` graded wrong,
+the polyphone line, the override advancing the card, and the answer panel
+measured at height 0 before reveal.
+
+Extracted `stripTones` and `canonPinyin` in lib/pinyin.ts so phoneticSeries
+and this share one ü-preserving implementation; `u:`/`v` now normalise before
+tone marks are applied, which is what `lu:4` needed.
+
+716 tests (+29), lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a81fd5ef5931412c71aedcf71d0d6613d25c5975</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/a81fd5ef5931412c71aedcf71d0d6613d25c5975"/>
+    <title>
+        feat(pwa): installable on a phone, an iPad and a desktop
+    </title>
+    <updated>2026-09-06T07:56:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pwa): installable on a phone, an iPad and a desktop
+
+Until now srsly was a website that happened to work on a phone: no home-screen
+icon, no standalone window, no way in without typing a URL into a browser. For
+a spaced-repetition app that gap is bigger than it sounds, because reviews
+happen in dead minutes — a queue, a lift, a bus — which is exactly when nobody
+is going to type a URL.
+
+`app/manifest.ts` plus the iOS metadata Next does not put in the manifest. The
+icon is the app&amp;#39;s OWN vocabulary rather than a new mark: accent ground, paper
+strokes, and the `page` glyph already used in ReadingSources. Geometry, not a
+character and not an emoji, for the reason BadgeSeal gives — the app is four
+languages and its icon is about none of them. SVG for everything that takes one,
+with a 192px PNG because iOS home-screen icons do not.
+
+The three literal colours in the manifest are the one place in this codebase a
+hardcoded colour is correct rather than a slip: a manifest is JSON handed to the
+operating system and cannot read a CSS variable. They are the existing --accent
+and --paper values, not new ones.
+
+Verified served rather than merely compiled: /manifest.webmanifest linked and
+parsing, display standalone, both icons 200, apple-touch-icon set, theme-color
+matching the manifest. Next 15 emits `mobile-web-app-capable` rather than the
+`apple-` prefixed name — that is the modern standard Apple moved to in iOS 16.4,
+not a missing tag.
+
+WHAT THIS DOES NOT YET DO IS WORK OFFLINE. Installable and offline-capable are
+separate things: without a service worker, opening it without signal still shows
+the browser&amp;#39;s offline page. The data layer is already built for it — the write
+queue, the read guards, localStorage — so the missing piece is only the app
+shell. That is deliberately not in this commit, because a caching strategy that
+gets it wrong serves stale JavaScript and is far harder to notice than a missing
+icon.
+
+Also removed five create-next-app SVGs from public/ — file, globe, next, vercel
+and window — confirmed unreferenced by anything in the repo.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75685500c6d52fbef8162a04409191fa824d049c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/75685500c6d52fbef8162a04409191fa824d049c"/>
+    <title>
+        feat(zh): the popup says which part gives the sound, and how far to t…
+    </title>
+    <updated>2026-09-06T07:11:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): the popup says which part gives the sound, and how far to trust it
+
+One line under the decomposition: the phonetic, three worked examples, and the
+family&amp;#39;s own verdict. 艮 blunt → only 7 of 11 sound alike — 恨 hèn · 眼 yǎn ·
+退 tuì. 己 self → sounds like 岂 qǐ · 忌 jì · 纪 jì · 4 of 5.
+
+This answers a question the component previously could not. SOUND / MEANING tags
+on the components were tried here before and removed, because &amp;quot;孝 filial piety
+SOUND&amp;quot; invites &amp;quot;sound of what?&amp;quot; and answers nothing. Naming the family and its
+measured reading is what finally answers it.
+
+TWO BUGS, BOTH FOUND BY OPENING THE POPUP RATHER THAN READING THE CODE.
+
+The sample excluded the looked-up character AFTER clustering, which deleted a
+cluster&amp;#39;s only representative: 很 is first in 艮&amp;#39;s largest group, so the line
+showed 眼 yǎn and 退 tuì — two singletons — and a family where 7 of 11 share
+&amp;quot;-en&amp;quot; rendered as pure noise. Excluding before clustering fixes it, and
+tests/phoneticSeries.test.ts now pins that the first example still speaks for the
+biggest group.
+
+And the low end read &amp;quot;no single sound&amp;quot;, which is often false. 艮 has a real
+majority on &amp;quot;-en&amp;quot; that simply does not clear the bar; flatly denying a pattern
+visible in the examples below teaches the learner to distrust the label rather
+than the phonetic. It now says &amp;quot;only 7 of 11 sound alike&amp;quot;, which is calibrated
+and needs no second threshold.
+
+The index is memoised, and it REFUSES TO CACHE AN EMPTY ANSWER: readings come
+from cedict, which loads asynchronously, so a call before it lands builds an
+empty index — and caching that would freeze &amp;quot;there are no phonetic families&amp;quot; for
+the session, silently, on the first render. That is CLAUDE.md&amp;#39;s sixth failure
+mode exactly, and the guard is two lines.
+
+Layout holds: the line uses the same nowrap + overflow-x pattern as the equation
+above it, so a long row scrolls inside itself; verified the page does not scroll
+sideways with the popup open.
+
+Also verified, and it makes an earlier claim of mine wrong: the app ALREADY
+teaches ü input. `readingHelp` for Chinese reads &amp;quot;(lv4 for lǜ · no number =
+neutral tone e.g. le)&amp;quot; directly above the pinyin field, and toneNumToMark
+converts lv4 → lǜ and nv3 → nǚ. `u:` is not accepted, which is the notation
+CC-CEDICT uses raw; srsly&amp;#39;s own copy is already tone-marked, so nothing reaches
+a learner that way. No change made — there was no gap to fix.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcb0439310c4c65b16f321bcc8134d9f040a99a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/bcb0439310c4c65b16f321bcc8134d9f040a99a9"/>
+    <title>
+        feat(zh): choose the examples to argue the family&#39;s own verdict
+    </title>
+    <updated>2026-09-06T06:56:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): choose the examples to argue the family&amp;#39;s own verdict
+
+The display sampler, and the cap is the easy half of it.
+
+Fourteen members of 者 in a popup is a wall of text at the moment the learner is
+already working hard, so it is capped at three. What it is capped TO matters
+more. Frequency ordering is the obvious rule and teaches the wrong thing: on an
+unreliable family it would cheerfully pick three members that happen to agree,
+demonstrating a regularity that is not there and contradicting the verdict
+printed beside it.
+
+So the sample argues the actual case. A predictive family shows its modal
+cluster — the shared sound becomes the visible pattern. An unreliable one shows
+one member from each of its largest clusters — the DISAGREEMENT becomes the
+visible pattern. Tested both ways round: 青&amp;#39;s three examples all match its modal
+reading, 者&amp;#39;s three all differ from each other.
+
+This is also where the tone caveat lives, and it is deliberately not a sentence.
+The members print with their real tone marks side by side — 清 qīng · 情 qíng ·
+请 qǐng — so three tones on one shared syllable are adjacent and unmissable. A
+disclaimer would be read past. Colour-coding the tones was considered and
+rejected: it carries the point in hue alone, which fails a colour-blind reader,
+and it would have to survive six themes to say something the tone marks on
+screen already say.
+
+Note for the UI: SOUND / MEANING tags on components were tried here before and
+removed, because &amp;quot;孝 filial piety SOUND&amp;quot; invites &amp;quot;sound of what?&amp;quot; and answers
+nothing. Naming the family and its shared sound is what can finally answer that,
+which is the whole reason this measurement was worth taking.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4003eaf3c82de102c7a6391486019065905ff0cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/4003eaf3c82de102c7a6391486019065905ff0cd"/>
+    <title>
+        feat(zh): phonetic series, scored for reliability rather than assumed
+    </title>
+    <updated>2026-09-06T06:47:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): phonetic series, scored for reliability rather than assumed
+
+青 gives the sound, 氵忄讠 give the meaning. han-decomp.json has held that all
+along — every pictophonetic entry carries `ph` and `se` — so the feature needed
+no new data. What it needed was a measurement.
+
+HAVING THE DATA IS NOT THE SAME AS THE DATA BEING TRUE. 2,097 characters carry a
+phonetic component; only a fraction of those components predict anything.
+Measured against cedict&amp;#39;s own readings, the BIGGEST family in the set is the
+worst: 者, 14 members, splitting 猪诸著渚煮箸 zhu / 堵睹赌 du / 暑署 shu / 奢 she
+/ 绪 xu / 都 dou. 隹 has nine members and nine readings. Shipping every series as
+predictive would have taught wrong guesses at scale.
+
+Three things the scoring had to get right, each of which was wrong first:
+
+  SELF-AGREEMENT, NOT COMPONENT-MATCHING. &amp;quot;Does it read like 青?&amp;quot; reports 0% for
+  长 → 帐张胀账, which are unanimously zhāng. The shared sound is the lesson; the
+  component is only the hook.
+
+  MODAL SHARE, NOT UNANIMITY. Requiring every member to agree is a size filter in
+  disguise — every unanimous family had 3–5 members and no larger one passed. It
+  also excluded 青 itself (清情请晴 qing, 睛精 jing, 猜 cai), i.e. the textbook
+  example of the thing being taught.
+
+  PAIRWISE TOLERANCE, NEVER TRANSITIVE. j/q/x came from g/k/h and from z/c/s
+  before front vowels, so qing/jing is one sound change and 青 scores 86% once
+  that is allowed. But the pairs CHAIN: retroflex ↔ sibilant ↔ palatal ↔ velar,
+  so unioning them into equivalence classes makes every sibilant and velar in
+  Mandarin mutually tolerant and the threshold stops filtering.
+
+That last failure is silent, which is why the numbers are pinned. Reverting to a
+transitive implementation moves the golden test from 91 families / 379 chars to
+92 / 385 — one family, six characters. It would have read as noise. The test
+asserts the pair `zh`/`g` is not tolerant, and the golden count catches the rest.
+
+Reliability is a PROPERTY, never an admission ticket: 者 shown as three labelled
+clusters teaches the thing this feature exists to prevent, which is trusting a
+phonetic too far. Tone is never predicted — 妈麻马骂 — and the UI must say so.
+
+91 predictive families, 379 characters, 344 of them (91%) in HSK 1–6.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ccba9e2ecaab49f77fae51b6c2caea3c6d636543</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/ccba9e2ecaab49f77fae51b6c2caea3c6d636543"/>
+    <title>
+        feat(settings): four groups, and Speech covers every language you study
+    </title>
+    <updated>2026-09-06T01:13:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(settings): four groups, and Speech covers every language you study
+
+Two things reported together, both about the same page having outgrown itself.
+
+SPEECH WAS STUCK ON THE STUDY LANGUAGE. It read `useLanguage()`, so someone
+studying four could only ever set the voice for the one currently selected, and
+the section announced &amp;quot;How Chinese is read aloud&amp;quot; with no hint the other three
+had their own. A voice is per language by nature — a French voice cannot read
+Chinese — so the section now carries its own selector over the added languages.
+Speed is unchanged and stays global, because a multiplier means the same thing
+in every language; its caption said otherwise and now does not.
+
+The preview had a real bug behind that: `speak()` resolves its voice from the
+module&amp;#39;s `currentLocale`, which the app sets from the STUDY language — so
+auditioning French while studying Chinese would have read French text through a
+Chinese voice and the picker would have looked broken. The locale is pushed for
+the preview and restored on the way out.
+
+TEN SECTIONS IN ONE SCROLL is a list to be endured: the only route to a daily
+limit ran past the level table, the voice picker and the retention dial. Four
+groups — Account, Studying, Scheduling, Backup — declared once and read twice, as
+the nav and as the render gate, so a group cannot exist in one and not the other.
+Nothing is hidden that was not already several screens down.
+
+Also added the line that would have saved a round trip today: a voice downloaded
+after the browser started is genuinely absent from the list rather than filtered
+out of it, because browsers enumerate system voices once at startup.
+
+Verified with two languages added:
+  groups      Studying → HSK level · Speech · Blank density
+              Scheduling → retention · max interval · pool · daily limits
+              Account → account · languages
+  speech      chips Chinese/French; zh lists Tingting·Meijia·Li-Mu,
+              fr lists Thomas·Marie·Amélie
+  preview     zh-CN spoke Chinese as Yu-shu; fr-FR spoke French as Thomas
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9567a508013510bcf4166e5f0c3151dbfba9ee9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/a9567a508013510bcf4166e5f0c3151dbfba9ee9"/>
+    <title>
+        fix(learn): the tree no longer starts on lesson one and then moves
+    </title>
+    <updated>2026-09-06T01:13:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(learn): the tree no longer starts on lesson one and then moves
+
+Opening Learn painted the &amp;quot;start here&amp;quot; marker on lesson 1 and then jumped it
+down to the real lesson a moment later, which reads as the tree changing its
+mind about where you are.
+
+`done` is an empty Set until storage answers, and the next lesson computed from
+an empty set is always the FIRST one. Same mistake as the passage skeleton, the
+&amp;quot;generating&amp;quot; caption and &amp;quot;Nothing to review yet&amp;quot; — a value meaning &amp;quot;not loaded
+yet&amp;quot; rendered as a value meaning &amp;quot;you have finished nothing&amp;quot; — which is the
+sixth entry added to CLAUDE.md&amp;#39;s flaky list this morning, in a fourth place. The
+flag that separates them, as usual, did not exist yet and cost one useState.
+
+The marker now appears once, on the right lesson.
+
+Staged with a delay on the lessons read, since LocalStorage answers before React
+can paint and this only shows up over a network:
+
+  control  marker on lesson 1 at +350ms, lesson 2 at +1225ms — 875ms wrong
+  fixed    no marker, then lesson 2 directly
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/807f341b98bdca09719478870c44a999e2846ac5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/807f341b98bdca09719478870c44a999e2846ac5"/>
+    <title>
+        feat(settings): choose the voice and the speed
+    </title>
+    <updated>2026-09-06T00:48:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(settings): choose the voice and the speed
+
+Both were fixed constants — the voice came from a hand-ranked priority list, the
+speed from a per-language table — and the ranking is a good default and a bad
+only-option. It can only pick from what this machine happens to have installed,
+and quality across system voices varies more than anything else in the audio
+path. Dictation made that matter: skimming a passage tolerates a robotic voice,
+straining to catch a word does not.
+
+THEY ARE STORED APART, AND THAT IS THE DESIGN. Speed is a preference and syncs
+in `prefs.ttsSpeed`; 0.8 means the same thing on every device. Voice is a fact
+about the MACHINE and stays device-local in `srsly-tts-voice`, because voices are
+installed per device — a voiceURI from a Mac with the enhanced Chinese voices
+downloaded does not exist on a phone, so syncing it would push a choice onto a
+device that cannot honour it and the silent fallback would look like the setting
+being broken. Same reasoning that keeps the Anthropic key out of the blob.
+
+Speed is a MULTIPLIER rather than an absolute rate. `RATE` is calibrated per
+language — Chinese slowest, because tone contours are what a beginner strains to
+hear — and one absolute number would flatten that, making one language sluggish
+to make another intelligible.
+
+Three smaller decisions, all in CLAUDE.md: a chosen voice outranks the novelty
+filter (someone who picked Zarvox has answered the question the filter was
+guessing at) but is still matched against the installed list, so an uninstalled
+one falls through rather than silencing the app; `clearVoiceCache()` exists
+because the resolved voice is cached by LOCALE and picking a new voice does not
+change the locale; and the picker deduplicates, because the priority names are
+substring matches and several nest — `Google 普通话（中国大陆）` and `Google 普通话`
+are both satisfied by one installed voice, which listed it twice.
+
+Verified in a browser against the real voice list, not assumed:
+  picker lists  Tingting · Meijia · Li-Mu · Sinji · Yu-shu   (no duplicate)
+  default       spoke as Tingting, the ranking&amp;#39;s own choice
+  after picking spoke as Yu-shu on the very next preview
+  speed 1.4×    spoke at 1.148 = 0.82 × 1.4, calibration intact
+
+A caution worth recording for later: do NOT fix the audio by setting
+OPENAI_API_KEY in production. `consumeAiCredit` rations generation per guest;
+/api/tts has no budget check at all, so any anonymous visitor could spend the
+operator&amp;#39;s credit by pressing play. Bring-your-own-key is the route there.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b47a15055c3878b3a6b314bbc3c3947fdc25f1b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/b47a15055c3878b3a6b314bbc3c3947fdc25f1b8"/>
+    <title>
+        feat(read): listening dictation — the cloze passage with the text wit…
+    </title>
+    <updated>2026-09-06T00:26:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(read): listening dictation — the cloze passage with the text withheld
+
+Phase 3. A Listen toggle on a generated passage plays each sentence whole,
+hides the text, and lets the learner type into the blanks that were already
+there.
+
+THE REFRAME IS THE WHOLE DESIGN: this is a presentation, not a second exercise.
+The blanks, the typed input, the grading and the FSRS write are all what
+ClozeBlank already does; only what can be SEEN changes. No new stored state, no
+schema change, and a heard blank grades as a read one — recognising by ear is
+arguably harder, but a second scale would be a second record of one fact.
+
+`speakWithBlank()` was the planned entry point and is the wrong tool. It speaks
+up to the blank, goes silent, then speaks the rest — so the learner never hears
+the word they are asked to type, and &amp;quot;type what you heard&amp;quot; needs it spoken. The
+audio is complete here and the TEXT is what has gaps. It also takes exactly one
+gap while a sentence can carry several, since a word is blanked in all of its
+occurrences and blanks have no ceiling. It keeps a real job as the &amp;quot;With the
+gap&amp;quot; hint, for someone who has heard the sentence and still cannot place the
+word.
+
+Four things worth knowing, all in CLAUDE.md:
+  - SRS only. Own reading commits vocabWords: [] and has no blanks to dictate.
+  - A sentence reveals the moment its last blank is answered. One with no blanks
+    is never hidden — nothing could ever earn it.
+  - A hidden token is masked plain text, not a blurred TokenEl: blurring the
+    real thing leaves it tappable and the popup would print the answer.
+  - Hints forced off while dictating; they give live per-character feedback.
+
+PassageText&amp;#39;s &amp;quot;is this occurrence a blank&amp;quot; rule is now computed once instead of
+inline in the token loop — dictation needs it per sentence, and two copies of a
+rule that already handles Japanese base forms and already-graded occurrences is
+how they come to disagree.
+
+Verified in a browser: 4 sentences → 3 stops (the one with no blanks is not a
+stop and is not hidden); answering sentence one dropped it from 10 blurred
+tokens to 0 while 9 and 5 stayed hidden; the transport steps and disables at the
+ends; the Read tab offers no Listen control at all.
+
+660 tests, 10 of them new for the pure half.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4601d966a61a8e8b1d9ff299394263f4f3d2ccf0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/4601d966a61a8e8b1d9ff299394263f4f3d2ccf0"/>
+    <title>
+        fix(sync): prefs and srs_state merge per field instead of overwriting…
+    </title>
+    <updated>2026-09-05T19:59:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(sync): prefs and srs_state merge per field instead of overwriting whole
+
+The last of the three defects Phase 2 was for, and the one CLAUDE.md named as
+unfixed: both columns were written as ONE BLOB, last-writer-wins. Every field
+travelled with every save, so a device holding a stale copy reverted the whole
+column on its next write — change the theme on a phone and the laptop&amp;#39;s level
+goes back; open the phone after studying on the laptop and the streak walks
+backwards. Nothing errors, and a setting that quietly returns to a value you did
+once choose is close to undetectable.
+
+THE STREAK IS OWNED, NOT MAXIMISED, and that is the part worth reading. MAX is
+the reflex and it is right for the counters and wrong for the streak, because a
+streak is allowed to go DOWN: break it and it resets to 1, which no per-field
+maximum can represent — a stale 40 would resurrect a streak already lost. That
+is the mirror of the bug being fixed and strictly worse, since it inflates. The
+streak instead belongs to whichever side has the later `lastActive`, which is
+already the authoritative last-studied day, and the two travel together: a count
+from one device beside a date from the other is a state neither was ever in.
+
+`prefs` are choices rather than tallies, so no max or union means anything for a
+theme. They take a THREE-WAY merge against the last value this device saw in the
+cloud, applying only the fields that differ from that base — knowing what the
+device CHANGED rather than what it holds is the entire bug. With no base, `mine`
+wins the scalars, which is the old behaviour kept as the floor. Four keyed
+collections merge per key regardless, because losing an entry there does real
+damage: `poolAutoDate` (dropping one reintroduces the double-activation
+avalanche it was moved into prefs to prevent), `testedLevels`, `placementSeen`,
+`languages`.
+
+`canonicalJson` moves to its own module; prefs needs it to ask &amp;quot;did this device
+change this field?&amp;quot; of values that are objects, and a JSONB round trip does not
+preserve key order.
+
+32 tests: the two merges, plus tests/blobMergeWiring.test.ts asserting the
+PAYLOAD rather than the functions — the wiring is the half that can silently
+regress, since these were one-line blob writes and an edit could make them one
+again without failing a merge test. Against the pre-fix writes it fails on
+exactly the three harms CLAUDE.md described: 9 sent over 10, level 3 over 5, and
+{zh:4} losing {es:2}.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/950e4ddaec37fe3a63a3a5ffc28e6efb271c930d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/950e4ddaec37fe3a63a3a5ffc28e6efb271c930d"/>
+    <title>
+        docs: CLAUDE.md had gone stale within a day of the UI changing
+    </title>
+    <updated>2026-09-05T19:51:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: CLAUDE.md had gone stale within a day of the UI changing
+
+Three corrections and one addition.
+
+The empty Read tab is described as four cards led by a starter text and badged
+with a key emoji. It has been two cards, no starter text and no emoji since
+2026-09-04 — changes made a few hours before this. The file&amp;#39;s own opening exists
+because of exactly this failure (the ts-fsrs and SvelteKit leftovers that
+&amp;quot;contradicted the code they were meant to describe&amp;quot;), so a fresh contradiction
+in the first section a reviewer reads is the worst place to leave one.
+
+`ReadingSources` was also described as collapsed to &amp;quot;+ Add reading&amp;quot; in EVERY
+state including the empty tab. That decision was reverted — the component&amp;#39;s own
+docstring records why — and it lists lyrics as a third source, which has no
+component in the tree at all.
+
+The flaky list gains a sixth entry, because four separate bug reports in one day
+turned out to be one mistake: a loading state rendered as an answer. A skeleton
+and a &amp;quot;writing your passage&amp;quot; caption while only reading the cache; &amp;quot;Nothing to
+review yet&amp;quot; to someone holding 542 words; &amp;quot;Added 542 words&amp;quot; on sign-in. In each,
+a value meaning &amp;quot;not here yet&amp;quot; was rendered as &amp;quot;there is none&amp;quot;, and the flag to
+separate them already existed. Its corollary is worth as much: three of the four
+would not reproduce locally, because LocalStorage answers before React can paint
+and these only exist once the data crosses a network.
+
+And the storage section now records the 52-queries-per-load measurement and why
+sharing an in-flight fetch does not weaken the freshness rule it sits under.
+
+Still stale and NOT touched here, because I have not established whether the
+feature was removed deliberately: the &amp;quot;No songs ship with the app&amp;quot; paragraph
+describes a listen-along panel and an .lrc helper block, and no such component
+exists.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ee318191e2d98917abcf4eecc3f346d33e68d14</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/1ee318191e2d98917abcf4eecc3f346d33e68d14"/>
+    <title>
+        feat(read): the card says &quot;Paste text&quot;, like the panel it opens
+    </title>
+    <updated>2026-09-05T02:41:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(read): the card says &amp;quot;Paste text&amp;quot;, like the panel it opens
+
+`PasteTextPanel` has always been headed &amp;quot;Paste text&amp;quot;; the card that opens it
+said &amp;quot;Paste any article&amp;quot;. &amp;quot;Article&amp;quot; also undersold it — the panel takes any
+text, and the web clipper feeds the same path.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4af086cc3c26d0cb2cf67aa9e4503b8a3290bfcf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/4af086cc3c26d0cb2cf67aa9e4503b8a3290bfcf"/>
+    <title>
+        fix(read): an unloaded deck is not an empty one
+    </title>
+    <updated>2026-09-05T01:21:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(read): an unloaded deck is not an empty one
+
+On every reload the SRS tab flashed &amp;quot;Nothing to review yet&amp;quot;, under it &amp;quot;it needs
+a deck first — open the Read tab and start anything&amp;quot;, to a learner holding 542
+words. `deck` is [] until storage answers, and that branch reads [] as a fact
+about the learner rather than as a fact about the load.
+
+Same mistake as the passage skeleton, in the copy instead of the shape, and the
+flag to tell them apart already exists: `deckLoaded` is what SrsTab and
+app/page.tsx gate on. Blank until it flips — the wait is one storage read, and
+an empty box for that long does not need a shape of its own.
+
+Locally the control does not reproduce, and that is the finding: LocalStorage
+answers before React can paint, so this only appears once the deck comes from
+SupabaseStorage over the network. Staged with a temporary delay on the deck read,
+which is exactly what signing in adds:
+
+  control  &amp;quot;Nothing to review yet&amp;quot; from 784ms to 1598ms — 814ms of it
+  fixed    blank, then the right screen; the empty-deck copy never renders
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb0d21b1e9e43e1e69c4ccf87b1f52b23a54139e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/fb0d21b1e9e43e1e69c4ccf87b1f52b23a54139e"/>
+    <title>
+        feat(read): monochrome marks instead of emoji, and no starter-text card
+    </title>
+    <updated>2026-09-05T00:43:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(read): monochrome marks instead of emoji, and no starter-text card
+
+Emoji are somebody else&amp;#39;s artwork. 📖 is a different drawing on macOS, Windows
+and every Android skin, it arrives in full colour into a palette assembled from
+six themes&amp;#39; worth of CSS variables, and it will not sit on the mono baseline the
+rest of this UI is set on. `components/shared/Mark.tsx` draws the four that were
+carrying meaning — page, book, key, spark — as paths on `currentColor`, so they
+inherit the theme like text. The same argument BadgeSeal already makes about
+milestone marks: every mark is geometry.
+
+Stroke width scales inversely with the box, because the viewBox scales and the
+stroke does not: a flat 1.5 is a hairline at 12px and a slab at 20px, and these
+appear at both. Checked at 11/12/15/20/64 in light and dark before shipping.
+
+✦ in the AI badge and in Flashcards&amp;#39; learning label is left alone — it is a mono
+glyph in a mono badge, already monochrome, and not what was asked about.
+
+&amp;quot;Start with a story&amp;quot; is removed, as requested. Recording the argument for it
+rather than deleting it silently: it was the only one of the cards that did not
+ask the learner to go and find something first, and an empty Read tab now offers
+paste, upload and generate, all of which want something they do not have to hand.
+StarterPanel and lib/data/starterTexts.ts stay in the tree, unreferenced, so
+restoring the card is one line rather than re-authoring twelve texts — and
+tests/starterTexts.test.ts still holds that data to its contract.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3002690b6e5fafc3b1138ba88c962cf709b88033</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/3002690b6e5fafc3b1138ba88c962cf709b88033"/>
+    <title>
+        perf(sync): one page load was 52 queries for the same row
+    </title>
+    <updated>2026-09-05T00:43:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(sync): one page load was 52 queries for the same row
+
+Measured on the live site, signed in: the page itself was interactive at 468ms
+and the last Supabase call landed at 25.9 SECONDS. 52 calls, all of them the
+same `select(&amp;#39;*&amp;#39;)` — the whole row, all four languages&amp;#39; decks, the shelf and the
+activity log — because every read path calls `row()` fresh and they all mount at
+once: four languages times several copies of useVocabDeck, plus prefs, SRS
+state, lessons, counts and per-passage cloze state.
+
+Freshness is not the bug and is not what changed. `row()` still refuses to serve
+a cached snapshot to a read, because that is what cross-device sync IS. What was
+missing is that these callers are CONCURRENT — a single fetch started at that
+instant is exactly as current as fifty-two started at that instant, so they now
+share the in-flight promise. A caller arriving after it resolves still fetches
+its own. `invalidate()` drops the share as well as the cache, so a focus re-read
+cannot join a request issued before the learner came back.
+
+tests/rowCoalescing.test.ts pins both halves. Against the old row() its first
+case fails 12 to 1 — the same storm at the scale a test can stage.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

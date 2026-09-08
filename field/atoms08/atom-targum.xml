@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/DLangellotti/targum/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/DLangellotti/targum/commits/master.atom"/>
+  <title>Recent Commits to targum:master</title>
+  <updated>2026-09-08T00:20:39Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bdb1f8aef65d7cfa8ba298fcae226fe01c672d6c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/bdb1f8aef65d7cfa8ba298fcae226fe01c672d6c"/>
+    <title>
+        Merge pull request #112 from DLangellotti/fix-204
+    </title>
+    <updated>2026-09-08T00:20:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #112 from DLangellotti/fix-204
+
+The place canary is failed by a store the browser threw away (targum-internal#204)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8011b89be508db3095a7acc5201883e0315f203d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/8011b89be508db3095a7acc5201883e0315f203d"/>
+    <title>
+        fix(tests): the place canary is failed by a store the browser threw away
+    </title>
+    <updated>2026-09-07T18:51:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(tests): the place canary is failed by a store the browser threw away
+
+targum-internal#204. `test_a_reader_opened_from_disk_keeps_what_it_was_told`
+failed four times on CI since the seek fix landed, and not for either reason
+this issue assumed.
+
+Crossed in the test&amp;#39;s own shape — one context, one page, two gotos, one
+variable at a time. A lost `localStorage` write passes. A recovery delayed to
+1.5s, three times `durable.js`&amp;#39;s 500ms patience, passes. Both together pass,
+`here: True`, gap 0. So the blind start is not it, and `durable.js` does the
+job it was written for.
+
+What reproduces the transcript exactly — `words: 280`, `here: False`,
+`kept: {}`, the same 3271px — is the second load on a fresh storage partition,
+and nothing else does. The browser discarded this `file://` origin&amp;#39;s storage
+between the navigations, both copies, so recovery had nothing to recover and
+the reader was being failed for something it cannot see. Same Chromium build
+here as on the runner, so not a version difference.
+
+The canary now asks the shelf, after the navigation, whether the place
+survived it — the existing check ran in the previous document and cannot
+answer for this one. Storage gone: skip, naming the cause. Storage intact and
+the reader did not restore: fail, as before.
+
+Teeth verified rather than assumed, since a test that can only pass or skip is
+worthless: with `resume()` neutered in the built file and storage untouched it
+fails, gap 3271, precondition true.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca6600beb1e52a339d2fa83dc78a4f30a01bf049</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/ca6600beb1e52a339d2fa83dc78a4f30a01bf049"/>
+    <title>
+        Merge pull request #111 from DLangellotti/issues-sweep
+    </title>
+    <updated>2026-09-07T18:31:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #111 from DLangellotti/issues-sweep
+
+The artifact says what the scripture lookup covered, and preflight says what is behind&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d795b834a1e653fc47c6e1f594b6ca38ec7c8f32</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/d795b834a1e653fc47c6e1f594b6ca38ec7c8f32"/>
+    <title>
+        fix(annotate): an absent shelf is not a current one
+    </title>
+    <updated>2026-09-07T17:25:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(annotate): an absent shelf is not a current one
+
+`survey` on a path that does not exist returned an empty `Shelf`, which prints
+&amp;quot;0 of 0 behind&amp;quot; — the reassuring version of exactly the silence this check was
+written to break. A mistyped path, or a user who cannot see /var/lib/targum,
+would have answered &amp;quot;is the box behind?&amp;quot; with &amp;quot;no&amp;quot;.
+
+It raises now. `preflight.check_shelf` already tested the path itself before
+calling, so the deploy path still says &amp;quot;nothing built at &amp;lt;path&amp;gt; yet&amp;quot; on a first
+deploy and is unchanged.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e09d83532645515fb67f99b83bcf0c3787959a5c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/e09d83532645515fb67f99b83bcf0c3787959a5c"/>
+    <title>
+        fix(annotate): the artifact says what the lookup covered, and the box…
+    </title>
+    <updated>2026-09-07T17:19:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(annotate): the artifact says what the lookup covered, and the box says what is behind
+
+Three cards from the annotator-staleness family, all additive: no annotator name
+changes, so no cache is invalidated and nothing is re-annotated.
+
+targum-internal#180 — `ScriptureLemmatizer.name` is fixed at wrap time, and wrapping
+is not running: `lemmas()` falls through per verse. So the `p4` copy of Genesis, 0
+`PART` across 20,858 tokens and read entirely by the model, carries a name identical
+to the `library/` copy that carries 1,958, while the two disagree by five points of
+difficulty. `Annotation.scripture_share` records what the tagging actually answered;
+`0.0` (wrapped, matched nothing) is a different fact from `None` (nothing asked). A
+share and not a flag, because a chapter heading never lines up. Deliberately not in
+the name: a key that moved with the outcome would re-annotate a text whenever a verse
+happened to align differently, and an unstable key is worse than an ambiguous one.
+`measure_difficulty.by_scripture_path` reads the field and keeps the `PART` sniff only
+for artifacts older than it.
+
+targum-internal#207 — the binyan is pinned through the whole `Annotator` rather than
+through `ScriptureLemmatizer`. The lemmatizer-level test was green throughout, which
+is why it caught nothing while the shelf carried a binyan on 0.68% of its scripture
+verbs and the same code produced ~100%. Banding, the register and the dictionary stage
+run between the two. `UPOS=` is asserted beside it, the second casualty in the same
+artifacts.
+
+targum-internal#208 — `targum preflight` prints how many built texts are behind, on
+every deploy and right before the `rebuild --words` that closes the gap. Three fixes
+were merged, closed and believed shipped on 2026-09-03 and reached no built page;
+nothing was done wrong, there was simply no line that printed &amp;quot;411 of 418 behind&amp;quot;. A
+warning and not a failure. The comparison moves to `annotate/versions.py` so there is
+one of it, and `scripts/shelf_versions.py` imports it and keeps the detail — `--list`,
+by home, and the ingester&amp;#39;s separate question.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/964f7b4651842f75505fe3ae6e9edca1f3514f9b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/964f7b4651842f75505fe3ae6e9edca1f3514f9b"/>
+    <title>
+        test(vocalize): the fallback test owns its model cache
+    </title>
+    <updated>2026-09-07T13:12:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(vocalize): the fallback test owns its model cache
+
+On a machine that holds the menaked weights an earlier test in the same
+run had loaded them, and the assertion that choosing is not loading read
+the process&amp;#39;s cache rather than this call&amp;#39;s.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2441d8134c7b03ac915e55fe3161f4bb73e8b5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/a2441d8134c7b03ac915e55fe3161f4bb73e8b5e"/>
+    <title>
+        Merge branch &#39;corrections&#39;
+    </title>
+    <updated>2026-09-07T13:05:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;corrections&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2f653ffb50cf6bf6ed05fa045300ca898356d8b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/c2f653ffb50cf6bf6ed05fa045300ca898356d8b"/>
+    <title>
+        Merge branch &#39;pointing&#39;
+    </title>
+    <updated>2026-09-07T13:05:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;pointing&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md
+#	evals/ledger.jsonl&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/262d7bd0acf50c56abe4e6a6785c6473e7be28e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/262d7bd0acf50c56abe4e6a6785c6473e7be28e0"/>
+    <title>
+        Merge branch &#39;glued&#39;
+    </title>
+    <updated>2026-09-07T13:05:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;glued&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d097346892fb5c39ea65a51a02b7cb5ee952b75c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/d097346892fb5c39ea65a51a02b7cb5ee952b75c"/>
+    <title>
+        Merge branch &#39;translations&#39;
+    </title>
+    <updated>2026-09-07T13:05:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;translations&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md
+#	tests/js/reader.js
+#	tests/test_reader_js.py&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fac49f625ae286d63cdbce00dffbd00518587250</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/fac49f625ae286d63cdbce00dffbd00518587250"/>
+    <title>
+        Merge branch &#39;errors&#39;
+    </title>
+    <updated>2026-09-07T13:04:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;errors&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6fbaa9079210bfecc2ec2047afd97f58a4c9dddd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/6fbaa9079210bfecc2ec2047afd97f58a4c9dddd"/>
+    <title>
+        Merge branch &#39;sefaria-daf&#39;
+    </title>
+    <updated>2026-09-07T13:04:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;sefaria-daf&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8aeaee3ae98ece30c6cce047a2553040c5559f99</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/8aeaee3ae98ece30c6cce047a2553040c5559f99"/>
+    <title>
+        Merge branch &#39;foot&#39;
+    </title>
+    <updated>2026-09-07T13:04:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;foot&amp;#39;
+
+# Conflicts:
+#	CHANGELOG.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3c217c58993b88e70c28d18b19111c766d3769c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/3c217c58993b88e70c28d18b19111c766d3769c2"/>
+    <title>
+        Merge branch &#39;haftarah&#39;
+    </title>
+    <updated>2026-09-07T13:04:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;haftarah&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/909c3d05fbc6d7fc972355cd49539a96bf4979de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/909c3d05fbc6d7fc972355cd49539a96bf4979de"/>
+    <title>
+        Merge branch &#39;deploy-ssh&#39;
+    </title>
+    <updated>2026-09-07T13:04:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;deploy-ssh&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f23b320c86b2d04302dea0bf1c9017eb0ce0a9c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/4f23b320c86b2d04302dea0bf1c9017eb0ce0a9c"/>
+    <title>
+        Merge branch &#39;marks&#39;
+    </title>
+    <updated>2026-09-07T13:04:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;marks&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/370f8c2d75e9afdf0ae3381b8c69e0a2adb70d23</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/370f8c2d75e9afdf0ae3381b8c69e0a2adb70d23"/>
+    <title>
+        evals: the recast judged by Sonnet 5, exemplars off and on
+    </title>
+    <updated>2026-09-07T12:49:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;evals: the recast judged by Sonnet 5, exemplars off and on
+
+Off: 41.0% right of 200, lemma overlap 0.534. On, the same recasts
+re-judged: 45.5%, overlap 0.563. No empty verdicts either way; $10 for
+the off case, 28 cents to re-judge the on case from its saved recasts.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e7737737f30c1c518c964215f81281493ea696d6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/e7737737f30c1c518c964215f81281493ea696d6"/>
+    <title>
+        feat(vocalize): DICTA&#39;s menaked points modern Hebrew, gated by register
+    </title>
+    <updated>2026-09-07T12:16:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocalize): DICTA&amp;#39;s menaked points modern Hebrew, gated by register
+
+The measurement in the two commits before this one held on both held-out
+sets, so this is step 4 of targum-internal#148: the swap, and nothing that
+the measurement did not earn.
+
+`vocalize/dicta.py` wraps dictabert-large-char-menaked behind the existing
+Vocalizer protocol. It loads the model&amp;#39;s own tokenizer.json rather than what
+AutoTokenizer builds under transformers 5, and assembles the marks by walking
+the input rather than the tokens, so every character comes back exactly once
+and a letter the model calls a mater is kept bare. Both are the bugs the
+measurement found in the card&amp;#39;s own code, and both are pinned by test. Every
+output still goes through the skeleton check in base.py, as Nakdimon&amp;#39;s does.
+
+`vocalize.for_source` is the gate. Scripture and the pinned editions reach no
+model, as before. The biblical, rabbinic and medieval shelves stay on
+Nakdimon — the card says the model is not for them. The revival and modern
+shelves and every upload go to the menaked; the Ben-Yehuda measurement was of
+revival Hebrew and the menaked won on it. The register is read off the
+catalogue, and a text the catalogue does not know is read as today&amp;#39;s Hebrew.
+
+The weights are 1.2 GB and never fetched inside a build: `targum models
+fetch menaked` brings them, `fetch he` brings them with the annotator&amp;#39;s, and
+a machine without them points with Nakdimon and says so once. The name
+`dicta/menaked/1` is the cache key, and the pipeline now reuses a stored
+pointing only when its vocalizer is the one that would run, so a text
+Nakdimon pointed is pointed again on its next build or `rebuild --words`,
+which re-points before it re-annotates because the readings are worked out
+from the pointing. SCHEMA_VERSION is untouched. The reader credits DICTA for
+the vowels where the menaked made them, keyed like the annotator&amp;#39;s credit;
+LICENSING.md records the licence, the measurement and the gate.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3dd5efafbf2c96c889b7e8087f8e4159676db993</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/3dd5efafbf2c96c889b7e8087f8e4159676db993"/>
+    <title>
+        feat(evals): a second held-out set for the pointing measurement, from…
+    </title>
+    <updated>2026-09-07T12:02:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): a second held-out set for the pointing measurement, from Ben-Yehuda
+
+The first corpus is DICTA&amp;#39;s own test set, so the gap it showed could have been
+house style. This adds `--corpus ben-yehuda`: 26 pointed works by 12 authors
+from Project Ben-Yehuda&amp;#39;s public domain dump, prose and poetry, none of them
+among the nine Ben-Yehuda authors Nakdimon&amp;#39;s training set names. Paragraphs
+that are fully pointed are joined into lines of twenty words or more, at most
+thirty lines a work, so no one novel outweighs the poets.
+
+The gap holds on 250 lines, 5,454 words: the menaked is 0.9056 to 0.8933 on
+vowels per letter (0.9102 to 0.8933 with qamats qatan folded, since these
+editions never write it and the menaked does), 0.7004 to 0.6766 on exact
+words, and keeps the skeleton on every line. Both models fall by seven to
+seventeen points from Wikipedia to the Hebrew of 1880-1940.
+
+Two scoring changes came with the corpus. A shin the reference leaves bare is
+no longer scored on its dot: these editions dot only the sin, and a model that
+dots the shin is not wrong. And the menaked&amp;#39;s marks are now assembled by
+walking the input rather than by the card&amp;#39;s predict, which emits a character
+once per token it became — the tokenizer NFKC-expands an ellipsis into three
+dots, and 24 of 250 lines came back with `………` and failed the skeleton check.
+The walk is versioned `/walk` in the ledger so its rows never pass for the
+card&amp;#39;s, and on the DICTA corpus it reproduces the card&amp;#39;s numbers exactly.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/534d4cfbeba5b32e6acd784e0ca8b9311be5e94d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/534d4cfbeba5b32e6acd784e0ca8b9311be5e94d"/>
+    <title>
+        feat(store): the correction store, door 1 — every hand on a gloss is …
+    </title>
+    <updated>2026-09-07T11:57:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(store): the correction store, door 1 — every hand on a gloss is written down
+
+The one thing no model lab has is a record of human judgement about
+Hebrew at the word level, with provenance, and until now every such
+judgement was thrown away the moment it was applied: a wrong gloss was
+deleted from the cache by hand, a right one grounded, and nothing said
+a person decided. A `correction` table now keeps what stood, what
+stands, who decided (a role, never a name), the licence the judgement
+is held under, and the sentence seen. `targum correct` applies the
+author&amp;#39;s hand and keeps the row; a grounding at a reader&amp;#39;s tap writes
+one too; `targum corrections` lists them. The editor&amp;#39;s and the reader&amp;#39;s
+doors, the harness export and the notice text are the rest of
+targum-internal#164, decided 2026-09-07 to start minimal.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

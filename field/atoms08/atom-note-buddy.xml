@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/pricees/note-buddy/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pricees/note-buddy/commits/main.atom"/>
+  <title>Recent Commits to note-buddy:main</title>
+  <updated>2026-09-06T23:15:35Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe4cccd1de924fa38b35f1842ecab46dc4b77c21</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commit/fe4cccd1de924fa38b35f1842ecab46dc4b77c21"/>
+    <title>
+        Drop stale model ids from the config docs
+    </title>
+    <updated>2026-09-06T23:15:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68484?s=30&amp;v=4"/>
+    <author>
+      <name>pricees</name>
+      <uri>https://github.com/pricees</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop stale model ids from the config docs
+
+The model comment named claude-sonnet-4-6 and claude-opus-4-7, both previous
+generation now. Point at the bare aliases instead -- they track the current
+generation, so this advice stops going stale -- and note that a full id pins.
+
+The shipped default stays claude-haiku-4-5: still current, still the right
+cheap/fast default for tidy handwriting. Same edit in the README&amp;#39;s config
+table, which carried a copy of the sentence.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f7b2bb44521f9529ea4235329210539b55a00059</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commit/f7b2bb44521f9529ea4235329210539b55a00059"/>
+    <title>
+        Add cron.sh: a cron-safe entry point for unattended runs
+    </title>
+    <updated>2026-09-06T23:08:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68484?s=30&amp;v=4"/>
+    <author>
+      <name>pricees</name>
+      <uri>https://github.com/pricees</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add cron.sh: a cron-safe entry point for unattended runs
+
+`run.sh` assumes an interactive shell. Driving it from cron directly gets
+three things wrong, so wrap it:
+
+- cron hands over a bare PATH, which omits ~/.local/bin and so hides the
+  `claude` CLI the transcriber authenticates through.
+- A transcription run can outlast a one-minute tick. flock -n skips the
+  overlapping tick instead of queueing a second run against one ledger.
+- `--max-images` bounds each tick, which also sidesteps the 50-image `--yes`
+  confirmation that would otherwise stall a run with nobody there to answer.
+
+Output goes to $HANDWRITTEN_STATE_DIR/cron.log, trimmed to the last 256K once
+it passes 1M, so cron mails nothing.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b89d386eab85d2279d7541bae4c4ce60b38ad94d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commit/b89d386eab85d2279d7541bae4c4ce60b38ad94d"/>
+    <title>
+        Prepare for open source: mermaid diagrams, source-image embed, licens…
+    </title>
+    <updated>2026-09-06T16:50:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/8f4a4f366d547f9a5fc14840c2d81be8?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>ted.price@basis.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prepare for open source: mermaid diagrams, source-image embed, licensing, danki
+
+Pipeline behavior:
+- Transcribe hand-drawn diagrams as mermaid code blocks; freeform sketches
+  fall back to &amp;gt; [!note] Diagram callouts. The source photo is now always
+  embedded at the bottom of each note under a ## Source section, and the
+  embed_source_image config flag is retired.
+- Filename slug and note title now come from the body&amp;#39;s leading # Heading
+  when present, falling back to the Subject: label. No more double-H1 when
+  the body already leads with a heading.
+
+Repo prep for publishing:
+- Add MIT LICENSE and SECURITY.md (local-only threat model, known caveats).
+- Add danki.py: standalone URL/PDF/text -&amp;gt; Anki cards CLI, previously an
+  ad-hoc script.
+- Pin dependency versions in requirements.txt; document both reproducible
+  and floating install paths in the README.
+- Add docs/data-flow diagram (mermaid source plus PNG/SVG renders).
+- Restructure the README to frame the repo as two tools (pipeline + danki).
+
+Co-Authored-By: Claude Opus 4.7 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/78ae8880af5c32bb10ad463fc6274ba56696bc4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commit/78ae8880af5c32bb10ad463fc6274ba56696bc4f"/>
+    <title>
+        Anonymize the information
+    </title>
+    <updated>2026-08-03T20:41:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/8f4a4f366d547f9a5fc14840c2d81be8?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>ted.price@basis.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Anonymize the information&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8615a9c0bce6d3746c3678c86b8fddb570e50489</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pricees/note-buddy/commit/8615a9c0bce6d3746c3678c86b8fddb570e50489"/>
+    <title>
+        First pass
+    </title>
+    <updated>2026-08-02T18:49:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/8f4a4f366d547f9a5fc14840c2d81be8?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>ted.price@basis.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;First pass&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Leon2k909/Micheon/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Leon2k909/Micheon/commits/main.atom"/>
+  <title>Recent Commits to Micheon:main</title>
+  <updated>2026-09-08T00:05:01Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/768c92dff7011fd53928c427104556d0c073435a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/768c92dff7011fd53928c427104556d0c073435a"/>
+    <title>
+        v1.2.1081: The Cyrillic keyboard row follows the alphabet on screen
+    </title>
+    <updated>2026-09-08T00:05:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1081: The Cyrillic keyboard row follows the alphabet on screen
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/292f27869f8480f6e600dbc5310bddd362a9f3a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/292f27869f8480f6e600dbc5310bddd362a9f3a9"/>
+    <title>
+        wip: The Cyrillic keys go away when the learner is reading Latin
+    </title>
+    <updated>2026-09-08T00:04:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: The Cyrillic keys go away when the learner is reading Latin
+
+The row is not a helper beside the keyboard, it IS the keyboard: not one of
+the thirty-three letters is on a German, French or Polish one. On the Latin
+setting the transcription is written in letters the keyboard already has,
+which is the point of it, so the row has nothing to offer and takes up half
+the screen.
+
+The comment on the row said this already; no code carried it, because until
+the lesson knew Russian at all the row was unreachable.
+
+Measured on the same stage: 66 keys on Cyrillic, 66 on both, none on Latin.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/919f6da5f0dd714b88a0ff2b84b1823b16900411</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/919f6da5f0dd714b88a0ff2b84b1823b16900411"/>
+    <title>
+        v1.2.1080: The app speaks Russian everywhere except beside a card — u…
+    </title>
+    <updated>2026-09-08T00:02:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1080: The app speaks Russian everywhere except beside a card — until now
+
+Russian became a complete interface language in v1.2.1073: every string of the
+app, every card note, the pet&amp;#39;s voice. The one place it could not follow was
+the switch beside a country-course card, which offered German, English, Polish
+and French and nothing else. A reader whose whole app was in Russian tapped a
+card and got the original back.
+
+Leben in Deutschland is the first course it can read — deliberately the first,
+because a Russian speaker sitting the German citizenship test is who that
+course is for. All 1,026 of its strings are translated: 628 cards and headings,
+407 question strings, the tagline. The other five courses follow, one entry in
+the from list each.
+
+Registering a target language is four edits, and three of them fail in silence
+if forgotten. check-ru-country-translations demands all four: the table spread
+into TRANSLATIONS, the source language present in the from list, &amp;quot;ru&amp;quot; in the
+TranslationLanguage union, and — the one that has no symptom until a reader
+comes back the next day — getTranslationLanguage accepting a stored &amp;quot;ru&amp;quot;, or
+the choice is dropped on every reload. Removing that line was tried: the gate
+names it exactly.
+
+It also carries the rules the Polish gate learned this week — emphasis that
+must survive, keys that must match real course text, tables that may share a
+key only when they say the same thing — plus one this course needed: a card
+that is nothing but a row of German institution names is allowed to read the
+same in both languages, because those names are what has to survive.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2345f8ae9d8e2ca541af1cf2ce5e5ffa3988d981</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/2345f8ae9d8e2ca541af1cf2ce5e5ffa3988d981"/>
+    <title>
+        v1.2.1079: A Russian lesson knows it is teaching Russian
+    </title>
+    <updated>2026-09-07T23:43:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1079: A Russian lesson knows it is teaching Russian
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa5ada841967092f0f226240644b3091ab256f3f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/fa5ada841967092f0f226240644b3091ab256f3f"/>
+    <title>
+        wip: The lesson learns that Russian is a language
+    </title>
+    <updated>2026-09-07T23:43:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: The lesson learns that Russian is a language
+
+Four chains in the lesson asked which language is being taught, and every
+one of them had a case for French, Polish, Spanish, Italian and Portuguese
+but none for Russian, so a Russian lesson fell through to German. It
+labelled Cyrillic as German, tagged the German meaning as English, offered
+umlauts to type Russian with, and handed the sentence to a German voice.
+
+Nothing Russian-specific could reach the screen through that: the script
+setting never applied, so neither the new transcription line nor the Latin
+spelling that shipped long before it ever showed up in a lesson, and the
+alphabet badge could not appear at all.
+
+Each chain now names Russian where it already named the others. Proof: the
+same lesson rendered under all three script settings used to come out
+identical and now differs.
+
+The labels the lesson builds from that name reach every interface table,
+Russian included, rather than falling back to English.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/64c3fcbd8d18ac9216fac65c6d373680cd6fe5a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/64c3fcbd8d18ac9216fac65c6d373680cd6fe5a7"/>
+    <title>
+        v1.2.1078: A Polish reader gets the British practice questions too
+    </title>
+    <updated>2026-09-07T23:34:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1078: A Polish reader gets the British practice questions too
+
+The Life in the UK course has had a Polish table for its lesson text since
+v1.2.1072, but its practice bank had none — so the lesson was read in Polish
+and then asked its 248 questions in English. Those questions reach a reader in
+three places: folded into the stepped lesson, and through the practice and
+test views that all seven country packs share.
+
+1064 strings, keyed on the English of ukQuestionBank.ts exactly as it stands
+there, extracted from the built module and paired back by position. Another
+251 of the bank&amp;#39;s strings were already answered by the course table and are
+deliberately absent: every Polish table is spread into one object, so a second
+entry for one key would be a silent collision.
+
+Institution and law names stay in English, the way they do in the course
+table, because the exam is sat in English and asks for those exact words. A
+Polish name appears only where Polish uses nothing else — Tamiza, Londyn,
+Kornwalia, Orkady.
+
+check-pl-bank-translation is the new gate. It refuses a key that matches no
+real question, a bank string with no Polish anywhere, a key that collides with
+another Polish table, and a table nobody spread into the lookup. It also
+watches the English names: drop Magna Carta out of the values and it names all
+six entries. Both rules were made to fail before this shipped.
+
+Verified in the app, in Polish, on the daily quiz: the question, all four
+options and the explanation all come back translated.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c946e02cda3073de2c21cd941f841b3835cd576f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/c946e02cda3073de2c21cd941f841b3835cd576f"/>
+    <title>
+        v1.2.1077: Three languages stop writing their dates in English
+    </title>
+    <updated>2026-09-07T23:18:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1077: Three languages stop writing their dates in English
+
+Spanish, Italian and Portuguese have been complete interface languages for a
+while — every string of the app, every card note. But uiLocale() and
+uiSpeechLang() were a chain of ifs ending in a bare English return, and those
+three were never added to the chain. An app set to Spanish formatted its dates
+and numbers the English way and let the pet speak to its reader in an English
+voice, with nothing failing anywhere.
+
+Both helpers now read one table typed on ResolvedInterfaceLanguage, so the next
+language cannot be forgotten: a missing row is a type error in the same edit
+that adds the language. check-number-formatting no longer names the three tags
+it happens to know about — it reads the union and demands a row for every
+language in it, and that the row belongs to that language rather than to
+another. Dropping Italian was tried: tsc and the gate both refuse it.
+
+Alongside, the Spanish country course finishes its Polish. Four strings were
+left out of that table because the gate failed on any key two tables share, and
+a year or a one-word heading repeats across courses on its own. The reader saw
+Polish regardless, since the tables merge into one lookup — but a card about
+Spain was borrowing from tables about Britain and France. The four rows are now
+where they belong, with the same wording, and the rule fails only when the two
+translations differ, which is the case where one of them is really lost.
+
+One card had also dropped a term the Spanish original prints in bold. Restored,
+and the gate counts the markers now: an odd number never closes, and fewer runs
+than the source means the card has stopped pointing at something.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d1163afa96d514e2c3a3cd8539c8244b93c7c4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/2d1163afa96d514e2c3a3cd8539c8244b93c7c4f"/>
+    <title>
+        v1.2.1076: A Polish reader can now open every country course there is
+    </title>
+    <updated>2026-09-07T21:22:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1076: A Polish reader can now open every country course there is
+
+Italy, Spain and Russia were the three a Polish reader could not tap
+through at all. All three are done — 3053 strings — and with Russia the
+last alphabet closes: in front of a Latin sentence you can guess, in
+front of Cyrillic you cannot.
+
+Cards, headings and questions in all three. Each country keeps the words
+its own counter uses, with the Polish meaning beside them: codice
+fiscale and questura, padron and empadronamiento, propiska and dacza.
+Names take their Polish form, because a reader who looks one up will
+look it up in Polish.
+
+They come in behind the quiz retrofits of v1.2.1072, so the count is
+whole rather than partly whole: not one of the 6428 strings across the
+seven country courses is left without Polish.
+
+A new gate holds them, modelled on the French one. It compares every
+Polish table against every other spread into the same object, since a
+shared key loses one translation with no error anywhere, and it asserts
+that the picker can actually reach what was written. Its Russian row
+carries the pair form: the Cyrillic to find in the key, the
+transliteration to require in the value.
+
+Polish now reads seven country courses of seven, the same as German,
+English and French.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f43f390cabdcfd204950c7286657e172bbd73c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/0f43f390cabdcfd204950c7286657e172bbd73c5"/>
+    <title>
+        wip: Zhizn v Rossii, read in Polish
+    </title>
+    <updated>2026-09-07T21:12:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: Zhizn v Rossii, read in Polish
+
+1224 entries, the seventh and last country course a Polish reader can
+open. It is also the one where the gap actually stopped somebody: in
+front of a Latin sentence a Polish reader can guess, in front of
+Cyrillic they cannot.
+
+Names take their Polish form — Czajkowski, Jurij Gagarin, Jekaterynburg
+— because a reader who looks one up will look it up in Polish. The
+exam&amp;#39;s own words keep their transliteration with the meaning beside
+them: EGE, OGE, MROT, SNILS, INN. And the everyday vocabulary the course
+teaches keeps the Russian and gains the Polish next to it: propiska,
+dacza, bania, wienik, marszrutka, elektryczka, barszcz, szczi, ucha.
+
+The gate&amp;#39;s Russian row carries the same pair form the French one needed:
+the Cyrillic to find in the key, the transliteration to require in the
+value, because a Polish sentence keeps no Cyrillic at all.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b4b59bf611e241d11d9b1a3e176d2a03f332a78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/5b4b59bf611e241d11d9b1a3e176d2a03f332a78"/>
+    <title>
+        wip: Vivir en Espana, read in Polish
+    </title>
+    <updated>2026-09-07T21:12:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: Vivir en Espana, read in Polish
+
+931 entries, the sixth country course a Polish reader can open. Four
+strings this course shares with the tables that came before are answered
+there and are deliberately absent, so no key is written twice.
+
+The Spanish stays wherever the counter or the exam uses it — padron,
+empadronamiento, NIE, TIE, DNI, RETA, Bachillerato, finiquito, menu del
+dia — with the Polish meaning beside it. Place names take their Polish
+form where Polish uses nothing else: Sewilla, Kadyks, Kordoba, Madryt.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c73f43ae1a8aa81dc30dec4bc04aced3f755e7f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/6c73f43ae1a8aa81dc30dec4bc04aced3f755e7f"/>
+    <title>
+        wip: Vivere in Italia, read in Polish
+    </title>
+    <updated>2026-09-07T21:12:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: Vivere in Italia, read in Polish
+
+898 entries, the fifth country course a Polish reader can open and the
+first beyond the three that were there from the start. Cards, headings
+and questions, keys extracted from the built module and paired back so
+that no character was retyped.
+
+The Italian stays wherever the counter uses it — codice fiscale,
+permesso di soggiorno, questura, partita IVA, IRPEF, INPS, tredicesima,
+Ferragosto — with the Polish meaning beside it, because a reader who
+learns only the Polish word cannot ask for the thing.
+
+With it a new gate, modelled on the French one: check-pl-country-
+translations, which holds every Polish table for a course written in
+another language. It compares each table against every other spread into
+the same object, since a shared key loses one translation with no error
+anywhere, and it asserts that the picker can actually reach what was
+written.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e250931162bd144cd7b562fa2e7c6d90721f95b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/8e250931162bd144cd7b562fa2e7c6d90721f95b"/>
+    <title>
+        v1.2.1075: Russian can be read in both alphabets at the same time
+    </title>
+    <updated>2026-09-07T21:06:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1075: Russian can be read in both alphabets at the same time
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8b8ff2e1ecfb441561edaf001a904b6fe5a8b31</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/e8b8ff2e1ecfb441561edaf001a904b6fe5a8b31"/>
+    <title>
+        wip: Both Russian alphabets at once, each on its own latch
+    </title>
+    <updated>2026-09-07T21:06:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: Both Russian alphabets at once, each on its own latch
+
+The Russian card now carries two independent toggles where English
+carries UK and US. Each latches and releases on its own; only the last
+one still pressed refuses to release, so a reader is never left with a
+card that shows nothing.
+
+With both pressed, every Russian line renders Cyrillic on top and the
+transcription as a smaller second line beneath it -- word cards,
+dialogue lines and sentences alike. Grading accepts either spelling.
+
+The English row is untouched: it stays mutually exclusive, and none of
+its four checks moved.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/12b653bfd5a3dc3bdfe83fbbadb3cc53223681f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/12b653bfd5a3dc3bdfe83fbbadb3cc53223681f2"/>
+    <title>
+        v1.2.1074: Two German cakes were given the names of two other things
+    </title>
+    <updated>2026-09-07T20:53:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/220651135?s=30&amp;v=4"/>
+    <author>
+      <name>LeonS2k909</name>
+      <uri>https://github.com/LeonS2k909</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1074: Two German cakes were given the names of two other things
+
+A native speaker read the counter line and said the German was right and
+the English was not. Both halves of it were wrong.
+
+Apfelstreusel is a cake: a base, a layer of apple, streusel on top,
+eaten cold with coffee. An apple crumble is a hot pudding with custard
+and no base at all — a different dish, not a translation. And
+Schwarzwälder on its own is a place in English; it is short for
+Schwarzwälder Kirschtorte, which English calls a Black Forest gateau,
+as another card in this very course already says. The line now names
+both, and carries the shortening as the lesson: a counter drops the
+second half of the name and so does the sentence.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9dbbb123ddc3bfdce988dd1c523a47b5c1dc2a63</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/9dbbb123ddc3bfdce988dd1c523a47b5c1dc2a63"/>
+    <title>
+        v1.2.1073: The whole app speaks Russian, not only the courses
+    </title>
+    <updated>2026-09-07T20:28:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/318993821?s=30&amp;v=4"/>
+    <author>
+      <name>Michelle0298</name>
+      <uri>https://github.com/Michelle0298</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1073: The whole app speaks Russian, not only the courses
+
+Russian was something you could study and nothing more. Every button, every
+setting and every card note stayed English while you studied it. It is now an
+interface language like the other six.
+
+The two tables it needed:
+
+- i18nRu.ts, 3070 interface strings, the same set the coverage gate demands of
+  German, French, Polish, Spanish, Italian and Portuguese.
+- usageNotesRu.ts, all 14019 card notes, keyed exactly as the other six are.
+
+Registered everywhere a language has to be: the picker list and both resolved
+types, the two lazy loaders, the number and speech locales, and the three gates
+that would otherwise never look at it.
+
+Two things found on the way there:
+
+- The interface gate was already failing before any of this. One string
+  reaches the Spanish, Italian and Portuguese tables and was in none of them,
+  so no build could pass at all. Added.
+- The 365 daily lines had no Russian, and the type had no room for one. They
+  have both now.
+
+uiLocale and uiSpeechLang still answer English for Spanish, Italian and
+Portuguese. That gap is older than this and is left where it is.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9514bbb2bc7622a433e0d1224aea63c9a67a4429</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/9514bbb2bc7622a433e0d1224aea63c9a67a4429"/>
+    <title>
+        v1.2.1072: The four courses a Polish reader opens are whole
+    </title>
+    <updated>2026-09-07T19:21:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1072: The four courses a Polish reader opens are whole
+
+The lesson text was already Polish in Life in the UK, Leben in
+Deutschland and Vivre en France. The questions that close each lesson
+were not, so a reader got through a whole lesson and then met three
+untranslated ones. 1069 strings, and none of the 3225 across the three
+courses is left without Polish now.
+
+Each course&amp;#39;s own words survive. The exam asks for them by name, and an
+answer translated away is the wrong answer at the test centre.
+
+Six strings sit in a sibling table rather than being repeated, because
+every table for one target is spread into a single object and a second
+entry for one key is a silent collision. So the extraction was run again
+after each course landed, which is what turned seven such keys up.
+
+A gate had to be corrected on the way. The check that keeps a language
+course out of the startup download recognised Polish by the bare word
+przynajmniej, an everyday adverb, so an ordinary quiz answer using it
+was accused of dragging the whole Polish course into the entry chunk.
+Nothing had leaked. The needle is now a full learner sentence that only
+the language course can hold, and it still fails the build when that
+chunk really is reachable.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d95da99239a4ca0ad3d9ce3dc07243c3580343c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/9d95da99239a4ca0ad3d9ce3dc07243c3580343c"/>
+    <title>
+        wip: The French questions, read in Polish
+    </title>
+    <updated>2026-09-07T19:02:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: The French questions, read in Polish
+
+357 strings, and with them the four courses a Polish reader already
+opens are whole: not one of the 3225 strings across the UK, Germany and
+France is left without Polish.
+
+The French stays wherever the exam asks for the French — laicite, SMIC,
+carte Vitale, tiers payant, prud&amp;#39;hommes — and the Polish carries the
+explanation around it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b2cccf2e4b9a847a60d2caf8ff52ece2895c3bc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/7b2cccf2e4b9a847a60d2caf8ff52ece2895c3bc"/>
+    <title>
+        wip: The German questions, read in Polish
+    </title>
+    <updated>2026-09-07T18:55:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: The German questions, read in Polish
+
+393 strings. The German stays wherever the test asks for the German —
+Grundgesetz, Bundestag, Ewigkeitsklausel, Abitur, Nachtruhe — and the
+Polish carries the explanation around it.
+
+Four strings this course shares with Life in the UK are answered by that
+table and are deliberately absent. Two entries for one key would be a
+silent collision: both tables are spread into the same object, and the
+later spread would decide the wording for both courses.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1fc5a60b47473b99b796b74240d2f1385fc12a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/c1fc5a60b47473b99b796b74240d2f1385fc12a5"/>
+    <title>
+        wip: The UK questions, read in Polish
+    </title>
+    <updated>2026-09-07T18:46:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: The UK questions, read in Polish
+
+319 strings, the ones that close each lesson. A Polish reader could get
+through the whole lesson text and then meet three untranslated questions;
+now the lesson can be finished.
+
+Answer options keep the English name of whatever the exam asks for by
+name. An answer translated away is the wrong answer at the test centre.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0076f2751634a8a43c35327ee2d734f2ed089e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Leon2k909/Micheon/commit/f0076f2751634a8a43c35327ee2d734f2ed089e2"/>
+    <title>
+        v1.2.1071: A French reader can now open every country course there is
+    </title>
+    <updated>2026-09-07T15:13:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/1f6bde58b34b0a263e346434941870e3?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>sophie4445666@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1071: A French reader can now open every country course there is
+
+Poland, Italy, Spain and Russia were the four a French reader could not
+tap through. All four are done, and with Russia the last alphabet closes:
+in front of a Latin sentence you can guess, in front of Cyrillic you
+cannot, so that was the one where the gap actually stopped somebody.
+
+Cards, headings and questions in all four, including the quizzes. A
+lesson that ends in three untranslated questions is not a lesson anybody
+can finish.
+
+The gate that guards them learned two things on the way. A repeated key
+across two tables is silent — the later one wins and a translation is
+gone — so every table spread into the same object is now compared with
+every other. And an exam word given in Cyrillic can be required in the
+key and its transliteration required in the French, which is the only
+way to keep the word the country uses in a sentence that has no Cyrillic
+left in it.
+
+French now reads seven country courses of seven, the same as German.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

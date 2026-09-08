@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="zh-hant" dir="ltr">
+<head>
+  <!-- dataLayer 初始化 -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('meta[property="article:tag"]').forEach(function(tag) {
+      window.dataLayer.push({
+        'event': 'channel_view',
+        'channel_name': tag.getAttribute('content')
+      });
+    });
+  });
+  </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WM8CNCWN');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:description" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<meta name="description" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<meta property="og:image" content="https://www.ithome.com.tw/sites/default/files/field/image/xie_qu_68.jpg" />
+<link rel="shortcut icon" href="https://www.ithome.com.tw/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<meta name="abstract" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<link rel="image_src" href="https://www.ithome.com.tw/sites/default/files/field/image/xie_qu_68.jpg" />
+<link rel="canonical" href="https://www.ithome.com.tw/news/178714" />
+<meta property="og:site_name" content="iThome" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="從原水監測、淨水、供水到水務管理，台水加速智慧水務管理大幅改善供水韌性" />
+<meta property="og:url" content="https://www.ithome.com.tw/news/178714" />
+<meta property="og:description" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<meta property="og:image" content="https://www.ithome.com.tw/sites/default/files/field/image/xie_qu_68.jpg" />
+<meta property="og:image:url" content="https://www.ithome.com.tw/sites/default/files/field/image/xie_qu_68.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@ithomeonline" />
+<meta name="twitter:creator:id" content="ithomeonline" />
+<meta name="twitter:title" content="從原水監測、淨水、供水到水務管理，台水加速智慧水務管理大幅改善供水韌性" />
+<meta name="twitter:description" content="面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。" />
+<meta name="twitter:image" content="https://www.ithome.com.tw/sites/default/files/field/image/xie_qu_68.jpg" />
+<meta property="article:tag" content="政府" />
+<meta property="article:tag" content="永續" />
+  <title>從原水監測、淨水、供水到水務管理，台水加速智慧水務管理大幅改善供水韌性 | iThome</title>
+  <link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_DyKGQQ1ZooWJGZ-VHtjSC6JOIbxxbEHPZMULRR2aAqY.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_k2Yr8VNJI0Ydmg9xojUqZx0Sb0TN6AmVo34lzYgLpk0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_pY0N9sRpYq8Zh6ttyDcsx9nywYPuYSfrjF6uDb2ZIYY.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_aYIN3mq1DmLT6Di-4-Gd2Se05n7P-awcXq0wcXZEGrI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="//www.ithome.com.tw/sites/all/themes/ithomeStyle/css/font-awesome/css/font-awesome.min.css" media="all" />
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")</script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_wLX2SIMnQ4ejGb11IHeDbZH2epX51LQPGgZCWanPeHk.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_yfF6JyCAP90rfOIqxIikFO4o_6C07rlQcJYLALL18eQ.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_PpWj1_0vz25Pp3KJwGcWwKOJWJfOoPE7svepJH4xqZA.js"></script>
+<script>(function($) { $(document).bind("ready", function() { State.init(".ithome.com.tw", "/", "_352ada6d1e201e578ecf132be4214bfc326a7294", 1); }); })(jQuery);</script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_q15x_O-9imkRmTs1RyvjELo4uxbnh8J6CSO5egfMvq4.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ithomeStyle","theme_token":"S4w9vvzwjgT5O4r3QhKSEsTyflFOfzldL5IjmAZVABk","js":{"modules\/statistics\/statistics.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.7.2\/jquery.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/prettify\/prettify.js":1,"sites\/all\/libraries\/prettify\/lang-css.js":1,"sites\/all\/libraries\/prettify\/lang-sql.js":1,"sites\/all\/libraries\/prettify\/lang-wiki.js":1,"sites\/all\/libraries\/prettify\/lang-yaml.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/state\/js\/state.min.js":1,"public:\/\/languages\/zh-hant_EynS4tarGHEmr5eaBV3EzbgWhvNJW-hDCo2uqR3SWPQ.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/prettify\/prettify.loader.js":1,"1":1,"sites\/all\/themes\/ithomeStyle\/js\/jquery.featureList.js":1,"sites\/all\/themes\/ithomeStyle\/js\/main.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-affix.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-alert.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-button.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-carousel.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-collapse.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-dropdown.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-modal.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-tooltip.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-popover.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-scrollspy.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-transition.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-typeahead.js":1},"css":{"modules\/system\/system.base.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/youtube\/css\/youtube.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/ckeditor.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/panels\/css\/panels.css":1,"sites\/all\/themes\/ithomeStyle\/css\/style.css":1,"sites\/all\/modules\/prettify\/styles\/naspinski.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"prettify":{"linenums":true,"match":".content","nocode":"no-code","custom":[],"markup":{"code":true,"pre":true,"precode":false}},"statistics":{"data":{"nid":"178714"},"url":"\/modules\/statistics\/statistics.php"}});</script>
+
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-178714 node-type-news" >
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM8CNCWN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v19.0&appId=1109758547106331" nonce="Ntz1BjMD"></script>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">移至主內容</a>
+  </div>
+    <header id="navbar" role="banner" class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+              <a class="logo pull-left" href="/" title="首頁">
+          <img src="https://www.ithome.com.tw/sites/default/files/ithome_logo_0.png" alt="首頁" />
+        </a>
+      
+      
+              <div class="nav-collapse collapse">
+          <nav role="navigation">
+                          <ul class="menu nav"><li class="first leaf"><a href="/news">新聞</a></li>
+<li class="leaf"><a href="/ai">AI</a></li>
+<li class="leaf"><a href="/security">資安</a></li>
+<li class="leaf"><a href="/cloud">Cloud</a></li>
+<li class="leaf"><a href="/cio" title="CIO">CIO</a></li>
+<li class="leaf"><a href="/dgov">政府</a></li>
+<li class="leaf"><a href="/healthit">醫療</a></li>
+<li class="leaf"><a href="/sustainableit">永續</a></li>
+<li class="leaf"><a href="/feature">專題</a></li>
+<li class="expanded dropdown"><a href="/seminar" class="dropdown-toggle" data-toggle="dropdown" data-target="#">活動 <span class="caret"></span></a><ul class="dropdown-menu"><li class="first leaf"><a href="https://aienterprise.ithome.com.tw/2026/">AI Enterprise Summit</a></li>
+<li class="leaf"><a href="https://cloudsummit.ithome.com.tw/">臺灣雲端大會</a></li>
+<li class="leaf"><a href="https://cyber.ithome.com.tw/?utm_source=ithome-online&amp;utm_medium=navbar&amp;utm_campaign=navbar" target="_blank">臺灣資安大會</a></li>
+<li class="leaf"><a href="/seminar">研討會訊息</a></li>
+<li class="leaf"><a href="/cfp">議程／講師徵求</a></li>
+<li class="last leaf"><a href="https://ithelp.ithome.com.tw/2026ironman?sc=iThomeNav" title="IT人的知識交流平臺">iThome鐵人賽</a></li>
+</ul></li>
+<li class="leaf"><a href="/tech">技術</a></li>
+<li class="last leaf"><a href="https://webinar.ithome.com.tw/">IT EXPLAINED</a></li>
+</ul>                                      <ul class="menu nav pull-right"><li class="first last leaf"><a href="/search" class="icon-search">搜尋</a></li>
+</ul>                                  </nav>
+        </div>
+          </div>
+  </div>
+</header>
+<div id="skybanner" style="background-color: #122239;text-align: center">
+  <script src="https://itadapi.ithome.com.tw/ads/serve?type=B5&channel=ithome_index"></script>
+</div>
+
+<header id="headerbar" role="banner" class="hidden-phone">
+  <div class="headerbar-wrap">
+        <div class="region region-before-header">
+    <section id="block-block-3" class="block block-block hidden-phone clearfix">
+
+      
+  <style>
+#div_cube3d_pic { width: 100% !important}
+#div_cube3d_exp {left:0 !important; position: relative !important; margin: 0 auto}
+#headerbar .container-fluid {max-width: 1350px !important}
+  </style>
+<div id="mkt-on-top">
+  <div class="mkt-720">  
+<script src="https://itadapi.ithome.com.tw/ads/serve?type=B1&channel=ithome_index"></script>
+
+  </div>
+
+</div>
+
+<div class="container">
+    <div class="mkt-text-top">
+     <div class="text-item">
+      <script src="https://itadapi.ithome.com.tw/ads/serve?type=T2&channel=ithome_index"></script>
+     </div>
+     <div class="text-item">
+       <script src="https://itadapi.ithome.com.tw/ads/serve?type=T3&channel=ithome_index"></script>
+     </div>
+     <div class="text-item">
+        <script src="https://itadapi.ithome.com.tw/ads/serve?type=T4&channel=ithome_index"></script>
+     </div>
+   </div>
+   <br style="clear:both"> 
+</div>
+</div></section> <!-- /.block -->
+  </div>
+    </div>
+</header>
+
+
+<div class="main-container container-fluid">
+
+  
+  <header role="banner" id="page-header">
+    
+      <div class="region region-header">
+    <section id="block-views-view-news-article-category" class="block block-views clearfix">
+
+      
+  <div class="view view-view-news view-id-view_news view-display-id-article_category view-dom-id-e01b950e071f874f8841729a2e3e485d">
+        
+  
+  
+      <div class="view-content">
+        <div class="category-label">
+      
+              
+              
+              
+              
+              
+          <a href="/tags/%E6%96%B0%E8%81%9E">新聞</a>    
+              
+              </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+<section id="block-block-47" class="block block-block clearfix">
+
+      
+  <style>
+.page-tag-highlight {background-color: #FFD700; font-family:Arial, "文泉驛正黑", "WenQuanYi Zen Hei", "儷黑 Pro", "LiHei Pro", "微軟正黑體", "Microsoft JhengHei", "標楷體", DFKai-SB, sans-serif; text-align: center; width: 70%; min-width: 320px;margin: 10px auto 1px}
+.page-tag-highlight .content a {font-size: 14pt; font-weight: 400; text-decoration: none; color: #111; line-height: 40px}
+.page-tag-highlight .content a:hover {color: #08c}
+@media screen and (max-width: 768px;) {   .page-tag-highlight {width: 100%; }   .page-tag-highlight .content {margin: 0 1em}   .page-tag-highlight .content a {    font-size: 1.4em;    line-height: 30px;   }}
+</style>
+</section> <!-- /.block -->
+  </div>
+
+                  <h1 class="page-header">從原水監測、淨水、供水到水務管理，台水加速智慧水務管理大幅改善供水韌性</h1>
+        <div class="content-summary"><p>面對極端氣候、水資源調度、地下管線老化與能源成本攀升等挑戰，台灣自來水公司近幾年積極導入AI技術，從原水的水質監測、淨水製程處理、供水調度到漏水管理，將傳統依賴大量人力或人工現場經驗的傳統水務管理工作，轉型為AI與數據驅動的智慧水務管理。</p>
+ </div>
+            </header> <!-- /#header -->
+
+  <div class="row-fluid">
+      
+    
+      
+    <section class="main-content span9">  
+                                                                      <section id="block-block-22" class="block block-block socail-btns-on-top clearfix">
+
+      
+  <style>
+#block-block-22 { width: 520px}
+.social-btn-set {float:right; margin: 10px 0}
+.social-btn-set .fan-page {margin: 0 15px 0 0; display: inline-block}
+.fb-like.fb_iframe_widget {display: inline-block}
+@media screen and (max-width: 480px) {
+  #block-block-22 {width: 100%}
+  .social-btn-set {float: left}
+  .social-btn-set .fan-page,   .social-btn-set .fb-like   { width: 100% !important; height: 40px; display: block; margin-left: 15px  }
+  .social-btn-set .fb-like { margin-left: 15px }
+  .social-btn-set .fan-page .fb-like {width: 105px !important; float: left; margin-left: 0}
+}
+/* firefox fix */
+.gplus div { vertical-align: top !important}
+</style>
+<div class="social-btn-set">
+  <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" style="display: inline-block"></div>
+
+</div>
+<br class="clear:both"></section> <!-- /.block -->
+<section id="block-views-view-news-custom-submitted" class="block block-views clearfix">
+
+      
+  <div class="view view-view-news view-id-view_news view-display-id-custom_submitted view-dom-id-f334511a487f02a52338222b0df2f8c2">
+        
+  
+  
+      <div class="view-content">
+        <div>
+      
+  <span class="views-field views-field-created">        <span class="field-content"><div class="submitted">
+  <span>文/<span class="author"><a href="/users/%E8%98%87%E6%96%87%E5%BD%AC">蘇文彬</a></span><span class="seprate">|</span><span class="created">2026-09-07</span><span class="pub-wording">發表</span>
+</div></span>  </span>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+
+<article id="node-178714" class="node node-news node-promoted node-sticky  clearfix">
+  <header>
+        <div class="img-wrapper">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/xie_qu_68.jpg?itok=GxnFL0Sk" width="960" height="420" alt="" /></div></div></div>        </div>
+                    
+      </header>
+    <div class="row-fluid">
+    <div class="contents-wrap">
+    <div class="content">
+    <div class="side-extra">
+      <script src="https://itadapi.ithome.com.tw/ads/serve?type=B3&channel=ithome_index"></script>
+  </div>
+
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>水是民生與產業運作不可或缺的重要資源。對一般民眾而言，打開水龍頭就能取得穩定的用水，每天都會用到的自來水看似簡單，但是其背後從水庫、河川及地下水等原水來源，到淨水處理、輸配水管網及用戶端服務等一系列複雜流程。台灣自來水公司(簡稱台水)資訊處長曾沛聰在2026數位政府高峰會分享，台水如何導入AI推動智慧水務發展，強化供水韌性及永續。</p>
+<p>曾沛聰首先指出，全球氣候變遷正在改變傳統水務管理模式。颱風與豪雨可能造成河川原水濁度快速升高，影響淨水處理；而長時間乾旱則會造成水源調度壓力；另一方面，埋設於地下的大量管線也面臨老化與漏水問題。在各種突發狀況下維持穩定供水，已成為水務管理的重要課題，也是供水韌性的重要挑戰。</p>
+<p>曾沛聰表示，過去台水許多操作流程高度依賴現場人員多年累積的經驗，例如判斷水質變化、調整加藥量、尋找地下漏水點等。但隨著供水系統規模不斷增加，以及環境變化更加快速，單靠人工判斷已難以滿足需求，因此台水希望透過AI協助建立更即時、更精準的管理模式。</p>
+<h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:4pt;"><span style="font-size:20px;"><span style="color:#B22222;"><strong><span id="docs-internal-guid-0b614f9c-7fff-c851-39b1-e060b2cc6f8c"><span style="font-family: Arial, sans-serif; background-color: transparent; font-weight: 700; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">從人工巡查到AI預警，建立原水水質監測防線</span></span></strong></span></span></h2>
+<p>原水水質監控是供水流程的第一道防線。過去淨水場主要透過人員定期巡查，觀察水體變化或生物反應，再依據經驗判斷是否可能受到污染，但是人工巡查仰賴經驗，觀察生物的行為變化來判斷水質的異常，另外，人工巡查也存在時間限制，首先人員不可能24小時巡查，且污染事件如果發生在巡查間隔期間，可能無法立即察覺。</p>
+<p>為此，台水導入AI生物監測技術，利用台灣蜆及養魚箱作為水質感測工具，希望透過生物反應搭配AI分析，提前發現異常。</p>
+<p><img alt="" src="/sites/default/files/images/%E6%93%B7%E5%8F%961-600(11).jpg" style="width: 600px; height: 410px;" /></p>
+<p>其中，台灣蜆對水中污染物的敏感反應，當水體受到柴油、有機污染物等影響時，可能出現閉殼等集體行為變化。利用這個特性，由AI持續觀察台灣蜆殼的開閉合狀態，當發現一定數量的蜆殼閉合，就會提醒人員進一步檢查。</p>
+<p>另一項養魚箱監測則是透過AI辨識魚群活動模式。當水質改變時，魚群可能出現移動位置改變、活動異常(從前箱移至中箱、後箱)，甚至出現魚群漂浮或沉到水底等現象，AI可藉由分析這些行為變化，提供水質異常預警。</p>
+<p>相較過去依靠人工定時觀察，利用AI系統可持續運作，協助淨水場建立更即時的水質監控能力，當發現生物受到水質影響的異常行為時，向管理人員發出預警，由人員確認。「AI並不是取代人工巡查，而是讓異常更早被發現，協助淨水處理」，曾沛聰說。</p>
+<h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:4pt;"><span style="color:#B22222;"><span style="font-size:20px;"><span id="docs-internal-guid-0b614f9c-7fff-c851-39b1-e060b2cc6f8c"><span style="font-family: Arial, sans-serif; background-color: transparent; font-weight: 700; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">AI精準控制淨水與供水，降低成本提升效率</span></span></span></span></h2>
+<p>原水進入淨水場後，如何精準控制處理流程，是AI另一項重要應用。</p>
+<p>曾沛聰指出，過去淨水場會依照原水濁度加入PAC（聚氯化鋁）等混凝劑，加藥量主要依靠操作人員的經驗判斷。由於原水狀況變化快速，為確保水質安全，現場通常會採取較保守策略，可能導致藥劑使用量增加，加藥不夠精準，造成藥劑浪費或成本提高。</p>
+<p>台水在淨水處理導入AI，將原水濁度、淨水量、歷史加藥資料及設備運轉資訊整合分析，建立加藥模型，根據不同水質條件提供加藥建議，再由操作人員確認與決策。</p>
+<p><img alt="" src="/sites/default/files/images/%E6%93%B7%E5%8F%963-600(12).jpg" style="width: 600px; height: 376px;" /></p>
+<p>先蒐集SCADA系統的歷史操作數據、即時水質資訊，訓練AI模型如LightGBM，由AI分析預測後提供混凝劑的加藥建議，讓淨水操作從過去靠經驗調整，逐步轉向以數據分析為基礎。目前台水已在3個淨水場導入AI精準加藥。</p>
+<p>「過往加藥仰賴人工經驗判斷，經驗難以作科學數據的量化，透過AI輔助，就能以比較科學化、數據化的方式加藥」，曾沛聰表示，除了可維持水質穩定，也能通過精準用藥，降低藥劑成本與後續處理負擔。</p>
+<p>此外，供水過程中的抽水設備也是能源管理的重要環節。一般來說，原水從淨水場經過處理後，要送到配水場，需要利用抽水機將水蓄滿，再利用重力將水送到平面的供水區。</p>
+<p>然而，這些抽水機運作需要大量電源，台水利用AI分析，控制調整變頻抽水機的效率、供水需求及電價離尖鋒時段電價，協助安排最佳運轉組合。例如利用夜間的離峰時段大量抽水蓄水，白天則透過配水池重力供水，並優先啟動效率較高的設備，以降低抽水用電成本。</p>
+<p><img alt="" src="/sites/default/files/images/20260826_151507%20(1).jpg" style="width: 600px; height: 400px;" /></p>
+<p>透過AI分析來優化抽水機機組組合運轉頻率，經過現場驗證，出水單位的用電量(度/噸)從0.47降到0.42，單位用電降低約10.6%。</p>
+<p>曾沛聰指出，全台約有400多座相關設施，即使每座每月僅節省數萬元至10萬元，累積效益相當可觀。</p>
+<h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:4pt;"><span style="color:#B22222;"><span style="font-size:20px;"><span id="docs-internal-guid-0b614f9c-7fff-c851-39b1-e060b2cc6f8c"><span style="font-family: Arial, sans-serif; background-color: transparent; font-weight: 700; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">靠AI協助找出地下漏水熱點</span></span></span></span></h2>
+<p>地下漏水管理則是台水提升供水韌性的另一項重點。</p>
+<p>台水目前維運管理超過6萬公里的供水管線，龐大複雜的供水管線，當地下發生漏水時，往往難以在第一時間發現。曾沛聰表示，民眾看到道路冒水時，即意謂著漏水已持續一段時間，甚至可能造成地下掏空，因此如何提前找到漏水位置，是水務管理的另一項重要挑戰。</p>
+<p>過去採用人工查漏，需要分區巡查，逐點檢測，依工程人員的經驗逐漸縮小範圍，才能確認漏水位置，往往需要大量人力投入逐區排查，耗費人力及時間。</p>
+<p>為了克服抓漏問題，台水建置WADA大數據漏水偵測分析系統，利用AI分析供水區域的流量變化，將供水系統劃分為4,000多個分區計量區（DMA），比較各區域進出水量、夜間流量變化等資料，找出可能存在漏水的區域或熱區，再結合管齡、管材及歷史維修紀錄，協助檢漏人員優先檢查漏水的高風險管段。</p>
+<p>在漏水檢測技術方面，台水與工研院合作建立地下漏水聲紋資料庫，將過去老師傅依靠聽漏器累積的經驗，轉化為AI可辨識的聲音模型，協助第一線人員更快速判斷地下是否存在漏水。</p>
+<p><img alt="" src="/sites/default/files/images/Clipboard01-1(9).jpg" style="width: 600px; height: 438px;" /></p>
+<p>在管線逐步汰換與智慧檢漏雙軌推動下，台水漏水率已從2013年的19.55%下降至2024年的11.99%。政府也設定下一階段目標，希望2031年前將漏水率降至10%以下，進一步降低水資源浪費，提升供水穩定度。</p>
+<h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:4pt;"><span style="color:#B22222;"><span style="font-size:20px;"><strong><span id="docs-internal-guid-0b614f9c-7fff-c851-39b1-e060b2cc6f8c"><span style="font-family: Arial, sans-serif; background-color: transparent; font-weight: 700; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">AI延伸客服與行政，讓人員投入專業判斷</span></span></strong></span></span></h2>
+<p>除了供水核心流程，台水也將AI延伸至用戶服務與內部管理。</p>
+<p>在服務端，台水導入AI水務服務，協助民眾查詢停水資訊、臨時供水站位置及相關水務服務，提升資訊取得效率。</p>
+<p>在內部工程作業方面，AI也被運用來協助辨識工程施工上傳的照片，負責檢修的工程團隊需要上傳大量的施工照片，以紀錄施工過程的完整性，這些上傳的施工照片高度相似，甚至重覆利用照片，過去台水依靠人工檢閱大量施工照片，容易發生疏漏，導致施工管理品質難以控管，現在則可透過AI辨識比對大量的施工照片，從中找出重覆上傳的相同照片，再由人工確認。</p>
+<p>另外，他們也透過工安影像分析，協助檢查施工現場是否符合安全要求。在台水內部的行政應用部分，目前也已開發AI發票辨識、智慧公文分文等應用，降低過去需要大量人工作業、重複性高的作業，透用AI提高行政工作效率。</p>
+<p>曾沛聰也強調，AI在台水扮演的是「智慧助手」角色，透過資料蒐集、分析與預警，協助人員提升判斷效率，而非取代現場專業能力。</p>
+<h2 dir="ltr" style="line-height:1.38;margin-top:18pt;margin-bottom:4pt;"><span style="font-size:20px;"><span style="color:#B22222;"><span id="docs-internal-guid-0b614f9c-7fff-c851-39b1-e060b2cc6f8c"><span style="font-family: Arial, sans-serif; background-color: transparent; font-weight: 700; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">關鍵基礎設施導入AI，兼顧智慧化與資安</span></span></span></span></h2>
+<p>由於供水系統屬於關鍵基礎設施，AI導入同時也必須考量資訊安全。</p>
+<p>曾沛聰指出，台水並未讓AI直接連接供水控制系統，而是採取較嚴謹的部署方式。相關資料會先在內部環境進行蒐集與分析，完成模型訓練與驗證後，再部署至內網或單機環境運作，避免核心供水系統直接暴露於外部網路。</p>
+<p>至於工安照片辨識、一般行政應用等非核心服務，則可依需求使用外部的AI工具。</p>
+<p>台水希望透過這樣的方式，在推動智慧水務的同時，兼顧供水系統安全。未來，隨著AI模型持續優化，台水也將進一步擴大AI在水質管理、設備運轉及供水調度等場景的應用，打造更具韌性的智慧水務體系。</p>
+</div></div></div>    <div>
+  </div>
+  </div>
+       
+  </article> 
+<section id="block-block-116" class="block block-block clearfix">
+
+      
+  <div align="right" style="margin-right: 5%">
+    <script src="https://itadapi.ithome.com.tw/ads/serve?type=B9&channel=ithome_index"></script>
+</div></section> <!-- /.block -->
+<section id="block-block-124" class="block block-block clearfix">
+
+      
+    <style>
+      #itplusArticleBottom {
+        max-width: 672px;
+        float: right;
+        width: 672px;
+      }
+      #itplusArticleBottom .title {
+        font-size: 22pt;
+        padding-left: 10px;
+        font-weight: 700;
+        color: #000;
+      }
+
+      #itplusArticleBottom .content {
+        display: flex;
+        justify-content: center;
+      }
+      #itplusArticleBottom .videoItem,
+      #itplusArticleBottom .header {
+        margin: 0 10px;
+        padding-bottom: 10px;
+      }
+      #itplusArticleBottom .header {
+        padding: 15px 0;
+        margin-top: 30px;
+      }
+      #itplusArticleBottom .header img {
+        vertical-align: sub;
+      }
+
+      #itplusArticleBottom .videoItem {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        position: relative;
+      }
+      #itplusArticleBottom .videoItem .cover {
+        height: 112px;
+        max-height: 112px;
+        overflow-y: hidden;
+      }
+      #itplusArticleBottom .videoItem .cover img {
+        width: 200px;
+        vertical-align: top;
+      }
+      #itplusArticleBottom .videoItem .subject,
+      #itplusArticleBottom .videoItem .info {
+        display: inline-block;
+        margin: 5px 10px;
+      }
+      #itplusArticleBottom .videoItem .subject {
+        text-decoration: none;
+        font-size: 12pt;
+        line-height: 1.5em;
+        margin: 5px 10px;
+      }
+      #itplusArticleBottom .videoItem .info {
+        font-size: 12px;
+        color: #444;
+        vertical-align: middle;
+     margin-bottom: 40px;
+      }
+      #itplusArticleBottom .videoItem .info .onair {
+        color: #ff0103;
+        background: 0 0 no-repeat
+          url("https://s4.itho.me/sites/default/files/itplus_onair_icon_wave.png");
+        padding-left: 26px;
+        margin-left: 5px;
+      }
+      #itplusArticleBottom .videoItem .info .offair {
+        margin-left: 5px;
+      }
+
+      #itplusArticleBottom .videoItem .signup {
+        text-align: center;
+        width: 100%;
+      }
+      #itplusArticleBottom .videoItem .signup a {
+        color: #f27f3f;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px auto;
+        width: 90%;
+        border: 1px solid #f27f3f;
+        padding: 2px 0;
+        text-align: center;
+       position: absolute;
+       bottom: 0;
+       left: 10px;
+       line-height: 25px;
+      }
+
+     @media (max-width: 750px) {
+        #itplusArticleBottom .header {
+          text-align: center;
+        }
+
+        #itplusArticleBottom .content {
+          flex-direction: column;
+          width: 340px;
+          margin: 0 auto;
+          min-height: auto;
+        }
+
+        #itplusArticleBottom .videoItem {
+          width: 320px;
+          margin: 0 auto 20px;
+        }
+
+        #itplusArticleBottom .videoItem .cover {
+          height: 180px;
+          max-height: 180px;
+          overflow-y: hidden;
+        }
+
+        #itplusArticleBottom .videoItem .cover img {
+          width: 320px;
+          height: 180px;
+        }
+      }
+    </style>
+  <script>
+
+      const rootUrl = "https://itplus.ithome.com.tw";
+      const apiurl = `https://www.ithome.com.tw/itplus_article.json`;
+      const utmStr =
+        "?utm_source=iThome&utm_medium=articlebottom&utm_campaign=newsarticlebottom";
+      (function ($) {
+        $(function () {
+          $.getJSON(apiurl, function (data) {
+            loadTables(data);
+          });
+          
+          
+          function loadTables(data) {
+            let listElm = `<div class="header"><a href="${rootUrl}"><img src="${rootUrl}/img/logo_it.svg" width="80px"></a> <span class="title">熱門推薦</span></div><div class="content">`;
+            const widget = data?.bottomBar?.map((item) => {
+              item.url = getLink(item);
+              item.time = formatTime(item.duration);
+              return item;
+            });
+
+            widget?.forEach((item) => {
+              listElm += renderElm(item);
+            });
+
+            listElm += "</div>";
+
+            const rootElm = document.getElementById("itplusArticleBottom");
+            rootElm.innerHTML = listElm;
+          }
+
+          function setSignup(item) {
+            if (isSignupOpen(item) === true) {
+              return `<a href="${getLink(item)}">立即報名</a>`;
+            }
+            return "";
+          }
+
+          function isSignupOpen(item) {
+            const fromStr = item.registerStarted;
+            const toStr = item.registerFinished;
+            let isOpen = false;
+            if (
+              item.type == "webinar" &&
+              fromStr.length > 0 &&
+              toStr.length > 0
+            ) {
+              const from = new Date(fromStr).getTime();
+              const to = new Date(toStr).getTime();
+              const current = Date.now();
+              if (current >= from && current <= to) {
+                isOpen = true;
+              }
+            }
+            return isOpen;
+          }
+          
+      
+          function getLink(item) {
+            let link = "";
+
+            switch (item.type) {
+              case "vod":
+                link = `${rootUrl}/vod-page/${item.id}${utmStr}`;
+                break;
+              case "replay":
+              case "webinar":
+                link = `${rootUrl}/webinar-page/${item.id}${utmStr}`;
+                break;
+            }
+            return link;
+          }
+
+          function formatTime(timeStr) {
+            const timeArr = timeStr.split(":");
+            const newTime = Number(timeArr[0]) * 60 + Number(timeArr[1]);
+            return newTime;
+          }
+
+          function getSuffix(item) {
+            let elm = "";
+            if (item.type == "webinar" && item.liveStatus == "直播中") {
+              elm += `<span class="onair">直播中</span>`;
+            } else if (item.type == "webinar" && item.webinarstarted.length > 1) {
+              elm += `<span class="offair">${getDate(item.webinarstarted)} </span>`;
+            } else if (item.type == "vod") {
+              elm += `<span class="offair">${item.time} 分</span>`;
+            } else {
+              elm = "";
+            }
+            return elm;
+          }
+
+          function getDate(date){
+            return (date.split(" "))[0]
+          }
+
+          function renderElm(item) {
+            const result = `<div class="videoItem">
+              <div class="cover">
+                <a href="${item.url}"><img src="${item.coverImage}" alt="${item.subject}" title="${item.subject}" /></a>
+              </div>
+              <div><a href="${item.url}" class="subject">${item.subject}</a></div>
+              <div class="info">${item.channelVendor} |${getSuffix(item)}</div>
+              <div class="signup">${setSignup(item)}</div>
+             </div>`;
+            return result;
+          } 
+              
+          
+          
+        });
+      })(jQuery);
+
+
+    </script>
+    <div id="itplusArticleBottom"></div></section> <!-- /.block -->
+<section id="block-views-hot-news-block-3" class="block block-views clearfix">
+
+        <h2 class="block-title">熱門新聞</h2>
+    
+  <div class="view view-hot-news view-id-hot_news view-display-id-block_3 popular-under-article view-dom-id-bad0d1fd1f437b1e61d9a41f23c786bf">
+        
+  
+  
+      <div class="view-content">
+        <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178722"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/960420-shou_xin_shen_dai_liu_cheng_-yu_shan_jin_kong_ti_gong_.png?itok=-T-mIWv1" width="180" height="180" alt="" title="玉山金控用AI來優化授信申貸作業最耗時的兩大環節，預估年省8.4萬人時" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178722">【AI轉型實例】玉山金打造AI智能徵信流程，7分鐘生成報告初稿，年省8.4萬人時</a>
+      </div>
+      <p class="created">2026-09-06</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178716"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/zi_an_zhou_bao_20260904.jpg?itok=IXRk1nY7" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178716">【資安週報】0831~0904，臺灣新創Zeabur爆資料外洩，高權限AWS憑證失守，用戶急需輪替API金鑰與密碼</a>
+      </div>
+      <p class="created">2026-09-04</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178701"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0904-gpt-6_astra-960.jpg?itok=DyQNab3k" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178701">OpenAI發表最危險也最聽話的GPT-6 Astra模型</a>
+      </div>
+      <p class="created">2026-09-04</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178725"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0907-back-openai-photo_by_thom_milkovic_on_unsplash.jpg?itok=054PCH9Z" width="180" height="180" alt="" title="背景圖片來源／&lt;a href=&quot;https://unsplash.com/@thommilkovic?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Thom Milkovic&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/photos/green-and-blue-strips-wallpaper-qGQIOLke2kE?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178725">OpenAI代理人被爆連上德文論壇共商解題，且1個多月才被發現</a>
+      </div>
+      <p class="created">2026-09-07</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178736"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0907-ascii-960.jpg?itok=XaBf9EHb" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178736">垃圾郵件業者已大規模套用ASCII走私技巧</a>
+      </div>
+      <p class="created">2026-09-07</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178698"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/netapp_security_design_2025-main.jpg?itok=dUvzwwXy" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178698">依循國家級資安標準與框架，NetApp打造實現安全即設計的產品與技術</a>
+      </div>
+      <p class="created">2026-09-06</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178691"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0904-redshift-960.jpg?itok=SHUndZ51" width="180" height="180" alt="" title="Red Sift實測顯示，相較ECDSA-256搭配X25519的基準組，X25519MLKEM768完整TLS握手資料量增加180%，ML-KEM-1024則增加243.7%；伺服器端增加的握手資料可能占用TCP初始壅塞視窗，影響實際連線建立效能。（圖片來源／Red Sift）" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178691">PQC導入TLS 1.3實測，完整交握的資料量增加幅度為180%、CPU影響有限</a>
+      </div>
+      <p class="created">2026-09-07</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/178700"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0904-aws_root-960.jpg?itok=iPAqScpl" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/178700">AWS高權限root使用者遭密碼噴灑，逾150個組織成攻擊目標</a>
+      </div>
+      <p class="created">2026-09-07</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+<section id="block-block-10" class="block block-block clearfix">
+
+      
+  <div class="span8 offset4">
+<div class="ad-text-in-middle">
+  <div class="wrap">
+<div class="text">
+     <script src="https://itadapi.ithome.com.tw/ads/serve?type=T1&channel=ithome_index"></script>
+</div>
+  <div class="ad-annoncement"> Advertisement</div>
+  </div>
+</div>
+</div></section> <!-- /.block -->
+    </section>
+
+          <aside class="span3 aside-right" role="complementary">
+          <div class="region region-sidebar-second">
+    <section id="block-block-33" class="block block-block clearfix">
+
+      
+  <script src="https://itadapi.ithome.com.tw/ads/serve?type=B8&channel=ithome_index"></script></section> <!-- /.block -->
+<section id="block-block-4" class="block block-block clearfix">
+
+      
+  <div class="side-extra">
+<script src="https://itadapi.ithome.com.tw/ads/serve?type=B2&channel=ithome_index"></script>
+</div>
+</section> <!-- /.block -->
+<section id="block-block-123" class="block block-block clearfix">
+
+      
+      <style>
+      #itplussidebar {
+        width: 300px;
+        margin-top: 30px;
+      }
+      #itplussidebar .title {
+        vertical-align: text-bottom;
+        font-size: 22pt;
+        padding-left: 10px;
+        color: #1badf8;
+        font-weight: 100;
+      }   
+      #itplussidebar .videoItem,
+      #itplussidebar .header {
+        margin: 10px 0;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }   
+      #itplussidebar .header {
+        padding: 15px 0;
+        marign-top: 30px;
+      }   
+      #itplussidebar .videoItem table .cover {
+        vertical-align: top;
+        padding: 10px;
+      }   
+      #itplussidebar .videoItem table .cover img {
+        width: 100px;
+        vertical-align: top;
+        max-width: 100px;
+      }   
+      #itplussidebar .videoItem table .subject {
+        text-decoration: none;
+        font-size: 13pt;
+        line-height: 1.5em;
+      }   
+      #itplussidebar .videoItem table .info {
+        font-size: 12px;
+        color: #444;
+        vertical-align: middle;
+      }   
+      #itplussidebar .videoItem table .info .onair {
+        color: red;
+        background: 0 0 no-repeat url("https://s4.itho.me/sites/default/files/itplus_onair_icon_wave.png");
+        padding-left: 26px;
+        margin-left: 5px;
+      }
+      #itplussidebar .videoItem table .info .offair {
+        margin-left: 5px;
+      }
+    </style>
+
+ <script>
+      (function ($) {
+        $(function () {
+ 
+          const apiurl = 'https://www.ithome.com.tw/newssidebar.json?u=202403040940';
+          $.getJSON(apiurl, function (data) {
+            loadTables(data);
+          });
+        });
+      })(jQuery);
+
+      function loadTables(data) {
+        let listElm = `<div class="header"><a href="https://itplus.ithome.com.tw"><img src="https://itplus.ithome.com.tw/img/logo_it.svg" width="80px"></a> <span class="title">看影片追技術</span></div>`;
+
+        const newsSidebar = data.sidebar.map((item) => {
+          item.url = getLink(item.type, item.id);
+          item.time = formatTime(item.duration);
+          return item;
+        });
+
+        newsSidebar.forEach((item) => {
+          listElm += formatSidebarItem(item);
+        });
+
+        const rootElm = document.getElementById("itplussidebar");
+        rootElm.innerHTML = listElm;
+      }
+
+      function getLink(type, id) {
+        let link = "";
+        switch (type) {
+          case "vod":
+            link = `https://itplus.ithome.com.tw/vod-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+            break;
+          case "replay":
+            link = `https://itplus.ithome.com.tw/webinar-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+            break;
+          case "webinar":
+            link = `https://itplus.ithome.com.tw/webinar-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+        }
+
+        return link;
+      }
+
+      function formatTime(timeStr) {
+        const timeArr = timeStr.split(":");
+        const newTime = Number(timeArr[0]) * 60 + Number(timeArr[1]);
+        return newTime;
+      }
+
+     function getSuffix(item) {
+        let elm = "";
+        if (item.type == "webinar") {
+          elm = `<span class="onair">直播中</span>`;
+        } else {
+          elm = `<span class="offair">${item.time} 分</span>`;
+        }
+        return elm;
+      }
+
+      function formatSidebarItem(item) {
+        const result = `<div class="videoItem"><table border="0">
+   <tr>
+       <td rowspan="2" class="cover"><img  src="${item.coverImage}" alt="${
+          item.subject
+        }" title="${item.subject}" /></td>
+       <td><a href="${item.url}" class="subject">${item.subject}</a></td>
+   </tr>
+   <tr>
+     <td class="info"><span>${item.channelVendor} |</span>${getSuffix(
+          item
+        )}</td>
+   </tr>
+  </table></div>`;
+        return result;
+      }
+    </script>
+    <div id="itplussidebar"></div>
+
+</section> <!-- /.block -->
+<section id="block-views-view-top-story-aside-list" class="block block-views clearfix">
+
+        <h2 class="block-title">專題報導</h2>
+    
+  <div id="story-carousel" class="view view-view-top-story view-id-view_top_story view-display-id-aside_list feature-aside-list view-dom-id-ad0632c4f7a19f7af1ea441a32db6f45">
+        
+  
+  
+      <div class="view-content carousel-inner">
+        <div class="aside-list-item active">
+      
+          <a href="/article/177657"><div>
+<a href="/article/177657"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/ai_coding.jpg?itok=2BFEWdsE" width="300" height="132" alt="" /></a>
+<br>AI Coding掀起軟體開發革命
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176840"><div>
+<a href="/article/176840"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/image_ac31eebe.png?itok=hWMJ7kQc" width="300" height="132" alt="" /></a>
+<br>人工智慧基本法
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176335"><div>
+<a href="/article/176335"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/0603-diao_cha_zhuan_ti_zhu_tu_-3-960.jpg?itok=Twi9wOSn" width="300" height="132" alt="" /></a>
+<br>iThome 2026 CIO &amp; CISO大調查
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176188"><div>
+<a href="/article/176188"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/960-nan_shan_ren_shou_zhu_tu_.png?itok=BK213Z2m" width="300" height="132" alt="" /></a>
+<br>南山人壽推動AI數位轉型
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/173880"><div>
+<a href="/article/173880"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/12731274-feng_mian_gu_shi_-p1-ming_de_-open-960x420_2.jpg?itok=6hXA2Ap7" width="300" height="132" alt="" /></a>
+<br>【加速生成式AI發展的下一個關鍵力量】向量資料庫與儲存系統的崛起
+</div></a>    </div>
+    </div>
+  
+  
+  
+  
+        <div class="more-link-deco"><a href="http://www.ithome.com.tw/feature" class="more-link-deco">更多專題報導</a></div>  
+  
+</div></section> <!-- /.block -->
+  </div>
+      </aside>  <!-- /#sidebar-second -->
+    
+  </div>
+</div>
+
+<footer class="footer">
+      <div class="region region-footer">
+    <section id="block-block-7" class="block block-block clearfix">
+
+      
+  <div id="mkt-on-top">
+  <div class="mkt-720">  
+ <script src="https://itadapi.ithome.com.tw/ads/serve?type=B1&channel=ithome_index"></script>
+
+  </div>
+</div></section> <!-- /.block -->
+<section id="block-block-2" class="block block-block clearfix">
+
+      
+  <ul class="copyright inline"><li>電週文化事業版權所有、轉載必究  | Copyright &copy; iThome</li><li><a href="/aboutus/">刊登廣告</a></li><li><a href="/aboutus/">授權服務</a></li><li><a href="/aboutus/">服務信箱</a></li><li><a href="/terms">隱私權聲明與會員使用條款</a></li><li><a href="/security-policy">資訊安全政策</a></li><li><a href="/aboutus/">關於iThome</a></li><li><a href="/rss">RSS</a></li> <li><a href="/jobs">徵才</a> </li></ul>
+<!--  2014.2.21 改版上線 -->
+
+</section> <!-- /.block -->
+<section id="block-block-24" class="block block-block clearfix">
+
+      
+  <!-- old ga code remove -->
+</section> <!-- /.block -->
+  </div>
+</footer>
+  <script src="https://www.ithome.com.tw/sites/default/files/js/js_VU7P4CTgUZdF2SyFko5LLAg9ZK0OSVjXVaAFnTLgVt0.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a37991139fab5ee6',t:'MTc4ODgyNDUxMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

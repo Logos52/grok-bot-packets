@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/eddyflores100-lang/alicelabs-voxtutor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commits/main.atom"/>
+  <title>Recent Commits to alicelabs-voxtutor:main</title>
+  <updated>2026-09-08T00:28:37Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27dd9714aed2c3eede6320cb43fe14ba380d6a49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/27dd9714aed2c3eede6320cb43fe14ba380d6a49"/>
+    <title>
+        chore: remove dead scaffold files (lib/db.ts prisma legacy, lib/route…
+    </title>
+    <updated>2026-09-08T00:28:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: remove dead scaffold files (lib/db.ts prisma legacy, lib/route.ts + lib/voice-tutor.tsx old copies)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1fabf157fc9db3cc9b3a87d360892845c940ffcd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/1fabf157fc9db3cc9b3a87d360892845c940ffcd"/>
+    <title>
+        fix(build): add @types/node (was a transitive dep of pruned packages)
+    </title>
+    <updated>2026-09-08T00:27:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(build): add @types/node (was a transitive dep of pruned packages)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29683138552b1b4c97bdf82fd31872344f8180b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/29683138552b1b4c97bdf82fd31872344f8180b0"/>
+    <title>
+        v1.1.0: fixes from code review
+    </title>
+    <updated>2026-09-08T00:25:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.1.0: fixes from code review
+
+- fix: export ChatMsg type (tutor.ts import was broken; removed ignoreBuildErrors — build now typechecks for real)
+- feat: per-browser memory isolation (stable anon sessionId in localStorage; scoped memory keys)
+- chore: prune package.json 40+ unused deps; delete 43 unused shadcn UI components + dead hooks
+- chore: remove dead code (firstUserMessage, unused Toaster), legacy tailwind.config, prisma/ leftovers
+- docs: README honest about demo mode (local heuristic tutor), Vercel badge, per-browser memory&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/196fd3eeaf7f8c74949ac32720eb35d814c11ad1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/196fd3eeaf7f8c74949ac32720eb35d814c11ad1"/>
+    <title>
+        resilience: chat never fails on storage errors (graceful degradation)
+    </title>
+    <updated>2026-09-08T00:02:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;resilience: chat never fails on storage errors (graceful degradation)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/58ac651200d2e6a6e9d71c1869bc9057febc53d4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/58ac651200d2e6a6e9d71c1869bc9057febc53d4"/>
+    <title>
+        docs: Edge Config storage + deploy notes
+    </title>
+    <updated>2026-09-08T00:01:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: Edge Config storage + deploy notes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d23c4915630d7be9c260eb022640446a92a0cd6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/5d23c4915630d7be9c260eb022640446a92a0cd6"/>
+    <title>
+        fix: standalone output only outside Vercel
+    </title>
+    <updated>2026-09-07T23:58:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: standalone output only outside Vercel&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/68e53d1f94787a8900325c667ba4ab73f05ce33f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/68e53d1f94787a8900325c667ba4ab73f05ce33f"/>
+    <title>
+        prod: Vercel-ready storage (Edge Config) + local heuristic tutor
+    </title>
+    <updated>2026-09-07T23:55:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;prod: Vercel-ready storage (Edge Config) + local heuristic tutor
+
+- store.ts: capa de almacenamiento Edge Config (prod) / in-memory (dev), sin Prisma en runtime
+- tutor-local.ts: tutor heuristico sin API key (detecta nombre/objetivo, corrige errores comunes, practica por etapas)
+- llm.ts: solo Nebius Nemotron (sin SDK interno); la app degrada con elegancia sin clave
+- UI: badge &amp;#39;Modo demo basico&amp;#39; cuando corre sin NEBIUS_API_KEY
+- build limpio para Vercel (next build, sin pasos de DB)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/278982a5e6aa1d89a36ee3ee7e187fb4bbc74047</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/278982a5e6aa1d89a36ee3ee7e187fb4bbc74047"/>
+    <title>
+        fix: hide internal kickoff token from chat UI
+    </title>
+    <updated>2026-09-07T23:09:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: hide internal kickoff token from chat UI&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6143dfd17e73d4696c0020300a6f6f6921be2ec6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/eddyflores100-lang/alicelabs-voxtutor/commit/6143dfd17e73d4696c0020300a6f6f6921be2ec6"/>
+    <title>
+        VoxTutor v1.0.0 — first public release by AliceLabs
+    </title>
+    <updated>2026-09-07T23:08:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/79ff25ab47212e5c5668afcf3de51cff?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>alicelabs@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;VoxTutor v1.0.0 — first public release by AliceLabs
+
+Tutor personal de inglés por voz con memoria persistente.
+- Conversación por voz end-to-end (Web Speech API: ASR + TTS)
+- Correcciones gramaticales en vivo, explicadas en español
+- Memoria persistente del estudiante (Prisma + SQLite)
+- LLM provider-agnostic: NVIDIA Nemotron en Nebius Token Factory + fallback demo
+- Preparado para el Nebius x NVIDIA Global AI Hackathon (Best Apps &amp;amp; Agents)
+
+MIT License © 2026 AliceLabs&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/rishabh7g/rung/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/rishabh7g/rung/commits/main.atom"/>
+  <title>Recent Commits to rung:main</title>
+  <updated>2026-09-07T23:59:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d599393ba354ff3f122ea58f6d71504318f2ece8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/d599393ba354ff3f122ea58f6d71504318f2ece8"/>
+    <title>
+        Content pipeline: emit delta word indexes and fold them at load (#424)
+    </title>
+    <updated>2026-09-07T23:59:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content pipeline: emit delta word indexes and fold them at load (#424)
+
+A module&amp;#39;s index file was cumulative through itself, so a course&amp;#39;s index set
+grew quadratically with its ladder. hi-mr reached thirty modules earlier today
+and the curve became measurable rather than projected: 1.2 MB raw of index for
+one course, every byte of it warmed for offline, against ~115 KB if each file
+carried only its own additions.
+
+Each file now carries the surfaces its module is the FIRST to teach, marked
+`delta: true`, beside the ladder it sits in and the folded totals.
+`loadIndex` fetches that ladder&amp;#39;s deltas and folds them earliest-first, which
+is what preserves first-occurrence-wins, and checks its own work: a fold whose
+size disagrees with the file&amp;#39;s `surfaceCount` throws instead of resolving half
+a ladder. Everything above content.ts — the resolver, the why panel, the
+tests — still sees the cumulative shape, and always has.
+
+The change rests on one claim, so that is what is tested: fold(deltas) equals
+the cumulative index key for key and entry for entry, for every module of
+every course (tools/delta-index.test.ts). The reader&amp;#39;s fold is written out by
+hand there rather than imported, the way a round-trip test writes the inverse.
+
+Measured: hi-mr&amp;#39;s index set 1.2 MB → 79 KB raw, `course:hi-mr` 542.0 → 468.5
+KiB gzip, `precache:hi-mr` 758.4 → 685.1; the other eight sit at 20-31 KB raw.
+Gzip moves 14% because cumulative files compress well — it is the raw bytes
+and the growth curve that move by an order of magnitude, and the curve is what
+mattered at fifty modules.
+
+Proved in a real build, not only in tests: L3-M10&amp;#39;s sentence detail resolves
+its why rows after folding thirty deltas, each index URL is fetched once, and
+a warmed course boots and resolves with the network off.
+
+scripts/verify.sh green: TYPES | LINT | TEST 320/320 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3dd42a5be286929877d8c5e8fcd374183f9b967</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/d3dd42a5be286929877d8c5e8fcd374183f9b967"/>
+    <title>
+        Content: ratify the L4 and L5 lists, and give two deferrals an addres…
+    </title>
+    <updated>2026-09-07T23:59:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content: ratify the L4 and L5 lists, and give two deferrals an address (#423)
+
+The twenty jobs #417 added as `draft: true` are ratified as drafted, the way
+#112 ratified L2/L3 — but reviewed against authored content rather than
+against the plan alone: hi-mr&amp;#39;s L2 and L3 shipped the same day, so these
+twenty were read next to twenty that have actually been written. Every
+levels.json now says `Ratified list (#423)` on L4 and L5; the `draft` flag
+stays until each level is authored, as L2/L3&amp;#39;s did.
+
+Two amendments came out of that review.
+
+L3-M10&amp;#39;s job said &amp;quot;written unaided&amp;quot;, which described the notebook exit
+#348/#349 retired — the exit ritual is generate-and-comprehend and nothing in
+it is written. All nine levels.json now read &amp;quot;built from the whole ladder&amp;quot;,
+and hi-mr&amp;#39;s shipped L3-M10 moved with it: the module&amp;#39;s own `job`, its brief,
+and the rule that quotes the phrase. The new phrase is also true of it — that
+module added one surface.
+
+And the passive now has an owner. docs/50 §3 deferred it out of L3 without
+saying where it goes, which is how a deferral becomes an orphan; it lands at
+L4-M7 (official talk — announcements and counters are where a learner meets
+it) with L4-M2 as its second home.
+
+Two things the review deliberately left alone, both recorded in docs/48 §4 so
+the next reader does not re-open them: L4-M10&amp;#39;s six sentences against L3/L5&amp;#39;s
+eight (the cap is a ceiling and that item carries dialogue), and L4-M7&amp;#39;s
+overlap with L2-M1 and L3-M8 (L2 teaches which register to speak, L3 puts you
+at the counter, L4 is the register you hear there and do not speak back).
+
+scripts/verify.sh green: TYPES | LINT | TEST 309/309 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eeb1e889c007d87515bee6b4344f02fb89e1e273</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/eeb1e889c007d87515bee6b4344f02fb89e1e273"/>
+    <title>
+        Content pipeline: report and ratchet shown-but-untaught surfaces (#491)
+    </title>
+    <updated>2026-09-07T23:59:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content pipeline: report and ratchet shown-but-untaught surfaces (#491)
+
+`checkComprehensionPool` has always failed a build when a pool token did not
+resolve. Nothing checked what a module SHOWS outside the pool, so a
+`variations[].display` could carry a word no row owns — the gap #282 closed by
+hand for seven hi-mr lines, which has reopened in every course since.
+
+`checkShownSurfaces` walks every sentence display and every variation display
+against the module&amp;#39;s own cumulative index. It REPORTS rather than fails, and
+that is the design, not a compromise: across the nine shipped courses it finds
+133 distinct surfaces, and they are three different things. A proper noun
+rides unindexed by #61 and no row should ever own it. A forward reference is a
+word the ladder teaches two rungs later — untaught for the learner standing
+here, so a real defect whose fix is a rewritten variation. The rest are simply
+never taught, and mostly want a `forms` entry on the row that should own them.
+Failing the build on all three would reject correct content and would spring a
+nine-language sweep on whoever ran the next build.
+
+So the line is held by a ratchet instead. `npm run content:build` prints one
+line per course; `tools/shown-surfaces.test.ts` pins a per-course baseline that
+may fall and may not rise, and a course with no baseline entry must have none.
+That is what makes it bite for the 320 L2/L3 modules still to author, which is
+where it saves the most.
+
+docs/52-shown-surface-findings.md is the standing list, classified per course,
+with what a sweep would have to decide. Two things it makes visible: hi-en (the
+course whose L2 is English) carries 30 of the 133, and the twenty hi-mr L2/L3
+modules added earlier today contribute none — they were audited by hand against
+this exact rule, which is the manual work this check replaces.
+
+scripts/verify.sh green: TYPES | LINT | TEST 309/309 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2c18e17a8f57c9d0a8a18d7e97b413a15372da0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/e2c18e17a8f57c9d0a8a18d7e97b413a15372da0"/>
+    <title>
+        Authoring: ship `verified: true` in the authoring change, by default
+    </title>
+    <updated>2026-09-07T23:39:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Authoring: ship `verified: true` in the authoring change, by default
+
+The two-step — author `verified: false`, flip it in a second pass — recorded
+nothing the signature does not, and left correct content out of a learner
+build for no gain. From now on a module is authored with `verifiedBy` and
+`verifiedAt` already on it, and the wave&amp;#39;s review-doc section lands in the
+same commit.
+
+Three places carry it so no future session re-derives it: the prompt&amp;#39;s
+round-trip block (step 4 said &amp;quot;never set it yourself&amp;quot; and now says what to
+set and what to write beside it), the README&amp;#39;s gate paragraph, and a new
+CLAUDE.md that also states the seam rules a level is expected to hold — no
+level edits a file below it, a shown surface is a taught surface, paradigms
+have one home.
+
+What does NOT change: `tools/validate.ts` still rejects a verified module
+with no signature, so the signature is the record; and the native-speaker
+gate is still a separate, stricter bar that is unmet. Every review doc ends
+in numbered open questions for it, and an authoring wave may not close one by
+rewriting a shipped module.
+
+scripts/verify.sh green: TYPES | LINT | TEST 298/298 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2412268c862f36f97453a5ab6c8ab1db5bc68bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/a2412268c862f36f97453a5ab6c8ab1db5bc68bf"/>
+    <title>
+        Content hi-mr: author and verify L3-M6…M10 — the level closes (#479)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L3-M6…M10 — the level closes (#479)
+
+M6 adds nouns and no grammar: feelings ride frames owned since L1-M9, and the
+delta is which verb each takes — काळजी/भीती on वाटणे, आनंद/दुःख on होणे, राग
+on येणे, a split Hindi cannot predict. वाटणे is not re-opened; the row stays
+L3-M3&amp;#39;s. Two gender flips against Hindi in one module. +17.
+
+M7 is one frame told plainly: the body part is the subject and there is no
+दर्द noun at all, so both Hindi routes are closed. Agreement with the part
+makes डोकं, हात and डोळे grammar rather than vocabulary. -कडे stands bare for
+the first time, pointing back at डावीकडे. +20.
+
+M8 turns on भरणे — a stomach, a bill, a form, exactly as भरना does — with the
+past agreeing with the thing filled. सही is the false friend (Hindi&amp;#39;s
+&amp;quot;correct&amp;quot; lives in बरोबर), and महत्त्वाचं is a genitive in disguise, so it
+needs no new rule. +24.
+
+M9 is आहे against असते, with Hindi&amp;#39;s है/होता है as the free half, and L2-M7&amp;#39;s
+continuous describing a street instead of a phone call. Festival names take
+rows like any other common noun, and the module describes what a visitor
+would see without asserting any practice as universal — written into the
+rules, not only the sentences. +33.
+
+M10 is the exit, and its number is the proof: +1 surface for the whole module.
+Every row is a re-show whose note explains the word&amp;#39;s job in a story; the
+accounts run four to seven sentences under an eight-sentence ceiling, each
+with a reason and a feeling, and the last tells the same day to a friend and
+to an elder.
+
+The level closes: 100 sentences, 120 pool items, 441 → 633 surfaces, `draft`
+dropped on L3, and the strict build ships hi-mr 30 modules. No L1 or L2 file
+changed in the whole level; every cell L2 left open was opened as a new row.
+`src/course/types.test.ts` pins 110 module files; the README carries the
+level&amp;#39;s paragraph.
+
+Reviewed in docs/51-llm-review-hi-mr-L3.md, wave 3 — open questions 87-96.
+scripts/verify.sh green: TYPES | LINT | TEST 298/298 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/881426ea224c6c1b483dca1ee24d9598d6aa3fbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/881426ea224c6c1b483dca1ee24d9598d6aa3fbd"/>
+    <title>
+        Content hi-mr: author and verify L3-M3, L3-M4, L3-M5 (#470)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L3-M3, L3-M4, L3-M5 (#470)
+
+M3 &amp;quot;Opinions with reasons&amp;quot; opens वाटणे — the row decision 4 of the briefs
+assigned here, with its note written true of both jobs so M6 can point back
+rather than open a second family. की does the second of its three jobs, the
+agreement words (बरोबर, चूक, खरं) need no grammar at all, and softening stays
+in words: कदाचित in front, ना at the end. आहे&amp;#39;s own past — होता/होती/होतं —
+arrives on the last sentence, because a reason often lies in the past. +26.
+
+M4 &amp;quot;If and then&amp;quot; takes the conditional in the order a speaker meets it: जर …
+तर with तर named as the half that never drops, advice on -आयला पाहिजे,
+पाहिजे&amp;#39;s second job beside L1-M3&amp;#39;s हवं, and exactly ONE counterfactual frame
+with the note saying in words that the system is L4-M3&amp;#39;s. नाहीतर closes it as
+two owned words in one shape. +22.
+
+M5 &amp;quot;What someone said&amp;quot; is the cheapest lesson in the level and says so:
+Marathi does not backshift and neither does Hindi. The work is म्हणणे, whose
+past agrees with the speaker and never takes ने, set directly against L2-M10&amp;#39;s
+त्याने सांगितलं, which takes both — that pair is the module. असं lets the
+report follow the words; विचारणे&amp;#39;s reported question keeps its question word
+where the answer would sit. +8.
+
+बोललो stays pinned: M5 does not stretch म्हणणे over बोलणे to close docs/15
+Q29, per the level&amp;#39;s decision 3. No L1 or L2 file changed.
+
+Reviewed in docs/51-llm-review-hi-mr-L3.md, wave 2 — open questions 78-86.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/506310b9a920b27644325bdf9f15a1c2da586459</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/506310b9a920b27644325bdf9f15a1c2da586459"/>
+    <title>
+        Content hi-mr: author and verify L3-M1, L3-M2 (#461)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L3-M1, L3-M2 (#461)
+
+The first two rungs of the first L3 in any course, authored from the #452
+briefs against the real 441-surface index.
+
+M1 &amp;quot;Your day, in detail&amp;quot; is the -ऊन converb and almost nothing else: a day
+told at length has no full stops in it, and Hindi&amp;#39;s करके makes the move free,
+so the ending is the whole delta. The rule that earns the module is that the
+converb carries no person and no gender — S01 and S07 are the same chain under
+मी and ती, and only the final verb moves. Not joining the steps with आणि is
+tagged interference, because that is exactly what the Hindi habit produces.
+Two items run to two sentences, the first in the course. +12 surfaces.
+
+M2 &amp;quot;Work and study&amp;quot; opens the genitive as a system — what L2-M2 taught in one
+frame and deliberately stopped at. All five cells land on real nouns
+(ऑफिसचं काम, कंपनीची नोकरी, भावाचे मित्र, ऑफिसच्या खोल्या), the law itself
+transfers from का/की/के, and the delta is the fusion plus the owner&amp;#39;s bend.
+-मध्ये arrives beside L1-M7&amp;#39;s -त, split by borrowed against native noun, and
+अभ्यास carries the false friend: Hindi&amp;#39;s &amp;quot;practice&amp;quot;, Marathi&amp;#39;s schoolwork, and
+masculine where Hindi&amp;#39;s पढ़ाई is feminine. +28 surfaces.
+
+Two cells L2 had left open are opened here rather than by editing an L2 file:
+जेवतो/जेवते (L2 taught only the past and the right-now) and the -चा/-चे/-च्या
+genitive cells. No L1 or L2 file changed.
+
+Reviewed in docs/51-llm-review-hi-mr-L3.md, wave 1 — open questions 71-77.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d643a6b4abac388d3933d348ca65e5c4e65bf829</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/d643a6b4abac388d3933d348ca65e5c4e65bf829"/>
+    <title>
+        Briefs: write the ten hi-mr L3 briefs (#452)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Briefs: write the ten hi-mr L3 briefs (#452)
+
+The first L3 briefed anywhere, and the first level in this repo planned
+against a verified level that is itself above L1. Pinned against the real
+cumulative index through L2-M10 — rebuilt and read, 441 surfaces, maxSpan 1 —
+not L1&amp;#39;s 222 and not a remembered figure.
+
+The four decisions, in the header and repeated in every module&amp;#39;s notes, with
+the full record in docs/50-hi-mr-L3-brief-decisions.md: fields unchanged from
+L1 and L2; register carried from L2 with #422&amp;#39;s chip; what L2 withheld now
+owned — the genitive as a system at M2, the -ऊन converb at M1, conditionals
+at M4 (one counterfactual frame, the system is L4-M3&amp;#39;s), reported speech at
+M5 on the की L2-M9 left unfenced; and the passive kept out of L3 entirely.
+
+Two debts stay standing rather than being quietly closed: L1-M9&amp;#39;s बोललो
+remains the pinned index miss (M5&amp;#39;s note says why merging बोलणे into म्हणणे
+would poison both rows), and docs/49&amp;#39;s open questions 49-70 are native-pass
+items, not authoring ones.
+
+Seams assigned up front so no two modules can claim one lexeme: वाटणे has two
+jobs and one row (M3&amp;#39;s, with M6 pointing back), भरणे stays L2-M8&amp;#39;s, की stays
+L2-M9&amp;#39;s across all three jobs, -कडे stands bare for the first time at M7.
+
+Bounds climb 10 → 11 → 12, pools 12, M10&amp;#39;s items capped at eight sentences
+with a new-word spend that should be zero. `tools/course-briefs.test.ts` pins
+the module list, the bounds ladder, the two governing decisions, the seam
+owners and the two standing debts.
+
+No content authored. `npm run content:prompt -- hi-mr L3-M1` renders from the
+real L2-M10 index.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8ebbfa92f4761f1c8ec3724b91f6e4368b8ffec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/b8ebbfa92f4761f1c8ec3724b91f6e4368b8ffec"/>
+    <title>
+        Content hi-mr: author and verify L2-M6…M10 — the level closes (#443)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L2-M6…M10 — the level closes (#443)
+
+M6 assembles the suggestion frame out of pieces already owned (-ऊ + या),
+splits ask from propose where Hindi folds both into चलें, and lands the clock
+hours — docs/15 Q28&amp;#39;s second instalment. येशील finally reaches a display,
+which docs/15 Q25 left open. +11 surfaces.
+
+M7 spends the module on one tense: बोलतोय · बोलतेय · बोलतंय, with the
+unknown-caller neuter as the interference and the written बोलत आहे shown
+beside the spoken form so both resolve. The plain present&amp;#39;s about-to job is a
+new use of a shape owned since L1-M4. बोलणे&amp;#39;s rows open — docs/15 Q29. +15.
+
+M8 is the survival module: सापडणे against मिळणे (M5&amp;#39;s mirror seam), the -त
+नाही frame where nothing agrees, हरवला/संपले on L1-M5&amp;#39;s law against विसरलो
+which agrees with the person, and जरा मदत करा · हळू बोला · पुन्हा सांगा. +27.
+
+M9 glues -पेक्षा over the oblique bend, keeps जास्त/कमी invariable, makes
+सगळ्यात parseable on sight, and splits की from किंवा by sentence type. +16.
+
+M10 brings the oldest debt due: the ने L1-M5 fenced off (docs/08 Q20) arrives
+as त्याने · तिने · त्यांनी with object agreement unchanged — S03 and S07 hold
+the subject still while the verb moves. भेटणे takes -ला on the person met and
+agrees with the meeter; सांगितलं is flagged irregular. Accounts on आधी · मग ·
+शेवटी, past tense only. +22.
+
+Two brief claims the rebuilt index corrected, both recorded in docs/49: झालं
+and आलो were never taught in L1, so they open here as their own rows. No L1
+file changed in the whole level.
+
+The level closes: 100 sentences, 120 pool items, 222 → 441 surfaces, `draft`
+dropped on L2 in levels.json, and the strict build ships hi-mr 20 modules.
+`src/course/types.test.ts` now pins 100 module files, and the README carries
+the level&amp;#39;s paragraph.
+
+Reviewed in docs/49-llm-review-hi-mr-L2.md, wave 3 — open questions 62-70.
+scripts/verify.sh green: TYPES | LINT | TEST 283/283 | CONTENT | FONTS |
+BUILD | BUDGET.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/08234fb59affe50f99473555bef6f262e359bab3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/08234fb59affe50f99473555bef6f262e359bab3"/>
+    <title>
+        Content hi-mr: author and verify L2-M3, L2-M4, L2-M5 (#434)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L2-M3, L2-M4, L2-M5 (#434)
+
+L2-M3 &amp;quot;Describing things&amp;quot; walks the whole agreement grid: -ा · -ी · -ं
+singular, -े · -्या · -ी plural, with the two loud cells shown as pairs — the
+feminine plural Hindi never bends (मोठी पिशवी / मोठ्या पिशव्या) and the neuter
+plural spelled exactly like the feminine singular (मोठी खोली / मोठी घरं). Noun
+plurals ride the same seam, each pointing back to its L1 first-teach. +38.
+
+L2-M4 &amp;quot;Getting around&amp;quot; is two glued endings: -ला on the destination over
+L1-M7&amp;#39;s oblique bend, starred against Hindi&amp;#39;s bare noun, and -ने on the
+vehicle, with the note kept narrow because -ने&amp;#39;s past-tense job is M10&amp;#39;s. The
+बस key stays the vehicle&amp;#39;s, as M1&amp;#39;s बसा row promised. +28.
+
+L2-M5 &amp;quot;Food and hosting&amp;quot; ships the host&amp;#39;s script (घ्या, आणखी, तुम्हाला) and
+the refusal ladder (नको → आता नको → पुरे → पोट भरलं), warns that a Hindi
+speaker&amp;#39;s &amp;quot;बस!&amp;quot; at a Marathi table is the vehicle, and keeps मिळणे to its half
+of मिलना so सापडणे&amp;#39;s seam survives for M8. तीन · चार · पाच pay docs/15 Q28.
++22.
+
+All three carry the full five enrichment blocks, not only M3 which the law
+compels: every hi-mr module has since L1-M1, and a learner should not feel the
+ladder thin out mid-level. Every display in every sentence, variation and pool
+item resolves against its own cumulative index — the #282 discipline, checked
+mechanically; proper nouns ride unindexed by #61.
+
+Reviewed in docs/49-llm-review-hi-mr-L2.md, wave 2 — open questions 55-61.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/415d8550531f03761b2019c92be453b1b33760d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/415d8550531f03761b2019c92be453b1b33760d8"/>
+    <title>
+        Content hi-mr: author and verify L2-M1, L2-M2 (#425)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Content hi-mr: author and verify L2-M1, L2-M2 (#425)
+
+The first content above L1 in any course. It proves the chain on a second
+level: the prompt CLI crossed the level boundary (L2-M1 was generated against
+L1-M10&amp;#39;s real index, L2-M2 against L2-M1&amp;#39;s), the M1-M3 enrichment law read the
+module number rather than the level, and `prerequisites` stayed inside the
+level — L2-M1 lists [], and the seal rule carries the cross-level dependency.
+
+L2-M1 &amp;quot;Asking politely&amp;quot; is the register module: the imperative pair (bare stem
+for तू — दे · कर · ये; stem + -आ for तुम्ही — द्या · करा · या · बसा), the
+starred -इए tier Marathi does not have, and आप ≠ आपण spent as a rule and a
+mistake. #422&amp;#39;s chip carries the tier the briefs had to smuggle into `usage`:
+five formal, four informal, one neutral. +12 surfaces.
+
+L2-M2 &amp;quot;Describing people&amp;quot; pays L1&amp;#39;s pronoun debt (docs/19 Q40): तो · ती · ते
+as one row-set true of both its jobs, आहेत as the fourth cell of आहे, the
+वडील/आई respect asymmetry told honestly, the adjective split that previews M3,
+neuter मूल, and the genitive in one frame — माझ्या भावाचं नाव. +28 surfaces.
+
+Seams held per docs/26 §4: द्या stays L1-M8&amp;#39;s row, बसा&amp;#39;s row lists no bare बस,
+या&amp;#39;s note is true of the invite particle too, मदत is left for M8, and no L1
+file changed. The briefs&amp;#39; stale index figure (215) is corrected to the rebuilt
+222 in both `tools/course-briefs.ts` and docs/26.
+
+Reviewed in docs/49-llm-review-hi-mr-L2.md — an LLM review on the owner&amp;#39;s
+standing authority, ending in open questions 49-54 for a native pass.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f7f9cd642033f6244431b09c472e6edc5e295801</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/f7f9cd642033f6244431b09c472e6edc5e295801"/>
+    <title>
+        Schema: add `formal` to the sentence register enum (#422)
+    </title>
+    <updated>2026-09-07T23:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Schema: add `formal` to the sentence register enum (#422)
+
+Every course&amp;#39;s L2-M1 is &amp;quot;Asking politely&amp;quot;, and four of the nine L2s teach a
+polite address that is a verb paradigm rather than a word. The chip had two
+values, so hi-mr&amp;#39;s L2 briefs and en-it&amp;#39;s L1 header both recorded the same
+workaround: carry the tier in the `usage` line, in words. It now lives as data.
+
+The enum is spelled in four places and all four move together — the schema
+(the only enforced one), `Register`, `ModuleSentence`, and the chip&amp;#39;s comment
+in `SentenceScreen.module.css`. `UsageSection` prints the raw value, so no
+strings key and no course bundle changes.
+
+`tools/register.test.ts` pins both ends against the real validator: `formal`
+validates, `polite` and a stray-cased `Formal` do not — widening it once did
+not turn it into free text.
+
+hi-mr&amp;#39;s L2-M1 brief now chips the formal end instead of smuggling it into
+`usage`; docs/26 §2 carries the addendum; the en-it, en-fr and en-de L1
+headers say the enum HAD two values when they were authored, so the record
+stays true without reopening those courses.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01AZ18ZUuCPaRZUDpGGMrqi8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37b8856a74589ca2a1a59854b0e2dc38f3dad50f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/37b8856a74589ca2a1a59854b0e2dc38f3dad50f"/>
+    <title>
+        Ladder: five levels per course — L4/L5 draft lists in every levels.js…
+    </title>
+    <updated>2026-09-07T12:30:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ladder: five levels per course — L4/L5 draft lists in every levels.json, id grammar L1–L5 (#417)
+
+Track A of docs/48-five-level-ladder-plan.md, which lands with it. Every course&amp;#39;s levels.json lists L4 &amp;quot;Nuance&amp;quot; and L5 &amp;quot;Voice&amp;quot; as draft, unauthored lists awaiting the ratification #112 gave L2/L3; the id grammar in the schema, tools/validate.ts, tools/content-build.ts and tools/generate-prompt.ts runs L[1-5]; tools/module-ids.test.ts and the widened ladder pin in src/course/types.test.ts hold it there. Nothing in src/ changes behaviour. scripts/verify.sh: TYPES ok | LINT ok | TEST 266/266 ok | CONTENT ok | FONTS ok | BUILD ok | BUDGET ok
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KECLbXqRKtjV7hnc4ZRSdk&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8adc554b9614ea063d77ae2a956557451df6d4b5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/8adc554b9614ea063d77ae2a956557451df6d4b5"/>
+    <title>
+        SentenceScreen: split SentenceDetail into ten section components
+    </title>
+    <updated>2026-09-07T11:28:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;SentenceScreen: split SentenceDetail into ten section components
+
+SentenceDetail was 482 lines (322 code), the largest function in src/,
+with ten data-section blocks nested up to ~13 levels deep at the same
+altitude as route derivation. Each block is now its own component under
+src/screens/sentence/ — HeroSection, WordsSection, TrapSection,
+GlossSection, RulesSection, SoundSection, VariationsSection,
+MistakeSection, UsageSection, MnemonicSection — taking { sentence } plus
+l2, strings or the module&amp;#39;s rules where the section needs them. A
+section with nothing to show returns null, so the &amp;quot;renders NOTHING&amp;quot; rule
+moved with the markup. WordRow and VariationRow keep each list body at
+two levels; changedTokens went with its only caller.
+
+Beside them: Deeper owns the disclosure&amp;#39;s state and button and takes the
+six deeper sections as children, so the frozen order stays in one place;
+SentencePager owns the nav and its own navigate(replace); and
+useLadderHandOver owns the hand-over / hand-back derivation, with
+isOpenableRung replacing the same three-clause predicate written three
+times. SentenceDetail is 78 lines: guards, the hand-over hook, and the
+composition in the same order as before.
+
+Proof, per docs/code-readability-conventions.md: headless Chromium
+against the local build renders /sentence/L1-M1-S01 (hi-mr; every
+optional section present) closed and with the disclosure open, and the
+article&amp;#39;s outerHTML is byte-identical before and after — baseline
+captured twice (identical), a corrupted copy of it makes the diff fail,
+and data-section reads hero words trap [gloss rules sound variations
+mistake usage] mnemonic both times. The built CSS carries the same 348
+rules; only TagChip&amp;#39;s five hashed rules moved after SentenceScreen&amp;#39;s,
+which no cascade depends on. scripts/verify.sh — TYPES ok | LINT ok |
+TEST 253/253 ok | CONTENT ok | FONTS ok | BUILD ok | BUDGET ok.
+
+Closes #414
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7364498181e1d0e4ec737a6b3097d4871b428639</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/7364498181e1d0e4ec737a6b3097d4871b428639"/>
+    <title>
+        Drop the redundant dir={course.dir} attributes; the provider sets it
+    </title>
+    <updated>2026-09-07T11:19:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop the redundant dir={course.dir} attributes; the provider sets it
+
+CourseProvider has set document.documentElement.dir = active.dir since
+#186, and dir inherits like lang does, so the 60 dir={course.dir} sites
+across 11 files said what the root already said — and the 13 components
+below them carried a dir?: string prop for no reason but to pass it on
+(43 dir={dir} drills). All of it is gone: the attributes, the prop
+declarations and their doc comments, the destructured names, and the
+four useCourse() reads (BottomNav, LadderScreen, StorageLine,
+BackupSection&amp;#39;s `course`) that existed only to feed them. The L2
+overrides stay: 13 sites reading l2.display.dir / l2.script.dir, which
+genuinely differ from the root on en-ar.
+
+Checked first: no L1 node sits inside an L2-dir subtree. Every L2-dir
+element (SentenceScreen ×6, ComprehensionItem ×2, SentenceCard ×2,
+RevealCard ×2, WhyRow ×1) wraps only text or plain spans, so nothing
+under them loses a direction it relied on.
+
+Proof: scripts/verify.sh — TYPES ok | LINT ok | TEST 253/253 ok |
+CONTENT ok | FONTS ok | BUILD ok | BUDGET ok. Headless Chromium against
+the live site, before and after deploy, reads getComputedStyle().direction
+on the settings and sentence screens for en-ar (rtl script line) and
+en-es (ltr): the computed values must match; only the explicit dir
+attributes on L1 nodes go from &amp;quot;ltr&amp;quot; to absent.
+
+Closes #415
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b67f4f46e0e7b5b4fb857e78c32eac9ddc6ff96</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/1b67f4f46e0e7b5b4fb857e78c32eac9ddc6ff96"/>
+    <title>
+        content-build: split buildContent into read, emit and report phases
+    </title>
+    <updated>2026-09-07T11:13:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;content-build: split buildContent into read, emit and report phases
+
+buildContent was 201 code lines nesting four deep (for row → for file →
+if (!result.ok) → for issue) with nine continue statements, and its body
+already labelled the three phases with banner comments. It is now twelve
+lines that read as the pipeline: readCoursePlans, then either the FAIL
+block or emitTree followed by reportLines.
+
+Read phase: readCoursePlans walks the manifest and asks readCoursePlan for
+each row, which returns CoursePlan | null instead of continuing. The
+per-file body became readValidModule, returning ValidModule | null — a
+ShippedModule plus the romanization warning it would earn, so gateCourse
+can decide what ships, what is held back and which warnings print without
+re-reading anything. checkComprehensionPools carries the #416 by-id lookup
+unchanged. Emit phase: emitTree replaces outRoot and returns the
+courseId → ids map; emitCourse writes one folder; emittedManifest builds
+courses.json. Report phase: reportLines, courseLines, nothingShippedLine,
+summaryLine. GatedModule names the { id, reason } shape describeGated and
+summariseReasons already took. No function in the new code nests past two.
+
+Proof, per docs/code-readability-conventions.md: strict `npm run
+content:build` twice on main gave byte-identical trees (208 files) and
+identical reports; a corrupted index file in a copy made `diff -r` report
+it; strict and --with-unverified --with-fixtures trees and reports built
+after this change diff empty against their baselines. The FAIL path, which
+the tree diff cannot see, was run on both versions against a copy of
+content/ with an orphan course folder, a missing strings key, an invalid
+module JSON and a module dropped from levels.json: 83 identical lines,
+exit 1, same order.
+
+Closes #413
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c93c1326c046f9a16845ae6e51c50d82086452b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/c93c1326c046f9a16845ae6e51c50d82086452b2"/>
+    <title>
+        content-build: pair word indexes by module id, not array position
+    </title>
+    <updated>2026-09-07T11:01:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;content-build: pair word indexes by module id, not array position
+
+buildWordIndex returned a positional array and buildContent re-paired
+shipped[i] with indexes[i] by shared counter, with an `undefined` guard
+that would have skipped the comprehension-pool check silently had the two
+ever drifted. It now returns a Map&amp;lt;moduleId, WordIndexFile&amp;gt; (insertion
+order is still ladder order, so the emit and report loops iterate
+.values() in the same sequence as before), and the caller looks each
+module&amp;#39;s index up by id; a miss throws, because buildWordIndex builds one
+per module it is given and a missing one is a bug, not a module to skip.
+
+The body nested five deep with two continues at the innermost level. It is
+now one loop over the shipped modules; indexModule, indexWord and
+indexSurface each sit at one altitude and nest at most two, and the
+empty-surface skip is a filter rather than a continue (surfaceIndexKeys(&amp;#39;&amp;#39;)
+would hand back the empty key). maxSpan is computed from the map at write
+time by maxSpanOf instead of carried as a running maximum — the same
+value, since keys are never removed.
+
+Proof, per docs/code-readability-conventions.md: strict `npm run
+content:build` twice on main gave byte-identical trees (208 files, 90
+index files) and identical reports; a deliberately corrupted index file in
+a copy made `diff -r` report it; the tree and report built after this
+change diff empty against the baseline.
+
+Closes #416
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3030eba89103ae33e752611e7c8584e28b77f702</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/3030eba89103ae33e752611e7c8584e28b77f702"/>
+    <title>
+        Remove test-only cache-reset exports and the unused sizes loader
+    </title>
+    <updated>2026-09-07T10:18:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remove test-only cache-reset exports and the unused sizes loader
+
+resetContentCache, resetManifestCache, resetStringsCache and
+resetPersistenceRequest each said in their own doc comment that only a test
+called them; those tests went in 1b79a9a and 02a45dd, so at e68044f each
+symbol&amp;#39;s sole repo-wide hit was its definition. loadSizes, parseSizes and
+the CourseSizes type go with them: nothing reads sizes.json at runtime —
+Settings&amp;#39; STORAGE line asks navigator.storage.estimate instead. sizesPath
+stays, because offlineCourse.ts still puts sizes.json on the precache list;
+content.ts&amp;#39;s header now says so.
+
+Closes #412
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e68044f46c450825546d742578495338872f9553</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/e68044f46c450825546d742578495338872f9553"/>
+    <title>
+        Drop @testing-library devDependencies and the vitest setup file
+    </title>
+    <updated>2026-09-07T10:15:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop @testing-library devDependencies and the vitest setup file
+
+The render-level suite cut in 1b79a9a and 02a45dd was the only consumer of
+@testing-library/react, jest-dom and dom; the surviving 253 tests render
+nothing. src/test/setup.ts existed solely to wire jest-dom&amp;#39;s matchers and
+RTL&amp;#39;s cleanup() into vitest, so it goes with them, as does the
+`test.setupFiles` entry in vite.config.ts. jsdom stays: it is still the
+vitest environment. docs/01-plan.md&amp;#39;s stack row now says so.
+
+package-lock.json also gains `&amp;quot;peer&amp;quot;: true` on 16 direct deps — npm 11.6.2&amp;#39;s
+lockfile dialect, no version changes; `npm ci` installs cleanly from it.
+
+Closes #411
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8c3c3ba4c636cd0c22b24bfcbfa70a45e02aa7e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rishabh7g/rung/commit/8c3c3ba4c636cd0c22b24bfcbfa70a45e02aa7e5"/>
+    <title>
+        Delete test scaffolding orphaned by the render-test cut
+    </title>
+    <updated>2026-09-07T10:12:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/5367553?s=30&amp;v=4"/>
+    <author>
+      <name>rishabh7g</name>
+      <uri>https://github.com/rishabh7g</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Delete test scaffolding orphaned by the render-test cut
+
+The render-level suite removed in 1b79a9a and 02a45dd was the only consumer
+of these: src/test/courseManifest.ts, src/test/courseStrings.ts, the whole
+of tools/fixtures/, the moduleFixture / romanizedModuleFixture /
+sizesFixture builders in src/test/courseContent.ts, and vite.config.ts&amp;#39;s
+`test.css` block (its comment named two style-guard tests that no longer
+exist, and the only surviving `?raw` globs read .json). levelsFixture and
+indexFixture stay — store.test.ts and types.test.ts still import them.
+
+Closes #410
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

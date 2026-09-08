@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/myqzurdux3/sillon/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/myqzurdux3/sillon/commits/main.atom"/>
+  <title>Recent Commits to sillon:main</title>
+  <updated>2026-09-07T20:32:16Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cb8e69fe64eb433fbd901ff3fa3342db49005bf5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/cb8e69fe64eb433fbd901ff3fa3342db49005bf5"/>
+    <title>
+        feat: une suite de gestes et ses propres mots, au lieu d&#39;une etiquette
+    </title>
+    <updated>2026-09-07T20:32:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: une suite de gestes et ses propres mots, au lieu d&amp;#39;une etiquette
+
+L&amp;#39;etape precedente laissait le modele choisir une intention parmi neuf. Elle
+echouait, et pas par defaut de comprehension : mesure a treize cas sur treize, il
+comprenait tres bien. C&amp;#39;est le canal de retour qui etait etroit — un seul mot.
+
+Il ne pouvait donc ni enchainer deux gestes, alors que « mets difficile à la
+précédente et passe celle-là » est une phrase et deux actions ; ni porter un
+parametre ; ni repondre a une question qui n&amp;#39;etait pas une commande. « Combien il
+en reste » se soldait par « je n&amp;#39;ai pas compris », alors qu&amp;#39;il avait compris.
+
+Il rend desormais une liste d&amp;#39;actions parametrees et sa propre phrase. Verifie
+contre l&amp;#39;API sur douze tournures : deux gestes ordonnes sur la demande composee,
+la vraie reponse chiffree a « combien il en reste » en lisant le contexte de
+session, l&amp;#39;annulation suivie de la reprise sur « oublie la note d&amp;#39;avant et redis
+moi la question », et l&amp;#39;adieu avec le score sur « on arrête là je suis arrivé ».
+
+Ce qui reste ferme est ce que l&amp;#39;application peut physiquement faire. Le modele
+choisit et parametre, le code valide et execute : la note reste bornee au nombre
+de boutons, le decalage d&amp;#39;une carte avant ecriture reste en place, le mode
+journal reste souverain. Le principe n&amp;#39;a pas bouge, la proposition est plus riche.
+
+Deux garanties tiennent l&amp;#39;execution. Le premier geste qui clot le tour arrete la
+suite, parce que ce qui viendrait apres porterait sur une carte qui n&amp;#39;est plus
+la. Et aucune suite ne laisse la boucle muette : si les gestes n&amp;#39;ont produit ni
+parole ni ecoute ni fin, l&amp;#39;executeur ajoute une phrase. L&amp;#39;invariant de vivacite a
+deja ete rompu deux fois ici, chaque fois en arretant la seance sans un mot.
+
+Un defaut vu a la verification et corrige : avec « reposer », le modele redisait
+la question dans sa phrase et l&amp;#39;application la redisait apres. Le prompt le lui
+interdit maintenant.
+
+263 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb2443aa4c7a5833486a06450cde84a4d78f0381</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/fb2443aa4c7a5833486a06450cde84a4d78f0381"/>
+    <title>
+        feat: attendre, avouer, et corriger une note en une phrase
+    </title>
+    <updated>2026-09-06T19:51:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: attendre, avouer, et corriger une note en une phrase
+
+Mesure contre le modele, avant correction. « attends deux secondes » etait lu
+comme « passer » : demander un instant au volant coutait la carte. « vas-y plus
+lentement » et « combien il en reste » etaient ramenes a « repeter » et a une
+reponse notee fausse. « mets très dur à la précédente au lieu de facile »
+rouvrait la carte et redemandait la note que l&amp;#39;utilisateur venait de dire.
+
+La reconnaissance de formulation etait deja ouverte — n&amp;#39;importe quelle tournure
+passe. C&amp;#39;est le vocabulaire d&amp;#39;actions qui etait ferme a sept verbes, et tout ce
+qui en sortait etait ramene de force au plus proche.
+
+ATTENDRE rouvre l&amp;#39;oreille sur la meme question, sans juger et sans noter.
+
+INCONNU avoue. C&amp;#39;est le changement qui compte le plus : le prompt interdit
+desormais d&amp;#39;inventer l&amp;#39;action la plus proche, et impose « inconnu » dans le
+doute. Une action fausse coute une carte ou une note sans que l&amp;#39;utilisateur
+sache pourquoi ; un aveu ne coute qu&amp;#39;une seconde.
+
+`ease_voulue` porte la note quand la phrase la dicte, et elle est bornee au
+nombre de boutons comme toute note — elle finira dans Anki si l&amp;#39;ecriture est
+active. Nulle sinon : on redemande plutot que de deviner une valeur qui s&amp;#39;ecrit.
+
+Verifie contre l&amp;#39;API : 13 cas sur 13, dont les trois tournures signalees, et les
+reponses ordinaires laissees tranquilles.
+
+Deux corrections sur le chemin de l&amp;#39;arret, signale injouable :
+`DeepgramListener` avalait l&amp;#39;annulation dans son `catch (Throwable)` — le bouton
+attendait donc la fin de la fenetre d&amp;#39;ecoute pour agir, jusqu&amp;#39;a quinze secondes.
+Et la cible de touche du bouton se limitait au libelle, dans un coin : elle prend
+maintenant la moitie basse de l&amp;#39;ecran, ce qu&amp;#39;un bouton cherche au pouce et sans
+regarder devrait toujours faire.
+
+268 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd2d5b505b9f5c7ebe8e119548c41708d888c2f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/dd2d5b505b9f5c7ebe8e119548c41708d888c2f0"/>
+    <title>
+        test: eprouver la pile vocale sur le materiel, et n&#39;affirmer que le v…
+    </title>
+    <updated>2026-09-05T21:32:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: eprouver la pile vocale sur le materiel, et n&amp;#39;affirmer que le verifiable
+
+Ce que l&amp;#39;appareil a prouve, en trois moities separees plutot qu&amp;#39;un tour complet
+dont l&amp;#39;echec ne designe personne :
+
+La synthese sort du haut-parleur. 5,5 s de lecture, aucun recours au repli : la
+voix distante fonctionne, ce qui n&amp;#39;avait jamais ete verifie ailleurs qu&amp;#39;en
+appelant l&amp;#39;API.
+
+Le micro rend des echantillons — apres deux corrections. Le service ne declarait
+pas le type « microphone » (commit precedent), et l&amp;#39;acces micro etait coupe au
+niveau du telephone. Dans les deux cas Android rend des zeros sans erreur, d&amp;#39;ou
+l&amp;#39;assertion sur une amplitude strictement positive : une piece calme a toujours
+un bruit de fond, un zero parfait est un refus deguise.
+
+L&amp;#39;audio du micro atteint le service. C&amp;#39;est le raccord qu&amp;#39;aucun test JVM ni le
+rejeu d&amp;#39;audio ne couvrent : `AudioRecord` d&amp;#39;un cote, la socket de l&amp;#39;autre. Il a
+rendu « Le théorème de Reuls a » sur une phrase jouee par le telephone lui-meme.
+
+Ce que ce test n&amp;#39;affirme plus, faute de pouvoir le tenir : la transcription. Le
+trajet haut-parleur vers micro d&amp;#39;un meme appareil est un canal marginal —
+amplitude recue entre 1 000 et 2 500 selon les essais, du texte une fois sur
+deux, sans qu&amp;#39;aucun code ne change. Une assertion instable ne prouve rien et
+finit par etre ignoree. Elle est donc journalisee, pas exigee.
+
+`MicrophoneStream` prend sa source en parametre pour que ce test puisse
+contourner la suppression d&amp;#39;echo, dont le travail est precisement d&amp;#39;empecher un
+appareil de s&amp;#39;entendre. La production garde `VOICE_RECOGNITION`.
+
+`DeepgramListener` journalise ce qu&amp;#39;il envoie — octets et amplitude crete. Sans
+cette trace, un tour muet ne distingue pas un micro qui n&amp;#39;entend rien d&amp;#39;une
+chaine rompue plus loin : c&amp;#39;est cette ligne qui a permis de trancher.
+
+Reste a verifier par une vraie voix, ce qu&amp;#39;aucun automate ne peut faire ici :
+l&amp;#39;appareil est verrouille et le micro n&amp;#39;est accorde qu&amp;#39;au premier plan.
+
+264 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a06662ace3262e75e680ce8bca6fa5ebfe97ea4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/8a06662ace3262e75e680ce8bca6fa5ebfe97ea4"/>
+    <title>
+        fix: declarer le micro sur le service, sans quoi la capture rend du s…
+    </title>
+    <updated>2026-09-05T21:17:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: declarer le micro sur le service, sans quoi la capture rend du silence
+
+Depuis Android 14, un service de premier plan qui ouvre un `AudioRecord` doit
+declarer `foregroundServiceType=&amp;quot;microphone&amp;quot;` et la permission associee. Le
+service ne declarait que `mediaPlayback`. Android n&amp;#39;aurait pas refuse l&amp;#39;appel :
+il aurait rendu des echantillons a zero, sans erreur ni exception, et chaque
+carte se serait soldee par « rien entendu » — en voiture, sans le moindre signe.
+
+L&amp;#39;ancien moteur n&amp;#39;etait pas concerne : `SpeechRecognizer` capte dans le processus
+de reconnaissance du systeme, pas dans le notre. Le defaut n&amp;#39;existait donc que
+depuis le passage a Deepgram, et n&amp;#39;etait visible sur aucun test JVM.
+
+`BoucleVocaleTest` est scinde en trois. Le tour complet, quand il echoue, ne dit
+pas quelle moitie a lache : c&amp;#39;est ce qui s&amp;#39;est produit au premier essai, ou un
+« Silence » laconique couvrait aussi bien la voix que l&amp;#39;oreille. Separes, ils
+ont montre en une execution que la synthese sortait bien du haut-parleur — 5,4 s
+de lecture, aucun repli — et que le micro rendait 64 000 octets d&amp;#39;amplitude
+exactement nulle.
+
+Cette nullite exacte est elle-meme une assertion : une piece calme a toujours un
+bruit de fond, un zero parfait est un refus de capture. Le test porte aussi son
+activite via `ActivityScenario`, `RECORD_AUDIO` etant accordee en mode « premier
+plan seulement » — et lancer l&amp;#39;activite depuis adb ne sert a rien, `am instrument`
+arretant l&amp;#39;application pour demarrer.
+
+267 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43e8d30ebecd193e31db536fd3c9930a97f3d85b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/43e8d30ebecd193e31db536fd3c9930a97f3d85b"/>
+    <title>
+        feat: rendre le prochain trajet auto-diagnostiquable
+    </title>
+    <updated>2026-09-05T15:02:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: rendre le prochain trajet auto-diagnostiquable
+
+Le journal est le seul temoin de ce qui se passe en voiture : c&amp;#39;est lui qui a
+fourni la preuve des quatre defauts du 2 septembre, apres trois series de
+corrections livrees a l&amp;#39;aveugle. Il lui manquait deux colonnes pour que le
+diagnostic suivant ne demande plus de relire les transcriptions une par une.
+
+`attenteMs` : le silence entre la fin de la reponse et le debut du verdict.
+C&amp;#39;est le seul temps d&amp;#39;attente reellement subi — l&amp;#39;utilisateur a fini de parler
+et il attend. « C&amp;#39;est trop lent » restait un ressenti impossible a situer ;
+il devient une colonne.
+
+`intention` : ce que le modele a lu dans la phrase. Une demande notee fausse —
+« tu peux répéter » — n&amp;#39;etait reperable dans l&amp;#39;ancien journal qu&amp;#39;a la lecture.
+
+Les lignes ecrites avant l&amp;#39;ajout n&amp;#39;ont pas ces champs et se relisent sans que
+rien ne soit invente, ce que le test verifie explicitement : un journal qui
+casse a la mise a jour ferait perdre la seule trace des trajets passes.
+
+Un champ de diagnostic qui n&amp;#39;atteint pas le fichier ne se verrait qu&amp;#39;au trajet
+suivant, donc le test l&amp;#39;assert sur le contenu ecrit, pas sur l&amp;#39;objet en memoire.
+
+264 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db57bccccb4f0779556e6b837086653b479af072</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/db57bccccb4f0779556e6b837086653b479af072"/>
+    <title>
+        docs: consigner la voix retenue
+    </title>
+    <updated>2026-09-05T14:56:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: consigner la voix retenue
+
+L&amp;#39;utilisateur a ecoute les deux voix francaises d&amp;#39;Aura-2 et retenu `agathe`, qui
+etait deja la valeur par defaut — rien a changer dans le comportement, mais le
+choix meritait d&amp;#39;etre trace ailleurs que dans une conversation. `hector` reste
+proposee dans les reglages.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ccbb72a7dd374a9f78eb8c9a8cdd44316ddb10bc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/ccbb72a7dd374a9f78eb8c9a8cdd44316ddb10bc"/>
+    <title>
+        fix: le prechauffage n&#39;atteignait jamais le locuteur
+    </title>
+    <updated>2026-09-05T14:50:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: le prechauffage n&amp;#39;atteignait jamais le locuteur
+
+`FocusAwareSpeaker` enveloppe le locuteur reel et ne redefinissait pas `warm` :
+l&amp;#39;implementation vide de l&amp;#39;interface l&amp;#39;emportait, et toute la preparation de la
+question suivante ne faisait rien. Aucune erreur, aucun test rouge, aucun
+symptome — sinon un aller-retour paye avant chaque question, c&amp;#39;est-a-dire
+exactement ce que le prechauffage devait supprimer.
+
+`Speaker.warm` perd donc son implementation par defaut, malgre les quelques
+lignes que cela coute aux implementations qui n&amp;#39;en ont pas besoin. Une methode
+qu&amp;#39;un decorateur peut oublier doit etre imposee par le compilateur, pas confiee
+a l&amp;#39;attention : c&amp;#39;est lui qui a trouve les cinq implementations a completer, une
+fois le defaut retire.
+
+`PrechauffageTest` verifie le trajet complet, boucle comprise, a travers un
+decorateur — et que le texte prechauffe est bien celui qui sera dit, le cache
+etant retrouve par egalite exacte. Verifie par mutation : retirer l&amp;#39;appel a
+`warm` de la boucle rend le test rouge.
+
+261 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1362bfe1a72c221c7fce03f186f41f37a3984d77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/1362bfe1a72c221c7fce03f186f41f37a3984d77"/>
+    <title>
+        fix: un tunnel ne doit pas tuer l&#39;oreille
+    </title>
+    <updated>2026-09-05T14:48:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: un tunnel ne doit pas tuer l&amp;#39;oreille
+
+La synthese avait son repli sur le moteur embarque, l&amp;#39;ecoute n&amp;#39;en avait aucun.
+L&amp;#39;asymetrie etait une faute : deux echecs d&amp;#39;ecoute de suite arretent la seance,
+donc un tunnel de trente secondes y aurait mis fin, avec une voix toujours
+presente et une oreille morte.
+
+`DeepgramListener` prend desormais un repli et y bascule sur echec technique. La
+distinction compte : c&amp;#39;est le reseau qui a lache, pas l&amp;#39;utilisateur qui se tait,
+et confondre les deux ferait defiler la session en notant tout « a revoir ».
+
+Le test de bout en bout recoit un repli volontairement sourd, pour la meme raison
+que la synthese y recoit un repli muet : sans cela il basculerait en silence sur
+les moteurs Android et semblerait passer alors que Deepgram ne repond pas.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a85e48776d9642987879eff1f469533acc972b65</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/a85e48776d9642987879eff1f469533acc972b65"/>
+    <title>
+        feat: ne pas juger une phrase que la transcription a tranchee
+    </title>
+    <updated>2026-09-05T14:47:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: ne pas juger une phrase que la transcription a tranchee
+
+Le commit precedent laissait un trou ouvert et le disait : une pause de plus de
+deux secondes et demie coupe la phrase, et il ne restait que « le théorème de
+Roll s&amp;#39;ap » a envoyer au jugement. Noter faux quelqu&amp;#39;un qui reflechissait est
+exactement le defaut qu&amp;#39;on corrige depuis le debut.
+
+Le modele voit immediatement qu&amp;#39;une phrase est tronquee. Il le dit maintenant
+par une intention de plus, et le moteur relance au lieu de juger, en gardant le
+debut de reponse pour l&amp;#39;y recoller. Une seule fois par carte : au-dela, insister
+vaut moins que juger ce qu&amp;#39;on a.
+
+La premiere redaction de la consigne echouait sur les trois cas qu&amp;#39;elle visait :
+elle temperait tellement — « ne choisis incomplet que si la coupure est nette »
+— que le modele repondait « reponse » a chaque fois. Remplacee par deux signes
+concrets, mot tronque ou mot grammatical en suspens, avec des exemples des deux
+cotes. Verifie contre l&amp;#39;API : 9 cas sur 9, les trois troncatures reconnues et
+les reponses breves — « n log n », « non » — laissees tranquilles. C&amp;#39;est ce
+second point qui compte : une relance sur une reponse finie serait agacante.
+
+259 tests JVM, 0 echec.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7605ba6ea953177108756df9c7d3786fa19860f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/a7605ba6ea953177108756df9c7d3786fa19860f"/>
+    <title>
+        fix: la fenetre d&#39;ecoute, mesuree au lieu d&#39;etre supposee
+    </title>
+    <updated>2026-09-05T14:43:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: la fenetre d&amp;#39;ecoute, mesuree au lieu d&amp;#39;etre supposee
+
+J&amp;#39;avais repris les valeurs de l&amp;#39;ancien moteur en supposant que Deepgram reglerait
+le probleme des pauses par lui-meme. Faux, et verifie en rejouant de l&amp;#39;audio reel
+dans l&amp;#39;endpoint temps reel.
+
+Une phrase portant une pause de reflexion de deux secondes en son milieu — le cas
+que l&amp;#39;utilisateur a explicitement demande de ne pas couper — est tranchee a
+1 000 ms, a 1 500 et encore a 2 000. Il n&amp;#39;en restait que « Le théorème de Roll
+s&amp;#39;ap », et c&amp;#39;est cela qui serait parti au jugement. Elle survit entiere a 2 500.
+
+La fenetre de reponse passe donc a 2 500 ms et le surcout est assume : se faire
+couper au milieu d&amp;#39;un raisonnement est pire que d&amp;#39;attendre une demi-seconde de
+plus. Celle de correction descend a 1 000 : un mot connu d&amp;#39;avance ne comporte pas
+de pause, et le meme audio s&amp;#39;y transcrit sans perte.
+
+Ce que ces valeurs ne couvrent pas, et qui reste ouvert : une pause de plus de
+deux secondes et demie coupe toujours. La relance ne rattrape ce cas que si la
+phrase s&amp;#39;arrete sur un mot en suspens.
+
+Le protocole lui-meme est verifie de bout en bout par le meme banc : URL,
+recollement des provisoires et des definitifs, et cloture par `UtteranceEnd`
+comme par `speech_final`. Le transcript rendu est complet et correct.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b26c307854510c3b29971301e231e8e40e163e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/2b26c307854510c3b29971301e231e8e40e163e6"/>
+    <title>
+        feat: synthetiser la question a l&#39;avance, et documenter la pile vocale
+    </title>
+    <updated>2026-09-05T14:37:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: synthetiser la question a l&amp;#39;avance, et documenter la pile vocale
+
+La synthese distante coute un aller-retour avant le premier mot. Celui de la
+question est evitable : elle est connue pendant que l&amp;#39;utilisateur repond encore
+a la carte precedente. `Speaker.warm` la prepare alors, et `speak` la joue sans
+attendre. Le verdict, lui, depend de la reponse et reste sur le chemin critique.
+La moitie de la latence ajoutee par le passage au cloud disparait ainsi.
+
+`warm` est sans effet par defaut : une synthese embarquee n&amp;#39;a rien a prechauffer,
+et un echec de prechauffage ne doit jamais empecher de parler ensuite.
+
+La documentation portait encore deux affirmations devenues fausses. La regle des
+cartes a media d&amp;#39;abord — celle qui ecartait 96 % de la collection — remplacee par
+ce qu&amp;#39;elle est devenue, avec le chiffre qui l&amp;#39;a condamnee et l&amp;#39;impasse qui reste
+sur les versos en image. La pile vocale ensuite, decrite comme « STT et TTS
+systeme Android » alors qu&amp;#39;elle est distante avec repli.
+
+257 tests JVM, 0 echec. La boucle vocale complete n&amp;#39;a toujours pas pu tourner :
+l&amp;#39;appareil s&amp;#39;est debranche deux fois. Le test est arme et partira des qu&amp;#39;il
+reviendra.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6535cf1d120d67181c4124278877763149594d23</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/6535cf1d120d67181c4124278877763149594d23"/>
+    <title>
+        feat: voix et micro par Deepgram, avec repli sur Android
+    </title>
+    <updated>2026-09-05T14:33:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: voix et micro par Deepgram, avec repli sur Android
+
+La reconnaissance vocale d&amp;#39;Android transcrivait « Sily white never food » pour
+une reponse anglaise et rendait cinq tours entierement vides, notes « a revoir ».
+Sa synthese, elle, valait ce qu&amp;#39;elle valait. Les deux passent a Deepgram, un
+seul fournisseur, la cle dans les reglages faisant office d&amp;#39;interrupteur.
+
+MICRO. `DeepgramListener` remplace `SpeechRecognizer`. Le motif principal n&amp;#39;est
+pas la transcription mais la detection de fin de parole : l&amp;#39;ancienne reposait
+sur un compte a rebours de silence que j&amp;#39;ai regle a l&amp;#39;aveugle trois fois de
+suite, la nouvelle sur l&amp;#39;ecart entre deux mots — ce qui tient dans un habitacle
+bruyant, la ou le silence n&amp;#39;arrive jamais. Deux chemins de cloture sont acceptes,
+`speech_final` et `UtteranceEnd`, parce qu&amp;#39;ils echouent dans des situations
+differentes.
+
+Le recollement des morceaux vit dans `:core` (`TurnAccumulator`) : c&amp;#39;est le seul
+endroit du chemin vocal eprouvable sans micro, sans reseau et sans appareil. Le
+piege qu&amp;#39;il traite est qu&amp;#39;un resultat definitif conclut le provisoire qu&amp;#39;il
+corrige — les additionner ferait dire deux fois le meme morceau de phrase.
+
+VOIX. `DeepgramSpeaker` joue l&amp;#39;audio pendant qu&amp;#39;il arrive. Ce n&amp;#39;est pas une
+optimisation : mesure sur une question reelle, premier octet a 1,0 s, fichier
+complet a 3,8 s. Attendre le fichier ajouterait pres de huit secondes de silence
+par carte, alors que la lenteur est deja l&amp;#39;un des reproches. Le format demande
+est du PCM brut, joue directement par `AudioTrack` sans decodeur.
+
+Une panne — tunnel, quota, reseau coupe — repasse par la synthese embarquee. Une
+voix moins belle qui parle vaut infiniment mieux qu&amp;#39;une belle voix muette : sans
+repli, la seance continuerait a l&amp;#39;aveugle.
+
+Verifie contre l&amp;#39;API avant d&amp;#39;etre ecrit : les deux voix francaises d&amp;#39;Aura-2
+existent (`agathe`, `hector`), les deux anglaises aussi, `linear16` et
+`container=none` sont acceptes, et nova-3 transcrit le francais en flux.
+
+257 tests JVM, 0 echec. Mais des tests JVM ne prouvent rien sur une boucle
+vocale : `BoucleVocaleTest` fait faire a une phrase le tour complet du materiel
+— synthese, haut-parleur, micro, transcription — et compare le texte. Il n&amp;#39;a pas
+encore pu tourner, l&amp;#39;appareil s&amp;#39;etant debranche.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/70ef767e2da5fbf11e96e861ba81be0b8b3244f8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/70ef767e2da5fbf11e96e861ba81be0b8b3244f8"/>
+    <title>
+        fix: reviser vraiment les cartes, et comprendre ce qui est demande
+    </title>
+    <updated>2026-09-02T17:19:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: reviser vraiment les cartes, et comprendre ce qui est demande
+
+Diagnostic tire du journal de l&amp;#39;appareil, 271 entrees sur six sessions reelles.
+Aucune des corrections precedentes n&amp;#39;avait ete verifiee sur du vrai son : elles
+reglaient des listes de mots a l&amp;#39;aveugle pendant que quatre defauts rendaient
+l&amp;#39;application inutilisable.
+
+96 % DES CARTES ETAIENT ECARTEES. 259 entrees sur 271 portaient « carte a media,
+inutilisable en voiture » — jusqu&amp;#39;a 20 sur 20 en une session. La regle testait
+la presence d&amp;#39;un fichier joint, pas la presence de texte : 233 des cartes
+ecartees avaient un recto parfaitement lisible. Elle porte desormais sur ce
+qu&amp;#39;il y a a lire et a comparer. Le seuil est d&amp;#39;un seul caractere, deliberement :
+toute valeur au-dessus serait une supposition sur ce qui fait « assez de texte »,
+et c&amp;#39;est cette supposition-la qui avait produit la regle precedente.
+
+LES DEMANDES ETAIENT NOTEES FAUSSES. Le journal en portait deux : « j&amp;#39;ai pas
+bien entendu est-ce que tu peux répéter » et « puis-je corriger la question
+d&amp;#39;avant », douze mots la ou le parseur de mots-cles en tolerait quatre. Elargir
+les listes ne pouvait pas marcher, parce que personne ne parle en mots-cles. Le
+modele qui juge deja la reponse rend maintenant une intention dans le meme
+appel, sans latence supplementaire. Le parseur reste en chemin rapide pour la
+commande nue et pour la fenetre de correction, ou la latence prime.
+
+NE RIEN ENTENDRE COUTAIT UNE NOTE. Cinq des douze revisions du journal ont un
+transcript vide et une note « a revoir ». Deux silences ne prouvent pas
+l&amp;#39;ignorance, seulement que le micro n&amp;#39;a rien rendu. La carte est desormais
+laissee due, verso enonce, sans note : abimer le calendrier Anki sur la foi
+d&amp;#39;une panne est le pire resultat possible.
+
+UN DEBORDEMENT D&amp;#39;ENTIER CASSAIT LES NOMS DE PAQUETS. `cursor.int(DECK_ID)` lit
+un identifiant Anki — un horodatage a treize chiffres — dans un `Int`. 66
+entrees du journal portaient un nom de paquet vide, et la detection de langue
+livree la veille n&amp;#39;aurait jamais pu s&amp;#39;appliquer aux cartes d&amp;#39;anglais.
+
+248 tests JVM, 0 echec. Detection d&amp;#39;intention verifiee contre l&amp;#39;API sur les
+transcriptions reelles du journal : 11 cas sur 11, dont les deux qui avaient ete
+notees fausses, et quatre reponses hesitantes correctement gardees comme
+reponses.
+
+Reste ouvert : les versos en image, qui demandent la vision, et le passage au
+cloud pour la reconnaissance et la synthese vocales. Le ContentProvider
+d&amp;#39;AnkiDroid ne sait pas lire les media — verifie dans FlashCardsContract, il ne
+propose que l&amp;#39;insertion —, donc la lecture passera par le systeme de fichiers.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7adbdd778bdf43d7670920444cd94592784bb4d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/7adbdd778bdf43d7670920444cd94592784bb4d7"/>
+    <title>
+        feat: reviser des paquets en anglais
+    </title>
+    <updated>2026-09-01T18:18:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: reviser des paquets en anglais
+
+L&amp;#39;application ne savait ecouter que le francais. Sur une carte anglaise, le
+micro ne se plaignait pas : il transcrivait la reponse en charabia francais, le
+modele la jugeait fausse, et la carte defilait. C&amp;#39;est la panne la plus couteuse
+possible pour une application qui note, parce qu&amp;#39;elle se confond avec de
+l&amp;#39;ignorance.
+
+Trois langues cohabitent desormais dans une session, et le point de conception
+est de ne jamais les melanger dans un meme enonce — une synthese vocale ne parle
+qu&amp;#39;une langue a la fois.
+
+La CARTE regle sa question, la relance, le micro pendant la reponse et le
+vocabulaire des commandes. `ReviewCard` porte sa `Langue`, posee une fois par la
+passerelle depuis le paquet d&amp;#39;origine ; le moteur n&amp;#39;a jamais a savoir ce qu&amp;#39;est
+un paquet. Les ports `Speaker` et `Listener` la recoivent a chaque appel — sans
+valeur par defaut pour `Listener`, ou l&amp;#39;oublier reglerait silencieusement le
+micro sur le francais.
+
+La CORRECTION suit un reglage, francais par defaut. Une exception prime dessus :
+un enonce qui recite le verso suit la carte. Mode degrade et abandon apres deux
+silences en font partie, et une voix francaise lisant un verso anglais serait
+perdue.
+
+L&amp;#39;APPLICATION garde le francais quand elle parle d&amp;#39;elle-meme.
+
+Quels paquets sont anglophones se decide en deux temps. Tant que l&amp;#39;ecran de
+choix n&amp;#39;a pas ete valide, le nom decide — « Anglais », « English », descendance
+comprise — pour que la premiere session marche sans reglage. Une fois valide, la
+coche fait foi, y compris pour dire « aucun », qu&amp;#39;un nom ne saurait pas
+exprimer.
+
+Le parseur de commandes porte deux vocabulaires, jamais consultes ensemble. Ils
+n&amp;#39;ont pas la meme tolerance : un verbe de commande est cru en tete d&amp;#39;une phrase
+de deux mots en francais, d&amp;#39;un seul en anglais, ou les mots de commande sont
+aussi des noms courants — « a stop consonant » declenchait un arret. « done »
+est volontairement absent du vocabulaire d&amp;#39;arret : il termine une reponse bien
+plus souvent qu&amp;#39;une session. Une phrase est desormais comparee telle qu&amp;#39;elle a
+ete dite avant de l&amp;#39;etre allegee de ses mots vides, sinon « what was that » se
+reduisait a « what », c&amp;#39;est-a-dire a une demande de repetition.
+
+Le locuteur retient une voix par langue, classee une fois au demarrage : le
+classement parcourt toutes les voix installees, et le refaire par enonce
+ajouterait ce cout au debut de chaque carte. L&amp;#39;accent anglais vise passe avant
+la qualite declaree, et regle aussi le modele acoustique du micro.
+
+230 tests JVM, 0 echec. Sorties du modele verifiees contre l&amp;#39;API par le meme
+chemin SDK que l&amp;#39;application : question anglaise sur carte anglaise, retour
+francais citant les termes anglais, retour integralement anglais selon le
+reglage.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/be8fc65cf5e290a79cf1a11230f9031355e30a84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/be8fc65cf5e290a79cf1a11230f9031355e30a84"/>
+    <title>
+        feat: voix plus vive, correction plus rapide, commandes plus tolerantes
+    </title>
+    <updated>2026-09-01T17:31:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: voix plus vive, correction plus rapide, commandes plus tolerantes
+
+Trois plaintes distinctes apres usage reel, trois causes distinctes.
+
+1. La voix. Le moteur retenait la premiere voix francaise installee, souvent la
+plus plate, et parlait au debit d&amp;#39;une lecture d&amp;#39;ecran. L&amp;#39;adaptateur classe
+desormais les voix par qualite declaree puis par latence de demarrage, en
+ecartant celles qui exigent le reseau : elles ajoutent un aller-retour par
+phrase et se taisent dans un tunnel, ou le moteur signale une erreur et la
+seance continue a l&amp;#39;aveugle. Le debit passe a 1,15 et devient reglable entre
+0,8 et 1,6. Le prompt demande en plus une vraie ponctuation, seule source
+d&amp;#39;intonation de la synthese vocale.
+
+2. La lenteur. Trois postes, mesures et non supposes.
+
+Le silence qui clot le tour de parole valait 2,5 s dans les deux fenetres. Il
+tombe a 2 s apres une reponse, et a 1,1 s apres une correction : « bien » ou
+« faux » ne se cherchent pas, et rien ne les relance. Le port `Listener` recoit
+donc le `ListenKind`, deplace de `engine` vers `ports`.
+
+Le jugement partait avec la reflexion prealable du modele. Comparer une reponse
+orale a un verso connu et rendre un petit objet JSON ne la demande pas : trois
+appels sur la meme carte donnent 4 081 ms de mediane avec, 3 506 ms sans, pour
+un verdict identique. Le plafond de sortie du verdict passe de 700 a 400 jetons.
+
+Le mode rapide de l&amp;#39;API reste desactive par defaut : le quota vaut zero sur ce
+compte, verifie en appelant l&amp;#39;API. Le code sait s&amp;#39;en servir et retombe seul en
+vitesse normale sur un 429, une fois par session et non par carte.
+
+3. « repete » faisait defiler la carte en la notant fausse. Le parseur exigeait
+la commande nue ; « repete la question » partait au modele comme une reponse.
+Il reconnait maintenant trois niveaux : la phrase exacte, une tournure figee
+dans une phrase courte, puis un verbe de commande en tete de phrase de deux mots
+au plus. « on passe a la limite » reste une reponse, et les notes gardent leur
+exigence de phrase entiere — les elargir ferait noter des cartes a l&amp;#39;insu de
+l&amp;#39;utilisateur. Les ligatures sont deliees avant comparaison : « par coeur » se
+reduisait a « par c ur ».
+
+La cle d&amp;#39;API des tests instrumentes ne passe plus par un argument
+d&amp;#39;instrumentation : `adbd` recopie la ligne de commande de `am instrument` dans
+le logcat, ou la cle se retrouvait en clair. Elle se lit dans un fichier pousse
+sur l&amp;#39;appareil.
+
+203 tests JVM, 0 echec. Configuration du modele verifiee contre l&amp;#39;API par le
+meme chemin SDK que l&amp;#39;application. La suite instrumentee n&amp;#39;a pas pu tourner :
+l&amp;#39;AVD porte un code de verrouillage, et `am instrument` est refuse avant tout
+test.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18de6c551efdd5cf502975b33be9908eeca1801f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/18de6c551efdd5cf502975b33be9908eeca1801f"/>
+    <title>
+        fix: ne pas interrompre quelqu&#39;un qui a fini sa phrase
+    </title>
+    <updated>2026-08-26T21:11:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: ne pas interrompre quelqu&amp;#39;un qui a fini sa phrase
+
+La liste des mots qui « appellent une suite » etait trop large : sept fins de
+phrase parfaitement naturelles se seraient fait relancer, dont « c&amp;#39;est tout »,
+qui est litteralement la facon de dire qu&amp;#39;on a termine. Aussi « la suite
+converge bien », « il converge aussi », « c&amp;#39;est trop », « il n&amp;#39;y en a plus ».
+
+Le groupe des adverbes est retire, les auxiliaires autres que les copules
+aussi (« il le peut », « elles y vont »), de meme que « aucun », « plusieurs »
+et « quoi ». Il ne reste que des mots qui ne peuvent pas clore une phrase
+francaise. Un test enumere douze fins naturelles pour que la liste ne
+regrossisse pas.
+
+Le compromis est deliberement asymetrique : rater une phrase en suspens
+ramene au comportement d&amp;#39;avant, interrompre une reponse complete est une gene
+a chaque carte.
+
+Retire aussi EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, ajoute la veille sans
+etre mesure : il retardait d&amp;#39;une seconde chaque mot de correction, qui est
+justement le plus court.
+
+currentListen devient volatile — requestStop l&amp;#39;atteint depuis le bouton
+« Arreter » et depuis le rappel de focus audio, chacun sur son thread.
+
+Version 0.2.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b1f0351a7ccf5c8fc73a689e00f3916a0f77879</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/2b1f0351a7ccf5c8fc73a689e00f3916a0f77879"/>
+    <title>
+        feat: laisser finir sa phrase, et ne pas reexpliquer ce qui est juste
+    </title>
+    <updated>2026-08-26T20:47:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: laisser finir sa phrase, et ne pas reexpliquer ce qui est juste
+
+Deux genes rapportees a l&amp;#39;usage.
+
+Chercher ses mots coupait la reponse. La reconnaissance vocale rend la main
+sur un silence, sans savoir si la phrase etait finie : quelques secondes de
+reflexion suffisaient a faire juger une demi-reponse comme la totalite. Le
+silence de fin passe de 1,5 s a 2,5 s, et au-dela le moteur regarde sur quel
+mot la phrase s&amp;#39;arrete. « la derivee de ce produit vaut donc » ne se termine
+pas sur « donc » : l&amp;#39;application redemande une fois, puis recolle les deux
+morceaux avant de juger. Un silence apres la relance vaut « j&amp;#39;ai fini » : ce
+qui a ete entendu est juge, jamais jete.
+
+L&amp;#39;heuristique exclut les mots d&amp;#39;une seule lettre et « un » : sur des fiches
+de maths ce sont des variables et des resultats, pas des articles en attente
+— « sinus de a », « la suite converge vers un ».
+
+Une reponse juste ne se fait plus reexpliquer. Reentendre trente mots de
+verso qu&amp;#39;on vient de reciter n&amp;#39;apprend rien et allonge le trajet : le prompt
+demande une confirmation de douze mots au plus, et le code la fait respecter
+au lieu de compter dessus. Les explications restent entieres la ou elles
+servent, sur ce qui a ete rate.
+
+Deux tests de bout en bout font passer la relance par la vraie boucle, pas
+seulement par le reducteur : c&amp;#39;est l&amp;#39;enchainement enonce -&amp;gt; fin d&amp;#39;enonce -&amp;gt;
+ecoute qui la rend possible.
+
+198 tests JVM.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2f84ce1305270c5467ff34948a388c11e4601af7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/2f84ce1305270c5467ff34948a388c11e4601af7"/>
+    <title>
+        fix: la fenetre d&#39;ecoute doit se lire dans la notice
+    </title>
+    <updated>2026-08-26T20:22:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: la fenetre d&amp;#39;ecoute doit se lire dans la notice
+
+La colonne de droite portait la couleur des filets : « apres le verdict » et
+« pendant ta reponse » etaient a peine visibles sur le fond. Or c&amp;#39;est
+exactement l&amp;#39;information qui surprend — une commande dite hors de sa fenetre
+ne fait rien, et rien ne le dit.
+
+Ajoute la capture de l&amp;#39;ecran aux deux README.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae56bf2a3c57b0c79ef449382b1e336902fa8a48</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/ae56bf2a3c57b0c79ef449382b1e336902fa8a48"/>
+    <title>
+        feat: notice des commandes vocales dans l&#39;application
+    </title>
+    <updated>2026-08-26T20:17:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: notice des commandes vocales dans l&amp;#39;application
+
+Reglages -&amp;gt; « Ce que tu peux dire ». La liste des tournures reconnues, avec
+la fenetre d&amp;#39;ecoute ou chacune agit, et la regle qui explique la plupart des
+surprises : une commande doit constituer toute la phrase.
+
+La notice vit dans :core, a cote du parseur, et un test confronte chaque
+tournure annoncee a ce que le parseur en fait. Une notice recopiee a la main
+derive — celle des documents annoncait deja « faux » et « trop dur » avant
+que le parseur ne les connaisse. Au volant, repeter un mot qui n&amp;#39;existe pas
+est indiscernable d&amp;#39;un micro qui n&amp;#39;entend rien.
+
+Les documents renvoient desormais a cet ecran pour la liste complete et n&amp;#39;en
+gardent qu&amp;#39;un extrait.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92219dd30f09036c559d3ccafb181886771ad912</id>
+    <link type="text/html" rel="alternate" href="https://github.com/myqzurdux3/sillon/commit/92219dd30f09036c559d3ccafb181886771ad912"/>
+    <title>
+        fix: corriger ce que l&#39;audit a trouve
+    </title>
+    <updated>2026-08-26T20:09:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/50cd1aee1490ff108f0c0513f32715e2?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>claude-acc@inbox.eu</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: corriger ce que l&amp;#39;audit a trouve
+
+Deux defauts arretaient la session en silence au milieu du trajet : une
+reduction qui parlait sans changer d&amp;#39;etat n&amp;#39;emettait plus rien, la boucle
+vidait sa file et rendait la main sans erreur. « reviens » sur la premiere
+carte le declenchait. Un test d&amp;#39;invariant parcourt maintenant toutes les
+commandes dans toutes les fenetres d&amp;#39;ecoute pour que ca ne revienne pas.
+
+Bugs
+- « reviens » sans carte precedente rouvre l&amp;#39;oreille au lieu de se taire
+- « annule » agit aussi pendant la reponse, et se dit a voix haute
+- « repete » redit le verdict au lieu de figer la note
+- un seul thread pour la boucle : la file d&amp;#39;evenements n&amp;#39;est pas concurrente
+- une perte definitive du focus audio arrete la session au lieu de la figer
+- le mode degrade ne vaut plus que pour la carte en cours : chaque carte
+  retente le modele, donc le reseau revenu, la session repart normalement
+- le rang affiche ne compte plus les cartes a media dans le parcours
+- une ecriture refusee par AnkiDroid est comptee, journalisee et annoncee
+- renoter en mode journal n&amp;#39;annonce plus d&amp;#39;ecriture qui n&amp;#39;a pas eu lieu
+- delai borne sur les appels au modele : une requete qui pend ne rend jamais
+- SpeechRecognizer detruit sur le thread principal, meme a l&amp;#39;annulation
+- START_NOT_STICKY : le systeme ne relance plus une session tout seul
+- le compteur d&amp;#39;echecs d&amp;#39;ecoute ne traverse plus la session entiere
+- un paquet supprime depuis le dernier reglage ne raccourcit plus la session
+- « faux », « mauvais », « trop dur » manquaient au parseur
+- retour systeme : remonte d&amp;#39;un ecran au lieu de quitter l&amp;#39;application
+- le JSON du modele est lu jusqu&amp;#39;a l&amp;#39;accolade fermante, pas la derniere
+- journal purge au-dela de trente jours
+
+Perf
+- les textes de cartes sont lus apres l&amp;#39;entrelacement, plus avant : la
+  lecture coutait paquets x limite allers-retours pour en garder limite
+- le prechargement passe avant l&amp;#39;ecoute, donc pendant que l&amp;#39;utilisateur parle
+- interrogation d&amp;#39;AnkiDroid sortie du corps des composables
+
+Nettoyage
+- code mort : containsMath, Judgement.missed, Session.deckIds, colors.xml
+- dependances : lifecycle-service, lifecycle-runtime, ui-tooling-preview,
+  okhttp explicite, buildConfig, mipmap-anydpi-v26
+- HTML retire en un seul endroit, partage par la passerelle et la voix
+- rootProject.name et la notification portaient encore l&amp;#39;ancien nom
+- lint : 23 avertissements -&amp;gt; 4, tous assumes
+
+Documentation
+- le plan d&amp;#39;implementation (4376 lignes, 80 % de code recopie, perime)
+  est supprime ; le design devient docs/conception.md et est remis a jour
+- INSTALLATION.md : la cle d&amp;#39;API est dans Reglages, pas dans l&amp;#39;accueil
+- les tableaux de commandes disent dans quelle fenetre chacune est ecoutee
+
+180 tests JVM, 15 instrumentes (13 verts sur emulateur, 2 sautes faute de
+cle d&amp;#39;API). Un test instrumente verifie que la table schedule expose bien
+button_count et media_files : le doute de l&amp;#39;audit est leve, pas contourne.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Cwdzqk6kNuZ2rHmCkFonu5&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

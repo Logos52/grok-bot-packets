@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/TahaKhanM/LearnWithNoura/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/TahaKhanM/LearnWithNoura/commits/main.atom"/>
+  <title>Recent Commits to LearnWithNoura:main</title>
+  <updated>2026-09-08T00:30:23Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72fd400461d055d4578a5637e648d37b198fc78e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/72fd400461d055d4578a5637e648d37b198fc78e"/>
+    <title>
+        Introduce LearnWithNoura with a reproducible public developer workflow
+    </title>
+    <updated>2026-09-08T00:30:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Introduce LearnWithNoura with a reproducible public developer workflow
+
+Align the package, page, manifest and version endpoint with LearnWithNoura while preserving the tutor persona and existing data namespaces. Explain the runtime, contribution history, experiments and readiness limits in the README. Make the example environment offline by default, remove hidden provider-key dependencies from preparation tests, include inspected home snapshots, and add clean-checkout CI.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/33005cedebcc30b51614adb7a4ef750e8d45eab9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/33005cedebcc30b51614adb7a4ef750e8d45eab9"/>
+    <title>
+        Reject invalid deployment modes instead of bypassing production guards
+    </title>
+    <updated>2026-09-08T00:27:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reject invalid deployment modes instead of bypassing production guards
+
+A misspelled mode previously fell back to local synthetic behavior, even on a production host. Fail startup on invalid modes and require production signing secrets to contain at least 32 characters.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c871e9de85800622bb15d12b6c41990a4e380051</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/c871e9de85800622bb15d12b6c41990a4e380051"/>
+    <title>
+        Update the query parser to address denial-of-service advisories
+    </title>
+    <updated>2026-09-08T00:24:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update the query parser to address denial-of-service advisories
+
+Refresh qs from 6.15.3 to 6.16.0 within the existing dependency constraints. A clean npm install and production dependency audit now report zero known vulnerabilities.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7da882a7cbe05a69eb09189766b08abdb4b87e9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/c7da882a7cbe05a69eb09189766b08abdb4b87e9"/>
+    <title>
+        Dispose work that arrives after a tutor generation has ended
+    </title>
+    <updated>2026-09-08T00:19:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dispose work that arrives after a tutor generation has ended
+
+Late async continuations could attach intervals and cleanup callbacks to an inactive scope forever. Refuse new scheduling and dispose late resources immediately after cancellation, failure, or completion.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0649da7d03bf25b91965b43ed0a5458ff77c24be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/0649da7d03bf25b91965b43ed0a5458ff77c24be"/>
+    <title>
+        Preserve database certificate verification when parsing connection URLs
+    </title>
+    <updated>2026-09-08T00:18:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Preserve database certificate verification when parsing connection URLs
+
+node-postgres can replace explicit TLS options with URL query settings. Strip those competing settings before pool creation and accept a configured PEM CA so managed databases can verify their certificate chain without disabling TLS verification.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa379cc94353c7ca6c81518beb8a47781cddd408</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/aa379cc94353c7ca6c81518beb8a47781cddd408"/>
+    <title>
+        Include synthetic image evidence required by the offline test suite
+    </title>
+    <updated>2026-09-08T00:17:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Include synthetic image evidence required by the offline test suite
+
+Fresh clones were missing 53 screenshots referenced by retained M2, M3 and M7 verifiers. Add the original inspected images without altering their hashes or historic acceptance decisions; all other generated artifacts remain ignored.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a72092716ba8ca42b2de74c0ccb39b421fa9dd5c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/a72092716ba8ca42b2de74c0ccb39b421fa9dd5c"/>
+    <title>
+        Bound request throttling and reject malformed authentication input
+    </title>
+    <updated>2026-09-08T00:16:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bound request throttling and reject malformed authentication input
+
+Handle malformed cookie encoding without failing requests, validate signed claim types and token framing, and cap distinct rate-limit keys. Periodic expiry sweeps avoid per-request scans; saturation rejects new keys while preserving active counters.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e41b89a6ee04681c7d803ef62c9ce893ef3d7e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/4e41b89a6ee04681c7d803ef62c9ce893ef3d7e6"/>
+    <title>
+        docs: record production drawing incident
+    </title>
+    <updated>2026-09-04T21:47:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: record production drawing incident&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/509564cd8866bda436beeb38aff2be624ba9b369</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/509564cd8866bda436beeb38aff2be624ba9b369"/>
+    <title>
+        fix: restore production drawing ingress
+    </title>
+    <updated>2026-09-04T18:09:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: restore production drawing ingress&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79eaf9f43fd85b525d003a19c853df20b9d1f200</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/79eaf9f43fd85b525d003a19c853df20b9d1f200"/>
+    <title>
+        docs: record Drawing vNext production-v0 deploy evidence
+    </title>
+    <updated>2026-09-03T16:15:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: record Drawing vNext production-v0 deploy evidence
+
+Capture verification matrix, visual baseline inspection, owner env
+choices, deployment IDs, and the open storage/smoke blockers.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/08a8ace27b5db10cc104c6d484b4f3be70e25eef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/08a8ace27b5db10cc104c6d484b4f3be70e25eef"/>
+    <title>
+        test: refresh board harness visual baselines for M7 fixture buttons
+    </title>
+    <updated>2026-09-03T16:01:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: refresh board harness visual baselines for M7 fixture buttons
+
+Update 48 /dev/board snapshots after inspecting diffs; only harness
+toolbar chrome changed (m7-* buttons), with no board-content regression.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8705319aad6d4c82234c220e4f80859e93d495c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/d8705319aad6d4c82234c220e4f80859e93d495c"/>
+    <title>
+        feat: add login-gated demo auth overlay for production-v0
+    </title>
+    <updated>2026-09-03T15:56:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add login-gated demo auth overlay for production-v0
+
+Gate parent-scoped APIs behind a server-verified demo account with
+scrypt-backed credentials, signed HttpOnly session cookies, and client
+AuthBoundary so the deployed tree matches the live login-gated site.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d83b1aebc5a787c8ceadcbcc153c8db516933a54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/d83b1aebc5a787c8ceadcbcc153c8db516933a54"/>
+    <title>
+        fix: keep overlay runs closable when illustration append fails
+    </title>
+    <updated>2026-09-03T13:00:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: keep overlay runs closable when illustration append fails
+
+Restore streamOpen on the colliding-objectId fallback, fail closed when a
+generation budget is omitted, and await the sketch-raster assertion.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8f56e26dbf25e854d112edd5bd19d1284ef19a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/d8f56e26dbf25e854d112edd5bd19d1284ef19a1"/>
+    <title>
+        docs: ratify the M7 spend incident as process-complete
+    </title>
+    <updated>2026-09-03T01:29:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: ratify the M7 spend incident as process-complete
+
+The owner accepted the G4 harness incident record. Hash-bound accepted
+stays false; this is not retroactive authorization of those calls.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/afc008e18536facc002c84dbedc710e6ad8a9233</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/afc008e18536facc002c84dbedc710e6ad8a9233"/>
+    <title>
+        docs: record M7 as technically accepted and process-blocked
+    </title>
+    <updated>2026-09-02T23:53:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: record M7 as technically accepted and process-blocked
+
+The G4 harness spend incident stays hash-bound and unratified.
+accepted remains false; this is not retroactive authorization.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3a0992cf1f6d080d6f70a8ca635d1b1da371be43</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/3a0992cf1f6d080d6f70a8ca635d1b1da371be43"/>
+    <title>
+        feat: harden snapshot equations and rebuild the sketch corpus
+    </title>
+    <updated>2026-09-02T23:51:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: harden snapshot equations and rebuild the sketch corpus
+
+Canonical snapshots keep equation occupancy with a measured-outline
+placeholder. The sketch study now uses a closed enum, learner-pen width,
+inspectable renders, and an offline geometric baseline; cheaper-model
+assist stays off.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8eee8c7493196613413b1fa04441b978d8d44fe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/d8eee8c7493196613413b1fa04441b978d8d44fe"/>
+    <title>
+        fix: keep living e2e captures out of hash-bound M7 evidence
+    </title>
+    <updated>2026-09-02T23:38:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: keep living e2e captures out of hash-bound M7 evidence
+
+The fast-annotation spec no longer overwrites the gitignored M7
+screenshot, and acceptance reproduction ignores those living fingerprints.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2def267d0f2223d0a566ab18a1018763036f0dfb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/2def267d0f2223d0a566ab18a1018763036f0dfb"/>
+    <title>
+        feat: decouple illustrations into a parallel gpt-image-2 lane
+    </title>
+    <updated>2026-09-02T23:30:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: decouple illustrations into a parallel gpt-image-2 lane
+
+Director overlay steps reveal immediately; the image arrives as a final
+reveal or checkpoint, with a two-generation lesson budget and no live
+provider calls in this commit.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d001717ab61356d8311faed337e706c3a685f7e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/d001717ab61356d8311faed337e706c3a685f7e0"/>
+    <title>
+        fix: refuse local provider starts without the fixture compiler or liv…
+    </title>
+    <updated>2026-09-02T23:00:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: refuse local provider starts without the fixture compiler or live authorization
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/034d74a8a5e757a43009252209b5b3345610e888</id>
+    <link type="text/html" rel="alternate" href="https://github.com/TahaKhanM/LearnWithNoura/commit/034d74a8a5e757a43009252209b5b3345610e888"/>
+    <title>
+        chore: add agent bootstrap, doc index, and the per-task quick gate
+    </title>
+    <updated>2026-09-02T22:57:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/73759710?s=30&amp;v=4"/>
+    <author>
+      <name>TahaKhanM</name>
+      <uri>https://github.com/TahaKhanM</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add agent bootstrap, doc index, and the per-task quick gate&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

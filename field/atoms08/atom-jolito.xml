@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/smolkaj/jolito/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/smolkaj/jolito/commits/main.atom"/>
+  <title>Recent Commits to jolito:main</title>
+  <updated>2026-09-07T22:36:07Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/794cd297c884f0ab0cf6899f9170e21328306b92</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/794cd297c884f0ab0cf6899f9170e21328306b92"/>
+    <title>
+        feat(deck): add curated starter packs with conflict-free semantic car…
+    </title>
+    <updated>2026-09-07T22:36:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(deck): add curated starter packs with conflict-free semantic card merge (#242)
+
+* feat(deck): add curated starter packs with conflict-free semantic card merge
+
+* fix(deck): address independent code and design review findings for starter packs
+
+* refactor(deck): align verbs with corpus frequency rankings and streamline starter pack layout
+
+* feat(deck): tactile starter packs with card inspection, one-liner copy, and duplicate transparency
+
+* fix(deck): single scroll boundary, theme spine on added cards, and bidirectional presence checks
+
+* fix(deck): correct bidirectional presence check, design tokens, and drill-down focus management
+
+* style(deck): compact back button, remove redundant meta pills, and simplify subtitle copy
+
+* feat(deck): allow adding individual words from pack inspection view
+
+- add individual words or missing reverse cards directly from inspect drill-down
+- refine back button vertical sizing and align with modal header controls
+- remove redundant card/phrase count pills to declutter pack display
+- streamline modal subtitle to &amp;#39;Pick a pack to expand your deck.&amp;#39;
+- ensure 100% test coverage and zero WCAG violations
+
+* fix(deck): address independent code review findings on starter note adding
+
+- inject clock.now() from services when adding individual notes to preserve SRS 24h spacing and sorting
+- route cloud sync through canonical onUpdateCards(cards, true) path
+- label partial cards symmetrically (+ Add reverse vs + Add missing)
+- clean up pack addition timer on modal unmount
+
+* refactor(deck): remove redundant search bar from pack inspection drill-down
+
+* test(e2e): disambiguate deck header action buttons in welcome pill height assertions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69439c3dda7e73e6e26c2586236cb59b6f93e49a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/69439c3dda7e73e6e26c2586236cb59b6f93e49a"/>
+    <title>
+        feat(ios): prepare native app for Apple App Store release (#241)
+    </title>
+    <updated>2026-09-07T22:05:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ios): prepare native app for Apple App Store release (#241)
+
+* feat(ios): prepare native app for Apple App Store release
+
+- Add ITSAppUsesNonExemptEncryption to Info.plist and update capabilities to arm64
+- Implement Apple Guideline 5.1.1(v) account deletion and 5.1.1(i) privacy disclosures
+- Create standalone privacy policy at public/privacy.html and in-app PrivacyModal
+- Add Fastlane Appfile, :release lane, and GitHub Actions appstore.yml workflow
+- Add automated Playwright screenshot generation and 10 App Store screenshots
+- Add docs/APP_STORE.md submission guide with complete metadata and privacy nutrition info
+
+* fix(store): comply with Apple 5.1.1(v) user account deletion and standard deliver structure
+
+* fix(scripts): sanitize HTTP preview path resolution against directory traversal
+
+* fix(scripts): guard against EISDIR in preview server on directory paths
+
+* docs(privacy): streamline privacy policy with punchy demo vs account terms
+
+* docs(privacy): strip filler tagline, add deck export guidance, and protect personal contact info
+
+* docs(privacy): use natural inline links instead of raw URLs
+
+* feat(privacy): wire &amp;#39;directly in the app&amp;#39; to open feedback modal and support #/feedback routing
+
+* docs(privacy): streamline Section 4 with symmetric open-source and feedback links&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a1c58556ebabcc06fb929d454e1c09e5fc953e86</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/a1c58556ebabcc06fb929d454e1c09e5fc953e86"/>
+    <title>
+        docs: document continuous delivery architecture, secrets, and deploym…
+    </title>
+    <updated>2026-09-07T21:38:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: document continuous delivery architecture, secrets, and deployment topology (#249)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a4e50d658f294b63cf35aaeb30a7aa7859c8a26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/4a4e50d658f294b63cf35aaeb30a7aa7859c8a26"/>
+    <title>
+        fix(supabase): validate PostgREST error payload boundaries with Zod (…
+    </title>
+    <updated>2026-09-07T21:25:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(supabase): validate PostgREST error payload boundaries with Zod (#247)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/454a7c3d6a480962d0220e65c316ac81cb7ee9d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/454a7c3d6a480962d0220e65c316ac81cb7ee9d8"/>
+    <title>
+        feat(ci): automate Supabase migrations, local RLS integration testing…
+    </title>
+    <updated>2026-09-07T20:27:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ci): automate Supabase migrations, local RLS integration testing, and error observability (#243)
+
+* feat(ci): automate Supabase migrations, local RLS integration testing, and error observability
+
+* fix(ci): fix workflow credential checks, trailing slash handling, and sync error observability
+
+* fix: address PR #243 review findings for pgTAP count, migration fallback, and test isolation
+
+* fix(test): wrap row_security_active checks in ok() to emit TAP assertions for 20 planned tests
+
+* fix(test): check pg_class.relrowsecurity for RLS enabled in pgTAP tests
+
+* fix(supabase): harden PostgREST error payload parsing against JSON primitives and arrays&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/08eb345441a4d23b33f85b1ca468aec1c5782ae0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/08eb345441a4d23b33f85b1ca468aec1c5782ae0"/>
+    <title>
+        test(hygiene): protect against energy regressions with CDP benchmarks…
+    </title>
+    <updated>2026-09-07T20:23:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(hygiene): protect against energy regressions with CDP benchmarks, timer tracking, and teardown invariants (#240)
+
+* test(hygiene): enforce zero idle activity, timer tracking, and teardown invariants
+
+* test(hygiene): apply independent review feedback to spec&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0cb785122b308696638ec9ebb0d16e290130746d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/0cb785122b308696638ec9ebb0d16e290130746d"/>
+    <title>
+        fix(audio): manage AudioContext lifecycle and idle suspension to prev…
+    </title>
+    <updated>2026-09-07T15:47:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(audio): manage AudioContext lifecycle and idle suspension to prevent Safari battery drain (#239)
+
+* fix(audio): manage AudioContext lifecycle and idle suspension to prevent Safari battery drain
+
+* refactor(audio): address reviewer observations on idle cancellation and active tone counter
+
+* style: format code with prettier&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5bf585fb79f08bdb8c05bec2bd453e3fad9f905e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/5bf585fb79f08bdb8c05bec2bd453e3fad9f905e"/>
+    <title>
+        fix(study): prevent same-note siblings from entering review sprint ba…
+    </title>
+    <updated>2026-09-07T14:58:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(study): prevent same-note siblings from entering review sprint batches (#237)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c0799662ab1ccb0fc80e7a0e124aaa8a3f0184ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/c0799662ab1ccb0fc80e7a0e124aaa8a3f0184ea"/>
+    <title>
+        feat(study): tolerate omitted inverted punctuation in answers and dif…
+    </title>
+    <updated>2026-09-07T14:55:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(study): tolerate omitted inverted punctuation in answers and diffs (#238)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5456f6de6bb101591d90dc313db68af23290d296</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/5456f6de6bb101591d90dc313db68af23290d296"/>
+    <title>
+        fix(welcome): display Why Jolito button on mobile and remove fold div…
+    </title>
+    <updated>2026-09-07T05:36:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(welcome): display Why Jolito button on mobile and remove fold divider line (#236)
+
+- Display Why Jolito scroll cue button on iPhone/mobile viewports centered in the hero footer, fulfilling Apple HIG minimum touch target sizing (&amp;gt;= 44x44pt).
+- Remove harsh 2px black border-top from the Why Jolito section in general, eliminating the line artifact caused by dynamic viewport/address bar height discrepancies on mobile Safari.
+- Symmetrically size the return button (Start learning) with the downward cue on mobile.
+- Add and update mobile E2E tests verifying visibility, interaction, and clean seamless fold presentation.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47132a1945bf4045666a5a5a8b38e005e341075d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/47132a1945bf4045666a5a5a8b38e005e341075d"/>
+    <title>
+        style: render accent nuance letters in matching green (#235)
+    </title>
+    <updated>2026-09-07T05:33:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: render accent nuance letters in matching green (#235)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29dbda856529997b3b473ab43afa595a46f48359</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/29dbda856529997b3b473ab43afa595a46f48359"/>
+    <title>
+        refactor(audio): unify hero sample card parameters with single source…
+    </title>
+    <updated>2026-09-07T05:28:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(audio): unify hero sample card parameters with single source of truth (#234)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/485a83dfd366d255d3ce6d983e9d22801b9c5563</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/485a83dfd366d255d3ce6d983e9d22801b9c5563"/>
+    <title>
+        feat(navigation): support deep link anchor and link semantics for Why…
+    </title>
+    <updated>2026-09-07T05:21:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(navigation): support deep link anchor and link semantics for Why Jolito fold (#233)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e95b07a1af6ee3e767f5d30ea758b207f1dee39</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/4e95b07a1af6ee3e767f5d30ea758b207f1dee39"/>
+    <title>
+        chore(style): prune dead .complete-card &gt; p selector (#231)
+    </title>
+    <updated>2026-09-07T05:15:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(style): prune dead .complete-card &amp;gt; p selector (#231)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5bd3d713c17d675b34fe4ab2262b8b0d864f7f00</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/5bd3d713c17d675b34fe4ab2262b8b0d864f7f00"/>
+    <title>
+        feat(audio): prefetch starter screen hero sample audio on welcome vie…
+    </title>
+    <updated>2026-09-07T05:10:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(audio): prefetch starter screen hero sample audio on welcome view (#232)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b30188383c17792c9ca3f7655007c746d732d0f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/0b30188383c17792c9ca3f7655007c746d732d0f"/>
+    <title>
+        feat(study): prioritize active recall over backlog cards and eliminat…
+    </title>
+    <updated>2026-09-07T05:05:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(study): prioritize active recall over backlog cards and eliminate direction starvation (#230)
+
+* feat(study): prioritize active recall over backlog cards and eliminate direction starvation
+
+* fix(study): address independent review findings for multi-card notes and active priority&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e13a6dd0aa9d5b6651b0a7c95fc7d1f6be306373</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/e13a6dd0aa9d5b6651b0a7c95fc7d1f6be306373"/>
+    <title>
+        feat(study): simplify session completion copy to calm single-line cou…
+    </title>
+    <updated>2026-09-07T05:00:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(study): simplify session completion copy to calm single-line count (#229)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/867db918e559b871307819e9894980866bb2a33a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/867db918e559b871307819e9894980866bb2a33a"/>
+    <title>
+        fix(audio): respect silent mode on iOS and stabilize Web Audio earcon…
+    </title>
+    <updated>2026-09-07T04:48:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(audio): respect silent mode on iOS and stabilize Web Audio earcon lifecycle (#226)
+
+* fix(audio): respect silent mode on iOS and stabilize Web Audio earcon lifecycle
+
+* fix(audio): preserve playback audio category across dual-voice phrases and tighten unlock listeners
+
+* fix(audio): remove duckOthers from ambient category and ensure explicit audio elevates session
+
+* fix(audio): guard speech utterance lifecycle and prevent premature audio session elevation
+
+* fix(audio): add defensive audio session cleanup in HTMLAudioElement catch&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d171b198c329826e54e68eb82d1b8a1492fd991d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/d171b198c329826e54e68eb82d1b8a1492fd991d"/>
+    <title>
+        perf(assets): convert in-app UI illustrations to optimized WebP and p…
+    </title>
+    <updated>2026-09-07T04:44:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(assets): convert in-app UI illustrations to optimized WebP and prune unused sample asset (#228)
+
+- Converts jolito-welcome, jolito-celebrate, and sample-aguacate from PNG to high-quality WebP (saving ~750 KB on active app assets).
+- Deletes obsolete unused sample-que-padre.png (saving 586 KB).
+- Updates asset imports across src/jolito.tsx, src/main.tsx, README.md, scripts, and tests.
+- Total asset payload reduced by ~1.34 MB with 100% lossless alpha preservation.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b0ce8c7530bd3f9587ff6b2d26dbbc21249366e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/smolkaj/jolito/commit/1b0ce8c7530bd3f9587ff6b2d26dbbc21249366e"/>
+    <title>
+        perf(assets): convert Jolito family illustration to optimized WebP (#…
+    </title>
+    <updated>2026-09-07T04:40:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6642034?s=30&amp;v=4"/>
+    <author>
+      <name>smolkaj</name>
+      <uri>https://github.com/smolkaj</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(assets): convert Jolito family illustration to optimized WebP (#227)
+
+Reduces asset payload from 809 KB to 138 KB (-83%) while preserving
+lossless alpha transparency and identical visual rendering across all
+modern browsers and WebKit.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
