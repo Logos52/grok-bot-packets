@@ -1,0 +1,100 @@
+# NeoAnki2
+
+A native macOS and iOS spaced-repetition app, built ground-up in Swift 6 and SwiftUI,
+with its domain logic in a standalone Swift package, `NeoAnkiCore`.
+
+NeoAnki2 is a rewrite of the Anki idea, not a port. It deliberately drops all
+legacy Anki compatibility (no HTML/CSS cards, no `.apkg`, no shared-deck import,
+no SM-2) in favor of a clean, native, and scientifically grounded model.
+
+Official macOS releases are published after every tested change to `main`.
+Install or upgrade them through the official Homebrew tap:
+
+```bash
+brew install --cask neoanki2/tap/neoanki2
+brew upgrade --cask neoanki2
+```
+
+Release artifacts are universal, checksummed, and ad-hoc signed. Candidates
+prepared in GitHub Actions are also provenance-attested. Releases are not yet
+Apple-notarized, so the first launch may require Control-clicking NeoAnki2 in
+Applications and choosing **Open**.
+
+Maintainers use one resumable command that prepares an attested CI candidate,
+waits for protected checks, promotes it, and optionally upgrades Homebrew; see
+[the release procedure](docs/RELEASING.md).
+
+For development on macOS 14+ with a Swift 6 Xcode toolchain, clone the
+repository and run the supported headless loop:
+
+```bash
+swift build
+./Scripts/test-fast.sh
+```
+
+The [Developer Guide](https://neoanki2.github.io/user/developer/) covers
+architecture, focused checks, interactive app runs, API changes, documentation,
+and releases.
+
+The full iPhone and iPad app requires iOS/iPadOS 17 or newer. Build the app and
+WidgetKit extension headlessly with:
+
+```bash
+./Scripts/build-ios.sh
+```
+
+The mobile product includes adaptive iPhone/iPad navigation, complete study and
+authoring workflows, native media, import/export, optional offline-first private
+CloudKit sync, reminders, and due-count widgets. See the
+[iOS release checklist](docs/IOS_RELEASE.md) for unsigned archive validation and
+the two provisioning-dependent TestFlight gates.
+
+See [Getting started](https://neoanki2.github.io/user/getting-started/)
+for prerequisite checks, expected output, updates, and removal.
+
+## Principles
+
+- **Native-only.** Card content is data (`ContentValue`), rendered by SwiftUI.
+  No HTML, no CSS, no template markup.
+- **Domain-neutral.** The core knows about no subject. Anatomy, music,
+  chemistry, and geography are all just user-declared item types. You can delete
+  any subject without touching a single type.
+- **Learning-science first.** The schema encodes the testing effect, encoding
+  specificity, desirable difficulties, dual coding, atomicity, and interleaving.
+- **Modern scheduling.** FSRS (Difficulty–Stability–Retrievability) learns
+  global and item-type-plus-template cohorts automatically. No SM-2, no ease
+  hell, and no scheduler controls to babysit.
+
+## Layout
+
+```
+NeoAnkiCore/Sources/NeoAnkiCore/
+  Content/   ContentValue, MediaRef        — the raw knowledge, native values
+  Schema/    ItemType, FieldDef,           — how content is structured,
+             Template, Skill                  presented, and tested
+  Models/    Item, Card, Deck,             — concrete instances and generation
+             CardGenerator
+  SRS/       MemoryState, Scheduler,       — memory and scheduling (FSRS)
+             ReviewRating, ReviewLog
+```
+
+## Documentation
+
+The published manual is available at
+**[neoanki2.github.io/user](https://neoanki2.github.io/user/)**.
+Documentation is versioned with the source in [`docs/`](docs/):
+
+- [User guide](https://neoanki2.github.io/user/) — every app feature, workflow, shortcut, and limitation
+- [Local HTTP API reference](https://neoanki2.github.io/api/) — generated endpoints, schemas, examples, and OpenAPI JSON
+- [Developer guide](https://neoanki2.github.io/user/developer/) — setup, architecture, tests, API changes, docs, and releases
+- [Feature index](https://neoanki2.github.io/features/) — source- and test-backed coverage map
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — domain model, learning-science mapping, FSRS rationale
+- [`docs/AUTHORED_DECK_FORMAT.md`](docs/AUTHORED_DECK_FORMAT.md) — import-only JSONL deck source format
+- [`docs/PORTABLE_DECK_FORMAT.md`](docs/PORTABLE_DECK_FORMAT.md) — portable SQLite deck interchange format
+- [`docs/DESIGN.md`](docs/DESIGN.md) — visual design system (SwiftUI shell)
+- [`docs/LLM_DECK_AUTHORING.md`](docs/LLM_DECK_AUTHORING.md) — coding-agent deck authoring workflow
+- [`docs/PRODUCT.md`](docs/PRODUCT.md) — product context for design and UX work
+
+The supported headless contributor loop is `swift build` followed by
+`./Scripts/test-fast.sh`; see [`CONTRIBUTING.md`](CONTRIBUTING.md) for the
+contract-generation commands required by API changes.

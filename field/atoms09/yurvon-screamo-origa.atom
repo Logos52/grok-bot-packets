@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/yurvon-screamo/origa/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/yurvon-screamo/origa/commits/master.atom"/>
+  <title>Recent Commits to origa:master</title>
+  <updated>2026-09-05T18:12:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/617a02e04204ca242fb7762a1776c641a05a3b57</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/617a02e04204ca242fb7762a1776c641a05a3b57"/>
+    <title>
+        feat(acquaintance): full hands via 7-quantized load ladder + grammar …
+    </title>
+    <updated>2026-09-05T18:12:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(acquaintance): full hands via 7-quantized load ladder + grammar leak fixes (#500)
+
+Problem 1 — degenerate short hands: hand size was
+min(daily_remaining, 7) against the 3/6/9/15/21/30 ladder,
+producing 1-6 card tail hands (user-visible &amp;quot;hand of 2&amp;quot;).
+
+- DailyLoad ladder quantized to full hands: 7/14/21/28/35/42
+  (1-6 hands/day); the default variant moves Medium -&amp;gt; Light
+  (=14 cards, 2 hands) — variant order and persistence untouched.
+- Hand is always min(7, pool); the daily remainder gates only
+  the OPENING of a hand, never its size.
+- Cluster selection: each hand kanji pulls up to 3 new pool
+  words containing its glyph into the same hand (displacing the
+  lowest-priority non-cluster words; kanji, grammar and cluster
+  words are never displaced, hand size unchanged).
+- &amp;quot;Already know&amp;quot; replacement tops up an under-clustered hand
+  kanji first, then falls back to the pool top.
+
+Problem 2 — new cards leaking from the New status into SRS
+bypassing acquaintance (visible as phantom studied-today entries
+and budget drain):
+
+- view mutations only use non-new grammar rules (known_grammars
+  filtered by is_new);
+- dual rating never rates a new card and never double-rates the
+  card just answered (a quiz on the grammar card itself used to
+  advance it twice per answer);
+- dead create-and-rate branch removed: rule cards are only
+  created explicitly.
+
+Companion migration cleanup:
+
+- startup MigrateKanjiCompanionsUseCase removed (phantom new-card
+  counter jumps on every launch); the REMOVED_POPULAR_WORDS guard
+  moved into create_companion_vocab_cards, covering all companion
+  pipelines; audit script comment + manual-sync note updated.
+
+Test infrastructure:
+
+- on_quiz_toggle tests wrapped in Owner::new().with() like their
+  siblings — signal/Callback registration in the global reactive
+  runtime raced across parallel test threads (load flake).
+
+Docs: landing fsrs/lesson (EN+RU) de-numberized per tone rules,
+acquaintance-mode.md spec, glossary, ADR-002/043 superseding
+notes. BDD daily-limit scenario text extended past the new
+Minimal=7 threshold (verified natively, 13 recognized words).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d405e927747da8aaeed18819818c0651e3c2abdf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d405e927747da8aaeed18819818c0651e3c2abdf"/>
+    <title>
+        fix(acquaintance): reset finishing window on lesson reload (review fo…
+    </title>
+    <updated>2026-09-04T16:58:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(acquaintance): reset finishing window on lesson reload (review follow-up to #498) (#499)
+
+* fix(acquaintance): reset finishing window on lesson reload (review follow-up)
+
+The new hand_finishing flag was never cleared: AcquaintanceState is
+created once per LessonContent mount and a lesson reload re-initializes
+the hand through the same state, so a second hand in a session inherited
+the finished flag — its presentation/training buttons and keyboard
+handlers stayed gated forever and the lesson dead-ended on the first
+slide.
+
+The re-initialization now lives in AcquaintanceState::start_new_hand
+(single owner, resets every stream field including hand_finishing) and
+content.rs uses it. Covered by a host test on the reset and a wasm test
+driving hand #1 to completion, then reloading a hand #2 into the same
+mounted state and asserting the action bar and its buttons recover.
+
+Review Low items:
+- audit trims the content level like build.rs does (symmetric contract);
+- audit also checks the reverse direction: every Duolingo meta entry
+  must have a content file (stale records cannot survive regeneration);
+- the presentation action bar container is gated as a whole during the
+  finishing window (no empty striped placeholder under the slide).
+
+* test(acquaintance): seed skipped_ids in start_new_hand reset fixture (review nit)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b95a95bc74c493736906b9933fec119d71cbe122</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/b95a95bc74c493736906b9933fec119d71cbe122"/>
+    <title>
+        fix: acquaintance UX batch + Duolingo JLPT distribution + dictionary …
+    </title>
+    <updated>2026-09-04T16:11:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: acquaintance UX batch + Duolingo JLPT distribution + dictionary casing (#498)
+
+* fix(sets): take Duolingo JLPT levels from content files, not titles
+
+The build.rs title heuristic took the first &amp;#39;Section&amp;#39;/&amp;#39;Модуль&amp;#39; token from
+the EN+RU title blob. RU-series English titles carry both tokens
+(&amp;#39;Module 5 Section 16&amp;#39;), so the parser read the sub-unit number: 55 sets
+were silently dropped (section &amp;gt; 6) and 66 tagged with their unit&amp;#39;s level
+instead of their module&amp;#39;s (e.g. &amp;#39;Модуль 5 Раздел 1&amp;#39; tagged N5).
+
+Duolingo levels now come verbatim from each content file&amp;#39;s own &amp;#39;level&amp;#39;
+field (corpus ground truth: Section/Модуль 1-3 -&amp;gt; N5, 4 -&amp;gt; N4, 5-6 -&amp;gt; N3;
+451 sets, 100% self-consistent). Empty/invalid levels skip with a
+cargo:warning, symmetric to the previous behavior.
+
+The audit test now guards completeness (every content file present in
+meta) and fidelity (meta level == content level, one of N5/N4/N3).
+The deprecated remap script loses its Duolingo branch (Spy-only now):
+its old 3-4-&amp;gt;N4 mapping contradicted the corpus and would fight the
+canonical source.
+
+* fix(acquaintance): audio button placement, CDN-file autoplay, tooltip opacity, completion freeze
+
+Four user-reported acquaintance-mode bugs:
+
+- Play button jumped the hand progress strip: it lived in the lesson
+  header next to HandProgressStrip, so its show/hide resized the strip
+  between cards. Moved to the tags row right edge (ml-auto) — the same
+  AudioButtons component and placement as the regular lesson card
+  header; the header strip now renders only the progress strip.
+- Autoplay sounded like TTS instead of the audio file: presentation and
+  training Forward autoplay used speak_word_immediate, which plays TTS
+  whenever the CDN blob cache is cold (always true for new words).
+  Both now use speak_word — CDN pitch-audio file first, TTS only as a
+  fallback, identical to the regular lesson. The now-unused
+  speak_word_immediate is removed. Trade-off: the first autoplay of a
+  word may wait for the CDN prefetch round-trip (same as the regular
+  lesson); repeats are cached.
+- Kanji tooltip on the answered training side was semi-transparent:
+  the dimmed question wrapper used a raw opacity-60, which cascades
+  into every DOM descendant including .kanji-popup. Replaced with the
+  semantic .front-dimmed class whose :has(.kanji-popup) rule lifts the
+  dim while the tooltip is open. Covered by a wasm test that injects
+  the real stylesheet and asserts computed wrapper opacity 0.6 -&amp;gt; 1
+  -&amp;gt; 0.6 across tooltip open/close.
+- &amp;quot;Acquaintance complete&amp;quot; appeared abruptly over an extra question:
+  the final answer reset showing_answer before the async hand
+  completion, so the same card re-asked as a phantom question until
+  the Completed card snapped in. The new hand_finishing state flag is
+  set synchronously by complete_hand: the answered card stays frozen
+  (no phantom question), rating/reveal/know/next buttons and their
+  keyboard handlers are gated, and the completion card enters with
+  the anima-page-fade animation.
+
+e2e: answerTrainingRating recognizes the finishing window (answer
+visible, rating buttons hidden) and waits for the final screen instead
+of re-clicking the frozen card.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/849b3b9f3d66ccd16f33db0779c9832cf6741b3e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/849b3b9f3d66ccd16f33db0779c9832cf6741b3e"/>
+    <title>
+        Merge pull request #497 from yurvon-screamo/docs_add
+    </title>
+    <updated>2026-09-04T12:59:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #497 from yurvon-screamo/docs_add
+
+docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0ff4e53aeca45f5983f4d91dfdbf7d8a712a27aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/0ff4e53aeca45f5983f4d91dfdbf7d8a712a27aa"/>
+    <title>
+        docs
+    </title>
+    <updated>2026-09-04T12:45:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/644bcfaa8bfd1d2e79a6f722c1b1c4b0a08bf531</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/644bcfaa8bfd1d2e79a6f722c1b1c4b0a08bf531"/>
+    <title>
+        docs
+    </title>
+    <updated>2026-09-04T12:44:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5add77a751efbd894195ba34ce0ac28307a0220</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d5add77a751efbd894195ba34ce0ac28307a0220"/>
+    <title>
+        Merge pull request #496 from yurvon-screamo/fix/post-492-followups
+    </title>
+    <updated>2026-09-04T12:07:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #496 from yurvon-screamo/fix/post-492-followups
+
+fix: #492 restore stall (JSON-string user codec) + e2e flake hardening&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/95c10320cc30cc6809d980b92e298f80b89f3569</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/95c10320cc30cc6809d980b92e298f80b89f3569"/>
+    <title>
+        fix(e2e): uiLogin waits for the terminal route, not a transient form …
+    </title>
+    <updated>2026-09-04T11:34:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(e2e): uiLogin waits for the terminal route, not a transient form unmount
+
+The race shortcut (URL match OR login form detached) returned while auth
+was still in flight: the form unmounts transiently on submit, callers
+then clicked onboarding step buttons on what was still the login screen,
+and two onboarding-lesson scenarios burned their whole 180s budgets
+through retries (the 42-minute job, run 33862838464). The terminal URL
+(/home or /onboarding) is the primary wait again; the root-route case
+(full-corpus restore, #492) is a fallback that additionally requires
+explicit content markers — no login form AND home/wizard mounted — so an
+early return is no longer possible.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43322985b786aebaf0f1c8789557fa11d48b6cb5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/43322985b786aebaf0f1c8789557fa11d48b6cb5"/>
+    <title>
+        Merge pull request #481 from yurvon-screamo/feature/grammar-v2
+    </title>
+    <updated>2026-09-04T11:20:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #481 from yurvon-screamo/feature/grammar-v2
+
+Grammar data v2: structured schema, emoji-free corpus, N1 level (141 rules)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5f80802bb6b761ad03aa0f3697c24fee30acdf1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d5f80802bb6b761ad03aa0f3697c24fee30acdf1"/>
+    <title>
+        🔧 style(deploy): drop placeholder-less f-strings in deploy_cdn.py
+    </title>
+    <updated>2026-09-04T10:31:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;🔧 style(deploy): drop placeholder-less f-strings in deploy_cdn.py&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9418a6991e64685a9577001e635cb64bb868221e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/9418a6991e64685a9577001e635cb64bb868221e"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/master&#39; into feature/grammar-v2
+    </title>
+    <updated>2026-09-04T10:27:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/master&amp;#39; into feature/grammar-v2&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/07c3beea13466a7a5d122752597734d6615eba30</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/07c3beea13466a7a5d122752597734d6615eba30"/>
+    <title>
+        fix(e2e): wait for the terminal navigation before asserting the rkyv …
+    </title>
+    <updated>2026-09-04T10:19:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(e2e): wait for the terminal navigation before asserting the rkyv path
+
+uiLogin&amp;#39;s new race returns as soon as the login form unmounts, which
+can precede the dictionary bootstrap entirely — the overlay-detached
+wait then passed in a gap before the overlay ever mounted, and the
+rkyv assertion ran against zero requests (run 33841099695, both
+attempts). The step now waits for the terminal navigation
+(/onboarding for a fresh user, /home for a restored one) first, then
+for the overlay to run its course.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ad36bc1062bc607f061b3b030ac91cc0ca720b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/1ad36bc1062bc607f061b3b030ac91cc0ca720b9"/>
+    <title>
+        Merge pull request #493 from yurvon-screamo/fix/android-ndk-context
+    </title>
+    <updated>2026-09-04T10:08:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #493 from yurvon-screamo/fix/android-ndk-context
+
+fix(android): own the ndk-context publication (tao 0.35 break) + emulator smoke CI&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7ab0e1d357f6c834f1a2bc76dbfb23a13ee9a1ac</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/7ab0e1d357f6c834f1a2bc76dbfb23a13ee9a1ac"/>
+    <title>
+        🔧 fix(ci): pin ANDROID_AVD_HOME — avdmanager and emulator disagree on it
+    </title>
+    <updated>2026-09-04T09:31:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;🔧 fix(ci): pin ANDROID_AVD_HOME — avdmanager and emulator disagree on it
+
+Reproduced locally with the same toolchain: with XDG_CONFIG_HOME set,
+cmdline-tools create the AVD under ~/.config/.android/avd while the
+emulator binary only searches $ANDROID_AVD_HOME, $ANDROID_SDK_HOME/avd
+and $HOME/.android/avd — &amp;#39;create avd&amp;#39; exits 0 as a silent no-op the
+emulator can never see (&amp;#39;Unknown AVD name&amp;#39;). Pin the AVD home explicitly
+and hard-fail if smoke.ini is not on disk after creation.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/35b95e5d6d6743c5bf1ea7dea72d555113154629</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/35b95e5d6d6743c5bf1ea7dea72d555113154629"/>
+    <title>
+        🔧 fix(ci): launch the smoke emulator by absolute SDK path
+    </title>
+    <updated>2026-09-04T06:28:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;🔧 fix(ci): launch the smoke emulator by absolute SDK path
+
+setup-android@v4 installs the emulator package but does not add its
+directory to PATH (adb is there, emulator is not) — every launch died
+with &amp;#39;nohup: failed to run command emulator&amp;#39;. Resolve it from
+ANDROID_SDK_ROOT and fail loudly if the binary is missing.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7e662b76246d618c3831bff1b18629cb5f736f0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/7e662b76246d618c3831bff1b18629cb5f736f0a"/>
+    <title>
+        🔧 chore(ci): harden emulator bootstrap + bounded smoke waits
+    </title>
+    <updated>2026-09-04T05:40:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;🔧 chore(ci): harden emulator bootstrap + bounded smoke waits
+
+Run 3 showed the failure mode: the emulator process died silently after
+launch and `adb wait-for-device` hung forever (no device ever attached).
+- emulator.log tail goes into the job log 15s after launch (early crash
+  visibility) and into every smoke failure dump
+- KVM verify now checks writability (chmod a+rw fallback), emulator runs
+  with -accel on to die loudly instead of software-emulation crawl
+- script: bounded device-attachment wait replaces the unbounded
+  wait-for-device; boot timeout unchanged (300s)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/564445c93dda51dd10175155f89edd1ebc04182f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/564445c93dda51dd10175155f89edd1ebc04182f"/>
+    <title>
+        docs(diag): describe the actual reload-block mechanism at the call site
+    </title>
+    <updated>2026-09-04T05:35:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(diag): describe the actual reload-block mechanism at the call site
+
+The comment still described the abandoned route-interceptor approach;
+the script blocks Location.prototype.reload (see blockTrunkReload).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/515e0af8561d98819bee06253bbb472c42bce7cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/515e0af8561d98819bee06253bbb472c42bce7cb"/>
+    <title>
+        ⚡ fix(ci): boot the smoke emulator in parallel with the build
+    </title>
+    <updated>2026-09-04T05:33:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;⚡ fix(ci): boot the smoke emulator in parallel with the build
+
+Emulator boot takes minutes and does not compete for CPU meaningfully —
+starting it right after the SDK setup hides the whole boot wait behind
+the toolchain/APK build instead of paying it sequentially at the end.
+The smoke script already polls sys.boot_completed, so correctness is
+unchanged.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc463521e8fb84a16fdc73fbaeb79d3df05f0d62</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/fc463521e8fb84a16fdc73fbaeb79d3df05f0d62"/>
+    <title>
+        fix(review): decode diagnostics, deletion cleanup window, doc precision
+    </title>
+    <updated>2026-09-04T05:33:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(review): decode diagnostics, deletion cleanup window, doc precision
+
+Review round fixes:
+- user_from_stored_value now returns the decode REASON (bad JSON vs
+  schema mismatch) instead of a bare None, and both callers log it —
+  the restore path is where that observability mattered during #492
+- the deletion step gives the local auth cleanup a chance to unmount
+  the profile on its own after the server DELETE (the reload stays as
+  belt-and-suspenders), closing the residual race window
+- the flatten comment is precise (KnowledgeSet.stats, transitively),
+  the codec test email matches the JSON codec, the diag script&amp;#39;s
+  neutralization comment describes the reload-block actually used
+  (plus formatting/unused-directive cleanup), and uiLogin documents
+  the early-return contract of the detach branch&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d67ffce6078d8b535b7787ea6f4cae9a16f038b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d67ffce6078d8b535b7787ea6f4cae9a16f038b0"/>
+    <title>
+        docs(e2e): trunk serve mutates dist/ — rebuild before static serving
+    </title>
+    <updated>2026-09-04T05:26:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(e2e): trunk serve mutates dist/ — rebuild before static serving
+
+trunk serve rewrites dist/index.html on disk with its live-reload
+bridge; trunk build does not. A dist that was ever served from is
+poisoned for static serving (npx serve dist): the bridge force-reloads
+the page on any WS reconnect, aborting WASM loads and restarting long
+restores — the exact noise that masked itself as an app bug during the
+N1-stress investigation (#492). Documented in origa_ui/AGENTS.md
+(Development), verified: a fresh trunk build --release ships no bridge.
+
+Also lands the pending local docs edits (browserslist note in the root
+and origa_ui AGENTS.md) and the diag-n1-sentinel.ts hardening from the
+investigation (device-1 listeners, full error texts) — the issue&amp;#39;s
+repro kit.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

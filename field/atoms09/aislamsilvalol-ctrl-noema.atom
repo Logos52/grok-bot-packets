@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/aislamsilvalol-ctrl/noema/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/aislamsilvalol-ctrl/noema/commits/main.atom"/>
+  <title>Recent Commits to noema:main</title>
+  <updated>2026-09-08T22:18:41Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dab58a28aa8da627dbdc46fd027994b817b83dd7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/dab58a28aa8da627dbdc46fd027994b817b83dd7"/>
+    <title>
+        The brown band across Mino: a shadow rendered before there was a figure
+    </title>
+    <updated>2026-09-08T22:18:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The brown band across Mino: a shadow rendered before there was a figure
+
+ContactShadows sat beside the lights, so its frames={1} fired at mount while
+the model was still suspended, and the demand loop left that uninitialised
+render target on screen — a brown band across the character, wider than the
+model because the shadow plane is. The rig now says when the figure is in
+the scene and the shadow mounts then, keeping the single frame.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/deb8fa616e7cc42502b5cb116eb007f76dfb8329</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/deb8fa616e7cc42502b5cb116eb007f76dfb8329"/>
+    <title>
+        EdNet-KT1: Sabelia wins the ranking, loses the calibration, and V1 fails
+    </title>
+    <updated>2026-09-08T17:22:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;EdNet-KT1: Sabelia wins the ranking, loses the calibration, and V1 fails
+
+Three seeds over 5,792 learners and 679k answers. 0.660 AUC against DKT&amp;#39;s
+0.655 and BKT&amp;#39;s 0.635 — and 0.632 log loss against BKT&amp;#39;s 0.622, with worse
+ECE and worse accuracy. V1&amp;#39;s exit condition asks for AUC *and* log loss
+against the best baseline, so the engine has not cleared it. The earlier
+claim that Duolingo had met V1 is corrected everywhere: one dataset is not
+the bar the roadmap set.
+
+The ablations lose their last excuse. EdNet has response times and 12,056
+questions against 142 tags, so no_response and no_item are testing something
+real here — and paired by seed, neither moves the same way on all three
+seeds, nor does time, nor forgetting, on any of the three datasets. What
+carries the result is attention over the concept sequence, which is not what
+the four mechanisms were added for.
+
+The one actionable finding points down, not up: dropping the item embedding
+takes the model from 862k parameters to 90k without costing AUC.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61cd041086b22711d84413c671779c60c44465ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/61cd041086b22711d84413c671779c60c44465ea"/>
+    <title>
+        Compare ablations within a seed, not across the means
+    </title>
+    <updated>2026-09-08T16:25:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Compare ablations within a seed, not across the means
+
+The variants share their split, their initialisation and their batch order,
+so what varies between seeds moves all of them together; a paired difference
+sees through that. It does not rescue the ablations: on the synthetic set and
+the Duolingo prefix every paired difference is inside 0.006 AUC and none has
+the same sign on all three seeds. Three seeds cannot carry a significance
+test, so the script prints the differences and their signs, not a p-value.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4b0588468782d472188fac45c7a8acd641870575</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/4b0588468782d472188fac45c7a8acd641870575"/>
+    <title>
+        Review pass over this session&#39;s code
+    </title>
+    <updated>2026-09-08T15:50:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Review pass over this session&amp;#39;s code
+
+acquire.py built the same seven-field record four times positionally; the
+two that produce no file are one helper now, and the rest name their fields.
+The word lists lose their noqa by being named before they are split.
+extraction&amp;#39;s enum helper returns the enum type instead of Any, and its
+list cap says what it caps. shadow-eval says why it reimplements five metrics
+the engine already has: the rule half runs in the product&amp;#39;s virtualenv, which
+has neither the engine nor numpy. The Lab reads the document&amp;#39;s language for
+its dates, the way the library page does. Scripts that had drifted out of
+lint are back in it.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c4294543e99f7b5bd499b109745ea6dd560cc0ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/c4294543e99f7b5bd499b109745ea6dd560cc0ce"/>
+    <title>
+        Duolingo on whole learner histories: the lead narrows
+    </title>
+    <updated>2026-09-08T15:26:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Duolingo on whole learner histories: the lead narrows
+
+Keeping every row of a 4% learner sample instead of the file&amp;#39;s first 300k
+rows raises the median sequence from 25 to 36 — and raises every model except
+this one. The recency heuristic goes 0.604 to 0.621, DAS3H 0.603 to 0.626,
+DKT 0.635 to 0.644, Sabelia 0.662 to 0.661, so its lead over the best
+logistic baseline falls from 0.058 to 0.037. Longer histories help the simple
+models more than they help the attention model, which is the opposite of the
+argument for it.
+
+The one thing that moved the right way: removing the time features now costs
+something (0.657), where on the prefix it cost nothing. The forgetting gate
+still scores higher without it. One seed — the run was stopped there to give
+the machine to EdNet, which has the response times and distinct item ids that
+decide the remaining ablations.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/637734443dddbe372899d8a08662da6a96afd5dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/637734443dddbe372899d8a08662da6a96afd5dc"/>
+    <title>
+        Academic knowledge engine, Phase 4: one atlas, disagreement included
+    </title>
+    <updated>2026-09-08T03:02:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Academic knowledge engine, Phase 4: one atlas, disagreement included
+
+Many lectures&amp;#39; extractions fold into one entry per concept. What folding
+would destroy is what this keeps: confidence counts lectures rather than
+repetitions, so twenty mentions in one lecture stay one lecture&amp;#39;s word; a
+concept no segment ever supported is capped low however often the model
+produced it; and two sources defining a concept differently produce a record
+instead of a vote, while one lecture rephrasing itself produces nothing.
+
+Writing the tests found the API wart: a fixed list of existing concepts
+cannot rank several candidates, because similarity belongs to a pair. The
+lookup is now a function of one normalised key.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/50b83b3524aba24821e21fb97217182f66646822</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/50b83b3524aba24821e21fb97217182f66646822"/>
+    <title>
+        Type extraction&#39;s gateway as what it uses, not as the whole gateway
+    </title>
+    <updated>2026-09-08T02:35:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Type extraction&amp;#39;s gateway as what it uses, not as the whole gateway
+
+CI&amp;#39;s mypy covers the tests; mine had only covered the package, so a
+stand-in gateway that a test passes was an error only the runner saw. The
+parameter is now the protocol this module actually needs — one structured
+call — which is also why the test can pass a fake that returns what models
+really return.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ef136b86693b91c0acd489ebfee9792e265849d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/9ef136b86693b91c0acd489ebfee9792e265849d"/>
+    <title>
+        The Sabelia Lab: the engine&#39;s results, inside the product, admin only
+    </title>
+    <updated>2026-09-08T02:30:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The Sabelia Lab: the engine&amp;#39;s results, inside the product, admin only
+
+A page that leads with the losses. It renders a frozen snapshot of the
+benchmark runs — scripts/sabelia-snapshot.py writes it, the product never
+calls the engine to draw a page — and labels what a table cannot carry: a
+synthetic dataset says it validates the pipeline and not the model, a
+one-seed table says a difference may be the seed, a dataset where a simple
+baseline wins names the baseline, and ablation rows are marked so they are
+not read as five models. It closes with what the engine&amp;#39;s status actually
+is: shadow, never shown to a learner.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/712e6ac034a463a7527d8fe36eea703427498e5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/712e6ac034a463a7527d8fe36eea703427498e5e"/>
+    <title>
+        Academic knowledge engine, Phase 3: extraction with evidence and support
+    </title>
+    <updated>2026-09-08T02:20:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Academic knowledge engine, Phase 3: extraction with evidence and support
+
+A segment becomes concepts, relations and claims that each carry the lecture
+and the milliseconds they came from, and each carry source_supported or
+inferred. Unmarked is stored as inferred: an unmarked object is one nobody
+promised the segment carried, and calling it supported would launder the
+thing the flag exists to show. A claim with no epistemic tag is dropped, a
+relation into a concept the model never returned is dropped, and a segment
+the segmenter flagged is never sent.
+
+The script estimates the run before spending anything: 18.06 is about 1.07M
+input tokens across its 1,164 segments. No model has read them — this
+machine has no provider key — so the pipeline is proven against a fake
+gateway that returns what models really return, including edges into
+nothing.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a28f536a2f0673470b5dd3c7e829f86f2ec0ded3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/a28f536a2f0673470b5dd3c7e829f86f2ec0ded3"/>
+    <title>
+        Sample EdNet learners by hash, not by lowest user id
+    </title>
+    <updated>2026-09-08T01:26:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sample EdNet learners by hash, not by lowest user id
+
+The lowest ids are the earliest registrations, so a prefix of them is a
+cohort, not a sample. sample_users draws that many learners from the whole
+set by a stable hash, records the draw in the dataset version, and is what
+the benchmark config uses. EdNet is also the dataset that can settle what
+Duolingo could not: it has response times and question ids distinct from
+their tags, so the response and item ablations finally have something to
+read.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/341da202f19eef6fae4d60aea845fbd20c2cacb0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/341da202f19eef6fae4d60aea845fbd20c2cacb0"/>
+    <title>
+        Academic knowledge engine, Phase 2: captions, cache, segments
+    </title>
+    <updated>2026-09-08T01:08:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Academic knowledge engine, Phase 2: captions, cache, segments
+
+acquire.py fetches a registered lecture&amp;#39;s official .vtt once, into a private
+cache with a manifest that records where it came from, under which licence,
+what it hashes to and when; a record whose trust or licence does not allow it
+is skipped with the reason kept. captions.py parses WebVTT into cues, joins
+them into sentences that carry the timing of their own words, and cuts those
+into topic segments by lexical cohesion, flagging the ways a transcript lies.
+
+The spoken-math flag is a density, not a keyword: at a mention of a matrix it
+marked 82% of MIT 18.06, which says nothing. Calibrated on that course it
+marks a third. Writing the tests found a real off-by-one — a sentence took
+its end from the following cue, which would have pointed every citation one
+caption late.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8e643170a3421e1782be0070e660c32d88d3509</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/e8e643170a3421e1782be0070e660c32d88d3509"/>
+    <title>
+        Sabelia in shadow: recorded beside the Professor&#39;s decision, never ac…
+    </title>
+    <updated>2026-09-08T00:57:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sabelia in shadow: recorded beside the Professor&amp;#39;s decision, never acted on
+
+The engine earned a benchmark, not a lesson. professor/shadow.py asks a
+running Sabelia service what it would recommend and writes the answer into
+the turn&amp;#39;s decision record after the reply is streamed; it is off unless a
+URL and the export secret are both set, and every failure is silent.
+scripts/shadow-eval.py is the comparison that would justify moving it
+inside: a prequential replay of an export scoring NOEMA&amp;#39;s own rule against
+the engine, which refuses to report below 500 graded events over 20
+learners. The Duolingo adapter gains learner-level sampling so the whole
+13M-row file can be read with the sequences at their real length. The Anki
+import tests counted rows across the whole table and failed on any database
+that was not pristine; they now count the test&amp;#39;s own user&amp;#39;s rows.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec050068bff2645637a68838a7fb6f1eba5b18d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/ec050068bff2645637a68838a7fb6f1eba5b18d8"/>
+    <title>
+        Sabelia on real data: the Duolingo HLR three-seed benchmark
+    </title>
+    <updated>2026-09-07T23:15:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sabelia on real data: the Duolingo HLR three-seed benchmark
+
+Every Sabelia variant reaches 0.661-0.664 AUC and 0.413 log loss on the
+300k-row slice against 0.635 for DKT and 0.603 for DAS3H, spreads under
+0.01, which meets V1&amp;#39;s exit condition on one dataset. The five variants are
+indistinguishable, so the time and forgetting components have no measured
+gain there; README, technical report, model card, roadmap and the
+integration plan say both things. benchmark_table.py&amp;#39;s base-rate line read
+the wrong dict and is fixed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/550f81ff8e589970c411832110a7e2836937880a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/550f81ff8e589970c411832110a7e2836937880a"/>
+    <title>
+        Sync script for the sabelia mirror and the 300k Duolingo slice config
+    </title>
+    <updated>2026-09-07T19:57:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sync script for the sabelia mirror and the 300k Duolingo slice config
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e62e866c1f8d31f89eb68d3aa633e2ac3330fc6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/3e62e866c1f8d31f89eb68d3aa633e2ac3330fc6"/>
+    <title>
+        Rename Aquilante to Sabelia
+    </title>
+    <updated>2026-09-07T19:50:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rename Aquilante to Sabelia
+
+Package, CLI entry point, configs, docs, CI job, registry run names and the
+Noema-side references all move to the new name. The venv is rebuilt; torch
+2.2.2 on x86 macOS needs numpy 1.x, noted in the README.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7f75a06a9ecff3f946a939d19b76d4f962d4517</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/a7f75a06a9ecff3f946a939d19b76d4f962d4517"/>
+    <title>
+        Wrap the one migration line ruff flagged in CI
+    </title>
+    <updated>2026-09-07T18:53:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Wrap the one migration line ruff flagged in CI
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1fd920d4070830e817b6a3df1fec720b42827fbc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/1fd920d4070830e817b6a3df1fec720b42827fbc"/>
+    <title>
+        docs: the knowledge-engine document states what is built
+    </title>
+    <updated>2026-09-07T18:48:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the knowledge-engine document states what is built
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da4bdf9a7e268821e9a8e4a614c664fc36a99fe2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/da4bdf9a7e268821e9a8e4a614c664fc36a99fe2"/>
+    <title>
+        Academic Source Registry: records, licences, trust, and the MIT OCW a…
+    </title>
+    <updated>2026-09-07T18:48:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Academic Source Registry: records, licences, trust, and the MIT OCW adapter
+
+Phase 1 of the Academic Knowledge Engine. noema/academic/registry.py
+holds the records a source must have before anything is derived from it
+(university, course, instructors, content type, licence read from the
+source, trust from an allow-list of official domains and YouTube channel
+ids, the official captions and transcript URLs); noema/academic/ocw.py
+reads OCW&amp;#39;s machine-readable data.json for a course, its video gallery
+and each lecture, and never invents a lecture it could not read.
+scripts/academic-register.py writes the registry as JSONL.
+
+The 18.06 pilot: 35 lecture videos, 35 with official .vtt captions and
+transcript PDFs, all CC BY-NC-SA 4.0. Nothing beyond metadata is fetched.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/257ae77ec807ba9be1be3d5d4b1a512a94461cfc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/257ae77ec807ba9be1be3d5d4b1a512a94461cfc"/>
+    <title>
+        Aquilante: the demo page — knowledge map, next action, recall curve, lab
+    </title>
+    <updated>2026-09-07T18:46:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Aquilante: the demo page — knowledge map, next action, recall curve, lab
+
+A static HTML page built by scripts/build_demo.py from the library: a
+simulated learner&amp;#39;s state as a map (mastery radius, uncertainty ring,
+prerequisite lines), the policy&amp;#39;s recommendation with reason codes, the
+half-life recall curve of the weakest concept against the review
+threshold, the per-concept table, and the lab view with the recorded
+benchmark and the fallback model&amp;#39;s reliability diagram. Inline SVG, no
+JavaScript; every number is computed at build time and the page says the
+learner is simulated and which model produced the estimates.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0d99b0793b5824872e326b5331579dd8306b26e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/aislamsilvalol-ctrl/noema/commit/d0d99b0793b5824872e326b5331579dd8306b26e"/>
+    <title>
+        Aquilante: the three-seed table, and that it settles nothing about th…
+    </title>
+    <updated>2026-09-07T18:41:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/299981893?s=30&amp;v=4"/>
+    <author>
+      <name>aislamsilvalol-ctrl</name>
+      <uri>https://github.com/aislamsilvalol-ctrl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Aquilante: the three-seed table, and that it settles nothing about the ablations
+
+The benchmark script aggregates seeds (mean ± sample sd). On the
+synthetic set with three seeds the ranking holds — heuristic, PFA, BKT,
+DKT, then the Aquilante variants — and the spread (about 0.025 AUC) is
+larger than every gap, so the README says plainly that the ablations are
+undecided here and will be decided on real-time data.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

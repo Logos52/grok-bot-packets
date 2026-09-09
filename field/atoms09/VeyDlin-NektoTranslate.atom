@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/VeyDlin/NektoTranslate/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/VeyDlin/NektoTranslate/commits/main.atom"/>
+  <title>Recent Commits to NektoTranslate:main</title>
+  <updated>2026-09-08T23:59:59Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/81af8fc566b39d3fe01a16ff63bcef1229ae5852</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/81af8fc566b39d3fe01a16ff63bcef1229ae5852"/>
+    <title>
+        Say which of the seven release files is yours, in the README and at t…
+    </title>
+    <updated>2026-09-08T23:59:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say which of the seven release files is yours, in the README and at the top of every release&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e55be5c43d7c977c7000bdb27c6b9558706be6f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/e55be5c43d7c977c7000bdb27c6b9558706be6f9"/>
+    <title>
+        Publish the release from a draft with every file attached, and let Gi…
+    </title>
+    <updated>2026-09-08T23:39:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Publish the release from a draft with every file attached, and let GitHub cut the tag
+
+The first attempt pushed the tag by hand, then handed gh the artifact folders themselves - the
+download keeps each glob&amp;#39;s folder - and failed on the first one, leaving a tag with no release,
+which the next run would have read as done. Now the files are listed one by one, the release is
+created as a draft and published in one step, GitHub creates the tag at that moment, and a draft
+left by a run that died is removed by the next run&amp;#39;s version check.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3992b77e6624a83a85a8bc7c493d36515b30f9d4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/3992b77e6624a83a85a8bc7c493d36515b30f9d4"/>
+    <title>
+        Leave the LTTng tracepoint provider out of the published server, so t…
+    </title>
+    <updated>2026-09-08T23:20:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Leave the LTTng tracepoint provider out of the published server, so the AppImage bundles
+
+linuxdeploy follows every shared library under the bundle&amp;#39;s resources; libcoreclrtraceptprovider.so
+wants liblttng-ust, which the runner does not have, and the whole AppImage failed on it. The runtime
+loads the provider only when present and behaves the same without it.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6823c79b4f0bf123ee0c39051fb2f52f6d450e1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/6823c79b4f0bf123ee0c39051fb2f52f6d450e1f"/>
+    <title>
+        Use the licence text as the FSF publishes it, so GitHub recognises it…
+    </title>
+    <updated>2026-09-08T23:06:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Use the licence text as the FSF publishes it, so GitHub recognises it as GPL-3.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/697b30a58fb383b044db631d6abd27a671829e94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/697b30a58fb383b044db631d6abd27a671829e94"/>
+    <title>
+        Version 0.2.0
+    </title>
+    <updated>2026-09-08T22:59:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version 0.2.0
+
+The first release: the server with the client inside it, the desktop window, installers for Windows
+and Linux. Also ignores the working files other assistants might leave behind.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8392792491b86ef2297ab8fc8cf83677f7048bad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/8392792491b86ef2297ab8fc8cf83677f7048bad"/>
+    <title>
+        Show the README&#39;s screenshots from .readme, three of them, taken by hand
+    </title>
+    <updated>2026-09-08T19:29:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show the README&amp;#39;s screenshots from .readme, three of them, taken by hand
+
+The reader with its settings open, the chapter list, and the run dialog - what a person sees,
+rather than the two captures made from a test window. docs/ goes back to being ignored whole.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a31c86c9bdbef495a8284953272137bde5a08a42</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/a31c86c9bdbef495a8284953272137bde5a08a42"/>
+    <title>
+        Write the README for the people who will use it, with two screenshots
+    </title>
+    <updated>2026-09-08T19:25:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Write the README for the people who will use it, with two screenshots
+
+Description, where to download and what for whom, how to run it without the window, and one
+short section for developers. The licence, the release mechanics and the publishing walkthrough
+went - GitHub shows the first two on its own, and the third belongs to the people who will find it
+anyway. The screenshots live under docs/screenshots, the one part of docs the repository keeps.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47dea9a779e88765984f1840a76723732e5c435f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/47dea9a779e88765984f1840a76723732e5c435f"/>
+    <title>
+        Describe the starting page in the desktop README
+    </title>
+    <updated>2026-09-08T19:22:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Describe the starting page in the desktop README&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/57d7e24a68b651b3879dc3078c5ba31582339ea1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/57d7e24a68b651b3879dc3078c5ba31582339ea1"/>
+    <title>
+        Open the window on a starting page in the page&#39;s own colour, and read…
+    </title>
+    <updated>2026-09-08T19:22:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Open the window on a starting page in the page&amp;#39;s own colour, and read the original in the same ink as the translation
+
+The window used to be created only once the server answered, which left a second or two with
+no window at all and then a white webview while the real page loaded. It now opens at once on a
+bundled starting page, painted behind with the client&amp;#39;s own background for the system theme, and
+is navigated to the server when /api/health answers; the server is started off the UI thread.
+In the reader the source column was a step lighter than the translation and read as dim rather
+than recessed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/569d59c7bcc7bb9c3b98954bbd023661431405c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/569d59c7bcc7bb9c3b98954bbd023661431405c6"/>
+    <title>
+        Reposition the macOS traffic lights for the taller merged bar
+    </title>
+    <updated>2026-09-08T18:25:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reposition the macOS traffic lights for the taller merged bar
+
+The overlay title bar&amp;#39;s traffic-light centring assumed the 38px bar
+the first cut of the window chrome used. Now that every screen&amp;#39;s own
+48px bar is the window&amp;#39;s title bar on every platform, the lights
+would sit near the top edge instead of centred. traffic_light_position
+puts them back at Apple&amp;#39;s own left margin, centred in the new height.
+
+Also rewrites the desktop README&amp;#39;s &amp;quot;Window chrome&amp;quot; section for the
+merged design: no separate WindowChrome.vue, one bar height on every
+platform, and the caption buttons pressed flush against the window&amp;#39;s
+own right and top edges on Windows (Linux&amp;#39;s round buttons keep a
+6px exception on their trailing edge so the corner radius is not
+clipped).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a9e23f943b1d91b7e79a8b5314f00a68bb48e0b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/0a9e23f943b1d91b7e79a8b5314f00a68bb48e0b"/>
+    <title>
+        Merge the window chrome into every screen&#39;s own header bar
+    </title>
+    <updated>2026-09-08T18:25:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge the window chrome into every screen&amp;#39;s own header bar
+
+Each screen already had exactly one 48px &amp;lt;header class=&amp;quot;bar&amp;quot;&amp;gt; at the
+top. Inside the desktop shell, WindowChrome.vue stacked a second,
+separate 32px bar above it with its own wordmark - the same word
+twice, one atop the other. That component goes away; its job (the
+drag region, the three caption buttons, the macOS traffic-light
+inset) moves into the screens&amp;#39; own header, which becomes the
+window&amp;#39;s title bar when running in the shell and looks byte-for-byte
+identical to what it always was in a browser.
+
+- AppBar.vue: the shared header every screen now renders instead of
+  its own &amp;lt;header class=&amp;quot;bar&amp;quot;&amp;gt;. Carries data-tauri-drag-region on
+  itself and its internal slot wrapper when in the shell, so a
+  mousedown anywhere non-interactive falls through to start a window
+  drag; screens mark that content with a data-bar-text attribute
+  rather than the component walking their DOM. Draws the macOS
+  traffic-light inset and renders WindowControls after the slot.
+- WindowControls.vue: the three caption buttons, drawn with the
+  platform&amp;#39;s own glyphs - Segoe Fluent Icons on Windows, the app&amp;#39;s
+  Material Symbols icons in round GNOME-style buttons on Linux,
+  nothing on macOS. Replaces the first cut&amp;#39;s hand-drawn SVG lines.
+- shell.ts: chromeLayoutFor is gone along with the per-platform bar
+  height it computed - the bar is 48px everywhere now. parseDesktopShell
+  and useDesktopShell are unchanged.
+- The ten screens (library, novel, reader, alignment, settings,
+  novel settings, parsers, and the three import screens) swap their
+  own &amp;lt;header class=&amp;quot;bar&amp;quot;&amp;gt; for &amp;lt;AppBar&amp;gt;, content unchanged, and mark
+  their non-interactive bar text with data-bar-text. The reader keeps
+  its own hide-on-scroll bar by passing a class through to AppBar&amp;#39;s
+  root and overriding it with :deep().
+- DefaultLayout.vue no longer renders a separate chrome bar.
+
+Verified byte-for-byte identical bar geometry against a build of
+main in a headless browser (library, novel, reader, settings,
+parsers): same height, same first/last content element positions,
+in both states.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b109c2e7e69d92d493ca30a47e27effa04697a77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/b109c2e7e69d92d493ca30a47e27effa04697a77"/>
+    <title>
+        Document the window chrome contract in the desktop README
+    </title>
+    <updated>2026-09-08T17:11:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Document the window chrome contract in the desktop README&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0407f1833fe42c21791d35c294d35474b369c787</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/0407f1833fe42c21791d35c294d35474b369c787"/>
+    <title>
+        Draw the client&#39;s own window chrome inside the shell
+    </title>
+    <updated>2026-09-08T17:11:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Draw the client&amp;#39;s own window chrome inside the shell
+
+WindowChrome.vue renders above .content in DefaultLayout.vue, but only
+when window.__NEKTO_DESKTOP__ says this page is running inside the
+shell - nothing changes in a browser tab, not one pixel. Bar height,
+control side and shape come from the platform: 32px with square
+caption buttons on Windows, 40px with round ones on Linux, 38px with
+no buttons of our own on macOS, which reserves a 78px inset for the
+real traffic lights instead. Double-click toggles maximize through
+Tauri&amp;#39;s own drag-region handling; nothing here listens for it by hand.
+
+src/desktop/shell.ts is the client&amp;#39;s half of the contract: it parses
+the global once, defensively, and exposes isMaximized / isFullscreen
+kept current from the Tauri window API and the nekto:fullscreen event,
+plus the three button actions. It reaches window.__TAURI__ directly,
+typed by hand, rather than adding @tauri-apps/api as a dependency of
+what is otherwise an ordinary web app. The pure parts - parsing the
+global and choosing a platform&amp;#39;s bar height and control side - get
+their own vitest spec.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/858305882ff64150f0e2280f7c61c67a4c2cfb50</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/858305882ff64150f0e2280f7c61c67a4c2cfb50"/>
+    <title>
+        Make the desktop window frameless and tell the page which platform it…
+    </title>
+    <updated>2026-09-08T17:11:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the desktop window frameless and tell the page which platform it is on
+
+Windows and Linux drop native decorations outright; macOS keeps the real
+traffic lights via an overlay title bar with the title hidden. Windows
+also gets the DWM shadow back explicitly, and Linux gets an 8px
+edge/corner resize script since an undecorated window there loses its
+resize border entirely (Windows keeps native resize on an undecorated
+window, so it needs nothing extra).
+
+tauri-plugin-window-state is told to stop restoring the decorated flag
+it saves per window - left alone, it silently re-decorated a window
+this crate had just built frameless, using whatever was saved to disk
+on an earlier run.
+
+An initialization script writes window.__NEKTO_DESKTOP__ = { platform,
+version } before the page&amp;#39;s own scripts run, on every navigation - the
+whole contract the client&amp;#39;s own window chrome reads. The fullscreen
+script also now dispatches a nekto:fullscreen DOM event on toggle, so
+the client can hide its bar without polling isFullscreen().
+
+The capability file grants exactly what the bar&amp;#39;s own code calls:
+dragging and its double-click maximize, the three caption actions, the
+state the buttons render, and the Linux resize script - each checked
+against the generated capabilities schema.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e53f4a3942749e4c3ecc00bfbb4160ccc4c19c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/3e53f4a3942749e4c3ecc00bfbb4160ccc4c19c6"/>
+    <title>
+        Say at the top of the one modified vendor parser that, and how, it di…
+    </title>
+    <updated>2026-09-08T16:59:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say at the top of the one modified vendor parser that, and how, it differs from upstream
+
+The GPL asks a conveyed modified file to carry a prominent notice of the change and its date; the
+Ranobes parser gained a title cleanup in the initial commit and never said so.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ee813b601192365ba772d548c37ca514e4d678e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/2ee813b601192365ba772d548c37ca514e4d678e"/>
+    <title>
+        Show the running build&#39;s version beside the wordmark
+    </title>
+    <updated>2026-09-08T16:56:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show the running build&amp;#39;s version beside the wordmark
+
+system.api.ts and useSystem&amp;#39;s useHealth() read GET /api/health (staleTime:
+Infinity, quiet on failure). LibraryView shows the dimmed version number next
+to NektoTranslate once the query answers, with the full informational
+version (0.1.0+&amp;lt;sha&amp;gt;) in the title tooltip. The mock backend answers
+/api/health too, so mock mode keeps working.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1dbc3b7a6329a3e9adac10780835485897128ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/c1dbc3b7a6329a3e9adac10780835485897128ba"/>
+    <title>
+        Describe the project, credit WebToEpub, and document releases in the …
+    </title>
+    <updated>2026-09-08T16:56:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Describe the project, credit WebToEpub, and document releases in the README
+
+Opens with what the application is and how it is built, thanks the
+WebToEpub project for the site parsers it ships, and adds a Licence section
+(GPL-3.0-or-later, because of those parsers) and a Releases section
+explaining the version bump and what CI does with it. The existing
+run/publish/data sections are kept, tightened.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/199e443efa322de692a3102547747188a5b8d9b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/199e443efa322de692a3102547747188a5b8d9b2"/>
+    <title>
+        Cut releases from main instead of a hand-pushed tag
+    </title>
+    <updated>2026-09-08T16:56:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cut releases from main instead of a hand-pushed tag
+
+.github/workflows/release.yml watches main. version reads
+Directory.Build.props and checks whether that version is already tagged and
+released; build only runs for a new version, and builds Windows and Linux
+desktop installers plus a standalone server zip for each; release only runs
+once every build has succeeded, and tags the commit, creates the GitHub
+release, and writes a changelog from the commit history since the previous
+tag. A build failure leaves no tag and no release, so the next push retries.
+The old desktop-release.yml, triggered by a hand-pushed tag, is folded into
+this and removed.
+
+The three jobs never cancel a run in progress (concurrency group with
+cancel-in-progress: false), since a release that is half-uploaded must
+finish rather than be cut off by the next push.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e5a9e63a0f962d4db2e8db2ffff1564554542c32</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/e5a9e63a0f962d4db2e8db2ffff1564554542c32"/>
+    <title>
+        License the repository GPL-3.0-or-later
+    </title>
+    <updated>2026-09-08T16:56:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;License the repository GPL-3.0-or-later
+
+The vendored WebToEpub parsers under NektoTranslate.Server/vendor/WebToEpub
+are GPL-3.0, and shipping them inside this application places the whole
+distributed work under the same terms. LICENSE carries the verbatim GPL-3.0
+text; Cargo.toml and package.json get a matching license field.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b2fee73a524b6d5b7443dc8ed358b6c8fd2431f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/VeyDlin/NektoTranslate/commit/8b2fee73a524b6d5b7443dc8ed358b6c8fd2431f"/>
+    <title>
+        Read the desktop build&#39;s version from Directory.Build.props
+    </title>
+    <updated>2026-09-08T16:56:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10778537?s=30&amp;v=4"/>
+    <author>
+      <name>VeyDlin</name>
+      <uri>https://github.com/VeyDlin</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read the desktop build&amp;#39;s version from Directory.Build.props
+
+Directory.Build.props stays the single source of the application&amp;#39;s version.
+scripts/publish-server.mjs now defaults -p:Version to whatever it holds
+instead of requiring NEKTO_BUILD_VERSION, so a plain local build stamps the
+same version CI would. A new scripts/sync-version.mjs writes that same value
+into tauri.conf.json, Cargo.toml and package.json, and npm run build runs it
+first; --check compares instead of writing, for CI to catch drift. Along the
+way, Directory.Build.props and package.json also pick up the GPL-3.0-or-later
+license metadata the vendored WebToEpub parsers require of the whole build.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

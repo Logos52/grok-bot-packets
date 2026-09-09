@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/gufyhvvyfycyddy-code/LinguaCafe-local/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commits/master.atom"/>
+  <title>Recent Commits to LinguaCafe-local:master</title>
+  <updated>2026-09-08T20:41:12Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69639d90fe17cf4be8759f03d411f14e3ea11fe4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/69639d90fe17cf4be8759f03d411f14e3ea11fe4"/>
+    <title>
+        Merge pull request #66: vocabularyBox appendReading writes to state.r…
+    </title>
+    <updated>2026-09-08T20:41:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #66: vocabularyBox appendReading writes to state.reading (closes #62)
+
+fix: vocabularyBox appendReading writes to state.reading (closes #62)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6335385159aeaf2408f3767eef7a0536fecd14d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/c6335385159aeaf2408f3767eef7a0536fecd14d"/>
+    <title>
+        fix: vocabularyBox appendReading writes to state.reading (closes #62)
+    </title>
+    <updated>2026-09-08T20:37:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: vocabularyBox appendReading writes to state.reading (closes #62)
+
+The appendReading mutation wrote `state.appendReading += value` — a stray,
+undeclared property — instead of `state.reading`, the field consumed by the
+vocabulary box save path (VocabularyBox.vue: _reading -&amp;gt; this.reading -&amp;gt;
+saved `reading`). So when multiple words were selected into a phrase, the
+per-word readings appended by TextBlockGroup.vue never reached state.reading.
+This matches the sibling mutations (appendSearchField -&amp;gt; state.searchField).
+
+Impact is limited to reading-bearing languages (e.g. Japanese furigana) when
+building a phrase; a no-op for languages without readings.
+
+Adds tests/js/VocabularyBoxAppendReadingMutation.test.mjs (node --test, 3 cases):
+accumulation onto state.reading, no stray property, sibling parity.
+
+Note: the mutation correctness is verified deterministically by unit test +
+frontend build. The end-to-end reader visual (a phrase reading rendering in the
+vocabulary box) only manifests with reading-language content, which this
+English-only test environment (no Japanese tokenizer) cannot produce; that
+visual step is env-gated, but the fix itself is proven at the unit level.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e52b29369df13b4d342d707e78bb00dec7f6f3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/0e52b29369df13b4d342d707e78bb00dec7f6f3a"/>
+    <title>
+        Merge pull request #63: fail-soft dictionary import progress broadcas…
+    </title>
+    <updated>2026-09-08T19:44:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #63: fail-soft dictionary import progress broadcasts (EP-10)
+
+fix: fail-soft dictionary import progress broadcasts (EP-10)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/903caf481c6e097b360957594b50e80a5f967d60</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/903caf481c6e097b360957594b50e80a5f967d60"/>
+    <title>
+        fix: fail-soft dictionary import progress broadcasts (EP-10)
+    </title>
+    <updated>2026-09-08T19:39:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: fail-soft dictionary import progress broadcasts (EP-10)
+
+DictionaryImportProgressedEvent is a ShouldBroadcastNow event dispatched
+synchronously inside the dictionary import HTTP request. With the default
+broadcast driver (pusher) unconfigured or unreachable, the bare event() calls in
+DictionaryImportService threw BroadcastException synchronously and aborted the
+import mid-file — proven via a runtime experiment (BroadcastException: Pusher
+error cURL 7 on a dead endpoint).
+
+The equivalent chapter broadcasts (ChapterService, ProcessChapter) already guard
+their ShouldBroadcastNow dispatches with try/catch; only the dictionary import
+progress broadcasts were unprotected. Route all six progress dispatches through a
+broadcastImportProgress() helper that keeps the synchronous broadcast but catches
+\Throwable and logs a warning, so an optional broadcast backend can never abort a
+dictionary import. No change to import logic, transactions, or any review/FSRS
+data path.
+
+Tests: DictionaryImportBroadcastFailSoftTest — guard swallows a throwing backend
+and logs; control proves a raw dispatch on the same backend still propagates.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f69e5e71ae554ef4769d3b69f9794ddc677c362c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/f69e5e71ae554ef4769d3b69f9794ddc677c362c"/>
+    <title>
+        Merge pull request #61: single owner for FSRS state Chinese label (EP-3)
+    </title>
+    <updated>2026-09-08T18:01:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #61: single owner for FSRS state Chinese label (EP-3)
+
+refactor: single owner for FSRS state → Chinese label (EP-3)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7207f6b6a09df2ff072e63c8090661abe1a93664</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/7207f6b6a09df2ff072e63c8090661abe1a93664"/>
+    <title>
+        refactor: single owner for FSRS state -&gt; Chinese label (EP-3)
+    </title>
+    <updated>2026-09-08T17:31:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: single owner for FSRS state -&amp;gt; Chinese label (EP-3)
+
+The FSRS scheduling-state label was re-implemented on five surfaces and had
+drifted: the statistics page showed `复习` / `重学` while every other surface
+showed `复习中` / `重新学习`, and the reader word-sense list collapsed the
+`review` state down to `学习中`.
+
+Introduce resources/js/services/FsrsStateLabel.js as the one owner of the
+new/learning/review/relearning -&amp;gt; Chinese mapping (新卡/学习中/复习中/重新学习,
+matching the shipped stats surfaces and the FSRS roadmap stats-chip spec) and
+route all five surfaces through it:
+- Home/Statistics.vue (was 复习/重学 -&amp;gt; now 复习中/重新学习)
+- Text/WordSensesList.vue (was review-&amp;gt;学习中 -&amp;gt; now review-&amp;gt;复习中)
+- ReviewCards/ReviewCardSearchSurface.vue (filter options)
+- ReviewCards/ReviewCardManage.vue (stats chips)
+- Admin/ReviewSettings/FsrsStatusPanel.vue (state distribution)
+
+Display-only: fsrs_state data, FSRS scheduling, ReviewCard and ReviewLog are
+untouched. Lifecycle state (active/buried/suspended/archived) is a separate
+concept and keeps its existing owner (ReviewCardLifecyclePresentation.js).
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b77b62a32bd7e04dc1b72235a2b3861be5be50e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/1b77b62a32bd7e04dc1b72235a2b3861be5be50e"/>
+    <title>
+        Merge pull request #60: review_cards FSRS datetimes to DATETIME (clos…
+    </title>
+    <updated>2026-09-08T16:39:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #60: review_cards FSRS datetimes to DATETIME (closes #57)
+
+fix: store review_cards FSRS datetimes as DATETIME not TIMESTAMP (closes #57)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ef73e60d2213318493502fb9659865bba74ac6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/1ef73e60d2213318493502fb9659865bba74ac6a"/>
+    <title>
+        fix: store review_cards fsrs datetimes as DATETIME not TIMESTAMP (clo…
+    </title>
+    <updated>2026-09-08T16:35:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: store review_cards fsrs datetimes as DATETIME not TIMESTAMP (closes #57)
+
+review_cards.fsrs_due_at / fsrs_last_reviewed_at were MySQL TIMESTAMP (range
+ends 2038-01-19). FSRS schedules a card&amp;#39;s next due date up to
+maximum_interval_days (default and clamp ceiling 36500 days ≈ 100 years, per
+ReviewSettingsPresetConfig), so a maturing card&amp;#39;s fsrs_due_at legitimately
+exceeds 2038 and then fails to persist (&amp;quot;Incorrect datetime value&amp;quot;), aborting
+the sole rating write path (ReviewCardService::recordReview → FsrsScheduling).
+2099 in the AI-study-card tests is within this real range, not a test-only
+sentinel — so the schema, not the test, is wrong.
+
+Additive, idempotent migration widens both columns to DATETIME (range to year
+9999), converging fresh builds and long-running installs alike. APP_TIMEZONE is
+UTC with no per-connection time_zone override, so existing &amp;lt;=2038 values convert
+without a shift. Only the storable range changes — no FSRS math, ReviewLog,
+ReviewCard lifecycle, scheduling, or due semantics are touched.
+
+Verified on isolated MySQL 8.0: fresh build yields DATETIME for both columns; a
+year-2125 due date round-trips through the model; the previously-erroring
+AiStudyCardPendingItemTest::test_generate_cards_does_not_reschedule_existing_fsrs_cards
+now passes; ReviewFsrsTest + FsrsSchedulingServiceTest 76/76; new
+ReviewCardDueDateRangeTest 2/2.
+
+Closes #57.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b9f92ddb0213277fed245b669932396a0bdb9c3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/5b9f92ddb0213277fed245b669932396a0bdb9c3"/>
+    <title>
+        Merge pull request #59: per-run disposable test database runner (clos…
+    </title>
+    <updated>2026-09-08T16:05:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #59: per-run disposable test database runner (closes #55)
+
+feat: per-run disposable test database runner (closes #55)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b251809565e6311895a5da1f5baebcff59e04124</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/b251809565e6311895a5da1f5baebcff59e04124"/>
+    <title>
+        feat: per-run disposable test database runner (closes #55)
+    </title>
+    <updated>2026-09-08T16:00:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: per-run disposable test database runner (closes #55)
+
+Stage C completes the #55 isolation. Stage A added a fail-closed guard that
+refuses destructive schema resets on non-disposable databases; this makes the
+safe path automatic so destructive-reset suites can *only* ever run against a
+throwaway database.
+
+On a testing run, tests/bootstrap.php now provisions a unique, process-owned
+disposable MySQL database (linguacafe_disposable_&amp;lt;ts&amp;gt;_&amp;lt;rand&amp;gt;), repoints the
+connection env at it plus the LINGUACAFE_DISPOSABLE_DB ownership marker (which
+the guard authorises), and drops it on shutdown. A shared / long-lived /
+recovery / dev / prod database is never connected to, so its migration ledger
+and sentinel cannot be touched.
+
+- new Tests\Support\DisposableTestDatabase: create / activate / drop; only ever
+  drops databases this run created that still match the disposable-name
+  contract (reuses DisposableTestDatabaseGuard::matchesDisposablePattern)
+- DisposableTestDatabaseGuard: extract matchesDisposablePattern() for reuse
+- tests/bootstrap.php: auto-provision + shutdown cleanup (no-op + fail-closed
+  when no server connection is configured)
+- tests: name uniqueness; drop refuses protected/shared/recovery and
+  not-created-by-this-run names; real create/drop roundtrip; and the suite
+  itself runs against an owned disposable DB
+
+Verified on isolated MySQL 8.0: runner test 5/5; RefreshDatabase suites run
+end-to-end on the disposable DB; the per-run database is created and dropped
+with no leak; Stage A guard (12/12) and #54 regression (2/2) still pass. No
+change to FSRS/ReviewCard/WordSense/ReviewLog, business logic, .env, or
+AGENTS.md.
+
+Closes #55.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abc958f4b7e7066bff6035e0cd75518d05a121f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/abc958f4b7e7066bff6035e0cd75518d05a121f4"/>
+    <title>
+        Merge pull request #58: bound composite-unique index columns for clea…
+    </title>
+    <updated>2026-09-08T15:55:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #58: bound composite-unique index columns for clean MySQL build (#54)
+
+fix: bound composite-unique index columns so a clean MySQL build succeeds (#54)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5eaebe0ffb5920c98b1d1626cbaa99614f20eda</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/b5eaebe0ffb5920c98b1d1626cbaa99614f20eda"/>
+    <title>
+        fix: bound composite-unique index columns so clean MySQL build succee…
+    </title>
+    <updated>2026-09-08T15:50:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: bound composite-unique index columns so clean MySQL build succeeds (#54)
+
+A clean utf8mb4 MySQL build failed because composite unique indexes spanned
+default VARCHAR(255) columns whose combined key length exceeded InnoDB&amp;#39;s
+3072-byte limit (&amp;quot;Specified key was too long&amp;quot;). Two create migrations drifted
+wider than the canonical long-running schema:
+
+- ai_study_card_pending_items: language_id -&amp;gt; VARCHAR(64), status -&amp;gt; VARCHAR(32)
+  (canonical bounds recorded in #54 from the verified backup). Index drops from
+  ~3080 to ~1424 bytes.
+- reading_inline_sense_confirmations: language -&amp;gt; VARCHAR(64) (same canonical
+  bound applied to a language identifier); surface/lemma word forms stay 255.
+  Index drops from ~3088 to ~2324 bytes.
+
+Full-value unique constraints are preserved (columns only narrowed, not
+prefix-indexed). Word-form columns (normalized_word, surface, lemma) keep 255.
+Editing the create migrations is the only possible fix: migrate:fresh aborts at
+the CREATE before any later ALTER could run. Existing databases already carry
+the bounded widths, so they are unaffected (no additive migration needed).
+
+Verified: full migration chain now builds from zero on a fresh disposable
+utf8mb4 MySQL 8.0 (53 tables); new FreshSchemaIndexLengthTest asserts the
+bounded widths and that both unique indexes fit within 3072 bytes.
+
+No change to FSRS, ReviewCard, WordSense, ReviewLog, business logic, .env, or
+AGENTS.md. Closes #54.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/24291f6c8d73720e893911438478337e7a103005</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/24291f6c8d73720e893911438478337e7a103005"/>
+    <title>
+        Merge pull request #56: fail-closed test-DB guard (Source #55 stage A)
+    </title>
+    <updated>2026-09-08T15:37:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #56: fail-closed test-DB guard (Source #55 stage A)
+
+fix: fail-closed guard against destructive schema resets on shared test DBs (Source #55 stage A)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1883b2631fdee3ea734a1bd97a2716350298ab5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/1883b2631fdee3ea734a1bd97a2716350298ab5f"/>
+    <title>
+        fix: fail-closed guard against destructive schema resets on shared te…
+    </title>
+    <updated>2026-09-08T14:54:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/23cfa21341b32ffa2256deb84ff32d69?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>agent@linguacafe.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: fail-closed guard against destructive schema resets on shared test DBs
+
+Source #55 (stage A) minimal containment. A RefreshDatabase-style
+migrate:fresh accidentally pointed at a shared/long-lived testing database
+can reset its schema and destroy acceptance state. This adds a fail-closed
+guard that, while APP_ENV=testing, refuses destructive schema-reset
+operations (migrate:fresh/refresh/reset, db:wipe, and any DROP/TRUNCATE DDL)
+unless the target database is a unique per-run, process-owned disposable
+database (name matching linguacafe_disposable_&amp;lt;run&amp;gt;_&amp;lt;id&amp;gt; and equal to the
+LINGUACAFE_DISPOSABLE_DB ownership marker).
+
+- new App\Services\DisposableTestDatabaseGuard (command + query decisions)
+- AppServiceProvider: CommandStarting listener (CLI path) + testing-only
+  beforeExecuting backstop (reliable for programmatic Kernel::call, fires
+  before the first drop) mirroring the existing RestoreWriteFence pattern
+- focused tests cover: no marker -&amp;gt; reject, shared/recovery/contains-&amp;quot;test&amp;quot;
+  names -&amp;gt; reject, disposable-without-matching-marker -&amp;gt; reject,
+  owned disposable -&amp;gt; allow, destructive-query classification, and that the
+  connection-layer guard fires before any drop
+
+Shared/recovery/dev/prod databases are never reset. Does not change .env,
+AGENTS.md, schema, or any frozen product semantics. Refs #55.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5309d5dc98a825dd2631eb2fa2b58891f751faf8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/5309d5dc98a825dd2631eb2fa2b58891f751faf8"/>
+    <title>
+        Merge pull request #53 from gufyhvvyfycyddy-code/fix/web-safe-error-p…
+    </title>
+    <updated>2026-09-08T13:25:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #53 from gufyhvvyfycyddy-code/fix/web-safe-error-pages-20260908
+
+Fix safe browser HTTP error pages&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/572565032cb798622ecda74686075b94e9efee22</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/572565032cb798622ecda74686075b94e9efee22"/>
+    <title>
+        fix: render safe browser HTTP error pages
+    </title>
+    <updated>2026-09-08T08:41:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/14c20dd7a44e6c756e5f4ee491b1f999?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>codex@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: render safe browser HTTP error pages&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6be790fb9a9402f838f74d7c557549cf2430ec1d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/6be790fb9a9402f838f74d7c557549cf2430ec1d"/>
+    <title>
+        Merge pull request #52 from gufyhvvyfycyddy-code/docs/feable-handoff-…
+    </title>
+    <updated>2026-09-08T02:39:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #52 from gufyhvvyfycyddy-code/docs/feable-handoff-20260908
+
+docs: add Feable project handoff&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d0ed68abf97a07eb48e5e959ba213824ce850ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/5d0ed68abf97a07eb48e5e959ba213824ce850ba"/>
+    <title>
+        docs: add Feable project handoff
+    </title>
+    <updated>2026-09-08T02:30:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/14c20dd7a44e6c756e5f4ee491b1f999?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>codex@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add Feable project handoff&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe7328f88972d11331c631302178bc3dc733a030</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/fe7328f88972d11331c631302178bc3dc733a030"/>
+    <title>
+        Merge pull request #51 from gufyhvvyfycyddy-code/fix/horizon-laravel1…
+    </title>
+    <updated>2026-09-08T01:53:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/294910805?s=30&amp;v=4"/>
+    <author>
+      <name>gufyhvvyfycyddy-code</name>
+      <uri>https://github.com/gufyhvvyfycyddy-code</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #51 from gufyhvvyfycyddy-code/fix/horizon-laravel11-signature-20260908
+
+fix: align Horizon with Laravel 11 queue signature&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e4895fbab01569c95f2a1050de1fa4e4d12ed58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gufyhvvyfycyddy-code/LinguaCafe-local/commit/3e4895fbab01569c95f2a1050de1fa4e4d12ed58"/>
+    <title>
+        fix: update Horizon for current Laravel worker options
+    </title>
+    <updated>2026-09-08T01:19:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/14c20dd7a44e6c756e5f4ee491b1f999?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>codex@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: update Horizon for current Laravel worker options&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

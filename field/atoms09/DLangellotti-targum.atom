@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/DLangellotti/targum/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/DLangellotti/targum/commits/master.atom"/>
+  <title>Recent Commits to targum:master</title>
+  <updated>2026-09-08T23:58:54Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc64d250e9c6c35a25c95560544a290c7d180573</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/fc64d250e9c6c35a25c95560544a290c7d180573"/>
+    <title>
+        Merge pull request #134 from DLangellotti/health-queue
+    </title>
+    <updated>2026-09-08T23:58:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #134 from DLangellotti/health-queue
+
+fix(serve): /health says what is waiting, not how many jobs it has ever seen&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/511aa08450c6356a65901fbfd7f273881de655b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/511aa08450c6356a65901fbfd7f273881de655b8"/>
+    <title>
+        fix(serve): /health says what is waiting, not how many jobs it has ev…
+    </title>
+    <updated>2026-09-08T23:52:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(serve): /health says what is waiting, not how many jobs it has ever seen
+
+`queue` reported `len(self.library.jobs)`, which is every job the process has created
+since it started and is never pruned. So a healthy box that had served a hundred builds
+said `queue: 100`, and a box with a hundred waiting said the same, and an operator had
+no way to tell them apart.
+
+It is the number that would have shown targum-internal#228 — every chat turn hanging
+until four dead workers left the queue growing with nobody on it — and it could not.
+Live tonight it reads 172, which means nothing under either reading.
+
+Two numbers now: `queue` is `queue.qsize()`, what is actually waiting, and `jobs` is
+what it has seen. `deploy.sh` greps for `&amp;quot;ok&amp;quot;: true` and is unaffected.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a30cdf554d7e87cf65acc73d93e4e7c4f6f9284</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/5a30cdf554d7e87cf65acc73d93e4e7c4f6f9284"/>
+    <title>
+        Merge pull request #133 from DLangellotti/rashi-dispatch
+    </title>
+    <updated>2026-09-08T23:48:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #133 from DLangellotti/rashi-dispatch
+
+fix(sefaria): Rashi on the Chumash is refused for what is missing, not for an edition&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a0a21918a9f1eac2048eb588f47c5e52f44b5bf4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/a0a21918a9f1eac2048eb588f47c5e52f44b5bf4"/>
+    <title>
+        fix(sefaria): Rashi on the Chumash is refused for what is missing, no…
+    </title>
+    <updated>2026-09-08T23:41:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(sefaria): Rashi on the Chumash is refused for what is missing, not for an edition
+
+`&amp;lt;Who&amp;gt; on &amp;lt;Name&amp;gt;` claimed everything with a name, so `sefaria:Rashi on Genesis` went to
+the daf reader, asked Sefaria for the Vilna edition — which exists for tractates and not
+for the Chumash — and came back &amp;quot;Sefaria has no &amp;#39;Vilna Edition&amp;#39; of Rashi on Genesis&amp;quot;.
+True, and about the wrong thing. Sefaria holds several editions of it, one of them
+public domain; what targum lacks is a reader for a commentary numbered by chapter and
+verse, where a verse carries a comment or several (targum-internal#200).
+
+So the daf module declines a subject that is a book of the Tanakh, and `sefaria.py` says
+the true thing in its own words, naming what it does read. Nothing is asked of Sefaria
+on the way, which the test pins: the old path spent a request to be told the wrong
+answer.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67932a8b46f02faf764e6d60856d85f89b746c27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/67932a8b46f02faf764e6d60856d85f89b746c27"/>
+    <title>
+        Merge pull request #132 from DLangellotti/mail-encoding
+    </title>
+    <updated>2026-09-08T23:34:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #132 from DLangellotti/mail-encoding
+
+fix(mail): a sign-in link in a language that is not English arrives whole&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/31b690cabe730ee80c2a12862c96b4064ebe3011</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/31b690cabe730ee80c2a12862c96b4064ebe3011"/>
+    <title>
+        Merge pull request #131 from DLangellotti/private-half-checked
+    </title>
+    <updated>2026-09-08T23:34:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #131 from DLangellotti/private-half-checked
+
+test: the private half is checked wherever it exists&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d2b1a0d986bfbf7e989da7a1200d7ce5168784a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/5d2b1a0d986bfbf7e989da7a1200d7ce5168784a"/>
+    <title>
+        fix(mail): a sign-in link in a language that is not English arrives w…
+    </title>
+    <updated>2026-09-08T23:12:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mail): a sign-in link in a language that is not English arrives whole
+
+The body falls back off 7-bit whenever it is not ASCII, which is every word of a
+Russian or Hebrew email (targum-internal#186). What it fell back to was unnamed, so the
+encoder picked 8bit: raw UTF-8 on the wire, safe only where the whole SMTP path
+advertises 8BITMIME, and mangled or refused where it does not — in the one email that
+is the entire product working or not.
+
+Base64 instead, named. Quoted-printable is the other 7-bit-safe candidate and it puts
+the soft break back inside the sign-in token, which is exactly what `cte=&amp;quot;7bit&amp;quot;` on the
+line above exists to avoid; base64 wraps too, but a client decodes it whole before it
+looks for a link, so the token arrives in one piece.
+
+Tested through the mailer&amp;#39;s own `_deliver` rather than a copy of it: `compose` in the
+test file rebuilds the message the way the mailer does, which tests the intention, and
+the two new tests hold the mailer to it. The subject was already right — `EmailMessage`
+does RFC 2047 on its own — and is pinned, because the day that stops being true is the
+day a Russian reader gets a subject line of mojibake.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/21a1fd805cf43f57291ae22c969a245dce567ac8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/21a1fd805cf43f57291ae22c969a245dce567ac8"/>
+    <title>
+        test: the private half is checked wherever it exists
+    </title>
+    <updated>2026-09-08T23:07:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: the private half is checked wherever it exists
+
+Eight modules are gitignored and ship in the wheel. CI has a public checkout and never
+sees them; a worktree of a tracked branch does not carry ignored files either, and
+worktrees are where most work here happens. So nothing checks them, and they depend on
+the public half: a rename in `recording/`, `weekly/index.py` or `models.py` breaks one
+while every check stays green, and it surfaces at the next weekly build, by hand
+(targum-internal#230).
+
+`tests/test_private_half.py` imports each of the eight where it is present and skips
+where it is not, which is the bargain `needs_dicta_model` already makes about a model on
+disk. It also refuses a half-copied checkout: some of them present and some missing is
+somebody&amp;#39;s interrupted copy, and the weekly would fail on whichever is absent rather
+than say so here. Nine pass in the main checkout; eight skip everywhere else.
+
+The names are written down rather than discovered, so a private module quietly
+disappearing fails a test instead of being one less thing checked. `CLAUDE.md` gains the
+command, beside the worktree note that explains why it is needed.
+
+Found by running ruff in the main checkout for the first time: three import-order errors
+had been sitting in the private half unseen. Fixed there, where a gitignored fix travels
+in the wheel rather than in a commit.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5bbea4e9d1a7159addef2bde9976a6aaac84ed9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/5bbea4e9d1a7159addef2bde9976a6aaac84ed9f"/>
+    <title>
+        Merge pull request #130 from DLangellotti/offline-suite
+    </title>
+    <updated>2026-09-08T22:30:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #130 from DLangellotti/offline-suite
+
+test: the suite is offline because it is stopped, not because it is asked nicely&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67e8785dfb64581e17021deea72345b82791e166</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/67e8785dfb64581e17021deea72345b82791e166"/>
+    <title>
+        test: the fourth build in the chapter tests takes the splitter too
+    </title>
+    <updated>2026-09-08T22:23:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: the fourth build in the chapter tests takes the splitter too
+
+It has a `provider_name` the other three do not, so the pattern that caught them
+missed it, and CI kept downloading the English model for one test.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4b9559f2bef07a2faf5b6cc7327c7c4eb09d4c53</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/4b9559f2bef07a2faf5b6cc7327c7c4eb09d4c53"/>
+    <title>
+        test: no test downloads a model, and CI stops pulling 1.2 GB on every…
+    </title>
+    <updated>2026-09-08T22:16:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: no test downloads a model, and CI stops pulling 1.2 GB on every run
+
+The offline rule turned up six more tests that reach out, and none of them showed up
+on a laptop that already has the models. On CI they were fetching:
+
+- `test_models_fetch_he_fetches_dicta_and_nothing_of_stanzas` stubs the lemmatizer but
+  not the menaked, and `models fetch he` takes that too — 1.2 GB, on every CI run, from
+  a test whose subject is which models Hebrew asks for. Said to be already there.
+- Five in `test_chapter_ui.py` build an English markdown file through the real
+  segmenter, which downloads Stanza&amp;#39;s `en` model. They are about what a chapter costs,
+  not about where an English sentence ends, so they take a full-stop splitter, which is
+  what the conftest fake does and what `test_audio_ingest` redeclares for itself. Every
+  assertion in the file survives it unchanged.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97364260ea17b59303bc901cb2ebb2ddbe701e9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/97364260ea17b59303bc901cb2ebb2ddbe701e9a"/>
+    <title>
+        test: the suite is offline because it is stopped, not because it is a…
+    </title>
+    <updated>2026-09-08T22:07:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: the suite is offline because it is stopped, not because it is asked nicely
+
+`conftest.offline` said the suite stayed offline and only skipped the two tests carrying
+the `network` marker. Everything else was trusted, and on 2026-09-08 the trust turned
+out to have lapsed: when the fetch door stopped being httpx&amp;#39;s, three tests in
+`test_ssrf.py` went on patching `httpx.Client.stream`, intercepted nothing, and made
+real requests to example.com. The checks between a reader&amp;#39;s pasted link and a hosted
+box&amp;#39;s metadata endpoint had stopped running and the suite was green
+(targum-internal#229).
+
+So the promise is enforced. An outbound connection to anything but loopback fails with
+a sentence saying what the test did, and so does a knock on the real fetch door, which
+connects inside libcurl where a socket patch cannot see it. The door may still be
+*built*, because `_open` makes its client before it checks the address and refusing the
+build would fail every test of an address that is turned away before anything leaves.
+
+Measured before the rule went in: of ~2,900 tests, five reached out, and all five were
+one thing — `needs_dicta_model` checks the weights are on disk and skips otherwise, but
+the loader still asked Hugging Face whether its cache was current. `HF_HUB_OFFLINE` is
+set at conftest import, beside the catalogue line and for the same reason a fixture is
+too late. `test_weekly_verify` runs in 7 seconds rather than 78; the round trip was most
+of it.
+
+The guard is tested, since a guard nobody tests is the shape of the thing it replaced:
+a refused connection, a refused knock, a door that may still be built, loopback left
+alone, and the marker still skipping.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6658935c2fe1056d17f083014b74a3c07b78d35d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/6658935c2fe1056d17f083014b74a3c07b78d35d"/>
+    <title>
+        Merge pull request #129 from DLangellotti/egress-reconciled
+    </title>
+    <updated>2026-09-08T21:48:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #129 from DLangellotti/egress-reconciled
+
+Merge &amp;#39;egress&amp;#39;: the fetch door is a browser&amp;#39;s, and the proxy is the exception&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c183968ecc9634143668e90e4c56dfb9ca473751</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/c183968ecc9634143668e90e4c56dfb9ca473751"/>
+    <title>
+        Merge branch &#39;egress&#39; — the fetch door is a browser&#39;s, and the proxy …
+    </title>
+    <updated>2026-09-08T21:41:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;egress&amp;#39; — the fetch door is a browser&amp;#39;s, and the proxy is the exception
+
+targum#128 and the `egress` branch answered targum-internal#226 independently and
+arrived at nearly the same design: the same knob with YouTube&amp;#39;s as its fallback, the
+same retry-only-on-a-refusal rule, the same `via` on what came back, the same schema 15
+column recording which way out a knock went. #128 landed first and is the weaker half.
+
+The branch probed from the box, which #226 said had never been done, and the probe
+changes the premise: six of the seven Hebrew hosts are not refusing our address. They
+serve Cloudflare&amp;#39;s bot check to any client whose TLS handshake is not a browser&amp;#39;s, and
+the laptop and the box get the identical answer. A proxy does not open those. A
+browser&amp;#39;s handshake does, so the door is `curl_cffi` impersonating Chrome, it knocks
+politely, a challenge is named as one to the model rather than reported as silence, and
+the proxy is retried only over https, where TLS is end-to-end through CONNECT.
+
+Taken from the branch: the door, the challenge, the politeness, the https rule, and the
+corrected record of what those seven hosts actually do. Taken from master: everything
+merged since the branch point, which `--theirs` on a whole file would have dropped —
+the shelf&amp;#39;s read times, the build&amp;#39;s words option, the whole-web search, and the parasha
+and daily preflight lines. Dropped from #128: its `check_fetch_egress`, whose hosted
+message promised a proxy would open hosts a handshake opens; `Store.egress_of`, which
+nothing calls; and its tests, which the branch&amp;#39;s own cover.
+
+Three things the branch had not finished, fixed here rather than left: `curl_cffi`
+ships no stubs so the session wanted an annotation, two test lines ran long, and — the
+one that matters — `tests/test_ssrf.py` and two download tests still patched
+`httpx.Client.stream`. After the swap those stubs intercepted nothing, so the redirect,
+size-cap and redirect-limit tests were making real requests to example.com and passing
+on its 404. They patch the door&amp;#39;s own seam now.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/897852ac2ff58d806e18a90c855ed9df8903c36f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/897852ac2ff58d806e18a90c855ed9df8903c36f"/>
+    <title>
+        Merge pull request #128 from DLangellotti/fetch-egress
+    </title>
+    <updated>2026-09-08T20:34:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #128 from DLangellotti/fetch-egress
+
+feat(fetch): a host that refuses this address is tried once more through the egress&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ac9cc9bd1005900c1643741cb95f16f1ed8700aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/ac9cc9bd1005900c1643741cb95f16f1ed8700aa"/>
+    <title>
+        Merge pull request #127 from DLangellotti/blank-annotation
+    </title>
+    <updated>2026-09-08T20:31:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #127 from DLangellotti/blank-annotation
+
+fix(annotate): a text no word of which could be read is refused, not written blank&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f5f4e03e99025b1c06497e453421a80a4f68ada2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/f5f4e03e99025b1c06497e453421a80a4f68ada2"/>
+    <title>
+        feat(fetch): a host that refuses this address is tried once more thro…
+    </title>
+    <updated>2026-09-08T20:27:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(fetch): a host that refuses this address is tried once more through the egress
+
+Seven of the 42 Hebrew hosts probed on 2026-09-07 refuse the caller rather than the
+client — a browser User-Agent gets the same 403 — and one of them is the Ministry of
+Education&amp;#39;s news in easy Hebrew, which is the best learner text found anywhere.
+Nothing installed here answers that: the request has to leave from somewhere else
+(targum-internal#226).
+
+`TARGUM_FETCH_PROXY` is that somewhere, read per call so unsetting it is the whole
+rollback, with YouTube&amp;#39;s knob as the fallback — one account, two knobs, because an
+article is half a megabyte where a video is hundreds. The direct attempt always
+happens first and only a refusal is retried, so a 404 stays a 404 and is not paid for
+twice. `download()` never goes through it: a gigabyte-scale proxied fetch is the one
+thing here that could make a bill surprising.
+
+What came back says which door it came through. `Fetched.via` and `Unreachable.via`
+carry it, the chat records it on the host, and `reached.egress` keeps it — because
+&amp;quot;the site is reachable&amp;quot; and &amp;quot;the site is reachable from the egress we pay for&amp;quot; are two
+different facts, and so are &amp;quot;refuses us&amp;quot; and &amp;quot;refuses us even from there&amp;quot;. Schema 15,
+additive, and a row written before it reads `direct`, which is what it was.
+
+The client is handed the proxy explicitly and trusts no other: httpx honours
+`HTTP_PROXY` by default, which would route every fetch through a variable nobody meant
+as a targum setting while `via` still said direct — a bill and a lie at once.
+
+`targum preflight` gains a `fetch egress` line beside YouTube&amp;#39;s, redacting the
+credentials a residential proxy carries in its URL.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6bcc35422f64fc6afda303d48b542026e838efe0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/6bcc35422f64fc6afda303d48b542026e838efe0"/>
+    <title>
+        fix(annotate): a lemmatizer that answered no words has still read the…
+    </title>
+    <updated>2026-09-08T20:25:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(annotate): a lemmatizer that answered no words has still read the text
+
+Two scripture tests build an annotation with a stub that answers a key per segment
+and nothing in it, and the check refused them. It was asking the wrong question: a
+lemmatizer that answers is one that read the text and found nothing in it, which can
+be true of a real text. A lemmatizer that answers nothing at all was never in a
+position to read it, and that — every segment skipped before it, or by it — is the
+blank book this refuses.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3c72c6cdac7f890e83cab27b18a47ec7d8867be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/f3c72c6cdac7f890e83cab27b18a47ec7d8867be"/>
+    <title>
+        Merge pull request #126 from DLangellotti/mussar-shelf
+    </title>
+    <updated>2026-09-08T20:20:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #126 from DLangellotti/mussar-shelf
+
+feat(sefaria): a treatise of a complex work is chapters of verses like any other&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c458a30fc336d914c3a24f130ccabb7165f82dbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/c458a30fc336d914c3a24f130ccabb7165f82dbd"/>
+    <title>
+        fix(annotate): a text no word of which could be read is refused, not …
+    </title>
+    <updated>2026-09-08T20:15:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(annotate): a text no word of which could be read is refused, not written blank
+
+Two rules leave a block without tokens rather than let a model at a language it does
+not know: `unread`, and `ScriptureLemmatizer`, which skips Aramaic the tagging cannot
+place instead of handing it to the Hebrew fallback. Each is right about its own block.
+
+Neither is right about a document where every block goes that way. What gets written
+then is a reader in which not one word can be tapped, by a build that reported
+success — and Targum Onkelos is exactly that shape, which is why it is still not on
+the shelf (targum-internal#65). Measured today rather than read: the Onkelos path
+returns an empty annotation for every verse, with no error anywhere.
+
+`ScriptureLemmatizer.reads` predicted it in as many words — a whole book &amp;quot;would come
+out blank with nothing saying why&amp;quot;. This says why, where the Stanza path already
+refuses a language it has no models for, and in that path&amp;#39;s own words: build it
+without --words and read it with the translation only.
+
+A document with nothing to read in it — numerals, punctuation — is not refused, and a
+single unreadable block among readable ones is still only a gap.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

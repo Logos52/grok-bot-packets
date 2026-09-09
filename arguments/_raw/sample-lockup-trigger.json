@@ -1,0 +1,177 @@
+{
+  "contentImage": {
+    "thumbnailViewModel": {
+      "image": {
+        "sources": [
+          {
+            "url": "https://i.ytimg.com/vi/GUmdqdkSjfk/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBD6zfSX3I6izoVLDH0HKAs3hwztw",
+            "width": 360,
+            "height": 202
+          },
+          {
+            "url": "https://i.ytimg.com/vi/GUmdqdkSjfk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC256X-7cRmhwhjVIvLV3SEwB5XUg",
+            "width": 720,
+            "height": 404
+          }
+        ]
+      },
+      "overlays": [
+        {
+          "thumbnailBottomOverlayViewModel": {
+            "badges": [
+              {
+                "thumbnailBadgeViewModel": {
+                  "text": "8:52",
+                  "badgeStyle": "THUMBNAIL_OVERLAY_BADGE_STYLE_DEFAULT",
+                  "animationActivationTargetId": "GUmdqdkSjfk",
+                  "animationActivationEntityKey": "Eh8veW91dHViZS9hcHAvd2F0Y2gvcGxheWVyX3N0YXRlIMMCKAE%3D",
+                  "lottieData": {
+                    "url": "https://www.gstatic.com/youtube/img/lottie/audio_indicator/audio_indicator_v2.json",
+                    "settings": {
+                      "loop": true,
+                      "autoplay": true
+                    }
+                  },
+                  "animatedText": "Now playing",
+                  "animationActivationEntitySelectorType": "THUMBNAIL_BADGE_ANIMATION_ENTITY_SELECTOR_TYPE_PLAYER_STATE",
+                  "rendererContext": {
+                    "accessibilityContext": {
+                      "label": "8 minutes, 52 seconds"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "animatedThumbnailOverlayViewModel": {
+            "thumbnail": {
+              "sources": [
+                {
+                  "url": "https://i.ytimg.com/an_webp/GUmdqdkSjfk/mqdefault_6s.webp?du=3000&sqp=CLW0g9UG&rs=AOn4CLCqSYBkCJJJs3WmuSfWQfkI2Oog_A",
+                  "width": 320,
+                  "height": 180
+                }
+              ]
+            }
+          }
+        },
+        {
+          "thumbnailHoverOverlayToggleActionsViewModel": {
+            "buttons": [
+              {
+                "toggleButtonViewModel": {
+                  "defaultButtonViewModel": {
+                    "buttonViewModel": {
+                      "iconName": "WATCH_LATER",
+                      "onTap": {
+                        "innertubeCommand": {
+                          "clickTrackingParams": "CPoCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                          "commandMetadata": {
+                            "webCommandMetadata": {
+                              "sendPost": true,
+                              "apiUrl": "/youtubei/v1/browse/edit_playlist"
+                            }
+                          },
+                          "playlistEditEndpoint": {
+                            "playlistId": "WL",
+                            "actions": [
+                              {
+                                "addedVideoId": "GUmdqdkSjfk",
+                                "action": "ACTION_ADD_VIDEO"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "accessibilityText": "Watch later",
+                      "style": "BUTTON_VIEW_MODEL_STYLE_OVERLAY_DARK",
+                      "trackingParams": "CPoCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNP",
+                      "type": "BUTTON_VIEW_MODEL_TYPE_TONAL",
+                      "buttonSize": "BUTTON_VIEW_MODEL_SIZE_COMPACT",
+                      "state": "BUTTON_VIEW_MODEL_STATE_ACTIVE"
+                    }
+                  },
+                  "toggledButtonViewModel": {
+                    "buttonViewModel": {
+                      "iconName": "CHECK",
+                      "onTap": {
+                        "innertubeCommand": {
+                          "clickTrackingParams": "CPkCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                          "commandMetadata": {
+                            "webCommandMetadata": {
+                              "sendPost": true,
+                              "apiUrl": "/youtubei/v1/browse/edit_playlist"
+                            }
+                          },
+                          "playlistEditEndpoint": {
+                            "playlistId": "WL",
+                            "actions": [
+                              {
+                                "action": "ACTION_REMOVE_VIDEO_BY_VIDEO_ID",
+                                "removedVideoId": "GUmdqdkSjfk"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "accessibilityText": "Added",
+                      "style": "BUTTON_VIEW_MODEL_STYLE_OVERLAY_DARK",
+                      "trackingParams": "CPkCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNP",
+                      "type": "BUTTON_VIEW_MODEL_TYPE_TONAL",
+                      "buttonSize": "BUTTON_VIEW_MODEL_SIZE_COMPACT",
+                      "state": "BUTTON_VIEW_MODEL_STATE_ACTIVE"
+                    }
+                  },
+                  "isToggled": false,
+                  "trackingParams": "CPECENTEDCITCOaI_s_S4JYDFcBKTAgdB8kDTw=="
+                }
+              },
+              {
+                "toggleButtonViewModel": {
+                  "defaultButtonViewModel": {
+                    "buttonViewModel": {
+                      "iconName": "ADD_TO_QUEUE_TAIL",
+                      "onTap": {
+                        "innertubeCommand": {
+                          "clickTrackingParams": "CPgCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                          "commandMetadata": {
+                            "webCommandMetadata": {
+                              "sendPost": true
+                            }
+                          },
+                          "signalServiceEndpoint": {
+                            "signal": "CLIENT_SIGNAL",
+                            "actions": [
+                              {
+                                "clickTrackingParams": "CPgCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                                "addToPlaylistCommand": {
+                                  "openMiniplayer": true,
+                                  "videoId": "GUmdqdkSjfk",
+                                  "listType": "PLAYLIST_EDIT_LIST_TYPE_QUEUE",
+                                  "onCreateListCommand": {
+                                    "clickTrackingParams": "CPgCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                                    "commandMetadata": {
+                                      "webCommandMetadata": {
+                                        "sendPost": true,
+                                        "apiUrl": "/youtubei/v1/playlist/create"
+                                      }
+                                    },
+                                    "createPlaylistServiceEndpoint": {
+                                      "videoIds": [
+                                        "GUmdqdkSjfk"
+                                      ],
+                                      "params": "CAQ%3D"
+                                    }
+                                  },
+                                  "videoIds": [
+                                    "GUmdqdkSjfk"
+                                  ],
+                                  "videoCommand": {
+                                    "clickTrackingParams": "CPgCEPBbIhMI5oj-z9LglgMVwEpMCB0HyQNPygEEjrtm-Q==",
+                                    "commandMetadata": {
+                                      "webCommandMetadata": {
+                                        "url": "/watch?v=GUmdqdkSjfk",
+                                        "webPageType": "WEB_PAGE_TYPE_WATCH",
+                   

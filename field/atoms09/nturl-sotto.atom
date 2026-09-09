@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/nturl/sotto/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/nturl/sotto/commits/main.atom"/>
+  <title>Recent Commits to sotto:main</title>
+  <updated>2026-09-08T23:20:51Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61144f0b993a114c2f6c2ec4d3f47748e017c4ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/61144f0b993a114c2f6c2ec4d3f47748e017c4ab"/>
+    <title>
+        voice: the paid origin&#39;s mid-session recovery panels never offer a pe…
+    </title>
+    <updated>2026-09-08T23:20:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;voice: the paid origin&amp;#39;s mid-session recovery panels never offer a personal key
+
+recoveryPanelFor still handed the `settings` button (Use your own OpenAI key)
+to two cases regardless of origin: quota_exceeded and mic_unavailable. With
+cloud.enabled the panel now sends
+
+- quota_exceeded to Plan &amp;amp; usage (/usage), where the reset date and the
+  higher plans live, under its own copy: a subscriber has tutor minutes,
+  not an OpenAI account
+- mic_unavailable to Try again; the message and hint already point at the
+  browser&amp;#39;s mic permission
+
+The free build keeps every button it had. Remaining instance from the
+2026-09-08 sweep (55347de), found by the worker who made that change.
+495 client tests, tsc and prettier clean.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55347de3d2c02a4b68f2787e62c5595c4c282b84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/55347de3d2c02a4b68f2787e62c5595c4c282b84"/>
+    <title>
+        paid flow: land a new subscriber in the app, and never offer a person…
+    </title>
+    <updated>2026-09-08T23:13:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;paid flow: land a new subscriber in the app, and never offer a personal key on the paid origin
+
+- paywall: Stripe checkout opens in the same tab on web; it opened a second tab
+  and the first sat on Subscribe
+- account: a return from Stripe shows You&amp;#39;re in / Your tutor is on / Start reading
+  above the settings list; a signed-in visitor carrying returnTo is sent there
+  instead of to settings
+- voice: the paid build&amp;#39;s recovery panels drop Use your own OpenAI key; a failed
+  /me reads as unreachable rather than signed out, with its own message; the free
+  build&amp;#39;s tutor panel links a subscriber back to app.readsotto.app
+
+Traced 2026-09-08 after a new subscriber paid and could not find the tutor.
+493 client tests, tsc clean.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/12fe52fd50ed4727689487123925464c9190bfb7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/12fe52fd50ed4727689487123925464c9190bfb7"/>
+    <title>
+        design: the link card from a real shelf cover, the tile from the mark…
+    </title>
+    <updated>2026-09-08T23:13:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;design: the link card from a real shelf cover, the tile from the marked letter, a lit Sign in
+
+- og.png: direction A of the card-and-tile sheet with the app&amp;#39;s own raster cover
+  (Le Chat botté) and Cover.tsx&amp;#39;s band type; planning/design/og-card.mjs
+  regenerates it for any bookId; the meta tags carry ?v=2 so cached previews refresh
+- icon: paper, the reader&amp;#39;s mark, a Fraunces Light S outlined as a path; every
+  size rebuilt through build_icon.py and generate-pwa-icons.mjs
+- landing: the install section shows the real tile instead of a teal drawing;
+  the header&amp;#39;s Sign in is a peach pill with a halo, the one door back for a
+  subscriber who returns to the free origin
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3af8c450f3cf5103b8637fbbf09d16dd11b1bb73</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/3af8c450f3cf5103b8637fbbf09d16dd11b1bb73"/>
+    <title>
+        design: card and tile directions sheet, four bets, one from the cross…
+    </title>
+    <updated>2026-09-08T22:48:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;design: card and tile directions sheet, four bets, one from the cross-family pass
+
+Directions for the Open Graph link card and the PWA tile: A the cover, B the gloss,
+C the promise, D the masthead (GPT-6 Astra&amp;#39;s bet, rebuilt on the sheet&amp;#39;s tokens).
+Astra&amp;#39;s own sheet ships alongside for provenance. cleo_verify full run: 0 FAIL, the
+two-hue WARN is the specimens&amp;#39; own colours.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca1f1c65fb07f01886e0e96b3bccda3ab0a5a9aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/ca1f1c65fb07f01886e0e96b3bccda3ab0a5a9aa"/>
+    <title>
+        landing: re-shoot the two product screenshots from the live app
+    </title>
+    <updated>2026-09-08T22:13:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;landing: re-shoot the two product screenshots from the live app
+
+The Library shot predated the parchment cover catalog merge and still
+showed the previous cover art; both images now come from readsotto.app
+as deployed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee5136fe26d9d513403eb8c1dd6247285491c947</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/ee5136fe26d9d513403eb8c1dd6247285491c947"/>
+    <title>
+        planning(run10): Fly deployment record and two findings from Noel&#39;s walk
+    </title>
+    <updated>2026-09-08T21:54:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): Fly deployment record and two findings from Noel&amp;#39;s walk
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9204b884900849aafb3aa8793360bd0eabf9fe2a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/9204b884900849aafb3aa8793360bd0eabf9fe2a"/>
+    <title>
+        planning(run10): deployment record for the closeout items and the led…
+    </title>
+    <updated>2026-09-08T21:43:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): deployment record for the closeout items and the ledger addendum
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd870d8b55f2fc113472c508118e6ae72c82a20e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/dd870d8b55f2fc113472c508118e6ae72c82a20e"/>
+    <title>
+        planning(run10): FINAL §8, the five closeout items
+    </title>
+    <updated>2026-09-08T21:38:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): FINAL §8, the five closeout items
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3389ca8b4612783004dc1c55e9cada4943312c9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/3389ca8b4612783004dc1c55e9cada4943312c9f"/>
+    <title>
+        landing: comments follow the 1240px stage breakpoint
+    </title>
+    <updated>2026-09-08T21:38:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;landing: comments follow the 1240px stage breakpoint
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/afc989d9576d886c19cbc76422b77ae676d9335b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/afc989d9576d886c19cbc76422b77ae676d9335b"/>
+    <title>
+        landing: split the stage at 1240px so the two doors share a line besi…
+    </title>
+    <updated>2026-09-08T21:37:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;landing: split the stage at 1240px so the two doors share a line beside the book
+
+Noel wanted the doors side by side as in the lane&amp;#39;s preview. The copy column
+beside the sticky book is 332 to 444px at 900 to 1239px, which no button size
+fits, so the two-column stage now starts at 1240px with the book column
+trimmed to 1.05fr (copy 488px) and the doors at 15px type; measured 465px
+together on the live page. Below 1240 the page keeps the single column with
+the tab strip, where the doors already sit in one row.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcbd6a6bda6d580561f6af4825e52bb431483752</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/bcbd6a6bda6d580561f6af4825e52bb431483752"/>
+    <title>
+        planning(run10): record the 17-minute regression and the restore
+    </title>
+    <updated>2026-09-08T21:34:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): record the 17-minute regression and the restore
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b6309a58e2b955718243bc49474ba86f46d22c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/5b6309a58e2b955718243bc49474ba86f46d22c7"/>
+    <title>
+        merge: live trial price on the free app&#39;s Discuss gate
+    </title>
+    <updated>2026-09-08T21:33:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: live trial price on the free app&amp;#39;s Discuss gate
+
+The gate quotes GET /billing/plans from the paid origin (trial days, monthly
+and yearly price), with today&amp;#39;s strings as the fallback when the fetch
+fails. Lane report: planning/run10/PRICE-report.md.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/072fac5c679d8e87f4ba3e72aa4d6ae941a06a3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/072fac5c679d8e87f4ba3e72aa4d6ae941a06a3a"/>
+    <title>
+        planning(run10): price lane report
+    </title>
+    <updated>2026-09-08T21:32:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): price lane report
+
+What changed per file, the nine catalog edits, 482 client tests and 17/17
+Playwright checks, the landing page&amp;#39;s four hand-written prices left alone,
+and the five things worth a second look — first among them the split between
+the paywall&amp;#39;s formatter and the prose one.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ee1e1e62d3e2000950b686eeab0dc18df856d46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/2ee1e1e62d3e2000950b686eeab0dc18df856d46"/>
+    <title>
+        e2e: open &quot;Run it in this browser&quot; before tapping the download CTA
+    </title>
+    <updated>2026-09-08T21:30:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;e2e: open &amp;quot;Run it in this browser&amp;quot; before tapping the download CTA
+
+Since run 10 the free build&amp;#39;s Discuss gate keeps the model panel behind
+that choice, so discuss-quality.mjs and browser-tutor.mjs waited 45 s for
+a button that was never visible and then assumed the models were already
+installed. The run 9 acceptance probe scored 4/18 for that reason alone.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b82d047ddbcc28d97f09d6134c6a9e81e327c35</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/0b82d047ddbcc28d97f09d6134c6a9e81e327c35"/>
+    <title>
+        i18n: voice.trial takes the length and prices as placeholders
+    </title>
+    <updated>2026-09-08T21:27:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;i18n: voice.trial takes the length and prices as placeholders
+
+All nine catalogs keep their own sentence; only the numbers move out.
+`voice.trial.cta` becomes &amp;quot;{days} days&amp;quot; and `voice.trial.note` takes
+{monthly} and {yearly}, filled by useTrialOffer() from the live plan table.
+Same {var} grammar useT.ts already interpolates for keys like
+onboarding.progress and voice.browser.choiceNote.
+
+The two Chinese catalogs kept &amp;quot;$9.99&amp;quot;/&amp;quot;$79&amp;quot; inline and the six other
+non-English ones wrote &amp;quot;9,99 $&amp;quot;/&amp;quot;79 $&amp;quot; by hand; both now print whatever
+Intl.NumberFormat gives for the interface locale, so the amount and its
+currency marker stop drifting from each other.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6288464bd39607ee21f0193bcc5ad3d86de8842c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/6288464bd39607ee21f0193bcc5ad3d86de8842c"/>
+    <title>
+        feat(client): the free build&#39;s trial gate quotes the live plan
+    </title>
+    <updated>2026-09-08T21:27:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(client): the free build&amp;#39;s trial gate quotes the live plan
+
+readsotto.app has no CloudAdapter, so its Discuss gate could not ask what a
+subscription costs and hard-coded the answer: &amp;quot;3 days&amp;quot;, &amp;quot;$9.99 a month or
+$79 a year&amp;quot;, written out in nine catalogs. A price change was a copy edit in
+nine files that someone would forget.
+
+The paid service already answers `GET /billing/plans` to anyone, no auth, off
+the same plan table Stripe charges against. The gate now reads it:
+
+- src/cloud/trialOffer.ts — `pickTrialOffer` (pure: first plan priced above
+  zero, the same rule the paywall&amp;#39;s card uses; `trialDays` or 3),
+  `FALLBACK_TRIAL_OFFER` as the client&amp;#39;s one remaining hard-coded price, and
+  `useTrialOffer()`, which fetches once per app session (credentials omitted,
+  4 s abort) and returns the fallback until the live values land. Offline, a
+  500, a body that isn&amp;#39;t a plans response, or a slow request all resolve to
+  the fallback — silently, with no console noise on a stranger&amp;#39;s first screen.
+- src/cloud/priceFormat.ts — the paywall&amp;#39;s `Intl.NumberFormat` lifted out so
+  both screens format a price in one place. `formatUsd` is the paywall&amp;#39;s,
+  byte-identical to before (always cents). `formatUsdCompact` is for prose,
+  where &amp;quot;$79.00 a year&amp;quot; reads like a form field.
+
+Nothing else on the voice screen changes, and the paywall keeps reading
+`cloud.plans()` exactly as it did.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c613d40e069f6fd63c9e22fb28bd5acfd305b7d2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/c613d40e069f6fd63c9e22fb28bd5acfd305b7d2"/>
+    <title>
+        docs(run10): MERGEFINAL report — the two prompt conflicts, both sides…
+    </title>
+    <updated>2026-09-08T21:27:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(run10): MERGEFINAL report — the two prompt conflicts, both sides quoted, and the proof
+
+Records how packages/core/src/prompt.ts and prompt.test.ts were resolved when
+merge/security met the run 9 line: the security branch&amp;#39;s fencing moved into
+run 9&amp;#39;s shared renderDynamicContext so both prompts get it, the compact
+prompt&amp;#39;s eleven rules left byte-identical, and GOLDEN_NON_COMPACT regenerated
+for the fence (four lines per mode, quoted).
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec1b579eea25f69cd4ec6118a9afe211e5683d69</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/ec1b579eea25f69cd4ec6118a9afe211e5683d69"/>
+    <title>
+        merge: security hardening onto the run 9 line (final main candidate)
+    </title>
+    <updated>2026-09-08T21:24:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: security hardening onto the run 9 line (final main candidate)
+
+Merges `merge/security` (0453827 — the 2026-09-07 audit fixes on top of main
+b2b65fc) into `merge/run9` (c6eb248 — run 9&amp;#39;s Discuss-tutor work on top of the
+same main). Merge base b2b65fc, so the security side of this merge is exactly
+`security/hardening-2026-09-07`. Git reported two conflicts; both are in
+packages/core.
+
+packages/core/src/prompt.ts
+  Both sides edited `buildSystemInstruction`&amp;#39;s tail. The security branch
+  (fde8a89) fenced the session-context block where it still lived — inline in
+  that function — wrapping the passage in `=== BOOK TEXT ===` /
+  `=== END BOOK TEXT ===` and running `fenceSafe` over the book title, chapter
+  title, sentence text, word text, saved words and turn summary. run 9 lane B
+  had already lifted that same block out into `renderDynamicContext()` so the
+  compact prompt for the in-browser 2B model could reuse it, and the tail was
+  reduced to a call.
+
+  Resolved by moving the security branch&amp;#39;s fencing into
+  `renderDynamicContext()`, not by taking either tail. Consequence: the fence
+  and both neutralisations now apply to BOTH prompts. Proven, not asserted —
+  a scratch suite built all four modes from this file and from each parent&amp;#39;s:
+  the non-compact output is byte-identical to merge/security&amp;#39;s for every mode,
+  and the compact output differs from merge/run9&amp;#39;s only by the fence.
+
+  The compact prompt&amp;#39;s eleven numbered rules are byte-identical to
+  merge/run9&amp;#39;s in every mode: order, count, the reply contract, rule 6&amp;#39;s
+  `[[reading:]]` allowance and rule 3&amp;#39;s current wording are all untouched.
+  The one sentence added to compact is the security branch&amp;#39;s own fence line,
+  verbatim, appended to the head above the session context — the same position
+  it holds in the full prompt. Without it the compact prompt would carry fence
+  markers with nothing saying what they are, and fde8a89&amp;#39;s `[[reading:]]`
+  forgery finding is reachable precisely on that path (imported EPUB -&amp;gt;
+  browser tutor -&amp;gt; markers.ts).
+
+packages/core/src/prompt.test.ts
+  Both sides appended a describe block at EOF. Kept both, in order: run 9
+  lane B&amp;#39;s compact suite and GOLDEN_NON_COMPACT fixture, then the security
+  branch&amp;#39;s &amp;quot;untrusted passage text is fenced as data&amp;quot; suite. The security
+  branch&amp;#39;s raise of the prompt-length ceiling (4600 -&amp;gt; 4800, for the fence)
+  auto-merged and is kept.
+
+  GOLDEN_NON_COMPACT had to be regenerated: the fence changes the non-compact
+  bytes it pins, which is exactly the deliberate prompt change its docstring
+  says to regenerate for. Four lines added per mode and nothing else — the
+  two-line fence rule after &amp;quot;...wait through natural pauses.&amp;quot;, and the
+  `=== BOOK TEXT ===` / `=== END BOOK TEXT ===` markers around the sentence
+  lines. Recorded in the docstring with the commit that caused it.
+
+No security fencing test and no run 9 golden test had to be traded off:
+packages/core/src/prompt.test.ts is 44/44.
+
+Proof: typecheck clean; `pnpm test` 105 files / 1076 tests / 0 failed
+(merge/run9 1062 + the security branch&amp;#39;s 14); `npx vitest run packages/core`
+81/81; `npx vitest run apps/server` 111/111; `pnpm lint` 0 errors / 27
+pre-existing warnings; prettier clean on both resolved files;
+`pnpm content:validate` 0 errors / 223 pre-existing warnings; `web:export`
+exit 0; `BASE_URL=http://localhost:8092 node e2e/hosted.mjs` RESULT PASS with
+TAPS landing -&amp;gt; reader = 4 at 375 and 1440, run twice.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/084dabd428378da5b598c3cd0f7d7aa4150e3807</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/084dabd428378da5b598c3cd0f7d7aa4150e3807"/>
+    <title>
+        planning(run10): second merge report — main b2b65fc into the run 9 line
+    </title>
+    <updated>2026-09-08T21:16:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;planning(run10): second merge report — main b2b65fc into the run 9 line
+
+Resolution per conflict (protocol.ts union, worker.ts SessionState /
+transcribeSegment / init, and the semantic prompt-vs-golden one git did not
+see), which privacy case applied for the push-to-talk pre-roll and the line
+that proves it, the full proof table, and four things worth a second look.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6eb2480f0a2124f0605f065a5851c111c051073</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nturl/sotto/commit/c6eb2480f0a2124f0605f065a5851c111c051073"/>
+    <title>
+        merge: main (origin PRs #1-#5 and run 10) into the run 9 line
+    </title>
+    <updated>2026-09-08T21:14:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34818653?s=30&amp;v=4"/>
+    <author>
+      <name>nturl</name>
+      <uri>https://github.com/nturl</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: main (origin PRs #1-#5 and run 10) into the run 9 line
+
+`main` moved to b2b65fc while merge/run9 was in flight — origin/main&amp;#39;s PRs
+#1-#5 (UX findings, capture gate by explicit mute and push-to-talk intent,
+service-worker refresh per build, awaited streamed speech handlers, imported
+narration, parchment covers) merged onto run 10. Two textual conflicts, both
+in packages/voice/src/browser-cascade, plus one semantic conflict git could
+not see, in packages/core/src/prompt. Nothing was taken wholesale.
+
+1. protocol.ts, MainToWorker union. Both sides appended a member next to
+   `ptt`: main&amp;#39;s `turn_detection`, run 9&amp;#39;s documented `playback_drained`.
+   Kept both, main&amp;#39;s first. `WorkerInitPayload`&amp;#39;s new `turnDetection`/`muted`
+   auto-merged.
+
+2. worker.ts, three hunks.
+   - SessionState: kept main&amp;#39;s `inputGeneration` epoch and run 9&amp;#39;s
+     `speaking` flag; the epoch gets the doc comment it never had.
+   - transcribeSegment head: main&amp;#39;s `session.muted` bail and the
+     `s`/`generation`/`current()` epoch capture FIRST, then run 9&amp;#39;s
+     `measureSegment` stats. A segment that arrives after the learner muted
+     is not measured, let alone transcribed. main&amp;#39;s three `if (!current())
+     return;` guards and `loadStt(s.payload.stt, &amp;#39;wasm&amp;#39;)` auto-merged and
+     were checked, as did run 9&amp;#39;s transcript gate and its `too_short` drop.
+   - init: main&amp;#39;s `muted: msg.payload.muted ?? false`, `inputGeneration: 0`
+     and `turnMode: msg.payload.turnDetection ?? &amp;#39;auto&amp;#39;` plus run 9&amp;#39;s
+     `speaking: false`.
+
+   The `ptt` case auto-merged into exactly the wanted shape and was kept:
+   main&amp;#39;s `if (session &amp;amp;&amp;amp; !session.muted)` guard and `turn_detection` case
+   around run 9&amp;#39;s `buffer.start(PTT_PRE_ROLL_MS)` and `too_short` drop. The
+   pre-roll keeps its missing `clear()` because the capture gate&amp;#39;s first
+   case applies — the buffer cannot hold audio recorded while muted.
+   `handleFrame` returns early on `session.muted` (worker.ts:1009-1010), the
+   provider disables capture whenever muted (provider.ts `syncCapture`),
+   `CaptureGate` drops callbacks while disabled, and the `mute` case clears
+   the buffer on the way in. The first press after unmuting therefore has an
+   empty pre-roll rather than a replay of the muted period. Recorded in a
+   comment at the call site.
+
+3. prompt.ts / prompt.test.ts (no conflict markers; the test suite found
+   it). 3669ff5 deliberately rewrote the non-compact prompt&amp;#39;s
+   response-language sentence, and run 9&amp;#39;s GOLDEN_NON_COMPACT fixture pins
+   those bytes for all four modes. Regenerated the fixture — the guard did
+   its job by failing on a deliberate change, which is what its docstring
+   asks for — and carried the same priority into compact rule 3, so the
+   in-browser tutor, the only caller of the compact prompt, keeps 3669ff5&amp;#39;s
+   behaviour instead of silently reverting it.
+
+Both sides&amp;#39; streamed-speech contracts survive unchanged: ff9560e&amp;#39;s awaited
+`onTextDelta` on the server (llm.ts) auto-merged, run 9 having made no
+server change, and the browser worker&amp;#39;s own `await handlers.onTextDelta`
+still sits inside cd326af&amp;#39;s draining loop, so run 9&amp;#39;s sentence cap aborts
+through `interruptGenerate()` and the `finally` awaits it before `chat()`
+resolves — the cap does not skip the await and the await does not resurrect
+the WebLLM lock leak.
+
+Proof: pnpm typecheck clean; pnpm test 105 files / 1062 tests, all green
+(merge/run9 alone 1046, main alone 856); @sotto/voice 18 files / 299 tests;
+@sotto/client 48 files / 459 tests; eslint 0 errors tree-wide; prettier
+clean on the resolved files; content:validate 0 errors / 223 warnings;
+hosted smoke RESULT PASS with TAPS landing -&amp;gt; reader = 4 at 375 and 1440.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

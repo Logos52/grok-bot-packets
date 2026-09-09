@@ -1,3 +1,149 @@
+## List · pinned shows · pass 2026-09-09 (noon Asia/Taipei)
+Window: since last clock 2026-09-08. Usage: LIST + newest missing (All-In Flock CEO Garrett Langley 2026-08-18). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In newest full still 2026-09-04 GPT-6; YT shorts/clips only).
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0, SF Mansion Shortage, NYC Bans AI in Schools & Venezuela Oil Deal · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- on disk 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up · https://www.youtube.com/watch?v=Sij_v-mcZXQ
+- **ingested** 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety · 55:57 · packet `/workspace/recap/2026-08-18-all-in.md` · https://www.youtube.com/watch?v=5BWuvjGLMik · libsyn https://allinchamathjason.libsyn.com/flock-ceo-garrett-langley-on-controversy-surveillance-state-claims-and-privacy-vs-safety
+- missing 2026-08-14 · Anthropic's $2T IPO…
+- missing 2026-08-13 · Rahm Emanuel…
+- missing 2026-08-08 · Google's AI Brain Drain…
+- missing 2026-08-05 · Saronic Founders…
+- skipped since last pass: All-In YT clip dumps / shorts (e.g. 2026-09-08 Chamath: Your AI Data Is NOT SAFE · vkAAAVtZwqc · 0:49; Jason: OpenAI's "Sentient AI" Hype… · ojVOeGL-Snc).
+- nothing new full-episode since last pass; pulled newest missing.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- nothing new since last pass.
+
+### Fern · English @fern-tv
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- nothing new since last pass.
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- nothing new since last pass.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- channel noise: shorts only on Shorts tab (How Taiwan built a chip city #business · UBiT14hsgKA; reusable rocket · DPbMOC0k-OM; Same car for 30 years · ZL-70QvCNfY; Ask 10 people what socialism is · O8PXdwknlfU; A refinery in the sky · _-Tb5c-C7Rs) — skipped. No newer shorts than last pass's top.
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- nothing new long-form since last pass.
+
+### Elon sit-downs
+- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny. US-Saudi Investment Forum remarks / ASML internal virtual talk are not sit-down interviews — skipped. Skip BBC wraps / daily X (→ Brief).
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (newest still 2026-07-02 Live in the Future).
+
+### Frontpage · English @frontpagechannel
+- in sources; not on this clock's LIST set (routine names All-In, Maxinomics, Justin Sung, Elon, Fern, Moon). Not scanned for ingest this pass.
+- note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk). Shorts noise (The State Of Britain's Economy · j6pOiqnVhVc; The Most Corrupt City In America · BWY6xwd_Mz4; Why Amazon Did Not Choose Chicago · -_2sXUMSOng; Why These Companies Left Illinois · hs3XM84lK5Y).
+
+Footer: listed 2026-09-09 ~12:00 Asia/Taipei (fired 11:19 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos HTML on the box · Flock captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
+
+---
+
+## Ingest · All-In · 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety
+url: https://www.youtube.com/watch?v=5BWuvjGLMik + https://allinchamathjason.libsyn.com/flock-ceo-garrett-langley-on-controversy-surveillance-state-claims-and-privacy-vs-safety  ·  length: 55:57  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**The most controversial company in privacy right now, Flock CEO joins the show! (0:00)**
+- 00:00 · Jason · Solo All-In interview framing: safety vs privacy; Garrett Langley (Flock) is the guest; Jason discloses past Twist interview (~6–7 yrs), tried to invest, not a shareholder.
+- 02:33 · Garrett · Founded ~9 yrs ago to make neighborhoods safer; core product is ALPR still-image cameras (plate + attributes like roof rack / bumper sticker / dent); last year: >1M crimes solved, >10k missing people found (dementia grandparents to kids); Atlanta example last week: stolen car with 2-year-old returned within the hour via APD + Flock.
+- 03:52 · Garrett · July alone: ~1,125 missing people, >20k stolen cars recovered via system; footprint ~6,000+ cities; debate is which society we want — safer while keeping privacy is hard.
+- 04:19 · Jason · Dirty-cop / Sopranos trope (gambling debt → plate runs); Facebook engineer stalking precedent; asks how communities install Flock and what is recorded / retained / audited / not recorded.
+- 05:38 · Garrett · Hard local-gov sales (last local-gov IPO ~20+ yrs ago); city councils decide every ~2 weeks; Flock attended ~10k council meetings last year; Jersey Village TX first-chief vote still public record.
+- *(skipped AppLovin sponsor ~01:43–02:25)*
+
+**License plate data retention: 7 days solves 90% of crimes (7:23)**
+- 07:22 · Garrett · Data treated as liability not asset; retention drives efficacy (1–2 days weak; 30 days strong; 1 year stronger); democratically elected councils/states set retention and sharing; default was 30 days, recently shifted to 7 days; providers must set strong defaults.
+- 08:42 · Garrett · Aggregate: ~90% of crimes solvable with 7 days of data; the remaining ~10% are the headlines — delayed-discovery homicide, rape victim who waits a week to call 911 — victims deserve accountability.
+- 09:34 · Garrett · Of that last 10%, majority would resolve with 30 days; NJ state law = 5 years retention for every customer; CA/WA and most states now set max retention; mayors/councils should consult chiefs; even 2–3 days still solves Amber/Silver alerts.
+- 11:42 · Jason · Personal Unity cameras + LPR + facial on semi-private property overlooking access roads (legal in Austin); asks if other systems already record full video of everyone entering private communities.
+- 12:08 · Garrett · Flock does **not** do facial recognition, does **not** capture video, does **not** look inside the car, does **not** allow people-search on license cameras — competitors do those things; as industry leader wants privacy-first defaults to force competitors to follow.
+
+**Camera vandalism, felony charges, and privacy concerns (13:00)**
+- 13:00 · Jason · People ripping cameras down (US + UK); after kids Jason prioritizes security over plate privacy; concerns on facial; criticizes Flock calling vandals "terrorists" — better frame = activists; vandals often misunderstand product (think permanent records + facial).
+- 14:44 · Garrett · Admits communication mistakes; vandals amped on TikTok/Instagram; felony risk (Ohio/Illinois arrest facing ~15–20 years); influencers get likes while cut cameras break Amber Alerts; prefers people fight at city council over committing felonies.
+- 16:01 · Garrett · Some cities removed Flock after backlash — "disheartening" to choose less safety; privacy-only and safety-only camps both wrong; democracy = common ground; safety as Maslow fundamental; unequal felt safety by wealth/race/sex — government obligation to equalize.
+- 17:23 · Jason · Common ground with privacy folks? Opt-out? Max retention window? Audit trail vs dirty-cop selling plates to mob?
+
+**Dirty cops exposed: Flock's audit tool got 9 Georgia officers fired (18:15)**
+- 18:13 · Garrett · Was "optimistic"/trusted Atlanta PD; critics' root issue often "I don't trust the police at all"; power (CEOs/electeds/cops) correlates with abuse risk.
+- 19:31 · Garrett · Old audit log assumed enough (industry norm); large SoCal agency: ~1k officers/day × 5–6 searches → impossible for one person to review; built **Audit Assistance** ~4 months ago using patterns from ~1M solved crimes + <12 known abuses over 8 years.
+- 20:23 · Garrett · Abuse example: repeat same-plate searches without hot-listing (stalking pattern vs real case where tag goes on shared hot list); tool caught "a ton" of bad cops; Georgia chiefs publicly fired **9 officers** for abusing the system — now **mandatory** (not just default) for customers.
+- 22:09 · Jason · Even 1% dirty cops → hundreds in NYC/LA-scale departments; Flock is a honeypot; proposes dual-key / sergeant approval + second review for searches.
+- 23:29 · Garrett · Dual-key is on the whiteboard; hard for tiny TX departments (~20 officers / 2k population) with slim logs — defaults may need big-city vs small-town tiers (like academy length differences); abuse is industry-wide (CA: 7k reported state-database abuses last year).
+- 25:14 · Jason · Tech providers of privacy-sensitive tools can't "just sell a tool" like tasers/laptops — Americans uniquely value privacy; Flock must own customer misuse.
+- 26:33 · Garrett · Responsibility evolved: electeds rely on chiefs who rely on vendors → strong defaults + democratic override; lead candidate takes the arrows.
+- 27:26 · Jason · Ring (Jamie Siminoff) Super Bowl "lost dog" feature backlash → feature turned off; asks AI opportunity vs China police-state fear.
+- 28:16 · Garrett · Ring is a "friendly" not competitor (same mission); both underestimated concern; intentionally going slow on AI vs rip-and-launch features.
+- *(skipped Numeral sales-tax sponsor ~26:05–26:33)*
+
+**AI, drones, facial recognition, and avoiding predictive policing (28:25)**
+- 28:42 · Jason · China CCP police-state facial/behavior tracking is triggering; asks practical AI features detectives want vs privacy line.
+- 29:34 · Garrett · Cautionary parallel: AI 911 bots (hallucination risk catastrophic vs booking a flight); cities lean in for budget/staffing — already bad cases; smarter: AI only when phone lines fully busy (not flipping a switch). Flock does **not** handle 911 calls.
+- 30:51 · Jason · Pattern AI (car casing houses vs burrito delivery) → Minority Report predictive policing.
+- 31:17 · Garrett · Explicitly refuses: "we never want to be a company that defines suspicion" — human-in-the-loop for public safety; any future AI needs third-party attestation that it makes officers more effective **and** less likely to get the wrong person; go deliberately slow.
+- 32:35 · Jason · ~60–70 of ~6,000 cities (~1%) walked away after protests.
+- 33:01 · Garrett · Most exits on misinformation (e.g. city googled "ALPR facial recognition," saw a **competitor** site, blamed Flock); WA city turned cameras off → next weekend boy shot, cold case locally — neighboring city with Flock found the car/arrest (child died; family at least got justice).
+- 34:48 · Jason · Predicts cities will re-address as audits/defaults improve; Austin canceled/didn't renew ~2025, then teens (15–17) committed crimes, fled to Manor PD (had Flock), arrested in 28 hours — debate restarted; ACLU wants ~48 hours (Jason: reasonable); cops prefer ~30; communities likely 7–14.
+- 36:33 · Garrett · ~**20 cities already turned cameras back on** after feeling less safe; would rather lose customers who refuse accountability than keep them — competitors run more reckless without tools/scrutiny and it will catch up.
+- 38:17 · Garrett · ALPR also indexes vehicle attributes (dents, color, make/model) because 911 callers rarely remember plates — Atlanta homicide: missing back-right hubcap in a 15-minute window started the investigation; SF crime/stolen-vehicle drop is "Flock effect" plus stronger DA/chief/enforcement — one piece of a bigger safety stack.
+
+**Safety is a privilege and who actually needs Flock (39:43)**
+- 39:43 · Jason · SF live-and-let-live / Summer-of-Love culture hit crime limit; privilege frame: gated community + private security + Ring means you can dismiss public safety tech; stop-and-frisk (4th Amendment overreach) was most favored by poorest communities who lived the crime; Park Heights gets swarmed by cops/private security for one "wrong" car.
+- 42:13 · Garrett · Agrees: opponents often already have gates/guards/cameras; supporters lack other protection and don't feel safe at night.
+- 43:06 · Jason · Would offer average families gated community — nearly all would take it if affordable; as parent OK with community LPR up to ~30 days; national Flock database + gov facial = bridge too far.
+- 44:28 · Garrett · Illinois antagonist elected official became advocate after political violence (shot at house) solved via Flock camera; "you don't get to pick when you're the victim of violence"; hope minority anti-safety pressure doesn't dictate less-safe society.
+
+**Flock's PR crisis: internal morale, churn, and 20 cities turning the cameras back on (45:36)**
+- 45:36 · Jason · Asks how far through PR disaster / company-killing risk.
+- 46:13 · Garrett · Biggest hit = internal morale (X/Reddit anger at things Flock doesn't do); silver lining: closer to customers — one chief: "best thing since DNA"; business still growing after raise; churn went from ~0% → ~1%; fighting to communicate better / listen more because safety demand is permanent (Maslow).
+- 47:31 · Jason · Compare Zuck always playing defense on IG teen harm / political subversion — better to get ahead with empathy (age gates, open-source agents leveling field); viral stories demand CEOs anticipate and own issues; asks if Garrett reached out after Tucker Carlson demolition.
+- 48:50 · Garrett · Not reaching out to Tucker; did Today Show / GMA — go where communities listen; long road ahead.
+- 49:42 · Garrett · Drones = fastest-growing unit; LPR still just under ~50% forward revenue; also live video + software. Drone docks on precinct/fire roofs; 911 → drone first. DFW gas-station case: woman reports man with gun → drone at 400 ft / 60 mph / 40× zoom arrives <1 min — it was a toy lighter; call-back calms her; avoids blue-lights/gun-drawn escalation. Thousands of such safety (not just crime) stories.
+- 51:26 · Jason · Wants third-party auditor (EY-for-drones) so dirty cops can't stalk exes; safeguards: 911-only launches?
+- 52:19 · Garrett · Next chapter for LE: implement drones better than body cams / non-lethals history; city managers already can see audit logs + flight patterns; transparency portals (cameras, drones, flights) with lag for active investigations; industry must set defaults soon — little state / zero federal regulation beyond air safety.
+- 54:30 · Garrett / Jason · Retention extremes: New Hampshire **3 minutes** ("Live Free or Die"); NY state **21 days**; WA also cited in retention discussion.
+- 54:56 · Jason · Closes: community choice is the high-order bit — turn off, set 48 hours, or keep with caps; wishes Garrett luck in controversial space.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 08:42 Garrett: "We think 90% of crimes will get solved within seven days of data retention."
+- 21:42 Garrett (quoting GA chief): "I fired nine officers today."
+- 31:17 Garrett: "We never want to be a company that defines suspicion."
+- 36:33 Garrett: "We've had close to 20 cities already turn their cameras back on."
+- 37:24 Garrett: "If a customer doesn't want to be held accountable, I don't think I want them as a customer."
+- 44:53 Garrett: "You don't get to pick when you're the victim of violence."
+
+### One paragraph
+Jason Calacanis solos an All-In interview with Flock CEO Garrett Langley on ALPR safety vs privacy: Flock is in ~6,000+ cities with claimed >1M crimes solved and >10k missing found, recently defaulting retention from 30→7 days (~90% of crimes solvable in that window) while insisting elected councils set policy and Flock itself refuses facial recognition, in-car video, and people-search that competitors offer. After vandals and city opt-outs fueled by misinfo (including councils googling competitor facial-recognition pages), Garrett describes a new mandatory Audit Assistance tool that flagged abuse patterns and led Georgia chiefs to fire nine officers, accepts vendor responsibility beyond "just a tool," and refuses predictive-policing AI that would "define suspicion," preferring human-in-the-loop and third-party attestation. ~20 cities have already turned cameras back on after crime spikes (Austin teens caught via Manor Flock; WA cold-case neighbor assist); privilege frame — gated/private-security households dismiss public LPR while poorer communities need it — plus Illinois antagonist-turned-advocate after a Flock-solved attack on her house. PR hit is mostly morale/1% churn not existential; drones (fastest-growing unit; LPR still <~50% forward revenue) star in a DFW "gun" that was a lighter story, with transparency portals and lagging flight logs as the next accountability fight under thin state/zero federal rules (NH 3-minute vs NY 21-day retention extremes).
+
+### Footer
+canary: published 2026-08-18T00:47:00Z RSS / YT 2026-08-17T18:06:43-07:00 lengthSeconds 3357 (55:57) · fetched 2026-09-09T04:24:00Z (2026-09-09 11:24 ICT) · text path: /workspace/recap/tmp-allin-0818/captions.txt — Android innertube English asr timedtext (first-party; no ASR on box) · chapters yes (7 official) · skipped stretch: AppLovin ~01:43–02:25; Numeral ~26:05–26:33; no Creative Planning / Conservation Fund / Summit plugs found in captions
+
+---
+
 ## List · pinned shows · pass 2026-09-08 (noon Asia/Taipei)
 Window: since last clock 2026-09-07. Usage: LIST + newest missing (All-In Dario Defends Himself 2026-08-21). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In YT posts since Sep 4 are still clip dumps ≤2:00).
 
@@ -668,53 +814,3 @@ Front Page traces how nickel hamburgers for Wichita factory workers became a lux
 canary: published 2026-09-03T12:00:07-07:00 (2026-09-04 02:00 ICT) · fetched 2026-09-05T04:34:37Z (2026-09-05 11:34 ICT) · seen index updated · text path: official YouTube watch page via WebFetch saved to /workspace/recap/tmp-frontpage/captions.txt (6946 words) · no ASR on the box · no yt-dlp · no timedtext API · no third-party transcript sites · chapters no (none in watch HTML / player response) · lengthSeconds 2447 (40:47) from official watch HTML · skipped stretch: Morgan & Morgan Meta/YouTube quiz mid-roll; DollarWise budgeting mid-roll; end channel membership/join ask
 
 ---
-## List · pinned shows · window 2026-08-03 ICT → 2026-09-03
-Window: since 2026-08-03 00:00 ICT. Clock still off. Full catch-up would blow weekly included usage, so this pass ingests Moon (first pin video) + newest missing All-In + newest missing Fern. Rest listed, not ingested.
-
-### Moon · new pin · https://www.youtube.com/@Moon-Real/videos
-Long-form English essays. Skip shorts, clip dumps, clones.
-- **ingesting** 2026-09-01 · George Orwell Tried To Warn You · 50:10 · https://www.youtube.com/watch?v=daQAhruFG40
-- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
-- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
-- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
-- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
-- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
-- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
-
-### All-In · rss libsyn + YT @allin
-- on disk 2026-08-24 · Michael Kratsios · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
-- **ingesting** 2026-08-29 · Nvidia's Historic Quarter, SaaS Comeback, Bessent vs Druck, America's Debt Crisis, Cancer Vaccine · https://www.youtube.com/watch?v=1u5dMAKl_ks
-- missing 2026-08-26 · Eric Weinstein: The State of American Science… · libsyn 2026-08-26
-- missing 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up
-- missing 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety
-- missing 2026-08-14 · Anthropic's $2T IPO, Zuck's AI Manifesto, Nvidia's $500B AI Bet, Grok's Comeback
-- missing 2026-08-13 · Rahm Emanuel: Trump's Foreign Policy, China, Europe's Decline, Immigration & DSA vs Democrats
-- missing 2026-08-08 · Google's AI Brain Drain, SpaceX's Huge Quarter, Airtable's 90% Collapse, US Data Fuels China AI
-- missing 2026-08-05 · Saronic Founders: Autonomous Warships, China's 230X Advantage & Swarms of Robot Ships
-- skipped: All-In YouTube clip dumps of the same episodes (not the full show).
-
-### Fern · English @fern-tv
-- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
-- **ingesting** 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
-- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
-- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
-- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
-
-### Justin Sung · @JustinSung
-- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
-- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
-- missing 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
-- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
-- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
-
-### Maxinomics · @Maxinomics
-- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
-- nothing new long-form. Skipped shorts: 2026-08-12 Same car for 30 years (short aspect); 2026-08-11 Ask 10 people what socialism is (0:66); 2026-08-04 A refinery in the sky #space #business (2:09).
-
-### Elon sit-downs
-- nothing new in the window. On disk outside window: 2026-07-23 Economist × Zanny. Skip BBC wraps.
-
-### Naval
-- parked since 2026-07-02. Did not publish in the window.
-
-Footer: listed 2026-09-03 19:50 ICT · feeds via official RSS/atom on the box · All-In WebFetch 500, curl RSS worked · no Arguments pins · no clock

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Mohammed-Abdelaziem/hifz-trainer/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commits/main.atom"/>
+  <title>Recent Commits to hifz-trainer:main</title>
+  <updated>2026-09-08T21:52:12Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ac1e36381c80e170d5f10093ad72a8afd831b46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/2ac1e36381c80e170d5f10093ad72a8afd831b46"/>
+    <title>
+        Merge branches &#39;main&#39;, &#39;dev&#39; and &#39;feature/oauth&#39; of https://github.co…
+    </title>
+    <updated>2026-09-08T21:52:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branches &amp;#39;main&amp;#39;, &amp;#39;dev&amp;#39; and &amp;#39;feature/oauth&amp;#39; of https://github.com/Mohammed-Abdelaziem/hifz-trainer&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da51bc52a4a3f7e3007f66f8dffa220501ee4367</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/da51bc52a4a3f7e3007f66f8dffa220501ee4367"/>
+    <title>
+        chore: track .env.example with all required env vars
+    </title>
+    <updated>2026-09-08T21:50:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: track .env.example with all required env vars
+
+- Un-ignore .env.example in .gitignore
+- Document: NEXT_PUBLIC_APP_URL, GOOGLE_CLIENT_ID/SECRET,
+  GITHUB_CLIENT_ID/SECRET, HF_API_KEY&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0e4457cf70aea780c7898660a939821a517edd8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/e0e4457cf70aea780c7898660a939821a517edd8"/>
+    <title>
+        Merge pull request #27 from Mohammed-Abdelaziem/feature/oauth
+    </title>
+    <updated>2026-09-08T21:31:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #27 from Mohammed-Abdelaziem/feature/oauth
+
+fix: resolve all lint errors for CI&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5ddc2a15bf675ea442105fcb6e8e8de8e91c7bd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/c5ddc2a15bf675ea442105fcb6e8e8de8e91c7bd"/>
+    <title>
+        fix: resolve all lint errors and warnings for CI
+    </title>
+    <updated>2026-09-08T21:30:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: resolve all lint errors and warnings for CI
+
+- Remove unused SURAH_NAMES from sitemap.ts
+- Remove unused getSurahAudioUrl import from use-audio-engine.ts
+- Remove unused _opts param from TajweedRecorder test mock
+- Remove unused error variable in tajweed route
+- Fix prefer-const for score in tajweed route
+- Rename unused destructured params with _ prefix (QuranAudioBar)
+- Remove unused remainingAttempts from auth.ts login
+- Add eslint config argsIgnorePattern for _ prefix
+- Replace window.location.href with router.push in ReaderWorkspace
+- Add eslint-disable for intentional set-state-in-effect patterns
+- Add router to dependency array in ReaderWorkspace effect&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7000ec012b5dd7b1af9455af59bb04abcfed6ecf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/7000ec012b5dd7b1af9455af59bb04abcfed6ecf"/>
+    <title>
+        Merge pull request #26 from Mohammed-Abdelaziem/feature/oauth
+    </title>
+    <updated>2026-09-08T21:23:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #26 from Mohammed-Abdelaziem/feature/oauth
+
+security: fix all audit findings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc0355e5d46bc13a418c6b1365f27bdd8bd4a040</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/cc0355e5d46bc13a418c6b1365f27bdd8bd4a040"/>
+    <title>
+        security: fix all audit findings — CSRF, auth, input validation, a11y
+    </title>
+    <updated>2026-09-08T21:22:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;security: fix all audit findings — CSRF, auth, input validation, a11y
+
+HIGH:
+- CSRF protection now covers ALL POST/PUT/DELETE (not just /api/*)
+- All unauthenticated API routes return 401 (not empty/success data)
+- Guard getUserMedia in TajweedRecorder (crashes on HTTP/unsupported)
+- Add auth check to GET /api/sync
+
+MEDIUM:
+- OAuth state comparison uses timingSafeEqual (prevents timing attack)
+- Markdown list rendering: catch orphaned &amp;lt;li&amp;gt; elements
+- OG route: cap title/subtitle to 200 chars
+- reviews/sync: already has batch limit + grade validation
+
+LOW:
+- Remove remaining attempts leak in login error messages
+- Remove lockout duration disclosure
+- Fix duplicate server8.mp3quran.net in CSP
+- Add role=&amp;#39;alert&amp;#39; on form error messages (a11y)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/303446f8b216edda2277ffda23a1101e2636a6fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/303446f8b216edda2277ffda23a1101e2636a6fd"/>
+    <title>
+        Merge pull request #25 from Mohammed-Abdelaziem/feature/oauth
+    </title>
+    <updated>2026-09-08T20:57:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #25 from Mohammed-Abdelaziem/feature/oauth
+
+security: fix OAuth CSRF + audit findings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0717aab26eee51a07f50b0dcf15023f7b2b39327</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/0717aab26eee51a07f50b0dcf15023f7b2b39327"/>
+    <title>
+        security: fix OAuth CSRF + audit findings
+    </title>
+    <updated>2026-09-08T20:57:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;security: fix OAuth CSRF + audit findings
+
+CRITICAL:
+- Add state parameter for OAuth CSRF protection
+  - Generate random 32-byte hex state on login
+  - Store in httpOnly cookie (10min TTL)
+  - Validate on callback, reject mismatch
+  - Prevents attacker from logging victim into their account
+
+HIGH:
+- Throw if env vars missing (GOOGLE_CLIENT_ID, etc.)
+- Validate Google verified_email === false
+- Check access_token exists before use (Google + GitHub)
+- Store user name from OAuth profiles
+
+LOW:
+- Fix autoComplete: current-password for sign-in, new-password for sign-up
+- Add https://api.github.com to CSP connect-src&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9a06af913837a9d0702268b1b5c68af911b40ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/a9a06af913837a9d0702268b1b5c68af911b40ab"/>
+    <title>
+        Merge pull request #24 from Mohammed-Abdelaziem/feature/oauth
+    </title>
+    <updated>2026-09-08T20:39:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #24 from Mohammed-Abdelaziem/feature/oauth
+
+feat: OAuth login (Google + GitHub)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e8ceaae1d587c31939c4ad6dc481c94c2889f2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/5e8ceaae1d587c31939c4ad6dc481c94c2889f2e"/>
+    <title>
+        feat: add OAuth login (Google + GitHub)
+    </title>
+    <updated>2026-09-08T20:38:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add OAuth login (Google + GitHub)
+
+- OAuth library (src/lib/server/oauth.ts):
+  - Google: authorization URL, code exchange, userinfo fetch
+  - GitHub: authorization URL, code exchange, user + email fetch
+  - findOrCreateOAuthUser: find by email or create, then create session
+- Callback route: /api/auth/callback?provider=google|github
+  - Exchanges code for tokens, fetches profile, creates user + session
+  - Error handling with redirect to /login?error=...
+- Server actions: googleSignInAction, githubSignInAction
+  - Redirect to OAuth provider authorization URL
+- Login UI updated:
+  - Google and GitHub buttons with official SVG icons
+  - &amp;#39;or continue with email&amp;#39; divider between OAuth and email form
+  - &amp;#39;Continue without account&amp;#39; preserved below
+- CSP updated for OAuth domains (googleapis, github, githubusercontent)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29bba615066da8ebcb26690376df053642dc04ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/29bba615066da8ebcb26690376df053642dc04ee"/>
+    <title>
+        Merge pull request #23 from Mohammed-Abdelaziem/dev
+    </title>
+    <updated>2026-09-08T20:31:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #23 from Mohammed-Abdelaziem/dev
+
+deploy: blog + security hardening to production&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e9da3773c8961ba102e7647ba49bcf673f37353f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/e9da3773c8961ba102e7647ba49bcf673f37353f"/>
+    <title>
+        Merge pull request #22 from Mohammed-Abdelaziem/feature/blog
+    </title>
+    <updated>2026-09-08T20:19:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #22 from Mohammed-Abdelaziem/feature/blog
+
+feat: blog + security hardening&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38f4270421b52c8d833d408683d67ec0368f829f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/38f4270421b52c8d833d408683d67ec0368f829f"/>
+    <title>
+        security: remove guest cookie, add session hardening, CSRF, lockout
+    </title>
+    <updated>2026-09-08T19:32:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;security: remove guest cookie, add session hardening, CSRF, lockout
+
+ARCHITECTURAL CHANGES:
+- Remove guest cookie system — guest mode is now client-side only
+  - Eliminates auth bypass via forged hifz_guest=1 cookie
+  - All API routes use simple getSessionUser() null check
+  - Guest button on login page still works (client localStorage)
+- Add per-account lockout: 5 failed attempts = 15-minute lock
+- Add sliding session expiration: refresh cookie every 1 hour
+- Add session revocation: login invalidates all old sessions
+- Reject sessions created before last password change
+- Harden scrypt: N=65536, r=8, p=1 (was using Node defaults)
+- Add CSRF protection: reject cross-origin POST/PUT/DELETE to API routes
+- Add @@index([verseKey]) to ReviewLog
+- Add @@index([pageNumber]) to Verse
+
+SCHEMA CHANGES:
+- User: +lastPasswordChangedAt, +failedLoginAttempts, +lockedUntil
+- Session: +lastRefreshAt&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/16a07a2c0f22abcc2278d064480b4945e6d00b20</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/16a07a2c0f22abcc2278d064480b4945e6d00b20"/>
+    <title>
+        security: harden CSP, rate-limit APIs, auth on tajweed, input validation
+    </title>
+    <updated>2026-09-08T19:18:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;security: harden CSP, rate-limit APIs, auth on tajweed, input validation
+
+CRITICAL:
+- next@16.3.3→16.3.4 (patches CVE-2025-66478 RCE, CVE-2026-44573, CVE-2026-64641)
+- Remove unsafe-eval from CSP script-src
+
+HIGH:
+- Rate limit ALL API routes (read: 60/min, write: 30/min, expensive: 10/min)
+- Add auth check to /api/tajweed (was unauthenticated paid API proxy)
+- Add batch size limit (100) to /api/reviews/sync
+- Add base-uri, form-action, frame-ancestors, object-src, upgrade-insecure-requests to CSP
+
+MEDIUM:
+- Add grade validation to /api/reviews/sync (prevents data corruption)
+- Add MIME type validation on tajweed audio upload
+- Sanitize error messages (no internal details leaked to client)
+- Pin wildcard CSP domains to exact subdomains (prevent subdomain takeover)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2f67d67d1c6b92b77fed3aa1efbf0aef6f6c786</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/e2f67d67d1c6b92b77fed3aa1efbf0aef6f6c786"/>
+    <title>
+        fix: audit findings — XSS escape, tajweed rules, sitemap, HTML
+    </title>
+    <updated>2026-09-08T19:07:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: audit findings — XSS escape, tajweed rules, sitemap, HTML
+
+- XSS: escape HTML entities in renderMarkdown before markdown-to-HTML conversion
+- Tajweed: fix Meem Sakin rules (Izhar=any letter except م/ب, Iqlab=ب, Idghaam=م)
+- Tajweed: fix Noon Sakin Idghaam letters (ل ر م و ي ن, not ب م و ي)
+- Tajweed: fix Qalqalah example (جَمَع → يَجْمَع, ع is not Qalqalah)
+- Typo: &amp;#39;Read the Quran Beautiful&amp;#39; → &amp;#39;Beautifully&amp;#39;
+- HTML: wrap consecutive &amp;lt;li&amp;gt; in &amp;lt;ol&amp;gt;/&amp;lt;ul&amp;gt;, tables in &amp;lt;table&amp;gt;
+- Sitemap: add /blog, remove /login (wastes crawl budget)
+- JSON-LD: merge two &amp;lt;script&amp;gt; tags into single array&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bbe876bd0671e72647406867406b28c570ff285e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/bbe876bd0671e72647406867406b28c570ff285e"/>
+    <title>
+        feat: add blog section with 3 SEO-targeted posts
+    </title>
+    <updated>2026-09-08T18:57:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add blog section with 3 SEO-targeted posts
+
+- Blog listing page with article cards (title, description, date, reading time)
+- Dynamic blog post pages with Article JSON-LD, Open Graph, Twitter cards
+- 3 initial posts targeting high-value keywords:
+  - &amp;#39;how to memorize quran fast&amp;#39; (8 min guide)
+  - &amp;#39;tajweed rules beginners guide&amp;#39; (6 min tutorial)
+  - &amp;#39;best quran memorization apps 2026&amp;#39; (7 min comparison)
+- Blog pages added to sitemap for Google indexing
+- Blog link added to SiteHeader navigation
+- File-based content system (no external dependencies)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d2abc88630a24d8357c2c49c6cd18a3685adaf42</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/d2abc88630a24d8357c2c49c6cd18a3685adaf42"/>
+    <title>
+        feat: switch domain to whollyquran.me
+    </title>
+    <updated>2026-09-08T18:46:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: switch domain to whollyquran.me
+
+Updated all URLs across 9 files: metadata, sitemap, robots.txt, OG tags, JSON-LD, OG image generator&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f30f0399a3047755a273bdd823f3f313af1ddd7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/6f30f0399a3047755a273bdd823f3f313af1ddd7"/>
+    <title>
+        feat: comprehensive SEO — per-page metadata, JSON-LD, OG image genera…
+    </title>
+    <updated>2026-09-08T18:40:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: comprehensive SEO — per-page metadata, JSON-LD, OG image generation
+
+- Home page: title, description, OG tags
+- Quran page: enhanced description with keywords for read quran online
+- Reader pages: dynamic generateMetadata with surah name, ayah count, revelation type, per-surah keywords
+- Login/Settings: description + robots noindex
+- Analytics: description, keywords, OG tags for heatmap
+- Root layout: Open Graph images via /api/og, Twitter cards
+- JSON-LD: WebApplication + WebSite schemas with SearchAction
+- OG image generator: edge route with branded design
+- Added @vercel/og dependency&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65972d16e9fe46fe4b3b892bda363d64877db2e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/65972d16e9fe46fe4b3b892bda363d64877db2e0"/>
+    <title>
+        feat: add SEO fundamentals — sitemap, robots.txt, enhanced metadata
+    </title>
+    <updated>2026-09-08T18:29:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add SEO fundamentals — sitemap, robots.txt, enhanced metadata&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe9ac1b8f9feef8c00ceabb781c1dc3151eab452</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Mohammed-Abdelaziem/hifz-trainer/commit/fe9ac1b8f9feef8c00ceabb781c1dc3151eab452"/>
+    <title>
+        test: harden tajweed checker tests and fix route env var access
+    </title>
+    <updated>2026-09-08T15:35:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/189886951?s=30&amp;v=4"/>
+    <author>
+      <name>Mohammed-Abdelaziem</name>
+      <uri>https://github.com/Mohammed-Abdelaziem</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: harden tajweed checker tests and fix route env var access
+
+- Fix HF_API_KEY env var access: read at call time via getApiKey() instead of module-level const
+- Change POST param from NextRequest to Request for test compatibility
+- Fix route tests: mock fetch properly, handle env var isolation
+- Fix TajweedRecorder tests: use vi.stubGlobal for MediaRecorder class mock
+- Fix use-tajweed-check timeout test: listen to AbortSignal instead of never-resolving promise
+- Replace 10MB file size test (Node.js FormData limitation) with equivalent validation test
+- All 348 tests pass, typecheck clean&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

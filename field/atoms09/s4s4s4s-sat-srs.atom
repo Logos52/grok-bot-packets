@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/s4s4s4s/sat-srs/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/s4s4s4s/sat-srs/commits/main.atom"/>
+  <title>Recent Commits to sat-srs:main</title>
+  <updated>2026-09-08T23:53:09Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0326d13023d7824127f624572c93f7079a1faf60</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/0326d13023d7824127f624572c93f7079a1faf60"/>
+    <title>
+        Полоса урока в экранах, поле other_senses карточки
+    </title>
+    <updated>2026-09-08T23:53:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Полоса урока в экранах, поле other_senses карточки
+
+Полоска прогресса: зажим целью захода (WS5b) считал цель дня в упражнениях,
+а числитель и оценку остатка - в экранах урока; окно-знакомства давало экран без
+упражнения, а упражнения прошлых заходов дня не вычитались. Полоса вставала на
+100% при «10 из 12» и храповик её там держал. Теперь ProgressInput.doneToday и
+goalCapShows переводят остаток до цели в экраны по разбивке showsByUnit.
+
+Карточка: other_senses (список pos/en/ru) - остальные значения слова; разбор и
+круговая сериализация в yamlfm, показ «Ещё значения» в обеих ветках Review,
+двойник по значению (C10) ищется по всем значениям с учётом pos значения.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b61abf0e3a0fb3ca049e83a1ec656fdf3f5912f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/b61abf0e3a0fb3ca049e83a1ec656fdf3f5912f3"/>
+    <title>
+        Логика без повторов: слияние feat/logic-oneshot
+    </title>
+    <updated>2026-09-08T23:29:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Логика без повторов: слияние feat/logic-oneshot
+
+Карточки раздела «Логика» (kind error, домены II/CS/EOI) выведены из FSRS на
+одноразовую модель как у практики: показ один раз, верно - вопрос закрыт,
+неверно - возврат через PRACTICE_RETRY_WRONG_DAYS, не больше LOGIC_MAX_SHOWS
+показов; состояние по журналу (lib/logic.ts). По ревью добавлен замок в
+rateItem: карточка логики отвергается в слое данных, а не только в Review.tsx
+(тест wordlist logicScreenChecks).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f93a6f3ab9497066e3bc322326668ca06a612cc0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/f93a6f3ab9497066e3bc322326668ca06a612cc0"/>
+    <title>
+        Карта: раздел «Логика» без FSRS - logic.ts, хвост очереди, набор тест…
+    </title>
+    <updated>2026-09-08T23:24:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Карта: раздел «Логика» без FSRS - logic.ts, хвост очереди, набор тестов logic
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7690b9e12327e865e6afd0560cba8d447dc74c32</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/7690b9e12327e865e6afd0560cba8d447dc74c32"/>
+    <title>
+        Логика на экранах: разбор вместо оценки, счётчики и очередь по журналу
+    </title>
+    <updated>2026-09-08T23:23:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Логика на экранах: разбор вместо оценки, счётчики и очередь по журналу
+
+Review.tsx: для карточки раздела «Логика» после ответа только вердикт, разбор
+и одна кнопка «Дальше» (gradeLogic) - ряда Again/Hard/Good/Easy нет, rateItem
+не вызывается, fsrs-блок и first_seen карточки не трогаются; в журнал ложится
+строка через logLogicAnswer (store.ts, общая запись pushJournal). Ученик видит
+судьбу вопроса: закрыт, вернётся через PRACTICE_RETRY_WRONG_DAYS или показы
+кончились. Очередь раздела строится с журналом (buildQueue, седьмой аргумент),
+поэтому решённые сегодня вопросы при повторном входе не всплывают.
+
+Home.tsx: плашка логики показывает «осталось / разобрано / ошибок» и кнопку
+«Разбирать · N» из logicCounts; homeCounts на главной, в итогах, статистике и
+отладочном хелпере получает журнал, maturityBySection тоже.
+
+Тесты: wordlist logicScreenChecks - Review не зовёт rateItem для логики,
+очередь и счётчики считаются по журналу; reading - запись строки журнала
+через pushJournal.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d229e52871296a45e02c3a47848d1e85af27a9d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/d229e52871296a45e02c3a47848d1e85af27a9d7"/>
+    <title>
+        Логика: одноразовая модель раздела вместо FSRS
+    </title>
+    <updated>2026-09-08T23:10:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Логика: одноразовая модель раздела вместо FSRS
+
+Карточки kind error (домены II/CS/EOI) больше не повторяются по FSRS: вопрос
+к тексту не заучивается, второй показ проверяет память о букве варианта, а не
+чтение. Раздел ведёт новый модуль src/lib/logic.ts по журналу: вопрос идёт,
+пока не решён, и не больше LOGIC_MAX_SHOWS раз, промах возвращает его через
+PRACTICE_RETRY_WRONG_DAYS - тот же график, что у практики.
+
+Ядро:
+- logic.ts: logicAttempts/logicStatus/logicRetryDay/pickLogic/logicCounts,
+  logicSliceCounts/logicFreshShownOn/logicFreshCount/buildLogicQueue и
+  logicReviewLine (строка журнала вместо rateItem, без FSRS-полей).
+- scheduler.ts: expandItems не разворачивает карточки логики, поэтому их не
+  видят freshItems/nextNewItems/earlyFillers/loadForecast/buildQueue; очередь
+  раздела возвращается хвостом buildQueue (седьмой аргумент - журнал), а
+  homeCounts (четвёртый аргумент - журнал) считает логику по журналу:
+  learnDue 0, revDue - созревшие возвраты, newAvail - свежие в бюджете.
+  Добавлен isLogicCard; newBudgetFor и newBudgetTotal считают ввод логики
+  первой попыткой по вопросу, а не prev_state.
+- metrics.ts: карточка логики не пиявка и не зрелая по fsrs;
+  maturityBySection меряет раздел журналом.
+- journal.ts: общий порядок строк byLineTime, сюда же переехал
+  journalElapsedMs (store.ts отдаёт его реэкспортом).
+- dayplan.ts: долг раздела читает работу логики из журнала.
+
+Проверка: npm test (все наборы, включая новый test:logic), npx tsc -b,
+npm run build - все три зелёные.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b34e06c65f751a7b4756e825d270523d8961896</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/2b34e06c65f751a7b4756e825d270523d8961896"/>
+    <title>
+        Главный на ноутбуке: ряды сетки по содержимому, приоритет дня на полн…
+    </title>
+    <updated>2026-09-08T22:57:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Главный на ноутбуке: ряды сетки по содержимому, приоритет дня на полную строку
+
+Сетка .s-home сидит в .screen с заданной высотой (flex: 1 внутри #root на
+100dvh), и при auto-рядах, не влезая в окно, ужимала ряды карточек разделов
+до доли содержимого: у .section-card overflow: hidden и нет минимальной
+высоты, кнопка «Учить» уходила под нижний край, у «Слов» с путём ступени
+пропадала целиком (ширина 1238 px, шесть разделов после WS6b). Теперь
+grid-auto-rows: max-content - ряды считаются по содержимому, лишнее
+прокручивается.
+
+Кнопка «Сегодня: раздел» и её подпись (WS6b) не имели своей колонки и
+занимали по одной ячейке среди карточек. Теперь они на полную строку над
+рядом разделов, кнопка не шире ряда действий внизу.
+
+Подпись полосы дня выросла до четырёх счётчиков и с nowrap не влезала рядом
+с полосой ни на телефоне (полоса сжималась в чёрточку), ни в трети ширины
+ноутбука («до миним…»). В карточках-метриках полоса на всю ширину, подпись
+под ней с переносом по словам.
+
+Тест styles: .s-home с grid-auto-rows: max-content, .today-btn/.today-reason
+с grid-column: 1 / -1.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5c589398ae81c8463afb340400ff147f60c13473</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/5c589398ae81c8463afb340400ff147f60c13473"/>
+    <title>
+        Итоги: «Ещё заход» только когда разделу есть что выдать, тот же замок…
+    </title>
+    <updated>2026-09-06T03:18:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Итоги: «Ещё заход» только когда разделу есть что выдать, тот же замок, что у кнопки раздела на главной
+
+Ревью экранов: вторая дверь в урок обходила проверку due === 0 и вела в пустой экран «Очередь пуста».
+Структурные тесты: замок на Summary.tsx, единственность closingUsed в Review.tsx (B7).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f332ad20474abcd33418bfbd18bbc94078b02e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/8f332ad20474abcd33418bfbd18bbc94078b02e8"/>
+    <title>
+        Карта: даты и стоп ввода по разделам (WS1), чтение отрывками (WS10), …
+    </title>
+    <updated>2026-09-06T03:13:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Карта: даты и стоп ввода по разделам (WS1), чтение отрывками (WS10), график практики и зачёт дня (WS4/WS6a)
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5d774b3f5d0964200f817bad85e9f1a0e0abe36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/b5d774b3f5d0964200f817bad85e9f1a0e0abe36"/>
+    <title>
+        L1-L2: списание бюджета окон знакомства после записи, точность урока …
+    </title>
+    <updated>2026-09-06T03:11:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;L1-L2: списание бюджета окон знакомства после записи, точность урока отсекает подсказку
+
+L1: бюджет reintroShown/freshIntros в grade (Review.tsx) списывался ДО rateItem/markIntroduced.
+При ошибке записи карточка оставалась на экране, и повторное &amp;quot;Дальше&amp;quot; списывало бюджет второй
+раз с другим ответом isReintroScreen (флаг провала уже снят). Признак reintro и freshNew теперь
+читаются в начале (до любых изменений), а списание вынесено в helper commitIntroBudget,
+вызываемый только после успешной записи; markIntroduced обёрнут try/catch в тот же
+setSaveError-путь, что и rateItem.
+
+L2: sessionAccuracy на итогах урока засчитывала подсказанный ввод (verdict cued) попаданием,
+хотя accuracyShare (metrics.ts) уже отсекает такой показ и из числителя, и из знаменателя.
+Добавлено SessionResult.cued (растёт в Review.tsx по verdict === &amp;#39;cued&amp;#39;), sessionAccuracy
+вычитает cued из обеих частей дроби, строка session (store.ts) пишет счётчик в session_cued
+(не cued - в JournalLine это имя уже занято булевым признаком C12 у строки review), Summary.tsx
+показывает &amp;quot;с подсказкой: N&amp;quot;.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/91526d6d600dabb252557f3301eb50c2a00d8b05</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/91526d6d600dabb252557f3301eb50c2a00d8b05"/>
+    <title>
+        WS5b (часть 2): Summary &quot;Ещё заход&quot;/&quot;До цели ещё&quot;, цена захода в мину…
+    </title>
+    <updated>2026-09-06T03:08:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;WS5b (часть 2): Summary &amp;quot;Ещё заход&amp;quot;/&amp;quot;До цели ещё&amp;quot;, цена захода в минутах на Home, тесты
+
+Summary.tsx: r.goalReached ветвится на &amp;quot;Заход закрыт: цель дня выполнена&amp;quot; с кнопками
+&amp;quot;Ещё заход&amp;quot; (startLesson(app.sessionSection, false, false)) и &amp;quot;На главную&amp;quot;; иначе, если
+очередь не пуста, &amp;quot;До цели ещё K упражнений&amp;quot; (K = sessionGoal - doneToday). types.ts: новое
+поле SessionResult.doneToday, заполняется в Review.tsx finish() в той же точке, что и
+goalReached. Home.tsx: рядом с &amp;quot;пол дня - N упражнений&amp;quot; печатает цену захода в минутах по
+speedStats(app.journal).medianMs, молчит при отсутствии данных вместо &amp;quot;0 мин&amp;quot;. Тесты:
+sessionGoalScreenChecks в wordlist.test.ts проверяет tryClosing() в обеих ветках выхода,
+подпись &amp;quot;лёгкое на прощание&amp;quot;, счётчик &amp;quot;N из goal&amp;quot;, кнопки Summary и speedStats на Home.
+Карта sat-srs-map дополнена разделом &amp;quot;Цель захода (WS5b)&amp;quot;.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d6c12e89c167d9184d303a3a0b2c176d39f3017</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/6d6c12e89c167d9184d303a3a0b2c176d39f3017"/>
+    <title>
+        WS5b (часть 1): цель захода, закрывающий показ B7, счётчик «N из цели…
+    </title>
+    <updated>2026-09-06T03:07:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;WS5b (часть 1): цель захода, закрывающий показ B7, счётчик «N из цели» вместо таймера
+
+progress.ts: goal зажимает знаменатель полоски; store.ts: sessionGoal и аргумент goal у startLesson;
+types.ts: goalReached в SessionResult; Review.tsx: tryClosing из обеих веток выхода, подпись
+«лёгкое на прощание», счётчик дня «N из goal» по dayUnitsByDay; тесты closingShow в session-sim.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9c9db629c15330a4d0c50f7bef89e0edc168eca2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/9c9db629c15330a4d0c50f7bef89e0edc168eca2"/>
+    <title>
+        K1-K3: cued выпадает из retentionByFormat, ошибка знания и закрытие п…
+    </title>
+    <updated>2026-09-06T02:59:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;K1-K3: cued выпадает из retentionByFormat, ошибка знания и закрытие пробела отделены от опечатки и подсказки
+
+После FixI (correct: verdict === &amp;#39;correct&amp;#39;) подсказанный ввод (cued) остался промахом в
+retentionByFormat, хотя это не попытка вспомнить самому - добавлено исключение вслед за
+typo/twin, продублировано по семантике isMatureShow/isAccuracyShow (metrics.ts), а не
+импортировано - обратный импорт замкнул бы цикл metrics.ts -&amp;gt; journal.ts -&amp;gt; metrics.ts.
+
+В report.ts список ошибок тьютору и «Закрытие пробелов» читали сырой correct и после FixI
+начали засчитывать опечатку и синоним как незнание слова, а подсказку - как закрытие пробела.
+Заведены isKnowledgeMiss/isKnowledgePass (journal.ts): решение по строке принимается по флагам
+typo/twin/cued, а не по одному correct, поэтому работает на строках обеих эпох журнала.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9b0f225442434d2225c023ada90eaf837693554</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/c9b0f225442434d2225c023ada90eaf837693554"/>
+    <title>
+        E-синк: битая локальная запись не уезжает на недостижимый -N путь
+    </title>
+    <updated>2026-09-06T02:52:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;E-синк: битая локальная запись не уезжает на недостижимый -N путь
+
+applyPull переселял на свободный -N путь любую локальную запись без sha с
+неотправленной работой, включая битую. Такая запись становилась невидимой
+навсегда: push её не берёт (dirtyCards = dirty &amp;amp;&amp;amp; !broken), файла с именем
+venerate-2.md в репозитории нет и не появится, тьютор его не видит и починить
+не может. Итог - вечный unsyncedCount &amp;gt; 0 и вечный статус warning при том, что
+ученику нечего сделать, а предупреждение называло слаг несуществующего файла.
+
+Ветка create/create теперь требует здоровой записи (dirty &amp;amp;&amp;amp; sha === null &amp;amp;&amp;amp;
+!broken): только её push действительно может отправить. Битая идёт общей
+merge-веткой - содержимое берётся у удалённого файла, локальный fsrs переживает
+слияние (mergeCard), карантин снимается сам, как только remote цел, и ближайший
+push увозит оценку. Остался битым и remote - запись застревает под реальным
+путём, который тьютор найдёт в vault, и видна через stuckMessage. Терять при
+переходе нечего: содержимое битой записи без sha - неразобранный текст, которого
+нет ни в одном файле репозитория.
+
+Развилка FixD (broken=1, dirty=0 перезаписывается remote целиком) не тронута:
+изменено только условие ветки, требующей dirty, и её проверка на месте.
+
+Тест sync-safety, группа E-синк: до правки красный (появлялся venerate-2.md),
+после - запись сливается, проходит фильтр отправки и после confirmPushed
+несинхронизированного не остаётся; второй случай - битый remote оставляет ровно
+одну застрявшую запись под путём из репозитория.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc6b952e21539c3ee84b6f2ab4bbf98cd76ccad6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/cc6b952e21539c3ee84b6f2ab4bbf98cd76ccad6"/>
+    <title>
+        D/WS9: подсказанный ввод не считается верным ответом, кэш корпуса вид…
+    </title>
+    <updated>2026-09-06T02:52:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;D/WS9: подсказанный ввод не считается верным ответом, кэш корпуса видит правку тьютора
+
+D (точность). rateItem писал correct как verdict !== &amp;#39;wrong&amp;#39;, и вердикт cued
+(слово взято со скелета после провала) шёл в журнал чистым попаданием: доля
+верных росла ровно от того, что ученик не смог ответить сам. Теперь correct -
+это verdict === &amp;#39;correct&amp;#39;, а опечатка, синоним и подсказка остаются при своих
+полях. Долю верных по журналу считает accuracyShare через isAccuracyShow
+(metrics.ts) - единственное место, где решается, что идёт в точность: cued
+выпадает и из числителя, и из знаменателя, у него своя строка отчёта. typoSplit
+по той же причине перестал считать twin и cued настоящим незнанием: с новым
+правилом обе строки дают correct: false и без отсева раздули бы realMisses.
+
+WS9 (корпус). Ключ кэша индекса корпуса был числом вопросов и текстов, и правка
+тела вопроса или текста тьютором корпус не обновляла до тех пор, пока в колоде
+не появится или не исчезнет файл; комментарий при этом утверждал обратное.
+Ключ собирает corpusCacheKey и берёт третьим слагаемым lastRemoteCommit из kv -
+тот самый коммит, который sync.ts пишет после каждого pull и push.
+
+Тесты: metrics - группа D (3 верных + 1 cued + 1 провал = 3/4, cued вне счёта,
+typoSplit не путает синоним с незнанием); sync-safety - группа WS9 (новый коммит
+при том же числе файлов меняет ключ, оба вызова refreshCorpus кормятся kv).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ce273e3c69d0ba6b307bda5bbad47784886c383</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/9ce273e3c69d0ba6b307bda5bbad47784886c383"/>
+    <title>
+        J2-bis: lightStem снимает -ies/-ied и -es после одиночных s/z правильно
+    </title>
+    <updated>2026-09-06T02:51:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;J2-bis: lightStem снимает -ies/-ied и -es после одиночных s/z правильно
+
+companies -&amp;gt; company, studied -&amp;gt; study, causes -&amp;gt; cause, prizes -&amp;gt; prize,
+viruses -&amp;gt; virus, quizzes -&amp;gt; quiz; наречное -ly не трогает apply/rally/family/only.
+Сам поток FixJ отметил пробел (companies -&amp;gt; compani), правила закрыты таблицей
+пар в journal.test.ts.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/09ed7edabff6b096b1805539fa4b2a525900f58c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/09ed7edabff6b096b1805539fa4b2a525900f58c"/>
+    <title>
+        fix(stem): единый консервативный стеммер lightStem вместо corpusStem/…
+    </title>
+    <updated>2026-09-06T02:47:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(stem): единый консервативный стеммер lightStem вместо corpusStem/stemEn (J2)
+
+corpusStem (corpus.ts) и stemEn (journal.ts, урезанный Портер) были двумя
+независимыми стеммерами с разными правилами. Портеровские -ive/-ion в
+stemEn склеивали relative с relate (relat/relat): настоящий кандидат на
+новую карточку молча пропадал из списка добавления через deckHasWord,
+пряча F41 наоборот. Оба стеммера удалены в пользу lightStem (src/lib/stem.ts):
+снимает только словоизменение (притяжательное &amp;#39;s, -s/-es кроме -ss/-us/-is,
+-ed/-ing/-ly с восстановлением удвоенной согласной и конечной e там, где
+это однозначно), без деривационных суффиксов Портера.
+
+deckHasWord кэширует основы колоды в WeakMap по самому объекту deck -
+раньше стем каждого слова колоды пересчитывался на каждый вызов (по разу
+на уникальную помеченную лемму), без кэша.
+
+Тесты пар distinctive/distinct и depletion/deplete переписаны: они
+проверяли Портеровское -ive/-ion поведение, которое lightStem сознательно
+не поддерживает - то же правило, что развело бы -ive/-ion, склеило бы
+relative с relate. Это не ослабление тестов, а перенос контракта на новый
+стеммер: добавлены явные проверки на несовпадение (relative/relate и
+подобные) вместо совпадения.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d5181f94987f8a64c4890a83709b7d25d272507</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/7d5181f94987f8a64c4890a83709b7d25d272507"/>
+    <title>
+        fix(metrics): planVsFact считает зрелый повтор независимо от вердикта…
+    </title>
+    <updated>2026-09-06T02:47:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(metrics): planVsFact считает зрелый повтор независимо от вердикта (J1)
+
+isMatureShow в planVsFact снимал не только внутридневной learning-повтор
+(F38), но заодно и опечатку/близнеца/cued - пунктуальность повтора к
+опечатке отношения не имеет. День, где карточки пришли в срок, но с
+опечаткой, давал done=0 и занижал обе половины плана/факта. Условие
+сужено до cur.type === &amp;#39;review&amp;#39; &amp;amp;&amp;amp; cur.prev_state === State.Review,
+retentionByLateness (isMatureShow законно нужен для ретеншна) не тронут.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf640c4bb3aa7a41d8d22934f0d87bc8e35f9632</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/bf640c4bb3aa7a41d8d22934f0d87bc8e35f9632"/>
+    <title>
+        C12/F82: подсказка обнуляет отсчёт времени ответа, слот «Подзабылось»…
+    </title>
+    <updated>2026-09-06T02:42:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;C12/F82: подсказка обнуляет отсчёт времени ответа, слот «Подзабылось» списывает только окно «Подзабылось»
+
+R7. answer_ms считался от момента показа (shownAt), и при C12 в поле уезжали обе
+попытки вместе с чтением подсказки, хотя types.ts обещает чистое время ответа.
+Поле кормит slowThresholdMs (metrics.ts): слово, вспомненное со скелета за три
+секунды, приходило туда минутой раздумий над первой попыткой и тянуло порог
+«медленно» вверх. Отсчёт вынесен в отдельную ссылку answerFrom: обычно она равна
+shownAt, а раскрытие подсказки сдвигает её на себя. Сам shownAt не трогается - он
+кормит зачётные минуты урока и cardTimeCap, а время над карточкой подсказкой не
+сокращается. Описание answer_ms в types.ts приведено в соответствие словами.
+
+R10. В ветке intro стоял `else reintroShown.current++`, то есть слот
+REINTRO_PER_LESSON списывало любое окно знакомства, не прошедшее проверку
+новизны, - включая повторный показ окна уже введённого слова. Списание теперь
+идёт по положительному признаку настоящего «Подзабылось» (слово провалено в этой
+сессии либо пришло в Relearning), и признак этот - один на подпись окна, на его
+выдачу в baseFormat и на бюджет: isReintroScreen в Review.tsx, разметка зовёт её
+же. Порядок важен: признак читается ДО снятия флага lapsed.
+
+Проверки: структурные в session-sim - отсчёт от answerFrom (и запрет прежнего
+вычитания shownAt), обнуление отсчёта в applyHint, единственное место списания
+reintroShown по признаку окна. Обе предъявлены мутацией.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03052e186e1525616568498824fddeb1659b341f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/03052e186e1525616568498824fddeb1659b341f"/>
+    <title>
+        C12: ввод с подсказкой заработал - чистая objectiveOutcome и видимый …
+    </title>
+    <updated>2026-09-06T02:42:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;C12: ввод с подсказкой заработал - чистая objectiveOutcome и видимый скелет слова
+
+R1. Ранняя ветка submitObjective стояла на условии «мимо И подсказка не
+раскрыта» и возвращалась молча на КАЖДОМ неверном вводе: показ не закрывался
+никогда, число попыток не ограничивалось, а верный ответ на десятой попытке
+уезжал в FSRS как «вспомнил с нуля» (correct, Good) - ни cued, ни следа
+провалов в журнале. Решение «что делать с попыткой» вынесено в чистую функцию
+objectiveOutcome (lib/session.ts) и проверяется таблицей, а не текстом экрана:
+первая мимо - retry (второй заход), вторая мимо - wrong, верный ответ после
+подсказки - cued (Hard), верный без подсказки - correct на любой попытке.
+
+Верная вторая попытка без подсказки засчитана correct намеренно: подсказки не
+было, слово извлечено из памяти самим учеником. Отдельного поля «сколько было
+попыток» в JournalLine нет, и заводить его этой правкой не стал - строка
+журнала пишется схемой, менять её ради одного признака дороже, чем польза.
+
+R2. Скелет слова отдавался только как placeholder, а поле при раскрытии
+подсказки не очищалось: placeholder гаснет от первой введённой буквы, и после
+нажатия «Подсказка» на экране не менялось ничего. Скелет теперь отдельная
+видимая строка над полем (.type-skeleton), поле очищается, фокус возвращается
+во ввод. Первый промах виден строкой «Мимо - попробуйте ещё раз или откройте
+подсказку»: без неё «Проверить» выглядела неработающей кнопкой.
+
+Проверки: таблица исходов objectiveOutcome (включая проход typo/twin насквозь и
+Hard за cued) и структурные проверки экрана в session-sim - вызов
+objectiveOutcome с номером текущей попытки, обработка retry, скелет вне
+placeholder, очистка поля в applyHint. Обе проверки предъявлены мутацией:
+подмена порога попытки и снятие строки промаха роняют набор.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bb91c83c8afb57905223022d6535fb5b98403e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/s4s4s4s/sat-srs/commit/2bb91c83c8afb57905223022d6535fb5b98403e0"/>
+    <title>
+        WS7: главное число витрины - готовность к попытке, тест и карта
+    </title>
+    <updated>2026-09-06T02:41:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/48960348?s=30&amp;v=4"/>
+    <author>
+      <name>s4s4s4s</name>
+      <uri>https://github.com/s4s4s4s</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;WS7: главное число витрины - готовность к попытке, тест и карта
+
+Первое число hero-плашки «Слова» на главном экране - examReady(...).ready
+к ближайшей попытке (D7), а не «введено»: то же решение, что уже принято
+в отчёте и «Статистике» коммитом ранее. Подпись «вспомнится &amp;lt;дд.мм&amp;gt;»,
+«введено»/«закрепилось» ушли строкой ниже как справочные числа.
+
+Тест wordlist.test.ts проверяет структурно, что формулировка «отстаёшь
+на» больше не встречается ни в report.ts, ни в Stats.tsx, ни в Home.tsx -
+report.ts читается тем же способом текстом, что и screenSource у экранов.
+
+Карта sat-srs-map описывает capacityEstimate/examReady и причину смены
+главного числа (прецедент 17.08.2026 с «400 готовых слов»).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

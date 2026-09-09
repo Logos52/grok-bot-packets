@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/DsDG1/turna/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/DsDG1/turna/commits/master.atom"/>
+  <title>Recent Commits to turna:master</title>
+  <updated>2026-09-08T10:53:58Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37b1f028a476ea77260f71313717c3091fff2930</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/37b1f028a476ea77260f71313717c3091fff2930"/>
+    <title>
+        perf(course-tree): 揭示动画透明度提前收尾并缓存状态投影
+    </title>
+    <updated>2026-09-08T10:53:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(course-tree): 揭示动画透明度提前收尾并缓存状态投影
+
+- `TurnaMotion.stagger` 新增 `span` 参数：透明度因子在帘式高度收满前
+  提前收尾，压缩部分不透明期每行每帧 saveLayer 的合成窗口
+- `_resolveStatusProjection` 增加 identity 三元组缓存（section /
+  dueWordIdSet / mistakeEntries 实例稳定），展开手风琴等无关重建
+  不再重算 O(全部待复习词) 聚合
+- 新增「透明度先于帘式高度收满」断言（course_tree_test 22→23）
+- dart_test.yaml 设置全局 2m 超时、golden 5m，快速定位 pumpAndSettle
+  卡死或挂住的后台资源导致的假死
+- 清理 tool/gui 死代码：移除 overview_stats、孤儿属性及关联测试&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e55918234bbf64ead68647cb4aa5cbd557fb273</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/8e55918234bbf64ead68647cb4aa5cbd557fb273"/>
+    <title>
+        少量测试bug修改
+    </title>
+    <updated>2026-09-08T10:53:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;少量测试bug修改&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eaf0330374781ecd8aa9bca9cb59bbfbbb892d8e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/eaf0330374781ecd8aa9bca9cb59bbfbbb892d8e"/>
+    <title>
+        test(gui): fill_empty 无 Key 行为断言对齐状态栏降级（随 69711600 行为变更）
+    </title>
+    <updated>2026-09-07T16:09:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(gui): fill_empty 无 Key 行为断言对齐状态栏降级（随 69711600 行为变更）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69711600a1b01312b229ab3e9b60bb83627fdaf5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/69711600a1b01312b229ab3e9b60bb83627fdaf5"/>
+    <title>
+        feat(gui): 体验 OS 设置 tab 落地，Immersive 档活过来
+    </title>
+    <updated>2026-09-07T15:00:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(gui): 体验 OS 设置 tab 落地，Immersive 档活过来
+
+- 新增 设置 ▸ 体验 OS tab：模式四档下拉（observer/copilot/active/immersive）
+  + Immersive 子开关 + Goal/LLM 意图/危险技能/日配额；experience_mode
+  此前无任何 UI 入口，Active/Immersive 实际不可达
+- settings_dialog._apply 白名单补 7 个 experience 字段与 advanced AI 字段
+  搬运缺口；进 Immersive 弹风险确认，拒绝回滚下拉（headless 默认拒绝）
+- 注册 Ctrl+Shift+D 降档快捷键（build_experience_actions +
+  _on_demote_experience：demote + QSettings 落盘 + 状态栏 + 刷新）
+- 无 Key 硬化：lesson.fill_empty 弃用 NodeAiEditDialog 模态回退改状态栏；
+  resource.fill_stubs 起线程前加 is_complete 预检
+- settings loader 加 mode 合法集校验；危险技能拒绝文案指向体验 OS tab
+- E_INTRUSIVE_WALKTHROUGH 重写；测试 +18 例（2481 -&amp;gt; 2499）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92001488b14e22b68f11b7419bcb05b38bba9069</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/92001488b14e22b68f11b7419bcb05b38bba9069"/>
+    <title>
+        refactor(gui): 移除 Sovereign 强制共生档，侵入度阶梯收敛为四档
+    </title>
+    <updated>2026-09-07T14:50:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(gui): 移除 Sovereign 强制共生档，侵入度阶梯收敛为四档
+
+- policy.py：删 SOVEREIGN 常量/档位映射/sovereign_mode_enabled 字段与分支；
+  旧持久化值 sovereign 经 normalize_experience_mode 安全回落 copilot
+- presence_mode.py：删 sovereign 进入确认/300s 降档冷却/mark 等零调用者守护函数；
+  保留 demote_to_copilot（Immersive 复用）与 should_confirm_immersive_enter
+- settings.py 删 experience_sovereign_enabled 四处；experience_host/app 删相关协议字段
+- 删除依据：该档无任何 UI 入口不可达，且守护机制未接线，手改 QSettings 可静默激活
+- 测试 -4 例（SovereignModeTests 3 + C 集对照 1）；sovereign 提案归档加废弃头注
+- BASELINE.md：2485 -&amp;gt; 2481&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f0fb844b935405ec8b708860511e359c441c458</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/0f0fb844b935405ec8b708860511e359c441c458"/>
+    <title>
+        refactor(gui): 删除未接线的噱头孤儿模块（副光标/输入锁定/反悔抑制）
+    </title>
+    <updated>2026-09-07T14:46:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(gui): 删除未接线的噱头孤儿模块（副光标/输入锁定/反悔抑制）
+
+- 删除 presence_visual_host.py / gaze_cursor_overlay.py / regret_suppression.py：
+  src 零 import、无动态导入、spec/conftest 不引用，所读设置旗标从未在 Settings 定义
+- 删除陪跑测试 test_sovereign_and_ambient.py / test_direct_commit_and_regret.py
+- 3 例 AmbientHeartbeatService 心跳门控测试迁入 test_ambient_heartbeat.py（sovereign 例改写为 immersive 等价档）
+- experience_host.py 删 _gaze_overlay 协议字段；app.py 删初始化
+- BASELINE.md：2492 -&amp;gt; 2485（实测）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e13db7ed867981b3ddc6e2ffb9e5b31b8e10f057</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/e13db7ed867981b3ddc6e2ffb9e5b31b8e10f057"/>
+    <title>
+        refactor: 抽取会话结算服务并统一文本回退与湿地调色板
+    </title>
+    <updated>2026-09-07T14:16:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: 抽取会话结算服务并统一文本回退与湿地调色板
+
+- 新增 SessionSettlementService，集中处理复习结束后的学习统计、游戏、宝石与成就结算，并补充单元测试
+- 桌面/网页端卡片文本回退复用 stripHtml，与 TTS 朗读内容保持一致
+- 调整湿地调色板浅色/深色表面色，同步 Android colors.xml、theme tokens 与契约测试
+- 新增 docs/remote-strategy.md 说明远端策略&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46fe543d6b9fabfa87504a07f280b4fcd321670c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/46fe543d6b9fabfa87504a07f280b4fcd321670c"/>
+    <title>
+        feat(maintenance): 新增数据库医生诊断修复中心与一键优化服务
+    </title>
+    <updated>2026-09-07T12:07:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(maintenance): 新增数据库医生诊断修复中心与一键优化服务
+test: 实施 P0-P2 测试套件治理，收敛重复用例与交互渲染器
+
+- 数据库维护与诊断：
+  - 新增 DatabaseDoctorService，支持主库与 Anki 集合体检、PRAGMA 完整性校验、
+    VACUUM 紧缩优化、孤立文件扫描与一键清理；
+  - 修复中心升级为数据库医生界面，提供健康状态卡片、索引重建与多维诊断；
+  - 存储诊断页面对接医生服务，补充一键优化与关联跳转。
+- 测试套件治理（P0-P2）：
+  - 渲染器测试 12 合 1：收敛 12 个微型渲染器为 interaction_renderers_test.dart，
+    消除大量 Dart Isolate 冷启动开销；
+  - 彻底清理 6 个此前已合并但未删除的 100% 重复死副本测试文件；
+  - 模块测试合并：CourseProvider（3合1）、交互测试（4合1）、资产系统对账归位、
+    诊断遥测（2合1）、官方许可证（2合1）；
+  - 测试基础设施：清理误提交的 Golden 差分图片，根目录新增 dart_test.yaml 声明标签，
+    修复发布构建测试脚本。
+  - 累计净减少 27 个测试文件（281 -&amp;gt; 254），测试用例 100% 保留并通过。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/33b7a360c140846a405d6053892c0b2a942f11e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/33b7a360c140846a405d6053892c0b2a942f11e2"/>
+    <title>
+        feat: 识别混合选择题卡型并加固 Anki 源移除与课程排序
+    </title>
+    <updated>2026-09-07T09:28:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 识别混合选择题卡型并加固 Anki 源移除与课程排序
+
+- 识别器升至 v2：选项扫描先归一化块级 HTML/实体，新增 A6m 规则，
+  部分样本为选择题的卡型按 review 档置信度命中，需答案对齐
+- Anki 源移除：账本行缺失时幂等按已移除返回；视图删行移出事务
+  best-effort 执行；卡片计数读失败按大源走后台续跑，避免已提交的
+  移除被误报为未完成
+- 课程管理拖拽排序在首个 await 前同步应用并通知，消除拖拽回弹闪烁
+- 官方 Anki 规范链接视图重构为规范卡片视图
+- 补充识别快照、retire、排序与渲染相关测试&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c23f80a4c033509d33753483fe719bba2c216b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/0c23f80a4c033509d33753483fe719bba2c216b0"/>
+    <title>
+        fix(anki-import): 允许选择 colpkg 并修正文件选择器路径解析
+    </title>
+    <updated>2026-09-06T15:47:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki-import): 允许选择 colpkg 并修正文件选择器路径解析
+
+- 文件选择器改为解析所选文件的真实路径并重建结果，扩展名校验更健壮（files.first 替代 files.single）
+- 选择 .colpkg 后不再在选择阶段拒绝，而是进入 ankiColpkgUnsupported 人工引导
+- unsupportedPlatform、contractVersionMismatch 及含 .apkg 的读取错误不再误报为选择文件错误
+- 补充错误映射与 colpkg 路由的单元测试；同步更新 GUI 工具侧说明与 AI 对话框迁移内容&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4745cbfdbad00feed65d655590ba50afe2bb2bdc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/4745cbfdbad00feed65d655590ba50afe2bb2bdc"/>
+    <title>
+        修改了部分的gui的测试
+    </title>
+    <updated>2026-09-06T13:10:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;修改了部分的gui的测试&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/af96e4aa4b2f1aa015016469557d1c8b68c32d8d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/af96e4aa4b2f1aa015016469557d1c8b68c32d8d"/>
+    <title>
+        文档(tool/gui): 契约文档补记 P2 棘轮基线与审查结论
+    </title>
+    <updated>2026-09-06T11:01:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;文档(tool/gui): 契约文档补记 P2 棘轮基线与审查结论&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6dc73acb204f9358ff5337b0ec12eb57918efb38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/6dc73acb204f9358ff5337b0ec12eb57918efb38"/>
+    <title>
+        门禁(tool/gui): 新增宽泛异常(broad_except=836)与内联硬编码样式(style_hex=29)两个棘轮指标,契约…
+    </title>
+    <updated>2026-09-06T11:00:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;门禁(tool/gui): 新增宽泛异常(broad_except=836)与内联硬编码样式(style_hex=29)两个棘轮指标,契约文档记录 P2 深水区基线与审查结论&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d1e8ac6f0a376ac7581d4a77d23b51e4e123995</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/8d1e8ac6f0a376ac7581d4a77d23b51e4e123995"/>
+    <title>
+        重构(tool/gui): DesignPanel(932行)拆分 —— _build_ui(199行)迁 design_panel_bu…
+    </title>
+    <updated>2026-09-06T10:58:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;重构(tool/gui): DesignPanel(932行)拆分 —— _build_ui(199行)迁 design_panel_build.py,_TEMPLATES/_LEVELS 常量随迁避免循环导入;DesignController 审查为分区清晰的内聚状态机(方法均短)保留&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ba7cfccf22d20a3ee2d3838dc004c680ff298e1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/ba7cfccf22d20a3ee2d3838dc004c680ff298e1f"/>
+    <title>
+        修复(tool/gui): build_import_service 迁移遗漏 QMessageBox/QDialog 导入导致的 Nam…
+    </title>
+    <updated>2026-09-06T10:56:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;修复(tool/gui): build_import_service 迁移遗漏 QMessageBox/QDialog 导入导致的 NameError/测试挂起;测试 patch 目标同步至 section_import_service&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26527f28a31231916c1001d2f282bcb6e16bf247</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/26527f28a31231916c1001d2f282bcb6e16bf247"/>
+    <title>
+        重构(tool/gui): textbook 导入对话框拆分 —— 步骤/策略常量迁 dialogs/textbook_import/co…
+    </title>
+    <updated>2026-09-06T10:29:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;重构(tool/gui): textbook 导入对话框拆分 —— 步骤/策略常量迁 dialogs/textbook_import/constants.py,三个向导页+总装 builder 迁 pages.py,对话框 1004→757 行;方法名保留委托,textbook 63 项测试全过(唯一失败为基线已知的既有问题)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a35edae0c57dc9cd92a243d2db08c7acc277b958</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/a35edae0c57dc9cd92a243d2db08c7acc277b958"/>
+    <title>
+        重构(tool/gui): AiEditController.handle_ai_edit(210行)拆分 —— _resolve_nod…
+    </title>
+    <updated>2026-09-06T10:22:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;重构(tool/gui): AiEditController.handle_ai_edit(210行)拆分 —— _resolve_node_section/_confirm_structural_removal/_apply_node_edit 三 helper,unit/lesson 两近重复分支合并为统一应用路径,主线降至约80行;46 个覆盖测试全过&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/beaaf792ec351fe611caf380f06b16540d13af9d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/beaaf792ec351fe611caf380f06b16540d13af9d"/>
+    <title>
+        重构(tool/gui): regenerate.py 两大闭包流拆分 —— _run_batch_regen_flow(216行)引入 …
+    </title>
+    <updated>2026-09-06T10:16:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;重构(tool/gui): regenerate.py 两大闭包流拆分 —— _run_batch_regen_flow(216行)引入 _BatchRegenSession + _batch_regen_prepare/_finish_batch/_run_next 模块函数,_run_regen_flow(152行)拆出 _RegenSession + _regen_on_ok/_regen_on_err;行为不变,26 个覆盖测试全过&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85806bdf7382a486ebb28656160099a478e64c36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/85806bdf7382a486ebb28656160099a478e64c36"/>
+    <title>
+        重构(tool/gui): MainWindow 瘦身 1107→712 行 —— shell 构建(toolbar/central/st…
+    </title>
+    <updated>2026-09-06T10:02:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;重构(tool/gui): MainWindow 瘦身 1107→712 行 —— shell 构建(toolbar/central/status bar/undo actions)拆到 main_window_shell,仓库会话簇(最近仓库/AI配置/打开新建课程)拆到 repo_session_host,体验桥(focus ring/refresh/metrics)拆到 experience_window_bridge,_save_course_async 迁 save_host.run_async_direct_save,_make_import_service 迁 section_import_service.build_import_service;全部方法名保留委托,顺带清理 7 个死命令导入&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e9c78da5c784686c57ccedef1c33c42113011daa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DsDG1/turna/commit/e9c78da5c784686c57ccedef1c33c42113011daa"/>
+    <title>
+        文档(tool/gui): 契约文档补记 SectionAiDialog/SettingsDialog/commands 拆分结果
+    </title>
+    <updated>2026-09-06T09:46:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/143599314?s=30&amp;v=4"/>
+    <author>
+      <name>DsDG1</name>
+      <uri>https://github.com/DsDG1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;文档(tool/gui): 契约文档补记 SectionAiDialog/SettingsDialog/commands 拆分结果&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

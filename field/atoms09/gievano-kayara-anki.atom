@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/gievano/kayara-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/gievano/kayara-anki/commits/main.atom"/>
+  <title>Recent Commits to kayara-anki:main</title>
+  <updated>2026-09-08T07:20:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2f93c454adb56e19c0e0c3a2dc7f756a2e82e0d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/2f93c454adb56e19c0e0c3a2dc7f756a2e82e0d5"/>
+    <title>
+        chore: add LICENSE and update various files
+    </title>
+    <updated>2026-09-08T07:20:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add LICENSE and update various files&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6a6ec376d36330a7a2a6085ca5ff200f08dfb8d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/b6a6ec376d36330a7a2a6085ca5ff200f08dfb8d"/>
+    <title>
+        fix: draft input nyangkut saat buka ulang panel
+    </title>
+    <updated>2026-09-05T13:23:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: draft input nyangkut saat buka ulang panel
+
+Dialog singleton bikin DOM webview awet — teks yang pernah
+di-paste tapi tak terkirim nongol lagi tiap open. Sekarang input
+dikosongkan saat open biasa; open-with-selection tetap pre-fill.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/736850ae0d5dd02cc982b3fef3064f473ae8c8d4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/736850ae0d5dd02cc982b3fef3064f473ae8c8d4"/>
+    <title>
+        feat: AI liat state UI Anki live tiap request
+    </title>
+    <updated>2026-09-05T13:04:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: AI liat state UI Anki live tiap request
+
+Snapshot UI disuntik ke system prompt: layar aktif, sisi kartu
+reviewer (question/answer), note id kartu aktif, editor note id.
+Prompt diajari memakai state ini — termasuk larangan spoil jawaban
+saat user masih di sisi question.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/437d1bba86717100caf77fe6ce4c1357d10f1784</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/437d1bba86717100caf77fe6ce4c1357d10f1784"/>
+    <title>
+        fix: bubble blank saat restore history
+    </title>
+    <updated>2026-09-05T12:47:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: bubble blank saat restore history
+
+Filter history di Python (skip pesan kosong + feedback mesin
+[HASIL ASK]) sebelum dikirim ke UI, plus pengaman di restoreHistory JS.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a10cafa41aa30ec03ee637e85721419b3cc78d51</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/a10cafa41aa30ec03ee637e85721419b3cc78d51"/>
+    <title>
+        feat: cancel batch, ASK transparan, fix bubble blank
+    </title>
+    <updated>2026-09-05T12:25:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: cancel batch, ASK transparan, fix bubble blank
+
+- tombol ✕ di progress bar batch (cooperative cancel, parsial tetap
+  bisa di-undo 1 klik)
+- query ASK dirender sebagai tool-call block persisten dengan hasil
+  collapsible, ala tool-call di CLI agent
+- fix bubble blank: reply ASK-only skip bubble; teks kosong + chip
+  aksi tampil hint konfirmasi
+- hapus dead code build tooling vite lama (app.jsx, vendor, assets,
+  package.json) yang tidak direferensikan index.html&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f39a3c62fc0ed2c599a9c568558b17ba158bcbee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gievano/kayara-anki/commit/f39a3c62fc0ed2c599a9c568558b17ba158bcbee"/>
+    <title>
+        feat: Kayara — AI Japanese tutor side panel for Anki
+    </title>
+    <updated>2026-09-04T22:25:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128557187?s=30&amp;v=4"/>
+    <author>
+      <name>gievano</name>
+      <uri>https://github.com/gievano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: Kayara — AI Japanese tutor side panel for Anki
+
+Panel chat docked di reviewer dengan kesadaran konteks kartu/deck,
+blok aksi SAVE/SET/ASK/BATCH/CARD, batch translate massal dengan
+progress bar + undo sekali klik, dan dialog Settings untuk endpoint,
+API key, model, dan system prompt.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

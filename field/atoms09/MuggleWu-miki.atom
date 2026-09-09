@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/MuggleWu/miki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/MuggleWu/miki/commits/main.atom"/>
+  <title>Recent Commits to miki:main</title>
+  <updated>2026-09-08T23:51:00Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b83e6845de78ffc83839facf46d845bed7418cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/1b83e6845de78ffc83839facf46d845bed7418cd"/>
+    <title>
+        docs: 使用手册与 README 同步近期功能——首页牌组表列改为 总数/未学习/到期、新增/编辑改为独立子窗口、补回车列表续行说明
+    </title>
+    <updated>2026-09-08T23:51:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 使用手册与 README 同步近期功能——首页牌组表列改为 总数/未学习/到期、新增/编辑改为独立子窗口、补回车列表续行说明
+
+- usage.md 双语：牌组表列描述与到期口径对齐 a95fe31
+- usage.md 双语：弹窗段改写为独立子窗口语义（可拖出主窗口/他屏、位置尺寸记忆、新增连续录卡），快捷键表关闭行同步
+- usage.md 双语：新增回车列表续行说明（6d6806d）
+- README 双语：特性区补「独立卡片窗口」一条
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6bd75784ee1f884d7cb830bf06eae64c91391ac5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/6bd75784ee1f884d7cb830bf06eae64c91391ac5"/>
+    <title>
+        style(home): 牌组表三列数字在单元格内居中——徽章与裸数字同轴，表头随列居中
+    </title>
+    <updated>2026-09-08T18:01:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style(home): 牌组表三列数字在单元格内居中——徽章与裸数字同轴，表头随列居中&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e81d206a712706f198136b14d42cd3c730caae3e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/e81d206a712706f198136b14d42cd3c730caae3e"/>
+    <title>
+        feat(dialog): 新增/编辑卡片改为可拖出主窗口的独立子窗口——child BrowserWindow 挂主窗、位置尺寸持久化、…
+    </title>
+    <updated>2026-09-08T17:30:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(dialog): 新增/编辑卡片改为可拖出主窗口的独立子窗口——child BrowserWindow 挂主窗、位置尺寸持久化、主窗口收 payload/cardsChanged 广播，渲染层拆出可复用 CardForm；纯逻辑收敛 shared/main 模块 + 41 个单测&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a95fe310cbba8bc8b0dc8cab15b2844a7dc6d0e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/a95fe310cbba8bc8b0dc8cab15b2844a7dc6d0e8"/>
+    <title>
+        feat(home): 首页牌组表三列改为 总数/未学习/到期——到期=此刻已到期可刷的学习/复习卡（不含新卡/未到期/暂停），总数含暂停…
+    </title>
+    <updated>2026-09-08T17:30:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(home): 首页牌组表三列改为 总数/未学习/到期——到期=此刻已到期可刷的学习/复习卡（不含新卡/未到期/暂停），总数含暂停卡；due 随时间推进无法增量维护，读时按堆 DFS 剪枝或全量扫描计算（MinHeap 增只读 at）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d6806d7ea562cb9366344571eb3dac883dc9577</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/6d6806d7ea562cb9366344571eb3dac883dc9577"/>
+    <title>
+        feat(editor): 回车列表续行——列表行末换行自动补同级标记（有序递增、缩进沿用），空项回车退出列表
+    </title>
+    <updated>2026-09-08T13:57:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(editor): 回车列表续行——列表行末换行自动补同级标记（有序递增、缩进沿用），空项回车退出列表&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a31eff874b1d9aabaf4e2ae7f02743d1a4b6ac1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/a31eff874b1d9aabaf4e2ae7f02743d1a4b6ac1f"/>
+    <title>
+        docs: 双语化文档——docs 分 en/zh 两目录，英文版四篇新写，README 引用与残留中文清理
+    </title>
+    <updated>2026-09-08T08:12:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 双语化文档——docs 分 en/zh 两目录，英文版四篇新写，README 引用与残留中文清理&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cae9ad1827cef9b937f4cf1d27ea0d3f2fd86316</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/cae9ad1827cef9b937f4cf1d27ea0d3f2fd86316"/>
+    <title>
+        fix(ui): 原生标题栏颜色跟随应用内深浅主题——themeSource 与 config.theme 同源，切主题即时生效
+    </title>
+    <updated>2026-09-08T01:25:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 原生标题栏颜色跟随应用内深浅主题——themeSource 与 config.theme 同源，切主题即时生效&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/139b13355218b436575438511ee6c0a573801a78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/139b13355218b436575438511ee6c0a573801a78"/>
+    <title>
+        feat(renderer): 代码高亮切换 Shiki TextMate 引擎——VS Code 同源语法粒度，方法调用/类型独立着色
+    </title>
+    <updated>2026-09-07T15:30:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(renderer): 代码高亮切换 Shiki TextMate 引擎——VS Code 同源语法粒度，方法调用/类型独立着色
+
+- shiki/core 细粒度接入 + @shikijs/langs 18 语言按需引入（非全量 bundle），纯 JS 正则引擎免 wasm，预载约 100ms
+- 自定义 miki-code 主题：tokenColors 直接引用 styles.css --code-* 变量，深浅色由 data-theme 自动切换，无需双主题机制
+- main.tsx 渲染前预载，失败照常渲染走转义兜底；md.tsx highlight 钩子改 highlightSync 同步调用，未知语言降级纯文本
+- --code-* 六变量保留为唯一色源，12 条 .hljs-* 规则删除，highlight.js 卸载，README 双语致谢更新
+- highlighter.spec 8 例：func token 粒度/别名与大小写归一/未预载语言降级/md 集成转义（653→661 全绿）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7362835de926cc8b86919ec81d858394f6fa5324</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/7362835de926cc8b86919ec81d858394f6fa5324"/>
+    <title>
+        feat(theme): 深色主题重制为 Darcula——#2B2B2B 底 + #A9B7C6 蓝灰前景 + #214283 选中蓝，…
+    </title>
+    <updated>2026-09-07T14:17:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(theme): 深色主题重制为 Darcula——#2B2B2B 底 + #A9B7C6 蓝灰前景 + #214283 选中蓝，代码语法色与 UI 语义色分离（Darcula 编辑器配色），ECharts 同步&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/213f9adc762f0291646821348101704c8b32b108</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/213f9adc762f0291646821348101704c8b32b108"/>
+    <title>
+        fix(dialog): 打开编辑弹窗光标立即落到正面内容末尾——add/edit 统一在内容就绪后聚焦，去掉 autoFocus 时序竞争
+    </title>
+    <updated>2026-09-07T14:03:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(dialog): 打开编辑弹窗光标立即落到正面内容末尾——add/edit 统一在内容就绪后聚焦，去掉 autoFocus 时序竞争&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a185dab10d0383a6be581909b95e1839f786eed5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/a185dab10d0383a6be581909b95e1839f786eed5"/>
+    <title>
+        feat(editor): markdown 输入框反引号快捷包裹——单按包行内代码，三连按出围栏代码块
+    </title>
+    <updated>2026-09-07T13:54:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(editor): markdown 输入框反引号快捷包裹——单按包行内代码，三连按出围栏代码块
+
+- 四处生效：新增/编辑弹窗正反面 + 卡片库编辑面板正反面
+- 单按：无选区插一对 \` 光标居中 / 有选区两侧包裹（选区保持内层）
+- 三连按：纯文本形态检测（不限按键间隔）——无选区 | 形态 / 选区双层 \\`sel\\` 形态，第三下替换为 \`\`\` 围栏代码块，选区内容落入块内；无选区生成空代码块光标落内容行
+- 单按刻意不做 toggle：toggle 会拆掉三连按的中间态导致永远出不了代码块；撤销走原生 ⌘Z
+- applyBold 泛化为 applyWrap(el, setText, fn)，加粗与反引号共用 execCommand+兜底直改路径&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aff3503fcc875616bb39b5849ae57d19ffa7da41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/aff3503fcc875616bb39b5849ae57d19ffa7da41"/>
+    <title>
+        feat(stats): 预测图改 38 根等宽时间柱自适应分桶——近一年均分未来 365 天、全部按最远到期−最早逾期均分，toolti…
+    </title>
+    <updated>2026-09-07T13:53:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(stats): 预测图改 38 根等宽时间柱自适应分桶——近一年均分未来 365 天、全部按最远到期−最早逾期均分，tooltip 显示桶起止区间
+
+- 旧口径 30 天按天 + 5-12 周按周的时间桶不均匀，且 30-35 天（W+4）与 12 周后的卡不可见
+- year 档窗口 [今天结束, +365 天]；all 档含逾期积压（最早逾期落最左柱）；暂停卡不计入（与队列口径一致）
+- label 随桶宽自适应（≥1 年标年份 / ≥25 天标年-月 / 否则月-日）；StatsPayload.forecast 新增 range 字段
+- 修复 computeStats 未排除 suspended 卡的预测口径问题&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a98439074ce8546005ec7868a021d91ea0eb0666</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/a98439074ce8546005ec7868a021d91ea0eb0666"/>
+    <title>
+        feat(hot-reload): 工作区外部变更热加载——git pull/他机写入后自动刷新
+    </title>
+    <updated>2026-09-07T10:49:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(hot-reload): 工作区外部变更热加载——git pull/他机写入后自动刷新
+
+主进程每 2s 轮询受管文件（decks/config/stats/cards/review-log）的
+mtime+size 指纹，发现外部变化即按启动加载链全量重建内存态，并经
+miki:workspace-changed 事件通知渲染进程刷新当前视图。
+
+- 自写豁免：全部写路径完成后更新快照，本机操作不误触发（漏挂也只多一次重载，不循环）
+- 3s 冷却合并：git pull 大操作期间最多每 3s 重载一次
+- 重载后会话撤销栈作废（外部变更可能使撤销目标失效）；不主动压实，不折叠他人文件
+- 学习页同卡保留答题相位不被打断；卡片库/统计页就地重查
+- saveBrowserConfig/saveTheme 统一走 saveConfig（原子写 + 自写豁免）
+- 新增 5 个单测：外部新增卡/异机 answer/decks 变更/自写豁免/撤销栈作废&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/852c10744d4b7e1a4ff82e1e36832118ef9bbb41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/852c10744d4b7e1a4ff82e1e36832118ef9bbb41"/>
+    <title>
+        fix(dialog): 新增弹窗牌组下拉与首页牌组顺序一致
+    </title>
+    <updated>2026-09-07T05:04:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(dialog): 新增弹窗牌组下拉与首页牌组顺序一致
+
+首页/卡片库/统计均按名称自然序展示牌组（sortedDecks），唯独新增弹窗直接渲染 decks 原始存储顺序，两处顺序不一致。弹窗下拉改用 sortedDecks，默认选中牌组同样取排序后第一个。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da0c895a23b7dca66e4b580d24b5fa58a6121b82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/da0c895a23b7dca66e4b580d24b5fa58a6121b82"/>
+    <title>
+        fix: 修复新增/编辑弹窗输入被后台刷新清空
+    </title>
+    <updated>2026-09-07T03:09:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 修复新增/编辑弹窗输入被后台刷新清空
+
+- 弹窗初始化 effect 移除 decks 依赖：60s 轮询与切视图都会 reload 换新
+  数组引用，触发 effect 重跑清空正反面输入；编辑态还会把未保存内容
+  回退为已保存版本
+- 编辑回填前校验仍是同一弹窗会话，防止快速取消再开时旧请求串场&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/96a2a34ccb49a6eaa5c59bb2039cd7e2a8cd7dde</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/96a2a34ccb49a6eaa5c59bb2039cd7e2a8cd7dde"/>
+    <title>
+        docs(readme): 双语补「打包与安装（macOS）」节
+    </title>
+    <updated>2026-09-06T16:34:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): 双语补「打包与安装（macOS）」节
+
+开发命令表加 pack:mac，替换过时的「打包后续提供、请从源码运行」；新节说明
+Miki.app 产物、/Applications 安装、Raycast/Spotlight/Dock 启动、单实例行为
+与打包版工作区解析链路，细节指向 docs/development.md「打包」节&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa1d530c91bfc4b13199a0f70dcf73bbb8f441ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/aa1d530c91bfc4b13199a0f70dcf73bbb8f441ea"/>
+    <title>
+        build(mac): electron-builder 打包 Miki.app——Dock 不再显示 Electron，Raycast 可启动
+    </title>
+    <updated>2026-09-06T16:30:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(mac): electron-builder 打包 Miki.app——Dock 不再显示 Electron，Raycast 可启动
+
+- package.json build 配置：productName Miki / appId com.wuhao.miki / dir 目标 /
+  resources/icon.png 转 icns / identity null（本地构建不签名）/ 输出 release/
+- 单实例锁 requestSingleInstanceLock：第二实例静默退出并唤起已有窗口，
+  防 Raycast 与 dev 双开并发写同一工作区
+- 打包版工作区解析走 userData workspace.json（无 MIKI_WORKSPACE 时）
+- postinstall 的 fix-dev-app-name（改 node_modules Electron.app plist）仅
+  服务 dev 模式；打包后由自身 Info.plist 决定 Dock/菜单名，根治显示问题
+- development.md 打包节改为实际流程，usage.md 补启动方式&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/673722dff858faf1b115b499b74fd11df03f5d81</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/673722dff858faf1b115b499b74fd11df03f5d81"/>
+    <title>
+        feat(dialog): 编辑弹窗 ⌘/Ctrl+B 选区加粗开关键
+    </title>
+    <updated>2026-09-06T16:18:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(dialog): 编辑弹窗 ⌘/Ctrl+B 选区加粗开关键
+
+- boldSelection 纯函数：无选区插 **** 光标居中；普通选区包 **（选区保持
+  内层）；选中自带 ** 对或紧贴外侧 ** 对 → 去掉；恰选中 ** → 删除
+- applyBold 走 execCommand(&amp;#39;insertText&amp;#39;) 保留输入框原生撤销栈（⌘Z 可回退），
+  失败退回受控直改；正反面输入框都生效，底部提示补充 ⌘B
+- bold.spec 6 用例（含开关幂等往返），638 全绿&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/31a588bf925e6749f50ee29c189d95bff3a5245f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/31a588bf925e6749f50ee29c189d95bff3a5245f"/>
+    <title>
+        fix(study): 编辑当前卡确认后，学习页立即显示修改后的内容
+    </title>
+    <updated>2026-09-06T16:10:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(study): 编辑当前卡确认后，学习页立即显示修改后的内容
+
+弹窗确认只 reload 了牌组计数，学习页 payload.card 是本地 state，界面停留
+旧内容。store 新增 contentEpoch，编辑确认后 bump；学习页监听版本重取
+getStudy（幂等不消费队列），同卡保留当前提问/答案相位，换卡/换牌组仍回
+提问态。answer/undo 同步维护 loadedCardIdRef 保证同卡判断准确。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/76961941bb27f078322637bb1971b5cacc59106d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/76961941bb27f078322637bb1971b5cacc59106d"/>
+    <title>
+        feat(home): 首页底部加「总共已学习 N 张」，快捷键提示拆行优化
+    </title>
+    <updated>2026-09-06T16:06:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(home): 首页底部加「总共已学习 N 张」，快捷键提示拆行优化
+
+- loadWorkspace 载荷新增 totalCount = 历史累计净答题数（WorkspaceService.
+  totalAnswered：dailyAgg 按日按牌组求和，undo 已抵消，与 todayCount 同口径）
+- 首页底部重构为两行：第一行「今天已学习 X 张 · 总共已学习 Y 张」，
+  第二行快捷键 chips（复用 .kbd 样式，横向排布）
+- workspace.spec 补 totalAnswered 用例（undo 抵消 + 跨天累加，632 全绿）&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

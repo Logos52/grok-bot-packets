@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/reedmarler/KanjiQuest/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/reedmarler/KanjiQuest/commits/main.atom"/>
+  <title>Recent Commits to KanjiQuest:main</title>
+  <updated>2026-09-08T23:54:58Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8950cd7fdb7a24d2780bf10a3bd603c4df859839</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/8950cd7fdb7a24d2780bf10a3bd603c4df859839"/>
+    <title>
+        Add a fourth polite form to two auxiliary drills
+    </title>
+    <updated>2026-09-08T23:54:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a fourth polite form to two auxiliary drills
+
+n3-03 (〜ようになる) and n3-31 (〜てみる) only exposed 3 and 2 forms to the
+Auxiliary Verbs drill. Both take a natural polite past-negative —
+〜ようになりませんでした (&amp;quot;did not become able to read X&amp;quot;), 〜てみませんでした
+(&amp;quot;did not try eating X&amp;quot;) — so add it. The other 2-form auxiliaries stay
+as they are: their remaining forms (&amp;quot;〜ておきません&amp;quot;, &amp;quot;〜てしまいません&amp;quot;) are
+the ones the reviewed comments call unnatural.
+
+audit:hero-focus: auxiliary median reach 2 → 3. audit:sentences unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abb60a471da5ebf23c522e203ba61427761ce1fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/abb60a471da5ebf23c522e203ba61427761ce1fa"/>
+    <title>
+        Build backup and sync profile page
+    </title>
+    <updated>2026-09-08T23:52:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build backup and sync profile page&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f66b9ee6e259606e081ec3356f2c525c8d542dd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/f66b9ee6e259606e081ec3356f2c525c8d542dd9"/>
+    <title>
+        Drive the Profile Sync row from real account-sync state
+    </title>
+    <updated>2026-09-08T23:50:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drive the Profile Sync row from real account-sync state
+
+The redesigned Profile page hard-coded &amp;quot;Sync — Local only&amp;quot;. Read the
+actual accountSyncState instead: the row shows Local only / Ready to
+connect / Signed in, with accountSyncStatusText below it as the
+explainer, so the page tracks the sync groundwork already in the drawer.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc5ba8aa8dd86bce36de8c468b66059f72f5ced9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/cc5ba8aa8dd86bce36de8c468b66059f72f5ced9"/>
+    <title>
+        Give the Adverbs grammar drill an N2 pattern
+    </title>
+    <updated>2026-09-08T23:49:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give the Adverbs grammar drill an N2 pattern
+
+The Adverbs focus died above N3 — every N2/N1 pattern is clause-level with
+no slot a manner adverb fits. n2-30 (〜とはいえ) is the exception: its
+conceded quality is an adjective, so it takes a degree adverb the same
+way n4-30 does. Add an always-on degree-adverb slot there (最も dropped —
+&amp;quot;it is most cheap&amp;quot; doesn&amp;#39;t read) and extend HERO_FOCUS_LEVELS.adverb to
+N2. N1 still has none and is left as-is.
+
+audit:hero-focus: N2 adverb 0 → 1 pattern, reach 14. Drift, empty-stream
+and slot-scope checks pass; audit:sentences unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25fa9cd2d4a5b282abd5db67703c6f34abe6cf20</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/25fa9cd2d4a5b282abd5db67703c6f34abe6cf20"/>
+    <title>
+        Persist profile/daily-goal writes outside the setState updater
+    </title>
+    <updated>2026-09-08T23:42:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Persist profile/daily-goal writes outside the setState updater
+
+updateProfile and toggleGoal/completeGoal ran their persistence side
+effect — which dispatches a DOM event that other useUserProfile /
+useDailyGoals subscribers react to with setState — inside the functional
+setState updater. React runs those updaters during the render phase, so
+saving the name on the redesigned Profile page fired a setState on the
+still-mounted UserProfileMenu mid-render (&amp;quot;Cannot update a component
+while rendering a different component&amp;quot;).
+
+Merge the partial against a ref instead and move setState + save into the
+caller&amp;#39;s event-handler scope, where the cross-component sync is fine.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db8f11dbfdb23ee23d8b94b44f1c97e985f219f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/db8f11dbfdb23ee23d8b94b44f1c97e985f219f5"/>
+    <title>
+        Square the furi/EN toggles outside a control-group
+    </title>
+    <updated>2026-09-08T23:35:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Square the furi/EN toggles outside a control-group
+
+.app-display-toggle sets a 0.55rem radius, but .control-chip&amp;#39;s pill radius
+is defined later in the file and wins at equal specificity, so a furi/EN
+button only looked square where a .control-group-* wrapper bumped the
+specificity (dashboard, KanjiLab, FocusedVocabPractice). The standalone
+ふり toggles in ChoiceDrill and SentenceBuilder fell back to the pill.
+Pin the square shape to .control-chip.app-display-toggle so it matches the
+dashboard everywhere.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dda7b9e1d029c519a46c72b0bca1e315c237b4e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/dda7b9e1d029c519a46c72b0bca1e315c237b4e3"/>
+    <title>
+        Redesign the Profile and Daily quests pages
+    </title>
+    <updated>2026-09-08T23:24:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Redesign the Profile and Daily quests pages
+
+Profile: restore the &amp;quot;Name&amp;quot; label above the editable name, add an editable
+tagline and a &amp;quot;Member since&amp;quot; line (new optional createdAt/tagline fields
+on UserProfile, back-filled for existing local profiles), and a 2x2 stat
+grid — day streak, cards learned, reviews, quests cleared — read from the
+existing stats/progress/quest stores. Device/Sync rows kept.
+
+Daily quests: a progress ring + meter hero, and a board of quest rows,
+each with a check toggle and a Go/Again action.
+
+Both pages now use the rounded gradient-panel look of the kana chart
+(profile in kyogre blue, daily quests in rayquaza green); the old
+.account-profile-* / .account-goal-* CSS is replaced. .account-page /
+.account-page-heading stay shared with Settings.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3db077bd521acc2a0c25abe5af7256d5c4d3a4e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/3db077bd521acc2a0c25abe5af7256d5c4d3a4e8"/>
+    <title>
+        Add optional account sync groundwork
+    </title>
+    <updated>2026-09-08T23:18:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add optional account sync groundwork&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0609daeb42e85a3fb4263de3099ff8e2a5415d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/b0609daeb42e85a3fb4263de3099ff8e2a5415d8"/>
+    <title>
+        Improve profile defaults controls
+    </title>
+    <updated>2026-09-08T22:54:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Improve profile defaults controls&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc277da25fde027e18c1c8bd3e1c311961d81384</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/dc277da25fde027e18c1c8bd3e1c311961d81384"/>
+    <title>
+        Widen the manner-adverb pool the grammar drill rotates
+    </title>
+    <updated>2026-09-08T22:47:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Widen the manner-adverb pool the grammar drill rotates
+
+MANNER_ADVERBIALS held five words, so the Adverb-focus drill on the two
+patterns that use it (n3-13 たばかり, n2-19 てみる) was a five-step loop.
+Add three more that read naturally on any everyday action verb and still
+work when the frame places them sentence-finally in English (eagerly,
+intently, happily); 一生懸命 / 上手に / きれいに were tried and left out
+because they read stiffly after eat/drink/watch.
+
+audit:hero-focus: N3 adverb reach 5 → 8. audit:sentences unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a5de9c9b9e8364f9b5780a61be39c7236d7e77a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/0a5de9c9b9e8364f9b5780a61be39c7236d7e77a"/>
+    <title>
+        Fix profile drawer mobile layout
+    </title>
+    <updated>2026-09-08T22:46:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix profile drawer mobile layout&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18f7279f3fe7820e9b47e2c241a2b5c9a60b6d73</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/18f7279f3fe7820e9b47e2c241a2b5c9a60b6d73"/>
+    <title>
+        Update profile menu labels and story layout
+    </title>
+    <updated>2026-09-08T22:41:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update profile menu labels and story layout&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5e5af16373238d469d7041b95ea63bec20c9123</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/b5e5af16373238d469d7041b95ea63bec20c9123"/>
+    <title>
+        Rotate the adjective, not just its ending, in grammar mode (n5-17)
+    </title>
+    <updated>2026-09-08T22:40:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rotate the adjective, not just its ending, in grammar mode (n5-17)
+
+The Grammar-mode adjective drill held one sentence still and rotated a
+part of speech, but on n5-17 (Object が Adjective) the adjective slot was
+picked off a fixed seed and never consulted slotSeeds/avoidWords, so the
+drill could only toggle the predicate ending on a single adjective —
+面白いです → 面白くないです → 面白かったです and back. Reach 5, and a
+learner exhausts it in one screen.
+
+Extract the per-adjective noun pool into objectPoolFor() and, on a drill
+rotation, hold the noun fixed and swap in another adjective the same noun
+legitimately takes — every candidate is one whose own reviewed pool
+already contains this noun, stays within the base adjective&amp;#39;s descriptive
+family, and excludes the curated-allow-list and abstract-evaluation
+adjectives whose pairings don&amp;#39;t generalise across a loose category match.
+
+Base-path generation is unchanged (audit:sentences identical: 13493/457).
+audit:hero-focus: N5 adjective reach 5 → 14, shown 5 → 13; all-levels
+median reach 6 → 14. Drift and empty-stream checks still pass.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/36710d6692a4c4e5cba6681d69efe7511df2ed44</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/36710d6692a4c4e5cba6681d69efe7511df2ed44"/>
+    <title>
+        Fix story mode settings and timing
+    </title>
+    <updated>2026-09-08T22:20:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix story mode settings and timing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e67825fd45f875df5f551a26c6f0c18ef31fed9d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/e67825fd45f875df5f551a26c6f0c18ef31fed9d"/>
+    <title>
+        Update profile settings display defaults
+    </title>
+    <updated>2026-09-08T17:43:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update profile settings display defaults&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a715fa8907a4a194d18c665b0fc6178f0125633</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/5a715fa8907a4a194d18c665b0fc6178f0125633"/>
+    <title>
+        Inset mobile profile/settings buttons to align with page content
+    </title>
+    <updated>2026-09-08T07:14:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Inset mobile profile/settings buttons to align with page content
+
+Profile stays left and settings stays right, but on phones they now
+sit at the same 1.25rem inset as the rest of the page instead of
+flush against the screen edge.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_012RxFMDQVM5dUYUYQ1DrayW&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99fb035a3926e3d922b7dfdd522e29f8818d683f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/99fb035a3926e3d922b7dfdd522e29f8818d683f"/>
+    <title>
+        Revert &quot;Swap mobile profile/settings button sides&quot;
+    </title>
+    <updated>2026-09-08T07:14:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revert &amp;quot;Swap mobile profile/settings button sides&amp;quot;
+
+This reverts commit e5bce91c463fbedf2abecd96086850212f4fe6ab.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1fe476f76c3a1266288c9995db0d4861740eed6b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/1fe476f76c3a1266288c9995db0d4861740eed6b"/>
+    <title>
+        Swap mobile profile/settings button sides
+    </title>
+    <updated>2026-09-08T07:14:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Swap mobile profile/settings button sides
+
+Profile moves to the right and settings to the left across every
+mobile breakpoint that positions them, keeping both at the same
+vertical offset above the app content.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_012RxFMDQVM5dUYUYQ1DrayW&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f28719a0e4309b5ee8f9146a6ba76b6aa1d4e269</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/f28719a0e4309b5ee8f9146a6ba76b6aa1d4e269"/>
+    <title>
+        Redesign the Quest hub as a single tappable path instead of a busy da…
+    </title>
+    <updated>2026-09-08T06:46:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Redesign the Quest hub as a single tappable path instead of a busy dashboard
+
+Replaces the always-expanded quest-focus panel (full description, meta
+row, five-row step list, guardian aside) plus the separate per-arc
+journey-road cards with one continuous path of all twelve stops. Tapping
+an open stop reveals a bottom quest sheet with the patron&amp;#39;s request,
+guardian, reward, and step progress — detail that used to load in front
+of every visit now shows up only when asked for.
+
+Each quest gains a patron: a villager, shopkeeper, officer, teacher,
+merchant, or lord who is the one actually asking for the quest, giving
+the campaign&amp;#39;s yōkai-stole-the-seals premise a face and a voice per stop
+instead of one abstract goal.
+
+Small motion stands in for &amp;quot;movement&amp;quot; along the path: the current stop
+pulses, a just-cleared stop pops, and the stop it unlocks pings a beat
+later — the study screens are still where the walking happens.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01EW8HGA8g5s6cJCMDePo31o&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/10ce374640627e234716d988fd6b00468b684f18</id>
+    <link type="text/html" rel="alternate" href="https://github.com/reedmarler/KanjiQuest/commit/10ce374640627e234716d988fd6b00468b684f18"/>
+    <title>
+        Namespace the home quest card CSS and settle the scene
+    </title>
+    <updated>2026-09-08T06:12:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/302588373?s=30&amp;v=4"/>
+    <author>
+      <name>reedmarler</name>
+      <uri>https://github.com/reedmarler</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Namespace the home quest card CSS and settle the scene
+
+Rename the card&amp;#39;s classes to a home-quest- prefix so they stop colliding
+with the existing .dashboard-quest-button / -mark rules and a parallel
+katana-themed draft that also lives under .dashboard-quest-* — that
+collision was forcing the scene layer to static and blowing the card up
+to ~670px tall.
+
+Also: fade the torii/road still in from the left and drop it to 0.4
+opacity, inset the last node so its bead clears the card edge, and seat
+the bead on the node instead of floating above it.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

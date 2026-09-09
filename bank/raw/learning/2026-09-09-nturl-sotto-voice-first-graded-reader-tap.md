@@ -1,0 +1,377 @@
+---
+id: 2026-09-09-nturl-sotto-voice-first-graded-reader-tap
+kind: article
+title: Sotto — voice-first graded-reader + tap-to-translate + SRS + availability-gated voice tutor
+source: "https://github.com/nturl/sotto"
+author: nturl
+published: 2026-09-08
+captured: 2026-09-09
+via: grok-bot/Field
+lane: learning
+status: raw
+private: false
+---
+
+# SOURCE: README.md
+
+# Sotto
+
+Sotto (as in _sotto voce_) is an open-source, voice-first graded-reader
+language-learning app: narrated, tap-to-translate stories with a spaced-
+repetition review deck, plus a voice tutor you can talk to about the
+passage you're reading. Code is [Apache-2.0](LICENSE); the story content
+is [CC BY-SA 4.0](packages/content/LICENSE-CONTENT).
+
+## Read a book in 30 seconds
+
+1. Open **[readsotto.app](https://readsotto.app)**.
+2. Pick a language and a level.
+3. Open a book.
+4. Tap any word for a translation, or press play to hear it narrated.
+
+Nothing is recorded — no account, no analytics. Everything runs in your
+browser and a book you've opened keeps working offline.
+
+## Three ways to run it
+
+| Way                     | What it costs                | How                                                                                                                                                        |
+| ----------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hosted PWA**          | Free, no account             | Open [readsotto.app](https://readsotto.app) — reading data stays on this origin/device; downloads and optional online tutors require network access.       |
+| **Your own OpenAI key** | You pay OpenAI directly      | Profile → Tutor preferences → **Use your own OpenAI key**, or straight from the voice screen when no tutor is available. See [docs/byok.md](docs/byok.md). |
+| **Your own server**     | Free (your hardware/hosting) | `docker compose up`. See [docs/self-hosting.md](docs/self-hosting.md).                                                                                     |
+
+## Add a book
+
+- Contribute a book to the shared library: [docs/adding-a-book.md](docs/adding-a-book.md).
+- Import a book you own, privately, on your own server: [docs/importing-books.md](docs/importing-books.md).
+
+---
+
+![Sotto demo: fast-path start, narrated reader, tap-to-translate, save](docs/media/demo.gif)
+
+The voice tutor can read to you, explain grammar, quiz your pronunciation,
+or just discuss the story. On the hosted PWA it runs via your own OpenAI
+key (above); self-hosted, it runs on local models by default, no API key
+required. Two honest caveats: the books are machine-adapted drafts and
+their levels are estimates ([docs/content-qa.md](docs/content-qa.md)), and
+the in-browser (WebGPU) voice tutor is still being finished
+([docs/browser-tutor.md](docs/browser-tutor.md)). What is verified and
+what is not is tracked in [docs/verification.md](docs/verification.md).
+
+## Quickstart (running it yourself)
+
+Requires Node 26 and pnpm 11 (see `.nvmrc` / `packageManager`).
+
+```sh
+pnpm install
+pnpm dev       # starts apps/server (voice + content API) and the Expo web client together
+```
+
+`pnpm dev` prints two URLs once ready: the web client on
+`http://localhost:8081` and the API server on `http://localhost:8790`.
+Open the web client URL in your browser — that's the book.
+
+`pnpm dev` needs no model servers to **read** a book — narration,
+tap-to-translate, and saving words all work with every voice model
+unreachable. The voice tutor needs one of: your own OpenAI key
+([docs/openai.md](docs/openai.md)), or local models
+([docs/local-models.md](docs/local-models.md)) — see
+[docs/self-hosting.md](docs/self-hosting.md) for the full breakdown of
+what each tier gets you.
+
+```sh
+pnpm ios       # runs the iOS app in the Simulator (expo run:ios)
+pnpm check     # format:check + lint + typecheck + test + content:validate
+pnpm content:new         # scaffold a new book bundle (see docs/adding-a-book.md)
+pnpm content:import      # import a DRM-free EPUB/TXT/Markdown file from the CLI
+pnpm content:word-audio  # render per-word pronunciation sprites for a narrated book
+```
+
+Optional e2e scripts (need the local model stack up — see
+[docs/local-models.md](docs/local-models.md); not run in CI, only
+deterministic unit/fake-transport tests are):
+
+```sh
+pnpm e2e:screenshots   # Playwright: disk screenshots at 6 widths, docs/screenshots/web/
+pnpm e2e:voice         # Playwright + a fake Chromium mic fed real Kokoro audio: live voice round-trip
+```
+
+`pnpm dev:server` and `pnpm dev:web` run each half individually.
+
+## Monorepo layout
+
+```
+apps/client/      Expo (SDK 57) app: Expo Router, React Native Web, iOS + web
+apps/server/       Fastify server: content API + voice orchestrator
+packages/core/     domain models, language defs, review scheduler, theme tokens, tool schemas
+packages/content/  language packs (source bundles, built packs) + the sotto-content CLI
+packages/voice/    VoiceProvider interface, fixtures, transports
+docs/              architecture, local-models setup, OpenAI setup, contracts
+```
+
+## Language matrix
+
+Interface (UI chrome), explanation (translation language), content
+(readable books), STT, and TTS voice per locale — full detail, stability,
+and narration coverage in [docs/supported-languages.md](docs/supported-languages.md).
+
+| Locale       | Interface | Explanation | Content books         | STT | TTS voice                 | Status   |
+| ------------ | --------- | ----------- | --------------------- | --- | ------------------------- | -------- |
+| en-US        | en        | en/fr/es    | 3                     | en  | af_heart                  | stable   |
+| en-GB        | en        | en/fr/es    | 0*                    | en  | bf_emma                   | stable   |
+| es-419       | es        | en/fr/es    | 3                     | es  | ef_dora                   | stable   |
+| es-ES        | es        | en/fr/es    | 0*                    | es  | ef_dora                   | stable   |
+| fr-FR        | fr        | en/fr/es    | 3                     | fr  | ff_siwis                  | stable   |
+| pt-BR        | pt        | en/fr/es    | 1                     | pt  | pf_dora                   | stable   |
+| pt-PT        | pt        | en/fr/es    | 0*                    | pt  | pf_dora                   | stable   |
+| it-IT        | it        | en/fr/es    | 1                     | it  | if_sara                   | stable   |
+| zh-CN (Hans) | zh-Hans   | en/fr/es    | 1                     | zh  | zf_xiaoxiao               | stable   |
+| zh-TW (Hant) | zh-Hant   | en/fr/es    | 1                     | zh  | zf_xiaoxiao               | stable   |
+| ro-RO        | ro        | en/fr/es    | 1                     | ro  | none (no narration/voice) | **beta** |
+| ca-ES        | ca        | en/fr/es    | 1 (community example) | ca  | none (no narration/voice) | **beta** |
+
+\* No region-specific seed content yet — the sibling region locale's books
+are the reference; see [docs/adding-a-language.md](docs/adding-a-language.md).
+
+## Status
+
+This is a first build (one overnight session plus several fix passes), not
+a finished product. All app copy in this README/docs is hand-written, but
+**every seeded book is AI-drafted** — a first-draft abridgment produced
+with AI assistance from a public-domain source (`reviewStatus: "draft"` in
+every `book.json`) — and **none has a recorded human language review
+yet**. Treat the readers as a functional demo of the pipeline, not vetted
+learning material, until a `reviewedBy` review lands.
+
+What's actually been verified, what's PASS/PARTIAL/DEFERRED/FAIL, and what
+was found and fixed vs. found-and-not-fixed is tracked honestly in
+[docs/verification.md](docs/verification.md) — read that before trusting
+any specific feature claim in this file. See also
+[docs/attribution.md](docs/attribution.md) for per-book content provenance.
+
+## License
+
+Code is licensed under [Apache-2.0](LICENSE). Content shipped in
+`packages/content` (story abridgments, glosses, generated covers and audio) is
+licensed separately under [CC BY-SA 4.0](packages/content/LICENSE-CONTENT) —
+see `packages/content/README.md` and each pack's `attribution.json`, or the
+attribution overview at [docs/attribution.md](docs/attribution.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [docs/adding-a-language.md](docs/adding-a-language.md)
+for adding a language pack. This project follows the
+[Contributor Covenant](CODE_OF_CONDUCT.md).
+
+# SOURCE: docs/verification.md (excerpt)
+
+# Verification report
+
+Mapped to the 35 acceptance criteria in `planning/BRIEF.md` (lines 590-628).
+Status values: **PASS** (verified this pass, evidence below), **PARTIAL**
+(verified in part; gap named), **DEFERRED** (named upfront as out of scope
+for this build), **NOT VERIFIED** (not exercised — architecture supports it
+but no evidence was gathered), **FAIL** (verified broken).
+
+## What changed since the last version of this doc
+
+The previous version of this report (commit `80aa57c`) was independently
+audited in `planning/ADVERSARIAL-REVIEW.md` (2026-09-04, read-only pass).
+That review found real bugs the report had missed or mis-stated — a
+`*-home.png` screenshot bug that made every "home screen" screenshot
+actually show onboarding, tutor-mode chips that didn't update the UI,
+duplicated voice captions, an unreadable-contrast passage in some voice
+states, a clipped push-to-talk ring, and several smaller items (full list
+in that file's §1/§2).
+
+This version reflects a subsequent fix pass (lane B of two parallel fix
+lanes; lane A handled server hardening, settings wiring, and the licences
+screen) plus fresh evidence gathered tonight and saved to
+`docs/evidence/*.log`. Where the review's findings are now fixed, this
+table says so and cites the fix; where they aren't, it says that too. The
+review's own §3 table (its recommended status changes) is the baseline for
+every row below — nothing here re-litigates its reading of the prior code,
+only updates it against what changed.
+
+The voice screen now probes `GET /health` before ever starting a tutor
+session, instead of silently attempting one that would fail: it shows a
+loading state while checking, then a clear "voice tutor unavailable" panel
+naming which of stt/llm/tts is down (or that the server didn't answer at
+all) with a "Read alone" exit, rather than connecting blind
+(`apps/client/src/voice/availability.ts`).
+
+Evidence paths are relative to the repo root. `pnpm check` tail is at the
+bottom of this doc; the full tail plus a live-voice e2e log and a
+server-smoke log are saved in `docs/evidence/`.
+
+## What changed 2026-09-05 (Lane E — read-only verification pass)
+
+This pass added no product code — Lane E's ownership was `apps/client/
+e2e/**` (new scripts), `docs/verification.md`, `docs/screenshots/**`,
+`docs/evidence/**` only. It closed the three remaining NOT VERIFIED rows
+(15, 16, 24) and the ES/FR/EN-only DEFERRED row (22), verified alignment
+numbers and desktop screenshots (rows 13, 28, 31), checked the static
+export's offline caching (row 34), and re-ran the iOS build with
+`xcode-select` now correctly pointed at Xcode (see the iOS session note
+below). New scripts: `apps/client/e2e/rows.mjs` (`pnpm e2e:rows`) and
+`apps/client/e2e/voice-smoke-locales.mjs`.
+
+**New defects found this pass** (none fixed — outside this lane's
+ownership; reported here and to whoever owns the next fix pass):
+
+1. **Vocabulary tab ignores the current language pair** (row 24) —
+   `apps/client/app/(tabs)/vocabulary.tsx:128` and `apps/client/src/ui/
+data.ts` (`byId` around line 193) never filter by
+   `preferences.learningLocale`, unlike home/library. A saved word from an
+   inactive pair stays visible in Vocabulary after switching pairs.
+2. **Mode label doesn't read back correctly after resuming a session via
+   the SessionBar tap** (row 15) — the active-mode chip highlight is
+   correct when a chip is tapped by hand (row 6), but not when arriving at
+   the voice screen via the SessionBar's own "return to this session" tap.
+   Not root-caused to a specific file:line this pass.
+3. **zh-CN voice session throws `colors is not defined`** (row 22) — a
+   real browser console error during an explain-word turn against the zh-
+   chengyu-stories book; no tutor caption ever arrived. Not investigated
+   beyond confirming it's a genuine app-thrown ReferenceError, not a test-
+   harness artifact.
+4. **whisper.cpp doesn't distinguish zh script variants** (row 22) — asked
+   in Traditional Chinese, STT transcribed Simplified characters; this
+   Kokoro build also shares one Mandarin voice/lang_code (`z`) across both
+   zh-CN and zh-TW packs (`apps/server/src/voice/tts.ts`'s `VOICE_BY_LANG`).
+5. **zh-TW content bookId mismatch** — `packages/content/packs/zh-TW/
+books/zh-chengyu-stories-hant/chapters/01.json` has
+   `"bookId": "zh-chengyu-stories"` (missing `-hant`), not matching its own
+   `book.json`/`pack.json`. Noticed while picking a target word for the
+   voice-smoke test; not investigated further.
+6. **Static-export offline caching is unverifiable on localhost** (row 34)
+   — `apps/client/src/state/contentApi.ts`'s `serverUrl()` (lines 27-34)
+   treats any `localhost`/`127.0.0.1` hostname as "not the static-hosting
+   case" and hardcodes `http://localhost:8790`, so testing the exported
+   `dist/` with `scripts/serve-static.mjs` on `localhost:8092` never
+   exercises the same-origin content caching the service worker
+   implements — every content/audio request silently goes cross-origin to
+   :8790 and the SW's `if (url.origin !== self.location.origin) return;`
+   passes it straight through, uncached. Reproduced with zero
+   `sotto-content-*` cache entries created after opening a book and
+   playing narration (`docs/evidence/sw-cache-2026-09-05.log`).
+7. **`createStore.ts`'s `hydrate()` has no shape validation on persisted
+   data** (found incidentally while seeding test fixtures) — `sotto.
+progress` is persisted as `{ progress: ReadingProgress[], completedBooks
+}` (createStore.ts ~line 372), but `hydrate()` (~line 358) calls
+   `progressData.progress.map(...)` with no guard beyond `safeParse`'s
+   JSON-parse-only check; any malformed/differently-shaped persisted value
+   crashes the entire app at startup with an uncaught TypeError instead of
+   falling back to an empty progress slice like the other three persisted
+   keys effectively do via `?? []`/`?? null`.
+
+**Confirmed working, not previously verified live**: row 16's completion
+gate + CompletionView (full click-through, first time), row 24's
+pair-filtering on home/library + data-preservation across pair switches
+(both PASS), row 6's mode-chip fix generalizing to all 4 chips, row 22's
+it-IT voice pipeline end-to-end.
+
+## In-browser tutor (not one of the 35 criteria) — 2026-09-05
+
+The in-browser tutor (STT/LLM/TTS running entirely client-side on WebGPU,
+`packages/voice/src/browser-cascade/**`) is this run's headline feature and
+has no row of its own among the 35 BRIEF criteria this report otherwise
+tracks — it's called out separately here rather than left silently absent.
+
+**Proven**: speech-to-text on WebGPU (Whisper via transformers.js) — the
+regression this task's evidence documents (garbage transcripts under LLM
+contention) is root-caused (fp16 encoder → decoder repetition collapse, not
+the leading WebGPU-contention hypothesis, which was disproved by controlled
+experiment) and fixed with a dtype change, bounded generation kwargs, and a
+unit-tested runtime fallback tracker (`docs/evidence/
+browser-tutor-stt-regression-2026-09-05.log`). The download panel offers
+the ~1.3 GB model set with real per-model sizes and never downloads
+
+# SOURCE: apps/client/src/voice/availability.ts (excerpt from raw fetch)
+
+VoiceAvailability includes checking / ready / needs-download / unavailable.
+Paths: local (server /health stt+llm+tts), browser (WebGPU cached models), byok (own OpenAI key), cloud (paid minutes).
+availabilityFromHealth returns unavailable with missing services when stt/llm/tts down.
+Voice screen probes health before starting tutor; shows "voice tutor unavailable" with Read alone exit.
+
+# SOURCE: docs/content-qa.md (excerpt)
+
+# Content QA
+
+## Gloss coverage — COMPLETE 2026-09-05 (Lane D1b)
+
+Lane D1 (previous session) widened glossary/vocab/metadata coverage to pt for 3 of 18
+books using the local Qwen model, then found it too slow (~9 tok/s) to finish. Lane D1b
+finished the sweep against **DeepSeek** (`deepseek-v4-flash`, OpenAI-compatible chat
+completions at `https://api.deepseek.com/chat/completions`, bearer token read at runtime
+from `~/.config/deepseek/api_key`) instead of the local model:
+
+- `packages/content/scripts/fill-locales.mjs` gained a `--backend=deepseek` flag
+  (default stays `local` for contributors without a key): same batch-prompt shape as
+  before (~40 words/call, one retry on parse failure or 5xx), now running up to 8 books
+  concurrently per locale.
+- **Important fix**: DeepSeek's `deepseek-v4-flash` is a reasoning model by default —
+  the first test call against it produced ~2000 "thinking" tokens for a single word and
+  would have made the sweep impractically slow/expensive. Passing `thinking: {type:
+"disabled"}` in the request body turns that off; every call in this lane's scripts
+  sets it.
+- **Identity-locale bug found and fixed**: for a book whose own content language matches
+  one of the target explanation locales (`ro-RO`→`ro`, `it-IT`→`it`, `pt-BR`→`pt`,
+  `ca-ES`→`ca`, `zh-CN`→`zh-Hans`), the established convention already visible in every
+  existing bundle (e.g. an English book's `glossary[word].en` is always the word itself,
+  a French book's `.fr` likewise) is that the same-language gloss is **identity**, not a
+  translation. The first real run against `ro-capra-trei-iezi` violated this — the model
+  filled `glossary["capră"].ro` with `"goat"` (the _English_ gloss) instead of `"capră"`
+  — because asking an LLM to "translate X into the language X is already written in" is
+  degenerate. Fixed with a `NATIVE_EXPLANATION_LOCALE` map: glossary/vocabulary-gloss and
+  `localizedTitles` are set to the word/title itself (no LLM call) for a book's native
+  locale; `premise`/`summary` are still real translations even for the native locale
+  (they're English-authored meta-text, translated per locale the same as book text — see
+  e.g. `fr-chat-botte`'s `premise.fr`, which is a genuine translation of `premise.en`, not
+  a copy of any book text). The five corrupted `ro-capra-trei-iezi` glossary/vocab
+  entries were cleared and correctly re-filled as identity before continuing.
+- One data-quality artifact found in `es-quijote-molinos`'s glossary: a duplicate key
+  `"br\nilla"` (literal embedded newline, pre-existing from before this lane) alongside
+  the correct `"brilla"` key. Filled by copying `"brilla"`'s translations rather than
+  re-deriving a nonsense key.
+
+Coverage table: glossary words with a value for that locale / total glossary words in
+the book. **100% for all nine locales across all 18 books** (en/fr/es were already
+complete from the prior session; pt/it/zh-Hans/zh-Hant/ro/ca are the six this lane
+added). `vocabulary[].gloss`, `localizedTitles`, `premise`, and `summary` are equally
+100% across all nine locales for all 18 books (verified by direct read of every source
+bundle, not just the glossary table below).
+
+| book                    | en   | fr   | es   | pt   | it   | zh-Hans | zh-Hant | ro   | ca   |
+| ----------------------- | ---- | ---- | ---- | ---- | ---- | ------- | ------- | ---- | ---- |
+| ca-patufet              | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| en-aesop-fables         | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| en-alice-rabbit-hole    | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| en-oz-cyclone           | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| es-fabulas-samaniego    | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| es-lazarillo            | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| es-licenciado-vidriera  | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| es-monte-de-las-animas  | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| es-quijote-molinos      | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| fr-cendrillon           | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| fr-chat-botte           | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| fr-chevre-de-m-seguin   | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| fr-fables-la-fontaine   | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| fr-petit-chaperon-rouge | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| it-pinocchio-inizio     | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| pt-jabuti-onca          | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| ro-capra-trei-iezi      | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+| zh-chengyu-stories      | 100% | 100% | 100% | 100% | 100% | 100%    | 100%    | 100% | 100% |
+
+### Sentence translations — COMPLETE
+
+`packages/content/src/translate-sentences.ts` gained the same DeepSeek backend switch
+(`SOTTO_LLM_BACKEND=deepseek` env var, since this is the project's own CLI command, not
+a standalone script — flags stay `--locale`/`--book`/`--dry-run`), the same
+`thinking:{type:"disabled"}` fix, the same native-locale identity short-circuit (a
+sentence's own-language "translation" is the sentence text verbatim — confirmed against
+every existing book, e.g. an English book's `sentence.translation.en` already equals
+`sentence.text`), and up to 8 books concurrently. Ran once with no `--locale` filter
+(defaults to all nine `GLOSS_LOCALES`); en/fr/es were already complete so those did
+nothing. Every sentence in every book now has a `translation` entry for all nine
+locales — `pnpm content:translate-sentences` reports 0 `missingAfter` for every
+(book, locale) row this run touched, and `zh-Hant` targets explicitly ask for

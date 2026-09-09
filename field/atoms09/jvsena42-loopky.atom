@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/jvsena42/loopky/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/jvsena42/loopky/commits/main.atom"/>
+  <title>Recent Commits to loopky:main</title>
+  <updated>2026-09-09T00:00:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c07f91f96ac979b97595b346df4573afcbf59d79</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c07f91f96ac979b97595b346df4573afcbf59d79"/>
+    <title>
+        Merge pull request #281 from jvsena42/chore/jna-sqlite
+    </title>
+    <updated>2026-09-09T00:00:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #281 from jvsena42/chore/jna-sqlite
+
+chore(deps): jna 5.19.1, sqlite-jdbc 3.53.4.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38edff85bccba0bdf05481fa3cf432b58c449be3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/38edff85bccba0bdf05481fa3cf432b58c449be3"/>
+    <title>
+        style: import ordering in KoinGraphTest
+    </title>
+    <updated>2026-09-08T23:45:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: import ordering in KoinGraphTest
+
+detekt&amp;#39;s ImportOrdering, caught by `ciCheck` after the commit that added
+the file. `--auto-correct` fix: `kotlin.*` sorts after third-party.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/359078f02f8753854ff744ed98f956bc098392c3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/359078f02f8753854ff744ed98f956bc098392c3"/>
+    <title>
+        test(di): the Koin graph resolves, and the splash survives dark mode
+    </title>
+    <updated>2026-09-08T23:43:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(di): the Koin graph resolves, and the splash survives dark mode
+
+Both raised in review on #280.
+
+**Koin 4.0.2 -&amp;gt; 4.2.2 had no automated coverage**, on the container that
+constructs every repository and ViewModel. `git grep` finds no
+`startKoin`, `checkModules` or `verify()` in any test source set: every
+other test builds its subject directly or over a fake, so a binding the
+new Koin resolved differently would first show up when an app launches,
+and CI launches no activity.
+
+`KoinGraphTest` starts the real graph — `sharedModule` plus
+`jvmPlatformModule`, the same `sharedModule` the apps use — on the desktop
+target and resolves all eleven repositories. They are named individually
+rather than reflected over, so adding a repository without a binding fails
+here instead of passing an empty loop, and the test was checked for
+vacuity by asking it for an unbound type and confirming
+`NoDefinitionFoundException`. This is the same move the stack already made
+three times: `checkJniLibsArePackaged`, `checkNativeImageIsOneFile`, the
+`afterEvaluate` predicate checks.
+
+**The splash was verified on video rather than by racing a screenshot** —
+it is too brief to catch, and it is the one surface Compose cannot reach,
+with `core-splashscreen` moving two minors and no source change beside it.
+`screenrecord` over a cold dark-mode launch, sampled at 6 fps: mean frame
+luminance 18 -&amp;gt; 5 with no spike, so no white flash at the handoff, and the
+splash frame shows the fox on the dark ground rather than the cream one —
+`values-night/` still resolves.
+
+Both recorded in the RESULTS.md entry for the stack.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75c07573c212c621dc08572fbf94c982b68c9fe3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/75c07573c212c621dc08572fbf94c982b68c9fe3"/>
+    <title>
+        docs(journeys): record the #273 device pass
+    </title>
+    <updated>2026-09-08T23:37:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(journeys): record the #273 device pass
+
+The stack&amp;#39;s plan called for a device pass and a dated RESULTS.md entry;
+this is the entry. One section for the whole stack rather than one per PR,
+because it is a single regression pass over changes that are meant to have
+no user-visible effect between them.
+
+Records what the check actually was — including that the Discover screen
+is pixel-identical to a `main` build, which is the useful form of &amp;quot;no
+regression&amp;quot; for a dependency swap — and, explicitly, that no journey was
+re-run end to end and no signed-in write path was exercised.
+
+Also records the two things that cost the most time and would otherwise be
+rediscovered: `Pixel_Tablet` will not boot under ~1 GB free, and its
+`user_rotation` does not take, so the expanded width class has to be
+reached with `wm size`.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c89189c5007a03972fcf0267e555c03faf6916ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c89189c5007a03972fcf0267e555c03faf6916ea"/>
+    <title>
+        chore(deps): jna 5.19.1, sqlite-jdbc 3.53.4.0
+    </title>
+    <updated>2026-09-08T23:27:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): jna 5.19.1, sqlite-jdbc 3.53.4.0
+
+Alone in their own PR, because both ship native libraries and both are
+reachable from `loopky`, which is shipped as a single `native-image`
+binary. `native-image` does not fail when it cannot fold a JDK native
+library in — it emits the library beside the executable and reports
+success — so a bump here can quietly turn a one-file install into an
+eight-file directory.
+
+JNA is the more delicate of the two: the UniFFI bindings run on it, and
+`com.sun.jna.Native` is hand-registered for JNI and **deliberately not**
+for reflection in `cli/src/main/resources/META-INF/native-image/`, because
+a reflection entry makes `native-image` reconstruct an `Executable` for
+every method the class declares and lands ten JDK dylibs beside the macOS
+binary. That metadata is untouched here; if the bump needs it changed,
+that is a finding to discuss rather than a patch to apply.
+
+Verified locally as far as a machine without GraalVM can: `ciCheck` green,
+and `:shared:jvmTest` — the only suite that loads the real libpubkycore —
+passes 1408 tests, so JNA 5.19.1 is exercised against the FFI rather than
+merely resolving. The CLI still answers `whoami --json` with exit 3.
+
+**Not verified locally: `:cli:nativeCompile` and `checkNativeImageIsOneFile`.**
+CI builds both rows on every PR that touches the catalog, and it has to be
+both — last time a metadata change left Linux clean and macOS at eleven
+files, and nobody saw it until the Mac row was built. A green Linux row is
+not evidence here.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/168462b03ec614d184771f73b6d2e284797d22b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/168462b03ec614d184771f73b6d2e284797d22b0"/>
+    <title>
+        docs: record the lifecycle/navigation move where it happens
+    </title>
+    <updated>2026-09-08T23:27:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: record the lifecycle/navigation move where it happens
+
+The other half of the #279 review finding. That PR&amp;#39;s Compose bullet had
+claimed lifecycle was already Google&amp;#39;s build; it is this PR that moves it,
+so the sentence belongs here.
+
+Stated as its own bullet rather than a clause on the Compose one, because
+the distinction is the point: Compose, lifecycle and navigation all leave
+the JetBrains channel across #279 and #280, but for different reasons and
+in different PRs, and &amp;quot;everything is AndroidX now&amp;quot; is the inference that
+puts both builds of lifecycle on one classpath again.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/164ce2ed441f5b325e0ee41873359630dd71554f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/164ce2ed441f5b325e0ee41873359630dd71554f"/>
+    <title>
+        chore(deps): core-splashscreen 1.0.1 -&gt; 1.2.0
+    </title>
+    <updated>2026-09-08T23:27:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): core-splashscreen 1.0.1 -&amp;gt; 1.2.0
+
+Its own commit because the splash window is the one surface Compose cannot
+reach — it is drawn from `Theme.Loopky.Starting` before `MainActivity`
+exists, resolves `values-night/` by what the *system* believes, and is
+told which to use by `UiModeManager.setApplicationNightMode`. A
+splashscreen change is one of the few things that can break that without
+touching any Kotlin, so it is reviewable and revertable on its own.
+
+Two minor versions with no API change on the path Loopky uses:
+`installSplashScreen()` in `MainActivity` and the four
+`windowSplashScreen*` attributes plus `postSplashScreenTheme` in
+`Theme.Loopky.Starting`, all unchanged. Builds clean.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c4e08e2dfac9aafd97c922e6e13d86ef2767834f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c4e08e2dfac9aafd97c922e6e13d86ef2767834f"/>
+    <title>
+        chore(deps): bring the catalog current
+    </title>
+    <updated>2026-09-08T23:27:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): bring the catalog current
+
+The routine half of #273 §2, no behaviour change intended: koin 4.0.2 -&amp;gt;
+4.2.2, coil 3.0.4 -&amp;gt; 3.6.2, kotlinx-coroutines 1.10.2 -&amp;gt; 1.11.0,
+kotlinx-serialization 1.9.0 -&amp;gt; 1.11.0, androidx-core 1.18.0 -&amp;gt; 1.19.0,
+appcompat 1.7.1 -&amp;gt; 1.8.0, work 2.10.0 -&amp;gt; 2.11.2, credentials 1.5.0 -&amp;gt;
+1.6.0, zxing 3.5.3 -&amp;gt; 3.5.4, graalvm-native 1.1.11 -&amp;gt; 1.1.12.
+
+The lifecycle row was not routine. Bumping it to 2.11.0 broke
+`:cli:installDist` outright — &amp;quot;Entry lib/lifecycle-common-jvm-2.11.0.jar
+is a duplicate&amp;quot; — because the desktop classpath had ended up carrying both
+`androidx.lifecycle` and `org.jetbrains.androidx.lifecycle`, two builds of
+the same classes under one filename.
+
+The fix is to stop using the JetBrains fork. Google now publishes
+lifecycle as a multiplatform library itself: `androidx.lifecycle:
+lifecycle-viewmodel:2.11.0` ships iosArm64 and iosSimulatorArm64 variants
+alongside android and desktop, so the fork `:shared` was depending on for
+its `commonMain` ViewModel has nothing left to add. Koin 4.2 had already
+moved, which is what put both on the classpath at once. Navigation follows
+for the same reason, and off its beta pin as well: `org.jetbrains.androidx.
+navigation:navigation-compose:2.9.0-beta03` -&amp;gt; `androidx.navigation:
+navigation-compose:2.10.0`.
+
+That also settles the thing this stack was most careful about — the
+multiplatform `ViewModel` all of `presentation/` extends and `:shared`
+re-exports as `api` for iOS. It is now the one Google supports as Tier 1
+KMP rather than a fork of it.
+
+`ciCheck` green, `testAndroidHostTest` still 1373, and the CLI still
+answers `whoami --json` with exit 3 and `not_signed_in` — the same
+assertion CI makes on the shipped binary.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5251fa406ca78186e7fbde0c322ea08c3f473c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c5251fa406ca78186e7fbde0c322ea08c3f473c7"/>
+    <title>
+        docs: the Compose bullet described a move that happens one PR later
+    </title>
+    <updated>2026-09-08T23:27:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the Compose bullet described a move that happens one PR later
+
+Raised in review on #279: the new §11 bullet said `androidx.lifecycle` is
+Google&amp;#39;s build and not the JetBrains fork, while this head&amp;#39;s catalog says
+`org.jetbrains.androidx.lifecycle`. The reviewer was right that it
+contradicts the build, and right about why it matters — the sentence names
+a real incident (`:cli:installDist` breaking when lifecycle went to
+2.11.0) and then points at the wrong survivor, so a reader hitting a
+lifecycle problem could &amp;quot;correct&amp;quot; the catalog straight into it.
+
+The cause was narrower than backwards, though, and the suggested fix would
+have gone stale immediately: lifecycle and navigation *do* move to Google&amp;#39;s
+builds, in **#280**, and asserting here that they stay JetBrains with
+Compose as the exception would be false one PR up. What actually happened
+is that a paragraph describing the state after #280 landed in #279.
+
+So this PR now claims only what it does: Compose moved, and Compose is the
+only family that did — which is the inference the reviewer flagged as the
+dangerous one, stated explicitly rather than left to be drawn. #280 adds
+the lifecycle/navigation half where it becomes true. The runtime-dependency
+line goes back to the catalog key for the same reason.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d27804b0d2adbce401f0dd0eeb8abb911d8cfeed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/d27804b0d2adbce401f0dd0eeb8abb911d8cfeed"/>
+    <title>
+        docs: record the move to AndroidX Compose in §11
+    </title>
+    <updated>2026-09-08T23:16:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: record the move to AndroidX Compose in §11
+
+§11 listed `androidx-navigation-compose` and said nothing about which
+Compose this project builds against, which is the thing this PR changes.
+
+The new bullet records what a reader would otherwise reconstruct from the
+catalog: the BOM is why those artifacts carry no version, Material 3
+Expressive is stable on this line so there is no opt-in annotation to copy
+(`ExperimentalMaterial3ExpressiveApi` is internal now), and
+`androidx.lifecycle` is Google&amp;#39;s multiplatform build rather than the
+JetBrains fork — the distinction that broke `:cli:installDist` when
+lifecycle went to 2.11.0 and both landed on one classpath.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9f38fbfab1945ea3b715d2d642e32b31b41131d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/b9f38fbfab1945ea3b715d2d642e32b31b41131d"/>
+    <title>
+        refactor(build): AndroidX Compose, off the Compose Multiplatform alphas
+    </title>
+    <updated>2026-09-08T23:16:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(build): AndroidX Compose, off the Compose Multiplatform alphas
+
+Compose Multiplatform was buying nothing here. `:shared` contains no
+Compose at all, iOS is SwiftUI by settled decision, and `:androidApp`
+imports only `androidx.compose.*` — not one `org.jetbrains.compose.*`
+import across 123 files, because the JetBrains artifacts publish under the
+AndroidX package namespace. So this swaps coordinates, not code.
+
+What it buys is leaving the alpha channel. `material3` was pinned at
+`1.10.0-alpha05` because that is where Material 3 Expressive lived, and
+the issue framed the pin as a standing decision to re-take. It isn&amp;#39;t one
+any more: AndroidX material3 **1.4.0 is stable** and ships
+`ShortNavigationBar` and `WideNavigationRail`, which are Loopky&amp;#39;s entire
+Expressive surface. `LoadingIndicator` looked like a third until it turned
+out to be a parameter named `showLoadingIndicator`.
+
+They are stable enough that `ExperimentalMaterial3ExpressiveApi` is now
+**internal**, so `LoopkyNavRail`&amp;#39;s opt-in had to go — the one source
+change in this commit, and the one place the swap was not purely
+mechanical.
+
+One BOM (`androidx.compose:compose-bom:2026.08.00`) replaces four version
+refs and pins the family to a set Google released together: foundation and
+runtime 1.12.0, material3 1.4.0, material3-adaptive 1.3.0,
+material-icons-extended 1.7.8. `components-resources` is dropped outright
+— nothing referenced `Res.*`.
+
+This had to follow the AGP 9 flip rather than precede it: AndroidX Compose
+1.12 requires AGP 9.1+ and `compileSdk 37`, and refuses to build below
+either. `compileSdk` moves to 37 here for that reason; `targetSdk` stays
+36, which already meets Play&amp;#39;s 31 Aug 2026 floor.
+
+`navigationCompose` comes off its `2.9.0-beta03` pin to 2.9.2, and stays
+the JetBrains build along with `androidx-lifecycle` — those are the two
+that must not move, since `:shared` re-exports the multiplatform
+`ViewModel` as `api` for iOS. Checked rather than assumed: the JetBrains
+lifecycle and navigation modules redirect to their AndroidX counterparts
+on the Android target, everything converges on lifecycle 2.10.0, and
+`checkDebugDuplicateClasses` passes.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92a4c97b75b2050f598216daa18987fd261e6bdf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/92a4c97b75b2050f598216daa18987fd261e6bdf"/>
+    <title>
+        perf(ios): incremental klib compilation, on its own and written down
+    </title>
+    <updated>2026-09-08T23:15:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(ios): incremental klib compilation, on its own and written down
+
+Split out of the AGP/Gradle/Kotlin commit on review of #278. The point
+stands: that commit justifies four rejected version choices and never
+mentioned a fourth moving part, so the flag read as accidental — and a
+three-way toolchain jump is exactly the commit someone bisects later,
+where an unrelated Kotlin/Native flag is the confounder CLAUDE.md&amp;#39;s
+atomic-commit rule exists to prevent.
+
+What it buys: Kotlin/Native&amp;#39;s documented lever for the iOS
+edit-build-drive loop, which is where that target spends its time.
+
+What it costs, and why it needs a paper trail rather than a green matrix:
+it is **Beta and off by default upstream**, so it is a real behaviour
+change, and **no CI job can exercise it** — every runner is fresh, so klib
+incrementality is structurally a no-op there. Its failure mode is a stale
+klib surviving a source change, which surfaces as a local iOS build that
+disagrees with the source and nothing reporting why.
+
+So it is recorded where someone hits it: a line in CLAUDE.md beside the
+iOS build guidance saying to turn this off first if a build looks stale,
+rather than only a comment in `gradle.properties` that nobody reads until
+they already suspect the build system.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7b8a9a6bce61f64cb080f39f87f8595c98144d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c7b8a9a6bce61f64cb080f39f87f8595c98144d0"/>
+    <title>
+        build: retry the Gradle distribution download
+    </title>
+    <updated>2026-09-08T23:15:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build: retry the Gradle distribution download
+
+Raised in review on #278. `gradle wrapper` generated `retries=0` alongside
+the 9.6.1 bump — Gradle&amp;#39;s own default, so not a regression, but a knob
+that now exists and is set to the value that fails a job on one blip.
+
+Every runner here is fresh, so every CI job downloads the ~130 MB
+distribution, and this repo already argues the point elsewhere: the CLI
+smoke test is &amp;quot;deliberately offline … so a network blip cannot make it
+flake&amp;quot;. Two retries cannot mask a real failure, because
+`distributionSha256Sum` still has to match whatever arrives.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/60e983f1c70ed95a7f63f41e36ec2a733bd5517b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/60e983f1c70ed95a7f63f41e36ec2a733bd5517b"/>
+    <title>
+        docs: stop pinning the SKIE rationale to a Kotlin version
+    </title>
+    <updated>2026-09-08T23:15:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: stop pinning the SKIE rationale to a Kotlin version
+
+§9.2 justified the hand-rolled Swift-Flow bridge with &amp;quot;Kotlin 2.3.x
+predates SKIE support&amp;quot;. This PR moves to 2.4.20, so the sentence now reads
+as a claim about a version the build no longer uses, and the next bump
+would make it wrong again.
+
+Restated as the standing reason rather than a version fact, and pointed at
+Swift export as the likelier successor — it removes the ObjC bridge that
+`IosFlowWatcher` and the erased-generics casting exist for, rather than
+wrapping it.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65494e0bc9efe811008f5028c34c12d1a24e56fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/65494e0bc9efe811008f5028c34c12d1a24e56fd"/>
+    <title>
+        chore(build): AGP 9.3.1, Gradle 9.6.1, Kotlin 2.4.20
+    </title>
+    <updated>2026-09-08T23:15:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(build): AGP 9.3.1, Gradle 9.6.1, Kotlin 2.4.20
+
+The flip #273 was aiming at. With `:androidApp` off KMP and `:shared` on
+`com.android.kotlin.multiplatform.library`, nothing here needs
+`android.newDsl=false` — the opt-out with the AGP 10.0 expiry date is
+never set, which was the point of the exercise.
+
+AGP **9.3.1** rather than the 9.4.0 the issue names: KGP 2.4.20 publishes
+support up to AGP 9.3.1, and 9.4.0 sits outside every published Kotlin
+compatibility row. Gradle **9.6.1** rather than the issue&amp;#39;s 9.1.0, which
+is AGP 9.0&amp;#39;s floor — AGP 9.3 requires 9.5.0, and 9.3.0 exactly is worth
+avoiding (gradle#36428 breaks cross-project dependency manipulation there,
+which is what the root&amp;#39;s `subprojects { dependencies { … } }` does).
+
+The wrapper and AGP had to move in one commit rather than two. AGP 8.13.2
+cannot run on Gradle 9.6.0+ at all — it relies on
+`org.gradle.api.problems.internal.InternalProblems`, removed there — and
+AGP 9.3 needs Gradle &amp;gt;= 9.5, so neither can lead. `gradle-wrapper.properties`
+was edited directly and the wrapper regenerated once the build came up.
+
+`org.jetbrains.kotlin.android` and the `jvmTarget` override come out of
+`:androidApp`: `android.builtInKotlin` defaults true here, and built-in
+Kotlin takes its jvmTarget from `android.compileOptions.targetCompatibility`,
+which is already JVM 11. AGP 9 lists that plugin as incompatible with the
+new DSL, so this is the removal it was placed for two commits ago.
+`android.nonTransitiveRClass` and `android.useAndroidX` are AGP 9 defaults
+and go with it.
+
+detekt 1.23.8 survives all three moves, so the conditional detekt 2
+migration is not needed. Its published table stops at Gradle 8.12.1 /
+Kotlin 2.0.21 / AGP 8.8.1 and it is EOL, so this was checked rather than
+assumed: `detektAll` passes, and a deliberately misnamed class is still
+reported, i.e. it is analysing rather than quietly finding nothing.
+
+`ciCheck` green. `testAndroidHostTest` still 1373 tests.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46d972e776b07473785d0f67932d2c433a498642</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/46d972e776b07473785d0f67932d2c433a498642"/>
+    <title>
+        fix(build): run the jniLibs assertion where CI can see it
+    </title>
+    <updated>2026-09-08T22:58:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(build): run the jniLibs assertion where CI can see it
+
+Raised in review on #277, and the diagnosis was right: the guard added
+because &amp;quot;an AAR built without them is a valid AAR, and the first sign of a
+missing one is an FFI call failing on a device long after CI went green&amp;quot;
+was itself only reachable from `ciCheck`. #239&amp;#39;s shape exactly — the check
+exists, the failure is silent, and nothing on the PR runs it.
+
+Wired as `finalizedBy` on `bundleAndroidMainAar`, the reviewer&amp;#39;s preferred
+option and the same shape as `:cli:nativeCompile`/`checkNativeImageIsOneFile`,
+so the assertion rides along with any build that produces an AAR rather
+than only with workflows that remember to ask.
+
+**One correction to the premise, and it is why a CI step is here too.**
+`:androidApp:assembleDebug` does *not* reach the finalizer: AGP consumes
+this module&amp;#39;s intermediate artifacts, not the packaged AAR
+(`./gradlew :androidApp:assembleDebug --dry-run` never mentions
+`bundleAndroidMainAar`). So `finalizedBy` alone would have run the check
+strictly *less* often than before. `:shared:assembleAndroidMain` is what
+produces an AAR, so that is what `ciCheck` and the `test-build` job now
+ask for, and the comment at both ends says why.
+
+Also from the same review, both LOW:
+
+- The ABI extraction computed a `substringAfterLast` and discarded it via
+  `let { _ -&amp;gt; }`, then re-read the outer receiver. Same behaviour in one
+  clause. Re-verified by adding a bogus ABI and watching the finalizer
+  fail, rather than by reading it.
+- Dropped the now-unused `androidLibrary` catalog entry. Nothing referenced
+  `com.android.library` once `:shared` moved to `androidKmpLibrary`.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f81f8552667fcf3fc01e14119311fd6797529622</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/f81f8552667fcf3fc01e14119311fd6797529622"/>
+    <title>
+        docs: ciCheck&#39;s new jniLibs assertion, and fix the bindings copy path
+    </title>
+    <updated>2026-09-08T22:51:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: ciCheck&amp;#39;s new jniLibs assertion, and fix the bindings copy path
+
+Two corrections to §7.4/§11 that go with this PR.
+
+`ciCheck` now also runs `:shared:checkJniLibsArePackaged`, which is worth
+naming where the command is documented: it is the only thing asserting
+that the four `libpubkycore.so` reach the AAR, and the whole point of it
+is that nothing else fails when they do not.
+
+The regeneration steps still told you to copy the generated `pubkycore.kt`
+into `shared/src/androidMain/`, which has been wrong since the jvmShared
+group was introduced — §7.4&amp;#39;s own prose two bullets earlier says
+`jvmSharedMain`, and following the command would create exactly the second
+copy that arrangement exists to prevent. Pre-existing rather than caused
+here, but this is the PR that touches the Android source-set layout.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/222bdf7dd77db76af8599d2fe2ecb19a24929cdb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/222bdf7dd77db76af8599d2fe2ecb19a24929cdb"/>
+    <title>
+        refactor(build): :shared onto com.android.kotlin.multiplatform.library
+    </title>
+    <updated>2026-09-08T22:51:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(build): :shared onto com.android.kotlin.multiplatform.library
+
+The reason #273 exists. AGP 9 makes the new DSL the default and lists
+`org.jetbrains.kotlin.multiplatform` beside `com.android.library` in one
+subproject as incompatible with it; `android.newDsl=false` buys time and
+is removed in AGP 10.0. This is the replacement Google points at, and it
+is applied here at AGP 8.13 — the plugin has existed since 8.10 — so the
+structural change is verified before the AGP 9 flip moves anything else.
+
+The `android {}` block moves inside `kotlin {}` and absorbs what the
+bottom-level `android {}` held. `compileOptions` is deleted rather than
+translated: Java compilation is off unless `withJava()`, and there is no
+`.java` here. `androidResources` stays off; there is no `res/`.
+
+Three things that fail silently, so all three are asserted rather than
+trusted:
+
+**The hierarchy group stops matching.** `withAndroidTarget()` selects
+`KotlinAndroidTarget`; this plugin creates a different target type, so the
+custom `jvmShared` group is built *without* the Android target in it,
+`androidMain` falls back to `commonMain`, and the generated
+`uniffi.pubkycore` bindings disappear from the Android compile. That is
+KT-80409, still open, and it reproduces here — swapping the predicate back
+fires the new `afterEvaluate` check. The fix is
+`withCompilations { it is KotlinMultiplatformAndroidCompilation }`, which
+is published API on both sides.
+
+**Host tests are opt-in.** AGP only warns about a missing `withHostTest`
+when a `src/androidHostTest` directory exists, and there is none —
+`commonTest` is what runs on this target. Without the opt-in the Android
+test run just disappears. With it, `testAndroidHostTest` reports 1373
+tests in 105 classes, matching the `testDebugUnitTest` baseline recorded
+at the bottom of this stack exactly, so `isReturnDefaultValues` survived
+the move.
+
+**jniLibs are packaged by convention, not by declaration.** They are —
+all four `libpubkycore.so` land in `shared.aar` under `jni/&amp;lt;abi&amp;gt;/` — but
+nothing in the build says so, and an AAR built without them is a valid
+AAR whose first symptom is an FFI call failing on a device. So
+`checkJniLibsArePackaged` asserts it and is wired into `ciCheck`, in the
+same spirit as `:cli:checkNativeImageIsOneFile`.
+
+Renames that follow: source set `androidUnitTest` -&amp;gt; `androidHostTest`
+(detekt&amp;#39;s source list and its four excludes), task
+`:shared:testDebugUnitTest` -&amp;gt; `:shared:testAndroidHostTest` (`ciCheck`,
+ci.yml, Architecture.md). `:cli`&amp;#39;s `shared-jvm.jar` lookup is unchanged in
+outcome but now says so when it misses, since this plugin forces
+`kotlin.publishJvmEnvironmentAttribute` on and a silent `first {}` failure
+there would read as a native-row bug.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c56ccffb7360d965389e5f8e065aada185f10957</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/c56ccffb7360d965389e5f8e065aada185f10957"/>
+    <title>
+        docs: finish the rename in the places no build reads
+    </title>
+    <updated>2026-09-08T22:50:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: finish the rename in the places no build reads
+
+Raised in review on #276. `git grep composeApp` still found nine
+references, and Architecture.md named a source set this PR deletes in
+three more. None of it fails a build, a lint or a test — which is the
+whole reason it needed a reviewer rather than CI.
+
+**Architecture.md is the one CLAUDE.md nominates as the source of truth
+for module layout**, and it was describing the layout this PR removes:
+`androidApp/androidMain` in the overview and the §5.1 heading, and
+`src/androidMain/kotlin/…` in the repo tree — the worst of the three,
+because a tree diagram is what someone copies a path out of.
+
+**The Unsplash KDoc is the load-bearing one.** `UNSPLASH_OBFUSCATION_SALT`
+is duplicated byte-for-byte between the build script and `commonMain`
+because a Gradle script cannot import from it, nothing relates the two
+copies, and `UnsplashKeyObfuscationTest` exists solely to catch them
+drifting. The comment naming the other copy *is* the link, and it pointed
+at a file that no longer exists — so did the test&amp;#39;s own KDoc.
+
+`shared/build.gradle.kts:110` carries the same staleness and is
+deliberately left: #277 already rewrites that line, and fixing it here
+would only create a conflict mid-stack. With that one exception,
+`git grep -n composeApp -- &amp;#39;:!journeys/RESULTS.md&amp;#39;` is now empty.
+
+Also drops &amp;quot;despite the name&amp;quot; from README and Architecture.md. That
+clause existed because `composeApp` implied Compose Multiplatform; with
+the module called `androidApp` it warns about nothing.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97fc866432a0a724399d9b0f6faea04af9934e6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jvsena42/loopky/commit/97fc866432a0a724399d9b0f6faea04af9934e6d"/>
+    <title>
+        refactor(build): :composeApp becomes :androidApp, a plain Android module
+    </title>
+    <updated>2026-09-08T22:50:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/44164057?s=30&amp;v=4"/>
+    <author>
+      <name>jvsena42</name>
+      <uri>https://github.com/jvsena42</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(build): :composeApp becomes :androidApp, a plain Android module
+
+AGP 9 forbids the shape this module had (#273). The release notes are
+explicit: &amp;quot;The new KMP integration does not support using KMP and the
+Android Application plugin in the same Gradle subproject&amp;quot; — and unlike
+`:shared`, there is no `com.android.kotlin.multiplatform.*` plugin for an
+application to migrate onto. The app has to stop being a KMP module.
+
+That turned out to cost nothing, because it was never really one. Only
+`src/androidMain/` existed on disk; there was no `commonMain` and no test
+source set at all, so `:composeApp:testDebugUnitTest` was running zero
+tests. The single `composeResources/` entry was the project template&amp;#39;s
+unused `compose-multiplatform.xml`, and nothing referenced `Res.*`. So
+the KMP scaffolding is deleted rather than ported: `src/androidMain` -&amp;gt;
+`src/main`, and the three source-set dependency lists collapse into one
+`dependencies {}` block.
+
+Renamed to `:androidApp` in the same commit, matching JetBrains&amp;#39; new
+default KMP structure and retiring the line CLAUDE.md had to carry
+explaining that `composeApp` was Android-only despite its name.
+
+`org.jetbrains.kotlin.android` is applied temporarily: AGP 8.13 has no
+built-in Kotlin, and AGP 9 lists that plugin as incompatible with the new
+DSL. Both it and the `jvmTarget` override come out at the AGP 9 flip,
+where `android.builtInKotlin` defaults true.
+
+Two things verified rather than assumed. `compose.materialIconsExtended`
+still resolves — the `compose` accessor comes from `org.jetbrains.compose`,
+which registers on any project, not only a KMP one. And detekt still lints
+all 123 files: they moved to `src/main/kotlin`, which the root&amp;#39;s explicit
+`source` list already carries for `:cli`. That list&amp;#39;s own comment warns
+that a missing entry is silently unlinted, so it was proved with a
+deliberate violation rather than inferred from a green run.
+
+`ciCheck` green; the APK still carries libpubkycore.so for all four ABIs.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01T99MY5MkzKvMVarVsBRLco&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
