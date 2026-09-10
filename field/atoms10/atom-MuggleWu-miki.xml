@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/MuggleWu/miki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/MuggleWu/miki/commits/main.atom"/>
+  <title>Recent Commits to miki:main</title>
+  <updated>2026-09-10T00:18:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f49fd58f3fa7913af1f8f4566384fd10fca0fba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/9f49fd58f3fa7913af1f8f4566384fd10fca0fba"/>
+    <title>
+        docs(development): 双语测试表补齐 09-07 以来新增的 10 个测试套件，命令段补 lint/format 四项
+    </title>
+    <updated>2026-09-10T00:18:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(development): 双语测试表补齐 09-07 以来新增的 10 个测试套件，命令段补 lint/format 四项
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/386fb8256e6e7572cd063e346606cd20552f6b34</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/386fb8256e6e7572cd063e346606cd20552f6b34"/>
+    <title>
+        docs: 同步本轮修复到 README 与 API 文档（nonce/本地零点/负分页/HEAD/suspend 严格布尔/MCP 批量…
+    </title>
+    <updated>2026-09-09T16:51:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 同步本轮修复到 README 与 API 文档（nonce/本地零点/负分页/HEAD/suspend 严格布尔/MCP 批量上限），补 lint 与 format 命令
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b55ad6eee63d46bd5eb0f284d43d9d9fdcb4cff8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/b55ad6eee63d46bd5eb0f284d43d9d9fdcb4cff8"/>
+    <title>
+        test(api): 到期窗口测试上限放宽到后天，规避午夜跨天的脆弱断言
+    </title>
+    <updated>2026-09-09T16:38:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(api): 到期窗口测试上限放宽到后天，规避午夜跨天的脆弱断言
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9c8c81e11c69642b1b068585d744a57b47a01fbf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/9c8c81e11c69642b1b068585d744a57b47a01fbf"/>
+    <title>
+        perf(main): undo 兜底 win 窗口 40k→200k
+    </title>
+    <updated>2026-09-09T16:18:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(main): undo 兜底 win 窗口 40k→200k
+
+窗口外 undo 在重放侧丢失聚合抵消（统计少抵消 1 次，compact 自愈）。
+原 40k 上限在千卡重度会话约 40 天可达；提到 200k 后该窗口实际不可达
+（200k 事件 ≈ 单会话数年），内存峰值约 30MB 可接受。截断逻辑本身
+保留，作为绝对兜底。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5cb3e341b2c4045a5d9a58eb249b75f30caabf6b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/5cb3e341b2c4045a5d9a58eb249b75f30caabf6b"/>
+    <title>
+        fix(mcp): 修正头注释、批量上限与端口文件 nonce 身份校验
+    </title>
+    <updated>2026-09-09T16:12:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mcp): 修正头注释、批量上限与端口文件 nonce 身份校验
+
+- 头注释「所有工具只读转发」与实情不符：写工具已存在，改为读/写
+  分类表述并保留安全边界说明
+- cardIds 批量上限 500：防误传全库 id 打爆逐卡 HTTP
+- 端口文件 pid 复用误判修复：api-server 启动生成随机 nonce 写入
+  miki-api.json 并在 /api/health 回显（health 本就免 token，nonce
+  非凭据无泄露面）；MCP 采用运行时端口前先比对 nonce，不匹配
+  （强杀残留 + pid 被无关进程复用）即回退配置端口。kill(pid,0)
+  探不出真身，nonce 是跨平台可靠的身份判定
+
+冒烟：真实 WorkspaceService 起服务，运行时文件 nonce 与 health
+回显一致；伪造 nonce 的文件会被判过期。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5294279106c2dc5ed7444ffb63f5c73f90662dd0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/5294279106c2dc5ed7444ffb63f5c73f90662dd0"/>
+    <title>
+        fix(api): HEAD 镜像 GET 语义，状态码逐一对齐
+    </title>
+    <updated>2026-09-09T15:23:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(api): HEAD 镜像 GET 语义，状态码逐一对齐
+
+原实现对存在路由一律 200，不执行 handler：HEAD /api/cards/not-exist
+回 200 而 GET 同路径回 404，探活语义失真。改为同一路由匹配 + handler
+执行（GET 全只读，安全），未知卡 404、非法参数 400 如实返回；响应体
+由 Node http 对 HEAD 自动省略。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5de8e681dc845e6c670dd9cdd11075c236f0eab5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/5de8e681dc845e6c670dd9cdd11075c236f0eab5"/>
+    <title>
+        fix(api): 分页负 limit/offset clamp 到 0
+    </title>
+    <updated>2026-09-09T14:46:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(api): 分页负 limit/offset clamp 到 0
+
+slice 对负数的语义是「从尾部数」：offset=-10 静默返回末尾几行、
+limit=-5 静默截尾——错位难以排查。两值统一 clamp 到 0。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d66cabd79219accd940d9654453410b29259e209</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/d66cabd79219accd940d9654453410b29259e209"/>
+    <title>
+        test(main): rebuildHeapsIfStale 过半重建与隐藏牌组早退分支覆盖
+    </title>
+    <updated>2026-09-09T14:32:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(main): rebuildHeapsIfStale 过半重建与隐藏牌组早退分支覆盖
+
+随机对拍难以稳定触达的两条分支补直接测试：40 张卡反复答题/暂停/
+解除逼 stale 过半触发全量重灌，逐轮与全量扫描对拍；软删牌组早退
+分支验证不重建不炸、其余牌组索引不受影响。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e1d49a5c621d5d0f8fa11ff2ff69d65252e5fef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/8e1d49a5c621d5d0f8fa11ff2ff69d65252e5fef"/>
+    <title>
+        fix(renderer): 数值草稿回声抑制改在途发送值多重集判定
+    </title>
+    <updated>2026-09-09T14:16:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(renderer): 数值草稿回声抑制改在途发送值多重集判定
+
+sentRef 单槽在「两次 commit 重叠」时失效：第一次 reload 回包未回、
+第二次 commit 已覆盖单槽——旧回声被误判为外部变化回写草稿（进行中
+编辑被拉回旧值），新回声反被吞掉，草稿与磁盘值从此分离。
+
+改为 pendingEchoes 多重集：每次 commit 记录发送值，configValue 命中
+即吞掉并消费一个；未命中才是外部变化。同值重复发送各认领各的。
+
+回归测试：重叠场景旧回声先到不拉回草稿、新回声认领、后续外部变化
+照常同步。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2deaddf484d1faee545cd392f64811ea3aeb0b56</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/2deaddf484d1faee545cd392f64811ea3aeb0b56"/>
+    <title>
+        test(renderer): 分页取数/数值草稿/选中态防抖三块纯逻辑收敛直测
+    </title>
+    <updated>2026-09-09T13:22:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(renderer): 分页取数/数值草稿/选中态防抖三块纯逻辑收敛直测
+
+卡片库分页、设置页数值草稿、选中态防抖落盘此前都是组件内联逻辑，
+无任何测试覆盖。按 staleGuard 路子收敛成三个不依赖 React/DOM 的
+模块后直测（21 个新用例）：
+
+- paginate.ts：三守卫（dataVer/viewSig/loaded 基点）逐项验证——
+  追加响应晚到遇新查询/参数变化/基点移动整页丢弃，防覆盖、重叠、
+  缺口；同视图刷新取已加载前缀保滚动位置；滚动预取边界
+- numericDraft.ts：连续拖动不逐次落盘、flush 立即落盘、自家回声
+  不回写、回声只消费一次、卸载补落（jsdom + React.act）
+- debouncedPersist.ts：连续 push 只写最终值、flushNow/dispose
+  立即补写、重复 dispose 安全
+
+Browser.tsx / Settings.tsx 改接新模块，行为不变；package.json
+新增 jsdom devDependency。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/624cc78ac774dd83119719806223de015ee6dfce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/624cc78ac774dd83119719806223de015ee6dfce"/>
+    <title>
+        test(main): lowerCache 失效链路回归
+    </title>
+    <updated>2026-09-09T12:58:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(main): lowerCache 失效链路回归
+
+updateCard/updateCards 改面后，小写缓存若不失效会脏读：旧词仍命中、
+新词搜不到，此前无任何测试覆盖。断言改面→旧词 0 新词 1、改回恢复、
+单卡与批量两条路径都失效。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4bdaf9008037a64862d6075bfd27f5c7f1ec10b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/4bdaf9008037a64862d6075bfd27f5c7f1ec10b6"/>
+    <title>
+        test(core): sortByKeys 装饰排序与 compareByKeys 对拍
+    </title>
+    <updated>2026-09-09T12:49:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(core): sortByKeys 装饰排序与 compareByKeys 对拍
+
+两套排序实现此前只有 compareByKeys 有正向断言。补齐：六组排序键
+（升降序/null/多列/空键）下装饰排序与直接比较逐元素一致；
+null 值恒排最前、同键值 id 决胜、空键返回原数组引用。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/997ab2a09b2cc183b04e0c6e2f49983c2e0fcf39</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/997ab2a09b2cc183b04e0c6e2f49983c2e0fcf39"/>
+    <title>
+        test(core): filterCards 单趟过滤直接单测；移除死代码 filterByKeywords
+    </title>
+    <updated>2026-09-09T12:43:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(core): filterCards 单趟过滤直接单测；移除死代码 filterByKeywords
+
+filterCards 是 IPC+HTTP 查询唯一入口，此前只有间接覆盖。补齐：
+无条件快路径返回原引用、关键词 AND（一词中正面另一词反面）、
+状态合并（new/learning/suspended，非 suspended 态排除暂停卡）、
+due 窗口排除无调度卡、状态+关键词组合单趟生效。
+
+filterByKeywords 仅剩测试引用，已被 filterCards 取代，删除；
+原关键词断言改写为 filterCards 等价形式。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80179f3837811a66b1fc5b0945c24e6ba20e9c57</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/80179f3837811a66b1fc5b0945c24e6ba20e9c57"/>
+    <title>
+        fix(api): suspend 接口拒绝非布尔 suspended，杜绝强转副作用
+    </title>
+    <updated>2026-09-09T11:47:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(api): suspend 接口拒绝非布尔 suspended，杜绝强转副作用
+
+裸 HTTP 传 {&amp;quot;suspended&amp;quot;: &amp;quot;false&amp;quot;} 时 Boolean(&amp;quot;false&amp;quot;)===true——想解除
+实际执行了暂停。改严格 typeof 校验，非布尔一律 400；MCP 走 zod 布尔
+不受影响。
+
+回归测试：五种非法值全 400 且无副作用，缺字段同样 400。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb69c0b83d7df127368227f77f5ca8b889eb190d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/eb69c0b83d7df127368227f77f5ca8b889eb190d"/>
+    <title>
+        fix(api): 纯日期到期窗口按本地零点解析，对齐 MCP 口径
+    </title>
+    <updated>2026-09-09T11:46:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(api): 纯日期到期窗口按本地零点解析，对齐 MCP 口径
+
+Date.parse 把 YYYY-MM-DD 解析成 UTC 零点（ECMA 规范），MCP toEpochMs
+按本地时区构造——UTC+8 下同一日期串两入口窗口差 8 小时，「今天到期」
+语义不一致且 epoch 值看不出差别。HTTP 侧补纯日期分支：本地零点构造，
+其余 ISO 串仍走 Date.parse。
+
+回归测试：同一日期串 HTTP 直传与 MCP 先转时间戳两入口命中行完全一致。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27253a1d24799e9f0df62917b9619f200b2f192f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/27253a1d24799e9f0df62917b9619f200b2f192f"/>
+    <title>
+        fix(main): 统计缓存对非事件写路径（加卡/移卡）显式失效
+    </title>
+    <updated>2026-09-09T11:33:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(main): 统计缓存对非事件写路径（加卡/移卡）显式失效
+
+statsCache 键含 seq，靠「状态变化必走事件」成立；但 addCard/addCards/
+moveCards 不写事件不推 seq，computeStats 的状态分布/预测/间隔分布又直接
+消费 cards——加卡后新卡数不涨、移卡后卡还算旧牌组，直到下一次事件型
+操作或跨天。三处写路径末尾显式 clear。
+
+deleteDeck 不需要失效：computeStats 只按 card.deckId 过滤，软删牌组的
+卡仍计在全库统计（既有口径），补注释声明该不变量。
+renameDeck 同理（统计不含牌组名）。
+
+附带回归测试：预热缓存后加卡/移卡，断言统计即时可见新值。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1e5cd0acb0658899ba4334f39f1bea530df9f93</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/c1e5cd0acb0658899ba4334f39f1bea530df9f93"/>
+    <title>
+        perf(main): 重放热路径 localDateKey 单条目 memo
+    </title>
+    <updated>2026-09-09T10:50:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(main): 重放热路径 localDateKey 单条目 memo
+
+streamEvents 逐行重放中 answer/undo 分支每事件各调一次 localDateKey
+（new Date + 手工 pad），事件时间近似单调，用 23h 窗口（&amp;lt;= 最短日长，
+DST 安全）缓存当日日期键，命中时免 Date 构造。语义零变化。
+
+注：原计划的「parse 前按 seq 预筛跳老事件」经分析否决——win Map
+兜底窗口要求每行都进 Map（旧库 undo 的 targetSeq 可能落在
+statsCheckpoint 之前），跳行会导致 undo 统计抵消静默丢失。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e061e08d06ba3350189618353cfce83d8918f367</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/e061e08d06ba3350189618353cfce83d8918f367"/>
+    <title>
+        perf(main): 统计结果缓存——键含 deckId/range/日期/seq，seq 推进即失效
+    </title>
+    <updated>2026-09-09T10:34:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(main): 统计结果缓存——键含 deckId/range/日期/seq，seq 推进即失效
+
+computeStats 全库扫 O(卡数)，统计页每开一次/切一次条件都重付。
+缓存键 (deckId|range|当日|seq)：调度/删除/答题全走事件故 seq 单调递增，
+同 seq 同日内结果确定；热加载链 loadStatsCheckpoint 显式清空。
+上限 8 组，超出全清。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f12197119334c40731352067c982a26aabda26bb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/f12197119334c40731352067c982a26aabda26bb"/>
+    <title>
+        perf(main): 批量软删/移动/重置 reindex 公共量 hoist
+    </title>
+    <updated>2026-09-09T10:27:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(main): 批量软删/移动/重置 reindex 公共量 hoist
+
+新增 ScheduleIndex.reindexBatch：与逐张 reindexCard 完全同口径，
+跨天检测/当日界/隐藏牌组判定提出循环，逐张只做减旧贡献+按新状态入堆计数。
+deleteCards/moveCards/resetProgress 三个批量口切换过去。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/995baae32671d4346dfe25565fbc8fee769f6e95</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/995baae32671d4346dfe25565fbc8fee769f6e95"/>
+    <title>
+        style: 全库 Prettier 格式化 + 清理 ESLint 真实问题
+    </title>
+    <updated>2026-09-09T09:59:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: 全库 Prettier 格式化 + 清理 ESLint 真实问题
+
+格式化（纯排版，语义等价）：printWidth 120 下拆行/合并，
+JSX 换行折叠空格显式化为 {&amp;#39; &amp;#39;}，?? 三元补括号。
+
+ESLint 修复（死代码删除级，无行为变化）：
+- 未用导入：api-server.ts path、shared/ipc.ts Deck、WorkspaceOnboarding WorkspaceStatus
+- 未用变量：api-server.spec BASE、card-dialog.spec win、core.spec deckId 参数、
+  workspace.ts deckInfos 残留 ids
+- fsrs.ts maxIvl let→const（prefer-const）
+- 删两条失效的 eslint-disable 注释（perf.spec no-console、Study.tsx exhaustive-deps）
+
+自测：lint 0 error / 11 warn；format:check 全过；typecheck 过；
+751 单测全绿（6 skipped 与基线一致）；build 通过。
+
+Co-Authored-By: ZCode &amp;lt;zcode@z.ai&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

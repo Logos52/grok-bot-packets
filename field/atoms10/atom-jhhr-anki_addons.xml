@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/jhhr/anki_addons/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/jhhr/anki_addons/commits/main.atom"/>
+  <title>Recent Commits to anki_addons:main</title>
+  <updated>2026-09-09T23:07:43Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4be9ce5e49289c10741f2d5b941c2e3da341ce87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/4be9ce5e49289c10741f2d5b941c2e3da341ce87"/>
+    <title>
+        Add build/ to .gitignore
+    </title>
+    <updated>2026-09-09T23:07:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add build/ to .gitignore&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/634e1fb16cd8bf8fa9d165d1182ed6b3b414f5c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/634e1fb16cd8bf8fa9d165d1182ed6b3b414f5c0"/>
+    <title>
+        The cached card_ids list is copied before it is popped from
+    </title>
+    <updated>2026-09-09T20:58:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The cached card_ids list is copied before it is popped from
+
+`get_across_target_notes` caches a query&amp;#39;s card ids in extra_state, then the
+select_card_by=&amp;quot;None&amp;quot; branch pops from that same list object. The cache and the
+working list were one list, so selecting cards edited the cached entry: a later
+call reusing it would get the query&amp;#39;s result with the already-selected cards
+missing from it, silently.
+
+Both sides now hold their own list.
+
+Latent today rather than observed - the branch needs select_card_count &amp;gt; 0, and
+the three Across notes definitions measured in the note-adding phase all use 0,
+which takes the &amp;quot;all cards&amp;quot; path above it instead. It stops being latent the
+moment extra_state is threaded across notes the way file_cache beside it already
+is, which is the only thing that would make this cache worth having.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f5c96eacf2f4260f2fc71452f8795f4e654a0e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/5f5c96eacf2f4260f2fc71452f8795f4e654a0e4"/>
+    <title>
+        The selected-card cache is stored, not assigned over
+    </title>
+    <updated>2026-09-09T20:58:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The selected-card cache is stored, not assigned over
+
+`get_across_target_notes` cached its Least_reps pick with
+
+    extra_state = {card_select_key: selected_card_id}
+
+which rebinds the local name rather than storing into the caller&amp;#39;s dict. Two
+things followed: the entry never reached the caller, and everything already in
+the dict was discarded - including the `card_ids` this same call cached a few
+lines earlier, which is the expensive half.
+
+Found while measuring the note-adding phase of a match_words_to_notes run, where
+copy_on_add definitions are 71% of the clock. This is not that cost: the branch
+is only reached when select_card_by is &amp;quot;Least_reps&amp;quot;, and the three Across notes
+definitions in that profile all use &amp;quot;None&amp;quot;. A correctness fix, worth ~0 there.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/238b562c35b6e0a46210c08afa8292117bde31a6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/238b562c35b6e0a46210c08afa8292117bde31a6"/>
+    <title>
+        related_card_disperse: bury across all decks, not just one tree
+    </title>
+    <updated>2026-09-06T19:22:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;related_card_disperse: bury across all decks, not just one tree
+
+The deck browser&amp;#39;s &amp;quot;Disperse due cards&amp;quot; gathered its session from
+deck_and_child_ids(deck_id) and then discarded every related card
+outside it, even though rule queries are not deck-scoped. On the live
+collection this meant the command could report &amp;quot;No two related cards
+were going to come up together&amp;quot; on a session with dozens of real
+collisions, because they all pointed from one top-level deck tree into
+another.
+
+Also fixes, found alongside the root cause:
+- only queue=2 (review) was gathered; interday and intraday learning
+  cards due today were invisible to a normal-deck run
+- a nested filtered deck&amp;#39;s row-number `due` was sorted against its
+  siblings&amp;#39; real due dates
+- a rule whose code raises was indistinguishable from a rule that
+  found nothing, on both the deck run and the sync path (live: a rule
+  starting with `import re` has been failing on every run since
+  `__import__` isn&amp;#39;t in the sandboxed builtins)
+- the daily limit excluded learning cards from the cap while including
+  them in the session, undercounting the limit
+
+The session is now the union of every deck&amp;#39;s own session today, as
+per-deck blocks concatenated rather than one global sort: the deck the
+run was started on leads (so a cross-deck collision buries the *other*
+deck&amp;#39;s card), the rest follow in name order. Cross-deck burying is
+on by default (matching the review hook&amp;#39;s existing behavior) with a
+new &amp;quot;Disperse due cards across all decks&amp;quot; option to opt back into the
+single-deck scope.
+
+Buried-deck attribution and rule-error summaries are now shown in the
+tooltip so both failure modes are visible instead of silent.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3b1a94c3db271dc8829a28b670a4fae4a9d79e41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/3b1a94c3db271dc8829a28b670a4fae4a9d79e41"/>
+    <title>
+        Merge pull request #2 from jhhr/copilot/related-card-disperse
+    </title>
+    <updated>2026-09-05T04:29:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #2 from jhhr/copilot/related-card-disperse
+
+New addon: Related card dispersal&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c8635747d2cabf54edc2675884e7f98788e8d0ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/c8635747d2cabf54edc2675884e7f98788e8d0ce"/>
+    <title>
+        Fix typo in README.md for functionalities
+    </title>
+    <updated>2026-09-05T04:29:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix typo in README.md for functionalities
+
+Co-authored-by: Copilot Autofix powered by AI &amp;lt;175728472+Copilot@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41c1972948f371a6c6055ac03d85d23dc2605d26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/41c1972948f371a6c6055ac03d85d23dc2605d26"/>
+    <title>
+        Fix query input stretching the dialog horizontally
+    </title>
+    <updated>2026-09-05T03:42:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix query input stretching the dialog horizontally
+
+Two causes. The description label in InterpolatedTextEditLayout was
+missing setWordWrap(True), unlike its counterpart in CodeEditLayout.
+Without word wrap, QLabel&amp;#39;s minimumSizeHint equals the full text width,
+so the layout was forced to at least that width whenever query_text_widget
+became visible -- which is exactly when a non-code-mode rule is selected.
+
+The AutoResizingTextEdit also lacked an explicit WidgetWidth line wrap
+mode and a horizontal scroll bar policy of AlwaysOff. Without those, the
+document&amp;#39;s unconstrained ideal width could propagate through sizeHint and
+push the layout wider, and long queries required horizontal scrolling
+within the input instead of wrapping and growing taller.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e4dd8b4f359f37d4f3709e9b6fb6765181f5247d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/e4dd8b4f359f37d4f3709e9b6fb6765181f5247d"/>
+    <title>
+        Add &quot;Disperse siblings for all note types&quot;
+    </title>
+    <updated>2026-09-05T03:23:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add &amp;quot;Disperse siblings for all note types&amp;quot;
+
+The replacement for custom_schedule_helper&amp;#39;s old auto-disperse siblings
+setting. On, every note type that makes more than one card per note --
+more than one template, or a cloze note type whatever its template count
+-- and that no stored rule names disperses the reviewed note&amp;#39;s own cards,
+on review and on sync alike.
+
+Those rules are worked out from the note type in hand at the point a rule
+would run, not materialised for the collection: a reviewed card only ever
+needs its own note type&amp;#39;s default, and rules_for_model keeps the cost to
+a set lookup. Their guids carry a prefix, because runs are deduped and
+grouped by guid and a derived rule needs one that is stable across calls
+but cannot collide with a stored rule&amp;#39;s uuid.
+
+The dialog lists them greyed out and italic after the stored rules. They
+stay derived while they are only being read -- a commit compares the form
+against the baseline before it promotes anything -- so clicking through
+them changes nothing. The first real edit promotes one in place with a
+uuid of its own, which is how a note type gets a query of its own or,
+saved with dispersal off, opts out of the default entirely.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/410d3e308cc3861bb3f324aa36c10762a08a9a9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/410d3e308cc3861bb3f324aa36c10762a08a9a9f"/>
+    <title>
+        Drop disperse siblings from custom_schedule_helper
+    </title>
+    <updated>2026-09-05T02:31:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop disperse siblings from custom_schedule_helper
+
+The related_card_disperse addon now covers this, and does more: it
+disperses by note and by configurable relations between notes, and
+registers both the reviewer_did_answer_card and sync_did_finish hooks
+that this code used to own.
+
+Removing the review-time hook left schedule/__init__.py empty, and
+removing the after-sync one left sync_hook&amp;#39;s `texts` accumulator dead --
+it existed only to funnel the reschedule message into the disperse
+tooltip, and reschedule already tooltips its own result.
+
+The &amp;#39;d&amp;#39; custom data marker stays live in reschedule&amp;#39;s filter, since
+related_card_disperse writes the same one, so auto reschedule must still
+skip those cards.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7fc2af3c2384cd461d7287a80d689db992edd39a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/7fc2af3c2384cd461d7287a80d689db992edd39a"/>
+    <title>
+        Add &quot;Disperse due cards&quot;: bury a session&#39;s colliding cards
+    </title>
+    <updated>2026-09-05T02:03:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add &amp;quot;Disperse due cards&amp;quot;: bury a session&amp;#39;s colliding cards
+
+Rescheduling disperses the future; it cannot disperse a backlog, because
+a backlogged card&amp;#39;s due date no longer decides anything but whether the
+card joins today&amp;#39;s pool. Burying works on the pool itself. It is
+unaffected by the review order, survives moving cards between decks and
+rebuilding filtered decks, changes no scheduling data, and Anki lifts it
+at the day rollover on its own.
+
+The new item on the deck list&amp;#39;s gear menu reads the session the deck will
+actually deal out, finds the rule relations within it, walks it in order
+keeping the first card of each collision, and buries the rest in a single
+bury_cards call -- one undo step, buried as the scheduler rather than as
+the user, since this is the job Anki&amp;#39;s own sibling burying does. Running
+it again finds nothing: a buried card leaves the session, and what
+remains has no two related cards in it.
+
+A filtered deck needs no modelling. Filling one rewrites each card&amp;#39;s due
+with its row number in the deck&amp;#39;s own search order and parks the real
+date in odue, and a filtered deck has no preset, so the queue builder
+falls back to ordering reviews by due -- which is that row number. For a
+normal deck the preset&amp;#39;s review order is reproduced clause for clause
+from rslib&amp;#39;s review_order_sql, down to the fnvhash tiebreak, and the list
+is cut at the deck tree&amp;#39;s review count.
+
+New bury_min_gap setting: 0, shown as &amp;quot;whole session&amp;quot;, means one card per
+group per day like Anki&amp;#39;s sibling burying. A larger value only buries a
+card when a related one sits within that many kept cards -- kept, because
+a buried card is never shown and so cannot space anything out.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9f6de41216944d898e952bb79c0ea6a07d078c8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/c9f6de41216944d898e952bb79c0ea6a07d078c8"/>
+    <title>
+        Report pinned backlog rather than an empty updated count
+    </title>
+    <updated>2026-09-05T02:03:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Report pinned backlog rather than an empty updated count
+
+A rule run over a backlogged group would otherwise report a large
+candidate count, updated=0, and &amp;quot;due ranges too tight to separate&amp;quot; --
+each true, and together misleading about why nothing happened. Outcome
+lines now carry backlogged=N when it bit, a fully pinned group says so
+by name, and a run whose cards all turned out to be already in place no
+longer claims to have dispersed them.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/faa6802afa7629dc81f79d82fd46cae5d4569974</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/faa6802afa7629dc81f79d82fd46cae5d4569974"/>
+    <title>
+        Pin backlogged cards instead of rescheduling them
+    </title>
+    <updated>2026-09-05T02:02:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pin backlogged cards instead of rescheduling them
+
+Anki gathers every card with due &amp;lt;= today into one pool and hands the
+deck&amp;#39;s review order straight to the SQL that orders it, then lets the
+daily limit truncate that stream. Under any order that is not a due-date
+one -- ascending retrievability, say, which reads the card&amp;#39;s last review
+time out of its FSRS data and ignores due and ivl entirely -- a
+backlogged card&amp;#39;s due date decides only whether it joins the pool. Where
+in the past the date sits changes nothing about when the card comes up,
+and moving it into the future postpones a card that is already late.
+
+So a backlogged card in such a deck is now pinned at its current date. It
+still anchors its group, and the cards that can still be moved arrange
+themselves around it. Decks that do order by due date are untouched:
+there the date really does drive both the order and the truncation, and
+dispersing a backlog across it works as intended.
+
+The deck consulted is the card&amp;#39;s home deck, not the one it is sitting in:
+a card in a filtered deck is shown in that deck&amp;#39;s build order and takes
+its real due date back with it when it leaves.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/10244b7e8363df291d8f9b4c33bb2e9cd7ebe4f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/10244b7e8363df291d8f9b4c33bb2e9cd7ebe4f4"/>
+    <title>
+        Stop a dispersal from stamping unmoved cards onto tomorrow
+    </title>
+    <updated>2026-09-05T02:02:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop a dispersal from stamping unmoved cards onto tomorrow
+
+apply_disperse_plan floored every card in the plan at today + 1,
+including the ones the optimiser had deliberately left alone. For a card
+that is already overdue, &amp;quot;leave it where it was&amp;quot; therefore became &amp;quot;make
+it due tomorrow&amp;quot;: a run over a backlogged deck moved almost every card
+in it onto a single day, which is neither dispersal nor a no-op.
+
+The skip has to be per card rather than per plan, because a group
+normally mixes movable cards with pinned ones, and _is_noop_plan only
+catches the case where nothing at all moved.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1cf9c0d6e2035788866a26c6ce31f102b1f109f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/1cf9c0d6e2035788866a26c6ce31f102b1f109f3"/>
+    <title>
+        Drop BrowserRunResult.messages and suppressed_messages
+    </title>
+    <updated>2026-09-05T00:43:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop BrowserRunResult.messages and suppressed_messages
+
+Both fields were written by _record_browser_outcome but never read after
+the browser tooltip was narrowed to the summary line. Remove them along
+with BROWSER_MESSAGE_LIMIT and the now-unused config parameter that
+gated accumulation.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/000e207c91e32b0e2481825023fa0bcbf7f7a934</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/000e207c91e32b0e2481825023fa0bcbf7f7a934"/>
+    <title>
+        Add per-trigger controls for the review tooltip
+    </title>
+    <updated>2026-09-05T00:11:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add per-trigger controls for the review tooltip
+
+Three new global settings gate what the review hook shows:
+- &amp;quot;Don&amp;#39;t show report during review&amp;quot; suppresses the tooltip entirely;
+  when enabled the other two options are disabled in the dialog.
+- &amp;quot;Don&amp;#39;t show details in report during review&amp;quot; collapses the per-rule
+  messages into a single summary line (same as the browser tooltip).
+- &amp;quot;Don&amp;#39;t show report on runs that rescheduled nothing during review&amp;quot;
+  suppresses the tooltip for outcomes where nothing moved.
+
+The old show_unchanged_outcome flag (True = show unchanged) is migrated
+on load to hide_review_unchanged (inverted). Browser and sync tooltips
+are unaffected: the browser always shows the summary-only tooltip, and
+the sync path always reports all outcomes.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a3db8b3423f4eebe008349034bd65e2c8fda07f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/a3db8b3423f4eebe008349034bd65e2c8fda07f4"/>
+    <title>
+        Disperse a browser selection without reviewing it
+    </title>
+    <updated>2026-09-04T22:43:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Disperse a browser selection without reviewing it
+
+Reviews done on a phone never run the review hook, and a rule added after
+the fact has never run at all; either way the next session still holds the
+cards those rules would have moved. Right-clicking a browser selection now
+runs the dispersal over it directly.
+
+In notes mode a rule that applies to a whole note runs once per note where
+it can: the run reports the raw ids its query returned, and every card of
+the note among them is taken off the queue, with the remainder anchoring
+another run until none are left. The anchor is dropped whether or not the
+query returned it, so a query gated to a card type the anchor is not cannot
+loop forever on the same card.
+
+A rule that names card types instead runs per card of those types. Pointing
+two card types of one note at the same group is user error, but it is the
+config saying so, not something to optimise away.
+
+Cards mode gets no such grouping: the selection already names the cards the
+user meant, so each anchors its own runs.
+
+Rules are matched on note and card type only. The on-review and on-sync
+flags say which automatic trigger a rule wants, and an explicit run from the
+browser is neither of them.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3a5b93536883c90976a7087cf91588c4d78418a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/3a5b93536883c90976a7087cf91588c4d78418a5"/>
+    <title>
+        Let a rule target card types, not just note types
+    </title>
+    <updated>2026-09-04T21:47:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let a rule target card types, not just note types
+
+Dispersal logic was defined per note type, on the assumption that every card of
+a note relates to the same other cards. That breaks down when one card type
+shows only some of the note&amp;#39;s fields: cards that never reveal the rest are not
+spoiling anything for the notes related through those fields, and should not be
+dispersed against them.
+
+Rules gain target_card_types, a list of &amp;quot;NoteType&amp;lt;::&amp;gt;Card type&amp;quot; names alongside
+the note type targets. Empty -- what every existing rule migrates to -- means
+every card type, so behaviour is unchanged until a rule says otherwise. The
+targets are a gate on whether the rule runs at all: a card outside them never
+reaches the query. Two rules on one note type with different card types is how
+one note type gets two different queries. Cloze notes resolve to their single
+template name; ordinals of one template show the same fields, so telling them
+apart would not buy anything.
+
+Queries also gain __Reviewed_Card_Template and __Reviewed_Card_Ord, handed to
+interpolation as variables since a note-level {{Field}} cannot see which card
+was reviewed. The ord is exposed 1-based so it drops straight into a card:N
+search term.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3834a5a22e8fae7805c614607b257231e5c225df</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/3834a5a22e8fae7805c614607b257231e5c225df"/>
+    <title>
+        Put the dialog directly on the Tools menu
+    </title>
+    <updated>2026-09-04T20:44:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Put the dialog directly on the Tools menu
+
+The submenu held a single &amp;quot;Configure rules&amp;quot; item, so the extra level of
+nesting bought nothing. Add &amp;quot;Related Card Disperse&amp;quot; as a plain Tools
+action that opens the dialog.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/865d27ea8243d391a886d98eea09435edb7e1372</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/865d27ea8243d391a886d98eea09435edb7e1372"/>
+    <title>
+        Move the rule buttons into the footer, outside the scroll area
+    </title>
+    <updated>2026-09-04T20:39:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move the rule buttons into the footer, outside the scroll area
+
+A rule with a long query scrolls the editor, and the buttons that act on the
+rule went with it: saving meant scrolling back down to find Save rule. Move up,
+Move down, New rule, Save rule and Delete rule now sit in the footer next to
+Save and Cancel, which never scrolls. The validation message follows them, so
+the reason Save is disabled stays visible alongside the disabled button.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99501a66a38ac26dbc9a095cdf473ba7802c60ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jhhr/anki_addons/commit/99501a66a38ac26dbc9a095cdf473ba7802c60ce"/>
+    <title>
+        Inset the dialog from the screen edge so it stays resizable
+    </title>
+    <updated>2026-09-04T20:35:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/11407217?s=30&amp;v=4"/>
+    <author>
+      <name>jhhr</name>
+      <uri>https://github.com/jhhr</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Inset the dialog from the screen edge so it stays resizable
+
+resize() sizes the client area, so opening at the exact available width pushed
+the window frame -- and the resize handles with it -- a few pixels off both
+sides of the screen, leaving the dialog impossible to resize horizontally.
+Inset it by the frame&amp;#39;s worth on each side.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

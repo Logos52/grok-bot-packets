@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/IamGianluca/anki-addon/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/IamGianluca/anki-addon/commits/main.atom"/>
+  <title>Recent Commits to anki-addon:main</title>
+  <updated>2026-09-08T02:46:16Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a645849245b158fbc666bcd8afa099a97ded332b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/a645849245b158fbc666bcd8afa099a97ded332b"/>
+    <title>
+        docs(plan): update planning document
+    </title>
+    <updated>2026-09-08T02:46:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(plan): update planning document&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/19dff5efc797d46295367578eb8c7308b205fd30</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/19dff5efc797d46295367578eb8c7308b205fd30"/>
+    <title>
+        feat(evals, curator): enforce code block vs inline code by role
+    </title>
+    <updated>2026-09-08T01:11:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals, curator): enforce code block vs inline code by role
+
+House-style rule mirroring the math-delimiter rule: code mentioned in a
+sentence or question stays inline; code that is the whole answer becomes
+a fenced code block with a language tag (one-line statements and command
+forms alike); a bare token (method name, flag, identifier) stays inline;
+a REPL/shell prompt marker (&amp;gt;&amp;gt;&amp;gt; and friends) is chrome and is stripped.
+Form follows the code&amp;#39;s role on the final card, not its previous
+formatting.
+
+Four capability tasks validate the rule: fix_code_formatting_1 converts
+three defective forms in a Lua cluster (inline statement, inline command,
+token wrapped in a block) while leaving a correct mention untouched;
+fix_code_formatting_command_1 converts an inline placeholder command
+(jj squash -r &amp;lt;rev&amp;gt; &amp;lt;path&amp;gt;) to a fenced block; fix_code_formatting_
+prompt_markers_1 strips the &amp;gt;&amp;gt;&amp;gt; markers; clean_code_formatting_1 is the
+should-not-fire guard over an already-correct cluster.
+
+Two regression tasks hardened: adam_duplicate_merge now also forbids
+touching the atomic beta_1 pair (role + typical value) and creating new
+cards; split_non_atomic_note&amp;#39;s cluster peers are atomic and correctly
+formatted (must_not_touch).
+
+Snapshot of the validating run (20260907T205538Z, qwen3.8-27b, 42
+trials): all new and hardened tasks 3/3, formatting clean across trials.
+recall_direction_docker_dangling_1 regressed 100% -&amp;gt; 97% (1/3 trials
+lost fact &amp;#39;tagged&amp;#39;); recall_direction_git_stash_derive_1 stays 0/3.
+Mean pass^k 88%, mean score 96%.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b62e000f53661c5b017f4fdaf14751fd8d8348ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/b62e000f53661c5b017f4fdaf14751fd8d8348ce"/>
+    <title>
+        feat(curator): bump max_steps from 30 to 100
+    </title>
+    <updated>2026-09-06T19:13:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(curator): bump max_steps from 30 to 100&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d99739953ba522295a698d1833548aaaf8d33464</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/d99739953ba522295a698d1833548aaaf8d33464"/>
+    <title>
+        fix(editor): render &#39;Save &amp; Keep Flagged&#39; button label correctly
+    </title>
+    <updated>2026-09-05T17:48:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(editor): render &amp;#39;Save &amp;amp; Keep Flagged&amp;#39; button label correctly
+
+Escape the ampersand in the QPushButton text so Qt displays it literally
+instead of treating &amp;#39;K&amp;#39; as a mnemonic shortcut (which rendered the label
+as &amp;#39;Save_Keep Flagged&amp;#39;).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/455e5b94b6bb2452d2fdae8227a3c2d66209a754</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/455e5b94b6bb2452d2fdae8227a3c2d66209a754"/>
+    <title>
+        feat(evals): show curator run time in the trace viewer
+    </title>
+    <updated>2026-09-05T16:14:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): show curator run time in the trace viewer
+
+Time the curation loop in CuratorAgent.run() and record the wall-clock duration next to the step count in production traces and eval records (stats.duration_seconds). The viewer renders every duration — dashboard tables, run page, session header, trial and task stat boxes — as XXs or YYm XXs; records predating duration tracking show a dash.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b2c9c992292b72cfecc3fac4da8dc26ac2efec54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/b2c9c992292b72cfecc3fac4da8dc26ac2efec54"/>
+    <title>
+        feat(curator): increase max_steps from 15 to 30 to handle more demand…
+    </title>
+    <updated>2026-09-05T01:04:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(curator): increase max_steps from 15 to 30 to handle more demanding production use cases&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/917af8b303dd37a3e9c720b353a63dc936a71a1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/917af8b303dd37a3e9c720b353a63dc936a71a1b"/>
+    <title>
+        feat(curator): prompt rule to test knowledge from both recall directions
+    </title>
+    <updated>2026-09-04T13:21:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(curator): prompt rule to test knowledge from both recall directions
+
+Adds the &amp;#39;Test from both directions&amp;#39; practice missing from the system
+prompt, which the recall_direction eval family measured: docker 100%
+(split present directions), git-extra 0% (extract untested context),
+git-derive 0% (derive the missing direction).
+
+New rule under Formulating knowledge: untested Extra context / back
+clauses that answer a different question get their own active-recall
+cards; a concept&amp;#39;s canonical confusable tool counterpart (definition
+vs operational direction) is proposed even when absent from the
+cluster. Carved exceptions into the conflicting lines the baselines
+showed agents citing to stop: &amp;#39;never create notes for material the
+cluster does not contain&amp;#39;, &amp;#39;a correct, complete answer is done&amp;#39;,
+&amp;#39;finish with an empty change set&amp;#39;, and the Extra-field description.
+Scoped to keep restraint: canonical counterpart only, correctly
+stated, proposed for review — never trivia or definitional neighbors
+(protects clean_cluster_no_changes, a regression task).
+
+Examples in the new text avoid the eval topics (no git, docker,
+pop/apply, prune) so the eval measures the practice, not prompt
+memorization: symlink/ln -s for the definition-vs-operational
+contrast, list.append vs list.extend for the confusable pair.
+
+Snapshot of the validating run (20260904T033031Z, qwen3.8-27b, 30
+trials) committed with the rule: recall_direction_git_stash_1 goes
+0/3 → 3/3, mean pass^k 80% → 90%, mean score 91% → 94%, formatting
+clean across all trials. recall_direction_git_stash_derive_1 stays
+0/3 and is the remaining hill: all three trials judged the definition
+and its tool &amp;#39;the same memory, not a confusable pair&amp;#39;, so the rule
+fires for untested in-cluster context but not yet for a pair derived
+with no trace in the cluster.
+
+Non-eval suite: 281 passed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/16e9b9c03101a8fc8d31df540d63c2b37e813c48</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/16e9b9c03101a8fc8d31df540d63c2b37e813c48"/>
+    <title>
+        feat(evals): add new tasks to assert the capability of the agent to e…
+    </title>
+    <updated>2026-09-04T03:12:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): add new tasks to assert the capability of the agent to ensure knowledge is tested in both directions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0bb1340254211cce690100718a7e5d388af8c46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/b0bb1340254211cce690100718a7e5d388af8c46"/>
+    <title>
+        feat(evals): define dormant by 30 calendar days, rank active modes by…
+    </title>
+    <updated>2026-09-02T13:25:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): define dormant by 30 calendar days, rank active modes by frequency&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/98a3b5f0e12076437d115cf19f8c2edd959de87c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/98a3b5f0e12076437d115cf19f8c2edd959de87c"/>
+    <title>
+        docs(plan): update planning document
+    </title>
+    <updated>2026-09-01T23:55:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(plan): update planning document&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc111d9c2776aa79565c70218398b1914cfe5212</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/dc111d9c2776aa79565c70218398b1914cfe5212"/>
+    <title>
+        style: fix line too long issue
+    </title>
+    <updated>2026-09-01T11:12:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: fix line too long issue&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3651a51db15ef664a9a7769f5d907e15ef7f8fb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/b3651a51db15ef664a9a7769f5d907e15ef7f8fb"/>
+    <title>
+        feat: support API-key auth and vLLM reasoning for OpenAI-compatible s…
+    </title>
+    <updated>2026-09-01T11:08:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: support API-key auth and vLLM reasoning for OpenAI-compatible servers
+
+- add optional openai_api_key config, sent as a Bearer token when the
+  server requires auth (e.g. vLLM started with --api-key); no header
+  is sent when unset
+- capture thinking from vLLM&amp;#39;s OpenAI-compatible &amp;quot;reasoning&amp;quot; field
+  (Qwen3), alongside llama.cpp&amp;#39;s reasoning_content
+- document the env var / config key in README, CONTRIBUTING, config.json,
+  and the eval docs; pass OPENAI_API_KEY through eval and integration
+  test fixtures
+- snapshot the latest eval run (qwen3.8-27b): all tasks pass^3 100%,
+  2 no_trailing_period formatting violations on split_non_atomic_note_1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f6536849f794547f22a72c3746909919aa0b0d6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/0f6536849f794547f22a72c3746909919aa0b0d6"/>
+    <title>
+        feat: retire one-shot AI note formatter, keep batch review editor
+    </title>
+    <updated>2026-08-31T17:13:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: retire one-shot AI note formatter, keep batch review editor
+
+Remove the &amp;quot;Format with AI&amp;quot; capability (NoteFormatter, its prompt and
+AddonNoteChanges schema, formatter factory, training dataset): the
+curator agent fully replaces it. The batch review editor for
+orange-flagged notes and the &amp;quot;Count notes marked for review&amp;quot; action
+are kept — the user reviews flagged cards manually or hands them to
+the agent from that editor.
+
+AnkiNoteMapper moves from formatter_service into
+AnkiNoteRepository (its only consumer); the OpenCode Go integration
+test now validates structured output against the AgentStep schema
+the curator depends on. Drop the formatters&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5bbf8977a302f668b6436d8f3498c30049910ce2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/5bbf8977a302f668b6436d8f3498c30049910ce2"/>
+    <title>
+        docs: update README, CONTRIBUTING, plan, and architecture files to re…
+    </title>
+    <updated>2026-08-31T03:30:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: update README, CONTRIBUTING, plan, and architecture files to reflect recent changes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a8212a62f4990589d50607e2c9a8eac9a611516f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/a8212a62f4990589d50607e2c9a8eac9a611516f"/>
+    <title>
+        feat(evals): isolate the math-delimiter task from search coverage
+    </title>
+    <updated>2026-08-31T02:54:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): isolate the math-delimiter task from search coverage
+
+fix_math_delimiters_1 carried two design defects that muddied what it
+measures:
+
+- Its instruction recited the system prompt&amp;#39;s own math rule, so a
+  passing trial showed instruction-following, not curation. Removed:
+  the agent must now recognize $/$$ and inline-whole-answer defects
+  from its system prompt alone.
+- Note 3 (Pythagorean identity) only surfaced through a tag-angle
+  search, so trials failed on search coverage rather than delimiter
+  behavior. Replaced with a content-family sibling — the secant
+  double-angle formula — which the seed&amp;#39;s own &amp;quot;double-angle&amp;quot; queries
+  always return, so every defective note is discovered by normal
+  cluster exploration without exhaustive searching.
+
+Result: 10/10 on the validation batch, then a full suite run at 100%
+pass^3 across all seven tasks (mean score 100%, no formatting
+violations); scores.md snapshots that run. Search coverage remains a
+real but separate capability for a dedicated task.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/038daa6bbf758cb5bd2e82b7a71aa746f81ab7b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/038daa6bbf758cb5bd2e82b7a71aa746f81ab7b0"/>
+    <title>
+        fix(curator): remove eval-suite examples from the system prompt
+    </title>
+    <updated>2026-08-30T23:49:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(curator): remove eval-suite examples from the system prompt&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27755dceacc06240aa94fada6c99395b6824e739</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/27755dceacc06240aa94fada6c99395b6824e739"/>
+    <title>
+        fix(curator, evals): mechanism and consequence are separate atomic facts
+    </title>
+    <updated>2026-08-30T20:18:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(curator, evals): mechanism and consequence are separate atomic facts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b7cc11420b00de3808abcfaef023cb99de3028f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/6b7cc11420b00de3808abcfaef023cb99de3028f"/>
+    <title>
+        feat(evals, curator): require block delimiters for whole-answer formulas
+    </title>
+    <updated>2026-08-30T20:18:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals, curator): require block delimiters for whole-answer formulas&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/180eaa69a36d861a4c4072417fc8964c947867a2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/180eaa69a36d861a4c4072417fc8964c947867a2"/>
+    <title>
+        feat(evals, curator): enforce Anki math delimiters as house style
+    </title>
+    <updated>2026-08-29T19:35:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals, curator): enforce Anki math delimiters as house style
+
+The curator recurringly writes $...$ / $$...$$ math. Anki&amp;#39;s MathJax
+renders both, but unreliably: spacing between symbols gets mangled and
+symbol sizes vary across the card. House style is \(...\) for inline
+math and \[...\] for block equations.
+
+Task: fix_math_delimiters_1 seeds a trigonometry cluster in which the
+compound seed carries $...$ inline math, a sibling double-angle note
+carries a $$...$$ block equation, and a third note is already correct.
+A correct run splits the seed (covering new notes written with \(...\)),
+converts both defective notes mode-preservingly, and leaves the correct
+note alone. The defective notes share the seed&amp;#39;s tags, so normal
+cluster exploration surfaces them; the task deliberately does not
+exercise exhaustive collection-wide search.
+
+Prompt: math delimiters are now a house-style defect on their own — a
+note carrying $ or $$ is edited purely to convert them, even when
+nothing else about it needs changing. Conversion preserves the
+formula&amp;#39;s mode ($ -&amp;gt; \( \), $$ -&amp;gt; \[ \]); for fresh math, inline is for
+formulas flowing in a sentence, block for standalone formulas.
+
+Grading: no_dollar_math is a deterministic check — the word-boundary
+matcher behind must_not_contain cannot see a $ glued to word characters
+(&amp;quot;$x^2$&amp;quot; carries no standalone &amp;quot;$&amp;quot;). Two LLM-judge assertions cover the
+positive mapping; the reference solution passes all outcome graders.
+
+Result: the capability scored 0/3 before the prompt rule; 1/3 on the
+snapshot run (pass@1 33%, pass^3 4%). The remaining failure is the
+agent upshifting inline $ math to \[...\] when a split makes the
+formula the whole answer — a semantic judgment the judge pins as
+inline-preserving, and a plausible target for a stronger model. The
+other six capability tasks are unchanged at 100%; formatting clean
+across 21 trials. scores.md snapshots the run.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/17e6ebf33dbeff5c93fc1467f743d0b286e658f1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/IamGianluca/anki-addon/commit/17e6ebf33dbeff5c93fc1467f743d0b286e658f1"/>
+    <title>
+        feat(evals): add resolution lifecycle for stale failure modes
+    </title>
+    <updated>2026-08-29T16:00:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4025968?s=30&amp;v=4"/>
+    <author>
+      <name>IamGianluca</name>
+      <uri>https://github.com/IamGianluca</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(evals): add resolution lifecycle for stale failure modes
+
+Failure modes were aggregates of all annotations ever, so cumulative
+counts never decreased: a mode fixed weeks ago kept its count and
+stayed indefinitely on the Failure modes page.
+
+Modes now derive recency from run stamps (when the failure happened,
+not when it was annotated): each mode carries last_seen and
+active_count, the number of occurrences within the 20 newest runs.
+The modes page sorts by recency and splits modes into Active (newest
+first), Dormant (dimmed, with a Mark resolved button), and Resolved
+(collapsed behind a toggle, kept as the regression baseline). A
+resolved mode with fresh annotations pops back into Active flagged
+RECURRED until reopened.
+
+Resolution is stored as a resolved_at flag in patterns.json, set or
+cleared through a new POST /api/patterns/resolve endpoint. Counts
+and example records stay derived from the annotations; the taxonomy
+holds only interpretation, so evidence and interpretation cannot
+disagree.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

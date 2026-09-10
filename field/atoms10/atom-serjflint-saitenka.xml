@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/serjflint/saitenka/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/serjflint/saitenka/commits/main.atom"/>
+  <title>Recent Commits to saitenka:main</title>
+  <updated>2026-09-08T20:32:01Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/100f37a624cff61910b196a35bc68ad11b2a2d8a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/100f37a624cff61910b196a35bc68ad11b2a2d8a"/>
+    <title>
+        Merge pull request #509 from serjflint/perf/vectorise-geometry-extrac…
+    </title>
+    <updated>2026-09-08T20:32:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #509 from serjflint/perf/vectorise-geometry-extraction
+
+perf(subtitles): vectorise the geometry extraction&amp;#39;s two per-pixel loops&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b8eabe3a01c33eacd7328561e37e4eaf2864ba9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/7b8eabe3a01c33eacd7328561e37e4eaf2864ba9"/>
+    <title>
+        perf(subtitles): vectorise the geometry extraction&#39;s two per-pixel loops
+    </title>
+    <updated>2026-09-08T19:50:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(subtitles): vectorise the geometry extraction&amp;#39;s two per-pixel loops
+
+`_collect_layer` and `_blit_coverage` walked one Python iteration per painted
+pixel of every glyph. Together they were the geometry render: 11.19 ms of an
+11.53 ms extraction, against libass&amp;#39;s own render at 0.07 ms.
+
+That cost is why the color arrives late. A cue&amp;#39;s measurement ran ~27 ms in the
+field, above the rate cues arrive at, so the lookahead queue overflowed — 18 of
+31 prefetched renders dropped, 1 prefetch entry retained, and only 25 of 48
+native draws had boxes to color.
+
+Measured on the same synthetic cue (M3 Pro, 24 tokens, 1920x1080, 40 reps):
+
+    collect layers   11.192 -&amp;gt; 0.517 ms   21.6x
+    coverage masks    3.961 -&amp;gt; 0.077 ms   51.4x
+    owners alloc      0.111 -&amp;gt; 0.019 ms    5.8x
+    measure one cue  11.620 -&amp;gt; 0.734 ms   15.8x
+
+The engine comparison inverts with it: native&amp;#39;s in-process work was 1.25x the
+legacy renderer&amp;#39;s and is now 0.085x.
+
+`owners` becomes a numpy array rather than `array(&amp;quot;H&amp;quot;)`; numpy is already a
+dependency of this package (`overpaint` uses it).
+
+Two behavioural notes, both deliberate:
+
+The refusals are unchanged in meaning and widened in scope — they test a whole
+layer rather than stopping at its first offending pixel. On failure the partial
+accumulator therefore differs, and nothing reads it: `resolve_outcome` discards
+the render either way.
+
+`_blit_coverage`&amp;#39;s offsets are routinely NEGATIVE. The crop is the token&amp;#39;s INK
+and a bitmap&amp;#39;s origin sits above and left of its ink whenever the glyph has
+bearing, which is most glyphs. The first draft sliced with them unclipped, and a
+negative slice start counts from the far end — so the window came back empty and
+the layer&amp;#39;s coverage was dropped silently. The differential test missed it by
+cropping to the bitmap rect, where the offsets are always zero; it now derives
+the crop from painted pixels the way production does, and the case is pinned.
+
+The differential runs the old implementation beside the new one over 500 seeded
+layer sets. Seeded rather than Hypothesis: this package ships independently and
+its dev group is `pytest` alone, so a property-testing dependency here is a
+distribution decision this test does not need to make.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72492865936f84c05dfed6600f6b45ed3ed2e29c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/72492865936f84c05dfed6600f6b45ed3ed2e29c"/>
+    <title>
+        Merge pull request #508 from serjflint/feat/ladder-and-renderer-telem…
+    </title>
+    <updated>2026-09-08T19:33:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #508 from serjflint/feat/ladder-and-renderer-telemetry
+
+feat(telemetry): price the color ladder and the three renderers separately&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae2939e6d3c4f033f458fa9015128f2ebd1b4518</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ae2939e6d3c4f033f458fa9015128f2ebd1b4518"/>
+    <title>
+        test(bench): cover the engine comparison, and correct a claim the fie…
+    </title>
+    <updated>2026-09-08T19:22:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(bench): cover the engine comparison, and correct a claim the field refuted
+
+`benchmark_engines` landed in d4109b7a by accident — `git add -A` on the
+regression fix swept it in, so that commit carries a change its message does not
+mention. Not rewriting a pushed branch to tidy that; recording it here instead,
+and adding the tests it should have arrived with. Every other leg of this
+benchmark has a guard that it measured something; this one had none.
+
+Also corrects the comment beside `subtitle_draw`&amp;#39;s token count. It asserted the
+legacy renderer &amp;quot;produces its own boxes rather than consuming measured ones&amp;quot;,
+which a session with both engines refutes: 6 of 36 legacy draws carried measured
+boxes and 25 of 48 native ones did. Geometry runs on both paths — it feeds hover
+and scanning regardless of who draws — so the boxes report what happened to have
+landed, not what the cue holds. The change itself stands; only its reason was
+too absolute.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d4109b7a37726b764695b5f5ea93650688a6567f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/d4109b7a37726b764695b5f5ea93650688a6567f"/>
+    <title>
+        fix(telemetry): teach the sink the extraction metrics it now receives
+    </title>
+    <updated>2026-09-08T19:01:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(telemetry): teach the sink the extraction metrics it now receives
+
+The extraction split broke subtitles outright. `_GeometryTelemetry.record` raises
+on a metric name it does not know — deliberately, so a typo cannot vanish — and
+`resolve_outcome` catches `Exception` and reports `provider-error`. So four new
+timing calls inside `extract_token_geometry` did not degrade telemetry: they
+failed EVERY geometry render, and a live session had no hit boxes, no color and
+no scanning. The legacy renderer kept working, because it never asks for geometry.
+
+Field evidence (report 20260908-215427, build gb5622129): 8 of 8
+`subtitle_geometry_render` spans `outcome=failed error_code=provider-error`,
+`subtitle_geometry.completed=0`, and `measured_boxes=0` on every native draw.
+
+The four histograms are registered and mapped now. The real fix is the gate: this
+is a contract with an enforcing end and an enumerable one, and nothing bound them
+— `NullTelemetry` and every test collector accept any name, so both halves of the
+suite passed while the pair was broken. `GEOMETRY_METRICS` makes the library&amp;#39;s
+side enumerable and `test_geometry_telemetry_contract` asserts the application&amp;#39;s
+sink accepts all of it, with a negative control that the map still refuses an
+unknown name. Removing the four entries again turns exactly those cases red.
+
+Worth stating plainly: a telemetry name mismatch taking down rendering is a
+disproportionate failure mode, and the raise is what makes it one. Keeping it,
+because it is also what surfaced this within one session rather than silently
+losing a metric — but the blast radius is now guarded by a test rather than by
+nobody.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5622129612f28e9b21bc8289d7a9e8b2ffda3ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b5622129612f28e9b21bc8289d7a9e8b2ffda3ff"/>
+    <title>
+        fix(subtitles): announce the renderer toggle, and count tokens the le…
+    </title>
+    <updated>2026-09-08T18:47:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): announce the renderer toggle, and count tokens the legacy path has
+
+Two defects a legacy session exposed, one in the feature and one in the telemetry
+that was supposed to observe it.
+
+Ctrl+Shift+L switched engines silently. Every other toggle here announces —
+hover auto-pause, overlay visibility — and this one&amp;#39;s only tell on screen is that
+the legacy renderer paints a semi-transparent background box behind the cue,
+which a user has to already know to look for and which says nothing at all if
+they were already on legacy. The reducer now names the engine it is moving TO,
+which needs `legacy_forced` among the session inputs.
+
+`subtitle_draw` counted `len(request.boxes)`. The legacy renderer produces its
+own boxes rather than consuming measured ones, so that reads 0 on exactly the
+path the span was added to make visible: a field trace carried `tokens=0` for all
+33 legacy draws. It now counts the tokenizer&amp;#39;s own tokens, which both engines
+have, and keeps the measured-box count as its own attribute.
+
+Field evidence from that session (33 draws, one episode, legacy throughout):
+
+    subtitle_draw[path=legacy]   p50  6.96 ms   p95 15.70   max 17.93
+
+with `subtitle.renderer_forced[renderer=legacy]=1` confirming the toggle fired,
+and the ladder spans correctly absent — the legacy renderer colors the cue
+itself, so no device ever runs.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e211ff7ce951a352b00432ed08f44407c23ca88</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/0e211ff7ce951a352b00432ed08f44407c23ca88"/>
+    <title>
+        feat(bench): split the extraction that is 99% of a geometry render
+    </title>
+    <updated>2026-09-08T18:02:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(bench): split the extraction that is 99% of a geometry render
+
+`extract_ms` was one number covering ~99% of a libasslite render — libass&amp;#39;s own
+render is 0.065 ms against 11.5 ms here — so it said &amp;quot;the slow part is ours&amp;quot;,
+which nobody can act on. Split four ways it names a function.
+
+Measured (M3 Pro, 24 tokens, 1920x1080, 40 reps):
+
+    owners map alloc    0.111 ms    1.0%
+    collect layers     11.191 ms   97.0%
+    validate tokens     0.011 ms    0.1%
+    coverage masks      3.987 ms   (demoted path only)
+
+So `_collect_layer` is the whole answer: a per-pixel Python loop over
+`enumerate(layer.bitmap)`, running once per painted pixel of every glyph.
+
+The frame-sized owner map is NOT the problem, which is worth recording because
+its size argues otherwise — `array(&amp;quot;H&amp;quot;)` over 1920x1080 is 4 MB zeroed per cue,
+and it costs 1%. Timed apart precisely because it scales with the FRAME while the
+collect loop scales with the INK, and one number could not tell those apart.
+
+`coverage masks` reads 0 unless the snapshot keeps them, which happens only after
+a face is demoted to the raster device — so it is measured on its own request
+rather than left looking free. It is a second per-pixel pass over the same layers
+and adds ~35% to the extraction when it runs.
+
+The split arrives through the backend&amp;#39;s existing `GeometryTelemetry` port, and
+the parameter is optional, so every current caller and the package&amp;#39;s public API
+are unchanged.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c31d74ddbe67527c4efcdbc034defd0ee3a8e675</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/c31d74ddbe67527c4efcdbc034defd0ee3a8e675"/>
+    <title>
+        feat(bench): price each color device and each renderer apart
+    </title>
+    <updated>2026-09-08T17:51:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(bench): price each color device and each renderer apart
+
+`cue_redraw` timed all three legs of a colored cue as one number, so two
+questions had no answer: whether the raster device is dear next to the text one,
+and whether the measuring or the drawing renderer dominates. A session read
+libasslite at p50 31.7 ms against cue_redraw at 2.1 ms, which reads as a verdict
+and is not one — different jobs at different rates, one of them instrumented.
+
+Measured on one synthetic cue, per token, so the numbers divide (M3 Pro, 24
+tokens, 40 reps):
+
+    ladder classify           0.049 ms
+    device 1 overprint        3.85 us/token
+    device 2 overpaint       18.25 us/token
+    device 3 decoration       0.020 ms delta
+    legacy renderer         436.1  us/token
+    libasslite              528.1  us/token   (99.1% our extraction)
+
+So the device ladder is microseconds and the renderers are hundreds of them: the
+two are not in the same conversation, and within libasslite it is our extraction
+to optimise, not libass, whose render is 0.11 ms.
+
+The libasslite split comes through the backend&amp;#39;s own `GeometryTelemetry` port
+rather than a wrapper, so it is exact rather than inferred from the outside.
+
+mpv&amp;#39;s OSD leg is deliberately absent — a `compute_bounds` round trip into another
+process cannot be measured headlessly, and `saitenka.subtitle.calibration_ms`
+records it in a live session instead. A number here covering it would be the
+wall-clock proxy BENCHMARKS.md warns against.
+
+Both device legs assert they did work before reporting. The first draft sized
+48x48 coverage masks for 120x48 boxes; `TokenMask.usable` rejected every one,
+`compose` returned None, and device 2 came out the CHEAPEST leg at 1.77 us/token
+for compositing nothing. Tests pin both guards and the absent-libass case, which
+must read as not-measured rather than as free.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3cbb0e922551529b41163573c3faeb409147757f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/3cbb0e922551529b41163573c3faeb409147757f"/>
+    <title>
+        Merge pull request #507 from serjflint/fix/overprint-osd-leg-run-style
+    </title>
+    <updated>2026-09-08T17:46:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #507 from serjflint/fix/overprint-osd-leg-run-style
+
+fix(subtitles): make the overprint land on the OSD leg it is actually drawn on&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27838f230f3076ec29f3b5d956708d952bb5d5a8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/27838f230f3076ec29f3b5d956708d952bb5d5a8"/>
+    <title>
+        feat(telemetry): price the color ladder and the three renderers separ…
+    </title>
+    <updated>2026-09-08T17:40:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(telemetry): price the color ladder and the three renderers separately
+
+Three questions the trace could not answer, each because the cost of a cue was
+one number covering everything.
+
+WHICH ENGINE RAN. `subtitle_renderer_forced` counts the switch, once, so a
+session that drew every cue on the legacy renderer and one that never touched it
+differed by a single event — and neither carried what a draw cost. `subtitle_draw`
+wraps the dispatch with path=native|legacy|suspended|unowned.
+
+WHICH DEVICE COST WHAT. Device 1 emits ASS events, device 2 composites pixels,
+and `cue_redraw` lumped both into one duration, so &amp;quot;is the raster expensive?&amp;quot;
+had no answer. `subtitle_overprint_build` carries the device split and the event
+count; `subtitle_overpaint_compose` carries mask count and composited area —
+each leg reporting the quantity its own cost scales with.
+
+The event count is also the only signal that says whether a spaced token split
+per glyph. The split events carry no `\fsp`, so a payload signature cannot tell
+&amp;quot;split&amp;quot; from &amp;quot;never spaced&amp;quot;; events exceeding tokens can.
+
+WHAT THE OSD LEG COSTS. `compute_bounds` makes mpv lay the payload out on its
+core thread and was untimed — `subtitle_layout_drift` spans the arithmetic after
+the answer arrives, which is microseconds. Timed from before the submit, because
+the queue wait ahead of it is part of what the stall costs.
+
+Without that last one every span in the draw path measured our side only, which
+made the measuring renderer look expensive purely by being the one instrumented:
+a real session reads libasslite at p50 31.7 ms against cue_redraw at 2.1 ms, and
+97.4% of the libasslite figure is our extraction rather than libass.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55653d95e5ec7e5521b1af814b68ec03ef8f29c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/55653d95e5ec7e5521b1af814b68ec03ef8f29c0"/>
+    <title>
+        fix(subtitles): key the calibration on weight and slant, and pin the …
+    </title>
+    <updated>2026-09-08T16:25:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): key the calibration on weight and slant, and pin the accept band
+
+Second adversarial review, on the artifact rather than the story.
+
+`payload_signature` matched only `\fn…\fs…`, so a payload differing only by
+`\b1` was the same question. Weight and slant select a different font FILE, so
+a cached &amp;quot;agrees&amp;quot; earned by the regular run suppressed the check on the bold
+one — whose substituted bold face is the exact class this module exists to
+catch, and the one no user can report. The run tags are in the key now.
+
+`_effective_run_style` recomputed the reset target from the event&amp;#39;s style,
+ignoring an earlier `\rStyle`. `{\rBolded\b}` came back regular while libass
+drew it bold, and `{\rBolded\fsp}` took the wrong style&amp;#39;s spacing.
+
+`\b` followed libass only approximately. `ass_parse.c` resets to the style for a
+bare tag AND for any value outside {0, 1} ∪ [100, ∞) — so `\b2` on a bold style
+is bold, not regular. Same for `\i`, where anything but 0 or 1 resets.
+
+`TILE_PADDING_PX` was pinned by nothing: 24 kept the whole suite green while
+leaving the accept band one pixel from the 29 px class. What matters is the band
+(`TILE_PADDING_PX + DRIFT_EPSILON_PX`), squeezed from both sides, so both ends
+are asserted against named constants — the measured padding ceiling below and
+the substituted-face class above. A second sweep (5760 unclipped bitmaps, sizes
+12–299) puts that ceiling at 17, not the 16 one tile implies, so the docstring
+now leads with the measurement and cites the tile only as the mechanism.
+
+Four tests passed regardless of the logic they named, and now do not: the `\b`
+prefix guard (every case resolved to regular either way — it needed a run that
+starts bold), the `glyph_dy` arithmetic (every fixture y was equal, so the sign
+was free), and the `ScaleX`/`Italic` style-row reads (the fixture&amp;#39;s values were
+the fallbacks, so the lookup could point at a nonexistent column). Each was
+confirmed by mutating the source and watching only the intended test go red.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0d5056c8339a466488b0b9d94a8b1b93b92c27b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/d0d5056c8339a466488b0b9d94a8b1b93b92c27b"/>
+    <title>
+        fix(subtitles): refuse glyph offsets that do not count the token&#39;s gl…
+    </title>
+    <updated>2026-09-08T16:08:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): refuse glyph offsets that do not count the token&amp;#39;s glyphs
+
+Adversarial review found three defects in the per-glyph work.
+
+`event_lines` indexed `glyph_dx` by position in `paint.text`, but the two come
+from different places: the offsets are measured against the prepared ASS surface
+and cached under it, while the text is the tokenizer&amp;#39;s surface for whatever cue
+is current. A snapshot that outlives its cue pairs them up wrong, and nothing
+compared them — longer text raised `IndexError` inside the draw, shorter text
+silently dropped the glyphs past its end. `drawable` now checks the counts, so
+such a token routes to the raster device, which colors it correctly anyway.
+
+`per_glyph` accepted negative spacing, because `bool(-2.0)` is true. Tight
+typesetting overlaps its glyphs, and the probe tells them apart by color — an
+ambiguous pixel makes the backend refuse the whole render, so a single
+negative-spacing cue cost every token in the batch its anchor. Positive spacing
+only; a tight token draws whole, exactly as it did before this work.
+
+The device census counted inside `color_ladder`, which a drawn cue builds three
+times (overpaint image, payload, calibration probe). The counter read two or
+three times the cue&amp;#39;s tokens, by a factor that moved with the calibration
+cadence. The ladder now carries the devices and the count is taken at the one
+call site that means &amp;quot;this cue was drawn&amp;quot;.
+
+Also notes on `subtitle.layout_drift_px` that its values are not comparable
+across the tile-padding discount.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9cd91a8c98318b5faa80cad3f273bae0022b1f96</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/9cd91a8c98318b5faa80cad3f273bae0022b1f96"/>
+    <title>
+        test(subtitles): build the differential&#39;s WordBox by name, not position
+    </title>
+    <updated>2026-09-08T15:47:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(subtitles): build the differential&amp;#39;s WordBox by name, not position
+
+`our_word_boxes` rebuilt the runtime snapshot with a positional argument list.
+Every `WordBox` field past the rect has a default, so a short list is silently
+legal — and this helper has dropped a newly added field three times (`text`,
+then the run metrics, then `glyph_dx`).
+
+Each time the token reached the assertion carrying a default the runtime would
+never have produced, so the oracle reported a product failure whose traceback
+pointed nowhere near the helper that caused it.
+
+Building the dict from `fields(WordBox)` makes the next added field an
+`AttributeError` at the source instead.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/31a812f5d159a58ad5ba737c4024046c19bb66bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/31a812f5d159a58ad5ba737c4024046c19bb66bf"/>
+    <title>
+        feat(telemetry): count which device drew each token, and why a hover …
+    </title>
+    <updated>2026-09-08T15:47:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(telemetry): count which device drew each token, and why a hover missed
+
+Device 1 was dead in production for weeks without a meter moving. Every existing
+signal was negative — no demotions, no errors — and the raster fallback colours
+the cue correctly, so &amp;quot;device 1 drew nothing&amp;quot; and &amp;quot;device 1 drew everything&amp;quot;
+produced identical telemetry and an identical picture.
+
+`subtitle.token_device` counts the fork positively, per token, so the primary
+rung&amp;#39;s share is readable rather than inferred from the absence of complaints.
+
+`hover.target_outcomes` splits what a `Cancel` used to flatten: a cursor that
+missed the word, a cue with no tokens, and a cue whose tokens carry no geometry
+are three different faults that all read as one silent no-op.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c5a6fd93bdd07ac1ddf968df3e44c7f52118b7b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/0c5a6fd93bdd07ac1ddf968df3e44c7f52118b7b"/>
+    <title>
+        fix(subtitles): reproduce the run the overprint measured, glyph by glyph
+    </title>
+    <updated>2026-09-08T15:47:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): reproduce the run the overprint measured, glyph by glyph
+
+Device 1 redraws a token as its own `\an7\pos`-ed event, and that event has to
+land where the token already is. Two things stopped it.
+
+The payload dropped the run&amp;#39;s layout properties. `Spacing`, `ScaleX`, `Bold` and
+`Italic` were measured but never re-emitted, so the redraw was shaped from a
+different run than the one it was correcting for. They now travel from the style
+catalogue through the geometry contract to the event, resolved per token —
+`\fscx` and `\fsp` are routinely toggled mid-line — and are omitted from the tags
+when they hold libass&amp;#39;s default, so a cue that overrides none produces the same
+payload bytes it did before.
+
+The rest is mpv&amp;#39;s, not ours: it holds two libass instances, and they segment
+shaping runs differently. libass starts a new run at every glyph of a run
+carrying letter spacing, but only while `whole_text_layout` is off, and that flag
+is derived from the style&amp;#39;s `Encoding`. mpv&amp;#39;s subtitle style keeps the authored
+encoding — LTR, flag off, runs split per glyph — while its OSD style is
+`Encoding = -1` (`sub/osd_libass.c`), which resolves to `FRIBIDI_PAR_ON` and
+turns the flag implicitly on, so the OSD shapes the whole token as one run.
+
+The resulting advances differ per glyph pair (1.42 px and 1.77 px on the first
+two glyphs of one four-glyph token, 0 on the rest), so no scalar corrects it. A
+token that is both multi-glyph and spaced is therefore drawn one event per glyph:
+a lone glyph is a single shaping run in either instance. The probe measures each
+glyph twice — inside its token and drawn alone — and carries the difference as
+`glyph_dx`. Unspaced tokens are untouched and stay a single event.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d312e7184dba2a9e11cb13b8bd3793cb4766531</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/8d312e7184dba2a9e11cb13b8bd3793cb4766531"/>
+    <title>
+        fix(subtitles): stop the padding allowance swallowing the drift it mu…
+    </title>
+    <updated>2026-09-08T15:47:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): stop the padding allowance swallowing the drift it must catch
+
+The calibration verdict discounts a positive right/bottom drift as libass tile
+allocation rather than layout, because `compute_bounds` answers with a union of
+bitmap rectangles and libass rounds each one out to a tile on those two edges.
+The allowance was set to 32 px — the tile size of a `CONFIG_LARGE_TILES` build.
+
+Both meson and autoconf default that option OFF, so a tile is 16 px
+(`ass_bitmap_engine.c`: `tile_order = 5` only under the flag, else 4). Measured
+across 45 run×size combinations against the installed mpv: worst right 15,
+worst bottom 16, and single-glyph boxes come back as exact multiples of 16.
+
+At 32 the allowance reached past the class it exists to separate. A substituted
+face reads 29 px on one edge; with the discount at 32 that scored 0, so every
+positive drift up to 36 px read as agreement and the verdict was switched off
+for its own motivating case, silently, with every gate green.
+
+The sign of that 29 is not settled — 0e13cca4 wrote −29 in prose and +29 in the
+two tests it added — so the scoring is now pinned in both directions rather than
+resting on a reading of the record, and the gap between the allowance and the
+signal is asserted so the two numbers cannot drift apart unnoticed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ef78b65a5ba022536ef7dd80f3b81c6f119724e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/ef78b65a5ba022536ef7dd80f3b81c6f119724e5"/>
+    <title>
+        Merge pull request #505 from serjflint/fix/overprint-anchor
+    </title>
+    <updated>2026-09-07T18:34:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #505 from serjflint/fix/overprint-anchor
+
+fix(subtitles): anchor the overprint where the token&amp;#39;s ink actually lands&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f471e2b5a519037355933fa9ca3f008619a65c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/7f471e2b5a519037355933fa9ca3f008619a65c5"/>
+    <title>
+        fix(subtitles): key anchors by event, normalize the probed text, reme…
+    </title>
+    <updated>2026-09-07T18:20:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): key anchors by event, normalize the probed text, remember failures
+
+Second review pass. None of the three fires through today&amp;#39;s producer, and each
+is inside a contract the package already states.
+
+The offset was looked up by token index alone. `_validate_palette` requires only
+the (event, index) PAIR to be unique, so two events in one frame both answer to
+index 0 — a frame with two events routinely has two first tokens — and the last
+one measured hands its correction to the other word. Keyed by both now.
+
+`_token_surface` sliced the raw text while every offset in that module is
+defined against the normalized form (`\r` dropped, literal `\N` folded to one
+newline). Past a break, every token read one character late and probed a
+neighbour&amp;#39;s string.
+
+A probe that measures nothing is not retried forever. `extract_token_geometry`
+refuses a palette colour that drew nothing, so one inkless token — text the
+overprint would refuse anyway — fails the whole batch; with nothing recording
+the attempt, the batch re-rendered once per geometry render for the session.
+
+Smaller, from the same pass: the probe renders under the cue&amp;#39;s own style, since
+hinting and blur change a glyph&amp;#39;s extent and measuring without them returns an
+offset for a render nobody performs; at timestamp 0, since its events start
+there and a long file would silently draw nothing; probe renderers evict
+most-recently-used last like the cue&amp;#39;s; and the row pitch is imported rather
+than restated beside the frame it has to agree with.
+
+`fragments`&amp;#39; docstring claimed extent-based routing to the raster device. That
+is not implemented — `Fragment.matches` exists so the decision has a measurement
+to stand on, and the docstring now says which of the two it is.
+
+The first of these had a test that could not fail: it gave the two events
+different token indices, so index-only keying passed it. Planting the defect is
+what showed that, not reading it.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0aff7e7285e301782aad41ae21f48e966f59353</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/b0aff7e7285e301782aad41ae21f48e966f59353"/>
+    <title>
+        fix(subtitles): bound the anchor cache and cover the probe wiring
+    </title>
+    <updated>2026-09-07T18:13:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): bound the anchor cache and cover the probe wiring
+
+Review findings on the anchor fix, both real.
+
+The cache was unbounded, and its key is not stable the way its docstring
+claimed. The size in it is the FRAME&amp;#39;s, not the document&amp;#39;s — `_palette_in_frame
+_units` multiplies by `frame_height / play_res_y` — so dragging a window edge
+mints a distinct float per pixel of height, every one of them a miss, every miss
+a second libass render, and none of it ever reclaimed. &amp;quot;A repeated cue costs a
+dict lookup&amp;quot; holds while the window is still and nowhere else. Now LRU, bounded,
+and the comment says which case the bound is for.
+
+The wiring had no coverage outside the `live` tier, which does not run in CI. A
+wrong sign, a key that never matches, or a probe failing forever would all have
+shipped green: the unit tests covered the pure arithmetic in `fragments` and
+nothing that decides whether it is reached. Six tests over the backend probe —
+offset carried, unprobed token left alone, measured once per cue, the cue&amp;#39;s
+renderer never pointed at a probe document, probe renderers closed, cache
+bounded — and two over the subtraction itself in `test_overprint`.
+
+Writing them exposed a fake that answered the cue&amp;#39;s palette whatever document it
+was handed, which made the probe&amp;#39;s own colours unrecoverable and hid the whole
+path behind the swallowed exception below. It answers the document now.
+
+That exception no longer swallows silently: the first failure logs at warning,
+since a probe that never succeeds disables the correction for the session with
+nothing on screen to show it, and the rest stay at debug so a bad face cannot
+flood the log.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9343ae208903ec78b32a6348e3761e88fddcfbed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/serjflint/saitenka/commit/9343ae208903ec78b32a6348e3761e88fddcfbed"/>
+    <title>
+        fix(subtitles): anchor the overprint where the token&#39;s ink actually l…
+    </title>
+    <updated>2026-09-07T17:59:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4900246?s=30&amp;v=4"/>
+    <author>
+      <name>serjflint</name>
+      <uri>https://github.com/serjflint</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(subtitles): anchor the overprint where the token&amp;#39;s ink actually lands
+
+`\an7` positions the line box; a measured box is ink. Passing the ink origin to
+`\pos` planted every redraw an ascent-gap low — 39% of the colour on the glyphs,
+the rest on empty frame, with mpv&amp;#39;s own subtitle showing through above it.
+
+The offset cannot be derived from the box (libass reports no baseline) and is
+not a constant: it depends on the token&amp;#39;s tallest glyph, so it differs per word
+in the same cue. It is measured instead, by rendering the fragmented layout the
+overprint will ask for through the renderer that produced the boxes, and reading
+where each token&amp;#39;s ink lands.
+
+    39% -&amp;gt; 99.9% of the overprint on a glyph mpv drew
+
+Cost is one probe render per unseen (text, face, size). A repeated cue, a redraw,
+and a recurring word all cost a dict lookup; a session&amp;#39;s second and third render
+of the same cue probe nothing. The probe uses its own renderer per font
+environment so it never evicts the cue document from the renderer drawing the
+cue, and a probe that fails leaves the offsets unrecorded — every redraw keeps
+the origin it had before, which is today&amp;#39;s behaviour.
+
+The live oracle now drives `overprint_payload` rather than assembling paints
+itself: the placement under test is a decision `_assign_rung` makes, and a test
+that re-implements it would have kept passing while the shipped path was wrong.
+That is not hypothetical — this commit&amp;#39;s first two attempts passed the anchor
+through a palette that dropped the text and through a field order that put
+`coverage` into `anchor_dx`, and only the end-to-end pixel count caught either.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

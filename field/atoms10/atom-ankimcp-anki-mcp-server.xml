@@ -1,0 +1,810 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ankimcp/anki-mcp-server/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ankimcp/anki-mcp-server/commits/main.atom"/>
+  <title>Recent Commits to anki-mcp-server:main</title>
+  <updated>2026-09-09T17:41:09Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bf526529edc8c202779cc0738dda9865d913a68</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/2bf526529edc8c202779cc0738dda9865d913a68"/>
+    <title>
+        chore: add claude-usage MCP server to .mcp.json
+    </title>
+    <updated>2026-09-09T17:41:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add claude-usage MCP server to .mcp.json
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014p2n4JX8Au5VELgziDdzXP&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c64b62cb59f331741c751aeb0dd32e736eb3295c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/c64b62cb59f331741c751aeb0dd32e736eb3295c"/>
+    <title>
+        chore: bump @rekog/mcp-nest 2.0.5, inspector 2.6.0, @types/node 26.5.…
+    </title>
+    <updated>2026-09-09T17:39:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: bump @rekog/mcp-nest 2.0.5, inspector 2.6.0, @types/node 26.5.0, typescript-eslint 8.70.0
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014p2n4JX8Au5VELgziDdzXP&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb313d2d185ddf7809c98bd249256aa9b50f0356</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/fb313d2d185ddf7809c98bd249256aa9b50f0356"/>
+    <title>
+        fix(notesInfo): make `mod` optional in outputSchema (fixes #66)
+    </title>
+    <updated>2026-09-09T17:36:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(notesInfo): make `mod` optional in outputSchema (fixes #66)
+
+Older AnkiConnect builds omit `mod` from `notesInfo` responses, so the
+required field failed schema validation on every call. Nothing consumes
+`mod`, so it is now optional in both the Zod schema and the NoteInfo
+type. Adds a unit test that runs the real decorator outputSchema against
+a response without `mod`. Bump 0.25.1.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014p2n4JX8Au5VELgziDdzXP&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c00e7a4471b884025b7246e8d79bd833f6f6f1c4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/c00e7a4471b884025b7246e8d79bd833f6f6f1c4"/>
+    <title>
+        chore: stamp CHANGELOG for 0.25.0
+    </title>
+    <updated>2026-09-04T15:58:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: stamp CHANGELOG for 0.25.0
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzdC1tjzrGVbUSJFMgbdaE&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/153649154a6869f4cde42b50643334bd1bd779a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/153649154a6869f4cde42b50643334bd1bd779a1"/>
+    <title>
+        chore: env-independent port test + document dev Node floor in README
+    </title>
+    <updated>2026-09-04T15:55:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: env-independent port test + document dev Node floor in README
+
+The main-http &amp;quot;default port 3000&amp;quot; spec collided with anything already
+on 3000 (e.g. the server itself running locally) — same flaw as the
+8080/3001 tests fixed earlier; use an ephemeral port. README&amp;#39;s
+install-from-source section now notes tests need Node 24.9+ while the
+runtime floor stays 22.12.0+.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzdC1tjzrGVbUSJFMgbdaE&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/046e467ed7016614b55be27c08cba78499891a77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/046e467ed7016614b55be27c08cba78499891a77"/>
+    <title>
+        chore: bump eslint 10.10.0, sharp 0.35.4 (dev deps)
+    </title>
+    <updated>2026-09-04T15:54:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: bump eslint 10.10.0, sharp 0.35.4 (dev deps)
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzdC1tjzrGVbUSJFMgbdaE&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3b2be87925d42e7a08a6b3d495bf3f15f878c00a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/3b2be87925d42e7a08a6b3d495bf3f15f878c00a"/>
+    <title>
+        chore: update vulnerable transitive deps in lockfile
+    </title>
+    <updated>2026-09-04T15:44:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: update vulnerable transitive deps in lockfile
+
+browserslist 4.28.9, fast-uri 3.1.7, qs 6.16.0, @humanfs/node 0.16.8
+(clears all 8 open Dependabot alerts) plus fflate via npm audit fix.
+Lockfile-only; every fix lands within existing semver ranges.
+
+Remaining npm-audit high: tmp@0.0.33 under @anthropic-ai/mcpb&amp;#39;s
+inquirer chain — no upstream fix available; dev-only tooling, never
+shipped to users.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Uvf8B7ucf3cM7TAo1RJrSM&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/94815859efcb691f1a57f2ed18de50ffdcb3fc10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/94815859efcb691f1a57f2ed18de50ffdcb3fc10"/>
+    <title>
+        chore: upgrade NestJS 11 to 12 (ESM-only upstream) (#65)
+    </title>
+    <updated>2026-09-04T15:09:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: upgrade NestJS 11 to 12 (ESM-only upstream) (#65)
+
+No user-facing behavior change; runtime Node floor stays &amp;gt;=22.12.0
+(require(esm) interop loads the ESM-only Nest packages fine — verified
+by booting dist/main-stdio.js on Node 22.22.3). Jest additionally needs --experimental-vm-modules (now set via NODE_OPTIONS in the test scripts) and
+Node &amp;gt;=24.9 to load them, so the unit-test CI lane and dev baseline
+move to Node 24; e2e workflows stay on 22.x as a runtime-floor guard
+(they never import Nest — the server runs as a spawned subprocess).
+
+ESM prep that also works on Nest 11: specs mocking @nestjs modules via
+jest.mock (silently inert under ESM) now spy on Logger.prototype, and
+tunnel.command.ts takes an injectable createMicroservice factory
+defaulting to NestFactory.createMicroservice.
+
+Also carries pending minor bumps (jest 30.5.1, ky, zod, eslint, etc.).
+
+
+Claude-Session: https://claude.ai/code/session_01Uvf8B7ucf3cM7TAo1RJrSM
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4676be8fc69a0fcba2e11fe8966d453db506fef4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/4676be8fc69a0fcba2e11fe8966d453db506fef4"/>
+    <title>
+        fix!: omit card answers from get_due_cards/get_cards unless include_a…
+    </title>
+    <updated>2026-09-03T11:08:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix!: omit card answers from get_due_cards/get_cards unless include_answer is set (#63)
+
+BREAKING: both tools no longer return `back` by default. During review
+sessions the batch fetch put every answer into model context before the
+user attempted the card, defeating present_card&amp;#39;s show_answer gate
+(#62). Pass include_answer: true for content-analysis/editing workflows
+that need answer text.
+
+Also tightens rate_card&amp;#39;s description (reveal precondition) and the
+anki_review prompt (never fetch answers in bulk). No behavior change to
+rate_card itself — see #62 for why the proposed session-state gate was
+declined.
+
+
+Claude-Session: https://claude.ai/code/session_012KY8ALDzqqq3CpGbdxp8Ba
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c68d814c1b29b8c4746dea1c0c4ac175c786861</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/0c68d814c1b29b8c4746dea1c0c4ac175c786861"/>
+    <title>
+        chore: harden forgetCards/setDueDate inputs + bump to 0.25.0 (#61)
+    </title>
+    <updated>2026-08-31T20:15:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: harden forgetCards/setDueDate inputs + bump to 0.25.0 (#61)
+
+- cards input: positive integers only, capped at 100 (addNotes precedent),
+  duplicates deduped so counts and per-card results match what Anki did
+- setDueDate existence pre-check switched to cardsModTime (no per-card
+  question/answer/css rendering); read-back guard now also catches
+  non-array, wrong-length and deleted-card ({}) responses
+- success log no longer fires on the degraded read-back path
+- direct unit tests for card-validation.utils.ts; specs extended for
+  dedupe, schema caps and read-back failure modes
+- README tool count corrected to 50 (39 essential + 11 GUI)
+
+
+Claude-Session: https://claude.ai/code/session_012KY8ALDzqqq3CpGbdxp8Ba
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cbc96173a45fea8c4902944271e1bbcb74981234</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/cbc96173a45fea8c4902944271e1bbcb74981234"/>
+    <title>
+        feat: add forgetCards and setDueDate scheduling tools (#60)
+    </title>
+    <updated>2026-08-31T18:55:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/25348228?s=30&amp;v=4"/>
+    <author>
+      <name>rosaunde</name>
+      <uri>https://github.com/rosaunde</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add forgetCards and setDueDate scheduling tools (#60)
+
+* feat: add forgetCards and setDueDate scheduling tools
+
+Both tools change a card&amp;#39;s schedule without recording a review, which is
+what separates them from rate_card. Until now the only way to push a card
+back into rotation was rate_card with a rating of 1 — that logs a real
+review, counts as a lapse and drops the card&amp;#39;s ease factor, permanently
+skewing future scheduling and review statistics.
+
+forgetCards resets cards to the new queue and reports each card&amp;#39;s prior
+state (previousState, previousIntervalDays, reps, lapses) so callers can
+show what was given up. setDueDate moves the next review by N days using
+Anki&amp;#39;s spec format (&amp;quot;0&amp;quot;, &amp;quot;3-7&amp;quot;, &amp;quot;1!&amp;quot;), keeping interval and ease, and
+reads the scheduling back so range specs report where each card landed.
+
+Both validate every card ID via cardsInfo before mutating: AnkiConnect&amp;#39;s
+forgetCards returns null and setDueDate returns true even for IDs that do
+not exist, so a typo would otherwise look like a successful reset. The
+shared check lives in card-validation.utils.ts.
+
+Neither action needed a read-only mode change — both were already treated
+as scheduling operations rather than content writes.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* fix: address review feedback on scheduling tools
+
+setDueDate: idempotentHint false. A range spec like &amp;quot;3-7&amp;quot; re-rolls on
+every call, so the same arguments can land cards on different days. The
+hint describes the tool rather than one set of arguments, and a client
+that auto-retried on it would silently reshuffle scheduling.
+
+Both tools: drop findCards from the cards parameter description. It is an
+internal AnkiConnect action, not an exposed MCP tool, so an LLM following
+the hint would call something that does not exist. Point at get_cards,
+get_due_cards and notesInfo instead.
+
+setDueDate: isolate the post-mutation read-back in its own try/catch. It
+shared a try with setDueDate, so an Anki hiccup after the reschedule had
+committed was reported as a failed call — inviting a retry, which on a
+range spec re-rolls the dates and turns a reporting problem into a
+scheduling one. A failed read-back now returns success with an empty
+scheduled array and a message saying not to retry.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a29c96db293f1f29d3a4f06ba418a983f5b1a72e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/a29c96db293f1f29d3a4f06ba418a983f5b1a72e"/>
+    <title>
+        chore: add .mcp.json with local http/stdio server entries
+    </title>
+    <updated>2026-08-26T08:42:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add .mcp.json with local http/stdio server entries
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JLHUqkptmARkLmNPhXXTLN&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5c3b2350bd7871767eb47db4854f1482fee01a17</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/5c3b2350bd7871767eb47db4854f1482fee01a17"/>
+    <title>
+        ci: lockfile-free pack smoke test; fix(http): honour PORT/HOST/ANKI_C…
+    </title>
+    <updated>2026-08-26T07:54:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: lockfile-free pack smoke test; fix(http): honour PORT/HOST/ANKI_CONNECT_URL env vars (#59)
+
+* ci: smoke-test the packed tarball with a lockfile-free install
+
+Follow-up to #56 / #57. CI validated the dependency tree from
+package-lock.json, which consumers never receive; a resolution that
+only breaks outside the lockfile (like the mixed @nestjs/* pinning in
+#56) passed every check and crashed at require-time for every npm user.
+
+Adds scripts/smoke-test-pack.sh (npm run smoke:pack) and a
+pack-smoke-test CI job: `npm pack`, install the tarball into a temp
+prefix with no lockfile, boot the real `ankimcp --stdio` bin and assert
+on the initialize and tools/list responses; also boot the HTTP entry
+point under a bounded timeout to validate its require graph.
+
+Suggested by @sudoleg in #56.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JLHUqkptmARkLmNPhXXTLN
+
+* fix(http): honour PORT, HOST and ANKI_CONNECT_URL env vars in HTTP mode
+
+Commander declared defaults for --port, --host and --anki-connect, so
+the parsed options were never undefined and buildConfigInput() let them
+override the environment unconditionally. main-http.ts also listened on
+the raw CLI values instead of the validated config. Result: in HTTP
+mode `PORT=39218 ankimcp` bound 127.0.0.1:3000 and
+`ANKI_CONNECT_URL=...` was silently replaced by localhost:8765, despite
+both being documented. STDIO and tunnel mode were unaffected (they
+never routed through the defaulted options).
+
+- Drop the Commander defaults; the Zod schema is the single owner of
+  defaults. Precedence is now CLI flag &amp;gt; env var &amp;gt; default.
+- main-http.ts listens on validatedConfig.port/host and the banner
+  prints the resolved values via a dedicated BannerOptions type.
+- RawCliOptions models what Commander actually returns (strings).
+- Blank PORT/HOST env values fall back to the defaults instead of
+  failing validation or binding all interfaces.
+- Precedence tests for PORT/HOST/ANKI_CONNECT_URL; README rows for
+  PORT/HOST and --help text synced.
+
+Surfaced while reviewing the pack smoke test, whose HTTP check tried to
+use PORT= and silently bound :3000.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JLHUqkptmARkLmNPhXXTLN
+
+* fix(config): honour -a in tunnel mode; blank env vars fall back to defaults
+
+- `ankimcp --tunnel -a &amp;lt;url&amp;gt;` was ignored: handleTunnel never forwarded
+  ankiConnect into loadValidatedConfig / AppModule.forTunnel. Threaded
+  through; tunnel startup now prints the resolved AnkiConnect URL.
+- ANKI_CONNECT_URL=&amp;quot;&amp;quot;, TUNNEL_SERVER_URL=&amp;quot;&amp;quot;, ANKI_CONNECT_TIMEOUT=&amp;quot;&amp;quot; and
+  ANKI_CONNECT_API_VERSION=&amp;quot;&amp;quot; hard-failed validation instead of falling
+  back to their defaults; apply the same blank-to-undefined preprocess
+  already used for PORT/HOST.
+- An explicit `-a &amp;quot;&amp;quot;` flag is rejected with a usage error (HTTP, tunnel
+  and stdio parsers) rather than silently resolving to the default,
+  matching --tunnel/--login.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JLHUqkptmARkLmNPhXXTLN
+
+---------
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eebd716ec6fc6b6ea85ef8c65a56cb2b68670a77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/eebd716ec6fc6b6ea85ef8c65a56cb2b68670a77"/>
+    <title>
+        fix(deps): float the whole @nestjs/* set together (v0.24.2) (#57)
+    </title>
+    <updated>2026-08-26T07:05:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(deps): float the whole @nestjs/* set together (v0.24.2) (#57)
+
+Fixes #56.
+
+@nestjs/core was exact-pinned at 11.1.29 while @nestjs/common,
+@nestjs/microservices and @nestjs/platform-express floated on
+^11.1.29. Nest packages depend on each other&amp;#39;s internal modules, so
+every fresh `npm i` / `npx` install resolved microservices to 11.2.3,
+which requires `@nestjs/core/helpers/safe-instance-decorator` (only in
+core &amp;gt;= 11.2.2), and the server died at require-time with
+MODULE_NOT_FOUND before any transport opened. CI never saw it because
+`npm ci` honours the repo lockfile, which consumers never receive.
+
+All @nestjs/* runtime deps now share the same `^11.1.29` range and move
+as a set (lockfile re-resolved to 11.2.3). Verified with a lockfile-free
+`npm pack` + install into a temp prefix: stdio boots and answers
+`initialize`.
+
+Thanks to @sudoleg for the precise report, root-cause analysis and
+verification.
+
+
+Claude-Session: https://claude.ai/code/session_01JLHUqkptmARkLmNPhXXTLN
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b82692e7181fd6504afc992f000c38f2c077fa3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/8b82692e7181fd6504afc992f000c38f2c077fa3"/>
+    <title>
+        fix(tunnel): treat IDLE_TIMEOUT (4010) as a permanent close code (#55)
+    </title>
+    <updated>2026-08-15T15:03:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(tunnel): treat IDLE_TIMEOUT (4010) as a permanent close code (#55)
+
+Free-tier tunnels are disconnected server-side after 12h of inactivity.
+The CLI now recognizes close code 4010 and does not attempt to
+auto-reconnect, mirroring SESSION_REPLACED (4005).
+
+
+Claude-Session: https://claude.ai/code/session_01Dh8RrVqVA9hWk8cdvox1VK
+
+Co-authored-by: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7787e6ed253c17ab5aafbd50c5d21827b38efd34</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/7787e6ed253c17ab5aafbd50c5d21827b38efd34"/>
+    <title>
+        fix(deps): migrate to mcp-nest v2 + MCP SDK v2 — emit JSON Schema 202…
+    </title>
+    <updated>2026-08-13T10:56:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(deps): migrate to mcp-nest v2 + MCP SDK v2 — emit JSON Schema 2020-12 (v0.24.0) (#54)
+
+* fix(deps): migrate to mcp-nest v2 + MCP SDK v2 — emit JSON Schema 2020-12 (v0.24.0)
+
+Claude Desktop&amp;#39;s Code tab rejects every tool call:
+
+    Tool &amp;#39;listDecks&amp;#39; has an invalid outputSchema: JSON Schema declares an
+    unsupported dialect (&amp;quot;$schema&amp;quot;: &amp;quot;http://json-schema.org/draft-07/schema#&amp;quot;).
+    The default validator supports JSON Schema 2020-12 only
+
+SEP-1613 made 2020-12 the default dialect, but @modelcontextprotocol/sdk 1.x
+hardcodes draft-07 for input/outputSchema with no opt-out — server/mcp.js calls
+the converter with a fixed options object and never passes a target. The
+upstream fixes for the 1.x line (typescript-sdk#2085, #2653) have not landed,
+so no configuration change in this repo could resolve it. Moving to the v2 SDK,
+which mcp-nest v2 requires, removes the cause.
+
+All 96 tool schemas (48 input + 48 output) now emit
+https://json-schema.org/draft/2020-12/schema.
+
+Fixes #53
+
+mcp-nest 1.9.11 -&amp;gt; 2.0.0 is a re-platform:
+
+- McpModule.forRoot() -&amp;gt; McpStrategy, a NestJS microservice
+  CustomTransportStrategy. Each entry point builds one strategy and hands the
+  same instance to both AppModule.forX() (as MCP_STRATEGY) and the microservice
+  connection.
+- 51 capability classes: @Injectable() -&amp;gt; @McpController(), handler params take
+  @Payload(). Registered in each primitive module&amp;#39;s controllers array;
+  AppModule no longer re-lists them (that would instantiate every class twice).
+- @modelcontextprotocol/sdk@1.30.0 -&amp;gt; @modelcontextprotocol/{core,node,server},
+  pinned exactly per prior pin discipline.
+- Tunnel mode rebuilt on the public McpTransport interface. TunnelMcpService is
+  gone along with its reach into mcp-nest internals: the module-id lookup, a
+  copied private buildMcpCapabilities(), and
+  registerRequestHandlers(server, {} as any). All three collapse into
+  ctx.createBoundServer(session).
+- HTTP mode owns its route via McpHttpControllerFor(transport) with
+  mount: false. A self-mounted transport route registers on the Express adapter
+  outside the Nest pipeline, which would silently bypass the Origin/Host guards.
+- OAuth moved to a separate package upstream, so @nestjs/jwt, @nestjs/passport,
+  passport, passport-jwt and jsonwebtoken are dropped — they were carried only
+  as v1 peer deps and were never imported.
+
+Also fixed, found while reviewing the migration:
+
+- Tunnel cross-client response mix-up. Responses were correlated by the
+  client-chosen JSON-RPC id, so two callers using id:1 collided: one received
+  the other&amp;#39;s payload, the other hung the full 25s timeout. A stale timer&amp;#39;s
+  unconditional delete could evict a third request, cascading. The transport
+  now renumbers internally and restores the caller&amp;#39;s id on the way out. The id
+  must be a string — the SDK numbers server-initiated requests from 0 through
+  the same send() path.
+- Removed the env://{name} resource, which returned any environment variable
+  verbatim with no allowlist. Over tunnel or --ngrok that exposed the process
+  environment to a remote client; under MCPB it handed the model the
+  ANKI_CONNECT_API_KEY that manifest.json injects. system://info is kept.
+- MCP server identity now comes from validated config instead of direct
+  process.env reads, so all three modes advertise the real package version
+  (STDIO/HTTP previously reported 1.0.0 while tunnel reported the true one).
+- Demoted NestJS RoutesResolver logs to debug. @McpController composes
+  @Controller, so all 51 capability classes were announced at startup despite
+  exposing no HTTP routes. RouterExplorer stays at info — those three lines are
+  the real record of the MCP endpoint.
+
+E2E harness adapted for MCP Inspector v2, which is pinned to 2.2.0 with a
+nightly canary tracking latest. Two v2 CLI breaks: server args after the target
+are dropped without a `--` separator (so --read-only never reached the server,
+making the read-only suite a false negative), and a tool returning isError now
+exits 5 after printing the result.
+
+Verified: 75 suites / 1320 unit tests, e2e green, MCPB bundle confirmed working
+in Claude Desktop&amp;#39;s Code tab, tunnel confirmed working.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01H5PpmrhpkSqs2LGdTBadjf
+
+* docs+test: changelog for v0.24.0, make three orphaned E2E specs reachable
+
+CHANGELOG entry for 0.24.0 — the #53 dialect fix, the mcp-nest v2 re-platform,
+the env://{name} removal, the tunnel id-collision fix, and the dropped
+passport/JWT peer deps.
+
+E2E is split by filename:
+
+    e2e:test:http   --testPathPatterns=&amp;#39;http\.e2e-spec&amp;#39;
+    e2e:test:stdio  --testPathPatterns=&amp;#39;stdio\.e2e-spec&amp;#39;
+
+and scripts/e2e-full.sh plus all three workflows call only those two.
+stats-tools, get-due-cards and add-notes were named *.e2e-spec.ts, matching
+neither pattern, so they have never run in any workflow or in CI despite
+jest-e2e.config.js collecting them. All three call setTransport(&amp;quot;stdio&amp;quot;) —
+they are stdio specs that missed the naming convention. Renamed so they
+actually execute.
+
+stats-tools then needed one fix: it asserted callTool throws on a validation
+error, while its HTTP twin asserts the opposite and passes. mcp-nest v2 returns
+validation failures as an isError payload from the transport-agnostic strategy,
+so both transports emit the same thing; the stdio spec was stale. Confirmed
+live against both transports:
+
+    Invalid parameters: [start_date]: Must be ISO date format: YYYY-MM-DD
+
+Its beforeAll timeout also went 60s -&amp;gt; 180s: that fixture is 42 inspector
+spawns and each one boots a fresh server in stdio mode, where the http twin
+reuses one running server and still needed 90s.
+
+get-due-cards and add-notes were audited field-by-field against the current
+tool schemas (including the 0.18.0 and 0.23.0 changes) and needed no edits.
+No product bugs surfaced.
+
+Also documents why engines.node stays at &amp;gt;=22.12.0 while the E2E tooling needs
+&amp;gt;=22.19.0: the inspector is a devDependency, so consumers must not be forced
+higher for a tool they never install.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01H5PpmrhpkSqs2LGdTBadjf
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6977b45011495e770a694c1ffbebcbb1fa699099</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/6977b45011495e770a694c1ffbebcbb1fa699099"/>
+    <title>
+        Chore/deps security sdk 1.30 (#52)
+    </title>
+    <updated>2026-08-11T18:57:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Chore/deps security sdk 1.30 (#52)
+
+* chore(deps): bump MCP SDK to 1.30.0 and clear security advisories
+
+Resolves 7 of 12 open advisories (12 -&amp;gt; 5, 0 critical/moderate).
+
+Prod tree (all rooted at @modelcontextprotocol/sdk):
+- @modelcontextprotocol/sdk 1.29.0 -&amp;gt; 1.30.0
+- @hono/node-server 1.19.14 -&amp;gt; 2.1.0 (GHSA-frvp-7c67-39w9)
+  The SDK bump alone only widens the range to &amp;quot;^1.19.9 || ^2.0.5&amp;quot;;
+  the existing lockfile entry still satisfied it, so this needed an
+  explicit update to actually leave the vulnerable 1.x line.
+- hono 4.12.25 -&amp;gt; 4.13.1
+- fast-uri 3.1.2 -&amp;gt; 3.1.5 (GHSA-v2hh-gcrm-f6hx and related)
+- ip-address 10.2.0 -&amp;gt; 10.5.0
+
+Dev-only:
+- js-yaml 3.15.0 -&amp;gt; 3.15.1, 4.3.0 -&amp;gt; 4.3.1 (GHSA-5p4m-2wfm-xmqj)
+- brace-expansion 1.1.18 / 2.1.4 / 5.0.9 across all 8 tree positions
+
+Remaining 5 advisories are the tmp chain (tmp, external-editor,
+@inquirer/*, @anthropic-ai/mcpb). No patched tmp is published; it is
+dev-only and local-attack (CVSS 2.5), so it is accepted for now.
+
+Also adds an allowScripts allowlist for fsevents and unrs-resolver.
+npm 12 blocks dependency install scripts by default; these two are a
+prebuilt macOS file-watcher binary and a NAPI platform-binding check.
+
+Verified: tsc --noEmit clean under TypeScript 6, eslint 0 errors,
+lockfile byte-identical when re-resolved under npm 12.0.2, tests green.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01CvYWSNBBmYnPDcTrxpdfr4
+
+* ci: drop npm/cli#9151 stepping-stone from publish workflows
+
+The two-step &amp;quot;npm install -g npm@11.11.1 &amp;amp;&amp;amp; npm install -g npm@11.12.1&amp;quot;
+worked around npm 10.9.7 (bundled with Node 22.22.2) crashing on a
+direct upgrade to npm 11.x. Node 22.22.3 now ships npm 10.9.8, so the
+intermediate hop is no longer needed.
+
+The upgrade step itself stays: OIDC trusted publishing requires
+npm &amp;gt;= 11.5.1 and Node 22 still ships 10.9.8, so removing it entirely
+would fail the &amp;quot;Verify npm version supports OIDC&amp;quot; gate in
+npm-publish.yml and break authentication in npm-publish-legacy.yml.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01CvYWSNBBmYnPDcTrxpdfr4
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ec8a93952d010cf729eb390bdeaae49bffb61a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/6ec8a93952d010cf729eb390bdeaae49bffb61a9"/>
+    <title>
+        fix(stats): honest due-tree vs card-state semantics + true state coun…
+    </title>
+    <updated>2026-08-11T17:19:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(stats): honest due-tree vs card-state semantics + true state counts (v0.23.0) (#51)
+
+Fixes #50 — deckStats/collection_stats descriptions claimed counts.review
+was &amp;quot;review cards (mature)&amp;quot; and counts.other &amp;quot;typically suspended or
+buried&amp;quot;. AnkiConnect getDeckStats numbers come from the scheduler&amp;#39;s due
+tree: due today, capped by daily limits. Descriptions corrected on every
+surface (tools, types, README, manifest blurbs).
+
+- Add states block with true card-state counts via Anki searches
+  (new/learning/review/suspended/buried; mutually exclusive, exhaustive):
+  per-deck on deckStats, collection-level on collection_stats. Shared
+  definitions in src/mcp/utils/card-states.utils.ts (queries + Zod
+  schemas + inferred types) so due-tree and card-state wording can&amp;#39;t
+  drift apart again.
+- Fix listDecks summary double-counting subdecks (buckets are rolled up;
+  summary now sums root decks only).
+- Harden deck-name escaping (_, *, \ treated as literals) in deckStats,
+  collection_stats, get_cards, get_due_cards; :: passthrough preserved.
+- Validate findCards/getEaseFactors/getIntervals payloads (throw on
+  malformed responses instead of silent zeros).
+- Drop counts.total===0 short-circuit that zeroed states for decks whose
+  cards sit in filtered decks; emptiness is gated on the search result.
+- Tests: query literals pinned in card-states.utils.spec.ts, regression
+  tests for filtered-deck borrowing and subdeck double-counting, e2e
+  assertions for states (fixture deck name exercises the \_ escape).
+
+
+Claude-Session: https://claude.ai/code/session_013x5wZAZ5vtMRWpEUk6gzjx
+
+Co-authored-by: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3cd6ea82aff4237a15947f7e36207ee2730e82dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/3cd6ea82aff4237a15947f7e36207ee2730e82dd"/>
+    <title>
+        style: apply prettier to media-validation spec (#47)
+    </title>
+    <updated>2026-07-22T15:18:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: apply prettier to media-validation spec (#47)
+
+Collapse a multi-line mock array to prettier&amp;#39;s canonical single-line form
+so the file is formatter-clean (no behavior change).
+
+Co-authored-by: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7a2f8187400e3e11e853f722410ec2ec7bd71fad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ankimcp/anki-mcp-server/commit/7a2f8187400e3e11e853f722410ec2ec7bd71fad"/>
+    <title>
+        fix(security): harden media-URL SSRF guard against IPv6 transition by…
+    </title>
+    <updated>2026-07-21T18:55:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1641594?s=30&amp;v=4"/>
+    <author>
+      <name>anatoly314</name>
+      <uri>https://github.com/anatoly314</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(security): harden media-URL SSRF guard against IPv6 transition bypass (v0.22.5) (#46)
+
+* fix(security): harden media-URL SSRF guard against IPv6 transition bypass
+
+Switch validateMediaUrl() from a range blocklist to a fail-closed
+allowlist (only ipaddr.js &amp;quot;unicast&amp;quot; is permitted). The blocklist missed
+the IPv6 transition ranges ipaddr.js can return (rfc6052/NAT64,
+rfc6145/SIIT, 6to4, teredo, benchmarking, amt), letting an attacker
+reach internal targets via a literal like
+http://[64:ff9b::169.254.169.254]/ that encodes a private IPv4.
+The allowlist closes the entire class, including any range future
+ipaddr.js versions add. (GHSA-5286-6cm5-w3qv)
+
+Also hardened, beyond the reported CVE:
+- Extract embedded IPv4 from IPv4-mapped (::ffff:0:0/96) AND deprecated
+  IPv4-compatible (::/96) IPv6 before the range check, so an internal
+  IPv4 wrapped in IPv6 (e.g. ::a9fe:a9fe) cannot bypass the guard.
+- Validate ALL resolved DNS records, not just the first, so a host with
+  a public record and a private sibling is rejected.
+- allowedHosts matching normalizes IPs (embedded-IPv4 + IPv6 form) and
+  handles bracketed IPv6 literals; the IP escape hatch requires every
+  resolved address to be allowlisted.
+
+Adds 12 tests covering the transition ranges, embedded-IPv4 forms,
+multi-record resolution, and allowlist normalization (127 total, green).
+
+Reported by tonghuaroot.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* chore(release): v0.22.5
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

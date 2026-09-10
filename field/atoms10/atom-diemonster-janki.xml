@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/diemonster/janki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/diemonster/janki/commits/main.atom"/>
+  <title>Recent Commits to janki:main</title>
+  <updated>2026-09-08T21:50:03Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f101612b39ba6a96970ddac35375ee44346b61a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/1f101612b39ba6a96970ddac35375ee44346b61a"/>
+    <title>
+        Batch extraction with bounded parallel calls and independent recovery
+    </title>
+    <updated>2026-09-08T21:50:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Batch extraction with bounded parallel calls and independent recovery
+
+Allow one exact confirmed batch over prepared source parts, with two concurrent
+calls by default and a maximum of four. Reserve the whole batch atomically and
+capture/stage each child through the shared extraction lifecycle. Successful
+children remain saved when another fails; selected retries bind fresh operation
+IDs and exact evidence cleanup, and durable execution receipts resume interrupted
+cleanup without repeating an owner decision. Captured replies recover locally.
+
+Expose the same service through Janki Assistant and the CLI, including child
+progress, local recovery and retry controls, and a combined real-card HTML
+preview. Keep independent staging provenance and disclose duplicate proposals.
+Source parts are explicit prepared files; document slicing remains separate.
+
+A prompt cannot enforce dispatch counts, one-use request authority or local file
+identity, so the journal and application own those structural checks. No new
+Japanese interpretation or content-audit rules are introduced.
+
+Validation: make gates (5248 tests passed, Ruff clean, sample deck built), the
+strengthened manifest-binding regression, independent recovery reproductions,
+and isolated mutations of dispatch, consent, recovery and Assistant controls.
+Independent code reviews covered the journal, application and surfaces.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eec34859b2be6e6f2bf8d8908c9909ef084eb856</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/eec34859b2be6e6f2bf8d8908c9909ef084eb856"/>
+    <title>
+        Require complete extraction of every supplied table page
+    </title>
+    <updated>2026-09-08T20:04:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Require complete extraction of every supplied table page
+
+A rich table answer selected only an initial chapter block despite receiving
+the complete document. Make whole-document coverage explicit and ask the model
+to budget concise, complete cards rather than choose its own sample or promise
+a continuation.
+
+Retain printed basic-form columns even when they repeat the headword, and
+preserve the source&amp;#39;s full semantic header levels so labels keep their long
+present/past descriptions. This changes the prompt, not Japanese-inspecting
+validation logic.
+
+Validation: make gates (ruff, 5,111 tests, sample deck build).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bb90b92a85ac8e5663380d7f9f90d075f93d2de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/2bb90b92a85ac8e5663380d7f9f90d075f93d2de"/>
+    <title>
+        Extract source documents through verified Claude subscriptions
+    </title>
+    <updated>2026-09-08T19:31:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Extract source documents through verified Claude subscriptions
+
+Default extraction to the guarded Claude Pro/Max transport and carry exact
+PDF/image inputs through planning, consent, capture, recovery, and staging.
+Keep API extraction explicitly configured; a subscription failure never
+switches billing providers. Assistant and CLI use the same extraction path.
+
+Preserve source conjugation labels, column order, blank-cell witnesses, and
+chapter references. Expand the extraction templates to account for repeated
+rows and grouped headers while keeping standalone deck identities separate.
+
+Drain CLI stdout independently of durable frame writes. This prevents the
+CLI&amp;#39;s bounded shutdown from dropping queued output while each received frame
+is still recorded before parsing. Export the full recovery artifact, including
+its original manifest, through operations --show-reply.
+
+Make API fixtures explicit and block real Claude subprocesses in tests.
+Transport bytes, process cleanup, provenance, and test billing boundaries are
+structural contracts that a Japanese-content prompt cannot enforce.
+
+Validation: make gates (ruff, 5,111 tests, sample deck build); real-pipe
+truncation regression fails before the fix and with read-ahead removed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c96c0be32566c0777bf330939441223bf6b976f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/c96c0be32566c0777bf330939441223bf6b976f4"/>
+    <title>
+        Support independent vocabulary decks in Janki Assistant
+    </title>
+    <updated>2026-09-08T18:05:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Support independent vocabulary decks in Janki Assistant
+
+Add explicit standalone vocabulary decks with scoped record identities and
+independent Anki progress. Carry the choice through creation, source known-word
+filtering, assignment, promotion, previews, and rebuilds. Keep duplicate checks
+and JPDB review imports within their appropriate identity scopes.
+
+Allow conversational creation plans to retain previously discussed choices;
+the exact confirmation still owns the write. Stack conjugation labels above
+their values on mobile while retaining every supplied form in source order.
+
+Scope, identity, and captured-file checks enforce persistent artifact facts.
+A card-writing prompt cannot enforce Anki identity or the exact bytes a later
+confirmation executes, so these checks belong in repository code.
+
+Validation: make gates; real Anki imports and rebuilds preserve both copies&amp;#39;
+review histories; focused mutations verify identity and consent bindings.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65b25e22a98567a16501dcd40d234b4e41c84b28</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/65b25e22a98567a16501dcd40d234b4e41c84b28"/>
+    <title>
+        Offer rendered card previews through Assistant wizard actions
+    </title>
+    <updated>2026-09-08T00:49:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Offer rendered card previews through Assistant wizard actions
+
+Wizard confirmations and proposal reviews now link the actual proposed cards;
+preview_cards also renders an existing deck or explicit card selection without
+preparing a mutation. Vocabulary, kanji, pattern and conjugation previews use
+the real exporters and Anki in a scratch collection. The CLI writes the same
+interactive HTML instead of a static vocabulary summary.
+
+Keep proposed bytes, existing media and immutable preview snapshots separate
+from confirmation authority. Opening a preview makes no additional provider
+call. Source snapshot, scope, media and transport checks bind artifact identity
+and exact bytes; these are mechanical contracts a prompt cannot enforce, not
+Japanese-content audits.
+
+Validation: make gates (4,967 tests, Ruff, sample build); actual deck and
+proposed-service integration; mobile light/dark browser checks, existing audio,
+reload stability and no outbound requests; targeted mutations caught.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/799eef93392837cc5f62793906a4e0055eaaec02</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/799eef93392837cc5f62793906a4e0055eaaec02"/>
+    <title>
+        Prefer rendered HTML cards for review
+    </title>
+    <updated>2026-09-07T23:36:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prefer rendered HTML cards for review&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e58ce3f428672c1a76f54d629c11fd89181ddde</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/0e58ce3f428672c1a76f54d629c11fd89181ddde"/>
+    <title>
+        Add dedicated kanji cards and enforce subscription-only development l…
+    </title>
+    <updated>2026-09-07T23:26:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add dedicated kanji cards and enforce subscription-only development launches
+
+Explicit character targets now produce character notes with stable GUIDs,
+KANJIDIC meanings, KanjiVG strokes and source-labelled JPDB reading evidence.
+Assistant prepares the exact cards, confirms one apply/build plan, and keeps
+progress, recovery and the package download in the conversation. Saved facts
+support offline builds; raw JPDB HTML stays outside the repository. Remove
+the JMdict word-priority proxy and the superseded acquisition script.
+
+Development and review launches now use a shared subscription-authentication
+guard. It removes inherited provider overrides, checks the Pro/Max login in
+the dispatch context, and refuses settings or launch-context overrides. Git
+review hooks and agent instructions use the tracked launcher, without an API
+fallback. Existing explicit paid content providers remain separate.
+
+These structural checks bind authentication, identities, source paths, deck
+membership and recovery state. A prompt cannot select its own billing route
+before dispatch or prove the bytes used by a later build; no check judges
+Japanese content. Regression tests and isolated mutations cover the named
+failures. Validation: make gates, actual Anki imports and repeat-import GUID
+checks, and mobile/light/dark previews.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a126f24528cc89f93675332131f0eaee81d8c2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/0a126f24528cc89f93675332131f0eaee81d8c2b"/>
+    <title>
+        Prototype on-demand JPDB reading percentages
+    </title>
+    <updated>2026-09-07T20:48:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prototype on-demand JPDB reading percentages
+
+Capture only requested kanji pages, reuse local cached responses, and refresh
+only explicitly. Preserve source reading groups, links, rounded percentages,
+bounds and missing values with URL, retrieval time and byte-hash provenance.
+Keep full HTML local and record the five-character factual report in Git.
+
+These checks protect HTML structure and cache bytes, not Japanese or model
+output; no prompt can supply this artifact-integrity contract. Kanji-card
+integration remains a separate design step.
+
+Validation: live five-page acquisition, byte-identical offline and cached-fetch
+replays with network disabled, focused tests and mutation checks, and make gates.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b96aeec01f8fe0af305377dbaa4b23746c605b07</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/b96aeec01f8fe0af305377dbaa4b23746c605b07"/>
+    <title>
+        Prototype Tamaoka reading-frequency acquisition and record source dis…
+    </title>
+    <updated>2026-09-07T18:25:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prototype Tamaoka reading-frequency acquisition and record source discrepancies
+
+Preserve a seven-character public export and an independent compound-word
+lookup for 理, with source requests, hashes, attribution, and a reproducible
+standalone diagnostic. Exported reading values do not reconcile with the
+compound totals, so the POC leaves usage percentages unverified.
+
+Checks cover CSV structure, exact response bytes, and integer arithmetic;
+these are artifact properties, not judgments or inference about Japanese.
+
+Record the owner&amp;#39;s requirement for the complete kanji study journey to run
+inside Janki Assistant, including review, recovery, and deck delivery.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47b9f6936698a29d12819e9e93ebd1fad7829203</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/47b9f6936698a29d12819e9e93ebd1fad7829203"/>
+    <title>
+        Propose dedicated kanji cards and compare reading-frequency sources
+    </title>
+    <updated>2026-09-07T06:16:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Propose dedicated kanji cards and compare reading-frequency sources
+
+Separate study content types from review directions and propose character
+notes with stable identities and contextual vocabulary examples. Record the
+owner&amp;#39;s agreed meaning-recognition default, distinguishing Show Answer from
+the caret for additional readings. Implementation remains a discussion item.
+
+Compare JPDB, Tamaoka, CJKI, Jiten, Ichiran, and NINJAL with primary sources,
+distinguishing occurrence counts from dictionary-word prevalence. No reading
+provider or existing study content is changed by these documents.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b984927224675ee5954e283a32dee32d5d217c3b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/b984927224675ee5954e283a32dee32d5d217c3b"/>
+    <title>
+        Store generated audio in Git LFS
+    </title>
+    <updated>2026-09-07T06:15:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Store generated audio in Git LFS
+
+Convert the current WAVs to LFS pointers without rewriting existing history.
+Track recovery audio stages in LFS too, while audition JSON and Markdown
+remain ordinary Git files. Compose LFS with the repository review hooks and
+hydrate media before bootstrap runs the gates.
+
+Abort a push when its ref capture or LFS upload fails. These checks protect
+filesystem and Git transport contracts; a Japanese-writing prompt cannot
+ensure that the exact ref bytes reached LFS or that media was uploaded.
+
+Validation: make gates; 31 focused hook/setup tests; 20 named fault mutations;
+real local LFS push and fresh-clone download; unchanged hashes for all 1,001
+audio-directory files, with 911 WAV pointers and 90 ordinary metadata files.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c1ed02cf29939c9f66c46b881260b99f4b7c4ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/0c1ed02cf29939c9f66c46b881260b99f4b7c4ee"/>
+    <title>
+        Preserve Week 2 vocabulary and completed potential-practice audio
+    </title>
+    <updated>2026-09-07T04:39:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Preserve Week 2 vocabulary and completed potential-practice audio
+
+Save the 17-note Week 2 vocabulary deck, kanji references, and its 51 clips. Preserve the completed potential-practice revision and 32 drill clips together with their ledger, staging archives, and Assistant turn provenance. Register Week 2 in the existing deck membership contract.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79cb8a30eddf025872605f860a91080116a94176</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/79cb8a30eddf025872605f860a91080116a94176"/>
+    <title>
+        Accept the Assistant agent&#39;s progress labels on the action route
+    </title>
+    <updated>2026-09-04T03:58:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Accept the Assistant agent&amp;#39;s progress labels on the action route
+
+The three labels recover_agent reports were accepted by the chat
+validator and refused by the action validator, so every &amp;quot;Recover
+captured result&amp;quot; for an assistant_agent operation failed on its first
+progress call, before the journal was read, and the captured answer
+could only be discarded with --forget --force. The suite was green
+because every recovery test substituted recover_agent.
+
+The labels now belong to both sets. Two tests keep it so: an AST scan
+requires every literal the agent reports to be accepted on both routes,
+and one recovery drives a real captured turn through
+plan_operation_action and execute_operation_action under a validator
+that refuses unknown labels.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f8e89439a2468bda1055427f424a735a531eda4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/5f8e89439a2468bda1055427f424a735a531eda4"/>
+    <title>
+        Cut Assistant turn latency and stream the answer as it arrives
+    </title>
+    <updated>2026-09-04T03:21:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cut Assistant turn latency and stream the answer as it arrives
+
+A message cost about 13 s of local work before the model was contacted,
+then about 18 s in a Claude Code call that showed nothing until the
+whole result landed.
+
+Local: the repository context was built three times per turn -- the
+plan, then two re-plans that guaranteed nothing the request bytes did
+not already bind. Staging YAML went through PyYAML&amp;#39;s pure-Python loader
+and was parsed three times per build, and the source catalog ranked
+every source through the completed-card archive to learn only its name.
+Now one context build with libyaml, one parse of the review queue shared
+by source names, proposal kinds and status, and a names-only catalog:
+under a second.
+
+Model: `[assistant] effort` chooses the depth for the one pass that
+writes no study content (default medium), bound into argv, environment
+and transport so a recovered plan validates from its own bytes. The
+Claude Code transport is stream-json with partial messages. Every stdout
+line is fsynced to the response spool before it is inspected, the first
+text block streams into the thread as a preview, and the validated
+structured answer always replaces it. A reply janki cannot read is
+captured before it is refused, a failing read kills and reaps the child,
+and a PyYAML built without libyaml is refused at import with the fix
+named instead of dying on an attribute.
+
+Guardrails rather than conventions: every literal progress label the
+adapter emits must be one the validator accepts; a stored Claude Code
+command is bound whole, not flag by flag; one broker build parses each
+live staging file once; the before-send cancellation lives in one
+helper for all four paid paths.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41b739b65a9ded43cdf945e6fb3029f847594ce1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/41b739b65a9ded43cdf945e6fb3029f847594ce1"/>
+    <title>
+        Record unanswered Assistant turns instead of wedging the next one
+    </title>
+    <updated>2026-09-03T19:35:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Record unanswered Assistant turns instead of wedging the next one
+
+An ordinary turn whose provider reply carried no answer stayed
+result_captured forever. The reply held nothing an owner could act on,
+but it still blocked every later question until someone settled it by
+hand.
+
+A reply with no answer now decodes to AgentUnansweredError and commits a
+durable failed manifest holding its exact provider bytes, so the turn
+settles itself and conversation continues. Recovery finishes such a
+manifest without another model call.
+
+Only a genuinely unanswered reply may settle itself. Both providers
+reach that through an incomplete stop reason or an error envelope, which
+decodes to a result with no parsed answer. Every other failure -- an
+intent naming an undisclosed resource, structured output that only
+failed schema validation, a disk fault -- still holds an answer somebody
+could read, so it stays for the owner to decide.
+
+Say what these calls are in owner-facing text. Under a Pro/Max login
+there is no per-message charge, so &amp;quot;Paid call needs your decision&amp;quot; read
+as if each question were billed; settling one earlier call is now
+described as exactly that.
+
+Progress labels are checked against the validator&amp;#39;s set rather than kept
+in step by hand: _validate_plan refuses an unknown label, so a rename
+that misses an emitter fails every use of that action instead of
+degrading.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d2d2221b94c329914bee970acff5a6017fe0111</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/9d2d2221b94c329914bee970acff5a6017fe0111"/>
+    <title>
+        Fix Assistant deck switching recovery
+    </title>
+    <updated>2026-09-03T08:25:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix Assistant deck switching recovery&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/104f0348df3d5c5d7f77f18c067ce318f2d1186d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/104f0348df3d5c5d7f77f18c067ce318f2d1186d"/>
+    <title>
+        Expand Assistant to repository workflows
+    </title>
+    <updated>2026-09-03T05:00:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Expand Assistant to repository workflows&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/49577647564fb63177bd071e403faee804a49d74</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/49577647564fb63177bd071e403faee804a49d74"/>
+    <title>
+        Allow chat selection for every readable deck
+    </title>
+    <updated>2026-09-02T22:00:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Allow chat selection for every readable deck&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/39bdba710cbc2eeecfd084eda61ca12187a3cfd3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/39bdba710cbc2eeecfd084eda61ca12187a3cfd3"/>
+    <title>
+        Fix Assistant starter prompt rendering
+    </title>
+    <updated>2026-09-02T19:46:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix Assistant starter prompt rendering&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c03498cd69375c2cf1b966c29d6c10b4be9c6c9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/diemonster/janki/commit/c03498cd69375c2cf1b966c29d6c10b4be9c6c9f"/>
+    <title>
+        Add thread-local Assistant deck selector
+    </title>
+    <updated>2026-09-02T19:11:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/12196049?s=30&amp;v=4"/>
+    <author>
+      <name>diemonster</name>
+      <uri>https://github.com/diemonster</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add thread-local Assistant deck selector&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

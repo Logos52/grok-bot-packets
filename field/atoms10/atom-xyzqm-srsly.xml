@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/xyzqm/srsly/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/xyzqm/srsly/commits/main.atom"/>
+  <title>Recent Commits to srsly:main</title>
+  <updated>2026-09-09T17:23:53Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b23903b6d9496adf246e712a43f89de9a23fefeb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/b23903b6d9496adf246e712a43f89de9a23fefeb"/>
+    <title>
+        docs: the repo catches up with five phases, and stops saying two thin…
+    </title>
+    <updated>2026-09-09T17:23:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the repo catches up with five phases, and stops saying two things that are false
+
+CLAUDE.md had drifted into the failure it already documents catching once — the
+ts-fsrs and SvelteKit leftovers that contradicted the code they described. Two
+statements were not merely stale but wrong, and this file is loaded as project
+instructions in every session, so they were being read as current:
+
+  - &amp;quot;The foundation only — there is no UI yet&amp;quot; about handwriting, five phases
+    after the canvas, the Learn state, the hint ladder and the printable sheet
+    shipped.
+  - A `writing_state` column that was renamed to `drill_state` two commits
+    earlier, including a dead reference to migrations/0003_writing_state.sql.
+
+Both corrected, with a note saying what they said and why it mattered, because a
+silent fix teaches nobody.
+
+THREE SECTIONS ADDED for a third of the app that was invisible:
+
+  - `drill_state` and the w:/c: namespacing — why one column rather than one per
+    drill, why the prefix is not redundant today, why the migration reads the data
+    rather than a version marker, and why saveDrillCards writes INTO the blob.
+  - The practice sheet — window.print() over a PDF library and the CJK font it
+    would need, and the three numbers that had to be measured: the glyph box
+    overflowing 100 units at the bottom only, cross-hairs first shipped at 0.07 mm
+    because a stroke width in viewBox units is a different physical line in a
+    different-sized box, and ten 18 mm cells fitting both A4 and Letter.
+  - Conjugation — derived not generated, the schedule per fact and the prompt per
+    cell, the diff cut at a known boundary, the accent rule and its 76%, and why
+    French is a sibling module with a third group learned as rows.
+
+AND THE THREE HEURISTIC BUGS, WRITTEN DOWN AS ONE LESSON. tiée, pincer and
+étaient were each a rule that looked obviously right, passed its tests, and put a
+wrong form on a card; all three were caught by reading the output rather than the
+code. The generalisation is recorded because it outlives this project: a heuristic
+that ranks candidates always returns something and never says how sure it was, so
+cost against a model of what the answer should look like rather than a proxy like
+length — and where there is no model, use a signal that carries meaning.
+
+README gains the same material aimed at a reader who has not seen the code, plus
+the drills in its opening paragraph. Numbers refreshed against a real build: 862
+tests across 44 files (was 563/26), first-load JS 316 kB (README said 296, CLAUDE.md
+305). Every relative link verified to resolve.
+
+Screenshot for docs/ is framed and confirmed but NOT captured — see the note in the
+handover; there is no headless browser in this environment and the existing
+docs/*.png are 2040px retina captures taken by hand.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/836d2ed190ed1aa3bbc5e37ec068bf8b793e23de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/836d2ed190ed1aa3bbc5e37ec068bf8b793e23de"/>
+    <title>
+        fix(es,fr): the card waits again — Next is back, and Enter does the s…
+    </title>
+    <updated>2026-09-09T06:31:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(es,fr): the card waits again — Next is back, and Enter does the same job
+
+Auto-advance on a correct answer is removed on request, having been asked for and
+then asked back. The second answer is the better one: half a second is long enough
+to feel hurried and short enough to miss what you just wrote, and a card vanishing
+on its own is the app deciding you were finished looking.
+
+Enter now continues after BOTH verdicts rather than only after a wrong one — that
+was only ever gated because the timer already handled the correct case, and the
+whole point of removing it is that a correct card waits too. Still not bound while
+the input is on screen, where TypedAnswer owns the key and guards isComposing so an
+IME candidate keystroke cannot submit.
+
+The Next button carries &amp;quot;or press Enter&amp;quot;, the same way the Learn row does, because
+a shortcut nobody is told about is a shortcut nobody uses.
+
+Verified in a browser: a correct answer sits on card 1 for two and a half seconds
+— well past the old 550 ms — and Enter then moves to 2; a wrong answer shows
+&amp;quot;Not quite — it is canté&amp;quot; and Enter moves to 3.
+
+862 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27d521a09030db75b81f209c0a1a2dab3101c957</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/27d521a09030db75b81f209c0a1a2dab3101c957"/>
+    <title>
+        feat(fr): French joins the drill — one seam, two engines, and a passé…
+    </title>
+    <updated>2026-09-09T06:06:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(fr): French joins the drill — one seam, two engines, and a passé composé that is composed
+
+Phase 6 finished. `hasConjugation` is on for French, `conjugationDrill.ts` gained an
+engine seam, and the passé composé is built from an authored être list.
+
+THE SEAM IS THIN BECAUSE THE DIFFERENCE IS SHALLOW. Spanish reads Wiktionary tag
+sets, French reads Lexique positional codes, French has a third group with no class
+at all — those live in sibling modules. Everything above them is genuinely shared:
+the card, the slot rotation, the exemplar rotation, the accent rule, the Learn row.
+A third language is a third entry in ENGINES.
+
+THE ACCENT MEASUREMENT, WHICH I GUESSED WRONG. I predicted French would collide
+far less than Spanish. It collides on exactly the same share of verbs — 76% — and
+on fewer cells (7.1% against 17%), because French has one dominant pair rather than
+five: `parle` against `parlé`, present against participle, for every -er verb. And
+the participle is precisely what the passé composé is built from, so the rule was
+needed just as much. Worth the measurement rather than the guess.
+
+A CLASS A VERB DOES NOT DESERVE IS WORSE THAN NO CLASS AT ALL. `être` ends in -re,
+so the ending alone called it regular — and `candidateCost` then prefers whichever
+candidate looks most regular. Lexique tags `étaient` as both the imperfect and the
+present third plural, and against a nominal -re paradigm it scores 7 where the
+correct `sont` scores 101. So être&amp;#39;s present row came out &amp;quot;suis es est sommes êtes
+étaient&amp;quot;, the imperfect smuggled into the present by a class the verb never had.
+Found by reading the output.
+
+A verb now has to EARN its ending&amp;#39;s class: deviate in two fifths or more of your
+cells and you are learned as rows instead. The split is measured and there is
+nothing in the gap — parler 0%, vendre 0%, rompre 4%, battre 10%, mettre 13%,
+manger 21%, then prendre 48%, dire 55%, faire 94%, être 100%. It also lands
+prendre, dire and faire in the third group, which is where a textbook has them.
+
+THE PASSÉ COMPOSÉ: avoir IS THE PATTERN, être IS THE EXCEPTION LIST — the same
+shape as the rest of the phase, and how French is actually taught. The être verbs
+are authored (no table records an auxiliary, and the tense is two words so it is
+not a form at all), kept short, and held to the same standard as core-overrides&amp;#39;
+beginner sets: a test asserts every one is a verb the grammar table knows.
+
+NUMBER AGREEMENT IS NOT OPTIONAL. `nous sommes allé` is wrong French, and printing
+it on a row the learner is asked to READ would teach an error — so number is
+applied and `sommes allés` is what shows. Gender is not: `elle est allée` depends
+on a subject no card can know, so the masculine is graded and the note says
+agreement exists rather than the drill inventing a speaker.
+
+And `je` elides. The pronoun is a label and the form a separate cell, so the row
+printed &amp;quot;je ai vendu&amp;quot;, which is not French. Only the Learn row elides — the prompt
+shows the pronoun alone as a cue, and eliding there would leak the answer&amp;#39;s first
+letter.
+
+Verified in a browser: French offers Cards + Conjugate; a five-verb deck earns 31
+cards; the -er present renders on `parler` with je/tu/il; the passé composé pattern
+reads &amp;quot;j&amp;#39;ai vendu&amp;quot;; `aller` reads &amp;quot;NEW AUXILIARY … suis allé … sommes allés&amp;quot; with
+its être note; grades land under c:.
+
+862 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee9005a78e80167f422e7eeb43abfab0d0f5bdf9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/ee9005a78e80167f422e7eeb43abfab0d0f5bdf9"/>
+    <title>
+        feat(fr): the French conjugation engine — three regular groups, and t…
+    </title>
+    <updated>2026-09-09T01:48:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(fr): the French conjugation engine — three regular groups, and the third learned as rows
+
+A sibling module rather than a branch inside the Spanish one. The neutral half is
+shared — stemDelta, clusterFacts and the cell vocabulary say nothing about
+Spanish — but Lexique gives POSITIONAL codes where Wiktionary gives tag sets, and
+French has three regular paradigms where Spanish has three uniform ones. Same seam
+components/read/GrammarNote.tsx already uses, where a third language is a third
+module and not a rewrite.
+
+FOUR THINGS THE FRENCH DATA DOES THAT THE SPANISH DATA DOES NOT.
+
+One code packs several readings: 87 of the 140 verb codes carry more than one slot
+and twelve carry four or five, so taking the first would label the commonest form
+of every regular -er verb an IMPERATIVE — which CLAUDE.md already documents.
+
+`imp` means two things by position — imperative MOOD in imp:pre, imparfait TENSE
+in ind:imp. A substring test mislabels one, and a beginner cannot catch a
+confidently wrong grammatical label.
+
+`inf` shares codes with finite forms (VER|ind:fut:3s;inf||), so excluding any code
+CONTAINING inf would delete real future cells. Filtering is per SLOT, never per
+code — the same granularity mistake the Spanish clitic filter made once already.
+
+And -ir is not one class. `finir` takes the -iss- infix and `partir` does not,
+while `ouvrir` conjugates like an -er verb; nothing in the spelling separates them,
+so the verb&amp;#39;s own present plural is asked instead of its last two letters.
+
+THE THIRD GROUP IS LEARNED AS ROWS, which is new. partir, ouvrir, every -oir and
+aller have no regular paradigm to deviate FROM, so a stem delta would be arithmetic
+dressed as a rule. They emit one paradigm fact per tense — the whole row, which is
+how they are taught and how they are recited. Spanish never needed this because
+every Spanish verb has a class.
+
+A LENGTH RULE PUT `pincer` IN `pouvoir`&amp;#39;s PARADIGM. Lexique tags `pincer` — the
+infinitive of &amp;quot;to pinch&amp;quot; — as VER|ind:pre:2p with the lemma `pouvoir`. It and
+`pouvez` both claim that cell, pouvoir has no class to cost them against, and both
+are six letters, so the tie broke alphabetically and the drill was ready to teach
+`vous pincer`. Found by reading the output, not the code. A conjugated form keeps
+the shape of its verb: pouvez shares four letters with pouvoir and pincer shares
+one. Suppletion is safe from it — `vais` shares nothing with `aller`, but nothing
+else claims that cell, so there is no tie to break.
+
+The -re future drops its final e (vendre → vendrai, not vendreai). Missing that
+would have made all 248 regular -re verbs look irregular.
+
+Literary tenses excluded on request: passé simple and imparfait du subjonctif. The
+imperative is deferred rather than half-modelled — it has three persons, so it
+needs its own cell model.
+
+Measured: 1,099 verbs judged, 70% fully regular, 91 in the third group, 1,059
+facts covering 4,215 cells at 4.0x compression. parler, finir and vendre come out
+with nothing to say; manger&amp;#39;s g→ge spelling rule is one fact and not six; prendre
+decomposes into pris, prenons and prennent exactly as a textbook has it.
+
+844 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55935dafd39d8d928f2a700af1e2744457a26ca1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/55935dafd39d8d928f2a700af1e2744457a26ca1"/>
+    <title>
+        fix(es): the drill stops repeating one verb, moves on by itself, and …
+    </title>
+    <updated>2026-09-09T01:33:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(es): the drill stops repeating one verb, moves on by itself, and lets you pick the tenses
+
+Four things from using it.
+
+&amp;quot;IT&amp;#39;S ALWAYS THE SAME WORD OVER AND OVER AGAIN&amp;quot; — and the cause was worse than
+dullness. A pattern card pinned the FIRST regular verb in the deck and kept it for
+ever, so all nine -ar cards conjugated `ayudar`, every review. A pattern
+demonstrated on one verb is indistinguishable from a fact about that verb, which
+is the opposite of what a pattern card is for. A card now carries every regular
+verb of its class the learner owns and rotates, offset by the card&amp;#39;s own id so the
+nine cards do not all show the same verb on the same day. An exception still
+carries exactly one, because an exception IS a fact about its verb and showing it
+on another would be false. That meant splitting the card from the forms: a card
+holds SLOTS and EXEMPLARS, and `materialise` resolves them per review.
+
+A RIGHT ANSWER MOVES ON BY ITSELF. There is nothing to read on a correct card —
+the feedback is the word &amp;quot;Correct&amp;quot; and the learner already knew — so making them
+click Next charged a keystroke for being right. A WRONG one still waits: the
+correction is the entire value of the card, and auto-advancing would be the app
+deciding how long you need to look at the answer.
+
+ENTER CONTINUES, in the Learn state and after a wrong answer. Deliberately not
+bound while the input is on screen, where TypedAnswer already owns the key and
+guards `isComposing` so an IME candidate cannot submit. An `advancing` ref stops
+the timer and a stray Enter from both moving a card.
+
+TENSES ARE THE LEARNER&amp;#39;S CHOICE, collapsed by default because nine checkboxes above
+every question is furniture. Absent and empty both mean ALL: a filter that silences
+the whole drill is a broken screen rather than a preference, and unticking the last
+one is far likelier to be a fumble than an intent. A multi-tense exception is
+NARROWED rather than dropped, so someone practising two tenses can still drill
+pedir. Changing it clears the latched queue, which is right — that is a new
+session, and latching through would leave them answering tenses they just turned
+off.
+
+`syncedPrefs.ts` was extracted the moment a second caller wanted it rather than
+copied: flashcardPrefs&amp;#39; read-sync/write-through-to-cloud split is exactly what the
+tense choice needs, and it is the half that was a real bug before it was a module.
+
+Verified in a browser: card 1 shows `trabajar` and card 2 `ayudar`; Enter dismisses
+the row and shows the input; a correct answer advances alone within 550 ms; a wrong
+one is still on the same card two seconds later showing &amp;quot;Not quite — it is ayudé&amp;quot;;
+the picker rebuilt the queue from 19 cards to 5 and persisted [&amp;quot;pres&amp;quot;,&amp;quot;participle&amp;quot;].
+
+821 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a5429e2fc5946cf6ed667fde7b004edaef0ee367</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/a5429e2fc5946cf6ed667fde7b004edaef0ee367"/>
+    <title>
+        feat(es): the conjugation drill — taught as a row, tested as a cell, …
+    </title>
+    <updated>2026-09-09T01:12:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(es): the conjugation drill — taught as a row, tested as a cell, graded on the accent
+
+Phase 6&amp;#39;s UI. One form per question, typed, reusing the typed-recall input; the
+SCHEDULE is per FACT rather than per cell, because pedir&amp;#39;s e→i covers eighteen
+cells and a learner who has it has all eighteen. Per-cell scheduling would make
+Spanish conjugation 5,222 cards — more than the whole of HSK 1–6 — and would keep
+asking about pidiendo as though it were unrelated to pido. A card rotates through
+its own cells by review count: deterministic, covers everything, needs no stored
+seed.
+
+AN ACCENT IS NOT A TYPO HERE, AND THIS IS THE ONE PLACE THE DRILL HAD TO DISAGREE
+WITH typedAnswer.ts. That module forgives a missing accent as a near miss and is
+right to for vocabulary — `estacion` for `estación` is someone who knows the word.
+Its own test is &amp;quot;whether the mark distinguishes two words&amp;quot;. In conjugation it
+distinguishes two ANSWERS TO DIFFERENT QUESTIONS: hablo is the present first
+person and habló the preterite third; hable is the subjunctive and hablé the
+preterite. Measured across the graded vocabulary, 76% of verbs carry at least one
+such pair and 17% of all cells are involved — so the existing grader scored `hablo`
+for `habló` as close, which grades GOOD, marking the present correct when the
+preterite was asked, on three quarters of the language.
+
+The near miss now survives only where it cannot be a confusion: a stripped answer
+matching ANOTHER REAL CELL of that verb is wrong, and one matching nothing else is
+the ordinary diacritic slip it looks like. The verb&amp;#39;s own paradigm decides, which
+is why siblings are passed rather than guessed at. Verified in a browser: `hable`
+typed for a PRETERITE prompt now reads &amp;quot;Not quite — it is hablé&amp;quot;, with a line
+saying the accent is the difference between two forms rather than a spelling
+detail.
+
+TAUGHT BEFORE TESTED, the same shape WritingCanvas uses for a new character. A
+card never answered opens on the whole six-form row with the change named, and
+&amp;quot;Got it, let me try&amp;quot; starts the test. A traditional driller tests without ever
+teaching, which makes the first meeting with a pattern a failure by construction.
+Nothing is scheduled until an answer is typed.
+
+Cards are scoped to the deck twice over: patterns only for classes the learner
+actually has (a rule with nothing to apply it to is a table to memorise), and
+exceptions only from verbs they own.
+
+drillState gains isDrillDue and scheduleDrill, which were writing&amp;#39;s and were never
+specific to characters; writingState now delegates rather than repeating them.
+SrsTab&amp;#39;s mode reset covers every drill in one effect, so a fourth cannot
+reintroduce the dead end by being forgotten.
+
+Verified end to end: Spanish offers Cards + Conjugate and Chinese Cards + Write;
+19 cards for a deck of hablar + pedir + a noun; the row renders; a right answer
+grades; grades land in drill_state as c:pattern:ar:pres with real FSRS state;
+switching language does not strand the learner in a drill the language does not
+have.
+
+812 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc66a163550941dcac5e6eddc3c7fe0bc57a8214</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/dc66a163550941dcac5e6eddc3c7fe0bc57a8214"/>
+    <title>
+        feat(es): the conjugation engine — 27 patterns, and the exceptions cl…
+    </title>
+    <updated>2026-09-08T18:42:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(es): the conjugation engine — 27 patterns, and the exceptions clustered by what changed
+
+Phase 6&amp;#39;s generator. Derived, never generated: every fact comes from
+lib/data/es-grammar.json, which every Spanish learner already downloads for the
+grammar note in the word popup, so a table of conjugation facts would be a second
+record of what the first already says and would drift the moment either was
+rebuilt. No build script, no new data file. 1,259 verbs analysed end to end in
+246 ms, once, behind a lazy import that has already happened.
+
+THE DIFFING ENGINE CUTS AT A KNOWN BOUNDARY. The obvious move is to compare the
+two whole strings and call the difference the stem, and it is wrong in a way that
+survives testing: `pensa` against `piensa` shares the suffix `ensa`, so a
+longest-common-suffix walk reports the stem as `pi`. Every e→ie cell reports `pi`,
+so it CLUSTERS correctly and passes a counting exercise — then prints a card that
+says &amp;quot;pi&amp;quot;. We generated the regular form as stem + ending, so the cut point is
+known rather than inferred. Cutting there leaves two stems whose difference is a
+real operation: pens→piens is &amp;quot;insert i at 1&amp;quot;, identical across pensar&amp;#39;s eight
+irregular cells and across two tenses.
+
+The result reads like a textbook. `pedir` is ONE fact covering eighteen cells
+(present, preterite, both subjunctives, gerund). `poder` is three: o→ue in the
+boot, o→u in the preterite, and the podr- future. `tener` is four stem facts plus
+the tuve/tuvo endings.
+
+&amp;quot;SHORTEST FORM WINS&amp;quot; WAS NOT SAFE, AND THE BROWSER-EQUIVALENT HERE WAS READING THE
+OUTPUT. It is correct about clitics — `hablándole` carries the same code as
+`hablando`, so tags cannot separate them and length can. It is wrong about bad
+data, and 14% of lemma/cell pairs in this table carry more than one candidate:
+Wiktionary lists both `tiene` and `tiée` as the third-person present of `tener`,
+tagged identically. `tiée` is not a word and it is one character shorter, so the
+rule printed it on a card for a top-twenty verb and invented a stem-fact to
+explain it. Candidates are now costed against the regular paradigm — exact match
+free, stem tweak cheap, unmatched ending expensive — which picks `tiene` (insert
+one letter) over `tiée` (rewrite two), still picks `hablando` over `hablándole`,
+and still keeps `hablaremos` and `hablara`, which the filter I proposed two
+sessions ago would have deleted. It removed 25 spurious A1 facts.
+
+ONE PASS, NOT ONE PER VERB. The first version asked the table per verb and each
+ask walked all 132,741 forms — 167 million iterations against the graded list. The
+aggregate test took 133 seconds and timed out, which is how it was found; on a
+device it would merely have been slow for no reason, where nobody would have
+looked. Inverted once into a memoised index, it is 189 ms and O(1) per verb.
+
+Measured, and these are the curriculum: 63% of graded verbs are perfectly regular;
+5,222 irregular cells collapse to 819 facts, 6.4x. Cards by scope — A1 132, A2 210,
+B1 308, C2 846 — so &amp;quot;about 350&amp;quot; is right for a learner through B1.
+
+Pattern cards are taught first, per the ordering decision: an exception is only an
+exception against a rule already held, and A1 is the most irregular band in the
+language because the commonest verbs are the irregular ones.
+
+790 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37951f9c10c27c58b613beee1daf40b8b4dee591</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/37951f9c10c27c58b613beee1daf40b8b4dee591"/>
+    <title>
+        feat(storage): writing_state becomes drill_state, so a second drill c…
+    </title>
+    <updated>2026-09-08T05:08:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(storage): writing_state becomes drill_state, so a second drill costs a prefix
+
+Phase 6 needs per-item FSRS state for Spanish conjugation, which is the same shape
+as handwriting in every respect that matters: not a deck word, merged by whole-card
+ownership, feeding no streak and no budget. A second column would have meant a
+second migration, a second merge, and a second entry in all three of the places
+lib/storage/supabase.ts demands — and a third drill a third of each.
+
+So the column is renamed and the KEYS carry the drill: w:好 for handwriting,
+c:hablar:pres for conjugation. lib/drillState.ts owns the shared half; writingState
+keeps the handwriting logic and goes on working in bare characters, because
+drillView strips the prefix on the way in and drillWrite restores it on the way
+out. The namespace stops at the storage boundary.
+
+THE PREFIX IS NOT REDUNDANT TODAY AND WOULD BE EXPENSIVE LATER. The blob is
+already per language, so nothing could collide right now: only Chinese has
+handwriting and only Spanish will have conjugation. But hasHandwriting is a config
+flag, not a law — Japanese is a KanjiVG build script away from wanting both, and
+then 食 and 食べる:past share one flat namespace with nothing but luck keeping them
+apart.
+
+MIGRATED BY READING THE DATA, NOT BY A VERSION MARKER. Every key written before
+this is a bare Han character, so parseDrillKey reads an unprefixed key as
+handwriting and it is rewritten with its prefix on the next save. deckGloss.ts
+documents at length why a marker is a trap: it gets written by a run whose result
+was discarded, and the migration is then marked done having done nothing. SQL
+could not have done it anyway — it would fix the cloud and leave every device&amp;#39;s
+localStorage.
+
+0004 RENAMES rather than replaces, because handwriting progress already exists in
+production and a drop-and-create would delete it silently. It is idempotent both
+ways: it renames only if writing_state is there, then adds drill_state if not.
+
+saveDrillCards writes one drill INTO the base rather than over it. That is the one
+way a shared column could be worse than two — handwriting saving its own cards
+over the whole entry would delete conjugation progress for that language, silently,
+on every character practised. Tested.
+
+Verified in a browser with a LEGACY deck: two characters practised under the old
+srsly-writing-zh key, both scheduled to 2027, correctly read as &amp;quot;Nothing due&amp;quot;
+rather than as never-practised. The old key is deliberately left in place — a read
+is not the right place to destroy the only copy of something.
+
+Also: the practice sheet&amp;#39;s sequence hint now shows in normal mode too, on request.
+Two rows carrying an identical gloss read as a glitch rather than as a compound
+word deliberately broken into parts.
+
+766 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1cff079067ef4c7c863ba29dd17eec19818280ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/1cff079067ef4c7c863ba29dd17eec19818280ed"/>
+    <title>
+        feat(zh): a new character is taught before it is tested, and the hint…
+    </title>
+    <updated>2026-09-08T03:25:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): a new character is taught before it is tested, and the hint ladder gets a bottom rung
+
+LEARN BEFORE QUIZ. A character with no reviews used to drop you onto a square with
+a grey outline and expect you to produce something you had never met — not a test,
+a guessing game, where every stroke after the first wrong one is a guess about a
+guess. It now opens in Learn: the strokes animate in order, Replay is free, and
+&amp;quot;Got it, let me try&amp;quot; starts the graded quiz. Nothing is scheduled until real
+strokes arrive, so the teaching costs the scheduler nothing.
+
+That is also where the &amp;quot;play the whole animation&amp;quot; request belongs. As a button
+inside the quiz next to a self-grade it is a free answer; before the quiz it is
+simply how you meet a character.
+
+THE LADDER&amp;#39;S BOTTOM RUNG. Under &amp;quot;Show me the next stroke&amp;quot; sits &amp;quot;Watch the whole
+character — counts as Again&amp;quot;. It replays everything and then RESTARTS THE SAME
+CHARACTER rather than advancing, so the thing just watched is the thing
+immediately drawn. Both rungs set usedHint, which gradeFromStrokes turns into
+Again, so watching is never free. Deliberately not &amp;quot;grade Again and skip&amp;quot;:
+skipping records the failure and teaches nothing at the one moment the learner has
+asked to be taught.
+
+ANIMATION TIMING IS NOT THE LIBRARY DEFAULT, and this is probably the &amp;quot;not smooth&amp;quot;
+report. hanzi-writer&amp;#39;s delayBetweenStrokes defaults to 1000 ms — a full second of
+motionless screen between every stroke. The median HSK character has 9 strokes and
+the worst has 23, so the default spends 9 to 23 seconds mostly showing nothing,
+and it does not read as deliberate, it reads as broken: you cannot tell a pause
+from a hang. Now 260 ms, with strokeAnimationSpeed 1.25.
+
+THE STATS RING STOPPED POPPING IN. MilestoneRing started `selected` at 0 and
+waited for storage.getPrefs() — signed in, a Supabase round trip — so `row` stayed
+null, `if (!row) return null` rendered NOTHING, and a second later the whole card
+appeared and shoved Milestones down the page. The level is now seeded
+synchronously off localStorage, exactly as app/page.tsx already does for the study
+language and for exactly this reason, and the null case renders a same-footprint
+skeleton instead of nothing. It shows no percentage: printing &amp;quot;0%&amp;quot; while loading
+would be the same mistake in the other direction.
+
+The practice sheet&amp;#39;s row numbers are gone on request. The answer key keeps its
+order and now says so.
+
+Found while double-checking: both hint buttons stayed live after a card was
+graded, so the bottom rung could cancel and restart a quiz for a review that was
+already over, underneath a verdict describing it. doneRef always blocked the
+second grade so nothing was miscounted, but the controls offered an action that
+could not mean anything. It predates the ladder; the ladder made it visible.
+
+Verified in a browser: a practised character goes straight to the quiz, a new one
+opens in Learn with the ladder hidden, autoplay settles to Replay, &amp;quot;Got it&amp;quot; swaps
+Learn&amp;#39;s controls for the ladder, and &amp;quot;Watch the whole character&amp;quot; animates and
+returns to a live quiz on the same character. Sheet rows carry no numbers in
+either mode.
+
+758 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3a5d2881b0340db4c4c6604647ae2d2c95ef85d2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/3a5d2881b0340db4c4c6604647ae2d2c95ef85d2"/>
+    <title>
+        feat(zh): 田字格 practice paper — paper does the practice, the screen do…
+    </title>
+    <updated>2026-09-08T02:48:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): 田字格 practice paper — paper does the practice, the screen does the measurement
+
+The answer to &amp;quot;let me practise on paper and mark myself correct&amp;quot;. A self-grade
+button beside a stroke-verified one writes a review the scheduler can never tell
+apart from an observed one afterwards, so instead paper gets its own surface —
+one that claims nothing. No FSRS write, no schedule, no streak, no heatmap, and
+tests/practiceSheet.test.ts pins that by asserting this module cannot import
+anything able to schedule.
+
+window.print() AND NOT A PDF LIBRARY. jsPDF or pdfmake would have to draw 水
+itself, which means embedding a CJK font — megabytes, to render characters we
+already ship as vector outlines. The browser is the renderer, every print dialog
+has Save as PDF including iOS Safari&amp;#39;s share sheet, and one code path serves
+print and PDF both.
+
+THE CHARACTERS COME FROM public/strokes/, SO NO LIBRARY LOADS AT ALL. A stroke
+file is plain SVG path strings, so drawing one needs a &amp;lt;path&amp;gt; and the vertical
+flip; hanzi-writer&amp;#39;s 36 kB chunk stays where it is. Two things follow that a font
+could not give: the sheet and the quiz use the same glyphs, so they cannot
+disagree about stroke forms, and the stroke-order build-up band becomes possible.
+
+THREE NUMBERS ARE MEASURED RATHER THAN CHOSEN.
+
+The glyph box: coordinates run x 12..1014 and y -100..888, so after the flip the
+overflow is entirely at the BOTTOM by 100 units. An estimate of &amp;quot;about 50 all
+round&amp;quot; was wrong in size and direction. A test walks all 2,663 files and asserts
+nothing clips, and a control asserts half the slack WOULD clip — so it is
+measuring the data rather than being generously large.
+
+Line weights: every box shares one viewBox, so a stroke-width in units is a
+different PHYSICAL line depending on the size it is drawn at. The 田字格
+cross-hairs went out at 5 units — 0.07 mm, a quarter of a screen pixel — and the
+defining feature of the paper was invisible. Weights are now stated in
+millimetres and converted per box.
+
+Column count: ten 18 mm cells fit both A4 and US Letter at a 12 mm margin, which
+is why it is ten.
+
+TWO THINGS FOUND BY LOOKING AT A RENDERED SHEET, neither visible in the code. The
+cross-hairs above; and with the models hidden, 朋 and 友 both label from 朋友, so
+a recall sheet printed two consecutive rows reading &amp;quot;péngyou · friend&amp;quot; and
+accepted either answer for both. Rows are now numbered and say which character of
+the word they want.
+
+globals.css gains the app&amp;#39;s first @media print block, and it deliberately breaks
+this repo&amp;#39;s &amp;quot;never hardcode colours&amp;quot; rule: paper has no theme, and a sheet printed
+in ink or dusk mode would emit a black page. The exception is commented so it is
+not tidied away later.
+
+Verified in a browser: the grid, the build-up band and model/trace/blank cells all
+render; recall mode leaks no character into the cells or the labels and every row
+label is distinct; the answer key carries one glyph per row.
+
+758 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf7aaf50cedb9811062fc03d570585e0b1e45306</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/bf7aaf50cedb9811062fc03d570585e0b1e45306"/>
+    <title>
+        fix(state): the two bugs that survived their own fix, and a Write-mod…
+    </title>
+    <updated>2026-09-08T00:31:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(state): the two bugs that survived their own fix, and a Write-mode dead end
+
+The report was that 631f169 did not hold. It did not, and neither fix was an edge
+case — both were wrong in the same way, having been written against the wrong
+signal.
+
+TOAST. The re-seed latched on the render where `language` changed. The new
+language&amp;#39;s deck arrives one or more renders LATER, because useVocabDeck has to
+read storage first — so the guard was spent against the OUTGOING deck, and by the
+time the incoming one landed the diff had nothing left protecting it. Its backstop
+compared `loadSeq` across languages, and that counter is per-language: Chinese&amp;#39;s
+third load against Spanish&amp;#39;s third load is two unrelated facts that are both 3.
+The two effects are now one, keyed on the language and counter the ids were
+RECORDED WITH, and gated on `deckLoaded` — the same fix Flashcards already carries.
+
+TYPE ANSWERS. Declaring `typedRecall` on `UserPrefs` was necessary and not
+sufficient: a type is erased at runtime, and the write path never changed.
+`setTypedRecall` wrote to localStorage and stopped, so the field never once reached
+the row — and `SupabaseStorage.getPrefs()` mirrors the cloud&amp;#39;s prefs down over local
+wholesale, which app/page.tsx triggers on every language change for the pool
+activation. Toggle on, switch language, and the blob was replaced by a copy that had
+never heard of the field. It is invisible signed OUT, because LocalStorage reads back
+what it just wrote — which is why it survived a fix and was only ever seen live.
+
+WRITE MODE HAD NO EXIT. `mode` outlives a language switch; the toggle is gated on
+`hasHandwriting`. So Chinese → Write → Spanish left mode on &amp;#39;write&amp;#39; with no control
+rendered to leave it: &amp;quot;Nothing to write yet&amp;quot;, and a reload was the only way out.
+
+LAG. The deck could not paint until `syncDeckGlosses` had fetched the language&amp;#39;s
+dictionary — 7.98 MB for Chinese, 5.45 MB for Spanish — so a language switch waited
+on a multi-megabyte download before showing anything. The gloss repair now runs
+behind the paint. `pruneDeckToCurriculum` stays in front, because its whole job is
+stopping an off-curriculum word flashing into a review surface on its way out.
+
+Verified in a browser, signed out: four language switches, zero toasts, typed mode
+still on. The control matters as much — adding 水 through the Vocab tab still fires
+&amp;quot;Added 水 to your deck&amp;quot;, so the test bites rather than having silenced the toast.
+Chinese → Write → Spanish now lands on Spanish flashcards.
+
+733 tests, lint and typecheck clean.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d2dc43e8e8e3a9d661365b9b0a23a87ec0c4a251</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/d2dc43e8e8e3a9d661365b9b0a23a87ec0c4a251"/>
+    <title>
+        feat(practice): typed recall asks one question now — meaning in, word…
+    </title>
+    <updated>2026-09-07T20:07:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(practice): typed recall asks one question now — meaning in, word out, your own IME
+
+Pivots typed recall so all four languages behave identically: English meaning on
+the front, the word typed on the back. Chinese and Japanese are entered with the
+learner&amp;#39;s own OS IME, so the answer is the characters rather than a romanisation.
+
+WANAKANA IS GONE, and that is the pivot rather than a side effect. It rewrote the
+input&amp;#39;s value to turn romaji into kana as you typed — which with a real Japanese
+keyboard means two things transforming the same keystrokes, fighting over every
+character. The app no longer touches the field: no library, no binding, and
+lib/typedAnswer.ts stays synchronous because every comparison left is a codepoint
+operation. The dependency is uninstalled and lib/kana.ts deleted.
+
+THE OLD ARGUMENT WAS NOT WRONG AND IS KEPT IN THE DOCS. Facing zh/ja forward —
+character shown, reading typed — rested on a real measurement: a multi-character
+HSK word has a median of ONE homophone in all of CC-CEDICT, so pinyin→characters
+is near deterministic and typing 朋友 tests less than it looks. What it missed is
+that producing a word from its meaning and choosing the right characters is what
+writing Chinese on a keyboard actually is.
+
+The `close` tier is now the FORGOTTEN-KEYBOARD tier, which is what makes the
+pinyin and kana work worth keeping. Type `pengyou` with the IME off, or press
+Enter on たべる before converting to 食べる, and that grades Good showing the right
+form instead of a lapse. Toneless on the Chinese side deliberately, because
+toneless pinyin is what an IME is driven with; for Japanese the realistic miss is
+unconverted kana, not romaji, so no romaji table is needed at all.
+
+A katakana loanword typed in hiragana lands there too — こーひー is not an
+alternative spelling of コーヒー, it is the reading in the wrong script. My test
+asserted `exact` for that and the test was wrong, not the grader.
+
+The bespoke &amp;quot;I was actually right&amp;quot; override is removed: Again/Hard/Good/Easy are
+already on screen and pressing Good does exactly what it did.
+
+isComposing stays and is load-bearing — Enter during composition commits the IME
+candidate and must not also submit; the input stays uncontrolled so React cannot
+re-render mid-composition and drop the candidate window.
+
+CLAUDE.md&amp;#39;s typed-recall section rewritten rather than left contradicting the
+code, which is the failure its own opening section calls out.
+
+733 tests, lint and typecheck clean. Not yet driven in a browser with a real IME.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/631f16955f6d6344e6bbd551b5103c93b781f025</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/631f16955f6d6344e6bbd551b5103c93b781f025"/>
+    <title>
+        fix(practice): three state bugs — a discarded pref, a deck mistaken f…
+    </title>
+    <updated>2026-09-07T19:47:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(practice): three state bugs — a discarded pref, a deck mistaken for an addition, a rewound counter
+
+TOGGLE AMNESIA IS NOT A LIFECYCLE BUG. `typedRecall` was written straight
+into the `srsly-prefs` blob by lib/flashcardPrefs.ts without being a field on
+`UserPrefs`, so it existed only in the LOCAL copy. `getPrefs()` mirrors the
+cloud row down over local wholesale, and the cloud blob never carried it — so
+the next read wiped it. `handleLanguageChange` calls `getPrefs()`, which is
+exactly why switching language turned the toggle off and nothing else did.
+
+A field the storage layer does not know about is a field it will discard.
+Declaring it on UserPrefs is the whole fix. `reverseCards` was declared from
+the start and never had this problem, which is why the two behaved differently
+and made it look like an unmount issue.
+
+THE &amp;quot;ADDED 711 WORDS&amp;quot; TOAST is the sixth failure mode in CLAUDE.md wearing a
+new face. ToastHost re-seeds silently on `loadSeq`, which counts loads from
+STORAGE and so covers signing in — but a language switch replaces the deck
+wholesale, often from the in-memory cache with no load at all. The diff then
+saw 711 unfamiliar ids and announced them as additions. Re-seeding on either
+signal fixes it; the toast now fires only for words actually saved.
+
+SESSION COUNTER continuity across a language switch, DERIVED rather than
+stored: a card graded today already carries `lastReview === today`, so the
+count of work done before this mount is a read over the deck, not a new
+per-day counter that would drift the first time either was written alone.
+Captured once at the queue latch so it keeps meaning &amp;quot;before this session&amp;quot;,
+with `results.length` carrying the rest. 3 of 34 no longer rewinds to 1 of 32.
+
+743 tests, lint and typecheck clean. Not yet driven in a browser.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d5cddba975c8cb66186a0db11e24f85a6587eb3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/9d5cddba975c8cb66186a0db11e24f85a6587eb3"/>
+    <title>
+        feat(zh): the writing canvas — draw the character, graded by its strokes
+    </title>
+    <updated>2026-09-07T06:48:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): the writing canvas — draw the character, graded by its strokes
+
+The frontend for Phase 5. A Cards/Write toggle in SrsTab, gated on the new
+`hasHandwriting` config flag rather than a `language === &amp;#39;zh&amp;#39;` check, opening a
+drawing surface that grades what you drew and feeds lib/writingState.ts.
+
+touch-action: none on the surface is the whole mobile story. hanzi-writer
+listens for pointer moves and preventDefaults them, but the browser decides
+whether a touch is a SCROLL before delivering any move event — so without that
+one property a finger drag scrolls the page and the library receives almost
+nothing. The feature would not work at all on the hardware it exists for.
+
+The library has no destroy(): it appends an SVG to the host and leaves it, so
+the cleanup clears the host by hand. Verified by advancing a card and counting —
+one SVG before, one after, not two.
+
+Colours resolve from CSS variables at runtime. hanzi-writer parses hex into
+rgba and cannot read var(--ink), so its defaults would make this the one screen
+that ignores all six themes; a MutationObserver on data-theme pushes changes
+through updateColor so a mid-session theme switch is not stale until the next
+character.
+
+Lazily imported, and checked rather than asserted: the library lands in its own
+36 kB chunk, and .next/app-build-manifest.json lists seven chunks for / and not
+that one. Stroke data comes from srsly&amp;#39;s own public/strokes/, never a CDN — a
+CDN would make the feature depend on a third party being up and would leak which
+characters a learner is practising to a host they never chose.
+
+Typed against a five-method `WriterHandle` rather than `any`, so the dependency
+surface is visible — including the one private field (`_quiz._currentStrokeIndex`)
+the hint button needs, which now shows up as a type to update if upstream renames
+it rather than as a hint that silently animates the wrong stroke.
+
+VERIFIED BY DRIVING IT, not by reading it. Dispatching all 8 strokes of 朋 along
+their real medians produced &amp;quot;Clean.&amp;quot;, revealed the character and persisted
+{&amp;quot;朋&amp;quot;:{&amp;quot;phase&amp;quot;:&amp;quot;learning&amp;quot;,&amp;quot;learningStep&amp;quot;:1,...}} — scheduling fields only, no
+gloss. And the firewall held in the running app: srsly-activity-log and
+srsly-review-counts stayed null, srs_state kept todayScore 0 with empty sessions,
+and no deck word gained a `reviews` or `dueAt`. Writing graded; reading untouched.
+
+/ first-load JS is 305 kB, up from the 287 kB recorded before typed recall, the
+phonetic series, the PWA and this — CLAUDE.md&amp;#39;s figures updated to match rather
+than left to drift.
+
+743 tests, lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03df05c19b05c6da59c7c4ded886e22768c7f1e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/03df05c19b05c6da59c7c4ded886e22768c7f1e7"/>
+    <title>
+        feat(zh): handwriting foundation — stroke data, per-character schedul…
+    </title>
+    <updated>2026-09-07T06:10:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): handwriting foundation — stroke data, per-character schedule, its own column
+
+The data pipeline and schema for Phase 5. No UI yet: nothing in the app reaches
+this code and the new column is written by nobody.
+
+WHAT IS KEYED BY WHAT is the whole design. A deck card is a WORD; writing is a
+character skill. 朋友 is one card and two things to learn to draw, and 朋 turns
+up again in every other word the learner owns that contains it — so keyed by
+word, one character&amp;#39;s schedule would exist in as many copies as it has words and
+they would disagree from the first review. Keyed by character it is also a
+SMALLER set than the deck rather than a doubling of it: HSK&amp;#39;s 4,991 words are
+built from 2,663 distinct characters.
+
+That is what forces the project&amp;#39;s first schema change. A second FSRS block on
+DeckWord would have been free — it lives inside the `decks` jsonb and the
+on-load strip is a denylist — but it is the wrong key. Hence `writing_state`,
+in UserDataRow, schema.sql and migrations/0003. Control-checked: removing it
+from schema.sql fails tests/sync.test.ts by name.
+
+IT FEEDS NOTHING ELSE, and a test pins that. Not isDueToday, not the reading
+streak, not the daily budget, not the heatmap. Writing is a gym, not a daily
+requirement, so being a month behind on it must never read as a broken reading
+streak. The test strips comments first, because this module&amp;#39;s prose names
+isDueToday repeatedly to explain what it is walled off FROM — a raw substring
+check would fail on the documentation and push the next person to delete the
+explanation to get CI green.
+
+A card is owned WHOLE on merge. Stability, difficulty, lapses and due date
+describe one review history, so a per-field max composes a state neither device
+was ever in — the argument srsStateMerge makes about the streak. Ties fall
+through to canonical JSON order because the rule must be COMMUTATIVE, not just
+deterministic: a device writes its merged copy back, so &amp;quot;mine wins ties&amp;quot; makes
+two devices ping-pong for ever, invisibly from either one.
+
+CHINESE ONLY, for data honesty rather than scope. Measured: 88.7% of JLPT kanji
+appear in hanzi-writer-data, but the 223 missing are exactly the shinjitai
+(厳倹権鉱渉沢団読売楽児発), and among those present are characters whose Japanese
+stroke order differs (直, 令, 骨). It would teach confidently wrong stroke order
+for a subset nobody could identify. hanzi-writer-data-jp is not the answer
+either — experimental, and its npm package ships no data files at all.
+
+One file per character rather than one bundle, which breaks this repo&amp;#39;s usual
+rule deliberately: a session practises a handful of characters, so ~2.4 kB each
+means ~48 kB against 1.41 MB for a level shard and 7.00 MB for the lot. The cost
+is 2,663 files — identical bytes, worse file count.
+
+The Arphic Public License is an obligation, not a footnote: ARPHICPL.TXT travels
+verbatim (§1), and because subsetting DELETES characters from the glyph table,
+MODIFICATIONS.txt states what changed and when (§2a) with the build script
+reproducing it exactly (§2b). Nothing inside a character file is touched.
+
+fsrsSchedule now takes a `Schedulable` rather than a whole DeckWord — it only
+ever read the scheduling fields, and requiring a word meant a character card
+would have had to invent a gloss to satisfy a type. DeckWord satisfies the
+narrower type structurally, so no caller changed.
+
+743 tests (+27), lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3aaacb2b77cd360689f075ffb7b871a211cec124</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/3aaacb2b77cd360689f075ffb7b871a211cec124"/>
+    <title>
+        feat(practice): type the answer, and ask each language what it can ac…
+    </title>
+    <updated>2026-09-06T18:11:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(practice): type the answer, and ask each language what it can actually test
+
+Typed recall as a toggle on the existing flashcard — no new tab, no new card
+type, no schema change, gradeCard untouched.
+
+The mode is NOT one exercise in four languages. Spanish and French have
+`hasReadings: false`, so their forward card has nothing to type and the
+exercise is meaning → word. Chinese and Japanese cannot be typed at all
+without an IME handing over the characters, so theirs is word → reading.
+Opposite orientations, decided by the flag that already encodes the
+difference rather than by a new one.
+
+Typing therefore PINS the orientation and disables Flip. That is a
+correctness fix: reverse + typed in Chinese asks &amp;quot;the word for friend?&amp;quot; and
+demands one romanisation, so a learner answering with another correct word
+takes a real FSRS lapse for a card they knew.
+
+wanakana (MIT, 21 kB, lazily imported) converts romaji on the INPUT and is
+never used for grading, because measuring it showed it disagrees with itself:
+`toHiragana(&amp;#39;コーヒー&amp;#39;)` is こうひい while typing `ko-hi-` gives こーひー, across
+the 10.4% of JMdict readings written in katakana. The grader shifts codepoints
+and resolves ー to the vowel it lengthens, one rule on both sides — so it stays
+synchronous, mock-free, and out of every Spanish learner&amp;#39;s bundle. The input&amp;#39;s
+IME mode is chosen from the answer&amp;#39;s own script, which is what makes `ko-hi-`
+land on コーヒー exactly.
+
+Three tiers. `close` is &amp;quot;right skeleton, wrong layer on top&amp;quot; — tone, accent,
+sloppy kana — and grades Good showing the correct form. Marks that carry a
+contrast are not folded: ü (女 nǚ ≠ 努 nǔ) and ñ (año ≠ ano). ç is folded,
+since no French pair turns on a cedilla. A doubled vowel is never collapsed:
+おばさん and おばあさん are different words.
+
+The &amp;quot;I was actually right&amp;quot; override is es/fr only, where synonyms make the
+question genuinely ambiguous. zh/ja ask for this card&amp;#39;s reading, which is
+determined; a polyphone gets a sentence naming the reading they hit instead.
+
+A card with no stored pinyin is not typed at all — grading an absent answer
+marks the learner wrong for a hole in our data. Audio hides until reveal in
+typed mode, or every zh/ja card was solvable by pressing play.
+
+Verified in a browser, not just compiled: `ko-hi-` → コーヒー and `taberu` →
+たべる live, per-card IME mode, Flip disabled, `ano` for `año` graded wrong,
+the polyphone line, the override advancing the card, and the answer panel
+measured at height 0 before reveal.
+
+Extracted `stripTones` and `canonPinyin` in lib/pinyin.ts so phoneticSeries
+and this share one ü-preserving implementation; `u:`/`v` now normalise before
+tone marks are applied, which is what `lu:4` needed.
+
+716 tests (+29), lint and typecheck clean.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a81fd5ef5931412c71aedcf71d0d6613d25c5975</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/a81fd5ef5931412c71aedcf71d0d6613d25c5975"/>
+    <title>
+        feat(pwa): installable on a phone, an iPad and a desktop
+    </title>
+    <updated>2026-09-06T07:56:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pwa): installable on a phone, an iPad and a desktop
+
+Until now srsly was a website that happened to work on a phone: no home-screen
+icon, no standalone window, no way in without typing a URL into a browser. For
+a spaced-repetition app that gap is bigger than it sounds, because reviews
+happen in dead minutes — a queue, a lift, a bus — which is exactly when nobody
+is going to type a URL.
+
+`app/manifest.ts` plus the iOS metadata Next does not put in the manifest. The
+icon is the app&amp;#39;s OWN vocabulary rather than a new mark: accent ground, paper
+strokes, and the `page` glyph already used in ReadingSources. Geometry, not a
+character and not an emoji, for the reason BadgeSeal gives — the app is four
+languages and its icon is about none of them. SVG for everything that takes one,
+with a 192px PNG because iOS home-screen icons do not.
+
+The three literal colours in the manifest are the one place in this codebase a
+hardcoded colour is correct rather than a slip: a manifest is JSON handed to the
+operating system and cannot read a CSS variable. They are the existing --accent
+and --paper values, not new ones.
+
+Verified served rather than merely compiled: /manifest.webmanifest linked and
+parsing, display standalone, both icons 200, apple-touch-icon set, theme-color
+matching the manifest. Next 15 emits `mobile-web-app-capable` rather than the
+`apple-` prefixed name — that is the modern standard Apple moved to in iOS 16.4,
+not a missing tag.
+
+WHAT THIS DOES NOT YET DO IS WORK OFFLINE. Installable and offline-capable are
+separate things: without a service worker, opening it without signal still shows
+the browser&amp;#39;s offline page. The data layer is already built for it — the write
+queue, the read guards, localStorage — so the missing piece is only the app
+shell. That is deliberately not in this commit, because a caching strategy that
+gets it wrong serves stale JavaScript and is far harder to notice than a missing
+icon.
+
+Also removed five create-next-app SVGs from public/ — file, globe, next, vercel
+and window — confirmed unreferenced by anything in the repo.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75685500c6d52fbef8162a04409191fa824d049c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/75685500c6d52fbef8162a04409191fa824d049c"/>
+    <title>
+        feat(zh): the popup says which part gives the sound, and how far to t…
+    </title>
+    <updated>2026-09-06T07:11:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): the popup says which part gives the sound, and how far to trust it
+
+One line under the decomposition: the phonetic, three worked examples, and the
+family&amp;#39;s own verdict. 艮 blunt → only 7 of 11 sound alike — 恨 hèn · 眼 yǎn ·
+退 tuì. 己 self → sounds like 岂 qǐ · 忌 jì · 纪 jì · 4 of 5.
+
+This answers a question the component previously could not. SOUND / MEANING tags
+on the components were tried here before and removed, because &amp;quot;孝 filial piety
+SOUND&amp;quot; invites &amp;quot;sound of what?&amp;quot; and answers nothing. Naming the family and its
+measured reading is what finally answers it.
+
+TWO BUGS, BOTH FOUND BY OPENING THE POPUP RATHER THAN READING THE CODE.
+
+The sample excluded the looked-up character AFTER clustering, which deleted a
+cluster&amp;#39;s only representative: 很 is first in 艮&amp;#39;s largest group, so the line
+showed 眼 yǎn and 退 tuì — two singletons — and a family where 7 of 11 share
+&amp;quot;-en&amp;quot; rendered as pure noise. Excluding before clustering fixes it, and
+tests/phoneticSeries.test.ts now pins that the first example still speaks for the
+biggest group.
+
+And the low end read &amp;quot;no single sound&amp;quot;, which is often false. 艮 has a real
+majority on &amp;quot;-en&amp;quot; that simply does not clear the bar; flatly denying a pattern
+visible in the examples below teaches the learner to distrust the label rather
+than the phonetic. It now says &amp;quot;only 7 of 11 sound alike&amp;quot;, which is calibrated
+and needs no second threshold.
+
+The index is memoised, and it REFUSES TO CACHE AN EMPTY ANSWER: readings come
+from cedict, which loads asynchronously, so a call before it lands builds an
+empty index — and caching that would freeze &amp;quot;there are no phonetic families&amp;quot; for
+the session, silently, on the first render. That is CLAUDE.md&amp;#39;s sixth failure
+mode exactly, and the guard is two lines.
+
+Layout holds: the line uses the same nowrap + overflow-x pattern as the equation
+above it, so a long row scrolls inside itself; verified the page does not scroll
+sideways with the popup open.
+
+Also verified, and it makes an earlier claim of mine wrong: the app ALREADY
+teaches ü input. `readingHelp` for Chinese reads &amp;quot;(lv4 for lǜ · no number =
+neutral tone e.g. le)&amp;quot; directly above the pinyin field, and toneNumToMark
+converts lv4 → lǜ and nv3 → nǚ. `u:` is not accepted, which is the notation
+CC-CEDICT uses raw; srsly&amp;#39;s own copy is already tone-marked, so nothing reaches
+a learner that way. No change made — there was no gap to fix.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcb0439310c4c65b16f321bcc8134d9f040a99a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/bcb0439310c4c65b16f321bcc8134d9f040a99a9"/>
+    <title>
+        feat(zh): choose the examples to argue the family&#39;s own verdict
+    </title>
+    <updated>2026-09-06T06:56:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): choose the examples to argue the family&amp;#39;s own verdict
+
+The display sampler, and the cap is the easy half of it.
+
+Fourteen members of 者 in a popup is a wall of text at the moment the learner is
+already working hard, so it is capped at three. What it is capped TO matters
+more. Frequency ordering is the obvious rule and teaches the wrong thing: on an
+unreliable family it would cheerfully pick three members that happen to agree,
+demonstrating a regularity that is not there and contradicting the verdict
+printed beside it.
+
+So the sample argues the actual case. A predictive family shows its modal
+cluster — the shared sound becomes the visible pattern. An unreliable one shows
+one member from each of its largest clusters — the DISAGREEMENT becomes the
+visible pattern. Tested both ways round: 青&amp;#39;s three examples all match its modal
+reading, 者&amp;#39;s three all differ from each other.
+
+This is also where the tone caveat lives, and it is deliberately not a sentence.
+The members print with their real tone marks side by side — 清 qīng · 情 qíng ·
+请 qǐng — so three tones on one shared syllable are adjacent and unmissable. A
+disclaimer would be read past. Colour-coding the tones was considered and
+rejected: it carries the point in hue alone, which fails a colour-blind reader,
+and it would have to survive six themes to say something the tone marks on
+screen already say.
+
+Note for the UI: SOUND / MEANING tags on components were tried here before and
+removed, because &amp;quot;孝 filial piety SOUND&amp;quot; invites &amp;quot;sound of what?&amp;quot; and answers
+nothing. Naming the family and its shared sound is what can finally answer that,
+which is the whole reason this measurement was worth taking.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4003eaf3c82de102c7a6391486019065905ff0cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xyzqm/srsly/commit/4003eaf3c82de102c7a6391486019065905ff0cd"/>
+    <title>
+        feat(zh): phonetic series, scored for reliability rather than assumed
+    </title>
+    <updated>2026-09-06T06:47:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68972303?s=30&amp;v=4"/>
+    <author>
+      <name>samuelz30</name>
+      <uri>https://github.com/samuelz30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(zh): phonetic series, scored for reliability rather than assumed
+
+青 gives the sound, 氵忄讠 give the meaning. han-decomp.json has held that all
+along — every pictophonetic entry carries `ph` and `se` — so the feature needed
+no new data. What it needed was a measurement.
+
+HAVING THE DATA IS NOT THE SAME AS THE DATA BEING TRUE. 2,097 characters carry a
+phonetic component; only a fraction of those components predict anything.
+Measured against cedict&amp;#39;s own readings, the BIGGEST family in the set is the
+worst: 者, 14 members, splitting 猪诸著渚煮箸 zhu / 堵睹赌 du / 暑署 shu / 奢 she
+/ 绪 xu / 都 dou. 隹 has nine members and nine readings. Shipping every series as
+predictive would have taught wrong guesses at scale.
+
+Three things the scoring had to get right, each of which was wrong first:
+
+  SELF-AGREEMENT, NOT COMPONENT-MATCHING. &amp;quot;Does it read like 青?&amp;quot; reports 0% for
+  长 → 帐张胀账, which are unanimously zhāng. The shared sound is the lesson; the
+  component is only the hook.
+
+  MODAL SHARE, NOT UNANIMITY. Requiring every member to agree is a size filter in
+  disguise — every unanimous family had 3–5 members and no larger one passed. It
+  also excluded 青 itself (清情请晴 qing, 睛精 jing, 猜 cai), i.e. the textbook
+  example of the thing being taught.
+
+  PAIRWISE TOLERANCE, NEVER TRANSITIVE. j/q/x came from g/k/h and from z/c/s
+  before front vowels, so qing/jing is one sound change and 青 scores 86% once
+  that is allowed. But the pairs CHAIN: retroflex ↔ sibilant ↔ palatal ↔ velar,
+  so unioning them into equivalence classes makes every sibilant and velar in
+  Mandarin mutually tolerant and the threshold stops filtering.
+
+That last failure is silent, which is why the numbers are pinned. Reverting to a
+transitive implementation moves the golden test from 91 families / 379 chars to
+92 / 385 — one family, six characters. It would have read as noise. The test
+asserts the pair `zh`/`g` is not tolerant, and the golden count catches the rest.
+
+Reliability is a PROPERTY, never an admission ticket: 者 shown as three labelled
+clusters teaches the thing this feature exists to prevent, which is trusting a
+phonetic too far. Tone is never predicted — 妈麻马骂 — and the UI must say so.
+
+91 predictive families, 379 characters, 344 of them (91%) in HSK 1–6.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

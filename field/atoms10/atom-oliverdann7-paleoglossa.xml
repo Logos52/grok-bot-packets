@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/oliverdann7/paleoglossa-ai-studio/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commits/main.atom"/>
+  <title>Recent Commits to paleoglossa-ai-studio:main</title>
+  <updated>2026-09-09T13:52:36Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/09f6d8b994834cc5139906d55b4879ef3fbf7496</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/09f6d8b994834cc5139906d55b4879ef3fbf7496"/>
+    <title>
+        Merge pull request #373 from oliverdann7/claude/testflight-ui-refinem…
+    </title>
+    <updated>2026-09-09T13:52:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #373 from oliverdann7/claude/testflight-ui-refinements-8ju2ev
+
+TestFlight UI refinements: meaning prominence, mobile language switching, Words/Review empty states&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62dfa1285d06a95ed43620ac4d5275c8273f648d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/62dfa1285d06a95ed43620ac4d5275c8273f648d"/>
+    <title>
+        fix(review, mobile): address code-review findings on the TestFlight r…
+    </title>
+    <updated>2026-09-09T13:33:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(review, mobile): address code-review findings on the TestFlight refinements
+
+Review
+- Practice-ahead queue: push the LEARNING/FAMILIAR/KNOWN status filter to
+  Firestore (equality-only, no composite index) so NEW/SEEN docs no longer
+  crowd reviewable words out of the limited page.
+- Demo-mode queue: apply the per-session card cap after the text filter,
+  not before, so &amp;quot;Review This Text&amp;quot; cannot drop the words it was opened for.
+- Hold the &amp;quot;nothing due&amp;quot; / &amp;quot;no words yet&amp;quot; empty states until the local
+  vocabulary map has loaded, instead of flashing &amp;quot;no words&amp;quot; while it fetches.
+- Reset practice-ahead and reload the queue when a session ends, so the
+  start screen reflects the updated schedule instead of re-offering the
+  cards just rated.
+- Share one vocabulary-doc → ReviewItem mapper between getDueItems and
+  getReviewableItems.
+- Route the &amp;quot;next review in …&amp;quot; relative phrasing through i18n keys.
+
+Mobile Home
+- Restore a streak-freeze (sabbatical) control next to the study-language
+  chip; it had only lived in the removed stat strip.
+
+Language picker
+- Take the host page&amp;#39;s already-loaded vocabulary map as a prop instead of
+  instantiating a second loader every time the sheet opens.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W3qzhGASc8thNDfz8kqZ3k&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e955214ca375effe20ad825c91721e2a63bebf28</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/e955214ca375effe20ad825c91721e2a63bebf28"/>
+    <title>
+        feat(mobile): TestFlight UI refinements — meaning prominence, languag…
+    </title>
+    <updated>2026-09-04T18:38:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mobile): TestFlight UI refinements — meaning prominence, language switching, Words/Review empty states
+
+Word panel
+- The dictionary gloss is now display-size serif type and the Meaning card
+  sits directly under the headword, above the knowledge buttons, so the
+  thing a reader opened the panel for is the first thing they see.
+
+Home (mobile)
+- Drop the &amp;quot;Biblical Texts / Get Started&amp;quot; recommendation card that
+  duplicated the Ready-to-read &amp;quot;Get started&amp;quot; CTA.
+- Drop the mobile stat strip and Library/Review/Import/Tutor quick-action
+  grid; the bottom tab bar and the study-plan header already carry them.
+- Add a study-language chip under the greeting (mobile only).
+
+Study-language switching
+- New ActiveLanguagePicker: a shared option grid, a bottom-sheet picker,
+  and a chip/row trigger. Until now the switcher only existed in the
+  desktop sidebar, so phones had no way to change language.
+- Settings gains a &amp;quot;Study language&amp;quot; section at the top; the Language
+  Slots section explains that it governs save limits, not the active
+  language.
+- More page leads with the current study language and a Change action.
+- Replace hard &amp;lt;a href&amp;gt; navigation with router Links in Settings and the
+  sidebar switcher so taps never trigger a full reload in the native shell.
+
+Words tab
+- Row actions (dictionary, remove) are always visible on touch screens;
+  hover-reveal remains on desktop.
+- Meanings fall back to the per-language lexicons when no user gloss or
+  bundled token gloss exists, so rows no longer show &amp;quot;—&amp;quot;.
+- A real first-run empty state explaining where words come from, with a
+  direct path to the reader; forecast and filters hide until words exist.
+
+Review tab
+- &amp;quot;Practice ahead&amp;quot;: when nothing is due but words are scheduled, offer a
+  session over all reviewable words (new ReviewService.getReviewableItems
+  for signed-in users; local filter in demo mode) and show the next due
+  time.
+- When no words are tracked at all, explain how reviews are built and link
+  to the Library and Words.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W3qzhGASc8thNDfz8kqZ3k&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da2a07ec13755f9c61a6fcb892be78016283668a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/da2a07ec13755f9c61a6fcb892be78016283668a"/>
+    <title>
+        Merge pull request #371 from oliverdann7/claude/app-launch-readiness-…
+    </title>
+    <updated>2026-09-04T11:03:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #371 from oliverdann7/claude/app-launch-readiness-m05lyy
+
+fix(auth): native sign-in errors from TestFlight build 59&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2e0aaf23d348bc1883ebf2a7c87f6ced58d2d5df</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/2e0aaf23d348bc1883ebf2a7c87f6ced58d2d5df"/>
+    <title>
+        fix(auth): native sign-in errors from TestFlight build 59
+    </title>
+    <updated>2026-09-04T10:54:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(auth): native sign-in errors from TestFlight build 59
+
+Two failures reported from build 59 on an iPhone:
+
+1. &amp;quot;auth.networkError&amp;quot; rendered verbatim after a failed native Google
+   sign-in. authService returns i18n keys in AuthResult.error, but the
+   social-login handlers in SignIn/SignUp displayed the key as-is and no
+   locale defines the auth.* error keys. Pages now render every failure
+   through describeAuthError(), which translates known keys with an
+   English default, and en.ts gains the missing keys so other locales
+   fall back to real prose.
+
+2. &amp;quot;The operation couldn&amp;#39;t be completed. (com.apple.AuthenticationServices.
+   AuthorizationError error 1001.)&amp;quot; shown as an error after Apple sign-in.
+   Error 1001 is ASAuthorizationError.canceled: the user dismissed the
+   sheet. @capgo/capacitor-social-login flags this with code
+   &amp;#39;USER_CANCELLED&amp;#39; but carries the raw iOS description, which contains
+   no &amp;quot;cancel&amp;quot;, so the message-only check missed it. isUserCancellation()
+   now checks the plugin code and the 1001 value; cancels are silent.
+
+Diagnostics for whatever remains: AuthResult.detail carries the
+underlying code + message (including Firebase&amp;#39;s customData cause such as
+&amp;quot;TypeError: Load failed&amp;quot;, and a distinct message when the 25s guard fires),
+rendered in small print under the banner and logged to the console, so the
+next device screenshot is enough to root-cause a real network failure.
+
+Native Firebase Auth no longer registers browserPopupRedirectResolver:
+OAuth on iOS/Android runs through native sheets, never Firebase popups or
+redirects, per Firebase&amp;#39;s Capacitor guidance.
+
+Tests: authErrors.test.ts pins cancel detection, key-to-prose rendering,
+silent Apple cancel, and detail propagation.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01C9eVbt9mHcv4EGxhU5u6Ct&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/be4c2fc21917e482fecdc7cf94d7379418d0065b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/be4c2fc21917e482fecdc7cf94d7379418d0065b"/>
+    <title>
+        Merge pull request #370 from oliverdann7/claude/remove-redundant-revi…
+    </title>
+    <updated>2026-09-03T16:29:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #370 from oliverdann7/claude/remove-redundant-reviewlogs-index
+
+chore(firestore): drop redundant single-field reviewLogs index&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec011b75b8f99e298356fa5013249c939adf31be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/ec011b75b8f99e298356fa5013249c939adf31be"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39; into claude/remove-redunda…
+    </title>
+    <updated>2026-09-03T16:20:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39; into claude/remove-redundant-reviewlogs-index&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9bf685b82979a29840045b41272fd2ec91e19a8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/f9bf685b82979a29840045b41272fd2ec91e19a8"/>
+    <title>
+        chore(firestore): drop redundant single-field reviewLogs index
+    </title>
+    <updated>2026-09-03T16:16:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(firestore): drop redundant single-field reviewLogs index
+
+Firestore builds single-field indexes automatically, so the composite
+entry on reviewLogs(createdAt DESC) is rejected by the Admin API with
+&amp;quot;this index is not necessary, configure using single field index
+controls&amp;quot;, making `firebase deploy --only firestore:indexes` report an
+error for that entry. The two-field reviewLogs index
+(vocabItemId ASC, createdAt DESC) is valid and stays.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75fc987b80cd17d8e1aeb48c6640be1b7aab0ea6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/75fc987b80cd17d8e1aeb48c6640be1b7aab0ea6"/>
+    <title>
+        Merge pull request #369 from oliverdann7/claude/app-launch-readiness-…
+    </title>
+    <updated>2026-09-03T16:00:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #369 from oliverdann7/claude/app-launch-readiness-m05lyy
+
+fix(release): launch-readiness fixes from the pre-launch audit&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4bf09ddd43bc45492e8d71502f8af7edb1f8087a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/4bf09ddd43bc45492e8d71502f8af7edb1f8087a"/>
+    <title>
+        fix(release): launch-readiness fixes found in the pre-launch audit
+    </title>
+    <updated>2026-09-03T15:52:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(release): launch-readiness fixes found in the pre-launch audit
+
+- firestore.indexes.json: add the tokenAnnotations composite index
+  (languageId, lemma, upvotes desc). Production logs show the annotations
+  endpoint failing with FAILED_PRECONDITION &amp;quot;query requires an index&amp;quot;;
+  every token-annotation fetch returned 500 until this exists. Deploy with
+  `firebase deploy --only firestore:indexes`.
+- Store listings (iOS + Android): privacy URL pointed at /legal/privacy,
+  which is not a route — the app serves /privacy. Also drop the treebank
+  syntax viewer and IIIF manuscript lab from the feature list and
+  &amp;quot;What&amp;#39;s New&amp;quot;: both surfaces are behind VITE_ENABLE_EXPERIMENTAL and are
+  hidden in production and native builds, so the copy advertised features
+  a reviewer cannot find (App Review guideline 2.3, accurate metadata).
+- Release notes 1.0.0: same removal, plus a reviewer note explaining why.
+- release:check: the iOS GoogleService-Info.plist check is now informational.
+  The iOS target does not link the Firebase iOS SDK; native Google Sign-In
+  takes VITE_GOOGLE_IOS_CLIENT_ID, and Xcode Cloud archives validate without
+  the file, so it is not a submission gate.
+- STORE_SUBMISSION_HANDOFF: document that indexes are not deployed by CI
+  and mark the iOS plist optional.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01C9eVbt9mHcv4EGxhU5u6Ct&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a07332b5a6c97aa094af0ee02a705e6740ff407</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/6a07332b5a6c97aa094af0ee02a705e6740ff407"/>
+    <title>
+        Merge pull request #368 from oliverdann7/claude/ancient-languages-con…
+    </title>
+    <updated>2026-09-03T07:21:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #368 from oliverdann7/claude/ancient-languages-content-9tf7e4
+
+Beginner-to-advanced content for every ancient language + alphabet courses in the Beginner Hub&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/996fd3066d508ff0ea0668aa48782bd0efba9cb5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/996fd3066d508ff0ea0668aa48782bd0efba9cb5"/>
+    <title>
+        Expand beginner-to-advanced content for all ancient languages + alpha…
+    </title>
+    <updated>2026-08-23T15:41:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Expand beginner-to-advanced content for all ancient languages + alphabet courses
+
+Beginner Hub / Script Lab:
+- Staged alphabet courses for all 12 languages (types, per-language lesson
+  data over the existing ScriptSign inventories, integrity tests)
+- New Script Lab &amp;quot;Learn&amp;quot; tab with lesson intro cards, tips, practice words,
+  and a pass/fail multiple-choice quiz per lesson
+- localStorage-backed per-lesson progress (useAlphabetProgress), surfaced
+  as a progress bar on the Beginner Hub script card
+- Syriac letters gain positional (initial/medial/final) forms rendered in
+  lesson cards, Surayt-style
+
+Corpus content:
+- &amp;quot;First Reader&amp;quot; A1 originals for akk, egy, hit, uga, cop, arc, syr, san
+  (12 fully annotated sentences each; previously akk/egy/hit/uga had zero
+  beginner texts)
+- Aramaic Dialogues: three themed A1 dialogues (greetings, family, market)
+  with per-token Latin transliteration, inspired by the Šlomo Surayt
+  dialogue-first pedagogy (original Biblical Aramaic content)
+- Advanced excerpts: Isaiah 40 (hbo, C1), Enūma Eliš I (akk, C1),
+  Īśā Upaniṣad (san, C1), Peshitta Psalm 23 (syr, B2)
+- Surfaced 21 previously orphaned curated sections: attached to their
+  texts (Ptahhotep, Mursili Annals, Gita, Coptic/Syriac John, Targum
+  Genesis, Baal Cycle) and new texts Egy-Sin, Hit-Prayer, San-Hito,
+  Cop-Thom, Arc-Dan, Syr-Gen; fixed the Uga-Baal extended-section id
+  collision that shadowed two sections
+
+Learning path:
+- Beginner curriculum ladders for all 12 languages (was Greek-only), each
+  starting at A1 and locked against CorpusDB by a new test
+- recommendedStartTextId now points at beginner readers instead of
+  hidden samples or advanced texts
+- sentLex lexical hints can carry transliteration through to tokens
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Mm4rTNShwT8fUANuVESKZZ&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/33f5baead98bfc804728d9a80624c29c123b5a4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/33f5baead98bfc804728d9a80624c29c123b5a4f"/>
+    <title>
+        Merge pull request #366 from oliverdann7/claude/testflight-android-pa…
+    </title>
+    <updated>2026-08-15T08:37:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #366 from oliverdann7/claude/testflight-android-parity-check-91aaaa
+
+fix(auth): honest login page when a provider is unavailable; bump to build 16&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7e0769c4b06c2c80c87fe41361567c23cec3d0d4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/7e0769c4b06c2c80c87fe41361567c23cec3d0d4"/>
+    <title>
+        fix(auth): honest login page when a provider is unavailable; bump to …
+    </title>
+    <updated>2026-08-15T08:32:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(auth): honest login page when a provider is unavailable; bump to build 16
+
+TestFlight build 15 (2026-07-07) predates the native parity audit (b9eb95c)
+by 47 commits. This bumps the build number so a current build can be cut, and
+fixes the login-page defects that surface when a provider button is hidden.
+
+Login page (SignIn + SignUp):
+- The &amp;quot;Or&amp;quot; divider rendered unconditionally while both provider buttons are
+  conditional. On Android — where Google needs VITE_GOOGLE_WEB_CLIENT_ID and
+  Apple has no web-flow — the page drew a separator above nothing.
+- The Google-linked-account error told users to &amp;quot;sign in with Google above&amp;quot;
+  regardless of whether that button exists, leaving a Google-linked user on a
+  provider-less build with no route into their account. Now branches on
+  showGoogle and points at the web app instead. New &amp;quot;…Web&amp;quot; variants added to
+  all 8 locales, alongside the two existing messages that were inline-only.
+
+config:check:native:
+- Checked VITE_GOOGLE_IOS_CLIENT_ID but never VITE_GOOGLE_WEB_CLIENT_ID, so
+  the Android half of native Google sign-in was invisible to the audit.
+- New generic check: warns when .env.native-production is missing values its
+  committed .example provides. Xcode Cloud seeds the env file from that
+  example (ci_post_clone.sh), so local and cloud builds of the same commit
+  could ship different sign-in buttons — exactly the drift found here.
+
+Tests:
+- authProviderAvailability.test.ts pins isGoogleSignInAvailable /
+  isAppleSignInAvailable across web/iOS/Android × configured/absent. These
+  decide which buttons exist and cannot be verified without a device.
+
+Verified: a --mode native-production build now embeds both client ids (it
+embedded neither before), and ios-google-scheme.sh injects the reversed-id
+URL scheme. Info.plist is deliberately not committed with that scheme — it is
+injected at build time.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/28d990e14c6a8c19121c9713bdb62d7bba9f0f73</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/28d990e14c6a8c19121c9713bdb62d7bba9f0f73"/>
+    <title>
+        Merge pull request #365 from oliverdann7/claude/dictionaries-study-la…
+    </title>
+    <updated>2026-08-15T07:54:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #365 from oliverdann7/claude/dictionaries-study-language-30bc0f
+
+feat(dictionary): always render lemma meanings in the learner&amp;#39;s chosen language&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25c23b9c20a33d480f9a8fcddca6d97b830be616</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/25c23b9c20a33d480f9a8fcddca6d97b830be616"/>
+    <title>
+        feat(dictionary): always render lemma meanings in the learner&#39;s chose…
+    </title>
+    <updated>2026-08-14T08:28:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(dictionary): always render lemma meanings in the learner&amp;#39;s chosen language
+
+All four inline dictionary sources (PalaeoGlossa, Logeion, Wiktionary, AI)
+now surface the lemma&amp;#39;s meaning in the user&amp;#39;s interface language (pt, es,
+fr, de, ru, tr, zh), matching the language the learner studies from.
+
+- dictionaryResolver: AI source is asked directly in the target language
+  (single call, cached per UI language) and flags the result with
+  localizedTo so the UI skips the redundant second translation pass.
+- LexDrawerPanel: threads the UI language into resolveMeaning and the
+  &amp;#39;Retry AI definition&amp;#39; fallback (which now also caches under the correct
+  per-language cache type instead of overwriting the English entry).
+- useLocalizedGloss: fetches the localized gloss even when no English
+  gloss exists, so lemmas missing from the bundled lexica still get a
+  meaning in the chosen language; exports getLocalizableUiLang.
+- Dictionary page: hides the localized-definition block when there is
+  nothing to show instead of rendering an empty section.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/057d620b4b6faa4957f8c49e806c5593e4eb1900</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/057d620b4b6faa4957f8c49e806c5593e4eb1900"/>
+    <title>
+        Merge pull request #364 from oliverdann7/claude/corpus-audit-expansio…
+    </title>
+    <updated>2026-08-11T21:09:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #364 from oliverdann7/claude/corpus-audit-expansion-627221
+
+feat(corpus): audit-driven overhaul — honesty fixes, Greek/Latin scholarly enrichment, re-sectioning, AI-stage runway (Phases 1–4)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54db6e9d2b93b94157b0214139045f8cb3b458ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/54db6e9d2b93b94157b0214139045f8cb3b458ca"/>
+    <title>
+        feat(corpus): concurrent AI enrichment driver with quota-safe backoff
+    </title>
+    <updated>2026-08-11T09:16:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(corpus): concurrent AI enrichment driver with quota-safe backoff
+
+ai-enrich-served.ts now runs a small worker pool (--concurrency, default 4)
+with exponential backoff on 429/503 and a clean stop after persistent
+rate-limiting (daily/monthly quota), periodic cache checkpoints every 100
+calls, and cache-first application so interrupted runs resume free.
+
+First live batch attempt confirmed the guard works: the user&amp;#39;s new
+AI Studio key hit its monthly spending cap after the Jonah batch
+(&amp;quot;RESOURCE_EXHAUSTED: monthly spending cap&amp;quot;), and all four runs stopped
+cleanly with zero data corruption.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/555cb4cfe6314a422dc7f51d71a26c34da5b8983</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/555cb4cfe6314a422dc7f51d71a26c34da5b8983"/>
+    <title>
+        fix(ai): replace retired gemini-2.0-flash with gemini-flash-latest + …
+    </title>
+    <updated>2026-08-11T09:10:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ai): replace retired gemini-2.0-flash with gemini-flash-latest + first AI translations
+
+Google retired gemini-2.0-flash (404 &amp;quot;no longer available&amp;quot;) — every live AI
+feature (analyze/translate/explain/tutor) and both offline enrichment stages
+were silently broken. All call sites now share GEMINI_MODEL from
+api/_lib/aiPrompts.ts, defaulting to the rolling gemini-flash-latest alias
+(override via the GEMINI_MODEL env var to pin).
+
+First AI translation batch shipped with it: hbo-jonah-full — all 48 sentences
+now carry stored translations labeled translationSource: &amp;#39;ai-generated&amp;#39;
+(spot-checked: accurate, natural renderings; e.g. Jonah 1:1-4, 4:11).
+hasTranslation flipped true by the recompute; per-sentence responses cached
+for review in .cache/hbo-ai-analysis.json.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67e62a4856e921a41e06fff72f4f165c8e3a22c1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oliverdann7/paleoglossa-ai-studio/commit/67e62a4856e921a41e06fff72f4f165c8e3a22c1"/>
+    <title>
+        feat(corpus): offline AI enrichment stages, ready for GEMINI_API_KEY …
+    </title>
+    <updated>2026-08-11T08:18:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/118666270?s=30&amp;v=4"/>
+    <author>
+      <name>oliverdann7</name>
+      <uri>https://github.com/oliverdann7</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(corpus): offline AI enrichment stages, ready for GEMINI_API_KEY (Phases 3b/4)
+
+Builds the AI morphology + translation backfill machinery, runnable the moment
+a Gemini key is available (none exists on this machine, so no data was
+AI-modified in this commit):
+
+- scripts/corpus/ingest/aiFill.ts — one cached Gemini call per sentence using
+  the SAME prompt contract as the live Reader (buildSentenceAnalysisPrompt),
+  returning per-token lemma/gloss/pos/morphologyDetails plus a natural
+  translation. Fill-only application with provenance labels: tokens get
+  morphSource: &amp;#39;ai-generated&amp;#39;, sentences get translationSource: &amp;#39;ai-generated&amp;#39;;
+  treebank morphology and curated fields are never overwritten. Per-sentence
+  cache (.cache/&amp;lt;lang&amp;gt;-ai-analysis.json) makes re-runs free and is the unit of
+  human review.
+- scripts/corpus/ai-enrich-served.ts — driver with --text/--language/--limit
+  scoping for the approved flagship-first rollout, --translate-only, and a
+  --dry-run that prices a batch (e.g. hbo-genesis-full = 1,533 calls) without
+  a key.
+- Token.morphSource + Sentence.translationSource added to src/types/corpus.ts.
+- npm scripts for the whole corpus toolchain: corpus:clean, corpus:regloss:grc,
+  corpus:regloss:lat, corpus:treebank, corpus:resection, corpus:sync-stubs,
+  corpus:ai-enrich.
+
+Verification: type-check, lint, 982 tests, build all pass.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

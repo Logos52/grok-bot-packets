@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mikemazzetti/ankicardmaker/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mikemazzetti/ankicardmaker/commits/main.atom"/>
+  <title>Recent Commits to ankicardmaker:main</title>
+  <updated>2026-09-10T00:22:00Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae2c2b38570f4b723da09a1d766e969a0b1a2ed5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/ae2c2b38570f4b723da09a1d766e969a0b1a2ed5"/>
+    <title>
+        feat: cloud daily backup from AnkiWeb via GitHub Actions
+    </title>
+    <updated>2026-09-10T00:22:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: cloud daily backup from AnkiWeb via GitHub Actions
+
+Adds a scheduled workflow (.github/workflows/anki-backup.yml) that runs
+on GitHub&amp;#39;s servers — works even when the Mac is off. It downloads the
+collection from AnkiWeb using a stored sync token and commits the export
+(download-only; never uploads).
+
+- scripts/get_ankiweb_hkey.py: one-time local helper to mint the hkey
+  token (password typed locally, never stored) for the ANKIWEB_HKEY /
+  ANKIWEB_ENDPOINT repo secrets.
+- scripts/anki_cloud_export.py: headless sync + per-deck JSON export,
+  using SyncAuth(hkey) to avoid CI&amp;#39;s password-login block.
+- README: cloud setup is now the recommended path; the local launchd
+  job is documented as an optional alternative and is no longer
+  installed by default.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c95101cf5aba92f5a65abe12205a80e911de60cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/c95101cf5aba92f5a65abe12205a80e911de60cd"/>
+    <title>
+        feat: automatic daily Anki-&gt;GitHub backup via launchd
+    </title>
+    <updated>2026-09-10T00:12:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: automatic daily Anki-&amp;gt;GitHub backup via launchd
+
+Adds scripts/daily_sync.sh (export + commit + push only on change, skips
+when Anki is closed) and the launchd agent plist that runs it daily at
+20:00. Documented install/change/disable in the README.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5b60f55c69039050bb452bb09806f9e5f94327d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/c5b60f55c69039050bb452bb09806f9e5f94327d"/>
+    <title>
+        docs: document collection backup workflow in README
+    </title>
+    <updated>2026-09-10T00:07:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: document collection backup workflow in README
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f559ccc72b344fa60204a4988cf379d99b22be59</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/f559ccc72b344fa60204a4988cf379d99b22be59"/>
+    <title>
+        backup: export full Anki collection to anki-export/ (12,358 notes)
+    </title>
+    <updated>2026-09-10T00:07:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;backup: export full Anki collection to anki-export/ (12,358 notes)
+
+Snapshot of every non-filtered deck as one JSON file per deck (full note
+fidelity: id, model, tags, fields), plus anki-export/INDEX.md. Media
+binaries excluded. Reusable via scripts/export_anki.py — re-run to
+refresh the snapshot and commit the diff.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84d2fbe2dc24e735bb8de1eb2a062d97af340714</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/84d2fbe2dc24e735bb8de1eb2a062d97af340714"/>
+    <title>
+        cards: full NeetCode 250 as story-front deck (18 category subdecks)
+    </title>
+    <updated>2026-09-10T00:03:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;cards: full NeetCode 250 as story-front deck (18 category subdecks)
+
+One story-front card per NeetCode 250 problem, authored to hide the
+technique so the solver recognizes the pattern; backs give Maps to /
+Model it / Approach &amp;amp; variations / Time / Space with reasoning.
+Organized into deck &amp;quot;NeetCode 250&amp;quot; with a subdeck per category and a
+markdown record per category under card-sets/NeetCode-250/.
+
+Coverage verified: all 250 slugs present exactly once, 0 missing/dupes;
+250 notes pushed to Anki, 0 failed.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c92bb7520378fd8281f2b884331e30e20592362</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/7c92bb7520378fd8281f2b884331e30e20592362"/>
+    <title>
+        cards: redo HackerRank deck with story/scenario fronts
+    </title>
+    <updated>2026-09-09T23:48:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;cards: redo HackerRank deck with story/scenario fronts
+
+Fronts are now plain-language real-world scenarios (monkey &amp;amp; bananas,
+trains, parties) that hide the technique; the solver recognizes the
+pattern. Backs add a &amp;quot;Model it&amp;quot; bridge from story to technical problem,
+then approach/variations and time/space with reasoning. Old technical-
+front cards removed and replaced in Anki. Documented the deck style in
+CLAUDE.md.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5300ec7351d128c0e44c05a4a86fc0c303360062</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/5300ec7351d128c0e44c05a4a86fc0c303360062"/>
+    <title>
+        cards: HackerRank algorithm &amp; data-structure patterns (20 cards)
+    </title>
+    <updated>2026-09-09T23:41:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;cards: HackerRank algorithm &amp;amp; data-structure patterns (20 cards)
+
+Scenario on the front; back gives the pattern/data structure, the
+variations needed to adapt it, and time/space complexity with the
+reasoning. Pushed into Anki deck &amp;quot;HackerRank&amp;quot; via AnkiMCP.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/282d8862e4ca0797de7901c90e7ee5a1d082ae96</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikemazzetti/ankicardmaker/commit/282d8862e4ca0797de7901c90e7ee5a1d082ae96"/>
+    <title>
+        Scaffold ankicardmaker: topic-to-Anki flashcard workflow
+    </title>
+    <updated>2026-09-09T23:31:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/152966730?s=30&amp;v=4"/>
+    <author>
+      <name>mikemazzetti</name>
+      <uri>https://github.com/mikemazzetti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Scaffold ankicardmaker: topic-to-Anki flashcard workflow
+
+Repo that turns a topic into Anki cards via the AnkiMCP add-on
+(MCP server inside Anki, http://127.0.0.1:3141/). Includes CLAUDE.md
+card-generation workflow + quality rubric, card-set record format,
+and setup docs.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
