@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ferranrego/darya/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ferranrego/darya/commits/main.atom"/>
+  <title>Recent Commits to darya:main</title>
+  <updated>2026-09-10T15:00:15Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3de40cb8a07f0bda27c91b07e2e06f257562c324</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/3de40cb8a07f0bda27c91b07e2e06f257562c324"/>
+    <title>
+        fix(prs): fill the last 4 curriculum gaps to perfect verify-beginner-…
+    </title>
+    <updated>2026-09-10T15:00:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): fill the last 4 curriculum gaps to perfect verify-beginner-core&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb0da3e64589b83b60a950f3adb83410dbcb32ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/eb0da3e64589b83b60a950f3adb83410dbcb32ee"/>
+    <title>
+        feat(prs): implement pedagogical audit fixes for A1-B1
+    </title>
+    <updated>2026-09-10T14:56:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prs): implement pedagogical audit fixes for A1-B1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a627248c40312d2d7382707db6f931d85c4e6648</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/a627248c40312d2d7382707db6f931d85c4e6648"/>
+    <title>
+        fix(core): update groq models to compound
+    </title>
+    <updated>2026-09-10T14:22:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(core): update groq models to compound&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d0bca8f1efd1bc5177573ac0bcaba0a8c81201d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/9d0bca8f1efd1bc5177573ac0bcaba0a8c81201d"/>
+    <title>
+        feat: pragmatic functions verify against the paradigm, and Dari keeps…
+    </title>
+    <updated>2026-09-10T12:26:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: pragmatic functions verify against the paradigm, and Dari keeps its phrases
+
+Ports the substantive half of riera 29b5e0d: `pragmaticFunctions` members are
+inflected surface forms by construction - what a person says, not citation
+forms - and `direct()` has required a lemma-identical hit since a256cc7, so the
+whole category was unverifiable. It is now checked against the language&amp;#39;s own
+paradigm via `text.generatedFormsByKey`.
+
+That is not a relaxation. `direct()`&amp;#39;s rule exists because the resolver&amp;#39;s
+morphological fallback can land on an unrelated lexeme (`sec` &amp;quot;dry&amp;quot; -&amp;gt; `seure`
+&amp;quot;to sit&amp;quot;); asking the paradigm keeps exactly that guard, since the accident is
+not a form the entry generates. Verified in riera by planting invented words:
+still reported as gaps.
+
+With it, the three Dari phrases the previous commit had to compromise on -
+امکان ندارد, لطفاً تکرار کنید, می‌خواهی بیایی - verify as written, so the draft&amp;#39;s
+original wording is restored and the two lemma substitutions are reverted. prs
+now has no pragmatic gaps at all; the 4 that remain are the pre-existing
+semanticFields ones (خاکی, گرمی, سردی), untouched here.
+
+Also drops the dead `CA_SENTENCES` block and Catalan phrase case this repo
+inherited from the fork - the mirror of what riera did for Dari.
+
+That mirror is the lesson now written into port.sh: a commit whose point is
+removing the *other* language&amp;#39;s dead data must not be cherry-picked. Doing it
+deleted darya&amp;#39;s own Dari sentences and left it testing Catalan it does not
+ship, caught by reading the diff rather than the gate, which stayed green
+because the file still had sentences in it - just the wrong language&amp;#39;s.
+port.sh in this repo was also still the pre-fix version; synced from riera.
+
+Lexicon audited: 0 removed, 0 new, 0 repointed, nothing outside `tags`.
+Gate: pnpm gate 0, 533 tests, validate:content 0.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c045e11c0d7a2ad53ddd5eab08c2f9a1bfa2d124</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/c045e11c0d7a2ad53ddd5eab08c2f9a1bfa2d124"/>
+    <title>
+        fix: port.sh survives the conflict it exists to handle
+    </title>
+    <updated>2026-09-10T12:23:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: port.sh survives the conflict it exists to handle
+
+Mirrors riera 8e8a04d. A commit touching the sibling&amp;#39;s language conflicts
+modify/delete against files this repo deleted, and `git cherry-pick -n` stops
+there - so `set -e` aborted the script before it reached the `git rm` that
+resolves exactly those. Also had a $SIBN left unexpanded in its output.
+
+Found on the first real port.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a942bf0a5d9d644531c504147bf3b375c9d9171</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/5a942bf0a5d9d644531c504147bf3b375c9d9171"/>
+    <title>
+        feat: beginners can ask, offer, agree and repair - not just describe
+    </title>
+    <updated>2026-09-10T12:18:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: beginners can ask, offer, agree and repair - not just describe
+
+Recovers the pedagogy work from `beginner-functions` (f8dcfed, 3 Aug), which
+never merged and could not be merged: the branch predates the fork and touched
+both languages&amp;#39; lexicons, and a month of lexicon changes had moved underneath
+it. A raw merge hit nine conflicts in a 3.5 MB JSON - and its two new entries
+carried ids lx-6158 and lx-6160, which now belong to شکم and سبزی. Merging it
+would have duplicated ids or repointed real learner progress. Applied
+semantically instead, through the repo&amp;#39;s own tooling.
+
+What the branch found still stands: `verbFunctions` groups verbs by SEMANTIC
+DOMAIN and nothing in the spec ever required a learner be able to ask for
+something, ask permission, offer, accept, agree, suggest or repair a
+misunderstanding. For a product pitched on holding a conversation, those are
+the first moves. `pragmaticFunctions` adds them, modelled on the Council of
+Europe Threshold / PCIC A1-A2 inventories, in the register people actually use
+in Kabul - قبول/موافقم to agree, اجازه to ask permission.
+
+Both of its silent-failure fixes are carried over, and both matter more than
+the content:
+
+  * readSpec/specWords only read the four categories they were written for, so
+    a new one was dropped on the floor and the run reported a clean &amp;quot;no gaps&amp;quot;
+    for requirements nothing had checked. `assertKnownCategories` now exits
+    non-zero on any category the checker cannot verify. Verified by planting an
+    unknown category: the run stops with that message instead of printing a gap
+    report.
+  * `usable()` and tag-beginner-core split phrases on whitespace, which cannot
+    decompose Catalan apostrophation (`d&amp;#39;acord`). Both now use the production
+    tokenizer. The effect here is visible: tagging drops سو, بالیدن, خزیدن, کل
+    and شک, none of which the spec requires - سو, کل and شک are fragments of
+    words it does require (سوم, کلید, تشکر). The old split was over-tagging.
+
+Three of the draft&amp;#39;s spec entries no longer hold. They name inflected forms,
+and `direct()` has required a lemma-identical hit since a256cc7 (11 Aug) so a
+requirement cannot be met by a word one derivation removed - the draft was
+measured against the laxer checker, which is why it reported no gaps. Two were
+replaced by the content lemma each is built on (امکان ندارد -&amp;gt; امکان,
+لطفاً تکرار کنید -&amp;gt; تکرار); می‌خواهی بیایی was dropped, both its verbs already
+being covered in the same block.
+
+Lexicon: two entries added via add-lexicon-entries.ts, which assigns fresh ids
+(lx-6222 لحظه, lx-6223 موافق). اجازه was already added independently this month
+as lx-6181. Audited: 0 entries removed, 0 ids repointed, tagging touched only
+the `tags` field.
+
+Gates: pnpm gate 0, 533 tests (14 new sentences), validate:content 0,
+verify-beginner-core back to its pre-existing 4 gaps - none introduced here.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3537e47974916323336773d1914c9732fe03294a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/3537e47974916323336773d1914c9732fe03294a"/>
+    <title>
+        docs: this repo is one product now, and says how to port from the other
+    </title>
+    <updated>2026-09-10T11:56:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: this repo is one product now, and says how to port from the other
+
+CLAUDE.md and AGENTS.md still described one codebase building two apps. Two of
+the five hard-won rules were about hazards the split removed - the
+`for L in ca prs` loop, and `content/active` being shared state that could be
+flipped under a running dev server. Left as-is they would send someone looking
+for a language that is not here.
+
+Rewritten as what is true now, keeping what the split did not change: silent
+failures, never renumber a lexicon entry, comments are load-bearing, and the
+whole cost section - the free-tier provider chain is shared by BOTH products, so
+that budget is tighter after the split, not looser.
+
+Adds &amp;quot;Porting from the sibling&amp;quot; and scripts/port.sh. The habit it asks for is
+the one that decides whether this fork was worth doing: keep shared changes in
+their own commit, separate from language-specific ones. Before the split a
+single commit routinely touched nine shared files plus both languages prompts;
+split in two, the shared half is one cherry-pick.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ebb34568793cb138d8318ee52087dcaea71e683</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/2ebb34568793cb138d8318ee52087dcaea71e683"/>
+    <title>
+        chore: drop simulate-fork.sh
+    </title>
+    <updated>2026-09-10T11:54:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: drop simulate-fork.sh
+
+It proved a two-language tree could be split. The split has happened; there is
+one language here now and nothing left for it to simulate.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c377052ec3c7f16d8e1aa6229d34158eca3b3d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/1c377052ec3c7f16d8e1aa6229d34158eca3b3d7"/>
+    <title>
+        fix: the default language comes from content/, not from a literal &quot;prs&quot;
+    </title>
+    <updated>2026-09-10T11:54:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: the default language comes from content/, not from a literal &amp;quot;prs&amp;quot;
+
+The first green typecheck in this repo still failed twelve test files with a
+module resolution error, because `DEFAULT_LANG = &amp;quot;prs&amp;quot;` was written down in six
+places outside the profile registry: vitest.config.ts, scripts/content-path.ts,
+scripts/link-content.ts, and three test files. In a Catalan-only repo every one
+of them sent the run looking for `content/prs`.
+
+The fork simulation missed all six because it ran the gate with
+NEXT_PUBLIC_TARGET_LANG set explicitly, which a real `pnpm test` does not.
+
+`soleLanguage()` reads the one language directory in `content/`, so a repo
+cannot default to a language it does not ship. Tests compare against
+`REGISTERED_LANGS[0]` instead of a literal. Both keep these files identical to
+Darya&amp;#39;s, so the change ports with a plain cherry-pick rather than diverging.
+
+Gate: typecheck 0, lint 0, 622 tests passed, validate 0, build ok.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc6a8d04a568ed5c802b5d5a49b52bedb68d8b4b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/fc6a8d04a568ed5c802b5d5a49b52bedb68d8b4b"/>
+    <title>
+        fork: Darya is Dari-only
+    </title>
+    <updated>2026-09-10T11:54:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fork: Darya is Dari-only
+
+Removes Catalan from this repo: src/lib/lang/ca, content/ca, the ca-only
+scripts and script data, and the Catalan philologist agent. add-lexicon-entries
+drops its `lang === &amp;quot;ca&amp;quot;` corpus-attestation block, which called into
+verify-ca-entries.ts - there is no Dari equivalent.
+
+supabase/migrations keeps every file: they are applied history in this database.
+
+The profile registry stays rather than inlining Dari, so Riera&amp;#39;s identical file
+layout keeps `git cherry-pick` working between the two repos.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb65632c5267a59c04c40d133b0dbc85fe875e80</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/bb65632c5267a59c04c40d133b0dbc85fe875e80"/>
+    <title>
+        refactor: SeedTextSource belongs to neither language
+    </title>
+    <updated>2026-09-10T11:50:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: SeedTextSource belongs to neither language
+
+The type describing a hand-authored seed text lived inside
+`scripts/data/seed-texts-prs.ts` - the Dari *data* file - and four
+language-neutral scripts imported it from there, including
+`seed-texts-ca.ts`. The Catalan seed data depended on the Dari seed data to
+describe its own shape.
+
+Invisible while both files are present; a hard build failure the moment one
+language is removed. Moved to `scripts/data/seed-text-source.ts`.
+
+Found by the actual fork, not by the simulation - which had been deleting
+`src/lib/lang/&amp;lt;lang&amp;gt;` and `content/&amp;lt;lang&amp;gt;` but not `scripts/data/*&amp;lt;lang&amp;gt;*`, so
+it kept the file the coupling pointed at and reported the split as viable.
+simulate-fork.sh now removes those too, and says why in its header: if it claims
+a split works, it has to actually work.
+
+Gates: typecheck 0, lint 0, ca 836, prs 828; simulate-fork.sh green both ways.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d2c526c48b37397e5fee0da85c7279bc869c2856</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/d2c526c48b37397e5fee0da85c7279bc869c2856"/>
+    <title>
+        fix: the service worker no longer hardcodes one product&#39;s name
+    </title>
+    <updated>2026-09-10T11:44:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: the service worker no longer hardcodes one product&amp;#39;s name
+
+public/sw.js is static and cannot import the language profile, so its push
+notification fallback was the literal &amp;quot;Darya&amp;quot; - shipped unchanged to the
+Catalan build, where the product is Riera.
+
+Latent rather than active: all three senders (cron reminders, chat notify, push
+test) always set a title, so the fallback never fires today. That is precisely
+why it survived - and why the next sender that forgets a title would have shown
+Catalan learners the wrong product name.
+
+Reads `short_name` from the web manifest instead, which already comes from
+`profile.brand.appName`. One copy of this file stays correct for both brands,
+so the fork does not have to diverge here.
+
+Found by fingerprinting an actual Catalan build rather than reading the code:
+24 files in `.next` contained &amp;quot;Riera&amp;quot; and 17 contained &amp;quot;Darya&amp;quot;. Most of the 17
+are the `prs` profile, which is bundled into both builds by design and which
+the fork removes on its own; sw.js was the one that the fork would not have
+fixed by itself.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3da22c9cf79263a36fcf177c4002c06e4230011c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/3da22c9cf79263a36fcf177c4002c06e4230011c"/>
+    <title>
+        test: a script that proves the tree can still be split
+    </title>
+    <updated>2026-09-10T11:06:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: a script that proves the tree can still be split
+
+Grepping for `import &amp;quot;.../lang/&amp;lt;code&amp;gt;/...&amp;quot;` finds module coupling and misses
+everything that names a language as data. Six test files hardcoded
+`[&amp;quot;ca&amp;quot;, &amp;quot;prs&amp;quot;]` and then read `content/&amp;lt;lang&amp;gt;/`; the shared tree was green
+throughout, because both languages were there. Only removing one showed it, and
+then four whole test files failed to load rather than reporting anything.
+
+So the check is the removal. `scripts/simulate-fork.sh` deletes one language in
+place, runs typecheck, lint, test and validate:content, and puts the tree back
+from a snapshot plus `git checkout content/`. It refuses to start if content/ is
+dirty, since it restores that from git.
+
+Both directions pass today. Run it after touching src/lib/lang, scripts/, or any
+test that loops over languages.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cea8765a45c593fda57757a812466604f518a890</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/cea8765a45c593fda57757a812466604f518a890"/>
+    <title>
+        refactor: tests read the language list from the registry, not a literal
+    </title>
+    <updated>2026-09-10T11:05:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: tests read the language list from the registry, not a literal
+
+Simulating each fork - deleting one language and running the gate - found a
+class the import grep could not: tests that name a language as *data* rather
+than importing its module. Six files hardcoded `[&amp;quot;ca&amp;quot;, &amp;quot;prs&amp;quot;]` and then read
+`content/&amp;lt;lang&amp;gt;/`, so in a single-language build four of them failed to load at
+all, reporting an import error instead of anything about the content.
+
+`REGISTERED_LANGS` now comes from the profile registry, which is the only thing
+that actually knows what a build carries. cefr, levels, teachability,
+word-selection and text-pool loop over it.
+
+Two could not be folded into a loop and say so instead:
+
+  * freq-integrity - prs must match its TSV exactly while ca carries a measured,
+    capped drift. Merging them would assert the weaker of the two, so each
+    stands down when its language is absent.
+  * the alphabet route guard - it imports the route it guards, and a language
+    with no script course deletes that tree. `describe.skipIf` does not help:
+    tsc resolves the path even when the test never runs. Moved next to the
+    route as `app/(app)/alphabet/layout.test.ts`, so it is deleted with the
+    feature it belongs to.
+
+capabilities.test.ts also pinned `PROFILES.prs` / `PROFILES.ca` directly, which
+is a type error rather than a skipped test once the registry holds one language;
+the expectations are now a table keyed by code, with a check that every
+registered language has one.
+
+Both forks were then simulated end to end and pass the whole gate:
+
+  Riera (ca only)  typecheck 0, lint 0, 622 tests, validate 0
+  Darya (prs only) typecheck 0, lint 0, 519 tests, validate 0
+
+Shared tree unchanged: typecheck 0, lint 0, ca 836, prs 828, validate 0/0.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e0ca5cde37e59ef30d95d319e718aeb0ecbb81e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/0e0ca5cde37e59ef30d95d319e718aeb0ecbb81e"/>
+    <title>
+        refactor: add-lexicon-entries takes normalize/matchKey from the profile
+    </title>
+    <updated>2026-09-10T10:59:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: add-lexicon-entries takes normalize/matchKey from the profile
+
+The last shared file importing both languages. normalize and matchKey are on
+`profile.text` already, so the dual import and the `lang === &amp;quot;ca&amp;quot;` ternary went
+together.
+
+What remains is deliberate and now documented in the file: `verifyEntry` is
+Catalan corpus attestation living in a Catalan-only script, called under a
+`lang === &amp;quot;ca&amp;quot;` guard. A Dari-only deployment deletes verify-ca-entries.ts and
+must drop that block with it. There is no Dari equivalent to call, so putting it
+behind a profile hook would only move the emptiness somewhere less visible.
+
+No shared file imports two languages any more. Everything still naming a
+language by path is single-language and belongs to exactly one fork.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9692dc8fee79eaedfc757dbda9c42d8f26b4ae19</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/9692dc8fee79eaedfc757dbda9c42d8f26b4ae19"/>
+    <title>
+        refactor: shared scripts and tests read the language from the registry
+    </title>
+    <updated>2026-09-10T10:58:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: shared scripts and tests read the language from the registry
+
+Six shared files imported `lang/ca/*` and `lang/prs/*` by path and dispatched on
+`lang === &amp;quot;ca&amp;quot;`. Two of them run inside `pnpm test`, so they would break the
+default suite in both forks, not just an opt-in script.
+
+All of them wanted normalize / matchKey / tokenize / buildIndex, which are
+already on `profile.text` - the dual imports were the only reason these files
+named a language at all.
+
+  * beginner-expressible.test.ts - sentences keyed by code, tokenizer and index
+    from the profile; runs whichever languages are registered.
+  * mine-pairings.test.ts - its fixtures are Catalan words, so it is a Catalan
+    test and now says so: reads the profile from the registry and skips when
+    Catalan is absent, instead of failing to resolve an import. Equivalent Dari
+    fixtures were never written; skipping makes that visible rather than
+    pretending the miner is covered.
+  * author-brief.manual.test.ts - the per-language `await import(&amp;quot;.../surface
+    .ts&amp;quot;)` branches moved to `text.inflectionHint`. Dynamic imports are still
+    resolved by tsc, so this failed `typecheck`, not just runtime.
+  * build-frequency, verify-beginner-core, tag-beginner-core,
+    audit-lexicon-coverage - mechanical: one `langProfile(lang).text`.
+    audit-lexicon-coverage also imported ZWNJ for a single character class that
+    already mixed Dari&amp;#39;s ZWNJ with Catalan&amp;#39;s apostrophes; inlined as ‌ with
+    a note, since neither language&amp;#39;s separators occur in the other&amp;#39;s text.
+
+Verified by output rather than by reading: verify-beginner-core and
+audit-lexicon-coverage produce byte-identical output in both languages against
+the pre-change code (including prs verify-beginner-core still exiting 1 on its
+pre-existing content condition), and tag-beginner-core leaves the lexicons
+untouched in both. build-frequency was NOT run - it regenerates committed TSVs
+from the corpora and another session changed that script an hour ago; its edit
+is the same mechanical substitution as the three that were proven identical.
+
+`inflectionHint` had no test at all, and a brief silently missing every hint
+still renders - covered now, one case per part of speech per language.
+
+Gates: typecheck 0, lint 0, test ca 835 / prs 827, validate 0/0.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83f7781c6d7bba19b7ed898fcc9ada2558808920</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/83f7781c6d7bba19b7ed898fcc9ada2558808920"/>
+    <title>
+        refactor: audit-homographs asks the profile for generated surfaces
+    </title>
+    <updated>2026-09-10T10:52:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: audit-homographs asks the profile for generated surfaces
+
+The homograph audit runs inside `pnpm validate:content` - validate-content.ts
+imports `auditHomographs` - so decoupling the gate in the previous commit was
+incomplete while the audit itself imported `lang/ca/lexicon-index.ts` and
+`lang/prs/lexicon-index.ts`. Either fork deletes one and the shared content gate
+stops compiling through its own dependency.
+
+`ambiguousSurfacesCa` and `ambiguousSurfacesPrs` were the same function twice.
+The only real difference was how each enumerated generated surfaces: Catalan
+folded `generatedSurfacesOf` per entry, Dari read `buildGeneratedForms`, which
+returns an already-folded map. That is now one `LanguageText` method,
+`generatedFormsByKey`, and one `ambiguousSurfaces` here.
+
+Behaviour is unchanged, and this is the check that had to prove it rather than
+be reasoned about: `pnpm validate:content` output is byte-identical in both
+languages, including the audit&amp;#39;s own counts - ca 180 ambiguous surfaces / 256
+used in seed texts, prs 43 / 23. Those numbers are what would move if the
+enumeration or the first-write-wins precedence had shifted.
+
+Gates: typecheck 0, lint 0, test ca 827 / prs 819.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18bb8ca478463cbc69def2515a426d7c56d35970</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/18bb8ca478463cbc69def2515a426d7c56d35970"/>
+    <title>
+        refactor: let the language answer what a bad verb headword is
+    </title>
+    <updated>2026-09-10T10:50:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: let the language answer what a bad verb headword is
+
+`scripts/validate-content.ts` is the content gate for every language, and it
+was the one file that could not survive a per-language repo: it imported
+`verbSpec` from lang/ca/lexicon-index.ts and `ZWNJ` from lang/prs/normalize.ts
+and dispatched on `lang === &amp;quot;ca&amp;quot;` / `lang === &amp;quot;prs&amp;quot;`. Either fork deletes one of
+those directories, so either fork fails to compile its own content gate.
+
+Replace the three branches with one call to a new `LanguageText`
+method, `verbHeadwordProblem(normalized)`, which returns why an entry cannot be
+a verb headword or null. Same question in both languages - can the engine
+resolve this entry&amp;#39;s forms? - with a wholly language-specific answer, so it
+belongs on the profile next to normalize/matchKey/tokenize/buildIndex.
+
+Dari reuses `derivePastStem` for the infinitive test rather than repeating
+/(دن|تن)$/, so the validator and the conjugator cannot drift apart on what an
+infinitive is.
+
+The exemption list moved too, and that turned out to matter. It was a set of
+lexeme ids (lx-0010, lx-0287, lx-0290) in the shared script. All three ids also
+exist in the Catalan lexicon - `ens`, `fins després`, `llet` - so once the check
+stopped being gated on `lang === &amp;quot;prs&amp;quot;`, those ids would have exempted Catalan
+entries as well. None is a verb today, so nothing was actually wrong; it was an
+accident, not a guarantee. Keyed on the Dari word inside the Dari profile, it
+cannot reach another language at all. Verified: with `llet` (lx-0290) forced to
+pos=&amp;quot;verb&amp;quot;, the gate now reports it; under the id-keyed version it was silent.
+
+Verified both rules end to end, not just as units: each language&amp;#39;s lexicon was
+temporarily given a bad verb entry, the gate reported it, and the lexicon was
+restored and confirmed byte-identical. `verb-headword.test.ts` pins the reject
+cases, which are the ones &amp;quot;All content valid&amp;quot; cannot witness; it reads its cases
+from a table keyed by language code and runs only the codes registered, so it
+needs no edit when a deployment carries one language.
+
+Gates: typecheck 0, lint 0, test ca 827 passed / prs 819 passed, validate 0/0.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/70eb16af48517c628281b81d197cf78d3eec06be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/70eb16af48517c628281b81d197cf78d3eec06be"/>
+    <title>
+        chore: actually track .env.example
+    </title>
+    <updated>2026-09-10T10:44:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: actually track .env.example
+
+The file existed on disk but `.env*` in .gitignore covered it, and `git log
+--all -- .env.example` returns nothing: it has never been in a commit, on any
+branch. The one file that tells a fresh clone which environment variables the
+app needs was invisible to every fresh clone.
+
+Negate it explicitly. It holds only empty keys - checked before tracking - so
+there is nothing secret to leak. This matters more after the fork than before:
+each repo will be cloned fresh at least once.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b2df4a17799c49a5ec68b38f2b4d371600aa6cf9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/b2df4a17799c49a5ec68b38f2b4d371600aa6cf9"/>
+    <title>
+        chore: delete 38 tracked throwaway files and fix .env.example drift
+    </title>
+    <updated>2026-09-10T10:43:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: delete 38 tracked throwaway files and fix .env.example drift
+
+`pnpm lint` was failing on main, and every one of the 8 errors was in a file
+nobody imports: scripts/dump-texts.js, scripts/temp-extract-remaining.test.ts
+(a &amp;quot;temp-&amp;quot; file that ran inside the default suite), and test-gen.ts. Around
+them sat ~35 more committed one-off probes - gen_*.py, generate_*.py,
+*_audit.md, curl.html, next.log, temp-schedule-*.txt, validation_output.txt.
+
+Checked every one for inbound references from src, scripts, docs, content and
+the configs before removing: none. lint goes 8 errors -&amp;gt; 0.
+
+.gitignore now refuses the shapes that accumulated, so a stray probe cannot
+break the gate for everyone else again.
+
+.env.example had drifted in both directions: it declared GEMINI_API_KEY, which
+no code reads, and omitted eight that are read - NEXT_PUBLIC_TARGET_LANG,
+NEXT_PUBLIC_APP_URL, and the HUGGINGFACE_*/GROQ_*/OPENROUTER_* model overrides.
+The provider vars are reached through string arguments in providers.ts rather
+than `process.env.X`, so a naive grep misses them; the file now matches the
+real chain (huggingface -&amp;gt; groq -&amp;gt; openrouter -&amp;gt; groq-fallback -&amp;gt;
+huggingface-fallback) and says out loud that those quotas are shared free tier.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

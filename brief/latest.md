@@ -1,1 +1,1 @@
-Nothing that changes today.
+Cursor Projects is live (beta): left-nav coordinator for multi-month features/migrations — shared context across agents, Slack/schedule/PR subscriptions, cloud computer so laptop-close doesn't stop it. Try on one real body of work this week. https://cursor.com/changelog

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/BENJAMINGLAI/anki-card-skill/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/BENJAMINGLAI/anki-card-skill/commits/main.atom"/>
+  <title>Recent Commits to anki-card-skill:main</title>
+  <updated>2026-09-10T23:57:33Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27bb0149e006d963c0ec6ce2aad2e4b4c107bbc9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/27bb0149e006d963c0ec6ce2aad2e4b4c107bbc9"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2026-09-10T23:57:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114123108?s=30&amp;v=4"/>
+    <author>
+      <name>BENJAMINGLAI</name>
+      <uri>https://github.com/BENJAMINGLAI</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update README.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2f0717c16c45705d3fb2d147db8cb1263e1dcca1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/2f0717c16c45705d3fb2d147db8cb1263e1dcca1"/>
+    <title>
+        fix: address code review findings (5 important, 6 minor)
+    </title>
+    <updated>2026-04-30T10:48:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114123108?s=30&amp;v=4"/>
+    <author>
+      <name>BENJAMINGLAI</name>
+      <uri>https://github.com/BENJAMINGLAI</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: address code review findings (5 important, 6 minor)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/791b2435d6cd711c85bf60aca89f88135a13d4de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/791b2435d6cd711c85bf60aca89f88135a13d4de"/>
+    <title>
+        fix: address code review findings (5 important, 6 minor)
+    </title>
+    <updated>2026-04-30T09:36:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114123108?s=30&amp;v=4"/>
+    <author>
+      <name>BENJAMINGLAI</name>
+      <uri>https://github.com/BENJAMINGLAI</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: address code review findings (5 important, 6 minor)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d7a2aa6bc14544e5442a28f174ebdd54f5bbac21</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/d7a2aa6bc14544e5442a28f174ebdd54f5bbac21"/>
+    <title>
+        fix: address code review findings (5 important, 6 minor)
+    </title>
+    <updated>2026-04-03T15:02:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: address code review findings (5 important, 6 minor)
+
+Important fixes:
+- I-1: is_cloze now uses regex \{\{c\d+:: to prevent false positives
+- I-2: AnkiConnect version check catches RuntimeError
+- I-3: Split test_parser.py into test_models.py + test_parser.py
+- I-4: Improved error message with expected model names and fields
+- I-5: All exporter tests use tmp_path fixture for auto cleanup
+
+Minor fixes:
+- M-1: Move import sys to top of parser.py
+- M-2: Move export_ankiconnect import to top of cli.py
+- M-4: deck_id fallback to 1 if hash produces 0
+- M-5: Add AnkiConnect example to SKILL.md export section
+- M-7: Add __all__ to __init__.py for public API
+- M-9: Pin genanki upper bound (&amp;lt;1.0)
+
+Co-Authored-By: Claude Opus 4.6 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/22c997333034a0ac37e4c078a1100fc93e6fa059</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/22c997333034a0ac37e4c078a1100fc93e6fa059"/>
+    <title>
+        feat: add URL input support and sync AnkiConnect docs
+    </title>
+    <updated>2026-04-03T14:52:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add URL input support and sync AnkiConnect docs
+
+- SKILL.md: add URL as input source in Step 1 (WebFetch)
+- README: add URL usage example, AnkiConnect CLI example
+- README.zh-CN.md: sync URL and AnkiConnect changes
+
+Co-Authored-By: Claude Opus 4.6 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/328193c78408e33f5bf1eef542d30f562a0b7e06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/328193c78408e33f5bf1eef542d30f562a0b7e06"/>
+    <title>
+        docs: add review step and AnkiConnect option to SKILL.md workflow
+    </title>
+    <updated>2026-04-03T14:49:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add review step and AnkiConnect option to SKILL.md workflow
+
+- Insert Step 5 (Review) between card generation and export
+- Update Step 6 (Export) with AnkiConnect direct push option
+- Renumber steps accordingly
+
+Co-Authored-By: Claude Opus 4.6 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b312792d4c7bb72bcfaa1b2e9e6b55b53a50447</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/1b312792d4c7bb72bcfaa1b2e9e6b55b53a50447"/>
+    <title>
+        feat: add AnkiConnect direct push support (--ankiconnect flag)
+    </title>
+    <updated>2026-04-03T14:48:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add AnkiConnect direct push support (--ankiconnect flag)
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c39e0ae319b42c92a5480e8153f6ac6c408d618e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/c39e0ae319b42c92a5480e8153f6ac6c408d618e"/>
+    <title>
+        docs: sync zh-CN README with English version
+    </title>
+    <updated>2026-04-03T14:39:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: sync zh-CN README with English version
+
+- Update description to multi-platform
+- Add Cloze deletion feature
+- Add Troubleshooting and Python API sections
+
+Co-Authored-By: Claude Opus 4.6 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ac4d2220199ab9a3a5b111644db05f236a5b4ee6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/ac4d2220199ab9a3a5b111644db05f236a5b4ee6"/>
+    <title>
+        docs: add cloze deletion instructions to SKILL.md
+    </title>
+    <updated>2026-04-03T14:16:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add cloze deletion instructions to SKILL.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c20c6bbe6352ed884a2f486c265daa3ba2d34f1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/0c20c6bbe6352ed884a2f486c265daa3ba2d34f1"/>
+    <title>
+        docs: improve README with troubleshooting, Python API, and cloze mention
+    </title>
+    <updated>2026-04-03T14:15:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: improve README with troubleshooting, Python API, and cloze mention&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c98860660ba680cd0cc5e7e8571d3a9baf02e8dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/c98860660ba680cd0cc5e7e8571d3a9baf02e8dc"/>
+    <title>
+        chore: add classifiers, keywords, and project URLs to pyproject.toml
+    </title>
+    <updated>2026-04-03T14:15:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add classifiers, keywords, and project URLs to pyproject.toml&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/def5213cf440edc629caeb5a9079b65102b22a42</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/def5213cf440edc629caeb5a9079b65102b22a42"/>
+    <title>
+        feat: add --verbose flag to show skipped lines
+    </title>
+    <updated>2026-04-03T13:49:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add --verbose flag to show skipped lines
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4fc00cfbefd1b33da217a4fcf5091ac265eb4159</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/4fc00cfbefd1b33da217a4fcf5091ac265eb4159"/>
+    <title>
+        feat: add cloze deletion card support
+    </title>
+    <updated>2026-04-03T13:46:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add cloze deletion card support
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2a048a05e968f2f3c5f690cb298fd2c27556dc34</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/2a048a05e968f2f3c5f690cb298fd2c27556dc34"/>
+    <title>
+        test: add parser edge case tests (double pipe, empty tags, multiple n…
+    </title>
+    <updated>2026-04-03T13:42:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: add parser edge case tests (double pipe, empty tags, multiple nidd)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae89137265f1304a6822f08c574a6fc87bf41195</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/ae89137265f1304a6822f08c574a6fc87bf41195"/>
+    <title>
+        test: add CJK, emoji, and mixed-language parser tests
+    </title>
+    <updated>2026-04-03T13:40:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: add CJK, emoji, and mixed-language parser tests&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/297ce29890406a1d33affeace3e6f196f95a89de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/297ce29890406a1d33affeace3e6f196f95a89de"/>
+    <title>
+        test: verify nidd handling in APKG export
+    </title>
+    <updated>2026-04-03T13:39:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: verify nidd handling in APKG export&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26864af7970a638a3b7bd1e50d503ce2d8f08694</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/26864af7970a638a3b7bd1e50d503ce2d8f08694"/>
+    <title>
+        test: add coverage for _sanitize_tsv function
+    </title>
+    <updated>2026-04-03T13:38:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: add coverage for _sanitize_tsv function&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/569daf0f5719424e78d21feee58fb5b890a1cb51</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/569daf0f5719424e78d21feee58fb5b890a1cb51"/>
+    <title>
+        fix: handle UTF-8 BOM in input files
+    </title>
+    <updated>2026-04-03T13:37:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: handle UTF-8 BOM in input files&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4fa92c0eb2a8f475bde2757bda67ba3b44edc334</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/4fa92c0eb2a8f475bde2757bda67ba3b44edc334"/>
+    <title>
+        fix: add error handling for mkdir and export failures in CLI
+    </title>
+    <updated>2026-04-03T13:33:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: add error handling for mkdir and export failures in CLI
+
+Wrap output directory creation and file export in try/except blocks,
+exiting with code 3 and a descriptive stderr message on OSError.
+Add test_cli_output_dir_permission_denied to verify graceful failure.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f83458649857992d11c75f8e42b3fe8838e2701</id>
+    <link type="text/html" rel="alternate" href="https://github.com/BENJAMINGLAI/anki-card-skill/commit/9f83458649857992d11c75f8e42b3fe8838e2701"/>
+    <title>
+        chore: add issue templates for bug reports and feature requests
+    </title>
+    <updated>2026-04-03T13:16:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43607145?s=30&amp;v=4"/>
+    <author>
+      <name>gong1414</name>
+      <uri>https://github.com/gong1414</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: add issue templates for bug reports and feature requests
+
+Co-Authored-By: Claude Opus 4.6 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

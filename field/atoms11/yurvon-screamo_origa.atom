@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/yurvon-screamo/origa/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/yurvon-screamo/origa/commits/master.atom"/>
+  <title>Recent Commits to origa:master</title>
+  <updated>2026-09-10T22:30:46Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6df19b3188da5881ec518e7c783b3e006bb1e8f8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/6df19b3188da5881ec518e7c783b3e006bb1e8f8"/>
+    <title>
+        Merge pull request #519 from yurvon-screamo/feat/strict-recall-audio-…
+    </title>
+    <updated>2026-09-10T22:30:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #519 from yurvon-screamo/feat/strict-recall-audio-mode
+
+feat(lesson): strict-recall for late-stage words + AudioRecall mode + acquaintance audio front&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03fb0a9207470868d9c4ca53f55116e188719871</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/03fb0a9207470868d9c4ca53f55116e188719871"/>
+    <title>
+        feat(lesson): strict-recall for late-stage words + AudioRecall mode +…
+    </title>
+    <updated>2026-09-10T21:47:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(lesson): strict-recall for late-stage words + AudioRecall mode + acquaintance audio front
+
+Close two learning gaps for vocabulary:
+
+1. Recognition formats (Quiz, YesNo) hinted answers on late-stage words,
+   letting barely-known cards coast into `is_known_card` (stability &amp;gt; 21)
+   on guessed recognition. Late stage (in_progress | known) now allows
+   strict-recall formats only: Normal 20% / AudioRecall 30% / Reversed
+   30% / GrammarMutated 20%. High-difficulty words keep all five formats
+   at an even 20% each (the YesNo exclusion gate is lifted for them).
+
+2. Visual fixation without audio fixation: new `LessonCardView::AudioRecall`
+   plays the word (CDN pitch audio / TTS) with no text on the question
+   side; the learner self-assesses with know/don&amp;#39;t know (1/2), Space
+   replays the audio, and the answer side is the classic word + reading +
+   translation. Audio availability is a single reactive signal sampled
+   once per showing (mute/pitch-loader flips apply to the NEXT card);
+   when unavailable the card renders and behaves as Normal everywhere
+   (renderer mapping, container branch, keyboard gate) — no split-brain.
+
+Acquaintance: the reverse subphase (ru-&amp;gt;jp) front is now a 50/50 mix of
+the text translation and an audio front (autoplay + replay, Space =
+replay / Enter = reveal); the coin is flipped once per card per subphase
+and frozen for both outcomes. Audio fronts require real audio
+availability (mute included), manual replay is never muted.
+
+Dead code removed: new-card view branches of the lesson generator
+(new words reach lessons only through the acquaintance hand,
+NewCardPolicy::Exclude in production) with defensive Normal fallbacks.
+
+Tests: seeded distribution suites (late stage never gets Quiz/YesNo over
+500 seeds; all strict forms reachable), repeat-pool contracts, serde
+roundtrip, handler unit tests, wasm tests for the card front (word
+absent from DOM), both container routing branches, and the freeze/resample
+semantics of the audio mode.
+
+Co-Authored-By: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb24121a47456f506bdf5c997c7818b27e5733e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/bb24121a47456f506bdf5c997c7818b27e5733e8"/>
+    <title>
+        Merge pull request #518 from yurvon-screamo/docs/readme-ko-vi-transla…
+    </title>
+    <updated>2026-09-10T08:16:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #518 from yurvon-screamo/docs/readme-ko-vi-translations
+
+docs(readme): add Korean and Vietnamese translations, unified language switcher&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec18bdd367f00e5574f9b137c33a5abb38095731</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/ec18bdd367f00e5574f9b137c33a5abb38095731"/>
+    <title>
+        docs(readme): add Korean and Vietnamese translations, unified languag…
+    </title>
+    <updated>2026-09-10T08:00:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): add Korean and Vietnamese translations, unified language switcher
+
+- README.ko.md / README.vi.md: full translations of the current EN
+  README (post-#517 state: 4 shipped interface languages, N5-N1
+  kanji/grammar coverage, roadmap trimmed to Indonesian/Spanish).
+  Terminology follows the production landing copy (ko.rs / vi.rs):
+  hàn-tự style hanja wording in VI (no &amp;#39;kanji&amp;#39;, per the repo&amp;#39;s VI SEO
+  convention), one-line disclaimer that the License translation is
+  for reference and the LICENSE original prevails.
+- Language switcher in the header of all four READMEs; current
+  language is plain text. Fixes the old EN header that pointed the
+  whole line at README.ru.md and never linked itself.
+- README.md Contacts line now carries the JP emoji, matching the
+  other three files.
+
+Switcher edits are strict 1-line replacements (verified via numstat)
+so the line-number references pinned in factcheck files stay valid.
+README-only changes are skipped by CI path filters entirely, so all
+verification (markdownlint via qlty on the four files, 1:1 section
+structure, image links, terminology consistency) ran locally.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/56980ca9956e903c46ca022b512589912d33c474</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/56980ca9956e903c46ca022b512589912d33c474"/>
+    <title>
+        Merge pull request #517 from yurvon-screamo/fix/landing-ko-vi-status-…
+    </title>
+    <updated>2026-09-10T05:51:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #517 from yurvon-screamo/fix/landing-ko-vi-status-jlpt-coverage
+
+fix(landing): drop stale KO/VI &amp;#39;in development&amp;#39; labels, surface JLPT N5–N1 coverage&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85094c020a1dd7ea8e30e1dd344ba2608be10459</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/85094c020a1dd7ea8e30e1dd344ba2608be10459"/>
+    <title>
+        fix(landing): drop stale KO/VI &#39;in development&#39; labels, surface JLPT …
+    </title>
+    <updated>2026-09-10T05:35:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(landing): drop stale KO/VI &amp;#39;in development&amp;#39; labels, surface JLPT N5-N1 coverage
+
+Korean and Vietnamese shipped with the 2026-09-08 KO/VI content release,
+but several surfaces still claimed they were planned. This removes the
+remaining stale labels and states the full JLPT grammar &amp;amp; kanji coverage
+(N5-N1, verified: grammar_v2.json 720 rules incl. 205 N1; kanji
+animations for all 5 levels) where it was missing.
+
+Slice 1 - stale &amp;#39;in development&amp;#39; labels:
+- Remove the site-level WIP banner: Locale::is_development(),
+  Content::banner_wip, the banner render + is_blog_article_route in
+  Layout, and the .landing-wip-banner CSS (processed.css regenerated).
+- llms.txt: interface languages now &amp;#39;English, Russian, Korean and
+  Vietnamese&amp;#39; (was: EN/RU with KO/VI planned).
+- README.md / README.ru.md: principles, roadmap and the RU language
+  table now list four shipped languages (Indonesian/Spanish stay
+  planned).
+- Blog: 8 files across en/ko/vi still said VI/KO &amp;#39;planned&amp;#39; - aligned
+  with the already-updated RU/EN counterparts; lastmod bumped to
+  2026-09-10 in each edited article.
+
+Slice 2 - surface &amp;#39;grammar &amp;amp; kanji N5-N1&amp;#39; (4 locales):
+- Home hero subtitle and home meta description (unified &amp;#39;N5-N1&amp;#39; with
+  U+2013), features meta description EN/RU aligned with KO/VI.
+- Compare page: bunpro/wanikani &amp;#39;Origa advantage&amp;#39; copy mentions N5-N1
+  (framed as unification, not competitor disparagement).
+- README Kanji/Grammar bullets and llms.txt kanji line now say N5-N1.
+
+Tests:
+- ko_vi_landing_have_no_wip_banner: /ko and /vi render without the
+  banner markup or its Korean/Vietnamese wording.
+- home_schema_description_covers_jlpt_levels_all_locales: home
+  description must state N5-N1 in every locale (guards against the
+  locale drift that caused this bug).
+
+Note: vi_articles_do_not_contain_kanji fails on master already (a
+/vi/docs/kanji link predates this PR); landing integration tests are
+not run by CI (ci.yml runs cargo test --workspace --exclude
+origa_landing).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/543247309f574caaa32499ce9922f019a1ee9259</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/543247309f574caaa32499ce9922f019a1ee9259"/>
+    <title>
+        Merge pull request #515 from yurvon-screamo/diag/ios-siwa-entitlement
+    </title>
+    <updated>2026-09-10T00:56:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #515 from yurvon-screamo/diag/ios-siwa-entitlement
+
+fix(apple): embed the SIWA entitlement in the iOS App Store build&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fde25c762fd3f16d51f812970ebc910217969e26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/fde25c762fd3f16d51f812970ebc910217969e26"/>
+    <title>
+        fix(apple): drop the stale tuple unpacking after the asc_request refa…
+    </title>
+    <updated>2026-09-10T00:22:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): drop the stale tuple unpacking after the asc_request refactor&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fff1774cac77a67e070bcf18fa56ec3a6624c6cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/fff1774cac77a67e070bcf18fa56ec3a6624c6cf"/>
+    <title>
+        chore: drop local experiment results accidentally swept into the prev…
+    </title>
+    <updated>2026-09-09T23:53:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: drop local experiment results accidentally swept into the previous commit
+
+git add -A picked up untracked scripts/results and vocab_eval evaluation
+artifacts; they are local working data, not part of this change.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc1cec9527ffab0de448fefc3614b63dba4742d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/fc1cec9527ffab0de448fefc3614b63dba4742d7"/>
+    <title>
+        review: address the code review findings on the SIWA re-sign pipeline
+    </title>
+    <updated>2026-09-09T23:53:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;review: address the code review findings on the SIWA re-sign pipeline
+
+- manage_ios_profiles.py: actually handle the 204 No Content body on
+  DELETE (the previous &amp;#39;fix&amp;#39; was a no-op expression).
+- mint_ios_identity.py: purge stale identities by id through the
+  profile relationship instead of a certificate-CN match (Apple rewrites
+  CNs to the account holder name, so the CN branch could never fire and
+  would have been dangerous if it had); write cert-id/profile-id to
+  GITHUB_OUTPUT immediately after each creation so a crash cannot orphan
+  a certificate; tolerate 404 in cleanup (parallel-run races); validate
+  response shapes via expect_data; surface openssl stderr; context
+  managers + encoding for file IO.
+- workflow: guard the entitlement Add (idempotent if tauri-cli ever
+  starts embedding it), document the Payload-only repack contract, and
+  extend the always() cleanup to delete the resign keychain and the key
+  material (mirrors the macOS job convention).
+- Swift: single ASAuthorizationError unwrap with a .unknown case instead
+  of the magic 1000.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d35ca9bd2446503aec74c3a2e1be7dd7e77fd6cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d35ca9bd2446503aec74c3a2e1be7dd7e77fd6cb"/>
+    <title>
+        fix(apple): resolve the actual minted identity name from the keychain
+    </title>
+    <updated>2026-09-09T23:14:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): resolve the actual minted identity name from the keychain
+
+Apple rewrites the certificate CN to the account holder name, so the
+hardcoded Origa CI name never matches.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32cb6369c9e1ac82af4d4aa5604b8949660fa2b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/32cb6369c9e1ac82af4d4aa5604b8949660fa2b9"/>
+    <title>
+        fix(apple): mint an Apple-issued identity + profile for the SIWA re-sign
+    </title>
+    <updated>2026-09-09T22:42:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): mint an Apple-issued identity + profile for the SIWA re-sign
+
+App Store Connect rejects uploads whose signing certificate is not
+contained in the embedded provisioning profile (-19241), so the
+self-signed identity cannot pass validation. Mirror tauri-cli exactly:
+mint an Apple-issued Apple Distribution certificate via the ASC API,
+create a fresh IOS_APP_STORE profile containing it, replace the embedded
+profile, merge applesignin into the current entitlements and re-sign.
+An always() step deletes the cert/profile afterwards; stale CI-minted
+certificates (including tauri-cli&amp;#39;s throwaway Tauri (unset) ones, whose
+keys die with the runners) are purged before minting.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6cb0930a9a4e07159037b0622560f0453308be2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/c6cb0930a9a4e07159037b0622560f0453308be2"/>
+    <title>
+        fix(apple): full keychain path for the codesign lookup
+    </title>
+    <updated>2026-09-09T22:05:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): full keychain path for the codesign lookup
+
+codesign --keychain expects a keychain path, not a bare name, and the
+keychain must be in the user search list for the imported key and cert
+to link into one identity.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/603a11f84b21ffd2a1a0520097d905eb049b15d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/603a11f84b21ffd2a1a0520097d905eb049b15d1"/>
+    <title>
+        fix(apple): codeSigning EKU on the self-signed re-sign identity
+    </title>
+    <updated>2026-09-09T22:03:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): codeSigning EKU on the self-signed re-sign identity
+
+security find-identity -p codesigning (and codesign&amp;#39;s own lookup) only
+accept certs with the codeSigning extended key usage — a bare openssl
+-x509 cert has none.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d6e864f0b6ec1abba6911df5993d2a40f8eb525b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/d6e864f0b6ec1abba6911df5993d2a40f8eb525b"/>
+    <title>
+        fix(apple): self-signed re-sign identity, merged entitlements
+    </title>
+    <updated>2026-09-09T21:35:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): self-signed re-sign identity, merged entitlements
+
+tauri-cli signs the export with a self-signed identity in an ephemeral
+keychain it deletes right after, so there is no real identity to reuse —
+and the mac-app p12 is a Mac cert, not an iOS one. Generate our own
+self-signed distribution identity (App Store Connect re-signs TestFlight
+builds, so the upload identity only needs to carry the entitlements) and
+MERGE applesignin into the current entitlements instead of replacing
+them, keeping application-identifier and the rest intact.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a54316bdb6e61def50607ae9c37f53f2eca3c45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/6a54316bdb6e61def50607ae9c37f53f2eca3c45"/>
+    <title>
+        ci: remove the temporary iOS profile cleanup workflow
+    </title>
+    <updated>2026-09-09T21:05:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: remove the temporary iOS profile cleanup workflow
+
+The stale IOS_APP_STORE profiles were deleted (the next builds create
+fresh ones); manage_ios_profiles.py stays in scripts/ for future
+capability rollouts.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d518a6d4912f183b918530eb3d9976c755a838d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/1d518a6d4912f183b918530eb3d9976c755a838d"/>
+    <title>
+        merge: master (keep the fixed manage_ios_profiles.py)
+    </title>
+    <updated>2026-09-09T21:05:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: master (keep the fixed manage_ios_profiles.py)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7ef357c5f95330e32bc139c53daa32c7038222bd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/7ef357c5f95330e32bc139c53daa32c7038222bd"/>
+    <title>
+        chore(apple): drop the one-off SIWA diagnostics from the build step
+    </title>
+    <updated>2026-09-09T21:05:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(apple): drop the one-off SIWA diagnostics from the build step
+
+The archive-profile/pbxproj dump served the root-cause investigation; the
+fail-closed entitlement gate already prints everything needed on failure.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25c4a1636577cd10a514760e6c3af94f82a009ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/25c4a1636577cd10a514760e6c3af94f82a009ae"/>
+    <title>
+        fix(apple): keychain name without a path for the import action
+    </title>
+    <updated>2026-09-09T20:51:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): keychain name without a path for the import action&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1cede12a9267cbfeb933dae7aaaeaba12ae2de26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/yurvon-screamo/origa/commit/1cede12a9267cbfeb933dae7aaaeaba12ae2de26"/>
+    <title>
+        fix(apple): import the distribution p12 into a temp keychain for the …
+    </title>
+    <updated>2026-09-09T20:18:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/109030262?s=30&amp;v=4"/>
+    <author>
+      <name>yurvon-screamo</name>
+      <uri>https://github.com/yurvon-screamo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(apple): import the distribution p12 into a temp keychain for the re-sign&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

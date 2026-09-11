@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/garthtrickett/gafu-v2/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/garthtrickett/gafu-v2/commits/main.atom"/>
+  <title>Recent Commits to gafu-v2:main</title>
+  <updated>2026-09-11T00:38:59Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db63f866a8c7af24cd3e90e4e9e98c3bec731043</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/db63f866a8c7af24cd3e90e4e9e98c3bec731043"/>
+    <title>
+        Let a session outlive the process that issued it (#57)
+    </title>
+    <updated>2026-09-11T00:38:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let a session outlive the process that issued it (#57)
+
+Every deploy asked for the password again. Sessions were held in a Map in
+process memory, so a restart forgot every one of them; the seven-day
+lifetime never mattered because a deploy always came first.
+
+The cookie now carries its own expiry and a signature over it, keyed off the
+configured password, so a fresh process recognises a session it never
+issued. The password is already in the environment and stable across
+restarts, so this needs no new configuration and no storage.
+
+Rotating GAFU_ACCESS_PASSWORD now invalidates every outstanding session. The
+Map did not do that: it kept honouring sessions issued under the old
+password until they expired.
+
+What is given up: logout revokes for as long as the process lives, but a
+restart forgets the revocation, so a signed-out cookie would be honoured
+again until its expiry. Reaching that requires having captured the cookie
+before sign-out, since sign-out clears it. For a single-owner deployment
+behind a password, with a bounded lifetime, that is a smaller cost than a
+login on every deploy -- but it is a real one, so it is stated here and in
+the code rather than left to be discovered.
+
+Tests cover the case the Map failed: a cookie issued by one instance is
+accepted by a separately constructed one, refused after the password
+changes, refused when its expiry is edited without re-signing, and refused
+once that expiry passes.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f7f083dcfb00bd137114f93e879f8b44fc18887</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/0f7f083dcfb00bd137114f93e879f8b44fc18887"/>
+    <title>
+        Stop asking for a candidate on punctuation (#56)
+    </title>
+    <updated>2026-09-11T00:25:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop asking for a candidate on punctuation (#56)
+
+&amp;quot;provider returned canonicalKey !? : where !?: was supplied&amp;quot;: the model
+answered `!? :` for a token whose canonicalKey is `!?:`, inserting a space,
+and that one candidate rejected its batch.
+
+Kuromoji files an unrecognised run of symbols under 名詞/サ変接続, so `!?`,
+`...` and `...♪` arrive as nouns and earn vocabulary candidates. With no
+reading, their canonicalKey is punctuation plus the empty-reading colon --
+`!?:`, `...♪:` -- which is exactly the kind of string a model tidies.
+Subtitles are full of them.
+
+Precomputing the key in #54 was necessary but not sufficient: supplying a
+string does not stop a model reformatting one that looks like a typo. The
+answer is not to ask. A token now earns a candidate only if its surface
+contains a letter or a number, so punctuation is absent from the payload
+and from what the answer is compared against.
+
+The predicate lives with the expectations, so the payload, the per-batch
+check, and the run-level check move together, and the fake providers use it
+too rather than their own copy of contentParts.
+
+promptVersion goes to preparation-v4. Two batches completed under v3 and
+hold candidates v4 does not expect, which would read as invented evidence
+at run level; completed batches are not re-checked, so they have to be
+asked again.
+
+Real words are unaffected, including those with no reading: グリズリー, Wi,
+and 24 still earn candidates and still carry the trailing colon.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8b1b1ef24f95e331253b4bc5bf4ed387fae7328</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/d8b1b1ef24f95e331253b4bc5bf4ed387fae7328"/>
+    <title>
+        Hold the API key only in the server environment (#55)
+    </title>
+    <updated>2026-09-11T00:17:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Hold the API key only in the server environment (#55)
+
+The key was held in process memory and entered through settings, so every
+restart discarded it. That is six re-entries across today&amp;#39;s deploys, and it
+made an environment-supplied key ambiguous: a key typed in settings won the
+session and then silently reverted to the environment&amp;#39;s on the next deploy,
+while &amp;quot;Remove API key&amp;quot; cleared a copy that came back on restart.
+
+The key is now a deployment value and nothing else. It is read from
+OPENAI_API_KEY at startup, held in process memory, and verified against the
+provider on first preflight. There is no route, form, or session copy that
+could disagree with the environment.
+
+Removed: PUT and DELETE /api/provider/key, replaceProviderKey and
+removeProviderKey from the LearningMaterial seam, replace and remove from
+ProviderKeyCustody, the settings form and its remove button, and the
+revision counter that existed only to order concurrent replacements.
+Settings now reports which provider and model are configured and whether
+the environment supplied a key, and names OPENAI_API_KEY when it did not.
+
+This keeps the phase-2 invariant that matters -- the key never reaches
+SQLite, a backup, a response, or a log -- while dropping the browser entry
+path that phase-2 also described. Railway stores it encrypted at rest and
+can seal it so it is write-only, which is strictly better custody than a
+value retyped into a form after every deploy.
+
+phase-2.md is updated to match rather than left contradicting the code: the
+custody bullet, the settings paragraph, the LearningMaterial type, and the
+two adversarial cases that were about replacing and removing a key.
+
+The Playwright harness supplies OPENAI_API_KEY, because the key can no
+longer be entered through the page it is testing.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eaf0c1df0973552fd3abd9baad47276aa3bf85c9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/eaf0c1df0973552fd3abd9baad47276aa3bf85c9"/>
+    <title>
+        Check completeness per batch and supply the keys the model must not d…
+    </title>
+    <updated>2026-09-10T10:00:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Check completeness per batch and supply the keys the model must not derive (#54)
+
+Audit of every field the validator compares against what the payload
+supplies, prompted by three consecutive failures that were each a case of
+the model being asked to reproduce something it had not been given.
+
+Verified sound: token spans reconstruct exactly (0 mismatches over 54
+tokens from the real analyzer), and `contentParts` matches the instruction
+wording.
+
+Three defects, all confirmed by measurement.
+
+Completeness was checked only once a run was whole. The real analyzer plus
+grammar detector oblige about 5,914 annotations for a 352-cue episode --
+24 content tokens and 60 grammar annotations per 5 cues, so roughly 330 per
+batch -- and `validateCompleteEvidence` demanded exact set equality over all
+of them. It ran only at `complete`, after all 18 batches were paid for, and
+`preparation.ts` then reset every batch in the run, discarding the lot. The
+most expensive failure was also the most likely.
+
+Cues partition into batches, so agreement on every batch is agreement on
+the manifest. Completeness, duplication, and canonicalKey are now compared
+as each batch commits: the same discrepancy is caught, but it costs one
+batch to ask again rather than the whole run. The run-level check remains as
+a final assertion and should no longer be reachable first. Both call the
+same comparison, so they cannot drift, and the detail now names what was
+omitted or altered instead of only a count.
+
+canonicalKey had to be built from a rule the rule did not cover.
+`canonicalVocabulary` is `lemma:reading` with a trailing colon when the
+reading is null, which the instruction &amp;quot;canonicalKey is exactly
+lemma:reading&amp;quot; does not describe: 6 of 26 content tokens on katakana and
+latin text have no reading, and Shirokuma Cafe is full of them. It is now
+precomputed into the payload for tokens and grammar occurrences alike, so
+the model copies a string.
+
+The content-token filter was the model&amp;#39;s job. 30 of 54 tokens are
+non-content and had to be skipped by judging broadPartOfSpeech the same way
+the validator does; any disagreement changed the count. The payload now
+carries only the tokens that earn a candidate, so its size fixes the
+answer&amp;#39;s size.
+
+promptVersion is bumped to preparation-v3, and this one is required rather
+than cosmetic: batches completed under v2 were never checked for
+canonicalKey, because that comparison only happened once a run was whole.
+Leaving them completed would let them bypass the per-batch check. This
+starts a fresh run and does not reuse previously completed batches.
+
+`contentParts` was copied in four files; preparation&amp;#39;s copy now has one
+home, shared by the payload, the per-batch check, and the run-level check.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ebdd512addd9dd0335fed5556341ebc3c67ac5ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/ebdd512addd9dd0335fed5556341ebc3c67ac5ce"/>
+    <title>
+        Label cues shortly instead of asking the model to echo a digest (#53)
+    </title>
+    <updated>2026-09-10T09:35:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Label cues shortly instead of asking the model to echo a digest (#53)
+
+Analysis failed with &amp;quot;invalidCueEvidence (unknown cue
+cue-v1:sha256:178923d4604444437ac0c1636a15d8732431dc2)&amp;quot;. The span problem
+from #52 is gone; this is the other branch of the validator, and the same
+class of defect one layer up.
+
+A cue id is `cue-v1:sha256:` plus a 64-character digest, and the contract
+asks the model to echo it on every candidate. A batch of 20 cues asks for a
+candidate per content token, so that is roughly 120 ids -- about 7,700
+characters of pure entropy to reproduce byte-perfect, and a single slip
+rejects all 120. The id above is 39 hex characters where 64 were sent: it
+dropped 25 characters mid-transcription.
+
+Asking a model to copy an opaque digest is the same mistake as asking it to
+count UTF-16 code units. Cues are now labelled `c1`, `c2`, ... in what the
+adapter serializes, and the labels are translated back to cue ids as the
+answer is decoded. The model echoes two characters instead of seventy-eight.
+
+`retrieve` now takes the batch, because rebuilding the labels is the only
+way to read a polled response back into cue ids.
+
+A label the batch does not name is reported as `malformedStructure` naming
+the label, rather than surfacing as an unknown cue id. It is a modelling
+error about a two-character token, not evidence about a cue.
+
+As in #52 this touches only what the adapter serializes and decodes, not
+`AnalyzedCue`, so manifest digests and already-completed batches are
+unaffected, and `promptVersion` is unchanged.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f16c11474680f66e88dc732759ce511c75336d9b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/f16c11474680f66e88dc732759ce511c75336d9b"/>
+    <title>
+        Give the model a grammar surface to copy instead of an offset to comp…
+    </title>
+    <updated>2026-09-10T09:13:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give the model a grammar surface to copy instead of an offset to compute (#52)
+
+Analysis failed with &amp;quot;invalidCueEvidence (invalid normalized span for
+cue-v1:sha256:b92901dd...)&amp;quot;. The model was not at fault, and neither was
+the validator.
+
+The candidate contract asks for `surface` plus a span whose slice
+reconstructs it, and the instructions say to copy both from the supplied
+cue. Tokens do supply `surface`, so vocabulary candidates copy it and
+verify. Grammar evidence supplied only `canonicalForm` and `spans` -- no
+surface anywhere -- and a canonical form is a label, not the text. Of 317
+declared forms, 84 begin with the placeholder `〜`, and others are
+metalinguistic: `受身形`, `命令形 (動詞)`, `の ( nominalizer )`,
+`〜ない (る-Verb Negative)`. On one ordinary sentence, 18 of 25 detected
+forms had a canonical form that does not occur in the cue at all.
+
+So for grammar the model could only copy the label, which cannot verify, or
+count UTF-16 code units into Japanese itself, which is unreliable. Either
+way one bad span rejects its whole batch of roughly 120 candidates, which
+is why this recurred on every run.
+
+The adapter now flattens each grammar occurrence to the token shape and
+includes the surface, sliced locally from the cue it already holds:
+
+  { canonicalForm, surface, span }
+
+Verification is unchanged and nothing is repaired after the fact; the model
+is simply given the thing it was always asked to reproduce. This touches
+only what the adapter serializes, not `AnalyzedCue`, so manifest digests
+and already-completed batches are unaffected.
+
+`instructions` and `promptVersion` are deliberately unchanged: the task
+definition is the same, and &amp;quot;copy surface exactly from the supplied cue&amp;quot;
+merely becomes satisfiable for grammar. Bumping the version would orphan
+every completed batch and repay for them.
+
+Also give zz-phase2-study a real time budget. It creates fourteen Grammar
+Cards one at a time and waits for a generated review, measuring 28-29s
+against Playwright&amp;#39;s 30s default, so it failed whenever anything else
+shared the machine. I twice attributed that to contention, which was the
+symptom; the budget was the cause.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c695bfa67ef7dc1fa74667b00c8f40d93e293f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/0c695bfa67ef7dc1fa74667b00c8f40d93e293f9"/>
+    <title>
+        Ask again for a rejected response instead of replaying it (#51)
+    </title>
+    <updated>2026-09-10T08:43:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ask again for a rejected response instead of replaying it (#51)
+
+* Ask again for a rejected response instead of replaying it
+
+Analysis failed with `invalidCueEvidence`: a response arrived, decoded
+against the schema, and then failed local span verification. The batch was
+left dispatched with its response id, so resuming retrieved the same
+known-bad output from provider-side retention and re-failed on it
+identically -- no new request at all -- until retention expired, at which
+point it demanded a duplicate-charge decision:
+
+  round 1: failed invalidCueEvidence [uncertain,...] submit()=1 retrieve()=0
+  round 2: failed invalidCueEvidence [uncertain,...] submit()=0 retrieve()=1
+  round 3: failed invalidCueEvidence [uncertain,...] submit()=0 retrieve()=1
+
+preparation.ts already states the rule for the whole-run case: invalid
+output is safe to charge but not safe to cache. Apply it per batch. A
+response that arrived and was rejected locally -- invalid cue evidence,
+malformed structure, incomplete output, or refusal -- now releases the
+checkpoint to `pending`, whether it arrived from submit or from retrieve.
+The batch still does not complete, as phase-0.md requires of an invalid
+span; it is simply asked again rather than replayed.
+
+  round 1: failed invalidCueEvidence [pending,...] submit()=1 retrieve()=0
+  round 2: failed invalidCueEvidence [pending,...] submit()=1 retrieve()=0
+
+The failure detail is now shown. It was already carried in the snapshot and
+discarded by the UI, which left `invalidCueEvidence` unactionable: the kind
+cannot say whether a cue was unknown or a span did not reconstruct, nor
+which of a batch&amp;#39;s candidates was at fault. It now reads
+&amp;quot;invalidCueEvidence (invalid normalized span for episode-1:001)&amp;quot;.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* Give the progress poller an interval
+
+window.setInterval was called with no delay, which defaults to 0 and is
+clamped by browsers to about 4ms. While a batch was in flight the page
+therefore issued the live-snapshot GET hundreds of times a second, each one
+querying SQLite and projecting findings, against the same server that was
+waiting on the provider.
+
+This was invisible while batches died in 60 seconds. Now that a batch
+legitimately runs for minutes, it runs for the length of the analysis.
+
+A batch takes minutes, so two seconds of granularity is ample.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b01d03bfc0790938f65c7949a225df959d77963f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/b01d03bfc0790938f65c7949a225df959d77963f"/>
+    <title>
+        Release rejected batches and verify a seeded key before offering anal…
+    </title>
+    <updated>2026-09-10T08:08:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release rejected batches and verify a seeded key before offering analysis (#50)
+
+Prepare stalled again after #49, this time with &amp;quot;last error: authentication&amp;quot;
+and the duplicate-charge banner showing. Two defects.
+
+A rejection was treated as a possible duplicate charge. #49 raised the
+warning whenever a dispatch failed with no recorded response id, which is
+true of every pre-dispatch failure -- including a 401, where the provider
+refused to run the request and billed nothing. The batch also stayed
+`uncertain` with no id, so it re-entered the unresolvable branch and
+blocked every later batch, and the second round reported no failure at
+all. That is the same latch #49 fixed for timeouts, reached by a different
+route:
+
+  round 1: failure=authentication duplicateCharge=true  [uncertain,...]
+  round 2: failure=null           duplicateCharge=true  [uncertain,...]
+
+Authentication, permission and rate-limit failures now release the
+checkpoint to `pending`: nothing was generated, so there is nothing to
+retrieve and nothing to repay, and fixing the cause needs no
+duplicate-charge decision. A lost or abandoned connection is still
+ambiguous and still warns.
+
+  round 1: failure=authentication duplicateCharge=false [pending,...]
+  round 2: failure=authentication duplicateCharge=false [pending,...]
+
+A round that names its failure now reports it instead of retrying twice
+more and burying it in &amp;quot;three rounds finished no new batches&amp;quot;.
+
+An unverified key claimed to be ready. The key is held only in memory and
+seeded from OPENAI_API_KEY, so any restart -- including every deploy --
+discards a key entered through settings and falls back to the environment.
+A key that arrives that way never passes through `replace`, so it was
+never verified, and `isConfigured` reported it ready. The scope panel then
+offered to analyze with a key the provider rejects, 18 times.
+
+Custody now verifies a seeded key once, on first preflight, and remembers
+the answer. Only the provider&amp;#39;s own refusal condemns a key; a verification
+that cannot reach the provider leaves it usable, so a network blip does not
+present as a bad key. `providerConfigured` is async to allow this.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f4f5fd5ead02a593a0dfcbb17c510d284e8e210</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/8f4f5fd5ead02a593a0dfcbb17c510d284e8e210"/>
+    <title>
+        Dispatch preparation batches in the background so a timeout is recove…
+    </title>
+    <updated>2026-09-10T07:41:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dispatch preparation batches in the background so a timeout is recoverable (#49)
+
+Analysis stalled at 0 of 18 batches with &amp;quot;three rounds finished no new
+batches (last error: timeout)&amp;quot;, and the duplicate-charge banner showing.
+
+The run was not retrying: after the first round it stopped calling the
+provider at all. A batch is marked `uncertain` before dispatch so a crash
+cannot silently repay it. Recovering that state needs the provider&amp;#39;s
+response id, but a synchronous `store: false` call only yields the id
+together with the output, so an interrupted call left nothing to look up
+and `retrieve` returned no recovery. `uncertain` was therefore terminal:
+every later round returned `paused` with `possibleDuplicateCharge` without
+a request, so batch 1 blocked batches 2-18 permanently.
+
+The wait was cut short because `timeoutMs` was 60s. That number was never
+measured -- docs/evidence/phase-0-batching.md records that the paid smoke
+gate never ran -- and it was sized against that script&amp;#39;s 3-cue batches
+while the server analyses 20 cues per batch, which runs to minutes.
+
+phase-0.md allows recovery through provider idempotency or result
+retrieval. Retrieval is available after all: background mode returns the
+response id immediately and works with `store: false`, with provider-side
+retention only long enough to poll, which the analysis disclosure already
+covers. (`Idempotency-Key` is documented for the Ads and Agentic Commerce
+APIs, not for /v1/responses, so it is not relied on.)
+
+- Dispatch with `background: true`, commit the returned id via a new
+  `markDispatched` before waiting, then poll GET /v1/responses/{id}.
+  `timeoutMs` now bounds one HTTP call; `completionTimeoutMs` bounds the
+  batch. A 404 while polling means the dispatch aged out and is reported
+  as no recovery rather than as a transport failure.
+- Carry `providerResponseId` on the `uncertain` checkpoint (schema v2).
+  `possibleDuplicateCharge` now covers only the narrow window in which a
+  dispatch was sent but its id was never committed.
+- Send one batch per HTTP request. At minutes per batch a five-batch chunk
+  held one request open long enough for an intermediary to drop it.
+- Default the paid smoke script to the server&amp;#39;s batch size, so the
+  duration it reports bounds production batches.
+
+Against a provider that times out on every wait, the run now completes a
+batch per round instead of returning the same paused snapshot, and no
+batch is paid for twice.
+
+`completionTimeoutMs` remains an unmeasured upper bound; `bun run
+spike:provider` is the gate that would calibrate it.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/68cb3454784b35f2765a0b51a6551f1198480f18</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/68cb3454784b35f2765a0b51a6551f1198480f18"/>
+    <title>
+        Remember stall errors across chunk rounds (#48)
+    </title>
+    <updated>2026-09-10T06:14:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remember stall errors across chunk rounds (#48)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/606b80a8e06b63acc664910657046382a2295e17</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/606b80a8e06b63acc664910657046382a2295e17"/>
+    <title>
+        Live per-batch progress polling, adaptive chunks, stall guard (#47)
+    </title>
+    <updated>2026-09-10T04:59:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Live per-batch progress polling, adaptive chunks, stall guard (#47)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54c1b9e4bf5c50654717fa393060b8614bdcb16c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/54c1b9e4bf5c50654717fa393060b8614bdcb16c"/>
+    <title>
+        Analyze subtitles in resumable chunks with live progress (#46)
+    </title>
+    <updated>2026-09-10T04:38:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Analyze subtitles in resumable chunks with live progress (#46)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d0f9b8d473ddfd47f370caec7c633b97f160836</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/5d0f9b8d473ddfd47f370caec7c633b97f160836"/>
+    <title>
+        Exclude lost+found from volume content assertions (#45)
+    </title>
+    <updated>2026-09-10T03:26:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Exclude lost+found from volume content assertions (#45)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cd6ab912fc7ce5bb7a9d8b7b82272df7824194cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/cd6ab912fc7ce5bb7a9d8b7b82272df7824194cf"/>
+    <title>
+        Make volume upload idempotent; poll post-upload verification (#44)
+    </title>
+    <updated>2026-09-10T03:18:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make volume upload idempotent; poll post-upload verification (#44)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18ddb68f51c11004dfb572cbd349ea7897179ce7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/18ddb68f51c11004dfb572cbd349ea7897179ce7"/>
+    <title>
+        Load SSH key into agent; retry volume list; tolerate empty fingerprin…
+    </title>
+    <updated>2026-09-10T03:08:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Load SSH key into agent; retry volume list; tolerate empty fingerprint (#43)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8b0f3cb9838d91fbc6d345c909ef1979b94cceb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/f8b0f3cb9838d91fbc6d345c909ef1979b94cceb"/>
+    <title>
+        Generate ephemeral SSH key inside ~/.ssh for CLI discovery (#42)
+    </title>
+    <updated>2026-09-10T03:00:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Generate ephemeral SSH key inside ~/.ssh for CLI discovery (#42)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e4096460aba2afbaa44336fe1fc22c20dcc97a84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/e4096460aba2afbaa44336fe1fc22c20dcc97a84"/>
+    <title>
+        Fix resumed classification; always pin source branch (#41)
+    </title>
+    <updated>2026-09-10T02:51:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix resumed classification; always pin source branch (#41)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0d58e29ff168bda6dc7b83093050ffbaa0dee03</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/d0d58e29ff168bda6dc7b83093050ffbaa0dee03"/>
+    <title>
+        Dump V2 source object on invalid boundary state (#40)
+    </title>
+    <updated>2026-09-10T02:43:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dump V2 source object on invalid boundary state (#40)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/652cd13d598983204e7fe5886b65e87f2a837b13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/652cd13d598983204e7fe5886b65e87f2a837b13"/>
+    <title>
+        Add guard progress markers for silent-failure diagnosis (#39)
+    </title>
+    <updated>2026-09-10T02:35:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add guard progress markers for silent-failure diagnosis (#39)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ff613eeb6513dbf29f0a2fde9d3a0ab566f8d074</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/ff613eeb6513dbf29f0a2fde9d3a0ab566f8d074"/>
+    <title>
+        Allow empty domains on cutover resume (#38)
+    </title>
+    <updated>2026-09-10T02:25:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Allow empty domains on cutover resume (#38)&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

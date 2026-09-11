@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/DLangellotti/targum/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/DLangellotti/targum/commits/master.atom"/>
+  <title>Recent Commits to targum:master</title>
+  <updated>2026-09-09T20:06:21Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b388a2255372659ea31a76d0d31d4f4a0e18a67d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/b388a2255372659ea31a76d0d31d4f4a0e18a67d"/>
+    <title>
+        Merge pull request #143 from DLangellotti/words-on-every-door
+    </title>
+    <updated>2026-09-09T20:06:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #143 from DLangellotti/words-on-every-door
+
+fix(serve): every build door asks for words&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7de497ef56f51305305b16db778fa88aa31acd5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/7de497ef56f51305305b16db778fa88aa31acd5a"/>
+    <title>
+        docs: the fix&#39;s history told in the past tense, and a changelog line …
+    </title>
+    <updated>2026-09-09T19:56:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the fix&amp;#39;s history told in the past tense, and a changelog line for it
+
+Two docstrings still said `_builder` reads `words` and takes silence for no,
+which was true when they were written and is the thing the previous commit
+changed. The audio test also claimed the chapter door lost words, and it did
+not: it renders the annotation already on disk and never reaches `annotate`.
+It is in the test so a rewrite that does annotate cannot forget, and now says
+so.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2340e147035c97beffb74cdf4d831e1fa1d1e331</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/2340e147035c97beffb74cdf4d831e1fa1d1e331"/>
+    <title>
+        fix(serve): every build door asks for words, since none means to ask …
+    </title>
+    <updated>2026-09-09T05:47:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(serve): every build door asks for words, since none means to ask for none
+
+Buying a recording&amp;#39;s second part rebuilt the whole reader with no word a
+reader could tap, the first part&amp;#39;s marks included. The part and chapter
+doors write their own job options and never carried `words`, and
+`Library._builder` read `difficulty=bool(options.get(&amp;quot;words&amp;quot;))`, so
+`Pipeline.annotate` returned None, every section shipped an empty word
+table, and the job said `done`. The two chat doors had forgotten the same
+key the day before (8b4cf17); a third door had too, as that fix predicted.
+
+`_builder` now reads `options.get(&amp;quot;words&amp;quot;, True)`: on unless a door says
+otherwise, and nothing anywhere says otherwise. The default lives where
+every door meets, so the next door cannot forget. Pinned on the part door,
+the chapter door, a bare build, and an explicit opt-out.
+
+A deploy runs `rebuild --words` over every home, so affected readers get
+their marks back on the box without a hand.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92916fa095bf9bcb3ef1052cf2f4e403f147679a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/92916fa095bf9bcb3ef1052cf2f4e403f147679a"/>
+    <title>
+        Merge pull request #142 from DLangellotti/something-else
+    </title>
+    <updated>2026-09-09T02:19:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #142 from DLangellotti/something-else
+
+A &amp;quot;something else&amp;quot; link beside the served next text&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/96408d70baf1f577fc6bb7f9982ff1e3100b16e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/96408d70baf1f577fc6bb7f9982ff1e3100b16e6"/>
+    <title>
+        feat(reader): a way to disagree with the offer, and nothing more
+    </title>
+    <updated>2026-09-09T02:11:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reader): a way to disagree with the offer, and nothing more
+
+The served next text (targum-internal#176) offers one text with a stated reason
+and no way to say &amp;quot;not that one&amp;quot;. Its open decision 4 asked whether a refusal
+should exist, and 2026-09-09 answered: a quiet &amp;quot;something else&amp;quot; link that draws
+again, with no memory.
+
+Not a refusal the server remembers. The whole argument for the served text is
+that saying yes costs nothing; a refusal that remembered would turn a door into
+a profile nobody asked to build, and drag in decay, undo and a per-reader store.
+Drawing again costs a click and removes the only bad feeling the single door
+has, which is being told what to read with no way to disagree except leaving.
+
+`next_after` returns a short list rather than one pick. The page fetches nothing
+— the rule in CLAUDE.md, pinned by test_render.py — so a refusal cannot ask the
+library for another text, and the alternatives ride in the page.
+
+**Every draw keeps the reason that is true of it.** A pick from the wider pool
+still says it is a different Hebrew on the second draw; one below this text says
+it is easier rather than pretending to be a step up. A refusal that lied about
+what it was offering would be worse than no refusal. That needed one new
+sentence, &amp;quot;Easier than this one.&amp;quot;, and a band: five points, which is roughly the
+width of one of the library&amp;#39;s own levels.
+
+The control is rendered only where there is a second pick and takes itself away
+when the list runs out, because one that offers for ever is offering nothing.
+
+Closes DLangellotti/targum-internal#233
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e695ed7da98417121c1eb26d0091b68dc2a66032</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/e695ed7da98417121c1eb26d0091b68dc2a66032"/>
+    <title>
+        Merge pull request #141 from DLangellotti/licence-translations
+    </title>
+    <updated>2026-09-09T02:10:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #141 from DLangellotti/licence-translations
+
+A targum is two texts, and the licence report was reading one&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/718d529a25880ec8f54e6b03580c08df11f74539</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/718d529a25880ec8f54e6b03580c08df11f74539"/>
+    <title>
+        fix(licences): a targum is two texts, and the report was reading one
+    </title>
+    <updated>2026-09-09T02:01:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(licences): a targum is two texts, and the report was reading one
+
+`targum licences` built its rows as `(&amp;quot;text&amp;quot;, entry.id, entry.licence)` and never
+looked at `entry.translations`. But the English beside the Hebrew is a separate
+work under a separate licence, recorded per translation since #115, and it ships
+in the same reader.
+
+Measured on the catalogue: 502 entries, 131 translations, and **90 of those
+translations stand worse than the source they sit beside** — 88 free-in-Hebrew
+against owed-in-English, and two with nothing recorded at all. None of them were
+counted, so &amp;quot;451 nothing owed&amp;quot; was short by 88.
+
+Nothing was closed. No NonCommercial or NoDerivatives translation was hiding
+behind a Public Domain source, so no door the report called open was actually
+shut. What was wrong is the bookkeeping, and the bookkeeping is the point of
+#115: an obligation nobody has written down is one nobody will honour.
+
+So: every translation is a row, and a line under the table names the pairs whose
+two halves disagree, which is the number somebody preparing an export needs and
+neither column showed. `unknown` ranks above `owed` in that comparison on
+purpose — this command&amp;#39;s own rule is that an unchecked licence is not an absent
+one.
+
+`scripts/backfill_licences.py` learns the same. A Sefaria rendering names its
+language in the ref (`sefaria:en:Ruth`) and the Hebrew side does not, which is
+the only difference between the two readers; asked of Ruth&amp;#39;s English it returns
+the CC-BY that was recorded there by hand.
+
+Closes DLangellotti/targum-internal#234
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de002135e6327dae2f5008ae91c946b750d30834</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/de002135e6327dae2f5008ae91c946b750d30834"/>
+    <title>
+        Merge pull request #140 from DLangellotti/liturgy-hour
+    </title>
+    <updated>2026-09-09T01:58:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #140 from DLangellotti/liturgy-hour
+
+Two of the three liturgy rows are not the morning&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d1bae3f41e5c91a3393b784afcc9d4a970cb7e0d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/d1bae3f41e5c91a3393b784afcc9d4a970cb7e0d"/>
+    <title>
+        Merge pull request #139 from DLangellotti/mussar-mesillat
+    </title>
+    <updated>2026-09-09T01:58:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #139 from DLangellotti/mussar-mesillat
+
+Pin Mesillat Yesharim under both spellings Sefaria answers to&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/12c4bc88d8ac71688452d86f414c7b38987d6a7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/12c4bc88d8ac71688452d86f414c7b38987d6a7d"/>
+    <title>
+        fix(catalogue): two of the three liturgy rows are not the morning
+    </title>
+    <updated>2026-09-09T01:52:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(catalogue): two of the three liturgy rows are not the morning
+
+The cover phrase said &amp;quot;read at the same hour each morning&amp;quot;. The first three
+rows filed under `liturgy` are the weekday Shacharit, Minchah and Maariv, and
+two of them are the afternoon and the evening.
+
+Also records on the enum what the shelf turned out to hold: this was not a
+filing waiting to happen. The three services were already there under `prose`,
+which `library.js` labels &amp;quot;Bible narrative — the Bible&amp;#39;s story books&amp;quot; in as many
+words, so a reader looking at the weekday Shacharit was told it was a story book
+of the Bible. That is the same correction `talk` was added to make.
+
+Refs DLangellotti/targum-internal#120
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/946eacfdf5a694f58281c92b3f673b87b89fceb9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/946eacfdf5a694f58281c92b3f673b87b89fceb9"/>
+    <title>
+        Merge pull request #138 from DLangellotti/kind-liturgy
+    </title>
+    <updated>2026-09-09T01:51:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #138 from DLangellotti/kind-liturgy
+
+Kind.liturgy, because a siddur is not a document&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e50989ab288d3989ff812508f80e95c0417db002</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/e50989ab288d3989ff812508f80e95c0417db002"/>
+    <title>
+        fix(sefaria): pin Mesillat Yesharim under both spellings Sefaria answ…
+    </title>
+    <updated>2026-09-09T01:47:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(sefaria): pin Mesillat Yesharim under both spellings Sefaria answers to
+
+Sefaria answers to `Mesilat Yesharim` and to `Mesillat Yesharim`, and its index
+now returns the double-`l` as the book&amp;#39;s title. Only the single-`l` was pinned,
+so a ref written the way Sefaria spells it today missed the pin and fell through
+to the Tanakh default:
+
+    Sefaria has no &amp;#39;Tanach with Ta&amp;#39;amei Hamikra&amp;#39; of Mesillat Yesharim.
+
+Which reads like a missing book rather than a missing pin, about a book that is
+there — 898 blocks and 30,620 vocalized Hebrew words, paired segment for segment
+with an English that covers all of it.
+
+Found while filing the work for targum-internal#120.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54ca6e96a0b3dfdcfe06396f76fdd5076bbc3f1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/54ca6e96a0b3dfdcfe06396f76fdd5076bbc3f1b"/>
+    <title>
+        Merge pull request #137 from DLangellotti/private-half-hook
+    </title>
+    <updated>2026-09-09T01:46:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #137 from DLangellotti/private-half-hook
+
+A pre-push hook checks the private half, which nothing else could&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3eb125c05fe57153a4e448945806c1dab52cc780</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/3eb125c05fe57153a4e448945806c1dab52cc780"/>
+    <title>
+        Merge pull request #136 from DLangellotti/jobs-index
+    </title>
+    <updated>2026-09-09T01:46:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #136 from DLangellotti/jobs-index
+
+The line is answered by the line, not by everything ever run&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a8faffc17f6607c957feaa717c0890e12e46e876</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/a8faffc17f6607c957feaa717c0890e12e46e876"/>
+    <title>
+        fix(catalogue): a cover prompt for the new kind, which the Draw butto…
+    </title>
+    <updated>2026-09-09T01:41:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(catalogue): a cover prompt for the new kind, which the Draw button needs
+
+`cover_prompt` maps every `Kind` to a phrase, and a value missing from it raises
+`KeyError` out of the `/cover` route — which is what happened to the scenes, and
+is why `tests/test_public.py` pins every value. CI caught it; the local run did
+not, because it was a subset.
+
+Said as the hour rather than as an object: the brand rules below already refuse
+ritual objects of any tradition, and what a prayer book actually is to a reader
+is the morning it is opened at.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b7768914d9249e3b260799f9d6b9ae71d894b9d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/7b7768914d9249e3b260799f9d6b9ae71d894b9d"/>
+    <title>
+        style(tests): a docstring that opens on a quotation mark
+    </title>
+    <updated>2026-09-09T01:36:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style(tests): a docstring that opens on a quotation mark
+
+`ruff format` wants a space between the delimiter and a leading `&amp;quot;`. Reworded
+instead, since the sentence reads better without the quotation.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65ae9446e588ef1d8c539de7f19fb070e96f6ba9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/65ae9446e588ef1d8c539de7f19fb070e96f6ba9"/>
+    <title>
+        feat(catalogue): Kind.liturgy, because a siddur is not a document
+    </title>
+    <updated>2026-09-09T01:34:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(catalogue): Kind.liturgy, because a siddur is not a document
+
+The siddur is the most-read Hebrew text in the world and the best one on this
+shelf to learn from, for a reason none of the others can claim: it is the same
+words in the same order every morning, which is spaced repetition already
+installed in a reader&amp;#39;s life. `Kind` had no word for it. `document` would have
+been the shrug, and `Kind` exists so a reader is told what they are holding.
+
+Decided deliberately rather than defaulted, which is what
+targum-internal#120 asked for. It also gives the Beit Midrash mode that
+`JEWISH = {tanakh, judaica}` already anticipates something to hang on: a text
+being *recited* wants the Hebrew first, the translation second, and a gloss that
+stops repeating itself by the tenth morning. None of that is buildable off
+`document`.
+
+The library page gets &amp;quot;Prayer&amp;quot; and a note. Its chips are drawn from what is
+actually on the shelf, so nothing appears until a liturgy text is filed.
+
+And a test that every `Kind` and `Register` has a word beside it, because
+`named()` returns &amp;quot;&amp;quot; for a value it does not know: a new enum value shows as a
+blank column and no filter, and says nothing about it. `Register.none` is
+excluded — it is the empty string for texts that are not in Hebrew.
+
+Refs DLangellotti/targum-internal#120
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c739791841a71f64ade18fe5f9510c7fc17520c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/2c739791841a71f64ade18fe5f9510c7fc17520c"/>
+    <title>
+        chore: a pre-push hook checks the private half, which nothing else could
+    </title>
+    <updated>2026-09-09T01:32:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: a pre-push hook checks the private half, which nothing else could
+
+Eight gitignored modules — the weekly&amp;#39;s writer and voice, the dialogue writer,
+the recording cutter and aligner — exist only in the main checkout. CI has a
+public checkout, a worktree of a tracked branch carries no ignored files, and
+the wheel does not carry them either: hatchling drops VCS-ignored files, and
+`[tool.hatch.build.targets.wheel].artifacts` adds back exactly one, verified by
+unzipping the wheel tonight&amp;#39;s deploy shipped. So no lint, no type check and no
+test saw them, while they go on depending on the public half — a rename in
+`recording/`, `weekly/index.py` or `models.py` breaks one with every check still
+green, and the failure surfaces at the next weekly build, by hand, days later.
+
+A push is the right moment. It is when a public-half change stops being local,
+and the last moment the two halves are in front of each other, because what goes
+to GitHub is only ever one of them.
+
+The hook runs ruff, ruff format, mypy and `tests/test_private_half.py` over the
+eight. In a tree that has none of them it is silent and instant, which is every
+worktree; a tree with *some* of them is refused, because a partial private half
+builds a wheel with holes in it. `--no-verify` skips it.
+
+Not committed into `.git/hooks` because that is per-clone by design, so
+`deploy/hooks/install.sh` puts it there and `CLAUDE.md` names both beside the
+by-hand command.
+
+Installing it immediately found three lint errors and a formatting divergence
+sitting in the private half, on top of the three found by hand the same day; and
+a deliberate rename of `weekly.models.dated_title` was caught twice over, by
+mypy and by the import test.
+
+Closes DLangellotti/targum-internal#230
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79a53c7094d92dc30e64ed1519d798757cffbb6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/79a53c7094d92dc30e64ed1519d798757cffbb6a"/>
+    <title>
+        perf(serve): the line is answered by the line, not by everything ever…
+    </title>
+    <updated>2026-09-09T01:31:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/249865e8d7ab257cfbcf6d07df62e60d?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>david@targum.page</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(serve): the line is answered by the line, not by everything ever run
+
+`Library.mine` computed a reader&amp;#39;s place in the queue by filtering the whole job
+registry — every job the process knows about, loaded at startup from every row
+ever written. Since 2026-09-05 every chat turn is a job row, which is right and
+is how the spending rails see a turn, so that registry grows with every turn
+anybody takes and a question about the two builds waiting was being answered by
+walking the conversations.
+
+`Jobs` is a dict that indexes the builds as they arrive, and `Jobs.waiting`
+returns the ones worth answering about — sweeping out, on the way past, exactly
+what `mine` would have skipped: settled for longer than `RECENT_MS`, or gone
+from the registry by any route. That is one condition rather than two policies
+to keep in step.
+
+The index is maintained inside the dict rather than at the thirteen places that
+assign a job, because an index the caller has to remember is an index that
+drifts; `Library.jobs`&amp;#39;s setter wraps a plain mapping so the tests that stage a
+queue by assigning a whole dict keep it.
+
+What the server *remembers* is deliberately unchanged: every job is still in the
+registry, `/job/&amp;lt;id&amp;gt;` still answers about one from three months ago, and the
+ledger on disk is still the record. Only the per-request cost moves. Bounding
+the memory is the other half of targum-internal#231 and stays filed.
+
+Refs DLangellotti/targum-internal#231
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b659f20331a42e9217febbe0a3fed8c1b7d30577</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DLangellotti/targum/commit/b659f20331a42e9217febbe0a3fed8c1b7d30577"/>
+    <title>
+        Merge pull request #135 from DLangellotti/chat-sync
+    </title>
+    <updated>2026-09-09T01:04:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/99733743?s=30&amp;v=4"/>
+    <author>
+      <name>DLangellotti</name>
+      <uri>https://github.com/DLangellotti</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #135 from DLangellotti/chat-sync
+
+fix(chat): the chat page starts the sync, so a signed-in reader is not told to sign in&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

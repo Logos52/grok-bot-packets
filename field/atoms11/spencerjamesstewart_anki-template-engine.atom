@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/spencerjamesstewart/anki-template-engine/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/spencerjamesstewart/anki-template-engine/commits/main.atom"/>
+  <title>Recent Commits to anki-template-engine:main</title>
+  <updated>2026-09-11T00:37:16Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f1f02c47b7ef73e38d546d594109d090385fc8e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/1f1f02c47b7ef73e38d546d594109d090385fc8e"/>
+    <title>
+        feat(anp_qa): accept tags: header and split detail
+    </title>
+    <updated>2026-09-11T00:37:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anp_qa): accept tags: header and split detail
+
+Skip an optional leading &amp;#39;tags:&amp;#39; line (deck tags still come from the
+driver). Split answers on the first &amp;#39;&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;&amp;#39; into a short lead and an
+&amp;#39;Additional info&amp;#39; detail; move detail to note for key_list and pairwise
+compare cards, which do not render detail.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Qj1AdqM9S9Az2fCN1oJC41&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2acf239a32838b5774732fb00aeb3a92188e31f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/2acf239a32838b5774732fb00aeb3a92188e31f6"/>
+    <title>
+        feat(anp_qa): allow chapterless inputs
+    </title>
+    <updated>2026-08-30T18:21:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anp_qa): allow chapterless inputs
+
+chapters=None skips the chapter self-check and omits the per-card
+chapter tag, for sources with no CHAPTER/UNIT structure.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5322d616383c595662c070e0a497d6a7c0cc9de7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/5322d616383c595662c070e0a497d6a7c0cc9de7"/>
+    <title>
+        feat(anp_qa): accept &#39;# UNIT N&#39; banner lines
+    </title>
+    <updated>2026-08-21T20:38:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anp_qa): accept &amp;#39;# UNIT N&amp;#39; banner lines&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a6e8410225d9ab23465fc275f67a1d59069a5ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/6a6e8410225d9ab23465fc275f67a1d59069a5ea"/>
+    <title>
+        feat: add reusable Q:/A: deck driver
+    </title>
+    <updated>2026-08-16T22:13:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add reusable Q:/A: deck driver
+
+Extracts the parser, HTML escaping, override merging, and the five
+self-checks that were duplicated byte-for-byte across two gitignored
+batch drivers. Batch drivers now supply only an OVERRIDES table and a
+generate() call.
+
+Verified behavior-preserving: regenerating the chapters 4-6 deck through
+this module reproduces the previously shipped file byte-for-byte.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3e90635d8f5b958240b5ca6e739eea6be02513e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/c3e90635d8f5b958240b5ca6e739eea6be02513e"/>
+    <title>
+        feat: add input/ folder with auto-archive on successful gen
+    </title>
+    <updated>2026-07-22T05:43:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add input/ folder with auto-archive on successful gen
+
+Drivers declare source files via new register_input(), which prints an
+&amp;#39;Input: &amp;lt;abspath&amp;gt;&amp;#39; contract line. After a fully successful gen run,
+run.sh moves consumed inputs to input/archive/&amp;lt;batch&amp;gt;/ so the same
+source can&amp;#39;t be regenerated by accident. Docs rewritten to the
+repo-as-workspace model; gen_medterm.py repointed to input/.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47fa2ea066da927492ef1232d913868242deb4d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/47fa2ea066da927492ef1232d913868242deb4d1"/>
+    <title>
+        feat: add medical-terminology card generator driver
+    </title>
+    <updated>2026-07-16T05:06:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add medical-terminology card generator driver
+
+Add gen_medterm.py, which parses the abbreviations and glossary source
+files into three validated Anki decks (word parts, abbreviations,
+eponyms), merging duplicate fronts and deduping globally.
+
+Point the INSTRUCTIONS.md output rule at pwd/outbox/ and gitignore the
+outbox/ directory so generated batches never get committed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8be1ea30d8e08cf0dfa8ce2faaca50725f68ac45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/8be1ea30d8e08cf0dfa8ce2faaca50725f68ac45"/>
+    <title>
+        docs: add reconstructible-vs-arbitrary card test
+    </title>
+    <updated>2026-07-14T13:15:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add reconstructible-vs-arbitrary card test&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89632a0c1198e68e77a4cb2b8f18bc2fcf5fbf5b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/89632a0c1198e68e77a4cb2b8f18bc2fcf5fbf5b"/>
+    <title>
+        feat(run)!: retire the deployment model
+    </title>
+    <updated>2026-07-14T03:52:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(run)!: retire the deployment model
+
+Cowork sessions now point directly at the working repo, so run.sh no
+longer manages git state: the update subcommand, do_update(), and the
+dirty-tree check are removed. Docs drop the _tools read-only-clone
+layout and document that drivers and decks live outside the repo.
+
+BREAKING CHANGE: ./run.sh update no longer exists&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9c728f16208c5f9835ae972b155985a4ff91801</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/a9c728f16208c5f9835ae972b155985a4ff91801"/>
+    <title>
+        feat!: add tags column and subject-neutralize engine
+    </title>
+    <updated>2026-07-14T03:00:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat!: add tags column and subject-neutralize engine
+
+Deck output gains a third tags column (#tags column:3); build_deck
+takes deck-wide tags, merges per-card tags, and raises on untagged
+cards or tags with whitespace. Rename clinical -&amp;gt; in_context
+(chart -&amp;gt; excerpt) and drug_name -&amp;gt; alias. Rebuild sample deck as
+mixed-domain, non-medical. Rewrite INSTRUCTIONS.md around Anki as
+cold-recall layer: drop Type II/III question blocks, add Tags
+section, bound true/false trap cards.
+
+BREAKING CHANGE: card types clinical and drug_name removed;
+validate_deck now requires three columns and tags&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f2a6d38806fa9dea693d133e6050e2f07d3e5c4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/7f2a6d38806fa9dea693d133e6050e2f07d3e5c4"/>
+    <title>
+        chore: ignore .memory-updates
+    </title>
+    <updated>2026-07-09T20:20:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: ignore .memory-updates&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b9296c47572f0c01988065e48b2891f1684f83c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/6b9296c47572f0c01988065e48b2891f1684f83c"/>
+    <title>
+        feat(run): add gen subcommand for pull-generate-validate
+    </title>
+    <updated>2026-07-03T18:17:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(run): add gen subcommand for pull-generate-validate&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/281c485177f39e4a60881c7371f44347f13d8e86</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/281c485177f39e4a60881c7371f44347f13d8e86"/>
+    <title>
+        docs: add expert &amp; orientation question conventions
+    </title>
+    <updated>2026-07-03T06:48:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add expert &amp;amp; orientation question conventions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bc898c1e850dadbefc828ecddadc716735f8e167</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/bc898c1e850dadbefc828ecddadc716735f8e167"/>
+    <title>
+        feat: add run.sh, deck validator CLI, and docs
+    </title>
+    <updated>2026-07-03T06:33:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add run.sh, deck validator CLI, and docs
+
+Deliverables from flashgen-build-spec.md:
+- run.sh: update (ff-only, fails on dirty/diverged), validate, sample
+- anki_templates.py: generalize _self_check into validate_deck(path),
+  add argparse CLI (--validate, --list-types), subject-neutral docstring
+  pointing at CATEGORIES as the type source of truth
+- INSTRUCTIONS.md: universal card-authoring rules (versioned header)
+- README.md: deployment model and usage
+- .gitignore: keep the generated sample deck from dirtying the clone
+
+Generated sample output verified byte-identical to pre-change engine.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8deb6aa38fcd4044cd0ddb966ad476cc8b2febc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/f8deb6aa38fcd4044cd0ddb966ad476cc8b2febc"/>
+    <title>
+        feat(builders): add ethics, true/false, and drug-name card types
+    </title>
+    <updated>2026-06-23T03:19:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(builders): add ethics, true/false, and drug-name card types
+
+Add six card builders to the engine and register them in CATEGORIES
+and the dispatcher:
+
+- argument    (ARGUMENT,          indigo)
+- position    (POSITION,          gold)
+- objection   (OBJECTION &amp;amp; REPLY, rose)
+- distinction (DISTINCTION,       purple)
+- true_false  (TRUE / FALSE,      slate)
+- drug_name   (DRUG NAME,         gold)
+
+Extend PALETTE with slate (#8f9aa6) and rose (#e0728c), and document
+the new categories in the module docstring.
+
+Additive only; no existing builder, helper, or output format changes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/775d77cb7fca847825544fc937ae3c0f8f98115d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/775d77cb7fca847825544fc937ae3c0f8f98115d"/>
+    <title>
+        feat(engine): add drug_name card category
+    </title>
+    <updated>2026-06-19T03:18:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(engine): add drug_name card category&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67b6e1c8b49bc447c8f34806c75537f39284ca9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/67b6e1c8b49bc447c8f34806c75537f39284ca9a"/>
+    <title>
+        feat(engine): add true_false card category
+    </title>
+    <updated>2026-06-12T02:36:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(engine): add true_false card category
+
+- Front uses a neutral slate badge so it never hints at the answer
+
+- Back leads with a TRUE (green) / FALSE (red) verdict, then a &amp;#39;Why&amp;#39; explanation focused on why the other answer is wrong
+
+- Verdict colors are fixed; per-card color override affects the front badge only
+
+- Add slate palette color + TRUE_COLOR/FALSE_COLOR constants and two sample cards&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed8a047f799977371fe609f5135f8d2842de99a2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/ed8a047f799977371fe609f5135f8d2842de99a2"/>
+    <title>
+        feat(engine): add Structure↔Function category, drop tag output, broad…
+    </title>
+    <updated>2026-06-02T03:23:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(engine): add Structure↔Function category, drop tag output, broaden builders&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8877870893507a220fcd39c7bac3f9c0fa6f8da0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/spencerjamesstewart/anki-template-engine/commit/8877870893507a220fcd39c7bac3f9c0fa6f8da0"/>
+    <title>
+        Add files via upload
+    </title>
+    <updated>2026-06-01T22:45:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/289839794?s=30&amp;v=4"/>
+    <author>
+      <name>spencerjamesstewart</name>
+      <uri>https://github.com/spencerjamesstewart</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add files via upload&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

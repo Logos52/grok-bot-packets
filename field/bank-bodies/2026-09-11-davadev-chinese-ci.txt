@@ -1,0 +1,568 @@
+===== README.md =====
+# Chinese Comprehensible Input — Obsidian Plugin
+
+| Desktop — reading view | Mobile — word lookup |
+| :---: | :---: |
+| <img src="resources/screenshots/desktop-reading-none.png" alt="Chinese reading view on desktop, words colored by status" height="430"> | <img src="resources/screenshots/mobile-reading-card.png" alt="Word popup card on mobile" height="460"> |
+
+<p align="center"><em>The same note rendered for reading. A runnable demo lives at <a href="resources/example.md">resources/example.md</a>.</em></p>
+
+Turn any Chinese note in Obsidian into a learner-friendly comprehensible-input reading environment. Dictionary-aware tokenization, exposure tracking, SRS, and optional OpenAI-compatible AI story generation. Works on desktop and mobile (no Node/Electron at runtime).
+
+## Tour the interface
+
+A quick visual walkthrough. The green numbers on each screenshot map to the lists
+below; deeper explanations live in [`docs/`](./docs/index.md).
+
+### Reading toolbar (desktop)
+
+<img src="resources/screenshots/desktop-toolbar-annotated.png" alt="Annotated Chinese-view toolbar" width="620">
+
+- **1 · Edit** — toggle between read and edit (type Chinese with annotations off).
+- **2 · Known**, **3 · Unknown**, **4 · Partial** — tap a word to set its status.
+- **5 · Add custom word** — tap characters to build a dictionary entry.
+- **6 · Highlighter** — arm tap-to-format mode (see [Formatting](./docs/formatting.md)).
+- **7 · Status / HSK** — color words by learning status or by HSK level.
+- **8 · More** — the display menu (below).
+- **9 · Note status bar** — Known / Partial / Unknown / New %, top HSK; tap for full stats.
+
+### Display menu (the "More" button)
+
+<img src="resources/screenshots/desktop-display-menu-annotated.png" alt="Annotated display menu" width="330">
+
+- **1 · Show / hide colors** — per-status (or per-HSK) tint toggles.
+- **2 · Display mode** — 2-line (pinyin), 3-line (pinyin + gloss), or None.
+- **3 · Known-word popups** — allow tapping words you already know.
+- **4 · Font size**, **5 · Line spacing** — reader sizing.
+- **6 · Stats**, **7 · Generate story** — open vocabulary stats / AI story generation.
+
+### Colors & the 1–3 line stack (3-line mode)
+
+<img src="resources/screenshots/desktop-three-line-annotated.png" alt="Annotated three-line view showing word states" width="620">
+
+A word's **status drives its color and how much help is shown**:
+
+1. **Known** (green) — characters only; you don't need help.
+2. **Partial** (yellow) — adds pinyin / meaning for a word you half-know.
+3. **New / untracked** (blue) — full gloss + pinyin + characters.
+4. **Unknown** (red) — full gloss + pinyin + characters, flagged for attention.
+
+Those are background tints. The **font** color of each of the three rows —
+characters, pinyin, English — is separately settable under **Settings → Display →
+Advanced display → Reader text colors** (off by default, so your theme stays in charge).
+See [Display modes & colors](./docs/display-modes.md).
+
+### Traditional Chinese (Taiwan / Hong Kong)
+
+**Settings → Script & region → Text script** is **Automatic** by default: both
+scripts are recognised, each word is shown the way you read it, and a mixed
+vault works with nothing to switch. Your vocabulary is shared between the
+scripts — mark 學習 known and 学习 is known too.
+
+Automatic costs about 29 MB of extra index. Choosing **Simplified** avoids that
+but cannot read a Traditional note — it falls apart into single characters — so
+change it only if you know your notes are Simplified and memory is tight.
+
+**Pronunciation** can be switched to the Taiwan reading for the ~500 words the
+dictionary records one for (垃圾 lè sè rather than lā jī). It does not cover
+the neutral-tone difference (謝謝 xièxiè, 東西 dōngxī) — CC-CEDICT has no data
+for those. Zhuyin is not supported yet.
+
+Your notes are never rewritten, and words are never converted between scripts
+for display — about 540 Simplified headwords map to more than one Traditional form
+and there is no frequency data to pick correctly, so the plugin shows you the
+form you actually read.
+See [Traditional Chinese & regional pronunciation](./docs/traditional-chinese.md).
+
+### Open the Chinese view (mobile)
+
+<img src="resources/screenshots/mobile-open-view-annotated.png" alt="The 中 button opens the Chinese view" width="320">
+
+1. From a normal note, tap **中** in the header to open the Chinese view.
+
+### Word lookup card (mobile)
+
+<img src="resources/screenshots/mobile-reading-card-annotated.png" alt="Annotated word popup card" width="340">
+
+1. **Word, pinyin & meaning** — headword, reading, traditional form, definitions.
+2. **"I know"** — tick characters / pinyin / translation; this sets the word's status.
+3. **Per-word stats** — HSK, times seen, last seen, status, SRS due date.
+4. **Exposure history** — recent sightings driving spaced repetition.
+5. **Actions** — Ignore, **Mnemonic** (write your own emoji line + story, or generate them with AI), Edit, or **Enhance** (AI, see below).
+
+### Tap-to-format & highlights (mobile)
+
+<img src="resources/screenshots/mobile-formatting-annotated.png" alt="Annotated formatting mode" width="320">
+
+1. **Highlighter button** — blue = add formatting (tap again → red remove → off).
+2. **Mode banner** — tap a start word then an end word; **Formats ▾** picks the
+   format / highlight color, **Exit** leaves.
+3. **The applied highlight** spanning the selected words.
+
+<p>
+<img src="resources/screenshots/mobile-formatting-menu.png" alt="Formats menu" height="360">
+&nbsp;
+<img src="resources/screenshots/mobile-formatting-remove.png" alt="Remove (red) formatting mode" height="360">
+</p>
+
+<em>Left: the Formats menu (Bold, Italic, headings, quote, and nine highlight
+colors). Right: the red <strong>remove</strong> mode — tap a span to strip its
+formatting.</em> Full details in [Formatting & highlighting](./docs/formatting.md).
+
+### AI dictionary Enhance (mobile)
+
+A sparse dictionary entry can be enriched by your configured AI provider.
+
+<p>
+<img src="resources/screenshots/mobile-enhance-before.png" alt="Sparse entry before Enhance" height="430">
+&nbsp;
+<img src="resources/screenshots/mobile-enhance-annotated.png" alt="Annotated enriched entry after Enhance" height="430">
+</p>
+
+Left → right, before and after tapping **Enhance**:
+
+1. **"Dictionary entry enhanced"** confirmation.
+2. **Enriched definitions + grammar** — full senses replace the bare "variant of…".
+3. **Revert** — undo the enhancement.
+
+### Flashcard review (mobile)
+
+<img src="resources/screenshots/mobile-flashcards-annotated.png" alt="Annotated flashcard review" width="340">
+
+1. **Stats view** — Dashboard / Flashcards / Words.
+2. **Review queue** — Unclassified, Due (SRS), or Smart story.
+3. **Progress** through the queue (sorted by frequency) · Skip.
+4. **The card** — headword, times seen, Reveal pinyin, example sentence.
+5. **Grade** — Known / Partial / Unknown, or Ignore.
+
+### Vocabulary stats & Smart stories
+
+<p>
+<img src="resources/screenshots/mobile-stats-dashboard.png" alt="Vocabulary stats dashboard" height="430">
+&nbsp;
+<img src="resources/screenshots/mobile-stats-progress.png" alt="Vocabulary progress and HSK coverage" height="430">
+&nbsp;
+<img src="resources/screenshots/mobile-smart-story.png" alt="Smart story generation" height="430">
+</p>
+
+<em>Tracked / known / partial counts and a comfort-HSK level; cumulative progress
+per-HSK coverage over time, and a Topic coverage radar showing which subjects your vocabulary covers; and Smart-story generation that weaves your
+due words into a level-appropriate story.</em> See
+[Spaced repetition](./docs/srs.md) and [Story generation](./docs/story-generation.md).
+
+## Why This Plugin Exists
+
+Learning a language should be enjoyable. Unfortunately, many learners experience the opposite: endless flashcards, grammar drills, vocabulary lists, and a constant feeling that progress is slow and difficult.
+
+When I started learning Chinese, the biggest breakthrough was discovering Comprehensible Input.
+
+The core idea is simple: instead of memorizing isolated words and grammar rules, you learn by consuming content that is just slightly above your current level. You acquire the language naturally through reading and listening, much like children learn their native language.
+
+Tools such as DuChinese have shown how powerful this approach can be. Reading stories designed for your level is far more engaging than spending hours reviewing flashcards. For a long time, comprehensible input allowed me to progress while enjoying the process.
+
+However, as your Chinese improves, a new problem appears.
+
+At beginner and intermediate levels, common vocabulary appears frequently enough that repeated exposure naturally reinforces it. But as you advance, you start learning increasingly rare words. These words may only appear occasionally, making it difficult to retain them through reading alone. This is the point where many learners feel forced to return to flashcards and traditional spaced repetition systems.
+
+The problem is that flashcards often break the flow and enjoyment of language learning. Instead of reading interesting content, you end up reviewing isolated vocabulary items again.
+
+This plugin explores a different approach.
+
+### Spaced Repetition Through Stories
+
+Instead of using flashcards, this plugin uses stories and meaningful content as the vehicle for spaced repetition.
+
+With the help of AI, it becomes possible to generate or adapt content that naturally includes the vocabulary you need to review. Rather than seeing a word on a card, you encounter it inside a story, dialogue, article, or topic that interests you.
+
+The goal is to combine the effectiveness of spaced repetition with the enjoyment of comprehensible input.
+
+You can import Chinese texts that interest you, track your vocabulary knowledge, and receive content tailored to the words that need reinforcement. Learning becomes less about reviewing cards and more about reading Chinese every day.
+
+### A Better Reading Experience
+
+Many Chinese reading tools provide pinyin and translations for every word. While helpful at first, this creates another problem: learners naturally rely on the easiest information available.
+
+If English translations are always visible, your eyes drift toward English. If pinyin is always displayed, you start reading pinyin instead of recognizing characters.
+
+As a result, character recognition develops more slowly than it should.
+
+This plugin takes a different approach.
+
+Words can be marked as:
+
+- Known
+- Partially known
+- Unknown
+
+Based on that knowledge, the plugin can selectively display characters, pinyin, or translations only where they are actually needed.
+
+Words you already know remain visible as Chinese characters only, encouraging character recognition and reading fluency. Support is shown only for vocabulary that still requires assistance.
+
+The result is a reading experience that provides help when necessary without constantly encouraging dependence on pinyin or translations.
+
+### Measure Real Progress
+
+Another important aspect of language learning is feedback.
+
+Many learners have only a vague sense of their progress. They know they have studied for months or years, but they cannot easily quantify what they have learned.
+
+By tracking vocabulary knowledge over time, this plugin provides measurable insights into your progress:
+
+- How many words you know
+- Which words are improving
+- Which words are being forgotten
+- Whether your vocabulary is growing over time
+
+Seeing tangible progress can be highly motivating, especially during the long journey of learning Chinese. The goal is not only to make learning more effective, but also to help learners stay motivated by making their improvement visible.
+
+### The Vision
+
+The long-term vision of this project is simple:
+
+Make Chinese learning feel more like reading and less like studying.
+
+By combining comprehensible input, AI-generated content, vocabulary tracking, and story-based spaced repetition, this plugin aims to make language acquisition both effective and enjoyable—even beyond the intermediate stages where traditional comprehensible-input tools begin to struggle.
+
+See `NOTICE.md` for license notes (CC-CEDICT, HSK).
+
+## Install
+
+**Requires Obsidian 1.13.0 or newer** (since 0.5.1 — the settings tab uses
+Obsidian's declarative settings API so every setting is searchable).
+
+Available in the **official Obsidian community-plugin store**: Settings →
+Community plugins → **Browse** → search **Chinese Comprehensible Input** →
+Install → Enable. To test the latest beta builds instead, install via **BRAT**.
+Full step-by-step guide (store, BRAT, or manual) in [docs/install.md](./docs/install.md).
+
+## Documentation
+
+Detailed guides live in [`docs/`](./docs/index.md). Each settings section also links to the relevant page from inside Obsidian. Highlights:
+
+- [Install (BRAT or manual)](./docs/install.md) — get the plugin into your vault
+- [FAQ](./docs/faq.md) — top issues and where the fix is
+- [OpenAI setup, privacy, and cost](./docs/openai-setup.md)
+- [Ollama tips: model choice and getting good output](./docs/ollama-tips.md)
+- [Mnemonics](./docs/mnemonics.md) — hand-written and AI-generated memory hooks, personalising the prompt
+- [Story generation, end to end](./docs/story-generation.md)
+- [Display modes & colors](./docs/display-modes.md)
+- [Traditional Chinese & regional pronunciation](./docs/traditional-chinese.md) — Taiwan / Hong Kong script, Taiwan readings, and what is not covered
+- [Formatting & highlighting](./docs/formatting.md) — tap-to-format mode, colored highlights, Highlightr support
+- [Themes & plugin compatibility](./docs/compatibility.md) — Things-style checkboxes, Highlightr, sync tools, and the limits inside the Chinese view
+- [Word states (new / partial / known / unknown / ignored)](./docs/word-states.md)
+- [Exposure tracking](./docs/exposure.md)
+- [Spaced repetition](./docs/srs.md)
+- [Vault-mirror sync (for users who don't sync .obsidian/)](./docs/sync-mirror.md)
+- [Conflict resolution between devices](./docs/conflicts.md)
+
+### Limitations
+
+- Mobile + Ollama needs a reachable LAN/Tailscale host (`localhost` from the phone points at the phone). See [Ollama tips](./docs/ollama-tips.md#mobile-tailscale-tips).
+- OpenAI mode sends prompt + target words to OpenAI's servers — fine for most users, see [the privacy section](./docs/openai-setup.md#2-privacy--your-text-leaves-obsidian).
+- The bundled seed dictionary is tiny; real use needs CC-CEDICT (see Data below).
+
+## Dev
+
+```bash
+npm install
+npm run dev        # watch build
+npm run build      # type-check + production bundle
+npm test           # vitest
+npm run test:cov   # coverage report + threshold enforcement
+npm run check-release
+```
+
+GitHub Actions runs the same validation set on every PR and on pushes to `main`: build, tests, coverage, and the release guard. Actual BRAT publishing stays manual so the tagged release assets and notes are reviewed before going live.
+
+Development policy:
+
+- Use a dedicated branch for each bugfix, feature, or release-prep change. Preferred prefixes: `fix/`, `feat/`, `release/`.
+- Merge changes to `main` through PRs after CI passes.
+- External PRs must be approved by the maintainer before merge.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to report bugs, suggest features, and open a PR (it's an issues-first project — please open an issue before a non-trivial PR).
+
+To install the dev build into a vault:
+1. Build: `npm run build`.
+2. Copy `manifest.json`, `main.js`, `styles.css` into `<vault>/.obsidian/plugins/chinese-comprehensible-input/`.
+3. Enable in Obsidian → Community plugins.
+
+## Data
+
+A tiny seed dictionary is bundled for development. For real use, drop a CC-CEDICT shard at `<vault>/.cci-dictionary.json` (array of `{simplified, traditional, pinyin, definitions, hsk?}`). See `NOTICE.md` for license notes.
+
+## Privacy
+
+- No data leaves the device unless you configure an AI provider.
+- In OpenAI-compatible mode, story generation may send prompt text and target words to the provider you configured.
+- API keys are stored locally in Obsidian local storage and are not written to synced vault files.
+
+## Data storage
+
+- Settings, vocabulary state, SRS state, and exposure history are stored in the plugin's local Obsidian data blob.
+- If you enable the optional sync mirror, sanitized settings and vocabulary data are also written to JSON files inside your vault. API keys stay local.
+- The bundled dictionary is only a small seed set. Normal use expects a user-supplied CC-CEDICT shard at `<vault>/.cci-dictionary.json`.
+
+
+===== docs/srs.md =====
+# Spaced repetition
+
+Spaced repetition is the strategy of reviewing a word right before
+you're about to forget it — when the recall is hardest but still
+possible. Get it right and the word sticks; the next review pushes
+further out. Get it wrong and it comes back soon. Over time, well-known
+words are reviewed once a year while shaky words come back daily.
+
+This page explains how the plugin schedules reviews and which knobs
+matter.
+
+## What "due" means
+
+Every word in your vocabulary store has:
+
+- **Status** — new / partial / known / unknown / ignored / etc. (See
+  [word states](./word-states.md).)
+- **Interval (days)** — how far apart consecutive reviews are.
+- **Ease** — a multiplier applied after a successful recall. Higher
+  ease = the interval grows faster.
+- **Due date** — when the next review is scheduled.
+
+The Flashcards tab → **Due** view shows everything whose due date has
+passed.
+
+<img src="../resources/screenshots/mobile-flashcards-annotated.png" alt="Annotated flashcard review" width="340">
+
+1. **Stats view** — Dashboard / Flashcards / Words.
+2. **Review queue** — Unclassified, **Due** (SRS), or Smart story.
+3. **Progress** through the queue (sorted by frequency) · Skip.
+4. **The card** — headword, times seen, Reveal pinyin, example sentence.
+5. **Grade** — Known / Partial / Unknown, or Ignore.
+
+## What counts as a "review"
+
+Two things:
+
+1. **Opening a generated story** (or any Chinese note) that contains a
+   due word — if you don't long-press / pop-up the word, the system
+   counts that as a successful recall (you saw it and understood it in
+   context).
+2. **Long-pressing a word** to open the popup — that's the "I needed
+   help" signal. Optionally treated as a failed recall depending on
+   **Popup on due is failed recall**.
+
+The split between "saw it in context" and "needed the popup" is the
+plugin's secret sauce. You're not drilling flashcards in isolation —
+you're reading real content, and the system uses your read-vs-popup
+signal to schedule review.
+
+## Knobs in SRS settings
+
+### Initial interval (days)
+
+Default **1**. When a word transitions from "new" to "known," the first
+review is scheduled this many days out. Raise to 2–3 if you find the
+default too aggressive.
+
+### Initial ease
+
+Default **2.5**. Multiplier applied after a successful review. With
+ease 2.5, a 1-day interval becomes 2.5 days, then 6.25, then 15.6, then
+39 — roughly doubling. Higher = faster spacing; lower = tighter
+review cadence.
+
+The Anki-classic default is 2.5; tweaking is rarely worth it.
+
+### Popup on due is failed recall
+
+Default **on**. When you long-press a word that's currently due, the
+SRS records a failed recall (interval resets, ease drops a notch). If
+off, popups are neutral — useful if you treat the popup as "let me
+just double-check, not a real fail."
+
+### Schedule known occasionally
+
+Default **off**. When on, the SRS keeps already-known words on a slow
+review schedule (every few weeks/months) so they don't fall out of
+memory. When off, known words leave the review queue entirely after
+graduation.
+
+Beginners: leave off. Intermediate and beyond: consider turning on,
+especially for low-frequency known words.
+
+## How exposure interacts with SRS
+
+The SRS doesn't act on every exposure — only on the ones that match its
+trigger conditions. See [exposure tracking](./exposure.md) for what
+"exposure" means and the dedup rules that prevent spammy double-counts.
+
+In short:
+
+- Every visible exposure of a due word is a successful recall.
+- A long-press on a due word is a failed recall (if the toggle is on).
+- Marking a word from the toolbar (Mark known / unknown / partial)
+  directly overrides the SRS — no recall logic, you said "I know this."
+
+## Reading the Flashcards "Due" view
+
+Lists due words sorted by overdue-ness. Click a word to open it in the
+popup and look at its current interval / ease / due date.
+
+The dashboard panel at the top of the Stats view shows daily, weekly,
+and monthly progress of "reviews completed" so you can see your habit
+forming.
+
+## When to ignore the SRS
+
+If you're using the plugin purely for graded reading and not vocabulary
+study, you can disable popups (**Known word popups** in display
+settings) and the SRS effectively becomes a passive counter. The
+vocabulary store still tracks exposures and statuses; you just don't
+get drilled.
+
+## See also
+
+- [Exposure tracking](./exposure.md) — what feeds the SRS.
+- [Word states](./word-states.md) — what the statuses mean.
+- [Story generation](./story-generation.md) — Smart Story uses
+  "due" words as its target list.
+- [FAQ](./faq.md)
+
+
+===== docs/story-generation.md =====
+# Story generation, end to end
+
+The plugin's headline feature: turn a list of vocabulary you need to
+review into a short, readable Chinese story you can actually enjoy.
+This page explains what happens behind the scenes so you understand
+which settings to touch when results aren't what you want.
+
+## What it does
+
+<img src="../resources/screenshots/mobile-smart-story.png" alt="Smart story generation panel" width="320">
+
+*Flashcards → **Smart story**: the panel shows how many words are due today,
+the target HSK level (auto), length, the known-coverage threshold, and the
+repair-iteration cap, then **Generate story**.*
+
+When you click **Generate story** in the Flashcards tab (or wait for
+the daily auto-generator), the plugin:
+
+1. **Picks target words.** By default, the next 12 words your spaced
+   repetition system says are due. You can override count, style, and
+   target HSK level in the modal.
+2. **Picks a target HSK level.** "Auto" looks at your due-words list and
+   chooses a level that matches it. Or pick a level by hand.
+3. **Optionally samples your known words.** If **Send known words** is
+   on, a percentage of your known-word inventory rides along so the
+   model can use them as filler vocabulary.
+4. **Sends a prompt to your AI provider** — OpenAI or Ollama, depending
+   on which you've selected. Includes the system prompt (graded
+   Chinese instructions), target words with pinyin + meaning, and the
+   sample.
+5. **Validates the draft.** A pure-JS validator scans the returned
+   Chinese for each required target word verbatim. If any are missing,
+   it kicks off the repair loop.
+6. **Repair loop.** Up to **Max repair iterations** times, the plugin
+   re-sends the draft + the missing-word list, asking the model to
+   rewrite. Best-of-N: the version with the fewest missing words wins.
+7. **Writes a note** in your **Generated stories folder** with the
+   final Chinese text plus YAML frontmatter listing the target words,
+   model, and validation score.
+
+## Default folder + filename
+
+The story note lands in `Chinese Learning/Generated/` by default. File
+names are date-stamped and include the first target word as a hint:
+`2026-06-16 — 学习.md`.
+
+You can change the folder in Story settings.
+
+## Daily auto-generation
+
+Turn on **Auto-generate a daily story** and set a local time (e.g.
+08:00). The plugin checks once on launch and then every 5 minutes; the
+first time the configured time has passed today and the AI is reachable,
+it generates one story and marks today as done.
+
+If the AI fails (network blip, model down), it retries every 30 minutes.
+Failed days don't carry over — at midnight the retry state is wiped.
+
+## What gets sent to the AI
+
+For each request:
+
+- **System prompt** (fixed): instructions for graded Chinese, JSON
+  output shape, no English explanations inside the Chinese.
+- **Target words**: each as `word (pinyin) — English definition`.
+- **Optionally**, the known-words sample.
+- **Length hint**: ~`Default length chars` characters of Chinese.
+
+On a repair pass, also:
+
+- The previous draft.
+- The list of target words still missing.
+- Words flagged "too hard" by the validator (above the target HSK).
+
+Nothing else from your vault gets sent — no other notes, no other
+vocabulary entries, no settings.
+
+## What "good enough" means
+
+The validator marks a story acceptable when:
+
+- Every target word appears verbatim in `textChinese`.
+- The proportion of characters that map to known or below-target-HSK
+  words exceeds **Known-coverage threshold** (default 80 %).
+
+If both pass, the repair loop exits. Otherwise it keeps trying up to the
+iteration cap.
+
+## Generated YAML frontmatter
+
+Each generated note opens with frontmatter you can read:
+
+```yaml
+---
+chinese_learning_generated: true
+generated_at: 2026-06-16T08:00:12Z
+provider: openai
+model: gpt-5.4-mini
+target_hsk: 4
+target_words:
+  - 学习
+  - 努力
+  - 进步
+validation_score: 0.91
+---
+```
+
+Useful for spot-checking which model produced which story and
+how cleanly it matched the targets.
+
+## Knob recap
+
+| Setting | What it does | When to touch |
+|---------|--------------|---------------|
+| **Default due count** | How many target words per story | Lower (8) for tighter stories, raise (16+) for marathon sessions |
+| **Default length chars** | Roughly how long the story is | 200 for snack-size; 600+ for serious reading |
+| **Default style** | story / article / dialogue | Personal taste |
+| **Known-coverage threshold** | Quality bar for filler vocabulary | Lower to 70 % if your model can't hit 80 % |
+| **Include glossary** | Add a learner-side glossary block | On is helpful for review |
+| **Send known words** + **%** | Feed your vocabulary to the model | On + 100 % for beginners ([why](./ollama-tips.md#send-known-words-helps-beginners-enormously)) |
+| **Auto-generate a daily story** | Background daily run | Set and forget |
+| **Auto-generate time** | Local time the daily run targets | Pick a time you can actually read |
+
+## When things go wrong
+
+- **Story drops target words** → bump **Max repair iterations**; for
+  small Ollama models, also switch to a stronger model. See
+  [Ollama tips](./ollama-tips.md).
+- **Story too hard** → see [FAQ](./faq.md#the-generated-chinese-is-too-hard-for-me).
+- **Story never finishes** → see [FAQ](./faq.md#story-generation-hangs-or-times-out).
+
+## See also
+
+- [OpenAI setup](./openai-setup.md)
+- [Ollama tips](./ollama-tips.md)
+- [Spaced repetition](./srs.md) — drives which words count as "due."
+- [FAQ](./faq.md)

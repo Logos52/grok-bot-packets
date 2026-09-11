@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/AiraDeCastro/learn-french-with-aira/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/AiraDeCastro/learn-french-with-aira/commits/master.atom"/>
+  <title>Recent Commits to learn-french-with-aira:master</title>
+  <updated>2026-09-10T00:51:01Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1bd7ab199dcb2fe17b257ba1496a01c045b87da2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/1bd7ab199dcb2fe17b257ba1496a01c045b87da2"/>
+    <title>
+        fix(ci): generate Prisma client before typecheck, not after
+    </title>
+    <updated>2026-09-10T00:51:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ci): generate Prisma client before typecheck, not after
+
+Both npm run verify and the CI workflow ran typecheck before
+db:generate. This only worked locally because a Prisma client from
+earlier manual testing was still sitting in the gitignored
+src/generated/prisma — a genuinely fresh checkout (i.e. real CI) has
+no client on disk until it&amp;#39;s generated, so the first push of M1&amp;#39;s
+work failed CI immediately on a missing-module error.
+
+Confirmed fixed by deleting src/generated locally and re-running
+verify clean.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0bb4d4d8d9546e0163c3f0d9b7171cb775c4146</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/f0bb4d4d8d9546e0163c3f0d9b7171cb775c4146"/>
+    <title>
+        feat(content): add lesson data model, admin panel, and starter content
+    </title>
+    <updated>2026-09-10T00:45:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): add lesson data model, admin panel, and starter content
+
+Implements M1 (Content Model &amp;amp; Admin Panel):
+
+- Prisma schema covering the full domain model: User, Lesson,
+  TranscriptSegment, ComprehensionQuestion, LessonCompletion,
+  KnownWord, Streak, LevelEstimate, and LexiconEntry
+- Prisma 7 requires an explicit driver adapter now rather than reading
+  DATABASE_URL implicitly — wired @prisma/adapter-pg into src/server/db.ts
+- src/server/storage.ts: local-disk file storage for lesson audio/cover
+  art, standing in for Cloudflare R2 until that account exists; callers
+  only ever see saveUpload() and an /api/media/... URL, never a path,
+  so swapping backends later won&amp;#39;t touch call sites
+- tRPC lesson router (create/update/delete/list/getById) and an admin
+  panel (/admin/lessons) to author lessons end-to-end, tested working
+  in-browser against the real local database. No auth in front of it
+  yet — follow-up logged in docs/TASKS.md
+- tRPC lexicon router backing tap-to-translate, seeded with 72
+  hand-curated French-English entries; bulk-importing a full open
+  dataset (FreeDict/Wiktionary) is a follow-up rather than rushed —
+  FreeDict&amp;#39;s own distributions are TEI XML/StarDict binary, not a
+  quick fetch
+- 4 real A1 mini-stories written and seeded (prisma/seed.ts), built
+  from a shared ~70-word vocabulary with comprehension questions.
+  Audio stays null — recording narration needs an actual human voice
+
+Also: the lesson/lexicon router tests are integration tests against
+the real local database rather than mocked, so npm run verify and CI
+now push the schema and seed data before running tests, and CI gained
+a real Postgres service container.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a4ec584dd1b77d204c54fdfc811eede72cdd43a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/a4ec584dd1b77d204c54fdfc811eede72cdd43a5"/>
+    <title>
+        ci: mirror the local pre-commit gate in GitHub Actions
+    </title>
+    <updated>2026-09-10T00:25:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: mirror the local pre-commit gate in GitHub Actions
+
+Adds the dependency-tree and security-audit checks to CI so a push
+that bypasses the local Husky hook (or a PR from a fresh clone) gets
+the same coverage.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c112c995e6cd19d07e1967b9d0e9541719fd08d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/1c112c995e6cd19d07e1967b9d0e9541719fd08d"/>
+    <title>
+        build(ci): add pre-commit quality gate and Conventional Commits
+    </title>
+    <updated>2026-09-10T00:24:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(ci): add pre-commit quality gate and Conventional Commits
+
+Every commit now runs `npm run verify` via Husky before it&amp;#39;s allowed:
+format check, lint, dependency-tree check, a security-audit check,
+typecheck, unit tests, and a full production build. Any failure
+blocks the commit.
+
+`npm audit` is gated through scripts/check-audit.mjs rather than
+called directly, because npm&amp;#39;s --omit=dev does not actually exclude
+devDependencies from the audit graph (a known npm limitation) — used
+plain, this would permanently fail every commit on 4 high-severity
+advisories that live entirely inside Prisma CLI&amp;#39;s own bundled MySQL
+introspection tooling (dev-only, unreachable in this Postgres-only
+project, no fix available short of downgrading Prisma two majors).
+The script fails on anything high/critical that isn&amp;#39;t on its
+reviewed, dated allowlist, so a genuinely new vulnerability still
+blocks a commit.
+
+Also adds commitlint + a commit-msg hook enforcing Conventional
+Commits, and .gitattributes forcing LF on .husky/* and *.sh so a
+Windows checkout doesn&amp;#39;t corrupt the hook scripts with CRLF.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/98ee8fe508d4ed2cc4388bb67c0138e9788af9ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/98ee8fe508d4ed2cc4388bb67c0138e9788af9ab"/>
+    <title>
+        Complete M0 code-side setup: tRPC, Prisma, Auth.js, CI, tests
+    </title>
+    <updated>2026-09-08T17:20:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Complete M0 code-side setup: tRPC, Prisma, Auth.js, CI, tests
+
+Finishes the parts of M0 (Project Foundations) that don&amp;#39;t require
+creating an external account:
+
+- ESLint + Prettier + strict TypeScript, wired together
+- tRPC end to end (Next.js route handler, React Query client provider,
+  a health.ping procedure proving the wiring works)
+- Prisma installed and verified against a local database via
+  `prisma dev` (no Docker or account needed for local work); pinned
+  to the stable 7.10.0 release after `npm install` initially resolved
+  a v8 release-candidate tagged &amp;quot;latest&amp;quot; on npm
+- Auth.js v5 scaffolded with Google + Resend magic-link providers,
+  inactive until real credentials are supplied
+- GitHub Actions CI: lint, format check, typecheck, unit tests, build
+  on every push/PR
+- Vitest and Playwright configured with passing smoke tests
+- Fixed a typecheck gotcha: Next.js 16&amp;#39;s generated route types
+  (LayoutProps etc.) don&amp;#39;t exist until `next typegen` runs, so
+  `npm run typecheck` now runs it first — otherwise a clean checkout
+  or CI run fails typecheck before ever building
+
+Still blocked on Aira creating accounts: hosted Postgres
+(Neon/Supabase), Cloudflare R2, Vercel, Sentry, PostHog — all noted
+in docs/TASKS.md.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dcf892a7b61e1be53bf1dd027a8c00910910fe97</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/dcf892a7b61e1be53bf1dd027a8c00910910fe97"/>
+    <title>
+        Scaffold Next.js + TypeScript + Tailwind app
+    </title>
+    <updated>2026-09-08T15:25:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Scaffold Next.js + TypeScript + Tailwind app
+
+Bootstraps the app per the confirmed MVP stack (PLANNING.md §3):
+Next.js 16 App Router, TypeScript, Tailwind CSS v4, ESLint, src/
+layout. Verified with a production build and a manual check of the
+dev server in-browser.
+
+Adds .claude/launch.json so the dev server can be previewed, and
+checks off the first M0 task in TASKS.md.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f32d806ed2b58143c64e445d553345d9df2cdb3b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/f32d806ed2b58143c64e445d553345d9df2cdb3b"/>
+    <title>
+        Add TASKS.md milestone checklist and session workflow rules
+    </title>
+    <updated>2026-09-08T15:09:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add TASKS.md milestone checklist and session workflow rules
+
+TASKS.md breaks the PRD&amp;#39;s three build phases into 8 milestones
+(M0-M7) of checkboxed tasks, tied back to specific PRD/PLANNING
+requirements.
+
+CLAUDE.md now instructs every session to read PLANNING.md at the
+start, check TASKS.md before starting work, check off tasks
+immediately on completion, and log newly discovered tasks as found.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79dba86225d7502c20d620a848d0697820d0b7d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/79dba86225d7502c20d620a848d0697820d0b7d1"/>
+    <title>
+        Confirm MVP tech stack
+    </title>
+    <updated>2026-09-08T15:04:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Confirm MVP tech stack
+
+Lock in Next.js/TypeScript, tRPC, PostgreSQL+Prisma, Cloudflare R2,
+Auth.js, and an in-app content admin panel for MVP. Resolves the
+previously open API-layer, auth, content-authoring, word-lookup, and
+lesson-audio choices with explicit reasoning tied to the PRD (offline
+resilience, privacy stance, content-production risk).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b2a3e962e993d37314a25aff0a0aec1efcedd7d3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/b2a3e962e993d37314a25aff0a0aec1efcedd7d3"/>
+    <title>
+        Add CLAUDE.md and PLANNING.md
+    </title>
+    <updated>2026-09-08T15:01:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add CLAUDE.md and PLANNING.md
+
+CLAUDE.md carries forward the comprehensible-input method&amp;#39;s hard
+constraints, domain vocabulary, and build order so Claude Code
+sessions don&amp;#39;t have to re-derive them from the PRD each time.
+
+PLANNING.md proposes an architecture and tech stack (Next.js/
+TypeScript, Postgres+Prisma, Vercel) with reasoning, plus a required
+tools checklist. Not yet confirmed by the user.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6163d849d726d8c16b2e393bb30af4e9751b5ea5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AiraDeCastro/learn-french-with-aira/commit/6163d849d726d8c16b2e393bb30af4e9751b5ea5"/>
+    <title>
+        Add README and PRD for Learn French with Aira
+    </title>
+    <updated>2026-09-08T14:51:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/144724812?s=30&amp;v=4"/>
+    <author>
+      <name>AiraDeCastro</name>
+      <uri>https://github.com/AiraDeCastro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add README and PRD for Learn French with Aira
+
+Comprehensible-input French learning app with CEFR-based leveled
+content and daily streaks.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

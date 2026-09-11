@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mikub97/repetita/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mikub97/repetita/commits/main.atom"/>
+  <title>Recent Commits to repetita:main</title>
+  <updated>2026-09-10T23:42:41Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88993e2dfc7a7ea0572f79546124173aea91c210</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/88993e2dfc7a7ea0572f79546124173aea91c210"/>
+    <title>
+        feat: design my lessons — catalogue, tag curation, study plans and th…
+    </title>
+    <updated>2026-09-10T23:42:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: design my lessons — catalogue, tag curation, study plans and the tab (#51)
+
+* feat: design my lessons -- catalogue, tag curation, study plans and the tab
+
+Chunks A, B and C of the plan in one change: the material becomes visible, the
+learner&amp;#39;s intent becomes data, and the tab puts both in front of them.
+
+ADR-0007 covers the part that is a decision rather than a feature.
+
+## The catalogue
+
+`card_state` gains a denormalised `bucket`, written from the single definition in
+`core/buckets.py`. Stored rather than recomputed: a threshold that decides policy
+must not get a second definition in a WHERE clause, which is the exact shape of
+the bug ADR-0002 records. `sync` backfills any state that has none, because a
+column added by a migration starts NULL and COALESCE would then report every card
+a learner has ever answered as new -- a catalogue confidently wrong about their
+own progress.
+
+`store/catalogue.py` is one query and one selector language.
+`level=A2,track=gramatica,topic=preposicoes,state=new` is the same string whether
+it arrives from the CLI, the web API, or a row in `plan_priorities`; three
+parsers for one idea is how they drift. Repeating a dimension widens rather than
+contradicts, because two checkboxes mean &amp;quot;either&amp;quot; and contradiction would make an
+empty result look like an empty course.
+
+## Curating tags
+
+`repetita tag add|remove|rename|split|merge|list`, all with `--dry-run`. A rename
+is course-wide -- a tag renamed on half the material is two tags, which is the
+situation this exists to fix rather than to create -- and leaves a `tag_aliases`
+row so plans and facets.yaml keep resolving. Every operation marks the notes it
+touched as `edited_at`, which is what stops the next import overwriting the change
+and makes a genuine clash surface as a conflict.
+
+`repetita export` is owed from ADR-0006 and lands here. The README promises that
+adding a lesson is a pull request a non-programmer can make, and once material is
+editable in the app that promise depends entirely on writing it back out. It is
+also what makes a tag change reviewable: a normal diff on normal files. Note
+emission reuses `importers.emit`, so imported and exported material come out in
+one format rather than two that drift.
+
+## Plans
+
+Four tables, and `review_log.plan_revision_id`. That column is the reason this is
+an ADR: ADR-0003 exists because the predecessor kept aggregates and threw the
+sequence away, and &amp;quot;did making it harder actually help?&amp;quot; is the same shape of
+question. Adding the link later would work from that day forward and leave every
+earlier answer unattributable.
+
+Weights read a priority list as a Zipf curve rather than a linear ramp: over ten
+rows linear gives the top 18%, which nobody experiences as &amp;quot;this is what I want
+to work on&amp;quot;. Allocation is largest-remainder so the budget is spent exactly, and
+what a exhausted bucket cannot take flows down the list rather than shrinking the
+session -- otherwise a plan would quietly become a cap.
+
+A plan cannot excuse you from review. It decides which *new* material is woven in
+and at what share; every owed card is still owed, in the same order.
+
+`policies/` finally gets the `get()`/`names()` registry that `srs/`, `graders/`
+and `presenters/` have had all along, plus the `SessionPolicy` protocol
+`ARCHITECTURE.md` has listed as an extension point since the beginning.
+
+## Issues
+
+`material_issues` is deliberately not `card_reports`. That table says one
+exercise is broken and suspends the card; this says the grouping is wrong and
+suspends nothing. Same reasoning that keeps reports out of `review_log`.
+
+## The tab
+
+Drag-to-reorder priorities, three knobs, and a live preview of what tomorrow
+would look like. The preview is cheap because the policy is pure, which is what
+makes a knob an experiment rather than a commitment.
+
+ADR-0005 governs the new endpoints and is easy to break by accident: card ids are
+authored from the material, so a quarter of them are the answer. The catalogue
+returns counts and labels only -- never a card id, never a note id, never a note
+field -- and a test asserts that over raw response bytes rather than a parsed
+field, because a parsed assertion only checks the places you thought to look.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(store): never stamp a database&amp;#39;s schema version backwards
+
+An older build opening a newer database wrote its own `SCHEMA_VERSION` over the
+recorded one. The next time the newer build ran, the version it read was lower
+than the migration it had already applied, so it replayed it -- &amp;quot;duplicate column
+name&amp;quot; on a database that was fine until something read it.
+
+Not theoretical here. The hub serves repetita live from the working tree, so
+switching branches over one study database is an ordinary thing to do, and this
+change adds the first migration anyone would hit it with.
+
+The stamp now takes the greater of the two.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee17faa24bd74f517a26ed419231be2eee9b0f04</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/ee17faa24bd74f517a26ed419231be2eee9b0f04"/>
+    <title>
+        feat(content): read a course&#39;s tags as facets (#50)
+    </title>
+    <updated>2026-09-10T23:17:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): read a course&amp;#39;s tags as facets (#50)
+
+`notes.tags` is a JSON array in a TEXT column. It has been written by every sync
+since the beginning and read by no query at all, because a JSON blob cannot be
+indexed, joined or grouped. Measured across the real course: 676 notes whose
+tags mix four different kinds of statement in one namespace -- level (A1/A2/B1),
+track (vocabulario/gramatica/musica/fala), topic (tempo/comida/preposicoes) and
+provenance (licao-setembro) -- with nothing in the engine able to tell them
+apart.
+
+So &amp;quot;the A2 grammar cards about prepositions that are still new&amp;quot; could not be
+expressed, let alone counted.
+
+A per-course `facets.yaml` says which question each tag answers, and
+`note_facets` is the join table that makes GROUP BY possible.
+
+The tags themselves do not change, and that is deliberate. `importers/hub.py`
+records that the predecessor had `track`, `topic` and `level` as three separate
+columns and the import flattened them into tags on purpose, because &amp;quot;a tag is
+the general form of something true about this note that a course may weight or
+filter on&amp;quot;. An axis is a reading of that bag, not a replacement for it. No note
+file is rewritten by this change.
+
+A note may hold several values on one axis. That is the ordinary case rather
+than an edge one: material about ordering food in a market is genuinely both
+`comida` and `cidade`, and forcing a choice loses real information. Only `level`
+is capped, at one, because two levels would make every count by level disagree
+with the total.
+
+One axis may be `catch_all`, which is what makes adding a topic an edit to a
+note rather than to a course&amp;#39;s configuration. Declared values beat the
+catch-all, so promoting a value onto a real axis reclassifies it everywhere with
+no note touched.
+
+Taxonomy problems are never fatal. A note filed under nothing is badly filed,
+not broken, and quarantining it would take working material away from a learner
+over a bookkeeping mistake -- the opposite of what the quarantine is for.
+
+Classification reads the stored notes rather than the incoming files, which
+matters under ADR-0006: a note edited here keeps its own tags, and filing the
+file&amp;#39;s version would put it under something it no longer says.
+
+`facets.yaml` is optional. A course without one gets no axes and no complaints,
+so every course written before this is still valid.
+
+`docs/tagging.md` documents the conventions and the loop for changing tags,
+written to be actionable by an agent working from an issue -- including the part
+that is easy to get wrong in both directions: renaming a tag is safe, because
+nothing is keyed on it, unlike an item id.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d8a72ef6dfb4d3cb2ee8a70c98b7706526d8c06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/2d8a72ef6dfb4d3cb2ee8a70c98b7706526d8c06"/>
+    <title>
+        feat(content): load unit.yaml and the course path (#49)
+    </title>
+    <updated>2026-09-10T23:08:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): load unit.yaml and the course path (#49)
+
+Three pieces of authored structure reached no query at all.
+
+`unit.yaml` was skipped outright by the loader -- `if path.name == &amp;quot;unit.yaml&amp;quot;:
+continue` -- so a unit&amp;#39;s title and CEFR level were written by the author, sat in
+the course directory, and were read by nothing. `Course.path` declares the order
+units are meant to be taken in and the prerequisites between them; it was parsed
+into a typed model and never looked at. `Course.tag_weights` is documented as
+&amp;quot;relative share of each tag when new material is introduced&amp;quot; and had no reader
+either.
+
+So: a `Unit` model, a `units` table and a `courses` table, populated by the same
+merge that owns the rest of the material.
+
+Ordering comes from `path` where a course declares one. A unit the path does not
+mention sorts *after* every unit it does, in directory order, rather than at the
+front -- an unlisted unit is material the author has not placed yet, and it
+should not jump the sequence they did place.
+
+A missing `unit.yaml` is not a problem. A unit exists because its directory
+does; the file only decorates it, and its absence means a unit with no title
+yet, which is the normal state of a course being written.
+
+Units are archived rather than deleted, for the same reason notes are:
+`notes.unit` joins on this id, and a unit that leaves the files still names the
+unit its notes were studied under.
+
+No migration and no version bump. `courses` and `units` are wholly new tables,
+and `CREATE TABLE IF NOT EXISTS` in `SCHEMA` reaches an existing database on the
+next connect -- which is exactly the case the contract beside `MIGRATIONS` says
+needs no step.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1677f622b34287c3f606766bec75685605c40def</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/1677f622b34287c3f606766bec75685605c40def"/>
+    <title>
+        feat(store): the database owns the material (#48)
+    </title>
+    <updated>2026-09-10T23:00:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(store): the database owns the material (#48)
+
+ADR-0006. `courses/*.yaml` becomes an import/export format; `notes` and `cards`
+stop being a cache that is wiped and re-derived on every load.
+
+`sync()` merges instead of replacing. Four outcomes per note: inserted when it
+is new, left alone when the source is unchanged, updated when the source
+changed, and -- the one the design turns on -- a reported *conflict* when a note
+was edited here and changed at the source. The local note stays and the id comes
+back in the report. Choosing a winner automatically is the only behaviour that
+would make an import unsafe to run, because the loser is unrecoverable and
+nothing in the UI would say so.
+
+A note that has left the files is archived, never deleted. Deleting would orphan
+`card_state` rows whose history cannot be reconstructed from anything. That is
+also why this schema still has no foreign keys: ownership makes the old
+reasoning stronger, not weaker, since a note removed in the app must never
+cascade into someone&amp;#39;s schedule.
+
+The property that used to be free is now maintained on purpose. &amp;quot;A card whose
+note vanishes keeps its history&amp;quot; held because nothing linked the tables -- a
+property of the *absence* of a mechanism. Archiving replaces that absence with a
+mechanism, so the guarantee is re-pinned rather than inherited: a removed note&amp;#39;s
+row survives, its `card_state` survives, material that comes back returns on the
+schedule it left with, and no sequence of imports changes `review_log`.
+
+Archived rows must be excluded by every content query or archived material stays
+in circulation. Two needed it: the session queue and `card_ids()`.
+`lesson_first_seen_on` deliberately does not -- it counts answers that really
+were given, and an answer is not retracted by its note leaving the course.
+
+`content_hash` covers the note as authored and excludes `origin`: moving a note
+to another file is not a change to the material, and hashing the path would turn
+any reorganisation of a course into a wall of conflicts.
+
+`sync()` now returns a `SyncReport` rather than a bare pair of counts. A merge
+that cannot report a conflict is a merge that hides one.
+
+Export is owed next. The README promises that adding a lesson is a pull request
+a non-programmer can make, and once material can be edited here that promise
+depends on writing it back out.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0d39d730ee2a9defa0bb74b5a40d2db30440cf3d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/0d39d730ee2a9defa0bb74b5a40d2db30440cf3d"/>
+    <title>
+        fix(store): export recent_ratings_for from the package facade (#47)
+    </title>
+    <updated>2026-09-10T22:51:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(store): export recent_ratings_for from the package facade (#47)
+
+`__all__` has listed `recent_ratings_for` since the function was written, but
+the `from .reviews import (...)` block never imported it. `from repetita.store
+import *` therefore raised AttributeError, and `store.recent_ratings_for` did
+not exist.
+
+Nothing noticed because nothing in this repo uses a star import, and every
+internal caller reaches through the module object for names that *are* imported.
+`__all__` is a promise made to code outside the repo, and it was being broken
+silently.
+
+The test guards the whole facade rather than this one name: every entry in
+`__all__` must resolve on the module. A flat re-export surface makes this
+mistake easy to repeat -- each new module under `store/` means another import
+block and another set of `__all__` entries to keep in step -- and the next
+occurrence should fail in CI rather than in someone&amp;#39;s editor.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/850120647cc96b6bb0d81269888e5a1983008139</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/850120647cc96b6bb0d81269888e5a1983008139"/>
+    <title>
+        fix(store): stamp a fresh database without replaying migrations (#45)
+    </title>
+    <updated>2026-09-10T22:49:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(store): stamp a fresh database without replaying migrations (#45)
+
+* fix(store): stamp a fresh database without replaying migrations
+
+`_apply_schema` runs `SCHEMA` first, then reads `schema_version` from `meta`
+to decide which steps in `MIGRATIONS` still need applying. On a database that
+did not exist a moment ago there is no `meta` row, so `current` was 0 and every
+step was replayed -- against tables `SCHEMA` had just created in their final
+shape.
+
+`MIGRATIONS` is empty and has never had an entry, so nothing has hit this. But
+the first real `ALTER TABLE ... ADD COLUMN` anyone appends would fail with
+&amp;quot;duplicate column name&amp;quot;, and only on newly created databases: green on the
+machine of whoever wrote it, red on a fresh clone and in CI. That is a poor
+thing to leave for the next person to find.
+
+Ask whether the database is empty *before* `SCHEMA` runs -- afterwards a new
+database is indistinguishable from a fully migrated one -- and treat a fresh one
+as already at `SCHEMA_VERSION`. An *existing* database with no `meta` row is a
+different case, predating versioning, and correctly still starts at 0.
+
+The contract this depends on is now written next to `MIGRATIONS`: `SCHEMA` is
+always the cumulative result of applying every step to an empty database.
+
+Tests use a toy schema rather than the real one, so they pin the mechanism
+rather than whatever `SCHEMA` happens to contain, and cover all four routes:
+fresh, upgraded, both-reach-the-same-shape, and reconnect-does-not-rerun.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(store): run migrations before the schema on an existing database
+
+A second ordering bug in the same mechanism, found by adding the first real
+migration to this repo -- an ALTER that adds a column, plus an index on it,
+which is the ordinary shape of a migration rather than an exotic one.
+
+`SCHEMA` describes the tables as they are *now*, so it names the new column.
+Executing it before the migrations meant creating an index over a column an
+existing database does not have yet:
+
+    sqlite3.OperationalError: no such column: colour
+
+on precisely the databases the migration exists for, and on no fresh one. Same
+failure mode as the bug in the previous commit, from the opposite direction:
+there, a fresh database replayed steps it did not need; here, an existing one
+ran the end state before the steps that produce it.
+
+So the two paths are now separate and each does only what it should. A fresh
+database runs `SCHEMA` and nothing else. An existing one runs the migrations it
+still owes and then `SCHEMA`, which is idempotent and picks up any wholly new
+table. `meta` is created explicitly before the version is read, because a
+database old enough to predate versioning does not have that table at all and
+the read would fail.
+
+The contract next to `MIGRATIONS` now says what a step may assume: tables that
+already exist, and columns it has itself just added -- but not a table
+introduced in the same version, which `SCHEMA` creates afterwards.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d415b4ed77845af13874c4c30d73f354a3d5778</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/9d415b4ed77845af13874c4c30d73f354a3d5778"/>
+    <title>
+        feat(web): offer &quot;I know this&quot; after a correct answer too (#46)
+    </title>
+    <updated>2026-09-10T22:47:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): offer &amp;quot;I know this&amp;quot; after a correct answer too (#46)
+
+The control only existed on the question. But getting a card right is often the
+moment you realise you never needed to be asked -- and until now the only way to
+act on that was to keep answering it correctly for months until it retired
+itself.
+
+Offered only after a pass. Declaring &amp;quot;I know this&amp;quot; straight after a miss
+contradicts the evidence just recorded, and would turn the button into a way out
+of a card you have demonstrably not learnt. A near-miss still gets the offer:
+HARD is a pass (ADR-0002), so a missing accent does not cost it -- the same line
+the grader already draws.
+
+&amp;quot;Next&amp;quot; stays first in the row and keeps focus, so Enter still advances and the
+control that retires a card stays something you aim at deliberately. That is the
+same reasoning that kept a keyboard shortcut off it.
+
+No server change: `declare_known` retires by `replace`, so the interval the
+answer just earned survives, and `undo_known` puts the card back exactly as it
+was. Undo does not re-queue the card in this case -- it has already been graded
+and scheduled, and putting it back would collect a second answer for one
+meeting, which is what sibling burying exists to prevent.
+
+Tests pin the invariants the new offer depends on, since none of them were
+covered for an already-answered card: the answer stays in the review log, the
+schedule it earned is kept, the retirement is still `declared` rather than
+`earned` even though evidence now exists, and undo returns the card to its
+answered state.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2cdad916413ac3832e712c9c1d590a6b67be1a67</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/2cdad916413ac3832e712c9c1d590a6b67be1a67"/>
+    <title>
+        feat(web): report a broken exercise from inside the session (#44)
+    </title>
+    <updated>2026-09-10T22:45:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): report a broken exercise from inside the session (#44)
+
+* feat(store,web): report a broken exercise, and take it out of the queue
+
+Studying turns up content bugs no validator can catch. `validate` finds the
+structural faults -- an exercise containing its own answer, a choice with too few
+options -- but not the ones that only appear under a real answer: a gap that
+accepts a word the `answers:` list does not, a cue that does not narrow, a
+translation that is simply wrong. Those were discovered mid-session and then
+lost, because the moment of discovery is a study session and the moment of repair
+is a terminal.
+
+A report is a third kind of thing, next to answering and declaring known.
+Answering is evidence about a memory; declaring is a claim about a memory; this
+is a claim about the *material*, and the only one of the three that someone has
+to go and edit a file about. So:
+
+* it writes nothing to `review_log` -- a report is not an answer, and letting it
+  in would corrupt every accuracy figure computed from there, including the gate
+  that decides how fast new material arrives;
+* it lives in its own table rather than in the content cache, which is wiped and
+  re-derived from the very files the report is complaining about;
+* it snapshots the note as authored, because the next load rebuilds `notes` --
+  and the load that follows someone reading the report is the one that destroys
+  the evidence for it.
+
+The card is suspended, not retired. Those are separate lanes in `is_active` and
+they mean opposite things: retired is &amp;quot;done with this&amp;quot;, suspended is &amp;quot;not now&amp;quot;.
+Setting `suspended_at` needs no scheduler changes at all -- `is_due` covers due
+work, and `introduction_order` and the consolidation branch both filter on
+`is_active`, so a card reported on its first showing does not come back tomorrow.
+
+`card_reports.suspended` records whether *this* report is what took the card out.
+Without it, undoing a report on a card the importer had already parked would
+resurrect material someone deliberately put away.
+
+Reasons are codes rather than prose, and each one names the key an author would
+edit -- `also_correct` appends to `answers:`, `ambiguous` sharpens `cue:` -- which
+is what makes triage mechanical instead of interpretive. An unknown reason is
+refused rather than folded into `other`: a report nobody can act on is worse than
+no report, because it looks like one.
+
+The table arrives via `CREATE TABLE IF NOT EXISTS` in `SCHEMA`, which reaches new
+and existing databases alike. Deliberately no `MIGRATIONS` entry and no
+`SCHEMA_VERSION` bump: the list gates nothing while it is empty, and bumping the
+version would stamp every database as migrated when nothing ran, silently
+skipping the first real migration someone writes later.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web,cli): a control to report an exercise, and a way to read the reports
+
+The control sits in the aside row beside &amp;quot;I know this&amp;quot;, understated for the same
+reason and with no keyboard shortcut for the same reason -- it takes a card out
+of rotation, and unlike &amp;quot;I know this&amp;quot; it also makes work for someone.
+
+It appears twice, and the second place is the one that matters. Before answering,
+a learner can say the question is ambiguous or the translation is wrong. Only
+after the verdict can they say the expected answer is wrong, or that what they
+typed was right too -- until then they have not been shown the answer to disagree
+with. Both of those are the reports most worth having, so `verdict()` now takes
+the card in order to offer them.
+
+Opening the picker does not post. One tap to open and one to send costs a tap and
+buys not keeping six buttons permanently beside an open question. The optional
+note rides along with whichever reason is tapped, so the common case stays two
+taps and the rare case needs no second write.
+
+Undo differs between the two moments and the difference is easy to miss: from an
+open question the card goes back to the front of the queue, but after a verdict
+it has already been answered and pushing it back would re-ask it in the same
+session -- which is what `bury_siblings` exists to prevent.
+
+Reports are deliberately not queued offline. `flushPending` replays answers only,
+and a report replayed twice is two rows in a work queue; telling the learner it
+needs a connection is honester than dropping it quietly.
+
+`repetita reports` is the other half. Without it the reports are write-only, and
+a queue nobody can read is a queue nobody empties. It prints the reason, the
+snapshot as it read when reported, what the learner typed, and the file and line
+to go and edit -- probing `units/&amp;lt;unit&amp;gt;/notes/&amp;lt;origin&amp;gt;` then `units/&amp;lt;unit&amp;gt;/
+&amp;lt;origin&amp;gt;`, in the loader&amp;#39;s own precedence order, because `Note.origin` is a bare
+filename and resolving in the other order would name a file the loader ignored.
+The line comes from a textual scan rather than a parser: `yaml.safe_load` throws
+line numbers away, and a loader that kept them would be a second implementation
+of what a note is.
+
+`test_forms.py` gains the same cross-check it already makes for forms, one layer
+up: a reason the client offers that the server refuses is a 400 the learner
+cannot act on, and a reason the server takes with no label renders an `undefined`
+button. Each side is internally consistent in both cases, so only a test that
+reads both can see it.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d627c1bd145cd5bdfa943a1124b7062c6d1f4021</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/d627c1bd145cd5bdfa943a1124b7062c6d1f4021"/>
+    <title>
+        fix(web): tell the client where the app is mounted (#43)
+    </title>
+    <updated>2026-09-08T18:02:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(web): tell the client where the app is mounted (#43)
+
+Every call went to a root-relative path. Standalone that is correct; mounted
+under a host prefix it 404s on the first request, which is exactly what happened
+the first time repetita was registered in hub -- statics resolved, the page
+rendered, and the session never loaded.
+
+The server is the only thing that knows the prefix, so it says it:
+`&amp;lt;body data-base=&amp;quot;{{ url_for(&amp;#39;repetita.index&amp;#39;) }}&amp;quot;&amp;gt;`, and `api.js` prefixes every
+path with it. Standalone that is &amp;quot;/&amp;quot; and nothing changes.
+
+Tested in both arrangements, including that `/api/state` is a 404 on the host --
+if it ever answered, the base would stop mattering and this would come back
+without anything noticing.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6193ae9722fd0f20b990e3d84d5ac37e542232a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/b6193ae9722fd0f20b990e3d84d5ac37e542232a"/>
+    <title>
+        feat(web): mount repetita on an application someone else owns (#42)
+    </title>
+    <updated>2026-09-08T17:53:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): mount repetita on an application someone else owns (#42)
+
+`init_app(app, course_dir, url_prefix=...)` registers the blueprint on a host&amp;#39;s
+Flask object. Everything the blueprint needs is already read through
+`current_app`, so a host only has to supply it; the four lines `create_app` used
+to do around `register_blueprint` are now shared rather than duplicated, because
+two versions would drift and the thing they would drift about is which material
+is served.
+
+The point of mounting is what the host brings. Repetita has no authentication of
+its own -- inside a host with a `before_request` gate it does not need any, and
+that is tested rather than assumed.
+
+`index.html` includes `repetita_chrome.html` if the host ships one, and nothing
+if it does not. That is the whole navigation contract: a host puts its own tab
+bar above the app, and standalone the page is complete on its own. Neither
+arrangement is the special case.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3dde44a9f5a78770e5ad948f9ea5b47430412bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/c3dde44a9f5a78770e5ad948f9ea5b47430412bf"/>
+    <title>
+        feat(web): reload course content without a restart (#41)
+    </title>
+    <updated>2026-09-08T17:47:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): reload course content without a restart (#41)
+
+Adds POST /api/reload and the repetita-licao skill. Committed before the history
+rewrite so nothing in flight is lost to it.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/397a460ed6dcb76c895080c4b33bd03c15f8f6d3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/397a460ed6dcb76c895080c4b33bd03c15f8f6d3"/>
+    <title>
+        feat(web): &quot;I know this&quot; — take a card out of the queue on the learne…
+    </title>
+    <updated>2026-09-08T17:25:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): &amp;quot;I know this&amp;quot; — take a card out of the queue on the learner&amp;#39;s word (#40)
+
+One button, not the four the predecessor had. It says &amp;quot;I already know this&amp;quot; and
+takes the card out of rotation.
+
+Recorded as `declared`, never as `earned`. Both land a card in the same place and
+mean opposite things -- one is months of correct answers, the other is one click
+-- and keeping them apart is what makes the claim checkable later instead of
+indistinguishable from evidence. Declaring will not relabel an earned
+retirement, and undo will not reverse one: putting evidence back needs the same
+evidence that took it out, which belongs to a review flow rather than to a
+button.
+
+It writes nothing to the review log. Declaring is not an answer, and letting it
+in would corrupt every accuracy figure computed from that log -- including the
+gate that decides how fast new material arrives.
+
+A card never answered has no state row, and that turned out to be the commonest
+case for this button: meeting a new card and already knowing the word. A test
+caught it; the fix is in the code, not the test.
+
+Undo costs the card nothing -- no interval, no lapse. &amp;quot;Actually, I don&amp;#39;t know
+it&amp;quot; is not the same as getting it wrong.
+
+No keyboard shortcut. The predecessor had one and removed it after a stray
+keystroke retired an item, and the button is styled quiet for the same reason:
+a control that takes a card out of rotation should not sit where a thumb lands
+on the way to answering.
+
+Also removes `card_id` from the answer payload -- the last place an id still
+left the server -- and brings the changelog up to date with this phase.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c8ab8258f70a9059e18065b139ee2d79e37ed1b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/c8ab8258f70a9059e18065b139ee2d79e37ed1b2"/>
+    <title>
+        feat(web): keep answers given offline, and persist handles so they su…
+    </title>
+    <updated>2026-09-08T17:19:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(web): keep answers given offline, and persist handles so they survive (#39)
+
+An answer given without a connection was lost: the `catch` in `submit()` wrote a
+status line and nothing else. Answers now go to localStorage and are sent when
+the connection returns.
+
+The queue follows the shape the predecessor arrived at the hard way: claim and
+clear the whole queue up front, retry only network failures, and merge anything
+added mid-flight in a `finally`. Leaving items in place while sending them is how
+one gets sent twice, when an `online` event fires a second flush over the same
+rows.
+
+That required changing a decision. Handles were minted per run (ADR-0005), which
+was fine while a restart only meant &amp;quot;refetch the session&amp;quot; -- but an answer queued
+offline and posted after a restart would have resolved to nothing and been lost,
+which is the exact failure the queue exists to prevent. Handles are now persisted
+in `card_handles`. Nothing in the guarantee depended on regeneration: a token is
+random and says nothing about the material whether it lives an hour or a year,
+and the threat model is a learner reading the DOM. ADR-0005 amended rather than
+replaced, so the reasoning stays visible.
+
+The distinction between an unreachable server and a server that said no is
+load-bearing and is now made once, in `api.js`: offline keeps the answer, a
+refusal drops it and says so. An answer disappearing without a word is the thing
+this module exists against, so even the dropped ones are counted.
+
+Verified in a browser, not by unit test alone: two answers given with the network
+cut show &amp;quot;2 answers saved here&amp;quot;, come back as &amp;quot;2 sent&amp;quot;, and land in review_log
+(462 -&amp;gt; 464). Then the case the handle change was for -- answer offline, restart
+the server, reconnect: &amp;quot;1 sent&amp;quot;, and the row is there.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4cccce8c9f275d3ea910e44c5581c1424fc2ffc1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/4cccce8c9f275d3ea910e44c5581c1424fc2ffc1"/>
+    <title>
+        fix(store): retire a card that has earned it, and move the rule out o…
+    </title>
+    <updated>2026-09-08T17:10:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(store): retire a card that has earned it, and move the rule out of the scheduler (#38)
+
+`sm2.should_retire()` and `is_leech()` existed, had unit tests, and **nothing
+called them**. `record_answer` only carried `retired_at` forward, so no card
+would ever have left the queue -- after months of study everything would still be
+in rotation. The unit tests passed throughout, which is what made it invisible.
+
+The plan said to add `should_retire` to `SchedulerBackend`. That is the wrong
+layer. Retirement is policy over what the store already records -- the interval,
+the lapse count, the recent ratings -- not a property of a memory model. Putting
+it on the protocol forces Leitner and FSRS to hold an opinion neither has: FSRS&amp;#39;s
+own position is that nothing is ever finished, it just schedules further out, and
+Leitner has no notion of a clean run at all.
+
+So both rules moved to `core/retirement.py`: pure functions over plain values,
+reachable from `store` without importing `policies` and inverting the layering.
+A clean run is read from the review log rather than from SM-2&amp;#39;s `reps`, because
+every backend writes the same log and only one of them keeps that counter.
+
+Measured on the real path: a card retires after ten clean answers at a 90-day
+interval, reason `earned`. A declared retirement is not relabelled as evidence by
+a later answer, and retirement survives a content reload.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f2a4e3a4c5f79c96311ad3d8db9e8bf220e2cc0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/f2a4e3a4c5f79c96311ad3d8db9e8bf220e2cc0a"/>
+    <title>
+        fix(web): render the choice form, and test that the two sides agree (…
+    </title>
+    <updated>2026-09-08T17:05:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(web): render the choice form, and test that the two sides agree (#37)
+
+`choice` was added to `SUPPORTED_FORMS`, the serialiser started shipping
+shuffled `options`, and no client module was ever written for it. The client hit
+`MODES[card.form] === undefined` and **silently skipped the card** -- a status
+line, not an error, with valid JSON on the wire. Measured on the real corpus:
+546 of 676 cards at first contact.
+
+I verified that change with curl against the API and never opened a browser,
+which is exactly the class of failure a browser would have shown in one look.
+
+The renderer itself is small: options arrive already shuffled and already
+filtered (a choice is refused outright unless real distractors exist), so this
+module only draws them and must not reorder. Picking disables the row, since a
+double tap would otherwise post a second answer for a card already being graded.
+
+The test is the point. `tests/web/test_api.py` asserted that a served form is in
+`SUPPORTED_FORMS` and passed, because the gap was *between* the server&amp;#39;s list and
+the client&amp;#39;s. `tests/web/test_forms.py` reads both and compares them, in both
+directions, plus a shape check that a form module talks to `submit()` and never
+to the network -- grading is server-side, and a module with `fetch` could route
+around that. Parsing JavaScript from a Python test is ugly and is the only place
+these two worlds meet without a browser.
+
+Verified by unregistering `choice` and watching the new test fail, then in a real
+headless browser: 3 choice cards drawn out of 12, zero skipped, no console
+errors.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/56922db847f1a5e1c77d35f47fb615506cfc633b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/56922db847f1a5e1c77d35f47fb615506cfc633b"/>
+    <title>
+        docs: make room for NonCommercial source material, outside git (#36)
+    </title>
+    <updated>2026-09-07T04:20:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: make room for NonCommercial source material, outside git (#36)
+
+The open textbook the first course follows turns out to be CC BY-NC-SA 4.0, not
+plain CC as THIRD-PARTY.md claimed. The NC clause is one-way incompatible with
+the CC BY-SA course content: BY-SA permits commercial use and NC forbids it, so
+no amount of transformation relicenses it.
+
+That does not make the book useless -- reading a textbook and then writing your
+own exercises is what a textbook is for. It means the extracted material has to
+live on one side of a line a later contributor cannot cross by accident.
+
+So `reference/` exists, with everything under it gitignored, and its README says
+plainly that the reason is the licence and not the file size -- because the
+extract is a few hundred kilobytes, and &amp;quot;it&amp;#39;s small, let&amp;#39;s just commit it&amp;quot; is
+exactly the thought that would undo this.
+
+Corrects the THIRD-PARTY row: structure only. Which grammar point precedes which
+is a fact about teaching a language and following it is fine; the sentences,
+tables and passages are not ours to ship.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/674acb4d383c63f77de30bf8363f9c2ddd6a7f2a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/674acb4d383c63f77de30bf8363f9c2ddd6a7f2a"/>
+    <title>
+        feat(content): rank distractors by shared stem and by how common a wo…
+    </title>
+    <updated>2026-09-07T04:02:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): rank distractors by shared stem and by how common a word is (#34)
+
+Closes the paradigm and frequency half of the distractor work.
+
+`morphology` -- a candidate sharing a stem with the answer -- is the hardest
+kind of option to eliminate without knowing the grammar, because for a Romance
+language it IS the conjugation paradigm. On the real corpus it produces exactly
+the sets the exercise is testing: `passada` against `passado`, `ainda` against
+`ainda assim`, `saio` against `saem` and `saímos`. 570 of 3360 distractors now
+come from it.
+
+It carries two thresholds and both are load-bearing. A short answer has no stem
+to share: `o` and `ontem` agree on one letter by coincidence, and honouring that
+ranked `ontem`, `outubro` and `onze` above `as` as options for an article --
+measurably worse than no signal. A long answer needs only two characters, since
+`sa|io` against `sa|em` is a real paradigm. A length floor separates the two
+cases; a bare count of shared characters cannot, and my first attempt at one
+made the article cards worse.
+
+Frequency ranking uses `wordfreq` behind an optional extra. Its absence changes
+the order of options within a tier, never which are eligible or how they are
+labelled, so a course built with it and one built without differ in polish
+rather than correctness. The language comes from `course.l2.code`; the engine
+holds no language knowledge of its own.
+
+`mlconjug3` was the planned source for paradigms and is not usable: it fails to
+import under scikit-learn 1.9 (`No module named &amp;#39;_loss&amp;#39;`, its pickled models
+predate the move) and pulls 232MB for the privilege. Recorded in THIRD-PARTY.md
+so the next person does not spend the afternoon I did.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6be30a8a83e3559b5cc1eb1a3b3d3dcaae742f12</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/6be30a8a83e3559b5cc1eb1a3b3d3dcaae742f12"/>
+    <title>
+        feat(content): precomputed distractors, and serving the choice form (…
+    </title>
+    <updated>2026-09-07T03:48:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): precomputed distractors, and serving the choice form (#33)
+
+Closes #32.
+
+Multiple choice was refused outright because there was nothing honest to put
+beside the answer. There is now: a `distractors` table, computed at content sync
+from two sources -- the note&amp;#39;s own `distractors:` field, which is the author
+saying &amp;quot;this is the mistake I expect&amp;quot; and beats any heuristic, and other notes&amp;#39;
+answers to the same field of the same note type, nearest in length, from the
+same unit before the wider course.
+
+This is a scheduling concern, not a rendering one. Options that can be
+eliminated without knowing anything mean the card is answered correctly whatever
+the learner knows, which inflates measured accuracy -- and accuracy is what
+opens the new-material gate. A multiple choice with filler options would make
+the app introduce material faster than anyone can absorb it. So `choice` is
+capability-gated on having real distractors and is simply not offered otherwise,
+and `validate` reports the cards that lose the form so the author knows.
+
+Generation is deterministic. Anything random would churn the table on every
+content rebuild and make a content diff unreadable; the shuffle happens when the
+card is served.
+
+On the real corpus: 560 of 676 cards resolve a full set, and a session now
+serves choice, typein, wordbank and flashcard rather than typein alone.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb8090984a20996f3b99b43cbc68880f03d612d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/fb8090984a20996f3b99b43cbc68880f03d612d1"/>
+    <title>
+        fix(import): never overwrite a card answered in this engine (#31)
+    </title>
+    <updated>2026-09-07T03:20:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(import): never overwrite a card answered in this engine (#31)
+
+Re-importing overwrote every `card_state` row unconditionally. That was harmless
+while the predecessor was the only place studying happened and this database was
+a reproducible copy of it. It stops being harmless the moment anyone answers a
+card here: the import would silently revert a real answer to the state it was
+imported in, which is the same failure the append-only review log exists to
+prevent, arriving through a different door.
+
+Imported history is stamped `sm2-legacy`, so any other algo in the log is an
+answer given here. Those cards keep their state and are reported; everything
+else still refreshes. A dry run says what it would keep without writing, since
+that is the number worth seeing before running it for real.
+
+Proven on the running instance, not only in tests: a card answered twice here
+went from seen 3 to 5, a full re-import from the predecessor left it at 5, and
+two card states were reported as kept.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/749e7ab997375596f7245fe5fc96f0eb4c75d3f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/749e7ab997375596f7245fe5fc96f0eb4c75d3f9"/>
+    <title>
+        fix(policies): hold a note&#39;s siblings back from today, do not requeue…
+    </title>
+    <updated>2026-09-07T03:04:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(policies): hold a note&amp;#39;s siblings back from today, do not requeue them (#29)
+
+* fix(policies): hold a note&amp;#39;s siblings back from today, do not requeue them
+
+Closes #27.
+
+`bury_siblings` moved a note&amp;#39;s extra cards to the end of the queue. That reads
+as burying and is not: the whole queue ships in one `/api/session` batch, so
+both siblings reached the learner in the same sitting anyway -- the exact thing
+ADR-0001 requires this to prevent, since the second card is then answered from
+the first rather than from memory.
+
+Held back now means not served today. The card keeps its due date, unpenalised,
+and comes up in the next session; over three days a three-card note is seen
+three times, once each. That is Anki&amp;#39;s semantics for the same reason.
+
+The count is reported on `/api/session` rather than left silent: a queue shorter
+than the stated debt deserves a visible cause.
+
+No effect on the imported corpus, where every legacy type maps to a single-
+template note type and no note has siblings. It bites the moment content uses
+`vocab` or `picture`, which is what the sample course already does -- serving 7
+cards from 4 notes before this, 4 after.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* test(web): drive the session until the plan is exhausted, not twice
+
+The end-to-end session test assumed two passes covered every card. That held
+while one note meant one card. Holding siblings back to a later session makes
+the number vary -- a two-card note needs a further round before its second card
+is introduced at all -- so the test now runs until the queue is empty or turns
+to consolidation, and asserts every card was reached.
+
+Caught by CI, not locally: the failure only appears once the branch is merged
+with a main that already has the presentation ladder.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/tobiaslrn/monosai/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/tobiaslrn/monosai/commits/main.atom"/>
+  <title>Recent Commits to monosai:main</title>
+  <updated>2026-09-10T21:34:52Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8a5ac2fc9ab2beb4a6b208e03cf8f2159083b3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/f8a5ac2fc9ab2beb4a6b208e03cf8f2159083b3a"/>
+    <title>
+        fix(ui): restore browser journeys after the shared-primitive refactor
+    </title>
+    <updated>2026-09-10T21:34:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): restore browser journeys after the shared-primitive refactor
+
+The accent status pill missed text contrast on its soft ground, list rows named their link with
+the whole row instead of the title, and the audio clear button lost its saved wording. Specs
+that still addressed the old reading card markup now target the shared list row.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/efab1a7dc659b90dc6e2562f5ea3b77c37e332b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/efab1a7dc659b90dc6e2562f5ea3b77c37e332b4"/>
+    <title>
+        fix(settings): compact settings onto shared primitives
+    </title>
+    <updated>2026-09-10T21:19:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(settings): compact settings onto shared primitives&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/040a752b32b5946934c7a18b9edc557b5762ef77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/040a752b32b5946934c7a18b9edc557b5762ef77"/>
+    <title>
+        refactor(ui): share one list row across shelves
+    </title>
+    <updated>2026-09-10T20:52:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): share one list row across shelves&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/17fec9eaa67d61f8ab3752a6dffae1aa5b4be336</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/17fec9eaa67d61f8ab3752a6dffae1aa5b4be336"/>
+    <title>
+        refactor(ui): give every page one frame and one header
+    </title>
+    <updated>2026-09-10T20:29:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): give every page one frame and one header&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/085d62e03cd7819d70f9da244a3ef3fd1cf074ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/085d62e03cd7819d70f9da244a3ef3fd1cf074ca"/>
+    <title>
+        refactor(ui): share card, notice, status and layout primitives
+    </title>
+    <updated>2026-09-10T19:52:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): share card, notice, status and layout primitives
+
+Surfaces, feedback and layout now come from one file per primitive under
+web/src/styles/components: card and inset, notice, status pill, facts, stack
+and actions, segmented, group title. Every local .mn-error, .error, .mn-panel,
+.mn-settings-section, tag, badge, pill-shaped .status and .actions copy now uses
+them, and the uppercase labels are sentence-case group titles. _controls.scss
+keeps only form fields, the switch and the disclosure.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80641ca09c13f94b81714108912bdb97a00f061a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/80641ca09c13f94b81714108912bdb97a00f061a"/>
+    <title>
+        refactor(ui): consolidate buttons into shared variants
+    </title>
+    <updated>2026-09-10T19:30:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): consolidate buttons into shared variants&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6e0cb6fab80fe818bb8df57596aff3d021d4f111</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/6e0cb6fab80fe818bb8df57596aff3d021d4f111"/>
+    <title>
+        refactor(ui): complete type scale and unify the action colour
+    </title>
+    <updated>2026-09-10T18:51:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): complete type scale and unify the action colour&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f4907fa472d9057a3c59a5e9d32ac2eac6f49ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/8f4907fa472d9057a3c59a5e9d32ac2eac6f49ff"/>
+    <title>
+        fix(reader): stop defining katakana names as hiragana words
+    </title>
+    <updated>2026-09-10T17:57:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): stop defining katakana names as hiragana words
+
+The bundled dictionary has no names, so a proper noun reached an unrelated entry through
+reading or variant folding: the name アンナ showed the meaning of あんな. Proper nouns now
+accept only their exact spelling and otherwise report no definition.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2aff6451abda989a3883c35e24595264e5a5893e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/2aff6451abda989a3883c35e24595264e5a5893e"/>
+    <title>
+        fix(vocabulary): recognize entries split only when analyzed alone
+    </title>
+    <updated>2026-09-10T17:48:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(vocabulary): recognize entries split only when analyzed alone
+
+IPADIC reads 十分 alone as 十 + 分 but as one token in これで十分です. Such
+entries were indexed only as phrases, so the single token never matched. The
+whole expression is now also an exact and normalized single-token key; joined
+per-token readings stay excluded because they can name another word.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c96b0f23be882be2144fc38fd19602bc65d4b2e1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/c96b0f23be882be2144fc38fd19602bc65d4b2e1"/>
+    <title>
+        fix(reader): keep policy exceptions unmarked in generated stories
+    </title>
+    <updated>2026-09-10T17:37:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(reader): keep policy exceptions unmarked in generated stories
+
+The reader classified every reading against the current snapshot only, so a word the exception
+review approved - by definition not in Anki - came back as not-in-snapshot and was underlined. A
+generated story now falls back to its frozen validation for any token the snapshot does not cover,
+as the glossary&amp;#39;s definition of Known already said. A word learned since still stops being marked.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/638b1e7d9352970abee82192598868fcf5e00e21</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/638b1e7d9352970abee82192598868fcf5e00e21"/>
+    <title>
+        fix(generation): let the story writer draw on the exception policy
+    </title>
+    <updated>2026-09-10T16:35:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(generation): let the story writer draw on the exception policy
+
+The policy only reached the post-hoc exception review, while the writing and repair prompts told
+the model the inventory was the complete vocabulary, so allowed loanwords and names never appeared.
+Writing, blueprint, segment and repair prompts now carry the policy; the review still decides.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/475a8b0be41d458b198b12b947fce6a31641f328</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/475a8b0be41d458b198b12b947fce6a31641f328"/>
+    <title>
+        feat(generation): focus recently learned stories on the newest words
+    </title>
+    <updated>2026-09-10T15:47:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(generation): focus recently learned stories on the newest words
+
+Recently learned now sends the N most recently first-reviewed words (25, 50 or 100, default 50)
+as an ordered focus list with coarse ages, instead of weighting the palette by a 120-day
+half-life. The palette is drawn uniformly from the remaining words, and provenance records the
+focus and its size. Story and repair prompts move to version 4. See ADR 0067.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e257127aa4382087ed976c2a15c4cc962589636e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/e257127aa4382087ed976c2a15c4cc962589636e"/>
+    <title>
+        feat(anki): recover FSRS difficulty from desktop AnkiConnect
+    </title>
+    <updated>2026-09-10T15:27:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anki): recover FSRS difficulty from desktop AnkiConnect
+
+AnkiConnect&amp;#39;s cardsInfo carries no FSRS memory state, so desktop vocabulary never had a
+difficulty. The desktop adapter now resolves it to the whole percent with a parallel binary
+search over Anki&amp;#39;s `prop:d` search on the existing read-only findCards action. SM-2 cards stay
+without difficulty, and a refused search leaves it unsupported without failing the refresh.
+
+The per-card `cid:` query packing is shared with the AnkiDroid `introduced:` search, and the
+fake AnkiConnect server can now answer with the desktop add-on&amp;#39;s real cardsInfo shape.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/07517fd51ff9f1fa46d79a1b83231d1797970061</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/07517fd51ff9f1fa46d79a1b83231d1797970061"/>
+    <title>
+        fix(anki): read learning state from desktop AnkiConnect cards
+    </title>
+    <updated>2026-09-10T15:21:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki): read learning state from desktop AnkiConnect cards
+
+AnkiConnect&amp;#39;s cardsInfo names the card type `type`, while the schema only read the bridge&amp;#39;s
+`cardType`, so desktop refreshes silently lost learning state. Both keys now fold into
+`cardType` at the schema boundary.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9658731cf37028d6e0ee8bbaf7a92df00296b625</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/9658731cf37028d6e0ee8bbaf7a92df00296b625"/>
+    <title>
+        merge(ui): integrate concise interface copy
+    </title>
+    <updated>2026-09-10T14:50:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge(ui): integrate concise interface copy&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c8a313caadf834c70b39a2530b8cc39c46dc7a65</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/c8a313caadf834c70b39a2530b8cc39c46dc7a65"/>
+    <title>
+        test(anki): format bridge search responder
+    </title>
+    <updated>2026-09-10T14:48:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(anki): format bridge search responder&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db4167ac65427a1386b2b50e2aad378925e89e47</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/db4167ac65427a1386b2b50e2aad378925e89e47"/>
+    <title>
+        test(anki): keep static bridge search responses typed
+    </title>
+    <updated>2026-09-10T14:48:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(anki): keep static bridge search responses typed&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b89cf84e9ddff989f148ce9a249e010913818bf3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b89cf84e9ddff989f148ce9a249e010913818bf3"/>
+    <title>
+        test(anki): model introduced search in browser stubs
+    </title>
+    <updated>2026-09-10T14:45:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(anki): model introduced search in browser stubs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/19e0b554c40af261ed9f427dc3d05e774786fb59</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/19e0b554c40af261ed9f427dc3d05e774786fb59"/>
+    <title>
+        chore(repo): restore prettier compatibility
+    </title>
+    <updated>2026-09-10T14:37:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(repo): restore prettier compatibility&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5d34a70a75abc6f870267206c1c8c7564671e65</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/b5d34a70a75abc6f870267206c1c8c7564671e65"/>
+    <title>
+        feat(anki): recover first review days on Android
+    </title>
+    <updated>2026-09-10T14:37:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anki): recover first review days on Android&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

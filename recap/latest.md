@@ -1,3 +1,167 @@
+## List · pinned shows · pass 2026-09-11 (noon Asia/Taipei)
+Window: since last clock 2026-09-10. Usage: LIST + newest missing backlog episode (All-In Anthropic's $2T IPO, deferred since prior passes; nothing new published in the window). Further backlog stays deferred.
+
+### All-In · rss libsyn + YT @allin
+- **ingested (backfill)** 2026-08-14 · Anthropic's $2T IPO, Zuck's AI Manifesto, Nvidia's $500B AI Bet, Grok's Comeback · 1:39:30 · packet `/workspace/recap/2026-08-14-all-in.md` · https://www.youtube.com/watch?v=kVzYGVJ8zUk · libsyn https://allinchamathjason.libsyn.com/anthropics-2t-ipo-zucks-ai-manifesto-nvidias-500b-ai-bet-groks-comeback · published Fri, 14 Aug 2026 20:11:00 +0000
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0, SF Mansion Shortage, NYC Bans AI in Schools & Venezuela Oil Deal · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- on disk 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up · https://www.youtube.com/watch?v=Sij_v-mcZXQ
+- on disk 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety · https://www.youtube.com/watch?v=5BWuvjGLMik
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- missing 2026-08-05 · Saronic Founders… · https://www.youtube.com/watch?v=jfxHHglA5Eo
+- skipped since last pass: All-In YT shorts/clip dumps (top still Chamath: Your AI Data Is NOT SAFE · vkAAAVtZwqc; Jason: OpenAI's "Sentient AI" Hype… · ojVOeGL-Snc; David Sacks AI/data centers · OLP4oVOZ9EM).
+- nothing new full-episode since last pass (newest full still 2026-09-04 GPT-6; libsyn lastBuild still that drop). What's new this pass: backfilled the previously deferred Anthropic $2T full.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- nothing new since last pass.
+
+### Fern · English @fern-tv
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- nothing new since last pass (FBI Agent still channel top).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- nothing new since last pass.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- channel noise: shorts only on Shorts tab (How Taiwan built a chip city #business · UBiT14hsgKA; reusable rocket · DPbMOC0k-OM; Same car for 30 years · ZL-70QvCNfY; Ask 10 people what socialism is · O8PXdwknlfU; A refinery in the sky · _-Tb5c-C7Rs) — skipped. Same top as last pass.
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- nothing new long-form since last pass.
+
+### Elon sit-downs
+- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny. Search noise (Gibney/Ashley St. Clair Musk-doc presser · ApHPZPBdKE0; Guardian/IGN Musk documentary teaser clips; Jamie Dimon / "JUST RECORDED" clip farms; WEF full still IDEA TV Jan 2026 · zVMJsCbCyIE) — not first-party sit-downs; skipped. Skip BBC wraps / daily X (→ Brief).
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (libsyn newest still 2026-07-02 Live in the Future; YT @NavalR top still Riding AGI… 2 months ago).
+
+### Frontpage · English @frontpagechannel
+- in sources; not on this clock's LIST set (routine names All-In, Maxinomics, Justin Sung, Elon, Fern, Moon). Not scanned for ingest this pass.
+- note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk).
+
+Footer: listed 2026-09-11 ~12:00 Asia/Taipei (fired 11:04 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos HTML + All-In/Max shorts + Naval RSS/YT + Elon YT search on the box · All-In Anthropic captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
+
+## Ingest · All-In · 2026-08-14 · Anthropic's $2T IPO, Zuck's AI Manifesto, Nvidia's $500B AI Bet, Grok's Comeback
+url: https://www.youtube.com/watch?v=kVzYGVJ8zUk + https://allinchamathjason.libsyn.com/anthropics-2t-ipo-zucks-ai-manifesto-nvidias-500b-ai-bet-groks-comeback  ·  length: 1:39:30  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Gavin Baker joins the show! (00:00)**
+- 00:00 · Jason · Short crew this week: David Sacks + Gavin Baker; Chamath/Friedberg absent. Long docket. Congrats Gavin on SpaceX — biggest win of career?
+- 00:00 · Gavin · SpaceX was magical; only one SpaceX; Bill Belichick "on to Cincinnati"; lots still ahead — SpaceX story isn't over.
+- 00:00 · Jason · You're only as good as your last investment. Sacks back; looking forward to talking with Gavin. Missed spicy All-In Interview with Rahm Emanuel — full guns blazing; will take any 2028 interview guest.
+- 00:00 · Jason · Verdict on Rahm: throwback Clinton/Obama DNC; no chance in Mamdani DSA Democrat party. Internal Dem civil war like GOP; hoping moderates get a chance vs lunatic democratic socialists.
+- 00:00 · Gavin · Rahm has incredible experience (Obama/Clinton, Chicago mayor, Japan ambassador); awesome on foreign relations; hard no on democratic socialists / socialist policies as road to nowhere — went as hard as Sacks would. Jason: hope for more moderate candidates.
+
+**Anthropic IPO report: $2T valuation, $100B+ run rate, October listing (02:36)**
+- 02:36 · Jason · Breaking (record Thu / publish Fri): FT — Anthropic targeting $2T IPO, would break SpaceX's $1.75T record. Investors expect October listing (~6–8 weeks). Polymarket ~80% chance Anthropic IPOs this year; Brad Gerstner signaling sooner. Annualized run rate end-year $100–120B — never-seen SV revenue ramp; at $2T = ~16–20× sales (fraction of SpaceX/Palantir multiples). ~10× revenue growth last year. Still AI's top model but Grok catching up; OpenAI not shabby. Polymarket 67% Anthropic has top model EOY. Breaking Thu: Anthropic in talks to buy Decart (~$6B) — software lowers training/inference cost via chip efficiency.
+- 02:36 · Gavin · Not currently an Anthropic shareholder; Anthropic/SpaceX datant came a little too late — doesn't generally invest in Elon's competitors. Dayton: Elon rented Colossus surplus compute to Dario/Anthropic after getting comfortable with Dario's morals ("don't set off my evil detector"; famously cut SPF short). Rumored numbers exceptional — never seen anything like; April/May among most extraordinary capitalism moments. On the margin Anthropic losing share to OpenAI, open source, and Grok — and still growing so fast.
+- 02:36 · Jason · Pie getting ginormous; even percentage share loss, absolute numbers huge; open-source "dark tokens" untracked — major pie-growing moment.
+- 02:36 · Gavin · AI broadly accelerated in July (contrasts public-stock action). Exceptional business; executed on model + amazing products. Cites Eric Fischria thought experiment ~2y ago: OpenAI/Anthropic retain value even if they lose at model layer via product/harness/user familiarity — element of truth. On $2T: a little skeptical — saw with SpaceX; bankers who lose lead-left leak high bars to make lead-left look bad. Previously said could trade $3–4T; if pricing responsibly, absorb lockup, avoid employee-distracting volatility — maybe $2T prices and trades to $3. If it comes out at $2T, testing-the-waters/road show went incredibly well. Road show itself not yet; if they price at $2T it means testing waters + road show went well.
+- 02:36 · Sacks · Can growth continue? Ending year ~$100B run rate, 10×+ YoY, and 10× YoY for last 3 years — exponential. Continue that → $1T ARR end next year. TAM big enough? Enough compute/energy? Physical constraints. Demand yes — agents taking off (Grokbot); more contexts; token demand grows exponentially. Question is physical delivery + market share as competitors catch up. Anthropic's coding bet was very prescient (ideology/recursive self-improvement and/or watching Cursor utilization → take that vertical). OpenAI pivoted to coding; GPT-5.6 better; growth was 3–4×/year, past ~2 months heard >20% MoM (~10× annualized if extrapolated) — now growing as fast as Anthropic. Regardless of another 10×, Anthropic grows very fast; question is share vs competitors. SpaceX AI may get there too.
+- 02:36 · Jason → Gavin · Back-of-envelope: can they 10× $100B → $1T next year on infrastructure (energy/DCs)?
+- 02:36 · Gavin · Right questions. Internally Anthropic very confident — multiple trusted sources: Dario said Anthropic might be the only private company in the world at some point (Anthropic + governments). More advanced checkpoints than Fable up their sleeve; executed really well. Would take the under on "only private company"; long time before they lay a rocket / deliver lunch (Zipline burrito, Uber, Waymo still exist).
+- 02:36 · Sacks · Might interpret as negative hubris signal — SPF land; would discourage Dario from saying that again. Pride cometh before the fall. Heard when ~$60B ARR they thought they could get to $600B in one year (10× from mid-year); now >$80B, not slowing. Big question: 100–120 → trillion? Merely $400–500B would make them the biggest software company. Even $200B amazing — peer to Microsoft Office / Google Search franchises.
+- 02:36 · Gavin · Demand vs supply. Knowledge-work TAM ~$25–65T (he's used $25; AI-institute head at a top-3 IB said way low) — before robotics. Labor substitution vs accelerating growth: thus far looks like accelerating growth — more software-coder job openings than a year ago (blast-zone epicenter); some negative for very-young/out-of-college. Better if growth accelerates — will show in national accounts next ~18 months. Supply: Landman / Billy Bob / Permian — atoms not bits; 110° heat; orchestrate thousands in remote locations. America/capitalism good once geared up. Turbine-blade constraint (few US/EU facilities, giant presses) — now 24-hour shifts. Boom Supersonic building turbine business first on demand; Elon reportedly bought a turbine company personally to go fast. Private-jet residuals strong because engines pulled for data-center turbines. Caterpillar, Cummins, GE Vernova, Siemens Energy expanding capacity fast. Politics/regulation: Abbott energy audit (not moratorium) — bring-your-own-energy fine; tapping Texas grid needs audit so grid doesn't freeze-fail.
+- 02:36 · Gavin · AI narrative bad: DCs take all water (book error ~100,000× off), raise electricity (wrong — lower it if they stand up own gen + sell excess / pay grid upgrades). WSJ Ellendale story: dying town revitalized, tax revenue 10×. CCP active anti-AI/anti-DC campaign; someone needs to tell the truth — "truth shall set you free."
+- 02:36 · Sacks · DC panic = media hoaxes/hysteria over literally nothing; every aspect wrong/a lie. Water less than a golf course, recirculates. Electricity rises in blue states from decarbonization/green regs. Noise pollution is legit — don't put in anyone's backyard. Common sense → no complete ban. Communities embracing them get better schools/services from revenue.
+- 02:36 · Jason · Entrepreneurs → solar/batteries/nuclear/clean energy scaled → prices fall. Manageable: noise, nat-gas air pollution (site far from people), minor local temperature rise; obsessing over water → stop eating almonds / golf-course billion gallons. On demand/pricing: Anthropic growth will slow considerably next year — no way to $1T; maybe triple to $300–400B. Startups + large cos embracing GLM-5.2 and Zuckerberg's open models; GLM vs Claude Opus ~90% cheaper. Corporate America will embrace open source like last 20 years (don't want rug-pull/hostage by large tech).
+- 02:36 · Gavin · Open source good for corporate America / world / America. Dwarkesh post resonated: Anthropic AI + constitution wired to do what Anthropic thinks best for humanity — take Elon's judgment; evil detector didn't go off; genuinely good people. Problem = unintended consequences / chaotic world. Open source → rich variety / diversity of AIs — good for humans/America; do not want 1–2–3 dominant models. History will judge Elon kindly for Grok dedicated to objective truth.
+- 02:36 · Jason · If you made the bet you used intelligence to pick the winner — talk that book. Elon explicitly believes in open source / tech shared for good; first foray was backing OpenAI.
+
+**Zuck's AI manifesto: What it means for Meta and frontier AI (27:32)**
+- 27:32 · Jason · OpenAI's manifesto rewritten this week by Zuckerberg — 6,500-word "The Future Is for Everyone / path to a positive AI future." Extremely optimistic: open-source models, agent for everybody, free, tutor + unlimited abundance; picks up abundance crown Sam dropped going private. Superintelligence = invention not automation; AI safety via balance of power, no singular centralized intelligence. Sacks — thoughts?
+- 27:32 · Sacks · Nodded in agreement with much of it. Likes early point taking shot at EAs/Anthropic/Dario: why rush to create a dystopian future you don't believe in (everyone out of work, AI goes rogue)? Fundamental contradiction. Answers: (1) mercenary/lucrative — doesn't think real reason; (2) missionaries who believe only under their enlightened control can humanity be protected — Thomas Sowell *Vision of the Anointed* (intellectuals maximally empowered to engineer society — always backfires into totalitarian schemes). Zuck: notion AI so dangerous only safe path is extreme concentration of power is inherently problematic; absolute power benevolently providing for humanity hasn't led to safe outcomes. Frame isn't just open vs closed — centralized vs decentralized; Sacks on decentralized side.
+- 27:32 · Jason · How could you not be decentralized? Most obvious argument. Sacks: EA types are not — delusional. In Washington, former Biden people moved to Anthropic gov affairs; think-tank clique frame: AI inherently dangerous → centralize control in government; 2–3 companies work together as cartel. Marc Andreessen meeting with Biden officials (they dispute characterization; Sacks heard similar). Limit to US (no export chips/models) — pipe dream; rest of world gets AI. Then atomic-energy-commission-style cartel + corporate/state merger. Still believe that to some degree.
+- 27:32 · Jason · Zuck clearly listens to All-In — invite next week (Hawaii/Tahoe + Starlink / e-foil). Sacks wrap: maximum individual empowerment; decentralized; open models; data sovereignty; proprietary frontier from Anthropic/OpenAI can coexist; Zuck on that side — agrees.
+- 27:32 · Gavin · Read it; agreed; boils down: Anthropic/EA believe tech too dangerous to distribute; Zuck/Elon/Jensen believe too dangerous to centralize — history always favors distribute/decentralize; no counterexample. As human wants AI that looks out for the sovereign individual — not Dario/Anthropic deciding his best interests. Doesn't trust "AI Jesus" (great guy; resting smiling face while describing Terminator / only he can save us / 20% chance he might not).
+- 27:32 · Sacks · Closely analogous: EAs think competition = race to bottom / less safety; Sacks thinks competition brings out the best. They want centralize + less competition; we want decentralize + more.
+- 27:32 · Jason · Right to bear arms / side defense against tyranny; wants right to own AI aligned with him. Sacks: guns allowed despite misuse; AI more creative/salutary/beneficial consumer tech — if guns, allow AI. Jason (TX): guns also feed family / defend vs evil. Delusion of Dario/EAs: make all the money, one company, money-printing machine, save all of us — delusions of grandeur. Tech will diffuse anyway; genie-in-bottle absurd. They treat it as superintelligence / nuclear bomb / Terminator they can't control — diluted themselves (pod/LSD/Burning Man); not reality — you can unplug it. Not the nuclear bomb.
+- 27:32 · Sacks · Dominant DC analogy was nuclear weapon → need global AEC — pipe dream. Reason: no right to personal nuke, but right to gun — they bucket AI with nuke. Jensen: no consumer needs a nuke; every consumer/business needs AI — consumer tech before military. Sci-fi polluted brains (Cyberdyne). Gavin: if Terminator, wants his own Terminators who like him / open-source the Terminator. American patriot: ban open source / centralize → lose AI, geopolitics, everything to China — that simple. For distribution/democratization/decentralization/individualization.
+- 27:32 · Jason · Nodding whole way — Zuck ran in front of parade with open source + empower individual + not nuclear. Two buried points: (1) job displacement — no rule AI must automate faster than capability growth; recent stats may favor capability matching/outpacing automation = Jensen "won't lose job to AI, lose to somebody with AI"; every time Jason uses tech, new opportunities + job reqs; 5–10× work if embrace. (2) right to index/learn from observed content / defend distillation — but hypocrisy: Meta sued startups (many Jason-backed) that tried to index Instagram/Facebook social graph; hundreds of lawsuits; locked down — like Claude-ripping-books / distillation debates.
+- 27:32 · Sacks · Huge irony: Dario didn't get his way in Washington this admin; if he had (highly regulated AI apparatus), company wouldn't be set up for hugely successful IPO — pricing power / premium for tokens depends on ~6 months ahead of open models; FAA-for-AI / FDA-for-AI years to approve → 6 months gone, commoditized, Chinese catch up — bad for US competitiveness and Anthropic. If they ever lose that 6 months, revenue hurt. Pricing power may still be sustainable for subset willing to pay premium for true frontier (Apple vs Android) — but Anthropic/OpenAI on hamster wheel; must stay ahead; they think lead growing via recursive self-improvement.
+- 27:32 · Jason · Going-direct movement: Nikesh (Palo Alto Networks) long-form on X; Jensen opened X + long form; Zuck activated account. Previously let others craft message; matured — wrote own missive (AI detector: 100% human). Would have been great earlier on teen girls / IG addiction. Credit for going direct; X exceptional for these dialogues.
+- 27:32 · Gavin · Profoundly agrees. If you're a public CEO without your own voice on X, you are at risk — only you can tell your authentic truth. Corporate PR isn't armor; retire / next CEO / Congress / Dem "accountability agenda." Own voice = protection, power, armor, sigil, superpower. Loving Zuck's Jeremy Strong era vs Jesse Eisenberg; MMA / floating barge Tahoe; authenticity / go direct / be yourself.
+- 27:32 · Gavin · Open source makes frontier tokens more valuable: 200–250 IQ frontier orchestrating open-source 150 IQ agents (Manhattan Project Oppenheimer + Nobelists needed thousands of merely top physicists). Plausible outcome: frontier tokens ~65–85% of economic value; open source ~80% of volume — good for everyone.
+- 27:32 · Jason · Over/under Anthropic 2027 revenue if 2026 ends exactly $100B? Gavin: take over vs Wall Street consensus (+25–30%) assuming regulation campaign doesn't succeed — not over on a trillion. Jason: $500B over/under? Gavin: $400–500B within realistic/achievable zone. Sacks: same $400–500B exit ARR next year comfortable; only reason not higher = physical limitations (+ competition). Over/under really ~$500B exit ARR; they think they'll do the over. Were talking $10B ~10 months ago → $400B = 40×. Should they thank Sacks for preventing Dario shooting himself in the foot (guns-to-ankles / Deer Hunter)? Hostility to open models: if they slow down they must slow open too or get commoditized — but US has no jurisdiction over China; global compute governance / China accords = pipe dream; if we slow, China races ahead.
+- 27:32 · Gavin · If short compute / energy slows Anthropic growth — planetary-scale limits real. Human brains insanely energy-efficient vs data centers (million homes / 6–9 months to approximate; ~thousand homes to answer a question) — capitalism will have use for most computationally efficient intelligences = humans.
+- 27:32 · Jason · Cerebras/Grok/Nvidia making inference 5–10× more efficient every 12–18 months. Congrats — Zuck in rearview like MySpace/Snapchat; T-Rex coming at frontier; beast at copying/competing; will have best American open-source model next year (guarantee). Gavin might take under. Another American hero: Jensen / Nvidia — might see Nvidia in open (Nemotron); Jason got back-channel Jensen doesn't like "we're in open source" framing. Hyperscaler told Jason 9-figure double-Lindy reverse: frontier model on $100B infra → pivot to open source not frontier.
+
+**All-In Summit Speaker Announcements! (56:41)**
+- 56:41 · Jason · Summit Sep 13–15 LA; adds Steve Hilton (CA governor run), Spencer Pratt, Abigail Shrier (*Bad Therapy*) + surprise guest; Gavin might appear; Blake Scholl (Boom). Frontier tech hub / gifting / wellness; apply allinsummit.com (skipped full pitch).
+
+**Nvidia's $500B financing plan, how the AI market could fall apart (58:13)**
+- 58:13 · Jason · Nvidia partnering with Goldman, BlackRock, and others to raise $500B in AI compute. Jensen X article: "Nvidia AI factory compute is becoming an investable asset class" — independent financing platforms, third-party capital; treat GPUs like financable income-producing assets (MBS analogy — hopefully not same outcome). Borrow → buy Nvidia systems → rent compute → pay loan; Nvidia as matchmaker. Vis-à-vis round-tripping / hand-wringing from prior pods?
+- 58:13 · Gavin · Blackstone/KKR/Goldman wouldn't have done CNBC with Jensen if they didn't believe Nvidia GPU compute was financable — smartest 2-and-20 asset managers validating the market. Nvidia matchmaker: flexible compute → long enough life → finance at lower rates. Chinese open models (Qwen, Kimi, DeepSeek, GLM) evolving differently — architectural variation favors flexible GPUs. Nvidia: bring deals to Blackstone/Goldman/KKR/Apollo/BlackRock (six of them); residual-value guarantee further lowers financing cost — after 3–4 years guarantee GPUs rentable at a rate; Nvidia bears risk between that and market; has best telemetry on compute S&D; only ~25% of risk with world's smartest underwriters.
+- 58:13 · Jason · What could go wrong (MBS / lifespan)? Hyperscalers debated 4–5–6 years; open models can be tweaked for oldest hardware → maybe years 6–8+.
+- 58:13 · Gavin · More than that — CoreWeave renting Ampères at economically profitable rates through 2029; Ampere from 2020 → ~9-year life (old American cars sent overseas). Biggest risk not demand — glut/overbuild → dark GPUs like dark fiber post-dotcom; disaster if built expecting Elon's $30–50/watt spot and oversupply crashes price. Political headwinds/DC hysteria ironically insure against oversupply vs exponential demand.
+- 58:13 · Gavin · Brilliant part: in return for offtake floor guarantee (nowhere near $30–50/watt — low-risk level), Nvidia gets revenue share / royalties above a higher floor → capital-light cloud (Morgan Stanley note). Numbers so big TAM constrained by ability to finance buildout — Jensen alleviating finance constraint. Elon wants ~6–8 GW next year = ~$300–400B capex; company raised ~$100B equity/debt — needs financing; seller financing from Nvidia (payback as quick as ~1 year) now via banks/PE line of credit for all downstream purchasers.
+- 58:13 · Sacks · Not circular like Gurley's worry — Wall Street/PE financing on expected GPU cash flows. Nvidia becoming central bank / Federal Reserve of AI; works through private banks/markets charging fees. PE analogy: plane financing — asset-backed (planes have value even if airline fails), not just airline credit; Nvidia must standardize reference designs so Wall Street can securitize (like mortgages).
+- 58:13 · Jason · Two governors/throttles: (1) physics of building DCs; (2) dead-man switch = Anthropic + OpenAI as biggest customers — OpenAI scaled ambitions ~$1.4T → ~$600B; if Anthropic doesn't need compute / efficiency / open-source headwind → hand off buy button. Anthropic IPO important: quarterly GAP earnings = pace-car signal vs bubble/no-ROI narrative (them + OpenAI + SpaceX). If Anthropic wobbles/slams brakes → pileup — they're making ~$100B per GW compute → pay SpaceX ~$50B/GW spot → SpaceX pays Nvidia ~$30B for chips → TSMC/Micron/SK Hynix food chain.
+- 58:13 · Jason → Gavin · Enough distance between cars if Dario slams brakes?
+- 58:13 · Gavin · If brakes because no demand → pileup, not enough room. If Dario passed by SpaceX/OpenAI/American open-source champion → no pileup. Anthropic S1 will break brains: macro/value investors confidently prognosticating assuming tokens subsidized — Anthropic generating cash / profitable; open-source tokens profitable; OpenAI imminently; SpaceX same. Overwhelming majority of tokens profitable for everyone in the chain. Macro bears wrong like claiming oil is $500/barrel — paid to be merchants of doom.
+- 58:13 · Jason · Framing: ~150–160M US employed; collective salaries ~$10–12T; corps/people spend 5–10% of salaries on tokens (avg $80k → $4–8k) like SaaS/desktops/phones — → ~$1T US AI spend (or half = $500B where these cos trending) before rest of planet. Going to be fine.
+
+**NJ and Mamdani take on Amazon over subcontracted drivers (1:14:29)**
+- 1:14:29 · Jason · NJ AG sued Amazon — cheating by hiring drivers via DSP (delivery service partners) subcontractors; shields liability (crashes) and union/labor obligations. NYC Mayor Mamdani jumped in with municipal laws demanding Amazon hire drivers themselves — "exploitative subcontracting"; tragic deaths under pressure. Surge in socialism belief that corps cheat on margins — is Amazon too clever? Midterms/2028 issue.
+- 1:14:29 · Sacks · Widespread practice not NY-focused. Amazon: denying independent contractors raises delivery costs; study — average household hundreds of dollars extra; slows service; threatens thousands of small-contractor jobs; could shift ops outside city. DSP enables holiday/dense-urban rapid scaling — more flexible than all-Amazon employees. Market evolved to decentralize to small-business networks → more jobs/entrepreneurship; thousands of NYC DSP jobs threatened if illegal. Let freedom of contract / voluntary exchange prevail; workers, DSP owners, Amazon liked mutually beneficial arrangements — no reason for Mamdani to insert city.
+- 1:14:29 · Gavin · If Amazon, put a line-item "Zohran Mamdani fee" on every bill — loads of non-wealthy NY Amazon users will feel it.
+- 1:14:29 · Sacks · Amazon vs any city service efficiency insane (same-day/next-day); optimized for low consumer prices — gov telling them how to run driver network is insane. What Mamdani city service is remotely as efficient?
+- 1:14:29 · Jason · Starbucks/Schultz gave living wage (~$20–22) pride to lowest paid. DSP drivers paid ~$18–20 but model created explicitly to benefit Amazon and shift employee burden onto American taxpayer — NJ/NY calling out rightfully. De minimis cost to make frontline full-time Amazon family; keep some DSPs for scale; ~25¢/delivery in NY to go ~$18–19 → $21–22 + benefits. Industry blind spot: Amazon most efficient → abusive to most vulnerable / against esprit de corps of capitalism; needs self-correction. Valid DSA argument that will sell; capitalists should be less cutthroat/clever. Long-term Amazon shareholder increasing every year — do right thing, get ahead, be incredible employer not hide expenses. Not socialist — got a little too clever. Uber different: massive insurance/lawsuit exposure vs DSP shield.
+- 1:14:29 · Sacks · Soapbox? If Uber too? How decide which stay DSP? As soon as you acknowledge DSPs more flexible why meddle? Workers toggle Uber/Amazon and like flexibility.
+- 1:14:29 · Jason · Compromise: DSPs for holiday scale-up; Jassy should get ahead proactively like Schultz — not be forced. DSP owners are fragmented firms that go out of business after accidents to shield Amazon; drivers want Amazon equity/RSUs/healthcare; full 8–12 hour shifts (not gig toggle as Sacks thinks); organizing/unionizing and Amazon uses DSP to break that. Bad look; cutthroat capitalism fuels young socialism belief that Amazon cheats margins / dumps costs on taxpayers. Predicts Mamdani + NJ win lawsuits.
+- 1:14:29 · Sacks · Sounds nice / wants to save capitalism too — not sure it will. What we know: raises package cost ~$5.20; families ~$664/year more; ~5,000 jobs at risk. Voters fall for socialism; as consumers hate $5 more packages. Put Mamdani surcharge on orders — not 25¢, $5.20/package / $664/household/year NYC = huge COL hit. (Jason had internet issues — move on.)
+
+**Grok 4.6 launch: SpaceX's high-ceiling, high-floor AI strategy (1:27:32)**
+- 1:27:32 · Sacks · What did you think of Grokbot + Grok 4.6 releases? People say close to / at frontier but cheaper. Was maintaining frontier-lab duopoly Anthropic/OpenAI — wrong? Number three? More fluid?
+- 1:27:32 · Gavin · Yes more fluid. Pareto frontier chart: quality/intelligence vs cost — Grok 4.6 disruptive on pricing (upper-right better). Cursor bench (SpaceX has right to acquire Cursor / working with them — grading own homework?). Databricks ($190B raise) eval: ahead of Fable 5 (gold standard) — higher quality at slightly lower price. Numbers are numbers; wait on vibes but early vibes good — DHH (37signals/Basecamp) positive; Databricks + their Meridian evals bearing out in real world.
+- 1:27:32 · Jason · Elon caught up for two reasons: (1) bought Cursor / dialed-in team; (2) reshuffled xAI management — brought SpaceX killers/aces (+ Cursor aces + new people) in ~6 short months. Never count Elon out — frequently late, never wrong, over-delivers; own admission always late but gets it right.
+- 1:27:32 · Gavin · Still relatively small model (~1–1.5T params); larger Grok 4.7 significantly more capable in a few short weeks. Grokbot as important — another OpenClaw moment: personalization/democratizing AI (same as Zuck manifesto bots-for-everybody; Claude Cowork/Claude / Hermes/Perplexity Computer). Grokbot much easier vs OpenClaw/Hermes (need to be technical / "buying a scarf" / Chanel-hard).
+- 1:27:32 · Jason · Tension: hosting Anthropic while catching up to Anthropic — Elon Web Services vs competing?
+- 1:27:32 · Sacks · Loves huge compute clusters: call option = catch up / true frontier lab; if fails, put option = sell compute at attractive prices to frontier labs. Right (per reports) to take compute back from Anthropic; both sides 90-day cancellation → Elon charges roughly spot-minus-90. Advantageous if compute stays supply-constrained — near-spot for compute or reroute to own service if he takes lead.
+- 1:27:32 · Gavin · Talks to many SpaceX investors: nuanced views on Starlink / direct-to-cell / orbital compute / terrestrial compute — very few talk about Grok at all, yet Pareto-dominant on many measures. Existence proof Anthropic ~$1B → $50B fast; if Anthropic worth $2T (FT) / maybe settles $3–4T — maybe start considering Grok when thinking about SpaceX.
+- 1:27:32 · Jason · SpaceX has so many ways to win; podcast folks among earliest SpaceX investors; Gavin part of leading small part of second $10B round.
+
+**Workday in talks to be acquired by Silver Lake for ~$43B (1:35:21)**
+- 1:35:21 · Jason · Breaking during show: Silver Lake may be buying Workday; stock +17%; significant moment — software death spiral (~12–18 months, troughed ~3–4 months ago); return of PE bid changes investing landscape.
+- 1:35:21 · Gavin · Don't know buyers' thinking, but rise/competitiveness of open source is a godsend for American software. Chart: Workday ~$300 → ~$100; even with bid only recovered a little. World of 1–2–3 dominant frontier models = hard world for software; PE bid coming back because they see open source. Sharp acquirers of money-printing businesses wanting more revenue extraction — good there's a buyer (Bending Spoons-style last week).
+- 1:35:21 · Jason · Backstop if public markets don't want them. PE saying oversold — some value; use AI to run them (Bending Spoons: cut ~80% employees, remaining 20% AI-first, extract revenue).
+- 1:35:21 · Jason · Close: Gavin now tied with Brad Gerstner for fifth bestie ratings — one drops to sixth; Brad may be on next week. Sacks — steak later? Amazing Aug 14 episode; see you next time.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 14:01 Sacks: "Pride cometh before the fall."
+- 34:01 Gavin: "this technology is too dangerous to centralize."
+- 1:06:40 Sacks: "Nvidia is kind of becoming the central bank of AI, the Federal Reserve of AI."
+- 1:12:33 Gavin: "The overwhelming majority of tokens are profitable for everyone in the chain."
+- 1:23:32 Jason: "I think they got a little too clever here."
+- 1:32:47 Sacks: "that's like the call option is to catch up and become a true frontier lab."
+### Notes
+- first-party YouTube English auto-generated captions via Android innertube player timedtext (json3); show notes chapters used as section anchors; no ASR on box; no third-party transcript sites
+- short crew confirmed in captions: Jason + Sacks + Gavin Baker; Chamath and Friedberg absent (Summit plug jokes about Freeberg parties only)
+- ASR name noise cleaned in body (Grock→Grok, Enthropic→Anthropic, Saxs/Sachs→Sacks, Mandami→Mamdani, Daario→Dario, Fable→likely Opus/Claude naming); quotes kept close to caption wording
+- Workday ~$43B is chapter-title/show-notes only — captions state Silver Lake talks + stock +17%, not the dollar figure
+- skipped Summit pitch fluff beyond one-liner under Summit Announcements chapter
+
 ## List · pinned shows · pass 2026-09-10 (noon Asia/Taipei)
 Window: since last clock 2026-09-09. Usage: LIST + newest new episode (Fern FBI Agent Who Infiltrated the Mafia, published after yesterday's pass). Backlog stays deferred (All-In Anthropic $2T IPO still newest missing full; no new All-In full since 2026-09-04).
 
@@ -61,8 +225,6 @@ Long-form English essays. Skip shorts, clip dumps, clones.
 - note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk).
 
 Footer: listed 2026-09-10 ~12:00 Asia/Taipei (fired 11:01 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos HTML + All-In shorts + Naval RSS on the box · Fern captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
-
----
 
 ## Ingest · Fern · 2026-09-09 · The FBI Agent Who Infiltrated the Mafia
 url: https://www.youtube.com/watch?v=hK8kzWOBi-U  ·  length: 50:56  ·  text: captions
@@ -157,8 +319,6 @@ Fern retells Joe Pistone's ~6-year Donnie Brasco undercover from desk-job boredo
 ### Footer
 canary: published 2026-09-09T07:00:16-07:00 (2026-09-09 21:00 ICT) · fetched 2026-09-10T04:09:19Z (2026-09-10 11:09 ICT) · words 8338 (plain caption text; 9631 wc including timestamp tokens) · text path: /workspace/recap/tmp-fern-0910/captions.txt · official YT English auto-generated timedtext via Android innertube · no box ASR · chapters no (all takeaway times --:--) · length 50:56 (3056s) · bank deposit path /workspace/bank/raw/ideas/2026-09-10-fern-the-fbi-agent-who-infiltrated-the.md (id 2026-09-10-fern-the-fbi-agent-who-infiltrated-the) · seen updated · skipped stretch: Epidemic Sound mid-roll ~10:37–12:06 (Thomas / fern60)
 
----
-
 ## Ingest · All-In · 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety
 url: https://www.youtube.com/watch?v=5BWuvjGLMik + https://allinchamathjason.libsyn.com/flock-ceo-garrett-langley-on-controversy-surveillance-state-claims-and-privacy-vs-safety  ·  length: 55:57  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -238,23 +398,21 @@ Jason Calacanis solos an All-In interview with Flock CEO Garrett Langley on ALPR
 ### Footer
 canary: published 2026-08-18T00:47:00Z RSS / YT 2026-08-17T18:06:43-07:00 lengthSeconds 3357 (55:57) · fetched 2026-09-09T04:24:00Z (2026-09-09 11:24 ICT) · text path: /workspace/recap/tmp-allin-0818/captions.txt — Android innertube English asr timedtext (first-party; no ASR on box) · chapters yes (7 official) · skipped stretch: AppLovin ~01:43–02:25; Numeral ~26:05–26:33; no Creative Planning / Conservation Fund / Summit plugs found in captions
 
----
-
-## List · pinned shows · pass 2026-09-08 (noon Asia/Taipei)
-Window: since last clock 2026-09-07. Usage: LIST + newest missing (All-In Dario Defends Himself 2026-08-21). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In YT posts since Sep 4 are still clip dumps ≤2:00).
+## List · pinned shows · pass 2026-09-09 (noon Asia/Taipei)
+Window: since last clock 2026-09-08. Usage: LIST + newest missing (All-In Flock CEO Garrett Langley 2026-08-18). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In newest full still 2026-09-04 GPT-6; YT shorts/clips only).
 
 ### All-In · rss libsyn + YT @allin
 - on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0, SF Mansion Shortage, NYC Bans AI in Schools & Venezuela Oil Deal · https://www.youtube.com/watch?v=DvFe9bR2eHA
 - on disk 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics · https://www.youtube.com/watch?v=y84ypzELP_s
 - on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
 - on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
-- **ingested** 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up · 1:30:53 · packet `/workspace/recap/2026-08-21-all-in.md` · https://www.youtube.com/watch?v=Sij_v-mcZXQ · libsyn https://allinchamathjason.libsyn.com/dario-defends-himself-datacenter-panic-ai-doomer-trap-senate-toss-up
-- missing 2026-08-18 · Flock CEO Garrett Langley…
+- on disk 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up · https://www.youtube.com/watch?v=Sij_v-mcZXQ
+- **ingested** 2026-08-18 · Flock CEO Garrett Langley on Controversy, "Surveillance State" Claims, and Privacy vs Safety · 55:57 · packet `/workspace/recap/2026-08-18-all-in.md` · https://www.youtube.com/watch?v=5BWuvjGLMik · libsyn https://allinchamathjason.libsyn.com/flock-ceo-garrett-langley-on-controversy-surveillance-state-claims-and-privacy-vs-safety
 - missing 2026-08-14 · Anthropic's $2T IPO…
 - missing 2026-08-13 · Rahm Emanuel…
 - missing 2026-08-08 · Google's AI Brain Drain…
 - missing 2026-08-05 · Saronic Founders…
-- skipped since last pass: All-In YT clip dumps still top of channel (e.g. 2026-09-07 David Sacks: Trump's Instincts on AI and Data Centers Are Right · OLP4oVOZ9EM · 2:00).
+- skipped since last pass: All-In YT clip dumps / shorts (e.g. 2026-09-08 Chamath: Your AI Data Is NOT SAFE · vkAAAVtZwqc · 0:49; Jason: OpenAI's "Sentient AI" Hype… · ojVOeGL-Snc).
 - nothing new full-episode since last pass; pulled newest missing.
 
 ### Moon · English @Moon-Real
@@ -287,25 +445,22 @@ Long-form English essays. Skip shorts, clip dumps, clones.
 
 ### Maxinomics · @Maxinomics
 - on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
-- channel noise: shorts only on Shorts tab (How Taiwan built a chip city #business · UBiT14hsgKA; reusable rocket · DPbMOC0k-OM; Same car for 30 years · ZL-70QvCNfY; Ask 10 people what socialism is · O8PXdwknlfU; A refinery in the sky · _-Tb5c-C7Rs) — skipped.
+- channel noise: shorts only on Shorts tab (How Taiwan built a chip city #business · UBiT14hsgKA; reusable rocket · DPbMOC0k-OM; Same car for 30 years · ZL-70QvCNfY; Ask 10 people what socialism is · O8PXdwknlfU; A refinery in the sky · _-Tb5c-C7Rs) — skipped. No newer shorts than last pass's top.
 - older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
 - nothing new long-form since last pass.
 
 ### Elon sit-downs
-- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny. Skip BBC wraps / daily X (→ Brief).
+- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny. US-Saudi Investment Forum remarks / ASML internal virtual talk are not sit-down interviews — skipped. Skip BBC wraps / daily X (→ Brief).
 
 ### Naval
 - parked since 2026-07-02. Did not publish in the window (newest still 2026-07-02 Live in the Future).
 
 ### Frontpage · English @frontpagechannel
 - in sources; not on this clock's LIST set (routine names All-In, Maxinomics, Justin Sung, Elon, Fern, Moon). Not scanned for ingest this pass.
-- note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk). Shorts noise (The Most Corrupt City In America · BWY6xwd_Mz4; Why Amazon Did Not Choose Chicago · -_2sXUMSOng; Why These Companies Left Illinois · hs3XM84lK5Y).
+- note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk). Shorts noise (The State Of Britain's Economy · j6pOiqnVhVc; The Most Corrupt City In America · BWY6xwd_Mz4; Why Amazon Did Not Choose Chicago · -_2sXUMSOng; Why These Companies Left Illinois · hs3XM84lK5Y).
 
-Footer: listed 2026-09-08 ~12:00 Asia/Taipei (fired 11:02 Asia/Saigon) · All-In libsyn RSS + All-In YT atom + Moon/Fern/Justin/Max/Frontpage /videos HTML on the box · Dario captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
+Footer: listed 2026-09-09 ~12:00 Asia/Taipei (fired 11:19 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos HTML on the box · Flock captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
 
----
-
----
 ## Ingest · All-In · 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up
 url: https://www.youtube.com/watch?v=Sij_v-mcZXQ + https://allinchamathjason.libsyn.com/dario-defends-himself-datacenter-panic-ai-doomer-trap-senate-toss-up  ·  length: 1:30:53  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -383,7 +538,125 @@ The besties unpack Dario's two-part essay as a response to regulatory-capture ch
 ### Footer
 canary: published 2026-08-21T14:14:00Z RSS / YT lengthSeconds 5453 (1:30:53) · fetched 2026-09-08T04:09:36Z (2026-09-08 11:09 ICT) · text path: /workspace/recap/tmp-allin-0821/captions.txt — official YouTube English auto-generated timedtext (kind=asr) via Android innertube player (first-party; no ASR on the box; no third-party transcript sites) · chapters yes (6 official from libsyn) · skipped stretch: All-In Summit plug ~59:56–60:56 (Sep 13–15 LA / Chainsmokers–Universal); no Creative Planning or Conservation Fund reads found in captions
 
----
+## List · pinned shows · pass 2026-09-08 (noon Asia/Taipei)
+Window: since last clock 2026-09-07. Usage: LIST + newest missing (All-In Dario Defends Himself 2026-08-21). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In YT posts since Sep 4 are still clip dumps ≤2:00).
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0, SF Mansion Shortage, NYC Bans AI in Schools & Venezuela Oil Deal · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- **ingested** 2026-08-21 · Dario Defends Himself, Datacenter Panic, AI Doomer Trap, Senate Toss-Up · 1:30:53 · packet `/workspace/recap/2026-08-21-all-in.md` · https://www.youtube.com/watch?v=Sij_v-mcZXQ · libsyn https://allinchamathjason.libsyn.com/dario-defends-himself-datacenter-panic-ai-doomer-trap-senate-toss-up
+- missing 2026-08-18 · Flock CEO Garrett Langley…
+- missing 2026-08-14 · Anthropic's $2T IPO…
+- missing 2026-08-13 · Rahm Emanuel…
+- missing 2026-08-08 · Google's AI Brain Drain…
+- missing 2026-08-05 · Saronic Founders…
+- skipped since last pass: All-In YT clip dumps still top of channel (e.g. 2026-09-07 David Sacks: Trump's Instincts on AI and Data Centers Are Right · OLP4oVOZ9EM · 2:00).
+- nothing new full-episode since last pass; pulled newest missing.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- nothing new since last pass.
+
+### Fern · English @fern-tv
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- nothing new since last pass.
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- nothing new since last pass.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- channel noise: shorts only on Shorts tab (How Taiwan built a chip city #business · UBiT14hsgKA; reusable rocket · DPbMOC0k-OM; Same car for 30 years · ZL-70QvCNfY; Ask 10 people what socialism is · O8PXdwknlfU; A refinery in the sky · _-Tb5c-C7Rs) — skipped.
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- nothing new long-form since last pass.
+
+### Elon sit-downs
+- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny. Skip BBC wraps / daily X (→ Brief).
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (newest still 2026-07-02 Live in the Future).
+
+### Frontpage · English @frontpagechannel
+- in sources; not on this clock's LIST set (routine names All-In, Maxinomics, Justin Sung, Elon, Fern, Moon). Not scanned for ingest this pass.
+- note only: long-form newest still 2026-09-03 Why Fast Food Became So Unaffordable · R9GEhShaHhI (on disk). Shorts noise (The Most Corrupt City In America · BWY6xwd_Mz4; Why Amazon Did Not Choose Chicago · -_2sXUMSOng; Why These Companies Left Illinois · hs3XM84lK5Y).
+
+Footer: listed 2026-09-08 ~12:00 Asia/Taipei (fired 11:02 Asia/Saigon) · All-In libsyn RSS + All-In YT atom + Moon/Fern/Justin/Max/Frontpage /videos HTML on the box · Dario captions via official YouTube English auto-generated timedtext (Android innertube player) · no Arguments pins · no wiki
+
+## Ingest · All-In · 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics
+url: https://www.youtube.com/watch?v=y84ypzELP_s + https://allinchamathjason.libsyn.com/eric-weinstein-the-scientific-precariat-chinas-brain-drain-physics-stagnation-string-theorys-collapse-uaps  ·  length: 1:30:20  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Eric Weinstein joins (00:00)**
+- 00:00 · Friedberg · Solo All-In interview in a rented DC studio (besties declined — "extended science corner"). Weinstein: mathematician/physicist/economist, Harvard PhD, Geometric Unity 2021, formerly Thiel Capital, podcast host.
+- 00:00 · Weinstein · In DC for Department of War meetings; talked to Michael Kratsios (OSTP), Jay Bhattacharya (NIH), Jim O'Neill (incoming NSF). Excited by first major American-science reform proposal since Vannevar Bush.
+- 00:00 · Friedberg · Just interviewed Kratsios; Weinstein had been feeding him issues. Kratsios: we know we don't know everything — blueprint for government-driven science.
+
+**Has American science stalled? Cowboy science, Fauci, precariat (03:09)**
+- 03:09 · Weinstein · Not all science stalled — what's at risk is courageous "cowboy science" only a rich, individualistic nation can afford. Incremental, low-variance "excellence" depresses him; the US should take bets no one else can.
+- 03:09 · Weinstein · Freedom is a weapon vs China; scientists should be able to investigate whether Fauci "killed 10 million people" without the conclusion known ahead of time. Giving away the American middle finger to supervisors.
+- 03:09 · Friedberg · Where were the skeptics in lockdowns/COVID? Dogma = no funding, no friends, chastised for asking.
+- 03:09 · Weinstein · We created the scientific precariat — professors can't afford to go against consensus. Consensus is artificial pressure (no "arithmetic consensus" that 2+3=5). Jay Bhattacharya (Great Barrington) was called fringe by Collins/Fauci; now runs NIH.
+- 03:09 · Weinstein · Covert ops (EcoHealth / DTRA / Wuhan) are transparent to scientists with tools; B-minus policy people in the covert community don't want kick-ass independent scientists exploding narratives. Same pattern with Biden dementia vs Roosevelt wheelchair media pact.
+- 03:09 · Weinstein · Manhattan Project secrecy was justified; today the few who stood up aren't made university presidents or chairs. ARC talk: haven't reinserted/rewarded them. American scientific precariat → unbalanced faculty → theoretical physics uniquely lost free speech via "restricted data" (can't write equations affecting nukes).
+- 03:09 · Friedberg · Translation: fall in line for tenure/grants or lose income for heterodoxy (Wuhan lab hypothesis as example).
+- 03:09 · Weinstein · His 1987 differential-geometry equations took over the field in 1994 with no apology for early brutalization. Scientists told not to want money/security — "absolute drivel"; Gini coefficients blowing out from tech derivative of science while scientists don't participate. Deliberately provocative "third home."
+- 03:09 · Weinstein · Break: 1965–75 (Medicare Act → MACOS/peer review). MIT physics walked out over Vietnam 1969; government saw them as wobbly; Mansfield amendment killed military blue-sky funding inside universities — disaster, because military had been their best friend (fat and happy blue sky, available when needed). Scientists are weirdos; need communists and fascists having tea. Palmer Luckey / Nima Arkani-Hamed as still-looking-like-scientists. Spaying/neutering best minds; kicking Watson out of Cold Spring Harbor.
+
+**Fix: Civil Rights Act holes, kill peer review, fund people (21:31)**
+- 21:31 · Weinstein · Provocations: national-interest waivers; blow a giant hole in the Civil Rights Act so teams aren't terrified of HR. High-agency bonding (two Jews + Muslim teasing since 1982) isn't HR-explainable. Need hyper-individualism for great work — not Ayn Rand; left-of-center nail-house Democrat staying in the party to make common cause with Republicans and fight over credit later.
+- 21:31 · Weinstein · Peer review is a fake retcon — barely mentioned before ~1965 (Google ngrams). Started with Medicare as major payer → Utah clinic peer review; 1975 fiscal/social conservatives attacked NSF over MACOS; anthropology shouldn't ride hard-science credit card. Soft sciences synonymized with biomedical; conservatives wrong that markets can price science (inexhaustible + inexcludable = market failure; taxes fund armies for the same reason). Homotopy theory as Jenga block — PhDs must show up despite Trump "cooties"; Nature survey ~6% Trump / ~85% Harris among readers.
+- 21:31 · Weinstein · Met Kratsios: stunning growth into the role; if PhDs won't tutor him they deserve what they get. Jim Simons / Yuri Milner exceptions don't scale private funding of pure math. Want slush funds / retainers of terrifying intellects (JASON-style), not KPI/ROI theater. Treat scientists like rock stars or lose them (Singer, Bott, Watson vs SaaS).
+- 21:31 · Weinstein · Modern grants = low-beta predictable outcomes (MPT applied to science). Rich governments should take 1%-cure-cancer bets. Fund people not only ideas — Slack/Butterfield pivot analogy; magic formula: fund who established leaders will block but not short. Witten: smartest man alive who drove theoretical physics off a cliff 42 years ago — nobody else will say it. Strings 2026 talks: search electron/hadron/Higgs/lepton → no physics. Leading theorists openly uninterested in the physical world. Departments invite him then deny the talk was "in the physics department."
+
+**Witten / Renaissance as secret Los Alamos? (41:36)**
+- 41:36 · Weinstein · 1983 physics made sense; 1984 overnight (Susskind, Gross, Witten) diverted the field — achievement is safety: SU(3)×U(1) weapons physics made harmless via AdS/CFT with nothing that could hurt a fly, so Chinese grad students can fill departments.
+- 41:36 · Friedberg · Secret advances somewhere? Weinstein: 1940 NRC Reference Committee buried chain-reaction papers; Los Alamos white-badge dual track existed. Leading candidate cover: Renaissance Technologies (Long Island) — only hires particle theorists/differential geometers/ML, close to Brookhaven + Stony Brook talent pool, Medallion closed to outsiders; compare Epstein cover stories. Jack Raper 1944 Cleveland story of secret city / next Einstein / doomsday weapon was dismissed as nuts — same reception pattern.
+
+**Boom, Vroom, Zoom (52:49)**
+- 52:49 · Weinstein · Frontier model (GR + Standard Model): valence quarks (1968) still unused (infrared slavery). Pati–Salam / SU(4) grand unification → electron+neutrino as fourth color; weapons that rotate quarks into leptons / disintegrate matter; dark = decoupled matter. Boom (weapons) / Vroom (energy) / Zoom (propulsion/compute) — 53 years denied new boom/vroom/zoom since SM finalization; stagnation may have saved the species via missing boom.
+- 52:49 · Weinstein · Disagrees that secret progress already exists and kept quiet for safety — COVID spike splice (four amino acids / 12 nucleotides) shut the Earth; black powder recipe forgotten; US v. Progressive Magazine / Teller–Ulam geometry; John Aristotle Phillips Princeton thesis page removed. If US fails on Iran → multipolar nuke proliferation (Tom Lehrer "Who's Next"); beyond-nukes world needs new theory.
+
+**UAPs, multi-temporal adversaries, Einstein's prison (67:11)**
+- 67:11 · Weinstein · Something there-there on UAPs (not mainly videos — smart sober people + special access programs + stove-piping). Multi-temporal adversaries: time may not be 1D — gun-on-rail vs tank vs A-10 analogy for time dimensions. Solar system as escape room; Mars/Moon mcguffins — need tens of thousands of habitats; Einstein's prison (c too brutal for Alpha Centauri round-trips). DESI may break cosmological-constant×metric encoding of dark energy; Geometric Unity as candidate; hold a conference, stop Witten's "only game in town." Pinch-to-zoom / shear-to-tilt built into what we confuse for spacetime — leave without breaking c. Radical ideas blocked like "SRY on Y" in meetings.
+
+**China poaches / AI trash-can corpus (76:12)**
+- 76:12 · Weinstein · France historically greatest math country; China until recently couldn't buy a base hit — now sidles up to Western scientists: come for freedom, pay, prestige. American/Russian scientists going to China until Tibet/Tiananmen/Taiwan collide. AI today trained on prestige journals; next: trash-can corpus of laughed-at ideas — China private model may assume string/M-theory/quantum gravity was a 42-year red herring and ask what it was meant to stop us seeing.
+- 76:12 · Weinstein · Insane to ship frontier AI as consumer product — Silence of the Lambs Hannibal Lecter on a gurney as "your new employee"; Davy Crockett personal nuke at Kmart analogy. Distillation/open-weight already out.
+- 76:12 · On UAPs today · If GR is last word → nation-state experimental weapons (1971 Australian intel: gravity-shielding research under GR golden-age cover). If not → pinch-to-zoom means we can leave and others can visit; North Sentinel Island analogy (India watches uncontacted people; nukes change the paternalism). Nukes as the signal before propulsion leap; Geometric Unity as next theory; dark chemistry/light, spin-3/2 matter, SU(4)×SU(2)×SU(2) GUT — jump makes world unrecognizable. Close: America must lead; make common cause with rivals fast; science community should come to DC and ask "how can I help?" despite Trump feelings — Kratsios/O'Neill/Bhattacharya better than PhDs think.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 03:09 Weinstein: "We created the scientific precariat."
+- 21:31 Weinstein: "I want to blow a giant hole in the Civil Rights Act."
+- 41:36 Weinstein: "In 1983 physics made sense. In 1984 it did not."
+- 52:49 Weinstein: "The stagnation in physics may have led to the survival of the human species."
+- 67:11 Weinstein: "We have been too long in Einstein's prison."
+- 76:12 Weinstein: "The trash can is also a corpus."
+
+### One paragraph
+Friedberg's DC solo with Eric Weinstein maps American science's stall to a 1965–75 break (Medicare peer review, Mansfield amendment after the MIT Vietnam walkout) that created a scientific precariat allergic to heterodoxy — Fauci/Collins vs Bhattacharya as the cautionary arc — and proposes provocative fixes: poke holes in Civil Rights Act HR chill, kill peer-review theater, fund high-beta people not only low-beta grants, and put terrifying intellects on retainer. He claims Witten/Susskind/Gross drove physics off a cliff in 1984 into safe string/AdS work with no physical-world progress, floats Renaissance Technologies as a possible Los Alamos analog, and frames missing boom/vroom/zoom (Pati–Salam, quark–lepton rotation weapons) as possibly species-saving. UAPs get a stepwise read (SAPs, multi-temporal adversaries, Einstein's prison, DESI vs Λ, Geometric Unity, pinch-to-zoom exit); China is poaching Western talent with pay/freedom; AIs will soon mine the trash-can corpus and may treat string theory as a 42-year red herring. Close: ship Hannibal Lecter AI into homes is insane; America should lead and scientists should show up in DC and ask how they can help.
+
+### Footer
+canary: published 2026-08-26T23:00:00Z RSS / YT lengthSeconds 5420 (1:30:20) · fetched 2026-09-07T04:11:00Z (2026-09-07 11:11 ICT) · seen index updated · text path: official YouTube watch page via WebFetch (English auto-generated captions rendered on watch page) · no ASR on the box · timedtext API empty 0 bytes from this IP · chapters yes (7 official) · skipped stretch: Creative Planning open; Conservation Fund mid-roll
+
 ## List · pinned shows · pass 2026-09-07 (noon Asia/Taipei)
 Window: since last clock 2026-09-06. Usage: LIST + newest missing (All-In Eric Weinstein 2026-08-26). Backlog stays deferred. No new full episodes on LIST pins since last pass (All-In YT posts since Sep 4 are clip dumps ≤2:00).
 
@@ -447,66 +720,58 @@ Long-form English essays. Skip shorts, clip dumps, clones.
 
 Footer: listed 2026-09-07 ~12:00 Asia/Taipei (fired 11:06 Asia/Saigon) · All-In libsyn RSS + Moon/Fern/Justin/Max/Frontpage/All-In atoms on the box · timedtext API empty from this IP (WebFetch watch-page text used for Weinstein ingest) · no Arguments pins · no wiki
 
----
-
----
-## Ingest · All-In · 2026-08-26 · Eric Weinstein: The State of American Science, Breakthrough Coverups, and the Danger of Physics
-url: https://www.youtube.com/watch?v=y84ypzELP_s + https://allinchamathjason.libsyn.com/eric-weinstein-the-scientific-precariat-chinas-brain-drain-physics-stagnation-string-theorys-collapse-uaps  ·  length: 1:30:20  ·  text: captions
+## Ingest · Justin Sung · 2026-08-28 · 5 Thinking Habits That Make You Look Smarter
+url: https://www.youtube.com/watch?v=6Z3I-9HvBQA  ·  length: 14:09  ·  text: captions
 ### Takeaways, arguments, claims (in order)
 
-**Eric Weinstein joins (00:00)**
-- 00:00 · Friedberg · Solo All-In interview in a rented DC studio (besties declined — "extended science corner"). Weinstein: mathematician/physicist/economist, Harvard PhD, Geometric Unity 2021, formerly Thiel Capital, podcast host.
-- 00:00 · Weinstein · In DC for Department of War meetings; talked to Michael Kratsios (OSTP), Jay Bhattacharya (NIH), Jim O'Neill (incoming NSF). Excited by first major American-science reform proposal since Vannevar Bush.
-- 00:00 · Friedberg · Just interviewed Kratsios; Weinstein had been feeding him issues. Kratsios: we know we don't know everything — blueprint for government-driven science.
+**Frame / payoffs**
+- --:-- · Justin · Five easy thinking habits you can start now that make you sound smarter; once they stick, they genuinely make you smarter.
 
-**Has American science stalled? Cowboy science, Fauci, precariat (03:09)**
-- 03:09 · Weinstein · Not all science stalled — what's at risk is courageous "cowboy science" only a rich, individualistic nation can afford. Incremental, low-variance "excellence" depresses him; the US should take bets no one else can.
-- 03:09 · Weinstein · Freedom is a weapon vs China; scientists should be able to investigate whether Fauci "killed 10 million people" without the conclusion known ahead of time. Giving away the American middle finger to supervisors.
-- 03:09 · Friedberg · Where were the skeptics in lockdowns/COVID? Dogma = no funding, no friends, chastised for asking.
-- 03:09 · Weinstein · We created the scientific precariat — professors can't afford to go against consensus. Consensus is artificial pressure (no "arithmetic consensus" that 2+3=5). Jay Bhattacharya (Great Barrington) was called fringe by Collins/Fauci; now runs NIH.
-- 03:09 · Weinstein · Covert ops (EcoHealth / DTRA / Wuhan) are transparent to scientists with tools; B-minus policy people in the covert community don't want kick-ass independent scientists exploding narratives. Same pattern with Biden dementia vs Roosevelt wheelchair media pact.
-- 03:09 · Weinstein · Manhattan Project secrecy was justified; today the few who stood up aren't made university presidents or chairs. ARC talk: haven't reinserted/rewarded them. American scientific precariat → unbalanced faculty → theoretical physics uniquely lost free speech via "restricted data" (can't write equations affecting nukes).
-- 03:09 · Friedberg · Translation: fall in line for tenure/grants or lose income for heterodoxy (Wuhan lab hypothesis as example).
-- 03:09 · Weinstein · His 1987 differential-geometry equations took over the field in 1994 with no apology for early brutalization. Scientists told not to want money/security — "absolute drivel"; Gini coefficients blowing out from tech derivative of science while scientists don't participate. Deliberately provocative "third home."
-- 03:09 · Weinstein · Break: 1965–75 (Medicare Act → MACOS/peer review). MIT physics walked out over Vietnam 1969; government saw them as wobbly; Mansfield amendment killed military blue-sky funding inside universities — disaster, because military had been their best friend (fat and happy blue sky, available when needed). Scientists are weirdos; need communists and fascists having tea. Palmer Luckey / Nima Arkani-Hamed as still-looking-like-scientists. Spaying/neutering best minds; kicking Watson out of Cold Spring Harbor.
+**Habit 1 — Start at the end**
+- --:-- · Justin · Brilliant researchers can still be confusing: they narrate a long chain of angles → factors → context before the opinion; listeners lose the conclusion minutes in.
+- --:-- · Justin · Judgments of you track how you present thoughts, not the private quality of the thoughts. Illegible brilliance still reads as weak thinking.
+- --:-- · Justin · Hard to hold many concepts at once; it feels smarter to start with the conclusion, then the rationale: "This is what I think. Here's why."
+- --:-- · Justin · Habit also catches the illusion of explanatory depth — you only notice gaps when you try to explain step-by-step; asking "what is my conclusion?" exposes holes fast.
+- --:-- · Justin · Nuanced version still starts at the end: "I feel we should do it this way, but I'm uncertain about a few points… here's what I'm seeing," then reasons — easy to follow without overconfidence.
 
-**Fix: Civil Rights Act holes, kill peer review, fund people (21:31)**
-- 21:31 · Weinstein · Provocations: national-interest waivers; blow a giant hole in the Civil Rights Act so teams aren't terrified of HR. High-agency bonding (two Jews + Muslim teasing since 1982) isn't HR-explainable. Need hyper-individualism for great work — not Ayn Rand; left-of-center nail-house Democrat staying in the party to make common cause with Republicans and fight over credit later.
-- 21:31 · Weinstein · Peer review is a fake retcon — barely mentioned before ~1965 (Google ngrams). Started with Medicare as major payer → Utah clinic peer review; 1975 fiscal/social conservatives attacked NSF over MACOS; anthropology shouldn't ride hard-science credit card. Soft sciences synonymized with biomedical; conservatives wrong that markets can price science (inexhaustible + inexcludable = market failure; taxes fund armies for the same reason). Homotopy theory as Jenga block — PhDs must show up despite Trump "cooties"; Nature survey ~6% Trump / ~85% Harris among readers.
-- 21:31 · Weinstein · Met Kratsios: stunning growth into the role; if PhDs won't tutor him they deserve what they get. Jim Simons / Yuri Milner exceptions don't scale private funding of pure math. Want slush funds / retainers of terrifying intellects (JASON-style), not KPI/ROI theater. Treat scientists like rock stars or lose them (Singer, Bott, Watson vs SaaS).
-- 21:31 · Weinstein · Modern grants = low-beta predictable outcomes (MPT applied to science). Rich governments should take 1%-cure-cancer bets. Fund people not only ideas — Slack/Butterfield pivot analogy; magic formula: fund who established leaders will block but not short. Witten: smartest man alive who drove theoretical physics off a cliff 42 years ago — nobody else will say it. Strings 2026 talks: search electron/hadron/Higgs/lepton → no physics. Leading theorists openly uninterested in the physical world. Departments invite him then deny the talk was "in the physics department."
+**Habit 2 — Separate observations from conclusions**
+- --:-- · Justin · Pet peeve: post-workshop feedback that opens with "it wasn't good / fix this slide / change that activity" without saying how those fixes were chosen.
+- --:-- · Justin · Better: state observations first (crowd disengaged, yawning, confused, few hands up), then conclusions about improvements.
+- --:-- · Justin · Why: (1) buy-in — us-vs-issues not me-vs-you; (2) others can form their own conclusions and you debate interpretations, not locked opinions; (3) admitting conclusions may be biased is a mark of intelligence — shallow thinkers are rigidly confident.
+- --:-- · Justin · Habit forces you to challenge your own assumptions; cognitive flexibility is a hallmark of intelligence.
+- --:-- · Justin · Mid-roll: free weekly newsletter (3–5 min, personal, practical takeaway); was paused for rest/feedback; coming back.
 
-**Witten / Renaissance as secret Los Alamos? (41:36)**
-- 41:36 · Weinstein · 1983 physics made sense; 1984 overnight (Susskind, Gross, Witten) diverted the field — achievement is safety: SU(3)×U(1) weapons physics made harmless via AdS/CFT with nothing that could hurt a fly, so Chinese grad students can fill departments.
-- 41:36 · Friedberg · Secret advances somewhere? Weinstein: 1940 NRC Reference Committee buried chain-reaction papers; Los Alamos white-badge dual track existed. Leading candidate cover: Renaissance Technologies (Long Island) — only hires particle theorists/differential geometers/ML, close to Brookhaven + Stony Brook talent pool, Medallion closed to outsiders; compare Epstein cover stories. Jack Raper 1944 Cleveland story of secret city / next Einstein / doomsday weapon was dismissed as nuts — same reception pattern.
+**Habit 3 — Clarify the question**
+- --:-- · Justin · In meetings: play back "what you're really asking is…" or split a question into parts and tackle separately.
+- --:-- · Justin · Mentally: what is the crux / true issue / concern / purpose of the ask.
+- --:-- · Justin · Buys thinking time while sounding intelligent; sharpens your own understanding; playing it back often organizes the asker's thinking too (they add a third part).
+- --:-- · Justin · People judge you by how interacting with you feels — if they get clearer/deeper thoughts, they rate you smarter. High-quality thinkers often do this privately but fail to make it explicit, then deliver the wrong thing.
 
-**Boom, Vroom, Zoom (52:49)**
-- 52:49 · Weinstein · Frontier model (GR + Standard Model): valence quarks (1968) still unused (infrared slavery). Pati–Salam / SU(4) grand unification → electron+neutrino as fourth color; weapons that rotate quarks into leptons / disintegrate matter; dark = decoupled matter. Boom (weapons) / Vroom (energy) / Zoom (propulsion/compute) — 53 years denied new boom/vroom/zoom since SM finalization; stagnation may have saved the species via missing boom.
-- 52:49 · Weinstein · Disagrees that secret progress already exists and kept quiet for safety — COVID spike splice (four amino acids / 12 nucleotides) shut the Earth; black powder recipe forgotten; US v. Progressive Magazine / Teller–Ulam geometry; John Aristotle Phillips Princeton thesis page removed. If US fails on Iran → multipolar nuke proliferation (Tom Lehrer "Who's Next"); beyond-nukes world needs new theory.
+**Habit 4 — State the antithesis**
+- --:-- · Justin · Especially for leadership/decision-making. Hypothesis = what you think will happen; antithesis = counterarguments; thesis lands in the middle.
+- --:-- · Justin · Pattern: "We should launch in 2 months. But here are three conditions that would delay that."
+- --:-- · Justin · Thoughtful people already weigh counters but don't state them; stating them signals depth + cognitive flexibility and that you won't defend past reasonable evidence — more trusted.
+- --:-- · Justin · Under time pressure, experts fall back on passive pattern recognition ("we've always done it this way"); actively checking antithesis is a checklist for "maybe this time is different."
 
-**UAPs, multi-temporal adversaries, Einstein's prison (67:11)**
-- 67:11 · Weinstein · Something there-there on UAPs (not mainly videos — smart sober people + special access programs + stove-piping). Multi-temporal adversaries: time may not be 1D — gun-on-rail vs tank vs A-10 analogy for time dimensions. Solar system as escape room; Mars/Moon mcguffins — need tens of thousands of habitats; Einstein's prison (c too brutal for Alpha Centauri round-trips). DESI may break cosmological-constant×metric encoding of dark energy; Geometric Unity as candidate; hold a conference, stop Witten's "only game in town." Pinch-to-zoom / shear-to-tilt built into what we confuse for spacetime — leave without breaking c. Radical ideas blocked like "SRY on Y" in meetings.
+**Habit 5 — Keep it concise**
+- --:-- · Justin · Med-school senior: every word should be a golden pearl (that doctor later went to prison — separate story; advice still valid).
+- --:-- · Justin · Deep thinkers elaborate; endless elaboration sounds messy and blocks a deeper level — ruthless compression requires the deepest expertise (Feynman / teach a 10-year-old).
+- --:-- · Justin · Habit: compress complex opinions to a one-or-two-liner first, then fluff-free. He trains this on YouTube/IG; still improving; comments/team feedback show clarity gains.
 
-**China poaches / AI trash-can corpus (76:12)**
-- 76:12 · Weinstein · France historically greatest math country; China until recently couldn't buy a base hit — now sidles up to Western scientists: come for freedom, pay, prestige. American/Russian scientists going to China until Tibet/Tiananmen/Taiwan collide. AI today trained on prestige journals; next: trash-can corpus of laughed-at ideas — China private model may assume string/M-theory/quantum gravity was a 42-year red herring and ask what it was meant to stop us seeing.
-- 76:12 · Weinstein · Insane to ship frontier AI as consumer product — Silence of the Lambs Hannibal Lecter on a gurney as "your new employee"; Davy Crockett personal nuke at Kmart analogy. Distillation/open-weight already out.
-- 76:12 · On UAPs today · If GR is last word → nation-state experimental weapons (1971 Australian intel: gravity-shielding research under GR golden-age cover). If not → pinch-to-zoom means we can leave and others can visit; North Sentinel Island analogy (India watches uncontacted people; nukes change the paternalism). Nukes as the signal before propulsion leap; Geometric Unity as next theory; dark chemistry/light, spin-3/2 matter, SU(4)×SU(2)×SU(2) GUT — jump makes world unrecognizable. Close: America must lead; make common cause with rivals fast; science community should come to DC and ask "how can I help?" despite Trump feelings — Kratsios/O'Neill/Bhattacharya better than PhDs think.
-
+**Close**
+- --:-- · Justin · Five habits for recognition you deserve and to get smarter over time. Next: thinking-on-paper video for organizing clarity under uncertainty/complexity.
 ### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 03:09 Weinstein: "We created the scientific precariat."
-- 21:31 Weinstein: "I want to blow a giant hole in the Civil Rights Act."
-- 41:36 Weinstein: "In 1983 physics made sense. In 1984 it did not."
-- 52:49 Weinstein: "The stagnation in physics may have led to the survival of the human species."
-- 67:11 Weinstein: "We have been too long in Einstein's prison."
-- 76:12 Weinstein: "The trash can is also a corpus."
-
+- --:-- Justin: "Start at the end."
+- --:-- Justin: "This is what I think. Here's why I think it."
+- --:-- Justin: "Separate your observations from your conclusions."
+- --:-- Justin: "Clarify the question."
+- --:-- Justin: "State the antithesis."
+- --:-- Justin: "Every word that comes out of your mouth should be a golden pearl."
 ### One paragraph
-Friedberg's DC solo with Eric Weinstein maps American science's stall to a 1965–75 break (Medicare peer review, Mansfield amendment after the MIT Vietnam walkout) that created a scientific precariat allergic to heterodoxy — Fauci/Collins vs Bhattacharya as the cautionary arc — and proposes provocative fixes: poke holes in Civil Rights Act HR chill, kill peer-review theater, fund high-beta people not only low-beta grants, and put terrifying intellects on retainer. He claims Witten/Susskind/Gross drove physics off a cliff in 1984 into safe string/AdS work with no physical-world progress, floats Renaissance Technologies as a possible Los Alamos analog, and frames missing boom/vroom/zoom (Pati–Salam, quark–lepton rotation weapons) as possibly species-saving. UAPs get a stepwise read (SAPs, multi-temporal adversaries, Einstein's prison, DESI vs Λ, Geometric Unity, pinch-to-zoom exit); China is poaching Western talent with pay/freedom; AIs will soon mine the trash-can corpus and may treat string theory as a 42-year red herring. Close: ship Hannibal Lecter AI into homes is insane; America should lead and scientists should show up in DC and ask how they can help.
-
+Justin offers five presentation-and-reasoning habits that both sound smart and, practiced, deepen thinking: start with the conclusion then rationale (and use that ask to pierce the illusion of explanatory depth); lead with observations before conclusions so feedback stays us-vs-issues and keeps cognitive flexibility; clarify/split the asker's question to buy time and sharpen both sides; state the antithesis so decisions look flexible and evidence-bound under expert shortcut pressure; and ruthlessly compress (Feynman-style) because elaboration without selection reads as messy. Newsletter CTA mid-video; closes pointing to thinking-on-paper.
 ### Footer
-canary: published 2026-08-26T23:00:00Z RSS / YT lengthSeconds 5420 (1:30:20) · fetched 2026-09-07T04:11:00Z (2026-09-07 11:11 ICT) · seen index updated · text path: official YouTube watch page via WebFetch (English auto-generated captions rendered on watch page) · no ASR on the box · timedtext API empty 0 bytes from this IP · chapters yes (7 official) · skipped stretch: Creative Planning open; Conservation Fund mid-roll
+canary: published 2026-08-28T00:02:44+00:00 (2026-08-28 07:02 ICT) · fetched 2026-09-06T04:05:00Z (2026-09-06 11:05 ICT) · seen index updated · text path: official YouTube watch page via WebFetch (English auto-generated captions rendered on watch page) · no ASR on the box · timedtext API empty 200 from this IP · chapters no · length 14:09 from official watch HTML · skipped stretch: newsletter CTA only (no mid-roll sponsor block)
 
----
 ## List · pinned shows · pass 2026-09-06 (noon Asia/Taipei)
 Window: since last clock 2026-09-05. Usage: LIST + newest missing (Justin Sung 2026-08-28). Backlog stays deferred. No new full episodes on LIST pins since last pass.
 
@@ -570,62 +835,6 @@ Long-form English essays. Skip shorts, clip dumps, clones.
 
 Footer: listed 2026-09-06 ~12:00 Asia/Taipei (fired 11:01 Asia/Saigon) · All-In libsyn RSS + Moon/Fern/Justin/Max/Frontpage atoms on the box · timedtext API empty from this IP (WebFetch watch-page text used for Justin ingest) · no Arguments pins · no wiki
 
----
-
----
-## Ingest · Justin Sung · 2026-08-28 · 5 Thinking Habits That Make You Look Smarter
-url: https://www.youtube.com/watch?v=6Z3I-9HvBQA  ·  length: 14:09  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Frame / payoffs**
-- --:-- · Justin · Five easy thinking habits you can start now that make you sound smarter; once they stick, they genuinely make you smarter.
-
-**Habit 1 — Start at the end**
-- --:-- · Justin · Brilliant researchers can still be confusing: they narrate a long chain of angles → factors → context before the opinion; listeners lose the conclusion minutes in.
-- --:-- · Justin · Judgments of you track how you present thoughts, not the private quality of the thoughts. Illegible brilliance still reads as weak thinking.
-- --:-- · Justin · Hard to hold many concepts at once; it feels smarter to start with the conclusion, then the rationale: "This is what I think. Here's why."
-- --:-- · Justin · Habit also catches the illusion of explanatory depth — you only notice gaps when you try to explain step-by-step; asking "what is my conclusion?" exposes holes fast.
-- --:-- · Justin · Nuanced version still starts at the end: "I feel we should do it this way, but I'm uncertain about a few points… here's what I'm seeing," then reasons — easy to follow without overconfidence.
-
-**Habit 2 — Separate observations from conclusions**
-- --:-- · Justin · Pet peeve: post-workshop feedback that opens with "it wasn't good / fix this slide / change that activity" without saying how those fixes were chosen.
-- --:-- · Justin · Better: state observations first (crowd disengaged, yawning, confused, few hands up), then conclusions about improvements.
-- --:-- · Justin · Why: (1) buy-in — us-vs-issues not me-vs-you; (2) others can form their own conclusions and you debate interpretations, not locked opinions; (3) admitting conclusions may be biased is a mark of intelligence — shallow thinkers are rigidly confident.
-- --:-- · Justin · Habit forces you to challenge your own assumptions; cognitive flexibility is a hallmark of intelligence.
-- --:-- · Justin · Mid-roll: free weekly newsletter (3–5 min, personal, practical takeaway); was paused for rest/feedback; coming back.
-
-**Habit 3 — Clarify the question**
-- --:-- · Justin · In meetings: play back "what you're really asking is…" or split a question into parts and tackle separately.
-- --:-- · Justin · Mentally: what is the crux / true issue / concern / purpose of the ask.
-- --:-- · Justin · Buys thinking time while sounding intelligent; sharpens your own understanding; playing it back often organizes the asker's thinking too (they add a third part).
-- --:-- · Justin · People judge you by how interacting with you feels — if they get clearer/deeper thoughts, they rate you smarter. High-quality thinkers often do this privately but fail to make it explicit, then deliver the wrong thing.
-
-**Habit 4 — State the antithesis**
-- --:-- · Justin · Especially for leadership/decision-making. Hypothesis = what you think will happen; antithesis = counterarguments; thesis lands in the middle.
-- --:-- · Justin · Pattern: "We should launch in 2 months. But here are three conditions that would delay that."
-- --:-- · Justin · Thoughtful people already weigh counters but don't state them; stating them signals depth + cognitive flexibility and that you won't defend past reasonable evidence — more trusted.
-- --:-- · Justin · Under time pressure, experts fall back on passive pattern recognition ("we've always done it this way"); actively checking antithesis is a checklist for "maybe this time is different."
-
-**Habit 5 — Keep it concise**
-- --:-- · Justin · Med-school senior: every word should be a golden pearl (that doctor later went to prison — separate story; advice still valid).
-- --:-- · Justin · Deep thinkers elaborate; endless elaboration sounds messy and blocks a deeper level — ruthless compression requires the deepest expertise (Feynman / teach a 10-year-old).
-- --:-- · Justin · Habit: compress complex opinions to a one-or-two-liner first, then fluff-free. He trains this on YouTube/IG; still improving; comments/team feedback show clarity gains.
-
-**Close**
-- --:-- · Justin · Five habits for recognition you deserve and to get smarter over time. Next: thinking-on-paper video for organizing clarity under uncertainty/complexity.
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- --:-- Justin: "Start at the end."
-- --:-- Justin: "This is what I think. Here's why I think it."
-- --:-- Justin: "Separate your observations from your conclusions."
-- --:-- Justin: "Clarify the question."
-- --:-- Justin: "State the antithesis."
-- --:-- Justin: "Every word that comes out of your mouth should be a golden pearl."
-### One paragraph
-Justin offers five presentation-and-reasoning habits that both sound smart and, practiced, deepen thinking: start with the conclusion then rationale (and use that ask to pierce the illusion of explanatory depth); lead with observations before conclusions so feedback stays us-vs-issues and keeps cognitive flexibility; clarify/split the asker's question to buy time and sharpen both sides; state the antithesis so decisions look flexible and evidence-bound under expert shortcut pressure; and ruthlessly compress (Feynman-style) because elaboration without selection reads as messy. Newsletter CTA mid-video; closes pointing to thinking-on-paper.
-### Footer
-canary: published 2026-08-28T00:02:44+00:00 (2026-08-28 07:02 ICT) · fetched 2026-09-06T04:05:00Z (2026-09-06 11:05 ICT) · seen index updated · text path: official YouTube watch page via WebFetch (English auto-generated captions rendered on watch page) · no ASR on the box · timedtext API empty 200 from this IP · chapters no · length 14:09 from official watch HTML · skipped stretch: newsletter CTA only (no mid-roll sponsor block)
-
----
 ## List · pinned shows · pass 2026-09-05 (noon Asia/Taipei)
 Window: since last clock 2026-09-03. Usage: LIST + newest missing (Moon 2026-09-04 + All-In 2026-09-04). Backlog stays deferred.
 
@@ -684,9 +893,6 @@ Long-form English essays. Skip shorts, clip dumps, clones.
 
 Footer: listed 2026-09-05 ~12:00 Asia/Taipei (fired 11:10 Asia/Saigon) · Moon atom + All-In libsyn RSS on the box · YT HTML for Justin/Max/Fern · timedtext API empty from this IP (WebFetch watch-page text used for ingest) · no Arguments pins · no wiki
 
----
-
----
 ## Ingest · All-In · 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0, SF Mansion Shortage, NYC Bans AI in Schools & Venezuela Oil Deal
 url: https://www.youtube.com/watch?v=DvFe9bR2eHA + https://allinchamathjason.libsyn.com/gpt-6-hits-agi-tech-euphoria-20-sf-mansion-shortage-nyc-bans-ai-in-schools-venezuela-oil-deal  ·  length: 1:31:55  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -753,9 +959,6 @@ url: https://www.youtube.com/watch?v=DvFe9bR2eHA + https://allinchamathjason.lib
 Jason opened on Chamath's 50th and a POTUS birthday letter via son Braden, then GPT-6/Astra: Brockman declared AGI era, Sam went sobering at G20, and Chamath said AGI has been here since year-start with keep-calm ROI framing while Sacks cast a frontier duopoly vs commodity-price tier and praised GrokBot. Euphoria talk landed on 1998-not-peak: Chamath called three more years at the beginning of the beginning; Sacks is clearing SF mansions ahead of the Anthropic IPO toward $3–5k/ft; Jason told founders to sell 10–20% and take money when offered. Dwarkesh's Hugging Face "civilizations" post was framed as sensationalized swarm/log-file bugs plus exposed API keys; Bernie cited it for an AI pause; Friedberg said dynamic offense vs static sandboxes; Sacks said guardrails forced HF onto Chinese GLM and the fix is AI cyber defense. EA conflicts (Dwarkesh–Leopold–Anthropic), half-trillion post-IPO DAFs, Jensen/Hugging Face as open bulwark, and Abbott/Shapiro midterm DC flip-flops filled the middle. On Mamdani's NYC K–8 generative-AI ban, Friedberg cited Stanford's mixed-positive evidence base and union politics; Chamath called it New York→Mississippi segregation; Sacks called HS literacy modules Doomer Academy; Jason held MIT atrophy vs Bloom two-sigma tutor tension. Venezuela closed as Blue Energy 100-year/~65B-barrel deal with Pentagon equity: Sacks sold it as complementary heavy-crude business not nation-building; Friedberg stressed denying Russia/China and Machado's legitimacy pushback; Sacks preferred Rodríguez stability over installing Machado.
 canary: published 2026-09-04T23:10:00Z RSS / 2026-09-04T23:52:31Z YT (2026-09-05 06:10 / 06:52 ICT) · fetched 2026-09-05T04:30:26Z (2026-09-05 11:30 ICT) · words 16899 · chapters yes · official YT watch page via WebFetch · no box ASR · timedtext empty from this IP · skipped Summit merch/ticket stretch
 
----
-
----
 ## Ingest · Moon · 2026-09-04 · How America Became a Surveillance State
 url: https://www.youtube.com/watch?v=f74awabxBXc  ·  length: 23:45  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -826,87 +1029,3 @@ url: https://www.youtube.com/watch?v=f74awabxBXc  ·  length: 23:45  ·  text: c
 Moon argues the American dream's props — home, school, dating, fitness, cars — were converted into a paid participation surveillance stack: Meta glasses and dox-on-sight hacks, Alexa/Ring (Familiar Faces, police partnerships, Super Bowl missing-dog ad), Gaggle's 58% student self-censorship, and Flock's ALPR empire (~125k cameras, 20B plates/month, kids'-facility peeking, stalking, mis-ID jailings, fusion-center pushback on Deflock). Coke Freestyle, McDonald's kiosks, Match Group, Tesla kill switches, UK Apple backdoors, and Palantir/Anduril border tools extend the same grid. Altman and Ellison name the end-state (comfort without agency; obedience as product); Thiel's hesitation about the human race hangs over a panopticon with a computer on top. The sting: we buy the cages, so the dream still looks free from outside while the private life is gone.
 ### Footer
 canary: published 2026-09-04T19:23:32Z (2026-09-05 02:23 ICT) · fetched 2026-09-05T04:19:22Z (2026-09-05 11:19 ICT) · seen index updated · text path: official YouTube watch page via WebFetch saved to /workspace/recap/tmp-moon-0904/captions.txt (4649 words) · no ASR on the box (timedtext API returned empty 200 from this IP; did not pull Whisper) · watch-page caption track labeled English (auto-generated) · chapters no · lengthSeconds 1425 (23:45) from official watch HTML · skipped stretch: none material (no mid-roll sponsor block in watch-page text)
-
----
-
----
-## Ingest · Frontpage · 2026-09-03 · Why Fast Food Became So Unaffordable
-url: https://www.youtube.com/watch?v=R9GEhShaHhI  ·  length: 40:47  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Open / viral receipts / luxury flip**
-- --:-- · Front Page · March 2024 Five Guys receipt (bacon cheeseburger, soda, small fries) hit $24.10 and ~25M views because it touched the shared memory of cheap fast food.
-- --:-- · Front Page · Past decade: fast-food prices up ~40–100%; 1955 McDonald's burger 15¢ → Big Mac ~$6 (Anchorage/DC past $7); combos $12–$18.
-- --:-- · Front Page · 2024 survey: 78% of Americans now think of fast food as a luxury — food invented for people who couldn't afford anything else, now unaffordable to millions of them.
-- --:-- · Front Page · Easy answer is corporate greed (partly true); whole story is cattle, Congress, a distant war, a virus, a phone app, and a hot printing press in Washington.
-
-**White flag / White Castle trust seed**
-- --:-- · Front Page · Summer 2024: McDonald's U.S. sales fell; company rolled out a $5 meal as a white-flag apology — hold that thread for the ending.
-- --:-- · Front Page · White Castle (Wichita, 1921) sold nickel burgers to factory/night-shift workers after *The Jungle* made ground beef terrifying; sold trust via white porcelain, open grill, 13-week burger diet stunt — cheap + safe is the seed.
-
-**Sponsor skip · Morgan & Morgan**
-- --:-- · sponsor · Meta/YouTube mental-health lawsuit quiz ad — skipped.
-
-**McDonald brothers / Kroc / real-estate model**
-- --:-- · Front Page · 1948: Dick & Mac McDonald reinvent San Bernardino kitchen as Speedy Service System (tennis-court chalk layout); blueprint for every fast-food kitchen.
-- --:-- · Front Page · Ray Kroc partnered, scaled sameness; 1961 buyout $2.7M; brothers' handshake royalty never paid; Kroc opened across the street and crushed their renamed shop — business was margin/scale, not burgers.
-- --:-- · Harry Sonnenborn (~1960) · Unofficial secret: not in the food business — real estate; 15¢ burgers get tenants who pay rent. McDonald's still owns land/buildings and leases to franchisees.
-- --:-- · Front Page · Franchisee vice: absorbs rent/wages/utilities but can't freely raise prices against brand expectations → something eventually gives.
-
-**Golden age / value wars / dollar menu alignment**
-- --:-- · Front Page · 1950s–60s golden age of cheap; even OPEC 1973 / stagflation held via scale. Late-80s 99¢ burger wars; Wendy's 1989 nine-item 99¢ value menu; early-2000s McDonald's dollar menu after 2002 first quarterly loss.
-- --:-- · Front Page · ~2003–2012: family-of-four meal under $10 as lifeline — only worked because oil, grain, cattle, and stagnant federal min wage lined up; that alignment broke everywhere at once.
-
-**Prime cost / franchise royalties**
-- --:-- · Front Page · Prime-cost rule: food + labor past ~60% of sales buckles the model (~$31 food + ~$30 labor per $100 before rent/royalties/ads/utilities); owner often keeps 6–15% — no cushion.
-- --:-- · Front Page · Royalty ~4–5% + marketing ~4% on total sales (not leftover profit); corp still collects full cut when beef/wages spike; franchisees feel it first.
-
-**Sponsor skip · DollarWise**
-- --:-- · sponsor · DollarWise budgeting app mid-roll — skipped.
-
-**Beef / ingredients / packing oligopoly**
-- --:-- · Front Page · Start-2026 U.S. cattle herd ~86.2M — smallest since 1951 (peak ~132M mid-1970s); breeding cows lowest since early 1960s; drought, feed costs, rates, biology → recovery not before ~2028.
-- --:-- · Front Page · Retail ground beef nearly $7/lb, +70% vs 2020, still ~+20%/yr; Tyson/JBS/Cargill/National Beef ~85% packing → COVID plant shutdowns had no backup. Eggs +~370% (bird flu); coffee ~tripled; oil/cheese/potatoes/buns all rose together.
-
-**Labor / Fight for 15 / California AB 1228**
-- --:-- · Front Page · Federal min wage $7.25 frozen since July 2009 (longest ever), but states/cities + Fight for 15 (Nov 2012 NYC walkout) moved floors; ~$150B raises for ~66M workers by 10th anniversary.
-- --:-- · Front Page · Post-2008: workforce shifted from teens to adults trying to live on teen wages — fuel for the wage fight.
-- --:-- · Front Page · CA AB 1228: Apr 2024 large-chain floor $20/hr (from $16), ~25% industry hike. NBER ~18k jobs lost vs counterfactual; Pepperdine >23k; UC Berkeley finds no employment drop, modest prices. Middle read: real wages for keepers, prices up, disputed job loss; undisputed push to kiosks/apps/automation.
-
-**Money printing / COVID / Ukraine / debt**
-- --:-- · Front Page · 2020: M2 +~25% in a year; $5–6T stimulus/UI/loans; inflation 9.1% by June 2022 (40-year high); food faster. March 2020 restaurants shed 5M jobs; supply chains broke while money flooded — fast food in the collision.
-- --:-- · Front Page · National debt past $36T; Big Mac price tracked money-supply growth more closely than official CPI over ~15 years.
-- --:-- · Front Page · Feb 2022 Russia/Ukraine: ~30% world wheat exports; sunflower oil for fryers; corn for feed → bun/fry/nugget costs in Ohio.
-
-**Greedflation / shrinkflation / skimpflation**
-- --:-- · Front Page · Chipotle margins ~11% → ~17% with raises (pricing power); McDonald's margins flat/slipped; Starbucks squeezed; SF Fed + Barclays: gouging not main driver. Some brands grabbed margin; system-wide spike ≠ greed conspiracy.
-- --:-- · Front Page · Shrinkflation (same price, less product) is deliberate playbook; BK operator (~14% of U.S. locations) cut nuggets 10→8 to offset inflation; Chipotle 2024 burrito-film backlash. Skimpflation: same size, worse quality. A 20% lighter "$5" burger is a $6 burger in disguise.
-
-**Viral backlash / grocery gap / politics / delivery**
-- --:-- · Front Page · More viral receipts (Idaho $16.10; CT Big Mac combo $17.59; Chipotle burrito ~$6.50→~$16); foot traffic drops. Grocery comparison: two people $25–$30 out vs ~$10 at home — speed remains, cheap is gone; "week of groceries" genre.
-- --:-- · Front Page · 2024 election theater: Bidenflation vs greed/junk fees; McDonald's Joe Earlinger letter — Big Mac +~21% over 5 years, not 100%. Wendy's "dynamic pricing" backlash → walked back. Trump fry-station op; Biden regional stops; Nov 2025 Trump rolls back tariffs on 200+ foods (beef/coffee/bananas) — imports ~10% of diet, "rounding error," and some tariffs had raised costs. Both parties' fingerprints on the receipt. Burger price = personal political symbol.
-- --:-- · Front Page · Delivery apps: 15–30% commissions; $12 in-store → $15 on app → ~$50 at door with fees/tip; Dallas owner paid huge annual fees then ripped apps out.
-
-**Automation / Ozempic / three futures / K-shape close**
-- --:-- · Front Page · CA full-time $20/hr >$40k/yr vs ~$15k kiosk that pays back <5 months; kiosk orders spend ~+30% (never forgets upsell). Wendy's AI drive-thru; McDonald's AI test killed after 260-nugget viral fail, smarter version testing. Irony: industry gave ~1 in 8 Americans first job, now automating them partly because of wage wins fought for.
-- --:-- · Front Page · GLP-1s (Ozempic-class): households with a user cut QSR spend ~8%; ~1 in 6 households; >30M Americans expected by decade-end (from ~10M) — priced out and/or medicated away.
-- --:-- · Front Page · Three futures: (1) automation holds prices by erasing entry jobs; (2) great split — premium $15–$25 fast-casual vs automated $4–$7 skeleton menus, hollow middle (McDonald's builds both: value deals + ~$9 Big Arch); (3) recession value-war revival like early-2000s dollar menu.
-- --:-- · Front Page · $5 meal deal worked into permanent value; end-2025 strongest quarter in ~2 years — but returners were middle/higher-income traders-down + moneyed youth, not priced-out low-income. CEO: low-income traffic still falling nearly double-digits while wealthy visits climb nearly double-digits → K-shaped economy visible at the drive-thru (e.g. early-2026 Taco Bell boom vs stretched-customer chain crater same day).
-- --:-- · Front Page · Fast food was classless (senator + janitor); >60% of lower-income Americans now call it unaffordable luxury. Global market ~$800B → >$1T mostly via developing countries; U.S. volume flattening as the invented-for customer is pushed out.
-- --:-- · Front Page · Honest answer: no single villain — money printing, pandemic, war, 75-year-low cattle herd, rebuilt labor market, delivery skim, some brand margin grab, rent-on-rent, shrinkflation. Economics not ideology. Working class built the nickel hamburger; same forces now price them out. Five-cent promise is over; the viral receipt is America on a slip of paper.
-
-**Footer skip · channel membership**
-- --:-- · Front Page · Membership/join ask after sources — skipped.
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- --:-- Front Page: "78% of Americans said they now think of fast food as a luxury."
-- --:-- Harry Sonnenborn: "We are not in the food business. We are in the real estate business."
-- --:-- Harry Sonnenborn: "The only reason we sell 15-cent hamburgers is that they are the best way to get tenants to pay us rent."
-- --:-- customer genre: "I could have bought a week of groceries for this."
-- --:-- Front Page: "A luxury car getting more expensive is abstract. A Big Mac getting more expensive is personal."
-- --:-- Front Page: "The five-cent promise is over."
-### One paragraph
-Front Page traces how nickel hamburgers for Wichita factory workers became a luxury: White Castle sold trust after *The Jungle*, McDonald's Speedy Service and Kroc/Sonnenborn real-estate franchise vise built scale, and the dollar-menu era worked only while oil, grain, cattle, and wages aligned. That alignment broke via a 75-year-low cattle herd, Fight-for-15/CA $20 wage pressure, M2/stimulus inflation colliding with COVID supply collapse, Ukraine grain/oil shocks, delivery commissions, shrinkflation, and selective brand pricing power — not a single greed villain. Viral receipts and a grocery-store comparison flipped the cheap pitch; politics weaponized the Big Mac; automation and GLP-1s shrink labor and demand. McDonald's $5 meal revived sales among traders-down, not the priced-out poor — a K-shaped drive-thru where the classless nickel promise is over.
-### Footer
-canary: published 2026-09-03T12:00:07-07:00 (2026-09-04 02:00 ICT) · fetched 2026-09-05T04:34:37Z (2026-09-05 11:34 ICT) · seen index updated · text path: official YouTube watch page via WebFetch saved to /workspace/recap/tmp-frontpage/captions.txt (6946 words) · no ASR on the box · no yt-dlp · no timedtext API · no third-party transcript sites · chapters no (none in watch HTML / player response) · lengthSeconds 2447 (40:47) from official watch HTML · skipped stretch: Morgan & Morgan Meta/YouTube quiz mid-roll; DollarWise budgeting mid-roll; end channel membership/join ask
-
----

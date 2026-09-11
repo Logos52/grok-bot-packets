@@ -1,0 +1,1038 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/heuwels/lector/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/heuwels/lector/commits/master.atom"/>
+  <title>Recent Commits to lector:master</title>
+  <updated>2026-09-03T10:45:23Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0dd3e558d629050bb97e47ea82e68c8a6cc90591</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/0dd3e558d629050bb97e47ea82e68c8a6cc90591"/>
+    <title>
+        Point the email start video at the new channel (#613)
+    </title>
+    <updated>2026-09-03T10:45:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Point the email start video at the new channel (#613)
+
+The getting started video moved to a dedicated channel. Update the link
+and the thumbnail in the email templates.
+
+The change covers three templates. They are welcome-on-account-create,
+day-1-registered-no-word-saved and language-request-notification.
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01d6b1ab40e22ebf858951c3fa6f29db2887248e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/01d6b1ab40e22ebf858951c3fa6f29db2887248e"/>
+    <title>
+        feat: add Finnish, Greek, and Hungarian language packs (#602)
+    </title>
+    <updated>2026-09-02T22:46:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add Finnish, Greek, and Hungarian language packs (#602)
+
+Ship the three remaining European packs. Greek stays a separate pack from Koine.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05a96a621650cf7934ec5c1a0bb16cd32a902602</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/05a96a621650cf7934ec5c1a0bb16cd32a902602"/>
+    <title>
+        Select a phrase on touch with a hold and drag (#600)
+    </title>
+    <updated>2026-09-02T22:27:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Select a phrase on touch with a hold and drag (#600)
+
+* Select a phrase on touch with a hold and drag
+
+The reader started a phrase lookup from `onMouseUp` only. A touch drag sends no
+`mouseup` event, so phrase selection did nothing on a phone.
+
+`usePhraseTouchSelection` now owns the gesture. Hold one word for 350 ms to arm
+the drag. Drag across the phrase. Release to look the phrase up.
+
+The hook paints the run under the finger before it commits. Movement of more
+than 10 px before the hold completes cancels the gesture, so a scroll still
+scrolls. Once the hook arms the drag, it also blocks the browser callout and the
+synthesized click.
+
+`lookUpPhrase` is now the commit path for both gestures. The touch path reads
+the phrase text from a Range between the two end words. The phrase text
+therefore matches the text that the reader drew, in any script.
+
+Tests: `e2e/reader-phrase-touch.spec.ts` covers a drag, a backward drag, a
+scroll, and a hold on one word. `wordSpansBetween` has unit tests.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* Harden the touch phrase gesture against a leaked click
+
+Review found four holes in the first pass.
+
+A click from the gesture can undo the whole selection. `preventDefault` on
+`touchend` was the only guard, and Safari may still send the click. A capture
+listener on the container now swallows one click after a commit, so WordCell
+never clears the phrase that the drag just made.
+
+A hold on one word waited for the click that a tap makes. iOS often sends none
+after a long press, so the drawer never opened. The hook now clicks the word
+itself, and it cancels the click of the browser.
+
+The non-passive `touchmove` listener stayed bound for the life of the reader,
+which held every scroll on the main thread. The hook now binds it at
+`touchstart`, and only for a touch that starts on a word. It does not wait for
+the hold: an engine marks `touchmove` non-cancelable once a scroll starts, and
+`preventDefault` is then a no-op. The slop is 8 px for the same reason, which is
+under the slop of both engines.
+
+The commit stripped the drag paint before React drew the phrase highlight, so
+one frame drew neither. The strip now waits for a timeout of 0 ms.
+
+Tests: three more cases in `e2e/reader-phrase-touch.spec.ts`. A run that wraps
+onto the next line. A phrase that survives the click of a tap. A drag inside one
+transcript cue.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/24b007c752002dd4243b1f9e97db8fdcce3c4584</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/24b007c752002dd4243b1f9e97db8fdcce3c4584"/>
+    <title>
+        Collapse the desktop sidebar (#599)
+    </title>
+    <updated>2026-09-02T14:11:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Collapse the desktop sidebar (#599)
+
+* Add a collapse control for the desktop sidebar.
+
+The control sits beside the theme toggle.
+A collapsed rail shows icons only.
+The browser stores the choice.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* Share one menu for every language selector variant.
+
+Collapsed, compact, and full used three copies of the same dropdown.
+One tree now drives all three.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* simplify classname evaluation
+
+* further DRY up navlink classes
+
+* center iccons on collapsed nav
+
+* refactor theme toggle and nav header
+
+* stop hook race condition
+
+* refactor turnstile widget
+
+* refactor onboarding coach component
+
+* refactor onboarding coach and nav subcomponents
+
+---------
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a3bdc9d2686870fa6d191ff981f6e5602e17ef5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/5a3bdc9d2686870fa6d191ff981f6e5602e17ef5"/>
+    <title>
+        build(deps): bump browserslist from 4.28.1 to 4.28.8 (#598)
+    </title>
+    <updated>2026-09-02T13:18:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(deps): bump browserslist from 4.28.1 to 4.28.8 (#598)
+
+Bumps [browserslist](https://github.com/browserslist/browserslist) from 4.28.1 to 4.28.8.
+- [Release notes](https://github.com/browserslist/browserslist/releases)
+- [Changelog](https://github.com/browserslist/browserslist/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/browserslist/browserslist/compare/4.28.1...4.28.8)
+
+---
+updated-dependencies:
+- dependency-name: browserslist
+  dependency-version: 4.28.8
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e97dcb17f1eb71272a344533e32e701362a00829</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/e97dcb17f1eb71272a344533e32e701362a00829"/>
+    <title>
+        Dock the translation drawer on large screens (#597)
+    </title>
+    <updated>2026-09-02T12:24:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dock the translation drawer on large screens (#597)
+
+* make the translation drawer fixed on large screens
+
+* update translation drawer screen width mechanics
+
+* reposition the chat bubble on large desktop
+
+* remove missing import
+
+* Dock the translation drawer in a layout slot.
+
+The hook treated an unknown width as 2xl.
+The server then placed the chat button over the listen-along controls.
+
+The drawer now renders in a reserved column on large screens.
+The panel shows an empty prompt until the user selects a word.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* Render the docked drawer in its slot.
+
+The layout effect set state when it chose a portal target.
+The linter rejects that.
+
+The drawer now renders as a child of the slot on large screens.
+On a smaller screen it still uses a portal to the document body.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/492fa89e1c6a780c501365df1ddc8127bbd1669f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/492fa89e1c6a780c501365df1ddc8127bbd1669f"/>
+    <title>
+        chore(bn): pin the published Bengali dictionary (#596)
+    </title>
+    <updated>2026-08-31T13:31:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(bn): pin the published Bengali dictionary (#596)
+
+The Bengali pack merged in #581 with no published dictionary, so every lookup
+fell through to AI translate. This pin closes that gap.
+
+Release `dict-bn-2026-08-31` holds 9,929 entries, 15,650 senses and 38,857
+inflections in 8.96 MB. `scripts/release-dict.sh bn` built and published it.
+
+I verified the published asset. It downloads, the sha256 matches the pin, and the
+database reports 9,929 entries. The build is reproducible, because the rebuilt
+file has the same sha256 as the file I built for #581.
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d5a64e98d755f7ee408c3d69e64b0a8d8393d51</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/6d5a64e98d755f7ee408c3d69e64b0a8d8393d51"/>
+    <title>
+        feat(hi): add Hindi language pack (#582)
+    </title>
+    <updated>2026-08-31T13:19:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(hi): add Hindi language pack (#582)
+
+Devanagari is space-separated and left to right. The shared tokenizer covers it. NFC folds the two nukta spellings onto one key.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9cb6db234dd335e6f802246f0e8f43f2b9ecf394</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/9cb6db234dd335e6f802246f0e8f43f2b9ecf394"/>
+    <title>
+        feat(bn): add the Bengali language pack (#581)
+    </title>
+    <updated>2026-08-31T11:02:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(bn): add the Bengali language pack (#581)
+
+Bengali is the first Brahmic-script pack. The script needs no engine work. The
+tokenizer keeps a word whole across its matras, its virama and its nuqta. It
+treats the Bengali digits as boundaries.
+
+Issue #252 says that an Indic pack must add script ranges in four places. That
+statement is out of date. Issue #289 replaced every character range with a
+Unicode property test. The one real gap is the danda. The manifest declares the
+danda as a sentence terminator.
+
+The pack builds against a 65% coverage gate. Every other pack clears 85%.
+English Wiktionary holds 9,929 glossed Bengali headwords. Arabic has 35,941.
+
+Against the top 5,000 wordfreq tokens, the exact key answers 38.7%. The
+inflection tables raise the result to 55.8%. The morphology slice raises it to
+69.7%. The limit is the vocabulary and not the morphology. A longer list of
+suffixes reaches 71.4%. That list also invents false stems for the two extra
+points.
+
+A dictionary miss is not a dead end. The lookup route returns a null entry. The
+caller then falls back to AI translate. A lower gate costs more LLM calls. It
+does not cause failed lookups. The new coverageThreshold lever makes that trade
+explicit in the build profile.
+
+Coverage is 88.3% over the top 1,000 words. It is 81.8% over the top 2,000. The
+formal vocabulary in the long tail is the part that fails.
+
+Google publishes no bn-BD voice. The pack uses bn-IN. The flag is the globe,
+because Bengali crosses a national border.
+
+The build makes 9,929 entries, 15,650 senses and 38,857 inflections in 8.96 MB.
+The cloze bank holds 3,213 rows over 1,063 target words.
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/394af4764d57bb9eaeca2e9c25ac578244d975d3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/394af4764d57bb9eaeca2e9c25ac578244d975d3"/>
+    <title>
+        Add the Italian first 1000 starter series. (#580)
+    </title>
+    <updated>2026-08-30T12:39:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add the Italian first 1000 starter series. (#580)
+
+Coverage meets the 90 percent bar.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aee8459130dcc3a10609388791c86ffb3a6b07a4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/aee8459130dcc3a10609388791c86ffb3a6b07a4"/>
+    <title>
+        Starter content: Indonesian — 1000 kata pertamamu (#573) (#576)
+    </title>
+    <updated>2026-08-30T10:33:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Starter content: Indonesian — 1000 kata pertamamu (#573) (#576)
+
+* feat(id): add first-1000 starter wordlist
+
+Commit the wordfreq list so the Indonesian series can start. Do not add a manifest yet.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* Add the Indonesian first 1000 starter series.
+
+Coverage meets the 90 percent bar.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c22391268cf7da1b0c8320706b3862c347b22a38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/c22391268cf7da1b0c8320706b3862c347b22a38"/>
+    <title>
+        Starter content: Dutch — Je eerste 1000 woorden (#343) (#575)
+    </title>
+    <updated>2026-08-30T10:27:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Starter content: Dutch — Je eerste 1000 woorden (#343) (#575)
+
+* feat(nl): add first-1000 starter series
+
+Twenty listed-form lessons and a wordlist. Coverage is 37.5 percent, so the manifest must not merge until the CI bar is met.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* Expand later Dutch starter lessons.
+
+Coverage now meets the 90 percent bar.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03dfc266c628a91e78d641589a407226819c1b12</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/03dfc266c628a91e78d641589a407226819c1b12"/>
+    <title>
+        fix(af): fold and peel the apostrophe the joiner now keeps (#430) (#577)
+    </title>
+    <updated>2026-08-30T09:33:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(af): fold and peel the apostrophe the joiner now keeps (#430) (#577)
+
+* fix(af): fold and peel the apostrophe the joiner now keeps (#430)
+
+Commit 2ec29ec added `extraJoiners` to the Afrikaans pack. The joiner is
+correct. Three problems remain, and two of them break the build on master.
+
+The reader props type uses `ActiveReaderWord` and never imports it. The
+typecheck fails with two errors. Move the type into `types.ts`. Re-export it
+from the component, because two other files import it from there.
+
+The pack joins the apostrophe but does not fold the variants. `foto&amp;#39;s` and
+`foto’s` make two vocab keys. The type doc says to set both flags together.
+Add `foldApostrophes`.
+
+The pack declares no morphology. The joined token reaches no dictionary key,
+because the dictionary holds `foto` and not `foto&amp;#39;s`. Add an `&amp;#39;s` clitic peel.
+`vocabKeys` keeps only a candidate that peels an apostrophe. A plural with no
+apostrophe cannot fire this peel.
+
+Update the two tests that the joiner changed. Move the Afrikaans apostrophe
+sentences out of the legacy parity corpus, as Italian did for its elisions.
+Add pack goldens for the plural, the fold, the peel, and the quote mark.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test(af): cover the ABC&amp;#39;s and 1990&amp;#39;s cases from #430
+
+The issue names an abbreviation plural and a decade plural next to foto&amp;#39;s.
+Digits and capitals are word characters, so the joiner keeps both whole. Assert
+it, and assert that each one peels to its base key.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs(af): correct the note about the Dutch split
+
+The first version repeated a claim from the fr and nl manifests. That claim
+says the avoidWords clitic fragments depend on the apostrophe split. The
+dependency runs the other way. The split makes the fragments.
+
+Italian is the evidence. It joined the apostrophe in #548 and kept l, d, all,
+dell, nell and sull in its avoidWords list, because wordfreq and older vocab
+rows still carry them. So a joiner can land in the Dutch pack with no rework.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b637be4db6faca1cf5670e0c5e7cafa3ce65d961</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/b637be4db6faca1cf5670e0c5e7cafa3ce65d961"/>
+    <title>
+        feat(pt): add first-1000 starter series (#574)
+    </title>
+    <updated>2026-08-30T09:09:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pt): add first-1000 starter series (#574)
+
+Keep é in band 1 so natural Portuguese can ship. The series is verifier-clean at 93.6% coverage.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ec29ec5bc3d13e4ccd169c929b08e7423580660</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/2ec29ec5bc3d13e4ccd169c929b08e7423580660"/>
+    <title>
+        fix #430, properly highlight apostrophe plural words
+    </title>
+    <updated>2026-08-30T03:25:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix #430, properly highlight apostrophe plural words&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/344e04e1356fdd5b60c6a24d2104a14ca7495027</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/344e04e1356fdd5b60c6a24d2104a14ca7495027"/>
+    <title>
+        feat(reader): configurable prose style, global and per language (#570…
+    </title>
+    <updated>2026-08-29T23:50:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reader): configurable prose style, global and per language (#570) (#571)
+
+* feat(reader): configurable prose style, global and per language (#570)
+
+The reader drew every language at one size, one weight, one kerning and one
+leading. A script does not read well at one setting. Japanese sits inside the em
+box and writes no spaces, so a leading tuned for Latin leaves its lines too far
+apart.
+
+Three layers now decide how a lesson is drawn, and each field resolves on its
+own:
+
+1. The language pack (`script.prose`) says what the script needs.
+2. The reader&amp;#39;s global setting applies in every language.
+3. The reader&amp;#39;s per-language setting applies in one language.
+
+A later layer wins. A pack default never overrules a stated preference, and a
+global preference never overrules a per-language one.
+
+The resolved values reach the DOM as custom properties on the reader container.
+The article, the transcript reader and every word chip read them by
+inheritance, so no component takes a new prop.
+
+Settings gets a &amp;quot;Reading text&amp;quot; panel with a scope selector, four sliders and a
+live sample in the pack&amp;#39;s own script. A per-language edit stores only the field
+that moved, so everything else keeps following the global setting.
+
+Japanese now ships a pack leading of 1.6. That is the language the issue
+reports.
+
+Other notes:
+
+- An overhanging annotation (furigana) takes its room from the gap between the
+  lines, and the browser reserves none. The annotated leading is the resolved
+  leading plus a per-script extra. A floor of 1.75 holds it there, so a tight
+  setting cannot drop the furigana onto the line above. An in-flow annotation is
+  already part of the line box, and pinyin therefore takes no floor.
+- The defaults draw a Latin lesson exactly as before: 20px, weight 700, kerning
+  0, leading 1.9. The reader used to step from 18px to 20px at the `sm`
+  breakpoint. One value now covers both widths, because a size the reader chose
+  must not change under it at a breakpoint.
+- The settings live in browser storage, browser-scoped, the same choice the
+  theme makes. The right font size is a property of the screen, not of the
+  account.
+- A word chip with no click handler no longer takes button semantics. The panel
+  preview draws chips with nothing to look up.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* fix(reader): measure the furigana floor, and save the sliders explicitly (#570)
+
+Three corrections after reading the panel and the Japanese reader on screen.
+
+The furigana floor was wrong. It was 1.75, derived from the 1.0em Han square
+plus the 0.58em reading. What has to fit is the word CHIP. A chip is an inline
+box, so its height is the reading font&amp;#39;s content area, about 1.4em for
+Literata. Measured in Chrome at 20px, 26px and 32px, the reading first clears
+the line above at 2.15, and by 0.4px. The floor is now 2.3, which is the first
+value with daylight in it.
+
+2.15 is also what the reader hardcoded before #570, so that layout was always
+one rounding error from a collision.
+
+Japanese moves from 1.6 to 1.7. 1.6 read as cramped with the annotations off.
+
+The sliders now write a draft, and Save applies it. The sample in the panel
+follows every drag, so the effect is visible before the reader changes. Reset
+throws away the unsaved sliders and whatever the scope holds in storage. A draft is
+held per scope, so a reader who edits Japanese, looks at German and comes back
+still has their edit.
+
+The per-field marker was the accent colour, which read as a button. It is muted
+now, and it says which language it belongs to.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test(settings): address the Anthropic credential controls by test id
+
+The reading typography panel (#570) put a second Save button on the settings
+page, above the credential one. settings-credentials.spec.ts reached its own
+button with getByRole(&amp;#39;button&amp;#39;, { name: &amp;#39;Save&amp;#39; }).first(). It found the new one
+instead, waited for a disabled control, and timed out.
+
+The Anthropic credential block never got the test ids its OpenAI twin has. Add
+them with the same names, then address them from the spec. The names are
+anthropic-api-key, -save, -status, -replace, -clear and -cancel.
+
+A settings page can hold more than one Save button. A label lookup was therefore
+always fragile here. A test id is not.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/811543abfb2346034ec2a70e26bbe8258b64ff68</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/811543abfb2346034ec2a70e26bbe8258b64ff68"/>
+    <title>
+        feat(billing): apply a Paddle discount to in-app checkout (#516) (#568)
+    </title>
+    <updated>2026-08-27T07:11:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(billing): apply a Paddle discount to in-app checkout (#516) (#568)
+
+Lector Cloud had no way to apply a discount, which blocked every promotion
+and win-back offer. Paddle now holds each discount. The app holds only a
+map from a code word to a Paddle discount id.
+
+- Add PADDLE_DISCOUNT_CODES, a JSON map of code word to `dsc_…` id. Unset
+  means coupons stay off.
+- A bad entry warns and drops. It never stops the boot. A broken map gives
+  nobody a discount, which is the safe direction.
+- POST /api/billing/checkout takes an optional `promo`. It answers with
+  `discount: applied`, `unknown`, or `none`.
+- makePaddleTransactionCreator sends `discount_id`. Paddle prices the
+  transaction, so the overlay opens on the discounted total.
+- The browser can never send a discount id. A Paddle code word holds
+  letters and numbers only, so a `dsc_…` value cannot become a lookup key.
+  A test asserts this.
+- An unknown code stops the redirect. The reader stays on the plan picker
+  and reads why. A redirect shows them a price they did not expect, which
+  is the one outcome to avoid.
+- sanitizeAuthReturnPath now allows `plan` and `promo`. It rebuilds the
+  destination from validated values. An unknown or repeated parameter
+  rejects the whole destination.
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/daaf053e400cb562e5fa757c7710cdd02cfdc4ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/daaf053e400cb562e5fa757c7710cdd02cfdc4ea"/>
+    <title>
+        Vocab/bulk delete (#569)
+    </title>
+    <updated>2026-08-27T07:01:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Vocab/bulk delete (#569)
+
+* fix(email): the API field is fallback_value, not fallbackValue
+
+Every template variable has carried a null fallback since #558. The REST API
+names the field `fallback_value`. This script sent `fallbackValue`, which Resend
+accepts, ignores, and answers 200 to. The Node SDK converts the case. This
+script calls fetch directly, so it does not.
+
+A null fallback is not cosmetic. It is the only guard on a send that omits a
+variable, and without one Resend renders the variable as nothing. That means an
+empty headline, an empty word count, or an empty `src` on the language
+screenshot, which every client shows as a broken image.
+
+A fallback also only reaches the live template through a publish. A PATCH alone
+updates the draft, and a GET keeps returning the published values, which is why
+this looked unfixable at first.
+
+Add verifyPublished, which reads each template back after its publish and warns
+if a variable the body uses is undeclared or has no fallback, or if the subject
+does not match. It sets a non-zero exit code. Nothing in the old output could
+have revealed a silently dropped field.
+
+Verified against the live templates: all six now report every variable with a
+fallback, and day-1 reads back all seven.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* add new bulk-delete endpoint
+
+* add data-layer consumer for bulk delete endpoint
+
+* add bulk-delete functionality to vocab page
+
+* add max length to req and wrap it in a transaction
+
+* add malformed json req guard
+
+* update PR feedback
+
+* update
+
+* hoist db ops
+
+* test(vocab): cover bulk delete, and document it in the OpenAPI spec
+
+The endpoint had no tests. Most of these cover the knownWords half rather
+than the vocab half, because that is where bulk delete and DELETE /:id can
+drift apart: the single-row route drops the knownWords entry when no other
+vocab row in that language folds to the same key, and a batch has to reach
+the same end state.
+
+Cases that earn their place:
+
+  - an unknown id must not abandon the ids after it. The loop body is a
+    callback today, so `return` skips one item. Under a for-of it would
+    abandon the batch, which no other assertion detects.
+  - HAEUSER and haeuser are one folded key (#289), so deleting either alone
+    must leave the knownWords row standing.
+  - a mixed-language batch sweeps each language on its own, and a language
+    absent from the batch stays untouched.
+  - a bare string carries .length, so only the Array.isArray clause stops it
+    reaching the id loop and answering 500.
+
+user-scoping.test.ts asks every route to prove it cannot see another
+tenant. Two cases there: another user&amp;#39;s id is skipped rather than deleted,
+and their identical word neither saves nor loses a knownWords row, which
+pins the userId scope on the survivor scan.
+
+The e2e spec covers the button, the confirm, and select-all across pages.
+
+The OpenAPI ratchet fails any route missing from annotations.ts, and this
+route was missing, so add its entry and regenerate openapi.json.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd94ea76472053b18d4121c4910ce658747e89b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/bd94ea76472053b18d4121c4910ce658747e89b2"/>
+    <title>
+        feat(email): rewrite the lifecycle copy for retention (#565)
+    </title>
+    <updated>2026-08-26T13:25:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(email): rewrite the lifecycle copy for retention (#565)
+
+The day 1 mail told the reader something false about their own account, and
+two mails told German and Spanish learners their library was empty when it
+holds twenty-two seeded lessons. Both cost trust at exactly the moment these
+mails exist to keep it.
+
+Day 1 fires on savedWordCount === 0 and checks nothing else, but the copy said
+&amp;quot;you haven&amp;#39;t created any lessons yet&amp;quot;. That is false for anybody who imported a
+book and read it without saving a word, and the send cannot know it either way.
+The mail now names what the trigger measures, which is the saved word.
+
+Starter content is the second correction. #315 seeds a graded series into the
+library on first language selection, and de and es are the two packs that ship
+one. So a Resend template cannot state the library&amp;#39;s state, because the true
+sentence differs per language. Add a STARTER_LINE variable that
+lifecycle-email.ts composes from hasStarterContent(), and print it instead.
+
+Add WORD_COUNT for the same reason. The Anki mail fires at ten saved words and
+described that as &amp;quot;a modest word list&amp;quot;, which is vague where it could be exact
+and faintly disparaging about the reader&amp;#39;s own effort.
+
+Copy changes across all five:
+
+- Stronger subject lines. &amp;quot;Just checking in&amp;quot; and &amp;quot;Need a hand with your first
+  lesson?&amp;quot; earned no open. No variable goes in a subject the app sends
+  automatically, because an interpolation failure would reach real users
+  silently.
+- Less apology. &amp;quot;No rush&amp;quot; twice, &amp;quot;when you have a moment&amp;quot;, &amp;quot;if that helps&amp;quot; and
+  &amp;quot;a modest word list&amp;quot; are gone. Each one gave the reader permission to ignore
+  the mail.
+- More help. Every mail now asks the reader to reply if they have an issue, and
+  says the reply is read.
+- Day 3 loses the video. A reader can receive welcome, day 1 and day 3, and all
+  three carried the same thumbnail. It also no longer tells them to pick a
+  language, which hasRealUse implies they may have done already.
+- The gloss cap mail leads with what still works, then names one action. It
+  previously offered three exits in one sentence, with self-hosting before the
+  bring-your-own-key route.
+- Every mail addresses the reader by name. Only the welcome did.
+
+Also restores the language-request-notification template, which lived only in
+Resend and in an untracked local file, so nothing in the repository described
+what is published. It carries a per-language screenshot through a
+SCREENSHOT_URL variable.
+
+Adds `--print`, which renders the copy with no network call and no API key.
+`--dry-run` lists the live templates first, so it cannot show the wording
+before a key exists, and reading the wording is the common case.
+
+Verified: 28 lifecycle-email tests pass, including three new ones for
+starterLine. The 15 failures in api/src/lib are the pre-existing missing
+@sglkc/kuromoji dependency. tsc --noEmit is clean.
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5c4291b8b9e1506110a1a43a06fdab273d7c1a1d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/heuwels/lector/commit/5c4291b8b9e1506110a1a43a06fdab273d7c1a1d"/>
+    <title>
+        feat(ar): Arabic language pack (#253) (#562)
+    </title>
+    <updated>2026-08-25T21:58:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14143193?s=30&amp;v=4"/>
+    <author>
+      <name>3stacks</name>
+      <uri>https://github.com/3stacks</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ar): Arabic language pack (#253) (#562)
+
+* feat(ar): Arabic language pack (#253)
+
+Arabic is the first right-to-left pack. It is also the first pack with a
+script that hides part of the word. Unvocalized text omits every short
+vowel.
+
+The dump is not the shape the issue expects. #253 expects vocalized
+headwords. Only 30 of 77,339 carry a diacritic. The vocalized spelling
+sits on the `canonical` form row instead, on 99.2% of glossed entries.
+
+So the key needs no help to match running text. The vocalized form
+becomes data worth a column. It goes in `ipa`, which is where a lookup
+prints it.
+
+`sounds[]` cannot do that job. It covers 20,695 entries. Every tag on it
+names a dialect: Hijazi, Moroccan, Egyptian, Kuwaiti. A selection from it
+ships a regional reading into a pack for Modern Standard Arabic.
+
+Results: 25,750 entries, 58,893 senses, 347,672 inflections, 49.6 MB.
+Coverage is 98.7% of the top 4,822 wordfreq-ar tokens. The cloze bank
+holds 7,126 rows over 1,680 target words.
+
+New levers in the build profile:
+
+- `foldArabicKeys` drops the tashkeel and the tatweel. It also folds the
+  four alef spellings onto bare alef. `stripFromKeys` cannot do this.
+  That lever strips on the NFD form. NFD takes ؤ and ئ apart as well as
+  أ. So a strip wide enough for the alef also folds the waw and the ya.
+- `readingFromCanonicalForm` reads the vocalized spelling off the
+  canonical row.
+- `looseAliases` registers the ة/ه and ى/ي variant of every key as an
+  alias row. Step 3-ar in the lookup retries against those rows.
+- `leadFormsRel` names which lemma leads a folded key.
+
+The lead map answers a real defect. Unvocalized Arabic spells several
+words the same way, so 6,133 of 25,747 keys hold more than one lemma.
+Only 341 of those come from the alef fold. The other 5,792 are the
+script itself, and no keying choice avoids them.
+
+Every lemma&amp;#39;s senses merge under the one key, so the pack loses nothing.
+But the order is the dump&amp;#39;s etymology order. For a short list of very
+frequent words that order leads with a rare verb. `ان` is the fourth most
+frequent word in the language, and it led with آن &amp;quot;time&amp;quot; in place of the
+conjunction أَنْ. `لم` led with لَمَّ &amp;quot;to gather&amp;quot; in place of the
+negator.
+
+The map holds 14 keys, curated against the top 200 of the corpus. If a
+key matches no record, the build fails, so the map cannot rot against a
+later dump. 15 reading invariants guard the result.
+
+The morphology slice peels both ends of the word. Arabic writes its
+conjunctions, prepositions and article onto the front with no space, and
+they stack: وبالقلم is و + ب + ال + قلم. `maxPrefixes` is new for that,
+because one pass stops at بالقلم, which is not a key.
+
+`minStem` is 2 and not 3. Arabic writes a proclitic onto its shortest
+words most often. A floor of 3 refused وهو, ومن, ففي and بكل. Those were
+17 of the 89 coverage misses.
+
+This also fixes a trap in the lookup. The mark-stripped fallback read
+`practiceLeniency` as its trigger. The two are unrelated. Leniency says
+what a typed practice answer may omit. That step needs the alias rows
+only the grc build profile writes.
+
+Arabic must set leniency, because a learner types no tashkeel, so Arabic
+inherited the stripping. NFD takes the hamza carriers apart. 817 Arabic
+entries change under it, and 51 of them reach a DIFFERENT entry. A lookup
+of رؤية &amp;quot;seeing&amp;quot; answered روية &amp;quot;deliberation&amp;quot;. The step now selects on
+the language.
+
+Bidi isolation reaches the surfaces that mix the two directions. Before
+this, only the reader set `dir`. A card, a popover or a practice prompt
+puts target text and English on one line. The algorithm then resolves
+the punctuation between them against the paragraph.
+
+So an Arabic sentence inside the English UI drew its full stop at the
+left edge. The new `TargetText` component wraps a run in `&amp;lt;bdi&amp;gt;` with the
+pack&amp;#39;s direction. Both Anki paths do the same.
+
+`dict.env` holds no pin for `ar` yet. Nobody published the dictionary.
+Until then tap-to-define falls through to the model path, the way
+Mandarin did before its dictionary landed.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* fix(ar): grade Arabic with the Arabic mark set, and pin the dictionary
+
+Review found the lookup fix did not reach the practice grader. Both read
+the same setting and both took the Greek fold.
+
+`foldForComparison` sent every answer through `stripMarks`. That is the
+NFD path this branch already removed from the lookup, and it rewrites
+the hamza carriers: stripMarks(&amp;quot;رؤية&amp;quot;) and stripMarks(&amp;quot;روية&amp;quot;) are one
+string. A learner who typed the wrong word of that pair was marked
+correct. 51 such pairs exist in the shipped dictionary.
+
+`practiceLeniency` now selects the POLICY, and foldForComparison selects
+the mark set for the script. Arabic folds with `foldArabicKey`, which
+also makes the answer check agree with the dictionary key. The type
+documents that a new script must add its own fold, because the Greek one
+does not travel.
+
+Second defect: the Arabic comma, semicolon and question mark stayed on
+the answer.
+
+The bank keeps the raw Tatoeba token, and 195 of the 7,126 Arabic rows
+end in ، ؛ or ؟. `splitTrailingPunctuation` and the practice punctuation
+class hold only the Latin marks. So the blank printed كتاب؟ as the word
+to fill, and a learner who typed كتاب was wrong. Both classes now hold
+the three Arabic marks. No script writes them except Arabic. So no other
+pack changes, and no bank needs a rebuild.
+
+Also from the review:
+
+- Both `ar` dictionary fixtures set DICT_DIR, and `getDb` caches the
+  handle by language. bun can run the two files in one process, so the
+  second file reads the first file&amp;#39;s database. Each fixture now drops
+  the handle in `beforeAll` and `afterAll`.
+- `TargetText` reached the reader and the drawer, but not the result
+  card. `ClozeFeedback` printed the typed answer and the correct answer
+  as raw text beside English labels. The choice buttons and the
+  related-form fallback had the same gap.
+- `vocabKeys` peels no proclitic, so الكتاب and كتاب are separate keys
+  and the reader paints a known word as new. The limitation is now named
+  where it lives. It needs its own change. A wider peel here colours a
+  token by a key the learner never marked, in every pack with prefixes.
+
+Tests: the hamza pair and the punctuation cases sit beside the grc and
+la cases in the practice suite. The Arabic marks sit beside the Spanish
+ones in the words suite.
+
+`dict.env` pins dict-ar-2026-08-25. The published asset hashes to the
+recorded sha256, so a box can now download the Arabic dictionary instead
+of falling through to the model path.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+* fix(anki): isolate the emphasis, not the word inside it
+
+The bidi work nested the tags the wrong way round. It wrote
+`&amp;lt;b&amp;gt;&amp;lt;bdi&amp;gt;word&amp;lt;/bdi&amp;gt;&amp;lt;/b&amp;gt;`, and `syncWordStates` reads a word back off a
+card with `/&amp;lt;b&amp;gt;([^&amp;lt;]+)&amp;lt;\/b&amp;gt;/`. That character class stops at the first
+`&amp;lt;`, so the probe returned null.
+
+The comment above the helper claimed the probe survives a `&amp;lt;bdi&amp;gt;`. It
+survives `&amp;lt;bdi&amp;gt;&amp;lt;b&amp;gt;word&amp;lt;/b&amp;gt;&amp;lt;/bdi&amp;gt;` and not the shape the code emitted. So
+a lector card stopped reporting its review state, and the e2e suite
+caught it on the Front-field assertion.
+
+Every field now puts the `&amp;lt;bdi&amp;gt;` outside the `&amp;lt;b&amp;gt;`. The word-only Front
+keeps the bare `&amp;lt;b&amp;gt;word&amp;lt;/b&amp;gt;` it had before this branch. That field holds
+the word and nothing else, so no neighbouring run can reorder it. A lone
+Arabic word already takes its own direction, and the punctuation comes
+off before it arrives. #197 pins that field&amp;#39;s shape, and the round-trip
+reader matches on it.
+
+The addon templates take the same nesting, so the two paths cannot
+drift.
+
+Verified: the 7 reader-anki specs pass, and all five field shapes return
+the word through the bold probe.
+
+Checked the stemmer as well, because this branch rewrote the prefix peel.
+Over 32 it/id/ko inputs the new code produces candidate lists identical
+to the pre-branch loop, element for element. Only ar reaches a stacked
+stem.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

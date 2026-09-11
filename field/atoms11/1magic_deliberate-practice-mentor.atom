@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/1magic/deliberate-practice-mentor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/1magic/deliberate-practice-mentor/commits/main.atom"/>
+  <title>Recent Commits to deliberate-practice-mentor:main</title>
+  <updated>2026-09-10T03:46:03Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a1cf51dedcee84c0916a2602bb3e045ebf2ad34</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/1a1cf51dedcee84c0916a2602bb3e045ebf2ad34"/>
+    <title>
+        v1.4.3: 能力二新增「概念底座前置」纪律（E-COACH-009）
+    </title>
+    <updated>2026-09-10T03:46:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.4.3: 能力二新增「概念底座前置」纪律（E-COACH-009）
+
+新增纪律：对比 / 选型 / 生态对比类练习（一次引入 ≥3 个同类实现），出题前
+先花 2-5 分钟重建概念底座（这东西是什么 → 站在架构哪一层 → 职责边界 →
+它只干哪一件事），再上实现差异——顺序不可颠倒，否则等于拿「实现」当
+「概念」教。
+
+- SKILL.md 能力二加「概念底座前置」条；学习者说「我对 X 没有概念性理解」
+  = 教练层级跳步的信号（非学习者问题）→ 立即补底座 + 最小费曼验收
+- references/teaching-discipline.md 新增「概念底座前置（细则与活例）」：
+  底座四问、反模式、活例
+- CHANGELOG 加 v1.4.3 条目
+
+本提交补齐并行会话遗漏的三处版本同步：
+- SKILL.md frontmatter version → 1.4.3（原仍停留在 1.4.2）
+- README 版本历史加 v1.4.3 行
+- SKILL_DESCRIPTION 版本字段 → 1.4.3
+
+兼容：新增纪律，不改既有判定规则；旧项目零迁移。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c554b87a0be1b9873b68786084317ff9035aa523</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/c554b87a0be1b9873b68786084317ff9035aa523"/>
+    <title>
+        v1.4.2: token 瘦身 SKILL.md 28.8KB→16.8KB（-42%）+ 防膨胀纪律
+    </title>
+    <updated>2026-09-10T02:50:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.4.2: token 瘦身 SKILL.md 28.8KB→16.8KB（-42%）+ 防膨胀纪律
+
+诊断：08-31 至 09-10 期间 SKILL.md 因「只加规则、不减内容」累积翻倍
+（14.2KB → 28.8KB）。SKILL.md 每次会话开头全量注入，体积直接等于每轮
+固定 token 成本。
+
+改动：
+- 教训叙事外移错误账本，正文只留一句话锚点
+- 跨文件重复消重 7 处（制图要点、错误指正协议、找茬纪律、维度评分、
+  基线评估、平台期、练习节奏）
+- 「≠掌握」家族 5 处合并为单处定义；概念引用两节合一
+- 低频分支下沉 references：教程关/Boss 关/周月双轨/计划漂移/粒度校准/
+  判读材料/工作区初始化
+- 新建 references/teaching-discipline.md 承接下沉细则（按需加载）
+- 正文压缩：交互命令表格→列表、记忆分层去冗余列、更新日志压至 1 行
+- 新增「技能维护纪律（防膨胀）」：先查重 / 正文只写规则 / 按频率归位 /
+  18KB 体检阈值
+
+结果：SKILL.md 251→179 行，20 章节全保留，规则零丢失。
+
+同时包含此前未提交的 v1.4.0 / v1.4.1 内容（游戏化动机设计、会话末
+总结图模板、基线评估文件契约）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dfc52c87260ec1b0e9a40f3edfb1ec26a0677d37</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/dfc52c87260ec1b0e9a40f3edfb1ec26a0677d37"/>
+    <title>
+        v1.3.0+v1.3.1: 课编号制/场次粒度重构 + 判读材料供给纪律
+    </title>
+    <updated>2026-09-07T09:31:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.3.0+v1.3.1: 课编号制/场次粒度重构 + 判读材料供给纪律
+
+v1.3.0（2026-09-03 定版，此前漏提交一并纳入）:
+- 课程单元统一 L-00X 单编号，W/G 双编号退场（时间盒仅作日历参考）
+- 时间粒度「周」→「场」（场≈1次会话45-90min，日1-2场）
+- 平台期「连续2周」→「连续≥4场」；计划漂移「&amp;gt;1周」→「&amp;gt;4场」
+- goal-brief/session/feedback 模板加课号与场次字段
+
+v1.3.1（2026-09-07）:
+- 新增「判读材料供给纪律」（E-COACH-008 制度化，出题侧）
+  - 材料自足：判读题语义必须材料内含或给查证路径，禁考未见枚举值
+  - 考推断有边界：可考推断但材料须够推
+  - 推对≠猜对：材料不足蒙对不算掌握证据，补材料重判
+- 「猜对≠掌握」并入 ≠掌握 家族（E-COACH-003/004 同源）
+- chore: .gitignore 忽略环境同步临时文件 zi*&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a176bbc9170cd6b1fa015170aabb8c3f8338d6fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/a176bbc9170cd6b1fa015170aabb8c3f8338d6fd"/>
+    <title>
+        docs: 补 v1.2.6 配套遗漏——goal-brief 模板加「范围覆盖矩阵（强制）」字段
+    </title>
+    <updated>2026-09-02T09:27:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 补 v1.2.6 配套遗漏——goal-brief 模板加「范围覆盖矩阵（强制）」字段&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a5b194604f857459a898242e62d4fd3a707841e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/9a5b194604f857459a898242e62d4fd3a707841e"/>
+    <title>
+        v1.2.8: 单轮投喂纪律——每轮一个验证主题（问题可多主题必一）+ 跨主题单发 + 答案后置 + 带宽调节开关在学习者
+    </title>
+    <updated>2026-09-02T09:27:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.8: 单轮投喂纪律——每轮一个验证主题（问题可多主题必一）+ 跨主题单发 + 答案后置 + 带宽调节开关在学习者&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/df5e4338b7d8ee59ba695d77618d124a75dcacf3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/df5e4338b7d8ee59ba695d77618d124a75dcacf3"/>
+    <title>
+        v1.2.1: 课程设计源头治理——心智模型清单 + 概念引用扫描（三态标注）+ 链路验证强制项
+    </title>
+    <updated>2026-09-01T03:16:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v1.2.1: 课程设计源头治理——心智模型清单 + 概念引用扫描（三态标注）+ 链路验证强制项
+
+- 能力一：知识地图每阶段显式列出 ≥2 个动词性心智模型（不建模=不教，E-COACH-005）
+- 能力二：概念引用扫描 + goal-brief 概念引用清单（用途三态：已学/新概念铺路/本课要学）
+- 能力二：链路验证强制项（每 goal ≥1 个 ≥3 环链路动词 DoD）
+- 措辞修正：引入新概念允许（铺路/钩子），红线=不得以考核答案方式出现（v1.2.1）
+- 模板同步：知识地图（心智模型清单/概念状态索引）+ goal-brief 字段
+- 版本号 1.1.0 → 1.2.1，CHANGELOG/README/SKILL_DESCRIPTION 同步&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e242b8aa8be8b974acbd387bf666e36eba1e2976</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/e242b8aa8be8b974acbd387bf666e36eba1e2976"/>
+    <title>
+        feat: 添加技能图标 icon.png（512×512 PNG）
+    </title>
+    <updated>2026-08-31T10:06:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 添加技能图标 icon.png（512×512 PNG）
+
+青绿渐变 + 红/琥珀/绿三环靶心 + 中心白勾 + 金星（i+1 意象），已移除生成模型附带的水印文字。
+同步 README：目录结构说明、发布前检查清单勾选。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/10b57a063090746d9dd7edd3ce2e02f9250f5d46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/10b57a063090746d9dd7edd3ce2e02f9250f5d46"/>
+    <title>
+        chore: 忽略发布 zip 产物（本地 SkillHub 提交用，不进版本库）
+    </title>
+    <updated>2026-08-31T09:38:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: 忽略发布 zip 产物（本地 SkillHub 提交用，不进版本库）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e664efe659fc42be5ff396337073c02bc689333d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/1magic/deliberate-practice-mentor/commit/e664efe659fc42be5ff396337073c02bc689333d"/>
+    <title>
+        chore: 初始导入 deliberate-practice-mentor v1.1.0
+    </title>
+    <updated>2026-08-31T09:34:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43130529?s=30&amp;v=4"/>
+    <author>
+      <name>1magic</name>
+      <uri>https://github.com/1magic</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: 初始导入 deliberate-practice-mentor v1.1.0
+
+将技能从 ~/.workbuddy/skills 迁移为独立 GitHub 项目（原位置符号链接保持 WorkBuddy 使用不变）。
+- SKILL.md v1.1.0：goal 粒度校准（E-PLAN-001）、DoD 独立产出规则（E-COACH-003/004）、验证方式纪律、图表化总结、调粒度/粒度命令
+- 附带 README / SKILL_DESCRIPTION / CHANGELOG / references（method-library、workspace-templates）&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -21,3 +21,4 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-08 | tsumugu-core-dev CI failed (~58h, compaction/2026-07) — investigate. https://github.com/Logos52/tsumugu-core-dev/actions/runs/33885746332 / tsumugu-ed validate corpus still red since Sep 2. https://github.com/Logos52/tsumugu-ed/actions/runs/33648836647 / tsumugu-core Deploy red ~65d — ignore or archive? https://github.com/Logos52/tsumugu-core/actions/runs/28697465339 |  |
 | 2026-09-09 | Nothing that changes today. |  |
 | 2026-09-10 | Nothing that changes today. |  |
+| 2026-09-11 | Cursor Projects is live (beta): left-nav coordinator for multi-month features/migrations — shared context across agents, Slack/schedule/PR subscriptions, cloud computer so laptop-close doesn't stop it. Try on one real body of work this week. https://cursor.com/changelog |  |

@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mrviduus/textstack/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mrviduus/textstack/commits/main.atom"/>
+  <title>Recent Commits to textstack:main</title>
+  <updated>2026-09-11T00:41:15Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e995797511e8b2198fe38eab6398281f4861e821</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/e995797511e8b2198fe38eab6398281f4861e821"/>
+    <title>
+        feat(mcp): the assistant can see where you are, and record where you …
+    </title>
+    <updated>2026-09-11T00:41:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mcp): the assistant can see where you are, and record where you got to (#601)
+
+* feat(mcp): the assistant can see where you are, and record where you got to
+
+Thirteen tools could read any book and write conclusions back into it. None could
+answer where the reader is — the position only ever surfaced as ask_book&amp;#39;s spoiler
+refusal, and that tool is gone.
+
+- get_my_reading takes no arguments: the shelf over the existing
+  GET /me/library/shelves, plus GET /me/books for what the shelf caps out. Each
+  row hands back the id the other tools take (bookId, or editionId AND slug).
+- get_book_progress: the chapter you stopped in. Never opened is an answer, not
+  an error.
+- set_book_progress: a chapter finished on another medium. Resumes at the START
+  of the next chapter using the app&amp;#39;s own sentinels, percent as chapters-done
+  over chapters-total declared as a book fraction.
+
+Four defects fixed because the tools cannot work around them:
+
+- UserBookService stored an unvalidated chapter slug; an invented one resolved to
+  nothing on every later read. The bookmark path in the same file always checked.
+- LocatorSpace.MayReplace refusal returned (true, null) — 200 having stored
+  nothing, which an assistant reports to a person as recorded.
+- get_book dropped chapterId while save_highlight&amp;#39;s description tells the model
+  to take it &amp;quot;from get_book&amp;quot;.
+- The shelf selected chapterSlug and had nowhere to put it.
+
+Tool count 13 → 16 in four asserting places; descriptions mirrored verbatim into
+McpManifest. Verified against the running bridge, not only the stubs.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* style: dotnet format the new tool builders
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9daedd108a79c58305c0ca0f3a69999e930d138</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/f9daedd108a79c58305c0ca0f3a69999e930d138"/>
+    <title>
+        A connect screen on the device where the reading happens (#600)
+    </title>
+    <updated>2026-09-10T23:42:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;A connect screen on the device where the reading happens (#600)
+
+* fix(web): the insights section never rendered, and its test hid that
+
+`BookInsightsSection` called `@textstack/shared`&amp;#39;s `insightsApi`. Every shared API
+client routes through an `authFetch` configured by `initApi()`, and only the
+mobile app calls `initApi` — the web has its own client because its token lives in
+a cookie, not a header. So the call threw &amp;quot;API not initialized&amp;quot; before reaching
+the network, the component swallowed it with `.catch(() =&amp;gt; {})`, and
+`insights.length === 0` returned null.
+
+The конспект section — the destination of the entire assistant handoff, the place
+a conclusion written by an outside assistant is supposed to appear — has never
+rendered on the web at all. Silently, for its whole life. Proved with a throwaway
+test asserting the shared call rejects on web before fixing it.
+
+Its own unit test was green throughout, because it mocked `@textstack/shared` and
+thereby replaced the broken dependency with a working one. A test that mocks the
+thing that is broken cannot see it.
+
+Fixed with a web-local `api/insights.ts` on the web&amp;#39;s own authFetch, matching how
+every other web API module works. The component test now mocks that instead.
+
+Added `noSharedApiOnWeb.test.ts`, which fails if any non-test web source imports a
+shared API client — the class of bug rather than this instance. Mutation-tested:
+re-adding the original import makes it fail with the file and symbol named, and
+removing it makes it pass.
+
+The `.catch(() =&amp;gt; {})` stays: silence is right for a network failure on a
+supplementary panel. It just cannot tell that apart from a wiring mistake, which
+is what the import guard is for.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* docs(handoff): the state of play at the end of 2026-09-10
+
+Four PRs merged and deployed, and an honest list of what is left in the order it
+should be done — plus the three things only the owner can do, one of which
+(Android developer verification, 30 Sep) is unrelated to this feature and more
+urgent than all of it.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* feat(mobile): a connect screen on the device where the reading happens
+
+The web page shipped in #598; the phone had nothing. The key is account-level, so
+one minted here works in Claude Desktop and vice versa — which is why this is
+worth having regardless of how the open question about mobile connector support
+lands.
+
+`canConnectAssistant` is a new named capability rather than an inline check.
+capabilityLiterals.test.ts fails the build on `user?.isGuest`, and rightly: the
+reason this one is account-only is sharper than the others. A key reaches the
+whole library from outside the app and lives until revoked, while a guest&amp;#39;s
+identity is three SecureStore keys that vanish with the app — a key minted by one
+would outlive every means of revoking it.
+
+apps/mobile/vitest.config.ts is narrowed to `src/lib/**/*.test.ts` and says
+outright that components are not in scope, so a test for this screen would not
+run. Everything worth asserting therefore moved to
+`packages/shared/src/lib/mcpConnect.ts` — the config template, the default key
+name, the live-key filter — where both platforms use it and it is covered. The
+screen stays dumb. Its tests parse the generated config as JSON rather than
+matching substrings: a snippet that is subtly malformed fails the client at
+launch with nothing naming the cause.
+
+That move also removes a real risk of drift. The template and the default name
+existed only in the web component; two platforms handing out two different
+snippets for the same key is two chances to be wrong.
+
+Networking stays per-platform on purpose. Mobile uses the shared api client it
+initialises; web keeps its own because its token is a cookie. Mixing those two
+layers is exactly the defect that kept the insights section from ever rendering
+on the web, and `noSharedApiOnWeb.test.ts` now guards that boundary from the
+other side.
+
+Strings went into shared, so the golden fixtures on both sides needed the hand
+edit their guards demand — 20 keys, visible in the diff rather than regenerated.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/298a5d750413b97f4c9b25b381dfb9283e446661</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/298a5d750413b97f4c9b25b381dfb9283e446661"/>
+    <title>
+        fix(handoff): the catalog Discuss button never worked (#599)
+    </title>
+    <updated>2026-09-10T22:16:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(handoff): the catalog Discuss button never worked (#599)
+
+It handed the assistant an `editionId` and told it to call `get_book` and
+`get_chapter` — both of which are keyed by `slug` with
+`additionalProperties: false`, so every call made from that brief was rejected.
+The button has been shipping in that state since it was written.
+
+A catalog book needs BOTH identifiers, because the tools disagree about which one
+they take: the read tools are slug-keyed, `save_insight` and `get_my_insights` are
+editionId-keyed. The brief now carries both and says which is for what. With only
+one of the pair it says nothing about the connector at all — half the pair is
+worse than none, because it names tools it cannot satisfy.
+
+Its test could not have caught this: it asserted the brief *string* contained the
+substring &amp;quot;get_book&amp;quot;, which is prose checked against prose. Replaced with a table
+of which identifier each tool accepts — mirroring the JSON schemas in
+McpToolCatalog — and an assertion that the brief never names a tool without
+carrying an identifier that tool takes. Writing that table caught my own error in
+it: the insight tools take either id, XOR, not editionId only.
+
+Same two call sites also stopped throwing away what they already knew. Both
+catalog screens compute the reader&amp;#39;s position for their own Continue Reading
+button and handed the assistant none of it; they now pass the chapter title, and
+mobile the progress fraction as well.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c91c178d1169e1aaea3ce8d4a3524839431f03d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/2c91c178d1169e1aaea3ce8d4a3524839431f03d"/>
+    <title>
+        feat(mcp): a page that hands you a working connect key (#598)
+    </title>
+    <updated>2026-09-10T22:08:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mcp): a page that hands you a working connect key (#598)
+
+The routes shipped in #596 with nothing in front of them, so a key could only be
+minted with curl and mcp_access_keys stayed empty. This is the missing half.
+
+It lives on the /mcp landing page rather than in profile settings, because that
+is where someone already is when they want to connect. Signed out, it asks for
+sign-in and never calls the API — a key is per-account and listing without one is
+a guaranteed 401.
+
+The key is shown once, in a panel that stays put rather than a toast, because the
+server keeps only a SHA-256 and &amp;quot;copy it now&amp;quot; is a statement of fact. Under it, a
+claude_desktop_config.json with the key already substituted: a config the reader
+has to hand-edit is the terminal step this feature exists to remove. Revoking the
+key on screen clears the panel with it — a dead string left there invites pasting
+something that authenticates nothing.
+
+Naming is skipped, not asked: a date-stamped default beats putting a form between
+the reader and the thing they came for.
+
+The component tests found a real defect, not just covered one. `refresh` cleared
+`error` on success, so a create that failed at 200ms had its message wiped by the
+mount listing that succeeded at 300ms — a button that visibly did nothing. Each
+action now clears the error it is about to replace, and refresh clears nothing.
+
+McpKeyEndpointTests covers the lifecycle against a live API — mint, authenticate,
+revoke, refuse — and asserts `lastUsedAt` actually transitions from null. That
+assertion is the point of the file: GuestActivityMiddleware is dead code in this
+repo precisely because nobody ever checked that its stamp was written. Verified
+locally against a rebuilt container, and it caught two things while I wrote it:
+/auth/register returns the token in a cookie unless X-Client: mobile is sent, and
+my first &amp;quot;secret is never echoed&amp;quot; assertion was wrong because the display prefix
+legitimately starts with tsk_.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7790a4c62a388b8e15a0c3a91493ec8690f86ebc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/7790a4c62a388b8e15a0c3a91493ec8690f86ebc"/>
+    <title>
+        Remove what the chat cut left behind (#597)
+    </title>
+    <updated>2026-09-10T21:35:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remove what the chat cut left behind (#597)
+
+* chore: remove what the chat cut left behind
+
+Inert, but exactly the residue the cut exists to remove.
+
+apps/mobile/src/lib/sse.ts and sseParser.ts had no importers left — their only
+caller was bookChat.ts. The web&amp;#39;s lib/sse.ts is NOT dead and stays: useExplain
+still streams through it.
+
+ReaderShell kept pendingCitationRef and scrollToCitation alive, plus the block
+that consumed them on WebView load. The only writer of that ref was the deleted
+handleCitation, so the ref was permanently null and the block could never run.
+packages/shared/src/reader/citation.ts existed for that path only, as did
+AskCitation / AskResponse / AskTurnDto / AskTarget.
+
+AskMarkdown survives — BookInsightsSection renders insight Markdown through it —
+but it is named after a feature that no longer exists and its doc comment
+described &amp;quot;the renderer the Ask sheet already uses&amp;quot;. Renamed to Markdown, same
+reasoning as onStudyBuddy → onAskAbout last week: a name pointing at something
+deleted is how the next reader concludes it is still there.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* docs(status): five web modules were dead before this work, not after it
+
+lib/fuzzyMatch, lib/wordAtPoint, hooks/useOfflineDownload, hooks/useSwipe,
+hooks/useVocabLevel and styles/native-language-picker.css have no importers —
+and git grep on main says they had none before the chat cut either. Recorded
+rather than swept in: mixing someone else&amp;#39;s dead code into a deletion PR is how
+a reviewer loses track of what the PR actually decided.
+
+Two of them (useSwipe, useOfflineDownload) are listed in STATUS.md&amp;#39;s own hook
+inventory as if live.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2fb53e702bf8d5cf9bb7e5f30dcd771b2fbb66ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/2fb53e702bf8d5cf9bb7e5f30dcd771b2fbb66ef"/>
+    <title>
+        The conversation moves to the reader&#39;s own assistant (#596)
+    </title>
+    <updated>2026-09-10T20:30:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The conversation moves to the reader&amp;#39;s own assistant (#596)
+
+* feat(mcp): a connect key a reader can actually paste
+
+The remote MCP endpoint had no credential of its own. Its only supported bearer
+was a 60-minute access token minted for a different transport, obtained by
+installing a .NET CLI, running a device flow in a terminal and copying a JWT out
+of a cache file — then repeating within the hour. That is the reason zero
+insights were ever written, not the quality of the feature, and it is why the
+whole thing is unreachable from a phone.
+
+McpAccessKey is long-lived, revoked in place rather than deleted, and stores only
+a SHA-256 of the key via the existing DeviceCodes.HashToken — the same helper
+behind PasswordResetToken and DeviceAuthorization. A fast hash is right here:
+this is 32 bytes of CSPRNG output, not a human-chosen password.
+
+Resolution is middleware, not a change to GetUserId: that method is synchronous
+and called from 102 places, and a key lookup needs the database. It sits ABOVE
+the rate limiter, unlike GuestActivityMiddleware which is deliberately below —
+highlight-write is the one policy partitioned by user id rather than IP,
+precisely because MCP traffic arrives from a single container address, and it
+cannot pick that partition before the key is resolved.
+
+LastUsedAt is written at most hourly. An assistant issues one request per tool
+call, so writing it per request would put an UPDATE in front of every read of the
+user&amp;#39;s own library.
+
+The device flow is untouched. It is still correct for the local stdio tool, which
+caches a refresh token and renews itself.
+
+Still to come before this is usable: the page that creates and shows a key, on
+web and mobile, and an integration test for the revoke-then-401 and LastUsedAt
+paths — GuestActivityMiddleware is dead code today precisely because nobody
+wrote that second test.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* refactor: delete Study Buddy
+
+Zero usage across its whole life, and unlike the other AI surfaces that is not a
+product verdict — it is orphaned code. StudyBuddyPanel is referenced exactly once
+in the repository, by its own declaration. The selection-toolbar button that
+looks like its entry point routes to handleAskAboutThis and always has, and its
+aria-label already reads reader.selectionToolbar.askAboutThis, so
+reader.selectionToolbar.studyBuddy was a string nothing rendered.
+
+The prop chain stays because the button is real and useful, but it is renamed
+onStudyBuddy → onAskAbout (and handleStudyBuddy, StudyBuddyIcon with it). A prop
+named after a deleted feature is how the next person concludes the feature is
+still there.
+
+BookToolTriggers survives: it is the shared detector behind the Explain
+pre-router, not just the agent&amp;#39;s tool gate. Its test kept the property it pinned
+— a self-contained passage triggers nothing — with the passages inlined now that
+the golden corpus is gone.
+
+Its eval runner scored a surface with no entry point, so it goes with it. The
+model registry, traces, shadow routing and AiQualityPage stay: they route
+translate, explain and the SEO crews, which are untouched.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* refactor: delete the Librarian
+
+48 runs, 3.5 cents of inference, one user. It answered &amp;quot;what should I read&amp;quot; in
+natural language over the catalog — a real idea, but it is the surface an outside
+assistant with the connector attached does better, over a catalog it can already
+search with search_books.
+
+Goes with it: the agent, its DTOs, RetrievedCatalog, the eval runner and golden
+set, both clients (web api/hooks/components + DiscoverPage, mobile screen and the
+entry card on Search), the rate-limit policy, the model route, and 25 web + 22
+shared locale keys.
+
+DiscoverMenu stays — it is the genres/authors/books navigation dropdown and only
+one of its links pointed here. The /discover route and its legacy redirect go
+with the page they resolved to.
+
+LibrarySearchService stays: it is the seam behind SearchLibraryTool and
+SearchLibrarySemanticTool, which are their own decision.
+
+The librarian.openBook entry in the locale override registry goes too — it
+documented a deliberate web/mobile divergence for a key that no longer exists,
+and a registry that outlives its keys stops being a registry.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* refactor: delete the in-app book chat
+
+16 conversations and 26 messages over its whole life, from one person — and
+book_conversation is upserted on read, so those 16 counted sheet-opens, not
+conversations. The engagement number was smaller than it looked, not larger.
+
+The reason it goes is not the usage, and not cost: measured on production, the
+six chat surfaces together spent 16 cents. It goes because the conversation is
+better somewhere else. The reader already pays for an assistant that beats
+anything we can afford to serve, and it already holds their profile and a year of
+history, none of which is copyable here. What has to come home is the conclusion,
+and BookInsight already carries it.
+
+Removed end to end: the endpoints, ConversationSummarizer, BookChatHistory, both
+entities and their tables (DropBookChat is annotated with what it destroys and
+the counts taken before writing it), both clients, and the reader chrome that
+opened them — AskPanel and AskSheet, the top-bar button on both platforms, the
+&amp;quot;Ask&amp;quot; action in the selection bars, and the citation-jump machinery that existed
+only to land a chat citation on its page.
+
+useRagIndex goes with the panel that owned it, which settles the guest-403
+dead-end it had: a bare catch turned a guest&amp;#39;s 403 into &amp;quot;Could not index this
+book&amp;quot; plus a Retry that reissued the same 403. Deleting beat fixing.
+
+ask_book and AskEndpoints are untouched. They are the MCP tool&amp;#39;s backing route,
+not this, and they are their own decision.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* docs(handoff): record what shipped, what is left, and four decisions the RAG cut surfaces
+
+Written before continuing the deletion so the findings survive the session:
+the similar-books rail dies with the chunks (4 editions of 1423 have an
+embedding, so it is already blank on 99.7% of pages), three tools are RAG-backed
+and two serve features that stay, Tutor loses its grounded example sentence, and
+RagIndexStatus is 7 columns on each of two entities.
+
+Also the honest not-done list: the key has no UI on either client, so it can only
+be minted with curl today, and its revoke/LastUsedAt integration test is missing
+— the exact gap that left GuestActivityMiddleware dead.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* refactor: delete the retrieval spine
+
+7 books of 1498 were ever indexed — 4 catalog editions of 1423, 3 uploads of 75.
+Vision PDF transcription bought those seven and cost $4.14, which is 94% of the
+project&amp;#39;s $4.39 lifetime LLM spend. Everything downstream of it was reasoning we
+were paying to make possible, so that an outside assistant could do it better for
+free by reading the chapter as plain text.
+
+Gone: Ai.Rag entire, Application/Rag, Infrastructure/Rag, both chunk tables,
+pgvector, editions.embedding, the seven RAG-state columns on each of Edition and
+UserBook, the indexing and embedding workers, /ask and /index on both halves,
+/admin/rag, the eval runners, and ask_book from the bridge (14 tools → 13).
+
+Two things went that were NOT chat, and both were already dead:
+
+  * &amp;quot;Similar books&amp;quot; — SimilarBooksRail is fed by editions.embedding, and 4 of
+    1423 editions had one, so the rail was blank on 99.7% of book pages.
+  * Semantic catalog search (HybridCatalogSearch, semantic=true) blended FTS with
+    the same vectors and degraded to FTS everywhere else. Keyword search is
+    untouched: it runs on the Postgres FTS search_vector.
+
+Three tools were RAG-backed. search_book was reachable from Explain&amp;#39;s
+EarlierReference signal — Explain&amp;#39;s tool path last fired 2026-06-13, so the
+signal now maps to nothing rather than to something broken.
+get_example_sentence leaves Tutor without a worked example on a miss; worth
+noting VocabularyWord.Sentence already stores the sentence a word was saved
+from, so that capability is a rewire away with no retrieval at all.
+find_earlier_definition had no live caller.
+
+DropRagSpine is annotated with what it destroys and the counts taken first.
+Reading PDFs never went through any of this: the reader renders the original
+document (ADR-012) and extraction is deterministic, in TextStack.Extraction,
+covered in CI.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* docs: say 13 tools everywhere, and stop advertising what was deleted
+
+mcp.md is the canonical reference — the NuGet README and the /mcp landing page
+both point at it — and it still described 14 tools including ask_book, told
+readers a bookId passed to ask_book 404s, and printed a chain ending in it. The
+landing page listed the tool by name and the entitlement comments still named
+librarian / ask / book chat / study buddy as the paid-inference surface.
+
+mcp.md now says plainly that there is no question-answering tool and why: your
+assistant reads get_chapter as plain text and reasons over it better than our
+retrieval did, on a subscription you already pay for.
+
+STATUS.md&amp;#39;s &amp;quot;AI platform: Phases 1-12 complete, RAG, agents&amp;quot; and &amp;quot;Book Chat: web
++ mobile at parity&amp;quot; sat twelve inches from assistant-handoff.md saying the
+opposite. Replaced with what is actually live, plus an In flight entry carrying
+the measurements, the not-done list, and the two unapplied destructive
+migrations.
+
+Also removed here: ReadingProgressGate, whose only caller was RagContextService.
+MaxChapterNumber itself stays and is now documented as deliberately write-only —
+it keeps accumulating correctly and get_book_progress is the reader it is waiting
+for. Re-deriving that history later would be worse than carrying one int.
+
+One correction to the previous commit&amp;#39;s wording: pgvector the extension is NOT
+gone. DropRagSpine drops the chunk tables, editions.embedding and its HNSW index;
+vector columns remain on vocabulary_words.embedding and the drift centroids, so
+Infrastructure still references Pgvector. Noted in assistant-handoff.md.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* test: two assertions I missed when ask_book and the chat routes went
+
+Both failed in CI&amp;#39;s docker job, and neither is a break: the API came up healthy
+and 174 integration tests passed.
+
+McpManifestEndpointTests still expected 14 tools and listed ask_book. I updated
+the drift test and the stdio smoke test and missed this one — three places
+assert the tool count and only two were in my head.
+
+GuestSessionEndpointTests&amp;#39; paid-inference matrix still named /ask, /me/chat and
+/index. They now 404 rather than 403, so the test reported &amp;#39;paid inference
+reachable by a guest&amp;#39; when the truth was &amp;#39;route deleted&amp;#39;. Reduced to its one
+surviving entry, with a comment saying why one entry is still worth a matrix:
+the next paid surface has to be added here on the day it ships, and a stale row
+reads like a pass.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8d6e86d150504d5a78b71e661e1f9ae92c6d151</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/d8d6e86d150504d5a78b71e661e1f9ae92c6d151"/>
+    <title>
+        refactor(i18n): delete 100 orphaned strings, and a detector so they c…
+    </title>
+    <updated>2026-09-09T04:23:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(i18n): delete 100 orphaned strings, and a detector so they cannot return (#595)
+
+Slice 5 of five. Nothing had ever checked whether a key was still used, and 100 of
+656 were not — a whole `review` namespace, most of `vocabulary`, `onboarding` copy
+for a flow that has since changed. They cost bundle size on a phone and they read
+as intent: the next person opening the file could not tell which strings the apps
+actually show.
+
+**I got this wrong first and the tests caught it.** The detector originally looked
+at the mobile app alone and reported 278 orphans. Deleting those removed 244 keys
+the WEBSITE renders, and `missing-keys.test.ts` failed instantly with
+`Footer.tsx → footer.privacy`. The reason is slice 3: web no longer keeps its own
+copy of a shared string, so a key used only by the website now lives only in
+shared. &amp;quot;Unused by mobile&amp;quot; and &amp;quot;unused&amp;quot; stopped being the same question the moment
+the duplicates went away. Rewritten to check both consumers; 278 became 100.
+
+That is also why the test lives in `packages/shared/src/i18n/unusedKeys.test.ts`
+and not in either app: the catalogue has two consumers and a test that can only see
+one of them is the bug I just made.
+
+The detector is deliberately narrow, because a wrong answer here deletes a working
+screen. An earlier general version called `privacy.*` dead — 49 keys behind a
+Google Play store-listing URL — because they are reached through a shared list of
+key names rather than a literal `t(&amp;#39;…&amp;#39;)`. A key counts as referenced if the exact
+dotted path appears quoted anywhere in either app, or matches one of the dynamic
+templates; DYNAMIC is the complete set of `` t(`…${…}`) `` shapes in both apps,
+collected by grepping for them rather than guessed. Adding a template to an app
+without listing it here makes this test call live keys dead — loudly, which is the
+point.
+
+The allowlist is asserted by set EQUALITY and is empty today. Equality also fails
+when an allowlisted key starts being used, so the list cannot quietly rot.
+
+Mutation-verified: planting `common.neverUsedAnywhere` fails with
+`expected [ &amp;#39;common.neverUsedAnywhere&amp;#39; ] to deeply equal []`.
+
+Both golden fixtures: 100 keys removed, **zero values changed**. Browser-checked
+home, /en/books, /en/vocabulary, /en/stats and /en/privacy — real headings, no key
+literals leaking through.
+
+786 web + 451 shared + 385 mobile tests green.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9bbeca76a7f1a77834093c3890179abb78d5ab5b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/9bbeca76a7f1a77834093c3890179abb78d5ab5b"/>
+    <title>
+        refactor(i18n): settle all 24 divergences; write the overrides down (…
+    </title>
+    <updated>2026-09-09T04:10:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(i18n): settle all 24 divergences; write the overrides down (#594)
+
+Slice 4 of five. Shared is the source and web is an overlay, so a string can only
+exist twice if somebody chose that. Twenty-four keys still did. Each was decided
+on its own evidence rather than by a rule.
+
+**Fourteen were dead in shared, not divergent.** Website SEO and brand copy for
+pages the app does not have — `authors.seoDesc`, `books.seoDesc`, `contact.seoDesc`,
+`contact.seoTitle`, `footer.description`, `nav.brandTitle`, `nav.aboutTextStack`,
+three `bookDetail.faq*` — plus `home.hero.*` and `home.seo.content`, which mobile
+never referenced because it has no home screen (Library is the front door), and
+`vocabulary.deleteConfirm`. Deleted from shared; web keeps them as its own. This is
+also the correction to what I said earlier: mobile was not showing an abandoned
+hero, it was carrying a string nothing rendered.
+
+**One key was serving two different destinations.** `tutor.signIn.cta` is the
+button on the signed-out tutor screen. Web&amp;#39;s goes to `/books` and says &amp;quot;Browse
+books&amp;quot;; mobile&amp;#39;s goes to sign-in and says &amp;quot;Sign in&amp;quot;. Each label matches its own
+handler — so this was never a mislabelled button, it was one name for two actions.
+Web&amp;#39;s is now `tutor.signIn.ctaBrowse` and shared&amp;#39;s `cta` says &amp;quot;Sign in&amp;quot;. Neither is
+an override any more.
+
+**One was real drift.** `reader.ask.indexFailed`: &amp;quot;Preparation failed.&amp;quot; on web,
+&amp;quot;Could not index this book.&amp;quot; on mobile. Same state, two messages, and the mobile
+one tells the reader what happened. Web now inherits it — a production copy change,
+visible as a fixture line.
+
+**Eight are deliberate and now written down** in `overrides.test.ts`, which asserts
+**set equality** against the register — so removing an override, or one quietly
+becoming a duplicate again, fails too. The reasons live in the test because JSON has
+no comments and a reason nothing enforces is not a reason. They are: brand
+(`contact.responseBody`), different jobs (`librarian.openBook` — web interpolates a
+title, mobile uses the string as a bare a11y label), different affordance in view
+(`library.actions.addToCollectionEmpty`), short phone labels (three
+`library.sort.*`), a &amp;quot;+&amp;quot; baked into mobile copy (`library.collections.new`, flagged
+as a smell), and one mechanism difference (`reader.vocab.tapAgainToStudy`, `{{n}}`
+vs `{n}` — to be retired by giving the shared t() a vars argument, not by editing
+the string).
+
+The fixture diffs are the review, and they are small: web has two changed values
+and one added key; **mobile has fourteen removals and not one changed string.**
+
+786 web + 449 shared + 385 mobile tests green; both typechecks clean.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/81f741a8095e1db4e1f9544c301d861849aeeaa3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/81f741a8095e1db4e1f9544c301d861849aeeaa3"/>
+    <title>
+        refactor(i18n): delete 523 duplicated strings; move the legal control…
+    </title>
+    <updated>2026-09-09T03:56:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(i18n): delete 523 duplicated strings; move the legal controls to the source (#593)
+
+Slice 3 of five, and the one the golden fixtures were built for. Every key in
+web&amp;#39;s file whose value was byte-identical to shared&amp;#39;s is gone: 1193 → 670 keys,
+72 KB → 40 KB, four namespaces (`about`, `privacy`, `search`, `terms`) vanishing
+whole. Web resolves them through the merge now.
+
+**The golden fixtures did not change by one character.** That is the entire proof
+this slice needed — 606 deleted lines and not a single string a reader can see
+moved. Had the script been wrong, the fixture would have said which key and what
+it became.
+
+`privacy` and `terms` were 54 and 36 keys, all identical, so they left web&amp;#39;s file
+completely — which is why the legal work is in this PR and not a later one. The
+four deep-equality assertions in `legalParity.test.ts` compared web&amp;#39;s copy to
+shared&amp;#39;s; with one copy left they assert nothing. Deleting them without a
+replacement would leave a window with no control at all on text Google Play reads
+from the store-listing URL.
+
+So they are replaced by two things, both here:
+
+- `packages/shared/src/i18n/legalContent.test.ts` — the CONTENT rules, moved next
+  to the file they describe, verbatim and with their reasons: the AI-retention
+  disclosure must still say &amp;quot;indefinitely&amp;quot;; the third-party list must still name
+  all seven processors; the policy must not have crept back to claiming data is
+  browser-only or never shared. These were never about parity.
+- `apps/web/src/locales/__tests__/legalShadow.test.ts` — the inverted guard: web&amp;#39;s
+  overlay may not contain `privacy.*`, `terms.*`, `library.insights.*` or
+  `library.discuss.*` at all. &amp;quot;Two files must match&amp;quot; becomes &amp;quot;there is one file
+  and web may not override it&amp;quot;, which is strictly stronger — it also catches a
+  divergence nobody thought to write an assertion for.
+
+Both mutation-verified rather than assumed: giving web its own `privacy.title`
+and `library.insights.title` fails the shadow guard on exactly those two and
+names the reason; reverting restores green.
+
+783 web + 449 shared + 385 mobile tests green; web typecheck clean. Browser-checked
+/en/privacy, /en/terms, /en/about, /en/search and /en/books — the four namespaces
+that left web&amp;#39;s file entirely — all render real headings with no key literals
+leaking through.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dbe54407e21272ad4989c8162d87cff38abbb648</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/dbe54407e21272ad4989c8162d87cff38abbb648"/>
+    <title>
+        refactor(i18n): merge the shared catalogue under web&#39;s, no keys moved…
+    </title>
+    <updated>2026-09-09T03:44:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(i18n): merge the shared catalogue under web&amp;#39;s, no keys moved yet (#592)
+
+Slice 2 of five. The machinery, with web&amp;#39;s file still a full superset — so web
+wins at every leaf and the golden fixture&amp;#39;s values are unchanged. This isolates
+&amp;quot;does the merge work&amp;quot; from &amp;quot;did we move the right keys&amp;quot;: functionally the riskiest
+PR of the set, and content-wise the safest.
+
+`apps/web/src/locales/catalog.ts` deep-merges `translations.en` from
+@textstack/shared under `locales/en.json`, once at module load. No build config
+changed — the alias already exists and web already imports from that package.
+
+Three properties are load-bearing rather than tidy:
+
+- **The merge builds a new tree.** `Object.assign(shared.en, web)` would mutate
+  the module-cached shared catalogue for every other importer in the process —
+  the shared package&amp;#39;s own `t()`, and under vitest every other test file in the
+  worker. That is the easiest way to write a merge that passes its own tests and
+  corrupts somebody else&amp;#39;s. Asserted both as a unit and against the real graph.
+- **A string-vs-object collision throws** instead of picking. There is no correct
+  answer: the result would depend on read order and the loser&amp;#39;s subtree would
+  vanish silently.
+- **Arrays replace, never concatenate.** None exist today, but `tArray` is real
+  API and &amp;quot;append&amp;quot; is a surprising default for a translation.
+
+That collision guard earned its place on its first run. `highlights.empty` is a
+STRING in shared and an OBJECT in web — a shape divergence a leaf-by-leaf
+comparison cannot see, because a key that is a leaf in one file and a branch in
+the other never appears in both leaf sets. Both are live: web reads
+`highlights.empty.title/.subtitle/.cta`, mobile reads `highlights.empty` next to
+its own `highlights.emptySubtitle`. And this exact shape has already shipped a bug
+once — `apps/mobile/src/lib/i18nKeys.test.ts:60` records it: &amp;quot;Web shipped exactly
+that — t(&amp;#39;highlights.empty&amp;#39;) where the locale held { title, … }&amp;quot;. Resolved by
+renaming the shared string to `highlights.emptyTitle`, which pairs with the
+`emptySubtitle` already beside it. One mobile line, one fixture line.
+
+`TranslationData = typeof en` is gone. `en.json` is an overlay now, not the whole
+catalogue, so the literal type could not describe it. Nothing consumed it
+structurally, and `missing-keys.test.ts` — every literal `t(&amp;#39;…&amp;#39;)` checked against
+the real catalogue — was always the stronger guarantee. Traded deliberately.
+
+The golden fixture gains 123 keys and changes **zero values**: web can now resolve
+what it inherits from shared, and pinning that is the point. `missing-keys` and
+the web golden both read the merged catalogue rather than the file.
+
+Browser-checked, because types do not prove a screen still reads right: home,
+/en/books, /en/highlights, /en/terms and /en/privacy all render real copy with no
+key literals leaking through, and the privacy page still names its processors —
+that page gates the production deploy via smoke.spec.ts.
+
+788 web + 385 mobile tests green; both typechecks clean.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b52e3af51381ca4a6e51df618c85d1f2676602c9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/b52e3af51381ca4a6e51df618c85d1f2676602c9"/>
+    <title>
+        test(i18n): pin every shipped string before moving any of them (#590)
+    </title>
+    <updated>2026-09-09T03:29:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(i18n): pin every shipped string before moving any of them (#590)
+
+Slice 1 of the locale de-duplication: nets only, no behaviour change. Both
+fixtures are generated from today&amp;#39;s files, so this PR is green by construction —
+which is the point. It is what makes everything after it reversible.
+
+The two locale files hold 547 of the same keys between them, 523 identical and
+24 already quietly diverged, and nothing checks that. Collapsing them onto one
+source means relocating 72 KB of JSON, and that diff is unreviewable. Worse, the
+hazards in it are invisible to a skim: `palette.*` versus `library.palette.*`,
+`library.sort.*` versus `library.sortRecent`, `tts.listen` versus
+`home.features.tts`. So the fixture becomes the review surface — a pure move
+leaves it untouched, and every line that does change is a shipped string somebody
+has to defend.
+
+A committed fixture with an explicit compare, NOT `toMatchFileSnapshot`: a
+snapshot is regenerated with one `vitest -u`, and the entire value here is that
+changing a production string costs a hand edit.
+
+The mobile half is the more important one. `packages/shared/src/i18n/en.json` is
+about to be edited for the WEB app&amp;#39;s benefit, and `mobile-ota.yml` triggers on
+`paths: packages/**` — i18n is plain JS and does not move the Expo fingerprint,
+so a merge republishes the bundle to installed Android phones with no store
+review and nobody pressing anything. This fixture is what stands between &amp;quot;we
+tidied the shared file&amp;quot; and &amp;quot;an OTA changed the copy on someone&amp;#39;s phone&amp;quot;.
+
+It lives in `apps/mobile/src/lib/` because `vitest.config.ts` there sets
+`include: [&amp;#39;src/lib/**/*.test.ts&amp;#39;]` — a test anywhere else in that app silently
+does not run.
+
+Both directions are asserted: a value that changed, a key that vanished, and a
+key that appeared without the fixture being updated. Failures name the key rather
+than counting them.
+
+Mutation-verified rather than assumed: changing `common.loading` in each file
+fails the matching test with `expected [ &amp;#39;common.loading&amp;#39; ] to deeply equal []`,
+and reverting restores green.
+
+780 web + 385 mobile tests green; both typechecks clean.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb827783a22aa2b345a476755cb4a30f030f0eb1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/bb827783a22aa2b345a476755cb4a30f030f0eb1"/>
+    <title>
+        fix(deps): take the vitest fix for the path-traversal advisory (#591)
+    </title>
+    <updated>2026-09-09T03:16:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(deps): take the vitest fix for the path-traversal advisory (#591)
+
+CI went red on every open branch, not just one: GHSA-82fw-gwwq-j7x9 was published
+against `vitest &amp;gt;=2.1.0 &amp;lt;4.1.11` — path traversal / arbitrary file read through
+@vitest/mocker&amp;#39;s redirect mock. The catalog was on ^3.2.6.
+
+Raised to ^4.1.11 rather than added to KNOWN in scripts/check-advisories.mjs. The
+allowlist there is for advisories with nowhere to go — its two entries are inside
+Expo&amp;#39;s own dependency tree, where forcing a version is how a working mobile build
+stops working. That file says so itself: &amp;quot;when a real fix appears upstream the
+entry stops being true, and the note below it stops being an excuse&amp;quot;. A fix exists
+here, so the excuse would have been false the day it was written.
+
+A test-runner major is worth checking rather than assuming, so all three suites
+were run against it before committing: 444 shared, 777 web, 382 mobile — all pass,
+no config or test changes needed. `pnpm audit` now reports only the two known Expo
+entries.
+
+Deliberately its own PR. It blocks every branch, so it should not ride inside one
+of them, and a bump of the tool that runs the tests deserves to be reviewable on
+its own.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eaed462ae5c422ceee592e194721363590c83b26</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/eaed462ae5c422ceee592e194721363590c83b26"/>
+    <title>
+        feat(mobile): the handoff and the conclusions it writes back, on the …
+    </title>
+    <updated>2026-09-08T21:09:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mobile): the handoff and the conclusions it writes back, on the phone (#589)
+
+* feat(mobile): the handoff and the conclusions it writes back, on the phone
+
+The write-back shipped web-only. Reading happens on the phone, so the half that
+matters — coming back to a book and finding what you already worked out — was on
+the wrong screen.
+
+Both panels now sit on both mobile book screens, above the chapter list: coming
+back to a book, what you concluded beats the table of contents. Not the reader
+exit summary — that screen already arbitrates between two mutually exclusive
+prompts with a written rationale, and a third needs a priority decision this is
+not the place to make.
+
+Shared, not copied. `assistantHandoff` and the insights client move into
+packages/shared, which is where CLAUDE.md says logic both clients need belongs,
+and web now imports them from there. Markdown reuses `AskMarkdown`, the renderer
+the Ask sheet already has: pure JS, theme-tokenised, OTA-safe, and with no
+raw-HTML path, so assistant output is only ever tokenised.
+
+**A bug this found, already in production.** `HandoffBook.progressPercent` was
+documented &amp;quot;0-100&amp;quot;. Every caller had a 0..1 fraction, because that is how progress
+is stored everywhere here — &amp;quot;the server stores a book-wide fraction&amp;quot;. So
+`Math.round(0.42)` was 0 and a reader 42% into a book opened a chat that said
+&amp;quot;about 0% in&amp;quot;. The browser check missed it by testing a book with no progress:
+the field is only rendered when there IS some. The field is now
+`progressFraction`, named for its unit — the same lesson `percentUnit` exists for
+(ADR-011) — and three cases pin it.
+
+Verified in a browser, not only by types: signed in to the mobile app running on
+react-native-web against the local API, seeded a clipped book with two insights,
+and read both screens in light and dark. Book-level entry first, chapter title
+resolved, question as the heading, bold and bullets rendering, both buttons
+readable in dark — no repeat of the missing-CSS-token defect the web pass caught.
+On a catalog book the handoff shows and the insights section correctly does not,
+because that edition has none.
+
+**The Android runtime fingerprint is unchanged** (7c9304f7f4186eec7261d1d83129f27db2d92f69),
+so this ships as an OTA — no store build.
+
+440 shared + 762 web + 382 mobile tests green. The reader is untouched: no file
+with reader, position, anchor, progress or locator in its name is in this diff,
+and the 120 tests behind ADR-015 were run on their own to say so.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+* refactor: one decision, one wording, and tests for the panels
+
+Follow-up to the mobile port. Three things that were duplicated or untested.
+
+**The scope label is now decided once.** Both clients were separately choosing
+what an insight is *about* — title, never the number, falling back to the slug
+when a re-ingest left the title unresolvable. Two copies of a rule with two
+reasons behind it is how the reasons get lost. `insightChapterLabel` holds it and
+carries both reasons; four tests pin them, including that the label never contains
+a digit.
+
+**The copy is now one wording, guarded.** The mobile strings were hardcoded
+English while web read i18n, and my mobile `lead` was a shorter rewrite &amp;quot;for the
+small screen&amp;quot; — a fresh divergence in the same sentence. The strings move into the
+shared catalogue the mobile app reads, matching web&amp;#39;s exactly, and a parity test
+sits next to the legal one that already exists for this hazard: the two locale
+files have drifted apart before, and nothing but a test stops a wording fix on one
+screen from leaving the other saying something else.
+
+Left alone deliberately: the two locale FILES. `apps/web/src/locales/en.json` and
+`packages/shared/src/i18n/en.json` already duplicate 21 top-level keys between
+them. That is a pre-existing, repo-wide split and merging it is its own change,
+not something to smuggle in here — so this follows the pattern and pins the part
+it adds.
+
+**Thirteen tests for the panels**, where there were none. The insights section:
+renders nothing when empty, labels a chapter by title and never by number, falls
+back to the slug, shows the question, renders markdown as markup, and does not
+interpret raw HTML in model-written text. The handoff: links to a NEW conversation
+on each service, opens third-party origins with noopener and noreferrer, names an
+upload by bookId and a catalog book by editionId and never both, reads progress as
+a fraction, and keeps the whole URL under 2000 characters for a 5000-character
+title.
+
+One path is NOT tested and says so in the file: the rejection branch. Seven
+attempts each ended with the *hook* timing out at ten seconds rather than the
+assertion, while the same code passed in a standalone file — an interaction with
+this file&amp;#39;s setup I did not isolate. A test that hangs for ten seconds is worse
+than none, and the behaviour is one `.catch(() =&amp;gt; {})` in plain view.
+
+444 shared + 777 web + 382 mobile green. Fingerprint still
+7c9304f7f4186eec7261d1d83129f27db2d92f69, so this stays an OTA.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+---------
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/17b77fb60ccb0121d46d63bc0276e7bbf527d141</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/17b77fb60ccb0121d46d63bc0276e7bbf527d141"/>
+    <title>
+        chore(deps): bump peter-evans/create-pull-request from 7 to 8 (#579)
+    </title>
+    <updated>2026-09-08T20:16:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): bump peter-evans/create-pull-request from 7 to 8 (#579)
+
+Bumps [peter-evans/create-pull-request](https://github.com/peter-evans/create-pull-request) from 7 to 8.
+- [Release notes](https://github.com/peter-evans/create-pull-request/releases)
+- [Commits](https://github.com/peter-evans/create-pull-request/compare/v7...v8)
+
+---
+updated-dependencies:
+- dependency-name: peter-evans/create-pull-request
+  dependency-version: &amp;#39;8&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92e6071dbb8b39d6d8b73b0b36f06d8024233a37</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/92e6071dbb8b39d6d8b73b0b36f06d8024233a37"/>
+    <title>
+        release(mcp): TextStack.Mcp 1.1.0 (#588)
+    </title>
+    <updated>2026-09-08T19:21:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release(mcp): TextStack.Mcp 1.1.0 (#588)
+
+The 7 tools added in #576 are in the server but not in the published tool: anyone
+who installed `TextStack.Mcp` from NuGet is still on 1.0.1 and cannot reach a book
+they uploaded. A minor bump, because everything 1.0.1 exposed still works the same
+way — this only adds.
+
+`&amp;lt;Version&amp;gt;` 1.0.1 → 1.1.0. The README was already updated in #576 and lists all
+fourteen; it is packed into the nupkg, so it is also the nuget.org page.
+
+The package Description is rewritten, which matters more than it looks: it is the
+one line a person reads before installing, and it described only the catalog half
+— &amp;quot;search books, read chapters, manage highlights and vocabulary&amp;quot;. It now says
+what this release is actually for: both halves of the library, and writing
+conclusions back into a book.
+
+Verified against the packed artifact rather than the source, because a NuGet
+version can never be overwritten or deleted:
+
+- `dotnet pack -c Release` → TextStack.Mcp.1.1.0.nupkg
+- nuspec: id, version 1.1.0, DotnetTool, AGPL-3.0-or-later, icon and readme present
+- the README inside the package has 14 tool rows, including search_my_library,
+  get_my_book and get_my_chapter
+- installed it from the local folder to a scratch tool-path and spoke MCP to it:
+  serverInfo 1.1.0.0, tools/list returns all 14 by name
+
+Landing through a PR rather than a push to main on purpose: the tag that publishes
+is irreversible, so it should point at a commit CI has already agreed with.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5dcaeaba1952c21d962e3d619b2cfc038eccf371</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/5dcaeaba1952c21d962e3d619b2cfc038eccf371"/>
+    <title>
+        Bump Microsoft.IdentityModel.Tokens and System.IdentityModel.Tokens.J…
+    </title>
+    <updated>2026-09-08T18:20:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump Microsoft.IdentityModel.Tokens and System.IdentityModel.Tokens.Jwt (#586)
+
+Bumps Microsoft.IdentityModel.Tokens from 8.18.0 to 8.22.0
+Bumps System.IdentityModel.Tokens.Jwt from 8.18.0 to 8.22.0
+
+---
+updated-dependencies:
+- dependency-name: Microsoft.IdentityModel.Tokens
+  dependency-version: 8.22.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+- dependency-name: System.IdentityModel.Tokens.Jwt
+  dependency-version: 8.22.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a82dc3ede364781858505df95bec71ff662c41c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/6a82dc3ede364781858505df95bec71ff662c41c"/>
+    <title>
+        Bump Sentry and Sentry.Extensions.Logging (#585)
+    </title>
+    <updated>2026-09-08T18:19:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump Sentry and Sentry.Extensions.Logging (#585)
+
+Bumps Sentry from 6.8.0 to 6.10.0
+Bumps Sentry.Extensions.Logging from 6.8.0 to 6.10.0
+
+---
+updated-dependencies:
+- dependency-name: Sentry
+  dependency-version: 6.10.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+- dependency-name: Sentry.Extensions.Logging
+  dependency-version: 6.10.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c934aed9f61540edc456a94da8a95ac8ce69e048</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/c934aed9f61540edc456a94da8a95ac8ce69e048"/>
+    <title>
+        chore(mobile): delete two devDependencies nothing imports (#587)
+    </title>
+    <updated>2026-09-08T18:19:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/22458177?s=30&amp;v=4"/>
+    <author>
+      <name>mrviduus</name>
+      <uri>https://github.com/mrviduus</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(mobile): delete two devDependencies nothing imports (#587)
+
+Dependabot proposed http-proxy-middleware 3 → 4 for apps/mobile (#568). The right
+answer to that PR is not a version — it is that nothing in this repository has
+ever imported the package.
+
+`express` and `http-proxy-middleware` arrived in the first mobile commit
+(68e96648, &amp;quot;add React Native mobile app&amp;quot;) and were never used. No import, no
+require, no reference from metro.config, app.json or vitest.config. Grepped for
+both across every file type outside node_modules and the manifests: the only hits
+are a changelog entry and the English word &amp;quot;express&amp;quot; in a comment.
+
+Removing them drops **94 packages** from the lockfile — express brings a whole
+HTTP server stack with it (body-parser, cookie, finalhandler, follow-redirects,
+send, serve-static, and the rest). Fewer packages is fewer advisories to triage
+and fewer bump PRs about code that is not there.
+
+This is not a new idea here, only a missed corner of an old one. The July cleanup
+recorded &amp;quot;deleted two dependencies nothing imports → 8 advisories closed&amp;quot;, and the
+packages it named as dragged in included http-proxy-middleware. That pass covered
+apps/web. apps/mobile kept its copies.
+
+Verified, because a mobile dependency change has a way of being invisible until it
+is expensive:
+
+- `tsc --noEmit` clean; 382 mobile unit tests pass; 771 web tests pass.
+- `expo install --check` — &amp;quot;Dependencies are up to date&amp;quot;.
+- **The Android runtime fingerprint is byte-identical to main**
+  (7c9304f7f4186eec7261d1d83129f27db2d92f69), so nothing here can stop an
+  installed app from receiving OTA updates. That is the check that matters, and
+  it is the one a green CI would not have given.
+
+
+Claude-Session: https://claude.ai/code/session_011rgEMvYYi4Egj99dVtvm6E
+
+Co-authored-by: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6e339a26844cbe419b947645f1a20c4475780c12</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/6e339a26844cbe419b947645f1a20c4475780c12"/>
+    <title>
+        chore(deps): raise 2 catalog versions (#584)
+    </title>
+    <updated>2026-09-08T17:55:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): raise 2 catalog versions (#584)
+
+Co-authored-by: mrviduus &amp;lt;22458177+mrviduus@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a635a8a9bc39fd07f7d835865b7768e341c767d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mrviduus/textstack/commit/a635a8a9bc39fd07f7d835865b7768e341c767d5"/>
+    <title>
+        Bump MeiliSearch from 0.16.0 to 0.20.0 (#583)
+    </title>
+    <updated>2026-09-08T17:55:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump MeiliSearch from 0.16.0 to 0.20.0 (#583)
+
+---
+updated-dependencies:
+- dependency-name: MeiliSearch
+  dependency-version: 0.20.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
