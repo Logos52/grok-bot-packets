@@ -1,0 +1,108 @@
+# finn_cards / Kielikaveri — FST-verified Finnish forms + curriculum unlock
+Source: https://github.com/mShono/finn_cards
+Author: mShono
+Published/window: 2026-09-11 Unlock forms only on Good/Easy; curriculum never closes forms
+Lane: learning / Finnish / FSRS / morphology-gate
+Fetched: 2026-09-12 Field education hunt (grok-bot/Field)
+
+--- README ---
+
+# finn-cards
+
+**Kielikaveri** - a Telegram bot for learning Finnish: FST-verified
+flashcards generated from your own mistakes, FSRS scheduling, voice
+practice. "Kielikaveri" is the project's working name; this repo,
+`finn-cards`, is its only home.
+
+## Why
+
+An LLM will confidently produce a plausible-looking but wrong Finnish word
+form, and at B1 level that's not always obvious to the ear. So forms are
+never invented by an LLM here - they come from `uralicNLP` (the omorfi
+FST for Finnish), which by construction can only return forms that exist.
+See `cards/instructions.md` for the exact algorithm and its rationale.
+
+## Layout
+
+- `cards/schema.json` - the note+card JSON Schema. Single source of truth;
+  nothing else redefines the card format.
+- `cards/instructions.md` - how to fill in a card without inventing forms.
+- `cards/examples/` - three reference notes (verb, noun with consonant
+  gradation, verb with non-trivial government/rektio).
+- `src/finn_cards/` - phase 0: `morphology.py` (generate_forms,
+  validate_form, lemmatize, detect_pos), `strict_schema.py` (converts
+  `cards/schema.json` into an OpenAI `strict: true` schema).
+- `src/kielikaveri/` - phase 1+: the bot.
+  - `config.py` - settings loaded from `.env` (see `.env.example`).
+  - `db/models.py` - SQLAlchemy models (`users`, `notes`, `cards`,
+    `reviews`, `sources`), mirroring `cards/schema.json`.
+  - `db/engine.py` - async engine/session helpers.
+  - `bot/main.py` - entrypoint: long polling, whitelist middleware,
+    `/start` `/help` `/stats`.
+  - `bot/middleware.py` - `WhitelistMiddleware`, registered on
+    `dp.update.outer_middleware`.
+  - `bot/text.py` - `split_message`, for replies over Telegram's 4096
+    character limit.
+  - `import_cards.py` - imports note JSON files (schema-validated) into
+    the database.
+- `alembic/` - migrations for the schema above.
+- `deploy/kielikaveri.service` - systemd unit template for the bot.
+- `scripts/backup_db.sh` - daily SQLite backup (off-server copy step not
+  wired up yet - see the script).
+- `scripts/measure_coverage.py` - measures hypothesis G3 (does the FST
+  cover the forms we need without LLM help) on a curated word list.
+
+## Setup
+
+Requires Python 3.12. First install downloads the Finnish FST models via
+`uralicNLP`, so it can take a minute.
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+uv pip install -e ".[dev]"
+cp .env.example .env  # fill in BOT_TOKEN, WHITELIST_USER_IDS at minimum
+alembic upgrade head
+```
+
+## Running the bot
+
+```bash
+python -m kielikaveri.bot.main
+```
+
+## Logs
+
+Logs go to stdout (captured by `journalctl -u kielikaveri` under systemd)
+and to a daily-rotated file at `LOG_FILE` (default `logs/kielikaveri.log`,
+14 days kept):
+
+```bash
+tail -f logs/kielikaveri.log
+```
+
+Set `LOG_LEVEL=DEBUG` in `.env` to also see the per-request lines `httpx`/
+`openai` log for every OpenAI call.
+
+## Importing phase 0 cards
+
+```bash
+python -m kielikaveri.import_cards --user-id <your telegram id>
+```
+
+## Tests
+
+```bash
+pytest
+```
+
+## Lint
+
+```bash
+ruff check .
+```
+
+## License
+
+GPL-3.0 - the Finnish FST models this project depends on (via omorfi) are
+GPL-licensed.

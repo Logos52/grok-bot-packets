@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ferranrego/darya/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ferranrego/darya/commits/main.atom"/>
+  <title>Recent Commits to darya:main</title>
+  <updated>2026-09-11T14:01:35Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/82c5c3ac50b66a7f25b867873b66b847d26e5f71</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/82c5c3ac50b66a7f25b867873b66b847d26e5f71"/>
+    <title>
+        fix(prs): third philologist pass on the rewritten beginner texts
+    </title>
+    <updated>2026-09-11T14:01:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): third philologist pass on the rewritten beginner texts
+
+Zero critical findings this round. All 34 present-tense verb forms in the
+rewrite were checked against the conjugation engine and the lexicon and are
+correct - including the ones that are right rather than lucky: نمی‌دود takes no
+epenthetic ی where نمی‌گوید does, می‌پزد from the irregular پختن, and داشتن and
+بودن stay bare.
+
+Four majors fixed:
+
+**رفتن was glossed &amp;quot;walk&amp;quot; in one text and &amp;quot;go&amp;quot; three texts earlier** - the app
+contradicting itself on a band-1 verb. The Dari says &amp;quot;go&amp;quot;; the English now does
+too.
+
+**`حالا ماه نو است`** reads by default as &amp;quot;now it is the new moon&amp;quot; - ماه is
+glossed &amp;quot;month; moon&amp;quot; in the app&amp;#39;s own dictionary, and the collocation belongs
+to the moon. Replaced with something unambiguous.
+
+**`dō` for دو** was the only place in the corpus spelling a band-1 numeral
+differently from its own card; the headword and both other texts say `dū`.
+
+**نوشتن** was the outlier in its own dictionary: the headword read `neweshtan`
+with `benewīs`, while every seed text and every derived form in the lexicon&amp;#39;s
+own examples use the Kabuli `nawishtan`/`nawīs`. The entry moved, not the
+texts.
+
+Minors: the possessive enclitic برادرم and the reflexive خود both fall outside
+the L2 grammar list and every other text in the batch avoided them; one
+time-adverb-before-من survived the earlier sweep; `تیز` does not collocate with
+پوشیدن, and that sentence&amp;#39;s را marked a definite object with three possible
+antecedents; two English glosses were not English; and three sentences appeared
+verbatim in two texts each, which reads as padding.
+
+The first attempt at breaking one of those duplicates introduced زرد, which
+would then have owed six appearances of its own - the ratchet caught it inside
+a minute. Saying something different about the flower was the better fix.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f0ad44f306f5c98bfe90660635173b5ff89223a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/8f0ad44f306f5c98bfe90660635173b5ff89223a"/>
+    <title>
+        feat: pnpm seed says when the database holds a text content no longer…
+    </title>
+    <updated>2026-09-11T13:55:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: pnpm seed says when the database holds a text content no longer has
+
+`seed.ts` only upserts, so a text renamed, re-levelled or deleted in content/
+keeps its database row - and the row is what the app serves, so the old text
+goes on being offered to learners with nothing anywhere saying it should not
+be. build-seed-texts.ts now removes the stale files; this was the same blind
+spot one layer down, and re-levelling 21 texts is exactly the operation that
+would have exposed it.
+
+Reported, never deleted. `user_texts.text_id` is a foreign key to this table,
+so a text somebody has read cannot be removed without taking their reading
+history with it - the same rule CLAUDE.md states for lexicon entries, for the
+same reason.
+
+Checked against production first: 89 seed rows, none orphaned. The warning is
+the guard for next time, not a fix for now.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed0fcb6bc082387bb954c18e87dba33868974214</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/ed0fcb6bc082387bb954c18e87dba33868974214"/>
+    <title>
+        feat: report where tapping half a compound verb teaches the wrong word
+    </title>
+    <updated>2026-09-11T13:53:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: report where tapping half a compound verb teaches the wrong word
+
+The tokenizer splits compound verbs, so each half resolves on its own. For
+کار کردن that is harmless - tapping کار and being told &amp;quot;work&amp;quot; is roughly right.
+For دوست داشتن it is not: a learner taps دوست in &amp;quot;I like this book&amp;quot; and the app
+teaches them &amp;quot;friend&amp;quot;. Seven places in the shipped corpus, listed by name.
+
+Reported rather than fixed, because the fix is not local. Pointing both tokens
+at the compound lexeme is rejected by the seed-text token check, which asserts
+that a token&amp;#39;s stored id is what `resolve(surface)` returns - and resolve,
+having no sentence context, correctly returns the noun. Reconciling those is a
+decision about the tokenizer, not a content repair.
+
+The first version of this report flagged every &amp;quot;به من&amp;quot; in the corpus, because
+&amp;quot;به منصه ظهور رساندن&amp;quot; is a compound verb beginning with به. Restricted to
+two-word compounds: a report that cries wolf gets ignored, which is worse than
+no report.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4092182fbfaa47a613cb5a0d0e6707de57d4af9b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/4092182fbfaa47a613cb5a0d0e6707de57d4af9b"/>
+    <title>
+        fix(prs): nine dictionary entries that contradicted the texts
+    </title>
+    <updated>2026-09-11T10:24:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): nine dictionary entries that contradicted the texts
+
+Each of these is reachable from a text a learner now reads, so tapping the word
+told them the sentence they had just understood was wrong.
+
+**ماندن** was glossed only &amp;quot;to stay, to remain&amp;quot;. Its &amp;quot;to put, to place&amp;quot; sense
+is one of the sharpest Dari/Iranian splits - Iranian Persian uses گذاشتن
+exclusively - and two texts teach it while the dictionary denied it. That turned
+a thing the app exists to teach into a contradiction.
+
+**درد**&amp;#39;s example was `سرم درد دارد`, the exact construction the texts were
+corrected away from two commits ago. The rule reached the content and not the
+entry for the word the rule is about, so the app taught the rule and its
+violation at the same time.
+
+**پاک** was glossed &amp;quot;clean (energy/air)&amp;quot; with a C-level example about reducing
+pollution, and an L1 text now uses it of a girl&amp;#39;s heart. **قیمت** carried only
+the noun &amp;quot;price&amp;quot;, so `گوشت در بازار قیمت است` decoded as &amp;quot;meat is price&amp;quot;; its
+headword also disagreed with its own example on the vowel. **سر** lacked the
+prepositional sense that `سرِ میز` depends on. **دوست داشتن**&amp;#39;s example was
+&amp;quot;This is a love/like&amp;quot;, which is not a sentence. **جای**&amp;#39;s example
+transliterated `این جای آرام است` as `īn jāy-e ārām ast` - the very ambiguity
+that made `آن جای` wrong in the texts.
+
+Two consistency repairs: **یاد** gave two different stem vowels for one verb
+inside a single entry, and **گران** was transliterated `gerān` where Dari is
+`girān`, now also marked as the register Afghans do not reach for first.
+
+Senses and examples only - no id moved, nothing renumbered.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/babaf51a5aaf2f00bfe727d5b840f45c01492207</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/babaf51a5aaf2f00bfe727d5b840f45c01492207"/>
+    <title>
+        fix(prs): the new texts were L3 grammar wearing an L1 label
+    </title>
+    <updated>2026-09-11T10:23:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): the new texts were L3 grammar wearing an L1 label
+
+A philologist reviewed batch 2 and found, besides the Dari, something
+structural I had missed: **the level spec was never checked against a seed
+text, and both my batches broke it.**
+
+`levels.json` states `maxSentenceWords`, `sentenceRange` and `freqBands` per
+level. L1 allows six-word sentences, present tense, and bans subordinators
+outright; L2 adds را and eight-word sentences but is still present-tense only.
+Simple past, که-clauses, the subjunctive and comparatives first appear at L3.
+Texts 001-037 obey all of that exactly. My 21 did not: 32 over-long sentences,
+6 که-clauses, simple past throughout, a present perfect and a comparative - all
+labelled L1. That is the Catalan B2-learners-handed-the-C1-course incident in
+CLAUDE.md, in miniature: it renders perfectly and is invisible until measured.
+
+All 21 are rewritten as L2 texts: present tense only, five or six sentences,
+inside the word ceiling, no subordinators. They keep the words they were
+written to teach, and the re-exposure they buy is unchanged in kind - 38 words
+out of the backlog, L2 seen-once down from 52% to 43%.
+
+**`checkShape` is now applied to seed texts.** It already existed and was only
+ever run against generated ones. Reused rather than reimplemented, so the rule
+a seed text is held to and the rule a generated text is held to cannot drift.
+Length fails the build, because `text-checks.ts` says why: &amp;quot;a sentence past the
+ceiling is not readable at the level, which is the entire point of the
+ceiling&amp;quot;. Sentence count and frequency band warn - both have violations in
+content that shipped long ago, and turning those red would teach the next
+person to silence the check. It immediately caught a pre-existing 16-word
+sentence at L4, now split in two rather than trimmed.
+
+**And `build:texts` deletes what it no longer builds.** The script only ever
+wrote files, so re-levelling these 21 left their old JSON on disk - and a stale
+built text is a real text to the app: loaded, offered to learners, counted in
+every report. The corpus briefly held 131 files for 110 sources, and the
+validator dutifully checked all 131.
+
+Philologist findings applied: the که in `دل من می‌خواهد که بخوابم` was in the
+script while the transliteration had already dropped it, so the two disagreed
+and the learner saw a word with no sound; `من چیزی را دور خوب نمی‌بینم` was
+ungrammatical twice over (a stranded adjective, and indefinite ی with definite
+را); `این جای` reintroduced the `آن جای` garden path; `حال بد دارم` is an
+English calque, not Kabuli; three transliterations invented an ezafe on
+quantifier phrases (`gōsht-e kam` is not a constituent); `این هفته من`
+reintroduced the time-adverb-before-من ambiguity; and `تیز` does not carry the
+metaphor in `زندگی تیزتر می‌شود`.
+
+Still open, reported not fixed: six lexicon entries this batch reaches whose
+glosses contradict the texts - ماندن lacks its Dari &amp;quot;to put&amp;quot; sense, قیمت lacks
+its adjectival &amp;quot;expensive&amp;quot;, پاک is glossed &amp;quot;clean (energy/air)&amp;quot; with a C-level
+example on an L1 word, درد&amp;#39;s example still teaches the درد داشتن the texts were
+corrected away from, دوست داشتن mistokenises to دوست &amp;quot;friend&amp;quot;, and سر lacks its
+prepositional &amp;quot;on top of&amp;quot;.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/825ff649ee6e82db01aab77d964134a4d21c484e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/825ff649ee6e82db01aab77d964134a4d21c484e"/>
+    <title>
+        docs: the gate does not run build, and a page can fail the prerender …
+    </title>
+    <updated>2026-09-11T10:12:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the gate does not run build, and a page can fail the prerender while it is green
+
+A useSearchParams added to /onboarding passed pnpm gate and failed pnpm build.
+Worth one sentence in the file that tells people what green means.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a2e01645a7c349dcc779ce6cada583d95f28ec1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/4a2e01645a7c349dcc779ce6cada583d95f28ec1"/>
+    <title>
+        fix(prs): three of my own sentences spelled کتاب the other way
+    </title>
+    <updated>2026-09-11T10:12:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): three of my own sentences spelled کتاب the other way
+
+The lexicon headword is `ketāb` and every other seed text uses it; three
+sentences in the new batch said `kitāb`, so a learner met two spellings of the
+same word one text apart. Consistency with 6,466 entries beats my preference
+for the more Dari-looking vowel.
+
+I also tried normalising the other 62 beginner disagreements the same way -
+sentence spelling to headword, mechanically - and backed it out. Checked in the
+direction I had not thought of, it makes things worse: `shīsha` → `shishe` and
+`mūsīqī` → `mōsīqī` move *toward* the Iranian pattern, because in those cases
+the headword is the one that is wrong. Deciding which side is right for each of
+the 62 is a philologist&amp;#39;s convention call on the lexicon, not something to
+settle with a string replace, and it stays on the open list.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4d9707225304e1e9b49cce44c8a916f25630d0bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/4d9707225304e1e9b49cce44c8a916f25630d0bf"/>
+    <title>
+        feat: texts say which grammar they exercise, and phrases cannot be lost
+    </title>
+    <updated>2026-09-11T10:09:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: texts say which grammar they exercise, and phrases cannot be lost
+
+Two gaps the plan named, both small and both guarded rather than assumed.
+
+**Texts carry grammar tags.** The grammar course and the reading course have
+been two products sharing an app: 93 lessons on one side, 110 texts on the
+other, and nothing saying which text lets a learner see a lesson in use.
+`grammarPoints` on a text names the points it exercises, and validate-content
+rejects a tag that names no lesson - a typo would otherwise make &amp;quot;read
+something that uses what you just learned&amp;quot; return an empty list rather than an
+error, so the text would simply never surface and nobody would find out.
+Verified by misspelling one tag and watching the build reject it.
+
+Only the 21 texts in this refactor are tagged. The other 89 stay untagged
+deliberately: a tag nobody has written is honest, a tag somebody guessed is a
+learner sent to the wrong text.
+
+**A floor under set phrases.** People speak in chunks, not words, and the
+dictionary holds 39 set phrases against 6,466 entries - 0.6%, which is why a
+learner can know a thousand words and still not be able to open a
+conversation. This cannot say how many a course needs, only that the number
+must not fall. Phrases are the easiest entries to lose in a bulk lexicon edit,
+because a multi-word headword looks like a data error to anything scanning for
+words - and losing them is invisible, since every individual word survives.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5817ea2780aa6c15f8100348ef46a51cd30d99e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/d5817ea2780aa6c15f8100348ef46a51cd30d99e"/>
+    <title>
+        feat(prs): 11 new L1 texts so beginner words actually come back
+    </title>
+    <updated>2026-09-11T10:03:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prs): 11 new L1 texts so beginner words actually come back
+
+The first authoring batch against the re-exposure backlog. 51% of beginner
+words were met exactly once in the whole course, against PEDAGOGY §7&amp;#39;s 6-12
+encounters, and the words that shows up on are the ones a beginner needs most:
+dōst (friend) once, nām (name) once, zan (woman) once, dukhtar (girl) once.
+These eleven texts are built to bring the highest-frequency short words back.
+
+Measured, L1: words seen exactly once 138 → 110, words reaching six or more
+23 → 53. L1 and L2 together, 51% → 43% seen-once. 23 words have left the
+backlog.
+
+The guards did their job, repeatedly and unglamorously. The build rejected two
+sentences outright - one used a word not in the dictionary, one had a bug in my
+own generator. The re-exposure ratchet rejected the batch three times for
+introducing words used only once or twice, which is the entire point: it will
+not let a new text add a word it does not then teach.
+
+A philologist reviewed the batch and found seven critical defects, all now
+fixed. The batch was not safe to ship:
+
+  - نام خواهر من زیبا است was translated &amp;quot;my sister&amp;#39;s name is Zeba&amp;quot; while the
+    app glosses زیبا as &amp;quot;beautiful&amp;quot; - the learner taps it and gets a flat
+    contradiction.
+  - مزه دار written with a space tokenises as مزه + دار, and دار is &amp;quot;gallows&amp;quot;.
+  - نمی‌تواند که is not Dari; توانستن takes a bare subjunctive, and Kabul uses
+    the participle construction (تیز دویده نمی‌تواند) instead.
+  - گل-e زیاد است put an ezafe between a subject and its copula.
+  - آن جای for &amp;quot;there&amp;quot; teaches a form the learner will then mis-produce; آنجا
+    is the free adverb.
+  - پس فردا written with a space reads as پس‌فردا, &amp;quot;the day after tomorrow&amp;quot;.
+  - دل من می‌خواهد که is not how دل خواستن is said; it takes the enclitic.
+
+Plus nine more: می‌آموزد means both &amp;quot;teach&amp;quot; and &amp;quot;learn&amp;quot; and read as the teacher
+learning Dari; سرم گرم است idiomatically means &amp;quot;I&amp;#39;m busy&amp;quot;; a body part takes
+درد کردن, not درد داشتن; inanimate plurals take singular agreement; three
+sentences used a present-for-future Dari verb with a present English gloss;
+and شب من / شب ما garden-path as ezafe in a batch that teaches ezafe as
+possession.
+
+Four transliteration slips repaired in the lexicon: سه was `se` where Dari
+keeps the majhul `sē`, پنیر disagreed with its own example, and زیاد&amp;#39;s example
+carried the same subject-copula ezafe error.
+
+**Reported, not fixed: `lx-6385` is a malformed entry.** Its headword is کالای,
+the ezafe form of کالا stored as if it were the lemma, band 6, with the
+ungrammatical example &amp;quot;این کالای است.&amp;quot; It also duplicates `lx-1310` کالا. The
+repair is a merge, and a merge retires an id that `user_words.lexeme_id`
+references - a reviewed migration, not something to do in passing. The texts
+use لباس instead, which is correctly entered and band 2, so no learner meets
+the ghost through this batch.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/91a6b435010ddd79615b4d027cf9b636e5130233</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/91a6b435010ddd79615b4d027cf9b636e5130233"/>
+    <title>
+        feat(prs): re-exposure becomes a ratchet that can only tighten
+    </title>
+    <updated>2026-09-11T09:47:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prs): re-exposure becomes a ratchet that can only tighten
+
+PEDAGOGY §7 says a person needs to meet a word roughly 6 to 12 times before it
+sticks. Measured across the beginner course: **371 of its 430 content words are
+met fewer than six times, and 221 exactly once.** That is the finding that
+produced this whole refactor, and the only one here that cannot be fixed in
+code - the fix is rewriting texts by hand.
+
+So this is a ratchet, not a gate. `re-exposure-backlog.json` lists the 371
+words currently short. A content word that is short and *not* listed fails the
+build: that is a new regression, and it is exactly what has been happening
+unnoticed - the last batch of authoring added forty sentences and made the
+number worse, because nothing was watching. The list may shrink and never grow,
+and validate:content prints how many have been fixed since it was taken, so the
+authoring has a number to move.
+
+Verified by removing five words from the list and watching the build reject
+them by name. Function words are excluded deliberately: they repeat by their
+nature, and &amp;quot;met once and never again&amp;quot; only costs a learner on content words.
+
+Delete the file and the check when it empties.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f5e8f1bd0dae6fa7eb975707aeda5c3fb99fe53</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/0f5e8f1bd0dae6fa7eb975707aeda5c3fb99fe53"/>
+    <title>
+        feat(core): texts come back, and the pronunciation crutch fades
+    </title>
+    <updated>2026-09-11T09:46:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): texts come back, and the pronunciation crutch fades
+
+Two small rules that raise re-exposure without a single new sentence being
+written - which matters, because 51% of beginner words are shown exactly once
+and rewriting that course is a much larger job than either of these.
+
+**Re-reading.** The app has never offered it: a text was read once and
+abandoned while its words went into the review deck as isolated cards. A text
+whose words are due again is the same repetition the scheduler is already
+asking for, in the form this app is actually good at - and the text is already
+written, so it costs nothing. Offered only after a week and only when at least
+three of its words are due; sorted by how much is due rather than by age,
+because the point is the words, not the nostalgia.
+
+It is placed **before** the generation retry deliberately. The old behaviour
+when nothing new was available was to ask the provider chain for more text -
+five free-tier quotas shared by every learner of the deployment - while
+something already written, already at the right level and now full of due words
+sat there unoffered. Better teaching and cheaper at the same time.
+
+**The Latin line fades by level.** With no audio, that line is the entire
+pronunciation of the language, so it is never removed - on at L1, one tap away
+at L2 and above, and the toggle still works everywhere. But left as a single
+permanent switch it is also never put down, and the Afghan script never becomes
+how a learner actually reads. Fading is the only mechanism a text-only app has.
+An imported article has no level and is treated as advanced, not as beginner:
+defaulting to &amp;quot;always&amp;quot; would hand a permanent crutch to exactly the learner who
+brings their own reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ff7bf6f2555ba304bf0b40cd02d1179c08090abb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/ff7bf6f2555ba304bf0b40cd02d1179c08090abb"/>
+    <title>
+        feat(prs): the &quot;what a person says&quot; list is checked for bookishness
+    </title>
+    <updated>2026-09-11T09:42:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prs): the &amp;quot;what a person says&amp;quot; list is checked for bookishness
+
+`pragmaticFunctions` is the one category in the beginner spec whose members are
+utterances rather than citation forms - asking a favour, declining, repairing a
+misunderstanding. A formal-register word there teaches a learner to say the
+written equivalent of &amp;quot;kindly repeat&amp;quot; to a friend, and with the dictionary 58%
+formal, drifting that way is the default rather than a slip.
+
+`verify-beginner-core` now resolves every member and reports any part tagged
+formal or literary. Two today:
+
+  acceptingDeclining: &amp;quot;امکان ندارد&amp;quot; uses امکان (formal)
+  repair: &amp;quot;لطفاً تکرار کنید&amp;quot; uses تکرار (formal)
+
+The audit that prompted this predicted three, naming می‌خواهم and اجازه بدهید as
+well; measured against the lexicon&amp;#39;s own tagging they are not formal, so the
+prediction was partly wrong and the measurement stands.
+
+Reported, not failed. Which register a given Kabul utterance belongs to is a
+philologist&amp;#39;s call on the lexicon&amp;#39;s tagging, and turning a judgement about Dari
+into a build failure would mean the next person to touch this file edits a
+register field to get the gate green - which would leave the content worse and
+the gate greener.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8be7dc52b058e83b6aad83868c6d0f8a81147e1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/f8be7dc52b058e83b6aad83868c6d0f8a81147e1"/>
+    <title>
+        feat(prs): the app stops telling Kabul speakers their Dari is wrong
+    </title>
+    <updated>2026-09-11T09:41:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prs): the app stops telling Kabul speakers their Dari is wrong
+
+Dari has a formal written form and a very different Kabul spoken form, and the
+dictionary is 58% formal against 1% spoken - while the tutor introduces itself
+as a speaker from Kabul and learners can be sent messages by real Afghan
+speakers. What makes this fixable in a text-only app is that Kabul spoken Dari
+is a *written* register: Afghans type it constantly.
+
+**The audit expected the recogniser to reject these forms. Measured, it does
+something worse: it answers with a different word, silently.**
+
+    ره   → رستن   &amp;quot;to escape&amp;quot;   (it is را, the object marker)
+    بری  → بردن   &amp;quot;to carry&amp;quot;    (it is برای, &amp;quot;for&amp;quot;)
+    مه   → مه     &amp;quot;fog&amp;quot;         (it is من, &amp;quot;I&amp;quot;)
+
+A learner tapping one of those in a message from a real speaker gets that word
+written into their review deck, and nothing anywhere looks broken. This is the
+`registre` failure the repo already has a rule about, pointing at a register
+rather than a part of speech.
+
+A hand-written table of Kabuli forms now sits **between** the exact match and
+the generated verb paradigms. The placement is the whole decision: above the
+headwords it would rewrite words the lexicon states outright - a text about
+weather must keep resolving مه as weather - and below the stemmer it would
+never fire, because the stemmer already reaches a wrong answer. There is also
+one productive rule, the Kabuli plural `-ا` for `-ها`, accepted only when what
+is left is a noun, or it would swallow a large part of the verb paradigms.
+
+Four forms collide with real entries - مه &amp;quot;fog&amp;quot;, مو &amp;quot;hair&amp;quot;, ره as a stem of
+رستن, and استین, which `matchKey` folds onto آستین &amp;quot;sleeve&amp;quot;. Those keep
+resolving to the lexicon&amp;#39;s own answer. All four are listed with their
+reasoning and pinned by a test, so a spoken form that silently does nothing
+fails the suite instead of being discovered by a learner. The استین collision
+was found by that test rather than by reading the list, which is the argument
+for it existing. Whether the Kabuli reading should win for those is a decision
+about Dari, not about code, and it is left for a philologist.
+
+The word sheet gains a &amp;quot;how Kabul says it&amp;quot; line where the registers actually
+differ. Formal stays what a learner writes; spoken is what they can read.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f492cfd339a2a0d7bab9cd707797b515f384267</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/6f492cfd339a2a0d7bab9cd707797b515f384267"/>
+    <title>
+        feat(core): grammar stops being an island
+    </title>
+    <updated>2026-09-11T09:35:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): grammar stops being an island
+
+Ninety-three lessons and 589 written exercises, and completing a lesson marked
+it done forever - no review, no repetition, nothing bringing the point back a
+week later. Vocabulary has had a scheduler since the first migration; grammar
+had a checkbox.
+
+**A finished lesson now becomes a card**, on the same FSRS scheduler as
+vocabulary - unchanged and shared, deliberately, because two schedulers become
+two different ideas of when something is due. The card is the grammar point,
+not the exercise: one lesson is one thing to remember rather than twelve. And
+the question a review asks is drawn from that lesson&amp;#39;s own written exercises,
+which already exist and have already been reviewed. All 95 lessons are
+reviewable this way, verified against the shipped course - so grammar review
+costs **no model call at all**, where the existing &amp;quot;extra practice&amp;quot; button is a
+generation against a quota shared by every learner of the deployment.
+
+**One daily queue, not a second tab.** Grammar questions are interleaved
+through the word session rather than appended: a block at the end is a block
+people stop reaching, which is how grammar became an island in the first place.
+And the queue works when either half is empty - grammar due with no words due
+used to mean &amp;quot;All caught up&amp;quot;, which would have left grammar exactly as isolated
+as before, only with a scheduler behind it.
+
+Two exclusions with reasons. `matchPairs` is never used as a daily item: it is
+a whole-screen sorting task built to consolidate a lesson just taught, and in a
+mixed queue it turns a ten-second item into a two-minute one. And a card whose
+lesson no longer exists is skipped rather than stranding the session - the same
+failure the vocabulary queue already guards against.
+
+A missed grammar point is recorded as a mistake like any other, so practice can
+lead with it. The mistake record does not care which system produced it.
+
+Re-reading a lesson does not reset its schedule. People re-read a lesson when
+they feel shaky, which is the worst possible moment to throw away what the
+scheduler had learned about them.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c05d02c00ae99632fb96c0dd61e7b4f7e285de7a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/c05d02c00ae99632fb96c0dd61e7b4f7e285de7a"/>
+    <title>
+        feat: two commands that say whether any of this works
+    </title>
+    <updated>2026-09-11T09:30:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: two commands that say whether any of this works
+
+This repo&amp;#39;s first rule is: measure the output, do not read the code and
+conclude it works. There was no instrument. Every number in the audit behind
+this refactor - 273 of 400 sentences with no pronunciation, 89 of 93 texts
+reaching a learner, 221 beginner words shown exactly once - was counted by hand
+with a throwaway one-liner, which is why none of them was noticed for months
+while they got worse.
+
+`pnpm report:content` is offline and prints pronunciation coverage, texts and
+sentences per level, how many texts can be quizzed at all, re-exposure against
+PEDAGOGY §7, register mix and the dictionary&amp;#39;s shape. This is the command that
+would have printed &amp;quot;231 of 358&amp;quot; without anyone needing to run an audit.
+
+`pnpm report:learning` reads production and prints retention, the gap between
+recognising and producing, comprehension, first-attempt exercise accuracy, how
+much practice now costs nothing, and how many mistakes get resolved.
+Aggregates only - never a learner&amp;#39;s words, sentences or mistakes. Finding out
+whether the method works needs no personal data.
+
+**And it immediately corrected the commit before it.** The retention floor for
+promotion was set to 0.75 an hour earlier, argued from FSRS being configured to
+a 0.90 target. Run against the real deployment, retention is 54% - so that
+threshold would have frozen every current learner at their level, silently,
+which is exactly the class of defect the rule above is about. Two fixes: the
+metric now counts only mature cards, because an aggregate over new and learning
+cards (57%) is not a real quantity - those are failed often by design - and the
+floor is 0.50, set from the data rather than from theory.
+
+The 54% is itself a finding worth keeping: FSRS is scheduling for 90% and
+getting 54%, on 70 mature reviews across seven learners. Far too thin to retune
+a scheduler on, and written into the constant&amp;#39;s comment as the reason it must
+be revisited rather than left to calcify.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd7a31a4f6839c8bdb457a55ac66487c8c468faf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/fd7a31a4f6839c8bdb457a55ac66487c8c468faf"/>
+    <title>
+        feat(core): levelling up needs evidence, not a word count
+    </title>
+    <updated>2026-09-11T09:27:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): levelling up needs evidence, not a word count
+
+Promotion has only ever read one number: how many words are marked &amp;quot;known&amp;quot;. Not
+accuracy, not retention, not comprehension. A learner could accumulate the
+count while forgetting most of it and be promoted into harder text on the
+strength of a number that had stopped being true - and until the last few
+commits, several hundred of those words were ones the placement invented and
+nobody ever claimed.
+
+Two floors, both read from evidence the app only started collecting in this
+refactor. **Retention**, 0.75: FSRS here targets 0.90, so a learner doing the
+work lands near 90% and clears this without noticing - it is a guard against
+coasting, not a bar. **Comprehension**, 0.6: a question has four options, so
+0.25 is the floor of pure guessing; 0.6 is comfortably above chance and
+comfortably below &amp;quot;read every text perfectly&amp;quot;. Neither applies until there are
+20 reviews or 5 questions behind it, because three reviews and one quiz is not
+a measurement and refusing a promotion on it would be refusing on noise.
+
+**Absent evidence never blocks, and nobody is ever demoted.** Every learner
+already mid-course has no comprehension history at all - the feature did not
+exist - and holding them at their level for the app&amp;#39;s own omission would punish
+them for a change they did not make. The floors apply to the next promotion,
+never to the level already held, and a failed read returns nothing rather than
+a zero: the failure falls on the learner&amp;#39;s side.
+
+`evidenceBlocks` is separate from the promotion decision so the reason can be
+shown. &amp;quot;Not yet&amp;quot; with no reason is the same dead end as having no requirement
+at all - the learner cannot act on either.
+
+One thing from the plan deliberately not done: it proposed capping the
+count-based rule to one level at a time, because that count used to include
+invented vocabulary. That is fixed at the source now, and capping as well would
+take a real behaviour away from a genuinely advanced learner who should reach
+their level in one step rather than several weeks. The existing test asserting
+the multi-level jump was right, and it stands.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/caccf091b4d1abc4d64be3ca28a12b3fbd481cfb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/caccf091b4d1abc4d64be3ca28a12b3fbd481cfb"/>
+    <title>
+        feat(core): the placement test can be retaken, and a retake destroys …
+    </title>
+    <updated>2026-09-11T09:18:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): the placement test can be retaken, and a retake destroys nothing
+
+The placement ran exactly once per account, with no way back. A learner
+mis-placed on their first day - by over-claiming, by under-claiming, or simply
+by having learnt a lot since - was stuck there permanently.
+
+The entry point is one line in the profile. The part that needed care is the
+two seeding functions, which both used a plain upsert. `seedKnownWords` writes
+`fsrs: null`, so on a retake it would have overwritten a word the learner had
+been reviewing for months and erased its entire history. That could not happen
+while the test ran once; it is the first thing that happens the moment a retake
+exists. Both now ignore rows that already exist: a retake re-estimates the
+level and can move words into review, and never resets progress.
+
+Note for anyone porting this: `useSearchParams` fails the static prerender of
+this page, and `pnpm gate` does not run `pnpm build`, so it passes green. The
+retake flag is read from the window in a lazy initialiser instead, the way this
+file already reads standalone mode.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ddeb3551bad7db71843c50169b4bd12aac8603fb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/ddeb3551bad7db71843c50169b4bd12aac8603fb"/>
+    <title>
+        fix(prs): philologist on the invented words, and two more checks
+    </title>
+    <updated>2026-09-11T09:17:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(prs): philologist on the invented words, and two more checks
+
+Of the forty controls, a philologist found one real Dari word and fifteen more
+that a speaker would simply *read*:
+
+**چکور** is `chakōr`, the chukar partridge - a dictionary word with its own
+entry, and it was a band-1 control, so the learner most likely to be wronged
+was the one furthest along. Replaced.
+
+Fifteen more are legible without being dictionary words, in two patterns.
+**میزاک** is میز &amp;quot;table&amp;quot; plus the Kabuli diminutive -ک and reads as &amp;quot;little
+table&amp;quot;; سبزوک، ترناک، همروش، شفناک، تبروش، گلپرد، رفشان are the same shape.
+**فرگوش** differs from خرگوش &amp;quot;rabbit&amp;quot; only in where a dot sits; مشتراخ from
+مشترک، مرغوت from مرغوب، مهتاچ from محتاج، پژوند from پیوند the same way. A
+learner tapping one of those is reading, not over-claiming, and gets marked
+down for knowing their own language. All sixteen replaced with the
+philologist&amp;#39;s own proposals.
+
+Three more it could not vouch for without a native ear are dropped rather than
+replaced - inventing three of my own would only move the risk somewhere I
+cannot see it. 37 controls.
+
+**Both patterns are now checks**, which is this repo&amp;#39;s rule: a finding you only
+fix comes back. The validator rejects a control that is a real headword under a
+productive suffix, and one within a single edit of any band-1-to-3 headword.
+The second immediately caught a seventeenth that the review had missed - وشکیل
+is one letter from وکیل &amp;quot;lawyer&amp;quot;. Verified by feeding both patterns back in
+deliberately and watching each fail.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5ce9940b3145cd27c7d76868136d7e521f72e87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/d5ce9940b3145cd27c7d76868136d7e521f72e87"/>
+    <title>
+        feat(core): the placement test can no longer be beaten by saying yes
+    </title>
+    <updated>2026-09-11T09:15:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): the placement test can no longer be beaten by saying yes
+
+Sign-up shows a grid of Dari words and asks which the learner knows. There was
+nothing in it that is not a real word, so tapping everything placed you as
+advanced. And the scoring made it worse: claiming 80% of a frequency band
+marked the *entire* band known. Bands run past a thousand words, so even a
+completely honest learner had up to 20% of every cleared band credited on no
+evidence, by design - roughly 500 invented words for someone clearing the first
+six. Those words never entered the review system and still counted toward
+promotion.
+
+**Forty invented words**, hand-written and mixed through the grid, rendered
+identically to real entries - same two lines, same unvocalised script, because
+anything distinguishable measures nothing. Tapping one cannot be knowledge, so
+the share tapped is a direct measurement of over-claiming.
+
+Hand-written rather than generated for the reason the plan gives: the failure
+mode is inventing a word that turns out to be real and calling an honest
+learner a liar for knowing their own language - invisible, and worse than
+having no controls at all. `validate-content.ts` now proves the half a machine
+can prove: no control may resolve through the app&amp;#39;s own word engine. It
+immediately caught two of my forty - نشتاب resolves to شتافتن, شورند to شوریدن
+- which is the whole argument for writing the check before the content. The
+list also goes to a philologist, because a 6,466-entry lexicon is not a
+dictionary of the language.
+
+**Scoring, rewritten around the same evidence.** Per-band rates are corrected
+for over-claiming with the standard guessing correction for a yes/no
+vocabulary test, which by construction leaves a learner who tapped no invented
+word completely unaffected - this must never cost an honest learner anything,
+and a test asserts it. Only bands where *every* sampled word was recognised are
+credited, with every easier band also fully cleared: the gap between &amp;quot;80%&amp;quot; and
+&amp;quot;every&amp;quot; is precisely the vocabulary the app used to invent. The topmost cleared
+band is seeded into review instead of credited, so the app checks rather than
+assumes. Above the over-claim limit nothing is seeded at all.
+
+Simulated both learners that matter. One who taps the entire grid, invented
+words included, ends at L1 with an estimate of zero and nothing added they did
+not claim one at a time. An honest advanced learner is scored exactly as before
+on the words they claimed, keeps their cleared bands, and loses only the
+invention.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/87878b36b98beaf074cfc0b14d97690683eccef9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ferranrego/darya/commit/87878b36b98beaf074cfc0b14d97690683eccef9"/>
+    <title>
+        feat(core): learners write the language, and &quot;known&quot; starts meaning s…
+    </title>
+    <updated>2026-09-11T09:07:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3515290?s=30&amp;v=4"/>
+    <author>
+      <name>ferranrego</name>
+      <uri>https://github.com/ferranrego</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(core): learners write the language, and &amp;quot;known&amp;quot; starts meaning something
+
+The biggest pedagogical gap in this app. Every flashcard has been recognition:
+show the Dari, ask &amp;quot;do you remember this?&amp;quot;, reveal the English, press Forgot or
+Got it. The learner grades themselves - generously, with the answer already on
+screen - and recognising a word is a different skill from producing one. The
+app measured the easy one and called the result &amp;quot;known&amp;quot;. There has been no
+point anywhere in Darya where a learner writes a Dari word.
+
+**The other direction.** A due card now sometimes gives the English and the
+sentence they first met the word in, with the word blanked, and asks them to
+write it. The prompt was already stored: tapping a word while reading saves its
+sentence. Production is asked once a word is genuinely in review and has
+survived two recognitions - demanding a word met ten seconds ago is a test of
+the last ten seconds - and it is not asked of a lapsed word, which has just
+been forgotten and is being re-learned.
+
+**Grading is free and automatic.** `lexicon-index.ts` already expands every
+verb paradigm and resolves any surface back to the entry that owns it; grading
+is that resolution run backwards, so it costs nothing and covers all 6,466
+entries rather than the ones somebody wrote answers for. Three verdicts, not
+two: the right word in the wrong form is a correction rather than a
+re-teaching, grades as remembered, and does not count as produced - so the card
+keeps asking until the form is right.
+
+Checked against the whole dictionary rather than fixtures: every headword and
+every transliteration accepted, and no entry&amp;#39;s headword accepted as the answer
+to a different entry - the کار/کردن hazard, which would teach a wrong answer as
+right and do it silently. Two tolerances, each verified before adding it.
+Macrons come off, because nobody types `khāna` on a phone - but the vowel
+quality does not, so `dust` is still refused for `dōst`, the exact flattening
+the lexicon was repaired to remove. ZWNJ comes off, because it is invisible,
+absent from phone keyboards and impossible to produce from tiles; folding it
+merges exactly 11 pairs of headword spellings across the lexicon and every one
+is the same word written two ways.
+
+**Tiles or typing, and either script.** Letter tiles are the default at L1-L2,
+typing from L3, and the switch is offered on every card at every level - a
+learner with a Dari keyboard should not be held back by a default written for
+one without. Latin spellings are accepted throughout: answering `khana` is
+still recall, which is the part that matters.
+
+**&amp;quot;Known&amp;quot; now needs evidence.** A word graduates only once it has been written
+correctly at least once. `user_words.produced_at` and `produced_count` are
+nullable and not backfilled - a word an existing learner already has at known
+was graduated on self-report, and pretending otherwise would destroy the one
+measurement these columns exist to make: the gap between recognising and
+producing, which the app currently cannot see at all.
+
+FSRS is untouched throughout. The interval says when a review happens; none of
+this changes that, only what is asked at it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

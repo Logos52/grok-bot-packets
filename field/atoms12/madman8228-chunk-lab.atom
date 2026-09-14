@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/madman8228/chunk-lab/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/madman8228/chunk-lab/commits/master.atom"/>
+  <title>Recent Commits to chunk-lab:master</title>
+  <updated>2026-09-11T00:22:56Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b4175661fe2a1cfb61434345cd5da2dbc288180</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/7b4175661fe2a1cfb61434345cd5da2dbc288180"/>
+    <title>
+        docs: 修正 README 漂移（e2e 套件数 / 行数）
+    </title>
+    <updated>2026-09-11T00:22:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 修正 README 漂移（e2e 套件数 / 行数）
+
+- e2e 套件 21→26（e2e/ 6 + output/e2e/ 20）
+- 主 UI 回归 69→97 项
+- main.html 行数 ~4.3k→~5.0k（ADR-007 历史 5.1k→4.3k 标注为当时值）
+- e2e-all.js 头注释 69→97 项基线&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/655edb79ba705f4a7ddf0777396ae4dd2064f397</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/655edb79ba705f4a7ddf0777396ae4dd2064f397"/>
+    <title>
+        fix(test): server/ai.test.js 接入 npm test 回归链
+    </title>
+    <updated>2026-09-11T00:22:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(test): server/ai.test.js 接入 npm test 回归链
+
+回归根因：ai.test.js（shouldRetry/trimAiCache/callDeepSeekRetry 14 断言）
+由 QA 新增后漏接进 package.json 的 test 链，导致回归保护形同虚设。
+现插入到 cd server 后、smoke 之前，npm test 全绿（ai 14/0）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74907b49cc65e37dde75a8292822c13320fd105a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/74907b49cc65e37dde75a8292822c13320fd105a"/>
+    <title>
+        test(security): 同步安全修复的测试
+    </title>
+    <updated>2026-09-11T00:01:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(security): 同步安全修复的测试
+
+- server/ai.test.js：新增 trimAiCache 单测（未超限不裁剪 / 8→5 LRU 淘汰最旧 3 条 / 保留最新 5 条 / TTL=1 清理过期）
+- server/smoke.test.js：export 断言改为「不再导出 aiCache」；ADR-004 缓存预置改直接 SQL（不再经 import 注入公共缓存）；ADR-008 LRU HTTP 测试删除（由 ai.test.js 覆盖）
+- server/backup-cli.test.js：EXPORT_PAYLOAD 去掉 aiCache；restore 断言改为「不含 aiCache」&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2a3e418db70bd8d6474d31cf6aca6aa7a915f485</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/2a3e418db70bd8d6474d31cf6aca6aa7a915f485"/>
+    <title>
+        fix(security): 修复 5 处安全审查问题（AI 缓存跨用户污染等）
+    </title>
+    <updated>2026-09-11T00:01:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(security): 修复 5 处安全审查问题（AI 缓存跨用户污染等）
+
+2026-09-11 安全审查报告逐条核实后修复：
+
+P0-1 AI 缓存跨用户导出/导入污染
+- /api/export 不再 dump 全局 ai_cache（公共缓存非用户私产，dump 进备份 = 无意义膨胀 + 跨用户污染）
+- /api/import 静默忽略 body.aiCache（向后兼容旧备份文件，不接受用户注入公共缓存）
+- trimAiCache 从 index.js 迁到 ai.js 并导出，LRU 裁剪逻辑改由单元测试覆盖（原走 import 的 HTTP 测试封禁）
+
+P0-2 全局 80mb body 上限
+- /api/auth 路由前置 express.json({limit:&amp;#39;64kb&amp;#39;})，鉴权小 payload 不再暴露 80mb 攻击面
+  （body-parser 首个解析后置 req._body，后续 parser 自动跳过，按路径前置是安全的最小改法）
+
+P0-3 密码 bcrypt 截断隐患
+- 注册密码限制从「128 字符」改为「72 字节」（bcrypt 只取前 72 字节，超出静默截断）
+- 用 Buffer.byteLength 按字节判定，中文等多字节字符也正确拦截
+
+P2-4 AI 缓存键缺中文语境
+- cacheKey 纳入 zh（仅 zh 非空时），英语多义句配不同中文释义不再串味；zh 空保持旧 key 格式
+
+P2-5 AI 限流配置 NaN 静默失效
+- AI_RATE_LIMIT 解析后 fail-closed：非有限数或非正数（NaN/0/负）回退默认 10，
+  避免「NaN 比较恒 false → 永远放行」或「0 → 永远拒绝」两种静默失效&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc60de11bdc814b1849636ec124a3c10825baf22</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/fc60de11bdc814b1849636ec124a3c10825baf22"/>
+    <title>
+        test(feedback): 后端单测 19 断言 + e2e 第 8 段反馈流程
+    </title>
+    <updated>2026-09-10T23:48:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(feedback): 后端单测 19 断言 + e2e 第 8 段反馈流程
+
+- server/feedback.test.js：含图/仅文字/空文本/超长/超大图/游客/非法 meta 全覆盖，
+  用 CHUNKLAB_DATA_DIR 注入临时目录，不污染真实数据
+- package.json：feedback.test.js 接入 npm test 回归链
+- e2e/e2e.js：入口可见→弹窗→提交→toast→SQLite 落库复核（端到端贯通）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/af0d96e5b3362cccab6622bae7ee2cd7820c4395</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/af0d96e5b3362cccab6622bae7ee2cd7820c4395"/>
+    <title>
+        feat(feedback): 手机端截图反馈功能（游客可提交，只存服务器）
+    </title>
+    <updated>2026-09-10T23:47:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(feedback): 手机端截图反馈功能（游客可提交，只存服务器）
+
+老板需求：设置里加「反馈问题」入口，用户（含游客）可文字描述
++ 用户自截上传截图，提交时自动附带诊断信息，只存服务器不做推送。
+
+后端：
+- server/feedback.js（新增）：POST /api/feedback 无鉴权。text 必填≤2000；
+  image 可选 base64（自动剥离 data: 前缀、解码后≤5MB）；meta 可选对象。
+  图片写盘 server/data/feedback/&amp;lt;ts&amp;gt;-&amp;lt;rand&amp;gt;.&amp;lt;ext&amp;gt;，元数据入 feedback 表，
+  image_path 只存相对文件名。fail-closed：500 不泄露堆栈。
+- server/db.js：feedback 表（id/text/image_path/meta/created_at）+ 索引
+- server/index.js：注册路由，挂在游客端点区
+
+前端（main.html）：
+- 设置面板「反馈问题」按钮（SVG chat 图标）
+- 反馈弹窗：文字 textarea + 可选上传截图（file input）+ 提交/取消
+- window.onerror + unhandledrejection 写入环形缓冲 _clErrors（5 条），
+  提交时随 meta 上报（UA/屏幕/页面/版本/SW 状态/errors）
+- 图片 FileReader→base64 JSON，复用 express.json 80mb（零新依赖）
+- 成功 toast「已收到反馈」；失败静默降级
+
+部署：deploy-prod.sh FILES 加 server/feedback.js；sw.js gen-sw 重算 hash&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d64c668f2bfeb0df1f755417278bbffa74af02af</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/d64c668f2bfeb0df1f755417278bbffa74af02af"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-10fb7158（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:53:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-10fb7158（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/936f0127b6db50c8093817c2a04dd9ab5b34f965</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/936f0127b6db50c8093817c2a04dd9ab5b34f965"/>
+    <title>
+        fix(ui): 日历「今天」格子去掉 box-shadow 外框，改用加粗字体
+    </title>
+    <updated>2026-09-10T15:53:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 日历「今天」格子去掉 box-shadow 外框，改用加粗字体
+
+老板截图反馈：today 格子的 box-shadow 外框是常驻样式，视觉上
+&amp;quot;像 hover 残留&amp;quot;（颜色 #b04a18 与 hover/focus 视觉语言一致），
+是&amp;quot;奇怪的设计&amp;quot;。
+
+根因：`.cal-cell.today{box-shadow:0 0 0 2px #b04a18}` 与外框系视觉
+语言撞车。经老板选定方案 A：去掉外框，改用加粗字体标识今天。
+
+修：`.cal-cell.today{font-weight:800}`
+
+e2e 覆盖（注入 today daysLog.rounds=5 触发 l3 深橙背景 + today）：
+- today cell boxShadow === none（防&amp;quot;hover 残留&amp;quot;外框回潮）
+- today cell fontWeight ≥ 700（加粗标识生效）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a248ab1197907c7157d4aea7ef631f08a2708fb6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/a248ab1197907c7157d4aea7ef631f08a2708fb6"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-3a148e5f（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:49:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-3a148e5f（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/10296cc0b58a121eb6c51219bd1905416d7d154d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/10296cc0b58a121eb6c51219bd1905416d7d154d"/>
+    <title>
+        fix(ui): 删除首页「今日无到期，练点新的或休息」废话提示
+    </title>
+    <updated>2026-09-10T15:49:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 删除首页「今日无到期，练点新的或休息」废话提示
+
+老板截图反馈：这句提示是废话——t.due==0 时下面三个按钮
+（复习需巩固/错题/去题库学新句）已经隐含&amp;quot;今天没到期&amp;quot;语境。
+
+删：`t.due&amp;gt;0 ? 提示 : 废话` 三元 → `if(t.due&amp;gt;0) 提示`。
+
+e2e 双层防回潮：
+- 源码层：main.html 不含「今日无到期」「练点新的或休息」
+- 渲染层：注入 due=0 真实场景（1 deck + 1 stats 未到期），
+  断言 home 不渲染该文案、仍渲染「去题库学新句」按钮
+
+⚠ e2e 教训：注入 stats 的测试必须用 browser.newContext() 独立
+context——stats 已迁 IDB，localStorage.clear() 清不掉，共享主 context
+会污染后续 1b 统计身份测试（本次实测踩坑后修复）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/423ddcaaca604e10f070c669988d18f36c980f05</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/423ddcaaca604e10f070c669988d18f36c980f05"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-0f7cbef9（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:43:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-0f7cbef9（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03ea576d5a98f6d3f88d6da22a5a69227708e31e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/03ea576d5a98f6d3f88d6da22a5a69227708e31e"/>
+    <title>
+        fix(ui): 答题模式选项文案精简「选择 chunk」→「选择」、「手动拼写」→「手拼」
+    </title>
+    <updated>2026-09-10T15:43:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 答题模式选项文案精简「选择 chunk」→「选择」、「手动拼写」→「手拼」
+
+老板截图反馈设置面板「答题模式」下拉框选项文案过长：
+- option value=choose：选择 chunk → 选择
+- option value=type：手动拼写 → 手拼
+
+（副标题「选择 chunk 或手动拼写」本次未动，待老板确认是否一并改）
+
+e2e 覆盖（点 #btnSettingsTop → 测 #setMode）：
+- choose option 文案 === 选择（防回潮）
+- type option 文案 === 手拼（防回潮）
+- w ≤ 100px（防回潮到 4 字时代 ~110px+）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b19147308c196d7c120d1a87fa5058bf0412874</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/0b19147308c196d7c120d1a87fa5058bf0412874"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-e5b68dd3（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:40:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-e5b68dd3（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/35993434b84366ddcb06633d0e9550602ef96ae4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/35993434b84366ddcb06633d0e9550602ef96ae4"/>
+    <title>
+        fix(ui): 庆祝效果「彩带喷射」→「彩带」+ 宽度缩 30%
+    </title>
+    <updated>2026-09-10T15:40:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 庆祝效果「彩带喷射」→「彩带」+ 宽度缩 30%
+
+老板截图反馈设置面板「庆祝效果」下拉框：
+1. 选项文案「彩带喷射」(4字) → 「彩带」(2字)
+2. select 宽度从 ~110px 缩 30% → 78px
+
+修：内联 width:78px; min-width:0; flex-shrink:0（沿用 #setBatchSize
+的 flex min-content 三件套修法，select 同样会被 min-content 拉伸）。
+
+e2e 覆盖（点 #btnSettingsTop → 测 #setCelebrate）：
+- confetti option 文案 === &amp;#39;彩带&amp;#39;（防回潮到&amp;#39;彩带喷射&amp;#39;）
+- w ≤ 90px（防回潮到 110px+）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75cf4247bba14478d24e2f561efaf83357ed6f4a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/75cf4247bba14478d24e2f561efaf83357ed6f4a"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-6f781767（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:36:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-6f781767（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7df841a606094fd9502eda7a1b19d72f34bb1fe6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/7df841a606094fd9502eda7a1b19d72f34bb1fe6"/>
+    <title>
+        fix(ui): 每批数量输入框宽度修复（flex min-content 拉伸）
+    </title>
+    <updated>2026-09-10T15:36:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 每批数量输入框宽度修复（flex min-content 拉伸）
+
+回归根因：#setBatchSize 是 flex item，浏览器默认 min-width:auto
+保留 &amp;lt;input type=&amp;#39;number&amp;#39;&amp;gt; 的 min-content（~20 字符 ≈ 200px），
+把内联 width:64px 撑成实际 ~200px。
+
+修：min-width:0 取消 min-content 保留；flex-shrink:0 防止父级
+空间紧张时被压；width:64 → 56（两位数可输入，单 spinner 上下键不挤）。
+
+e2e 覆盖（点 #btnSettingsTop → 测 input 实际宽度）：
+- 可见
+- w ≤ 80px（防 min-content 拉伸回潮）
+- w ≥ 40px（仍可输入两位数）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7edd5e4ee5eeb59a9636198c9e36ff62a797fdc9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/7edd5e4ee5eeb59a9636198c9e36ff62a797fdc9"/>
+    <title>
+        chore(sw): 重算 cache hash → chunklab-5af4a462（main.html 改动后漏算）
+    </title>
+    <updated>2026-09-10T15:33:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(sw): 重算 cache hash → chunklab-5af4a462（main.html 改动后漏算）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/532df18e4d7639f159abd192475caf6965c5dfb8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/532df18e4d7639f159abd192475caf6965c5dfb8"/>
+    <title>
+        fix(ui): 工具栏题库入口恢复 + 首页底部冗余入口删除
+    </title>
+    <updated>2026-09-10T15:33:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): 工具栏题库入口恢复 + 首页底部冗余入口删除
+
+- 恢复 #btnDecks onclick → 跳 decks.html（与左上 brand 行为一致）
+  回归根因：2026-09-10 误以为与 brand「完全重复」删了 onclick，
+  但 HTML 按钮仍在，导致「点不动」。e2e 加跳转回归测试。
+- 删首页底部「题库管理 / 学习档案」两个 ghost 按钮
+  与工具栏 #btnDecks / #btnStats 重复。删后 home 页面回归
+  「信息卡 + 行动按钮」单列布局，CSS .home-links 同步移除。
+- e2e 防回归：
+  * #btnDecks 工具栏题库入口跳 decks.html
+  * 首页无 #homeLinkDecks / #homeLinkStats / .home-links&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/959b881a3fce962cc415e0ba5c3334bf68b3f70d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/959b881a3fce962cc415e0ba5c3334bf68b3f70d"/>
+    <title>
+        perf(sync): stats 去冗余 —— 下行 bySentence/events 剥离冗余字段，省 30.1%
+    </title>
+    <updated>2026-09-10T14:03:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf(sync): stats 去冗余 —— 下行 bySentence/events 剥离冗余字段，省 30.1%
+
+背景：8000 句口径里 mem.stats 占 86.8%，其中「结构性冗余」2689.7KB(37.4%)
+拆开看是 events 与 bySentence 两处的混合冗余。本提交剥掉其中**全链路零读取**的
+安全子集（30.1%），保留有反查/定位职责的字段。
+
+已剥（服务端 buildMem 组装时 delete + 客户端停写）：
+- bySentence.deckName / bySentence.translation —— 展示冗余
+  （translation 统计页恒由题库 item 重算；deckName 只在旧 key 迁移读）
+- events.deckId / events.sentence —— 与 key(=deckId#cid) 重复
+  （mergeStats 只用 id/kind/ok/key；backfillDaysLog 只用 kind/at）
+
+关键设计：
+- 服务端组装时剥离（而非只靠客户端停写）：DB 里的存量旧条目也即时受益，
+  下行 GET 立即缩小，不必等条目被重新作答才收敛
+- statSig 只 hash SRS 计数、不含这四字段 → 剥离不改变签名、不触发误重传
+
+未剥（7.3%，风险高暂缓）：bySentence.sentence（cid 碰撞反查锚点）与
+bySentence.deckId（findDeck 定位锚，15+ 读取点），需 cid 反查改造另开一轮。
+
+测试：downstream-delta.test.js 扩 54→59（B3-B5 bySentence 剥离、B6-B7 events
+剥离）；npm test 全绿；e2e:all 26/26。bench-scale.js 造数形状同步。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6faaf55ade61e0c7b9c67a997c51110c3d5341f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/madman8228/chunk-lab/commit/6faaf55ade61e0c7b9c67a997c51110c3d5341f3"/>
+    <title>
+        docs(adr): 记录下行增量客户端接入的深层耦合
+    </title>
+    <updated>2026-09-10T13:37:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/906901?s=30&amp;v=4"/>
+    <author>
+      <name>madman8228</name>
+      <uri>https://github.com/madman8228</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(adr): 记录下行增量客户端接入的深层耦合
+
+补充 ADR-009「客户端接入的关键耦合」章节，沉淀本轮探索的结论：
+
+- 增量下行拿不到「远端全量」来对齐上行水位 _cloudBsSig/_cloudEvIds
+  （内存变量刷新即 null），导致刷新后上行退化全量 → 下行省 640KB、上行多花
+  ~1058KB（gzip）→ 净亏损。现有全量下行靠 `_cloudBsSig = remoteBsSig` 重建
+  水位才让刷新后上行仍增量。
+- 事件 id 是随机字符串（非时间序），_cloudEvIds 无法用「前缀锚点」紧凑持久化，
+  须存完整集合 ~400KB → 正确方案是上行水位持久化到 IDB meta。
+- stats 增量合并不能复用 mergeStats（反推基线会算重 5→8），需独立 mergeStatsDelta
+  （events 去重并集、totalAnswered=本地+增量独有、bySentence 远端覆盖但本地 lastAt 更晚保留）。
+- 增量下软删传播必须读显式 deleted.* 清单，不能用存在性推断。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

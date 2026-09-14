@@ -1,0 +1,1532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/davadev/obsidian_chinese_comprehensible_input/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commits/main.atom"/>
+  <title>Recent Commits to obsidian_chinese_comprehensible_input:main</title>
+  <updated>2026-09-10T15:31:36Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0336315859cc564e201e6afa6ea05d700ceba482</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/0336315859cc564e201e6afa6ea05d700ceba482"/>
+    <title>
+        Merge pull request #73 from davadev/release/0.7.0
+    </title>
+    <updated>2026-09-10T15:31:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #73 from davadev/release/0.7.0
+
+0.7.0 — release&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11e751972e2b97ab343884014548e12afec8b183</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/11e751972e2b97ab343884014548e12afec8b183"/>
+    <title>
+        0.7.0 — release
+    </title>
+    <updated>2026-09-10T15:28:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.7.0 — release
+
+Topic coverage radar on the dashboard, and a prerelease workflow that keeps the
+default-branch manifest on the current stable version while betas are tested.
+
+Verified through 0.7.0-beta.1 .. beta.3 on device via BRAT, while Community
+Plugin users stayed on 0.6.1 throughout.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/52c0dfbfbbd45c68c3e084bd7fa1e0f2529a7344</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/52c0dfbfbbd45c68c3e084bd7fa1e0f2529a7344"/>
+    <title>
+        0.7.0 — radar: legend below chart, wider canvas, unknown ring (#72)
+    </title>
+    <updated>2026-09-10T15:21:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.7.0 — radar: legend below chart, wider canvas, unknown ring (#72)
+
+* 0.7.0 — topic radar: legend below the chart, wider canvas, larger web
+
+The legend was already appended after the SVG, but `.cci-dash-topics-chart`
+was `display: flex` with the default row direction, so the two sat side by
+side and the legend ate the chart&amp;#39;s width. Column direction puts it under the
+graph, as intended.
+
+While fixing that, found a latent clipping bug: the canvas was 200 units wide
+with labels anchored at 1.28x a radius of 62, so the longest label
+(&amp;quot;Character&amp;quot;) ran to x~216 and SVG clipped it at the viewBox edge. The canvas
+is now 270x200 — deliberately wider than tall, since the web is circular but
+the side labels extend horizontally — and the radius grows 62 -&amp;gt; 70, a 13%
+larger web in the same vertical space.
+
+RADAR_LAYOUT is exported so a test can assert the longest short label fits on
+both sides. That regression shipped once already.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.7.0 — topic radar: show unknown as a third ring in red
+
+Unknown words were only implied by the gap between the outer ring and the
+edge, which is not readable. The chart now draws three cumulative rings in the
+same colour language the HSK coverage bars already use:
+
+  green filled  fully known
+  amber         + partially known
+  red           + words explicitly marked unknown
+
+The gap to the edge is now specifically &amp;quot;seen but not yet classified, or never
+met&amp;quot;, which is what it should have meant all along. `new` deliberately stays
+out of the rings: the learner has encountered those words but made no
+judgement, so counting them as classified would overstate coverage.
+
+Tooltips gained the per-ring percentages, and tests pin the nesting invariant
+(known &amp;lt;= known+partial &amp;lt;= classified) so an inner ring can never render
+outside an outer one.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d711fa553be3dbc4043798f7d08dcce4db06a9f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/d711fa553be3dbc4043798f7d08dcce4db06a9f9"/>
+    <title>
+        0.7.0 — topic radar: fix duplicate render, use short English labels, …
+    </title>
+    <updated>2026-09-10T15:11:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.7.0 — topic radar: fix duplicate render, use short English labels, show partial (#71)
+
+Three issues found in beta.1 testing.
+
+1. The radar rendered twice. `renderTopicCoverageSection(root)` was called on
+   two consecutive lines in renderDashboard — introduced by a scripted edit and
+   a manual edit both applying, and missed because the verification grep was
+   truncated by `| head`.
+
+2. Axis labels were Chinese. They were chosen for compactness on a phone-width
+   chart, but that makes the chart unreadable for a learner who cannot yet read
+   the topic names — which is precisely the audience. Adds a `short` English
+   label per topic (Food, Health, Travel …), short enough to fit the axes, with
+   a test pinning length and uniqueness. Chinese remains available in the data.
+
+3. Only fully-known words were visible. Partial words were folded into a single
+   half-credited number the reader could not decompose. The chart now draws two
+   nested rings in Coverage mode: filled = fully known, dashed = plus partially
+   known, with the gap to the edge being unknown or never met. Tooltips give the
+   full five-bucket split, and the footnote explains the reading.
+
+`coverage` (known + half credit for partial) is retained as the input to
+Relative mode, where a single derived number is the right shape.
+
+Also fixes a lint Error the release guard caught: a static
+`style.opacity` assignment in the legend, now a CSS class.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7fef07e77d15f7ac74998b6544adba62489b73a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/7fef07e77d15f7ac74998b6544adba62489b73a9"/>
+    <title>
+        0.7.0 — topic coverage radar + safe prerelease workflow (#70)
+    </title>
+    <updated>2026-09-10T14:57:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.7.0 — topic coverage radar + safe prerelease workflow (#70)
+
+* 0.7.0 — safe prerelease workflow: stamp betas in CI, never in the default branch
+
+Obsidian reads manifest.json on the default branch to decide which version to
+advertise, then downloads assets from the release tagged identically to it. The
+previous loop kept main&amp;#39;s manifest pinned at the NEXT version while only
+-rc.N prereleases existed, so every update check resolved to a release that did
+not exist. check-release actively enforced that by stripping the suffix before
+comparing.
+
+BRAT, by contrast, reads manifest.json from the release ASSETS and is
+&amp;quot;independent of the version numbering in the repository root&amp;quot;, picking the
+highest semver including prereleases. So the committed manifest must stay old
+while the published assets must be new.
+
+scripts/stamp-prerelease.mjs bridges the two: for a suffixed tag, CI stamps the
+prerelease version into the working tree only. Nothing is committed, and the
+whole gate then runs against the exact artifact that gets uploaded.
+
+- check-release: tag must equal manifest.version EXACTLY; with no tag, a
+  committed prerelease suffix is now a hard failure
+- release.yml: conditional stamp step, plus artifact validation asserting the
+  three files are non-empty and the asset manifest version equals the tag
+- docs/release-process.md: full five-stage procedure, verified against Obsidian
+  and BRAT documentation, with the stable promotion publishing the release
+  BEFORE main advertises it so the dangerous window is zero rather than minutes
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.7.0 — topic coverage radar on the dashboard
+
+Adds a radar chart showing what the learner&amp;#39;s vocabulary is ABOUT, not just how
+much of it there is — the comprehensible-input question of &amp;quot;can I read a text
+on this topic?&amp;quot;.
+
+Data: a hand-authored word -&amp;gt; topic map, 4,806 of 9,032 HSK 1-9 words across 20
+topics. Every assignment was made by hand and agrees 178/178 with an
+independently written 350-word gold sample; the other 4,226 words were reviewed
+and deliberately carry no topic (idioms, generic verbs, function words). The
+join was validated empirically against CC-CEDICT: 4,806/4,806 keys resolve to
+the simplified headword the plugin stores, and 2,885/2,886 traditional surfaces
+resolve back correctly.
+
+Metric is frequency-weighted coverage. A plain word count collapsed every topic
+into 4-28% once the HSK 7-9 band tripled the denominator; weighting restores a
+usable spread (HSK2 6-20%, HSK4 23-43%, HSK6 60-81%). A second &amp;quot;relative to my
+level&amp;quot; mode divides out word difficulty, which otherwise predetermines the
+ranking for every learner. Ignored words leave both sides of the ratio.
+
+Three implementation notes, each guarding a real failure:
+- chip clicks repaint only the section; render() empties the view root, which
+  would throw the user back to the top of the dashboard on every click
+- saving is leading+trailing debounced: saveSettings() rewrites the whole
+  data.json, and the leading edge keeps a single toggle durable even where
+  onClose() never fires (iOS deferred views)
+- topicRadarTopics is a flat top-level array because settings merge with a
+  shallow spread, so a nested object gaining a key later returns undefined
+
+Licence chain is MIT throughout; topic assignments are original work. Coverage
+rises: functions 84.33 -&amp;gt; 86.14, branches 80.76 -&amp;gt; 83.36.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9bb4f340f017e26a07aa886cf52eef55b74ac5d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/9bb4f340f017e26a07aa886cf52eef55b74ac5d1"/>
+    <title>
+        0.6.1 — stop rewriting the whole data blob to count launches (#69)
+    </title>
+    <updated>2026-09-10T07:39:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.1 — stop rewriting the whole data blob to count launches (#69)
+
+Crash protection stored its counter in the main data blob, so every healthy
+launch did this before Obsidian could show the ribbon icon:
+
+  parse 4.76 MB   crash probe reads data.json
+  write 3.2 MB    counter 0 -&amp;gt; 1
+  parse 4.76 MB   onloadInner re-reads the same file
+  ... 30 s later ...
+  parse 4.76 MB   reset reads it again
+  write 3.2 MB    counter 1 -&amp;gt; 0
+
+Three full parses and two multi-megabyte writes to store one integer that is
+0 before and 0 after. On a synced vault it also re-uploaded a 4.9 MB file on
+every launch of every device.
+
+Crash state now lives in its own ~30-byte file next to the plugin. The probe
+no longer touches data.json at all, so onloadInner&amp;#39;s read is the only parse
+on the critical path — and there is no reordering hazard, because nothing
+writes between them.
+
+WHAT DID NOT CHANGE
+
+The write stays AWAITED. The increment has to be durable before any risky
+work runs or the guard cannot see the crash it exists to catch, which is why
+localStorage was rejected: setItem returns before its backing store flushes,
+and a crash in that window loses the increment — exactly the case this
+protects against. Threshold, reset delay, notices and fail-open behaviour are
+all untouched; only the storage location and its size moved.
+
+decideOnLoad() is pure, so every branch of a mechanism that can disable the
+plugin is directly testable. 16 tests cover both threshold boundaries (4 -&amp;gt; 5
+proceeds, 5 -&amp;gt; 6 trips, matching the previous behaviour exactly), a six-crash
+simulation that must still auto-disable, fifty healthy launches that must not,
+the durability ordering localStorage would have broken, and fail-open on a
+missing, corrupt, junk-valued or throwing file.
+
+manifest.dir is optional in Obsidian&amp;#39;s API, so the path falls back to
+vault.configDir rather than resolving to &amp;quot;undefined/crash-state.json&amp;quot;.
+
+Legacy __crashCounter / __autoDisabled keys are dropped from the blob once,
+off the critical path, so a downgrade cannot re-read a stale auto-disable
+flag. The old count is deliberately not carried over: a user in a live crash
+loop is already auto-disabled rather than launching a new version.
+
+Not claimed: that this is the ~4 s iOS startup. On macOS it is ~24 ms of CPU;
+the Files-provider I/O cost on iOS is not measurable from here. It removes
+6.4 MB of writes per launch either way.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a829d7acc6f393f329edc26a1f603d7b9b48fdb9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/a829d7acc6f393f329edc26a1f603d7b9b48fdb9"/>
+    <title>
+        0.6.0 — tell a new user why their Progress chart is empty (#66)
+    </title>
+    <updated>2026-09-10T05:03:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — tell a new user why their Progress chart is empty (#66)
+
+A first vault index inventories every Chinese word already in the notes and
+marks them as a baseline, so a brand-new user sees cards reporting thousands
+of words above a chart that is a flat line at zero. That reads as breakage.
+It is not — the chart plots classifying, and they have not classified
+anything yet.
+
+progressEmptyHint() says so when every selected series totals zero, naming
+the indexed count so it also replaces the &amp;quot;Tracked excludes N words&amp;quot; note
+rather than stacking a second line beneath it. Once anything is classified
+the hint disappears and the old note returns.
+
+Deliberately kept to the smallest safe shape, since this ships without
+manual testing: the decision is a pure function with no dependencies and no
+way to throw, unit-tested across all four states (fresh index, nothing
+indexed, has history, no series selected), and the rendering is a single
+createEl identical to the two beside it. The one existing line touched is
+the summary, which now reads its per-series totals from the same array the
+hint does instead of recomputing them — same values, one source.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c08eb7dcfa9b0ff5ecddb7f00d908778656fb2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/0c08eb7dcfa9b0ff5ecddb7f00d908778656fb2e"/>
+    <title>
+        0.6.0 — make the Cumulative chart cumulative to date, not to the wind…
+    </title>
+    <updated>2026-09-10T04:48:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — make the Cumulative chart cumulative to date, not to the window (#65)
+
+bucketTimestamps() drops every stamp older than its first bucket, and
+renderProgressArea() then accumulated from zero at the window&amp;#39;s left edge.
+So &amp;quot;Cumulative&amp;quot; meant &amp;quot;cumulative within whatever window is selected&amp;quot;: the
+12-month view only looked right because this learner&amp;#39;s classifying happened
+to fall inside it, while the 30-day view plotted a flat line on the floor
+and a summary reading &amp;quot;Last 30 days: Known 0&amp;quot; under it. A running total of
+vocabulary should never fall when you zoom in.
+
+Pre-existing since 0.1.20 (git log -S &amp;quot;acc += d.count&amp;quot;), not a regression
+from the Traditional work.
+
+Fixed by supplying the opening balance. countBeforeWindow() counts the
+stamps the window discards, and the accumulator is seeded with it.
+
+Two deliberate choices, both about not breaking what already works:
+
+- No existing signature or return shape changes. countBeforeWindow() is a
+  new export, `prior` is optional on the series objects, and the bars
+  renderer is untouched — its per-period counts are correct as they are.
+- The cutoff is an INSTANT, not a comparison against the first bucket&amp;#39;s
+  key. Week keys are `yyyy-Www`, which do not sort across a year boundary
+  (&amp;quot;2026-W01&amp;quot; &amp;lt; &amp;quot;2025-W52&amp;quot;), so a string comparison would have silently
+  miscounted every January.
+
+Tests came first: bucketTimestamps had no direct coverage, so its current
+behaviour is pinned before anything moved. The boundary between the balance
+and the window is then asserted as a property rather than from hand-computed
+dates — a binary search finds the first in-window instant and checks that
+countBeforeWindow() excludes exactly it and claims the millisecond before,
+across day/week/month, two year boundaries and a leap day. The accumulator
+is extracted as cumulativeCounts() so it can be tested at all; these tests
+run without a DOM.
+
+Also makes an active note scope visible. It filters every number on the
+dashboard, but the only sign of it was the dropdown up in the header —
+scroll past that and a scoped dashboard is indistinguishable from one that
+has lost your vocabulary, which is exactly how it read. There is now a line
+above the cards naming the note, with a button back to all vocabulary.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b44696a397202e89481009e2f523c74885966662</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/b44696a397202e89481009e2f523c74885966662"/>
+    <title>
+        0.6.0 — fix the rc.5 script rows, gate the re-index offer, refresh li…
+    </title>
+    <updated>2026-09-09T11:32:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — fix the rc.5 script rows, gate the re-index offer, refresh lint tooling (#64)
+
+* 0.6.0 — refresh the lint toolchain before the stable release
+
+typescript-eslint 8.61.1 -&amp;gt; 8.70.0 and eslint 9.39.4 -&amp;gt; 9.39.5.
+
+typescript-eslint is the one that matters: its minors add and widen rules,
+so Obsidian&amp;#39;s cloud auto-review can run checks we do not — exactly the
+failure mode eslint.config.mjs exists to prevent. 8.70.0 is inside
+eslint-plugin-obsidianmd&amp;#39;s ^8.35.1 peer range, and the bump surfaces
+nothing: still 0 errors, 0 warnings.
+
+eslint-plugin-obsidianmd is already on 0.4.2, which is current. eslint 10
+exists but the plugin&amp;#39;s peer is &amp;gt;=9.19.0, so it is not required, and a
+major flat-config bump immediately before a stable release is risk with no
+upside — took the 9.39.5 patch instead.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — fix the script rows behaving like checkboxes instead of radios
+
+The overflow menu stays open after a toggle and is never rebuilt, so the
+three script rows added in rc.5 never repainted each other. Picking
+Traditional while Automatic was checked left BOTH ticked, and clicking the
+already-active row unticked its own box while the early-return kept the
+setting unchanged — leaving the active script showing as off until the menu
+was reopened. Visible on the first tap of a feature this release is built
+around.
+
+checkRow now returns its checkbox so a caller can repaint a
+mutually-exclusive group, and the script rows re-assert all three from the
+setting after every click, including the no-op one.
+
+Also stops offering a pointless re-index. Automatic and Traditional build
+the identical trie, so moving between them changes what is displayed but
+not what is indexed, and the offer would walk the whole vault to report &amp;quot;0
+new exposures&amp;quot;. indexedSetChanged() lives next to planScriptChange() in the
+pure module so it is testable, and gates all three paths: the settings tab
+(which needed the previous value threaded through persist, since the new
+one is already written by then), the reading view, and the settings-mirror
+notice — the last still tells the user their script changed, it just drops
+the button when there is nothing to re-index.
+
+And makes trackedBaselineRepaired device-local. It is bookkeeping about
+work this device has done, exactly like vaultIndexed beside it in
+FILTER_OUT; sharing it would let one device&amp;#39;s completed baseline pass
+suppress another&amp;#39;s, which has its own records to adopt.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e527261c23237448259eff0dc71e6b340733727</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/3e527261c23237448259eff0dc71e6b340733727"/>
+    <title>
+        0.6.0 — Automatic script mode as the default, and a Progress chart th…
+    </title>
+    <updated>2026-09-09T11:13:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — Automatic script mode as the default, and a Progress chart that stops lying (#63)
+
+Two changes that interleave across the same files.
+
+## Automatic script
+
+Every script problem this release has chased — Traditional notes
+shattering into single characters, the junk records that produced, the
+skip added to avoid them, re-indexing after a flip, the &amp;quot;this note looks
+Traditional&amp;quot; prompt — exists only because the trie was gated on a global
+setting. Automatic removes the gate: index both scripts, never convert
+anything for display, show each word the way it was read.
+
+Measured against the full CC-CEDICT before committing to it, because it
+becomes the default. Indexing both scripts leaves Simplified segmentation
+byte-identical: 0 differing tokens across a 22,569-token corpus. Only 392
+of 76,783 union-only surfaces can occur in Simplified text at all — the
+rest contain a character that is never a simplified headword — and those
+392 only ever MERGE what the simplified-only trie split (乾杯 as one token
+rather than 乾 + 杯), which is a better answer, not a different one. Cost:
+121,275 -&amp;gt; 198,058 keys, 34 -&amp;gt; 65 ms build, +29.3 MB heap.
+
+That cost lands on every upgrading user, not just new installs: 0.6.0
+never shipped stable, so nobody has a stored scriptVariant for the
+defaults spread to preserve. Deliberate, and called out in the docs.
+
+tsc enumerated the AI work rather than us guessing it: scriptVariant fed
+four two-value sites, all of which stopped compiling. resolveAiScript()
+decides from the target words, since generation must commit to one script
+and has no note to look at.
+
+## Vault-index records are a baseline, not events
+
+Indexing a 2,833-file vault created 9,829 records at once, all stamped
+firstSeenAt = now, so the Progress chart&amp;#39;s Tracked line showed a vertical
+cliff claiming the learner met 9,829 words in a day.
+
+Back-dating from file mtime was tried and rejected on measurement: that
+vault&amp;#39;s timestamps span 5 months with 47% in one, and its oldest file is
+NEWER than the vocabulary history it would have to explain — Nextcloud
+rewrote them. It would have turned one honest cliff into two plausible
+fictions.
+
+So records a bulk scan created are marked `backfilledAt` and excluded from
+Tracked, with the count reported under the chart. A one-shot pass, gated
+on `trackedBaselineRepaired`, adopts records an earlier build&amp;#39;s index left
+behind; one-shot because leaving it on would keep swallowing genuinely
+newly-read words on every later index.
+
+## Four things that would have shipped as bugs
+
+- The overflow menu wrote &amp;quot;traditional&amp;quot;/&amp;quot;simplified&amp;quot; from one checkbox. In
+  Automatic it renders unchecked, so two taps silently dropped the reader
+  into the one mode where a Traditional note shatters. Three explicit rows
+  now, which also makes the third state reachable.
+- StoryGenerator wrote `script: ${script}` into note frontmatter and would
+  have recorded a literal &amp;quot;auto&amp;quot; over Traditional prose.
+- displaySurface&amp;#39;s `if (script !== &amp;quot;traditional&amp;quot;)` would have routed
+  Automatic silently down the Simplified path.
+- mergeForSync and mergeRecords both build explicit object literals, so
+  `backfilledAt` missing from either would have been dropped on every sync
+  — working locally and evaporating between devices. Asserted directly.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf6b0e20445091bcbc9875162ea76ba78ee737bd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/bf6b0e20445091bcbc9875162ea76ba78ee737bd"/>
+    <title>
+        0.6.0 — test the dictionary and tokenizer against real CC-CEDICT data…
+    </title>
+    <updated>2026-09-09T09:13:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — test the dictionary and tokenizer against real CC-CEDICT data (#62)
+
+Every test in this repo drove a hand-written stub: a three-entry
+dictionary, a tokenizer that called every character a word. That leaves a
+whole class of bug invisible, because the stub agrees with the code and
+neither agrees with CC-CEDICT. The 0.6.0 flashcard bug is the case in
+point — VocabularyStore.ensure() seeds lookup()[0].traditional into
+rec.surfaces, CC-CEDICT orders entries by codepoint, so 干 seeded the
+obsolete 乹 and displaySurface() showed it. It was found by reading code,
+not by a failing test, and its regression test still simulates the seeding
+with a literal.
+
+Adds a committed ~200-entry CC-CEDICT subset and wires the real pieces
+together over it: parseCedict → DictionaryService → Trie →
+LatticeTokenizer → scriptDetect / displayForms. 16 tests covering entry
+ordering, the real variant counts, the u:/-iu pinyin repair, the Taiwan
+reading lifted out of its gloss, segmentation of a Traditional note in
+both script modes, script detection including the documented
+below-threshold miss, and displaySurface over records built exactly the
+way ensure() builds them.
+
+Three of those failed on first run. Two were fixture artifacts —
+isTraditionalMarker() is &amp;quot;in byTraditional and not in bySimplified&amp;quot;, so a
+character whose own entry was missing from the subset reported a marker
+status it does not really have (乾 and 裡 are simplified headwords in
+their own right). Fixed by pulling in every character of the test notes.
+The third was mine: I asserted lookup(&amp;quot;绿&amp;quot;)[0].pinyin is lǜ, but 绿 is
+polyphonic and CC-CEDICT&amp;#39;s order between lu:4 and lu4 is not ours to
+assume — the same mistake displaySurface() used to make with traditional
+variants. Now asserted as membership, with a global check that no entry
+anywhere still carries a raw u: or stray tone digit.
+
+Licensing: NOTICE.md says the plugin does not bundle CC-CEDICT, and that
+stays true. The generator keeps the simplified/traditional/pinyin mapping
+and replaces every English gloss with a placeholder — the same line
+build-hsk-map.mjs takes, importing the HSK term→level mapping and nothing
+else. The one verbatim field is the &amp;quot;Taiwan pr. [...]&amp;quot; reading, because
+that formatted field is itself what extractTaiwanReading() parses. The
+fixture is read by tests only and does not reach main.js.
+
+Also documents, as an assertion rather than a comment, why the indexer
+skips a whole note rather than filtering tokens: under Simplified a
+Traditional note shatters into shards like 公 / 乾 / 程 / 喜, which are
+ordinary simplified headwords, so no per-token predicate can tell them
+from real vocabulary.
+
+
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c79380daa172a45169e44d14197586b017d1b06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/1c79380daa172a45169e44d14197586b017d1b06"/>
+    <title>
+        0.6.0 — skip wrong-script notes when indexing, announce a synced scri…
+    </title>
+    <updated>2026-09-09T08:39:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — skip wrong-script notes when indexing, announce a synced script change (#61)
+
+* 0.6.0 — skip notes written in the other script instead of indexing them wrong
+
+DictionaryService.lookup() consults both the simplified and traditional
+maps regardless of the setting, but only the trie is gated on
+scriptVariant. So with Simplified selected a Traditional note found no
+multi-character trie match, fell through to the single-character OOV edge,
+and every one of those characters still resolved through lookup() — so
+isWord was true and the indexer recorded it. 學, 習, 灣 each became a
+permanent vocabulary record, and since indexing only ever adds, nothing
+removed them again.
+
+Skip those notes instead, reusing looksTraditional() — already the
+conservative one-directional detector the &amp;quot;this note looks Traditional&amp;quot;
+prompt uses. The check runs before tokenizing, so a skipped file costs a
+character scan rather than a full segmentation pass, which is also why
+indexVault now calls dictionary.ensureLoaded() up front: the first
+tokenize() used to be what forced the load.
+
+One-directional on purpose — Traditional mode indexes a union of both
+scripts, so Simplified notes are never skipped.
+
+Progress carries a `skipped` count and the notice names the fix:
+&amp;quot;skipped 3 that look Traditional. Switch Text script to index them.&amp;quot;
+
+Not covered, and documented as such: the detector needs three distinct
+traditional-only characters, so a very short note still slips through;
+this guards the bulk path only, not live reading; and entries created by
+an earlier index stay.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — say so when another device changes the script
+
+scriptVariant is a shared setting, so flipping it on one device flips them
+all. The remote path was already correct — SettingsMirror.applyMerge()
+routes through saveSettingsSilently() into applyScriptSideEffects(), so
+the trie really is rebuilt — but it was completely silent: the second
+device&amp;#39;s reader re-segmented and its flashcards switched script with no
+explanation.
+
+planScriptChange() gains a `remote` input and a `notifyRemote` output, so
+the decision stays in the pure module that already exists to make this
+testable. main threads `remote` through saveSettingsSilently(); the
+settings mirror is the only caller that sets it.
+
+The notice reuses offerReindexAfterScriptChange(), now taking a reason, so
+it is one notice rather than two. Offering the re-index on the remote path
+is safe as of the previous commit&amp;#39;s idempotent index — the original
+objection was a surprise bulk write on an idle device, and that is gone.
+It is still only a button.
+
+Also stops sharing traditionalPromptDismissed. It is a per-device UI
+dismissal, so syncing it meant &amp;quot;Don&amp;#39;t ask again&amp;quot; on one device silenced
+the prompt on every other one. scriptVariant and pronunciationRegion keep
+syncing — those describe the vault, which is the same everywhere.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13526bc29728d9b21bde671e32663cd12e5d22b3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/13526bc29728d9b21bde671e32663cd12e5d22b3"/>
+    <title>
+        0.6.0 — idempotent vault re-index, and act on the Traditional script …
+    </title>
+    <updated>2026-09-09T08:22:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — idempotent vault re-index, and act on the Traditional script check (#60)
+
+* 0.6.0 — make re-indexing the vault safe to re-run
+
+The script setting offers to re-index, and re-indexing called
+recordExposure() once per occurrence. That increments unconditionally, so
+a second pass doubled seenCount for every word in the vault, back-dated
+lastSeenAt to &amp;quot;now&amp;quot;, and spiked today&amp;#39;s dailySeenCounts for reading that
+never happened. None of it undoable. It also made trying Traditional mode
+on a real vault a one-way door.
+
+Add VocabularyStore.recordNoteScan(), which takes a note&amp;#39;s whole tally and
+reconciles it against the count already stored for that path. A note&amp;#39;s
+count is a high-water mark: delta &amp;lt;= 0 writes nothing at all — no
+timestamp, no updatedAt, no save — so re-running over unchanged text is a
+true no-op. A note that grew contributes only the difference; a note that
+shrank keeps its count, because unwinding would mean removing exposures
+from dailySeenCounts and nothing records which day they were read on.
+
+That last point is also why seenCount is kept in step with
+dailySeenCounts rather than derived some other way: mergeForSync()
+re-derives seenCount as the sum of the daily counts on every merge, so
+any scheme that let the two drift would have its totals silently reset on
+the next sync.
+
+recordExposure() is unchanged — live reading has no note total to
+reconcile against and must keep incrementing. VaultIndexer now tallies per
+file, and progress.recorded becomes the number of NEW exposures, so the
+notice reads &amp;quot;0 new exposures&amp;quot; on a clean re-index.
+
+Counts already inflated by an earlier re-index stay inflated; the
+high-water mark cannot tell an inflated count from a real one after the
+fact. Documented in docs/traditional-chinese.md.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — act on the Traditional script check instead of discarding it
+
+StoryValidator computed `wrongScript` and its comment claimed the finding
+&amp;quot;lets the repair loop try again&amp;quot;. It did not. The flag was absent from
+both `score` and `ok`, it only appended to `report.notes`, and nothing
+anywhere reads `notes` — not StatsView, not StoryGenerator. The repair
+loop keyed on missing target words alone. So a model that ignored the
+Traditional instruction was detected and the detection thrown away.
+
+Put `wrongScript` on ValidationReport, fail `ok` on it, dock the score so
+best-of-N prefers a correct-script candidate on a tie, and let the repair
+loop run for it. The trigger is zero traditional-only characters across
+the whole story, which a text of these lengths never hits by accident, and
+maxRepairIterations caps the retries either way.
+
+The repair prompt needed the same honesty: a story can come back for the
+script alone with every target word present, and opening with &amp;quot;your
+attempts repeatedly miss required target words&amp;quot; would aim the model at a
+problem it does not have. It now leads with the actual defect and names it.
+
+Also makes the mnemonic modal script-aware. It keyed on surfaces[0], so a
+Traditional reader got a heading and an AI prompt about the Simplified
+form. Display and the prompt now follow displaySurface(); storage stays on
+surfaces[0], because updateMnemonic() goes through ensure() and handing it
+a converted form would push that form into rec.surfaces — and
+surfaces[0]-as-first-encounter is exactly the signal displaySurface()
+relies on to avoid showing a guessed variant.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c78e86676b14a056783cd253139115046b361b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/2c78e86676b14a056783cd253139115046b361b7"/>
+    <title>
+        0.6.0 — Traditional Chinese (Taiwan) support (#59)
+    </title>
+    <updated>2026-09-09T07:24:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — Traditional Chinese (Taiwan) support (#59)
+
+* 0.6.0 — refresh Obsidian lint parity to eslint-plugin-obsidianmd 0.4.2
+
+Step 0 of the 0.6.0 Traditional Chinese work: bring the local mirror of
+the Obsidian community-plugin auto-review up to the latest published rule
+set before any feature work lands, so every 0.6.0-rc.N is linted against
+the same rules the cloud review will run.
+
+eslint.config.mjs pulls obsidianmd.configs.recommended rather than
+enumerating rules, so the upgrade picks up new rules automatically:
+39 obsidianmd rules are now active out of the 41 shipped.
+
+npm run check-release -- --with-build: 39 passed, 0 failed,
+lint 0 errors / 0 warnings.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — fix pinyin tone placement, stranded ü digits, and Trie surrogate handling
+
+Three pre-existing correctness bugs found while verifying the Traditional
+Chinese work. All predate this release and affect every user.
+
+1. -iu tone marks landed on the wrong vowel. numbersToToneMarks ranked
+   vowels a &amp;gt; o &amp;gt; e &amp;gt; i &amp;gt; u, but the rule for -iu/-ui is to mark the LAST
+   vowel. Core HSK 1-3 vocabulary was wrong in the shipped data: 六 lìu,
+   九 jǐu, 牛奶 níu nǎi, 休息 xīu xi, 秋天 qīu tiān, 丢 dīu.
+
+2. Every ü syllable kept a raw tone digit. The downloader converted CC-CEDICT&amp;#39;s
+   &amp;quot;u:&amp;quot; to ü AFTER numbersToToneMarks, whose character class has no &amp;quot;:&amp;quot;, so
+   &amp;quot;nu:3&amp;quot; never matched and became the literal &amp;quot;nü3&amp;quot;. 1,069 entries: 女 nü3,
+   绿 lü4, 律 lü4.
+
+3. Trie.insert walked code points while Trie.matchesFrom walks code units, so
+   any word containing a character outside the BMP was stored under a key the
+   matcher could never reach. 268 simplified headwords and 10 traditional-only
+   forms never matched.
+
+4,788 of 125,052 entries display wrong pinyin. repairPinyin() fixes them at
+index time, so existing users get correct pinyin on next load with no
+dictionary re-download; the downloader fix covers fresh downloads.
+
+The repair is vocabulary-key-safe, which is the constraint that dictates the
+implementation. toneMarksToNumbers now absorbs a trailing digit as its
+syllable&amp;#39;s tone, so &amp;quot;nü3&amp;quot; and &amp;quot;nǚ&amp;quot; hash identically. Verified against all
+125,052 shipped entries: 4,788 repaired, 0 vocabulary keys moved, 0 case or
+letter damage. Without that change the same repair would have moved 1,066
+keys and orphaned those records. The repair is also deliberately NOT a
+round-trip through numbersToToneMarks, which lowercases and would corrupt
+23,485 proper nouns (Qū -&amp;gt; qū, 3D -&amp;gt; 3d).
+
+Dictionary overrides are keyed by makeKey and, unlike WordRecords, are never
+re-derived on load, so they get a one-shot re-key. It is a pure string
+transform because onload() runs vocab.load() long before the dictionary is
+read — forcing an early load would add a ~17 MB read to every startup.
+Verified: 1,066 of 1,066 legacy keys map correctly, 0 false positives.
+
+Also lands the groundwork for Taiwan readings: DictionaryEntry.pinyinTaiwan,
+extracted at index time from the &amp;quot;Taiwan pr. [le4 se4]&amp;quot; gloss CC-CEDICT
+already ships. 512 of 513 entries parse cleanly; the one skip is a prose note
+with no bracketed reading. Costs 6 ms (repair) + 5 ms (extraction) at load,
+against 41 ms just to JSON.parse the file.
+
+346 tests pass; lint 0 errors, 0 warnings.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — script/region settings, Traditional tokenization, and display helpers
+
+Makes the plugin able to read Traditional Chinese (#57). Defaults are
+unchanged, so an upgrading Simplified user gets a bit-identical trie.
+
+Settings: `scriptVariant` and `pronunciationRegion` as a top-level
+&amp;quot;Script &amp;amp; region&amp;quot; group placed right after Display — a Traditional reader has
+to find this before anything else works for them, so it must not sit behind an
+Advanced sub-page. Both are top-level scalars, so the shallow DEFAULT_SETTINGS
+spread in onload fills them for existing users with no migration and no
+schemaVersion bump.
+
+Tokenizer: DictionaryService.surfaces() gains an opt-in `includeTraditional`,
+and it is a UNION rather than a swap — Traditional readers still meet
+Simplified text, and mixed vaults have to keep working without a per-note
+switch. Verified against the real 125k-entry dictionary: 台灣的天氣很熱 was
+台|灣|的|天|氣|很|熱 and is now 台灣|的|天氣|很|熱; 圖書館, 學習, 網路 and
+軟體 all merge correctly, and every simplified sample segments byte-identically.
+
+lookup() now concatenates the traditional map after the simplified one instead
+of `simplified ?? traditional`, recovering the sense that was silently dropped
+for the 66 surfaces that are both a simplified headword and someone else&amp;#39;s
+traditional form (著, 乾, 宁, 於 …). The ordering is fixed and must never
+depend on a setting: VocabularyStore.ensure() keys records off lookup()[0], so
+a settings-dependent order would re-key those records on every toggle.
+Measured across all 66: candidates[0] is unchanged.
+
+Invalidation is centralised in applyScriptSideEffects(), called from
+saveSettingsSilently(). Four paths can change the script — the settings tab,
+the view toolbar, importSettings(), and a remote SettingsMirror apply — and
+the last two replace settings wholesale and then only refresh views, so a
+script flip arriving that way would repaint fresh colors over a stale trie
+with no error anywhere. One guard off one remembered value covers all four.
+VocabularyStore.clearSurfaceCache() is now public for the same reason:
+DictionaryService.reload() has eight call sites and none could reach it.
+
+displayForms.ts deliberately never converts between scripts. 1,078 simplified
+headwords map to more than one traditional form, CC-CEDICT orders entries by
+codepoint rather than frequency, and frequencyRank is never populated — so
+taking the first candidate gives 发 -&amp;gt; 發 (wrong for 头发), 干 -&amp;gt; 乹 and
+历 -&amp;gt; 厤 (obsolete variants), 里 -&amp;gt; 裏 (the Hong Kong form). It returns a form
+the learner actually encountered instead, and offers the counterpart only when
+the mapping is unambiguous.
+
+scriptDetect.ts is one-directional by design. The symmetric test does not
+work: 台, 只, 后 and 里 are simplified headwords yet normal in Taiwan writing,
+so a &amp;quot;looks simplified&amp;quot; score misfires — a pure Traditional paragraph scored
+7 against 4, and 你好我是人今天 read as simplified.
+
+387 tests pass; lint 0 errors, 0 warnings.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — Traditional parity in the reader, flashcards, stats, and AI
+
+Closes the places where a Traditional reader would have got a worse
+experience than a Simplified one.
+
+Reader: the word popup&amp;#39;s headword is now the form the learner actually
+tapped, and the counterpart script is shown as a meta row only when the
+mapping is unambiguous. RubyWidget resolves pinyin through displayPinyin, so
+the Taiwan reading reaches the page and a region flip correctly busts widget
+equality.
+
+Flashcards were the worst gap — StatsView drew rec.simplified, so a Taiwan
+learner was drilled on Simplified characters. They now show the encountered
+form, and read pinyin through the live dictionary rather than the record&amp;#39;s
+snapshot, which predates both the tone repair and the Taiwan field.
+
+Stats: the search box matched r.simplified only, so typing 學習 found nothing;
+it now matches every surface. The note-scope filter compared r.simplified
+against noteSurfaces, which holds raw token surfaces and is therefore
+traditional in a traditional note — scoped stats came back empty. It now
+matches on any surface. StatsView also gains invalidateCaches(), because
+refreshStatsViews() only re-renders and would otherwise keep serving
+note-scope surfaces and example sentences computed under the old trie.
+
+(loadTriageContext needed no change after all — it already tries every entry
+of rec.surfaces, so example sentences were being found in traditional notes.)
+
+AI: buildUserPrompt and buildRepairPrompt take the script, and the repair
+prompt no longer hardcodes &amp;quot;the exact simplified-Chinese surface form&amp;quot;. The
+clause asks for Taiwanese Mandarin usage rather than only Traditional glyphs
+— characters alone yield Mainland vocabulary in Traditional clothing, and
+CC-CEDICT carries both halves of every common pair (網路/網絡, 影片/視頻).
+
+validateStory accepts a target in either script, so a model that ignores the
+instruction is still scored on whether it used the word, and the generated
+note&amp;#39;s checklist ticks on either form so the boxes are truthful. The script
+check tests for the PRESENCE of traditional-only characters rather than the
+absence of simplified ones: 台, 只, 后 and 里 are simplified headwords yet
+entirely normal in Traditional writing, so the absence test is unreliable.
+Advisory only — a short story can legitimately contain none.
+
+Discoverability, three ways: the settings group, a one-tap &amp;quot;Traditional
+characters&amp;quot; toggle in the reading view&amp;#39;s overflow menu (which runs the full
+invalidation rather than the plain redecorate the colour checkboxes use), and
+a conservative one-time prompt when an opened note contains at least three
+traditional-only characters. The prompt never switches on its own.
+
+398 tests pass; lint 0 errors, 0 warnings; coverage 91.96% lines /
+80.11% branches; check-release 39 passed, 0 failed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — docs and version bump for the first release candidate
+
+Adds docs/traditional-chinese.md, linked from the new settings group via
+docLink() and from the README&amp;#39;s guide list, plus a short README section.
+
+The doc is explicit about the two things a Taiwan learner would otherwise
+discover the hard way: the Taiwan readings cover CC-CEDICT&amp;#39;s ~500
+idiosyncratic re-readings and NOT the neutral-tone difference you actually
+hear most (謝謝 xièxiè, 東西 dōngxī), and HSK is a Mainland standard so the
+colours, &amp;quot;Top HSK&amp;quot; label and story level are calibrated to a syllabus they do
+not use.
+
+It also explains why the plugin never converts between scripts, with the data
+behind it: 1,078 Simplified headwords map to more than one Traditional form,
+and with no frequency data the naive conversion gives 干 -&amp;gt; 乹 and 历 -&amp;gt; 厤.
+
+Version bumped once for the 0.6.0 target; later -rc.N tags leave it alone.
+
+check-release --tag 0.6.0-rc.1 --with-build: 40 passed, 0 failed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — fix regressions found in self-review of the Traditional work
+
+Four defects found reviewing the 0.6.0 branch against 0.5.1, three of them
+introduced by this branch.
+
+1. WordPopup could freeze after marking a word. refresh() read the surface
+   back out of the rendered headword and called vocab.bySurface() with it.
+   That was safe while the headword was always rec.simplified, but this
+   branch let displaySurface return the counterpart form for an unambiguous
+   mapping — a form the learner may never have encountered, and therefore
+   absent from rec.surfaces, which is what bySurface() falls back to
+   scanning. The popup now remembers the tapped surface and both renders and
+   re-reads by it, so the headword is exactly the characters on the page and
+   refresh() no longer depends on the DOM. Guarded by a test asserting that
+   displaySurface can legitimately return a form outside rec.surfaces.
+
+2. index() could throw on a hand-edited dictionary file. It now reads
+   e.definitions to extract the Taiwan reading, but the vault-side loader
+   only validates `simplified` and `pinyin`. A truncated or hand-written
+   .cci-dictionary.json entry would have thrown mid-load and taken the
+   plugin&amp;#39;s dictionary with it. extractTaiwanReading is now defensive about
+   a missing or non-string definitions list.
+
+3. pronunciationRegion had the same silent-path bug the script guard was
+   built to fix. It was handled only in the settings tab, so a region change
+   arriving via importSettings() or a remote SettingsMirror apply left the
+   RubyWidget&amp;#39;s snapshotted pinyin stale. Both settings now run through one
+   applyScriptSideEffects() guard, which rebuilds the trie only when the
+   script actually changed and drops cached tokens for either.
+
+4. The Words table still printed the raw r.pinyin snapshot, so it showed
+   pre-repair readings (nü3) and ignored the Taiwan region while the
+   flashcard, popup and detail modal all used the corrected path. It now
+   goes through displayPinyin like everything else. The table is capped at
+   500 rows, so the extra lookups are bounded.
+
+Also moved StatsView.invalidateCaches() out of the middle of the field
+declarations.
+
+Regression evidence against the real 125,052-entry dictionary:
+- lookup()[0] identical for all 198,106 surfaces, so no makeKey can move.
+- 0 entries whose canonical key changes after the pinyin repair.
+- 0 segmentation differences over 20,000 synthetic sentences in Simplified
+  mode, and 0 over the 109 CJK spans of the real vault note.
+- New upgradeRegression.test.ts covers the 0.5.1 -&amp;gt; 0.6.0 path: a record
+  keyed 女|nü53 re-keys to 女|nü3, an old-key and new-key pair for the same
+  word merge into one (strongest status wins, exposure counts summed)
+  rather than duplicating, untouched records are preserved byte for byte,
+  and a traditional surface still resolves to the same record.
+
+404 tests pass; lint 0 errors, 0 warnings; coverage 92.01% lines /
+80.71% branches; check-release 40 passed, 0 failed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — make the invalidation guard testable, and verify the wiring end to end
+
+The script/region invalidation decision was the subtlest thing on this
+branch and the only piece with no test, because it lived inside a method on
+CciPlugin that a unit test cannot stand up. Extracted to a pure
+planScriptChange() in settings/scriptChange.ts and covered, including the
+property that matters: whenever either setting actually moved, retokenize is
+never false. Getting that wrong repaints fresh colours over stale
+segmentation and reports nothing.
+
+The extraction also records the asymmetry explicitly — a script change
+rebuilds the trie because segmentation changes, a region change does not,
+but BOTH must drop cached tokens because RubyWidget snapshots its pinyin at
+construction time.
+
+Verified end to end against the real 125,052-entry dictionary, driving the
+actual DictionaryService + TokenizerService rather than the pieces:
+  - Simplified mode, traditional text: 台|灣|的|天|氣|很|熱|我|昨天|去|圖|書|館|學|習|中文
+  - After the flip:                    台灣|的|天氣|很|熱|我|昨天|去|圖書館|學習|中文
+  - Simplified text before vs after the flip: character-for-character identical
+  - Flipping back WITHOUT invalidate() returns the stale traditional
+    segmentation, which is direct evidence the guard is load-bearing rather
+    than defensive; invalidate() restores the correct result
+  - 垃圾 reads lā jī / lè sè by region through the real lookup path
+  - 女 indexes as nǚ and 九 as jiǔ with no dictionary re-download
+  - The detector answers true on the traditional sample and false on the
+    simplified one
+  - Whole run, including reading and parsing the 17 MB dictionary: 326 ms
+
+Also confirmed main.js is gitignored, so the release workflow&amp;#39;s clean build
+is what ships rather than a stale local artifact.
+
+410 tests pass; lint 0 errors, 0 warnings; check-release 40 passed, 0 failed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — don&amp;#39;t let the override migration touch the mirror before bootstrap
+
+Three sync-path defects found while deciding whether this was ready to
+prerelease. The first is the serious one.
+
+1. The onload override migration wrote through saveDictionaryUserData(),
+   which flushes via vocab.flushSave() and therefore SCHEDULES A MIRROR
+   WRITE. At that point bootstrapMirrorAfterLoad() has not run, so the vault
+   mirror still holds a remote envelope this device has never merged —
+   writing local-only vocabulary over it loses whatever another device had.
+   The 5s mirror debounce means bootstrap usually wins the race, but &amp;quot;usually&amp;quot;
+   is not a guarantee on a mobile device with stalled Nextcloud I/O, which is
+   exactly the environment this plugin documents elsewhere as hostile.
+   It now writes the plugin data blob directly and leaves the mirror alone;
+   the corrected keys reach it on the next natural write, after the merge.
+
+   The same call was also a floating promise. An unhandled rejection during
+   onload surfaces as Obsidian&amp;#39;s generic &amp;quot;plugin encountered an error while
+   loading&amp;quot; — the failure mode vocab.load() already carries a comment about.
+   Errors are now caught and logged; the migration is idempotent, so a failed
+   write just means it runs again next launch.
+
+2. Remote overrides bypassed the migration entirely. The onload pass only
+   sees this device&amp;#39;s own blob, but mergeMirroredDictionaryData() inserts
+   whatever the mirror holds verbatim — so a peer still on 0.5.1 would
+   re-introduce legacy keys after every sync, silently re-orphaning those
+   overrides. Incoming overrides are now migrated on the way in.
+
+3. Wired clearSurfaceCache() into all eight dictionary.reload() sites. This
+   is the pre-existing bug noted during review: reload() changes what
+   lookup() resolves a surface to, bySurface() memoises that, and nothing
+   ever cleared it — so a newly added custom word could keep resolving to a
+   cached miss until some unrelated vocabulary mutation happened to flush it.
+
+412 tests pass; lint 0 errors, 0 warnings; check-release 40 passed, 0 failed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+* 0.6.0 — never show a dictionary-guessed traditional form
+
+displaySurface() treated every entry of record.surfaces as a form the
+learner had actually read, and returned it before reaching the
+distinctTraditionalForms() === 1 ambiguity guard.
+
+surfaces is not that. VocabularyStore.ensure() seeds lookup(surface)[0]
+.traditional into it at record creation, and CC-CEDICT orders entries by
+codepoint rather than frequency, so entries[0].traditional is an obsolete
+or wrong-sense variant for 539 headwords — 346 of them single characters.
+Reading 干 in a Simplified note therefore produced surfaces [&amp;quot;干&amp;quot;,&amp;quot;乹&amp;quot;],
+and Traditional mode drilled the learner on 乹 across flashcards, the
+words table, story targets and the frontmatter checklist. Same for
+历 -&amp;gt; 厤, 里 -&amp;gt; 裏 (Hong Kong, not Taiwan) and 钟 -&amp;gt; 鍾 (the surname).
+
+Only surfaces[0] is evidence of an encounter — it is the form the word was
+first met in and is never seeded. Use it, and route everything else
+through the existing guard.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — keep the Words tab scoped across a script switch
+
+invalidateCaches() emptied noteSurfaces but never re-derived it, while
+noteScope survived. scopedRecords() only filters while noteSurfaces is
+non-empty, so a script change silently widened a note-scoped Words tab to
+the entire vocabulary with the scope selector still naming the note.
+
+Re-run setScope() when a scope is active, and move the call site in
+applyScriptSideEffects() below clearTokenCache() — re-deriving the scope
+re-tokenizes that note, which ahead of the clear would just read back the
+stale cached tokens. Also drops a typeof guard made redundant by the
+instanceof check next to it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — offer the re-index wherever a person changes the script
+
+Three paths let a user flip scriptVariant — the settings tab, the reading
+view&amp;#39;s overflow menu and the &amp;quot;this note looks Traditional&amp;quot; prompt — but
+only the first offered to re-index the vault, which is what makes word
+counts match the new script. Move the offer onto the plugin and call it
+from all three; deliberately not from applyScriptSideEffects(), so a
+remote settings-mirror apply stays silent on an idle device. Its button
+now uses the .cci-notice-actions wrapper the styles were written for.
+
+Also in this file: set lastAppliedScriptVariant / lastAppliedRegion before
+the accent-derivation save rather than after. saveSettingsSilently() runs
+applyScriptSideEffects() synchronously, so with a stored &amp;quot;traditional&amp;quot; the
+old order fired view refreshes during onload, before tokenizer and vocab
+exist. And drop a duplicated clearSurfaceCache() in
+mergeMirroredDictionaryData(). Restores persist()&amp;#39;s JSDoc, which the new
+method had displaced in SettingsTab.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — make the Taiwan pinyin override reachable, and label the surface honestly
+
+DictionaryOverride.pinyinTaiwan was read by DictionaryService.lookup() but
+nothing ever wrote it — there was no UI. Add the field to the dictionary
+editor in override mode, where displayPinyin() will pick it up whenever
+Pronunciation is set to Taiwan. Custom words have no Taiwan field, so the
+input is not offered there.
+
+The surface label was derived from the global scriptVariant, but override
+mode is opened with rec.surfaces[0] — the form the word was FIRST seen in,
+which can be Simplified while the plugin is set to Traditional. Read it off
+the entry instead, so the box is not labelled &amp;quot;traditional&amp;quot; over 学习.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+* 0.6.0 — correct the CC-CEDICT figures in comments and docs
+
+Measured against the shipped build (cedict_1_0_ts_utf-8_mdbg, 125,025
+entries) rather than restated. The ambiguity count was out by exactly 2x —
+1,078 counts the simplified/traditional pairs, not the headwords; 539
+headwords have more than one traditional form. Also: 125,025 entries not
+125,052, 1,069 legacy override keys not 1,066, ~1,280 (Tw) tags not 1,263,
+121k -&amp;gt; 198k trie keys not 121,275 -&amp;gt; 198,106.
+
+Rounded where the figure appears in prose, since it drifts with every
+CC-CEDICT release; the exact numbers stay in migrations.ts, which
+documents a one-time verification, now with the build named. The worked
+examples (干 -&amp;gt; 乹, 历 -&amp;gt; 厤, 里 -&amp;gt; 裏, 钟 -&amp;gt; 鍾, 发 -&amp;gt; 發) all check out and
+are unchanged.
+
+Verified in the same pass: migrateOverrideKey() maps all 1,069 moved keys
+with zero failures, and repairPinyin() is key-safe on every one of the
+125,025 entries.
+
+Also removes a filter in DictionaryService.native() that can never drop
+anything — index() only adds an entry to byTraditional when its traditional
+form differs from its simplified one, so the two lists are disjoint for any
+one surface.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019M5G8xgvZWbLzRPRQk58n5
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55a45a2cb1a98cee5eb41c4d6a643d7964ed4932</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/55a45a2cb1a98cee5eb41c4d6a643d7964ed4932"/>
+    <title>
+        0.6.0 — refresh Obsidian lint parity to eslint-plugin-obsidianmd 0.4.…
+    </title>
+    <updated>2026-09-09T07:21:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.6.0 — refresh Obsidian lint parity to eslint-plugin-obsidianmd 0.4.2 (#58)
+
+Step 0 of the 0.6.0 Traditional Chinese work: bring the local mirror of
+the Obsidian community-plugin auto-review up to the latest published rule
+set before any feature work lands, so every 0.6.0-rc.N is linted against
+the same rules the cloud review will run.
+
+eslint.config.mjs pulls obsidianmd.configs.recommended rather than
+enumerating rules, so the upgrade picks up new rules automatically:
+39 obsidianmd rules are now active out of the 41 shipped.
+
+npm run check-release -- --with-build: 39 passed, 0 failed,
+lint 0 errors / 0 warnings.
+
+
+Claude-Session: https://claude.ai/code/session_01QcoqjUfHtUJ7VAuSyAF99A
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/64d55eb57ddcd8deb65eb3459f8e987982197bab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/64d55eb57ddcd8deb65eb3459f8e987982197bab"/>
+    <title>
+        0.5.1 — no hanzi in the emoji line, pinyin beside characters in the s…
+    </title>
+    <updated>2026-08-16T05:51:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.5.1 — no hanzi in the emoji line, pinyin beside characters in the story (#55)
+
+Two rules added to the fixed mnemonic system prompt, so they also apply to
+users who have customised their own user template.
+
+The emoji line must not contain Chinese characters: the word itself is
+already displayed right next to the line on the card, so repeating the
+hanzi burns the 40-grapheme budget and weakens the cue — which matters
+more once the line can be rendered as a third annotation row. The
+existing &amp;quot;use a word only where no emoji can carry the idea&amp;quot; clause now
+says explicitly that it means an English word.
+
+The story must give tone-marked pinyin in parentheses every time it names
+a character. &amp;quot;The child 子 under a roof&amp;quot; is useless to a learner who
+cannot read 子 yet; it has to read &amp;quot;the child 子 (zǐ)&amp;quot;.
+
+Prompt-only by design. Stripping hanzi in the parser would also mangle a
+mnemonic the user typed by hand, and the editor already lets them correct
+any model slip.
+
+check-release --tag 0.5.1 --with-build --strict: 40 passed, 0 failed,
+0 warned; Obsidian-parity lint 0 errors / 0 warnings; 274 tests pass.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cf668a86b8d02154413c761f30915e1719ef93b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/cf668a86b8d02154413c761f30915e1719ef93b2"/>
+    <title>
+        0.5.1 — clear every Obsidian-checker warning (#54)
+    </title>
+    <updated>2026-08-16T05:38:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.5.1 — clear every Obsidian-checker warning (#54)
+
+The community-plugin review of 0.5.0 passed releases, dependencies and
+build verification but flagged 34 source findings. Our local gate reported
+none of them, which was the first thing to fix: we pinned
+eslint-plugin-obsidianmd 0.3.0 (35 rules, no prefer-create-el, no
+settings-definitions rule) and had switched off
+no-unnecessary-type-assertion under a comment claiming the cloud ignored
+it. Bumped to 0.4.1 and re-enabled the rule; local lint then reproduced
+the cloud&amp;#39;s findings exactly, and CI now emits a warning annotation
+whenever a newer checker is published so the mirror cannot drift again.
+
+Ten unnecessary type assertions removed. Twenty-three createElement call
+sites moved to Obsidian&amp;#39;s helpers: a parent&amp;#39;s createDiv/createSpan where
+one exists at creation time, the global helpers for detached nodes
+(CodeMirror widget toDOM, the popup root, toolbar menus). The rule&amp;#39;s
+autofix was not usable here — it rewrites activeDocument.createElement()
+to activeWindow.createSpan(), which does not exist.
+
+The settings tab is now declarative. getSettingDefinitions() describes
+every setting, which is what makes them findable from Obsidian&amp;#39;s settings
+search; display() is deleted because Obsidian skips it entirely for tabs
+that return definitions, and minAppVersion moves 1.8.7 → 1.13.0
+accordingly. Nested settings are addressed by dotted key through new
+getControlValue/setControlValue overrides (settingsPath.ts), with the API
+keys routed to the device-local key store via a secret: prefix so they
+still never touch data.json. Vault path fields use the built-in
+file/folder controls, which retires PathPickers. Blocks with no
+declarative equivalent — the formatting picker, status-priority list,
+OpenAI usage card, dictionary status — keep their existing imperative
+renderers behind render items.
+
+settingsCoverage.test.ts guards the rewrite: it asserts every leaf of
+DEFAULT_SETTINGS either has a control or is listed as deliberately
+managed elsewhere, that no control binds a path that does not exist, and
+that keys are unique. It surfaced that newWordBehavior and
+unknownWordBehavior are read nowhere in the plugin; they were absent from
+the old tab too, so the dead docs section describing them is removed
+rather than a dead control added.
+
+check-release --tag 0.5.1-rc.1 --with-build --strict: 40 passed, 0
+failed, 0 warned; Obsidian-parity lint 0 errors / 0 warnings; 272 tests
+pass (was 262).
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c611eb71060d5d00d02a04816d64a917c147c81c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/c611eb71060d5d00d02a04816d64a917c147c81c"/>
+    <title>
+        0.5.0 — provider-parity audit fixes before stable (#53)
+    </title>
+    <updated>2026-08-16T05:08:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.5.0 — provider-parity audit fixes before stable (#53)
+
+Pre-stable sweep after 0.5.0-rc.3, which was only tested against OpenAI.
+
+The AI wiring needs no change: every feature funnels through
+AiProviderService.chatJson, and MnemonicService calls it exactly like
+EnhanceDictionaryService and StoryGenerator do, so provider selection,
+endpoint shaping, streaming, timeouts and usage logging are inherited
+from paths Ollama already exercises. Three real edge cases came out of
+the audit.
+
+MNEMONIC_SCHEMA was invalid under json_schema strict mode. When the user
+picks Response format = json_schema, buildResponseFormat sends
+strict: true, which rejects an additionalProperties:false object with a
+property missing from `required`. `story` was optional, so OpenAI and the
+LiteLLM/vLLM proxies people front local models with would reject the
+request outright while Ollama&amp;#39;s lenient grammar conversion accepted it.
+Both properties are now required, matching the shape the system prompt
+already declares; the parser still treats a missing story as absent, so
+lenient providers are unaffected.
+
+Notices were buried by our own modals. liftModal puts our modal container
+at z-index 400, but Obsidian deliberately stacks --layer-notice above
+--layer-modal, so any Notice raised while one of our modals was open —
+the &amp;quot;Mnemonic failed&amp;quot; error, story-generation failures, the persistent
+[CCI AI] debug notice — rendered behind the modal dimmer. The notice
+container is lifted to 401 to restore Obsidian&amp;#39;s own ordering.
+
+Migrated mnemonics rendered as the literal placeholder &amp;quot;🧠 (story only)&amp;quot;,
+which after the v3 migration is the state of every pre-0.5.0 prose
+mnemonic. The collapsed row now previews the story itself, and the
+expand toggle is omitted when it would expand to identical text.
+
+Docs: README tour gains the reader text colors, and the two settings
+paths that skipped the &amp;quot;Advanced display&amp;quot; step are corrected.
+
+check-release --tag 0.5.0 --with-build --strict: 40 passed, 0 failed,
+0 warned; Obsidian-parity lint 0 errors / 0 warnings; 264 tests pass.
+Artifacts verified present: main.js, manifest.json, styles.css,
+versions.json, LICENSE.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9b5739d21e4ac9a5d67b3eab9c4afdfda3b4db6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/c9b5739d21e4ac9a5d67b3eab9c4afdfda3b4db6"/>
+    <title>
+        0.5.0 — one Mnemonic button, emoji-first two-field mnemonics (#52)
+    </title>
+    <updated>2026-08-16T04:51:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.5.0 — one Mnemonic button, emoji-first two-field mnemonics (#52)
+
+Follow-up to 0.5.0-rc.2 testing.
+
+Modal layering, properly this time. rc.2 lifted only MnemonicModal, so
+the manual &amp;quot;Mnemonic…&amp;quot; prompt (a bare Modal from confirmInput) still
+opened behind the word card. The cause is structural: .cci-popup (100),
+.cci-bottom-sheet (200) and .cci-overflow (300) all outrank Obsidian&amp;#39;s
+--layer-modal, so any modal opened over them is trapped. A liftModal()
+helper now tags every modal this plugin opens — confirmAsync, promptAsync,
+EditDictionaryModal, GenerateStoryModal, SettingsConflictModal,
+MnemonicModal — with the .cci-modal-front container class.
+
+The two mnemonic buttons collapse into one. &amp;quot;Mnemonic&amp;quot; opens an editor
+with two fields: a short emoji line (mnemonic.text) and a story
+(mnemonic.story). &amp;quot;Generate with AI&amp;quot; fills both in place instead of
+locking the result behind a preview, so the user can edit it, reroll, or
+discard; nothing persists until Save, and clearing both fields deletes
+the mnemonic.
+
+The emoji line is capped at 40 graphemes because a future release may
+render it as a third annotation line in place of the English gloss, where
+prose would not fit. The system prompt now asks for an emoji sequence
+encoding components, tone and meaning, with words only where no emoji can
+carry the idea, plus a story that unpacks it. Clamping counts graphemes
+via Intl.Segmenter so a cut never lands inside a surrogate pair or a ZWJ
+emoji, and never leaves a dangling joiner.
+
+Existing mnemonics are migrated, not destroyed: schema v3 moves a text
+too long to be a line into the story field, and only when story is empty
+— a record that already has a story keeps both verbatim.
+mnemonic.updatedAt is left alone so two-device conflict resolution is
+unaffected, and the migration is idempotent and runs on mirror-absorb and
+import as well as on load, so a device still on rc.2 cannot undo it.
+
+The card now shows the emoji line whenever one exists, clamped to two
+lines, with the story behind a toggle.
+
+check-release --with-build --strict: 40 passed, 0 failed, 0 warned;
+Obsidian-parity lint 0 errors / 0 warnings; 262 tests pass.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4c6c41f10b1376793001c75612203d5ec5c50a70</id>
+    <link type="text/html" rel="alternate" href="https://github.com/davadev/obsidian_chinese_comprehensible_input/commit/4c6c41f10b1376793001c75612203d5ec5c50a70"/>
+    <title>
+        0.5.0 — fix mnemonic modal layering and text-color picker visibility …
+    </title>
+    <updated>2026-08-16T04:24:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67618972?s=30&amp;v=4"/>
+    <author>
+      <name>davadev</name>
+      <uri>https://github.com/davadev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.5.0 — fix mnemonic modal layering and text-color picker visibility (#51)
+
+Two defects found testing 0.5.0-rc.1.
+
+Mnemonic modal was trapped behind the word popup, making it impossible to
+interact with. Cause: .cci-popup (z-index 100) and, on mobile,
+.cci-bottom-sheet (200) sit above Obsidian&amp;#39;s --layer-modal, so any modal
+opened while the card is up renders underneath. openDictionaryEditor
+never hit this because it closes the popup right after .open(); the
+mnemonic action omitted that. It now closes the popup the same way, and
+MnemonicModal additionally tags its own container with .cci-modal-front
+(z-index 400) so it also clears the toolbar overflow menu. The dead
+onDone callback goes away with the popup it used to refresh.
+
+The three text-color pickers were rendered only after the enable toggle
+was switched on, so an expanded &amp;quot;Advanced display&amp;quot; section showed a lone
+toggle and nothing else — the feature read as missing. Pickers and the
+reset button now always render; the toggle only decides whether they take
+effect. Reset writes straight into the live controls instead of
+rerendering the tab, which used to collapse the enclosing details
+element.
+
+check-release --with-build --strict: 40 passed, 0 failed, 0 warned;
+Obsidian-parity lint 0 errors / 0 warnings; 249 tests pass.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

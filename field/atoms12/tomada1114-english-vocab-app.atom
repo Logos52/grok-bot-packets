@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/tomada1114/english-vocab-app/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/tomada1114/english-vocab-app/commits/main.atom"/>
+  <title>Recent Commits to english-vocab-app:main</title>
+  <updated>2026-09-11T22:38:08Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cfcbcee691f17af2770fea1f1c6699665c21eaf7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/cfcbcee691f17af2770fea1f1c6699665c21eaf7"/>
+    <title>
+        feat: add the card Lint, its thresholds, pnpm cards:lint and the CI g…
+    </title>
+    <updated>2026-09-11T22:38:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the card Lint, its thresholds, pnpm cards:lint and the CI gate over data/ (#29)
+
+* feat: add the card Lint, its thresholds and the data/ gate
+
+Every rule id in card-data.md&amp;#39;s Lint table, ported from tomada-routine&amp;#39;s
+validate_phrase_cards.py and cardgate.py with the gloss_ja rules dropped,
+E_EXAMPLES_IDENTICAL added and E_HAS_CJK widened to every field.
+
+Findings are plain data, never thrown: severity is read off the rule id, so
+the two cannot disagree. Thresholds live only in lint-config.ts, which the
+boundary tests import rather than repeating a number.
+src/server/card-lint.ts is the one entry point that reads a directory, and
+tests/card-data.test.ts lints the committed data/ tree inside pnpm test, so
+CI blocks an ERROR. pnpm cards:lint runs that suite alone.
+
+Closes #3
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* test: cover the inflection paths the Lint accepts
+
+`rubbed` for `rub` and `joking` for `joke` are the two suffix repairs the
+ported `_word_variants` makes, and neither had a case. The doubled-consonant
+check moves to a regex in the same pass: reading the last character back with
+`at()` left an `undefined` branch no input can reach, which coverage counted
+against the file forever.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb64e5ecd4d3f4e117f9aeb61a0e694769e410a2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/bb64e5ecd4d3f4e117f9aeb61a0e694769e410a2"/>
+    <title>
+        feat: add the study session end to end — session, review and end APIs…
+    </title>
+    <updated>2026-09-11T22:02:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the study session end to end — session, review and end APIs, the study screen and the summary (#26)
+
+* feat: add the session, review and end APIs behind a composition root
+
+The first Route Handlers this repository ships, and the first place the
+environment, the database and a handler are joined.
+
+Each handler is a `create&amp;lt;Name&amp;gt;Handler(dependencies)` factory under
+`src/server/handlers/`, taking its store, its deck and its clock as
+arguments, so a test drives it with a plain `new Request(...)` against
+`:memory:`. `src/server/composition.ts` is the one file that chooses the
+concrete three: it reads `VOCAB_DB_PATH` through `src/server/env.ts`,
+opens the database once per process — lazily, so a route module imported
+during `next build` creates no file — and each route under
+`src/app/api/sessions/` is a single re-export line over what it built.
+
+The session id of the two `[id]` routes is read off the request&amp;#39;s own
+URL rather than taken as a second argument, which is what keeps every
+handler `Request`-only and every route file logic-free.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* feat: add the study screen and the session summary
+
+`/[locale]/study` opens a session on mount, shows a card&amp;#39;s definition and
+cloze, reveals the headword and both examples on Space or Enter, rates it
+with 1-4 or the four buttons, and keeps a remaining count. A card the
+review answer requeues goes back to the end of the local queue — the
+20-minute learn-ahead rule stated once in `src/core/session.ts` and read
+from both sides. Esc, or an empty queue, ends the session and moves to
+`/[locale]/sessions/[id]`, which reports the ratings recorded and the
+change in remembered-now. Its daily curve is issue #10&amp;#39;s.
+
+Only `study-session.tsx` carries `&amp;quot;use client&amp;quot;`; the page above it stays
+a Server Component, and the summary page opts its own route out of the
+locale layout&amp;#39;s `force-static` because it is a database read.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* test: cover the session-id path read and an unknown stored phase
+
+Three branches of `session-context.ts` the handler suite reached only one
+side of: a path segment that is not a number, the same id read through a
+trailing slash, and a `card_state` row whose phase is outside the four
+FSRS knows — which must degrade to New rather than end the session it
+turns up in.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* fix: correct the study session&amp;#39;s client/server field mismatch and dedupe id parsing
+
+Code review found the client&amp;#39;s OpenSession type naming the session id field
+`id` while the server actually answers `sessionId` — an unnoticed mismatch
+because the test&amp;#39;s fetch stub fabricated the wrong client shape instead of
+the real handler response, so every existing test passed while the whole
+study flow was broken end to end in production. Renamed the field
+consistently across the client, the study page and the test stub.
+
+Also extracts session-context.ts&amp;#39;s session-id validation into a shared
+parseSessionId, so the summary page and the handlers cannot silently
+disagree on what counts as a valid id.
+
+Two lower-severity findings from the same review are deferred: repeated
+full-table Store reads on the review hot path (#27), and the corrupted-state
+handling in toPhase, which needs a design decision (#28).
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ff32b607235152c09b173a0501b14259a9ad541</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/6ff32b607235152c09b173a0501b14259a9ad541"/>
+    <title>
+        feat: add scope filtering, the IELTS→CEFR target table and the progre…
+    </title>
+    <updated>2026-09-11T21:17:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add scope filtering, the IELTS→CEFR target table and the progress math (#24)
+
+* feat: add scope filtering and the IELTS to CEFR target table
+
+`src/core/scope.ts` holds the Scope type and its strict zod schema, the
+IELTS band to CEFR table written out band by band, `targetLevels` (the
+band&amp;#39;s level plus the one below it) and `inScope`, the four conditions
+that decide whether a card is one a scope selects.
+
+The table is an `as const satisfies Record&amp;lt;IeltsScore, Level&amp;gt;` rather
+than a set of ranges, so a band added to IELTS_SCORES fails to compile
+until it is mapped.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* feat: add the progress math behind every number a scope shows
+
+`src/core/progress.ts` adds `rememberedNow` (the sum of the FSRS recall
+probability over the reviewed, non-retired cards in scope),
+`unlearnedCount`, `targetRatio`, and `dailyCurve` — one point per study
+day from the first in-scope review&amp;#39;s day to today, each at that day&amp;#39;s
+04:00 rollover, with today&amp;#39;s point taken at now so the last point always
+equals remembered now.
+
+Every figure is recomputed from the review history, never snapshotted,
+which is what lets a scope the owner has never selected before show the
+same history as one they have always used. The curve walks the ratings
+once in time order alongside the days, so the 3,000 cards over 365 days
+the design budgets for stay one closed-form evaluation per card per day.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/221fd3e79a641ba07fe9bf0ee45eef5009b36188</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/221fd3e79a641ba07fe9bf0ee45eef5009b36188"/>
+    <title>
+        feat: add the session queue (due-first, quota, learn-ahead requeue) (…
+    </title>
+    <updated>2026-09-11T20:54:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the session queue (due-first, quota, learn-ahead requeue) (#23)
+
+Pure session-queue algorithm for issue #7: `buildQueue` orders due-today
+reviewed cards ahead of new cards drawn against the daily quota,
+`afterRating` requeues or drops a card by the 20-minute learn-ahead
+window, and `nextCard` serves the queue without stalling on a learning
+step&amp;#39;s timer. Design settled in
+`.agents/skills/building-the-vocab-app/references/storage-and-scheduling.md`
+§ &amp;quot;The session queue&amp;quot;.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d6bc330e18f05f554d5c14c49db2f7786b74d215</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/d6bc330e18f05f554d5c14c49db2f7786b74d215"/>
+    <title>
+        feat: add ts-fsrs and the scheduler wrapper with the 04:00 rollover (…
+    </title>
+    <updated>2026-09-11T20:38:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add ts-fsrs and the scheduler wrapper with the 04:00 rollover (#22)
+
+`src/core/scheduler.ts` is the only module that imports `ts-fsrs`, and it
+publishes plain numbers: a `Rating` union, a `SchedulerState` mirroring the
+`card_state` table with every instant an epoch-millisecond number, and
+`rate`/`retrievability`/`dayBounds` over them. Swapping the library is
+therefore a bounded edit, and `tests/boundaries.test.ts` holds that to one
+importer the same way it holds `node:sqlite` to `src/server/db/`.
+
+The FSRS parameters are the ones settled in `building-the-vocab-app`&amp;#39;s
+storage-and-scheduling reference — 90% requested retention, fuzz on, short-term
+scheduling on — with the weights and the (re)learning steps left at ts-fsrs&amp;#39;s
+defaults. Fuzz is seeded from the card and the review time, so `rate` answers
+the same for the same arguments.
+
+`dayBounds` reads both ends of a study day off the zone&amp;#39;s wall clock rather
+than deriving one from the other, so a day across a DST change is 23 or 25
+hours long rather than silently shifting the rollover.
+
+`ts-fsrs` is declared as a SemVer range, per `managing-dependencies`; 5.4.2 is
+MIT, has no runtime dependencies of its own, and was published on 2026-09-01,
+past the `minimumReleaseAge` cooldown.
+
+Closes #5
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29a13f1f6e400f3002f36bb14593ca79f8f05ba6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/29a13f1f6e400f3002f36bb14593ca79f8f05ba6"/>
+    <title>
+        docs: add the reviewing-cards skill — blind answer and perspective re…
+    </title>
+    <updated>2026-09-11T20:14:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add the reviewing-cards skill — blind answer and perspective review (#20)
+
+* docs: add the reviewing-cards skill and its two lenses
+
+The mechanical Lint sees only shape, so whether a front has exactly one
+answer is reviewed by an independent run instead. The doctrine is adapted
+from tomada-routine&amp;#39;s anki-router review-doctrine.md and the
+anki-vocabulary section of short-form-review.md: pass only the criteria
+text and the cards, ask for violations, return only failing cards, DROP
+beats FIX, and DROP is advice the calling session decides on.
+
+The blind-answer run is handed the definition and the cloze alone — not
+even the card id, which is derived from the headword — and returns the
+words that fit; the caller compares that list against the real headword.
+The perspective run sees the whole card and the existing card list, and
+holds five criteria: answer leak by paraphrase, example quality,
+disguised echo, overlapping examples, duplicate synonym.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* test: assert the reviewing-cards prompts and output shape
+
+A skill that is pasted into another run is a contract: the blind-answer
+template must be fed the definition and the cloze and nothing else, each
+perspective criterion must reach the run with its text rather than its
+name, and the worked outputs in SKILL.md must match the shape the calling
+session parses. agents:check only proves the mirror matches and the
+frontmatter suite only reads frontmatter, so none of that had a gate.
+
+The suite joins the automation project: it asserts against files on disk
+rather than against imported code.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* fix: correct two self-contradictions in the blind-answer lens doc
+
+Code review found the doc claiming the run &amp;quot;does not decide the card&amp;#39;s fate&amp;quot;
+when its own prompt spec has it emit a self-judged FIX/DROP for every
+ambiguous or empty word list, and claiming the table&amp;#39;s last two rows
+(Empty, Only true synonyms) are the ones needing the caller&amp;#39;s headword
+knowledge, when both are already self-flagged by the run — the row that
+actually needs the caller is the third one, where a single wrong word
+produces no finding at all and silently looks like a pass.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/71689d8e7991cbb64e57df2877547097098a0d41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/71689d8e7991cbb64e57df2877547097098a0d41"/>
+    <title>
+        feat: add the SQLite store — node:sqlite connection, migrations and q…
+    </title>
+    <updated>2026-09-11T20:00:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the SQLite store — node:sqlite connection, migrations and queries (#18)
+
+* feat: add the SQLite store under src/server/db/
+
+Opens a node:sqlite DatabaseSync in WAL mode with the migrations applied on
+open, creates card_state, review_log, session and setting exactly as
+storage-and-scheduling.md&amp;#39;s &amp;quot;The database&amp;quot; states them, and binds the query
+surface every later storage-touching issue calls.
+
+The migration list is ordered SQL tracked by PRAGMA user_version and applied
+inside one transaction, so a file is never left half-migrated. The tables are
+STRICT, which is what makes a row readable back as the record it was written
+from: an INTEGER epoch-millisecond column cannot quietly hold a fraction.
+One rating is one transaction — the card_state upsert and the review_log
+insert land together or not at all.
+
+tests/boundaries.test.ts now holds node:sqlite to src/server/db/ from the
+module graph, so no page or handler can open a second connection without the
+pragmas openDatabase applies.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* feat: add the optional VOCAB_DB_PATH setting
+
+Declares where the SQLite store lives, defaulting to the gitignored
+.data/english-vocab.sqlite. Unlike the other name env.ts reads, an absent or
+blank value resolves to that default rather than to undefined: there is always
+a database, and a caller supplying the fallback itself would be the second
+place the path is written down.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* test: cover the guarded rollback in withTransaction
+
+A ROLLBACK with no transaction open raises, so the guard is what keeps the
+caller&amp;#39;s own failure from being replaced by one about transaction state.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* fix: harden the SQLite store against nesting, corruption and unserializable values
+
+Code review (high effort) on the storage layer turned up seven real gaps:
+withTransaction had no reentrancy guard and its rollback checks could mask the
+original failure with a secondary one; openDatabase never set a busy timeout,
+contradicting its own WAL rationale; toJson only guarded JSON.stringify
+returning undefined, not it raising for a circular reference or a BigInt;
+readUserVersion could return a negative version that MIGRATIONS.slice would
+silently misread, and a failure there escaped the DatabaseError contract.
+
+Also splits the single ERR_DB_VALUE_INVALID code into three
+(ERR_DB_VALUE_UNSERIALIZABLE, ERR_DB_VALUE_CORRUPT,
+ERR_DB_VALUE_SCHEMA_MISMATCH) so a caller can tell an unserializable input
+from a corrupted file from a stale schema.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/87bfa9198fe67e34d93d70beaef5bab094a1fd42</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/87bfa9198fe67e34d93d70beaef5bab094a1fd42"/>
+    <title>
+        feat: add the card schema, id derivation, topic/purpose lists and the…
+    </title>
+    <updated>2026-09-11T18:41:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the card schema, id derivation, topic/purpose lists and the card loader (#17)
+
+* feat: add the card schema, id derivation and the data lists
+
+A strict zod schema for one vocabulary card, matching the field table in
+`building-the-vocab-app`&amp;#39;s card-data reference, plus the `cardId` derivation
+that turns a card&amp;#39;s `(headword, pos)` key into its id and its file name.
+
+The committed lists come with it: the 15 topic ids and the single `ielts`
+purpose, beside the empty `data/cards/` tree the generator will fill. Topic
+and purpose membership, and every rule about a card&amp;#39;s text, belong to the
+Lint rather than to the schema.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* feat: add the card loader, the only reader of data/
+
+`loadCards` returns every card a directory holds beside one error per file
+that is not one — unreadable, not JSON, off-schema, or named something other
+than the id it declares — and never throws, so one bad file cannot hide the
+cards beside it or end the page that asked for them.
+
+`loadLists` throws instead, because a missing or malformed topic or purpose
+list leaves no vocabulary to build a scope out of at all: a repository
+mistake with no caller-side recovery, read the way `src/server/env.ts` reads
+the environment.
+
+Its suite joins `automationTests` because it reads the disk, including the
+committed `data/` tree, which is what makes a malformed list file fail CI
+rather than the first page that asks for one.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK
+
+* test: cover the unreadable purpose list beside a readable topic list
+
+The only branch of the loader no case reached: `loadLists` reports the second
+list file when the first one read cleanly.
+
+Claude-Session: https://claude.ai/code/session_01DFx7GEDTyxoPhqjr85cskK&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c12f51feb7242a95f24ab47f72cb8e74cf168330</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/c12f51feb7242a95f24ab47f72cb8e74cf168330"/>
+    <title>
+        docs: add the building-the-vocab-app skill with the settled design
+    </title>
+    <updated>2026-09-11T16:44:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add the building-the-vocab-app skill with the settled design
+
+Record the design agreed with the owner before any feature work: card JSON
+(one file per card, strict schema, derived ids), the card Lint in src/core
+gated by CI, the node:sqlite store and its four tables, ts-fsrs scheduling
+with in-session learning steps, the session queue, scope filtering, the
+recomputed progress curve, the screens, and why card generation is run by
+the owner rather than shipped as an issue. Route it from AGENTS.md.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a31f13ceb2ebbbcde18bca261ea0ff9a72c7263</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/8a31f13ceb2ebbbcde18bca261ea0ff9a72c7263"/>
+    <title>
+        ci: add Claude Code review and @claude mention workflows
+    </title>
+    <updated>2026-09-11T16:40:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: add Claude Code review and @claude mention workflows
+
+Add claude-code-review.yml, running on every non-fork, non-Dependabot
+pull request, and claude.yml, running on an @claude mention in an
+issue or pull request comment/review. Both pin
+anthropics/claude-code-action to a commit SHA, declare empty
+top-level permissions with a narrow per-job grant, and trade an OIDC
+token (id-token: write) for a Claude GitHub App token rather than
+carrying a GITHUB_TOKEN write scope. The review prompt reads
+AGENTS.md&amp;#39;s Skills table and the skill owning each changed file
+directly, since the code-review plugin audits CLAUDE.md only.
+
+Register both files in tests/workflows.test.ts&amp;#39;s workflow and writer
+lists and note the writers-list exception in changing-gates for a
+workflow whose only write is id-token: write.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f4c3a7baea9ba26c383f018a719146766907ef54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/f4c3a7baea9ba26c383f018a719146766907ef54"/>
+    <title>
+        feat: add the model: light label and its triage rule
+    </title>
+    <updated>2026-09-11T16:31:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the model: light label and its triage rule
+
+Declare model: light in .github/labels.yml and define in triaging-issues
+when it applies: design settled, one small PR following an existing
+pattern, and a mechanical close condition with nothing foundational or
+quality-judged left. It is independent of priority and blocked: dependency,
+and lets automation route these issues to a lighter model.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5886578de0130262bc456414f15447e6a7f414d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/5886578de0130262bc456414f15447e6a7f414d7"/>
+    <title>
+        feat: rewrite the home page demo copy for this app
+    </title>
+    <updated>2026-09-11T16:29:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: rewrite the home page demo copy for this app
+
+Replace HomePage.intro with copy describing this app instead of the App
+Router skeleton, and drop HomePage.localeCount and the now-unused
+LocaleSwitcher catalog entries — the app ships a single locale and no
+switcher. The keys go from messages/en.json, the page that rendered them,
+and tests/messages.test.ts&amp;#39;s MESSAGE_KEYS; tests/home-page.test.tsx
+asserts the new intro.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd9771cd0f7ac6aaf8b4651f1620f555dc63f5a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/fd9771cd0f7ac6aaf8b4651f1620f555dc63f5a1"/>
+    <title>
+        chore: drop the ja locale, ship English-only for now
+    </title>
+    <updated>2026-09-11T16:25:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: drop the ja locale, ship English-only for now
+
+The app ships only en per starting-an-app&amp;#39;s locale decision: LOCALES becomes
+[&amp;quot;en&amp;quot;], messages/ja.json is deleted, the home page&amp;#39;s locale-switcher nav and
+the layout&amp;#39;s alternates.languages self-alternate go with it. The
+/[locale]/ tree, next-intl and src/i18n/ stay as they are so ja can return
+by reverting this change. / still redirects to /en (localePrefix stays
+&amp;quot;always&amp;quot;).
+
+Also fixes two stale AI-layer mentions in AGENTS.md and
+updating-docs/SKILL.md, and two guard-rule test comments that referenced
+the now-deleted ai-layer-removal suite, all missed by task 1&amp;#39;s removal
+because none of them carried one of its needles.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0cc099a070dec0e052fca1ae791cb64017db4414</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/0cc099a070dec0e052fca1ae791cb64017db4414"/>
+    <title>
+        chore: remove the AI layer whole
+    </title>
+    <updated>2026-09-11T16:11:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: remove the AI layer whole
+
+This app runs no language model at runtime, so the port, its adapters, the
+/api/ask route, and the composition root that wired them all come out in one
+piece, per starting-an-app&amp;#39;s removal procedure. src/server/http.ts survives
+as the route&amp;#39;s Web-standard body-reading helper; tests/server-http.test.ts
+covers it directly now that its only caller is gone.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05f73d7fb55e91ec6d9a05cb5a5de1a638ec8084</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/05f73d7fb55e91ec6d9a05cb5a5de1a638ec8084"/>
+    <title>
+        chore: replace template identity strings with this app&#39;s
+    </title>
+    <updated>2026-09-11T15:42:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: replace template identity strings with this app&amp;#39;s
+
+Rename the package, the repository slug, the copyright holder and the
+localized display name and description from the nextjs-app-template
+placeholders to english-vocab-app&amp;#39;s own, and empty EXPECTED_INVENTORY now
+that no site remains.
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/476630c7d74d8b476c8c7f759ab5cdb0c8058503</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tomada1114/english-vocab-app/commit/476630c7d74d8b476c8c7f759ab5cdb0c8058503"/>
+    <title>
+        chore: start from nextjs-app-template@4c2de0a
+    </title>
+    <updated>2026-09-11T15:40:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68495563?s=30&amp;v=4"/>
+    <author>
+      <name>tomada1114</name>
+      <uri>https://github.com/tomada1114</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: start from nextjs-app-template@4c2de0a
+
+Claude-Session: https://claude.ai/code/session_01T2jtxbV7PH2xjkoPncWonB&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

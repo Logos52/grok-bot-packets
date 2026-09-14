@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/tobiaslrn/monosai/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/tobiaslrn/monosai/commits/main.atom"/>
+  <title>Recent Commits to monosai:main</title>
+  <updated>2026-09-11T22:56:24Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abdbccf24e1b5c8623adf7ad7eda00c372bd7afe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/abdbccf24e1b5c8623adf7ad7eda00c372bd7afe"/>
+    <title>
+        build(repo): make cloud sessions able to run the project&#39;s own commands
+    </title>
+    <updated>2026-09-11T22:56:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(repo): make cloud sessions able to run the project&amp;#39;s own commands
+
+A Claude Code cloud session started on an image whose Node predates `.nvmrc`, with no installed
+dependencies and a Playwright browser of the wrong build behind a blocked download CDN, so neither
+the test suites nor the browser lane could run at all. A SessionStart hook now selects the pinned
+Node, installs `web` dependencies when the clone has none, and points Playwright at the browser the
+sandbox does provide; it is inert locally and a no-op once the environment&amp;#39;s setup script, kept
+here as a reference copy, has put the same things in the cached snapshot.
+
+The browser override is read from an environment variable the hook sets only when the pinned build
+is genuinely absent, so CI and local runs resolve their own browser unchanged.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_015G6CFFhotuZmHyejMqgWKV&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b0d2be9eac45c7e60b33aea797bdc472ad29084</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/5b0d2be9eac45c7e60b33aea797bdc472ad29084"/>
+    <title>
+        revert(repo): return to a single library home without tabs
+    </title>
+    <updated>2026-09-11T22:18:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;revert(repo): return to a single library home without tabs
+
+Undoes the home/library/settings tab split and the desktop site header, restoring the tree to
+1a052e8 - the last commit whose CI run passed on main. The reverted work is preserved on
+claude/homepage-library-split-revert-45x5lg and can be reapplied once it is green.
+
+This reverts 69021d7..7c8f08b, and with them ADR 0070 and ADR 0071.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01A5PpZ9DW2nNWPos6P1g95S&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c8f08bb5a4a71b19ee10bcd3e2e003ad6f4a246</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/7c8f08bb5a4a71b19ee10bcd3e2e003ad6f4a246"/>
+    <title>
+        feat(repo): make the wide header a site header with a home mark
+    </title>
+    <updated>2026-09-11T18:43:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(repo): make the wide header a site header with a home mark
+
+On a wide screen the Monosai mark and wordmark are the link home, so the header drops its Home tab;
+Library, Settings and Help follow as labelled places, and the current one is marked by a rule on
+the bar&amp;#39;s edge rather than a filled pill. On a phone the docked tabs are unchanged and Home&amp;#39;s Help
+gains its label. Recorded in ADR 0071, which amends ADR 0070.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42f00850eb87234d85e1d26c1c61527b09d60fdc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/42f00850eb87234d85e1d26c1c61527b09d60fdc"/>
+    <title>
+        feat(repo): keep one site header across the tab pages on desktop
+    </title>
+    <updated>2026-09-11T18:27:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(repo): keep one site header across the tab pages on desktop
+
+On a wide screen Home, Library and Settings now wear the same bar, the way a website does: the
+Monosai mark and wordmark, then Home, Library and Settings at the bar&amp;#39;s end, then Help. The tabs were
+centred and the brand and Help appeared on Home alone, so the header looked different on every tab.
+Phones keep their bottom tab bar and Home-only Help, and Help&amp;#39;s Back returns to the tab that opened
+it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d74a2a3dac9505060a0b317d4998a7ad0c28568d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/d74a2a3dac9505060a0b317d4998a7ad0c28568d"/>
+    <title>
+        test(repo): cover tab navigation between home, library and settings
+    </title>
+    <updated>2026-09-11T18:27:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(repo): cover tab navigation between home, library and settings
+
+A new smoke journey opens on Home, switches between the three tabs with aria-current following, starts
+either kind of story in one tap, and leaves the reader without a tab bar, on desktop and Android.
+Existing journeys now land on Home, start stories from its direct links, reach the shelf through the
+Library tab, and go back to Home from Paste text, Write with AI and a story opened there. The two
+pages below Words and level lose their last &amp;quot;what you can read&amp;quot; label.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aebf140ba8fc1b47ce25fed63b4e5afd7c10cf66</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/aebf140ba8fc1b47ce25fed63b4e5afd7c10cf66"/>
+    <title>
+        feat(library): preview reading progress with sample figures
+    </title>
+    <updated>2026-09-11T18:07:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(library): preview reading progress with sample figures
+
+Home continues the story opened most recently, found through the existing lastOpenedAt index, and
+shows three reading figures and a sixteen-week streak calendar. Everything not yet recorded is a
+placeholder under a Sample pill, and both groups wait until a story has been opened. Library rows
+say Read or New, with opening standing in for reaching the end until that is recorded.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa70b7c2c8400ca1e538b7029a2c433bbfe391e1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/fa70b7c2c8400ca1e538b7029a2c433bbfe391e1"/>
+    <title>
+        feat(vocabulary): name the profile page words and level
+    </title>
+    <updated>2026-09-11T17:55:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocabulary): name the profile page words and level
+
+Settings&amp;#39; first row and the page it opens are both called Words and level, and the row now
+names where the words came from. The page goes back to Home or Settings, whichever opened it,
+and to Settings for a link from outside.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6fa63e01528e4c8b760f35458c7fb12c4da7c18c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/6fa63e01528e4c8b760f35458c7fb12c4da7c18c"/>
+    <title>
+        feat(repo): navigate between home, library and settings with tabs
+    </title>
+    <updated>2026-09-11T17:52:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(repo): navigate between home, library and settings with tabs
+
+Below the wide breakpoint the shell docks the three tabs to the bottom edge of a tab page and
+reserves their height; from the wide breakpoint up each tab page centres them in its own bar.
+Library and Settings keep their heading only for assistive technology, Help becomes an icon on
+Home, and Settings keeps Back to story when the generate form sent the learner there.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18454e483ce226080c95709702fa20092848b1a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/18454e483ce226080c95709702fa20092848b1a7"/>
+    <title>
+        feat(library): give stories their own tab and start on a home screen
+    </title>
+    <updated>2026-09-11T17:44:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(library): give stories their own tab and start on a home screen
+
+Home opens at the root with the standing line, Write with AI and Paste text as direct links, the
+stories being written, and the first-run introduction. The Library keeps only the shelf, with its
+filters always visible. Paste text, Write with AI and Help now go back to Home; the reader returns
+to whichever page opened it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69021d709b578766f35130908a8b01169d947c3b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/69021d709b578766f35130908a8b01169d947c3b"/>
+    <title>
+        docs(repo): adopt home, library and settings tabs
+    </title>
+    <updated>2026-09-11T17:37:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(repo): adopt home, library and settings tabs
+
+Record the split of the start screen from the shelf, the tab bar that reverses ADR 0069&amp;#39;s
+rejection of bottom navigation, and the temporary sample figures on Home.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a052e8b7eb7a1c8fa9f6c0494e840f043ab21ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/1a052e8b7eb7a1c8fa9f6c0494e840f043ab21ff"/>
+    <title>
+        fix(pwa): keep status bar icons readable in the installed app
+    </title>
+    <updated>2026-09-11T16:43:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(pwa): keep status bar icons readable in the installed app
+
+Installed Android apps paint the status bar from the manifest colour but choose icon contrast
+from the page&amp;#39;s theme-color. Following the theme at runtime left dark icons on the dark bar in
+light mode, so theme-color now stays at the manifest&amp;#39;s dark value and the runtime sync is gone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/98b41dfd00d300d3d764d593a240f7a8f602a2a2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/98b41dfd00d300d3d764d593a240f7a8f602a2a2"/>
+    <title>
+        fix(pwa): darken the installed app&#39;s status bar under a dark system
+    </title>
+    <updated>2026-09-11T16:33:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(pwa): darken the installed app&amp;#39;s status bar under a dark system
+
+Chrome on Android ignores theme-color for installed apps while the system is dark and falls
+back to the manifest colour, so the manifest now carries the dark canvas. In a light system the
+page&amp;#39;s theme-color still wins and keeps the bar light.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/731e9e6e46fe58d6af7600fe64cad46e569edeb7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/731e9e6e46fe58d6af7600fe64cad46e569edeb7"/>
+    <title>
+        fix(library): show the home illustration undimmed in dark mode
+    </title>
+    <updated>2026-09-11T16:29:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(library): show the home illustration undimmed in dark mode
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/883fe452349b1627de3cf46cf26bd03547b7088d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/883fe452349b1627de3cf46cf26bd03547b7088d"/>
+    <title>
+        test(pwa): keep raw colours out of the theme service spec
+    </title>
+    <updated>2026-09-11T16:20:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(pwa): keep raw colours out of the theme service spec
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32473887b90df7a50e5c8f56e99c1bde218e827f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/32473887b90df7a50e5c8f56e99c1bde218e827f"/>
+    <title>
+        fix(pwa): match the status bar to the active theme
+    </title>
+    <updated>2026-09-11T16:12:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(pwa): match the status bar to the active theme
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5784119bde27c7a639f8d4787c6ea26b0d686de1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/5784119bde27c7a639f8d4787c6ea26b0d686de1"/>
+    <title>
+        fix(library): land the wordmark reel without overshoot
+    </title>
+    <updated>2026-09-11T16:11:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(library): land the wordmark reel without overshoot
+
+The spin eased past the landing and settled back, so the next spelling peeked in for a few pixels
+at the end. The reel now decelerates straight onto the landing.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e81141d5cf03b0a6a16fc6fac9d445e7fb435c2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/e81141d5cf03b0a6a16fc6fac9d445e7fb435c2e"/>
+    <title>
+        feat(library): replace the library title with a spinning wordmark
+    </title>
+    <updated>2026-09-11T16:01:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(library): replace the library title with a spinning wordmark
+
+The Library bar now shows the Monosai wordmark instead of a visible title. It spins like a slot
+reel between &amp;quot;monosai&amp;quot; (Pacifico) and &amp;quot;ものさい&amp;quot; (Zen Maru Gothic Black) once per launch and on
+tap, landing on one spelling. Glyphs ship as outlined SVG paths so no font is downloaded; the
+heading still names the page &amp;quot;Library&amp;quot; for assistive technology, and reduced motion skips the spin.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1578e13b3c035cd477d5b51f615475af85ad5e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/c1578e13b3c035cd477d5b51f615475af85ad5e4"/>
+    <title>
+        feat(pwa): frame the mascot icon for launcher masks
+    </title>
+    <updated>2026-09-11T15:17:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pwa): frame the mascot icon for launcher masks
+
+The icon source is now the transparent mascot, composed onto the brand green at build time. The
+maskable icon shrinks and raises the mascot so round launcher masks keep its ears and face whole;
+the Anki bridge&amp;#39;s adaptive icon reuses that composition so both launchers match.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/213abfd8dce4ef0552bcbb6782ded6b1aea3bd56</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/213abfd8dce4ef0552bcbb6782ded6b1aea3bd56"/>
+    <title>
+        fix(bridge): sync generated brand icon
+    </title>
+    <updated>2026-09-11T13:54:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(bridge): sync generated brand icon&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed68ff588ab3cc745664f88fbad8315cc9d0e458</id>
+    <link type="text/html" rel="alternate" href="https://github.com/tobiaslrn/monosai/commit/ed68ff588ab3cc745664f88fbad8315cc9d0e458"/>
+    <title>
+        feat(pwa): replace Android app icon
+    </title>
+    <updated>2026-09-11T13:52:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/52038911?s=30&amp;v=4"/>
+    <author>
+      <name>tobiaslrn</name>
+      <uri>https://github.com/tobiaslrn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pwa): replace Android app icon&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/rixcian/lexo/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/rixcian/lexo/commits/main.atom"/>
+  <title>Recent Commits to lexo:main</title>
+  <updated>2026-09-12T21:04:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8ef13a72ddace99189cbbc5b02fab604c17f6872</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/8ef13a72ddace99189cbbc5b02fab604c17f6872"/>
+    <title>
+        release: v0.2.0
+    </title>
+    <updated>2026-09-12T21:04:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.0
+
+Images and audio through the whole pipeline, deck export, and an upload
+limit that can be set from the environment. First minor bump since the
+schema changed: the media and note_media tables arrive in migration 0001,
+which runs on first start.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/973d68149bdbc997a4293041a0ac905d91a1c442</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/973d68149bdbc997a4293041a0ac905d91a1c442"/>
+    <title>
+        Merge pull request #1 from rixcian/claude/anki-image-audio-support-b0…
+    </title>
+    <updated>2026-09-12T21:01:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1 from rixcian/claude/anki-image-audio-support-b02023
+
+feat: images and audio, deck export, and a configurable upload limit&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6361cc39e73f5cada05c0fc904e2b0753b7a0c0c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/6361cc39e73f5cada05c0fc904e2b0753b7a0c0c"/>
+    <title>
+        Merge origin/main into the media, export and upload-limit branch
+    </title>
+    <updated>2026-09-12T21:00:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge origin/main into the media, export and upload-limit branch
+
+main rewrote the README around the mascot and real screenshots while this
+branch was open, so its version is taken wholesale and this branch&amp;#39;s three
+documentation additions are re-applied onto the new structure rather than
+kept as they were: media and export get a feature bullet, the import section
+gains the media paragraph and the upload cap, &amp;quot;Exporting decks&amp;quot; and &amp;quot;Images
+and audio&amp;quot; slot in after it, and ANKI_MEDIA_DIR and ANKI_MAX_UPLOAD_MB join
+the Configuration table main introduced - which is a better home for them
+than the compose snippet they used to live in.
+
+next.config.ts merged on its own: main&amp;#39;s devIndicators alongside this
+branch&amp;#39;s note on what bodySizeLimit still governs.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b1415d04814f2276172776e6a20a05fff20d579d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/b1415d04814f2276172776e6a20a05fff20d579d"/>
+    <title>
+        feat: raise the deck upload limit to 100 MB and make it configurable
+    </title>
+    <updated>2026-09-12T20:56:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: raise the deck upload limit to 100 MB and make it configurable
+
+The cap was 64 MB in two places: MAX_BYTES inside the upload server action,
+and serverActions.bodySizeLimit in next.config.ts. The second one is the
+gate that actually bites, and `next build` serializes it into the standalone
+bundle - so reading an env var there would freeze the value into the image
+at build time, and the prebuilt GHCR image everyone deploys could never be
+re-tuned from docker-compose. An env-configurable limit is not reachable
+from a server action at all.
+
+Route handlers carry no such cap, so the upload moves to POST /api/import
+and the limit becomes ours to enforce. ANKI_MAX_UPLOAD_MB is read per
+request rather than at module load, so a container restart applies it and
+no rebuild is involved. It defaults to 100, falls back to 100 with a warning
+when it is not a positive number, and clamps at 2048 so a typo cannot ask
+the process to buffer more than it can chew.
+
+Three gates, cheapest first. The browser checks file.size before sending,
+so a 101 MB mistake never leaves the machine. The route refuses on
+Content-Length before reading a byte of the body. The real size is checked
+again once the form is parsed, because a header can lie. The drop zone shows
+the configured cap, passed down from the server component so no NEXT_PUBLIC_
+variable is needed to display a server-side value.
+
+The parsing itself is unchanged - it moved to lib/import/upload.ts, shared
+by the route and the CSV re-preview action. bodySizeLimit stays at 64mb
+because card attachments still go through an action, and its comment now
+says which of the two uploads it governs.
+
+Verified at ANKI_MAX_UPLOAD_MB=2 (3 MB file refused with 413 and a message
+naming the variable, a 1.2 KB .apkg still parsed, page rendered &amp;quot;Up to
+2 MB&amp;quot;) and with the variable unset (page rendered 100 MB, the same 3 MB file
+passed the size gate).
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/915a78b6635809dd97d33df0a929e825c08a514d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/915a78b6635809dd97d33df0a929e825c08a514d"/>
+    <title>
+        feat: export a deck as .apkg or CSV
+    </title>
+    <updated>2026-09-12T20:56:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: export a deck as .apkg or CSV
+
+Decks could come in but never leave, which makes this a place you put
+cards rather than a place you keep them. Both formats are downloads from
+the deck&amp;#39;s settings page.
+
+The .apkg writer targets schema 11 - the last collection format that is
+plain SQLite rather than protobuf, and the one modern Anki still accepts
+and upgrades on the way in. It carries the notes, tags, a three-field note
+type whose template count follows the deck&amp;#39;s own reverse setting, the media
+files with their &amp;lt;img&amp;gt; and [sound:...] markup rebuilt, and the review log.
+
+Scheduling is where it gets lossy. Schema 11&amp;#39;s card columns are SM-2, so
+FSRS stability and difficulty have nowhere to live: review cards keep their
+interval and due date, and learning cards become reviews rather than being
+stranded mid-step, since schema 11 encodes a step&amp;#39;s position in `left` and
+guessing at it would be worse than not trying. The revlog ships too, which
+is what Anki&amp;#39;s own FSRS needs to derive memory state again.
+
+Note identity survives the trip. Anki matches notes on guid, not id, so the
+guid is derived from the note rather than randomised - export the same deck
+twice, import it twice, and Anki updates instead of duplicating.
+
+The CSV writer emits the four columns the importer reads, so a file exported
+here comes straight back in. Attachments are listed by filename, and a side
+that is only a picture takes its filenames in place of the missing text, so
+the row survives instead of being silently dropped.
+
+Verified by opening the package and checking what Anki&amp;#39;s importer checks:
+all five tables, ver 11, crt on a day boundary, model `req` present (schema
+11 packages fail to import without it), 0x1f-separated fields, space-padded
+tags, sfld and csum taken from the first field&amp;#39;s stripped text, unique
+revlog ids, and no orphaned cards or revlog rows. Then the round trip: a
+deck exported and imported straight back reports 0 added and every note a
+duplicate, which - since the fingerprint includes media content hashes -
+means not one byte of any image moved.
+
+Not verified against real Anki, which is not installed here.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80cf768fe0a2a926d8da60cfb3d834537fcc25f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/80cf768fe0a2a926d8da60cfb3d834537fcc25f3"/>
+    <title>
+        feat: import and study images and audio from Anki cards
+    </title>
+    <updated>2026-09-12T20:18:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: import and study images and audio from Anki cards
+
+Media was the one part of an .apkg we threw away: stripAnkiHtml counted
+the &amp;lt;img&amp;gt; tags and [sound:...] references it deleted, and the UI told you
+how many had gone. A picture deck imported as a wall of blank fronts, and
+half of it did not import at all, because a note needed two non-empty text
+fields to survive.
+
+Store files content-addressed, keyed by the sha256 of their bytes:
+
+  media       one row per distinct file (hash, filename, mime, size)
+  note_media  which file sits on which field of which note
+
+A pronunciation clip shared by fifty notes is stored once, and re-importing
+a deck costs nothing on disk. Bytes live at &amp;lt;db dir&amp;gt;/media, two hex
+characters of the hash deep, so /data already covers them in a backup.
+ANKI_MEDIA_DIR overrides the location.
+
+Reading the package needs both manifest formats Anki has shipped: the
+legacy JSON index-to-name map, and the zstd-compressed protobuf written
+since 2.1.50. The protobuf reader here pulls the one field it needs out of
+MediaEntries rather than adding a runtime for it. Members are individually
+zstd-framed in the new format, which the frame magic tells us more reliably
+than the manifest&amp;#39;s own flags do.
+
+A side is now &amp;quot;empty&amp;quot; only when it has neither text nor a file, so a
+picture-only front is a card rather than a skipped row. That makes the
+old fingerprint wrong: a picture deck whose cards share no text would
+collapse to one note. Front and back media hashes now feed into it, in a
+way that leaves fingerprints of text-only notes byte-identical, so
+existing rows stay valid.
+
+Media is staged on disk beside the parsed result rather than inside its
+JSON, since a deck with a few hundred clips is tens of megabytes of base64,
+and it only moves into the store once the import is confirmed.
+
+Serving is /api/media/&amp;lt;sha256&amp;gt;.&amp;lt;ext&amp;gt;: immutable, cached forever, and
+byte-range capable because Safari will not play an &amp;lt;audio&amp;gt; source that
+cannot serve ranges. Uploaded SVGs are scriptable, so the response carries
+a default-src &amp;#39;none&amp;#39; sandbox for anyone who opens the raw URL. The service
+worker treats these like hashed build output and steps aside for range
+requests, which cannot go into the cache.
+
+Studying plays a side&amp;#39;s audio when that side appears, the way Anki does,
+with a speaker button to replay. The add and edit forms take files per
+field, and a side with an attachment stops demanding text. Removing an
+attachment, deleting a note or deleting a deck prunes any file nothing
+points at any more.
+
+Two fixes that the media path made load-bearing: import warnings were
+painted in a hardcoded light-mode ink on a themed background, unreadable
+in dark mode and now shown for every media deck, and the import page still
+promised that media would be dropped.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/60ad1f61c0c3e49b790e4ee0621def4e3585433e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/60ad1f61c0c3e49b790e4ee0621def4e3585433e"/>
+    <title>
+        release: v0.1.3
+    </title>
+    <updated>2026-09-12T19:59:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.1.3
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/12d0a104c36ee136b7c52c98c53432cb7551cf83</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/12d0a104c36ee136b7c52c98c53432cb7551cf83"/>
+    <title>
+        ci: build amd64 only
+    </title>
+    <updated>2026-09-12T19:59:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: build amd64 only
+
+Measured on the v0.1.2 build: amd64 took 85s of step time, the emulated
+arm64 layer took 399s - 4.7x slower, with `npm run build` going from 24s to
+234s and `npm ci` from 24s to 141s. The whole run was 10m36s and arm64 was
+the critical path for all but 74 seconds of it.
+
+The only host this image is deployed to is x86_64, so the arm64 layer was
+paying five minutes a release for nothing. The workflow comment says how to
+put it back if that ever changes.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/71b3cd7bd8075445089c6ce1112ed3a4900fa64f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/71b3cd7bd8075445089c6ce1112ed3a4900fa64f"/>
+    <title>
+        release: v0.1.2
+    </title>
+    <updated>2026-09-12T19:44:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.1.2
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6cec6f0a4b6c5b99dfea63b34bb1456488a16ef3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/6cec6f0a4b6c5b99dfea63b34bb1456488a16ef3"/>
+    <title>
+        docs: rewrite the README around the mascot and real screenshots
+    </title>
+    <updated>2026-09-12T19:41:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: rewrite the README around the mascot and real screenshots
+
+Replaces the wall of prose with something someone can actually skim: the
+owl and a badge row up top, the deck list as a hero image, then study,
+stats, import and browse shown rather than described, plus dark mode.
+
+Two UI fixes fell out of taking the screenshots:
+
+- Deck titles were truncated with an ellipsis, so ordinary names like
+  &amp;quot;Spanish - Core 1000&amp;quot; and &amp;quot;Capitals of the World&amp;quot; were cut off next to
+  the count pill. They now wrap to two lines.
+- The year heatmap was a fixed 11px grid left-aligned in its card, leaving
+  40% of the width empty on a desktop. Columns now flex to fill, with an
+  11px floor so narrow screens still scroll rather than squash.
+
+Also turns off the floating Next dev badge, which sat on top of the
+bottom-left of the UI.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8ae5c754b91f8ae981c7c5aeca2a73a1cd458b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/d8ae5c754b91f8ae981c7c5aeca2a73a1cd458b7"/>
+    <title>
+        release: v0.1.1
+    </title>
+    <updated>2026-09-12T19:29:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.1.1
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/35123434ba229311aef5ede0020b68d3b0a9c99a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/35123434ba229311aef5ede0020b68d3b0a9c99a"/>
+    <title>
+        fix: centre the text in inputs
+    </title>
+    <updated>2026-09-12T19:29:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: centre the text in inputs
+
+The coss Input renders a wrapper span around the real control, so the
+h-12 class every call site passed was sizing the span while the inner input
+kept its own h-8.5/leading-8.5. The text ended up sitting near the top of a
+48px box.
+
+Give the component proper duo and duo-sm sizes instead, so the height and
+line-height land on the control that actually renders the text, and drop the
+height overrides from all 13 call sites. The inner control now measures 48px
+with a 48px line-height, 2px inside the border on both edges.
+
+Also pins the inner text to 16px at every breakpoint, which stops iOS
+zooming the page in when a field is focused - worth having in an app meant
+to be installed on a phone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54997d676589a03ed91dbfccd7b9df620b7b81c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/54997d676589a03ed91dbfccd7b9df620b7b81c5"/>
+    <title>
+        ci: publish semver image tags and decouple latest from main
+    </title>
+    <updated>2026-09-12T19:20:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: publish semver image tags and decouple latest from main
+
+Every push to main was moving :latest, so a &amp;quot;Pull and redeploy&amp;quot; could land
+on any half-finished commit. Version the packages instead:
+
+  tag v0.1.0  -&amp;gt;  0.1.0, 0.1, latest, sha-&amp;lt;short&amp;gt;
+  push main   -&amp;gt;  edge, sha-&amp;lt;short&amp;gt;
+
+{{major}} is omitted on purpose - a bare `0` tag would span breaking changes
+while the project is pre-1.0.
+
+package.json is the version of record and CI fails a tag that disagrees with
+it, so a mislabelled image cannot be published by accident.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/22bc06efd91a34959f5520c11432ecc9cebe334c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/22bc06efd91a34959f5520c11432ecc9cebe334c"/>
+    <title>
+        fix: explain SQLITE_CANTOPEN instead of throwing a stack trace
+    </title>
+    <updated>2026-09-12T18:47:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: explain SQLITE_CANTOPEN instead of throwing a stack trace
+
+Mounting a host directory the container user cannot write to is the most
+likely way to get this wrong: Docker creates a missing bind-mount directory
+as root, while the image runs as uid 1000. SQLite then fails with
+SQLITE_CANTOPEN and the log gives no hint about ownership.
+
+Check the directory is writable before opening the database, and on failure
+log which uid owns it, which uid the process runs as, and the chown command
+that fixes it (plus the SELinux :z case).
+
+Also document adding the service to an existing compose stack, where bind
+mounts make this the default outcome rather than the exception.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2a62f06083c583b1c1b94092cd8093dca28b6075</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/2a62f06083c583b1c1b94092cd8093dca28b6075"/>
+    <title>
+        ci: publish the image to GHCR and document Portainer deploys
+    </title>
+    <updated>2026-09-12T18:26:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: publish the image to GHCR and document Portainer deploys
+
+Building on the server is slow and needs ~2 GB of RAM, so build in Actions
+instead and let the server pull.
+
+- Workflow builds linux/amd64 and linux/arm64 on every push to main and
+  pushes ghcr.io/&amp;lt;repo&amp;gt;:latest, authenticating with the built-in
+  GITHUB_TOKEN - no secrets to configure.
+- docker-compose.portainer.yml is a paste-ready stack for Portainer&amp;#39;s web
+  editor. It binds to all interfaces, which is fine on a tailnet or LAN and
+  is called out as the thing to narrow if that stops being true.
+- README covers both routes (pull vs build-from-git), the GHCR package
+  visibility step, and why the PWA needs HTTPS to install - with
+  `tailscale serve` as the one-liner for a tailnet.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f75894bc0105900d24b4eb8523e23719a7e2b4dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/f75894bc0105900d24b4eb8523e23719a7e2b4dc"/>
+    <title>
+        fix: escape the NUL separator in the note fingerprint
+    </title>
+    <updated>2026-09-12T18:19:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: escape the NUL separator in the note fingerprint
+
+The separator between the normalized front and back was a literal 0x00
+byte in the source, which made git treat fingerprint.ts as a binary file
+(no diffs, and a hazard for editors that strip NULs).
+
+Written as a unicode escape the file is plain ASCII again and the hashed
+bytes are identical, so existing fingerprints still match.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7bab0afcac2f48f9cd096610a3f3d377a72ddfa4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/7bab0afcac2f48f9cd096610a3f3d377a72ddfa4"/>
+    <title>
+        feat: build lexo, a self-hosted spaced-repetition PWA
+    </title>
+    <updated>2026-09-12T18:16:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: build lexo, a self-hosted spaced-repetition PWA
+
+A flashcard app with FSRS scheduling, deck import and study stats, backed
+by a single SQLite file. Language-agnostic: a deck is a front, a back and
+two free-form language labels.
+
+Stack
+- Next.js 16 (App Router, Turbopack, server actions), standalone output
+- coss.com/ui (Base UI + Tailwind v4) installed via its shadcn registry,
+  re-themed to the Duolingo spec vendored as DESIGN.md
+- SQLite via better-sqlite3 + Drizzle, migrations applied on first access
+- ts-fsrs for scheduling, shared by the server (authoritative grading) and
+  the client (the interval hints on the grade buttons)
+
+Features
+- Study sessions with four grades, learning-step requeues inside a session,
+  keyboard control (Space to flip, 1-4 to grade) and a completion screen
+- Deck CRUD, inline card authoring, card browser with search, suspend,
+  reset and delete
+- Import from Anki .apkg (schema 11 and 18, zstd collections, deck
+  hierarchy, HTML flattening) and from CSV/TSV with a column mapper;
+  duplicate notes are fingerprinted and skipped
+- Stats from the append-only review log: streak, XP, year heatmap, due
+  forecast, retention, rating mix, per-deck totals
+- Installable PWA: manifest, maskable icons, shell-caching service worker
+  with an offline fallback. Card data is never cached - server-side SQLite
+  stays the single source of truth
+- Multi-stage Dockerfile and compose file with a /data volume and a
+  health check
+
+Design
+DESIGN.md is the visual source of truth: Feather Green as the only primary
+CTA color, the five-accent gamification vocabulary, and the flat-color drop
+shadow that trims on press rather than fading. Dark mode follows the
+published dark guidance in section 12.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4d3141382b74ec4a030a51531dbc312561d5bdfe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rixcian/lexo/commit/4d3141382b74ec4a030a51531dbc312561d5bdfe"/>
+    <title>
+        Initial commit from Create Next App
+    </title>
+    <updated>2026-09-12T17:31:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14358496?s=30&amp;v=4"/>
+    <author>
+      <name>rixcian</name>
+      <uri>https://github.com/rixcian</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit from Create Next App&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

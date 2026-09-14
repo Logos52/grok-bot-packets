@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/liu-li-huan-ying/drill/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/liu-li-huan-ying/drill/commits/main.atom"/>
+  <title>Recent Commits to drill:main</title>
+  <updated>2026-09-11T15:45:52Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38ca5210ab02882d2ab1720be5aa71b35844c548</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/38ca5210ab02882d2ab1720be5aa71b35844c548"/>
+    <title>
+        数据清洗：手工补 171 条缺例句词（批次 33–34 收尾；累计 3,926 / 余 14，本项完结）
+    </title>
+    <updated>2026-09-11T15:45:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 171 条缺例句词（批次 33–34 收尾；累计 3,926 / 余 14，本项完结）
+
+- 批次 33 补 107 词、批次 34（末批）补 64 词，累计 3,926，缺例句词由原 3,940 收敛至 14
+- 剩余 14 个全为按策略刻意跳过：口语碎片/噪声（n&amp;#39;t、mmmm、naw、ooo）、冒犯性词
+  （whitey、gook、kaffir、wetback、honky、jihadi、mujahedeen）、粗俗词（ponce、goddam、moll）
+- examples 总量 115,581；README 标注本项已收尾，并记录例句批量补译受阻（argostranslate→torch
+  依赖 + 85,739 唯一句 CPU 推理耗时）尚未启动&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed4fa5cd6261e40138c4e43406d526dccbd5de66</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/ed4fa5cd6261e40138c4e43406d526dccbd5de66"/>
+    <title>
+        数据清洗：手工补 108 条缺例句词（批次 32，最常用优先；累计 3,755 / 余 185）
+    </title>
+    <updated>2026-09-11T15:39:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 108 条缺例句词（批次 32，最常用优先；累计 3,755 / 余 185）
+
+- 按频率（bnc/frq 升序、OFFSET 0 无漂移）补 108 词英文句+简中译，余 185
+- 跳过 11 个口语碎片/冒犯性词（同前批）+ moll（粗俗，既有策略）
+- README 同步累计 3,755 / 余 185&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85eec4c6237d6dc447d34e6ae931a0d55eb2a936</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/85eec4c6237d6dc447d34e6ae931a0d55eb2a936"/>
+    <title>
+        数据清洗：手工补 109 条缺例句词（批次 31，最常用优先；累计 3,647 / 余 293）
+    </title>
+    <updated>2026-09-11T15:37:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 109 条缺例句词（批次 31，最常用优先；累计 3,647 / 余 293）
+
+- 按频率（bnc/frq 升序、OFFSET 0 无漂移）补 109 词英文句+简中译，余 293
+- 跳过 11 个口语碎片/冒犯性词（同前批）
+- README 同步累计 3,647 / 余 293&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad7ea98955ce0e72cd7c70c1ae86da67aa3d9146</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/ad7ea98955ce0e72cd7c70c1ae86da67aa3d9146"/>
+    <title>
+        数据清洗：手工补 108 条缺例句词（批次 30，最常用优先；累计 3,538 / 余 402）
+    </title>
+    <updated>2026-09-11T15:33:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 108 条缺例句词（批次 30，最常用优先；累计 3,538 / 余 402）
+
+- 按频率（bnc/frq 升序、OFFSET 0 无漂移）补 108 词英文句+简中译，余 402
+- 跳过 11 个口语碎片/冒犯性词；coppery 已在上一提交补回，故本批取 indices 13..120
+- README 同步累计 3,538 / 余 402&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f1c4adb61e27413809786482c4f394207d09583</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/8f1c4adb61e27413809786482c4f394207d09583"/>
+    <title>
+        数据清洗：修正批次 29 例句错位 + 同步计数（累计 3,430 / 余 510）
+    </title>
+    <updated>2026-09-11T12:15:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：修正批次 29 例句错位 + 同步计数（累计 3,430 / 余 510）
+
+- 修正 coppery/circularity/timekeeping 三词的 id↔例句错位：coppery(22415) 原漏补，circularity(26736)/timekeeping(29349) 各挂了上一词的例句，已归位并补回 coppery
+- 全文扫描批次 29 ord=1 例句未发现其他错位
+- README 同步累计 3,430 / 余 510&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7fe17d26b46d5dffa70db54b7ae0c8b8284b4164</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/7fe17d26b46d5dffa70db54b7ae0c8b8284b4164"/>
+    <title>
+        数据清洗：手工补 108 条缺例句词（批次 29，最常用优先；累计 3,429 / 余 511）
+    </title>
+    <updated>2026-09-11T12:11:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 108 条缺例句词（批次 29，最常用优先；累计 3,429 / 余 511）
+
+- 按频率（bnc/frq 升序、OFFSET 0 无漂移）补 108 词英文句+简中译，余 511
+- 跳过 11 个口语碎片/冒犯性词（n&amp;#39;t/whitey/gook/kaffir/wetback/jihadi/mujahedeen/mmmm/ponce/goddam/naw）
+- 注：批次 29 原取 120 词（11 跳过 + 109 候选），书写脚本时漏列 1 个候选，该词留在队列由批次 30 队首补回
+- README 同步累计 3,429 / 余 511&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2eb84da77f67a64c7ef9dc53ee93ca9145f4f37c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/2eb84da77f67a64c7ef9dc53ee93ca9145f4f37c"/>
+    <title>
+        数据清洗：手工补 109 条缺例句词（批次 28，最常用优先；累计 3,321 / 余 619）+ 补全 16 条释义真缺口
+    </title>
+    <updated>2026-09-11T12:00:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 109 条缺例句词（批次 28，最常用优先；累计 3,321 / 余 619）+ 补全 16 条释义真缺口
+
+- 批次 28：按频率（bnc/frq 升序、OFFSET 0 无漂移）补 109 词英文句+简中译，余 619
+- 释义「中文比英文少」核查：def_en 非空而 def_zh 为空 = 0；16 条分词/动名词/过去分词缺真实动词义项（shall/called/breaking/born/stolen/proven…）已补全
+- README 同步累计 3,321 / 余 619，并记下新范围（例句 102,876 条有英无中→离线 MT 批量补；释义缺口已清）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80ce21559a8cf8ce1ee1fa75b9e73e8470456afc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/80ce21559a8cf8ce1ee1fa75b9e73e8470456afc"/>
+    <title>
+        数据清洗：手工补 335 条缺例句词（批次 25–27，最常用优先；累计 3,212 / 余 728）
+    </title>
+    <updated>2026-09-11T11:19:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 335 条缺例句词（批次 25–27，最常用优先；累计 3,212 / 余 728）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/614193cef77525d9762573eaa227d7e3401101ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/614193cef77525d9762573eaa227d7e3401101ef"/>
+    <title>
+        数据清洗：手工补 113 条缺例句词（批次 24，最常用优先；累计 2,877 / 余 1,063）
+    </title>
+    <updated>2026-09-11T11:11:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 113 条缺例句词（批次 24，最常用优先；累计 2,877 / 余 1,063）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f751d4436c93293729e0f9a65e8729d45b96622f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/f751d4436c93293729e0f9a65e8729d45b96622f"/>
+    <title>
+        数据清洗：手工补 345 条缺例句词（批次 21–23，最常用优先）
+    </title>
+    <updated>2026-09-11T11:08:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 345 条缺例句词（批次 21–23，最常用优先）
+
+- 批次 21–23 各 114–117 条，跳过 n&amp;#39;t/whitey/gook/kaffir/wetback/jihadi（口语碎片/冒犯/敏感词）
+- 修正 jacksonian 误拼为 jacksonsonian 的漏插
+- 缺例句词 1,521 → 1,176；累计已补 2,764 条（初始 3,940）
+- 全表 114,419 条例句繁体字符扫描 = 0
+- 同步更新 README 数据清洗行（累计/剩余数字 + 跳过词清单）
+- 还原 tsconfig.json 自动去掉 expo-env.d.ts 的无关改动&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01a6099da1e886a6ea12f728485feb6a298d46f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/01a6099da1e886a6ea12f728485feb6a298d46f0"/>
+    <title>
+        数据清洗：手工补 357 条缺例句词（批次 18–20，修正 OFFSET 漂移，最常用优先）
+    </title>
+    <updated>2026-09-11T01:08:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 357 条缺例句词（批次 18–20，修正 OFFSET 漂移，最常用优先）
+
+- 修正此前累计 OFFSET 对收缩集合造成的漂移：改为始终取 OFFSET 0 当前队首（无漂移）
+- 批次 18–20 各 119 条（跳过 n&amp;#39;t 口语碎片），填回最常用的一批（bnc=0、frq 21k–29k）
+- 缺例句词 1,878 → 1,521；累计已补 2,419 条（初始 3,940）
+- 全表 114,074 条例句繁体字符扫描 = 0
+- 同步更新 README 数据清洗行（累计/剩余数字 + OFFSET 漂移说明）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3fe39242354d1f98075af421ab7c0e733c760e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/b3fe39242354d1f98075af421ab7c0e733c760e8"/>
+    <title>
+        数据清洗：手工补 359 条缺例句词（批次 15–17，最常用优先）
+    </title>
+    <updated>2026-09-11T00:37:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 359 条缺例句词（批次 15–17，最常用优先）
+
+按频率 bnc/frq 升序续填：批次 15–17 累计补入 359 条「英文句 + 简中译」
+至 examples(ord=1)，无例句词 2237 → 1878。跳过 moll（妓女/情妇，粗俗）
+沿用既有策略；ponce/goddam 等此前已跳过。同步刷新 README 累计数字
+（1703 → 2062，剩余 2237 → 1878）。全部新增例句繁体扫描 = 0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e68f5e035ba58bc257101e5892bad71d29cb8d68</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/e68f5e035ba58bc257101e5892bad71d29cb8d68"/>
+    <title>
+        数据清洗：手工补 838 条缺例句词（批次 8–14，最常用优先）
+    </title>
+    <updated>2026-09-11T00:15:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：手工补 838 条缺例句词（批次 8–14，最常用优先）
+
+按频率 bnc/frq 升序继续填补无例句缺口：批次 8–14 累计补入
+838 条「英文句 + 简中译」至 examples(ord=1)，无例句词 3075 → 2237。
+跳过 ponce/goddam 等粗俗/渎神词（既有策略）。同步刷新 README 的
+累计数字（865 → 1703，剩余 3075 → 2237）。全部新增例句繁体扫描 = 0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9c4e77a90b8182e937cacd53dd4c5683a638d258</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/9c4e77a90b8182e937cacd53dd4c5683a638d258"/>
+    <title>
+        数据清洗：例句繁→简转换 + 手工补 865 条缺例句词
+    </title>
+    <updated>2026-09-10T10:00:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;数据清洗：例句繁→简转换 + 手工补 865 条缺例句词
+
+- opencc t2s 将 definition_zh(11行)/sentence_zh(3,862行) 繁体转简体，残余=0
+- 按频率(最常用优先)手工撰写英文句+简中译，补入 examples(ord=1)
+  累计 865 条，覆盖 frq&amp;lt;~32k 的无例句词；剩 3,075 个极低频词待后续
+- 新增例句经繁体字符扫描=0
+- README 状态块补充数据清洗进度&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abdc12efe8e049b264b29ef9e7d795fdd7992355</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/abdc12efe8e049b264b29ef9e7d795fdd7992355"/>
+    <title>
+        feat(M6): 词根词缀运行时拆解 + 手写助记与检索
+    </title>
+    <updated>2026-09-10T09:14:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(M6): 词根词缀运行时拆解 + 手写助记与检索
+
+词根词缀（words.root_affix 全为 NULL，改运行时规则拆）:
+- 新增 src/lib/morphology.ts：前缀/后缀/约150条词根表 + decompose(word,isKnown)
+  宁缺毋滥：枚举所有「前缀×后缀」候选择优打分（词根命中 ≫ 普通单词命中），
+  低于阈值返回 null；-ion 等易假命中短词的后缀对词干另设更长门槛
+  全量 30565 词中 10545（34.5%）可拆，-ion 假朋友误报约 2-3%
+- queries.ts 加 decomposeWord（惰性全词集验证词干）
+- 新增 src/components/Morphology.tsx 渲染「前缀+词干/词根+后缀」
+- word.tsx 删除恒为空的 root_affix 死展示块，改用 MorphologyView
+
+手写助记:
+- user_notes 落地为「我的助记」：详情页两条 TextInput，onEndEditing 自动落库
+  （两栏皆空删行），页内「已保存」提示
+- 新增 app/notes.tsx 检索页：getNotes JOIN words 倒序 + 按单词/助记/备注模糊检索
+- settings.tsx 新增「学习记录」分组入口
+
+docs: README 补 M6 两条 + 状态行
+验证: tsc --noEmit 零错误；npx expo export --platform android 打包通过&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dbad83247084af940a02d1b2e9054d7baad5973b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/dbad83247084af940a02d1b2e9054d7baad5973b"/>
+    <title>
+        fix(deps): 显式声明 expo-router 必需 peer 依赖，修复 Metro 打包失败
+    </title>
+    <updated>2026-09-10T08:53:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(deps): 显式声明 expo-router 必需 peer 依赖，修复 Metro 打包失败
+
+根因：安装全程用 --legacy-peer-deps（因锁文件里 react@19.2.3 与 react-dom@19.2.8
+历史版本不匹配，不带该 flag 会 ERESOLVE 中止），而该 flag 会完全跳过 peerDependencies，
+使 expo-router 的原生必需 peer 被 npm 当成多余包剪掉，Metro 报
+&amp;quot;Unable to resolve react-native-safe-area-context&amp;quot;。
+
+修法：把 expo-router 的原生必需 peer 在 package.json 显式声明——
+react-native-safe-area-context ~5.9.1 / react-native-screens ~4.27.0 /
+expo-linking ~57.0.9 / expo-constants ~57.0.17。显式依赖不受 --legacy-peer-deps 影响。
+
+验证：npm ls 树上版本正确；tsc --noEmit 零错误；npx expo export --platform android
+成功打包 1278 模块（entry hbc 2.9MB）。README 补「依赖说明」记录该坑与三步验证法。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/466c5034821bdb1fe60ea677d9bd37cca31fe2df</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/466c5034821bdb1fe60ea677d9bd37cca31fe2df"/>
+    <title>
+        feat(M5): 备份导出/导入 UI + 安装文件模块（SDK57 File/Paths API）
+    </title>
+    <updated>2026-09-09T12:38:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(M5): 备份导出/导入 UI + 安装文件模块（SDK57 File/Paths API）
+
+- app/backup.tsx：导出（Paths.document.createFile + file.write + Sharing.shareAsync）
+  与导入（DocumentPicker.getDocumentAsync + new File(uri).text()）合并到本地库
+- settings.tsx：工具区新增「备份与恢复」入口
+- 安装 expo-file-system@57.0.6 / expo-sharing@57.0.18 / expo-document-picker@57.0.1
+  （--legacy-peer-deps；react@19 peer 冲突）
+- 关键修复：SDK57 的 expo-file-system v57 已移除旧版 writeAsStringAsync/
+  readAsStringAsync/documentDirectory 扁平 API（运行时抛错），改用 File/Paths 新 API
+- 备份数据层已在 M5-1 提交（exportBackupData/restoreBackup）
+- tsc --noEmit 通过&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc867204b5391ded95af13193ffdd581a3f0c0cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/fc867204b5391ded95af13193ffdd581a3f0c0cc"/>
+    <title>
+        feat(M5): 统计看板 + 备份数据层
+    </title>
+    <updated>2026-09-09T12:07:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(M5): 统计看板 + 备份数据层
+
+- stats.tsx 重写为完整看板：连续打卡、学习总览、近7日趋势条形、留存率、记忆状态分布
+- queries.ts 新增 getStreak/getDailyHistory/getRetention/getStateDistribution/getLearningStats + shiftDateKey
+- 备份数据层：exportBackupData / restoreBackup（事务合并，cards 按 last_review_at 取新）
+- Database.ts 导出 EXPECTED_DB_VERSION 供备份元信息记录
+- README 标记 M5 统计看板完成&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/20f19efeabcf9e0d2ee84084f8dc99053357388c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/20f19efeabcf9e0d2ee84084f8dc99053357388c"/>
+    <title>
+        fix(review): 发音按钮移右上角避免压住背面释义
+    </title>
+    <updated>2026-09-09T11:02:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(review): 发音按钮移右上角避免压住背面释义
+
+- ReviewCard 发音键由 center-bottom 浮层改为右上角（带 acsf 浅底），正反面可重听且不压字
+- 背面滚动容器顶部预留 60dp 内边距，长释义滚动时首行不被角标遮挡
+- README 标记 M3.2 收尾（中文例句随 EXPECTED_DB_VERSION=4 整库换库生效），澄清例句在单词详情页展示、需彻底重启 App&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4c749dea1e3135c5f82dbe0d2dcf4b719cf0b5c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/liu-li-huan-ying/drill/commit/4c749dea1e3135c5f82dbe0d2dcf4b719cf0b5c7"/>
+    <title>
+        feat(M3.2): Chinese example translations + v4 whole-DB swap; fix stat…
+    </title>
+    <updated>2026-09-09T10:30:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/cd06c78c0b15f61a004b97d4b410670b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dev@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(M3.2): Chinese example translations + v4 whole-DB swap; fix stats live update &amp;amp; card-back scroll
+
+- build_examples.py: with links.tar.bz2 fully downloaded, rebuild examples with EN-&amp;gt;ZH
+  pairing (user_version 3-&amp;gt;4). 111,655 example rows, 26,625 words, 8,779 rows have
+  Chinese translation (~7.9%); asset db 22.0MB.
+- Database.ts: EXPECTED_DB_VERSION 3-&amp;gt;4 so returning users&amp;#39; runtime db re-copies the
+  new asset (whole-DB swap, resets progress per existing design) and gets Chinese examples.
+- stats.tsx: add useFocusEffect to re-read today&amp;#39;s counts on tab focus (was stale on
+  first render; tab switch doesn&amp;#39;t remount so it never updated after learning).
+- ReviewCard.tsx: fix card-back scroll - back face now renders AFTER the flip layer
+  (higher z-index) with pointerEvents toggled by flipped; swipes now scroll instead of
+  being misread as a flip. Tap (no scroll) still flips back.
+- README: document Chinese examples, v4 swap, stats fix, and corrected scroll fix.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

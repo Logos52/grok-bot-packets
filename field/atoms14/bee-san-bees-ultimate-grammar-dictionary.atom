@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bee-san/bees-ultimate-grammar-dictionary/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commits/main.atom"/>
+  <title>Recent Commits to bees-ultimate-grammar-dictionary:main</title>
+  <updated>2026-09-13T16:45:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77dbb054d4642fe2bb2bcbf126da20438d228f1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/77dbb054d4642fe2bb2bcbf126da20438d228f1b"/>
+    <title>
+        Enhance README with image and updated description
+    </title>
+    <updated>2026-09-13T16:45:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Enhance README with image and updated description
+
+Added an image and updated the description to highlight the inclusion of 12 grammar dictionaries.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7465748fa5dcfd0f66d8e811ef982577ee5e8af7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/7465748fa5dcfd0f66d8e811ef982577ee5e8af7"/>
+    <title>
+        Fix HJGP lock to pin Yomitan bank files, not raw mefat.review format
+    </title>
+    <updated>2026-09-13T07:59:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix HJGP lock to pin Yomitan bank files, not raw mefat.review format
+
+The acquire script downloads dict.json/toc.json/trans.json (raw format)
+but the extractor reads term_bank_1.json (Yomitan bank format). Fix the
+lock to pin the correct files from the monolingual Yomitan dictionary.
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b8d90399d744990ed99709a1076a132147dcd63</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/2b8d90399d744990ed99709a1076a132147dcd63"/>
+    <title>
+        Fix NINJAL ZIP filename decoding on Python 3.14
+    </title>
+    <updated>2026-09-12T22:22:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix NINJAL ZIP filename decoding on Python 3.14
+
+Python 3.14&amp;#39;s zipfile module already decodes non-UTF8-flagged
+filenames correctly, so the cp437→cp932 roundtrip raises
+UnicodeEncodeError. Fall back to the as-is filename when the
+roundtrip fails.
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77430aabdd11ef4d7f6280abace0c6c45ad26162</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/77430aabdd11ef4d7f6280abace0c6c45ad26162"/>
+    <title>
+        Update Bunpro lock to V2 deck
+    </title>
+    <updated>2026-09-12T22:06:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update Bunpro lock to V2 deck
+
+Pin Bunpro Grammar Reference V2 (sha256 803f00cc, 256MB).
+Same 964 notes / Bunpro Grammar Model Final V3 notetype.
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38760a265da134298a6dc2203de3136b89adc868</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/38760a265da134298a6dc2203de3136b89adc868"/>
+    <title>
+        Update README with source listing and build instructions
+    </title>
+    <updated>2026-09-12T21:52:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update README with source listing and build instructions
+
+Replace one-liner README with comprehensive documentation including
+install instructions, full table of all 12 sources with languages
+and descriptions, build pipeline overview, and guide for adding
+new sources.
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4cda21b783b86fb395c27bbd9f4e9476f9e39d71</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/4cda21b783b86fb395c27bbd9f4e9476f9e39d71"/>
+    <title>
+        Re-scrape nihongokyoshi-net.com replacing old aiko-tanaka data
+    </title>
+    <updated>2026-09-12T21:52:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Re-scrape nihongokyoshi-net.com replacing old aiko-tanaka data
+
+Fresh scrape of nihongokyoshi-net.com produces 505 grammar entries
+(N1:126, N2:138, N3:132, N4:74, N5:35) with Japanese meanings,
+English translations, structure patterns, and example sentences
+with bilingual translations. Replaces the May 2022 aiko-tanaka
+community banks (628 entries, no English).
+
+- Update NihongoNetExtractor for dynamic bank count via SOURCE.lock
+- Add English translation ([英訳]) parsing to extractor
+- Remove 56 stale nihongo_net content corrections (old data errors)
+- Remove 5 stale source corrections (A2, A4-A7) for entries no
+  longer in the scraped data; keep A3 (かどうか) which still applies
+- Update nihongo_net reading correction for 込む (new reading &amp;#39;む&amp;#39;)
+- Add scraper script (scripts/scrape_nihongokyoshi.py)
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/20b30799465d58c24ba14911777237688e9f580e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/20b30799465d58c24ba14911777237688e9f580e"/>
+    <title>
+        Add HJGP (日本語文型辞典) as monolingual and bilingual sources
+    </title>
+    <updated>2026-09-12T21:52:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add HJGP (日本語文型辞典) as monolingual and bilingual sources
+
+Add two new extractors for A Handbook of Japanese Grammar Patterns:
+- hjgp: monolingual Japanese edition (1,245 grammar points with rich
+  furigana and data-role-annotated structured content)
+- hjgp_en: bilingual English edition (1,049 points with English
+  translations and bilingual examples)
+
+Both are registered in SOURCE_PRECEDENCE and _SOURCE_EXPLANATION_LANG.
+Includes acquisition script (scripts/acquire_hjgp.py) and SOURCE.lock.json
+digest pins for reproducible builds.
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01W55HJ8mz47NemzdRZonQAT&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/905acf673b8eb02d7e83b94060ef8559bc3f9587</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/905acf673b8eb02d7e83b94060ef8559bc3f9587"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2026-09-11T15:09:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update README.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4b1f4e060b9a257af7102b0b3c180962e82a65b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/4b1f4e060b9a257af7102b0b3c180962e82a65b2"/>
+    <title>
+        Make the whole dictionary the default build, and render each source&#39;s…
+    </title>
+    <updated>2026-09-10T09:47:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the whole dictionary the default build, and render each source&amp;#39;s own markup (#2)
+
+## One dictionary, not two
+
+The repo built two artifacts from one codebase: a &amp;quot;public&amp;quot; release filtered down
+to the two CC BY 4.0 sources, and a full local build of all ten. Everything
+downstream of that split is gone — `publish_filter.py`, `audit_public_archive.py`,
+`LICENSING.md`, the `_probe_ugd15_claims.py` audit, the five `-public` directory
+trees, the `publish-filter`/`public`/`audit-public` targets, and the
+`licenseTier` / `redistributable` / `permissionBasis` provenance keys that existed
+only to feed the filter (also stripped from the committed source locks and the
+acquisition scripts that wrote them).
+
+`make` with no target now builds the whole dictionary: `.DEFAULT_GOAL := all`,
+with `personal` as an alias that says what it is. 4,901 entries from all ten
+sources, byte-reproducible, all gates green.
+
+Per-source *attribution* stays — it is the product&amp;#39;s core feature, not licensing
+apparatus. Every card still names the source that made each statement, and
+`tag_bank_1.json` and `index.json` still credit all ten. The repo&amp;#39;s own MIT
+LICENSE also stays: it governs this code, and deleting it would leave the
+pipeline unlicensed.
+
+## Each source&amp;#39;s markup is part of its content
+
+New `src/bugd/dialects.py`: the one place that knows which notation a source
+writes. Measured over all 7,896 extracted points, the ten sources are two
+dialects.
+
+Yokubi writes GitHub-flavoured Markdown, and none of it rendered. Cards showed
+literal `**asterisks**` (180 runs), a bare `|---------------|` separator as body
+prose, 44 conjugation tables as run-together text, 48 bullets as dashes, and 149
+backslash escapes verbatim. Worse, an escaped `\&amp;lt;verb\&amp;gt;` placeholder reached the
+HTML parser as a tag opening and silently swallowed the rest of that paragraph.
+It now renders as real `table`/`thead`/`ul`/`li` nodes and `span` emphasis, via
+the HTML subset `richtext` already maps onto Yomitan&amp;#39;s allowed tags — no new
+schema surface. Blank header rows (33 of 44 tables) are dropped rather than drawn
+as an empty band, and a contiguous pipe run is split at every separator row so
+`lesson-20:の`&amp;#39;s four back-to-back tables stay four tables.
+
+The other nine sources deliberately get no dialect. NINJAL&amp;#39;s `&amp;lt;s&amp;gt;ます&amp;lt;/s&amp;gt;` and
+どんなとき&amp;#39;s `&amp;lt;ruby&amp;gt;` already render correctly; `【…】` headings, `①②③` list breaks
+and stripped-highlight soft breaks are already handled downstream. IMABI&amp;#39;s 17,549
+`N. ` lines and 145 `*` footnote markers are explicitly NOT read as Markdown —
+its own prose cross-references those numbers as `Ex. N`, so an ordered list would
+renumber them.
+
+Two rendering fixes fall out of this:
+
+* Yokubi ships zero blank lines and hard-wraps every paragraph, so the shared
+  soft-wrap rule was gluing its English paragraphs into one run-on block.
+* `proseTranslation` subordinates a Latin line inside a Japanese field. It was
+  applied unconditionally, so for the five sources that explain IN English it
+  indented and quietened the primary explanation. Now gated on the field&amp;#39;s own
+  language; the Japanese-field case is unchanged and still tested.
+
+## Published index
+
+`index.json` now carries `indexUrl`, `downloadUrl` and `isUpdatable`, and
+`publish_dist` writes it beside the archive in `dist/` (committed, ~1KB) so a
+reader can check the current revision without downloading 6MB. This is also a
+hard requirement for installing the dictionary from a release: Hachidori refuses
+any archive whose `indexUrl` does not match the URL it was fetched under.
+
+## Verification
+
+* `make test` — 719 passed (was 712; -21 for the deleted filter suite, +26 new
+  dialect tests, +2 index tests).
+* `make all` — 4,901 entries, 6,213,551 bytes, sha256 089f496d…; a clean rebuild
+  reproduces the identical digest.
+* `make validate` + `make validate-node` — both pass against the pinned 26.8.24.0
+  schemas.
+* `make audit-packaged`, `make audit-attribution`, `docs/contract/validate.py`,
+  `check_example_runons.py` — no failures; 0 real run-ons; 0 colliding claims.
+* Packaged bytes carry 44 tables, 38 `th`, 180 bold and 28 italic spans — exactly
+  the measured Yokubi corpus counts. The 19 residual `**` are imabi/bunpro
+  literal footnote markers, which must stay literal.
+
+Co-authored-by: hermes &amp;lt;hermes@local&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ecc6d7b39b52e73d72c4d33eb5eff04b52bcee0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/5ecc6d7b39b52e73d72c4d33eb5eff04b52bcee0"/>
+    <title>
+        UGD-19: finish card-harness rewire — all 70 card tests green (above_f…
+    </title>
+    <updated>2026-09-09T23:13:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-19: finish card-harness rewire — all 70 card tests green (above_fold/disclosure/geometry/themes); restore byte-stable builds (deterministic highlight-marker tiebreak); keep stylesheet host-scope-clean&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ccd475cf157d5c13b7ad929e7e49d0c76c9c995d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/ccd475cf157d5c13b7ad929e7e49d0c76c9c995d"/>
+    <title>
+        UGD-19 (wip): fix geometry (ruby/zoom/wrap) + line-height sentinel — …
+    </title>
+    <updated>2026-09-09T22:25:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-19 (wip): fix geometry (ruby/zoom/wrap) + line-height sentinel — geometry 21/22, themes progressing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3920f2f269f15615c36722481c9569283d78ae7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/d3920f2f269f15615c36722481c9569283d78ae7"/>
+    <title>
+        UGD-19 (wip): rewire card-harness to production composer — above_fold…
+    </title>
+    <updated>2026-09-09T22:15:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-19 (wip): rewire card-harness to production composer — above_fold 12/12 + disclosure 12/12 green; geometry/themes in progress&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7abdb3f0a2fb3aa2709db73dffafab09e2ebbb05</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/7abdb3f0a2fb3aa2709db73dffafab09e2ebbb05"/>
+    <title>
+        Merge pull request #1 from bee-san/feat/imabi-source-card-layout
+    </title>
+    <updated>2026-09-09T21:08:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1 from bee-san/feat/imabi-source-card-layout
+
+Add IMABI source, refine card layout, and fix corpus-derived audit gates&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29ef9561a95634b5fcbe8d0c58a5d86b1c0f41b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/29ef9561a95634b5fcbe8d0c58a5d86b1c0f41b2"/>
+    <title>
+        Drop the per-card Sources block and order sources by explanation lang…
+    </title>
+    <updated>2026-09-09T20:34:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop the per-card Sources block and order sources by explanation language
+
+Each per-source disclosure is already titled with its source, so the trailing
+Sources attribution disclosure was redundant; the source name is the section
+title. Order the disclosures English-explaining dictionaries first, then
+monolingual Japanese ones. Update the frozen contract, JSON schema, golden
+entries, and tests to match.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/057b4cf707377d7ac5cb36e93db46db2683a2f97</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/057b4cf707377d7ac5cb36e93db46db2683a2f97"/>
+    <title>
+        Render the 文法 source label without the parenthetical qualifier
+    </title>
+    <updated>2026-09-09T20:34:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Render the 文法 source label without the parenthetical qualifier&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/484d5be994592781f5a0aee7a36ab594caf005b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/484d5be994592781f5a0aee7a36ab594caf005b9"/>
+    <title>
+        Add IMABI source acquisition via WordPress REST API
+    </title>
+    <updated>2026-09-09T20:33:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add IMABI source acquisition via WordPress REST API
+
+Fetch all imabi.org lesson pages from /wp-json/wp/v2/pages, storing one
+digest-locked pages/&amp;lt;id&amp;gt;.json per page plus index.json, PERMISSION.json,
+and SOURCE.lock.json. Content-addressed and fail-closed: the fetched page
+count is checked against X-WP-Total and a mismatch aborts the acquisition.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2aa13098e990d3d3b75fe07eb1afef852483423d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/2aa13098e990d3d3b75fe07eb1afef852483423d"/>
+    <title>
+        UGD-17: publish from the convergence lineage, with the fail-closed li…
+    </title>
+    <updated>2026-09-09T20:29:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-17: publish from the convergence lineage, with the fail-closed licence filter
+
+Reconciles `main` onto `ugd-16/converge`, whose tree this merge takes wholesale.
+Two lineages both called themselves UGD-16 convergence; `main` had been published
+from the wrong one.
+
+WHY THIS TREE
+
+`ugd-16/integration` (main&amp;#39;s basis) is NOT an ancestor of `ugd-16/converge`, and
+all 30 other branch tips ARE ancestors of converge -- verified mechanically with
+`git merge-base --is-ancestor` over every ref. main&amp;#39;s tree was missing 81 files,
+including:
+
+  * every `data/sources/*/SOURCE.lock.json` -- the reproducibility contract, 611
+    files pinned by sha256. Without them a clone cannot verify that a
+    re-acquisition produced the bytes the dictionary was built from;
+  * the whole UGD-11d audit programme (`scripts/audit/*`: attribution coherence
+    and precision probes, the verbatim-citation verifier and its mutation
+    runners) that a user comment on the card explicitly required be shipped;
+  * `src/bugd/{structure,reading,content}_corrections.py` and their data
+    overlays -- the reviewable, byte-anchored source-defect corrections;
+  * UGD-12&amp;#39;s real-Yomitan behaviour/geometry suite and its harness;
+  * `LICENSING.md`&amp;#39;s corrected audit and `scripts/_probe_ugd15_claims.py`.
+
+The two files main had that converge does not are `src/bugd/corrections.py` and
+its test -- the single correction module that converge deliberately split into
+three (structure / reading / content), because they have different dataclasses,
+data directories and pipeline stages. Nothing in this tree imports the old name.
+They are dropped, not lost.
+
+Three files main had that were worth keeping came over in an earlier commit on
+this branch: the example-run-on fix, its evidence note, and
+`scripts/check_example_runons.py`.
+
+WHY THE RELEASE CHANGED
+
+The release previously published for this repo (`v2026.09.09`) bundled ALL TEN
+sources. Its own notes acknowledged shipping &amp;quot;a personal Anki deck, a paid
+service (Bunpro), and published grammar content without an explicit
+redistribution licence&amp;quot; from a public GitHub release. Verified by downloading the
+asset: `tag_bank_1.json` declared all ten, `index.json` credited Bunpro and
+DoJG 日本語文法辞典(全集), 4,632 entries.
+
+That contradicts LICENSING.md, which finds eight of ten sources not publicly
+redistributable. It has been deleted (release and tag; both URLs now 404).
+
+The replacement is built through `bugd.publish_filter`: 1,550 entries from the
+two sources whose CC BY 4.0 licence text is present in their own locked bytes
+(NINJAL, Yokubi). `scripts/audit_public_archive.py` independently re-checks the
+packaged bytes -- 0 hits for all eight excluded sources across EVERY member, both
+admitted sources present and attributed in the tag bank and index attribution,
+and the filter&amp;#39;s admitted set equal to the set LICENSING.md pins.
+
+VERIFIED ON THIS EXACT TREE
+
+Replayed in a clean detached worktree with only ninjal_bunkei and yokubi acquired
+-- precisely a public user&amp;#39;s checkout. One `make public` produced
+sha256 cc1d4aef01d9f5b20b1a6a97a3f3070e489b2f42b4d3689f6f49eeaf4fe6c06b
+(483,953 B, 1,550 entries), byte-identical to the build in the development tree.
+Pinned Yomitan schema validation and the independent Node/ajv validator both
+accept it; audit-public FAILURES: none; 0 real example run-ons; the card contract
+gate reports 0 invalid.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5c99e48934aa0817fb70b0e611eb0b112a6aaad7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/5c99e48934aa0817fb70b0e611eb0b112a6aaad7"/>
+    <title>
+        UGD-17: make `public` runnable from a clean checkout by depending on …
+    </title>
+    <updated>2026-09-09T20:27:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-17: make `public` runnable from a clean checkout by depending on `extract`
+
+`make public` on a fresh clone died with &amp;quot;no extracted corpus at data/extracted&amp;quot;:
+the redistribution filter PROJECTS data/extracted/, and nothing had produced it.
+That defeated the target&amp;#39;s purpose, since `make public` is the one build a public
+user can run.
+
+Found by replaying the previous commit into a clean detached worktree with only
+the two CC BY 4.0 sources acquired, rather than reusing a tree that already had an
+extraction lying around.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9d0976a1fd677963a583501768079447ff7efb2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/f9d0976a1fd677963a583501768079447ff7efb2"/>
+    <title>
+        UGD-17: skip a source whose LOCKED BYTES are unacquired, not whose di…
+    </title>
+    <updated>2026-09-09T20:26:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-17: skip a source whose LOCKED BYTES are unacquired, not whose directory is missing
+
+The skip in run_extract keyed on `data/sources/&amp;lt;name&amp;gt;/` existing. But
+`SOURCE.lock.json` is committed for every source -- it IS the reproducibility
+contract, 611 files pinned by sha256 -- so in a fresh clone every source
+directory exists while holding only that lock. The check therefore skipped
+NOTHING, and `make extract` died on the first unacquired source:
+
+    SourceLockError: locked input is missing: data/sources/bunpou/文法.apkg
+
+which made `make public` -- the one build a public user can actually run, since
+by design they have only the two CC BY 4.0 sources -- unreachable. The
+empty-corpus guard then fired correctly on 0 records, which is how this surfaced.
+
+Keying on the locked PAYLOAD fixes it, and the skip is REPORTED with a reason
+naming the missing members, because a silently smaller dictionary is precisely
+the failure mode this project fails closed against. A malformed lock still
+raises: that is a defect, not an unacquired source. An explicit `--source`
+request still runs and still fails loudly.
+
+Verified end to end in a clean detached worktree with ONLY ninjal_bunkei and
+yokubi acquired -- exactly a public user&amp;#39;s checkout: extract writes 932 points
+and reports all 8 skips with reasons, and `make public` reproduces the published
+archive BYTE-IDENTICALLY (cc1d4aef01d9f5b20b1a6a97a3f3070e489b2f42b4d3689f6f49eeaf4fe6c06b,
+483,953 B, 1,550 entries), with audit-public FAILURES: none.
+
+The full ten-source build is unchanged: 7,896 points, 0 skips.
+
+Mutation: 3/3 killed -- reverting to the directory check, dropping the skip
+report, and skipping everything each fail the assertion aimed at them.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c05b94377cdbf8a43198a17d90830db4bbce7e77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/bees-ultimate-grammar-dictionary/commit/c05b94377cdbf8a43198a17d90830db4bbce7e77"/>
+    <title>
+        UGD-17: add the fail-closed publish gate LICENSING.md required, and s…
+    </title>
+    <updated>2026-09-09T20:23:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/591b9da4a66b957fd2475c84393261fa?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>hermes@local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UGD-17: add the fail-closed publish gate LICENSING.md required, and ship the release
+
+UGD-15&amp;#39;s audit found eight of the ten acquired sources are not publicly
+redistributable, and named the exact gap that blocked publication:
+
+    &amp;quot;There is no publish-time filter. `redistributable` is recorded in
+    provenance and carried through extraction, but no code in the build path
+    reads it -- the flag appears only in the acquisition scripts that write it.
+    It is therefore advisory metadata, not a machine-enforced gate.&amp;quot;
+
+This is that filter, plus the three real defects that surfaced building it.
+
+THE GATE -- src/bugd/publish_filter.py + `make public`
+
+`is_redistributable` requires TWO things, and the second one matters as much as
+the first:
+
+  * `provenance.redistributable is True` -- identity, not truthiness. `bunpro`
+    and `imabi` carry no licence block in their SOURCE.lock at all, so a
+    &amp;quot;not False&amp;quot; predicate would admit them on silence, and a `if flag:` test
+    would admit the string &amp;quot;false&amp;quot;.
+  * `provenance.permissionBasis` is not a merely REPORTED permission. UGD-15
+    separated &amp;quot;verified licence in locked bytes&amp;quot; (Yokubi, NINJAL) from
+    &amp;quot;publishable only on reported permission, not independently verifiable&amp;quot;
+    (IMABI: /terms/, /license/, /copyright/ all 404), and its instruction for
+    the second class is to obtain the approval in writing first. So IMABI&amp;#39;s 494
+    lessons are excluded rather than shipped on an undocumented grant.
+
+Filtering writes a SEPARATE `data/extracted-public/`, never editing the full
+local corpus, and refuses to emit an empty public corpus -- a zero-entry archive
+passes schema validation and would publish successfully while shipping nothing.
+A source with a split grant raises instead of shipping the subset.
+
+Every stage after the filter is the SAME code the local build runs, pointed at a
+different directory, so the public artifact cannot drift from the one the tests
+and audits cover.
+
+THE INDEPENDENT CHECK -- scripts/audit_public_archive.py
+
+The filter decides about INPUTS; this proves a fact about OUTPUTS. It scans every
+member as text, because a leak need not be in a term bank: a `styles.css` comment
+illustrating JLPT disagreement named two of the excluded community sources, so
+the public archive shipped their names after the filter had removed all their
+content. No content leaked, but an archive naming a source it deliberately
+excluded is a false provenance claim; the comment is now source-agnostic.
+
+The cleared set is PINNED from LICENSING.md, not derived from the filter&amp;#39;s own
+output. That distinction is the whole gate: an earlier version read the expected
+set out of `data/extracted-public/`, so loosening the filter widened BOTH the
+archive and the expectation and the audit reported &amp;quot;FAILURES: none&amp;quot; while IMABI
+shipped. Verified by mutation -- that exact change survived until the pin existed.
+
+THREE REAL DEFECTS FOUND ON THE WAY
+
+  1. `yokubi.py` documented `redistributable: True` in its module docstring and
+     never emitted the key. Every Yokubi record read `None`, so the publish
+     filter excluded the one source whose CC BY 4.0 licence text is present in
+     its own locked bytes. Invisible until something read the flag.
+
+  2. `StaleCorrection` fired on any corpus narrower than the overlay. It is
+     scoped now: a correction whose SOURCE contributes no rows is out of scope,
+     not stale. A correction whose source IS present but whose row is gone still
+     raises -- that is the drift the gate exists for. Both call sites (
+     `reading_corrections.apply_corrections` and `unify`) were fixed; scoping one
+     alone just moves the failure to the merge stage. This also resolves UGD-16&amp;#39;s
+     residual failure (c): the stage test now DECLARES its isolated corpus via a
+     new `--no-reading-corrections` flag rather than the guard being weakened.
+
+  3. `write_points_jsonl` wrote the reviewable sidecar BEFORE `ExtractResult`
+     applied corrections and row identity, so bunpro&amp;#39;s `points.jsonl` disagreed
+     with the corpus the pipeline carried. Same stage-seam class as UGD-16&amp;#39;s D1,
+     and again only a round-trip equality assertion catches it, because the
+     divergence is uniform and every count and digest still looks right.
+
+PORTED: the example-sentence run-on fix
+
+`banks.py`&amp;#39;s `_split_example_sentences` (from the abandoned `ugd-16/integration`
+lineage, which is NOT an ancestor of this branch and is missing 81 files
+including every SOURCE.lock, the UGD-11d audit automation, and UGD-12&amp;#39;s suite).
+Measured on this branch: REAL run-ons 144 -&amp;gt; 0 in the local archive, 27 -&amp;gt; 0 in
+the public one. Committed with its evidence note and `check_example_runons.py`.
+
+REPINS, attributed mechanically and never on a total
+
+`test_corpus_counts_are_pinned` was stale by the four sources UGD-16 landed.
+Attributed by rebuilding the keymap through the real production builder over the
+same artifacts with those four `data/extracted/*.json` REMOVED:
+
+  * that basis reports rows=5936 / substantiveRows=4696 exactly, reproducing the
+    old pin, and the row-identity SETS differ by +1960 with ZERO lost
+    (bunpou 534 + imabi 494 + ninjal_bunkei 800 + yokubi 132);
+  * tierA 676-&amp;gt;821 bijective, 201-&amp;gt;217 refused, growing with the corpus;
+  * tierB DECREASED 57-&amp;gt;49, which a totals-only repin would have hidden. Set
+    diff of `acceptedLinks`: +1 gained, 8 LOST. Verified nothing became
+    unreachable -- all 16 forms are still separate points and 0 contributor
+    identities disappeared -- so the pairs are split across two cards, not lost.
+    Filed as its own card rather than fixed by loosening a fold guard here.
+
+MUTATION EVIDENCE
+
+  * publish_filter: 8/8 mutants killed, each by the assertion targeting it
+    (absent-is-permitted, truthiness, no-provenance, reported-permission,
+    empty-corpus, split grant, empty artifact, stale public dir).
+  * Two mutants that SURVIVED were probe defects, not untested code: all 7,896
+    records carry a boolean flag, so the missing-provenance and missing-key
+    branches are unreachable through the corpus. They are covered by direct
+    synthetic-input tests instead, which is the only thing that can kill them.
+  * audit_public_archive: reintroducing an excluded producer&amp;#39;s name fails it;
+    dropping the reported-permission check fails it on TWO findings.
+  * write_points_jsonl: dropping the normalization fails the bunpro round-trip.
+
+VERIFIED
+
+  Public:  1,550 entries (832 points + 718 redirects) from NINJAL + Yokubi only.
+           sha256 identical across three consecutive builds. Pinned Yomitan
+           schema validation and the independent Node/ajv validator both accept
+           it. `audit-public` FAILURES: none -- 0 hits for all eight excluded
+           sources across every member, both admitted sources present and
+           attributed in tag bank and index. 0 real run-ons.
+  Local:   4,901 entries, all ten sources, extract/keymap/merge/build/validate
+           green, `audit-packaged` 26/26 FAILURES none.
+  Suite:   662 passed. The 32 remaining failures are UGD-12&amp;#39;s harness selectors
+           against a stand-in that convergence replaced, reproduced on this
+           branch&amp;#39;s parent commit -- verified by running the same selection there.
+  Clean:   126 tracked .py, every `bugd.*` import resolves to a tracked file,
+           0 syntax errors.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/MuggleWu/miki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/MuggleWu/miki/commits/main.atom"/>
+  <title>Recent Commits to miki:main</title>
+  <updated>2026-09-12T08:50:24Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/23541ae16db42c2163347f1f97b4ddfbb4c7b8c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/23541ae16db42c2163347f1f97b4ddfbb4c7b8c7"/>
+    <title>
+        fix(mobile): 键盘让位改为只动 WebView 的底外边距，监听移到 decor view
+    </title>
+    <updated>2026-09-12T08:50:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 键盘让位改为只动 WebView 的底外边距，监听移到 decor view
+
+真机上&amp;quot;输入框弹起后内容快速闪动&amp;quot;仍未解决，这次按检索到的同类实现换掉整个做法
+（Ionic 论坛与 capacitor-community/safe-area 的实测与修复记录）。
+
+两处关键改动：
+
+- **改 WebView 自己的 bottomMargin，不再改父视图的 padding**。改父容器会让它重新
+  测量并触发整棵树的 insets 分发与重排；键盘弹出、输入法自己改高度的过程中这些回调
+  连环触发，页面就在两三个位置之间反复跳。改 WebView 的 margin 只影响它自己的边界。
+  已知坑按同类实现处理：margin 夹在 [0, parent 高度]——输入法在 App 启动前就可见时
+  parent 还没测量完，直接按键盘高度设会把 WebView 挤成一条缝。
+- **insets 监听从 WebView 移到 decor view**。Capacitor 的 CoordinatorLayout 会把
+  insets 吞掉，挂在 WebView 上的监听读到的永远是 0（论坛实测日志：decor 66 / WebView 0），
+  挂在 decor view 上才是真值。
+
+随之撤掉上一版为&amp;quot;两层协调&amp;quot;引入的 --native-kb 交接开关：让位只由原生这一层负责之后，
+WebView 被撑短会让布局视口与可见区一起变小，网页侧算出的键盘高度自然接近 0，
+不需要第二个信号，也就没有两层互相触发的可能。网页侧仍保留键盘高度计算——它是
+Android 14 及以下 + 老 WebView 那一格（原生拿不到输入法内边距）的唯一让位来源。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 245 passed / 8 skipped、
+npm run build 通过；gradlew assembleDebug 出包成功，核对包内入口 chunk 与当前构建同一份
+（指纹一致），dex 内是新的 kbMargin/parentH 日志、旧的 parentBottomPad 已无残留。
+真机复核待做：键盘弹出时内容不闪、正在打的字与保存按钮完整可见；
+adb logcat -s miki-insets 会打印 kbMargin 与 layout 两行，能看清是谁在振荡。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ebc16a6466933ed3b8230642d17ebb2f87bd33c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/9ebc16a6466933ed3b8230642d17ebb2f87bd33c"/>
+    <title>
+        chore(mobile): 键盘/安全区的真机排查记录（原生 + 网页两侧落 logcat）
+    </title>
+    <updated>2026-09-12T08:40:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(mobile): 键盘/安全区的真机排查记录（原生 + 网页两侧落 logcat）
+
+真机上&amp;quot;内容快速闪动&amp;quot;还没定位，而这类现象的现场只存在于真机：浏览器里把
+__mikiKbOverride 按两种事件顺序各跑 12 个周期，弹层与输入框位置只有一次
+切换、没有中间态（详见自测），说明网页侧的算法本身不抖，剩下的嫌疑在原生
+与输入法那一段。没有现场就只能靠猜，所以这次先把观测做出来。
+
+- 原生：每次布局把 webH / webY / parentPad / imeRaw / imeOn 记一行（数值没变
+  不重复写），字段变化的序列就是&amp;quot;谁在振荡&amp;quot;的证据；另加一个只写日志的
+  JavascriptInterface（MikiDiag），接收网页侧送来的现场记录。
+- 网页：viewport.ts 每次重算键盘高度时，把读数（layout/inner/vv/offset/native/kb）
+  连同元素实际位置（弹层与编辑区矩形、输入框矩形、滚动容器 scrollTop、
+  可视区高度）记进 40 条环形缓冲，并同步到 logcat。量矩形是因为变量值相同也
+  可能因为滚动或输入法自身窗口导致位置变化，只看变量会漏判。
+- 顺带修掉一个真实竞态：--native-kb 之前只在&amp;quot;让位高度非 0&amp;quot;时写，输入法自己改
+  高度的瞬间（候选栏出现/收起）会短暂读到 0，网页侧会误判成&amp;quot;原生交还了&amp;quot;而抢回
+  让位权，那一下就是可见跳动。现在原生把&amp;quot;我接管着&amp;quot;这个状态 latch 住，变量改成
+  开关语义（写 1px，不再随高度变化），直到明确交还才清掉。
+- 排查工具不影响主流程：缓冲只在内存（刷新即清空），桥接调用失败被吞掉。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 248 passed /
+8 skipped、npm run build 通过；gradlew assembleDebug 出包成功，核对包内入口
+chunk 与当前构建同一份（指纹一致）、MikiDiag 接线在前端产物里。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3d2a878123849e5286437b4ee91838dd577d7d0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/3d2a878123849e5286437b4ee91838dd577d7d0a"/>
+    <title>
+        fix(mobile): 修掉键盘让位被算两遍（内容闪动）与安全区又变 0（上下重叠）
+    </title>
+    <updated>2026-09-12T08:24:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 修掉键盘让位被算两遍（内容闪动）与安全区又变 0（上下重叠）
+
+真机上报的两个现象：呼出键盘后弹层与内容在两三个位置之间快速闪动；状态栏
+与三大金刚的让位又没了、内容压在上面。两处根因都在&amp;quot;谁负责给键盘让位&amp;quot;这件事
+没定死，以及原生首次发布安全区时读到了 0。
+
+键盘（闪动）：原生按输入法内边距把 WebView 的父视图撑高（WebView 是
+match_parent，于是它真的变短），网页侧又按可视视口算了一次 --kb。两层都在改
+布局，就会互相触发对方的回调：原生撑高 → 可视视口变小 → 网页侧重算 --kb →
+弹层与滚动区再让一次 → 布局又变。页面因此在两三个位置之间反复跳。
+现在让位只留原生那一层：它改完注入 --native-kb（CSS 像素）并派发一个事件，
+网页侧一看到这个变量就把自己那份让位量报成 0（nativeKeyboardHeight()），
+原生交还时清掉变量、网页侧回到自己算。原生那边同时保持&amp;quot;按实际值设置而不是
+累加&amp;quot;，键盘连续回调也不会把内边距一节节堆上去。
+
+安全区（重叠）：onCreate 里那次 publishInsets 跑在布局之前，读到的 insets 全是
+0；而&amp;quot;父视图底部内边距 ≥ 期望值(0)&amp;quot;这个已处理判据恰好成立，于是 --native-inset-*
+被写成 0 并且再也不会被改正（值没变就不重发），内容就一直压在状态栏与三大金刚
+下面。现在挂布局监听补发，并跳过&amp;quot;四点全 0&amp;quot;的窗口读数（那是还没布好，不是真值），
+旋转、切导航方式、分屏也一并覆盖。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 248 passed / 8 skipped、
+npm run build 通过；viewport 用例改为 jsdom 环境（要真的派发一次事件才算验过），
+新增三条：原生接管时网页侧必须报 0（先断言&amp;quot;没有原生接管时会算成 300&amp;quot;，否则断言恒真
+——第一版就是这么写错的）、事件驱动重算、browserEnv 读得到 --native-kb。
+对&amp;quot;原生接管&amp;quot;这层做了变异测试：把那处判断改回旧写法，用例失败于
+expected [300] to deeply equal [0]；还原后全绿。
+gradlew clean assembleDebug 出包成功（5.97MB），核对包内前端产物与当前构建
+同一份（index chunk 指纹一致）、dex 内有 --native-kb 与 miki:insets。
+真机复核仍待做：键盘弹出时内容不闪、输入框与保存按钮完整可见，
+adb logcat -s miki-insets 可看到每次发布的值。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8a96f0cbc18b0c5bce3849a2fae27995ef741e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/d8a96f0cbc18b0c5bce3849a2fae27995ef741e4"/>
+    <title>
+        test: 修掉三条偶发失败的渲染层用例（时序假失败，非产品缺陷）
+    </title>
+    <updated>2026-09-12T08:11:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: 修掉三条偶发失败的渲染层用例（时序假失败，非产品缺陷）
+
+现象：全量并行跑时偶发 1-2 条红，单跑必过，无规律换位置。逐条定位后发现都是
+「测试自己在猜时序」，不是被测代码的问题：
+
+- browserAutosave：真计时器实等（60ms 窗口只留 30ms 余量），机器被挤满时等待被
+  拉长，「防抖期内还没落盘」的断言提前看到保存。此前已用「把窗口放大到 300ms」
+  绕过一次，属于把余量做大、机器再慢还会复发。改为假计时器（只伪造
+  setTimeout/clearTimeout，不伪造 Date），窗口只在 wait() 显式推进时到期，
+  与机器快慢无关；顺带去掉那处放大窗口的补丁，整文件不再有真实等待。
+- highlighter：引擎是模块级单例，多条用例中途 reset 全局状态、靠末尾自己
+  preloadAllLangs() 把状态还回去——口头约定，被挤时后面的用例就带着被重置的单例
+  跑。改为每条用例前统一 ensureReadyState() 兜底。
+- md：断言「引擎就绪后自动补色」时只多等一轮微任务，而就绪 → 订阅回调 → setState
+  → commit 要跨多轮任务，挤的时候看不到补色。改为等 DOM 真实出现该状态（有超时与
+  「等不到：X」诊断）。另把「首帧是纯文本」拆成独立用例：该断言的前提是引擎未就绪，
+  同文件其他用例的预热在途时 isHighlighterReady() 仍为 false 却随时可能装好引擎，
+  挤在一条里会自相矛盾（真机上 render 与预热同帧，首帧必为纯文本）。
+
+验证：
+- 故障注入确认用例仍抓得住真回归——stub 掉 subscribeHighlighter 的就绪通知 →
+  md 补色用例失败并报「等不到：引擎就绪后的补色重渲染」；注入「切卡不落盘」→
+  browserAutosave 4 条失败。注入均已还原，生产源码零改动。
+- 极端负载（8 核机器上 24 个纯计算进程）+ 随机顺序：三文件连跑 6/6 全绿，
+  修复前同样条件 4/5 次红。
+- 全量：极端负载 16 忙进程 ×3 轮全绿；正常负载 981 passed / 6 skipped。
+- 门禁：tsc --noEmit、eslint、vitest、npm run build 均通过。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9dd59f4aad74aa0e43a1f0c42e98904ff49b330b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/9dd59f4aad74aa0e43a1f0c42e98904ff49b330b"/>
+    <title>
+        docs(mobile): 补 Android 客户端双语文档
+    </title>
+    <updated>2026-09-12T07:36:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(mobile): 补 Android 客户端双语文档
+
+- 新增 mobile-android/README.en.md：与中文 README 对齐的英文版，覆盖三层差异
+  （文件访问 / 界面 / 跨端一致）、开发构建链、门禁、运行环境、同步与 v1 边界。
+- mobile-android/README.md 补齐原先缺的三块：运行环境与配置（Android 15+、边到边
+  布局，键盘与系统栏避让那层要在改动前先读）、同步机制（三种模式与两处刻意不猜的
+  合并口径、同步报告与快照回退）、v1 边界（补 debug 签名这一条）；并去掉与同步
+  一节重复的边界条目。
+- 根 README.md / README-zh.md 的 Android 段落补上客户端文档互链（中英互指）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aba89c0589962ab760c8339c29ebb7e973827843</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/aba89c0589962ab760c8339c29ebb7e973827843"/>
+    <title>
+        fix: API token 改为工作区私有文件，不再写进 config.json
+    </title>
+    <updated>2026-09-12T07:29:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: API token 改为工作区私有文件，不再写进 config.json
+
+config.json 是工作区仓库里的文件，会随仓库同步/推送；把本机 API token 写在里面
+等于把凭证写进仓库历史，每台机器各自的 token 也不该跟着同步。改为：
+
+- token 落在 `.miki/api-token`（已 gitignore、不参与同步），权限 0600；
+- config.json 里 `api.token` 恒为空字符串；内存中的 config 仍持有 token，API 鉴权、
+  渲染层与既有调用方都不受影响；
+- 老工作区读盘时自动迁移：config.json 里的旧值搬到私有文件并继续生效（不打断已配好
+  的 MCP/脚本），盘上那份随即抹空，launch 后工作区不再出现无意义改动；
+- 落盘 token 失败（只读目录等）退化为本次运行的一次性 token，不拦住启动；
+- 跟随改口径的调用方与文档：scripts/mcp-server.mjs 优先读私有文件（旧位置兜底）、
+  api-server 的 401 提示与启动日志、OpenAPI 描述、docs/{zh,en}/api.md、README-zh。
+
+测试：tsc --noEmit 通过；vitest 980 passed / 6 skipped（新增迁移用例，原「首启写盘」
+用例改为钉住新口径：token 文件存在且 config.json 里为空）。端到端复核：老工作区
+（真实 7 牌组）迁移后 config.json 无 token、私有文件 0600、健康检查与带 token 的
+/api/decks 均 200、错 token 401。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dd0cdcff47930b31b29262e2a5b8c72f0bf5d3e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/2dd0cdcff47930b31b29262e2a5b8c72f0bf5d3e"/>
+    <title>
+        fix(mobile): 键盘不再盖住正在输入的内容（原生让位 + 网页侧滚动留白）
+    </title>
+    <updated>2026-09-12T07:02:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 键盘不再盖住正在输入的内容（原生让位 + 网页侧滚动留白）
+
+真机上报的现象：录卡时键盘从底部弹出来，压住正在打字的那一块，看不见自己
+打的是什么。根因是 Android 15+ 起 targetSdk 35+ 强制边到边，窗口不再随输入法收缩——
+manifest 里的 windowSoftInputMode=&amp;quot;adjustResize&amp;quot; 在边到边窗口上等于失效，键盘直接画在
+WebView 之上，WebView 自己也不会把聚焦的输入框滚进可见区。原来只在网页侧算 --kb
+（App 里那段 VisualViewport 逻辑），而边到边下布局视口不缩、可视视口读数在各版本
+WebView 上又不一致，只靠它兜不住。
+
+两层一起修：
+
+- 原生层（MainActivity，关键的一层）：按输入法内边距给 WebView 的父视图留白，
+  键盘弹起时 = 键盘高度、收起时 = 0，等价于恢复 classic adjustResize。判据是
+  「窗口内边距有没有真的落到父视图上」——边到边时父视图底部内边距为 0 才动手，
+  Android 14 及以下（窗口自己会缩）保持原样，不叠加多余空白。同时修好原来的一处
+  隐患：键盘弹起时导航栏内边距的&amp;quot;已处理&amp;quot;判据会误判成已补过，导致底部少让一条；
+  现在按实际设置值比较，并跳过无变化的重复 evaluateJavascript（键盘弹出期间
+  每帧都会回调一次）。
+- 网页层：键盘高度的算法抽成 viewport.ts 纯函数（布局视口底 − 可见区底，
+  把 visualViewport.offsetTop 与 scale 都算进去），带了 __mikiKbOverride 这个
+  模拟开关——桌面浏览器里能把&amp;quot;键盘弹起&amp;quot;整套状态复现出来，不必每次上真机试。
+  CSS 侧补 scroll-padding-bottom（.sheet-body / .sheet-full .sheet-body / .page-body）：
+  浏览器把聚焦输入框滚进可见区时只看这个，否则输入框会停在键盘上沿以下；
+  底部让位统一走 --bottom-blocked（键盘与安全区取大者），弹层不再只认 --kb
+  （原来没键盘时它会贴到导航栏底下）。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 245 passed / 8 skipped、
+npm run build 通过；gradlew assembleDebug 成功出包（5.97MB）；
+浏览器里用模拟键盘（vv 552 / 布局 852，即键盘 300px）实测：
+--kb=300px、弹层底边正好停在键盘上沿 552（sheetBottom ≤ 552），聚焦背面输入框后
+scroll-padding-bottom 计算值 16px 生效、输入框底边 267 落在键盘之上，
+提示条也在顶层且底边 462 在键盘之上；关掉模拟后 --kb 回 0、弹层回到底部、字段清空。
+真机上还要复核一次（这是唯一能验原生那层的地方）：键盘弹出时输入框与&amp;quot;保存&amp;quot;按钮
+都应完整可见。
+
+另外把 3 个文件里 6 处注释中的具体称呼（styles.css 4 处、styles.spec.ts 1 处、
+sync.spec.ts 1 处）换成中性的&amp;quot;用户&amp;quot;，与同期其它文件口径一致。纯注释改动，无行为变化。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/179fab324c186dbc10c1ac51094db72eeb31d496</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/179fab324c186dbc10c1ac51094db72eeb31d496"/>
+    <title>
+        fix(mobile): 新增卡片保存后连录（保留牌组、清空正反面），并让提示显示在弹层之上
+    </title>
+    <updated>2026-09-12T06:47:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 新增卡片保存后连录（保留牌组、清空正反面），并让提示显示在弹层之上
+
+录卡通常是连着录的一串（一个考点连带几张），而原来保存即关抽屉：每张都要重开抽屉、
+再选一次牌组，节奏被打断两次。桌面端本来就是「连续新增」的口径，这里对齐。
+
+- AddCardForm 保存成功后不调 onDone：只清正反面、光标送回正面（键盘不主动收——
+  收起来再弹一次每次多两拍，页面还会跳一下），牌组保持用户选的那个（chosenId 不动）。
+  底部补一个「关闭」作为唯一的收工出口（语义同桌面端连续新增模式下的按钮）。
+- 主按钮禁用态改成中性色：只靠 opacity 的话蓝底变浅蓝，正反面清空后用户会把
+  「还不能保存」看成能点，正好在&amp;quot;这张到底存上没有&amp;quot;这个最需要确信的时刻误导人。
+- 提示条进顶层：新增后抽屉不关，而 &amp;lt;dialog&amp;gt;.showModal() 会把对话框提到顶层，
+  挂在 .app 下的 .toast 连同&amp;quot;已新增卡片&amp;quot;一起被遮罩盖住——等于什么提示都没有。
+  改用 popover=&amp;quot;manual&amp;quot; + showPopover()，节点一动不动（App 里连 append 都不出现）。
+  这里试错了一版并留下教训：先写成&amp;quot;把提示条 DOM 挪进当前打开的 dialog&amp;quot;，视觉上好了，
+  但 React 仍按原位置去删它，提示消失时抛 removeChild NotFoundError、整棵树崩掉；
+  toast-host.spec.ts 把&amp;quot;不许搬 DOM&amp;quot;这条也钉住了。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 231 passed / 8 skipped、
+npm run build 通过；浏览器里把真应用跑起来，首页 FAB 与刷卡页 ⋮ 两条入口各点一遍 ——
+保存后抽屉留着、牌组仍选中「测试乙」/「测试甲」、两个输入框清空、焦点回到正面
+（activeElement 就是正面 textarea）、顶部计数刷新；提示条实测
+matches(&amp;#39;:popover-open&amp;#39;) 为 true、顶层顺序 [DIALOG.sheet, DIV.toast]、
+rect 在视口内（y=722/852），关掉抽屉后自动退出顶层，:empty 时 display: none 不占位。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9beea1e4ccb749d32db1839c82a8a2bd8c7f4605</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/9beea1e4ccb749d32db1839c82a8a2bd8c7f4605"/>
+    <title>
+        feat(mobile): 学习页「⋮」菜单里能就地新增卡片
+    </title>
+    <updated>2026-09-12T06:40:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mobile): 学习页「⋮」菜单里能就地新增卡片
+
+刷卡时经常被手里这张卡启发出新卡，而以前唯一的入口在首页 FAB —— 得先退回牌组
+列表、再在下拉里找回同一个牌组，思路被打断两次；这条路径上还很容易把卡落错牌组。
+
+- 学习页「这张卡」菜单顶部加「新增卡片」（排在编辑之前：它是菜单里唯一不针对当
+  前这张卡的动作），复用同一个 AddCardForm，表单仍是打开时才挂载。
+- AddCardForm 新增 defaultDeckId，pickDeckId 的优先级扩展为
+  用户选过的 &amp;gt; 发起处的牌组 &amp;gt; 上次用的 &amp;gt; 第一个；从学习页进来默认就是**当前牌组**，
+  从首页 FAB 进来不传（行为与从前完全一致）。三处候选都重新确认还在牌组列表里，
+  发起处的牌组被删过就退回「上次用的」，不会写进一个不存在的 id。
+- 新增与编辑是两套独立的弹层状态，不复用开关（复用会让一个弹层带着另一个的内容出现）。
+
+自测：tsc --noEmit、eslint（0 error，1 条既有 warning）、vitest 218 passed / 8 skipped；
+浏览器里把真应用跑起来点过一遍 —— 建「测试甲 / 测试乙」两个牌组，进「测试甲」刷卡页
+（空状态）→ ⋮ → 新增卡片，牌组下拉默认选中「测试甲」（不是上次用过的「测试乙」），
+填正反面保存后提示「已新增卡片」、返回首页计数 测试甲 1/1/0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/24084e60a36daeab81dea60c69a170e99230dcc6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/24084e60a36daeab81dea60c69a170e99230dcc6"/>
+    <title>
+        build(mobile): Gradle 依赖源加国内镜像，并覆盖子工程 buildscript
+    </title>
+    <updated>2026-09-12T05:17:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(mobile): Gradle 依赖源加国内镜像，并覆盖子工程 buildscript
+
+本机直连 Maven Central / dl.google.com 在 Gradle 里是 TLS 握手失败（Remote host
+terminated the handshake；curl 却正常），冷缓存构建直接卡在解析 AGP classpath。
+
+- 阿里云 google / public / gradle-plugin 加腾讯 maven-public，一律排在官方仓库之前，
+  镜像缺件时才回落到 google() / mavenCentral()；理由与实测数字（阿里 public 16.3、
+  google 镜像 15.2、腾讯 15.4 MB/s；官方 Maven Central 2.6 且不可用）写在文件顶部注释，
+  免得下次被当噪声删掉。与 mobile-android/.npmrc 换 npmmirror 同一策略。
+- 关键一处：capacitor-android（node_modules 里）与 capacitor-cordova-android-plugins
+  （cap sync 生成）各自声明了 buildscript 仓库，根工程 allprojects{repositories} 管不到
+  它们的 classpath，而那两个文件都不能改 —— 所以补 allprojects{buildscript{repositories}}。
+  少了这一处，冷缓存构建会在解析 :capacitor-android 的 AGP classpath 时失败。
+- README 补首次构建的两件前置：装 SDK（platforms;android-36 + build-tools;36.0.0），
+  并让 android/local.properties 指过去。
+
+自测：清空 GRADLE_USER_HOME 冷缓存全量构建（不带任何 -I init 脚本）2m07s 成功，产物与
+热构建字节一致（5.97MB app-debug.apk，com.mugglewu.miki v1.0(1)，minSdk 24 / target 36，
+debug 签名校验通过）；缺子工程覆盖的那版冷构建复现失败，可作该配置必要性的证据。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e93028b7ade55aa1c89497fc4dcf2108ec3e3d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/5e93028b7ade55aa1c89497fc4dcf2108ec3e3d5"/>
+    <title>
+        test(mobile): 钉住时钟，修掉评级预览这条 flaky 断言
+    </title>
+    <updated>2026-09-11T16:44:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(mobile): 钉住时钟，修掉评级预览这条 flaky 断言
+
+「评级预览给出四档 due，且关掉 fuzz 后重复调用稳定」偶发失败（约 12 次 1 次）：
+previewIntervals 内部取 Date.now()，两次调用跨毫秒就差 1ms，而断言要求两次完全
+相等。测试里把时钟钉死，校验的才是「同一时刻重复调用确定」这条真命题；生产代码
+不动。与上一条出卡口径改动无关。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3afc5017024468e791ffa751e14d76c481122de3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/3afc5017024468e791ffa751e14d76c481122de3"/>
+    <title>
+        fix(queue): 出卡只算此刻到点，去掉「当日稍后到点」的兜底
+    </title>
+    <updated>2026-09-11T16:44:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(queue): 出卡只算此刻到点，去掉「当日稍后到点」的兜底
+
+刷卡时「到期」列已经清零，接着出的还是学过的卡。成因是复习卡按「当日末」取：
+复习间隔按整日算，到期时刻落在上次复习的同一钟点，晚上刷卡时当天晚些才到点的
+复习卡就成批插到新卡前面（真实日志里 29 条是 due 未到就被作答的复习卡）。
+
+出卡口径收敛为只认此刻到点：
+- pickNext / pickNextIdx 的复习规则由 due ≤ 当日末 改为 due ≤ now；
+- 连「当日新卡出完再把稍后到点的复习卡拉前」的兜底也去掉：三条都取不到就返回
+  null（学习页空状态），pickNext 的 endOfToday 参数随之删掉；remainingCount /
+  deckCounts 的计数口径不变，仍按当日末算。
+学习回炉卡到点插回优先位这条不变。
+
+真实工作区副本上逐牌组连刷复核：未到点出卡 0（此前英语单词牌组会先插 8 张未到
+点的复习卡）。回归钉：core.spec 两条 + schedule-index.spec 一条服务层用例（种一张
+今晚 22 点到点的复习卡：先出新卡、删掉新卡后返回 null、时钟推到 22 点才出现）；
+变异验证通过（改回 due ≤ 当日末该用例变红）。README 与文档双语同步。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abdc48de635ab1e169cfbed34cb9bf8a6530fe06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/abdc48de635ab1e169cfbed34cb9bf8a6530fe06"/>
+    <title>
+        fix(mobile): 卡片详情关闭后编辑态没复位
+    </title>
+    <updated>2026-09-11T13:56:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 卡片详情关闭后编辑态没复位
+
+CardDetail 是随弹层关闭一起卸载的（内部编辑态自然复位），页面这份 `editingCard` 却会留下来：
+下次打开任意卡片，标题写着「编辑卡片」、弹层是全屏，内容却是只读的 —— 用户得先按一下&amp;quot;取消&amp;quot;
+才回到正常详情。关闭与保存两条路径都补上复位。
+
+自测：新增源码级断言&amp;quot;两条关闭路径的复位次数与关闭次数相等&amp;quot;；变异检查（去掉复位）让它失败；
+tsc/eslint/prettier/213 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb26715cac572455080b25fe8aba3b89d5fc9bf9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/fb26715cac572455080b25fe8aba3b89d5fc9bf9"/>
+    <title>
+        fix(mobile): 学习页在工作区被外部重载后不再显示旧卡与旧的可撤销数
+    </title>
+    <updated>2026-09-11T13:56:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 学习页在工作区被外部重载后不再显示旧卡与旧的可撤销数
+
+同步拉取、回到前台都会 `ws.reload()`，它会**整体换新** Card 对象并重建会话日志，
+而学习页手里那份 `state` 是按 id 之前取到的对象：卡面停在旧文案、可撤销数停在旧值
+（重载后撤销栈其实是空的，界面却还写着&amp;quot;可撤销 1&amp;quot;，按下去只会得到&amp;quot;没有可撤销的操作&amp;quot;）。
+
+- StudySession.refresh()：按 id 重新取当前这张卡的内容、剩余数、今日计数、可撤销数，
+  但**不换卡** —— 正在看的这张不动（答题中途被抽走比看到旧文案糟得多）；只有当前这张
+  已经不在了（被删 / 暂停）才交给 load() 重挑一张。
+- StudyPage：在 workspace version 变化时 refresh()（useWorkspace 已经订阅了这个计数）。
+
+自测：新增 3 例（不换卡但内容跟新 / 可撤销数跟新 / 当前这张被暂停才重挑）；
+变异检查（refresh 返回旧计数）让 2 例失败；tsc/eslint/prettier/212 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dde88d64370e8cc79fe245d93a0ad19678a9c4a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/dde88d64370e8cc79fe245d93a0ad19678a9c4a1"/>
+    <title>
+        fix: 答题写盘失败要回滚内存态（两端），桌面端失败要报出来
+    </title>
+    <updated>2026-09-11T13:54:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 答题写盘失败要回滚内存态（两端），桌面端失败要报出来
+
+appendEvents 抛错时，内存里的调度状态**已经改过了**：界面显示已答、调度器按新状态排下一张，
+磁盘上却什么都没有 —— 直到下次重载才发现这次答题不存在（用户看到的是&amp;quot;题答了但记录没了&amp;quot;，
+而且是静默的）。两端同一个形状、同一个修法：写失败就退回 `before` 快照再抛出去。
+
+- 移动端 answer()：回滚 fsrs/reps/lapses/suspended（leech 自动暂停也一起退）。
+- 移动端 updateCard()/addCard()：同样先改内存后写盘，失败时退回正文与 updatedAt、
+  把幽灵卡从内存与牌组桶里摘掉（否则它出现在列表里、点进去什么都存不下）。
+- 桌面端 answer()：回滚后抛出。
+- 桌面端 Study.tsx：答题失败原来没有 catch，按了键画面不动、毫无提示（用户只会反复按，
+  每次都白写一遍）。现在 catch 住并显示横幅，说清&amp;quot;状态已回滚，可以直接再按一次&amp;quot;。
+- 移动端本来就有 notify(&amp;#39;答题失败：…&amp;#39;)，这次补上的是它底下的回滚。
+
+自测：两端各新增用例（注入&amp;quot;追加即抛错&amp;quot;的 FileStore / 把 review-log 目录改成只读），
+断言内存态与重放结果一致；变异检查（去掉移动端 answer 的回滚）让用例失败；
+桌面 977 例、移动 200+ 例全绿。桌面那条横幅是 JSX 反馈层，没有为它写组件测试（Study 的
+测试脚手架要铺 deck/payload/window.miki），靠 tsc 与人工验证 —— 如实说明。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb2a4c918f399bbbae93a851872ca6a1d5bb973e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/bb2a4c918f399bbbae93a851872ca6a1d5bb973e"/>
+    <title>
+        fix(mobile): 同一张卡两侧改得不一样时不再静默丢改动
+    </title>
+    <updated>2026-09-11T13:52:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 同一张卡两侧改得不一样时不再静默丢改动
+
+行并集对&amp;quot;同一张卡被改成不同内容&amp;quot;是**静默丢改动**：两条都留在文件里，重放按文件顺序取
+最后一条，一边的编辑就没了 —— 而两边都显示同步成功，用户以为自己备份好了。这是同步里
+最坏的一类结果（不报错、看起来正常、数据已经不对称）。
+
+- merge.ts 增加 findCardConflicts()：按 id 取内容行（同一侧多行同 id 按最后一条算，
+  与重放的取值语义一致），三方可判时只在&amp;quot;两侧都改了且不一样&amp;quot;时判冲突，没有 base 时
+  一律判（无从判断谁改了什么，宁可多问一句）。
+- 只对 `cards/` 生效：复盘日志那些事件行本来就该是多条真实历史，不按 id 合并。
+- 冲突时 blocked，理由里点名是哪几张卡，并指路&amp;quot;桌面端对齐 / 用远端覆盖本机&amp;quot;。
+
+自测：新增 6 例（三方冲突 / 只一侧改过不拦 / 两侧改成一样不拦 / 不同卡片各自追加照常并集 /
+无 base 也拦 / 复盘日志不受影响）；变异检查（关掉这段判断）让 2 例失败；tsc/eslint/prettier/
+206 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3631586a1061feecbfd6b2e79d2cade87a00a47e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/3631586a1061feecbfd6b2e79d2cade87a00a47e"/>
+    <title>
+        feat(mobile): 设置页「用远端覆盖本机」（解掉分叉与坏文件的死局）
+    </title>
+    <updated>2026-09-11T13:51:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mobile): 设置页「用远端覆盖本机」（解掉分叉与坏文件的死局）
+
+有些状态手机上自己走不出来：decks.json 半写（本机这份读不出来，同步只会在&amp;quot;只本地改了&amp;quot;
+与 blocked 之间来回）、或某份文件分叉到无法自动合并。原来唯一的出路是&amp;quot;去桌面端&amp;quot;，
+而手机常常是唯一在手边的设备。
+
+- 候选集抽成纯函数 rescueCandidates()：损坏的 JSON 文档 + 上次同步判过 blocked 的文件，
+  去重排序。**只救点名的这几个** —— 整仓库覆盖会把还没推上去的答题进度一起抹掉。
+- 数据健康区里出现可救文件时给出入口，弹确认（把清单与后果摊开讲），走 force-pull：
+  只拉不推、不产生 commit、覆盖前留快照。
+- 同步消息里那条&amp;quot;已跳过&amp;quot;现在指路到这个按钮，用户不用自己猜下一步。
+
+自测：新增 3 例（候选集的两类来源与去重排序、按钮确实带清单走 force-pull 的源码级断言）；
+tsc/eslint/prettier/200 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b77a2696b637b15a412ce4b66d5f20f467c6a6e1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/b77a2696b637b15a412ce4b66d5f20f467c6a6e1"/>
+    <title>
+        fix(mobile): 同步的路径判据收紧成白名单形状（原来只看后缀）
+    </title>
+    <updated>2026-09-11T13:50:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 同步的路径判据收紧成白名单形状（原来只看后缀）
+
+`isSyncable` 里 &amp;quot;以 .ndjson 结尾就算可同步&amp;quot; 让**远端树**里的任意路径都能落进本机：
+`foo/evil.ndjson` 会在应用私有目录里建出目录，`cards/a/b.ndjson` 也能进来。远端是仓库里的
+树，路径要当输入看待，不该因为后缀对就在本机造文件。
+
+- 只认 `decks.json` / `config.json` / 一层深的 `cards/*.ndjson` 与 `review-log/*.ndjson`。
+- 顺带修正一处&amp;quot;两侧传的不是同一个东西&amp;quot;：本地清单原来把**裸文件名**丢给 isSyncable
+  （裸名字没有斜杠，收紧后会被判成不可同步），现在两边都传拼接后的相对路径。
+- 复核了原本被怀疑的&amp;quot;落地会写入白名单外的文件&amp;quot;：本地清单本来就只有 decks.json /
+  config.json / cards / review-log，落地写不出白名单，那条不成立。
+
+自测：新增 2 例（远端任意路径不会在本机建目录 / 本地一层 .ndjson 照常参与）；
+变异检查（换回只看后缀）会让新用例失败；tsc/eslint/prettier/全套绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/96cb20cf133eba1f48523de8f8ded680347b458e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/96cb20cf133eba1f48523de8f8ded680347b458e"/>
+    <title>
+        fix(mobile): 设置与自检的四处事与文案不一致
+    </title>
+    <updated>2026-09-11T13:50:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 设置与自检的四处事与文案不一致
+
+- 「清空凭据」原来单击就把 PAT 删了：这是全 App 唯一&amp;quot;删了不可逆、也没法撤销&amp;quot;的设置动作
+  （PAT 只能回 GitHub 重生成）。现在先弹确认，文案说清后果与&amp;quot;仓库名会保留&amp;quot;。
+- 「清空本机偏好」名不符实：只删了 lastDeckId，主题/字号/常亮都还在，提示语却说&amp;quot;已清空&amp;quot;。
+  现在删这四项（**不含**同步配置与同步记账 —— 它们不是偏好，顺手清等于把同步断了），
+  并调 loadPrefs() 让界面立刻生效（否则要重启才看得出变化），提示语改成如实的。
+- 同步配置：PAT 输入框写着&amp;quot;已存 …，留空则不改&amp;quot;，而保存按钮要求 PAT 非空 —— 只改仓库名这条
+  最常见的路径被按钮封死，用户只能重新贴一遍 PAT。现在&amp;quot;已配置过&amp;quot;即可留空保存（首次仍需填）。
+- 设备自检的探针 1/2 原来把测试文件写进**真实工作区**（探针 2 还写 ~2MB），失败时也不清理，
+  而页面文案说&amp;quot;都在独立目录里、跑完即删&amp;quot;。现在落到 `&amp;lt;工作区名&amp;gt;__selfcheck/` 旁路目录，
+  失败路径也清理，页面文案由同一个常量拼出来、与实现一致。
+
+自测：新增四组用例（渲染级断言保存按钮 disabled + 源码级不变量），探针 spec 3→10 例；
+9 处变异全部被抓到；tsc/eslint/prettier/195 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/573515465ecc9a782fc88111f62fe8d48edca3cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/MuggleWu/miki/commit/573515465ecc9a782fc88111f62fe8d48edca3cb"/>
+    <title>
+        fix(mobile): 页面级渲染错误边界 + 学习页常亮切回前台后失效
+    </title>
+    <updated>2026-09-11T13:50:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/29477798?s=30&amp;v=4"/>
+    <author>
+      <name>MuggleWu</name>
+      <uri>https://github.com/MuggleWu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mobile): 页面级渲染错误边界 + 学习页常亮切回前台后失效
+
+两处都在 App 外壳这一层，症状都是&amp;quot;只能杀进程&amp;quot;：
+
+- 任一页面渲染期抛错，React 会卸载整棵树 → 手机上一片白屏，而且连同一棵树里的「设备自检」
+  都进不去，而那正是排查这类问题的入口。现在六个页面各自一个边界（抽屉与提示条留在边界外，
+  崩了还能换页自救），显示可读提示 + 「重试」重新挂载，并把完整栈打到 logcat。
+  label 按页面区分，用户描述问题时报得出是哪一页。
+- 学习页常亮只在 route/偏好变化时申请：文档隐藏时浏览器会按规范自己释放 Screen Wake Lock，
+  切出去再回来不会自动恢复（句柄还在、锁已经没了）→&amp;quot;接个电话回来，刷卡时屏幕照常息屏&amp;quot;。
+  现在盯 visibilitychange：回到可见且条件仍成立就重新获取，隐藏立刻释放，卸载时摘监听并释放。
+
+自测：新增 render-boundary.spec.ts（6 例，含&amp;quot;新增页面忘了包也会红&amp;quot;与样式不许硬编码颜色）、
+wake-lock.spec.ts（4 例）；9 处变异（去掉包裹/去掉钩子/去掉 visibilitychange 等）全部被抓到；
+tsc/eslint/prettier/195 例/build 全绿。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

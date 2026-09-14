@@ -1,0 +1,429 @@
+# Vivlio
+
+**English** | [日本語](README.ja.md)
+
+Typeset Obsidian notes with [Vivliostyle](https://vivliostyle.org/) — CSS paged
+media, Japanese vertical writing, ruby and emphasis dots — with a live preview,
+and export to PDF and EPUB.
+
+Desktop only (`isDesktopOnly: true`). Nothing is downloaded on first run: the
+typesetting engine ships in the plugin and the PDF is printed by the Chromium
+Obsidian already runs.
+
+Implements [docs/SPEC.md](docs/SPEC.md). A full user manual in Japanese
+starts at [manual/](manual/00_vivlio_plugin_manual.md) — the settings tab,
+`vivlio.yaml`, writing, themes of your own, and troubleshooting.
+
+![Obsidian with a note open on the left and the Vivlio preview on the right: the vivlio-* frontmatter and the ｜遠雷《えんらい》 and 《《…》》 notation sit plainly in the editor, and come out as vertical Japanese type in the pane beside it.](docs/images/obsidian.png)
+
+*The note on the left, the page on the right. The preview uses the same engine
+and the same stylesheet the PDF will.*
+
+One thing the preview cannot do on its own: the page numbers on a contents
+page read `??` until every page has been laid out, because the number comes
+from `target-counter`, which has nothing to count against a page that has not
+been composed yet. An export always composes the whole book, so the PDF and
+the EPUB are correct. To see the real numbers on screen, turn on **Render
+every page up front** in the settings — the preview then takes longer to
+appear and is right from the first frame.
+
+## What it does
+
+| | |
+|---|---|
+| **Preview** | A pane showing the real page composition — the same engine and stylesheet the PDF will use. Vertical writing, hanging punctuation and Japanese/Latin spacing included, none of which Obsidian's own PDF export can produce. |
+| **A book is one note or many** | One note is a book on its own. Point at a folder and the notes directly in it are the book; point at a table-of-contents note and the notes it links to are. |
+| **Obsidian syntax** | Embeds, wikilinks, callouts, task lists, tags, highlights, plus Aozora/Kakuyomu ruby, emphasis dots and tate-chu-yoko. |
+| **PDF** | Tagged, searchable, with bookmarks, metadata and `i, ii, iii, 1, 2 …` page labels. Fonts are embedded and subset by Chromium, so the file is printable elsewhere. |
+| **EPUB 3** | Reflowable, with the theme's CSS, a cover and landmarks. |
+| **Pre-export checks** | Images that will print below 300 dpi, fonts this machine does not have, a cover whose aspect ratio does not match the page. |
+
+## Samples
+
+Download complete source-and-output examples. Extract the source folder into a vault to experiment with the settings and stylesheets.
+
+| Sample | What it demonstrates | Download |
+|---|---|---|
+| Akutagawa Ryunosuke short stories | The same Markdown manuscript and multiple YAML configurations exported as two-column A5 PDFs with and without crop marks and bleed, 127 × 188 mm and bunko PDFs, and EPUB | [0.10.1 sample (30.1 MiB)](https://github.com/nonkuri/obsidian-vivlio/releases/download/0.10.1/vivlio-sample-akutagawa-0.10.1.zip) |
+| *The Adventures of Sherlock Holmes* | An English novel using custom CSS from inside the vault, with PDF, EPUB, and source | [0.8.0 sample (2.7 MiB)](https://github.com/nonkuri/obsidian-vivlio/releases/download/0.8.0/vivlio-sample-sherlock-holmes-0.8.0.zip) |
+
+Each package has a README explaining how to unpack the source, which settings produced each output, and the source-text licensing notes. Keep the source folder's name when first extracting it: `vivlio.yaml` refers to that path.
+
+## Installing
+
+**From Obsidian.** Settings → Community plugins → Browse, search for *Vivlio*,
+install and enable it.
+
+**By hand.** Take `main.js`, `manifest.json` and `styles.css` from a
+[release](https://github.com/nonkuri/obsidian-vivlio/releases) and drop them
+into `VaultFolder/.obsidian/plugins/vivlio/`, then reload Obsidian and enable
+the plugin under Community plugins.
+
+Desktop Obsidian 1.8.7 or later. The plugin prints through the Chromium that
+Obsidian is already running, which is why there is no mobile build.
+
+## Opening the preview
+
+Three ways in, whichever is nearest to hand:
+
+- **The ribbon.** The book icon in the left ribbon typesets the note you are
+  looking at.
+- **The command palette.** `Vivlio: Open preview` does the same.
+- **The file explorer's context menu.** Right-click a Markdown note for
+  **Vivlio: preview**. Right-click a *folder* for **Vivlio: preview as a
+  book** — every `.md` in it, in chapter order — and **Vivlio: export as a
+  book** beside it.
+
+The pane opens on the right, with a toolbar across the top: **Rebuild**, a
+theme picker, and **PDF** and **EPUB** buttons that open the export dialog for
+whatever the pane is showing. It re-typesets as you edit the note; turn that
+off with **Refresh the preview automatically** in the settings, and rebuild by
+hand with the toolbar button or `Vivlio: Reload typeset result`.
+
+## Commands
+
+| Command | What it does |
+|---|---|
+| `Vivlio: Open preview` | Typeset the active note in a side pane |
+| `Vivlio: Export to PDF` / `to EPUB` | Export dialog, checks, then the file |
+| `Vivlio: Export this folder as a book` | Every `.md` in the folder, in order |
+| `Vivlio: Build a book from this note's links` | The note's `[[links]]` become the spine |
+| `Vivlio: Create book configuration` | Wizard that writes `vivlio.yaml` — every key, the untouched ones as comments |
+| `Vivlio: Add configuration to this note` | Adds, edits and removes flat `vivlio-*` frontmatter, with what each key means |
+| `Vivlio: Write configuration reference` | Every key, with defaults and comments |
+
+The file explorer's context menu offers preview and export as well — see
+[Opening the preview](#opening-the-preview).
+
+Open any `.yaml` file (for example, `print.yaml` or `ebook.yaml`) and run **Export to PDF** or **Export to EPUB** to export its whole folder as one book using the selected configuration. The same actions are available by right-clicking a YAML file in the File Explorer. Starting from a Markdown note or folder still uses the conventional `vivlio.yaml` beside the manuscript.
+
+When a multi-selection contains exactly one `.yaml`, that file is used as the configuration. With two or more YAML files—even two editions beside the same manuscript—Vivlio asks you to select one configuration at a time rather than guessing which one to use.
+
+Running **Create book configuration** while any YAML file is open also loads that file into the wizard and writes the result back to the same file. When started from Markdown, the wizard creates or updates `vivlio.yaml` as before.
+
+## Configuring a book
+
+Three layers; a lower one overrides the one above it.
+
+1. **Settings tab** — vault-wide defaults.
+2. **`vivlio.yaml`** next to the book — the real place for a book's settings.
+   Nesting and comments allowed.
+3. **A note's frontmatter** — flat `vivlio-*` keys only, so Obsidian's property
+   editor can edit them (it cannot edit nested YAML).
+
+### Editing `.yaml` and `.css` inside Obsidian
+
+Obsidian's built-in editor is centred on Markdown notes and does not provide a general editor for arbitrary `.yaml` and `.css` files. With **Show .yaml / .css / .epub in the file explorer** enabled, Vivlio makes its configuration and theme files visible and opens them in a minimal plain-text editor.
+
+For syntax highlighting, line numbers, folding, and search and replace without leaving Obsidian, [Code Space](https://community.obsidian.md/plugins/code-space) is a useful community plugin; it is also what the author of this README uses. Install it from **Settings → Community plugins → Browse** by searching for “Code Space”. It manages `.css`, `.yaml`, and `.yml` by default.
+
+If those files still open in Vivlio's minimal editor after installing Code Space, turn off Vivlio's setting above, restart Obsidian, and check that `css`, `yaml`, and `yml` are present under Code Space's **Managed extensions**. Only one plugin can own a file extension at a time. Code Space's external-folder mounting feature is not needed for this workflow.
+
+```yaml
+# vivlio.yaml
+title: 吾輩は猫である
+author: 夏目漱石
+
+theme: novel              # novel, novel-2col, english-novel or manual, or a CSS path in the vault
+writingMode: vertical-rl
+size: 文庫
+charsPerLine: 39
+linesPerPage: 15
+footnote: gcpm            # bottom of the page
+
+cover: 装丁/表紙.png
+sections:
+  titlePage: auto
+  toc: auto
+  preface: まえがき.md
+  colophon: auto
+pageNumbering: continuous # one sequence through front matter and body, excluding the cover
+startPage: 1             # first folio; zero and negative values count but stay hidden
+cropMarks: false         # many Japanese printers ask for no marks
+bleed: 3mm               # …and 3mm of bleed; the sheet grows to carry it
+output: 原稿/出力/猫.pdf
+```
+
+`bleed` works with or without `cropMarks`. Without them the sheet is printed
+at the trim size plus twice the bleed, which is the shape a Japanese printer
+means by 「トンボなし・塗り足し3mm」; the text block keeps its place relative to
+the trim.
+
+The cover image and a `coverPage` background reach the outer bleed edge with
+or without crop marks. Use `![[images/illustration.png|bleed]]` for a full-page
+bleeding illustration in the body. For a tinted page, put the class on the
+page element, for example
+`<div class="vivlio-bleed" style="background: #18202a"></div>`. Ordinary body
+images remain fitted inside the text block.
+
+```yaml
+---
+title: 吾輩は猫である
+vivlio-theme: manual
+vivlio-size: 文庫
+---
+```
+
+A note's own `title` is read as well, so a single note exported on its own
+needs no `vivlio-title` to name the book. Write `vivlio-title` when the two
+should differ — it wins — which is the form `Vivlio: Add configuration to this
+note` inserts, since every key it offers takes the `vivlio-` prefix.
+
+`Vivlio: Create book configuration` asks about every one of those keys and
+writes them all. A key you left at **Use the default** is written as a comment,
+so the file lists what this book could say while the book still follows the
+vault as its defaults change — delete the `#` to take one over.
+
+For an English trade paperback, start with the English preset in the wizard,
+or use these settings:
+
+```yaml
+lang: en
+theme: english-novel
+writingMode: horizontal-tb
+size: 6x9
+sections:
+  titlePage: auto
+  copyrightPage: auto
+  toc: auto
+  colophon: off
+```
+
+English books use a prose copyright page immediately after the title page;
+the Japanese-style colophon remains a separate, optional section at the back.
+When neither setting is written, `lang: en` selects the values above. The
+wizard also writes a language-matched `labels:` block, where headings and the
+copyright-page sentences can be edited without changing the theme.
+
+```yaml
+# --- Typesetting ---
+# Page size: 文庫 (A6, 105x148mm) | 新書 | JIS-B6 | A5 | ...
+# size: 文庫
+# Characters per line; empty lets the theme size the text block from the page
+charsPerLine: 39
+```
+
+Run `Vivlio: Write configuration reference` for a `vivlio.yaml` listing every
+key with its default and a comment, as values rather than comments.
+
+## Chapter order
+
+1. A table-of-contents note (`index.md`, a note named after the folder, or one
+   with `vivlio-toc: true`) — its `[[links]]` in the order they appear.
+2. Otherwise the natural order of file names, so `2.md` comes before `10.md`.
+3. `vivlio-order: 3` pins a note to a position either way.
+
+The table-of-contents note itself stays out of the book unless
+`includeToc: true`.
+
+`vivlio-order` and `vivlio-toc` belong to a note rather than to the book, so
+`vivlio.yaml` has no use for them and the configuration reference leaves them
+out. `Vivlio: Add configuration to this note` offers both.
+
+## Notation
+
+| You write | You get |
+|---|---|
+| `《《テキスト》》` | emphasis dots (Kakuyomu style); choose sesame dots, circles, triangles, or type any mark |
+| `漢字《かんじ》` | ruby over the run of kanji in front of it — the shorthand a manuscript actually uses |
+| `｜任意《よみ》` | ruby over anything; `｜` says where the base begins (a halfwidth `\|` does too) |
+| `{漢字\|かんじ}` | ruby (VFM's own syntax) |
+| `^^1/2^^` | tate-chu-yoko, up to four characters |
+| a one- or two-digit number, in vertical writing | set upright automatically — a pair combined into one em, a lone digit stood up rather than laid on its side. Only when no digit, letter or `. , : % -` adjoins it |
+| `==highlight==` | emphasis dots, bold, `<mark>` or plain text — your choice |
+| `［＃改ページ］`, or a line of `===` | a forced page break, written either the way Aozora Bunko writes one or the way Den-Den Markdown does. Leave a blank line above the equals signs, or Markdown reads them as a heading underline |
+| three or more blank lines | space on the page: `n` blank lines give `n - 2` blank lines of it |
+| an ideographic space starting a line | that paragraph is indented, and the character itself goes |
+| `> [!anything]` | a framed callout. Any type; it survives as `callout-<type>` for a theme to style |
+| `![[fig.png\|300]]` | a picture at a stated width — `300`, `300x200`, `60%`, `80mm`, `300px` |
+| `![caption](fig.png)` | a `<figure>` with the caption under it. The wiki form takes a width, this one a caption |
+| `![[Note]]`, `![[Note#Heading]]` | the note's text, set in place (three deep; a cycle is refused) |
+| `[[Note]]`, `[[Note\|shown]]` | a link when the note is in the book, plain text when it is not |
+| `- [ ]` | ☐ / ☑, drawn as text rather than as a form control |
+| `$E = mc^2$`, `$$…$$` | math, converted to MathML (Temml) while the book is built. Nothing is loaded to typeset it in the reader, so it comes out the same in a PDF, in an EPUB and with no network. A currency `$` is written `\$` (see [Math](#math)) |
+| a `mermaid` or `dataview` block | drawn by Obsidian's own renderer, then placed as a figure |
+| `#tag`, `%%comment%%`, `^block-id` | removed |
+
+Every stage can be switched off in the settings tab, and none of them can reach
+inside a code block: the conversions run over the document tree, not over the
+Markdown source.
+
+![A spread from the sample book at full size: ruby over 遠雷, emphasis dots beside 「その手袋は、もう戻らない」, 10 and 42 turned upright, the gap a run of blank lines opens, running heads and folios.](docs/images/spread.png)
+
+### Math
+
+`$...$` and `$$...$$` are turned into MathML while the book is typeset. Temml
+does the conversion, so a formula is part of the document itself and comes out
+the same in a PDF, in an EPUB and in a vault with no network. (The other way -
+leaving the LaTeX in the page and fetching MathJax to set it in the reader - is
+not used: a book does not run code, and that script is taken out before the
+book is written.) In vertical writing both inline and display math stay
+horizontal.
+
+A `$` opens a formula only when all three of these hold:
+
+- no space follows the opening `$`
+- no space precedes the closing `$`
+- no digit follows the closing `$`
+
+So `it cost $100 to $200` and `$1,000 to $2,000` are left alone. What does get
+read as math is a pair with no space between them whose second `$` is followed
+by something other than a digit. Write `\$` for the dollar sign itself
+(`&dollar;` and a code span do the same), or `vfm: { math: false }` to switch
+the syntax off altogether.
+
+## Columns
+
+B6 and A5 — the sheets a 同人誌 is usually printed on — and the 新書 are
+commonly set vertically in two columns. The `novel-2col` theme sets them:
+
+```yaml
+# vivlio.yaml
+theme: novel-2col
+size: JIS-B6
+charsPerLine: 23   # characters in one column's line
+linesPerPage: 17   # lines one column holds
+```
+
+**Both figures are per column.** In vertical writing the two columns are an
+upper and a lower band, and each band is as long as the page is wide, so the
+page carries twice `linesPerPage` lines. A line runs down its own band and the
+lines march leftwards; when the upper band is full the text continues at the
+top right of the one below.
+
+To change only the count, write `columns:`. An explicit count applies to the
+body regardless of theme, so it can split not only a vertical `novel` page but
+also horizontal `manual` pages and custom themes. `columns: 1` returns
+`novel-2col` to one column. Themes without a grid simply split their existing
+body area; the font size and margins are left alone.
+
+The setup wizard offers Shinsho, B6 and A5 two-column presets. The body size is
+derived from the sheet and the grid, so rewriting the two figures moves the
+whole page with them.
+
+The cover, title page, copyright page, contents and colophon stay in one column
+— a colophon split across two bands is not a colophon. Footnotes (`gcpm`) sit
+at the foot of the page, spanning both.
+
+Vivlio warns when a multi-column body contains a table. A narrow column can
+force extreme wrapping inside cells or push a table beyond the page. The
+warning does not stop export: check the preview and use one column for that
+manuscript when the table does not fit. EPUB removes columns and therefore
+does not show this warning.
+
+## A theme of your own
+
+`theme:` also takes the vault-relative path of a stylesheet, and that stylesheet
+can start from a bundled one:
+
+```css
+/* 装丁/私の本.css */
+@import url("vivlio:novel");
+
+:root {
+  --vs-novel--chars-per-line: 42;
+  --vs-novel--lines-per-page: 17;
+  --vs-novel--boten-font-size: 0.32rem;
+  --vs-novel--secondary-ink: #4a4a4a;
+}
+
+.callout-warning { border-color: #b00; }
+```
+
+```yaml
+# vivlio.yaml
+theme: 装丁/私の本.css
+```
+
+The theme picker offers the four themes built for this plugin — `novel`, for a
+novel set vertically, `novel-2col`, for one set vertically in two columns,
+`english-novel`, for a western trade paperback, and `manual`, for a manual or
+tech book set across the page — followed by **every `.css` file in the vault, listed by its path**. Put
+a stylesheet anywhere in the vault and it is in the list; there is nothing to
+register. `vivlio:base`, `vivlio:bunko`, `vivlio:techbook` and `vivlio:academic`
+— the CC0 Vivliostyle themes — resolve when a book names one, but are left out
+of the picker: they have not been gone over against this plugin's folios and
+headings yet.
+
+Any other `@import` is an ordinary one, relative to the file doing the
+importing and read from the vault. Each is followed once, so a ring of imports
+is safe. The whole thing is flattened into a single stylesheet before use, which
+is why the preview and the EPUB read exactly the same text.
+
+Local files named by `url(...)` are resolved relative to the stylesheet that
+contains the declaration, including stylesheets brought in through `@import`.
+Vivlio rewrites those references to book assets and packs images and fonts into
+the EPUB. Remote URLs, data URLs and fragment-only references are left as
+written; a missing local file is reported before export.
+
+```css
+/* style/parts/callouts.css -> style/images/paper.png */
+.callout { background-image: url("../images/paper.png"); }
+```
+
+The classes worth knowing when writing one: `.boten`, `.tcy`, `.callout` and
+`.callout-<type>`, `.task-list`, `.vivlio-page-break`, `.vivlio-blank-lines`,
+`.vivlio-no-indent`, `.vivlio-rendered`, `.copyright-page` and
+`.copyright-page-content`.
+
+## Building
+
+```bash
+npm install
+npm run build
+```
+
+`main.js`, `manifest.json` and `styles.css` are what a release ships. The
+prebuilt Vivliostyle viewer and the four CC0 themes are embedded in the bundle,
+so there is nothing else to copy.
+
+```bash
+npm test
+```
+
+The tests run the real conversion pipeline, the configuration layers and the
+local server outside Obsidian, against a small stub of the app's API.
+
+## Releasing
+
+`npm version patch` (or `minor` / `major`) writes the new number into
+`package.json`, `manifest.json` and `versions.json` in one go. Pushing the tag
+it creates is the whole release: the workflow builds the bundle, checks that
+the tag and the manifest agree, and uploads the three files as loose assets —
+which is the shape Obsidian's installer expects.
+
+```bash
+npm version patch
+git push --follow-tags
+```
+
+## How it works
+
+```
+note(s) ──▶ VFM (+ this plugin's hooks) ──▶ HTML + generated CSS
+                                                │
+                                    127.0.0.1 (token-scoped)
+                                                │
+                            ┌───────────────────┴───────────────────┐
+                            ▼                                       ▼
+                   iframe + Vivliostyle viewer          hidden webview → printToPDF
+                          (preview)                       → pdf-lib (bookmarks,
+                                                             metadata, page labels)
+```
+
+Vivliostyle fetches the document and its assets over XHR, which rules out
+`file://`, so the plugin serves the build over loopback while a preview or an
+export is open. That server binds `127.0.0.1` only, requires a per-session
+token in every URL, checks the `Host` header, answers only GET and HEAD, sends
+no CORS headers, and refuses any path outside the vault unless a font was
+explicitly configured from elsewhere.
+
+## Licence
+
+AGPL-3.0-or-later. `@vivliostyle/core` and `@vivliostyle/viewer` are AGPL-3.0
+and are bundled into `main.js`, so the plugin as a whole is AGPL-3.0. See
+[LICENSE](LICENSE) and [NOTICE](NOTICE) — VFM is Apache-2.0 and the themes are
+CC0-1.0.
+
+Fonts are never bundled. Checking that a font's licence allows embedding it in
+a PDF or an EPUB is up to you.

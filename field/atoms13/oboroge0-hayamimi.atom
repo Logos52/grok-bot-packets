@@ -1,0 +1,2665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/oboroge0/hayamimi/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/oboroge0/hayamimi/commits/main.atom"/>
+  <title>Recent Commits to hayamimi:main</title>
+  <updated>2026-09-13T00:11:56Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3f506bf62ca810410ae7bd7cce1d70df2d9d115</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/f3f506bf62ca810410ae7bd7cce1d70df2d9d115"/>
+    <title>
+        input: Windows speaker loopback (--input speaker) and mic+speaker mix…
+    </title>
+    <updated>2026-09-13T00:11:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4611624?s=30&amp;v=4"/>
+    <author>
+      <name>bingyo</name>
+      <uri>https://github.com/bingyo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;input: Windows speaker loopback (--input speaker) and mic+speaker mix (--input mix) (#53)
+
+* feat: add Windows speaker loopback and mixed microphone input
+
+Capture system audio through WASAPI on a dedicated COM-initialized thread,
+downmix native output channels, and align mic/speaker windows by capture
+timestamp with bounded mixer queues and explicit source-failure handling.
+
+Add device selection, Windows-only SoundCard dependency, English/Japanese
+usage documentation, and hardware-free regression coverage. Keep ASR
+routing, finalization, refinement, and session reset outside this change.
+
+* test: isolate audio capture platform and SoundCard mocks
+
+---------
+
+Co-authored-by: bingyo &amp;lt;4611624+bingyo@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca5a3bd444ea231bd66f1bb564642dbd33c7c6a4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/ca5a3bd444ea231bd66f1bb564642dbd33c7c6a4"/>
+    <title>
+        vad: preserve pending LiveVad updates and segment timing across rebui…
+    </title>
+    <updated>2026-09-10T18:45:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4611624?s=30&amp;v=4"/>
+    <author>
+      <name>bingyo</name>
+      <uri>https://github.com/bingyo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;vad: preserve pending LiveVad updates and segment timing across rebuilds (#54)
+
+Compose queued sensitivity changes, defer rebuilds until completed segments
+are drained, and keep segment coordinates on the existing audio timeline.
+Publish new settings only after construction succeeds, preserving pending
+updates and the active detector when construction fails.
+
+Add regression tests, real-speech VAD rebuild coverage, and update the
+English and Japanese embedding guides. Leave capture, session reset,
+ASR decoding, and refinement behavior outside this change.
+
+Co-authored-by: bingyo &amp;lt;4611624+bingyo@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9dcc93d6c8ed72f25a1f5178960f5957ccc567d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/a9dcc93d6c8ed72f25a1f5178960f5957ccc567d"/>
+    <title>
+        punct: opt-in 4-class Japanese punctuation model on an MIT base, Punc…
+    </title>
+    <updated>2026-09-10T17:22:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;punct: opt-in 4-class Japanese punctuation model on an MIT base, PunctuatorJa4Class (#58)
+
+* punct: opt-in 4-class ja punctuation model (PunctuatorJa4Class)
+
+Track C: a token-classification punctuator (none / 、 / 。 / ？ / ！)
+trained from scratch on an MIT base (sbintuitions/modernbert-ja-30m)
+with ODC-By FineWeb-2 Japanese text, so the fine-tuned weights are
+distributable under MIT. FLEURS ja (n=250): F1 0.887 vs the shipped
+model&amp;#39;s 0.622, punct-inclusive CER 1.17% vs 2.81%, ？ recall 1.0,
+！ F1 0.76 (shipped: unsupported); int8 37MB vs 364MB; 3.4ms/line vs
+44ms (solo, 6 threads). Opt-in only -- PunctuatorJa and the default
+pipeline are unchanged -- because on the sparse-punctuation TV-caption
+set (testdata/eval_real) the shipped model still scores higher; the
+record says so. The first attempt (CC-BY-SA deberta-v2-tiny + Wikipedia
++ JSQuAD, F1 0.774) is kept in the record as measured-but-rejected on
+licensing. Adds the trainset/train/export/eval scripts, 13 tests, and
+docs/eval/punct_retrain.md.
+
+Squash of agent/feature/punct-4class.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* review fixes: one safe_nfkc, notices row for the adopted punct model, tidy-ups
+
+- scripts/ja_text_norm.py holds the single NFKC that protects fullwidth
+  ？/！; the trainer, corpus builder, 4-class eval and quantize_punct.py
+  all import it (quantize_punct&amp;#39;s strip_marks was still folding ？ away).
+- THIRD_PARTY_NOTICES: record punct-ja-4class-permissive (MIT base,
+  ODC-By training text) -- CONTRIBUTING requires it for an adopted model.
+- punct_ja.PunctuatorJa4Class: module-level numpy, np.ones mask, and the
+  NFKC precondition spelled out in restore()&amp;#39;s docstring.
+- check_doc_links: rely on the pyvenv.cfg check instead of naming venvs.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/640c49e3222dd6e70c6819f77982cc36a1270f38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/640c49e3222dd6e70c6819f77982cc36a1270f38"/>
+    <title>
+        asr: opt-in English-only Parakeet TDT v2 tier, --en-tier v2 (#57)
+    </title>
+    <updated>2026-09-10T17:21:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;asr: opt-in English-only Parakeet TDT v2 tier, --en-tier v2 (#57)
+
+* asr: opt-in en-only Parakeet TDT v2 tier (--en-tier v2)
+
+Track E: FLEURS en WER 10.04% -&amp;gt; 6.64% and LibriSpeech 2.26% -&amp;gt; 1.33%
+against v3, same CC-BY-4.0 license, RTF 0.099 (solo, 6 threads). Opt-in
+via RoutedASR(en_tier=&amp;quot;v2&amp;quot;) / --en-tier v2; the default stays v3, which
+also carries the other 24 European languages and avoids the extra ~660MB
+resident. A missing v2 model degrades to v3 explicitly (not to the generic
+chain&amp;#39;s rz). Adds download_models.py --en-parakeet-v2, the eval harness
+and record (docs/eval/en_candidates.md), THIRD_PARTY_NOTICES entry, and 8
+model-free tests. Parakeet unified (2026-04) measured but not adopted:
+NVIDIA Open Model License instead of CC-BY.
+
+Squash of agent/feature/en-parakeet-v2.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* review fixes: _TIER_FALLBACK table, v2 under --minimal, LRU note
+
+- The v2-&amp;gt;v3 degrade is now a table (_TIER_FALLBACK) consulted inside
+  _get_with_fallback, not a prefer= knob each call site must remember.
+- --en-parakeet-v2 goes through download_opt_ins(), so it is honoured
+  together with --minimal (test added).
+- Document that --en-tier v2 costs one more --max-resident slot when a
+  session alternates English with other European languages.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: en_candidates -- record the solo 6-thread RTF re-measurement
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad6cf66ca9b130220fb8730db289c1b02d83c9cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/ad6cf66ca9b130220fb8730db289c1b02d83c9cb"/>
+    <title>
+        eval: model replacement round 1 -- LID, translation, Korean, OSD cand…
+    </title>
+    <updated>2026-09-10T17:19:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;eval: model replacement round 1 -- LID, translation, Korean, OSD candidates, none adopted (#56)
+
+* eval: LID replacement candidates (track A) -- no candidate adopted
+
+whisper-base, SenseVoice-alone, VoxLingua107-ECAPA (raw and with a
+FLEURS-trained target-language head) measured on the real-speech LID
+harness (clean + babble_snr10, 0.5-4s). None clears the 90%/80% bar;
+production keeps the whisper-tiny + SenseVoice dual-confirm policy.
+Extracts trim_lid_clip() so every candidate shares production&amp;#39;s input
+framing; adds download_models.py --lid-candidates and 11 unit tests.
+
+Squash of agent/feature/lid-candidates.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* eval: translation replacement candidates (track B) -- none adopted
+
+opus-mt-ja-en/es, M2M-100 1.2B and LMT-60-0.6B converted to CTranslate2
+int8 and scored with chrF on FLEURS (zh/ko/es, plus a new en mapping)
+and the repetition smoke set. opus-mt loops like FuguMT; the two larger
+models are clean but miss the zh/ko chrF bar and run 2-4x over the 1s/line
+budget. Production translators unchanged (additive intra_threads only).
+Adds a pluggable backend module, eval_translate.py --backend, and
+download_models.py --translate-candidates.
+
+Squash of agent/feature/translate-candidates.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* eval: Korean route alternatives (track D) -- keep SenseVoice
+
+zipformer-ko with peak gain normalization (fixes the quiet-clip empty
+output but still ~2x SenseVoice&amp;#39;s CER), SenseVoice with language pinned
+to ko (worse than auto), and Omnilingual 300M (worse, over the RTF
+budget) measured on FLEURS ko-100 and the real ko-12 set. Cohere
+Transcribe 14-lang (Apache-2.0) noted as the lead if the 700MB size cap
+is ever relaxed. Production unchanged.
+
+Squash of agent/feature/ko-candidates.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* diarization: dedicated OSD investigation (track F, section 21) -- not viable this round
+
+pyannote&amp;#39;s OSD models are gated on Hugging Face (no token here), NVIDIA
+Sortformer&amp;#39;s ONNX export is broken upstream, and no other permissively
+licensed pretrained OSD was found. A pseudo-OSD gate (hysteresis + joint
+marginal floor + min run-length) over segmentation-3.0&amp;#39;s powerset output
+reaches a net -0.7pt (pyannote DER) at best, short of the -1.5pt bar and
+regressing 2/5 AMI meetings -- the same ceiling as section 20. Eval-only:
+scripts/eval_diar_osd.py + 8 tests; nothing wired into production.
+
+Squash of agent/feature/osd-research.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: index the three new candidate-evaluation records
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* review fixes: LID knob, opt-in downloads under --minimal, notices, index tag
+
+- asr_engine.LID_MAX_SECONDS is the documented tuning knob
+  (docs/guide/tuning.md); pass it explicitly to trim_lid_clip instead of
+  leaving an orphaned duplicate, and pin the two constants in a test.
+- download_models.py: --eval-baselines / --lid-candidates /
+  --translate-candidates were unreachable when combined with --minimal
+  (early return). Move them into download_opt_ins(), called on both paths.
+- THIRD_PARTY_NOTICES: record the four --translate-candidates source repos
+  (CONTRIBUTING: new model dependency =&amp;gt; notices in the same PR).
+- docs index: lid_candidates.md is written in Japanese; tag it ja.
+- eval_ko_candidates.py: build the SenseVoice/Omnilingual baselines through
+  asr_engine&amp;#39;s builders so the &amp;#39;production baseline&amp;#39; cannot drift.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9aca740e780a82981d4425d4347b9f70205bd89</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/a9aca740e780a82981d4425d4347b9f70205bd89"/>
+    <title>
+        asr: give RoutedASR/Refiner a close() so pytest no longer leaks 19GB …
+    </title>
+    <updated>2026-09-10T17:19:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;asr: give RoutedASR/Refiner a close() so pytest no longer leaks 19GB (#55)
+
+* asr: give RoutedASR, Refiner and TranslationWorker a close()
+
+Each of these classes started a daemon thread that looped forever on a
+queue get (Refiner, TranslationWorker) or ran an untracked preload
+(RoutedASR), with no way to stop it. The thread&amp;#39;s frame holds its owner,
+and a Refiner holds the RoutedASR, which holds the sherpa-onnx
+recognizers -- so an engine could never be collected once built.
+
+close() on each: FIFO stop sentinel + thread join for the two queue
+workers (so already-queued work still runs first), and for RoutedASR a
+tracked-thread join followed by dropping the recognizers, punct,
+ko_spacer, LID and segmentation VAD. Work submitted after close raises
+(Refiner: dropping refine text would lose transcript content, and a
+force_sync refine would otherwise deadlock) or is dropped
+(TranslationWorker: the line was already printed untranslated).
+main()&amp;#39;s shutdown path closes all three.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* tests: guard the pipeline lifecycle against the 19GB pytest leak
+
+Model-free stubs cover the mechanism itself (a closed Refiner releases
+its engine; a closed RoutedASR joins its preload thread, drops every
+model reference and becomes collectable; both refuse work afterwards),
+so CI without models/ still catches a regression. One models-gated test
+runs the real make_ja_golden.run_clip() twice and asserts no RoutedASR
+survives it -- that loop is where the 19GB came from.
+
+Thread leaks are checked by comparing threading.enumerate() before and
+after each test rather than by name: threading.Thread(target=...) names
+its threads &amp;quot;Thread-N&amp;quot;, so there is no _worker_loop/_preload_rest to
+match on.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* tests: teach the RoutedASR/Refiner stubs about the closed state
+
+transcribe(), partial(), identify() and add_span() now check that their
+object is still open, and these stubs call those methods unbound, so
+they need the same state. Borrowed from the real classes rather than
+faked, matching how the stubs already borrow _looks_truncated and
+add_span.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: document the pipeline shutdown path in the embedding guide
+
+An embedding app is exactly the caller that hits this: stopping
+run_stream releases nothing, and a dropped-but-unclosed pipeline keeps
+its recognizers resident for the life of the process. Says which order
+to close in, that close() ends the object&amp;#39;s life rather than pausing it,
+and points at reset_live_session() for the &amp;quot;new conversation, same
+models&amp;quot; case.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/35a4d9712dd77bdd9833dbc97eb8209d273af773</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/35a4d9712dd77bdd9833dbc97eb8209d273af773"/>
+    <title>
+        docs: point the fp16 punctuation model at its Hugging Face repo (#52)
+    </title>
+    <updated>2026-09-06T09:44:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: point the fp16 punctuation model at its Hugging Face repo (#52)
+
+Problem: the docs (README, README.ja, THIRD_PARTY_NOTICES, CHANGELOG,
+mobile_quantization.md) all said the on-device fp16 Japanese punctuation
+model (punct_bert.fp16.onnx + vocab.txt) was an undistributed local build
+artifact that a host app had to produce itself via quantize_punct.py.
+
+Change: the fp16 conversion is now hosted publicly at
+oboroge0/hayamimi-punct-ja-fp16 on Hugging Face. Updated every &amp;quot;not
+hosted&amp;quot;/&amp;quot;local build artifact&amp;quot; statement to point there instead, adding
+file sizes and sha256 checksums to the README (English and Japanese) and
+the HF repo as a distribution source in THIRD_PARTY_NOTICES.md, plus a
+CHANGELOG line noting the model is now downloadable. Left the desktop
+pipeline&amp;#39;s fp32 flow and scripts/download_models.py untouched, and did
+not touch docs/spec/ja_pipeline*.md or the generated spec JSON since they
+carry no such &amp;quot;not hosted&amp;quot; claim about the fp16 file.
+
+Effect: readers of these docs now know where to get both files instead of
+being told to build them locally.
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9e63ae6e3fe8c233ce8fe7a40e39f5236e7a7c32</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/9e63ae6e3fe8c233ce8fe7a40e39f5236e7a7c32"/>
+    <title>
+        asr: survive a missing omni fallback model; download the int8 omnilin…
+    </title>
+    <updated>2026-09-06T09:16:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;asr: survive a missing omni fallback model; download the int8 omnilingual tarball (#51)
+
+* asr: keep the live process alive when the omni fallback model is missing
+
+Problem: transcribe()&amp;#39;s empty-specialist safety net called _get(&amp;quot;omni&amp;quot;)
+without catching ModelUnavailable. On an install without the omnilingual
+model, the first specialist decode that came back empty raised out of
+run_stream() and took the whole live process (mic, --serve dashboard,
+runtime API) down mid-stream. Seen 2026-09-04 while testing language
+switching: a short English &amp;quot;Once.&amp;quot; under a ja tag was enough.
+
+Change: catch ModelUnavailable there, like every other _get() caller
+already does, and let the empty result stand (the caller drops empty
+finals as non-speech).
+
+Effect: a minimal install degrades to &amp;quot;no fallback&amp;quot; instead of dying.
+Two stub-based tests cover both branches.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* download_models: fetch the int8 omnilingual tarball and refuse partial dirs
+
+Problem: the omnilingual entry pointed at the fp32 tarball
+(...300M-ctc-2025-11-12) while asking for model.int8.onnx, which that
+tarball does not contain (it ships model.onnx only). The selective
+extractor kept whatever matched, so the model directory ended up holding
+only tokens.txt, and because &amp;quot;present&amp;quot; was tested on the directory rather
+than its files, every later run skipped it as complete. The live fallback
+route therefore had no model to load.
+
+Change: point at the upstream int8 tarball
+(...300M-ctc-int8-2025-11-12, model.int8.onnx 365,352,120 bytes, the
+same artifact the 2026-08-24 benchmarks used); treat &amp;quot;present&amp;quot; as &amp;quot;every
+wanted file exists&amp;quot; so a partial directory is re-fetched; and raise (after
+removing the partial directory) when a tarball lacks a wanted file.
+
+Effect: a fresh download restores the fallback model; the stale layout
+repairs itself on the next run. Three tests exercise the extractor with
+tiny synthetic tarballs.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/63515773bd934265033e99c1101f4407e5a1b07c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/63515773bd934265033e99c1101f4407e5a1b07c"/>
+    <title>
+        docs: reorganise by purpose, add index/tuning/embedding guides, Engli…
+    </title>
+    <updated>2026-09-06T09:14:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: reorganise by purpose, add index/tuning/embedding guides, English ja_pipeline spec, link check in CI (#48)
+
+* docs: move the flat docs/ tree into purpose-named subdirectories
+
+23 files sat flat in docs/ with no index, mixing current results, dated
+experiment logs, design investigations, procedures and a spec. Group them
+by what a reader wants: results/ (current numbers), eval/ (dated records),
+design/ (design history), verify/ (procedures), spec/ (the ja spec and its
+pinned JSON), and lower-case every name. All moves use git mv so history
+follows; no prose is changed.
+
+docs/MOBILE.md is split at its section boundary: the three &amp;quot;Android
+emulator verification&amp;quot; runs move verbatim to docs/verify/android_emulator.md
+and the rest stays as docs/design/mobile_quantization.md, each with a note
+saying where it came from and a link to the other half.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: move the two embedding sections out of the READMEs into docs/guide
+
+The READMEs carried the whole embedding reference inline -- the event-type
+table, the /config keys, the POST /reset semantics -- which is a lot of
+API surface between &amp;quot;network audio input&amp;quot; and &amp;quot;requirements&amp;quot; for a reader
+who only wants to run the CLI. The sections move verbatim to
+docs/guide/embedding.md and docs/guide/embedding.ja.md; each README keeps a
+short summary and a link, plus a pointer to the Dart guide in
+mobile/hayamimi_core/README.md, which is not duplicated.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: add a tuning reference listing every knob and the record behind it
+
+The defaults were spread over argparse help, module constants, POST /config
+handlers and the hayamimi_core README, so answering &amp;quot;what can I change, and
+why is it that value&amp;quot; meant reading four places and guessing at the rest.
+docs/guide/tuning.md (+ .ja.md) puts one table per side -- Python engine and
+hayamimi_core -- with the shipped value, every place it can be changed, and
+a link to the measurement that set it. Every number is read out of the code
+named in its row. A closing table lists the four internal Dart timeouts that
+are deliberately not exposed, so nobody goes looking for a knob that is not
+there.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: add the index, repoint every reference, and check links in CI
+
+Nothing pointed at the new layout yet: 40+ files carried a docs/ path in a
+comment, a docstring, a dartdoc, a Markdown link, or an absolute
+blob/main/ URL in the published Dart package&amp;#39;s README, and there was no
+index at all.
+
+- docs/README.md (+ .ja.md): the index, grouped by purpose, with a one-line
+  summary, a language tag and conclusion/dated-record for every file, and an
+  old-to-new path table at the bottom for anyone holding an old link.
+- Both root READMEs now point at that index.
+- Every reference repointed, including the filesystem paths the eval scripts
+  write their own reports to (eval_engine.py, eval_noise.py, eval_lid_curve.py
+  and friends) and tests/test_ja_pipeline_spec.py&amp;#39;s SPEC_PATH.
+- The two docs/MOBILE.md halves are distinguished by what each reference was
+  actually about: the pre-roll and emulator findings go to
+  verify/android_emulator.md, everything else to design/mobile_quantization.md.
+- scripts/check_doc_links.py resolves relative links and blob/main/ self-links
+  against the tree and exits 1 on a break; tests/test_doc_links.py runs it, so
+  the next move fails a test instead of rotting quietly. Stdlib only, no models.
+- CONTRIBUTING.md gains a Documentation section (layout, where a new doc goes,
+  the language policy, the house writing rule); README.ja.md carries the same
+  in Japanese rather than forking a whole CONTRIBUTING.ja.md.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: add the English ja_pipeline spec and wire it in as the primary edition
+
+The Japanese route spec (docs/spec/ja_pipeline.ja.md) was the only edition,
+so anyone re-implementing the route without Japanese had to work through a
+disclaimer of &amp;quot;not yet translated.&amp;quot; Add docs/spec/ja_pipeline.md as a full
+English rendering -- same sections, tables, numbers, sha256s and identifiers
+as the Japanese file, checked with a script that diffs every sha256,
+number-with-unit and backticked identifier between the two editions. The
+only differences left are justified ones (romanised glosses, hyphenation).
+
+Repoint docs/README.md/.ja.md&amp;#39;s spec row, tests/golden/ja/README.md, and
+scripts/dump_ja_config.py&amp;#39;s &amp;quot;describes&amp;quot; field at the new English file, and
+regenerate docs/spec/ja_pipeline_spec.json so it agrees.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: add a condensed Japanese guide for hayamimi_core
+
+The Flutter package guide (mobile/hayamimi_core/README.md) is 1,108 lines
+of full API reference; a Japanese developer starting out doesn&amp;#39;t need all
+of it translated, just enough to get HayamimiLive running. Add
+README.ja.md covering the three pieces, installing, initBindings and
+platform permissions, the minimal HayamimiLive snippet, model placement
+per RoutingProfile, the runtime-knobs table, punctuation restoration (how
+to enable it, why finals are punctuated too, the measured cost), the
+threading model, and the platform status table -- every number copied
+from the English README, nothing invented. Points to README.md for the
+full event table, remote-mode details, and API docs.
+
+Link it from README.md&amp;#39;s top and from the docs index&amp;#39;s &amp;quot;Embed it&amp;quot; row.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8565d59fcc7eb2fa82f96fe2c4e6fa465309b72f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/8565d59fcc7eb2fa82f96fe2c4e6fa465309b72f"/>
+    <title>
+        eval: ReazonSpeech head dropout on FLEURS ja: pre-roll vs silence pre…
+    </title>
+    <updated>2026-09-06T09:02:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;eval: ReazonSpeech head dropout on FLEURS ja: pre-roll vs silence prepend, greedy vs beam (#46)
+
+* eval: measure ReazonSpeech head dropout under 8 onset x decoder conditions
+
+scripts/eval_head_dropout.py runs the live path&amp;#39;s VAD verbatim
+(realtime_transcribe.build_vad defaults, 512-sample windows, flush at end),
+picks the first utterance-bearing segment of each clip, and decodes it under
+greedy_search/modified_beam_search x {none, preroll, silence300,
+silence1000}, plus a RoutedASR(forced_lang=&amp;quot;ja&amp;quot;) reference row.
+
+The raw grid builds its own recognizers with _build_reazon&amp;#39;s exact
+configuration, varying only decoding_method, so split-retry and LID cannot
+interfere with what is being measured. Scoring reuses
+eval_accuracy.normalize_ja plus a character alignment whose reference side is
+end-free, because the hypothesis covers one segment while the FLEURS
+reference covers the whole clip.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: head dropout measured on FLEURS ja, pre-roll vs silence prepend
+
+FLEURS ja 100 clips, first utterance-bearing VAD segment, Ryzen 5 5600,
+--threads 4, sherpa-onnx 1.13.6. On the onset-resolvable subset (n=90): no
+onset handling drops the utterance head in 27/90 decodes with beam and 29/90
+with greedy -- the decoding method does not protect the head. Pre-roll takes
+that to 0/90 (mean CER 0.188 -&amp;gt; 0.086) for +10% decode time; prepending 300ms
+of silence takes it to 4/90 and 1.0s to 2/90, so silence is a workable but
+weaker substitute for an implementation that keeps no pre-onset audio.
+split-retry never fired (0/100): a 2-5 character head loss does not move text
+density enough to trip its gate, so it is not the first line of defence.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d04d901a97782077df43b1ac4d6283c7519843b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/d04d901a97782077df43b1ac4d6283c7519843b6"/>
+    <title>
+        docs: JA_PIPELINE spec for re-implementation, config drift check, ja …
+    </title>
+    <updated>2026-09-06T09:02:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: JA_PIPELINE spec for re-implementation, config drift check, ja golden tests (#47)
+
+* refactor: name the ja route&amp;#39;s literal settings as module constants
+
+docs/JA_PIPELINE.md specifies the Japanese route for re-implementation
+elsewhere, and scripts/dump_ja_config.py has to be able to report that
+configuration without loading a model. Several of the values it needs were
+bare literals inside the builder that consumes them, reachable only by
+constructing the thing.
+
+Hoisted, not changed: RZ_MODEL_TYPE / RZ_DECODING_METHOD / RZ_MODELING_UNIT /
+RZ_HOTWORDS_SCORE / RZ_MODEL_FILES out of _build_reazon(), VAD_MIN_SPEECH_S /
+VAD_BUFFER_S / VAD_NUM_THREADS out of build_vad(), and PUNCT_* out of
+PunctuatorJa.__init__&amp;#39;s signature. Every value is identical.
+
+punct_ja.py additionally moves numpy / onnxruntime / fugashi into the methods
+that use them, so `import punct_ja` for the constants alone costs nothing.
+CI installs none of the three, and the punctuation model is an optional
+363 MB download. Constructing a PunctuatorJa still raises the same
+ImportError for a missing fugashi that importing the module used to raise.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: specify the Japanese route for re-implementation
+
+Another project is rebuilding this pipeline in C++ (a Godot GDExtension over
+sherpa-onnx&amp;#39;s distributed binaries, running the punctuation model through the
+ONNX Runtime sherpa-onnx already bundles). Everything it needs was spread
+across asr_engine.py, realtime_transcribe.py, punct_ja.py, PUNCT_JA.md,
+MOBILE.md and BENCHMARKS.md, and some of it only existed as a literal in a
+function.
+
+docs/JA_PIPELINE.md (Japanese) collects it: model list with sha256 and
+licenses, every OfflineRecognizerConfig value including the feature settings
+that are sherpa defaults, the VAD settings with the measurements behind them,
+the head-dropout phenomenon and all three countermeasures with their exact
+constants, the call order from VAD to final text with which stages are
+optional, and a complete C++ reproduction spec for the punctuation restorer
+(I/O, vocab, MeCab-free tokenization with the evidence counts, thresholds,
+post-processing order, question suffixes, the `？` -&amp;gt; `?。` quirk, the ORT
+call sequence, and what is verified on which platform).
+
+Two things a re-implementation would otherwise get wrong are called out: the
+upstream punct_bert.int8.onnx is non-functional and must not be used, and
+hotwords cannot be encoded against this recognizer&amp;#39;s byte-level BPE tokens.
+
+The numbers come from scripts/dump_ja_config.py, which reports the effective
+ja configuration as JSON without loading a model, and are committed as
+docs/ja_pipeline_spec.json. tests/test_ja_pipeline_spec.py re-runs the dump
+and compares, so the document drifting from the code is a failing test. The
+model half of that comparison only runs where models/ is populated.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: pin the ja route&amp;#39;s output on eight FLEURS clips
+
+A specification nobody executes rots. docs/JA_PIPELINE.md describes the
+Japanese route in prose; this is the part a machine checks.
+
+tests/golden/ja/ holds eight FLEURS ja clips (CC BY 4.0, attributed in that
+directory&amp;#39;s README and in THIRD_PARTY_NOTICES.md) and golden.json: the exact
+finals and refine text the pipeline emits for each, plus the CER against the
+FLEURS reference for transparency and the machine the run was recorded on.
+
+scripts/make_ja_golden.py regenerates it by running the pipeline, not a
+re-creation of it: the same objects main() builds for `--wav X --no-realtime
+--mode single --lang ja --threads 4`, with results read off the EventHub via
+add_listener rather than scraped from stdout. Two full regenerations produced
+identical output on this machine, and the test&amp;#39;s own run made a third.
+
+The clips were chosen to cover 6.5-12.5 s, to exercise the CJK ITN pass
+(ja_085 and ja_090: 千九百四十年八月十五日 -&amp;gt; 1940年八月15日, 三十四件 -&amp;gt; 34件),
+and to pin one real failure on purpose (ja_044 loses its first sentence to
+head dropout). No FLEURS ja reference contains a question mark at all, so the
+punctuator&amp;#39;s `？` rule is not covered here; the Dart parity fixture covers it
+with synthetic cases.
+
+tests/test_ja_golden.py compares at two levels: exact match is reported, and
+the pass condition is CER against the golden text at most 1.0% per clip,
+because int8 ONNX kernels are not bit-reproducible across CPU
+microarchitectures. At these clip lengths 1.0% admits zero differing
+characters, so today that gate is the same test as exact match -- the README
+says so plainly and the test also prints a set-level CER for diagnosis. Skips
+without models/ or testdata/.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: fold the measured head-dropout rates into JA_PIPELINE
+
+The placeholder table is replaced with the numbers from
+docs/HEAD_DROPOUT.md (merged separately), stated with the conditions they
+were measured under: FLEURS ja test split 100 clips (read speech, CC BY 4.0),
+one VAD segment per clip (the first at least 1.0 s long), Silero at
+threshold 0.5 / min silence 0.35 s / 512-sample windows, Ryzen 5 5600,
+4 threads, sherpa-onnx 1.13.6. Both the 90-clip onset-resolvable subset and
+the 100-clip totals are given, with the definitions of &amp;quot;head dropout&amp;quot;
+(2+ leading reference characters deleted, 60%+ of the hypothesis aligned)
+and of the subset (clips where at least one condition reached the
+reference&amp;#39;s first character) spelled out, since neither number means
+anything without them.
+
+The conclusion is written at the strength the measurement supports: real
+audio pre-roll is the standard (0/90 with beam), silence prepend is a weaker
+but workable alternative for an implementation whose VAD keeps no pre-onset
+audio (2-4/90, explicitly not claimed significant at that scale), and
+decoding method does not protect the onset at all (greedy 29/90 vs beam
+27/90 with no countermeasure). Pre-roll costs about +10% decode time, with a
+note that run-to-run noise is the same order so smaller ms differences are
+not real. _split_retry fired 0/100 times, so the production row&amp;#39;s 0/90 is
+pre-roll&amp;#39;s alone and split-retry cannot be specified as a head-dropout
+countermeasure.
+
+未検証事項 now records what the measurement does not reach (read speech, one
+dataset, one machine, first segment only, two prepend lengths) instead of an
+unmeasured placeholder.
+
+Also fixes an attribution in the 現象 list. The 資料は -&amp;gt; 昨日は observation
+is recorded in three independent places, not one, so all three are cited:
+docs/BENCHMARKS.md&amp;#39;s 2026-09-01 live-path section (desktop Python),
+docs/MOBILE.md&amp;#39;s Android emulator run 2, and today&amp;#39;s condition grid.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5ef9b2e78df9e4f2a9ba3ad827629ff5e41e597</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/c5ef9b2e78df9e4f2a9ba3ad827629ff5e41e597"/>
+    <title>
+        hayamimi_core 0.1.0 release prep: punctuation in refine (#15 phase 2)…
+    </title>
+    <updated>2026-09-06T09:02:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;hayamimi_core 0.1.0 release prep: punctuation in refine (#15 phase 2), pub.dev readiness (#16), emulator-driven fixes (#45)
+
+* live: describe a session&amp;#39;s punctuation model in the decode protocol
+
+A refine (&amp;quot;清書&amp;quot;) pass sends its audio to the decode worker isolate and
+gets text back, and neither side had any way to talk about punctuation:
+the worker could not be told which model to load, and a result could not
+say whether anything had been restored into it.
+
+DecodeWorkerConfig gains the four things PunctuatorJa.load needs — the
+model file, its vocabulary, an optional ONNX Runtime library path, and
+intra-op threads — plus punctuatePlainSession, and DecodeWorkerResult
+gains punctuated. shouldPunctuateRefine sits beside them as the rule
+itself: a routed session punctuates what came back as Japanese, a plain
+session has no language tag to test and goes by the flag. Keeping the
+rule here, as a pure function of the config and one result&amp;#39;s language,
+is what lets it be read and tested on its own rather than inferred from
+the worker&amp;#39;s decode loop.
+
+JaPunctuation is the caller-facing half: an immutable description of
+where the two files live, with no imports of its own, so the protocol
+stays free of FFI and testable without any native library.
+
+Nothing loads or applies a model yet — this is the vocabulary for it, so
+a session that passes none behaves exactly as before.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: load the punctuation model in the decode worker, and use it on refines
+
+Phase 1 of #15 landed PunctuatorJa but left it unwired, so a mobile
+session&amp;#39;s refine (&amp;quot;清書&amp;quot;) output was still an unbroken run of characters
+while the desktop pipeline&amp;#39;s read as sentences. This wires it in.
+
+The worker loads it after its recognizers, when the session&amp;#39;s config
+names one, and reports it on the same model_load start/done events every
+other model uses, as model: &amp;#39;punct&amp;#39;. It then runs restore() over refine
+results whose language it applies to, inside the same timed section and
+the same try as the decode: the reported latency is what the worker
+actually took, and a restore() that throws loses that one refine and
+leaves the session running, exactly as a failed decode does.
+
+It lives here, beside the recognizers, because restore() is another
+synchronous native call — tens of milliseconds per refine on the Windows
+x86 host the parity test runs on — and running it on the caller&amp;#39;s isolate
+would hand back the pause that moving decoding off it removed.
+
+Only refine results are punctuated. That is where the desktop pipeline
+punctuates, and it is the pass with the context for it: a final covers
+one speech segment and a draft part of one still being spoken, so
+sentence boundaries there fall wherever the speaker paused. Punctuating
+every final would also add a full model run per utterance, on a phone,
+for a line the next refine replaces.
+
+A load failure frees whatever was already built and reports a build
+failure naming the model, so a session never comes up quietly producing
+unpunctuated text.
+
+loadWorkerPunctuator takes a callback rather than the worker&amp;#39;s SendPort
+so a test can build exactly what a config would build without spawning an
+isolate — as close to the real worker as a flutter test run can get, since
+the recognizers beside it need native libraries no test VM can load. The
+test skips when the 182 MB model or an ONNX Runtime library is absent.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: let a session ask for punctuation, and say when it applied
+
+The worker can now punctuate a refine, but nothing could ask it to and
+nothing downstream could tell it had. This is the caller&amp;#39;s half.
+
+start() and startDebugWavStream(), on both LiveTranscriber and the
+HayamimiLive facade, take an optional JaPunctuation; null keeps today&amp;#39;s
+behaviour. Both files are checked for existence before a worker is
+spawned, so a missing 182 MB model is reported before up to 396 MB of
+recognizer weights are loaded for a session that could not have worked.
+The worker checks again when it loads them — it is the one that can tell
+a file that exists from a file it can read.
+
+LiveTranscriptEntry and RefineSubtitleEvent gain punctuated (also
+&amp;quot;punctuated&amp;quot; in toJson, beside every key that was already there), so a
+consumer can tell text the punctuation model wrote from text the
+recognizer produced. Only refine entries can carry it.
+
+One ordering detail decides a real case. The refine pass falls back to
+the fast finals&amp;#39; text when the merged re-decode comes back much shorter
+than they were, and punctuation is restored in the worker, before that
+comparison. Restored marks are characters nobody said: one per clause is
+enough to lift a genuinely truncated re-decode back over the threshold.
+So the comparison strips them first (withoutRestoredMarks, next to the
+list of marks the restorer writes) and the fast text it is compared
+against is left alone, having never been punctuated. When that fallback
+does fire, the entry reports punctuated: false — the text that survived
+is the finals&amp;#39;, which nothing punctuated.
+
+HayamimiLive.textTransform still runs last, on the punctuated text.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: describe punctuation as a feature you can turn on, not a port
+
+The README&amp;#39;s punctuation section still said the model was a port with
+nothing wired to it, and told a reader to call PunctuatorJa themselves
+from the textTransform hook. That stopped being true.
+
+It now says how to turn it on (a JaPunctuation on start), what it changes
+(refine events only, and why), which refines get it in a routed versus a
+plain session, where it runs and what it costs in memory, that a load
+failure fails start() rather than degrading quietly, and how the restored
+marks interact with the refine pass&amp;#39;s too-short fallback. The threading
+table, the events table&amp;#39;s refine and model_load rows, and the package
+layout follow the same change. Using PunctuatorJa directly is still
+documented, for text the live pipeline did not produce.
+
+Two caveats stay, said plainly: the 182 MB model is still not
+downloadable, so a host app places it itself, and nothing in this change
+ran on a device — what a phone&amp;#39;s ONNX Runtime does, and what restore()
+costs on an ARM CPU, is unverified.
+
+The parity test&amp;#39;s recorded mean widens from 66–71 ms over three runs to
+66–90 ms over six, which is what this host actually produced once the
+runs from this change are counted.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs(hayamimi_core): reach dartdoc 0 warnings, fill consumer-facing doc gaps
+
+dartdoc (the standalone 9.0.9 build, not the SDK&amp;#39;s own dartdoc which
+crashes on Windows independent of this package - dart-lang/dartdoc#4266)
+reported 11 warnings against this package: five unresolved [Foo] doc
+references and six broken links from the README (fixed separately). Two
+of the five were plain mistakes - a doc comment referencing a filename
+in bracket syntax instead of a code span, in lang_routing.dart and
+live_transcriber.dart. One was a symbol split across two /// lines
+([RoutingProfile\n.jaSenseVoice]), which also wasn&amp;#39;t importable from
+manifest_eval_runner.dart since nothing else in that file uses the type
+- switched to a code span rather than adding an import dartdoc-only
+would leave unused.
+
+The remaining two, in draft_pass.dart, were a real bug: isDraftDue&amp;#39;s
+doc comment and slideDraftFrames&amp;#39;s doc comment had been concatenated
+into one block with no blank line between them, so the whole thing
+attached to slideDraftFrames (the next declaration) and isDraftDue had
+no doc at all. [isDecoding] and [_runDraftDecode] were both then
+unresolvable - the former because it isn&amp;#39;t slideDraftFrames&amp;#39;s
+parameter, the latter because it&amp;#39;s a private member of a different
+library. Split the comment back onto its two declarations; [isDecoding]
+now resolves correctly as isDraftDue&amp;#39;s own parameter, and
+[_runDraftDecode] became a code span since it can never resolve
+(private, cross-library).
+
+Separately, scanned for public API left without any doc comment at all:
+nine standalone exception/support types (BenchRunException,
+ModelFileResolutionException, LiveTranscriberException,
+RemoteEventParseException, RemoteTranscriberException,
+WavParseException, RoutedRecognizerException, the ModelDownloadProgress
+typedef, ModelDownloadResponse) and a dozen getters/constructors on the
+two consumer-facing facades and their transcribers (HayamimiLive.isRunning,
+HayamimiRemote&amp;#39;s constructor and connectionState/state/isConnected,
+LiveTranscriber.sampleRate/isRunning, RemoteTranscriber&amp;#39;s constructor,
+sampleRate, connectionState/state/isConnected). Left the vendored ONNX
+Runtime FFI bindings (ort_bindings.dart) and individual self-evident
+data-class fields undocumented, matching this package&amp;#39;s existing
+convention of documenting a field only when its meaning isn&amp;#39;t obvious
+from the surrounding class doc plus its name.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* chore(hayamimi_core): pubspec metadata for a pub.dev release
+
+pana (pub.dev&amp;#39;s scorer) can&amp;#39;t run on Windows here to check this
+directly, so going through its checklist by hand: description was a
+286-character multi-line block reusing the package doc&amp;#39;s wording -
+pub.dev wants 60-180 characters, one line for the package listing.
+Rewrote it to one sentence. Added issue_tracker (homepage/repository
+were already set) and an explicit platforms: map. The package depends
+on record and sherpa-onnx&amp;#39;s native libraries for android/ios only -
+without a platforms: map, pub.dev infers support from every
+transitive dependency&amp;#39;s own platforms, which would list web/desktop
+targets this package has never been run on (see README &amp;quot;Platform
+status&amp;quot;).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs(hayamimi_core): rewrite the 0.1.0 changelog as one release entry
+
+The 0.1.0 entry had accumulated bullets from three separate issues
+(#15, #24, #29) in the order they landed, with the actual &amp;quot;here is
+what this package is&amp;quot; bullet (on-device transcription, remote client,
+broadcast server, bench tools) buried third, after two long
+implementation-detail entries. For a first release, that&amp;#39;s backwards -
+a reader&amp;#39;s first look at this package shouldn&amp;#39;t open on punctuation
+internals.
+
+Regrouped by theme instead: on-device live transcription (including
+routing and the two-pass refine) opens it, then the remote client, the
+LAN broadcast server, runtime configuration/events/reset (#29),
+decoding off the UI isolate (#24) with its three incidental bug fixes
+folded in, Japanese punctuation (#15) with its &amp;quot;refine only, model not
+downloadable yet&amp;quot; caveats kept front and center rather than buried at
+the end, and bench/eval utilities. Added a &amp;quot;Known limitations&amp;quot; section
+at the end pulling together caveats that were previously scattered
+across bullets (no app-lifecycle handling, textTransform&amp;#39;s scope, no
+diarization, unimplemented translation event, no device run for
+punctuation) so a reader evaluating the package for production doesn&amp;#39;t
+have to reconstruct that list from prose.
+
+No facts changed - every number, API name, and caveat is carried over
+from the existing text; this is a reorganization, not new content.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs(hayamimi_core): reorganize the README as a pub.dev landing page
+
+pub.dev renders this file from the package directory (not the repo
+root), so every relative link to a repo file resolved to a 404 there -
+and dartdoc&amp;#39;s own link validator already flagged six of them as broken
+for the same reason (fixed here as a side effect; the standalone
+dartdoc&amp;#39;s 11-warnings baseline drops to 5 from this alone, before the
+lib/ doc-reference fixes in the prior commit). Converted every
+relative lib/example link to an absolute
+github.com/oboroge0/hayamimi/blob/main/... URL.
+
+Beyond the link fix, restructured for a pub.dev first-time reader
+rather than a repo browser who already has the source open: added a
+table of contents; grouped the embedding-relevant sections under one
+&amp;quot;Embedding guide&amp;quot; heading in the order a new integration actually
+needs them (initialize sherpa_onnx.initBindings() - previously
+undocumented at the README level even though the example does it and
+native_model_loader.dart explains why it&amp;#39;s required - platform
+permissions, the two facades, runtime config, punctuation, threading,
+events); consolidated the model-file material into one &amp;quot;Model
+placement guide&amp;quot; with an explicit directory-layout table (which files
+in model/, vad/, sense_voice/, lid/, and where the punctuation files
+go) alongside the existing download/manual-placement instructions and
+a pointer to THIRD_PARTY_NOTICES.md for licensing; and replaced the
+punctuation-only platform table with a package-wide &amp;quot;Platform status&amp;quot;
+table built from docs/MOBILE.md and docs/IOS_VERIFY.md, stating
+plainly that Android has only ever been exercised on an emulator (host
+PC CPU, not a real device) while iOS has real iPhone 15 verification
+for bench/live-mic/routing but not remote mode or punctuation.
+
+Existing section substance (threading model, event JSON shapes,
+package layout, measured numbers and their conditions) is carried
+over, not rewritten - no new numbers were introduced, and every
+existing measured number kept the conditions it was recorded under.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs(hayamimi_core): scope THIRD_PARTY_NOTICES.md to this package
+
+Both files had been copied from the desktop hayamimi pipeline&amp;#39;s own
+notices and only added to, never trimmed - so a pub.dev reader auditing
+this Flutter package&amp;#39;s licenses saw entries for Paraformer-zh, Parakeet
+TDT, Omnilingual, CAM++ speaker embedding, M2M-100/FuguMT translation
+(including the CC BY-SA 4.0 share-alike warning), and a Python
+dependencies table (ctranslate2, sentencepiece, fugashi, kiwipiepy,
+...) - none of which this package uses. LICENSE&amp;#39;s addendum specifically
+warned about FuguMT&amp;#39;s CC BY-SA 4.0 terms, which don&amp;#39;t apply here since
+this package never bundles or downloads that model.
+
+Rewrote THIRD_PARTY_NOTICES.md to cover exactly what hayamimi_core
+uses: the four ASR/VAD models downloadProfile or manual placement can
+put on a phone (ReazonSpeech, Silero VAD, SenseVoice, whisper-tiny),
+the optional Japanese punctuation model, and the package&amp;#39;s own six
+Dart dependencies (including onnxruntime, used transitively through
+sherpa_onnx and directly through this package&amp;#39;s own dart:ffi bindings)
+with their actual licenses checked against each package&amp;#39;s own LICENSE
+file in the pub cache - record&amp;#39;s BSD-3-Clause text carries a mismatched
+&amp;quot;Copyright 2022 openapi4j authors&amp;quot; header (that package&amp;#39;s own
+artifact, not something to fix here). Kept the vendored ONNX Runtime
+bindings section, the FLEURS test-fixture attribution, and the Mojicast
+credit, all unchanged since they&amp;#39;re accurate as written. Reworded
+LICENSE&amp;#39;s addendum to name the models this package actually places
+instead of the desktop-only translation model.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: point mobile/ and MOBILE.md at the hayamimi_core package guide
+
+mobile/README.md: noted hayamimi_core is now published on pub.dev, so
+a third-party app can depend on it directly instead of copying this
+repo&amp;#39;s path/git dependency form.
+
+docs/MOBILE.md: this file is an investigation log (model sizing,
+quantization, on-device measurements) that a reader searching for
+&amp;quot;mobile&amp;quot; + &amp;quot;hayamimi&amp;quot; is likely to land on, but it never pointed
+anywhere for the actual embedding guide - added one line at the top to
+mobile/hayamimi_core/README.md, which is where issue #16&amp;#39;s pub.dev
+release work landed the model-placement and platform-status reference
+these measurements now feed into.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: decode each segment with the second of audio before it
+
+Silero VAD reports a speech onset slightly after the speaker actually
+started, so the samples it hands over can begin partway into the first
+word and the recognizer transcribes that word wrong. On the Android
+emulator run of this package, `資料は昨日送りました` came back as
+`昨日は昨日送りました` and `あしたの会議は十時からです` lost its `あしたの`
+outright -- both utterance-initial, both clipped by the onset.
+
+The desktop pipeline has never had that problem, because it does not
+decode the VAD&amp;#39;s samples as-is: `AudioHistory` (scripts/realtime_transcribe.py)
+keeps a rolling buffer of recent audio and prepends up to PREROLL_S = 1.0
+seconds of it to every segment, clamped so it never reaches back into the
+previous one. tests/test_asr_segment.py pins that on the same fixture that
+regressed here. This is that, in Dart, on the caller&amp;#39;s isolate.
+
+`PrerollHistory` (lib/live/preroll.dart) is the whole mechanism and is
+pure Dart, so it is unit tested directly: frames in, bounded, and a
+segment out with its run-up attached -- never past what the buffer still
+holds, never past where the last segment ended. A session pushes every
+frame it feeds the VAD into one of these and asks for the extended
+segment when the VAD finalizes one.
+
+Two pieces of plumbing this needed. `LiveVad.takeSegment` now returns a
+`LiveSpeechSegment` (samples plus the segment&amp;#39;s start position) rather
+than bare samples, because the samples alone do not say where &amp;quot;just
+before&amp;quot; is; and `LiveTranscriber` tracks how much audio it had fed when
+the current VAD instance was installed, so a mid-session sensitivity swap
+-- which gives it a VAD counting from zero again -- does not shift every
+position after it.
+
+For a caller: a final now covers the pre-roll as well as the speech, so
+`audioSeconds` grows by up to a second and the refine (&amp;quot;清書&amp;quot;) buffer
+stores the same extended audio the desktop&amp;#39;s history does. The new
+`prerollSeconds` knob (constructor plus runtime setter on both
+`LiveTranscriber` and `HayamimiLive`) tunes it, and is the one pacing knob
+where 0 is a valid value: it means &amp;quot;decode exactly what the VAD
+delimited&amp;quot;.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: split segments on the pauses the desktop splits on
+
+`VadSensitivity` shipped with sherpa-onnx&amp;#39;s own stock values, and the
+class doc said so as if that were the safe choice. The Android emulator
+run of this package showed what it costs. On a three-sentence Japanese
+recording whose inter-sentence pauses fall just under half a second, the
+stock 0.5 s silence default merged all three sentences into a single
+6.13 s segment; handed that segment, this repo&amp;#39;s ja recognizer returned
+only the last sentence. Two sentences vanished, with nothing in the
+output to say so -- a wrong caption rather than a rough one.
+
+The desktop pipeline this package is the mobile port of does not use the
+stock values. It runs --min-silence 0.35 and --max-speech 12.0
+(scripts/realtime_transcribe.py), and its own comment records that 0.35 s
+measured no worse for accuracy than 0.5 s on real broadcast Japanese
+while finalizing a segment 150 ms sooner. Re-running the same audio
+through this package at 0.35 s split it into three segments and all three
+sentences came out. So the defaults here are now the desktop&amp;#39;s:
+minSilenceSeconds 0.35, maxSpeechSeconds 12.0. threshold and
+minSpeechSeconds are unchanged; the desktop leaves those alone too.
+
+The maxSpeechSeconds doc also stops promising something that did not
+hold. It called itself a hard cap that force-closes a segment &amp;quot;even
+mid-speech&amp;quot;, but the same run emitted a 6.134 s segment from a session
+configured with 5.0 s. sherpa-onnx&amp;#39;s max_speech_duration influences when
+the VAD closes a segment; it does not bound what the VAD can hand over,
+and the doc now says that, so nobody sizes a buffer or a timeout on the
+old promise.
+
+For a caller who passes no vadSensitivity: segments now finalize on
+shorter pauses, so a transcript has more lines, each shorter, and each
+decoded from audio the recognizer can actually handle. Passing
+VadSensitivity(minSilenceSeconds: 0.5, maxSpeechSeconds: 5.0) restores
+the previous behavior exactly.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: end a debug wav stream with the refine it promises
+
+`startDebugWavStream` says it emits &amp;quot;the same events a live mic session
+would&amp;quot;, and it is the package&amp;#39;s answer to an emulator having no usable
+microphone -- the README points at it as the way to see punctuated refine
+output. With default settings it could not produce a refine at all. Auto
+refine is off by default, so nothing fired during the stream; and the
+method tears the session down in its own `finally`, so by the time its
+future completes `refineNow()` has no worker left to ask and silently
+returns having done nothing. The Android emulator run measured exactly
+that: a `refineNow()` after the await returned in 0 ms with an empty
+buffer.
+
+Two things were also true and undocumented: setting `autoRefineEnabled`
+before the call does work (the debug path&amp;#39;s session reset starts the
+timer when the flag is already set), and `refineNow()` works if called
+from another async context while the stream is still running.
+
+So: after the last segment is flushed and its decode has drained, the
+stream now runs one refine over what those finals buffered -- if they add
+up to at least half a second, the same floor the refine payload itself
+applies -- and awaits it before teardown. The `autoRefineEnabled` setter
+also starts its timer for a debug stream, not only a microphone session,
+so turning auto refine on mid-stream works the way it reads. Both are
+documented on `LiveTranscriber.startDebugWavStream` and
+`HayamimiLive.startDebugWavStream`, including that the session is gone
+before the future completes, which is why a caller cannot ask for a
+refine afterwards.
+
+One bug fixed alongside: the debug path never cancelled its auto-refine
+timer, since only `stop()` does that and `stop()` only ends a microphone
+session. Before this change nothing started that timer on this path in
+practice; now that both paths can, the `finally` cancels it, so a
+finished stream does not leave a timer ticking against a torn-down
+session for the life of the object.
+
+For a caller, one awaited `startDebugWavStream` call is now enough to see
+a punctuated refine on a device with no microphone -- which is what the
+method existed for.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: record what the Android emulator run verified, and what it changed
+
+The decode worker (#24) and the Dart punctuation port (#15) had both been
+built without ever running on Android, and the docs said so. They have now
+run there, on an x86_64 emulator, and the same session turned up two ways
+the mobile port produced worse text than the desktop pipeline on the same
+recording -- which is what the VAD-default and pre-roll changes in this
+branch came from. This writes all of that down.
+
+docs/MOBILE.md gets the full account: the setup, why each of the two
+targets was worth doubting on Android in the first place, what the run
+showed (the worker spawning and loading models inside itself, torn down
+and rebuilt three times in one process; exactly one libonnxruntime.so in
+the APK, ONNX Runtime 1.27.1 through it, ja refines punctuated at the same
+sentence ends as the Python reference), the timings with their conditions,
+the two segmentation findings and what this branch did about them, and the
+truncation that is the recogniser model&amp;#39;s own property rather than
+anything this package can fix.
+
+The package README says the same, shorter, where a reader of the package
+will look: the Android rows of both platform-status tables, a timing table
+labelled for what it is, the pre-roll row in the pacing-knob table, the
+reason the VAD defaults are the desktop&amp;#39;s, and a known-limitation section
+for the long-group refine.
+
+Two things are stated the same way everywhere, because both are easy to
+misread. Nothing here is a phone measurement -- an emulator&amp;#39;s CPU is the
+host desktop&amp;#39;s under virtualization, and ONNX Runtime has no float16
+compute path on x86, so the punctuation timings in particular do not
+transfer. And punctuation was never timed on its own: a refine&amp;#39;s
+latency_ms covers the re-decode and restore() together, so the 26-33 ms
+per ~10 characters quoted for it is a refine minus the final over the same
+samples, an inference from two timers rather than a measurement.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: punctuate Japanese finals, so a refine&amp;#39;s fallback keeps its marks
+
+A refine (&amp;quot;清書&amp;quot;) does not always emit its own text. When the merged
+re-decode comes back much shorter than the fast finals it is replacing,
+`isRefineTextTooShort` rejects it and the caller emits those finals joined
+instead. Those finals were never punctuated, so the refine went out raw --
+losing the marks in exactly the case the guard exists to protect. The
+Android emulator run hit this on package defaults: three good finals, a
+re-decode holding only the last sentence, and
+`refine punctuated=false text=東京の天気は晴れです あしたの会議は十時からです
+資料は昨日送りました`. With `defaultAutoRefineSilenceSeconds` at 4.0 a
+microphone session groups several sentences per refine, so on this
+recognizer that was the normal outcome, not a corner case.
+
+The worker now punctuates `finalSegment` results under the same condition
+it punctuates refines -- routed `lang == &amp;#39;ja&amp;#39;`, or a plain session flagged
+Japanese -- so the joined fast text is already punctuated and the fallback
+has something punctuated to fall back to. That is what the desktop
+pipeline relies on: `RoutedASR.transcribe` punctuates its ja finals, so
+`realtime_transcribe.py`&amp;#39;s identical fallback yields punctuated text.
+Drafts stay unpunctuated; they cover part of a sentence still being spoken
+and are re-decoded about once a second.
+
+`RefineSegment` and `RefineRequestPayload` carry whether their text is
+punctuated, so the fallback reports `punctuated: true` only when every
+final in the group was; the shrink comparison now strips the restored
+marks off both sides, since either can have them. `JaPunctuation` gains
+`applyToFinals` (default true) for a caller who wants the fast line left
+exactly as the recognizer produced it and will take the old fallback
+behaviour with it.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* events: say on a final line whether it was punctuated
+
+A finalized line can now carry 、 and 。 (the previous commit), and a
+consumer had no way to tell one that does from one the recognizer wrote
+bare -- `punctuated` existed on `RefineSubtitleEvent` but not on
+`FinalSubtitleEvent`, so the same fact was reportable for one pass and not
+the other.
+
+`FinalSubtitleEvent` gains `punctuated` (wire key `&amp;quot;punctuated&amp;quot;`, default
+false; every key that was already there still is), `HayamimiLive` forwards
+`LiveTranscriptEntry.punctuated` onto it, and `RemoteFinalEvent` parses the
+key when a server sends it. No server sends it today --
+`subtitle_server.py` has no such key on `final` frames -- so a remote
+session reports false; the field is there so a consumer reads the same
+field from the on-device and remote paths rather than one that only some
+producers have.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: record why the fast line is punctuated, and what the second emulator run measured
+
+The README described punctuation as a refine-only feature and explained the
+fallback as a case where the marks are simply lost. Both are now wrong, and
+the reason they changed is worth writing down rather than paraphrasing: the
+second Android emulator run showed the closing refine coming out
+`punctuated=false` on package defaults, over three sentences the fast path
+had recognized correctly.
+
+README: the punctuation section says refines and finals (and why drafts are
+excluded), a new &amp;quot;Why the fast line is punctuated too&amp;quot; subsection carries the
+emulator line, the mechanism, the desktop comparison and the `applyToFinals`
+switch with its measured cost, the events table&amp;#39;s `final` row gains
+`punctuated`, and the emulator timing table is replaced with the second run&amp;#39;s
+numbers (n=10 model loads, per-segment final medians, warm and first-in-
+process refines), labelled as the second run. Both emulator runs predate
+punctuated finals, so the platform-status row says the fast line&amp;#39;s
+punctuation has been seen only in this package&amp;#39;s tests.
+
+CHANGELOG: the punctuation entry describes what ships, and a new entry
+records the third defect and the fix, including that it is unverified on a
+device.
+
+docs/MOBILE.md: a run-2 section — the run 1 / run 2 / desktop text and
+`audio_s` comparison, the two controls (`prerollSeconds: 0` reproduces run 1
+exactly; the old VAD values reproduce its merged segment), the closing refine
+firing on true defaults, the timings, and the third defect with its
+mechanism and the change this branch makes for it.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: join a punctuated fallback&amp;#39;s finals without spaces
+
+The Android emulator&amp;#39;s third run found that a refine&amp;#39;s fallback text --
+combineSegmentFastText, joining the buffered group&amp;#39;s fast finals when the
+merged re-decode is rejected as too short -- still used the same join(&amp;#39; &amp;#39;)
+that was right when finals were unpunctuated but wrong now that they carry
+marks: every sentence already ends in 。, so a following space is a second,
+redundant separator and not how Japanese is set. The desktop&amp;#39;s own refine
+output for the same fixture has none.
+
+combineSegmentFastText now joins with &amp;#39;&amp;#39; when isCombinedFastTextPunctuated
+says every contributing segment was punctuated, and keeps &amp;#39; &amp;#39; otherwise, so
+an unpunctuated fallback still has a separator. Adjusted the fallback-text
+expectation in the session test that covers this case, and added unit
+tests for the punctuated (no separator), unpunctuated (spaces), and mixed
+(spaces, since a partly punctuated group is not treated as punctuated)
+cases.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: warm the punctuation model during its own load phase
+
+The fp16 punctuation model&amp;#39;s first restore() in a process costs ~300 ms
+more than every later one. Run 2 saw that land on a process&amp;#39;s first
+refine; now that finals are punctuated by default, run 3 found it lands on
+the first final instead -- the first caption line a user sees, not a 清書
+pass that arrives seconds later.
+
+loadWorkerPunctuator now calls punctuator.restore(&amp;#39;あ&amp;#39;) once, right after
+PunctuatorJa.load succeeds and before the model_load punct/done event is
+sent, discarding the result. The ~300 ms then lands inside the already
+multi-second model_load punct duration, which is already understood as
+startup cost, instead of on the first final or refine. Documented on the
+call site and on ModelLoadEvent.model.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: correct the punctuation cost figure with run 3&amp;#39;s direct measurement
+
+ja_punctuation.dart&amp;#39;s applyToFinals doc and the README&amp;#39;s punctuation
+section said &amp;quot;~25-35 ms per ~11-14 characters&amp;quot;, inferred in run 2 by
+subtracting two timers (warm refine median minus final median). Run 3
+measured it directly instead, on the same audio, with applyToFinals on vs.
+off: finals went from 61.7/77.6/68.8 ms to 109.5/115.4/117.3 ms, i.e.
++38 to +49 ms per 11-14 character line -- higher than the earlier estimate.
+Both doc comments now say &amp;quot;~40-50 ms&amp;quot; and note it is a direct A/B rather
+than a subtraction; the README&amp;#39;s timing table gains two rows from run 3.
+
+docs/MOBILE.md gains a run-3 section: the fix (the previous commit&amp;#39;s
+punctuated-finals-in-refine change from run 2) confirmed side by side with
+run 2&amp;#39;s own log lines and reproduced exactly via the applyToFinals: false
+control, the full timing table, the two follow-ups from this run and what
+this branch did about each, the cold-start-moved-to-the-fast-path
+observation, and a known small waste (an unconditional restore() on a
+merged re-decode the caller-side guard may then discard) left unfixed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3eda122ce71ca7a54812f5f93c9697142bde94dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/3eda122ce71ca7a54812f5f93c9697142bde94dd"/>
+    <title>
+        Punctuation (#15 phase 1, Dart): PunctuatorJa port over sherpa&#39;s ONNX…
+    </title>
+    <updated>2026-09-06T08:58:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Punctuation (#15 phase 1, Dart): PunctuatorJa port over sherpa&amp;#39;s ONNX Runtime via dart:ffi, host parity test (#50)
+
+* eval: record the Python punctuation output as a Dart parity fixture
+
+A Dart port of scripts/punct_ja.py is only trustworthy if it is pinned to
+the reference implementation on real sentences, not on hand-written
+examples that both sides were written to satisfy.
+
+scripts/make_punct_fixture.py takes 40 Japanese sentences from the FLEURS
+ja benchmark set, strips their punctuation to make ASR-like input, and
+records for each one the token ids PunctuatorJa feeds the model and the
+string its restore() returns with the fp16 model loaded. It adds 11
+synthetic cases for what FLEURS ja does not contain: question endings
+(FLEURS ja is news prose and holds no questions at all), empty and
+punctuation-only input, half-width kana, and input past the 500-character
+cut.
+
+Recording the token ids separately from the output is what lets the Dart
+side check tokenization without the 182 MB model, so half the parity
+survives on a machine that does not have it.
+
+The script also re-checks the assumption the Dart tokenizer rests on --
+that MeCab&amp;#39;s only observable effect here is dropping whitespace -- and
+refuses to write the fixture if the two ever disagree. Right now they
+agree on all 102 texts checked.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* feat(mobile): restore Japanese punctuation in hayamimi_core
+
+The desktop pipeline runs its refine (&amp;quot;清書&amp;quot;) text through
+scripts/punct_ja.py before anything sees it, so desktop captions read as
+sentences. hayamimi_core had no equivalent, so its refine output arrived
+as an unbroken run of characters -- same words, no 、 and no 。.
+
+PunctuatorJa.restore(String) is a Dart port of that script: the same
+character-level BERT model, the same 0.5 thresholds, the same rule-based
+？ pass. Phase 1 of #15 -- this adds the component, it does not yet wire
+it into HayamimiLive.
+
+lib/punct/ splits along one line: everything except two files is plain
+Dart, unit-testable without a model. punct_ja_tokenizer.dart turns text
+into the model&amp;#39;s character tokens; punct_ja_text.dart decides where a
+mark goes. punct_ort_session.dart and ort_library.dart are the only FFI.
+
+Reaching ONNX Runtime is the part with a decision in it. Adding the
+onnxruntime or flutter_onnxruntime package would put a second
+libonnxruntime.so in the app, and two copies in one Android process is a
+known crash (k2-fsa/sherpa-onnx#3261). So this ships no runtime: it looks
+up OrtGetApiBase in the library sherpa_onnx has already loaded and calls
+the C API through dart:ffi. ONNX Runtime&amp;#39;s function table only grows at
+the end across releases, so asking for API version 11 keeps the bindings
+valid as sherpa_onnx bumps what it bundles. The session is built from the
+model&amp;#39;s file path, never from bytes, so 182 MB does not pass through the
+Dart heap; every native object is freed explicitly.
+
+Android is expected to work but was not run on a device. iOS is refused
+by default with an explanatory exception: sherpa_onnx links ONNX Runtime
+as an xcframework and it is unconfirmed that OrtGetApiBase stays exported
+from the app binary, so guessing would be worse than saying so.
+
+Two dependencies. unorm_dart supplies NFKC, a Unicode normalization
+dart:core has no equivalent of and the tokenizer needs to match Python.
+ffi supplies native allocation. MeCab, the other half of the reference
+tokenizer, is not replaced at all: the pipeline splits every morpheme
+back into single characters a line later, so MeCab&amp;#39;s only observable
+effect is dropping whitespace, and the Dart tokenizer does that directly.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test(mobile): pin the Dart punctuation port to the Python reference
+
+Unit tests say each rule behaves as written; they cannot say the rules
+add up to the same text scripts/punct_ja.py produces. So the load-bearing
+test replays the recorded fixture end to end -- 40 FLEURS ja sentences
+plus 11 edge cases through the fp16 model -- and asserts the Dart output
+equals the Python output character for character. It passes on all 51.
+
+Neither the 182 MB model nor an ONNX Runtime library is in the
+repository, so the test skips with a reason naming whichever is missing
+instead of failing, and a checkout without them stays green. On Windows
+it borrows the onnxruntime.dll that sherpa_onnx_windows ships, resolved
+through .dart_tool/package_config.json rather than hardcoded, so a
+version bump does not break it; elsewhere HAYAMIMI_ORT_LIBRARY points at
+one.
+
+punct_ja_fixture_tokens_test.dart checks the same fixture&amp;#39;s token ids and
+needs only the 28 KB vocab.txt, so the tokenizer -- the piece most likely
+to drift, since it replaces MeCab and unicodedata with hand-written rules
+-- stays covered without the model.
+
+The parity test also prints its mean restore() latency, labelled as this
+Windows x86 host: 66-71 ms across runs. That number says nothing about a
+phone and the message says so, because ONNX Runtime&amp;#39;s CPU provider has no
+float16 path on x86 and casts every operator&amp;#39;s tensors to float32 and
+back.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: document the Dart punctuation port, and what it does not do yet
+
+Someone picking up hayamimi_core needs to know three things about the new
+PunctuatorJa that the code alone does not say: why the mobile package was
+missing punctuation at all, why the ONNX Runtime access looks so
+roundabout, and which platforms this has actually been run on.
+
+The README gains a section covering all three. The platform table states
+plainly that only the Windows host is verified, that Android is expected
+to work but was never run on a device, and that iOS is refused by default
+because sherpa_onnx&amp;#39;s xcframework may not export OrtGetApiBase. It also
+records what the parity test measured and, more importantly, why that
+number does not transfer to a phone.
+
+It also says what is still missing: the restorer is not wired into
+HayamimiLive, and the model file is not downloadable -- 181.8 MB with no
+hosting decision made.
+
+THIRD_PARTY_NOTICES gains the attribution the code owes: the trimmed ONNX
+Runtime bindings derived from gtbluesky/onnxruntime_flutter (MIT, itself
+generated from Microsoft&amp;#39;s MIT-licensed header), unorm_dart (MIT) and ffi
+(BSD-3-Clause), and the fixture&amp;#39;s FLEURS sentences (CC BY 4.0).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: stop attributing the Dart-vs-Python latency gap to the runtime build
+
+The README compared the Dart port&amp;#39;s 66-71 ms mean restore() with the
+Python reference&amp;#39;s 366.3 ms on the same host and stated the gap was &amp;quot;between
+two ONNX Runtime builds, not between the two implementations&amp;quot;. That was a
+guess: the two timings differ in ONNX Runtime build (1.27.1 vs 1.29.0),
+intra-op thread count (2 vs 4) and in what the timed call includes (the
+Python number contains MeCab tokenization), and nobody isolated any of
+those. Keep the measurement, drop the attribution, and say plainly that the
+cause was not investigated.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e76d8b3cbc71bfc11bd2d8d4aa32c727daea0f2a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/e76d8b3cbc71bfc11bd2d8d4aa32c727daea0f2a"/>
+    <title>
+        Decode off the UI isolate (#24): persistent decode worker, explicit q…
+    </title>
+    <updated>2026-09-06T08:56:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Decode off the UI isolate (#24): persistent decode worker, explicit queue policy, testable VAD seam (#49)
+
+* live: a decode worker isolate that owns the session&amp;#39;s recognizers
+
+Every sherpa-onnx call is synchronous FFI: it runs to completion on the
+isolate that makes it, and a Dart isolate is single-threaded, so nothing
+else on it happens meanwhile. Model loading already moved off the caller&amp;#39;s
+isolate for that reason; decoding did not, so a host app stopped painting
+for the length of every utterance&amp;#39;s decode, and for much longer during a
+refine pass over a whole buffered group.
+
+This adds the machinery for moving it, without wiring it up yet:
+
+- decode_protocol.dart: the request/result message types and their wire
+  encoding. Audio travels as TransferableTypedData, which moves a refine
+  pass&amp;#39;s buffer through external memory rather than copying it into the
+  receiving isolate&amp;#39;s collected heap.
+- decode_scheduler.dart: the queue policy, as a pure state machine. Being
+  synchronous used to *be* the mutual exclusion, so each kind of request
+  now needs an explicit rule -- finals queue, drafts are dropped, refines
+  coalesce.
+- decode_worker.dart: the worker isolate itself, and the handle it is
+  driven through. It builds its own recognizers, because the objects never
+  leave it and there is no pointer handoff to justify, and it serves one
+  request at a time, which is the same exclusion the old code got for free.
+- decode_session.dart: the caller&amp;#39;s-isolate half -- request ids, dispatch,
+  staleness, and the futures refineNow/resetSession hand out.
+
+RoutedRecognizerSet.build gains loadOffIsolate so the worker can build its
+three models in place instead of spawning a nested isolate per model; it
+defaults to today&amp;#39;s behaviour for every other caller.
+
+Nothing calls any of this yet, so nothing changes for a caller.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: send every decode to the worker instead of running it inline
+
+LiveTranscriber decoded each VAD segment, each draft and each refine pass
+with a synchronous FFI call on whichever isolate drove the mic stream --
+the host app&amp;#39;s UI isolate. The app stopped painting for the length of each
+one. This routes all of them through the decode worker added in the
+previous commit, so the caller&amp;#39;s isolate keeps only mic capture, one Silero
+VAD acceptWaveform per 32 ms frame, and event dispatch.
+
+The parts that only worked because decoding was synchronous had to be
+rebuilt around a queue:
+
+- _busy is no longer a flag set around a call; it is the decode queue&amp;#39;s own
+  state, so `decoding` now emits one true/false pair per burst rather than
+  one per decode. isDraftDue and shouldSwapVadNow read the same thing and
+  keep their meaning.
+- Drafts are stamped with a segment id that is bumped whenever a segment
+  opens or closes, so a draft answered after its segment already produced a
+  final is discarded instead of overwriting it.
+- refineNow&amp;#39;s future now completes when its result has been emitted, and it
+  claims the buffered audio at dispatch rather than at the call, so a
+  segment still decoding when the user taps the refine button joins that
+  group instead of the next one.
+- resetSession no longer polls a busy flag; the clear is queued behind
+  whatever the worker already has and completes on the worker&amp;#39;s ack.
+- stop() waits (bounded) for the queue to drain before shutting the worker
+  down, so the segment its VAD flush produces still reaches `entries` --
+  which used to happen for free.
+
+A worker that dies mid-session is handled like a revoked microphone: a
+LiveTranscriberException on `errors`, capture torn down, the object left
+restartable. A build failure inside the worker comes back out of start() as
+the same LiveTranscriberException text callers saw before, with the worker
+already cleaned up. Late replies from a stopped session are ignored via the
+existing session-generation counter.
+
+Every public signature, stream and event is unchanged; currentLang is now a
+mirror updated from worker replies. startDebugWavStream goes through the
+same path, so an emulator run exercises the worker too;
+runDebugWavRefineTest still decodes in place and now says so.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover the decode protocol, the queue policy, and the worker lifecycle
+
+The decode path was untested because it needed the sherpa-onnx native
+libraries and a real microphone, neither of which a flutter test run has.
+Splitting the work into a message protocol, a pure queue policy, and a
+caller&amp;#39;s-isolate coordinator driven through an injectable worker interface
+means most of it no longer does.
+
+- decode_protocol_test.dart: every request and result round-trips its
+  fields, including a sample view sent from the middle of a buffer, which
+  is what capDraftWindow hands over.
+- decode_scheduler_test.dart: finals queue in order, drafts are dropped
+  while anything is outstanding, refines fold into a queued one but not
+  into one already sent, and clear returns the in-flight request first.
+- decode_session_test.dart: a whole session against a scripted stand-in
+  worker -- finals answered in order with their own audio, a stale draft
+  discarded, a refine claiming its buffer at dispatch, a reset landing
+  behind the work it must not race, a decode failing without stopping the
+  session, and a worker dying mid-session.
+- live_transcriber_decode_test.dart: what start() hands the worker, that a
+  build failure comes back as the same LiveTranscriberException text, and
+  that a failure after the worker is up still shuts it down.
+- isolate_decode_worker_test.dart: the real spawn/error/exit plumbing, as
+  far as a test VM that cannot load the native library can go.
+
+What is still only verifiable on a device: whether a decode produces the
+right text, and what any of this does to frame timing.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: describe what runs where now that decoding is off the caller&amp;#39;s isolate
+
+The README&amp;#39;s &amp;quot;Threading / known limitations&amp;quot; section told readers that
+per-segment decode ran on their isolate and pointed at the issue tracker
+for a fix. That is no longer true, and a package about to be published
+should not ship a section describing the shape of a problem it has since
+moved.
+
+The section now says which isolate each piece of work runs on, spells out
+the queue rules a caller can observe (finals in order, drafts dropped and
+discarded, refines coalesced, `decoding` once per burst), and states two
+things plainly rather than implying otherwise: decode latency is unchanged,
+because the work moved rather than shrank, and no on-device frame-timing
+measurement was taken for this change. It also documents what happens when
+the worker dies, why a shutdown that times out frees nothing, and that
+runDebugWavRefineTest still decodes in place.
+
+CHANGELOG gains the same under 0.1.0, and the resetSession, source-layout
+and testing sections are corrected to match.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: say why a routed decode worker refused to build
+
+decodeWorkerMain dereferenced senseVoiceModelDir/lidModelDir with `!`.
+LiveTranscriber checks both before spawning anything, so the path is
+unreachable from the facade -- but decodeWorkerMain is exported, and
+someone driving it directly would have got a build failure reading &amp;quot;Null
+check operator used on a null value&amp;quot; instead of a sentence naming the two
+missing arguments. Now it names them.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: stop a worker build failure racing the exit port into a StateError
+
+IsolateDecodeWorker settles its `_ready` completer from two directions: the
+`build_failed` frame the worker sends, and the error/exit ports reporting
+that it is gone. Those race, and a failing worker triggers both -- it sends
+the frame and then exits. The death path guarded against completing twice;
+the frame path did not, so if the exit landed first, `_ready.completeError`
+ran on an already-completed completer. That throws a StateError inside a
+port listener, where no caller can catch it: an unhandled async error
+instead of the DecodeWorkerException start() was about to throw.
+
+Both directions now go through the same guarded helpers, with the reason
+written down next to them.
+
+The isolate test now waits for both messages to land before finishing, so
+the ordering that does occur is covered; flutter_test fails on an unhandled
+async error, which is what this would produce. Forcing the reverse
+interleaving would need a seam for Isolate.spawn itself, which is more
+machinery than this guard is worth.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: put a seam in front of the VAD, so a running session is testable
+
+The decode worker got an interface so tests could stand in for it, but that
+was only one of the two FFI edges a session has. LiveTranscriber reaches
+isRunning == true only after it has loaded a Silero VAD, which no
+flutter test run can do, so everything a *live* session does -- segments
+becoming transcript lines in order, drafts being skipped and then discarded,
+a worker dying with the microphone open, a reply landing after stop() --
+was reachable only on a device, and this branch had reasoned about all of
+it rather than tested it.
+
+live_vad.dart adds the missing half: a LiveVad interface of the six calls
+LiveTranscriber actually makes (feed a frame, is speech in progress, take a
+finished segment, flush, free, frame size), a LiveVadFactory, and
+SileroLiveVad wrapping sherpa-onnx exactly as before. The production path
+is unchanged -- buildSileroLiveVad is the constructor default and still
+loads off-isolate through native_model_loader.dart; the config building
+that lived in LiveTranscriber moved next to the implementation that uses
+it.
+
+Two things follow from the seam:
+
+- isSegmentWorthDecoding now takes the samples rather than a
+  sherpa_onnx.SpeechSegment. LiveTranscriber no longer sees that type at
+  all, and the helper (and its test) are now free of the FFI-backed package
+  entirely.
+- startDebugWavStream reads its wav with this package&amp;#39;s own pure-Dart
+  parser instead of sherpa-onnx&amp;#39;s readWave. Same accepted format -- both
+  handle 16-bit PCM only -- but it keeps the streaming debug path free of
+  FFI, so a test can push a file through the whole VAD/draft/final/refine
+  pipeline. Channel count is now checked explicitly, where readWave would
+  have failed less clearly.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: drive a whole live session, microphone to transcript line
+
+With both FFI edges behind seams, a LiveTranscriber can now reach
+isRunning == true in a plain flutter test run, so the behaviour this branch
+changed is checked rather than argued for. Fifteen tests against a fake
+recorder, a scripted fake VAD and a fake decode worker:
+
+- two segments become two lines, in order, with text, lang, switched,
+  audioSeconds and latencyMs all populated, the refine buffer filled, and
+  one busy transition for the burst rather than one per decode;
+- an empty result buffers nothing, and a segment under the minimum duration
+  never reaches the worker at all;
+- a draft goes out mid-utterance; none is even *queued* while a final is
+  outstanding (checked by letting the final finish and watching nothing
+  follow it out); one whose segment closed while it was decoding is
+  discarded, and the final that superseded it is emitted instead;
+- two refineNow calls yield one pass, covering the segment that was still
+  decoding when the caller asked;
+- resetSession lands behind that segment, then clears and reports;
+- a worker dying stops the session, reports exactly once, frees the VAD, and
+  leaves the object restartable; a single failed decode reports without
+  stopping anything;
+- stop() emits the segment its VAD flush produces before returning, and a
+  reply arriving after it emits nothing;
+- startDebugWavStream feeds a real wav file through and flushes its last
+  segment, and rejects one at the wrong sample rate without leaving a worker
+  or a VAD behind.
+
+Each of these was mutation-checked: breaking the staleness comparison, both
+draft-skip guards, the worker-death teardown, or stop()&amp;#39;s drain makes the
+corresponding test fail. One thing is deliberately not claimed here --
+that a second refineNow returns the *same* future -- because refineNow is an
+async wrapper and necessarily hands out a fresh one; that half of coalescing
+is asserted on DecodeSession, and the comment says so.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: record the VAD seam and what a live session&amp;#39;s tests now cover
+
+The README&amp;#39;s source-layout and testing sections were written when the
+decode worker was the only thing a test could stand in for, so they
+described coverage that has since grown: a whole live session is now driven
+end to end, and the FFI itself is what is left untested. The CHANGELOG&amp;#39;s
+list of new building blocks likewise predates live_vad.dart, and did not
+mention two changes a caller could notice -- isSegmentWorthDecoding&amp;#39;s
+signature, and startDebugWavStream reading its wav in Dart.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8402b4213317d3993ca3e6375ffdcc58e004590d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/8402b4213317d3993ca3e6375ffdcc58e004590d"/>
+    <title>
+        Embedding (#29, Dart): runtime knobs, VAD sensitivity, resetSession, …
+    </title>
+    <updated>2026-09-06T08:53:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Embedding (#29, Dart): runtime knobs, VAD sensitivity, resetSession, audio_s/switched/model_load events (#42)
+
+* chore: sync mobile/ lockfile with hayamimi_core&amp;#39;s declared deps
+
+mobile/pubspec.lock hadn&amp;#39;t been regenerated since hayamimi_core&amp;#39;s
+pubspec.yaml picked up its archive/posix transitive dependencies, so
+`flutter pub get`/`flutter analyze` in mobile/ was resolving them fresh
+every run instead of reading a pinned version. Running the verification
+gate for this change surfaced the drift; syncing it now keeps the demo
+app&amp;#39;s resolved dependency set reproducible.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* routing: thread decodingMethod/hotwords/onModelLoad into RoutedRecognizerSet.build, add reset()
+
+RoutedRecognizerSet.build hardcoded &amp;#39;modified_beam_search&amp;#39; for the ja
+tier with no way to override it, never exposed sherpa-onnx&amp;#39;s hotwords
+feature, and had no way to observe when each of its three model builds
+started/finished. It also had no way to clear currentLang for a fresh
+&amp;quot;conversation&amp;quot; without freeing and rebuilding all three native models.
+
+Add decodingMethod (default unchanged: &amp;#39;modified_beam_search&amp;#39; for ja),
+hotwordsFile/hotwordsScore (both applied only to the ja tier -- the
+routed profile&amp;#39;s only tier that runs a plain transducer decode), and an
+optional onModelLoad(&amp;#39;ja&amp;#39;|&amp;#39;sensevoice&amp;#39;|&amp;#39;lid&amp;#39;, &amp;#39;start&amp;#39;|&amp;#39;done&amp;#39;, ms)
+callback fired around each background-isolate build. Kept as a plain
+callback rather than a dependency on any event type, so this file stays
+free of anything beyond sherpa-onnx and its own model-resolving helpers;
+LiveTranscriber is what turns the callback into its own ModelLoadEvent
+stream.
+
+Add reset(), which just clears currentLang: RoutedRecognizerSet never
+populates resolveStickyLang&amp;#39;s pending/count state (see that function&amp;#39;s
+doc -- it has no production callers on mobile today), so there&amp;#39;s nothing
+else session-scoped to clear.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: pure-Dart pieces for VAD sensitivity, model-load events, mutable refine cap
+
+LiveTranscriptEntry had no way to carry a segment&amp;#39;s audio duration or
+whether it caused a routed session&amp;#39;s language to switch, so neither
+could reach a UI or the wire event types. Add audioSeconds (nullable --
+drafts never measure it) and switched (default false).
+
+Add VadSensitivity, an immutable value class for Silero VAD&amp;#39;s four
+tunable knobs (threshold, min-silence/min-speech/max-speech durations),
+defaulting to sherpa-onnx&amp;#39;s own values so VadSensitivity() reproduces
+today&amp;#39;s unconfigurable behavior exactly; validated in its constructor
+(threshold in (0, 1], durations positive/finite) since a bad value here
+would otherwise silently mistune segmentation. Alongside it,
+shouldSwapVadNow(speechActive, busy) is the pure &amp;quot;is it safe to swap in
+a rebuilt VAD right now&amp;quot; decision (never mid-segment, never while a
+decode is in flight) -- pulled out as its own testable function the same
+way isDraftDue/isAutoRefineDue already are, since the actual swap needs
+FFI and can&amp;#39;t be unit tested directly.
+
+Add ModelLoadEvent, the plain data LiveTranscriber.modelLoads will emit
+around each native model&amp;#39;s background-isolate build.
+
+RefineBuffer.maxDurationSeconds becomes a mutable field instead of
+final, so LiveTranscriber&amp;#39;s refineBufferMaxSeconds runtime setter can
+change the cap without rebuilding the buffer or touching any native
+model.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: runtime pacing knobs, decodingMethod/VAD sensitivity/hotwords, resetSession, model-load events
+
+LiveTranscriber&amp;#39;s pacing (draft interval/window/min-audio, auto-refine
+silence/max-buffered, refine buffer cap), decoding method, and VAD
+sensitivity were all frozen constants or sherpa-onnx defaults baked in
+at _buildNativeState time, with no way for an embedding app to tune any
+of them for its own device/environment. There was also no way to start
+a fresh &amp;quot;conversation&amp;quot; without paying to reload up to 396 MB of models,
+and start()/startDebugWavStream() were one opaque Future with no
+visibility into which of up to three models was currently loading.
+
+Pacing knobs: draftIntervalSeconds/draftWindowSeconds/
+minDraftAudioSeconds/autoRefineSilenceSeconds/
+autoRefineMaxBufferedSeconds/refineBufferMaxSeconds are now constructor
+parameters AND same-named runtime-settable properties, validated
+(positive, finite) with ArgumentError. Validation runs before the
+constructor defaults `recorder` to a fresh AudioRecorder() (Dart
+evaluates an initializer list left to right) -- AudioRecorder()&amp;#39;s own
+constructor kicks off a real asynchronous platform-channel call under
+the hood, so an invalid knob value now fails cleanly and synchronously
+instead of also leaking a half-started platform call.
+
+decodingMethod: start()/startDebugWavStream() gained a decodingMethod
+parameter (null keeps prior behavior -- &amp;#39;greedy_search&amp;#39; on the plain
+path, &amp;#39;modified_beam_search&amp;#39; on the routed ja tier).
+
+VAD sensitivity: start()/startDebugWavStream() gained a vadSensitivity
+parameter, and setVadSensitivity() rebuilds Silero VAD off-isolate and
+swaps it in the moment shouldSwapVadNow says it&amp;#39;s safe to (checked once
+per processed frame via _maybeSwapPendingVad, so no timer polling is
+needed) -- never mid-segment. Overlapping setVadSensitivity calls
+collapse to the latest target rather than queueing every one; a stale
+in-flight build is freed rather than installed. If no session is
+running, the value is just remembered for the next start().
+
+Hotwords: start()/startDebugWavStream() gained hotwordsFile/
+hotwordsScore, applied to the plain path and (via RoutedRecognizerSet&amp;#39;s
+new parameters) the routed ja tier. No runtime setter -- baked into the
+recognizer at build time.
+
+resetSession(): clears the refine buffer, draft state, and (for a
+routed session) RoutedRecognizerSet&amp;#39;s language lock, without touching
+any native model. Waits for an in-flight decode to finish first (a
+20ms poll of the existing _busy flag, matching stopDebugWavStream&amp;#39;s own
+poll style, rather than a new mutex). No-op, no event, when no session
+is running.
+
+Model-load events: _buildNativeState now wraps each native build
+(vad/recognizer, or ja/sensevoice/lid via RoutedRecognizerSet&amp;#39;s
+onModelLoad) with start/done emissions on the new modelLoads stream,
+including elapsed build time on &amp;#39;done&amp;#39;. setVadSensitivity&amp;#39;s own rebuild
+emits the same &amp;#39;vad&amp;#39; events.
+
+Entries: _decodeSegment/_decodeSegmentRouted now populate
+LiveTranscriptEntry.audioSeconds (segment sample count / 16000) and
+.switched (from RoutedDecodeResult.switched, previously read and
+discarded); refineNow() populates audioSeconds with the refined group&amp;#39;s
+total duration.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* embed: surface audioSeconds/switched, model-load, and session-reset events on HayamimiLive
+
+The new LiveTranscriber-level data (LiveTranscriptEntry.audioSeconds/
+.switched, modelLoads, sessionResets) had nowhere to go on the wire:
+FinalSubtitleEvent/RefineSubtitleEvent didn&amp;#39;t carry audioSeconds or
+switched, and there was no event type for model-load progress or a
+session reset -- so a host app (or SubtitleBroadcastServer&amp;#39;s LAN
+consumers) had no way to see any of it.
+
+FinalSubtitleEvent gains audioSeconds (&amp;quot;audio_s&amp;quot;) and switched
+(&amp;quot;switched&amp;quot;); RefineSubtitleEvent gains audioSeconds only, per the wire
+design both this and the Python side of issue #29 implement. Add
+ModelLoadSubtitleEvent (&amp;quot;model_load&amp;quot;: model/phase/ms) and
+SessionResetSubtitleEvent (&amp;quot;session_reset&amp;quot;, no payload). All existing
+keys are unchanged, so this is additive on the wire; the desktop
+overlay&amp;#39;s JS already ignores unrecognized types.
+
+HayamimiLive&amp;#39;s constructor now forwards the six pacing knobs to the
+LiveTranscriber it creates for itself (ignored if a transcriber is
+injected instead -- configure that one directly), mirrors its runtime
+setters, forwards decodingMethod/vadSensitivity/hotwordsFile/
+hotwordsScore through start()/startDebugWavStream(), adds
+setVadSensitivity()/resetSession() pass-throughs, and subscribes to the
+new modelLoads/sessionResets streams to translate them into
+ModelLoadSubtitleEvent/SessionResetSubtitleEvent on `events` -- the same
+&amp;quot;LiveTranscriber emits its own domain type, HayamimiLive maps it onto
+SubtitleEvent&amp;quot; split entries/refineEntries/drafts/errors already use, so
+LiveTranscriber itself never has to depend on the SubtitleEvent
+hierarchy.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* server: add bindAddress/allowOrigin to SubtitleBroadcastServer
+
+SubtitleBroadcastServer bound InternetAddress.anyIPv4 and hardcoded
+Access-Control-Allow-Origin: * unconditionally, with no way for a host
+app to narrow either -- issue #30&amp;#39;s ask, which hadn&amp;#39;t landed on the
+Dart side yet (git log on this file showed nothing past the original
+extraction).
+
+Add bindAddress (defaults to InternetAddress.anyIPv4, documented as
+deliberate: LAN reachability from other devices is this class&amp;#39;s whole
+point, so narrowing it to loopback defeats the purpose -- only worth
+doing if a host app specifically wants same-device-only consumers) and
+allowOrigin (defaults to &amp;#39;*&amp;#39;, matching the desktop subtitle_server.py&amp;#39;s
+permissive default). Existing callers that pass neither keep today&amp;#39;s
+behavior unchanged.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover the new runtime-config knobs and wire events
+
+Adds coverage for everything in the previous four commits that&amp;#39;s
+reachable without the sherpa-onnx native libs or a real mic:
+
+- subtitle_event_test.dart: fixes the two FinalSubtitleEvent JSON-shape
+  assertions broken by the new audio_s/switched keys, and adds cases for
+  RefineSubtitleEvent&amp;#39;s audio_s, ModelLoadSubtitleEvent, and
+  SessionResetSubtitleEvent.
+- vad_sensitivity_test.dart: VadSensitivity&amp;#39;s constructor validation
+  (threshold bounds, positive/finite durations) and all four
+  shouldSwapVadNow truth-table cases.
+- live_transcriber_config_test.dart: the six pacing knobs&amp;#39; constructor
+  defaults/custom values/validation and runtime-setter validation
+  (installed via the same fake-RecordPlatform approach lifecycle_test.dart
+  uses, since AudioRecorder() touches a platform channel even when
+  nothing else does); resetSession()/setVadSensitivity() as no-ops when
+  no session is running.
+- hayamimi_live_events_test.dart: a _FakeLiveTranscriber (same pattern
+  hayamimi_live_text_transform_test.dart uses) exercising
+  LiveTranscriptEntry -&amp;gt; FinalSubtitleEvent/RefineSubtitleEvent
+  audioSeconds/switched propagation, modelLoads/sessionResets -&amp;gt;
+  ModelLoadSubtitleEvent/SessionResetSubtitleEvent, resetSession()
+  delegation, and HayamimiLive&amp;#39;s constructor/setters forwarding the
+  pacing knobs to its own transcriber.
+
+Not covered here (needs real FFI/model files, same as the rest of
+RoutedRecognizerSet): RoutedRecognizerSet.reset()&amp;#39;s effect itself --
+its bootstrap-after-reset behavior (currentLang/lastLang both null) is
+already exercised by lang_routing_test.dart&amp;#39;s existing null-lastLang
+resolveDualConfirm cases, since reset() only ever clears that one field.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: document runtime configuration, resetSession, and the full events table
+
+The README&amp;#39;s &amp;quot;Recommended configurations&amp;quot; section described the pacing
+defaults as fixed constructor parameters, and had no mention at all of
+decodingMethod, VAD sensitivity, hotwords, resetSession(), or the two
+new event types -- all landed in the preceding commits with no user-
+facing documentation of how or why to use them.
+
+Add a &amp;quot;Runtime configuration and session control&amp;quot; section: a table of
+the six pacing knobs (default, runtime-settable, what each does) plus
+prose on decodingMethod/VAD sensitivity/hotwords/resetSession() that
+leads with the problem each solves before the API, per this package&amp;#39;s
+usual style. Add an &amp;quot;Events&amp;quot; section: a full JSON-shape table for every
+SubtitleEvent type this package emits, including why a custom consumer
+should still switch on `type` defensively (this package&amp;#39;s own overlay
+already does, safely, for the two new types). Touch up the
+&amp;quot;Broadcasting to other apps on the LAN&amp;quot; section for
+SubtitleBroadcastServer&amp;#39;s new bindAddress/allowOrigin parameters, and
+the &amp;quot;Package layout&amp;quot; bullets for the two new lib/live/ files and the
+two new SubtitleEvent subclasses.
+
+CHANGELOG.md: added entries under 0.1.0 (not yet published) for all of
+the above.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* live: fix native-state leak on partial build failure, lost setVadSensitivity during start(), and a stale-VAD-install race
+
+Review round on the runtime-config work turned up three related bugs in
+how LiveTranscriber manages native state across start()/stop()/
+setVadSensitivity():
+
+1. start()/_runDebugWavStream() awaited _buildNativeState unguarded. If
+   it built the recognizer (or routed set) successfully and then the VAD
+   build threw (e.g. a good recognizer load followed by a truncated
+   silero_vad.onnx), the already-built recognizer/routed handle was never
+   freed -- isRunning was still false at that point, so stop()/dispose()
+   had nothing to tear down and the handle leaked. Both call sites now
+   wrap _buildNativeState in try/catch and await _teardownNativeState()
+   before rethrowing.
+
+2. setVadSensitivity() called while start() was still loading (_starting
+   true, isRunning/isDebugStreaming both still false) took the &amp;quot;no
+   session&amp;quot; branch: it wrote _vadSensitivity immediately as if applied,
+   but start()&amp;#39;s own in-flight _buildNativeState call would then
+   overwrite that field with whatever sensitivity IT was given, once it
+   finished -- silently discarding the caller&amp;#39;s request. setVadSensitivity
+   now treats _starting like a running session: it queues the target into
+   _pendingVadSensitivity instead, and a new _applyPendingVadSensitivityIfAny
+   helper (called from start()/_runDebugWavStream() right after a
+   successful _buildNativeState) picks it up and kicks the existing
+   rebuild-and-swap machinery once native state -- including
+   _vadModelPath -- actually exists.
+
+3. A setVadSensitivity() rebuild&amp;#39;s buildVadOffIsolate await can outlive a
+   stop() followed immediately by a new start(): by the time it resolves,
+   _pendingVadSensitivity is null and isRunning is true again (for the
+   NEW session), so the old checks treated it as still valid and installed
+   a VAD built against the OLD session&amp;#39;s model path into the new one,
+   freeing the new session&amp;#39;s own freshly built VAD in the process. Added
+   a monotonically increasing _sessionGeneration counter, bumped in both
+   _buildNativeState and _teardownNativeState; _rebuildVadUntilCaughtUp
+   now captures the generation right before its await and compares it
+   against the current one once the build resolves (isVadBuildStale, in
+   vad_sensitivity.dart) -- a mismatch means the native state this build
+   was for has moved on, so it&amp;#39;s freed instead of installed, the same as
+   the existing &amp;quot;superseded by a newer request&amp;quot; case.
+
+isVadBuildStale is a pure equality check, so it&amp;#39;s unit-testable without
+the native VAD itself, same as shouldSwapVadNow.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover the native-state-leak, queued-setVadSensitivity, and stale-build fixes
+
+isVadBuildStale gets full pure-function coverage in vad_sensitivity_test.dart
+(unchanged/advanced-once/advanced-twice/zero-generation cases), the same
+way shouldSwapVadNow already was.
+
+live_transcriber_config_test.dart gains three groups exercising the parts
+of the fix reachable without real model files/FFI:
+
+- &amp;quot;start failure cleanup&amp;quot;: a start() against a nonexistent model
+  directory throws and leaves isRunning false, and can be retried
+  afterward (the _starting guard resets even when _buildNativeState
+  throws). This exercises the same try/catch/teardown path the leak fix
+  added, though a nonexistent directory fails before the recognizer is
+  ever built, so it can&amp;#39;t reach the exact &amp;quot;recognizer built, VAD
+  failed&amp;quot; partial-build point that needs real model files to test
+  directly.
+- &amp;quot;setVadSensitivity during start()&amp;quot;: a call made in the deterministic
+  window between start()&amp;#39;s first `await` and its failure doesn&amp;#39;t throw
+  and doesn&amp;#39;t build anything of its own -- Dart&amp;#39;s async-function
+  semantics (a call runs synchronously up to its first await before
+  yielding) make this window reachable without timing-based flakiness.
+
+The exact-replacement race (fix 3) and the &amp;quot;recognizer built, VAD
+failed&amp;quot; partial leak (fix 1) stay unverified beyond code review and
+`flutter analyze` -- both need a real, partially-failing native build to
+observe, which is the same FFI limitation already documented on
+LiveTranscriber itself.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* remote: sync RemoteEvent with the new wire fields/event types
+
+The remote path had fallen out of sync with the wire additions the
+on-device path and desktop subtitle_server.py landed for issue #29:
+RemoteFinalEvent never parsed audio_s/switched, RemoteRefineEvent never
+parsed latency_ms (only RemoteFinalEvent did) or audio_s, and
+model_load/session_reset frames from a desktop server fell through to
+RemoteUnknownEvent even though ModelLoadSubtitleEvent/
+SessionResetSubtitleEvent already exist on the on-device side.
+
+RemoteFinalEvent gains audioSeconds/switched (parsed from audio_s/
+switched); RemoteRefineEvent gains latencyMs and audioSeconds. Added
+RemoteModelLoadEvent and RemoteSessionResetEvent, parsed the same as
+their on-device ModelLoadEvent/SubtitleEvent counterparts. All four are
+mapped in HayamimiRemote._onRawEvent onto the matching SubtitleEvent
+(ModelLoadSubtitleEvent/SessionResetSubtitleEvent for the two new
+types), so HayamimiRemote.events now carries the same event types the
+README&amp;#39;s &amp;quot;Events&amp;quot; table promises regardless of which path produced
+them.
+
+subtitle_server.py also emits model_fallback/warning/session_summary/
+recluster, which this package still has no typed RemoteEvent for --
+left falling back to RemoteUnknownEvent (parseRemoteEvent&amp;#39;s default
+case already does this for anything unrecognized), documented via a
+doc comment on parseRemoteEvent and a parser test asserting all four
+degrade that way rather than throwing.
+
+mobile/lib/remote/remote_page.dart&amp;#39;s switch on RemoteEvent was
+exhaustive and needed the two new cases added (both currently no-ops,
+same as the existing protocol-only frames it already ignores) to keep
+compiling.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover the synced RemoteEvent fields/types and their SubtitleEvent mapping
+
+remote_event_test.dart: audio_s/switched on a parsed final event
+(present and defaulted), latency_ms/audio_s on a parsed refine event
+(present and defaulted), model_load (both start and done-with-ms), and
+session_reset. Also asserts model_fallback/warning/session_summary/
+recluster all fall back to RemoteUnknownEvent rather than throwing.
+
+New hayamimi_remote_events_test.dart, mirroring
+hayamimi_live_events_test.dart&amp;#39;s fake-transcriber pattern
+(_FakeRemoteTranscriber extends RemoteTranscriber, events stream
+injectable): confirms HayamimiRemote._onRawEvent carries audioSeconds/
+switched onto FinalSubtitleEvent, latencyMs/audioSeconds onto
+RefineSubtitleEvent, RemoteModelLoadEvent onto ModelLoadSubtitleEvent,
+RemoteSessionResetEvent onto SessionResetSubtitleEvent, and that a
+RemoteUnknownEvent stays dropped from events (not surfaced as a
+SubtitleEvent).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover SubtitleBroadcastServer&amp;#39;s bindAddress/allowOrigin
+
+Added in a prior commit but shipped without direct test coverage.
+Three cases: a server given bindAddress: InternetAddress.loopbackIPv4
+is reachable on 127.0.0.1, /events sends Access-Control-Allow-Origin:
+* by default, and /events sends a custom Access-Control-Allow-Origin
+when allowOrigin is configured. Headers are read from
+request.close()&amp;#39;s resolved HttpClientResponse (its future completes
+once headers arrive, before the SSE body, which never closes on its
+own) so these don&amp;#39;t need to drain or wait out the streaming response.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: document the remote-path event sync and note the review-round fixes
+
+README &amp;quot;Events&amp;quot; section: a paragraph noting HayamimiRemote&amp;#39;s RemoteEvent
+parser understands the same seven wire types (same field names) as the
+on-device path, plus which four desktop event types
+(model_fallback/warning/session_summary/recluster) still fall back to
+RemoteUnknownEvent since this package has no typed RemoteEvent for them
+yet.
+
+CHANGELOG.md: entries for the RemoteEvent sync and the three
+LiveTranscriber native-state bugs fixed in this review round (partial
+native-state leak on a failed build, setVadSensitivity silently losing
+its effect when called during start(), and a stale VAD rebuild racing a
+stop()+start() cycle).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c86b5f189314a7d4b1d8c7f498c5cdf47813f06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/7c86b5f189314a7d4b1d8c7f498c5cdf47813f06"/>
+    <title>
+        Embedding (#29, Python): always-on EventHub, runtime setters, /config…
+    </title>
+    <updated>2026-09-06T08:52:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Embedding (#29, Python): always-on EventHub, runtime setters, /config and /reset, session reset (#41)
+
+* engine: runtime setters, structured event hook, speaker reset
+
+Issue #29 asks for hayamimi to be embeddable: an app hosting the engine
+needs to change session config without restarting it, and needs to learn
+about model-load/fallback/warning conditions structurally instead of by
+scraping stderr. RoutedASR previously only accepted forced_lang,
+dual_confirm, punctuate, lid_switch_confirm and min_switch_s at
+construction time, and its degraded-model notices (missing tier,
+unencodable hotwords, missing segmentation VAD, missing second-opinion
+model) were print-only.
+
+Adds RoutedASR.set_forced_lang/set_dual_confirm/set_punctuate/
+set_lid_switch_confirm/set_min_switch_s, each validating its input and
+documented as GIL-safe plain attribute writes (transcribe() runs on a
+single decode thread; a setter can be called from any other thread
+without a lock). set_forced_lang validates against the new
+ROUTABLE_LANGS constant (the tiers the engine actually routes to by
+name, as opposed to the omni catch-all) and resets sticky/pending LID
+state either way, since a stale switch-confirmation candidate from one
+regime must not leak into the other.
+
+Adds an optional on_event callback to RoutedASR.__init__, called for
+model_load (start/done, timed) around every real recognizer/LID/punct
+build, model_fallback when _get_with_fallback() actually substitutes a
+different tier (reported once per requested name per session, matching
+the existing stderr print&amp;#39;s cardinality so a whole missing tier doesn&amp;#39;t
+flood an embedder with one event per segment), and warning for the four
+degraded-model cases the console already prints for
+(hotwords_unencodable, segmentation_vad_unavailable,
+second_opinion_unavailable). Every existing print is left in place
+unchanged; the callback is purely additive and a no-op when omitted, so
+every existing caller (eval scripts, tests) keeps working with no
+behavior change.
+
+SpeakerLabeler.reset() forgets all centroids/counts/aliases/merge
+history/confirmation state without rebuilding the CAM++ embedding
+extractor, so a live session can restart its speaker identity from
+scratch without paying a model reload.
+
+scripts/realtime_transcribe.py and scripts/subtitle_server.py are not
+wired to any of this yet (next commits); tests/test_second_opinion.py&amp;#39;s
+_FakeASR stub gained a no-op _emit() to match RoutedASR&amp;#39;s new call.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* server: split EventHub out of SubtitleServer, add /config and /reset
+
+Issue #29&amp;#39;s structured-event requirement needs a pub/sub hub that exists
+whether or not --serve&amp;#39;s HTTP server does, since an app embedding the
+engine directly (no HTTP layer at all) still wants model_load/warning/
+session_summary events. SubtitleServer previously WAS the pub/sub core
+(clients list, refine replay buffer, lock), so there was nowhere to
+publish an event without an HTTP server running.
+
+Pulls that core into a new EventHub class: publish()/subscribe()/
+unsubscribe() unchanged in behavior (including the refine-replay-to-new-
+subscribers list), plus add_listener() for an in-process callback that
+doesn&amp;#39;t need JSON round-tripping. A listener that raises is reported to
+stderr once per callback (not once per event) and then stays swallowed,
+so one broken listener can&amp;#39;t spam the console for the rest of the
+session, matching the same &amp;quot;never let an event-hub problem break the
+pipeline&amp;quot; principle asr_engine.RoutedASR._emit() (previous commit) applies
+on the publisher side. final()&amp;#39;s convenience method gains the audio_s/
+lid_ms/decode_ms/switched fields realtime_transcribe.py&amp;#39;s drain_segments()
+will start passing next.
+
+SubtitleServer now wraps an EventHub (auto-created if none is passed,
+so existing standalone construction still works) and becomes a thin
+HTTP/SSE front over it -- every previously-public method (publish/
+partial/final/subscribe/unsubscribe/start, the /replacements and
+/itn_overrides endpoints) is unchanged, so scripts/ws_ingest.py&amp;#39;s
+`self.subtitle_server.subscribe()`/`.unsubscribe()` calls needed no edit.
+
+Adds a RuntimeControls container (asr/translator_pool/live_vad/reset_fn
+handles, all optional) backing three new endpoints: GET /config reads
+the live session&amp;#39;s forced language, dual-confirm, punctuation,
+LID-switch-confirm, min-switch-guard, translation targets and VAD
+sensitivity; POST /config applies any subset of those (400 with the
+setter&amp;#39;s own message on an invalid value); POST /reset runs a caller-
+supplied session-reset closure. All three 404 when no controls are
+attached, matching the existing /replacements pattern. subtitle_server.py
+still only imports stdlib, so RuntimeControls reads its handles by duck
+typing rather than importing realtime_transcribe.py&amp;#39;s classes.
+
+Nothing constructs an EventHub/RuntimeControls from realtime_transcribe.py
+yet (next commit); this file&amp;#39;s own behavior for existing callers
+(ws_ingest.py, the OBS overlay, the dashboard) is unchanged, confirmed via
+tests/test_overlay_parity.py and tests/test_ws_ingest.py.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* pipeline: always-on EventHub, LiveVad, TranslatorPool, session reset
+
+Wires the previous two commits&amp;#39; pieces (RoutedASR.on_event, EventHub,
+RuntimeControls) into realtime_transcribe.py&amp;#39;s actual pipeline and adds
+the remaining GitHub issue #29 pieces: runtime VAD sensitivity, shared
+translation targets, and a full session reset that doesn&amp;#39;t rebuild any
+loaded model.
+
+main() now always constructs an EventHub before building the engine
+(RoutedASR(..., on_event=hub.publish)) and passes it to PartialPrinter/
+Refiner/TranslationWorker; --serve only adds an HTTP/SSE front over the
+SAME hub instead of gating whether events exist at all. Every
+`if server is not None` around an event publish is gone -- drain_
+segments(), Refiner&amp;#39;s two refine-event sites, and TranslationWorker now
+publish unconditionally. drain_segments()&amp;#39;s `final` event gained
+audio_s/lid_ms/decode_ms/switched (switched tracked via a new
+SessionStats.last_final_lang, since asr.last_lang has already advanced
+past the value needed for the comparison by the time drain_segments()
+reads the result). Refine events gained audio_s. A caught diarization
+failure in Refiner._emit_turns() now also publishes a `warning` event
+(diarization_failed) alongside its existing stderr print.
+
+Adds LiveVad, wrapping the sherpa-onnx VAD so --min-silence/--max-speech/
+threshold can change at runtime: sherpa-onnx has no in-place setters, so
+a set_sensitivity() request is deferred and only rebuilds the detector at
+the next chunk boundary where it isn&amp;#39;t mid-segment (rebuilding mid-speech
+would drop that segment&amp;#39;s audio and reset the endpointer mid-word).
+Implements the subset of the sherpa VAD API run_stream()/drain_segments()
+use, so it&amp;#39;s a drop-in for build_vad() at every existing call site;
+build_vad() itself is untouched for the eval scripts that call it
+directly.
+
+Adds TranslatorPool, a shared mutable set of ja-&amp;gt;target translators used
+by both TranslationWorker (live) and Refiner (second pass) so a runtime
+add/remove target (POST /config&amp;#39;s &amp;quot;translate&amp;quot; key) applies to both at
+once. build_translators() now populates a pool instead of returning a
+plain dict; an unsupported --translate code still just prints a stderr
+note and continues (existing CLI behavior), while TranslatorPool.
+add_target() itself raises ValueError so the HTTP path gets a clean 400.
+main() now always constructs the pool and its TranslationWorker, even
+with no --translate targets at startup, specifically so a target added
+later at runtime has a live worker already pulling ja finals to
+translate -- an empty pool costs nothing (the worker iterates zero
+targets per line).
+
+Adds SessionStats.reset(), AudioHistory.clear(), Refiner.reset() (drops
+pending spans/group state, clears history, writes a visible separator
+into an open transcript file, and waits for the refine worker queue to
+drain first so it can&amp;#39;t race an in-flight task), and the module-level
+reset_live_session(asr, refiner, labeler, stats, hub, live_vad=None)
+orchestrator: flush pending refine -&amp;gt; publish session_summary (so it
+describes the ending session, not the zeroed one) -&amp;gt; reset each piece -&amp;gt;
+asr.reset_session() -&amp;gt; publish session_reset. live_vad is accepted for
+signature symmetry but deliberately untouched -- VAD sensitivity is
+orthogonal to a conversation&amp;#39;s identity, not part of what a session reset
+should change. main()&amp;#39;s own shutdown block publishes the same
+session_summary shape via a new shared _session_summary_event() helper,
+and wires a RuntimeControls instance onto the SubtitleServer (when
+--serve) whose reset_fn closes over reset_live_session().
+
+Verified against the real model catalog (not just tests/): `--wav
+testdata/multi_sentence_ja.wav --no-realtime --no-refine` reproduces the
+exact prior console output, and a `--input ws --serve` run answered GET/
+POST /config (including a 400 on an unsupported --lang code) and POST
+/reset correctly, with model_load/session_start/session_summary/
+session_reset events observed on /events in that order.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: cover EventHub, runtime setters, TranslatorPool, LiveVad, resets
+
+Adds tests/test_embed_runtime.py, 45 tests for GitHub issue #29&amp;#39;s new
+surface: EventHub publish/subscribe/refine-replay/add_listener (including
+that a listener&amp;#39;s exception is reported once per callback, not once per
+event -- publishes twice through a raising listener and checks stderr
+only got one report); drain_segments()&amp;#39;s `final` event carries audio_s/
+lid_ms/decode_ms and the `switched` field is false on the session&amp;#39;s first
+final, true on a language change, false on a repeat, and resets cleanly
+through SessionStats.reset(); TranslationWorker publishing on a bare
+EventHub with no SubtitleServer/HTTP server at all, and being a silent
+no-op with an empty TranslatorPool (main()&amp;#39;s always-on wiring); RoutedASR&amp;#39;s
+five setters validating and taking effect, gated behind a needs_lid_model
+skip since __init__ still builds the real LID model eagerly; TranslatorPool
+add/remove/idempotence with translator construction stubbed via
+monkeypatching the module-level _build_translator function; LiveVad
+deferring a sensitivity change while a stubbed VAD reports mid-speech and
+applying it at the next safe chunk boundary; SpeakerLabeler.reset(),
+AudioHistory.clear(), and Refiner.reset() (including that reset() writes
+its separator into a transcript file that stays open, not reopened);
+reset_live_session()&amp;#39;s five-step ordering, particularly that a still-
+pending refine group is flushed and reflected in the session_summary
+event&amp;#39;s refine_groups_closed count BEFORE stats.reset() zeroes it back
+out; and SubtitleServer&amp;#39;s GET/POST /config and POST /reset over a real
+http.client connection against a server started on port 0, including the
+404-without-controls and 400-on-invalid-value cases.
+
+Whole suite: 263 passed, 4 skipped (up from the 218 passed, 4 skipped
+baseline -- the 4 skips are pre-existing and unrelated to this change;
+none of the new tests skip in this environment, since models/ is a
+junction to the real model catalog here).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: document runtime control and structured events (issue #29)
+
+An app embedding this engine could only set session config once, at
+construction, and had no reliable way to learn about a model load
+failing or a fallback kicking in short of scraping stderr and the
+console&amp;#39;s free-text diagnostic line -- structured events only existed
+behind --serve at all. The last few commits fixed both (an always-on
+EventHub, RoutedASR runtime setters, TranslatorPool, LiveVad, session
+reset); this documents them.
+
+Adds &amp;quot;Embedding: runtime control and structured events&amp;quot; to both READMEs,
+right after the existing &amp;quot;Embedding in another app&amp;quot; section: the
+add_listener()/subscribe() consumption paths, a reference table of every
+event type&amp;#39;s JSON shape and when it fires, and the three --serve-only
+HTTP endpoints (GET/POST /config, POST /reset) with curl examples,
+including the one non-obvious behavior worth calling out explicitly --
+a VAD sensitivity change can&amp;#39;t apply immediately (sherpa-onnx has no
+in-place setter) and is deferred to the next point the detector isn&amp;#39;t
+mid-utterance. Also adds one row to each README&amp;#39;s Features table
+pointing at the new section.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* fix: thread-safe session reset, VAD input validation, pool locking
+
+Review round 1 on this branch found three real bugs, all in the runtime
+control surface added over the previous five commits.
+
+1. POST /reset ran reset_live_session() directly on the HTTP handler
+   thread while run_stream()&amp;#39;s decode thread could be concurrently inside
+   drain_segments() (SpeakerLabeler.match_embedding(), Refiner.add_span(),
+   stats.latencies_ms.append()) or Refiner.maybe_refine(). SpeakerLabeler.
+   reset() clearing _centroids/_counts mid-match_embedding() could raise
+   IndexError there, and two threads both calling maybe_refine() race on
+   Refiner.spans with nothing serializing them. Fixed the same way
+   LiveVad already defers a VAD rebuild: a new ControlQueue class queues
+   a callable and hands back a threading.Event, and run_stream() calls
+   control.poll() once per chunk (right alongside its existing stop_event
+   check) to actually run whatever&amp;#39;s queued, on the decode thread.
+   RuntimeControls.reset_fn now submits reset_live_session(...) to the
+   queue and waits on the Event with a 10s timeout (RESET_TIMEOUT_S);
+   POST /reset answers 200 once it actually ran, or 202 {&amp;quot;ok&amp;quot;: false,
+   &amp;quot;pending&amp;quot;: true} if the timeout elapses first (e.g. --input ws with no
+   client currently sending audio, since nothing reaches a chunk boundary
+   to poll from). reset_live_session()&amp;#39;s docstring now documents that
+   calling it directly is only safe from the thread already driving
+   run_stream(), or via a ControlQueue that thread is polling.
+
+2. LiveVad.set_sensitivity() stored whatever it was given and only
+   reached build_vad() with it later, on the decode thread, when
+   _maybe_apply_pending() next ran -- so POST /config {&amp;quot;vad&amp;quot;:
+   {&amp;quot;threshold&amp;quot;: &amp;quot;abc&amp;quot;}} (or a negative/zero/out-of-range number) would
+   crash the decode loop instead of returning 400. Validation now happens
+   synchronously inside set_sensitivity() itself, before anything is
+   queued into self._pending: type-checked (int/float, with bool
+   explicitly excluded since it&amp;#39;s a subclass of int in Python) and
+   range-checked (0 &amp;lt; threshold &amp;lt;= 1, min_silence &amp;gt; 0, max_speech &amp;gt; 0),
+   raising ValueError with the offending key&amp;#39;s name. An explicit None
+   (including JSON null from a partial POST /config body, which can&amp;#39;t be
+   told apart from an absent key) still means &amp;quot;no change&amp;quot; and is never
+   validated, matching the existing &amp;quot;no change&amp;quot; contract.
+
+3. TranslatorPool.items()/targets read self._order/self._translators
+   without the lock add_target()/remove_target() hold, so a remove_target()
+   landing mid-iteration could KeyError inside the live TranslationWorker&amp;#39;s
+   daemon thread -- which has no try/except around its loop, so that
+   silently killed translation for the rest of the session. Both methods
+   now snapshot fully under self._lock; the returned (lang, translator)
+   pairs hold real object references, so a target removed a moment AFTER
+   the snapshot is harmless (at most one extra translation using an
+   object the caller already holds, never a stale re-lookup by name).
+
+Added 33 tests (45 -&amp;gt; 78 in tests/test_embed_runtime.py): ControlQueue&amp;#39;s
+FIFO ordering, that a submitted task runs on the polling thread and not
+the submitter&amp;#39;s, that a raising task still sets its Event and doesn&amp;#39;t
+block later tasks; run_stream() polling control once per chunk and being
+unaffected when control is omitted; every LiveVad.set_sensitivity()
+rejection case (wrong type, bool, out-of-range) parametrized, plus the
+400 path through POST /config end-to-end; a 4-reader/1-writer stress test
+hammering TranslatorPool.add_target/remove_target against concurrent
+items()/targets calls with no KeyError; and the reset endpoint&amp;#39;s 202
+&amp;quot;pending&amp;quot; response. Fixed one pre-existing test whose stub reset_fn
+returned None (now treated as &amp;quot;still pending&amp;quot; -&amp;gt; 202 instead of the 200
+it used to always get).
+
+Verified end-to-end against the real model catalog, not just stubs: a
+`--input ws --serve` session with ws_mic_client.py actively streaming
+audio answered POST /reset with 200 in ~60ms; the same session with no
+audio flowing answered 202 after the 10s timeout, exactly as designed.
+
+README.md/README.ja.md&amp;#39;s `POST /reset` paragraph now explains the
+200-vs-202 behavior and why (the same &amp;quot;why&amp;quot; as the code comments, not
+just the shape).
+
+Whole suite: 296 passed, 4 skipped (up from 263/4 before this round; the
+4 skips are the same pre-existing, unrelated ones).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* test: gate the two LiveVad tests that missed the CI model-free stub
+
+PR #41&amp;#39;s ubuntu CI run failed with 2 failed, 271 passed, 27 skipped:
+test_live_vad_set_sensitivity_none_is_always_a_noop_no_change and
+test_post_config_invalid_vad_value_returns_400_not_a_crash both died with
+asr_engine.ModelUnavailable: vad. Both construct a real LiveVad(...)
+directly instead of going through the fake_build_vad fixture the other
+LiveVad tests in this file already use -- LiveVad.__init__ calls
+build_vad() unconditionally, which needs models/silero_vad.onnx, present
+locally only because models/ is a directory junction to the real catalog
+and absent entirely in CI (installs only sherpa-onnx numpy scipy
+soundfile pytest, no models/). Local runs never caught this because the
+junction papered over exactly the gap CI has.
+
+Fix: add fake_build_vad to both tests&amp;#39; parameters, monkeypatching
+rt.build_vad the same way every other LiveVad test in the file already
+does, so the deferred-rebuild logic still runs for real, just against a
+stub VAD object instead of sherpa_onnx.VoiceActivityDetector.
+
+Swept the rest of tests/test_embed_runtime.py for the same class of gap:
+every RoutedASR/_cheap_asr() construction is already behind
+@needs_lid_model, TranslatorPool&amp;#39;s translator construction is stubbed via
+monkeypatching _build_translator in every relevant test, and
+SpeakerLabeler is only ever built via object.__new__() (never __init__,
+never touching the CAM++ model) -- no other real-model reach found.
+
+Verified the fix, not just asserted it: a throwaway script (not
+committed) reassigned realtime_transcribe.build_vad to unconditionally
+raise asr_engine.ModelUnavailable(&amp;quot;vad&amp;quot;) -- the exact CI failure -- then
+ran the whole file under pytest. All 78 tests passed, proving none of
+them reach build_vad() outside a test that has monkeypatched it locally
+via fake_build_vad. This exercises the same code path CI&amp;#39;s missing
+models/ directory does, without relying on os.path.exists tricks.
+
+Whole suite (normal conditions, models/ present via the local junction):
+296 passed, 4 skipped -- unchanged from before this fix, confirming no
+regression.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: oboroge0 &amp;lt;202881821+oboroge0@users.noreply.github.com&amp;gt;
+Co-authored-by: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f4f7e5496dab0ab47e8a7de32d4e423231ffd2d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/6f4f7e5496dab0ab47e8a7de32d4e423231ffd2d"/>
+    <title>
+        docs: name the scorecard&#39;s data sources per language
+    </title>
+    <updated>2026-09-01T18:15:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: name the scorecard&amp;#39;s data sources per language
+
+The scorecard backed claims like &amp;#39;real-broadcast ja CER 3.8%&amp;#39; without
+naming its datasets anywhere user-facing (the generator scripts document
+them, but COMPARISON.md points at this file and this file said nothing).
+Spell it out: only ja is broadcast-derived (ReazonSpeech test); en is
+LibriSpeech audiobook speech and zh/ko/yue are FLEURS read speech, so
+&amp;#39;real broadcast&amp;#39; claims apply to the ja row alone.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcf0cd841777901b97c0f58adad7a71b7dee3edb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/bcf0cd841777901b97c0f58adad7a71b7dee3edb"/>
+    <title>
+        docs: correct the turbo-RTF reading in the FLEURS section
+    </title>
+    <updated>2026-09-01T15:04:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: correct the turbo-RTF reading in the FLEURS section
+
+RTF 0.64-0.83 is BELOW 1.0, i.e. turbo&amp;#39;s batch decode of these short
+clips is faster than realtime -- the section claimed the opposite. Also
+reconcile with COMPARISON.md&amp;#39;s older RTF&amp;gt;1 measurement (different clip
+lengths/threads; both are real) and state the streaming distinction
+explicitly instead of leaning on a wrong number.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b7eaf3cf5cc51a129c4d55513d53426a5f7db2bc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/b7eaf3cf5cc51a129c4d55513d53426a5f7db2bc"/>
+    <title>
+        eval: unified FLEURS test 5x100 head-to-head, hayamimi vs turbo (v0.3…
+    </title>
+    <updated>2026-09-01T15:04:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;eval: unified FLEURS test 5x100 head-to-head, hayamimi vs turbo (v0.3.1 chart)
+
+Adds scripts/make_fleursset.py (FLEURS test split via the HF parquet-
+conversion route, since datasets-server /rows returns 500 for this
+dataset -- fsspec+pyarrow, sorted by id, 100 clips/lang for
+ja/en/zh/ko/yue) and scripts/eval_fleurs_bench.py (resumable two-engine
+runner: hayamimi RoutedASR production path vs faster-whisper
+large-v3-turbo, same clips/scoring/CPU). Records the full table in
+docs/BENCHMARKS.md: 0 excluded clips, hayamimi ~12-21x faster, turbo
+slightly more accurate on 4/5 languages under the documented
+language-given asymmetry.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2124cea7229c35b97fe7c8b6efc450eb3ffbcad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/oboroge0/hayamimi/commit/e2124cea7229c35b97fe7c8b6efc450eb3ffbcad"/>
+    <title>
+        demo: record AMI attribution and register the DiarMain composition
+    </title>
+    <updated>2026-09-01T15:01:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/202881821?s=30&amp;v=4"/>
+    <author>
+      <name>oboroge0</name>
+      <uri>https://github.com/oboroge0</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;demo: record AMI attribution and register the DiarMain composition
+
+Both changes date from the v0.3.0 demo-video production and never got
+committed: CREDITS.md gains the AMI Meeting Corpus (CC BY 4.0) entry the
+published video relies on, and Root.tsx registers the DiarMain Remotion
+composition alongside the existing Main.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

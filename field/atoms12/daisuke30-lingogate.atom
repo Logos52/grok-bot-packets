@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/daisuke30/lingogate/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/daisuke30/lingogate/commits/main.atom"/>
+  <title>Recent Commits to lingogate:main</title>
+  <updated>2026-09-11T21:58:17Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/debf9f7a2181cf713f845361643a7f19ed6b6de5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/debf9f7a2181cf713f845361643a7f19ed6b6de5"/>
+    <title>
+        LINGO-048: フッターを暗色統合（再インストール不要の黒帯対策）＋バックアップにペットを追加
+    </title>
+    <updated>2026-09-11T21:58:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-048: フッターを暗色統合（再インストール不要の黒帯対策）＋バックアップにペットを追加
+
+## 1. フッターの暗色統合
+勝田の決定的な証言:「以前はフッターが下に固定されて見えた。色変更のデプロイの
+タイミングで黒帯が出現した」。つまり**実機下端の未塗装/OS塗装領域はずっと存在
+していたが、旧パレット時代は全体が同色の黒系だったため不可視だった**。
+LINGO-045 のパレット引き上げがそれを可視化した。
+
+iOSはインストール時のmanifestをスナップショットするため、サーバー側の色修正は
+インストール済みアプリのその帯に届かない（再インストールはさせない方針）。
+制御できるのは**アプリ自身が最下部に塗る色**だけなので、そこを旧パレット系の
+暗色にしてOSの帯と視覚的に一体化させる。
+
+- `--footer-bg: #0b0b12`（＝LINGO-045以前の --bg）、`--footer-bg-end: #07070c`
+- `.tabbar` を上から下へ footer-bg → footer-bg-end のグラデ、上辺に subtle な境界線
+- `.tabbar::after`（下の保護帯）も footer-bg-end で、バー→帯→OS領域が一続きの降下に
+- ページ本体は LINGO-045 の明るいパレットのまま（短い画面の余白が「穴」に
+  見えなくなった効果を維持）
+
+正常な端末では単に「本体より暗いタブバー」であり、下部バーの接地としてごく一般的。
+つまり**問題が存在しない端末では何のコストも無い**。
+
+ui-audit の継ぎ目assertionを新しい不変条件に更新: 「単一色であること」ではなく
+**「バーが終わる色 == 直下の帯の色」**（グラデの最終ストップを読んで比較）。
+::after を別色に変えて両エンジンで落ちることを確認済み。
+
+## 2. バックアップにペットを追加（データ保護債務）
+バックアップは学習状態を全て守る一方、**育成ペットだけが対象外**だった。
+Safariのストレージ退避や「サイトデータを消去」で、何週間も世話した個体が
+復旧不能に消える——このファイルが存在する理由そのものの状況。
+
+- `BACKUP_SCHEMA_VERSION` 1 → 2。`pet` ブロック（petState / 図鑑 /
+  meta の `pet.name.&amp;lt;generation&amp;gt;`）を追加
+- **v1ファイルは従来どおり読める**。pet が無いファイルは「ペットについて何も
+  言っていない」であって「ペットが居ない」ではないと解釈し、端末のペットを消さない
+- マージ規則 `chooseBackupPet`: ①generation が大きい方が勝つ（generationは
+  旅立ちごとに単調増加なので、大きい方が確実に先に進んだ履歴）②同generationなら
+  世話ログが時間的に先に届く方＝直近まで使われていた端末 ③比較不能なら端末側を
+  維持。**バックアップの復元でペットを失うことは絶対に起こさない**
+- ペットは1体の生き物なので部分マージはしない（2体を継ぎ接ぎすると
+  どちらの端末にも存在しなかった状態になる）
+- テスト12本追加（v1互換・往復・世代/世話ログ比較・v1復元でペットを消さない）
+
+Vitest: 担当範囲パス（全体の失敗は並行中LINGO-044の未生成deck.ja.json由来）。
+tsc クリーン・ui-audit（chromium+webkit）全項目パス。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8cd88f1391d2cd5edf9c293fbb87ae15302353f3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/8cd88f1391d2cd5edf9c293fbb87ae15302353f3"/>
+    <title>
+        LINGO-047: 「フッターの下の黒い空白」根治 — manifestの色ズレ修正＋シェルをfixed inset:0に＋実機診断パネル
+    </title>
+    <updated>2026-09-10T23:43:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-047: 「フッターの下の黒い空白」根治 — manifestの色ズレ修正＋シェルをfixed inset:0に＋実機診断パネル
+
+勝田報告: フッターの下に黒い空白があり、フッター自体が画面の一番下に来ていない
+（実機iOS PWA）。3回目なので高さ計算の仮定を全部捨てた。
+
+## 原因: OSが塗る層だけが旧パレットのままだった
+`public/manifest.webmanifest` の `background_color`/`theme_color` と
+`index.html` の `&amp;lt;meta name=&amp;quot;theme-color&amp;quot;&amp;gt;` が **#0b0b12 のまま**だった。
+standalone PWA では web view の外側（ホームインジケータ帯を含む）を **OSが
+これらの色で塗る**ため、アプリ本体が #111119 を塗る一方その下は #0b0b12＝
+より暗い帯として見える。これが「フッターの下の黒い空白」。
+
+**これは LINGO-045 で自分が作り込んだ回帰**である。あの変更でページの
+パレットを near-black から持ち上げたとき、manifest と meta を追随させなかった。
+両方が #0b0b12 だった頃は色が一致していたので見えなかっただけ。
+
+「どの層にも黒が存在しない」ことを確認:
+  manifest background_color / theme_color = #111119
+  index.html meta theme-color              = #111119
+  CSS --bg                                  = #111119
+  → grep で #0b0b12・#000 の残存ゼロ（コメント内の経緯記述を除く）
+
+## 構造: 高さ計算をやめる
+`#root` を `height:100dvh` から **`position:fixed; top/right/bottom/left:0`** へ。
+`bottom:0` はどのビューポート単位が何を信じていようと物理下端に張り付く＝
+間違えられる数字が無くなる。`.app` の `min-height` も dvh をやめ `100%`
+（= #root の実寸）に。html/body からも dvh を除去。
+
+fixed の containing block を作るプロパティ（transform/filter/backdrop-filter/
+will-change/contain）が html・body・#root のいずれにも無いことを確認済み
+＝タブバーの `position:fixed; bottom:0` はビューポート基準のまま。
+
+## 実機診断パネル（今回の切り札）
+設定 →「診断 / 画面の実測値」に read-only の計測シートを追加。
+innerHeight / visualViewport(height・offsetTop・scale) / screen.height /
+documentElement.clientHeight / devicePixelRatio / #root の bottom・height /
+**fixed bottom:0 要素が実際に着地する座標** / safe-area 4辺 / standalone 判定 /
+ページ背景色 / meta theme-color を表示し、**一致すべき値がズレている行を赤く**する。
+これが再発したら勝田にこの画面のスクショを1枚もらうだけで実機の数値が全部わかる
+（今回の3往復は、実機の数値を誰も見られなかったことが原因）。
+
+## ui-audit
+背景連続性チェックに以下を追加（両エンジン）:
+- meta theme-color / manifest theme_color / manifest background_color が
+  ページ背景と一致すること ← **今回の原因を直接検出**
+- fixed bottom:0 要素の着地点 == innerHeight
+- #root の bottom == innerHeight
+旧 manifest 色に戻して両エンジンで落ちることを確認済み（回帰検出を実証）。
+
+自分の担当範囲テスト パス・ui-audit（chromium+webkit）全項目パス。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0768c3dcae068de786d5973b06b48373a98de556</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/0768c3dcae068de786d5973b06b48373a98de556"/>
+    <title>
+        LINGO-044: 日本語コース解放 — core文1000本・band1全語カバー
+    </title>
+    <updated>2026-09-10T22:46:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-044: 日本語コース解放 — core文1000本・band1全語カバー
+
+**文の作り方はタイ語と別物にした**。タイ語は孤立語なので文を辞書形の連結で
+「計算」できたが、日本語は活用する（食べる→食べます）。そこで文そのものは
+自然な日本語として書かせ、**読み・ローマ字・lemmaはUniDicで文から導出**する。
+モデルが書くのは文とen/ru訳だけで、読みは一切書かせていない。
+
+タイ語の構造的保証（語彙外の語が混入し得ない）はここでは成立しないので、
+機械検証で置き換えた:
+- トークン化のラウンドトリップ（連結した表層形が原文と一致すること）。一致
+  しなければ、そこから作った読みはその文の読みではない。
+- **全lemmaがデッキ語であること**（タイ語では構造的にタダで得られたもの）
+- targetが自分の文に実際に出ること、3-8トークン、重複なし、en/ruの文字種、
+  noteは3言語揃うか無しか
+
+**アセンブラ側で直した日本語特有の3点**（どれも初級文法の中核）:
+- て形の促音: 待って は 待っ+て に割れ、促音で終わる単体トークンはローマ字化
+  できない → 次トークンの頭子音を借りて mat te
+- 活用・接辞は語彙ではない: 飲みません の ぬ、働いています の接続助詞て、
+  お待ちください の接頭辞お は「読みには寄与するがlemmaにしない」。格助詞は
+  語彙なので対象外
+- 複合機能語（でも/ので/のに）は文中で で+も に割れるので再結合
+
+**コンテンツ判断**: wordfreq は字幕コーパス寄りのため band1 に成人向け語が
+入っていた。エロ(497)・セックス(905)・おっぱい(928) を rank据え置きで差し替え
+（主人・作れる・古代）、該当3文も書き直した。バカ・クソ・殺す は実際に頻出し
+学習者が必ず出会うので残した。
+
+**i18nLeakの拡張**: パターンを「到達可能な18通り」に整理した。LINGO-044の
+表示ルールにより course === UI言語 の組み合わせは選べなくなったので、監査対象
+からも外した（従来はUI=ru×ru課程なども数えていた）。
+日本語コースは「日本語が出てはいけない」テストから**意図的に除外**し、代わりに
+逆向きのテストを追加した — en/ru話者にふりがなが**必ず届く**こと。LINGO-037の
+規約を字面どおり適用すると、初学者が漢字を読む唯一の手段を消してコースが成立
+しなくなるため。RU課程のカタカナ抑制は従来どおり維持されることも固定した。
+noteは日本語を引用してよい（「付く は五段動詞で、ます形は付きます」がまさに
+説明の中身）が、glossは翻訳なので不可、と区別した。
+
+テスト 491/491 パス。tsc クリーン。deck.ja は独立チャンク（gzip 237kB）で
+初期バンドル不変。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43aef1d812c0253b437f2e90a1c7d89549089ddf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/43aef1d812c0253b437f2e90a1c7d89549089ddf"/>
+    <title>
+        LINGO-044: JA語彙の読み修正＋core文400本（band1 rank1-400）
+    </title>
+    <updated>2026-09-10T22:27:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-044: JA語彙の読み修正＋core文400本（band1 rank1-400）
+
+**読みの系統的バグを1つ発見・修正**: `lForm` は「UniDicの見出し語の読み」なので、
+表層形と見出し語が違う語では**別の語の読み**が返る。ほん→其れ→ソレ、どん→何の→
+ドノ、突っ込む→突き込む→ツキコム。`lemma == surface` のときだけ lForm を使い、
+それ以外は表層形の文脈読み `kana` を使うよう修正。併せて「かなだけの見出し語は
+自分自身と同じ読みでなければならない」を品質ゲートに追加。band1の構成は不変
+（＝生成済みの文は無効化されない）ことを確認済み。
+
+**壊れた見出し語3件を修正**（rankは維持したまま文字列だけ差し替え）:
+- 化る→化ける（UniDicは異表記として受けるが標準語ではなく、文の解析結果と
+  永久に一致しないため、そのカードは出題不能だった）
+- 様→よう（読みようの「〜のような」の様。現代日本語はかなで書き、解析器も
+  よう を返す）
+- 起き→起きる（語幹は語ではない。初学者に必要なのは動詞のほう）
+これで band3 に 起きる の重複が生じたので、そちらを未使用候補に差し替えた。
+
+**アセンブラの修正3件**（いずれも初級文法の中核に効く）:
+- て形の促音: 待って は 待っ+て に分割され、促音っで終わるトークン単体は
+  ローマ字化できない。次トークンの頭子音を借りて mat te とする。
+- 活用・接辞は語彙ではない: 飲みません=飲む+ます+ぬ の ぬ、働いています の
+  接続助詞て、お待ちください の接頭辞お は、デッキ語でなくても「読みには
+  寄与するがlemmaにはしない」扱いに。格助詞は語彙なので対象外。
+- 複合機能語の再結合: でも/ので/のに 等はデッキでは1語だが文中では で+も に
+  分割されるため、既知の複合語だけ再結合する。
+
+Codex独立レビュー（漢字語50件）: **読み・ローマ字の誤り0件**、gloss誤り2件
+(4%)→修正済み。読みを生成させずUniDicから導出した判断の裏付け。
+
+文はrank 1-400をカバー。バッチ間重複2件・語彙外3件・targetが複合語の中に
+しか出ない1件を検出し、6文を書き直した。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dec27689170967e99cee7b0c4e7a6c985c90d89e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/dec27689170967e99cee7b0c4e7a6c985c90d89e"/>
+    <title>
+        LINGO-046: 「今日 あとN問」＋1日の目標設定＋覚えた語の概数化
+    </title>
+    <updated>2026-09-10T22:12:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-046: 「今日 あとN問」＋1日の目標設定＋覚えた語の概数化
+
+勝田要望: ①「復習8枚＋新しい単語」が分かりにくい ②1日の目標を設定でき
+「あと何問」で示してほしい ③「覚えた語275」は「約270」の方が分かりやすい。
+
+## 1日の目標（設定）
+10/30/50/100問、既定30（＝3バッチ、約5分。悪い日でも守れる大きさなので
+50ではなく30を既定にした）。コース横断のグローバル設定＝「今日どれだけ
+時間を使うか」の宣言であって特定言語の話ではないため。
+
+## 今日やることカード
+主表示を「あと{N}問」＋進捗リングに。N = 目標 − 今日グレードした枚数。
+置き換えた「復習8枚＋新しい単語」は、アプリのキューの説明であって学習者の
+タスクではなく、しかも終わりが無かった（復習8＋無限の新語は目標ではなく
+ランニングマシン）。復習/新規の内訳は補助行に降格。
+達成後もカードは閉じず、リングは満、カウントは「目標＋M問」で伸び続け、
+ボタンも次のバッチを始められる。1日の目標は超えるべき床であって、
+乗っている人を止める天井にしない。
+
+## 部分セッションの計上（あとN問を正しくするための前提）
+中断したバッチは GateSession 行を書いておらず、7枚answerして終了しても
+「あとN問」が動かない一方、ペットは既にその7枚分の餌を払っていた。
+`graded` フィールドを追加し、中断バッチも（1枚以上gradeした時だけ）行を
+残すようにした。既存行に `graded` は無いので読み出し時は `questions` に
+フォールバック。バックアップの入出力にも引き回して復元時に失われないように。
+
+## 覚えた語の概数化
+ホームの大数字を10語単位の切り捨て「約270語」に（`approximateWordCount`）。
+275の「5」が何を意味するか説明できない以上、その精度は嘘。切り捨てなので
+実際より多く見せることは無い。10未満は「約0語」が失礼なので正確値のまま。
+詳細シートは従来どおり正確値。
+
+## レベルチェックの自動読み上げ（勝田追加要望）
+実機で計測した結果、**現行コードにプレースメント中の自動speakは存在しない**
+（speechSynthesis.speak を計装して0回を確認。speakWordは🔊ボタンからのみ）。
+再発防止として ui-audit に「レベルチェックを3問進めて自動speakが0件」の
+assertionを追加した。クイズ側の裏返し時自動再生は要望どおり変更なし。
+
+## 併せて修正: 「あとで」がレベルチェックを永久に居座らせていた
+「あとで（すぐ始める）」を押しても記憶されず、ブロック2がレベルチェックの
+ままだったため、**スキップした人は新しい目標カードに一生辿り着けなかった**。
+`placementDeferred` を追加して選択を記憶する。設定からはいつでも受けられる
+ので、テストが消えるわけではなく「今日やること」の枠を占有しなくなるだけ。
+
+Vitest: 自分の担当範囲 285/285 パス（全体の4 failuresは並行中のLINGO-044が
+未生成の deck.ja.json を参照しているもので当チケット範囲外）。
+tsc クリーン・ui-audit（chromium+webkit）全項目パス。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/350a486c30a5dcc18271410297b6b916391507d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/350a486c30a5dcc18271410297b6b916391507d7"/>
+    <title>
+        LINGO-044: 日本語コースの語彙3000語＋web配線（コース解放はまだ）
+    </title>
+    <updated>2026-09-10T22:09:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-044: 日本語コースの語彙3000語＋web配線（コース解放はまだ）
+
+**語彙の出典**: wordfreq の `ja` リスト（Apache-2.0, Robyn Speer）。複数コーパス
+（字幕・web・Wikipedia）の統合で、空白ではなくMeCabでトークン化されている点が
+決め手。日本語もタイ語同様に分かち書きしないので、空白分割のリストは語ではなく
+行区切りを数えてしまう。BCCWJは配布URLが解決しなかった＋書き言葉寄りのため不採用
+（本コースは会話向け）。
+
+**読み＝この課の品質の全て**: fugashi + unidic-lite (UniDic) から取得し、
+**モデルには一切生成させていない**。理由はタイ語の声調と同じで、日本語の読みは
+綴りから導けず、かつ文脈依存だから（人=ひと/にん、今日=きょう/こんにち）。
+全語が「ふりがな＋ヘボン式ローマ字」を持つ。
+
+UniDicの3フィールドを役割ごとに使い分けた（取り違えを実際に3回やって直した）:
+- `lForm`（見出し語の読み）→ 単語リストの読み。`kana` を使うと 箱 が **バコ**
+  になる（複合語での連濁形。ゴミ箱）。lFormは ハコ。
+- `kana`（文脈での読み）→ 文の読み。
+- `pron`（実際の発音）→ ローマ字、ただし**助詞だけ**。pron は長音を全てーに潰す
+  ので（センセイ→センセー）ローマ字に使うと sensei が **sensē** になる。一方
+  助詞は綴りと音が規則的にずれる（は=wa, へ=e）のでここだけ pron が正しい。
+
+**頻度の集約**: 生の表層形頻度で並べると band1 が名詞731・動詞48語になった。
+日本語の動詞は活用形で出現する（食べます/食べた/食べて）ため辞書形の順位が低い。
+各表層形の頻度質量を辞書形（orthBase）に足し上げて並べ直し、名詞650・動詞140・
+形容詞70・副詞47に是正。
+
+**機能語は頻度で選ばない**: 文脈なしで解析すると て/た/し/って/たら/れ/さ が
+軒並み上位30語に見えるが、どれも活用の断片で語彙項目ではない。助詞・コピュラ・
+です/ます・接続詞は閉じた類なので約38語を手で選んで先頭に置いた。挨拶23語も同様
+（すみません=済む+ます+ぬ、ありがとう=有り難う、こんにちは=今日は と正規化される
+ため、頻度リストでは語として表現できない）。
+
+**品質ゲートで除外**: 活用形・人名（周→シュウ、達→トオル。地名の日本/東京は
+残す）・拘束形態素（的/者/製/買い）・読みが定まらない単漢字（出/分/上/下/間）・
+単独ひらがな。個別除外と読みoverride計9件は理由付きでコードに記録。
+
+**web配線**: JA_DECK追加、tokenCountは日本語もlemmas長に分岐（分かち書きが無く、
+放置すると1節=1語になりcalibrationが「未判定語ゼロ=最易」と誤認する）。
+`pronunciationReadable` に targetLang を追加 — 学習対象言語の文字で書かれた
+発音表記は「選んでいない言語の混入」ではなく教材そのもの。これが無いと
+en/ru話者から日本語コースのふりがなが消え、コースが成立しなくなる。
+
+コース自体はまだ coming-soon（例文が未完のため）。テスト 472/472 パス。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/627c6f2e35f751a6954bfd52a48154390d42fe28</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/627c6f2e35f751a6954bfd52a48154390d42fe28"/>
+    <title>
+        LINGO-044: コース一覧からUI言語と同じ言語のコースを隠す
+    </title>
+    <updated>2026-09-10T21:51:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-044: コース一覧からUI言語と同じ言語のコースを隠す
+
+勝田指摘: UI言語=日本語の人に「日本語を学ぶ」を出すのはおかしい。
+
+`selectableCourses(uiLang, activeCourseId?)` を courses.ts に追加し、
+コースピッカー3箇所（設定・ホーム・オンボーディング）を全て差し替えた。
+targetLang === uiLang のコースを一覧から除外する。
+
+これは `availableFrontLangs` が既に表面言語のレベルで守っている規約
+（コースは自分のtargetLangを表面言語として提供しない）の、コースレベルの
+対応物。どちらも「学習者に自分の言語を、学ぶ対象としてもヒントとしても
+出さない」という同じ原則。テストで両者の整合も表明した。
+
+例外は「今学んでいるコース」。英語UIで日本語コースを始めてから UI を
+日本語に切り替える経路があり、そこで一覧から消えると進捗が消えたように
+見えるため、アクティブな間は残す。
+
+TargetLang が Lang より広い（LINGO-039）ので、タイ語コースはどのUI言語
+でも隠れない——これもテストで固定。
+
+テスト 468/468 パス（courses.test.ts に6本追加）。tsc クリーン。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/affdfb93cbe9f545583f57bec435e3b74350b4e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/affdfb93cbe9f545583f57bec435e3b74350b4e4"/>
+    <title>
+        LINGO-045: iOS「黒いスペース」の解消 — 不透明タブバー＋背景トーンの引き上げ＋WebKit監査
+    </title>
+    <updated>2026-09-10T21:47:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-045: iOS「黒いスペース」の解消 — 不透明タブバー＋背景トーンの引き上げ＋WebKit監査
+
+勝田報告: LINGO-042 修正後も実機iPhone PWAでホーム・育成の下部に黒いスペースが
+残る。Playwright WebKit を導入し iPhone 13 相当で再現を試みた。
+
+## 判定: レンダリングバグではない（幾何は正常）
+WebKit・Chromium とも tabbar.bottom == innerHeight == 664、#root の
+scrollHeight == clientHeight で、未描画の隙間は存在しなかった。原因は2つの
+「見た目」側の問題と、実機でだけ出る1つの実バグだった。
+
+## 実バグ: セーフエリアの継ぎ目（ヘッドレスでは出ない）
+.tabbar は `color-mix(... 92%, transparent)` の半透明で、near-black の下地に
+重なって ≈#131320 で描画されていた。一方その下（ホームインジケータ領域）を
+埋める .tabbar::after は不透明の --bg-elev。**この2つは違う色**なので、
+env(safe-area-inset-bottom) が非0の実機でのみ、バーとその下に色の継ぎ目が出る。
+ヘッドレスでは inset が0のため ::after が可視領域に入らず、検出できていなかった。
+
+さらに `color-mix()` は Safari 16.2+ でフォールバック無し＝それ以前では宣言ごと
+無効になりバーが完全に透明になる。
+
+→ タブバーを不透明 (var(--bg-elev)) に。継ぎ目・透け・古いSafariの3つが同時に
+消える。backdrop-filter も不要になるため削除（iOSの合成エッジ由来のアーティ
+ファクト要因を1つ減らす）。
+
+## デザイン: 「暗い虚無」
+コンテンツが短い画面（新規ユーザーのホーム・育成タブ）では、カードが上に寄り
+下半分が全面 #0b0b12 になる。OLED実機ではこれがほぼ純黒で、カードとの差は
+わずか9RGB。面ではなく「穴」に見えていた。
+
+→ パレット全体を near-black から持ち上げた（bg #0b0b12→#111119、
+elev #14141f→#1b1b28、elev-2/line も相対差を保って追随）。加えて #root に
+ビューポート下端へ向けたごく浅いグラデーションを重ね、下部が「タブバーへ
+続く面」として見えるようにした（solid な background-color は維持）。
+
+## ui-audit
+- **chromium と webkit の両方**で全画面を実行するよう変更
+- 背景連続性チェックを追加: タブバーが不透明であること／タブバーと直下の
+  ストリップが同色であること（＝上記の継ぎ目バグを検出）／html・body・#root
+  の下地色が一致すること
+- 追加したassertionが実際に落ちることを、旧CSSに戻して両エンジンで確認済み
+  （8 failures）。落ちないassertionは書かない
+
+Vitest 463/463・tsc クリーン・ui-audit（chromium+webkit）全項目パス。
+before/after スクショは web/ui-audit-out/lingo-045/ に出力（gitignore対象）。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8385cf1237feb574474d6767675bd645bbdc8d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/f8385cf1237feb574474d6767675bd645bbdc8d0"/>
+    <title>
+        chore: gitignore custom ui-audit screenshot dirs too (ui-audit-prod/)
+    </title>
+    <updated>2026-09-10T17:21:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: gitignore custom ui-audit screenshot dirs too (ui-audit-prod/)
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b588407e6da027fa7ce7330e09158eb4d1cb438b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/b588407e6da027fa7ce7330e09158eb4d1cb438b"/>
+    <title>
+        LINGO-043: normalize RU word bands to exactly 1000/1000/1000 (Katsuta…
+    </title>
+    <updated>2026-09-10T17:20:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-043: normalize RU word bands to exactly 1000/1000/1000 (Katsuta&amp;#39;s repeated &amp;quot;why 998&amp;quot; fix)
+
+RU band1/2/3 were 998/995/967 (2960 of the intended 3000) since LINGO-020&amp;#39;s
+rebaseline deliberately left them short (~57 new-inflow candidates dropped
+during garbage/dedup cleanup, judged &amp;quot;cosmetic&amp;quot; to backfill at the time —
+see rebaseline/assemble_words.py&amp;#39;s docstring). Katsuta has repeatedly asked
+why the denominator isn&amp;#39;t a clean 1000; LINGO-040/042 hid the raw number
+from the UI but never fixed the underlying data.
+
+Telescoping fix (rebaseline/normalize_bands_1000.py): band1&amp;#39;s 2-word gap
+filled from band2&amp;#39;s top (by band2&amp;#39;s own existing rank order — preserves
+LINGO-020&amp;#39;s editorial judgement, e.g. ТРКИ boosts); band2&amp;#39;s resulting gap
+(7) filled from band3&amp;#39;s top; band3&amp;#39;s resulting gap (40) filled from the
+band4 retirement pool&amp;#39;s top (by original candidate_bands.tsv rank, since
+band4 carries no rank field). Total word count conserved throughout
+(3819) — band4 shrinks 859-&amp;gt;819. rank renumbered to a clean, gap-free
+1..3000 sequence.
+
+Moved words: band2-&amp;gt;band1 (сложно, животное), band3-&amp;gt;band2 (лишний,
+родственник, взяться, надоесть, газ, концерт, отстать), band4-&amp;gt;band3 (40
+words, see rebaseline/band_moves.json for the full list).
+
+Sidecar integrity verified (lemma-keyed, unaffected by band moves): all 30
+promoted nouns already had gender, all 7 promoted verbs already had
+words_aspects.jsonl entries.
+
+Core-sentence retag (rebaseline/retag_sentences_1000.py, same approach as
+LINGO-020&amp;#39;s retag_sentences.py generalized to all 4 files): every core
+sentence&amp;#39;s file location re-derived from its target_lemma&amp;#39;s NEW band. 7
+existing sentences relocated (животное T0581 bandFile 2-&amp;gt;1; надоесть/газ/
+отстать 3-&amp;gt;2; середина/редко/электричество 4-&amp;gt;3). One band1 word had zero
+core sentences after the move (сложно, promoted from band2, never had one)
+-&amp;gt; new T1387 &amp;quot;Это слишком сложно для меня.&amp;quot; (LINGO-011 methodology: 3-7
+words wrapped in higher-frequency band1 vocabulary, self-reviewed with
+review_sentences.py, 0 issues). RU band1 coverage: 1000/1000 (100%).
+
+EN/TH also audited per the task (both already exactly 1000/1000/1000, no
+band4 equivalent, single-pass courses). TH band1 core coverage was already
+1000/1000. EN band1 coverage was 998/1000 — two duplicate target_lemma
+uses (money x2, fact x2) had left &amp;quot;put&amp;quot; and &amp;quot;call&amp;quot; with zero core
+sentences; added E1001 (&amp;quot;Put it here.&amp;quot;) and E1002 (&amp;quot;I will call you
+back.&amp;quot;), both self-reviewed (word-count bounds, target-in-lemmas, every
+lemma resolves, no duplicate text, wrap-word frequency check). EN band1
+coverage: 1000/1000.
+
+web/src/content/build.test.ts and build.en.test.ts: updated the hardcoded
+998/995/967/859/2134 and EN 1000/1000 fixtures to the new real counts
+(1000/1000/1000/819, 2135 RU core sentences, 1002 EN sentences); added a
+full rank-contiguity assertion (1..3000, no gaps). Mastery/coverage/
+band-promotion code was already fully dynamic (MASTERY_TARGET_WORDS=3000 is
+an intentional fixed design target, not deck-size-derived; deckLemmas
+filters by band&amp;lt;=3 dynamically) — no production logic changes needed,
+confirmed via the full test run. Touched-up a few stale &amp;quot;998&amp;quot; comments
+(HomeView.tsx, service.ts, i18n.tsx) that referenced the old band size.
+
+Verification: import.py idempotent (2x run, identical DB hash). Vitest
+463/463. tsc -b clean. `npm run ui-audit` passed locally against the
+production build (all geometry/console/overflow assertions green);
+screenshots reviewed directly (home, details sheet, settings, pet, gate,
+narrow viewport) — no raw &amp;quot;998&amp;quot;/9xx denominator on screen, no layout
+regressions.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f7013efb4d539bd4f3d0679322742ab0e8b0a8cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/f7013efb4d539bd4f3d0679322742ab0e8b0a8cf"/>
+    <title>
+        LINGO-042: UI破損修正（設定行の消失・シート余白・目標の二重化）＋Playwright視覚ゲート
+    </title>
+    <updated>2026-09-10T17:03:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-042: UI破損修正（設定行の消失・シート余白・目標の二重化）＋Playwright視覚ゲート
+
+LINGO-040 デプロイの回帰。勝田の実機とヘッドレス実画面レビューで確認。
+
+## 1. 設定画面の全行が不可視（最重要）
+原因は CSS のflex圧縮。#root は高さ固定(100dvh)のflex column で、.app は
+`flex:1`(=1 1 0%) だったため .app の高さがビューポートに固定されていた。.app
+自身もflex columnなので、中身が1画面を超えた瞬間（設定画面: 844pxの箱に862px）
+子要素が「あふれる」のではなく「縮む」。.list は角丸のため overflow:hidden を
+持ち、これは flex item の automatic minimum size を無効化するので、縮小分が
+.list に集中して 93px→2px に潰れ、行が完全にクリップされた。
+
+DOMは終始正しく（高さ93px・色正常・consoleエラーゼロ・Vitest green）、
+「描画されていないだけ」だったため、既存のどのゲートにも掛からなかった。
+
+修正: #root から display:flex を外し（実質 .app 一枚しか通常フローの子が無く
+flex化の必要が無い）、.app からも flex:1 を外して min-height だけにした。
+外側のflexサイズ決定そのものを無くしたので圧縮が起きない。加えて .list に
+flex-shrink:0 を保険として明示。
+
+## 2. くわしくシート
+- .sheet は横paddingを持たず各子が padding:… 20px を持つ規約だが、追加した
+  .detail-body だけそれが無く画面端に密着・値が見切れていた → 20px を付与
+- 「学習を始めた語 0語 / 998語」の生の分母998が露出（裁定§3違反）→「0語」のみに
+- 「次のステップまで / 次のステップまで あと899語」の二重表示 → 値を「あと899語」に
+- 長い値の折返し崩れ → .detail-row を flex-wrap
+
+## 3. 進捗の目標を1本化（勝田指示）
+「次の目標500語まで」と「次のステップまで あとN語」の2系統が並んで混乱して
+いた。500語マイルストーンを廃止し、バーは現在ステップの進捗を表すように変更
+（バーとその下の文言が同じ指標を指す）。nextMilestone() と関連テスト・i18nは
+未使用になるため削除。バーに role=&amp;quot;progressbar&amp;quot; を付与。
+
+## 4. 再発防止: npm run ui-audit
+主要5画面を実ブラウザで開き、要素の存在ではなくジオメトリ（高さ・可視性・
+クリップ・viewport内・横overflow・タブバーとの重なり）をassertする。320px幅も
+確認。preview サーバは自前で起動。失敗時 非ゼロ終了。README に「UI変更の
+デプロイ前に ui-audit 必須・スクショは自分の目で確認」を明記。
+※ ai-org 側の全社規約への明文化は勝田の承認待ち（ガード対象ファイルのため未実施）。
+
+## Codexレビューで修正した点
+- COVERAGE_POINTS を誤って削除していた（推定会話カバー率が壊れる）→ 復元
+- `.app &amp;gt; * { flex-shrink:0 }` は広すぎる → 原因側(#root/.app)を直し .list のみに
+- 黒帯チェックが未導入の canvas モジュール依存で「無ければ成功扱い」だった
+  → DOM計測に変更（黙ってスキップする門番を廃止）
+- 「最下行が見える」とコメントしながら未assertだった → 実際にassert
+- mouse.wheel ではなく #root.scrollTop を直接動かし、実際に動いたことを確認
+
+Vitest 463/463・tsc クリーン・ui-audit 全項目パス（スクショ目視確認済み）。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/706e49d0c3009559fc268ef250361e5c81c7ac85</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/706e49d0c3009559fc268ef250361e5c81c7ac85"/>
+    <title>
+        LINGO-040: ホーム/統計UXの再設計 — 3ブロック化・用語の平易化・QAバグ6件修正
+    </title>
+    <updated>2026-09-10T02:23:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-040: ホーム/統計UXの再設計 — 3ブロック化・用語の平易化・QAバグ6件修正
+
+勝田指摘（2026-09-10）「数字を出しすぎで読み手が混乱する」に対する
+Fable裁定（ai-org/Ideas/20260910-home-ux-ruling.md）の実装。
+
+ホームを常時3ブロックに:
+1. コースチップ（ネイティブ名・タップで切替）＋連続学習日数
+2. 「今日やること」1行＋開始CTA1つ（初回は同じ枠がレベルチェックに入替）
+3. 進捗バー1本（500語マイルストーン）＋ステップ1行＋「くわしく」
+
+削除: 「解除」タイル／「既知率」タイル／「(255枚)」／マスターバッジ／
+「判定済み0語」／ペットミニ行（→タブバーの赤ドット）／
+オートメーション導線（→設定「アプリのロック」）。
+
+用語（ja/en/ru）: band/語帯→ステップ、語彙カバー→学習を始めた語、
+定着率→復習の成功率、マスター→覚えた語、
+復習の期限が来たカード→今日の復習N枚。/gateの説明文も平易化。
+
+QA発見の実装バグを同時修正:
+- QA-1 unlocked:true 決め打ち → returnApp != null（保存データも是正）
+- QA-2 見出しの unlockedBand*1000 → 実語数を丸めて「約N語」
+- QA-3 到達不能な /3000 バー → 500語マイルストーン分母
+- QA-4 bandRetention が Relearning を分母から除外していた（失敗直後の
+  カードが抜け、ラプスが成功率を上げていた）→ 含めて是正
+- QA-5 ステップ昇格時のメーター崩壊 → 表示のみ累積化。昇格ゲートは
+  band-exact のまま（iOS参照テストとの一致を維持）
+- QA-6 「既知率」＝完了画面が既に廃止した指標 → 削除
+- QA-7 「覚えた語」を申告分/定着分に分離（内訳はシートのみ）
+
+Vitest 467/467・tsc クリーン・build 成功。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4aecc850d0dc24c8e82e4873810f3ee7ff1dd2c4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/4aecc850d0dc24c8e82e4873810f3ee7ff1dd2c4"/>
+    <title>
+        LINGO-039: README — 文の最終カバレッジ・note数・wrap則・重複解消を反映
+    </title>
+    <updated>2026-09-10T02:19:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-039: README — 文の最終カバレッジ・note数・wrap則・重複解消を反映
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5389555c26c93ce4e3d02a406bc89673b03d952a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/5389555c26c93ce4e3d02a406bc89673b03d952a"/>
+    <title>
+        LINGO-039: タイ語 core文を1000本に（band1全語カバー）
+    </title>
+    <updated>2026-09-10T02:17:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-039: タイ語 core文を1000本に（band1全語カバー）
+
+残り4ブロック（rank 1-200 の一部・401-600・801-1000）が揃い、band1
+1000語すべてが「その語を教える文」を1本ずつ持つ状態に。
+
+- 未カバー語 0（600本時点では400語が未カバーだった）
+- 3言語note 164本（類別詞・声調・語順・丁寧語尾の要点）
+- wrap則遵守 72.0%。EN課程の97.5%より低いのは構造的な理由で、タイ語は
+  文を成立させるのに助詞・類別詞・丁寧語尾（ครับ 等）が要り、それらの
+  rank が target より下のことがあるため。band1は全語が学習対象なので
+  実害は小さいが、band2/3 の文を作るときは支援語をband1に限れるので
+  自然に改善するはず。
+- 生成3本とも「語の並びだけを出させ、タイ文と発音表記はパイプラインが
+  計算する」方式で、語彙外の語の混入は0件。
+- バッチ間の重複3件（別バッチが同じ語ペアから同じ自然な文に到達）を検出し、
+  rank の低い語を target にした側を残して他方を書き換え。うち แก้ว は
+  「数詞＋類別詞」を見せる文に差し替え、教材価値を上げた。
+
+テスト 449/449 パス。tsc クリーン。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca670b7e91cc10a4c427e05cfd51c9f4f364df9b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/ca670b7e91cc10a4c427e05cfd51c9f4f364df9b"/>
+    <title>
+        LINGO-039: Thai course — 3000語 + band1 core文600本、TargetLang導入
+    </title>
+    <updated>2026-09-10T02:09:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-039: Thai course — 3000語 + band1 core文600本、TargetLang導入
+
+タイ渡航(9/25)向け。EN課程(LINGO-015)と同形式だが、タイ語固有の問題が
+3つあり、それぞれ設計判断を要した。
+
+■ 頻度リスト: hermitdave/FrequencyWords の th は不採用
+上位が文字化け(rank1 เธ, rank4 เน = Thai UTF-8をTIS-620で復号した二重
+エンコード)、英単語も混入。原因は空白分割トークナイズで、分かち書きしない
+タイ語では語ではなく字幕の行区切りを数えている。→ 語分割済みの
+Thai National Corpus (PyThaiNLP配布, 106,122語) を採用。
+
+■ 発音表記: 生成させず Wiktionary から導出
+タイ語の声調は初学者には綴りから読めないので、発音表記が無い単語カードは
+機能しない。kaikki.org の Wiktionary 抽出から Paiboon + IPA を取得
+(TNC top1000の96%, top3000の88%を被覆)。発音データが無い語は採用しない
+ことを品質ゲートにしたので、出荷3000語すべてが出典のある実データ。
+Wiktionary は Becker 式(有気音=素のk/p/t)で ครับ が kráp になり、
+日本語/英語話者は無気音で読んでしまう(ค と ก は別音素)ため、有気音を
+kh/ph/th で書く方式に変換。変換の安全性は Wiktionary 自身の IPA と
+突き合わせて機械検証済み: 48,201/48,201音節 (100.00%) 一致。
+
+■ 文: タイ語が孤立語であることを利用して「計算」する
+語形変化が無いので、文のタイ語表記と発音表記を生成させず計算できる
+(th = lemmasの連結 / kana = 各語の発音表記の連結)。生成物は語の並びと
+ja/en訳だけ。これで最大の誤り源(モデルがタイ文字と声調記号を手書きする)が
+消え、文の発音と単語分解の発音が構造上一致し、語彙外の語は混入し得ない
+(未知lemmaはアセンブラの即エラー)。表示上のタイ文は分かち書きなしのまま、
+語境界は lemmas が保持する。
+
+■ 型: Lang と TargetLang を分離
+Lang(UI・表面言語 = i18nカタログを持つ言語)と TargetLang(学べる言語)を
+分けた。カタログは Record&amp;lt;Lang,...&amp;gt; のままなので、コース言語を足しても
+275キーの翻訳義務が発生しない。同時に「th は UI/表面言語として渡せない」が
+型で保証される。
+
+■ その他
+- band1は頻度順ではなく「教える順」: 書き言葉コーパスの素の頻度では
+  สวัสดี(#2831) ห้องน้ำ(#1925) เท่าไหร่(#1416) เผ็ด(#4884) が band1 に
+  入らず旅行に使えないため、旅行中核語139語を前倒しブレンド(50語がTNC上位
+  1000圏外からの繰り上げ)。tnc_rank を全行に残し出典順は保持。
+- pos.classifier を新設。タイ語は活用・格・性・体が全て無く既存の文法
+  スロットは全null。代わりに類別詞が必須語彙(数えるのに要る)。
+- tokenCount はタイ語で lemmas 長を使うよう分岐。空白分割だと1節が1語に
+  なり、calibration が「未判定語ゼロ=最易」と誤認するため。
+- kana の表示条件を「日本語が読めるか」から「この表記が読めるか」に変更。
+  RU課程のカタカナは非ja話者に無意味(LINGO-037で抑制済み)だが、タイ課程の
+  Paiboon はラテン文字で全員が読め、かつ無いとカードが成立しない。
+- gloss 3000語は sonnet 6本に委譲。Wiktionary の全語義候補を渡して「選ば
+  せる」方式(語義を発明させない)。Wiktionary は語源順なので「最初の項目」は
+  高頻度機能語ほど誤る(กับ=罠→実際は前置詞「と」, จาก=ニッパヤシ→「から」)。
+  機械検証 3000/3000 issue 0。Wiktionary 側のデータ誤り6件は override。
+- Codex独立レビュー(band1無作為60語): 発音表記の誤り0件、gloss誤り2件
+  (3.3%)→修正済み。
+
+文は band1 の rank 1-400 と 601-800 をカバー(600本)。残りは後続ブロック。
+RU/EN課程は th/kana の常時null列が増えるだけで、それを除去すると HEAD の
+ビルド結果とバイト一致することを検証済み(現行データ無干渉)。
+
+テスト: 449/449 パス(既存414 + TH 19 + i18nLeak 16)。tsc クリーン。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a50a12773e163ff6ea1f21aab373a4f46f65c10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/8a50a12773e163ff6ea1f21aab373a4f46f65c10"/>
+    <title>
+        LINGO-039 pre-work: fix note language-slot debt in EN/RU source data
+    </title>
+    <updated>2026-09-09T23:27:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-039 pre-work: fix note language-slot debt in EN/RU source data
+
+Closes the two content-side items LINGO-037 left open (its finding #9 /
+残リスク 2), both in the JSONL that build-content.mjs compiles from.
+
+pipeline/courses/en/sentences_band1_core.jsonl (141 rows):
+English text sat in the bare `note` field, which the builder maps to the
+deck&amp;#39;s *ja* slot (`note` == &amp;quot;noteJa&amp;quot; per the LINGO-026 convention). Split
+by what the text actually is:
+  - 64 irregular-verb principal parts (&amp;quot;go-went-gone&amp;quot;) are genuine,
+    language-neutral learner content -&amp;gt; `note_en`, the neutral last resort
+    every persona&amp;#39;s front-&amp;gt;UI-&amp;gt;en chain lands on.
+  - 80 maintainer annotations across 9 distinct strings (&amp;quot;lemma &amp;#39;you&amp;#39;
+    covers the possessive form &amp;#39;your&amp;#39;&amp;quot;) document the deck&amp;#39;s internal
+    lemma-linking convention and teach the learner nothing -&amp;gt; `lemma_note`,
+    a key build-content.mjs deliberately does not read, so they stay in git
+    for maintainers and stop shipping to the app.
+deck.en.json now has 0 notes in the ja slot (was 141) and 64 in noteEn.
+
+pipeline/data/sentences_imported*.jsonl (12 rows):
+the sentences whose only note was actually Japanese script. LINGO-037
+gated the ja last-resort fallback on the learner reading Japanese, so
+these notes silently vanished for en/ru learners; they now carry
+note_en/note_ru and come back for everyone. deck.ru.json ja-script-only
+notes: 12 -&amp;gt; 0.
+
+Source files were written by different generators with different
+json.dumps separators (en/ compact, data/ default) — matched each file&amp;#39;s
+own style so the diff is exactly the 153 touched rows.
+
+build.en.test.ts: the irregular-verb test asserted the note was in the ja
+slot, i.e. it pinned the bug — repointed at noteEn, plus two new
+assertions that nothing ships in the ja slot and no maintainer annotation
+reaches a learner. 416/416 pass (was 414, +2).
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abf2780acc868738e6591e19258562dc3f8843e4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/abf2780acc868738e6591e19258562dc3f8843e4"/>
+    <title>
+        LINGO-037: 全ユースケースの言語混入監査 — 重大5件・軽微2件を修正
+    </title>
+    <updated>2026-09-09T23:14:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-037: 全ユースケースの言語混入監査 — 重大5件・軽微2件を修正
+
+有効12パターン（UI ja/en/ru × コース ru/en × 表面2）を機械監査＋
+サブエージェント2本のコードトレース＋Codexレビューで検証。
+
+重大（日本語が読めない学習者に日本語が出ていた）:
+- orderedGloss が「表面言語優先」と称して全言語のglossを連結していた。
+  勝田(UI=ja/表=en)はRUパックにruGlossが無いため &amp;quot;I / 私&amp;quot; となり露見せず。
+  → {表面言語, UI言語} 限定＋重複排除。勝田の &amp;quot;I / 私&amp;quot; はバイト単位で不変。
+- sentence.ja の表示条件が uiLang を見ておらず、コメントの設計意図
+  （&amp;quot;Katsuta reads Japanese natively&amp;quot;）が実装されていなかった。全3378カード。
+- sentence.kana（カタカナ発音）が完全無条件表示。85カード。
+- note/pairNote の最終手段jaフォールバックが非ja学習者にも発火（12文）。
+  allowJaFallback + readsJapanese() でゲート。
+- manifest/index.html の description が日本語固定かつ「ロシア語」決め打ち。
+
+軽微:
+- wordBreakdown の全角約物（）。・ をUI言語追従に（punctFor）。
+- &amp;lt;html lang&amp;gt; をUI言語に同期。
+
+回帰テスト src/engine/i18nLeak.test.ts を新設（21本）。実デッキ・実リゾルバを
+使うためデータ回帰もコード回帰も検知する。重点4ペルソナを名指しで固定。
+
+414 tests pass (393 → 414). tsc clean.
+発見の全リストと残リスクは ai-org/Tasks/LINGO-037-usecase-matrix-audit.md 参照。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd9dbb9b8115bc867448d67b9ca1fab80bfce7a6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/dd9dbb9b8115bc867448d67b9ca1fab80bfce7a6"/>
+    <title>
+        fix(pet): 睡眠中も掃除は可能に＋全ルート共通のオーバースクロール黒帯を修正
+    </title>
+    <updated>2026-09-09T21:15:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(pet): 睡眠中も掃除は可能に＋全ルート共通のオーバースクロール黒帯を修正
+
+## 1. 睡眠中の掃除を許可（LINGO-035フォローアップ、勝田指示）
+LINGO-035で睡眠中は餌・掃除とも無効化していたが、掃除だけは睡眠中も実行可能に
+変更（餌やりは従来どおり睡眠中disable=「起こさないであげよう」）。
+- pet/petDisplay.ts: cleanDisabledのシグネチャから`asleep`を削除
+  （feedDisabledのみ睡眠ゲートを維持）。
+- ケアスコアへの反映を確認: engine.ts の applyClean() はそもそも`now`/
+  overdueCountを取らない純粋な在庫デクリメントで、睡眠中/覚醒中を区別しない。
+  次のtick()のadvancePoop()が「既に掃除済みのpoopCount」をoldPoopとして読むため、
+  睡眠中の掃除は次の覚醒時間帯のdirtyMs計上に正しく反映される
+  （睡眠時間帯自体はcleaned/uncleanedに関わらずtrackedMs/dirtyMsに一切寄与しない
+  ため、掃除のタイミングが睡眠中でも覚醒中でも結果は同じ）。回帰テスト2本を追加
+  （睡眠中掃除ありと掃除なしを対比し、覚醒後1時間のdirty寄与が0になることを確認）。
+- テスト: petDisplay.test.ts のcleanDisabled用テストを反転
+  （disabled→enabled while asleep）。engine.test.ts に
+  「掃除中is care-score-correct」の2本追加。
+
+## 2. 全ルート共通：オーバースクロール（ラバーバンド）時の黒帯を修正
+勝田報告: 引っ張るスクロール（オーバースクロール）で黒い空白が出る。育成画面
+固有ではなくホーム含む全ルートで発生。
+
+原因: 前回のフッター修正（100dvh・tabbar::after延長）とは別種のiOS/WebKit
+特有の挙動。`body { overscroll-behavior: none }` は元から設定済みだったが、
+WebKitはdocument/bodyレベルのスクローラーに対して`overscroll-behavior`を
+事実上無視する（chaining抑止のみ有効・ネイティブのラバーバンド弾性そのものは
+抑止されない）。非body要素（overflow:auto の内側コンテナ）に対しては
+`overscroll-behavior`が正しく効く既知の差異があるため、実際のスクロールを
+document（html/body）から`#root`へ移す構成に変更:
+- html/body: `height:100dvh`＋`overflow:hidden`（外枠自体はスクロール/バウンド
+  しない固定フレーム）＋`background: var(--bg)`をhtmlにも明示。
+- `#root`: 新たに`overflow-y:auto; overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;`を追加した実スクロールコンテナに変更
+  （WebKitがoverscroll-behaviorを尊重する非document要素）。
+- `.app`: `min-height:100dvh`を明示追加（flex:1と合わせて二重に保証）。
+全ルートがこの共通html/body/#rootシェルを使うため、Home/Pet/quiz/gate/settings
+含め一括で修正される。JS側でwindow/document scrollに依存する箇所は無いことを
+grepで確認済み（position:fixedのタブバー/モーダル/シートは挙動不変）。
+
+## テスト・デプロイ
+Vitest全393パス（回帰なし・新規9本追加）。tsc -b クリーン。build成功。
+preview/本番とも `/` `/pet` `/gate` `/pet-gallery` 200確認。ビルドCSSに
+`#root{overflow-y:auto;overscroll-behavior-y:contain;...}`と
+`html,body{overflow:hidden;background:var(--bg);...}`が含まれることを直接確認。
+デプロイ: https://lingogate.pages.dev/（wrangler pages deploy、
+https://6bcfda07.lingogate.pages.dev）。本番CSSに反映済みであることも直接確認。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/832a4200e47d586acbb7363424e2b9ce8d5e4f5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/832a4200e47d586acbb7363424e2b9ce8d5e4f5f"/>
+    <title>
+        fix: surface レベルチェック (adaptive placement) as a permanent Settings entry
+    </title>
+    <updated>2026-09-09T15:53:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: surface レベルチェック (adaptive placement) as a permanent Settings entry
+
+Katsuta reported his mastered-word count (224) reads lower than his real
+level. Root cause: the placement test (LINGO-016) was only reachable from
+Home&amp;#39;s CTA, which hides once placement is done OR judged&amp;gt;=100 words — so
+anyone who partly did the old linear calibration flow (Katsuta&amp;#39;s RU course)
+never sees an entry point to run the more accurate adaptive test at all.
+
+- ui/SettingsView.tsx: permanent &amp;quot;レベルチェックを受ける/やり直す&amp;quot; row
+  (ListRow pattern, per-course, label reflects isPlacementDone()) routing
+  to &amp;quot;placement&amp;quot;. Home&amp;#39;s CTA condition is untouched (new-user path).
+- engine/placement.ts: extracted the judged/assumed write-row merge into a
+  pure resolvePlacementWriteRows() so the retake safety guarantee (assumed
+  values never clobber an existing real judgement; a lemma actually
+  re-swiped this run always updates) is directly unit-tested without a
+  database — 4 new tests, including a &amp;quot;retake with identical answers is
+  idempotent&amp;quot; case.
+- state/placement.ts: finalizeAndPersistPlacement now calls that helper
+  instead of inlining the merge (behaviour-preserving). Its existing FSRS
+  seeding already skips any sentence with a review state, so a retake never
+  resets real learning history either way.
+- ui/PlacementScreen.tsx: the finished screen now confirms &amp;quot;マスター指標に
+  反映されました&amp;quot; under the &amp;quot;約N語マスター相当&amp;quot; estimate, so a retake&amp;#39;s
+  updated number is visibly not just a preview.
+
+391/391 vitest pass (+4 new), tsc clean, build/preview smoke-tested (/,
+/gate?return=tiktok, /pet all 200), deployed to lingogate.pages.dev.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/403a71738af12f3e8525d9dac5ef1136f0149881</id>
+    <link type="text/html" rel="alternate" href="https://github.com/daisuke30/lingogate/commit/403a71738af12f3e8525d9dac5ef1136f0149881"/>
+    <title>
+        LINGO-035: ペットの生活リズム — 睡眠時間の導入＋満腹度バグ調査＋朝うんこ山の解消
+    </title>
+    <updated>2026-09-08T10:07:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/21375060?s=30&amp;v=4"/>
+    <author>
+      <name>daisuke30</name>
+      <uri>https://github.com/daisuke30</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LINGO-035: ペットの生活リズム — 睡眠時間の導入＋満腹度バグ調査＋朝うんこ山の解消
+
+勝田の実運用フィードバック（2026-09-08）: 0時就寝→10時起床でうんこ5個（上限）＋
+満腹度が全く減っていない。後日「40%ほど減っていたかも」と訂正あり＝満腹度は
+仕様どおりで実際はバグではなかった（コーディネーター指示によりバグ調査は
+確認テスト1本に縮小）。
+
+- pet/engine.ts:
+  - 睡眠時間 (SleepWindow): 既定23:00〜08:00、pet.settings.sleepStartHour/
+    sleepEndHour で設定可（同一時刻=睡眠時間なしと解釈、安全側）。
+    isAsleep/awakeMs（睡眠窓を除いた実効経過時間）/advanceAwakeMs（その逆関数、
+    睡眠窓をスキップして時刻を進める）を追加。
+  - satietyAt・advancePoop（うんこ発生・ケアスコアのtracked/dirty時間）を
+    awakeMs基準の実効経過時間で計算するよう変更。睡眠中は満腹度減衰ゼロ・
+    うんこ発生ゼロ・ケアスコアへの影響ゼロ。
+  - バランス再調整: HUNGER_DECAY_MS 24h→16h、POOP_INTERVAL_MAX_MS(overdue=0)
+    24h→16h（起きている時間だけで満タン→空腹が約16h＝1日2〜3回の餌やり）。
+    overdue=10→8hの実測点とMIN=4hの下限は不変。
+  - バグ修正（睡眠時間対応の副産物として発覚）: poopAccruedAtが「ケア履歴への
+    蓄積チェックポイント」と「次のうんこ発生への進捗」を兼任しており、新規発生の
+    ないtick呼び出しが続くとケア履歴の経過時間を二重計上する不具合があった。
+    poopProgressMs（発生進捗、v3新規フィールド）を分離し修正。
+  - PetSnapshot.asleep追加。petSnapshot/feedDisabled/cleanDisabledが睡眠中を
+    反映（「起こさないであげよう」で餌やり・掃除を無効化）。
+  - migrateLegacyPet: poopProgressMsの加算のみマイグレーション追加
+    （v2→v3のサブマイグレーションも対応、既存poopCount/poopAccruedAtは保持）。
+- pet/petDisplay.ts: feedDisabled/cleanDisabledにasleepチェックを追加。
+- ui/PetView.tsx: 就寝/起床時刻のListPicker設定を追加、睡眠中はZzz表示
+  （CSSオーバーレイ、アート差分なし）。
+- i18n.tsx / styles.css: 睡眠関連の文言・アニメーション（3言語）。
+- テスト: satietyAtが仕様どおりの減衰式であることの確認テスト（バグなし）、
+  isAsleep/awakeMs/advanceAwakeMs/resolveSleepWindowの単体テスト（境界値・
+  跨ぎ・複数日・ゼロ幅特例）、睡眠中の満腹度停止・うんこ非発生・ケアスコア除外、
+  二重計上バグの回帰テスト、マイグレーション。既存の12日健全ライフサイクル
+  統合テストは新しい起床基準の数値に合わせて再構成
+  （直接構成したCareDayでtick()の実配線を検証する方式に変更、理由をコメント
+  に明記）。全387パス。
+
+Vitest 387 pass / tsc -b clean / build OK / wrangler deploy 200
+(https://lingogate.pages.dev/, /gate?return=tiktok, /pet)。
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01BK2Etn6nfHRDuPFkftBEmo&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/0xzerolight/anki_miner/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/0xzerolight/anki_miner/commits/main.atom"/>
+  <title>Recent Commits to anki_miner:main</title>
+  <updated>2026-09-12T12:50:18Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/411aca30113231ad86da98cc9317a02598bd1896</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/411aca30113231ad86da98cc9317a02598bd1896"/>
+    <title>
+        docs(changelog): record the macOS wheel-floor fix
+    </title>
+    <updated>2026-09-12T12:50:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): record the macOS wheel-floor fix&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3648d743d613081671298face1ee7636238bd2a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/f3648d743d613081671298face1ee7636238bd2a"/>
+    <title>
+        fix(settings): keep an install failure on one readable status line
+    </title>
+    <updated>2026-09-12T12:46:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(settings): keep an install failure on one readable status line
+
+The nine set_*_status methods are handed str(exc) on failure, and an exception
+is not a status line: the macOS dyld error in the v3.1.0 report is three lines,
+the QLabel rendered all three, and the card cut them at its right edge — the
+screenshot could not be read to find the missing symbol.
+
+FormPanel.set_status_text collapses whitespace runs to one line, caps it at 140
+characters, and puts the verbatim original in the tooltip. Short translated
+statuses are byte-identical, tooltip included.
+
+Not ElidingLabel: its rendered text depends on pixel width, and ~60 tests assert
+these labels&amp;#39; text() verbatim.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb79fdf2b1d50e7bc79c256ce2044b2c733bab27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/bb79fdf2b1d50e7bc79c256ce2044b2c733bab27"/>
+    <title>
+        feat(packs): never offer a wheel the running macOS cannot load
+    </title>
+    <updated>2026-09-12T12:39:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(packs): never offer a wheel the running macOS cannot load
+
+A macOS wheel tag is a hard dyld floor, and nothing honoured it: artifact
+selection keys on (sys.platform, machine) only, and every CI runner is current.
+
+- ArtifactSpec.min_macos / _OnnxWheelSpec.min_macos read the floor off the
+  pinned filename, so it can never drift from the wheel being downloaded.
+- artifact_for and _current_spec decline a wheel above the host&amp;#39;s release; the
+  pack row then hides exactly as it does on an unpinned platform.
+- onnxruntime&amp;#39;s arm64 wheel moves to 1.23.2 (macosx_13_0). The table stays
+  versioned per platform: 1.23.2 has no win_arm64 cp312 wheel, so a wholesale
+  downpin would drop Windows ARM64 silence removal.
+- New test asserts every required macOS pin loads on the app&amp;#39;s own floor
+  (PyQt6-Qt6&amp;#39;s macosx_11_0_arm64) and pins onnxruntime as the one gated
+  exception. It fails on the pre-fix av pin.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/efc4972365d652d88f2bf9f204316830f3dc938a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/efc4972365d652d88f2bf9f204316830f3dc938a"/>
+    <title>
+        fix(asr): re-pin PyAV to the macOS 11 arm64 wheel
+    </title>
+    <updated>2026-09-12T12:30:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(asr): re-pin PyAV to the macOS 11 arm64 wheel
+
+- av 17.1.0&amp;#39;s arm64 wheel is tagged macosx_14_0; every other arm64 binary we ship is macosx_11_0, so Apple Silicon Macs below macOS 14 got a dyld &amp;quot;Symbol not found … Expected in: AVFoundation.framework&amp;quot; on any faster-whisper import. macOS has no whisper.cpp leg, so that is all of transcription.
+- 13.1.0 is the newest release still tagged macosx_11_0 (15.x -&amp;gt; 13_0, 16.x -&amp;gt; 14_0). No abi3 wheel there, hence cp312 pins and abi=(3, 12).
+- faster-whisper asks only for av&amp;gt;=11 and uses four APIs stable since av 9.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d7f277407dc434d5167eb7493fa6e48e5a410591</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/d7f277407dc434d5167eb7493fa6e48e5a410591"/>
+    <title>
+        Merge audiobook sync: Utilities -&gt; Audiobook Sync, 2 h ASR windows
+    </title>
+    <updated>2026-09-12T11:45:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge audiobook sync: Utilities -&amp;gt; Audiobook Sync, 2 h ASR windows&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a1310a0afc4a46760dd3b7d3e808c9e477a8ca5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/5a1310a0afc4a46760dd3b7d3e808c9e477a8ca5"/>
+    <title>
+        test(capabilities): narrow the browser search to one audiobook row
+    </title>
+    <updated>2026-09-12T11:38:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(capabilities): narrow the browser search to one audiobook row&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e7628e1edc559f80217c9a58cfa65cf05cc80ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/4e7628e1edc559f80217c9a58cfa65cf05cc80ae"/>
+    <title>
+        docs: describe Audiobook Sync and windowed transcription; sync catalo…
+    </title>
+    <updated>2026-09-12T11:32:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: describe Audiobook Sync and windowed transcription; sync catalogues&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3a7d6c4953d4bc2f1640d7e6be3d127bf7b79fc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/b3a7d6c4953d4bc2f1640d7e6be3d127bf7b79fc"/>
+    <title>
+        feat(utilities): register the Audiobook Sync sub-tab and its capability
+    </title>
+    <updated>2026-09-12T11:30:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(utilities): register the Audiobook Sync sub-tab and its capability&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3fa78c929058de15795ad266bf6e406b80e332fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/3fa78c929058de15795ad266bf6e406b80e332fd"/>
+    <title>
+        feat(booksync): Audiobook Sync tool screen
+    </title>
+    <updated>2026-09-12T11:26:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(booksync): Audiobook Sync tool screen&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9c0afe0a1b15312a2e28c91d175e75c83b8d2f7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/d9c0afe0a1b15312a2e28c91d175e75c83b8d2f7"/>
+    <title>
+        feat(booksync): queue worker over the book-sync pipeline
+    </title>
+    <updated>2026-09-12T11:23:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(booksync): queue worker over the book-sync pipeline&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b16d643524bddd3205414d2df3a09022e988ce3c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/b16d643524bddd3205414d2df3a09022e988ce3c"/>
+    <title>
+        feat(book-sync): per-file load, transcribe, align, write pipeline
+    </title>
+    <updated>2026-09-12T11:21:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(book-sync): per-file load, transcribe, align, write pipeline&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7cb6b128d6667047dbe3a419ae48438d72ef609</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a7cb6b128d6667047dbe3a419ae48438d72ef609"/>
+    <title>
+        feat(book-sync): windowed monotonic transcript-to-sentence aligner
+    </title>
+    <updated>2026-09-12T11:20:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(book-sync): windowed monotonic transcript-to-sentence aligner&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dff1f69ba7abe6ae77bf7e06044b265804b2aebf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/dff1f69ba7abe6ae77bf7e06044b265804b2aebf"/>
+    <title>
+        feat(book-sync): alignment text fold shared by book and transcript
+    </title>
+    <updated>2026-09-12T11:18:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(book-sync): alignment text fold shared by book and transcript&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7e6765e1747c0f7c2dc7c50df1173e5e5de2f403</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/7e6765e1747c0f7c2dc7c50df1173e5e5de2f403"/>
+    <title>
+        feat(generate): lift the 6 h ceiling via windowed transcription
+    </title>
+    <updated>2026-09-12T11:17:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(generate): lift the 6 h ceiling via windowed transcription&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c00a6aa3ad5e8f99b7a6c10dd0403ac561b30659</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/c00a6aa3ad5e8f99b7a6c10dd0403ac561b30659"/>
+    <title>
+        feat(asr): transcribe media past 2 h in silence-cut windows
+    </title>
+    <updated>2026-09-12T11:15:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(asr): transcribe media past 2 h in silence-cut windows&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/598befb920cf7d4605db5e13dfed797f8bddcfb7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/598befb920cf7d4605db5e13dfed797f8bddcfb7"/>
+    <title>
+        feat(media): extract a seeked audio window as 16 kHz PCM
+    </title>
+    <updated>2026-09-12T11:13:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(media): extract a seeked audio window as 16 kHz PCM&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62e027da9557e5cfbe78a0f573eaae7b8bade1fc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/62e027da9557e5cfbe78a0f573eaae7b8bade1fc"/>
+    <title>
+        chore(deps): add rapidfuzz for transcript-to-book alignment
+    </title>
+    <updated>2026-09-12T11:11:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): add rapidfuzz for transcript-to-book alignment&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd41796a384c48667ceac1c263ee98c7c5f45911</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/bd41796a384c48667ceac1c263ee98c7c5f45911"/>
+    <title>
+        Merge curator frame-pick accuracy: preview and stamp the frame the ca…
+    </title>
+    <updated>2026-09-11T21:02:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge curator frame-pick accuracy: preview and stamp the frame the card gets&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d49ffac50d8ef67b75794dad4dc168fdcc372c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/7d49ffac50d8ef67b75794dad4dc168fdcc372c6"/>
+    <title>
+        chore(i18n): sync catalogues for the frame steppers
+    </title>
+    <updated>2026-09-11T20:44:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(i18n): sync catalogues for the frame steppers
+
+Extract is all-or-none, so this also picks up eight pre-existing
+transcription-engine strings that were never extracted. All ten are
+untranslated and fall back to English.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f7f0f71468135b152ab1c0e37da5dd86ea4b65d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/1f7f0f71468135b152ab1c0e37da5dd86ea4b65d"/>
+    <title>
+        fix(curator): preview the frame the card&#39;s screenshot will use
+    </title>
+    <updated>2026-09-11T20:43:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(curator): preview the frame the card&amp;#39;s screenshot will use
+
+The preview parked on the line&amp;#39;s start while extraction grabbed
+screenshot_offset seconds later, so for an unpicked word the frame on screen
+and the frame on the card were never the same picture.
+
+- _screenshot_instant routes through media_extractor.resolve_screenshot_time,
+  against the merged window when a line expansion is active
+- a picked word parks on its pick; Reset frame re-parks on the default
+- frame_time is a separate keyword so no second-adjusted value can reach the
+  manga path&amp;#39;s int(start_time) unit index
+- CurationMediaContext carries config.screenshot_offset, like audio_padding
+- real-ffmpeg test pins that a stamped second extracts that exact frame, and
+  the static screenshot&amp;#39;s full argv pins -ss before -i&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

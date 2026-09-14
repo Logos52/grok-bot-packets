@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mwo1066/By-ear-tutor/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mwo1066/By-ear-tutor/commits/master.atom"/>
+  <title>Recent Commits to By-ear-tutor:master</title>
+  <updated>2026-09-09T18:51:48Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d28ad1b70b6875afc2508813c72767885c81fc7e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/d28ad1b70b6875afc2508813c72767885c81fc7e"/>
+    <title>
+        An audit that turns 1278 words into a shortlist of 83
+    </title>
+    <updated>2026-09-09T18:51:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;An audit that turns 1278 words into a shortlist of 83
+
+Meo asked for a cross-check of every gloss against a source. There is one on
+disk -- 39968 Wiktionary headwords, cached in August -- and a script that prints
+the course gloss beside the dictionary entry for all of them, which is the same
+reading job the list already is.
+
+audit_glosses.py does the mechanical half: it reports only the words whose gloss
+shares no word with ANY sense the dictionary lists. 1278 taught words, 1176
+supported, 19 absent from the dictionary, 83 flagged.
+
+It is a smell and not a verdict, and the docstring says so in both directions. A
+flagged gloss can be right -- the instruction TELLS the model to override an
+entry that captured a homograph, so áo (listed &amp;#39;Austria&amp;#39;, means shirt) and súng
+(listed &amp;#39;water lily&amp;#39;, means gun) flag by design. And an unflagged gloss can be
+wrong: ý was glossed &amp;#39;Italy&amp;#39; straight from senses that were about the proper
+noun, so every error caused BY the dictionary agrees with it and is invisible
+here.
+
+The first run over-flagged badly and the fix is worth recording. My own stop-word
+list held be, and, not, this and very -- so a gloss made entirely of stop words
+had nothing left to compare and could never match. That flagged là (&amp;#39;to be&amp;#39;),
+và (&amp;#39;and&amp;#39;), rất (&amp;#39;very&amp;#39;) and every other function word, all of them agreeing
+with the dictionary word for word. 96 became 83.
+
+What survives at the top of the list shows the remaining limit plainly: tên,
+glossed &amp;#39;name&amp;#39;, flags because the dictionary lists stork, egret and a childish
+word for penis. tên means name. The dictionary is incomplete, and the tool
+compares words rather than meanings.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fafbd631a825dc27ff3a09bfa3df9c7a342cef63</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/fafbd631a825dc27ff3a09bfa3df9c7a342cef63"/>
+    <title>
+        The cupboard candidate list, cleaned of its false positives
+    </title>
+    <updated>2026-09-09T18:42:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The cupboard candidate list, cleaned of its false positives
+
+47 words in five groups, written to notes/CUPBOARD-CANDIDATES.md so it can be
+read and marked up rather than living in a conversation.
+
+Meo pulled ấm (warm) back: it was never a real candidate, only a false positive
+of the keyword scan on the substring in &amp;quot;warm&amp;quot;. So were kho (warehouse), cảnh
+báo (warning), tiệc (party), điều tra (to investigate) and xuất sắc (excellent).
+All six stay in the course, and the file says so, because a list of exclusions
+without its own errors named is a list nobody can check.
+
+The file leads with what it is not: a proposal, not a decision. Nothing has been
+moved, every one of these words is still taught, and the cupboard mechanism in
+0029 is not built.
+
+Việt Nam and Tết are deliberately absent -- they are the course&amp;#39;s own.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0ab31bc59e421556bc22d9f9589a57984c27a62</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/e0ab31bc59e421556bc22d9f9589a57984c27a62"/>
+    <title>
+        Name the cupboard, and correct a glossary entry the evening made stale
+    </title>
+    <updated>2026-09-09T18:37:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Name the cupboard, and correct a glossary entry the evening made stale
+
+Meo chose the name. It is in GLOSSARY.md section 3, Coined here, beside mute
+stock -- which it must not be confused with, so the entry says the difference:
+
+  mute stock    no gloss          the tutor does not know the word
+  the cupboard  gloss, unqueued   it knows it, answers, never teaches it
+  the course    gloss, queued     it teaches it
+
+And mute stock&amp;#39;s own definition was stale. It read &amp;quot;the 1,915 frequency-imported
+words with no gloss written&amp;quot; -- that number is 0 as of tonight. The state still
+exists and any future import lands in it, so the entry now says both: what it is,
+and that it currently has no occupants.
+
+0029 also gains a first pass over the 1125 glossed words, which finds about 55
+cupboard candidates in five clean groups rather than scattered: places and proper
+nouns, military, finance, state and administration, medical and technical. Việt
+Nam and Tết stay -- they are the course&amp;#39;s own.
+
+Marked as a first pass and not a decision, because the same keyword scan caught
+kho (warehouse), ấm (warm) and cảnh báo (warning) as military, all three on the
+substring &amp;quot;war&amp;quot; -- the third substring bug of the day, after sword/word and
+in/print.
+
+Still not built. 0029 remains a proposition.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a3bf5b9ada3dc45eeee5ffd396e15ef8d9776c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/9a3bf5b9ada3dc45eeee5ffd396e15ef8d9776c2"/>
+    <title>
+        The gloss list was missing the 221 items taught first
+    </title>
+    <updated>2026-09-03T18:18:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The gloss list was missing the 221 items taught first
+
+Meo asked whether the list held every gloss in the course. It did not. It was
+built from the frequency stock alone, so it left out all 221 hand-written items
+-- 153 words, 46 rules, 22 sentences -- including tôi, tên, là and the address
+and tone rules.
+
+Those are the ones a learner meets in the first hours and the ones the course
+drills hardest. They are also the ones whose glosses were rewritten this morning
+under 0019. Leaving them out meant the review would have covered the back of the
+course and skipped the front.
+
+Now 1346 items in two parts. Part 1 is the hand-written items in TEACHING order
+rather than by frequency, because that is the order a learner meets them in, and
+it is marked read-these-first. It labels each item word, rule or sentence, with a
+line explaining that a rule&amp;#39;s gloss is a statement the tutor speaks rather than a
+translation, since a reviewer would otherwise read a paragraph where they
+expected a word. Part 2 is the bulk-glossed stock by frequency.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c450772d76bd1207b97599a668a01b53cb6f8c60</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/c450772d76bd1207b97599a668a01b53cb6f8c60"/>
+    <title>
+        The only French the program says out loud
+    </title>
+    <updated>2026-09-03T11:25:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The only French the program says out loud
+
+[diag] modele=... raisonnement=129 car -- three French words in the one line
+printed on every model turn, so it scrolled past in every session tonight and in
+every session before them.
+
+Now: model=..., reasoning=129 chars.
+
+The repository is otherwise English throughout. The French that remains is
+quoted speech from Meo in the change propositions, attributed and italicised,
+which is the established pattern -- 0013, 0017 and 0018 all record his words
+verbatim because a decision&amp;#39;s source is worth keeping in the words it was made
+in.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e5c6fc4a55bc0b23fbbc6b12f1e7e8d4cf26c9fb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/e5c6fc4a55bc0b23fbbc6b12f1e7e8d4cf26c9fb"/>
+    <title>
+        A to-do list for the words, then the sentences
+    </title>
+    <updated>2026-09-03T11:21:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;A to-do list for the words, then the sentences
+
+Meo asked for one, focused on those two. Written to notes rather than said in a
+conversation, ordered by dependency rather than importance -- a sentence built on
+a wrong gloss is wrong twice, so the words come first.
+
+Where the course stands after tonight:
+
+  1278 words       done in quantity
+    46 rules       all of them inside the first 221 items
+    22 sentences   1% of the course, and 8 of them hand-written
+
+The ratio is the finding. The reference course in METHOD.md spends most of its
+time on assembly rather than on vocabulary, and this one inverted that in an
+evening. Adding sentences until the number looks better is not the answer; what
+a sentence is FOR at this size is a question first.
+
+Nine tasks. The first is a Vietnamese speaker reading GLOSSES-TO-VALIDATE.md,
+which nothing else can substitute for and which everything downstream inherits
+the errors of.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9608d8054e7dcff524f134e391d6d5da62794507</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/9608d8054e7dcff524f134e391d6d5da62794507"/>
+    <title>
+        The gloss list for a native speaker, and propose 0030
+    </title>
+    <updated>2026-08-31T19:38:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The gloss list for a native speaker, and propose 0030
+
+notes/GLOSSES-TO-VALIDATE.md: all 1125 glossed words in frequency order, with
+the warning at the top and a note to watch for tone pairs, since nhắc glossed
+&amp;#39;to lift&amp;#39; is the error no check in this project can catch.
+
+And 0030, proposed not written. Meo asked whether there was a plan for how the
+new words get introduced. There is not, and the sequencing shows why that
+matters:
+
+  items    0-221    167 words,  46 rules,  8 sentences
+  items  221-1346  1111 words,   0 rules, 14 sentences
+
+After item 221 the course stops teaching grammar and becomes a vocabulary drill
+in frequency order. load_roster reads files in filename order, 90_frequency_
+stock.toml sorts last, so everything glossed tonight arrives after everything
+curated. That was correct while the stock was unglossed and held out by
+is_teachable. Glossing it turned a staging area into the back half of the course
+in one evening, without anyone choosing an order.
+
+Not a bug and not a bad gloss -- every one of those words is wanted. The
+proposition asks what has to be decided: whether they interleave or follow, what
+carries the grammar across 1111 items, and what happens to the 54 candidate
+sentences written when the course had 150 words.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aba25f64b4930554eaca337730197ca0c65820ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/aba25f64b4930554eaca337730197ca0c65820ed"/>
+    <title>
+        The shelf is empty, and the vocabulary in it is RAW AND UNVERIFIED
+    </title>
+    <updated>2026-08-31T18:23:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The shelf is empty, and the vocabulary in it is RAW AND UNVERIFIED
+
+The last seventeen words. The frequency stock has no unglossed ordinary words
+left. The course stands at 1346 teachable items, from 221 this morning.
+
+READ THIS BEFORE TRUSTING THE CONTENT. 1125 glosses were written by a model in
+forty batches and kept or shelved by me, from dictionary senses and my own
+Vietnamese. 540 words were shelved with a reason each; the rest are live and
+will be taught to whoever runs this. NO NATIVE SPEAKER HAS READ ANY OF IT. The
+one who sat a session that evening was never shown the list.
+
+The errors found while doing it were not rare, and they are the measure of what
+was probably missed:
+
+  nhắc  glossed &amp;quot;to lift&amp;quot;       it means to remind
+  nợ    glossed &amp;quot;to be willing&amp;quot; it is a debt
+  nỗi   glossed &amp;quot;anger&amp;quot;         it is a classifier for feelings
+  Đức   glossed &amp;quot;king&amp;quot;          it is Germany
+  ý     glossed &amp;quot;Italy&amp;quot;         it is an idea
+  cuộc  glossed &amp;quot;demonstration&amp;quot; it is an event classifier
+  lương glossed &amp;quot;good&amp;quot;          it is a salary
+  me    glossed &amp;quot;mother&amp;quot;        that is mẹ; me is a tamarind
+
+Every one of those was caught by reading, not by a check. nhắc is the one that
+should worry anyone: nhấc, one tone away, IS to lift, and _bare strips tones by
+design, so no test in this repository can ever tell them apart.
+
+Six checks stand between the model and the course and they catch SHAPE --
+duplicate glosses, length, mixed kinds across a slash, a gloss giving away its
+own answer, metalinguistic frames, descriptions instead of translations. Only a
+person catches truth.
+
+Written into notes/OPEN.md as section 0 rather than left in a commit message,
+because a commit message is not read by the person who picks this up in a month.
+
+The highest-value hour anyone can spend on this course now is a Vietnamese
+speaker reading the glossed list.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f2085c1fcb19ad457bbd70c02e8e24e40d62ba20</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/f2085c1fcb19ad457bbd70c02e8e24e40d62ba20"/>
+    <title>
+        Thirty-ninth batch: 69 kept, and 17 words left on the shelf
+    </title>
+    <updated>2026-08-31T18:05:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirty-ninth batch: 69 kept, and 17 words left on the shelf
+
+A hundred words, zero 403. The course reaches 1339 teachable items, from 221
+when the evening started.
+
+Twenty duplicate groups, first kept each time.
+
+Four that are not words a beginner can use: canh, glossed &amp;quot;seventh heavenly
+stem&amp;quot; from the sexagenary calendar; hi, a grin written as a syllable; ben, a
+dump truck from the French benne; khúc, glossed &amp;quot;firewood&amp;quot; when it is a segment
+or a stretch.
+
+Also shelved: chủ nghĩa, công đoàn, phó chủ tịch and mục as institutional or
+bound inside longer terms -- chủ tịch was already gone; chất liệu as a third
+word in the material field where nguyên liệu keeps it; hạt nhân as narrow; trần
+for being bare and also a ceiling.
+
+Seventeen ordinary words remain unglossed, the residue of batches skipped during
+the outage.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/704e78f37740fa39f113db30dfaf1651b316ebdd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/704e78f37740fa39f113db30dfaf1651b316ebdd"/>
+    <title>
+        Thirty-eighth batch: 61 kept, and thirteen batches go through
+    </title>
+    <updated>2026-08-31T17:53:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirty-eighth batch: 61 kept, and thirteen batches go through
+
+A hundred words, 61 kept, zero 403. Thirteen batches is exactly what was blocked
+twice earlier tonight, so the block was the evening&amp;#39;s cumulative volume rather
+than the size of any one run. The course reaches 1270 teachable items.
+
+Sixteen duplicates. mặt beat BOTH khuôn mặt and gương mặt for &amp;quot;face&amp;quot;.
+
+This batch produced far more multi-alternative glosses than any before it, and
+the checks took all of them -- four by the slash rule, four by length. diện came
+back as &amp;quot;to dress up / well-dressed / aspect / area / sphere&amp;quot;: eleven words and
+five meanings in one gloss. Four more of the same shape had to go by hand, the
+same-kind-of-word-on-both-sides case that has been recorded twice as unfixable
+without knowing meanings.
+
+Also shelved: tin tức, with tin already carrying news; vật chất and vật liệu,
+three words in one field where nguyên liệu keeps it; nhiễm for a parenthetical
+doing the gloss&amp;#39;s work; ăn uống as compositional, ăn and uống both being taught;
+tây, with Tây already shelved for west; văn, bi, lao and mạch for being bound or
+one spelling over unrelated things.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9cfb8088a390b3d68497e1aaabab58bfc49cb6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/d9cfb8088a390b3d68497e1aaabab58bfc49cb6d"/>
+    <title>
+        Fifty words, still no 403
+    </title>
+    <updated>2026-08-31T17:42:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fifty words, still no 403
+
+Seven batches instead of thirteen, and the block has not returned. Fifty words
+landed, 33 kept. The course reaches 1209 teachable items.
+
+Seven duplicates, first kept each time. Google caught by the self-name check.
+Hùng and kinh shelved as a personal name and an ethnic group -- người Kinh. Ấn
+Độ and Á as place names.
+
+Also shelved: xuyên and đáp for being bound or already covered -- trả lời
+carries to reply; lát, hương and phủ for being one spelling over unrelated
+things -- lát is a slice and also a moment, một lát.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e495ebfd1a46a04e4ec8e6ad01104090984db74</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/8e495ebfd1a46a04e4ec8e6ad01104090984db74"/>
+    <title>
+        Twenty words after a pause, and the 403 was volume
+    </title>
+    <updated>2026-08-31T17:34:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Twenty words after a pause, and the 403 was volume
+
+Zero batches failed, after two consecutive runs where all thirteen returned
+403 &amp;quot;Access denied. Please check your network settings.&amp;quot; A pause plus a
+three-batch run instead of a thirteen-batch one, and it went straight through.
+
+That confirms what a direct single call had already suggested: the block was not
+the service being down and not the key. It was the rate of requests from one
+address, and the right response to it was to stop asking rather than to keep
+retrying -- which is the opposite of what a saturation would want.
+
+Worth recording that I misread it for four messages. The log said &amp;quot;model
+unavailable&amp;quot; up to batch 33 and &amp;quot;403 access denied&amp;quot; from batch 34, and I went on
+counting failed batches and repeating that the service was oscillating without
+reopening the message. The exact error was in the file the whole time.
+
+Eleven of twenty kept. Six duplicates; thông was glossed &amp;quot;river&amp;quot;, which is not
+what it means -- a pine tree -- so the duplicate check caught it for the wrong
+reason and was right anyway. lông shelved for &amp;quot;hair / fur / feathers&amp;quot;, two nouns
+across a slash the check cannot see; khớp and độc for being one spelling over
+unrelated things.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5c9ec602c0727293b75b419fd2864ac06cf34816</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/5c9ec602c0727293b75b419fd2864ac06cf34816"/>
+    <title>
+        Thirty-third batch: 33 kept
+    </title>
+    <updated>2026-08-25T18:38:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirty-third batch: 33 kept
+
+Seven of thirteen unavailable. 48 words landed, 33 kept. The course reaches 1165
+teachable items.
+
+Six duplicates. The slash check caught nướng, &amp;quot;to roast / grill&amp;quot;; the self-name
+check caught Đông, glossed &amp;quot;Đông (a personal name)&amp;quot;.
+
+Also shelved: Đoàn as institutional, with đoàn already gone for the same reason;
+yêu thương, glossed &amp;quot;to love and cherish&amp;quot;, where yêu already carries to love;
+xứ for living inside xứ sở; chiếu for being to shine and a sleeping mat and to
+project a film; cổ phiếu and tín dụng as financial, with cổ phần already
+shelved; khủng bố, glossed &amp;quot;to terrify&amp;quot;, where the word is terrorism.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ba9f2db85122eb8e780b9d6119c77fabcd6b08f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/5ba9f2db85122eb8e780b9d6119c77fabcd6b08f"/>
+    <title>
+        Thirty-second batch: 14 kept, and a word the learner can already build
+    </title>
+    <updated>2026-08-25T16:40:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirty-second batch: 14 kept, and a word the learner can already build
+
+Ten of thirteen unavailable. 24 words landed, 14 kept. The course reaches 1132
+teachable items.
+
+Six duplicates. đóng cửa shelved for a reason not seen before: it was glossed
+&amp;quot;close the door&amp;quot;, and đóng and cửa are BOTH already taught -- so it is a
+sentence the learner can assemble rather than a word to learn. That is what the
+construction kind is for, if it is wanted at all.
+
+Also shelved: hưởng for living in ảnh hưởng and hưởng thụ; trang phục, with
+quần áo already carrying clothes; nhận thức as abstract, with nhận itself
+already shelved.
+
+dì kept deliberately -- a maternal aunt is address-system vocabulary, and the
+pronoun strand has six rules still unwritten that will want it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c44a74e3b05d50a8b61983b4a62578401605171</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/6c44a74e3b05d50a8b61983b4a62578401605171"/>
+    <title>
+        Thirty-first batch: 31 kept, and press means three things
+    </title>
+    <updated>2026-08-25T15:39:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirty-first batch: 31 kept, and press means three things
+
+Seven of thirteen unavailable. 48 words landed, 31 kept. The course reaches 1118
+teachable items.
+
+Another English collision, and a three-way one: báo chí is the press as in
+newspapers, nhấn is to press a button, ép is to press as in squeeze. One English
+word over three unrelated Vietnamese ones. báo chí was validated first and keeps
+it.
+
+tết shelved as a capitalisation variant of Tết, already taught -- the same fault
+as chúa against Chúa and bắc against Bắc.
+
+Also shelved: thủ, cử and tài for living inside longer words -- tài alone is in
+tài chính, tài liệu and tài khoản, all three already taught; Huế and Sài Gòn as
+place names; chà, đậu and cổ phần for being one spelling over unrelated things
+or too narrow to earn a slot.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a0838f3d7f38f9476bc3181c1575e94fbf53fe82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/a0838f3d7f38f9476bc3181c1575e94fbf53fe82"/>
+    <title>
+        Thirtieth batch: 63 kept, and the slash check pays three times in one…
+    </title>
+    <updated>2026-08-25T15:18:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Thirtieth batch: 63 kept, and the slash check pays three times in one run
+
+Fourth full window. A hundred words, 63 kept. The course reaches 1087 teachable
+items.
+
+The slash check caught three in one batch -- &amp;quot;to skip / ignore&amp;quot;, &amp;quot;to update /
+keep posted&amp;quot;, &amp;quot;to arrange / organize&amp;quot; -- all verbs against non-verbs, which is
+exactly the shape it was written for two batches ago. And it still cannot see
+hầm as &amp;quot;basement / cellar&amp;quot; or khoa as &amp;quot;faculty / department&amp;quot;, both nouns on
+either side, which is the limitation recorded last batch as unfixable without
+knowing what the words mean.
+
+Four things that are not words: hoá is a suffix, the -ise of hiện đại hoá; g is
+a letter of the alphabet; tí was glossed &amp;quot;Rat&amp;quot;, the zodiac sign; sam is a
+horseshoe crab, which nobody needs before a thousand other words. ả shelved as
+archaic and faintly disdainful for an older woman.
+
+Eighteen duplicate groups. Also shelved: nghiệm, phiên and sinh hoạt for being
+bound or awkwardly glossed; Hoa Kỳ, Tây and bắc as place names, with Mỹ already
+carrying America; dạo, lạc and hành for being one spelling over unrelated things
+-- lạc is lost and also a peanut.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb77322059e226b37f249d82cff51ea13697a709</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/eb77322059e226b37f249d82cff51ea13697a709"/>
+    <title>
+        Twenty-ninth batch: 67 kept, and the course passes a thousand
+    </title>
+    <updated>2026-08-25T15:05:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Twenty-ninth batch: 67 kept, and the course passes a thousand
+
+Third full window in a row. A hundred words, 67 kept. The course reaches 1024
+teachable items, from 221 when this evening started.
+
+Eighteen duplicate groups, and three of them are the class that keeps
+appearing -- English being the vague one, not Vietnamese. Each is a real
+distinction Vietnamese draws and English collapses:
+
+  cơm is cooked rice, lúa is the plant growing in the field
+  đầy is a full container, no is full from eating
+  mặc is to wear clothes, đeo is to wear a watch or glasses
+
+All three are shelved under the duplicate rule and all three are worth
+returning to, because the words are good and only the glosses collide.
+
+bảo đảm was glossed &amp;quot;to sponsor&amp;quot; and means to guarantee -- which đảm bảo, the
+same two syllables reversed, already carries. thức was glossed &amp;quot;delicacy (food)&amp;quot;
+and means to stay awake.
+
+u and New York were both caught by the self-name check: a letter of the alphabet
+and a city abroad. Đà Nẵng shelved as a place name, the same call as Hồ Chí Minh.
+
+Also shelved: đại, châu, tạm and khai for living inside longer words rather than
+standing alone; lợi, trống and hạng for being one spelling over unrelated
+things; thủ tướng and quy hoạch as institutional, with kế hoạch already carrying
+plan.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/675f94d6ccf965430280c27af58b0c5510053b62</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/675f94d6ccf965430280c27af58b0c5510053b62"/>
+    <title>
+        Twenty-eighth batch: 57 kept, and a check I promised and cannot write
+    </title>
+    <updated>2026-08-25T14:31:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Twenty-eighth batch: 57 kept, and a check I promised and cannot write
+
+Second full window in a row. A hundred words, 57 kept. The course passes 956
+teachable items.
+
+TWENTY-SEVEN duplicate groups, up from nineteen last batch. The course crossed
+700 glossed words between the two runs and the collision rate is simply
+following the size of what is already taught. This check now removes more words
+per batch than every other filter combined.
+
+Last batch I said a semicolon-or-slash check was worth writing if the pattern
+recurred. It recurred -- chùa as &amp;quot;temple / free&amp;quot;, cao cấp as &amp;quot;high-class /
+superior&amp;quot;, tiếp cận as &amp;quot;to approach / to reach&amp;quot; -- and I cannot write it. The
+existing slash check separates a verb from a non-verb, which is why it caught
+&amp;quot;worthy / to deserve&amp;quot; and &amp;quot;to laugh / smile&amp;quot;. These three have the same kind of
+word on both sides, and telling them from &amp;quot;I / me&amp;quot; or &amp;quot;we / us&amp;quot; needs to know
+what the words MEAN, not what shape they are. Recorded as refused rather than
+shipped badly.
+
+dính was caught by the length check instead, at seven words.
+
+Also shelved: lái xe and mở cửa for being compositional -- lái, xe, mở and cửa
+are all taught already -- and thi đấu for putting an adverb in a gloss; quốc
+hội, trung ương, uỷ ban and bộ trưởng as institutions of state; đề, sát and cung
+for being one spelling over unrelated things; Nhật, with Nhật Bản already
+carrying Japan.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d03da354ab71b20421eff8feb0110ec9fb00f2d2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/d03da354ab71b20421eff8feb0110ec9fb00f2d2"/>
+    <title>
+        Twenty-seventh batch: a full window, 69 kept, and 19 duplicate groups
+    </title>
+    <updated>2026-08-25T14:15:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Twenty-seventh batch: a full window, 69 kept, and 19 duplicate groups
+
+Zero batches unavailable -- the first clean run in five. A hundred words landed,
+69 kept. The course passes 899 teachable items.
+
+NINETEEN duplicate groups, a record, and the reason is arithmetic rather than a
+bad run: the course now holds 600-odd glossed words, so every newcomer has that
+many chances to land on a meaning already taken. The check was added on a single
+pair sixteen batches ago.
+
+Three of them are English being the vague one rather than Vietnamese, which is
+now a recognised class:
+
+  cứu is to rescue, tiết kiệm is to economise      -- both &amp;quot;to save&amp;quot;
+  bác sĩ is a physician, tiến sĩ holds a doctorate -- both &amp;quot;doctor&amp;quot;
+  lĩnh vực is a field of study, bãi is a yard      -- both &amp;quot;field&amp;quot;
+
+lương was glossed &amp;quot;good&amp;quot;. It is a salary.
+
+Two semicolon glosses offering a verb and a noun together -- liên hệ as &amp;quot;to
+contact; relationship&amp;quot;, điện tử as &amp;quot;electronic; electron&amp;quot; -- which the slash
+check cannot see, and which is now the fourth batch to produce one. Worth a
+check of its own if it happens again.
+
+Also shelved: thơ for a gloss too specific to be spoken (&amp;quot;traditional Vietnamese
+poetry&amp;quot;); Hồ Chí Minh as a city and a political name; tận and chuyên for living
+inside other words rather than standing alone; bầu, phân, dịch, la and tướng for
+being one spelling over unrelated things.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b4d4860a46b7d66d6bb07572e23208969bfb695</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mwo1066/By-ear-tutor/commit/5b4d4860a46b7d66d6bb07572e23208969bfb695"/>
+    <title>
+        Twenty-sixth batch: 6 kept, and a fix to how I read the results
+    </title>
+    <updated>2026-08-24T20:48:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/110910383?s=30&amp;v=4"/>
+    <author>
+      <name>mwo1066</name>
+      <uri>https://github.com/mwo1066</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Twenty-sixth batch: 6 kept, and a fix to how I read the results
+
+Eight words landed, six kept: model, cheap, sometimes, to contribute, to prove,
+sport. Duplicates, first kept: tham gia has &amp;quot;to participate&amp;quot;, tầng has &amp;quot;floor&amp;quot;.
+
+Also worth recording: I had been listing each batch by slicing the glossed items
+from a fixed offset, and the offset drifted -- shelving a word shortens the list,
+so the slice showed words from earlier runs as if they were new. Read the batch
+by diffing against HEAD instead, which is exact and cannot drift.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

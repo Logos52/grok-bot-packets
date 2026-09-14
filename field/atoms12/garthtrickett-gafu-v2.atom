@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/garthtrickett/gafu-v2/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/garthtrickett/gafu-v2/commits/main.atom"/>
+  <title>Recent Commits to gafu-v2:main</title>
+  <updated>2026-09-11T12:26:59Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c774e27c04aac640029709364a37d6142fc1c65</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/7c774e27c04aac640029709364a37d6142fc1c65"/>
+    <title>
+        Chain batched Cards after each grade (#74)
+    </title>
+    <updated>2026-09-11T12:26:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Chain batched Cards after each grade (#74)
+
+* Chain batched Cards after each grade until the batch is done
+
+After a grade, the browser serves the next batched Card still due through
+a per-card prepare route, skipping anything already answered elsewhere;
+failed batch Cards are never attempted there. When none remains the batch
+closes with Batch complete. Single reviews outside a batch behave as before.
+
+* Serialize journey card creates behind their status round-trip&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc4156e3a6bcf6991ae6be97b3fad2d46bf91fee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/cc4156e3a6bcf6991ae6be97b3fad2d46bf91fee"/>
+    <title>
+        Review opens the explanation first, then asks correct-or-incorrect (#73)
+    </title>
+    <updated>2026-09-11T11:58:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Review opens the explanation first, then asks correct-or-incorrect (#73)
+
+A review shows the situation and the sentence with the target coloured.
+An Explanation button opens the answer, explanation, and usage note; only
+then do Correct (good) and Incorrect (again) appear. The scheduler is
+untouched, and the journey marks one Card correct and the other incorrect.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa8fdd9ac1aca1689132dd376a5a1a9b5d2d81ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/fa8fdd9ac1aca1689132dd376a5a1a9b5d2d81ef"/>
+    <title>
+        Reviews ask understood-or-not, with the target coloured (#72)
+    </title>
+    <updated>2026-09-11T11:46:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reviews ask understood-or-not, with the target coloured (#72)
+
+A review shows the situation and the sentence with the target word in a
+different colour, then asks plainly whether it was understood. Yes maps to
+good, no maps to again; the scheduler never sees a third option. Answer,
+explanation, and usage note appear only afterwards as feedback. Colouring
+is per segment with an uncoloured fallback when segments do not rejoin.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec68b752893aa5532b8109321d219d944ff8eae6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/ec68b752893aa5532b8109321d219d944ff8eae6"/>
+    <title>
+        Dispatch review sessions as a pumped batch job (#71)
+    </title>
+    <updated>2026-09-11T09:53:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dispatch review sessions as a pumped batch job (#71)
+
+POST /study/review-batch selects due reviews, records one row per card,
+and returns 202 immediately. Each GET advances one card — banking reserves
+without taking, so work-through serves with fresh permits through the
+normal Review path. Failed cards stay due and listed. No daemon; progress
+is client-pumped and resumable. The browser shows progress and works the
+batch through the existing grade flow.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/59e55844350743a31d9a125c050517e2a86a699a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/59e55844350743a31d9a125c050517e2a86a699a"/>
+    <title>
+        Accept compound and copula-lemmatized targets by span containment (#70)
+    </title>
+    <updated>2026-09-11T09:10:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Accept compound and copula-lemmatized targets by span containment (#70)
+
+Grammar targets are present when the span contains the detected form, and
+constructions inside the span are the word&amp;#39;s own morphology. Vocabulary
+targets tile their span and match by concatenated lemma and reading, with
+な-adjective stems meeting their だ-lemmatized tokens. The cards CLI
+locates targets with the same rule; the prompt documents the whole-word
+span. Implements 2.7 (with a gate correction) and specs 2.12.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/288fd1ed2c4b32541294158c00337fc28cb97026</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/288fd1ed2c4b32541294158c00337fc28cb97026"/>
+    <title>
+        Split study into Learn and Review queues (#69)
+    </title>
+    <updated>2026-09-11T08:36:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Split study into Learn and Review queues (#69)
+
+The server offers learn (first untaught new Card, stored teaching only)
+and review (first due Card that is not an untaught new Card) as separate
+session modes behind one filtered serve, with the mixed start kept. The
+taught check is a read; nothing is prepared for a Card the mode skips.
+The browser shows Learn new and Review buttons, and the journey walks
+both filters including Learn&amp;#39;s empty queue.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db8812a5e03a7ee7cd752b41a420118967596d31</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/db8812a5e03a7ee7cd752b41a420118967596d31"/>
+    <title>
+        Spec patches 2.10-2.11: split learn/review sessions, review batch job…
+    </title>
+    <updated>2026-09-11T08:27:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Spec patches 2.10-2.11: split learn/review sessions, review batch job (#68)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a1455de8962f1953ea201bdb7f56e7cda8b6a64a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/a1455de8962f1953ea201bdb7f56e7cda8b6a64a"/>
+    <title>
+        End the encounter when teaching is seen; no chained review (#67)
+    </title>
+    <updated>2026-09-11T08:02:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;End the encounter when teaching is seen; no chained review (#67)
+
+Marking teaching seen persists the acknowledgement and returns. The Card
+goes back in the queue and its first review is prepared on a later start,
+when due. Permits, Review Events, and the scheduler are untouched; they
+happen at the first review instead of inside first exposure.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3cd911540b08274f7417e4b88926792ed010137</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/c3cd911540b08274f7417e4b88926792ed010137"/>
+    <title>
+        Teach from stored material only; study never generates first exposure…
+    </title>
+    <updated>2026-09-11T07:40:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Teach from stored material only; study never generates first exposure (#66)
+
+A new Card with nothing stored returns teachingNotPrepared immediately
+instead of holding the session open on up to three provider generations.
+Review keeps bounded attempts and the outage reserve. The browser maps the
+new failure to the unavailable state with a cards-CLI import instruction,
+and the study journey attaches teaching through the public route before
+starting.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f350138c24b66f8b9e7f453f0605e76912dc6aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/9f350138c24b66f8b9e7f453f0605e76912dc6aa"/>
+    <title>
+        Keep the media cue out of the material prompt (#65)
+    </title>
+    <updated>2026-09-11T07:00:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep the media cue out of the material prompt (#65)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0d94c09c5b65cac11e277bf8d4bfe51dd1b347a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/d0d94c09c5b65cac11e277bf8d4bfe51dd1b347a"/>
+    <title>
+        Spec Patch 2.7: grammar-target span containment (#64)
+    </title>
+    <updated>2026-09-11T06:29:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Spec Patch 2.7: grammar-target span containment (#64)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/653b8deb7e2fb2993aa513e2be58e189afa1f5e9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/653b8deb7e2fb2993aa513e2be58e189afa1f5e9"/>
+    <title>
+        Dispatch Learning Material generations in the background so a slow mo…
+    </title>
+    <updated>2026-09-11T06:07:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dispatch Learning Material generations in the background so a slow model is recoverable (#63)
+
+Study generation held one synchronous Responses call open against a 30s
+timeout, so a ~35s generation always failed and the Card stayed
+ungeneratable. Preparation hit the same wall in #49: dispatch with
+background: true, return on the queued id, then poll GET
+/v1/responses/{id} to a terminal status. timeoutMs now bounds one HTTP
+call and completionTimeoutMs (5min, unmeasured upper bound) bounds the
+generation. A poll that 404s is an offline failure, not a transport
+failure. Provider-cancelled maps to cancelled. No checkpoint: a lost
+poll still means a fresh dispatch on retry, exactly as today.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/777cf052c6af2e9bfa2a9960e6717f47c41cff9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/777cf052c6af2e9bfa2a9960e6717f47c41cff9f"/>
+    <title>
+        Teach a new Card from a sentence written when it was made (#62)
+    </title>
+    <updated>2026-09-11T05:33:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Teach a new Card from a sentence written when it was made (#62)
+
+First exposure called the provider, so the first thing a learner sees after
+adding a Card was a twenty to thirty second wait and a paid request, for a
+sentence nobody had chosen. A Card can now carry its own teaching
+presentation, stored when it is created and served from the reserve that
+prepare already checks before generating. Review is untouched: varying the
+sentence is the point of a review.
+
+Authored is not unvalidated. The presentation passes the same validator as
+generated material, and is built here with the same analyzer the validator
+uses, so a sentence that assembles locally is one the server will accept.
+
+That validator refused every る-verb. It requires the supporting language to
+be known, and the potential-form patterns match the める tail of a plain
+る-verb, so a sentence teaching 詰める was rejected for leaning on 可能形 it
+never used -- while plain form is the only form whose reading identifies the
+Card. The detections sit entirely inside the target span, which makes them
+the target word&amp;#39;s own morphology rather than language the learner must
+already have; the validator already made that exclusion for grammar targets
+and now makes it for vocabulary ones. The detector is unchanged, so
+Preparation is unaffected.
+
+The pre-check in cards:add held its own copy of that rule and kept refusing
+verbs the validator had started accepting. It mirrors the validator now, and
+says which constraint a sentence missed rather than only that it failed.
+
+phase-2.md said no authored fallback exists. It now distinguishes authored
+from unvalidated, which is the property that actually matters.
+
+zzzzz-phase6-compatibility gets a real time budget. It walks three surfaces
+in three browsers and fits Playwright&amp;#39;s 30s default only unloaded, which is
+the same measurement that zz-phase2-study needed.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1618fbde24de737730c56533d3e5ca0ebc88f97c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/1618fbde24de737730c56533d3e5ca0ebc88f97c"/>
+    <title>
+        Put the reading over the kanji and bring the sentence down to a reada…
+    </title>
+    <updated>2026-09-11T04:57:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Put the reading over the kanji and bring the sentence down to a readable size (#61)
+
+The presented sentence was set at up to 4.5rem, which magnified whatever
+the platform fell back to and left the glyphs visibly rasterised, and it
+carried no readings at all -- the learner had to already know the kanji the
+Card is teaching them.
+
+The material has carried readingSegments all along, and the validator
+requires their written parts to rejoin into exactly the sentence, so ruby
+built from them cannot drop or duplicate text. It was simply never
+rendered.
+
+A reading over a whole written form prints its okurigana twice: 広い reads
+ひろい, so ruby over the segment shows い as writing and again above it. The
+kana at each end belong to both, so splitFurigana trims the ones they agree
+on, leaving 広 carrying ひろ and い standing as itself. お客 keeps its お for
+the same reason. A segment whose reading is its own writing is kana already
+and takes none: が over が is noise that only pushes the line apart.
+
+The split is pure text handling rather than view code, so it lives in its
+own module with tests, including that the written form is always
+recoverable from the pieces.
+
+Type comes down to clamp(1.5rem, 3.5vw, 2.25rem) with line-height 2.1, so
+the readings have room above every line rather than only the first.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b11bf1c3403aabdccde5f327362e7f0bdd73c5c5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/b11bf1c3403aabdccde5f327362e7f0bdd73c5c5"/>
+    <title>
+        Compare a grammar form regardless of character width (#60)
+    </title>
+    <updated>2026-09-11T04:48:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Compare a grammar form regardless of character width (#60)
+
+Re-filing the four idioms as Vocabulary Cards, then checking every live
+Grammar Card in the deck, found four that could not be taught -- and none
+of them was mine. The V1 migration created them:
+
+  Card  Verb[せる・させる]     declared  Verb［せる・させる］
+  Card  ~ても~なくても        declared  ～ても～なくても
+  Card  すこしも~ない         declared  すこしも～ない
+  Card  とか~とか            declared  とか～とか
+
+The same constructions, differing only in whether the tilde and brackets
+are halfwidth or fullwidth. Each would have stopped the session that
+reached it, exactly as the six I created did. The guard added in #59 made
+them visible; it did not cause them.
+
+`comparable` now applies NFKC, which folds the bracket pair, and removes
+tildes wherever they appear rather than only at the start. All 299 live
+Grammar Cards are teachable, and the six undeclared forms are still
+refused.
+
+The four idioms are Vocabulary Cards now: 間が悪い and 元も子もない as
+adjectives, 我ながら and 私としたことが as adverbs, each keeping the
+derivation that makes it memorable. Vocabulary has no declared-form
+constraint, so they are teachable without extending a list that also drives
+Preparation&amp;#39;s detector. 〜からには and 〜てこそ stay suspended.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8e18f72793b735b68f77b7164267835a20d9c94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/f8e18f72793b735b68f77b7164267835a20d9c94"/>
+    <title>
+        Refuse a Grammar Card where it is created, not where it is studied (#59)
+    </title>
+    <updated>2026-09-11T04:43:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Refuse a Grammar Card where it is created, not where it is studied (#59)
+
+Six Grammar Cards were created naming forms outside the declared set --
+〜からには, 〜てこそ, and four idioms. POST /api/study/cards accepted every
+one. The material validator refuses an undeclared form, but by then the
+Card is stored, and the session that reaches it fails with
+unsupportedGrammarTarget: one unteachable Card stops the whole queue. That
+is what &amp;quot;Start next Card&amp;quot; was reporting, and a slow retry of it is what
+surfaced as a 502.
+
+createCard now asks the same question, through an injected
+`grammarTargetSupported` so Study does not reach into learning-material.
+The existing `invalidCard` failure carries it, naming the field.
+
+Asking the same question meant making it one question. The declared forms
+are written for a reader rather than for comparison: some carry the
+placeholder tilde, some a parenthetical sense, some list alternates behind
+a slash. `〜てしまう（縮約）` and `てしまう / ちゃう` are both declared, so a
+literal comparison refused the plain `〜てしまう` -- which a browser test
+caught, because it creates exactly that Card. A guard that disagrees with
+the thing it guards is worse than no guard.
+
+`supportsGrammarTarget` normalises once and is used by both the Card route
+and the validator, so a Card that is accepted can always be taught. It
+still refuses all six forms that caused this.
+
+The six existing Cards are suspended in production rather than deleted;
+what to do with the idioms is a separate decision.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ded8663c8d6d533b1388d4b86ae21180455d6f7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/3ded8663c8d6d533b1388d4b86ae21180455d6f7"/>
+    <title>
+        Add an agent-assisted route from subtitles to Cards (#58)
+    </title>
+    <updated>2026-09-11T04:20:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add an agent-assisted route from subtitles to Cards (#58)
+
+Preparation splits into a local stage that is deterministic and free and a
+provider stage that asks for per-candidate evidence under exact-set-equality
+verification. These three scripts keep the first and replace the second with
+an agent reading the episode, producing ordinary Cards through the ordinary
+route: Study cannot tell which way they arrived.
+
+subs:scan reads the SRTs, signs in, and prints every distinct form with its
+tags, frequency and a cue, marking what the Known Word Bank or an existing
+Card already covers. On the first episode that removed 168 of 423 distinct
+words, which is the check no reader can do reliably against 1,437 entries.
+It calls no provider and writes nothing.
+
+subs:context shows every occurrence of given words with the cues either
+side. A dictionary lists every sense and leaves you choosing; the
+surrounding cues show the one in use and supply the example sentence with
+it. It separated おごり (complacency) from 奢る (to treat), which the scan
+listed apart and a headword would have merged.
+
+cards:add posts a reviewed proposal file through POST /api/study/cards, the
+route the browser uses, so canonical identity, deduplication and scheduling
+stay with Study rather than being bypassed. An existing Card is reported as
+`existing`, so re-running resumes a partial run.
+
+The scripts deliberately do not filter on worth. An earlier version dropped
+tokens tagged 名詞/接尾 before anything saw them, which silently hid 放題 --
+the word behind the episode&amp;#39;s central joke. They show everything with its
+tags and leave the cut to the reader.
+
+The document records the division of labour, the route, and what the tools
+get wrong: readings are of the surface rather than the dictionary form, so
+破れる comes back as われる and 無頓着 as むとんじゃく. That defect is not
+confined to these scripts. projection.ts relationFor and known-vocabulary.ts
+sameForm both compare lemma and reading as a pair, so an inflected
+occurrence of a known word does not match; measured over ordinary
+conversational Japanese, 12 of 34 words already in the Known Word Bank were
+classified as gaps. Preparation over-reports its gap until that is fixed.
+
+Proposal files and subtitles stay outside the repository, because their
+usage notes quote subtitle text.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db63f866a8c7af24cd3e90e4e9e98c3bec731043</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/db63f866a8c7af24cd3e90e4e9e98c3bec731043"/>
+    <title>
+        Let a session outlive the process that issued it (#57)
+    </title>
+    <updated>2026-09-11T00:38:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let a session outlive the process that issued it (#57)
+
+Every deploy asked for the password again. Sessions were held in a Map in
+process memory, so a restart forgot every one of them; the seven-day
+lifetime never mattered because a deploy always came first.
+
+The cookie now carries its own expiry and a signature over it, keyed off the
+configured password, so a fresh process recognises a session it never
+issued. The password is already in the environment and stable across
+restarts, so this needs no new configuration and no storage.
+
+Rotating GAFU_ACCESS_PASSWORD now invalidates every outstanding session. The
+Map did not do that: it kept honouring sessions issued under the old
+password until they expired.
+
+What is given up: logout revokes for as long as the process lives, but a
+restart forgets the revocation, so a signed-out cookie would be honoured
+again until its expiry. Reaching that requires having captured the cookie
+before sign-out, since sign-out clears it. For a single-owner deployment
+behind a password, with a bounded lifetime, that is a smaller cost than a
+login on every deploy -- but it is a real one, so it is stated here and in
+the code rather than left to be discovered.
+
+Tests cover the case the Map failed: a cookie issued by one instance is
+accepted by a separately constructed one, refused after the password
+changes, refused when its expiry is edited without re-signing, and refused
+once that expiry passes.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f7f083dcfb00bd137114f93e879f8b44fc18887</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/0f7f083dcfb00bd137114f93e879f8b44fc18887"/>
+    <title>
+        Stop asking for a candidate on punctuation (#56)
+    </title>
+    <updated>2026-09-11T00:25:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop asking for a candidate on punctuation (#56)
+
+&amp;quot;provider returned canonicalKey !? : where !?: was supplied&amp;quot;: the model
+answered `!? :` for a token whose canonicalKey is `!?:`, inserting a space,
+and that one candidate rejected its batch.
+
+Kuromoji files an unrecognised run of symbols under 名詞/サ変接続, so `!?`,
+`...` and `...♪` arrive as nouns and earn vocabulary candidates. With no
+reading, their canonicalKey is punctuation plus the empty-reading colon --
+`!?:`, `...♪:` -- which is exactly the kind of string a model tidies.
+Subtitles are full of them.
+
+Precomputing the key in #54 was necessary but not sufficient: supplying a
+string does not stop a model reformatting one that looks like a typo. The
+answer is not to ask. A token now earns a candidate only if its surface
+contains a letter or a number, so punctuation is absent from the payload
+and from what the answer is compared against.
+
+The predicate lives with the expectations, so the payload, the per-batch
+check, and the run-level check move together, and the fake providers use it
+too rather than their own copy of contentParts.
+
+promptVersion goes to preparation-v4. Two batches completed under v3 and
+hold candidates v4 does not expect, which would read as invented evidence
+at run level; completed batches are not re-checked, so they have to be
+asked again.
+
+Real words are unaffected, including those with no reading: グリズリー, Wi,
+and 24 still earn candidates and still carry the trailing colon.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8b1b1ef24f95e331253b4bc5bf4ed387fae7328</id>
+    <link type="text/html" rel="alternate" href="https://github.com/garthtrickett/gafu-v2/commit/d8b1b1ef24f95e331253b4bc5bf4ed387fae7328"/>
+    <title>
+        Hold the API key only in the server environment (#55)
+    </title>
+    <updated>2026-09-11T00:17:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3760677?s=30&amp;v=4"/>
+    <author>
+      <name>garthtrickett</name>
+      <uri>https://github.com/garthtrickett</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Hold the API key only in the server environment (#55)
+
+The key was held in process memory and entered through settings, so every
+restart discarded it. That is six re-entries across today&amp;#39;s deploys, and it
+made an environment-supplied key ambiguous: a key typed in settings won the
+session and then silently reverted to the environment&amp;#39;s on the next deploy,
+while &amp;quot;Remove API key&amp;quot; cleared a copy that came back on restart.
+
+The key is now a deployment value and nothing else. It is read from
+OPENAI_API_KEY at startup, held in process memory, and verified against the
+provider on first preflight. There is no route, form, or session copy that
+could disagree with the environment.
+
+Removed: PUT and DELETE /api/provider/key, replaceProviderKey and
+removeProviderKey from the LearningMaterial seam, replace and remove from
+ProviderKeyCustody, the settings form and its remove button, and the
+revision counter that existed only to order concurrent replacements.
+Settings now reports which provider and model are configured and whether
+the environment supplied a key, and names OPENAI_API_KEY when it did not.
+
+This keeps the phase-2 invariant that matters -- the key never reaches
+SQLite, a backup, a response, or a log -- while dropping the browser entry
+path that phase-2 also described. Railway stores it encrypted at rest and
+can seal it so it is write-only, which is strictly better custody than a
+value retyped into a form after every deploy.
+
+phase-2.md is updated to match rather than left contradicting the code: the
+custody bullet, the settings paragraph, the LearningMaterial type, and the
+two adversarial cases that were about replacing and removing a key.
+
+The Playwright harness supplies OPENAI_API_KEY, because the key can no
+longer be entered through the page it is testing.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

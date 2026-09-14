@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/AndrewDongminYoo/peak-fanout/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/AndrewDongminYoo/peak-fanout/commits/main.atom"/>
+  <title>Recent Commits to peak-fanout:main</title>
+  <updated>2026-09-11T18:40:35Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/411906254c2e4639a3abdd87659d759847e1de94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/411906254c2e4639a3abdd87659d759847e1de94"/>
+    <title>
+        feat: Supabase magic-link auth, GET /me, and the Eden treaty call fro…
+    </title>
+    <updated>2026-09-11T18:40:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: Supabase magic-link auth, GET /me, and the Eden treaty call from the app (M0 part 2) (#9)
+
+* docs(design): specify the login and Me screens and the auth API shapes
+
+* build(supabase): add the local Supabase stack config and scripts
+
+* feat(api): verify Supabase JWTs and serve POST /auth/session and GET /me
+
+The app is now built by createApp({ users, jwt }) in src/app.ts so tests
+run against an in-memory users repository with tokens signed in the test;
+src/index.ts wires the Drizzle repository and the real verifier and
+listens. verifySupabaseJwt is one function that accepts HS256 with
+SUPABASE_JWT_SECRET and ES256 against the project&amp;#39;s JWKS, because the
+local Supabase CLI issues ES256 tokens. Missing, malformed, tampered,
+expired, and exp-less tokens are 401; /me before the first
+/auth/session upsert is 404.
+
+* feat(mobile): sign in with a Supabase magic link and persist the session
+
+The root layout becomes a Stack with Stack.Protected guards; the two tabs
+move under (tabs)/ so /login and /auth/callback live outside NativeTabs.
+The Supabase client persists the session with the Supabase Expo guide&amp;#39;s
+LargeSecureStore (AES key in expo-secure-store, ciphertext in
+AsyncStorage) and ties token refresh to app foreground. The callback
+completes the implicit-flow deep link with setSession, calls
+POST /auth/session, and serializes concurrent link attempts so the newest
+link always owns the persisted session.
+
+* feat(mobile): show the user&amp;#39;s row from GET /me on the Me screen
+
+* docs: describe auth, the local Supabase stack, and M0 completion
+
+README gains the supabase start step, the env values, and how to read
+the magic-link mail from Mailpit, and marks the M0 row done. AGENTS.md
+describes auth and /me as present, names the local Supabase stack as a
+heavy Docker dependency, and records the redirect-URL pattern rule.
+
+* docs: require a development build for the magic-link callback and add Android emulator hosts
+
+* fix(mobile): use the theme palette for the login error color
+
+* fix(mobile): key the Me query by user id and surface sign-out failures
+
+* fix(mobile): name the missing environment variable accurately
+
+* docs: name the Supabase CLI prerequisite in Getting started
+
+* fix(mobile): never retry a 404 on the Me query so the repair runs once
+
+* docs: set the Auth external URL so a physical device can follow the magic link&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3116d4d5cc213a1a07830359ff5b830a4b90f956</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/3116d4d5cc213a1a07830359ff5b830a4b90f956"/>
+    <title>
+        build: convert to a Bun workspaces monorepo with Elysia API and Drizz…
+    </title>
+    <updated>2026-09-11T15:30:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build: convert to a Bun workspaces monorepo with Elysia API and Drizzle db (M0 part 1)
+
+- Converted the project into a Bun workspaces monorepo to separate the mobile app, API, and database concerns.
+- Added an Elysia API with a typed `App` export and `GET /health` endpoint to provide a foundation for backend services and health checks.
+- Added a Drizzle database package with the `users` schema, connection factory, inferred types, and initial PostgreSQL migration to establish the data layer.
+- Added Docker Compose PostgreSQL support and updated scripts, CI, linting, documentation, and environment templates to support consistent local and automated workflows.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5c3d2fca75cf95cece93e8ec485505ed79cbcaa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/c5c3d2fca75cf95cece93e8ec485505ed79cbcaa"/>
+    <title>
+        fix(api): validate the whole PORT value as a decimal integer in 0-65535
+    </title>
+    <updated>2026-09-11T15:15:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(api): validate the whole PORT value as a decimal integer in 0-65535&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/424bc852760412c8b63912055d7b1fc7fceedf95</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/424bc852760412c8b63912055d7b1fc7fceedf95"/>
+    <title>
+        docs(design): add GET /health to the API surface
+    </title>
+    <updated>2026-09-11T13:01:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(design): add GET /health to the API surface&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/36abc7e9bb49c3551b0b6bd42a3e25d064994fa1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/36abc7e9bb49c3551b0b6bd42a3e25d064994fa1"/>
+    <title>
+        docs: describe the monorepo layout, gates, and getting started
+    </title>
+    <updated>2026-09-11T12:51:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: describe the monorepo layout, gates, and getting started
+
+README&amp;#39;s Target layout becomes Layout, Getting started gains the compose
+and migrate steps, and the Status paragraph says M0 is in progress.
+AGENTS.md describes the workspace as the current state, moves the code
+layout paths under apps/mobile, and gate rule 2 names bun test and
+drizzle-kit check. Milestone and measurement tables are untouched.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/980946fa0a400dcda5113110016c672a75bda59b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/980946fa0a400dcda5113110016c672a75bda59b"/>
+    <title>
+        build(compose): add Postgres 16 primary and the env example
+    </title>
+    <updated>2026-09-11T12:51:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(compose): add Postgres 16 primary and the env example&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc81d981d40eadcd82280599b3a5f45a28b81973</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/cc81d981d40eadcd82280599b3a5f45a28b81973"/>
+    <title>
+        feat(db): add Drizzle users schema, createDb, and the first migration
+    </title>
+    <updated>2026-09-11T12:51:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(db): add Drizzle users schema, createDb, and the first migration&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1276a225bc6bf18c820410bc6a9263f7fb7048e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/1276a225bc6bf18c820410bc6a9263f7fb7048e6"/>
+    <title>
+        feat(api): add Elysia app with GET /health and an exported App type
+    </title>
+    <updated>2026-09-11T12:51:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(api): add Elysia app with GET /health and an exported App type&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a907bff26c53f5d2ee5ed437b2aa2979a1ffa777</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/a907bff26c53f5d2ee5ed437b2aa2979a1ffa777"/>
+    <title>
+        build: convert the root into a Bun workspace and move the Expo app to…
+    </title>
+    <updated>2026-09-11T12:50:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build: convert the root into a Bun workspace and move the Expo app to apps/mobile
+
+The root package.json now only declares workspaces (apps/*, packages/*),
+the root scripts that fan out with `bun run --filter &amp;#39;@peak-fanout/*&amp;#39;`,
+the uuid and esbuild overrides, and the eslint tooling that the root
+eslint.config.mjs needs because trunk runs eslint from the root.
+bunfig.toml pins the hoisted linker so expo-doctor sees one copy of expo.
+The Expo app moves with git mv and is renamed @peak-fanout/mobile; its
+lint config stays in place and is extended from the root config.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f4d0be1619a0e4243d01d937e01f4ce74683046</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/6f4d0be1619a0e4243d01d937e01f4ce74683046"/>
+    <title>
+        ci: install dependencies before trunk check so eslint can load the pr…
+    </title>
+    <updated>2026-09-11T09:01:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: install dependencies before trunk check so eslint can load the project config&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c23f15e1818f682af9084bb13d27ada37301aad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/7c23f15e1818f682af9084bb13d27ada37301aad"/>
+    <title>
+        chore(security): suppress three unpatched transitive advisories in os…
+    </title>
+    <updated>2026-09-11T08:58:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(security): suppress three unpatched transitive advisories in osv-scanner.toml&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2aee384101cd51cf0e9c0d5128a211dad52d5ba8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/2aee384101cd51cf0e9c0d5128a211dad52d5ba8"/>
+    <title>
+        build(deps): override transitive uuid to 11.1.1 for GHSA-w5hq-g745-h8pq
+    </title>
+    <updated>2026-09-11T08:55:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(deps): override transitive uuid to 11.1.1 for GHSA-w5hq-g745-h8pq&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7767be865280f721f89e7ae5b2030906f98e5092</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/7767be865280f721f89e7ae5b2030906f98e5092"/>
+    <title>
+        chore(cspell): add pinact to the project dictionary
+    </title>
+    <updated>2026-09-11T08:49:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(cspell): add pinact to the project dictionary&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ea5e3af49af8ecccd605562182f55aa5ac66abc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/9ea5e3af49af8ecccd605562182f55aa5ac66abc"/>
+    <title>
+        docs(agents): describe the CI gate and action pinning
+    </title>
+    <updated>2026-09-11T08:49:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(agents): describe the CI gate and action pinning&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb860b86d5307e84340b056d15507167e2a1a132</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/eb860b86d5307e84340b056d15507167e2a1a132"/>
+    <title>
+        ci: add GitHub Actions workflow with bun run check and trunk check
+    </title>
+    <updated>2026-09-11T08:49:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: add GitHub Actions workflow with bun run check and trunk check
+
+Two jobs on push to main and on pull requests: `bun run check`
+(typecheck + lint) with Bun pinned through .bun-version, and
+`trunk check --all --no-fix` through trunk-action/setup so CI never
+formats. Actions are SHA-pinned by pinact with the version tag in a
+comment, and dependabot.yml keeps the pins and Bun dependencies current.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e74384de5215b88880919ffee9868c078bc9ab0f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/e74384de5215b88880919ffee9868c078bc9ab0f"/>
+    <title>
+        chore(trunk): enable pinact and add yamllint config
+    </title>
+    <updated>2026-09-11T08:48:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(trunk): enable pinact and add yamllint config&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c10ad150f2be7930b542edf31afa2673c7cf8b67</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/c10ad150f2be7930b542edf31afa2673c7cf8b67"/>
+    <title>
+        chore(github): add pull request template
+    </title>
+    <updated>2026-09-11T08:34:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(github): add pull request template&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8203db591b578510312bfa9212c100d5ea49114</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/e8203db591b578510312bfa9212c100d5ea49114"/>
+    <title>
+        docs: rewrite README, AGENTS, CLAUDE and add design.md for PeakCall
+    </title>
+    <updated>2026-09-11T08:33:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: rewrite README, AGENTS, CLAUDE and add design.md for PeakCall
+
+README owns the plan: status, milestones, the blank measurement table,
+stack decisions, and the target monorepo layout. design.md owns the
+screen, API, and data contracts. AGENTS.md owns the gate rules and the
+Expo SDK 57 working rules, and CLAUDE.md imports it so Claude Code and
+Codex read the same file.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ceb2d519d64a745c11a5b217b1b256cef558f8e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/ceb2d519d64a745c11a5b217b1b256cef558f8e7"/>
+    <title>
+        chore: replace template copyright holder in LICENSE
+    </title>
+    <updated>2026-09-11T08:33:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: replace template copyright holder in LICENSE&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5a54c7233ac1cfc2e1ba07bc39859914ae0b11b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndrewDongminYoo/peak-fanout/commit/b5a54c7233ac1cfc2e1ba07bc39859914ae0b11b"/>
+    <title>
+        style: apply trunk fmt to template assets and reset script
+    </title>
+    <updated>2026-09-11T08:33:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82999715?s=30&amp;v=4"/>
+    <author>
+      <name>AndrewDongminYoo</name>
+      <uri>https://github.com/AndrewDongminYoo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: apply trunk fmt to template assets and reset script&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

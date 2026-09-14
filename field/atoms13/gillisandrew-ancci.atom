@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/gillisandrew/ancci/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/gillisandrew/ancci/commits/main.atom"/>
+  <title>Recent Commits to ancci:main</title>
+  <updated>2026-09-12T22:59:59Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/329bafc6b1ebf0032f25f12af5855e8ad4cc6079</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/329bafc6b1ebf0032f25f12af5855e8ad4cc6079"/>
+    <title>
+        Release 0.5.0
+    </title>
+    <updated>2026-09-12T22:59:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release 0.5.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a93826240a48e100ab7a4e34e89aadcea118d10f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/a93826240a48e100ab7a4e34e89aadcea118d10f"/>
+    <title>
+        Purge everything that is not authoring or reviewing
+    </title>
+    <updated>2026-09-12T22:59:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Purge everything that is not authoring or reviewing
+
+One goal: write cards, sync them, fix what studying flags. Anything not in furtherance is
+gone.
+
+Removed: the limits and warnings system entirely - length is a judgement and a character
+count was a bad proxy for it, so the author skill makes that call from the deck&amp;#39;s
+AUTHORING.md and the validator only reports whether a card is valid. The raw-HTML template
+override, replaced by a single css: key, because restyling is all a deck ever needed. The
+style: alias, now that all 573 cards say type:. The example deck, the design doc, and a
+reference documenting an acquirer deleted two rounds ago.
+
+Kept, because not all cards are equal: card_types with their own fields, which is how a
+card carries audio, an image or a phonetic transcription; code and reverse; and the whole
+ingestion path.
+
+deck.yaml renames styles: to types:, which is breaking - a deck must be edited in step.
+
+Acceptance test holds: both decks sync add 0, update 0, orphan 0.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b3178385d6b396af96baa1c948fb2862de55a5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/2b3178385d6b396af96baa1c948fb2862de55a5f"/>
+    <title>
+        Say that a deck documents the types it invents
+    </title>
+    <updated>2026-09-12T22:19:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say that a deck documents the types it invents
+
+deck.yaml carries a type&amp;#39;s contract - what it requires and allows. It cannot carry what the
+type is for, which is the part a person needs before writing a card of it. The last item
+from the brief&amp;#39;s documentation list.
+
+No version bump: a README line changes nothing for an installed copy.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c16c7e6ec954661de8a75e289621ca0bffee46cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/c16c7e6ec954661de8a75e289621ca0bffee46cc"/>
+    <title>
+        Release 0.4.0
+    </title>
+    <updated>2026-09-12T22:18:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release 0.4.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7e4bf356347c7fe39839dcfcc578885d41b246a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/a7e4bf356347c7fe39839dcfcc578885d41b246a"/>
+    <title>
+        Make card types and their fields deck-defined
+    </title>
+    <updated>2026-09-12T22:18:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make card types and their fields deck-defined
+
+A card type is now a contract - requires, optional, cloze, fields - and the deck declares
+its types. That replaces the hardcoded cloze-versus-front/back branch: which keys a card
+must carry, may carry, and may not all come from the type it names.
+
+The tool ships basic and cloze as an always-available floor; a deck&amp;#39;s styles: and
+card_types: extend it. A bare name gets the basic contract UNLESS it matches a shipped
+name, which keeps that type. That exception is load-bearing rather than tidy: without it a
+deck listing cloze bare routes its cloze cards onto the basic note type, which Anki cannot
+do in place - 102 re-adds and 102 lost review histories on the agentic deck alone.
+
+style: is a silent alias for type:, so not one of the existing cards was rewritten.
+
+Field removal refuses. Anki&amp;#39;s modelFieldRemove destroys that field&amp;#39;s content on every note
+with no undo, so when a deck stops declaring a field, sync reports what Anki still has and
+names the two ways out - declare a new type, or remove it by hand. It never removes.
+
+Note lookup now queries every model in note_types:, not the two shipped ones. This was the
+most dangerous spot in the change: a model missing from that query makes its notes
+invisible, so each is re-added as a duplicate and orphan detection silently stops seeing
+them. It has a test.
+
+Deck fields nest under fields: on a card, so Card keeps extra=forbid and a misspelled key
+stays an error. They land before Feedback so the field you type into stays last. Per-field
+limits nest under limits.fields: for the same reason - flat, a misspelled back_char would
+become a limit on a field nobody has.
+
+Acceptance test: agentic-ai and quebec-french both sync add 0, update 0, orphan 0.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4402b7cc3f327332c52e91ee34fc45a537c53ce6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/4402b7cc3f327332c52e91ee34fc45a537c53ce6"/>
+    <title>
+        Drop card counts from the design doc
+    </title>
+    <updated>2026-09-12T17:42:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop card counts from the design doc
+
+Both decks grow. A count written into prose is wrong by the next authoring session, and
+the acceptance test is zero diff on the decks as they are - not on a number.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c0d333b50b91a828dae6924cdbc7f8775745edf4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/c0d333b50b91a828dae6924cdbc7f8775745edf4"/>
+    <title>
+        Record the design for deck-defined card types
+    </title>
+    <updated>2026-09-12T17:42:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Record the design for deck-defined card types
+
+Seven rounds of grilling turned the brief into decisions. The shape: card types are
+contracts (requires/optional/cloze/fields), the tool ships basic and cloze as an
+always-available floor, a deck&amp;#39;s list extends it, and a bare name matching a shipped type
+resolves to that type rather than to basic.
+
+That last rule is the one that matters. Without it a deck listing cloze bare would route its
+cloze cards onto the basic note type, which Anki cannot do in place - 102 re-adds and 102
+lost review histories on the agentic deck alone.
+
+Not built yet. Rollout, acceptance test and the two answers the PR note has to carry - field
+removal refuses, and note lookup queries every declared model - are all written down.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce029079192247afafb5c99b9b4e895361d3eea0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/ce029079192247afafb5c99b9b4e895361d3eea0"/>
+    <title>
+        Stop release.py leaking its own environment
+    </title>
+    <updated>2026-09-12T16:20:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop release.py leaking its own environment
+
+release.py runs in a uv script environment of its own, and passed VIRTUAL_ENV straight
+through to uv run pytest - which warned about an environment it then ignored, on every
+release. Found by running the failure path rather than by reading the code.
+
+No version bump: maintainer tooling changes nothing for an installed copy.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9a4c12e132a90ff31f52470acfa4d02d0a2450b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/d9a4c12e132a90ff31f52470acfa4d02d0a2450b"/>
+    <title>
+        Add release.py
+    </title>
+    <updated>2026-09-12T16:18:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add release.py
+
+The version lives in two manifests and an install is cached by version, so a push without
+a bump reaches nobody - which is how three feature releases shipped to no one. This owns
+both files and refuses a dirty tree, a non-increasing version, or manifests that already
+disagree. It writes by targeted replacement rather than re-serialising, so formatting and
+comments survive.
+
+No version bump: a maintainer script changes nothing for an installed copy.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd7b23763b0171de0f2ba90a76492d3c10ebe09c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/dd7b23763b0171de0f2ba90a76492d3c10ebe09c"/>
+    <title>
+        Let a deck ship its own card templates (0.3.0)
+    </title>
+    <updated>2026-09-12T16:12:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let a deck ship its own card templates (0.3.0)
+
+The templates: key documented itself as overriding Anki templates and CSS, and only ever
+read cards.css - the HTML was hardcoded and unreachable. It now reads six optional files,
+any subset, falling back to the shipped template for whatever a deck leaves out.
+
+An empty override file is an error rather than a blank card side, because Anki would
+accept it and render nothing on every card of that note type.
+
+This is safe only because note types are already named per deck: updateModelTemplates
+rewrites the type on every sync, so an override that leaked across decks would rewrite
+someone else&amp;#39;s cards.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a43b750fb364cf8b939671a5788b7499d3a9c596</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/a43b750fb364cf8b939671a5788b7499d3a9c596"/>
+    <title>
+        Describe the marketplace
+    </title>
+    <updated>2026-09-12T15:51:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Describe the marketplace
+
+The only thing claude plugin validate --strict flagged: a marketplace with no
+description tells nobody browsing it what the plugin is for.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d6c160b27a3024913718f70d1aa44295ee312760</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/d6c160b27a3024913718f70d1aa44295ee312760"/>
+    <title>
+        Release 0.2.0
+    </title>
+    <updated>2026-09-12T15:45:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release 0.2.0
+
+Three feature pushes have gone out under 0.1.0 - source ingestion, working from the root
+of a repository of decks, and moving deck guidance into three layers - so nobody who
+installed the plugin has received any of them. The install cache is keyed by version, so a
+republish at the same number has nowhere to land.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab8865648521e51c8405d068761dbf82ff379645</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/ab8865648521e51c8405d068761dbf82ff379645"/>
+    <title>
+        Move deck guidance into three layers
+    </title>
+    <updated>2026-09-12T15:35:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move deck guidance into three layers
+
+A deck was carrying an AUTHORING.md whose content was mostly not deck-specific: of 126
+lines in the agentic one, 7 were about that deck. The rest was universal card craft,
+personal house style, schema documentation duplicating the README, and examples
+duplicating the deck&amp;#39;s own cards.
+
+So deck.yaml gains audience, scope and avoid - three optional lines that are the only
+prose most decks need. Universal craft lives in the author skill; house style goes in a
+root ancci.yaml inherited by every deck in a repository. A deck that genuinely needs more
+keeps an AUTHORING.md, which overrides the rest.
+
+The example deck now has no AUTHORING.md at all, which is the shape a new deck should
+copy.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67bd01e7ff1b144985d60ce7d09f306f931754da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/67bd01e7ff1b144985d60ce7d09f306f931754da"/>
+    <title>
+        Work from the root of a repository of decks
+    </title>
+    <updated>2026-09-12T15:22:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Work from the root of a repository of decks
+
+A session usually sits at the root and moves between decks, so --deck now takes a deck
+name as well as a path, and decks.py lists what is there with card counts. Standing at a
+root with no deck still refuses to guess, and names the decks it found.
+
+All five skills now pick the deck first and pass it explicitly, because syncing or
+authoring into the wrong deck is worse than asking.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/299299d23e8c823828613ccb46f07da795970b74</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/299299d23e8c823828613ccb46f07da795970b74"/>
+    <title>
+        Drop the repository acquirer, and fix what the smoke tests found
+    </title>
+    <updated>2026-09-12T15:06:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop the repository acquirer, and fix what the smoke tests found
+
+Cloning a repo and reading it is something an agent already does well, so the fetcher
+and its guesses about where docs live are gone; references/repo.md says to clone and
+read instead. A github.com URL is now simply a page, which renders the README anyway.
+RepoSource stays: citing a repo at a commit is still a real citation.
+
+Running the remaining acquirers against real inputs for the first time found two
+defects, neither of which unit tests would have caught:
+
+- An EPUB cover is a base64 data URI, and converting it put the whole encoded file in
+  the note. Images are now replaced by their alt text or dropped.
+- PDFs that position characters instead of writing spaces came out with 24% of tokens
+  fused together - whole sentences as one word. An explicit, size-relative word gap
+  takes that to zero.
+
+Video needed no changes: timestamped windows, chapters and auto-caption detection all
+worked against a real video.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abf87cf6a169952922430a914524c7d91f48b561</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/abf87cf6a169952922430a914524c7d91f48b561"/>
+    <title>
+        Add source ingestion
+    </title>
+    <updated>2026-09-12T14:56:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add source ingestion
+
+One entrypoint takes a URL, a YouTube link, a repository, a PDF, an EPUB or a text
+file and works out the kind from the shape of what it is given. Extracted text is cached
+under .ancci/ and never committed; distilling it into a research note is a reading job,
+so the script stops at the raw text and the skill does the rest.
+
+Acquirers are lazily imported, so reading a local file loads neither a video extractor
+nor an HTTP client.
+
+Two things measured rather than assumed, both of which contradicted what I first believed:
+
+- The converter reads a code block&amp;#39;s language only off language-/lang- on &amp;lt;pre&amp;gt; or &amp;lt;code&amp;gt;,
+  never from an ancestor. A pre-pass copies it down where a site names it - but MkDocs
+  Material as deployed on docs.astral.sh names it nowhere, so fences there arrive bare.
+  Documented rather than papered over.
+- MkDocs line-number anchors leak an empty link onto every line of every code block: 136
+  in one page. An earlier synthetic test used an anchor with no href, which the converter
+  drops by itself, so it passed while the real markup was mangled. The regression test now
+  uses the markup that actually ships.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/591c4b0b5d7c3760b4787cc6c3782db5924952b5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/591c4b0b5d7c3760b4787cc6c3782db5924952b5"/>
+    <title>
+        Package ancci as a Claude Code plugin
+    </title>
+    <updated>2026-09-12T14:38:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Package ancci as a Claude Code plugin
+
+The package becomes standalone scripts over a shared _lib, each declaring its own
+dependencies inline so uv builds the environment on first run and nobody installs
+anything. validate.py needs only pydantic and pyyaml; the review commands need no
+Markdown renderer, which is why fetch_notes moved out of sync and the exception types
+moved into a module that imports nothing.
+
+Four skills: new-deck and author run only when asked for by name, review and sync can
+also be triggered in plain English. add-source waits for the ingestion work rather than
+shipping a skill that calls scripts that do not exist yet.
+
+Adds the plugin manifest, a marketplace entry so it installs from GitHub, MIT licence,
+and a coffee-brewing example deck that overrides the default styles - the tool shipping
+proof that it is not only for software.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed1e702cfe84747a167bed2cb6bf20f9d08a48a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/ed1e702cfe84747a167bed2cb6bf20f9d08a48a9"/>
+    <title>
+        Move the deck out to its own repo
+    </title>
+    <updated>2026-09-12T14:30:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move the deck out to its own repo
+
+The deck now lives in a separate decks repository with its authoring history intact; this
+repo keeps only the tooling. Nothing about one subject is left in it.
+
+The deck&amp;#39;s own history stays here too - these paths were removed, not rewritten - so
+git log still answers questions about how a card got the way it is.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc2143cb71313c14c1ea76f137a9a7c2cd9aac38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/fc2143cb71313c14c1ea76f137a9a7c2cd9aac38"/>
+    <title>
+        Make the deck a configuration, not a constant
+    </title>
+    <updated>2026-09-12T14:27:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the deck a configuration, not a constant
+
+Everything that was hardcoded about one subject now comes from a deck.yaml the
+deck owns: its Anki deck and note type names, tag root, card styles, answer-shape
+limits, extra tags and what it may cite. The tool ships defaults; a deck overrides
+what it needs, and a repo of decks can share house style in a root ancci.yaml.
+
+Sources grow types - url, file, repo, video - so a card can cite a page, a path, a
+commit or a moment. A bare string still reads as a URL, which is why every existing
+card parses and renders byte for byte as before.
+
+Card files carry an NN- prefix that orders them and means nothing else: the area,
+the ids and the tags are unchanged by renumbering. Commands find their deck by
+walking up from the working directory.
+
+Verified against the real deck: sync --dry-run reports 0 adds, 0 updates, 0 orphans
+across all every card.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc60528dfeb361bdc5ae9ff48f1b87f6ba8b9df6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/gillisandrew/ancci/commit/dc60528dfeb361bdc5ae9ff48f1b87f6ba8b9df6"/>
+    <title>
+        Add ancci resolve to clear feedback and flags
+    </title>
+    <updated>2026-09-12T12:01:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/3246357?s=30&amp;v=4"/>
+    <author>
+      <name>gillisandrew</name>
+      <uri>https://github.com/gillisandrew</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add ancci resolve to clear feedback and flags
+
+Closes the review loop: report lists bad cards, resolve clears them once fixed.
+Flags have no dedicated AnkiConnect action, so it goes through
+setSpecificValueOfCard, whose value must be an int. The leech tag and review
+history stay Anki&amp;#39;s.
+
+Claude-Session: https://claude.ai/code/session_01SV4x7V1RAUkUxB7VjpvET5&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

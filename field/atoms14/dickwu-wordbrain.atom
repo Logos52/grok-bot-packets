@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/dickwu/wordbrain/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/dickwu/wordbrain/commits/main.atom"/>
+  <title>Recent Commits to wordbrain:main</title>
+  <updated>2026-09-13T19:40:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0b3b6af11a3306bf95cc79d1459bf8d7883b2ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/e0b3b6af11a3306bf95cc79d1459bf8d7883b2ea"/>
+    <title>
+        chore: update dependencies and improve key hashing logic
+    </title>
+    <updated>2026-09-13T19:40:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: update dependencies and improve key hashing logic
+
+- Updated `next` from `16.3.4` to `16.3.5`
+- Updated `react` and `react-dom` from `19.2.8` to `19.3.0`
+- Updated `@types/node`, `@types/react`, and `@types/react-dom` to their latest versions
+- Updated `@zumer/snapdom` from `2.24.16` to `2.24.18`
+- Updated various Rust dependencies in `Cargo.lock`, including `bitflags` from `2.13.1` to `2.13.2`, and several others
+- Refactored key hashing logic in `src-tauri/src/keys.rs` to simplify macOS Keychain handling and ensure unit tests run on all OSes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11f884afd551afe51771053220ba322aeb8c77c9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/11f884afd551afe51771053220ba322aeb8c77c9"/>
+    <title>
+        Add tests for EPUB import and learning functionality
+    </title>
+    <updated>2026-09-08T15:29:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add tests for EPUB import and learning functionality
+
+- Implement tests for the `saveEpubWithChapters` function to ensure successful chapter identification and error handling during EPUB import.
+- Create tests for various learning policies, including interleaving old weak words, managing daily new quotas, and sibling card burying logic.
+- Introduce new IPC interfaces for learning operations, including session management and card handling.
+- Develop the learning module with policies for managing learning sessions, candidate cards, and review operations.
+- Add recovery storage functionality to manage draft states in the learning database.
+- Implement tests for the word store to validate reader state classification and rollback behavior on IPC failures.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0442eef1441cd1dd36e61639e08e4180b96a53f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/0442eef1441cd1dd36e61639e08e4180b96a53f5"/>
+    <title>
+        release: v0.3.0
+    </title>
+    <updated>2026-07-07T14:40:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.3.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca8bb9c8c433123f5a84eb6ee03e8b0a177317f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/ca8bb9c8c433123f5a84eb6ee03e8b0a177317f2"/>
+    <title>
+        feat(learning): whole-loop hub, word-profile recall, review memory an…
+    </title>
+    <updated>2026-07-07T14:40:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(learning): whole-loop hub, word-profile recall, review memory anchors
+
+- New word_profile IPC aggregates a word&amp;#39;s full learning trail (state,
+  FSRS schedule + recent reviews, lookup history, usage telemetry, and
+  every containing material tagged with source_kind) in one call.
+- New learning_stats IPC powers the Learning hub: vocabulary funnel,
+  SRS load, local-timezone review-activity strip, material totals.
+- LearningView placeholder replaced with the whole-process cockpit:
+  due/learning/new-this-week/reviews-today cards, funnel bar, i+1
+  next-read recommendations, practice pool with level chips.
+- WordProfileDrawer replaces MaterialsForWordDrawer everywhere; clicks
+  route by source kind (stories deep-link into StoryView via the new
+  openStoryId prop; documents load fully into the Reader — fixes stale
+  reader text when opening from the drawer).
+- ReviewSession shows &amp;quot;where you met it&amp;quot; sentences after reveal and
+  recaps Again/Hard words as drill chips on the done screen.
+- Words-table lemmas open the profile drawer.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1dae9fedbd70abe57278a876ce33c243735c9d1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/1dae9fedbd70abe57278a876ce33c243735c9d1b"/>
+    <title>
+        docs: refresh CLAUDE.md commands, architecture, and release guidance
+    </title>
+    <updated>2026-07-07T14:40:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: refresh CLAUDE.md commands, architecture, and release guidance
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b4f173b8d59e71ad2d3bd98b3cebcaa3cd747ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/9b4f173b8d59e71ad2d3bd98b3cebcaa3cd747ba"/>
+    <title>
+        release: v0.2.5
+    </title>
+    <updated>2026-06-05T20:02:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.5&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/53487782a11387b1cdd0d65270a71bb855ce56d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/53487782a11387b1cdd0d65270a71bb855ce56d8"/>
+    <title>
+        refactor(dictionary): extract shared DictionaryEntryFrame, render ful…
+    </title>
+    <updated>2026-06-05T19:58:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(dictionary): extract shared DictionaryEntryFrame, render full entry in SRS review
+
+Pull the sandboxed-iframe renderer (buildDictionaryFrameSrcDoc + cross-reference
+navigate handling + asset-base-url normalization) out of WordLookupModal into a
+reusable DictionaryEntryFrame component.
+
+- WordLookupModal now consumes &amp;lt;DictionaryEntryFrame&amp;gt; and re-exports
+  buildDictionaryFrameSrcDoc for back-compat.
+- SRS ReviewSession renders the full styled dictionary entry via the shared
+  frame instead of plain definition text.
+- Add unit tests for DictionaryEntryFrame (full-page render + plain-text fallback).
+
+Co-Authored-By: Claude Opus 4.8 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ed801eaf45988634fd46e5aa899c138d030f86f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/ed801eaf45988634fd46e5aa899c138d030f86f0"/>
+    <title>
+        release: v0.2.4
+    </title>
+    <updated>2026-06-05T18:38:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.4&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9ce0ad88b999271484de2a7b40dc0aa0cae3612</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/f9ce0ad88b999271484de2a7b40dc0aa0cae3612"/>
+    <title>
+        chore(deps): bump @tiptap/* to 3.26.0
+    </title>
+    <updated>2026-06-05T18:37:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): bump @tiptap/* to 3.26.0
+
+Bump @tiptap/extension-placeholder, @tiptap/pm, @tiptap/react and @tiptap/starter-kit from 3.25.0 to 3.26.0 and refresh bun.lock so the lockfile matches the package.json pins (they had drifted ahead). Also syncs the wordbrain crate version line in Cargo.lock.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0ef5da109d72802a464e9e212704cba6a72dfd1c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/0ef5da109d72802a464e9e212704cba6a72dfd1c"/>
+    <title>
+        feat(dictionary): auto-search lookup a beat after typing stops
+    </title>
+    <updated>2026-06-05T18:37:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(dictionary): auto-search lookup a beat after typing stops
+
+Fire the dictionary lookup automatically 450ms after the last keystroke, so looking up a word no longer needs an Enter press or Search click. A lastLookupRef guards the debounce against the on-mount autoSearch path, trailing-whitespace re-normalization, linked-entry navigation, and the Back button, so only fresh typing re-fires the request.
+
+Covered by two new WordLookupModal tests: fires after typing, and does not auto-fire the initial query when autoSearch is off.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c53f3051a11f2f03b9c40656000ad439ba2f11cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/c53f3051a11f2f03b9c40656000ad439ba2f11cf"/>
+    <title>
+        release: v0.2.3
+    </title>
+    <updated>2026-06-05T04:04:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.3&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f6f199e45212ba8e67ce04a43f4a6e4084aaaa01</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/f6f199e45212ba8e67ce04a43f4a6e4084aaaa01"/>
+    <title>
+        chore(assets): new app icon + regenerated icon set
+    </title>
+    <updated>2026-06-05T04:03:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(assets): new app icon + regenerated icon set
+
+Regenerate the full icon set (icns/ico/png + Windows Store logos) from a new source app-icon.svg.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1930f95fad07329dff95b6c020fb45ce21f2cffe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/1930f95fad07329dff95b6c020fb45ce21f2cffe"/>
+    <title>
+        chore(deps): refresh JS + Rust dependencies
+    </title>
+    <updated>2026-06-05T04:03:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(deps): refresh JS + Rust dependencies
+
+Bump JS deps (next 16.2.7, antd 6.4.3, @tiptap 3.25.0, react 19.2.7, tailwind 4.3.0, ts-fsrs 5.4.1) and refresh Cargo.lock.
+
+Tiptap 3.25 pulled a duplicate prosemirror-model that broke the WordHighlightExtension typecheck — pin it to a single copy via package.json overrides. Tiptap 3.25&amp;#39;s placeholder viewport tracking also calls document.elementFromPoint (absent in jsdom), so polyfill it in vitest.setup.ts.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5f184d36f2e55eddf0bec6ffe73b24287c647e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/c5f184d36f2e55eddf0bec6ffe73b24287c647e3"/>
+    <title>
+        chore: prettier auto-format tauri.conf.json endpoints array
+    </title>
+    <updated>2026-05-15T23:15:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: prettier auto-format tauri.conf.json endpoints array&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c4078e481493e5a7eea7488c8325abae71a9580</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/2c4078e481493e5a7eea7488c8325abae71a9580"/>
+    <title>
+        feat(learning): sidebar nav + default landing + Learning stat (v0.3 F…
+    </title>
+    <updated>2026-05-15T23:14:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(learning): sidebar nav + default landing + Learning stat (v0.3 Fri-night)
+
+First slice of the learning-first repositioning. App now boots to a
+Learning page (placeholder copy &amp;quot;Garden coming Sat AM&amp;quot;) instead of the
+Reader. The sidebar carries a third stat — Learning: NNN — alongside
+Known and Due today, and a new Practice-group nav entry sits between
+Reader and Review.
+
+What landed:
+- New ViewId &amp;#39;learning&amp;#39;; VIEW_LABELS + NAV updated; default useState
+  flipped from &amp;#39;reader&amp;#39; to &amp;#39;learning&amp;#39;.
+- New useLearningStore + refreshLearningCount() mirror useSrsStore. The
+  count source is list_words({states:[&amp;#39;learning&amp;#39;]}).length via the
+  existing TanStack-style wrapper; no new Rust IPC.
+- Hooked into the existing 30s polling tick + the first-launch hydrate
+  path so the stat refreshes alongside dueCount.
+- Placeholder LearningView matches Reader/Words editorial chrome so the
+  page doesn&amp;#39;t look stubbed.
+
+Saturday picks up the wordStore audit (the actual `learning: Set`),
+the Reader/Writing state-aware highlight, and the canonical-pool TS
+composer that powers the Garden scatter. See:
+~/.gstack/projects/dickwu-wordbrain/lifefarmer-main-design-20260515-160613.md
+
+Verified: bun run format clean, tsc --noEmit clean.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7aa4891eb01ad58b08631aa31e54505fa4a1470a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/7aa4891eb01ad58b08631aa31e54505fa4a1470a"/>
+    <title>
+        release: v0.2.2
+    </title>
+    <updated>2026-04-29T15:57:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.2&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/529b3209281c3c82b88e172ff8bccc7ebb8e2ec7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/529b3209281c3c82b88e172ff8bccc7ebb8e2ec7"/>
+    <title>
+        chore(ui): drop stale hardcoded sidebar version badge
+    </title>
+    <updated>2026-04-29T15:56:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(ui): drop stale hardcoded sidebar version badge
+
+The sidebar showed a hardcoded `v0.1.9` even on v0.2.1 because the
+constant was never re-bumped. Remove the badge and its prop entirely
+rather than wiring it to a real source — the About / settings surfaces
+already expose the version. Also folds in the v0.2.1 Cargo.lock churn
+that escaped the release commit.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9c7b74303a7d60ee17a5a8f039f35bf7be64789</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/c9c7b74303a7d60ee17a5a8f039f35bf7be64789"/>
+    <title>
+        release: v0.2.1
+    </title>
+    <updated>2026-04-29T04:29:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: v0.2.1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f66b098b1f4e711928a3e1c26dbaff44cbff105f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/f66b098b1f4e711928a3e1c26dbaff44cbff105f"/>
+    <title>
+        feat(dict): persist lookup history and rebase iframe assets on API or…
+    </title>
+    <updated>2026-04-29T04:29:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(dict): persist lookup history and rebase iframe assets on API origin
+
+- Mirror the renderer&amp;#39;s lookup-history into a Turso `lookup_history` table
+  (lemma PK + counters + timestamps) so searches survive webview resets and
+  app restarts. New IPC commands record/list/remove/clear, with the frontend
+  keeping localStorage as the unauthenticated-webview fallback.
+- Propagate `asset_base_url` from the backend so `WordLookupModal`&amp;#39;s iframe
+  injects a `&amp;lt;base href=&amp;quot;…&amp;quot;&amp;gt;` and relative dictionary asset URLs resolve
+  against the configured API server instead of the packaged Tauri app.
+
+Tests: schema/normalize/record/list/remove/clear unit tests on the Rust side,
+a connection-close-and-reopen integration test in `persistence_test.rs`, and
+a new `buildDictionaryFrameSrcDoc` vitest covering doctype/head/fragment paths.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/954df8856eef52e592986b42bdf639adfeafaa3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dickwu/wordbrain/commit/954df8856eef52e592986b42bdf639adfeafaa3a"/>
+    <title>
+        docs(skill): document traps #13-15 from v0.2.0 (cask license, updater…
+    </title>
+    <updated>2026-04-29T04:11:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4208695?s=30&amp;v=4"/>
+    <author>
+      <name>dickwu</name>
+      <uri>https://github.com/dickwu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(skill): document traps #13-15 from v0.2.0 (cask license, updater darwin keys, Gatekeeper)
+
+Three traps surfaced post-tag for v0.2.0:
+
+  #13 — homebrew cask used `license &amp;quot;MIT&amp;quot;`, which is formula-only DSL;
+        every release v0.1.7 → v0.2.0 shipped a syntactically broken
+        cask. CI didn&amp;#39;t catch it because gh api PUT doesn&amp;#39;t parse Ruby.
+  #14 — release.yml emitted only `darwin-universal` in latest.json,
+        but Tauri&amp;#39;s updater queries `darwin-aarch64` / `darwin-x86_64`.
+        Apple Silicon installs hit &amp;quot;None of the fallback platforms […]
+        were found&amp;quot;.
+  #15 — un-notarized brew installs are quarantined; users see &amp;quot;WordBrain
+        is damaged&amp;quot;. Documented xattr workaround until APPLE_*
+        notarization secrets are wired.
+
+Also extends the skill&amp;#39;s frontmatter description so future invocations
+match on these post-release symptoms (brew install failure, fallback-
+platforms updater error, Gatekeeper damaged-app prompt).
+
+Co-Authored-By: Claude Opus 4.7 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

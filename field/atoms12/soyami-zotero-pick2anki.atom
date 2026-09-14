@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/soyami/zotero-pick2anki/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/soyami/zotero-pick2anki/commits/master.atom"/>
+  <title>Recent Commits to zotero-pick2anki:master</title>
+  <updated>2026-09-11T09:06:03Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4792c6ae8df536a6f23b026a4bfa8156a2607f81</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/4792c6ae8df536a6f23b026a4bfa8156a2607f81"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2026-09-11T09:06:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update README.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/70fbcd409d3570415ee7e657e1a00464d0f4354c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/70fbcd409d3570415ee7e657e1a00464d0f4354c"/>
+    <title>
+        Add files via upload
+    </title>
+    <updated>2026-09-11T08:34:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add files via upload
+
+也是AI帮我写的一个模板&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3414dd431b53379f6377c228f7805f91d4a55757</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/3414dd431b53379f6377c228f7805f91d4a55757"/>
+    <title>
+        fix: 修复被误保存截断的 package.json author 字段
+    </title>
+    <updated>2026-09-11T08:08:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 修复被误保存截断的 package.json author 字段
+
+现象：本地 package.json 的 author 在 2026-09-11 15:48:52 被某次编辑器保存截断为
+&amp;quot;zotero-pick2anki &amp;quot;（中文部分丢失，属非 UTF-8 另存导致），随后被 git add -A 一起提交进 5ecf262。
+排查：同时间窗口内只有该文件被改动（其余两处为本次的正常编辑），此前提交 d5d23d8 中该字段完好。
+
+修法：作者字段改为 &amp;quot;soyami&amp;quot;（干净的公开值，与 LICENSE 的版权行、git 提交身份一致；
+Pick2anki 的衍生说明仍在 README「License 与致谢」与 LICENSE-Pick2anki 中，归属信息不丢失）。
+
+已验证：JSON 合法；npm run build 通过，产物 manifest 的 author=soyami、name=Pick2anki、version=1.0.6。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ecf2627237d44f18346819f2fe90d08eb6a8378</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/5ecf2627237d44f18346819f2fe90d08eb6a8378"/>
+    <title>
+        docs(ci): README 增英文简介与三步发版说明；发布工作流加两条自检守卫
+    </title>
+    <updated>2026-09-11T08:07:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(ci): README 增英文简介与三步发版说明；发布工作流加两条自检守卫
+
+背景：作者希望&amp;quot;以后只管更新插件&amp;quot;，所以把发版流程固化成三步 + 机器自检。
+
+README：
+- 顶部新增 &amp;lt;details&amp;gt; 英文简介（Zotero 论坛/国际用户看得懂：是什么、依赖、安装、用法、
+  隐私、与 Translate for Zotero 的关系、许可证），中文正文保持不变
+- 「发布」小节改写为明确的三步操作（改 version → 提交推送 → 打数字标签并推送），
+  并说明工作流会自动做哪些事、最后会跑自检
+
+工作流 .github/workflows/release.yml：
+- 新增「确定要发布的标签」步骤（tag 推送取 GITHUB_REF_NAME，手动运行取输入值，
+  留空则只刷新清单桶）
+- 自检①：标签必须与 package.json 的 version 一致，否则直接失败 —— 避免 update.json 里的
+  下载地址（按 version 拼接）与实际标签不匹配导致更新链接 404
+- 自检②：发布后断言 latest Release 带 application/x-xpinstall 资产、且 release 清单桶是
+  pre-release，否则 job 失败 —— 把&amp;quot;插件市场抓不到包&amp;quot;这类静默故障变成显式失败
+- 原来在每次运行时无条件把 .xpi 也挂到清单桶的逻辑保留（双保险）
+
+验证（本地干跑，未消耗 GitHub Actions 额度）：
+- YAML 用解析器校验通过；7 个 run 块用 git 自带 bash 逐个 `bash -n` 语法检查通过
+- 用桩 gh 模拟线上返回值跑真实逻辑，5 个用例全部符合预期：
+  1) 标签=version(1.0.6) → 放行
+  2) 标签=9.9.9 → 失败，输出中文 ::error:: 指明改 version 或改标签
+  3) 线上真实状态（latest=1.0.6 带 xpi、桶 pre-release）→ 放行
+  4) latest 无 xpi → 失败
+  5) 桶非 pre-release → 失败&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d433058220ca5c059de7aee0fd1be1eca8a99b55</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/d433058220ca5c059de7aee0fd1be1eca8a99b55"/>
+    <title>
+        fix(ci): 修正发布布局——清单桶标为 pre-release，避免抢占 latest
+    </title>
+    <updated>2026-09-11T07:25:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ci): 修正发布布局——清单桶标为 pre-release，避免抢占 latest
+
+问题（本轮实测发现的真实故障）：
+社区插件市场（syt2/zotero-addons-scraper）取包的方式是 tagName &amp;quot;latest&amp;quot; →
+GitHub /releases/latest → 在该 Release 里找 content_type 为 application/x-xpinstall 的资产。
+而本仓库目前 /releases/latest 返回的是 &amp;quot;release&amp;quot; 那个清单桶（只有 update.json、没有 xpi），
+抓取方会记录 &amp;quot;No XPI found&amp;quot; 并把插件排除在市场之外。
+
+修法（工作流）：
+- release 清单桶：创建/编辑时加 --prerelease（GitHub 的 latest 会排除 pre-release，
+  因此 latest 稳定指向真正的版本 Release，tag 也显示为正确版本号）
+- 清单桶里同时再放一份 .xpi 作为双保险（万一有工具直接取了这个 Release 也能拿到包）
+- workflow_dispatch 增加可选输入 tag：留空时只刷新清单桶（用于修复线上已有的 Release），
+  填了 tag 才同时发布该版本 Release
+- YAML 已用解析器校验通过
+
+顺带：README 的「发布」小节补上两个 Release 的分工表。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5d23d824cd0f018dfb0cc52f8d741291e8621b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/d5d23d824cd0f018dfb0cc52f8d741291e8621b9"/>
+    <title>
+        chore: addonID 定稿为 zoteropick2anki@soyami.github.io，README 增补隐私与网络行为
+    </title>
+    <updated>2026-09-11T07:14:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: addonID 定稿为 zoteropick2anki@soyami.github.io，README 增补隐私与网络行为
+
+1) addonID：zoteropick2anki@local → zoteropick2anki@soyami.github.io
+   插件 ID 是&amp;quot;安装身份&amp;quot;，发布后再改用户需要卸载重装，所以在打首个发布标签前定稿。
+   同步更新：test/zotero-stub.ts（桩里的 config）、test/integration.ts（监听注册断言）、
+   _dev/zotero-loadtest.ps1（旁加载文件名必须等于插件 ID）。
+   偏好前缀 extensions.zotero.zoteropick2anki.* 与 ID 无关，不受影响，用户设置不会丢。
+   构建后核对 manifest：applications.zotero.id = zoteropick2anki@soyami.github.io ✓
+
+2) README 新增「隐私与网络行为」小节（提交到论坛/插件市场前必备）：
+   会联网访问 5 个词典站与音频 CDN、写卡只连本机 AnkiConnect、无账号/无 API Key/无遥测、
+   不收集不上传文献内容、唯一主动检查是 update_url 拉取 update.json。
+
+3) 自测：npm test 96/96 通过（含 reader 监听注册的插件 ID 断言）；
+   真实 Zotero 隔离 profile 加载测试通过。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f34deedda1ce441096c13573d997c1099c325478</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/f34deedda1ce441096c13573d997c1099c325478"/>
+    <title>
+        docs: 许可改为标准 MIT、README 继续瘦身、发布标签改用纯数字
+    </title>
+    <updated>2026-09-11T07:01:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 许可改为标准 MIT、README 继续瘦身、发布标签改用纯数字
+
+1) LICENSE 改为标准 MIT 正文（不再夹中文说明），让 GitHub 能识别出 MIT 徽章；
+   衍生说明与第三方致谢仍在 README「License 与致谢」中，Pick2anki 的原始许可证
+   文本仍保留在 LICENSE-Pick2anki
+
+2) README 继续瘦身（322 → 182 行）：
+   - 移出「架构」（目录树 + 从 Pick2anki 复用/新写的文件对照表）与「验证记录」
+     （自动化测试清单、实测字段内容、人工验证清单）
+   - 这两段内容原样搬到内部区 _dev/架构与验证记录-internal.md（不进 Git），README
+     只保留「项目是什么 / 与 zotero-pdf-translate 的关系 / 功能 / 安装 / 使用 /
+     已知限制 / 许可证与致谢」
+
+3) 发布标签改用纯数字（不带 v）：
+   - zotero-plugin.config.ts 显式设置 xpiDownloadLink，去掉 scaffold 默认模板里的 &amp;quot;v&amp;quot;
+     （否则 update.json 的下载地址会指向 .../download/v1.0.7/... 而标签实际是 1.0.7）；
+     构建后核对 update_link = .../releases/download/1.0.6/zotero-pick2anki.xpi ✓
+   - .github/workflows/release.yml 触发条件改为纯数字标签模式 [0-9]*.[0-9]*.[0-9]*
+   - README「发布」小节同步说明标签用纯数字（如 1.0.7）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d18fb6ad99da0dda5aa1a1773bfc8d14e2a6559</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/7d18fb6ad99da0dda5aa1a1773bfc8d14e2a6559"/>
+    <title>
+        docs: README 精简 + 新增发布工作流
+    </title>
+    <updated>2026-09-11T06:57:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: README 精简 + 新增发布工作流
+
+README：
+- 整段删除「更新记录」（v1.0.0~v1.0.6 的逐版本说明），正文不再出现版本号，README 只保留
+  项目是什么、怎么装、怎么用、架构与文件对照、已知限制、验证方式、许可证与致谢
+- 去掉装饰性 emoji：表格里的 ✅/❌ 改为文字（如「连接成功」「403（自动跳过）」）；
+  保留 ➕ Anki、✔ / ↺ / ⏳、📖 在线词典、🔍 查词 —— 这些是插件 UI 上真实存在的按钮名/区块名，
+  保留是为了让用户能把文档与界面上的东西对上
+- 「发布」小节补上自动化流程说明
+
+新增 .github/workflows/release.yml：
+- 触发：推送 v* 标签（或在 Actions 页手动运行）
+- 流程：checkout → setup-node 22（scaffold 需要 ≥22.8）→ npm ci → npm run build
+  → 把 .scaffold/build/zotero-pick2anki.xpi 作为附件挂到该标签的 Release
+  → 把 .scaffold/build/update.json 挂到固定的 release 标签（插件 manifest 的 update_url 指向它，
+    Zotero 靠它检查更新 / 放宽版本兼容区间）
+- YAML 已用 yaml 解析器校验通过&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ededf8888de25b568143032623f032997d3541e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/soyami/zotero-pick2anki/commit/ededf8888de25b568143032623f032997d3541e3"/>
+    <title>
+        chore: v1.0.6 初始提交（重建仓库历史）
+    </title>
+    <updated>2026-09-11T06:44:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/67258504?s=30&amp;v=4"/>
+    <author>
+      <name>soyami</name>
+      <uri>https://github.com/soyami</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: v1.0.6 初始提交（重建仓库历史）
+
+Zotero 划词词典插件 zotero-pick2anki v1.0.6：在内置 PDF/EPub 阅读器里划选英文单词
+→ 5 个在线词典源聚合释义 → 一键通过 AnkiConnect 写入 Anki 生词卡（原句取原文句子）。
+
+本提交是重建后的首条记录，内容为 v1.0.6 工作区快照：
+
+- 复用 Pick2anki（MIT © soyami）：5 个词典适配器、统一词典 schema、AnkiConnect 客户端、
+  Anki 字段 HTML 生成、Edge TTS 协议实现、弹窗与设置页设计
+- 新增 Zotero 宿主适配层：http.ts（Zotero.HTTP）、env.ts（沙箱环境）、sha256.ts、
+  zdom.ts（XUL/XHTML DOM）、styles.ts、page-text.ts（从文本层取原句）
+- reader 划词弹窗（含 v1.0.6 修复：文本层在内层 iframe，需按 [data-page-number] .textLayer 定位）、
+  中文设置面板（上下堆叠版式）、Zotero 偏好持久化与 Obsidian data.json 导入
+- 构建：npm run build → .scaffold/build/zotero-pick2anki.xpi
+- 自测：npm test（96/96，含真实网络查词与真实 AnkiConnect 写卡，测后清理）
+- 真实 Zotero 10.0.1 隔离 profile 加载测试通过
+- 仓库地址：https://github.com/soyami/zotero-pick2anki
+  （package.json 的 homepage/repository 与 zotero-plugin.config.ts 的 updateURL 均已指向它；
+    manifest 里的 update_url 为 .../releases/download/release/update.json）
+
+不包含（按 AGENTS.md 目录约定排除）：AGENTS.md / CLAUDE.md / _dev / _private / _templates、
+构建产物（*.xpi）、缓存与依赖目录。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

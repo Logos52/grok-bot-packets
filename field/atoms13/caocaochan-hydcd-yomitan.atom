@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/caocaochan/hydcd-yomitan/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/caocaochan/hydcd-yomitan/commits/main.atom"/>
+  <title>Recent Commits to hydcd-yomitan:main</title>
+  <updated>2026-09-12T17:30:41Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/796b3d79c5b3fb1bd012f57734e0143545d82b2a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/796b3d79c5b3fb1bd012f57734e0143545d82b2a"/>
+    <title>
+        Remove image captions from Light edition
+    </title>
+    <updated>2026-09-12T17:30:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remove image captions from Light edition&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62441781bf9e470d8e60753de311eb14b55ab221</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/62441781bf9e470d8e60753de311eb14b55ab221"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39;
+    </title>
+    <updated>2026-09-12T12:31:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c39d96005dacfffa0bde49b494c3b098cdc61ce6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/c39d96005dacfffa0bde49b494c3b098cdc61ce6"/>
+    <title>
+        Add Light dictionary edition and release validation
+    </title>
+    <updated>2026-09-12T12:30:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Light dictionary edition and release validation&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/64e3375e83a9b4e24ebfacc83ae211574e468fce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/64e3375e83a9b4e24ebfacc83ae211574e468fce"/>
+    <title>
+        Merge pull request #1 from Fighter1/main
+    </title>
+    <updated>2026-09-12T07:12:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1 from Fighter1/main
+
+Strip literal corner brackets from fw-edition quotes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/876a61ddd5782a45e55374148341086678ce91d4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/876a61ddd5782a45e55374148341086678ce91d4"/>
+    <title>
+        Strip literal corner brackets from fw-edition quotes
+    </title>
+    <updated>2026-09-11T21:49:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6279168?s=30&amp;v=4"/>
+    <author>
+      <name>Fighter1</name>
+      <uri>https://github.com/Fighter1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Strip literal corner brackets from fw-edition quotes
+
+The 光盘2.0 edition records (&amp;lt;hdcs class=&amp;quot;fw&amp;quot;&amp;gt;) write 「」 as literal text
+inside &amp;lt;quote&amp;gt; elements, and the source stylesheet suppresses its own
+pseudo-element brackets for that class. The converter drops the root
+class during sanitization and the packaged CSS brackets every quote, so
+those entries rendered doubled brackets such as 「「修」」 for 俢.
+
+Remove a wrapping 「…」 pair from quote content at conversion time and
+report the count as quote_literal_brackets_stripped. This affects 107
+quotes across 64 headwords in the pinned 2025.12.13 source. Quotes that
+carry curly “” quotes are left untouched, since that is source
+punctuation rather than a duplicate.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/568a8ffecc44695a1343660c7a0c51fad9add85f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/568a8ffecc44695a1343660c7a0c51fad9add85f"/>
+    <title>
+        Use dictionary revision in release titles
+    </title>
+    <updated>2026-09-11T08:05:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Use dictionary revision in release titles&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b6e2035faafcde80c29b960f9acdb96f4103ff9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/1b6e2035faafcde80c29b960f9acdb96f4103ff9"/>
+    <title>
+        Trigger CI dictionary build
+    </title>
+    <updated>2026-09-11T07:45:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Trigger CI dictionary build&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/214d0413a0b3bffda8a664d927521a5f81e1ff68</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/214d0413a0b3bffda8a664d927521a5f81e1ff68"/>
+    <title>
+        Publish updater metadata with future dictionary releases [skip ci]
+    </title>
+    <updated>2026-09-11T07:41:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Publish updater metadata with future dictionary releases [skip ci]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da12959248db252bb5eb9b408f4e17838ff58005</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/da12959248db252bb5eb9b408f4e17838ff58005"/>
+    <title>
+        Clean lookup readings and preserve pronunciation metadata in 1.0.4 [s…
+    </title>
+    <updated>2026-09-11T07:40:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Clean lookup readings and preserve pronunciation metadata in 1.0.4 [skip ci]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db88ec916d8b456957f112ffa69a306dbfa9fb49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/db88ec916d8b456957f112ffa69a306dbfa9fb49"/>
+    <title>
+        Publish validated dictionary builds as GitHub Releases
+    </title>
+    <updated>2026-09-11T07:21:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Publish validated dictionary builds as GitHub Releases&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c0e6e70462fe7b6e08d16dce33602be40990eb1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/2c0e6e70462fe7b6e08d16dce33602be40990eb1"/>
+    <title>
+        Build and validate the dictionary on every branch push
+    </title>
+    <updated>2026-09-11T06:53:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build and validate the dictionary on every branch push&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/677cfa48bf8bc1210d166b3a0c3df1afb1c07cc3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/caocaochan/hydcd-yomitan/commit/677cfa48bf8bc1210d166b3a0c3df1afb1c07cc3"/>
+    <title>
+        Import HYDCD Yomitan converter with normalized pinyin and tests
+    </title>
+    <updated>2026-09-11T06:51:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/150467924?s=30&amp;v=4"/>
+    <author>
+      <name>caocaochan</name>
+      <uri>https://github.com/caocaochan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Import HYDCD Yomitan converter with normalized pinyin and tests&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

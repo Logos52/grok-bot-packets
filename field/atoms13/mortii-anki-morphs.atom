@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mortii/anki-morphs/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mortii/anki-morphs/commits/main.atom"/>
+  <title>Recent Commits to anki-morphs:main</title>
+  <updated>2026-09-12T10:37:16Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5fc56cded7dc429b4524ebca7adb20e96d16622</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/c5fc56cded7dc429b4524ebca7adb20e96d16622"/>
+    <title>
+        Read the card-morph map without joining and sorting
+    </title>
+    <updated>2026-09-12T10:37:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/75368540?s=30&amp;v=4"/>
+    <author>
+      <name>pierspad</name>
+      <uri>https://github.com/pierspad</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read the card-morph map without joining and sorting
+
+get_card_morph_map_cache joined Card_Morph_Map with Morphs and ordered the
+result by (lemma, inflection). The join made sqlite materialize a lemma and
+an inflection for every row of the map table -- 235279 of them on the
+big_japanese_collection test fixture -- and then sort all of them, while the
+loop above it kept one Morpheme object per distinct morph (14302 of them) and
+dropped the rest.
+
+Morphs is now read once into those objects, and the map table is read on its
+own. Its primary key already is (card_id, morph_lemma, morph_inflection), so
+the per-card ordering comes from walking that index rather than from a sort.
+Each card still gets its morphs sorted by (lemma, inflection), which is what
+the previous global ORDER BY produced and what the extra fields depend on. The
+order between cards changes, but it was never observable: the return value is
+a dict keyed by card id.
+
+The function goes from 1293ms to 537ms (-58%) on that collection, roughly
+three quarters of a second off every recalc.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f9c9709838bcc119f96eda845fb25eef8d1365c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/4f9c9709838bcc119f96eda845fb25eef8d1365c"/>
+    <title>
+        removed obsolete spacy hotfix
+    </title>
+    <updated>2026-08-30T10:14:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;removed obsolete spacy hotfix&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a206a4bc052b7ee03b031d168ebb2a3af72d0440</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/a206a4bc052b7ee03b031d168ebb2a3af72d0440"/>
+    <title>
+        Bump the all-dependencies group across 1 directory with 5 updates
+    </title>
+    <updated>2026-08-30T09:44:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the all-dependencies group across 1 directory with 5 updates
+
+Bumps the all-dependencies group with 5 updates in the / directory:
+
+| Package | From | To |
+| --- | --- | --- |
+| [anki](https://github.com/ankitects/anki) | `25.9.4` | `26.8.1` |
+| [aqt](https://github.com/ankitects/anki) | `25.9.4` | `26.8.1` |
+| [pre-commit](https://github.com/pre-commit/pre-commit) | `4.6.0` | `4.6.2` |
+| [pylint](https://github.com/pylint-dev/pylint) | `4.0.6` | `4.0.7` |
+| [spacy](https://github.com/explosion/spaCy) | `3.8.14` | `3.8.16` |
+
+
+
+Updates `anki` from 25.9.4 to 26.8.1
+- [Release notes](https://github.com/ankitects/anki/releases)
+- [Changelog](https://github.com/ankitects/anki/blob/main/release.just)
+- [Commits](https://github.com/ankitects/anki/compare/25.09.4...26.08.1)
+
+Updates `aqt` from 25.9.4 to 26.8.1
+- [Release notes](https://github.com/ankitects/anki/releases)
+- [Changelog](https://github.com/ankitects/anki/blob/main/release.just)
+- [Commits](https://github.com/ankitects/anki/compare/25.09.4...26.08.1)
+
+Updates `pre-commit` from 4.6.0 to 4.6.2
+- [Release notes](https://github.com/pre-commit/pre-commit/releases)
+- [Changelog](https://github.com/pre-commit/pre-commit/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/pre-commit/pre-commit/compare/v4.6.0...v4.6.2)
+
+Updates `pylint` from 4.0.6 to 4.0.7
+- [Release notes](https://github.com/pylint-dev/pylint/releases)
+- [Commits](https://github.com/pylint-dev/pylint/compare/v4.0.6...v4.0.7)
+
+Updates `spacy` from 3.8.14 to 3.8.16
+- [Release notes](https://github.com/explosion/spaCy/releases)
+- [Changelog](https://github.com/explosion/spaCy/blob/master/RELEASE_NOTES.md)
+- [Commits](https://github.com/explosion/spaCy/compare/release-v3.8.14...release-v3.8.16)
+
+---
+updated-dependencies:
+- dependency-name: anki
+  dependency-version: 26.8.1
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: all-dependencies
+- dependency-name: aqt
+  dependency-version: 26.8.1
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: all-dependencies
+- dependency-name: pre-commit
+  dependency-version: 4.6.2
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: all-dependencies
+- dependency-name: pylint
+  dependency-version: 4.0.7
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: all-dependencies
+- dependency-name: spacy
+  dependency-version: 3.8.16
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: all-dependencies
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc2c8f1126b83a9201baeff85552f009359b0a29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/fc2c8f1126b83a9201baeff85552f009359b0a29"/>
+    <title>
+        updated python binary test
+    </title>
+    <updated>2026-08-30T09:43:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;updated python binary test
+
+now works with more recent versions of aqt&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/961c5fc2ebb2eeefcca791ad09a6201f8142dfab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/961c5fc2ebb2eeefcca791ad09a6201f8142dfab"/>
+    <title>
+        bumped version, updated contributors
+    </title>
+    <updated>2026-08-30T09:34:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;bumped version, updated contributors&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e9a9754d7c72217f746eb0e267045669890b3c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/0e9a9754d7c72217f746eb0e267045669890b3c0"/>
+    <title>
+        fix: don&#39;t crash on startup on anki 26.08+
+    </title>
+    <updated>2026-08-30T09:26:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/247056922?s=30&amp;v=4"/>
+    <author>
+      <name>Exalted5373</name>
+      <uri>https://github.com/Exalted5373</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: don&amp;#39;t crash on startup on anki 26.08+
+
+Anki 26.08 removed aqt.package.venv_binary along with the uv launcher,
+so importing it at module scope stops the entire add-on from loading:
+
+    ImportError: cannot import name &amp;#39;venv_binary&amp;#39; from &amp;#39;aqt.package&amp;#39;
+
+Resolve the interpreter used to bootstrap the spaCy/CAMeL venvs in a new
+get_python_binary() helper instead: use the launcher venv when it exists,
+fall back to the running interpreter when that is a real python, and
+return None on the self-contained builds that ship no interpreter.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9ea4489b211322fb54c4601e39fc29958b9723b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/c9ea4489b211322fb54c4601e39fc29958b9723b"/>
+    <title>
+        fixed failing fresh morphs tests
+    </title>
+    <updated>2026-08-23T10:22:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fixed failing fresh morphs tests&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de3027ab079b6d4223d89b5380d9f99de9e9402b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/de3027ab079b6d4223d89b5380d9f99de9e9402b"/>
+    <title>
+        bumped version and updated contributors
+    </title>
+    <updated>2026-08-15T19:15:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;bumped version and updated contributors&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65cdf847d4a5a252c85abbb76a73dd9e9dc6f727</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/65cdf847d4a5a252c85abbb76a73dd9e9dc6f727"/>
+    <title>
+        Bump the all-actions group with 3 updates
+    </title>
+    <updated>2026-08-15T18:12:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the all-actions group with 3 updates
+
+Bumps the all-actions group with 3 updates: [actions/checkout](https://github.com/actions/checkout), [actions/setup-python](https://github.com/actions/setup-python) and [actions/stale](https://github.com/actions/stale).
+
+
+Updates `actions/checkout` from 7.0.0 to 7.0.1
+- [Release notes](https://github.com/actions/checkout/releases)
+- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/actions/checkout/compare/9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0...3d3c42e5aac5ba805825da76410c181273ba90b1)
+
+Updates `actions/setup-python` from 6.3.0 to 7.0.0
+- [Release notes](https://github.com/actions/setup-python/releases)
+- [Commits](https://github.com/actions/setup-python/compare/ece7cb06caefa5fff74198d8649806c4678c61a1...5fda3b95a4ea91299a34e894583c3862153e4b97)
+
+Updates `actions/stale` from 10.3.0 to 11.0.0
+- [Release notes](https://github.com/actions/stale/releases)
+- [Changelog](https://github.com/actions/stale/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/actions/stale/compare/eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899...4391f3da665fdf50b6810c1a66712fb9ba21aa93)
+
+---
+updated-dependencies:
+- dependency-name: actions/checkout
+  dependency-version: 7.0.1
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: all-actions
+- dependency-name: actions/setup-python
+  dependency-version: 7.0.0
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: all-actions
+- dependency-name: actions/stale
+  dependency-version: 11.0.0
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: all-actions
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8612c72f24aad365c1cd23048da3e7981e37544d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/8612c72f24aad365c1cd23048da3e7981e37544d"/>
+    <title>
+        Reduce redundant work in recalc caching and morph priorities
+    </title>
+    <updated>2026-08-15T18:10:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/75368540?s=30&amp;v=4"/>
+    <author>
+      <name>pierspad</name>
+      <uri>https://github.com/pierspad</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Reduce redundant work in recalc caching and morph priorities&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c78a72da0b50b02f51a11907725ef74962f1bd8d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/c78a72da0b50b02f51a11907725ef74962f1bd8d"/>
+    <title>
+        Speed up the readability report and the progression window
+    </title>
+    <updated>2026-08-15T17:29:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/75368540?s=30&amp;v=4"/>
+    <author>
+      <name>pierspad</name>
+      <uri>https://github.com/pierspad</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Speed up the readability report and the progression window&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bac6203d8386fe38d12c96a25248bd92c49584e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/bac6203d8386fe38d12c96a25248bd92c49584e5"/>
+    <title>
+        fix spacy models not installing (#420)
+    </title>
+    <updated>2026-08-05T10:20:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix spacy models not installing (#420)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a3557344e21cafe136b3024631c33a21177922a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/0a3557344e21cafe136b3024631c33a21177922a"/>
+    <title>
+        updated contributors
+    </title>
+    <updated>2026-08-04T19:27:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;updated contributors&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6463e7f3633511f8c36ab2481dd1d8b38349899d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/6463e7f3633511f8c36ab2481dd1d8b38349899d"/>
+    <title>
+        Added brackets to anki profile folder directory in Designating Morph …
+    </title>
+    <updated>2026-08-04T19:27:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/278542054?s=30&amp;v=4"/>
+    <author>
+      <name>octomurp</name>
+      <uri>https://github.com/octomurp</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Added brackets to anki profile folder directory in Designating Morph Priorities to match notation elsewhere in usage docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9739a0def12239288bccc8eefcc4ffe703504df2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/9739a0def12239288bccc8eefcc4ffe703504df2"/>
+    <title>
+        Restored double bracket notation in generators.md for Generator Output
+    </title>
+    <updated>2026-08-04T19:27:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/278542054?s=30&amp;v=4"/>
+    <author>
+      <name>octomurp</name>
+      <uri>https://github.com/octomurp</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restored double bracket notation in generators.md for Generator Output&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ccd636f0e35dec61d71e52f26b9879c3ad4c410f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/ccd636f0e35dec61d71e52f26b9879c3ad4c410f"/>
+    <title>
+        Fix for stale &quot;frequency&quot; file links and incorrect column name in usa…
+    </title>
+    <updated>2026-08-04T19:27:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/278542054?s=30&amp;v=4"/>
+    <author>
+      <name>octomurp</name>
+      <uri>https://github.com/octomurp</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix for stale &amp;quot;frequency&amp;quot; file links and incorrect column name in usage docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a0bc1d036ae41ab86c8455bdc283c013b77eb214</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/a0bc1d036ae41ab86c8455bdc283c013b77eb214"/>
+    <title>
+        updated contributors
+    </title>
+    <updated>2026-07-30T18:14:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;updated contributors&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fcc2a687b15574ba0a79282fc71fab708b35c57b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/fcc2a687b15574ba0a79282fc71fab708b35c57b"/>
+    <title>
+        fix de-sync during recalc (#416)
+    </title>
+    <updated>2026-07-30T18:07:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix de-sync during recalc (#416)
+
+- completely sync card id and processed morphs
+- hardened mecab_wrapper&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/86292986f9a2aee10aaa2a5687f37c5a039942af</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/86292986f9a2aee10aaa2a5687f37c5a039942af"/>
+    <title>
+        feature: skip if all fresh already seen (#407, #415)
+    </title>
+    <updated>2026-07-25T10:31:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feature: skip if all fresh already seen (#407, #415)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd1ccc5a2a3938fbe2a58b00eb3db1e3d8f9682e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mortii/anki-morphs/commit/bd1ccc5a2a3938fbe2a58b00eb3db1e3d8f9682e"/>
+    <title>
+        updated license badge
+    </title>
+    <updated>2026-07-03T11:59:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/15674619?s=30&amp;v=4"/>
+    <author>
+      <name>mortii</name>
+      <uri>https://github.com/mortii</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;updated license badge&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

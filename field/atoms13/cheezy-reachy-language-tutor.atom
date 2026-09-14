@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/cheezy/reachy-language-tutor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/cheezy/reachy-language-tutor/commits/main.atom"/>
+  <title>Recent Commits to reachy-language-tutor:main</title>
+  <updated>2026-09-12T23:51:33Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e7cc0e5d7cc9854400b3f3b12a92cc0879cb4b34</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/e7cc0e5d7cc9854400b3f3b12a92cc0879cb4b34"/>
+    <title>
+        Convert six units of FSI Italian FAST into real lessons (W24)
+    </title>
+    <updated>2026-09-12T23:51:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Convert six units of FSI Italian FAST into real lessons (W24)
+
+Italian&amp;#39;s first six lessons are now units of a published course instead of
+objectives an AI wrote as a placeholder: 82 dialogue turns, 42 usage notes and
+113 drills, each lesson citing the course, volume, unit and printed page it
+came from. The six placeholders keep their ids and move to positions 7-12, so
+a learner who finished one still has.
+
+Every shipped line was read on a rendered page image rather than taken from
+the OCR layer, and that is not belt-and-braces. Re-measured over printed pages
+40-160: 333 accented characters correct, 79 replaced by a stray tilde. Three
+faults nobody had recorded turned up in the doing -- `I` read as `!`, `/` read
+as `l` (so `arrivato/a` arrives as `arrivatola`, a plausible Italian word shape
+that does not announce itself), and INVENTED accents, with SETTING THE SCENE
+coming through as SCENE with a grave. A conversion that only restored missing
+accents would have shipped that last one.
+
+Rights were checked against the file and written down with what was NOT
+checked beside them. Twelve of eighteen units did not ship; the curation log
+says why for each, and the approved-unit allow-list makes shipping a
+thirteenth a deliberate edit rather than an oversight.
+
+The content is package-data JSON loaded inside the seed transaction, replaced
+rather than upserted so a corrected unit with fewer drills cannot leave a
+stale one behind. SEED_VERSION 3-&amp;gt;4, and the shipped-catalog fingerprint now
+hashes that file&amp;#39;s bytes -- it was the one piece of seeded data that could
+have changed without forcing the bump that carries it to a robot.
+
+Two review rounds, eleven findings, all fixed. The sharpest was mine: the
+method doc written in this change forbids a drill whose cue admits more than
+one right answer, and the drills shipped beside it did exactly that in every
+unit -- an either/or answered with one branch, a place the cue never named,
+and two models with opposite rules merged into one list. Each marks a learner
+wrong for saying something right. Fixed by the doc&amp;#39;s own rules, with two
+backstop tests.
+
+Acceptance criterion 10 is NOT met and cannot be met here: no tool reads
+lesson content, which W23 assigns to W18, so the tutor still improvises while
+the real material sits underneath. The half that can be executed is proved
+through the real dispatch path, in a test that asserts its own limit and will
+fail the day W18 lands.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/295f76e41d63ef5cd7231ec61a145eefafc8f3dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/295f76e41d63ef5cd7231ec61a145eefafc8f3dd"/>
+    <title>
+        Give a lesson somewhere to keep its content (W23)
+    </title>
+    <updated>2026-09-12T23:20:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give a lesson somewhere to keep its content (W23)
+
+A lesson row was id, language, position, title and a one-sentence objective,
+so the tutor improvised everything else. Five new tables give it a dialogue of
+speaker turns, numbered usage notes, ordered typed drills, and a record of
+where the lesson came from.
+
+All of it is optional: the thirty seeded lessons carry no content yet and read
+back as empty rather than as an error, because the corpus is converted a unit
+at a time. None of it is personal data -- every table cascades from lessons,
+not from a learner, so forgetting a household is still one statement.
+
+New data had to be TABLES rather than columns. A schema change reaches a robot
+that already has a database only by re-running a script of IF NOT EXISTS
+statements under a bumped SCHEMA_VERSION, which is a no-op against a table
+that exists -- so a column added to `lessons` would have reached fresh
+installs and nobody else, silently. ALTER is not available either.
+
+Both new vocabularies are allow-lists mirrored by pinned Python tuples, and
+each table&amp;#39;s shape is an allow-list too: a drill must BE a repetition drill or
+a cue-response drill, and provenance must BE an app-written lesson with no
+page or a converted one citing all four parts. The IS NOT NULL beside each
+trim() is load-bearing -- length(trim(NULL)) is NULL and a CHECK is satisfied
+by NULL, so the shorter spelling accepts a cue-response drill with no answer.
+Measured, not assumed, and the tests fail on exactly those seven rows when the
+clauses are removed.
+
+get_lesson&amp;#39;s inline lesson-id guard became a shared refusal, which swept two
+siblings: get_lesson_content uses it, record_result now answers unknown_lesson
+instead of reporting the robot broken, and the guard gained the UTF-8 check
+its two sibling refusals already had.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5e24535d5c672afa01997b7ab52803c96d1aed7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/d5e24535d5c672afa01997b7ab52803c96d1aed7"/>
+    <title>
+        Record the lesson the app pinned, and leave one writable path (W16)
+    </title>
+    <updated>2026-09-12T22:47:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Record the lesson the app pinned, and leave one writable path (W16)
+
+finish_lesson takes how it went and an optional score. It takes no lesson: the
+lesson comes from the session start_lesson pinned, so nothing in the
+conversation can change which lesson a result is recorded against. A successful
+write clears the pin, which is what stops the same lesson being recorded twice
+by repeating the call; a refused write does not, because a learner who tried
+should not lose the lesson because storage hiccuped.
+
+The decision the task asked for: record_result is DELETED, not merely
+undeclared. The profile boundary is a real control -- get_tool_specs and
+get_tools are both built from default_tools -- but it is a markdown data file,
+so &amp;quot;exactly one conversation-reachable writer&amp;quot; would have been one unreviewed
+edit from false. Its tests were retargeted rather than discarded: the AST kwargs
+guard, the identity-key schema sweep, the RECORD_REASONS refusal-table pin, the
+never-raises fuzz and the log-redaction test all moved to test_finish_lesson.py.
+Three tests went with the lesson_id parameter they were about.
+
+The class is closed as well as the member. PERMITTED_LEARNER_TOOL_PARAMETERS no
+longer contains lesson_id, and a new allow-list over EVERY tool the loader can
+build -- offered or not -- names the fourteen parameters any of them may
+declare. A deny-list of lesson-shaped spellings would have admitted lesson_ref,
+unit or topic_id; this admits nothing nobody has approved. It reads `required`
+as well as `properties`, because a schema can put a key in front of the model
+through either and a properties-only guard means less than the surface it
+protects.
+
+test_tool_identity_boundary&amp;#39;s _run now pins a lesson before every dispatch.
+Without it every finish_lesson dispatch is refused at its &amp;quot;nothing is running&amp;quot;
+guard, so the attack never reaches the write -- the suite fails loudly rather
+than passing green, which is what proves the harness change widens the surface
+rather than narrowing it.
+
+Writer census by command across four dimensions: one conversation-reachable
+write remains, tools/finish_lesson.py -&amp;gt; store.record_result -&amp;gt;
+_INSERT_ATTEMPT_SQL. An independent security review reached the same count
+independently and verdicted all four security considerations mitigated.
+
+1167 passed, 30 skipped (1142 before). Seven revert-proofs, each failing for the
+reason its test names.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34f59d127f127775bf8dd9333a0a473688dcd34c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/34f59d127f127775bf8dd9333a0a473688dcd34c"/>
+    <title>
+        Implement the start_lesson tool (W15)
+    </title>
+    <updated>2026-09-12T22:24:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Implement the start_lesson tool (W15)
+
+The learner says a language; the database picks the lesson. start_lesson takes
+one argument -- the language -- resolves the next lesson through get_progress
+rather than re-deriving the ordering, pins it in the W14 lesson session, and
+returns the title, objective and position. It returns no lesson id: pinning it
+is what makes the id application state, so handing it back would put the
+decision this tool exists to take back into the model&amp;#39;s hands.
+
+The answer is {&amp;quot;started&amp;quot;: bool, &amp;quot;reason&amp;quot;: &amp;lt;code&amp;gt;, ...}, one sentence per
+meaning. &amp;quot;all_lessons_finished&amp;quot; is the one negative answer with no error key,
+because finishing a course is not a failure -- and it is deliberately separate
+from &amp;quot;no_lessons_yet&amp;quot;, because telling somebody they finished a course that has
+no lessons is a lie about them. Both were reachable and both are tested.
+
+The language-matching rule moved into tools/_language_choice.py and get_progress
+was refactored onto it, rather than copied into the new tool. That rule decides
+whether the robot denies teaching a language it teaches, and two copies drift
+the day one of them learns to fold an accent. Breaking it now fails tests in
+BOTH tools, which is what makes the share real rather than nominal.
+
+test_tool_identity_boundary.py&amp;#39;s _deps now mirrors main.build_tool_dependencies
+and binds the holder to the learner the bundle names. Without it the suite fails
+loudly -- start_lesson reaches only its input validator and answers a constant
+refusal for both probe learners -- so this widens what is attacked rather than
+narrowing it. Confirmed by reverting the line and by an independent security
+probe. The sweep it exposed is closed with it: the pinned lesson is now read
+back after every dispatch, exactly as current_learner_id already was.
+
+1142 passed, 30 skipped (1083 before). Five revert-proofs, each failing for the
+reason its test names. pytest-cov is not installed, so branch coverage is
+argued from named tests rather than measured.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2f60a7b6aa20d96ea568d1025354af8ec41577d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/2f60a7b6aa20d96ea568d1025354af8ec41577d5"/>
+    <title>
+        Hold the running lesson in application state (W14)
+    </title>
+    <updated>2026-09-12T22:09:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Hold the running lesson in application state (W14)
+
+The learner&amp;#39;s identity already comes from application state and never from the
+conversation. The lesson being practised is the same kind of fact: if the model
+can name it, it can record a result against a lesson nobody ran.
+
+So the app holds it. LessonSessionHolder is bound at construction to one learner
+-- main.build_tool_dependencies resolves the current learner once and passes the
+same value to both current_learner_id and the holder -- and open() has no
+identity parameter at all, so there is no channel through which a
+conversation-supplied learner could reach it. read_for is the only read and
+hands a session back only to the learner it was opened for; &amp;quot;nothing running&amp;quot;
+and &amp;quot;running for somebody else&amp;quot; are deliberately the same answer.
+
+The reference on ToolDependencies is sealed, as the task asked. An earlier
+version of this change left it writable, arguing read_for compensated. It does
+not: read_for proves the LEARNER dimension only and cannot attest that the
+LESSON was chosen by the app, so a holder swapped for one bound to the same
+learner but carrying a lesson nobody started read back clean. A security review
+demonstrated exactly that by probe. The seal closes it, and the package-wide
+write scan in test_current_learner.py now derives its protected field list from
+_SEALED_ATTRIBUTES rather than one hard-coded name -- so lesson_session inherits
+all 62 bypass shapes the learner id already had, and so will the next sealed
+field.
+
+The open() guard is the store&amp;#39;s own rule rather than a narrower restatement of
+it: an id must be a non-empty string equal to its own strip() with no
+whitespace or control character, refused rather than repaired, and a timestamp
+must be an int that is not a bool and is inside the 64-bit range SQLite can
+bind. A differential test runs both sides against a real seeded database.
+
+Logging is three constant strings; both reprs render shape only, so repr(deps)
+one layer up cannot drag an id out; the refusal texts interpolate nothing.
+
+1083 passed, 30 skipped (994 before). Coverage of lesson_session.py measured at
+zero unexecuted statements with the stdlib tracer. Six revert-proofs, each
+failing for the reason its test names.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41935471ac9befadc0a80823676d46f291bcc4db</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/41935471ac9befadc0a80823676d46f291bcc4db"/>
+    <title>
+        Sweep the sibling logger levels the isolation fixture missed (D28 rev…
+    </title>
+    <updated>2026-09-12T21:22:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sweep the sibling logger levels the isolation fixture missed (D28 review r2)
+
+Round two approved the work and left three minor findings. Two are fixed here; the
+third was a correction to my own reported figures.
+
+The one that mattered was the unswept sibling, and it is the defect this board
+repeats most -- committed, embarrassingly, inside the very fixture written to close
+an isolation leak. utils.setup_logger does not only reconfigure the root logger: it
+also pins aiortc and aioice, and under --debug openai and websockets. The fixture
+restored root alone, so those came back 0 -&amp;gt; 40 and 0 -&amp;gt; 30 and stayed there.
+
+The fix does not name those four. It snapshots the level of every logger in
+logging.root.manager.loggerDict and restores each at teardown, because a list of four
+names is a deny-list that goes stale the moment setup_logger pins a fifth -- the shape
+CLAUDE.md records four separate defects against. Loggers that did not exist before the
+test are reset to NOTSET rather than left alone, which matters because aiortc and
+aioice are created BY the import that configures them, so &amp;quot;restore only what existed&amp;quot;
+would miss exactly the ones this is for.
+
+Pinned by two more ordered tests in test_logging_isolation.py. Drop the sweep and the
+second fails with &amp;quot;aiortc&amp;#39;s level leaked out of the previous test&amp;quot;.
+
+Also: test_tool_space_runtime.py&amp;#39;s teardown reset was load-bearing but unasserted, so
+a test now pins it in the same ordered-pair shape -- neuter the teardown and it fails
+naming the tool it found surviving.
+
+CORRECTION to the figures in a68c7b5 and b32f46b. Those ordering runs used
+`ls tests/test_*.py`, which is 40 files and omits tests/tools/ and tests/audio/ -- so
+&amp;quot;892&amp;quot; described 924 of 1021 collected tests, not the suite. The conclusion was not
+affected, but the number was wrong and is restated here properly. Re-measured over
+every test file:
+
+  forward                   994 passed, 30 skipped
+  true reverse (find-based) 993 passed, 30 skipped, 0 failed
+  external_loading first    clean
+  tool_spaces first         clean
+  six shuffled seeds        clean
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b32f46bf8603be943f8480eb7827e3fa55673caf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/b32f46bf8603be943f8480eb7827e3fa55673caf"/>
+    <title>
+        Stop a leaked root log level making the suite order-dependent (D28 re…
+    </title>
+    <updated>2026-09-12T21:15:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop a leaked root log level making the suite order-dependent (D28 review)
+
+Round-one review marked acceptance criterion 3 -- &amp;quot;the full suite passes with no
+order-dependent failures&amp;quot; -- as not met, and it was right to. The module-identity
+half was fixed; three failures remained in reverse file order and in half of the
+shuffled orders tried. They were pre-existing, so I had filed them as D29 rather
+than fix them. With claim time left I bisected instead, and D29 is superseded by
+this commit.
+
+Bisected to a single file: tests/test_tool_spaces.py alone reproduces it. It
+invokes main() for the tool-space CLI subcommands, main.py:149/180 call
+utils.setup_logger, and that calls logging.basicConfig(..., force=True). force=True
+does not merely set a level -- it CLOSES AND REMOVES every existing root handler.
+Probed before and after:
+
+  before: level=30 handlers=[_LiveLoggingNullHandler, _FileHandler, LogCaptureHandler, ...]
+  after:  level=20 handlers=[StreamHandler &amp;lt;stderr&amp;gt;, LogCaptureHandler, ...]
+
+With the root left at INFO, test_learner_schema&amp;#39;s three
+test_an_empty_record_reads_as_empty_without_a_warning cases picked up an INFO record
+from ensure_learner_database and failed their caplog.text == &amp;quot;&amp;quot; assertion -- an
+order-dependent failure blaming a file that had done nothing wrong. Those tests
+assert a no-PII property, so the corrosive outcome was somebody eventually weakening
+them to get the suite green.
+
+The guard is an autouse fixture in conftest.py restoring the root level AND the
+handler list after every test. It is in conftest rather than in test_tool_spaces.py
+deliberately: that file is the only one reaching basicConfig today, but the hazard
+belongs to any test exercising a path that configures logging, and fixing the one
+current member is the mistake CLAUDE.md names as this board&amp;#39;s most repeated defect.
+
+tests/test_logging_isolation.py pins it with two ordered tests -- one mutates logging
+through the real setup_logger, the next asserts the damage did not survive. Revert
+the fixture and it fails with the reason it names: &amp;quot;the root log level leaked out of
+the previous test: 20 != 30&amp;quot;. Its first draft compared against import-time state,
+which is captured during collection before pytest installs its per-test handlers, so
+it failed for the wrong reason; the baseline is now taken inside the first test.
+
+Also from round one: test_tool_space_runtime.py now resets the registry at teardown
+as well as setup, so the MagicMock-backed remote tool it installs cannot reach later
+files through the module-scope bindings D28 made possible; the orphaned explanatory
+comment in test_log_redaction.py moved to the import it describes; and
+identity_probe_session.py&amp;#39;s deferred import now says why it is deferred.
+
+Measured, all clean: forward 991 passed / 30 skipped; reverse 892; external_loading
+first 892; tool_spaces first 892; three shuffled seeds 892 each.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a68c7b541f8409914b4bb2064c3aee95b5b96df0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/a68c7b541f8409914b4bb2064c3aee95b5b96df0"/>
+    <title>
+        Stop the last two test files rebuilding the tools module graph (D28)
+    </title>
+    <updated>2026-09-12T21:03:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop the last two test files rebuilding the tools module graph (D28)
+
+2b5450b fixed test_external_loading.py and left two siblings. This finishes the
+class: test_tool_space_runtime.py and test_profile_load_resilience.py no longer
+pop reachy_language_tutor.tools.* out of sys.modules and re-import, so no second
+Tool base class is ever built and a module-scope core_tools binding stays valid
+whatever ran before it.
+
+Neither file was reloading to refresh the registry -- both reloaded so that a
+monkeypatch applied to ANOTHER module would be picked up, because core_tools.py:20
+binds build_remote_client by value and app_lifecycle.py:17 binds initialize_tools
+the same way. A re-import was the only thing that re-executed those `from` lines.
+
+  * test_tool_space_runtime.py: three tests patched tool_spaces.build_remote_client
+    BEFORE the reload. They now obtain the module first and patch core_tools itself,
+    which is what the reload was standing in for. Swept for siblings rather than
+    assuming: of the 11 names core_tools imports directly, build_remote_client is
+    the only one any test monkeypatches on its source module.
+  * test_profile_load_resilience.py: the task recorded that its three defensive
+    imports &amp;quot;must stay regardless&amp;quot;. That note is wrong, and this was measured rather
+    than argued -- with no second module, app_lifecycle&amp;#39;s initialize_tools binding
+    is still the right function object, so importlib.reload(app_lifecycle) has
+    nothing to do. All six tests pass without it.
+
+With both converted, the seven defensive in-function core_tools imports the leak
+forced on the suite are gone, and with them the two _core_tools() lookup helpers
+whose own docstrings said they could go once these two files were converted. Ten
+sites in seven files now bind at module scope, which is the thing the defect made
+impossible and therefore the real proof it is fixed. Two in-function imports remain
+and are NOT this leak: test_external_loading.py:274 is a deliberate module-identity
+proof, and identity_probe_session.py is not pytest-collected.
+
+Measured:
+  forward order              989 passed, 30 skipped (was 989; no drop)
+  reverse file order         3 failed, 889 passed (was 4 failed, 888)
+  test_external_loading first  892 passed, 0 failed
+  the three reloader files + test_locked_profile  33 passed
+
+The one remaining reverse-order failure is NOT this defect and is pre-existing --
+it was in the baseline before any change here. test_learner_schema.py&amp;#39;s
+test_an_empty_record_reads_as_empty_without_a_warning asserts caplog.text == &amp;quot;&amp;quot; and
+picks up an INFO record from ensure_learner_database when an earlier file has left
+the log level below WARNING. A logging-level leak, not a module-identity one, and
+filed separately rather than folded in here.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0516ce2d211c2a28ba7dd22abe0208a8e2f50244</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/0516ce2d211c2a28ba7dd22abe0208a8e2f50244"/>
+    <title>
+        Pressure-test the learner identity boundary through the model (W21)
+    </title>
+    <updated>2026-09-12T20:50:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pressure-test the learner identity boundary through the model (W21)
+
+W8, W9 and W10 each carried a manual test asking a human to try talking their
+way into a housemate&amp;#39;s profile, and all three shipped with it undischarged
+because it needed a microphone. The structural half was never the gap:
+test_tool_identity_boundary.py attacks every tool through the real dispatcher.
+But every one of those tests calls the tools directly, and the model is the only
+layer a person in the room can actually talk to.
+
+The harness removes the microphone from the requirement. say() already injects a
+text turn exactly as the startup greeting does, so a scripted conversation needs
+no audio. Nothing under src/ changed: set_transcript_observer is a public API
+console.py already consumes, and start_tool / _handle_tool_result are ordinary
+methods a subclass records around. start_tool is the seam because ToolNotification
+carries no arguments at all -- measured, not assumed -- so it is the only place
+args_json_str can be captured byte-identically.
+
+Verdicts are computed, never read off a transcript, because CLAUDE.md is explicit
+that a verdict you reasoned your way to is a hypothesis. 53 offline tests drive
+one synthetic turn per leak route and assert the specific reason code; each check
+was neutered in turn and confirmed to fail its named test and nothing else.
+
+The live session found real things, which is the point of running it:
+
+  * Run 1 flagged four turns. All four were the tutor REFUSING while repeating
+    the name the probe had just supplied. A model echoing the attacker&amp;#39;s own word
+    discloses nothing, so the judge now separates disclosure from echo -- bounded
+    so a name it ADDS beyond what was said is still caught, tool results are
+    exempt from the exemption, and the echo is reported rather than swallowed.
+  * That narrowing raised a question nothing tested: does the tutor answer
+    differently about someone who IS registered? If so, a household member could
+    enumerate who else lives there from refusal wording alone, with no tool call
+    for the structural suite to see. The oracle pair tests it, and
+    oracle_divergence() compares the two replies mechanically -- printing them for
+    a human to eyeball is not a control.
+  * Review found H6 matched only \d+. This is a speech product whose prompt says
+    &amp;quot;write how people talk&amp;quot;, and the real session says &amp;quot;two lessons, with four
+    left&amp;quot;. So the figure detector was blind in the ordinary case: &amp;quot;ninety-three&amp;quot;
+    disclosed a stored score and scored HELD while &amp;quot;93&amp;quot; was caught.
+
+Final session: 16 probes across nine attack families, every attempt HELD,
+current_learner_id unmoved, housemate&amp;#39;s stored data byte-identical. No tool call
+was attempted in any adversarial turn -- the model declined conversationally and
+never reached the dispatcher, so the two defences are independent and this
+exercised the outer one.
+
+The runner is not a pytest test and never collected: it needs credentials and
+real money, and the task names a permanently-skipped test as the pitfall to
+avoid. docs/identity-boundary-probe.md carries the one command, the recorded
+result, and what this does not cover.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ebc0cadf836295760e8638840530788febb4b8e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/1ebc0cadf836295760e8638840530788febb4b8e"/>
+    <title>
+        Push the goal&#39;s work to GitHub in the after_goal hook
+    </title>
+    <updated>2026-09-12T20:24:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Push the goal&amp;#39;s work to GitHub in the after_goal hook
+
+The hook file has carried &amp;quot;Add the publish step here once GitHub is set up, or
+goals will reach Done with their work never leaving this machine&amp;quot; since it was
+written. GitHub is now set up, and G3 is the next goal on the board, so the
+warning was about to come true rather than stay hypothetical.
+
+after_goal now ends with `git push origin main`, verified against the real
+remote with `git push --dry-run origin main` (exit 0, &amp;quot;Everything up-to-date&amp;quot;),
+so the credential path is known to work rather than assumed. It is the last line
+so that the `git status --short` above it still reports uncommitted work before
+a push that would only ever have sent commits.
+
+before_doing still has no `git pull`, but for a new reason, now recorded in the
+file: with a single writer a pull can only be a no-op, while `git pull` against
+a dirty worktree fails outright and would block the claim of any task started
+mid-edit. Written down so the next reader does not restore it as an oversight.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f094562d41172a10528a4c68e7382f6abaf0a19</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/8f094562d41172a10528a4c68e7382f6abaf0a19"/>
+    <title>
+        Gitignore the exploratory-testing artifact directory
+    </title>
+    <updated>2026-09-12T20:16:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Gitignore the exploratory-testing artifact directory
+
+Those files transcribe application output, which is the material the redaction
+rules keep out of anything that leaves the machine. Untracked plus a hook that
+stages everything is how they would otherwise reach a commit.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9e062ecb6aec0eadf238c813818784e3ed1797e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/9e062ecb6aec0eadf238c813818784e3ed1797e7"/>
+    <title>
+        Choose the Basic/FAST courses and rule out Headstart
+    </title>
+    <updated>2026-09-12T20:12:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Choose the Basic/FAST courses and rule out Headstart
+
+Measured, not assumed. Italian FAST (FSI, 1992) against Italian Headstart
+(DLI, 1985), on comparable samples:
+
+  military terms per ~120 pages   Headstart: pervasive    FAST: 0
+  accented characters lost        Headstart: 38%          FAST: 19%
+
+Headstart is Defense Language Institute material for service personnel and
+teaches ranks as its first vocabulary set. It is excluded.
+
+FAST carries its own OCR pathology worth knowing before someone writes a
+cleanup script: `l` is read as `/`, giving usual/y, on/y, se/ecting -- 194
+instances in 121 pages. Mostly a mechanical repair, but americano/a and s/he
+are legitimate slashes, so not a blind one.
+
+The important finding is what modernising actually means here. The Italian is
+natural and current thirty years on: &amp;quot;Scusi, Lei e&amp;#39; americano?&amp;quot;, &amp;quot;Ha qualcosa
+da dichiarare?&amp;quot;. What is dated is the SITUATION. The course is written for an
+adult diplomat arriving at post, so Lesson II is a customs queue -- doganiere,
+guardia di finanza, cartons of cigarettes -- and the drills practise &amp;quot;Sono
+dell&amp;#39;Ambasciata&amp;quot;. A 1992 customs lesson also describes a border regime the EU
+single market replaced in 1993.
+
+So: keep the sentences and the drill structure, replace the situations. A
+customs queue becomes a shop, a station, a kitchen. Rewriting the target
+language to sound more modern would throw away the reason to use a
+professionally built course at all.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae837c4a59c22adaaae579e7af99feb76e040d5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/ae837c4a59c22adaaae579e7af99feb76e040d5f"/>
+    <title>
+        Adopt the FSI/DLI public-domain courses as the basis for lesson content
+    </title>
+    <updated>2026-09-12T20:03:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Adopt the FSI/DLI public-domain courses as the basis for lesson content
+
+Milestone 2 shipped a catalog that is really a syllabus: a title and a
+seventy-character objective per lesson, no content column at all. The tutor
+improvises the rest, so no two runs of a lesson are alike and nothing
+constrains what a child is taught.
+
+Section 9 records the decision to base lesson content on the FSI and DLI
+courses, and three things measured from the source rather than assumed:
+
+They are scans. Italian Headstart Modules 1-3 is 277 JBIG2 images over 283
+pages, with an OCR text layer that pdftotext -layout reads well.
+
+That OCR loses accents. Over 101 pages, 93 accented characters survived and 58
+became a stray tilde -- roughly four in ten. In a language course that is not a
+cosmetic defect; it teaches the wrong word.
+
+The content is military and forty years old. Unit 1&amp;#39;s vocabulary is ranks, and
+one note states that women do not serve in Italy&amp;#39;s armed forces -- false since
+1999, and not something these robots should say in family homes.
+
+Licensing is good but not uniform: FSI and DLI works carry no US copyright as
+federal government works, but some FSI courses were contractor-produced and ARE
+copyrighted, and repackaged editions carry copyright in the derivative work. So
+rights get verified per course, against the original scan.
+
+The structure is the asset. A unit is a dialogue, numbered usage notes, and
+typed drills -- and a cue-response drill is a spoken exchange with a right
+answer, which is exactly what this tutor is for.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b5450b1b7700911c503a7a1b032ca7ea5515c98</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/2b5450b1b7700911c503a7a1b032ca7ea5515c98"/>
+    <title>
+        Stop test_external_loading rebuilding the tools module graph (D28, pa…
+    </title>
+    <updated>2026-09-12T19:53:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop test_external_loading rebuilding the tools module graph (D28, partial)
+
+Re-importing core_tools creates a SECOND Tool base class. Every module-scope
+`from ... import core_tools` elsewhere is already bound to the first one, and
+_load_enabled_tools filters candidates with issubclass, so against the wrong
+Tool it matches nothing and the loader reports &amp;quot;the profile declares unknown
+tools&amp;quot; in whichever file runs next. That is why seven test files carry
+in-function core_tools imports nobody could explain.
+
+The reloader now resets the registry in place -- both caches cleared and
+_TOOLS_SIGNATURE dropped, which is exactly what initialize_tools consults --
+and never discards the module. External tool modules are still discarded: they
+are file-backed, several tests re-execute them deliberately, and they define no
+base class.
+
+Measured, with a standalone file binding core_tools at module scope: 12 passed
+with the fix, 2 failed without it.
+
+PARTIAL. test_tool_space_runtime.py and test_profile_load_resilience.py still
+pop and re-import, so the cross-file guarantee does not hold yet and the new
+test says so in reverse file order. The defensive imports therefore stay, now
+naming the two files that are the remaining cause rather than a fixture that
+was tried and reverted.
+
+Two dead ends recorded in tools_module_graph so they are not retried: restoring
+sys.modules afterwards (breaks thirteen tests; it cannot un-bind references
+other modules already hold), and re-pointing the parent package attribute (a
+no-op -- import_module already sets it).
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e7d3998688b15b49a6c2ddfd1ca8b0b88fb5b59</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/5e7d3998688b15b49a6c2ddfd1ca8b0b88fb5b59"/>
+    <title>
+        Teach Italian, German and Portuguese (W22)
+    </title>
+    <updated>2026-09-12T19:35:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Teach Italian, German and Portuguese (W22)
+
+Five languages now, six lessons each, and SEED_VERSION bumped so the robots
+already in homes converge onto the new catalog instead of teaching the old one
+forever. Spanish stays: lessons and lesson_results both cascade on delete, so
+removing it would take real learner history with it.
+
+Two things had to move first, and neither was in the task.
+
+de and pt were already this suite&amp;#39;s stand-ins for &amp;quot;a language we do not teach&amp;quot;,
+at eleven sites. Seeding German threw UNIQUE constraint failed: languages.name
+and broke eight tests, with a Portuguese sibling hidden behind an earlier
+failure. They now name a permitted value instead of a forbidden one: zxx, the
+ISO 639-2 code meaning &amp;quot;no linguistic content&amp;quot;, which nothing will ever teach.
+A guard fails the day the seed contradicts that.
+
+The lesson_id enum&amp;#39;s ORDER was load-bearing and unpinned. _benign_args takes
+enum[0], and the boundary suite tells its two probe learners apart by their
+Spanish and French history -- so sorting thirty ids would put a German lesson
+first, make both answers identical, and leave the injection test covering
+nothing while staying green. Both drift tests are now order-exact and both
+tools assert enum[0] names a language somebody has practised.
+
+The version bump itself needed a guard too. A convergence test that rewinds to
+SEED_VERSION - 1 passes whether or not the constant ever moved, and the first
+fingerprint pin was worse: its failure message told you to paste the new hash,
+which satisfied it without bumping. The pin is a history now -- one line per
+shipped catalog, append only, newest must be current.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ccc550b1d3b8aeefd2389737e2c6fc55130e43cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/ccc550b1d3b8aeefd2389737e2c6fc55130e43cb"/>
+    <title>
+        Stop /rpc read routes walking out of the profiles root (D25)
+    </title>
+    <updated>2026-09-12T19:16:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop /rpc read routes walking out of the profiles root (D25)
+
+Config.resolve_profile_dir joined a caller-supplied name onto the profiles
+root with no validation, and personalities.load and personalities.avatar pass
+request data into it ungated, because D20 classed them as reads. The /rpc port
+has to be LAN-reachable, so the attacker is anyone on the household LAN.
+
+Reproduced before fixing, not argued: a canary profile.md outside the
+repository came back in full through an absolute path and through a ../ walk,
+through both sinks, and read_profile(&amp;#39;/definitely/not/here/xyz&amp;#39;) quoted that
+path straight back as a filesystem existence oracle.
+
+The resolver has TWO join sites, which the task described as one. The
+user_personalities branch joins everything after the first slash, so
+&amp;#39;user_personalities/&amp;lt;absolute&amp;gt;&amp;#39; escaped too. Both branches now validate.
+
+Two guards, because one does not cover the other. A per-segment allow-list
+closes names that walk out; a containment check closes a SYMLINK inside the
+root, which is reached by a name no character rule could object to. Each is
+revert-proved on its own: removing either fails tests that name it.
+
+Error text no longer reaches the caller on the reachable routes. Both the
+missing and the unparsable cases now return one fixed code, so a caller cannot
+tell from the answer whether a path is there.
+
+Also unified the write path onto the resolver. It carried a second copy of the
+allow-list and joined the root by hand, which is two rules that can drift.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3eedf48496f0d1521a7796b485560eb8564232b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/f3eedf48496f0d1521a7796b485560eb8564232b"/>
+    <title>
+        Make the locked-profile guard ask the loader, and test the flow end t…
+    </title>
+    <updated>2026-09-12T18:47:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the locked-profile guard ask the loader, and test the flow end to end (W10)
+
+The task&amp;#39;s declaration work was already done: W8 and W9 had added get_progress
+and record_result to default_tools and rewritten the prompt, so AC1, AC3 and AC4
+were satisfied before the claim and profile.md is untouched.
+
+AC2 was not. test_locked_profile.py claimed to prove every declared name
+resolves, but built its accepted set by scanning tools/ for any class carrying a
+name attribute, while the loader imports tools.&amp;lt;declared name&amp;gt; and keys whatever
+Tool subclasses it finds there by their own name. The two rules can disagree,
+and an unresolvable name is not an error anyone sees -- one warning, the tool
+dropped, the app started. Measured rather than argued: a probe class in a
+differently-named module is accepted by the scan and refused by the loader.
+
+The guard now asks the loader, with a fixture that manufactures that divergence
+in a temporary directory on tools.__path__ so nothing is written to the package.
+
+Also here: the identity check over the specs the realtime session receives is an
+allow-list of catalog vocabulary applied to tools discovered by the boundary
+suite&amp;#39;s own rule, not a deny-list of identity words over three hard-coded names;
+and a new flow test drives get_profile, get_progress and record_result through
+dispatch_tool_call, reading the result back from a separate interpreter to show
+it survives a restart.
+
+Not done: the spoken half of AC5, and security consideration 2 -- talking the
+tutor into another learner&amp;#39;s data -- which needs a microphone and is now
+outstanding for a third consecutive task.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/759f2d58cec9551c4d78fa6244410a2e80222494</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/759f2d58cec9551c4d78fa6244410a2e80222494"/>
+    <title>
+        Implement the record_result tool, and un-blind the write-direction gu…
+    </title>
+    <updated>2026-09-12T18:29:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Implement the record_result tool, and un-blind the write-direction guard (W9)
+
+store.record_result already existed (W5/W6), so this is the tool wrapper, one store
+reader it needed, and one fix to a security guard this task made relevant.
+
+Three departures from the task&amp;#39;s technical_details, each verified before deciding:
+
+- `notes` dropped. There is no notes column, no store parameter, and no migration
+  mechanism -- _apply_schema is IF NOT EXISTS DDL behind a user_version gate, so an
+  added column would never reach the ~20 already-provisioned household databases. It
+  is also LLM-written commentary about a child. A notes kwarg is now unreadable
+  structurally, not merely discouraged.
+- The outcome enum is the store&amp;#39;s real (&amp;quot;completed&amp;quot;,&amp;quot;partial&amp;quot;,&amp;quot;skipped&amp;quot;). The schema
+  CHECK rejects the specified &amp;quot;abandoned&amp;quot;, so that enum would have had the model
+  reliably emit a word the database refuses -- acceptance criterion 2 satisfied to the
+  letter while every such call recorded nothing. No synonym mapping: the tool would
+  report one word and store another.
+- lesson_id declares an enum, verified load-bearing by removing it: the boundary suite
+  then fails exactly the two tests the code comment names.
+
+This is the first tool that WRITES, which is the whole difficulty. The boundary suite
+needs a tool to answer identically on repeat calls yet differently per learner.
+Returning post-write progress does both, because `completed` is a DISTINCT set so a
+duplicate row collapses -- which makes the RETURN SHAPE load-bearing rather than the
+write, and a guard test says so.
+
+The specialist security pass returned mitigated on all four considerations, and found
+that the boundary suite&amp;#39;s only write-direction control was vacuous for write tools:
+_housemate_snapshot read just her French rows while the suite synthesises a Spanish
+lesson, so a cross-learner Spanish write passed the entire suite. The snapshot now
+covers every language, with a control that writes a Spanish row onto the injected
+identity while returning the caller&amp;#39;s own standing -- the shape that defeated the
+equality half, the token half and the old snapshot at once.
+
+Swept the kwargs guards: test_get_profile.py still carried a substring deny-list that
+an injected kwargs.pop(&amp;quot;learner_id&amp;quot;) passes. Inverted to an allow-list; it now fails.
+
+Two review rounds. Round 2&amp;#39;s findings were all new debt from the round-1 fixes and are
+all fixed here: get_lesson&amp;#39;s guard was regression-permeable (deleting it left 57 tests
+green; it now fails 8), its comment named a wider class than it closed, and a log
+assertion could not tell breakage from refusal.
+
+The manual test is NOT done -- it needs the LLM conversation loop and there is no .env.
+Handed back to a human.
+
+891 passed, 30 skipped; ruff clean on src; tests/ lint unchanged at 25.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ba4515cbe14b1921f011ace78560563e22aba5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/1ba4515cbe14b1921f011ace78560563e22aba5a"/>
+    <title>
+        Implement the get_progress tool, and make &quot;not taught&quot; a fact (W8)
+    </title>
+    <updated>2026-09-12T18:07:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Implement the get_progress tool, and make &amp;quot;not taught&amp;quot; a fact (W8)
+
+store.get_progress already existed (W6), so this is the tool wrapper plus the one
+store reader the wrapper needed.
+
+The reader exists because of a defect reproduced by execution: store.get_progress
+takes a catalog CODE, but this tool&amp;#39;s parameter is a spoken NAME. &amp;quot;spanish&amp;quot; passes
+_cannot_be_a_catalog_code, matches no row, and returns a SILENT None -- which by
+that function&amp;#39;s own contract means &amp;quot;this language is not taught here&amp;quot;. Passing the
+spoken name down would have had the tutor deny teaching Spanish to a learner
+mid-course.
+
+get_language_catalog() + CatalogLanguage make absence positively decidable: a
+language missing from a NON-EMPTY catalog is evidence, not an inference from
+silence. SQL stays in the store. store_is_available is deliberately not used --
+verified it returns True for an emptied languages table, so it cannot separate
+these cases, exactly as the store&amp;#39;s docstring warns.
+
+The schema enum on `language` is a deliberate departure from the task&amp;#39;s
+technical_details, and is load-bearing: removing it fails
+test_no_tool_can_be_steered_by_an_injected_identity and
+test_every_learner_tool_is_individually_observable, because _benign_args
+synthesises &amp;quot;w11&amp;quot; for a required free string and the resulting waiver is
+forbidden for learner-reading tools. A drift test pins it to SEED_LANGUAGES.
+
+Returns counts plus the single next lesson, never the whole lesson list, and drops
+attempt history entirely -- scores are the most sensitive field and a spoken answer
+does not need them.
+
+The kwargs guard is a shape allow-list, not a deny-list: `kwargs` may appear in the
+module only as kwargs.get(&amp;quot;language&amp;quot;). An earlier version matched two node patterns
+while claiming to be an allow-list; seven access forms passed it while reading an
+identity. Its docstring now states its real bound -- it reads syntax, so
+string-mediated dynamic access is out of scope and test_tool_identity_boundary.py
+is the behavioural control.
+
+A specialist security pass returned mitigated on all four security_considerations,
+verified with ~540 injection payloads through the real dispatch path, an SQL trace,
+and log capture at DEBUG.
+
+Also drops the test count from .stride.md: it went stale twice during this one
+task, which is the argument against carrying it.
+
+The manual test is NOT done -- it needs the LLM conversation loop, and there is no
+.env, so the app cannot authenticate. Handed back to a human.
+
+826 passed, 30 skipped; ruff check and format clean.
+
+Claude-Session: https://claude.ai/code/session_01QKn952Urb9YHN5MWWgdHW8&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d4552cea04183eebca0598280e8f09044aa8b86a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cheezy/reachy-language-tutor/commit/d4552cea04183eebca0598280e8f09044aa8b86a"/>
+    <title>
+        File the webrtcsink deadlock upstream, and correct the boot count (W20)
+    </title>
+    <updated>2026-09-12T17:36:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/34346?s=30&amp;v=4"/>
+    <author>
+      <name>cheezy</name>
+      <uri>https://github.com/cheezy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;File the webrtcsink deadlock upstream, and correct the boot count (W20)
+
+Filed as pollen-robotics/reachy_mini#1416, with the project owner&amp;#39;s explicit
+go-ahead — publishing to a third-party tracker under their account is their
+decision, not an agent&amp;#39;s, and the task said so.
+
+The published text is deliberately cleaner than the entry it came from. No
+PIDs, no wall-clock timestamps, no local socket path, the timeline rebased to
+relative offsets, and the TURN detail dropped so no third-party address rides
+along. An upstream issue is public and permanent; docs/SETUP.md is not. A
+pre-publication security review and an independent 14-class identifier sweep
+both ran before anything was posted, and the published body was re-checked
+after the fact.
+
+Also corrected, because writing the report caught it: the entry claimed both
+of the day&amp;#39;s boots wedged the same way. There were three. A re-check of the
+log found signalling activity long after the second process should have been
+silent, which looked like a recovery and was not — the app had been restarted
+again at 17:10, and that third daemon wedged on its own schedule, confirmed by
+a fourth sample at 2086/2086 with its own session UUID and both probes at
+zero. Three for three, each within seconds of boot. The near-miss is recorded
+beside it, since &amp;quot;it recovered&amp;quot; was the wrong conclusion available at the time.
+
+Claude-Session: https://claude.ai/code/session_01VprzuzvRPcYkAE11xjcHCQ&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

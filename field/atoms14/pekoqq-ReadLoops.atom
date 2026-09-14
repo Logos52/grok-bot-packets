@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/pekoqq/ReadLoops/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pekoqq/ReadLoops/commits/main.atom"/>
+  <title>Recent Commits to ReadLoops:main</title>
+  <updated>2026-09-13T23:25:13Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee51220a86c98f8b16301083100360f5c03fdafa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/ee51220a86c98f8b16301083100360f5c03fdafa"/>
+    <title>
+        fix(cli): force UTF-8 standard streams so Chinese output works on Win…
+    </title>
+    <updated>2026-09-13T23:25:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(cli): force UTF-8 standard streams so Chinese output works on Windows cp1252 consoles&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd44c9498b00d33b0d94b440b0857dc14564a75c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/bd44c9498b00d33b0d94b440b0857dc14564a75c"/>
+    <title>
+        chore(release): prep v2.3.0 — bump version, real clone URLs, sidebar …
+    </title>
+    <updated>2026-09-13T23:08:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): prep v2.3.0 — bump version, real clone URLs, sidebar logo links to GitHub&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0835fef5ad17e6ddf237a8254ddba71b2ebfe424</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/0835fef5ad17e6ddf237a8254ddba71b2ebfe424"/>
+    <title>
+        docs: changelog for v2.3.0 (UI/motion polish + sentence translation)
+    </title>
+    <updated>2026-09-13T22:42:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: changelog for v2.3.0 (UI/motion polish + sentence translation)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d08789b320b5d3f4851d5b63019c869051e76ff8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/d08789b320b5d3f4851d5b63019c869051e76ff8"/>
+    <title>
+        polish(ui): damped curve + kill the second source of ghosting
+    </title>
+    <updated>2026-09-13T22:20:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): damped curve + kill the second source of ghosting
+
+- #reader.page-fading used a transition; removing it tweened opacity back to
+  1 while page-enter started from 0, briefly showing the old frame. Both
+  phases are animations now.
+- new --ease-damped cubic-bezier(0.34, 1.28, 0.42, 1): a real overshoot that
+  settles back
+- content entrance 0.68 -&amp;gt; 0.78s, lift 14px, stagger 0.055s
+- page leave 0.16 -&amp;gt; 0.10s so the old page never lingers&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/172fc0e491d4ccf5cf3e8ee9cd84ff240f2a42a0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/172fc0e491d4ccf5cf3e8ee9cd84ff240f2a42a0"/>
+    <title>
+        fix(ui): eliminate page-switch ghosting; add damping to entrances
+    </title>
+    <updated>2026-09-13T22:02:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): eliminate page-switch ghosting; add damping to entrances
+
+1. Ghosting: switchPage did not await its (async) renderer, so the old page
+   faded back in and was swapped out only when data arrived.
+   -&amp;gt; switchPage is now async and awaits the renderer before fading in.
+
+2. Damping: --ease-silk is now cubic-bezier(0.22, 1.18, 0.36, 1) -- a slight
+   overshoot that settles back. Duration 0.68s, lift 12px, and all nine
+   entrance animations use the silk curve.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/809391521d9e50c1e8d169f91220895c551bcf6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/809391521d9e50c1e8d169f91220895c551bcf6a"/>
+    <title>
+        polish(ui): apply the same entrance rhythm to every page
+    </title>
+    <updated>2026-09-13T21:52:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): apply the same entrance rhythm to every page
+
+- test page cards, option buttons, answer options and result card now use
+  the shared enterFade + staggerIn rhythm
+- removed a duplicate hand-written stagger loop in loadVocab that was
+  overwriting the shared delays
+- removed dead stagger code that sat after a return statement
+- staggerIn default step raised to 0.045s to match the silk tokens&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84e6b1846bcecdde8dced3dd9931700fd19c34ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/84e6b1846bcecdde8dced3dd9931700fd19c34ce"/>
+    <title>
+        polish(ui): silk, not snappy -- longer easing with a long tail
+    </title>
+    <updated>2026-09-13T21:46:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): silk, not snappy -- longer easing with a long tail
+
+- content entrance 0.42s -&amp;gt; 0.62s on the expo-out curve
+- page enter 0.32s -&amp;gt; 0.46s; page leave stays quick at 0.16s
+- lift 6px -&amp;gt; 8px, which reads as floating at the longer duration
+- stagger 0.03s -&amp;gt; 0.045s
+- added --ease-silk as the named curve; JS timings re-aligned&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45f0b835d1038cbc7a68490783e801e96db1b0be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/45f0b835d1038cbc7a68490783e801e96db1b0be"/>
+    <title>
+        polish(ui): retune motion -- container stays put, content lifts 6px
+    </title>
+    <updated>2026-09-13T21:41:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): retune motion -- container stays put, content lifts 6px
+
+- container cross-fades only (a moving container makes the page jump)
+- content keeps a small 6px lift instead of 12-14px + scale
+- durations tightened: out 0.18s / in 0.32s / content 0.42s
+- stagger 0.03s
+- JS switch timings now match the CSS (the old hardcoded 220/450ms left a
+  gap that read as a flicker)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5982697a03221192a1da17990166deabbc2da29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/d5982697a03221192a1da17990166deabbc2da29"/>
+    <title>
+        Revert &quot;fix(ui): remove layout shift on page switch; content fades in…
+    </title>
+    <updated>2026-09-13T21:38:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revert &amp;quot;fix(ui): remove layout shift on page switch; content fades in place&amp;quot;
+
+This reverts commit 2eb3d14ac2c543269b47ecad9c0366b955580e44.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2eb3d14ac2c543269b47ecad9c0366b955580e44</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/2eb3d14ac2c543269b47ecad9c0366b955580e44"/>
+    <title>
+        fix(ui): remove layout shift on page switch; content fades in place
+    </title>
+    <updated>2026-09-13T21:35:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): remove layout shift on page switch; content fades in place
+
+- #reader no longer animates translateY/scale on switch (that slid the whole
+  content area while cards moved independently on top of it)
+- cards and list rows fade in place instead of sliding, with a smaller
+  stagger, so text and blocks surface together rather than blocks &amp;#39;pushing in&amp;#39;
+- removed a duplicate pageEnter keyframes block&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/63a39ae181d32610242d43b4e48d84b508c70890</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/63a39ae181d32610242d43b4e48d84b508c70890"/>
+    <title>
+        polish(ui): soften entrance animations, add stagger to grouped elements
+    </title>
+    <updated>2026-09-13T21:29:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): soften entrance animations, add stagger to grouped elements
+
+- heatmap cells no longer animate individually (188 playing scaleIn at once
+  read as the grid exploding); the container fades in as a whole
+- stat cards are slower and staggered
+- article/vocab lists get a per-item delay via a shared staggerIn() helper
+- added --enter-dur / --enter-stagger tokens for a single source of rhythm&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b4521bc845b4f1fed1596f2c943d72a7ec305c06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b4521bc845b4f1fed1596f2c943d72a7ec305c06"/>
+    <title>
+        fix(ui): hide timer bar outside reader; strengthen edge hints
+    </title>
+    <updated>2026-09-13T21:19:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): hide timer bar outside reader; strengthen edge hints
+
+- bottom timer bar (and focus button) now appear only on the reader view
+- right-edge drawer hint is thicker and breathes more visibly
+- top trigger hint now breathes continuously in focus mode, so users can
+  tell the hidden toolbar is still reachable&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1863aee66870dcad0d8b848944c2eac85373a0d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/1863aee66870dcad0d8b848944c2eac85373a0d7"/>
+    <title>
+        polish(ui): theme transition, lighter heatmap, richer empty state
+    </title>
+    <updated>2026-09-13T21:14:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): theme transition, lighter heatmap, richer empty state
+
+- theme switching cross-fades via a temporary global transition class
+- heatmap empty cells are outlined, not solid grey, so active days stand out
+- empty state gained keyboard hints as kbd chips
+- right-edge drawer hint breathes slowly
+- vocab toolbar uses glass with a divider&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26e5590b2fb98d283597e018e22ec3681523b3db</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/26e5590b2fb98d283597e018e22ec3681523b3db"/>
+    <title>
+        feat: translate selected sentences; make sidebar logo link to project…
+    </title>
+    <updated>2026-09-13T21:08:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: translate selected sentences; make sidebar logo link to project page
+
+1. Selecting a sentence used to fail -- the lookup endpoint only handles
+   single words.
+   -&amp;gt; new POST /api/words/translate (AI translation); the panel branches on
+      selection length, single words still hit the dictionary
+   -&amp;gt; 加入生词本 is hidden in sentence mode
+
+2. Sidebar logo now links to the project page (new tab).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55b5869317d20db580335a312ee32e9723b85fb7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/55b5869317d20db580335a312ee32e9723b85fb7"/>
+    <title>
+        fix(ui): strengthen glass, fix auto-focus regression
+    </title>
+    <updated>2026-09-13T21:02:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): strengthen glass, fix auto-focus regression
+
+1. Auto focus broke because tryAutoFocus() runs on any click inside
+   #readerContainer, and the vocab/article/stats pages also render there.
+   Clicking those pages consumed the one-shot autoFocusTriggered flag.
+   -&amp;gt; return early unless the active view is the reader.
+
+2. Glass looked flat: --glass was barely lighter than the background and
+   backdrop-filter had nothing to blur on a flat colour.
+   -&amp;gt; lighter translucent surfaces, stronger borders, thicker inner shadow
+   -&amp;gt; buttons back on the liquid (SVG refraction) filter
+   -&amp;gt; faint ambient-light layer behind the UI
+   -&amp;gt; modals/dialogs use the strong liquid glass&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84f1d427cf97b1a112a3eabc6259d16cf50750cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/84f1d427cf97b1a112a3eabc6259d16cf50750cc"/>
+    <title>
+        refactor(ui): introduce button design system and unify glass treatment
+    </title>
+    <updated>2026-09-13T20:52:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(ui): introduce button design system and unify glass treatment
+
+Buttons had no shared standard, so radii, glass recipes, transitions and
+hover feedback all diverged -- including two completely different designs
+for the same delete button.
+
+- add button tokens (--btn-h/-radius/-pad, --ease-spring/-out)
+- toolbar-btn becomes the shared base; timer/action buttons follow it
+- unify both delete buttons into one icon-danger style
+- test options lift instead of shifting sideways
+- settings modal and sidebar inputs now use glass
+- remove the whole-button colour-inversion hover
+
+CSS only -- no markup or behaviour changes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a685b5ed544e355976a7f6a09a322f58454e039</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/5a685b5ed544e355976a7f6a09a322f58454e039"/>
+    <title>
+        fix: block focus mode outside reader; make batch actions discoverable
+    </title>
+    <updated>2026-09-13T18:18:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: block focus mode outside reader; make batch actions discoverable
+
+1. Focus mode could still be entered from the vocab page via the F key.
+   -&amp;gt; toggleFocusMode() refuses to enter unless the active view is the
+      reader; the F-key handler returns early on non-reader views.
+
+2. Batch actions were undiscoverable: the toolbar stayed hidden until a
+   word was checked.
+   -&amp;gt; Toolbar is now always visible, with buttons disabled until a
+      selection is made.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43af6ed0828a76c16751758ec1a616d803599aa2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/43af6ed0828a76c16751758ec1a616d803599aa2"/>
+    <title>
+        fix: make delete dialogs actually visible; hide focus mode outside re…
+    </title>
+    <updated>2026-09-13T18:07:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: make delete dialogs actually visible; hide focus mode outside reader
+
+1. Dialog was invisible. CSS gated visibility on .app-dialog-overlay.show,
+   but the JS never added that class, so the overlay stayed at opacity:0.
+   Class names also mismatched the markup (.app-dialog-msg,
+   .btn-danger / .btn-primary).
+   -&amp;gt; Rewrote with @keyframes animation and aligned class names.
+
+2. Focus mode only makes sense in the reader.
+   -&amp;gt; switchPage() now shows the button only on the reader view.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa612dbc378796bae7e8cd3c0890484681644e2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/aa612dbc378796bae7e8cd3c0890484681644e2b"/>
+    <title>
+        fix: auto-version frontend assets to defeat browser cache
+    </title>
+    <updated>2026-09-13T18:00:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: auto-version frontend assets to defeat browser cache
+
+Index page hardcoded ?v=37, so editing app.js/style.css did not change
+the URL and Chrome (especially --app= mode) kept serving the cached
+bundle.
+
+- Inject ?v=&amp;lt;mtime of app.js/style.css&amp;gt; at request time
+- Send Cache-Control: no-cache for index.html&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9acc63346a46688ed52a42086c5cfd23e117a849</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/9acc63346a46688ed52a42086c5cfd23e117a849"/>
+    <title>
+        feat: add app-dialog styles for async confirm/alert overlays
+    </title>
+    <updated>2026-09-12T20:36:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add app-dialog styles for async confirm/alert overlays&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

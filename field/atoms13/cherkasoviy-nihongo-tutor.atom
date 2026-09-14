@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/cherkasoviy/nihongo-tutor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/cherkasoviy/nihongo-tutor/commits/main.atom"/>
+  <title>Recent Commits to nihongo-tutor:main</title>
+  <updated>2026-09-12T20:44:49Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/687693477ef75f34c04378c6ab2171f0ff5fbf9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/687693477ef75f34c04378c6ab2171f0ff5fbf9a"/>
+    <title>
+        Merge pull request #9 from cherkasoviy/claude/fix-api-command
+    </title>
+    <updated>2026-09-12T20:44:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/126102137?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasovzentist</name>
+      <uri>https://github.com/cherkasovzentist</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #9 from cherkasoviy/claude/fix-api-command
+
+uvicorn was running without --proxy-headers in production&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/87a0daa8be690ffb500633d8858d5a2f6b471a13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/87a0daa8be690ffb500633d8858d5a2f6b471a13"/>
+    <title>
+        fix: uvicorn was running without --proxy-headers in production
+    </title>
+    <updated>2026-09-12T20:09:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: uvicorn was running without --proxy-headers in production
+
+Found by deploying. The api command used a folded &amp;quot;&amp;gt;&amp;quot; scalar:
+
+    command: &amp;gt;
+      sh -c &amp;quot;alembic upgrade head &amp;amp;&amp;amp;
+             uvicorn ... --port 8000
+                     --proxy-headers --forwarded-allow-ips=&amp;#39;*&amp;#39; --no-server-header&amp;quot;
+
+A folded scalar collapses newlines only between lines at the same
+indentation; a *more indented* line keeps its newline. So sh received three
+lines, ran `alembic &amp;amp;&amp;amp; uvicorn ... --port 8000`, and then tried to execute
+`--proxy-headers --forwarded-allow-ips=&amp;#39;*&amp;#39; --no-server-header` as a command
+of its own:
+
+    sh: 3: --proxy-headers: not found
+
+Three consequences, none of which announce themselves:
+
+* uvicorn ran **without --proxy-headers**, so X-Forwarded-Proto from Caddy
+  was ignored — the app saw every request as http and every client IP as
+  Caddy&amp;#39;s container address.
+* --no-server-header was dropped too, so the upstream Server header leaked.
+* sh exited 127 after uvicorn died, replacing uvicorn&amp;#39;s real exit code. The
+  container reported &amp;quot;Restarting (127)&amp;quot; no matter what actually went wrong,
+  which is how this hid.
+
+One line now, and `exec` so uvicorn replaces sh and receives SIGTERM
+directly instead of sh swallowing it and compose waiting out the kill
+timeout.
+
+`docker compose config -q` validates this file happily, which is why CI
+never saw it — so CI now also rejects any multi-line service command.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc636fd0739baa9f55943ff1558ba4aa6027d684</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/fc636fd0739baa9f55943ff1558ba4aa6027d684"/>
+    <title>
+        Merge pull request #8 from cherkasoviy/claude/drop-stray-bundle
+    </title>
+    <updated>2026-09-12T19:25:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #8 from cherkasoviy/claude/drop-stray-bundle
+
+Drop a git bundle that was committed by accident&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ddbfa828b19df5f1d901e5434075d544afe6b36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/2ddbfa828b19df5f1d901e5434075d544afe6b36"/>
+    <title>
+        chore: drop a git bundle that was committed by accident
+    </title>
+    <updated>2026-09-12T19:22:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: drop a git bundle that was committed by accident
+
+27efcf2 staged nihongotutorphase0skeleton.bundle along with its intended
+changes — my mistake, a `git add -A` over a working directory that had the
+bundle sitting untracked in it. 174 KB of packed git history, checked into
+git.
+
+Nothing sensitive: it is this repository&amp;#39;s own Phase 0 history, already
+public here. But bundles are how work moves between machines, not source,
+so *.bundle is ignored now to stop the next one following it in.
+
+The blob stays in history; rewriting main to excise 174 KB is not worth
+invalidating every existing clone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d67f65ba9a79f65cb0ad8715f87f29470d4c6e82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/d67f65ba9a79f65cb0ad8715f87f29470d4c6e82"/>
+    <title>
+        Merge pull request #5 from cherkasoviy/claude/content-seed
+    </title>
+    <updated>2026-09-12T19:22:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #5 from cherkasoviy/claude/content-seed
+
+Core vocabulary tranche 1, and the content/audio contract&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/44beb07aeb9816de970f47e79f49cc42132acefd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/44beb07aeb9816de970f47e79f49cc42132acefd"/>
+    <title>
+        Merge pull request #7 from cherkasoviy/claude/plan-ai-route
+    </title>
+    <updated>2026-09-12T19:21:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #7 from cherkasoviy/claude/plan-ai-route
+
+Reach Claude through Vertex, and STT through Google&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2631bb783cd26be8c9300b4932dac5a6262c70c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/c2631bb783cd26be8c9300b4932dac5a6262c70c"/>
+    <title>
+        Merge pull request #6 from cherkasoviy/claude/deploy-runbook
+    </title>
+    <updated>2026-09-12T19:21:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #6 from cherkasoviy/claude/deploy-runbook
+
+Seed content on deploy, and a runbook for the first cutover&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf518975680163033c0e5122bb17a242b1dacff7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/bf518975680163033c0e5122bb17a242b1dacff7"/>
+    <title>
+        Merge pull request #4 from cherkasoviy/claude/progress-transfer
+    </title>
+    <updated>2026-09-12T19:21:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #4 from cherkasoviy/claude/progress-transfer
+
+Move a learner&amp;#39;s progress between databases&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c5b2dbe1a2df3b7af458e46adb0810f2c0025cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/7c5b2dbe1a2df3b7af458e46adb0810f2c0025cc"/>
+    <title>
+        Merge branch &#39;claude/deploy-runbook&#39; into claude/plan-ai-route
+    </title>
+    <updated>2026-09-12T18:54:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/deploy-runbook&amp;#39; into claude/plan-ai-route
+
+# Conflicts:
+#	docs/PLAN.md
+#	infra/.env.example&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27efcf27b02904159e1d6685c20a2e1d803f22ad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/27efcf27b02904159e1d6685c20a2e1d803f22ad"/>
+    <title>
+        plan: reach Claude through Vertex, and STT through Google
+    </title>
+    <updated>2026-09-12T18:50:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;plan: reach Claude through Vertex, and STT through Google
+
+Direct Anthropic billing is not available to the owner, and neither is
+OpenAI&amp;#39;s, so two of the plan&amp;#39;s AI decisions were unreachable as written.
+Claude now goes through Vertex AI and STT through Google Cloud
+Speech-to-Text v2. Both authenticate with the same service account that
+already does TTS, so no Anthropic or OpenAI key exists anywhere in the
+deployment — one credential, one vendor.
+
+Vertex costs two things, and neither announces itself:
+
+Server-side `fallbacks` is first-party only, so a refusal on Vertex would
+have been a dead end. build_async_client registers the SDK&amp;#39;s
+BetaRefusalFallbackMiddleware instead, which needs an explicit fallback
+model because there is no &amp;quot;default&amp;quot; routing policy to defer to. The
+first-party path keeps the server-side parameter; sending it to Vertex
+would be an error, so the client tracks which route it is on.
+
+The Message Batches API is also unavailable, so offline seed generation
+pays full price rather than the 50% batch rate. Recorded in the plan
+against the task table that assumed the discount.
+
+STT v2 takes OGG_OPUS natively — no transcode — and its PhraseSet
+adaptation replaces OpenAI&amp;#39;s `prompt=&amp;lt;target sentence&amp;gt;` trick. 60 min/month
+free. openai_api_key is now dead config and is gone rather than left to
+invite someone to fill it in.
+
+Class names, the middleware signature, and the batches and fallback
+availability were checked against anthropic 1.4.0 as installed, not
+recalled.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/21c8d1fbccbf5de65648f3191d90e5e445117f9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/21c8d1fbccbf5de65648f3191d90e5e445117f9f"/>
+    <title>
+        content: put kanji in the examples, and use the plan&#39;s field names
+    </title>
+    <updated>2026-09-12T18:45:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;content: put kanji in the examples, and use the plan&amp;#39;s field names
+
+All 93 example sentences were kana-only while 69 of the 93 headwords carried
+kanji. That made example.reading a byte-for-byte copy of example.ja in every
+single row, and left the furigana toggle — which the plan turns on by default
+from the first vocabulary item — with nothing to render. 89 of the 93 now
+carry kanji; the four that do not are the ones whose headword is kana or
+katakana.
+
+No new vocabulary enters the sentences: every word was already there in kana,
+so this writes the same Japanese properly rather than making it harder. The
+examples stay at the `core` stage, where kanji is correct — the kana seeds
+are untouched, because the plan&amp;#39;s validation gate requires kana-only text
+during the bootcamp.
+
+Verified the readings rather than trusting the rewrite: Sudachi reproduces the
+pinned reading on 86 of 93 and disagrees on seven — 明日 as あす, 私 as
+わたくし, 日本 as にっぽん, 四人 as よんにん, 何時 as なんどき. Each is a real
+reading of the characters and the wrong one for this course, which is the
+argument for authoring `reading` instead of deriving it. Recorded in
+CONTENT.md, since it is the same case the audio section makes.
+
+`source`/`reviewed` were invented names for concepts vocab_lemmas already
+defines: now gloss_source (&amp;quot;claude&amp;quot;) and gloss_review_status (&amp;quot;needs_review&amp;quot;).
+
+Three sentences were duplicated across entries (39/63, 46/68, 13/90, 40/91);
+they are distinct now. Four first-person past-tense glosses forced a gender in
+Russian — those sentences moved to the present tense, and the remaining
+gendered glosses are neutral, since two learners of different genders share
+this content.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cbcf2fc6a9554d67410f76a06e6edbd95af3da43</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/cbcf2fc6a9554d67410f76a06e6edbd95af3da43"/>
+    <title>
+        Merge branch &#39;main&#39; into claude/content-seed
+    </title>
+    <updated>2026-09-12T18:43:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;main&amp;#39; into claude/content-seed&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad47a9278e17bd36e2b2676fd3a72835cabd6ad8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/ad47a9278e17bd36e2b2676fd3a72835cabd6ad8"/>
+    <title>
+        fix: carry the optimiser weights and the budget across as well
+    </title>
+    <updated>2026-09-12T18:38:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: carry the optimiser weights and the budget across as well
+
+The learner block claimed to move the learner&amp;#39;s settings and moved all but
+two of them. daily_budget_usd is cheap to lose — it is one number a learner
+can re-enter. fsrs_params is not: it is the personalised FSRS weight vector
+the monthly optimiser produces, and the only way to reproduce it is to have
+done the reviews again.
+
+Nothing writes fsrs_params yet (Phase 4), which is what made it easy to
+miss: a column that is null everywhere transfers correctly by accident, and
+the day it stops being null is the day the loss becomes real and silent.
+That is the worst possible shape for a bug in a tool whose entire job is not
+losing state.
+
+Both read with .get on import, so a payload written before they existed
+still applies, and a learner whose optimiser has never run is left alone
+rather than having null written over a default.
+
+The round-trip test now sets a 21-float weight vector and asserts it lands.
+Dropping the export line again fails it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e547fa7dfb5b35eaef8abc6ba85c7e6e18805672</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/e547fa7dfb5b35eaef8abc6ba85c7e6e18805672"/>
+    <title>
+        deploy: size the runbook for the box we actually bought
+    </title>
+    <updated>2026-09-12T18:36:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: size the runbook for the box we actually bought
+
+The prerequisites table said &amp;quot;≥ 2 GB RAM&amp;quot;, justified by the ~1 GB idle
+footprint. That is the wrong number to check against. deploy.sh runs
+`docker compose build` on the server and the Mini App stage runs `npm run
+build`, where Vite/esbuild is the memory peak in this stack — so on a 2 GB
+CPX12 with no swap it is the build that gets OOM-killed, while the table
+says everything is fine.
+
+Split the row into idle and peak, and add a swapfile row before the first
+deploy step rather than as troubleshooting: recovering from a killed build
+is slower than preventing one. Document building the miniapp image locally
+as the fallback if swap is not enough.
+
+PLAN.md still said GCP e2-medium. Hetzner&amp;#39;s CX/CAX line has been out of
+stock since early September 2026 and GCP lands near $35/mo once the
+external IP and balanced PD are counted, so the box is a CPX12. Recorded
+with its consequence, and with the one that is easy to miss: off GCP there
+is no attached service account, so Phase 2&amp;#39;s TTS/STT needs a JSON key on
+the box. .env.example said the opposite.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d7a15c1ef585a672d9f2fe8bb024de051909739</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/9d7a15c1ef585a672d9f2fe8bb024de051909739"/>
+    <title>
+        deploy: seed content on deploy, and a runbook for the first cutover
+    </title>
+    <updated>2026-09-12T17:49:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: seed content on deploy, and a runbook for the first cutover
+
+deploy.sh ran the migrations and never imported the kana seed, so a fresh
+production database would have come up fully migrated with nothing to teach:
+the first lesson would have found an empty `kana` table. The import upserts on
+natural keys, so running it on every deploy is free and means the server can
+never drift from the seed files in git.
+
+docs/DEPLOY.md is the order of operations for the first cutover, host-agnostic
+rather than GCP-specific, and covers the three things the README&amp;#39;s deploy
+section does not.
+
+The webhook is the one that bites: a bot token has exactly one webhook URL, so
+production steals it from the development tunnel on boot — and a laptop stack
+restarted afterwards steals it back, silently. The runbook says to expect that,
+and to take a second token from BotFather for further local work.
+
+Progress transfer needs the timezone fixed *before* the export, because the
+payload carries it and the reminder job fires on it.
+
+And DNS has to resolve before the first deploy, not after: Caddy proves domain
+control over HTTP, and repeated ACME failures are rate-limited in hours.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d0aac0c343fd8b3dbf24e2b2fb3ed4d73cf26bc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/5d0aac0c343fd8b3dbf24e2b2fb3ed4d73cf26bc"/>
+    <title>
+        content: core vocabulary tranche 1, and the content/audio contract
+    </title>
+    <updated>2026-09-07T18:29:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;content: core vocabulary tranche 1, and the content/audio contract
+
+Ninety-three entries covering what a learner can use in the first sittings
+after kana: greetings, people, food, places, time, verbs, adjectives and the
+question words. Kanji where that is the ordinary written form, a pure-kana
+reading on every entry, no romaji.
+
+Everything ships reviewed=false. The owner reads it before the importer marks
+the items active — a learner cannot detect a wrong gloss, she just learns it.
+
+docs/CONTENT.md records why content lives in git rather than in a database,
+and settles the audio design: synthesize the reading rather than the written
+form, ship MP3 alongside OGG_OPUS so iOS does not fail silently, and address
+clips by a hash of (text, voice, rate, encoding) so stale audio cannot
+survive an edit. Full coverage measures 4,530 characters — 0.45% of the
+monthly free tier, so nothing needs rationing.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01HwxagkrKqX9SuH3DtWJuik&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42d346f56882795886ef784779813c1e0bef8fc2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/42d346f56882795886ef784779813c1e0bef8fc2"/>
+    <title>
+        feat: move a learner&#39;s progress between databases
+    </title>
+    <updated>2026-09-07T12:14:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: move a learner&amp;#39;s progress between databases
+
+Needed to carry existing progress onto a server, and it cannot be a `pg_dump` of the learner
+tables. `cards.item_id` points at `items.id`, which is a UUID minted when `import_kana` runs, so
+two databases that imported the same seed hold the same 208 syllables under entirely different
+ids — verified: あ is `01a07645-e696…` in the dev database and `01a07b8d-a7ac…` in another. Copied
+rows would arrive pointing at nothing.
+
+So progress travels keyed by what the content actually is — `(script, char, direction)` — and the
+importer resolves that against whatever ids the destination uses. `nihongo-content
+export-progress --tg-id N` and `import-progress -i file.json`.
+
+Being re-runnable is the other reason not to use a dump: a learner keeps using the local instance
+while a server is being set up, so the export has to be re-applied at cutover against a database
+that is already live. Cards match on `(learner, item, direction)`, review logs on
+`(card, review_at, rating)`, sessions on `(learner, started_at, kind)`; a second run adds nothing.
+
+What travels: settings, streak, every card with its full FSRS state, every review log, and finished
+sessions. What does not: `session_steps` and `daily_plans` are working state for one sitting and are
+rebuilt on demand, so an unfinished session is skipped rather than half-copied, and
+`ai_usage_ledger` is per-deployment billing rather than learner progress.
+
+A syllable the destination has never heard of is counted and reported, and the CLI exits non-zero —
+importing before the seed would otherwise lose progress silently.
+
+Tested by re-minting the content ids underneath an export and checking it still lands: eight tests
+covering the id-divergence case, settings and streak, review history, idempotency, the
+missing-seed warning and a format-version guard.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0734b2b2b56612f4f238a10b11d7863f57041728</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/0734b2b2b56612f4f238a10b11d7863f57041728"/>
+    <title>
+        Merge pull request #3 from cherkasoviy/claude/phase-1-kana
+    </title>
+    <updated>2026-09-07T11:05:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #3 from cherkasoviy/claude/phase-1-kana
+
+Let learners set their own pace, and skip the kana they already read&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/822b2f8a3152aba50ce0350602a146b5fe8bc6b1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/822b2f8a3152aba50ce0350602a146b5fe8bc6b1"/>
+    <title>
+        fix: total orderings, and describe the simulation&#39;s variance accurately
+    </title>
+    <updated>2026-09-07T04:18:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: total orderings, and describe the simulation&amp;#39;s variance accurately
+
+**The ordering bug.** `ORDER BY due` with a LIMIT is not a total order here. A day&amp;#39;s cards are
+created in one transaction and share an identical `due` — every new production sibling is
+`now + 1 day` — so which of them the limit returned was up to Postgres and could differ between two
+identical requests. The plan promises that reopening a session replays it, and that promise was only
+as good as the physical row order. `id` now breaks the tie in the due and weakest-card queries, and
+uuid7 is time-ordered, so the tiebreak also means &amp;quot;oldest first&amp;quot; rather than an arbitrary pick. Same
+for the session lookups that resolve with LIMIT 1.
+
+**Correcting an overclaim from the previous commit.** Its comment said seeding the module RNG made
+the 30-day run reproducible. It does not. Seeding removes FSRS&amp;#39;s interval fuzz as one source, and
+this commit removes unstable row order as another, but the step order comes from
+`interleave.make_seed(user.id, local_date)` and the learner&amp;#39;s UUID is fresh on every run —
+deliberately, since each learner is meant to get their own ordering. Different order means different
+cards answered at different moments, which feeds back into the schedule.
+
+Measured across four runs after both fixes: streak, completed days and syllables taught come out
+identical every time; minutes per day do not. Which is exactly why the assertions are invariants
+rather than counts — they hold under any ordering, and pinning the incidentals would only buy a test
+that fails for the wrong reason.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e866bd3481ffe73f1f029bdeb9badbd001c50be8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/e866bd3481ffe73f1f029bdeb9badbd001c50be8"/>
+    <title>
+        docs: catch the plan and hand-off up with the product
+    </title>
+    <updated>2026-09-07T04:03:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: catch the plan and hand-off up with the product
+
+The docs had drifted from the code, which is worse than being out of date: `docs/PLAN.md` still
+specified `base = 5` and `min(new + 1, 10)`, so anyone reconciling plan against code would have
+&amp;quot;fixed&amp;quot; the code back.
+
+- **PLAN.md** now carries the amended numbers with the measurement as the reason — the sweep that
+  showed base 5 leaving a 70%-accuracy learner on 94 of 208 syllables with hiragana unfinished after
+  a month — plus the note that the ceiling had to move with the base or the high-retention bump would
+  silently do nothing. Placement, the learner-settable pace, `daily_new_items_target` and the
+  nothing-to-do day are all described, since the plan never mentioned any of them.
+- **HANDOFF.md** closes the kana-pace open question with the table that answered it, and drops the
+  claim that &amp;quot;the code implements the plan verbatim&amp;quot; — no longer true, and the six product-level
+  departures are now listed explicitly. Its two &amp;quot;not in PLAN.md&amp;quot; sections said the same thing about
+  different kinds of decision, so they are now separated into implementation and product.
+- **README.md** describes the pace, practice sittings, placement, free recall and the empty-day rule
+  in the lesson walkthrough, none of which existed when it was written.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

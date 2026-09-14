@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/jackylin2026/englishpod_to_anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/jackylin2026/englishpod_to_anki/commits/main.atom"/>
+  <title>Recent Commits to englishpod_to_anki:main</title>
+  <updated>2026-09-11T15:50:50Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0b96584d49eb804b84d6313b3c9549c6149528ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/0b96584d49eb804b84d6313b3c9549c6149528ba"/>
+    <title>
+        Recognise a lesson by the recording its card plays, and read past a n…
+    </title>
+    <updated>2026-09-11T15:50:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Recognise a lesson by the recording its card plays, and read past a note that is gone
+
+Reviewing #8 (ad17fc9) against the learner&amp;#39;s own collection turned up a wrong
+claim, two crashes, and a better identifier than the one the ticket was built
+on.
+
+The claim first, because it is the one that mattered: ADR-0009 said the cards it
+could not recognise belonged to lessons the tool cannot build yet. They do not.
+Matching the learner&amp;#39;s 102 hand-made cards to lessons by the dialogue recording
+each card plays shows every one of them is for a lesson the tool builds, and 54
+of them are for one it builds today. The measurement behind the claim was a
+prefix comparison, which a single differing word early in a dialogue destroys;
+the audio field names the lesson outright, and nothing about a card&amp;#39;s wording
+can spoil it. The ADR&amp;#39;s numbers are corrected, and the README and CONTEXT say
+what was measured rather than what was guessed.
+
+That identification is worth having in the tool, not only in the measurement.
+Import now looks for a note playing the lesson&amp;#39;s dialogue recording before it
+compares any words: the audio is attached under the filename the corpus gave it,
+no two lessons were recorded into one file, and a hand-made card&amp;#39;s own text may
+depart from the corpus&amp;#39;s by a word or two -- `religous` for `religious`,
+`daughter` for `son` -- without the lesson being a different lesson. Matching
+the words more loosely was the alternative and is rejected: a rule for comparing
+words that could call those the same could just as easily call another lesson&amp;#39;s
+the same. Measured against the collection: `181 imported, 102 left as they
+were, 82 skipped`, every one of the 102 recognised, where the tag-and-words rule
+alone left 54 of them to be duplicated.
+
+Two failures the review found in the reading of the deck. AnkiConnect answers an
+empty object for a note id that is gone, which is what a run meets if a note is
+deleted or synced away between the search and the read; subscripting it raised a
+KeyError that no part of the command line catches, so a corpus-wide run would
+have died in a traceback with no summary and nothing said about where. The run
+reads past such an answer now, and the stub can put a collection in that state,
+which it could not before. The other: a note was indexed by its dialogue only if
+it carried no `englishpod::` tag, so a lesson whose code changed under it --
+re-read from another document, or corrected by hand -- was recognised by neither
+its tag nor its words, though ADR-0009 and the README both promise tag *or*
+words. Every note is read for all three now.
+
+And one the review found in the escape handling: a lesson whose text layer
+prints `&amp;amp;quot;` reaches its card as `&amp;amp;amp;quot;`, and a hand-made card of the
+same dialogue holds the character itself, so the two were compared as
+`quotEdquot` against `Ed`. Entities are resolved until they settle, which is
+what a card carrying the lesson&amp;#39;s words rather than the extraction&amp;#39;s escapes
+needs.
+
+Tests, one per finding: a card recognised by the recording it plays and one
+playing another lesson&amp;#39;s recording that is not a match, a note that vanishes
+between the search and the read, a note whose tag names another code, and a card
+that spells out what the corpus printed as an entity.
+
+Refs #8.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad17fc920f33442495c9948606f2b0f80464e8b1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/ad17fc920f33442495c9948606f2b0f80464e8b1"/>
+    <title>
+        Ask about a lesson the collection already holds, and refresh it in place
+    </title>
+    <updated>2026-09-11T15:43:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ask about a lesson the collection already holds, and refresh it in place
+
+Import used to find out that a lesson was already in the collection the hard
+way: it added the note, Anki refused it as a duplicate, and the run stopped
+there. That left the learner&amp;#39;s decision unmade in the one place it matters most,
+since the note already there may be one they have studied for months, and a
+corpus-wide re-run is where it would bite hardest.
+
+It now reads the deck before it writes a note and asks: leave that note exactly
+as it is, or refresh its content and keep everything else about it. One answer
+can be given for every lesson left -- `s all`, `r all` -- so a corpus-wide
+re-run is a single decision rather than three hundred, and `--existing skip` or
+`--existing replace` answers ahead of time, so a scripted run never stalls on a
+prompt. A run with nobody to answer and no flag says what it was asked and what
+to pass rather than sitting on the question.
+
+Replace is `updateNoteFields` on the note that is there, and nothing else. It is
+never a deletion and a note made again: Anki&amp;#39;s ids and guids are not
+reproducible by the tool (ADR-0004), and a note made again is a card the learner
+has never studied in place of one they have -- which would cost exactly the
+review history the question exists to protect. A test asserts the note id, the
+deck, the tags and the card&amp;#39;s scheduling come through a replace unchanged.
+
+A lesson counts as already there by its note&amp;#39;s tag, and failing that by its
+dialogue. The second is what makes this worth anything for a collection that
+predates the tool: the learner&amp;#39;s profile holds 102 EnglishPod cards made by hand
+that carry no tags at all, so a tag search alone would call every one of them
+absent and hand them a second card. What two cards from one lesson share is the
+words -- a hand-made card blanks seven of lesson 108&amp;#39;s thirteen terms where the
+tool blanks eleven, breaks its lines where it likes and punctuates its own way
+(`Dont` for `Don&amp;#39;t`, `....` for `. . . .`, `partlycloudy` for `partly-cloudy`),
+so the comparison takes the blanks, the line breaks and the punctuation out of
+both. Measured against the learner&amp;#39;s collection, 48 of the 102 are recognised;
+the rest are lessons the tool cannot build yet -- the image-only scans above all
+-- or five whose card was edited to different words, which import a second card
+(ADR-0009 records the count and what it costs).
+
+Two things are reported rather than decided: a lesson the collection holds
+twice, since which note is the lesson&amp;#39;s is not the tool&amp;#39;s to guess, and a note
+found by its dialogue whose note type would not render the card, checked exactly
+as the tool&amp;#39;s own note type is (ADR-0005). Both name the lesson in the run&amp;#39;s
+summary and leave the others alone.
+
+A lesson left as it is counts as work, so a `--existing skip` run over a corpus
+that already holds every lesson exits zero and says how many were left, where a
+run that skipped every lesson for reasons of its own still exits non-zero
+(ADR-0006, amended).
+
+End to end against the real corpus with a stub holding the learner&amp;#39;s 102 notes:
+`import: 365 lessons: 235 imported, 48 left as they were, 82 skipped`, 475
+requests to the collection and not one of them a write to a note that was
+already there.
+
+Tests: the stub holds the notes a test puts in it -- with per-name note types,
+since the learner&amp;#39;s collection has more than the one this tool makes -- and
+answers findNotes, notesInfo and updateNoteFields, so each mode is driven
+through the command line and a replace is shown to keep the scheduling it found.
+run_cli feeds standard input, empty by default, so a prompt nobody meant to
+raise reads an end of file instead of a terminal.
+
+Closes #8.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ac0d107e0aee597cd1a24e52be5a321be7fc9523</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/ac0d107e0aee597cd1a24e52be5a321be7fc9523"/>
+    <title>
+        Pass over an unreadable batch PDF, and keep a title&#39;s walk back in bo…
+    </title>
+    <updated>2026-09-11T14:45:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pass over an unreadable batch PDF, and keep a title&amp;#39;s walk back in bounds
+
+Reviewing the batch PDF fallback (de88b23) turned up two things the code should
+have done differently, four tests it was missing, and three sentences in the
+docs that were not true of it.
+
+A PDF beside the lesson that could not be read at all aborted the search, and
+the failure it raised named that file rather than the lesson: a corrupt or
+scanned file in the batch directory -- a shape the corpus has elsewhere, in the
+69 lessons that want the OCR pass -- would have cost every code-less lesson in
+that batch its card with a reason about somebody else&amp;#39;s file. Every candidate is
+tried now, an unreadable one is passed over in silence, and what went wrong with
+one is reported only when none of them carries the lesson after all.
+
+The walk back over a title&amp;#39;s first line was bounded by nothing but the top of
+the document, so a code row close under another could have produced a slice
+beginning before the previous lesson&amp;#39;s -- which `_lesson_beside` would have
+taken for a lesson and reported as carrying no code. The bound is the previous
+lesson&amp;#39;s code row now, which makes an empty slice impossible as well as an
+overlapping one, and the caller asks a slice to be not empty rather than merely
+not absent.
+
+The docs: ADR-0008 promised that a lesson gaining a PDF of its own would end up
+with two Markdown files to reconcile, which the code has never done -- the
+Markdown a directory holds is the one a re-run writes to, and a test says so. It
+said twenty lessons &amp;quot;print a title that way&amp;quot; where the measurement is that
+twenty print the row carrying their code apart from the row their title begins
+on, fourteen under a wrapped title and six under a one-line one; and it blamed
+the column shift in 0282 and 0297 on per-lesson PDFs, which neither lesson has.
+It also counted a batch&amp;#39;s lessons as always ten, where the corpus&amp;#39;s last batch
+holds five and its fixture two. The README&amp;#39;s example skip line named a file the
+corpus does not have, and read a first-run count as though the corpus were
+empty, which after a run it is not.
+
+Tests, one per finding: a scanned PDF is not sent looking beside the lesson, an
+unreadable PDF beside it is passed over, whichever PDF beside it carries the
+lesson supplies it, `--force` keeps the name a recovered lesson&amp;#39;s Markdown
+already holds, and a directory not named by a number is reported as it was.
+Measured against the corpus after the change: all 115 lessons above 250 recover,
+twenty of them by walking back over a title&amp;#39;s first line, with no empty slice
+and none that reaches into the lesson before.
+
+Refs #10.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de88b233cb58c91ef00274e3f48c121b2b986ae9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/de88b233cb58c91ef00274e3f48c121b2b986ae9"/>
+    <title>
+        Read a lesson from its batch&#39;s PDF when it has none of its own
+    </title>
+    <updated>2026-09-11T14:24:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read a lesson from its batch&amp;#39;s PDF when it has none of its own
+
+Seventy-seven lessons -- every one of them above 250 -- keep a one-page
+introduction sheet where a lesson&amp;#39;s PDF would be: it names the lesson and says
+what it is about, and carries no lesson code, no dialogue and no vocabulary, so
+preprocess skipped all of them and none could ever become a card. Their content
+is in the combined PDF one directory up, which is a lesson PDF ten times over:
+ten lessons, each beginning at the row that prints its own code, each with a
+dialogue and both vocabulary tables.
+
+The stage reads them from there now. A lesson whose own PDF carries no lesson
+code is looked for beside it, by the four digits its directory is named with,
+one level up only -- that being the batch directory the corpus keeps. The
+number says which lesson is wanted; the code the card is identified by is still
+read from inside the document the lesson is found in, so a misnamed directory
+cannot misname a note. A PDF the stage cannot read at all is not sent looking:
+a scan wants the OCR pass, and says so.
+
+Deciding where one lesson ends and the next begins is where the care went. The
+marker is the row carrying the code, but a title too long for its column prints
+on two rows with the code beside the second -- so the title&amp;#39;s first row belongs
+to the lesson before the one it names, and since a title row spans the width of
+a vocabulary table, a stray one flattens that table&amp;#39;s columns into a single
+cell. Twenty of the corpus&amp;#39;s 115 lessons above 250 print their titles that way,
+and slicing at the code row damaged 101 table rows; measured against the
+corpus, walking back over a title&amp;#39;s first line leaves every lesson&amp;#39;s dialogue
+identical and swallows no row of any table.
+
+The Markdown lands in the lesson&amp;#39;s own directory, named for the code it was
+read from (0251/englishpod_C0251.md), and the Markdown a directory already
+holds is the one a re-run writes to however it is named -- so --force
+regenerates it in place instead of leaving a second file beside it, which is
+what used to happen to a hand-renamed one. Measured on the corpus: preprocess
+now writes 296 of 365 lessons and skips the 69 image-only scans, where it wrote
+219 and skipped 146; build makes 283 notes, two of the recovered lessons short
+of the count because their own tables print shifted by a column (0282, 0297) and
+the run says so rather than guessing.
+
+ADR-0008 records the decision and what it costs; CONTEXT.md gains Batch PDF and
+Introduction sheet beside a Lesson code entry that draws the line between the
+number a directory is named with and the code read inside the document; ADR-0006
+no longer cites these lessons as a reason a run cannot fix something.
+
+Tested through the command line against a batch fixture drawn the way the
+sample lesson PDFs are -- two lessons in one document, the second beginning
+mid-page under a wrapped title, which is the case that used to take the first
+lesson&amp;#39;s columns with it -- plus the corpus-level run that turns a recovered
+lesson into a note.
+
+Closes #10.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c15c434211d85537c13c48db0137407c56710c4a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/c15c434211d85537c13c48db0137407c56710c4a"/>
+    <title>
+        Report an unreadable ignore file, and match entries whatever the root is
+    </title>
+    <updated>2026-09-11T13:46:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Report an unreadable ignore file, and match entries whatever the root is
+
+Reviewing the ignore file added in 3f397aa against the standard the rest of the
+tool meets turned up two ways it could fail its owner.
+
+The file is the one thing a person hand-writes, and a file that is not UTF-8 --
+GBK is plausible for a corpus whose directories are named in Chinese -- raised a
+UnicodeDecodeError out of the stage and killed the run with a traceback. It is
+now reported the way every other unreadable thing is: the run stops and says
+which file it cannot read. A UTF-8 byte-order mark, which some editors write by
+default, no longer disables the first entry in silence; the file is read as
+utf-8-sig.
+
+An absolute entry now names the same directory when the corpus is given to a
+stage as a relative path, which it did not: the entry was resolved against the
+root only when the root was absolute, so `build corpus` with the absolute path
+its owner had in front of them excluded nothing, while the README and ADR-0007
+both said it would. Both sides are resolved before they are compared, and an
+entry opening with `./` is normalised now too.
+
+The rest of the review&amp;#39;s findings are in the words rather than the code. An
+entry naming a batch directory prunes it before anything asks what it is, so it
+takes its ten lessons and the combined PDF that would otherwise have been
+reported in their place out of the run in silence -- stated in the README and
+ADR-0007 rather than left implied. The README now gives the comment rule, since
+it is what makes a directory whose name opens with `#` unnameable. ADR-0007 had
+the host-transcript directory in the family it has since been moved out of, and
+CONTEXT.md had the file at &amp;quot;the corpus root&amp;quot; where the code reads it at whatever
+root a stage is pointed at. In the code, `excluded` became `ignored`, the
+glossary&amp;#39;s word for the thing, and `corpus.py`&amp;#39;s module docstring no longer
+claims the layout is the only list there is.
+
+Tests cover both bugs and the hazard: an absolute entry under a relative root, a
+byte-order mark, a file that cannot be decoded, an entry naming a batch
+directory, and the case the previous test only appeared to cover -- a lesson
+named in the ignore file beside it is still the lesson when a stage is pointed
+straight at it.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f397aaa0c6de51a2f554e7ecb34f1747af9da7a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/3f397aaa0c6de51a2f554e7ecb34f1747af9da7a"/>
+    <title>
+        Leave a directory out of a corpus run
+    </title>
+    <updated>2026-09-11T13:41:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Leave a directory out of a corpus run
+
+A corpus holds material that belongs to no lesson, and the walk could not tell:
+`英语博客51-100/ENGLISHPOD主持人对话文本/` holds 178 host-transcript PDFs, so
+every run found it, could not choose a file from it, and reported it as one
+more skipped lesson. The corpus&amp;#39;s owner can now name such a directory in
+`.englishpodignore`, at the root a stage is pointed at, by its own name or by
+its path from that root, and the walk neither descends into it nor reports it.
+Measured on the real corpus, the summary goes from 366 lessons to 365 and the
+line naming that directory is gone.
+
+Matching is exact -- a name or a path, never a glob or a prefix -- because the
+two directions fail differently: an entry that over-matches takes lessons out
+of every run and says nothing about it, while an entry that matches nothing
+excludes nothing and the directory it named comes back to the report. That
+same asymmetry is what keeps this from being the hand-maintained list ADR-0006
+rejects: a lesson list goes stale by silently omitting lessons that exist, an
+exclusion list by loudly excluding none. ADR-0007 records the exception;
+CONTEXT.md gains `Ignored directory` beside `Skipped lesson`, which nothing
+about this declines, and the README&amp;#39;s measured example moves to the steady
+state with a section of its own for the file.
+
+An explicit path is not discovery: pointing a stage at an ignored directory
+still works. Excluding every lesson of a batch leaves the batch directory
+holding its combined PDF with no lesson beneath it, which is what a lesson
+directory looks like, so it is reported as one in their place -- visible, and
+the honest shape of a corpus whose lessons someone has put out of the tool&amp;#39;s
+sight.
+
+Tested through the command line: the name and path forms, an absolute path
+with a trailing slash, comments and blank lines, a stale entry that changes
+nothing, a lesson still worked on when its directory is named directly, and
+the batch promotion above.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/337df51682b8e65df8a3375ccee04f306e080e38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/337df51682b8e65df8a3375ccee04f306e080e38"/>
+    <title>
+        Report a PDF that cannot be opened, and correct the corpus numbers
+    </title>
+    <updated>2026-09-11T09:17:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Report a PDF that cannot be opened, and correct the corpus numbers
+
+Reviewing the change against the ticket turned up two things worth fixing.
+
+A file that is not a PDF at all raised pdfminer&amp;#39;s error through the stage
+and out of the run: a traceback, and every lesson after it abandoned --
+which is what &amp;quot;one malformed lesson never stops the run&amp;quot; exists to forbid.
+The reader now raises the error the other unreadable lessons raise, so a
+corrupt file is one skipped lesson named in the summary, and a stage pointed
+at it says what is wrong rather than printing where the library gave up.
+pdfplumber wraps both a failed open and a failed page in its own exception,
+which is the net drawn here; nothing reaches past it into pdfminer. Tests
+cover the corrupt file both in a corpus run and on its own.
+
+The README&amp;#39;s corpus example was invented rather than measured, and was
+wrong. The real corpus preprocesses 217 lessons and skips 149, so it now
+carries the measured counts and says what the 149 are -- 69 image-only scans
+that want the OCR pass, 77 lesson-introduction sheets that carry no lesson
+code in the batches above 250, 3 directories holding more than one PDF --
+since that is what a first run should be read against. Measured as well: a
+build over those 217 makes 206 cards and skips 160, six of them for a
+missing dialogue recording and five for a Key Vocabulary table with no
+entries to blank.
+
+The ADR also records the quiet edge of the rule that reads a directory
+holding lessons as a container: a lesson directory that ever gains a
+subdirectory holding lesson files becomes a container, and the lesson is
+then neither built nor skipped nor named. No directory in the corpus is
+shaped that way, and the alternative rule reads each batch&amp;#39;s combined PDF as
+one more lesson, which is the likelier harm.
+
+Refs #5.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e15b67b144ec81fd0818c7c2d418a900d2628174</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/e15b67b144ec81fd0818c7c2d418a900d2628174"/>
+    <title>
+        Run a stage over the whole corpus
+    </title>
+    <updated>2026-09-11T09:12:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Run a stage over the whole corpus
+
+Each stage now takes either one lesson directory or the corpus directory
+holding them, and works out which it was given from what the path holds: a
+stage pointed at the corpus works through every lesson in it, and ends with
+a summary of the ones it skipped.
+
+The corpus has no index of its lessons, so its layout is the index -- and
+the layout is not uniform. The first families keep one lesson a directory
+and the later ones nest ten, each batch directory carrying a combined PDF
+of its ten beside the lesson directories, so a directory is a lesson when it
+holds a lesson&amp;#39;s files (its PDF, its recordings, its Markdown) and holds no
+lesson beneath it. That second half is what keeps the combined PDF from
+becoming a lesson of its own. It is also why 0001 and 0164 -- the lessons
+with no dialogue audio -- are found at all, and reported once their Markdown
+is there.
+
+A lesson that cannot be read, or that cannot make a card, is skipped and
+named in the stage&amp;#39;s own words rather than emitted as a degraded card, and
+one malformed lesson never stops the run. Build now refuses a lesson whose
+dialogue carries none of its Key Vocabulary: a note with nothing blanked
+looks complete in the collection and asks the learner nothing. What does
+stop a run is the collection itself -- an Anki that cannot be reached, a
+missing deck, a note type that is not the card&amp;#39;s design, a note refused --
+and it stops where that happened, saying how many notes had landed, since
+half a corpus imported is worse than none. That is the current answer to a
+lesson already in the collection too, until #8 asks rather than decides.
+
+A run that worked on no lesson at all exits non-zero even though no lesson
+failed on its own, so a script cannot mistake it for success. Skipped
+lessons are reported together at the end. The message for an ambiguous
+directory now names three of its files and counts the rest, because one
+corpus directory holds 178 of them and a run over the corpus reports it.
+
+ADR-0006 records the decisions and the cost: a run can succeed while
+looking incomplete, and the summary grows with the corpus.
+
+Tested through the command line against a corpus fixture laid out the way
+the real one is -- a lesson and a malformed lesson a directory deep, a
+batch directory carrying a combined PDF, one lesson missing its dialogue
+audio, and something that is not a lesson at all -- plus a corpus of PDFs
+for preprocess. The stub AnkiConnect now answers for a note type it was
+asked to create, which a run over a corpus asks of the second note on.
+
+Closes #5.
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7cdd85ec0bf8074fd15f9e446656eedfb479d32d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/7cdd85ec0bf8074fd15f9e446656eedfb479d32d"/>
+    <title>
+        Refuse a note type that is not the card&#39;s design
+    </title>
+    <updated>2026-09-11T08:32:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Refuse a note type that is not the card&amp;#39;s design
+
+Import creates `EnglishPod Cloze` when the collection lacks it, and until
+now adopted one already there as it stood. Reading the learner&amp;#39;s own
+collection showed why that is wrong: their profile holds an EnglishPod
+Cloze with the six fields in the right order and a card that renders only
+`Sentences` and `Phonetic symbols` -- a note type started by hand and never
+finished. Notes added to it would carry a glossary and a dialogue
+recording that no card ever shows, and Anki reports nothing when it
+happens: a field the note type lacks is dropped from a note in silence.
+
+Import now reads the note type&amp;#39;s fields and its card sides and compares
+them with the design before writing anything. A missing field, a card side
+that never renders a field the design renders, or a note type making more
+than one card a note stops the run with what differs named. The check is
+deliberately narrow: extra fields, restyling and the order the back
+renders them are the learner&amp;#39;s, and only content decides.
+
+Repairing the note type through AnkiConnect&amp;#39;s model actions was the
+alternative and is rejected in ADR-0005: the tool cannot tell a half-built
+note type from one its owner changed on purpose, and rewriting the first
+kind would silently discard the second.
+
+Refs #3.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8178a283320fe0c8595cd58e90cdae3d3af2567</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/e8178a283320fe0c8595cd58e90cdae3d3af2567"/>
+    <title>
+        Build a lesson&#39;s card and send it to Anki
+    </title>
+    <updated>2026-09-11T08:11:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build a lesson&amp;#39;s card and send it to Anki
+
+Add the middle and the last stage. Build reads a lesson&amp;#39;s Markdown and
+emits the note it would create as JSON, touching nothing: the dialogue
+with every Key Vocabulary term it carries blanked, the glossary from both
+tables, the note type&amp;#39;s six fields in order, and the dialogue audio under
+its source filename. Import sends that note to a running Anki through
+AnkiConnect, checking the EnglishPod deck is there, making the EnglishPod
+Cloze note type when the collection lacks it, and uploading the audio
+before the note that plays it.
+
+Matching normalises three things and no more: the page&amp;#39;s line wrapping, so
+a term split across lines still matches; simple inflections, so `plunge`
+finds `plunged`, `govern` finds `governing` and `road trip` finds `road
+trips`; and bracketed annotations, so `(be) overstocked` is `overstocked`.
+Every occurrence of a term is blanked, not only the first. Measured against
+the 191 lessons already preprocessed that places 87.6% of Key Vocabulary
+terms, around 8.4 blanks a lesson, and reports the rest -- `chapter elven`
+where the dialogue says `eleven`, `quality control` where it says `QC`,
+`write off` where the dialogue has `write them off`. Those want a human eye
+rather than a fuzzy match, which is what ADR-0003 asks for.
+
+A note cannot be given a guid through AnkiConnect, so it is born with a tag
+carrying the lesson code, `englishpod::C0108`, which is what a later run
+searches for to find what an earlier one made. ADR-0004 records why a tag
+rather than a field or a file.
+
+The lesson model and its Markdown form move to lesson.py, the one shape the
+stages meet on, along with the rule about what a lesson directory holds.
+That leaves card.py reading Markdown and never a PDF, as the design
+requires, and the two discovery rules preprocess and build were about to
+each write for themselves in one place.
+
+Tested through the command line against a stub AnkiConnect that records
+what it was asked to do, so no test needs Anki, the network or a corpus.
+The lesson directory fixture gains the dialogue audio it always should have
+had; the build tests read a Markdown lesson written to exercise a wrapped
+term, an inflected one, a bracketed one and one the dialogue never carries.
+
+Closes #3.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88dc100fd3352948da80ffb968434081e3f50e0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/88dc100fd3352948da80ffb968434081e3f50e0a"/>
+    <title>
+        Correct the Dialogue glossary entry on speaker labels
+    </title>
+    <updated>2026-09-11T07:21:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Correct the Dialogue glossary entry on speaker labels
+
+The entry claimed speakers are always labelled `A:`/`B:`. Measured across
+the 230 lesson PDFs that have a text layer, that holds for only 165 of
+them: 32 add a `C:`, six add `C:` and `D:`, and the rest name their
+speakers (`Steven:`, `Team A:`, `HUSBAND:`).
+
+The entry now defines a speaker label by its shape, which is what the
+parser accepts, and no longer states a claim the corpus contradicts.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ba4c5bfecdc196a65c2628b3f25b17af06e9c634</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/ba4c5bfecdc196a65c2628b3f25b17af06e9c634"/>
+    <title>
+        Decide line-break hyphens with the dictionary
+    </title>
+    <updated>2026-09-11T07:14:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Decide line-break hyphens with the dictionary
+
+A word the typesetter broke over a line and a hyphen the author typed are
+identical on the page, so no rule about where the break sits can tell them
+apart. The old rule removed every hyphen, which turned `non-variable` into
+`nonvariable` and `government-run` into `governmentrun`.
+
+Ask the dictionary instead: close the word up when it knows the result,
+otherwise keep the hyphen. The offline dictionary is cmudict, which the
+pronunciation stage needs anyway. It was picked by measurement against the
+corpus -- 37/37 on a hand-built set of real cases, against 36/37 for the
+system word list and 25/37 for hunspell, which lacks inflections.
+
+A word the dictionary does not know keeps its hyphen rather than have one
+guessed away. That leaves roughly fifteen rare words hyphenated across a
+break; ~1250 joins are healed.
+
+Reading the words back out needed two fixes found by the same measurement:
+`use_text_flow` keeps a wide speaker label whole where it overlaps the word
+after it, and a possessive ending in an apostrophe no longer swallows the
+word in front of it.
+
+Refs #2.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d93db8705e738c8ad02c0fa0a222f252b2483f21</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/d93db8705e738c8ad02c0fa0a222f252b2483f21"/>
+    <title>
+        Preprocess a lesson PDF into Markdown
+    </title>
+    <updated>2026-09-11T06:58:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Preprocess a lesson PDF into Markdown
+
+Add the command-line entry point with its three subcommands, and the
+preprocess stage, which reads a lesson directory&amp;#39;s PDF and writes a
+Markdown file beside it: the lesson code read from inside the PDF, the
+dialogue with its speaker labels and physical line structure, and the
+Key and Supplementary Vocabulary tables.
+
+The vocabulary tables&amp;#39; column geometry differs between the corpus&amp;#39;s two
+layout families, so it is recovered per table from the gaps that stay
+empty down the whole table, rather than hard-coded.
+
+The sample lessons the tests run against are drawn from scratch, copying
+the geometry of a real lesson PDF without copying any of the corpus,
+which is copyrighted.
+
+Refs #2.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a3b52aac0983e32d95066ca8dcc341876f0dd1a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/9a3b52aac0983e32d95066ca8dcc341876f0dd1a"/>
+    <title>
+        Translate README to English
+    </title>
+    <updated>2026-09-11T04:36:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Translate README to English&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9991ff94d91826762a42d3e4e006acea2bfd0b57</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/9991ff94d91826762a42d3e4e006acea2bfd0b57"/>
+    <title>
+        Add domain glossary and design decisions
+    </title>
+    <updated>2026-09-11T04:36:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add domain glossary and design decisions
+
+CONTEXT.md records the language this project speaks: lesson, lesson
+code, dialogue, Key Vocabulary, Supplementary Vocabulary, cloze blank,
+glossary, lesson card, skipped lesson.
+
+The three ADRs capture decisions from the design interview that a
+future reader would otherwise re-litigate, each with the alternative
+that was rejected:
+
+- 0001  import through AnkiConnect rather than a generated .apkg
+- 0002  convert PDFs to reviewable Markdown before building cards
+- 0003  one cloze card per lesson, blanks drawn from Key Vocabulary,
+        matching the shape of the hand-built card for lesson 108
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a745fa98473afb4a73f8060c30d764bb2f0f378a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/a745fa98473afb4a73f8060c30d764bb2f0f378a"/>
+    <title>
+        Add agent skills configuration
+    </title>
+    <updated>2026-09-11T04:36:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add agent skills configuration
+
+Configures the engineering skills for this repo: GitHub Issues as the
+issue tracker, the canonical five triage labels, and a single-context
+domain doc layout (CONTEXT.md plus docs/adr/).
+
+Co-Authored-By: Claude Code &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0359c4e1090890e881db33fc9d2f55266338a766</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/0359c4e1090890e881db33fc9d2f55266338a766"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2026-09-10T10:40:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update README.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8baaffbc1ff8013c354ddb98097e307c20cf60da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jackylin2026/englishpod_to_anki/commit/8baaffbc1ff8013c354ddb98097e307c20cf60da"/>
+    <title>
+        Initial commit
+    </title>
+    <updated>2026-09-10T10:31:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/264953708?s=30&amp;v=4"/>
+    <author>
+      <name>jackylin2026</name>
+      <uri>https://github.com/jackylin2026</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

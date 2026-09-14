@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/candemircan/ankispiel/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/candemircan/ankispiel/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/candemircan/ankispiel/commits/main.atom"/>
+  <title>Recent Commits to ankispiel:main</title>
+  <updated>2026-09-11T11:06:25Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/753421d02168b20f751772f9710a6c064b88fb1c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/candemircan/ankispiel/commit/753421d02168b20f751772f9710a6c064b88fb1c"/>
+    <title>
+        2026.9.11: persist refresh history per note, so an interrupted run re…
+    </title>
+    <updated>2026-09-11T11:06:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/63473642?s=30&amp;v=4"/>
+    <author>
+      <name>candemircan</name>
+      <uri>https://github.com/candemircan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;2026.9.11: persist refresh history per note, so an interrupted run resumes
+
+`run` wrote history.json only after the last note, so Ctrl-C discarded the
+whole night&amp;#39;s progress: the next run found no history entry and regenerated
+every note it had already filled, paying for the LLM and TTS twice. Write the
+history after each note instead; notes already refreshed are then skipped on
+resume (reps unchanged), and the in-flight note is retried atomically.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bb1bf2b71d52697e86f0dc5fa7c8a459a2b73285</id>
+    <link type="text/html" rel="alternate" href="https://github.com/candemircan/ankispiel/commit/bb1bf2b71d52697e86f0dc5fa7c8a459a2b73285"/>
+    <title>
+        2026.9.10: fix new-note selection, prune orphaned audio, switch to Ca…
+    </title>
+    <updated>2026-09-10T14:48:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/63473642?s=30&amp;v=4"/>
+    <author>
+      <name>candemircan</name>
+      <uri>https://github.com/candemircan</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;2026.9.10: fix new-note selection, prune orphaned audio, switch to CalVer
+
+`prop:due` matches no new card (new cards hold a queue position, not a due
+date), so the nightly run never refreshed new notes. Select the lowest queue
+positions explicitly instead.
+
+Delete generated audio that no note references, as part of `run`.
+
+Version is now CalVer (YYYY.M.D) rather than 0.x.y.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a1f382dc87bae9222a8fe6eb4b42f9400d067864</id>
+    <link type="text/html" rel="alternate" href="https://github.com/candemircan/ankispiel/commit/a1f382dc87bae9222a8fe6eb4b42f9400d067864"/>
+    <title>
+        update readme
+    </title>
+    <updated>2026-09-08T15:14:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/526e29df71732074572bd97d55bd4c62?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>cdemircan@tutanota.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;update readme&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f1a4ede18cd804163ea8d222fa9e903cbfaa042</id>
+    <link type="text/html" rel="alternate" href="https://github.com/candemircan/ankispiel/commit/4f1a4ede18cd804163ea8d222fa9e903cbfaa042"/>
+    <title>
+        v0.1.0: PyPI metadata, migrate smoke test, chkstyle sweep, --version …
+    </title>
+    <updated>2026-09-08T10:58:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/526e29df71732074572bd97d55bd4c62?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>cdemircan@tutanota.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;v0.1.0: PyPI metadata, migrate smoke test, chkstyle sweep, --version flag&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ataias/flashcards/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ataias/flashcards/commits/main.atom"/>
+  <title>Recent Commits to flashcards:main</title>
+  <updated>2026-09-12T23:27:18Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0cbc8763c9bc90ab269677437eae3bae9a5decdf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/0cbc8763c9bc90ab269677437eae3bae9a5decdf"/>
+    <title>
+        deploy: fix GHCR publish source copy in job containers (#66)
+    </title>
+    <updated>2026-09-12T23:27:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: fix GHCR publish source copy in job containers (#66)
+
+Job containers default to Debian sh (dash), which rejects set -o pipefail
+and aborted Place sources at /src before the copy ran. Use bash and a tar
+pipe so cargo still builds from a real /src tree for ServeDir.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72fde81c626abf59f41914111659d10db74e5021</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/72fde81c626abf59f41914111659d10db74e5021"/>
+    <title>
+        deploy: native multi-arch publish without QEMU cargo (#65)
+    </title>
+    <updated>2026-09-12T23:15:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: native multi-arch publish without QEMU cargo (#65)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6249e97da514186560e4947bc394b25157978b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/b6249e97da514186560e4947bc394b25157978b0"/>
+    <title>
+        deploy: publish multi-arch GHCR image (amd64 and arm64) (#60)
+    </title>
+    <updated>2026-09-12T22:58:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: publish multi-arch GHCR image (amd64 and arm64) (#60)
+
+Buildx now pushes linux/amd64 and linux/arm64 as one manifest for
+latest (main) and the short SHA. QEMU is set up for the cross build.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eaa58837da876275692c26f339b725579ea54d6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/eaa58837da876275692c26f339b725579ea54d6a"/>
+    <title>
+        docs: accept v1.2 learning and relearning steps (#54)
+    </title>
+    <updated>2026-09-12T22:47:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: accept v1.2 learning and relearning steps (#54)
+
+* docs: accept v1.2 learning/relearning steps (#21)
+
+* docs: clarify New→Learning step 0 and Easy new-card cap&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd3ff221774e9eaefcd930b1e5107526ee772ccb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/fd3ff221774e9eaefcd930b1e5107526ee772ccb"/>
+    <title>
+        deploy: app Containerfile and GHCR publish (#53)
+    </title>
+    <updated>2026-09-12T22:43:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deploy: app Containerfile and GHCR publish (#53)
+
+* deploy: add app Containerfile and GHCR publish workflow
+
+Add a multi-stage runtime image under deploy/ (kept separate from the
+CI toolchain Containerfile) and a workflow that pushes latest plus the
+short SHA to ghcr.io/ataias/flashcards on main and workflow_dispatch.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* deploy: drop system useradd so uid 1000 is a regular user
+
+Avoids the bookworm useradd warning when SYS_UID_MAX is 999.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38b5b1435cf29e078f0a068d126ee5da423950ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/38b5b1435cf29e078f0a068d126ee5da423950ff"/>
+    <title>
+        web: empty-Deck home UI + README (#49)
+    </title>
+    <updated>2026-09-12T22:04:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;web: empty-Deck home UI + README (#49)
+
+* web: empty-Deck home UI and README
+
+Show empty-state copy plus the create-Deck form when home has zero Decks, and drop the README claim that last-delete recreates Default.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* do-work: require an open stack bottom on main
+
+Every open stack must keep a PR whose base is main. Do not leave
+orphan tips after closing parents, and do not flatten a mid-stack
+PR onto main as a mega-diff.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* do-work: require named HTTP regression proof
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* do-work: move regression proof into companion file
+
+Drop version/plan phrasing from the skill; keep detailed guidance in
+.cursor/skills/do-work/regression-proof.md and reference that file.
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/934fb3c1d66aa916a4f27cf03bdf849a0c8d86c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/934fb3c1d66aa916a4f27cf03bdf849a0c8d86c7"/>
+    <title>
+        web: handlers call domain use cases only (#48)
+    </title>
+    <updated>2026-09-12T21:58:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;web: handlers call domain use cases only (#48)
+
+Map domain::Error to HTTP in AppError so handlers can use ? for
+not-found and persist HTMX form re-renders for empty-field errors.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75ff80792ffb750ea932af5de01f187bb37da7ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/75ff80792ffb750ea932af5de01f187bb37da7ae"/>
+    <title>
+        flashcards: binary crate + web library split (#47)
+    </title>
+    <updated>2026-09-12T21:53:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;flashcards: binary crate + web library split (#47)
+
+* db: persist-and-return review state; seed on first migration
+
+Return the Card that commit_review actually wrote so rate does not
+hand back a schedule from a different snapshot than the DB.
+
+Gate Default seeding on whether migrations have already been applied,
+not path.exists(), and keep ensure_default_deck crate-private.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* flashcards: binary crate + web library split
+
+Move the process entry to crates/flashcards (workspace default member).
+web depends on domain only and takes Store; the binary wires pool to
+SqliteStore to the router. HTTP tests move with the binary crate.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd75d4e9285333f44e4e1d1d47003ad7b015d017</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/dd75d4e9285333f44e4e1d1d47003ad7b015d017"/>
+    <title>
+        db: implement Store and seed Default only on first open (#46)
+    </title>
+    <updated>2026-09-12T21:50:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;db: implement Store and seed Default only on first open (#46)
+
+SqliteStore maps sqlx to domain::Error and persists reviews via
+commit_review (in-txn re-fetch). Deleting the last Deck leaves zero
+Decks; a missing Deck id is DeckNotFound.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84bdf05c6ca0456bf204e698f4ea071794c773e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/84bdf05c6ca0456bf204e698f4ea071794c773e5"/>
+    <title>
+        domain: Store, apply_rating, and use cases (#44)
+    </title>
+    <updated>2026-09-12T20:52:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;domain: Store, apply_rating, and use cases (#44)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ecc4b38822f62efca61f388c2b7d78523a41af6b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/ecc4b38822f62efca61f388c2b7d78523a41af6b"/>
+    <title>
+        docs: PR titles omit issue numbers (#45)
+    </title>
+    <updated>2026-09-12T20:25:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: PR titles omit issue numbers (#45)
+
+Keep Fixes #N in the PR body only. Update do-work skill §6 and the
+PR template so titles stay human-scoped.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/64e93790622badde8549be6bea791d815759e7fc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/64e93790622badde8549be6bea791d815759e7fc"/>
+    <title>
+        docs: accept v1.1 architecture (Store seam + Default seed-only) (#39)
+    </title>
+    <updated>2026-09-12T18:58:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: accept v1.1 architecture (Store seam + Default seed-only) (#39)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c989b2ae1914cdf1cae0f30a2c3f32938a9ca318</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/c989b2ae1914cdf1cae0f30a2c3f32938a9ca318"/>
+    <title>
+        docs: park web↔domain↔db architecture as v1.1 (#36) (#37)
+    </title>
+    <updated>2026-09-12T16:55:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: park web↔domain↔db architecture as v1.1 (#36) (#37)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c4d59202438f440d2ae457cd72774472b06309e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/2c4d59202438f440d2ae457cd72774472b06309e"/>
+    <title>
+        Docs: require UI visual proof before Code Reviewer (#35)
+    </title>
+    <updated>2026-09-12T14:48:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Docs: require UI visual proof before Code Reviewer (#35)
+
+UI-facing PRs must attach screenshots or a short video in the Test
+plan. Cargo checks alone are not enough; CI-only / non-UI PRs skip it.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2957a2bb87a504d428484d094c16fd2b9ea9b9b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/2957a2bb87a504d428484d094c16fd2b9ea9b9b6"/>
+    <title>
+        UI: Study / Review session (#26)
+    </title>
+    <updated>2026-09-12T14:44:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UI: Study / Review session (#26)
+
+* Add HTMX Study/Review session and fold #24 residuals
+
+Wire GET /decks/{id}/study plus reveal/rate fragments to the domain
+queue and db::rate_card. Also map create-card FK races to DeckNotFound
+and update cards with RETURNING.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Harden Study forms and add Again / cross-deck tests
+
+Give reveal/rate forms native method/action so they POST without JS.
+Assert Again floors to ≥1 day and Study stays inside the requested Deck.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Docs: finalize README for runnable v1 (#31)
+
+Reflect implemented Decks/Cards/Study, real cargo run defaults, and
+prerequisites so a stranger can start the binary.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* docs: drop hardcoded Rust version from README Prerequisites
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e06edeb472084d7d8da6a30cd49dda78902fdaa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/0e06edeb472084d7d8da6a30cd49dda78902fdaa"/>
+    <title>
+        UI: Card CRUD (HTMX + Askama) (#24)
+    </title>
+    <updated>2026-09-12T14:32:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UI: Card CRUD (HTMX + Askama) (#24)
+
+* Add HTMX Card CRUD UI and fold #20 should-fixes
+
+Card list/create/edit/delete on GET /decks/{id} matching Deck HTMX style.
+Also stop leaking AppError details, count home due/new without per-Deck
+study_queue, and remove web test DBs via tempfile.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Assert Askama numeric HTML entities in Card escape test
+
+Askama 0.14 emits &amp;amp;#60;/&amp;amp;#38; rather than named &amp;amp;lt;/&amp;amp;amp; entities.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Fix Card CRUD review must-fixes and cheap should-fixes
+
+Stop panicking on the home summary path, delete cards with RETURNING
+deck_id so missing rows stay 404, and fold easy should-fixes (domain
+count helpers, form draft, lighter list query, more web tests).
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Comments: drop tautological home-page new-count rustdoc
+
+Local-day cap stays in apply_daily_new_cap / remaining_new_card_slots.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42b2b590b723a09b40ddb5db9c80594bc5622cd4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/42b2b590b723a09b40ddb5db9c80594bc5622cd4"/>
+    <title>
+        CI: bump Rust toolchain 1.88 → 1.98.1 (#34)
+    </title>
+    <updated>2026-09-12T12:47:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;CI: bump Rust toolchain 1.88 → 1.98.1 (#34)
+
+Align rust-toolchain.toml, Containerfile base image, and workspace
+rust-version on 1.98.1. Keep edition 2024 and rustfmt/clippy.
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/390034dc6ebd53e3f8b8f5690c031a3250260611</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/390034dc6ebd53e3f8b8f5690c031a3250260611"/>
+    <title>
+        UI: Deck CRUD (HTMX + Askama) (#20)
+    </title>
+    <updated>2026-09-12T12:04:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;UI: Deck CRUD (HTMX + Askama) (#20)
+
+* Add HTMX Deck CRUD UI and re-fetch Card inside rate_card txn
+
+Home lists Decks with due/new counts; create, rename, and confirmed
+delete go through Askama fragments. Deleting the last Deck still
+recreates Default. rate_card now schedules from the Card row locked
+in the write transaction (carry from #18 review).
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Fix web test body conversion for axum Bytes
+
+oneshot responses yield Bytes; convert to Vec before from_utf8.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Drop restating rustdoc per Code Reviewer policy
+
+Keep only non-obvious why (empty env, IMMEDIATE TOCTOU, rate_card
+re-fetch, local-day queue contract, create_deck name rules).
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Comments: drop SPEC-ci and #18 ticket cites
+
+Keep the Containerfile no-COPY why and rate_card txn re-fetch why.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Bump askama from 0.14 to 0.16.1
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a9258c71aa82d7ef617d03ecf1710d607b706aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/6a9258c71aa82d7ef617d03ecf1710d607b706aa"/>
+    <title>
+        CI: add links-daily.yml (external lychee) (#32)
+    </title>
+    <updated>2026-09-12T11:48:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;CI: add links-daily.yml (external lychee) (#32)
+
+* CI: add links-daily.yml for external lychee
+
+Scheduled 06:00 UTC plus workflow_dispatch. Builds the root Containerfile
+with GHA layer cache and runs lychee on README.md, CONTEXT.md, and docs.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Comments: drop SPEC-ci/#14 cites and tautological rustdocs
+
+Keep GHA cache write, Containerfile no-COPY why, local-midnight,
+and lychee offline/404/429 notes. Must-fix WITHHOLD items in
+links-daily.yml are deleted rather than rewritten.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* CI: drop obvious Containerfile/checkout comment
+
+Keep the note that this workflow is self-contained and does not
+require ci.yml.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Drop obvious workflow comments per review
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d25a549c8dc9010dbcf8f0b1323e9f175a188c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ataias/flashcards/commit/7d25a549c8dc9010dbcf8f0b1323e9f175a188c0"/>
+    <title>
+        CI: land ci.yml on main (issue #14) (#30)
+    </title>
+    <updated>2026-09-12T09:47:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1009034?s=30&amp;v=4"/>
+    <author>
+      <name>ataias</name>
+      <uri>https://github.com/ataias</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;CI: land ci.yml on main (issue #14) (#30)
+
+* CI: add ci.yml (fmt/clippy/test/build + relative lychee)
+
+Build the root Containerfile in Actions with GHA layer cache, then run
+edition 2024, fmt, clippy -D warnings, test, build, and offline lychee
+inside that image. Cache Cargo via Swatinem/rust-cache. Set SQLX_OFFLINE
+when .sqlx/ is present. Install jq in the CI image for the edition gate.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* CI: stable job name checks; bump Actions to current majors
+
+Keep the GitHub check name as &amp;quot;checks&amp;quot; so later steps can be added
+without renaming a required status. Use latest majors: checkout v7,
+setup-buildx-action v4, build-push-action v7; rust-cache stays on v2.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* CI: extract checks into scripts/checks.sh
+
+Same edition/fmt/clippy/test/build/lychee gate as Actions, so the
+workflow can docker-run the script and the same file works locally.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* CI: keep ci.yml non-executable
+
+The previous commit applied +x to the workflow file by mistake.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* Comments: drop SPEC-ci cites and tautological rustdocs
+
+Keep GHA cache write, BEGIN IMMEDIATE, delete-recreate Default,
+local-midnight, lychee offline/404/429, and provenance whys.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+* CI: drop obvious Containerfile/checkout comment
+
+Ataias asked to remove the tautological toolchain/checkout note.
+Keep the actions: write GHA cache why.
+
+Co-authored-by: Ataias Pereira Reis &amp;lt;ataiasreis@gmail.com&amp;gt;
+
+---------
+
+Co-authored-by: Cursor Agent &amp;lt;cursoragent@cursor.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

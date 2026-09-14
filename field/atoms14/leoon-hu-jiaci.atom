@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/leoon-hu/jiaci/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/leoon-hu/jiaci/commits/main.atom"/>
+  <title>Recent Commits to jiaci:main</title>
+  <updated>2026-09-13T19:01:47Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97e5109a08b7da893d231fb26bdef8c7033ffae6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commit/97e5109a08b7da893d231fb26bdef8c7033ffae6"/>
+    <title>
+        README 与落地页显著位置说明代码与数据结构开源
+    </title>
+    <updated>2026-09-13T19:01:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6971613?s=30&amp;v=4"/>
+    <author>
+      <name>leoon-hu</name>
+      <uri>https://github.com/leoon-hu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README 与落地页显著位置说明代码与数据结构开源&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b18c8b44b30912e2f4fdba802a2d67385c0c530b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commit/b18c8b44b30912e2f4fdba802a2d67385c0c530b"/>
+    <title>
+        词库「独立进度」、单词状态跟着单词走、列表遮罩模式整行揭开
+    </title>
+    <updated>2026-09-13T16:37:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6971613?s=30&amp;v=4"/>
+    <author>
+      <name>leoon-hu</name>
+      <uri>https://github.com/leoon-hu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;词库「独立进度」、单词状态跟着单词走、列表遮罩模式整行揭开
+
+- 词库可切换独立进度：进度与学习记录加作用域列（空串 = 全局，否则 = 词库 id），
+  开关按用户 × 词库存 user_wordbook_setting；打分 / 队列 / 列表 / 详情 / 导出都按作用域读写，
+  两套记录互不影响、可来回切换
+- 单词状态与词库无关：非当前词库里没学过的词也算未开始，灰色只剩移出
+- 单词列表隐藏释义 / 隐藏英文时整行点击都是揭开遮罩，行的上下留白不再漏进详情&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/beffbf6fa3c206c7380527d56ba39531ff09992e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commit/beffbf6fa3c206c7380527d56ba39531ff09992e"/>
+    <title>
+        公开词条页（/dict/*）、单词列表「加进度」可撤销、打分守卫修复、发音接口匿名开放
+    </title>
+    <updated>2026-09-12T20:32:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6971613?s=30&amp;v=4"/>
+    <author>
+      <name>leoon-hu</name>
+      <uri>https://github.com/leoon-hu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;公开词条页（/dict/*）、单词列表「加进度」可撤销、打分守卫修复、发音接口匿名开放
+
+- 公开词条页与词库页 /dict/* 供搜索引擎收录：ISR、内链、分片 sitemap、匿名 /word 跳转
+- 发音接口：现成音频文件对匿名开放（公开词条页用），缓存头改 public；按需合成仍需登录
+- 单词列表「加进度」也可撤销：先向服务端预览结果、本地生效，5 秒后再真正提交
+- 「认识」的当天不重复守卫与今日队列只看当天最后一条记录：认识后又重新记的词可以再记、重新进队列&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eecd2383945ef0de27ddf2492cf6c24d0b8b1e02</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commit/eecd2383945ef0de27ddf2492cf6c24d0b8b1e02"/>
+    <title>
+        README 与落地页、单词列表工具栏排版、LICENSE 修正
+    </title>
+    <updated>2026-09-11T13:08:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6971613?s=30&amp;v=4"/>
+    <author>
+      <name>leoon-hu</name>
+      <uri>https://github.com/leoon-hu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README 与落地页、单词列表工具栏排版、LICENSE 修正
+
+- README：功能概览、目录结构、内容数据生成步骤、数据来源致谢、截图与站点链接、英文简介
+- 落地页与分享：未登录的 / 改为落地页，OG 卡片、robots、sitemap
+- 单词列表：五个状态筛选一行等宽、文字与数量两行并带饼图图例；搜索 / 排序 / 方向同高一行；提示精简；顶栏与底部 Tab 收小
+- LICENSE 补回漏掉的「without restriction, including」；词表注释去掉本机文档路径&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4ea9e00b5f7721d554929be52486f63de816a79d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leoon-hu/jiaci/commit/4ea9e00b5f7721d554929be52486f63de816a79d"/>
+    <title>
+        初始提交：AI加词（Next.js 15 + Prisma + PostgreSQL）
+    </title>
+    <updated>2026-09-11T12:11:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6971613?s=30&amp;v=4"/>
+    <author>
+      <name>leoon-hu</name>
+      <uri>https://github.com/leoon-hu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;初始提交：AI加词（Next.js 15 + Prisma + PostgreSQL）&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

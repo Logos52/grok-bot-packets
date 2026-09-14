@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/suj1e/elysia/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/suj1e/elysia/commits/main.atom"/>
+  <title>Recent Commits to elysia:main</title>
+  <updated>2026-09-13T23:44:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9c07f74347d6b833a5f98b8f58a7653d488cfeea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/9c07f74347d6b833a5f98b8f58a7653d488cfeea"/>
+    <title>
+        fix(auth): verify promoted admin by account id
+    </title>
+    <updated>2026-09-13T23:44:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(auth): verify promoted admin by account id
+
+Verify the email-promoted admin account by immutable account ID so deployment succeeds while preserving the existing username.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3c8209347fe17af34472c4dff2c99a91c02cbaf4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/3c8209347fe17af34472c4dff2c99a91c02cbaf4"/>
+    <title>
+        fix(auth): promote existing admin by email
+    </title>
+    <updated>2026-09-13T23:39:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(auth): promote existing admin by email
+
+Promote the existing password account identified by the configured email without renaming it, and keep deployment provisioning idempotent.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c690ce2670b986502981ffba67a3a26b066b1881</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/c690ce2670b986502981ffba67a3a26b066b1881"/>
+    <title>
+        ci: provision production admin during deploy (#28)
+    </title>
+    <updated>2026-09-13T23:18:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: provision production admin during deploy (#28)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf43f61cefa1590e47a62f2d56578ea5b929a682</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/bf43f61cefa1590e47a62f2d56578ea5b929a682"/>
+    <title>
+        feat(admin): add database-backed data overview (#27)
+    </title>
+    <updated>2026-09-13T23:07:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): add database-backed data overview (#27)
+
+* feat(admin): add database-backed overview
+
+* test(admin): cover postgres overview aggregates&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26877231246d74afce33d77d28f77477da9e6b46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/26877231246d74afce33d77d28f77477da9e6b46"/>
+    <title>
+        feat(admin): establish visual system and responsive operations UI (#26)
+    </title>
+    <updated>2026-09-13T16:19:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): establish visual system and responsive operations UI (#26)
+
+* feat(admin): establish visual system and responsive operations UI
+
+* fix(admin): preserve account kind in detail responses&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c014f52c4a7adfdb98466cb1d6e804bdabec0a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/0c014f52c4a7adfdb98466cb1d6e804bdabec0a3"/>
+    <title>
+        feat(ios): move account operations to settings (#25)
+    </title>
+    <updated>2026-09-13T15:43:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ios): move account operations to settings (#25)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dfd0627bab62f652388c2d32a6f77e19039dc41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/2dfd0627bab62f652388c2d32a6f77e19039dc41"/>
+    <title>
+        feat(admin): add account operations and learning overview (#24)
+    </title>
+    <updated>2026-09-13T15:43:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): add account operations and learning overview (#24)
+
+* feat(admin): add account operations and learning overview
+
+* chore: format admin account tests
+
+* fix(admin): sync account status with provisioning&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/454940bd2f9349c3cf780b616d2df9ec99325423</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/454940bd2f9349c3cf780b616d2df9ec99325423"/>
+    <title>
+        feat(admin): add secure first-admin provisioning (#23)
+    </title>
+    <updated>2026-09-13T15:12:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): add secure first-admin provisioning (#23)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fae790e30a20ace03c1bf14fddb07f3cf85d0bf4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/fae790e30a20ace03c1bf14fddb07f3cf85d0bf4"/>
+    <title>
+        refactor(content): make postgres the sole scenario source (#22)
+    </title>
+    <updated>2026-09-13T14:46:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(content): make postgres the sole scenario source (#22)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b7f20c386ad0b2fb794f0e7e2625b834379e5253</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/b7f20c386ad0b2fb794f0e7e2625b834379e5253"/>
+    <title>
+        ci(deploy): reuse existing mirrored images
+    </title>
+    <updated>2026-09-13T14:18:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci(deploy): reuse existing mirrored images&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f8ae47e768c4ea841ef347b21645b8ab4986d36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/3f8ae47e768c4ea841ef347b21645b8ab4986d36"/>
+    <title>
+        docs: use Linear for execution tracking (#21)
+    </title>
+    <updated>2026-09-13T14:12:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: use Linear for execution tracking (#21)
+
+* docs: use linear for execution tracking
+
+* chore(admin): remove duplicate workspace lockfile
+
+* fix(admin): reload caddy without api rebuild and add icon
+
+* ci(ios): publish unsigned production ipa release&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab659b845d3ded5ffdae946f4f5966a90efc1e20</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/ab659b845d3ded5ffdae946f4f5966a90efc1e20"/>
+    <title>
+        feat(admin): land scenario management stack on main (#20)
+    </title>
+    <updated>2026-09-13T13:05:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): land scenario management stack on main (#20)
+
+* feat(admin): add role-protected admin boundary
+
+* feat(admin): list scenario revisions
+
+* feat(content): validate database language drafts
+
+* feat(admin): create scenario drafts
+
+* feat(admin): automate static web deployment (#11)
+
+* feat(admin): automate static web deployment
+
+* feat(admin): standardize React web workspace with pnpm
+
+* feat(admin): publish validated scenario revisions atomically (#12)
+
+* feat(admin): publish validated scenario revisions atomically
+
+* feat(admin): add scenario unpublish and rollback lifecycle (#13)
+
+* feat(admin): add scenario unpublish and rollback lifecycle
+
+* feat(admin): expose editable scenario revision details (#14)
+
+* feat(admin): expose editable scenario revision details
+
+* feat(admin): save editable scenario drafts (#15)
+
+* feat(admin): save editable scenario drafts
+
+* feat(admin): archive draft scenario revisions (#16)
+
+* feat(admin): archive draft scenario revisions
+
+* feat(admin): copy scenario revisions into drafts (#17)
+
+* feat(admin): copy scenario revisions into drafts
+
+* feat(admin): add scenario revision editor workflow (#18)
+
+* feat(admin): automate static web deployment
+
+* feat(admin): standardize React web workspace with pnpm
+
+* feat(admin): add scenario revision editor workflow
+
+* feat(admin): add scenario creation workflow
+
+* feat(admin): support editing scenario steps and prerequisites
+
+* chore(admin): standardize pnpm workspace
+
+* feat(admin): add preview and rollback actions
+
+* chore(admin): run web checks from pnpm workspace
+
+* test(content): verify database release snapshot (#19)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0cc6ed3752467394af7b476febac6ca91c5aa752</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/0cc6ed3752467394af7b476febac6ca91c5aa752"/>
+    <title>
+        feat(admin): add role-protected admin boundary (#8)
+    </title>
+    <updated>2026-09-13T10:52:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(admin): add role-protected admin boundary (#8)
+
+* feat(admin): add role-protected admin boundary
+
+* feat(admin): list scenario revisions (#9)
+
+* feat(admin): list scenario revisions
+
+* feat(content): validate database language drafts (#10)
+
+* feat(content): validate database language drafts
+
+* feat(admin): create scenario drafts
+
+* feat(admin): automate static web deployment (#11)
+
+* feat(admin): automate static web deployment
+
+* feat(admin): standardize React web workspace with pnpm&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b73ab81ddd953ada8501e9d3432e44ca9d0e919</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/1b73ab81ddd953ada8501e9d3432e44ca9d0e919"/>
+    <title>
+        feat(content): make language catalog database-backed (#6)
+    </title>
+    <updated>2026-09-13T09:59:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): make language catalog database-backed (#6)
+
+* feat(content): source language catalog from database
+
+* feat(content): pin practice sessions to published revisions (#7)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/95037bd898f5232ff7b447a4bf6d1273c88caf3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/95037bd898f5232ff7b447a4bf6d1273c88caf3a"/>
+    <title>
+        fix(ios): make profile settings recoverable (#5)
+    </title>
+    <updated>2026-09-13T09:06:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ios): make profile settings recoverable (#5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7dad503e47e37b278cd69fa2431d2df06ba2b8d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/c7dad503e47e37b278cd69fa2431d2df06ba2b8d"/>
+    <title>
+        fix(ios): make home exploration accessible (#4)
+    </title>
+    <updated>2026-09-13T09:06:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ios): make home exploration accessible (#4)
+
+* fix(ios): make home exploration accessible
+
+* chore(api): apply gofmt to repository assertions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a12199e9b5dd01b2c2089c83fe8fa95f4c8e280</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/8a12199e9b5dd01b2c2089c83fe8fa95f4c8e280"/>
+    <title>
+        Merge pull request #3 from suj1e/codex/flo-11-content-postgres
+    </title>
+    <updated>2026-09-13T09:04:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #3 from suj1e/codex/flo-11-content-postgres
+
+refactor: require postgres for runtime content&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8ddda598a7e7725c78730069bd2a98d898c9d29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/d8ddda598a7e7725c78730069bd2a98d898c9d29"/>
+    <title>
+        feat: refine scenario practice feedback flow (#2)
+    </title>
+    <updated>2026-09-13T09:01:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: refine scenario practice feedback flow (#2)
+
+* feat(ios): attach coach feedback to practice answers
+
+* chore(api): apply gofmt to repository assertions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd45a17e723c5f4f5b85eefa608d1009ded944a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/dd45a17e723c5f4f5b85eefa608d1009ded944a7"/>
+    <title>
+        fix: stabilize authentication first-launch flow (#1)
+    </title>
+    <updated>2026-09-13T09:00:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: stabilize authentication first-launch flow (#1)
+
+* fix(ios): stabilize authentication acceptance flow
+
+* chore(api): apply gofmt to repository assertions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d4466678aeaed41ee6fbee44fefb714b5ed0d544</id>
+    <link type="text/html" rel="alternate" href="https://github.com/suj1e/elysia/commit/d4466678aeaed41ee6fbee44fefb714b5ed0d544"/>
+    <title>
+        chore(api): apply gofmt to repository assertions
+    </title>
+    <updated>2026-09-13T06:55:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/43363454?s=30&amp;v=4"/>
+    <author>
+      <name>suj1e</name>
+      <uri>https://github.com/suj1e</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(api): apply gofmt to repository assertions&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

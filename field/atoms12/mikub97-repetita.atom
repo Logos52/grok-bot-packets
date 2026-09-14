@@ -1,0 +1,1437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mikub97/repetita/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mikub97/repetita/commits/main.atom"/>
+  <title>Recent Commits to repetita:main</title>
+  <updated>2026-09-11T23:36:21Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37c9ff1ca8c291286949b59803f5e3c472cdcde1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/37c9ff1ca8c291286949b59803f5e3c472cdcde1"/>
+    <title>
+        docs: ADR-0014, sourced material carries its licence (#66)
+    </title>
+    <updated>2026-09-11T23:36:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: ADR-0014, sourced material carries its licence (#66)
+
+Three readers are about to be built for openly licensed material --
+Wiktionary via kaikki.org, Lingua Libre recordings, and OpenSubtitles
+frequency lists. This is the decision they all reference.
+
+The rule that matters is not the parsing. courses/ is CC BY-SA 4.0 and
+emit.py writes a course directory, so a reader that hands back a bare
+string has dropped the only thing that decides whether it may be used.
+Every item therefore carries its provenance, and the licence is recorded
+per item -- a Lingua Libre recording is CC BY-SA 4.0 or CC0 depending on
+the recording.
+
+Three licence states rather than two, using SPDX&amp;#39;s own tokens. kaikki
+states &amp;quot;the same licenses as Wiktionary - both CC-BY-SA and GFDL&amp;quot; with no
+version numbers, so a two-state model has to either invent a version or
+throw away the fact that terms exist. LicenseRef- is the third state and
+it costs nothing.
+
+The property is redistributable, not exportable: a floor, not a permit.
+CC BY-NC-SA is perfectly well known and unshippable, and this repository
+already documents that exact case in THIRD-PARTY.md.
+
+Also settles two questions the work would otherwise have decided in code:
+these packages are stdlib-only and add no extra, because nothing in them
+needs a third-party package; and wordfreq stays as it is, because it
+answers whether a distractor is about as common as the answer, not what
+word number 500 is.
+
+Numbered 0014 because 0013 is taken on another branch.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4805296f51ab186e87f9607abf97068855267a5b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/4805296f51ab186e87f9607abf97068855267a5b"/>
+    <title>
+        docs: ADR-0012, and a layout section that was describing an empty dir…
+    </title>
+    <updated>2026-09-11T22:10:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: ADR-0012, and a layout section that was describing an empty directory
+
+Records why the exercise type became an extension point like the other four,
+what the new validation found in the six built-in declarations, and the check of
+mine it refused -- &amp;#39;a card&amp;#39;s expect field must not be visible before&amp;#39; would have
+forbidden two-way vocabulary, which is the most common exercise shape there is.
+
+Also: the layout listed `modes/` as &amp;#39;one module per exercise form&amp;#39;, a directory
+that has been empty since it was created and is now actively misleading, because
+the client has both `modes/` and `types/`. Removed, and `content/notetypes/`
+listed instead. And the merge of two &amp;#39;Commits&amp;#39; sections I had just created by
+adding one beside the one that was already there.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/645bf5c83cd446eaaf217aacd883b91b6b34bcf7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/645bf5c83cd446eaaf217aacd883b91b6b34bcf7"/>
+    <title>
+        docs: a page about exercise types, with examples that run
+    </title>
+    <updated>2026-09-11T22:08:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: a page about exercise types, with examples that run
+
+Generated from the registry by `scripts/gen_types_doc.py`, with a CI check that
+it is current -- the same argument as the schema page: a hand-written list of six
+types and their fields would be wrong within a month and believed anyway.
+
+The examples are not screenshots. The script copies the app&amp;#39;s own renderers into
+`docs/javascripts/repetita/` and the page renders each type with them, so a
+picture of an exercise cannot drift from the exercise. The word bank assembles,
+the multiple choice selects, and a line under each one says nothing is graded,
+because there is no server behind a static site and answering does nothing.
+
+Two quoting bugs found by looking rather than reasoning: the payload travels in
+an HTML attribute, so it is escaped now (an apostrophe in any future example
+would have ended the attribute early), and the `picture` placeholder is base64
+rather than a literal SVG full of quotes.
+
+That placeholder is drawn rather than photographed on purpose. Neither course has
+`picture` material, so there is no licensed image to show, and hotlinking one
+would have put an unattributed image in the documentation of a project whose
+rule about images is the strictest it has.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61404c57bbc4a83acdd06c33de8e5539fd286b1a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/61404c57bbc4a83acdd06c33de8e5539fd286b1a"/>
+    <title>
+        feat(content): an exercise type is a file, and a course can declare one
+    </title>
+    <updated>2026-09-11T22:03:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): an exercise type is a file, and a course can declare one
+
+CONTRIBUTING promises that &amp;#39;a new scheduler, grader, presenter or session policy
+is a new file plus a registry entry&amp;#39;. The exercise type was the one extension
+point that was not like that: six of them in a single hard-coded dict, so adding
+one meant editing the engine -- which is why the Create tab shipped with a type
+picker over a fixed list and no way to want another.
+
+Now: `content/notetypes/` is a package with one declaration per file and a
+registry in the same shape as `graders/` and `srs/`, and a course may declare
+its own in `notetypes.yaml`, merged over the built-ins.
+
+**And declarations are checked, which they never were.** Nothing verified that a
+template&amp;#39;s grader existed -- a typo was a LookupError at answer time, on a card
+in front of a learner. Once a course can write one, that stops being
+unreachable, so a declaration is now refused by name when it points at a field
+the type does not have, an unknown grader, a form that grader cannot judge, or
+no cards at all. A broken type is dropped and reported rather than merged: its
+notes would otherwise be quarantined for a reason that is not their fault.
+
+Running those checks against the built-in six found two real ones, both
+declaring a form their grader cannot mark and both unreachable behind an earlier
+form, so nobody had ever met them: `phrase.say` offered a word bank to the
+`self` grader (issue #57) and `vocab.recognize` a flashcard to `typed`. Fixed.
+
+It also found a check of mine that was wrong. &amp;#39;The expect field must not be
+shown before&amp;#39; sounds right and would forbid the most common exercise shape there
+is: in `vocab`, `l1` is the prompt for `produce` and the answer for
+`recognize`. `NoteType.visible_before` already excludes a card&amp;#39;s own answer
+unconditionally, so the field-level setting is a default and the card wins. The
+check is gone and the reasoning is in its place.
+
+On the client, `static/types/` is the same idea: one view per type, registered,
+with the generic renderer as the fallback for a type that has no file. A gap now
+marks its blank inside the sentence and shows its cue as the grammatical label it
+is; a transform shows its instruction as a task rather than a second sentence.
+The four `modes/` files each changed by one import line.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a5080a81b86472da09dcb9f039bdbd61587e4af7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/a5080a81b86472da09dcb9f039bdbd61587e4af7"/>
+    <title>
+        docs: the rules become mechanisms
+    </title>
+    <updated>2026-09-11T21:52:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the rules become mechanisms
+
+About seventy rules across nine documents, and the shape of nearly all of them
+was prohibition: &amp;#39;never&amp;#39; appears eleven times in this file alone, and &amp;#39;never
+change an existing item id&amp;#39; was repeated in twelve places.
+
+Every one had a real reason -- the id rule protects the only thing here that
+cannot be reconstructed. But a prohibition has no idea what it costs, and three
+costs were being paid daily: an id derived from a typo stayed wrong for ever,
+rubbish could only be archived and never removed, and small fixes became issues
+that nobody did.
+
+So a prohibition is replaced by a mechanism wherever one can exist. Four rules
+remain absolute, and they are the ones no mechanism helps with: history is never
+destroyed silently, answers do not reach an open question, the scheduler is
+pure, the engine knows no language. Licensing is separate -- not a rule about
+care but the condition for the repository existing.
+
+The id rule is stronger than it was, not weaker. It used to rely on everybody
+reading it in twelve places; now the only way to do it moves the history, CI
+checks the record, and a record pointing at nothing is refused.
+
+Three things still ask first, about consequence rather than permission: deleting
+study history, deleting material still in a course, and human-only issues.
+Pushing and publishing are not among them -- and `enforce_admins` is off, with
+the four required checks kept, so this commit goes straight to main.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/462e9eab21f24edc2055f8643deaa142969ddd52</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/462e9eab21f24edc2055f8643deaa142969ddd52"/>
+    <title>
+        feat(store): rename an id with its history, and delete material on pu…
+    </title>
+    <updated>2026-09-11T21:43:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(store): rename an id with its history, and delete material on purpose (#65)
+
+* feat(store): rename an id with its history, and delete material on purpose
+
+Two prohibitions become two operations.
+
+**`repetita rename-id &amp;lt;old&amp;gt; &amp;lt;new&amp;gt;`.** Ids were frozen because a rename orphans
+history: scheduling state is keyed on the card id, which is keyed on the note id.
+That is true of renaming by hand, and says nothing about whether the operation is
+possible. It is -- it just has to happen in one transaction across everything
+that refers to the exercise, which is nine tables and ten columns, which is
+exactly why it belongs in a function rather than in a rule telling people not to.
+
+It refuses a target that is already taken, **including by an archived note**: an
+archived exercise still owns the history stored under its id. And it clears
+`origin`, which is what stops the next import from archiving the exercise that
+was just renamed -- the file still says the old id until an export catches up,
+so until then the note is one that was never in a file. A test caught that; it
+is the fourth time this rule has been needed.
+
+**`repetita purge`.** Archiving stays the default and stays right. What was
+missing was any way to be rid of a test set or a duplicated import. It reports
+before it acts -- how many exercises, how many cards, how much history is
+attached -- does nothing without `--yes`, and refuses `--with-history` without
+`--i-mean-it`, because those rows cannot be rebuilt from anything. A snapshot is
+taken first either way.
+
+**And CI learns the difference.** A proper rename looks identical to an id
+vanishing, which is the thing `check-ids` exists to catch, so the rename is
+written down in `courses/&amp;lt;course&amp;gt;/renames.yaml` and the check reads it -- but
+only accepts a record whose new id is actually there. The rule stops being
+&amp;quot;never rename&amp;quot;, which nothing could enforce and which left wrong ids wrong for
+ever, and becomes &amp;quot;a rename is written down&amp;quot;, which CI can check and a reviewer
+can read.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* style: sort the imports in the restore command
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/763ccbbe9db454620d6bf932069fcb05a08fdf27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/763ccbbe9db454620d6bf932069fcb05a08fdf27"/>
+    <title>
+        feat(store): snapshots of the study database, taken correctly (#64)
+    </title>
+    <updated>2026-09-11T21:33:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(store): snapshots of the study database, taken correctly (#64)
+
+`card_state` and `review_log` are the only things here that cannot be rebuilt
+from anything: material comes back from `courses/`, a schedule does not. That is
+why so much of this package is written as a prohibition. A snapshot is what makes
+the carefulness affordable -- with one in hand a mistake is a restore, and an
+operation that would otherwise have to be forbidden can simply be offered.
+
+`repetita snapshot [&amp;quot;why&amp;quot;]` · `--list` · `repetita restore &amp;lt;name&amp;gt;`, and
+`restore` snapshots what it is about to overwrite, because restoring is itself
+the destructive step and the state it replaces is usually the one nobody thought
+worth keeping until a second later.
+
+**Through SQLite&amp;#39;s backup API, not `cp`.** In WAL mode committed rows live in
+the log until a checkpoint folds them into the main file, so a file copy is
+complete only if it happens to be taken after one: a race, whose losing side is a
+backup that opens cleanly and is quietly missing the last answers.
+
+Checked rather than asserted, and my first version of this message was wrong:
+the seven hand-made copies already in `data/` all open and all look sane. They
+won the race. The test provokes the losing side deterministically -- an open
+connection and fifty committed rows -- because a backup that is correct by luck
+is the kind that fails on the day it is needed.
+
+`scripts/restart-host.sh` stops rolling its own `cp` and calls this; automatic
+snapshots are named so that pruning keeps the last twenty and never touches one
+somebody took deliberately.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/812effd0e57d38c47368015aee9cb17c91e52279</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/812effd0e57d38c47368015aee9cb17c91e52279"/>
+    <title>
+        fix(create): let go of unsaved work, on purpose (#63)
+    </title>
+    <updated>2026-09-11T19:43:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(create): let go of unsaved work, on purpose (#63)
+
+Leaving the Create tab kept everything in memory and said nothing, which is kind
+right up until the day you want the half-typed rows gone -- and then there was
+nowhere to say so. The only discard in the tab appeared while switching sets.
+
+Two ways out now, both through the same bar: a **Discard changes** button beside
+Save, and the guard firing when you click another tab, offering Save them first
+/ Discard them / Stay here. Leaving with nothing unsaved is instant, as before.
+
+Discarding actually puts the rows back before it navigates. Leaving them in
+memory meant the guard stopped you again on the way out, over work you had just
+said you did not want.
+
+The router grew a hook for this rather than Create reaching into the tab
+buttons: a view may refuse to be left, and answers by calling `show` again
+itself once the question is settled.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26aed5091ec24abe8c1944a56fc1dc2b3acd2f1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/26aed5091ec24abe8c1944a56fc1dc2b3acd2f1f"/>
+    <title>
+        feat(ui): show what is waiting, and say what just happened (#62)
+    </title>
+    <updated>2026-09-11T19:38:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ui): show what is waiting, and say what just happened (#62)
+
+Two things were invisible, and both read as the app ignoring you.
+
+**Everything you told the app disappeared.** Changes staged on Manage could only
+be seen on Manage; lesson notes only inside the composer that makes them; cards
+flagged while studying and problems filed from Design **nowhere at all** --
+`open_reports()` and `open_issues()` existed and no screen called either. The
+first thing the new panel did on the real database was surface a card flagged as
+&amp;quot;bad translation&amp;quot; that had been sitting unseen since it was reported.
+
+`GET /api/waiting` is assembly only -- `material.diff`, `drafts.queued`,
+`reports.open_reports`, `issues.open_issues` -- and a header count that is on
+every tab, so a staged change is no longer invisible the moment you look away.
+
+**Every confirmation rendered about 2,200px below the fold.** `#status` is one
+grey span in the page footer; on a wrapped board that is off screen, it was never
+cleared, and it has no live region. Saves, warnings and failures all landed
+there. They are toasts now, in the corner of the window, with failures that stay
+until dismissed.
+
+Three silences get a voice: Confirm had **no `catch` at all**, so a failed
+confirm showed nothing whatever; Design&amp;#39;s &amp;quot;Something&amp;#39;s off here&amp;quot; said nothing on
+success and threw an unhandled rejection on failure; and staging a change now
+updates the drawer **in place** rather than rebuilding the panel, because that
+swapped the Confirm button between mousedown and mouseup -- pressing Confirm
+straight from a field you had just edited did nothing at all.
+
+And the inbox is called **Capture a lesson**. &amp;quot;Add material&amp;quot; is what a person
+presses when they want to add material, and it was the one route that does not:
+it queues text for an agent to shape later. The direct way is the Create tab, and
+the label should not compete with it.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/20b601315d667b7a7d142edaf37cb0d710f2bdd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/20b601315d667b7a7d142edaf37cb0d710f2bdd9"/>
+    <title>
+        feat(ui): Create writes, Manage files (#61)
+    </title>
+    <updated>2026-09-11T19:28:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ui): Create writes, Manage files (#61)
+
+Both tabs edited exercises, with two editors, two field orders and two different
+promises about when a change lands. That is most of why adding and editing
+material felt like a maze: before you could act you had to decide which tab you
+were in, and the app never said.
+
+**Manage&amp;#39;s inspector becomes a filing card.** The fields are there to be read --
+in reading order, not the alphabetical order a JSON object arrives in, which put
+`audio` first and the actual question fourth -- each still labelled shown with
+the question or shown after answering, which is the best explanation of an
+exercise in the app. It is titled by the exercise&amp;#39;s **name** rather than
+`fala-capoeiristas.01`, a directory and a sequence number.
+
+What stays editable there is what filing means: the name, the tags, and **which
+set it is in** -- a control, because dragging was the only way to move an
+exercise, which is fine when two sets are side by side and impossible when they
+are four rows apart.
+
+**&amp;quot;Edit this exercise →&amp;quot; opens Create on that exercise**, not merely on its set.
+Losing your place was most of the friction in moving between the two.
+
+**Create owns naming a set, properly.** Choosing a set and naming one were the
+same control and one trap: picking an existing set and typing in the id box
+renamed nothing -- it quietly pointed Save at a different set, so the next edit
+moved that one exercise into a set that did not exist and left the other
+twenty-four behind. Renaming is now its own act, through the endpoint that moves
+every note in one transaction, and it was never called by any UI until now.
+
+Three more dead ends in Create, each of which read as the app ignoring you:
+
+* editing **tags** alone left Save greyed out for ever, because the listener
+  refreshed nothing;
+* naming a **new set** and pressing Save did nothing, so the only way to make one
+  was a button on another tab that created nothing either;
+* **switching sets discarded everything typed since the last Save**, silently.
+  Now you are asked, and closing the tab with unsaved work says so too -- there
+  was no `beforeunload` anywhere in the app.
+
+And changing an exercise&amp;#39;s **type** no longer deletes the fields the new type
+does not have. They are set aside and come back if the type does.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad8006e324582699df9a8c68c23c4acce060cad3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/ad8006e324582699df9a8c68c23c4acce060cad3"/>
+    <title>
+        fix(manage): say where a drop will land (#60)
+    </title>
+    <updated>2026-09-11T19:21:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(manage): say where a drop will land (#60)
+
+Dragging answered &amp;quot;where will this go?&amp;quot; with a border around the column under
+the pointer, which says *which* column and not *where* -- and the answer was
+always &amp;quot;before this one&amp;quot;, which is not what an outlined box means to anybody.
+Reported as: you cannot tell where the set will land.
+
+A set now shows a **caret in the gap it will drop into**, and which gap depends
+on which half of the column the pointer is in. That also fixes something that
+was not possible before: `moveUnit` only ever inserted *before* the target, so
+no set could be moved to the end of the board. Dropping on the right of the last
+column now does it.
+
+An exercise marks the set that will **receive** it -- it marked nothing at all
+before, because the highlight was only applied to set-drags. Deliberately a
+tinted column rather than a caret: dropping an exercise *into* a set and dropping
+a set *between* sets are different acts, and two gestures that look alike are two
+gestures you have to guess between.
+
+Also: the column you are holding is dimmed and dashed, so you can see what you
+picked up; `dragend` clears the marks, which is the handler that was missing
+when a drag abandoned over nothing left its last highlight on the board; the set
+handle is a visible grip and the remove button is no longer `opacity: 0` until
+hovered -- at zero it was not quiet, it was undiscoverable; and the Confirm
+drawer is sticky, so the button you have to press is not six rows of board above
+where you are working.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b80f5a5bb01209b895afcf1785c25eb53e8b89ad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/b80f5a5bb01209b895afcf1785c25eb53e8b89ad"/>
+    <title>
+        feat: a Create tab — exercises can be written in the app (#59)
+    </title>
+    <updated>2026-09-11T18:46:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: a Create tab — exercises can be written in the app (#59)
+
+* feat(store): write material, not only edit it
+
+`save_set` is the first path in this package that creates a note rather than
+editing what an import left. Two columns carry that and both are load-bearing:
+`origin` stays empty, which is what tells an import the note was never in a
+file, and `edited_at` is set, which keeps its cards from being recomputed from
+a file that does not mention it.
+
+The first of those closes a hole that would have destroyed the feature on the
+next restart: `sync()` archived every note it could not find in the files, with
+no exemption for one the app had written. Fourth appearance of one rule --
+notes, cards, units, and now notes again for the ones that begin life here.
+
+Also: `notes.forms` (migration 7), a per-card form preference for exercises
+whose author disagreed with their type, applied in `expand_cards` so that both
+paths into the cards table get it from one place; `GRADER_FORMS`, because a
+flashcard cannot be marked by anything but the `self` grader and nothing about
+the result would look wrong from the outside; and `ids.propose`, which derives
+an id from the answer and checks it against every id the database has ever
+held, archived ones included.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): endpoints for writing exercises, and a dry run for the screen
+
+`POST /api/sets/&amp;lt;set&amp;gt;/exercises` saves a whole set -- new exercises, edits to
+ones already there, removals -- in one request and applies it. Writing an
+exercise is not editing one: there is no older version to be careful of, so the
+Save button is the confirmation rather than a trip to the Manage drawer.
+
+`POST /api/material/check` is the same shape of payload with nothing written,
+answering what the authoring screen needs while you type: the name this exercise
+would get, the cards it would make, its leaks and warnings, and which forms it
+could be asked in **with the reason for each one it could not**. A route rather
+than a rule reimplemented in the browser, because the leak test is
+accent-sensitive and word-boundary aware and a second copy of it would
+eventually disagree with the one that decides what gets served.
+
+`/api/material` now sends each note type&amp;#39;s cards as well as its fields, with
+`visible_before` composed by `NoteType.visible_before` on this side -- it is not
+a list of fields marked &amp;#39;before&amp;#39;, and recomposing it client-side is how a field
+ends up shown in one view and hidden in another.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): a Create tab, where exercises are written
+
+A set down the left, the exercise you are on in the middle, and on the right
+what it will look like to a learner -- rendered by the same module the Study tab
+uses, so the preview is the exercise rather than a picture of one. Paste a list
+of lines to make several at once; pick any of the six types; choose how each one
+is asked, with the reason shown for every form that is not available rather than
+the form quietly disappearing.
+
+Nothing in create.js decides validity. Whether a field gives away its answer,
+what an exercise will be called, which forms it can be asked in -- all of it
+comes back from /api/material/check as you type, because a second opinion in
+JavaScript would eventually disagree with the one that decides what is served.
+
+The tab router was four booleans and eight toggle lines for three views, and a
+fourth by the same method is how it gets to six; it is now one row per view.
+
+Two bugs found by building on top of it:
+
+* `_reexpand` wrote only the cards that were missing, so the `ON CONFLICT`
+  clause that brings an existing card back in line with its note never ran --
+  choosing a different form for an exercise that already existed changed the
+  note and left the card asking the old way.
+* Distractors were built from the *files* rather than from the database, so an
+  exercise written in the app contributed none and received none, and could
+  never be offered as a multiple choice however many wrong answers were typed
+  into it. They are now derived from the material as the database has it, which
+  is what ADR-0006 made the material.
+
+Manage&amp;#39;s &amp;#39;+ New set&amp;#39; hands over here instead of asking for a name in a prompt
+box, and its inspector gains a link to the set in Create. One place to write.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* docs: writing exercises in the app
+
+ADR-0010 records the decision and the two things that had to be true for it: the
+`origin` rule -- the fourth appearance of &amp;#39;whatever the app creates must record
+that it did, or the next import undoes it&amp;#39; -- and distractors being derived from
+the database rather than from the files. It also records the per-exercise form
+preference as a real departure from ADR-0001, where presentation belonged to the
+card and to the moment.
+
+The four ways in are five, and the in-app route is no longer &amp;#39;fix one exercise&amp;#39;.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* refactor(core): the grader-form rule belongs to the domain, not the web layer
+
+`store/` may not import `web/`, and it was doing so to find out which forms a
+grader can mark -- a fact about grading rather than about drawing, so it moves to
+`core/forms.py` along with the vocabulary of form names. `SUPPORTED_FORMS` stays
+in `serialize.py`, where it means something different: what this build can put on
+a screen.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(create): save only what changed, and refuse what cannot be stored
+
+Opening a set and pressing Save rewrote every exercise in it, which is not
+nothing: a rewritten note is marked edited-here, and from then on a change to it
+in the course files is a conflict rather than an update. Save now sends the rows
+that are new, changed or on their way out, and the footer counts the same ones --
+&amp;#39;10 changed&amp;#39; on a set nobody had touched was the visible half of it.
+
+Also in the write path: a field is coerced to the type its note type declares, so
+a list that arrives as one string is not stored as a string and read back as a
+list on the next import; and a malformed lesson date is refused rather than
+dropped, because a dropped one pushes a whole set to the back of the
+introduction order, which looks exactly like the app ignoring today&amp;#39;s lesson.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6e7d0b0f2981af30606a1b46ab2bd0ae09a1544c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/6e7d0b0f2981af30606a1b46ab2bd0ae09a1544c"/>
+    <title>
+        fix(manage): hold the scroll position, and let the board be rearrange…
+    </title>
+    <updated>2026-09-11T18:11:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(manage): hold the scroll position, and let the board be rearranged (#56)
+
+Three things about the board, all reported from using it.
+
+**Expanding a word moved the view.** Every interaction here redraws by
+replacing nodes, and a replaced scroll container starts again at the top-left --
+so opening a word six sets along threw the board back to the first column and
+the column back to its first row. `render()` and `renderBoard()` now record
+where the reader was (the page, and each column&amp;#39;s own scroll) and put it back
+afterwards. In `render()` rather than at the one call site, because staging an
+edit, selecting and saving a name all go through the same path.
+
+**Thirty sets no longer run off to the right.** `.mboard` wraps, so columns flow
+into as many rows as the width allows and the board is scrolled like a page --
+six rows of five at 1600px instead of one strip six screens long. Columns are
+shorter to suit (`min(60vh, 30rem)`), and the phone keeps `nowrap` with its
+scroll-snap: wrapping is the answer to &amp;quot;they are too far apart&amp;quot;, and on a phone
+nothing is beside anything anyway.
+
+**A column can be dragged by its header.** The reason the distance mattered was
+dragging exercises between two distant sets; now the sets can be put side by
+side first. `dragging` was a bare array of note ids, which cannot say what is
+being dragged, so it is tagged -- `{kind: &amp;quot;notes&amp;quot;, ids}` or `{kind: &amp;quot;unit&amp;quot;, id}`
+-- and a column&amp;#39;s existing drop handler branches on it.
+
+The arrangement is a property of this screen and nothing else: it lives in
+`localStorage`, reconciled with the live set list on load so a remembered layout
+can never decide which sets exist, and **it never reaches the server**.
+`units.ord` is untouched, nothing is staged, and the exported course is
+byte-identical before and after. A **Reset layout** button appears in the
+toolbar only while the board is actually arranged differently from the course.
+
+Verified in a browser against a copy of the live database: expanding a word at
+scroll 1200 leaves it at 1200; a column&amp;#39;s own scrollTop of 220 survives a
+redraw; dragging the last set onto the first reorders it, the order survives a
+reload, Reset restores the course order and clears the key; `/api/material/pending`
+is empty throughout. At 500px the board still snaps one set at a time and the
+page does not scroll sideways.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b4c90e2ff0a36fcd42cc8e964b96e83801653cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/6b4c90e2ff0a36fcd42cc8e964b96e83801653cc"/>
+    <title>
+        feat: every exercise has a name, an inbox for raw material, removable…
+    </title>
+    <updated>2026-09-11T02:46:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: every exercise has a name, an inbox for raw material, removable sets (#55)
+
+* feat: every exercise has a name, an inbox for raw material, removable sets
+
+Three screens needed to refer to one exercise in a few characters -- the board,
+the confirm drawer, the plan preview -- and all three fell back to the note id.
+`gram-atras-passado-ainda.tempo-01` is a directory name and a sequence number.
+
+**Names.** `notes.label` + `notes.label_custom`, migration 6, derived by
+`content/labels.py` and editable in the inspector. The rule was chosen by
+measurement over the 757 live notes, and the obvious ordering lost: reaching for
+the cue head first -- which looks right, it is already the family key -- gives a
+median of 10 characters, a longest of 72 and 39% repeating within a set, against
+the answer&amp;#39;s 6, 20 and 20%. A family key is *designed* to be shared.
+
+Names repeat, and that is not a bug to fix: twenty exercises in one set
+legitimately answer `o`. The board shows what separates two rows with the same
+name (`03`, `07`, `cinema`) and only there, rather than inventing text nobody
+wrote. A typed name is pinned and exported; a derived one is neither.
+
+**The inbox.** `material_drafts`, `store/drafts.py`, `repetita inbox`, and the
+&amp;quot;Add material&amp;quot; button that replaces &amp;quot;Import from the course files&amp;quot;. Raw text,
+stored unparsed on purpose -- a lesson is written down in one state of mind and
+turned into exercises in another, and making the first wait for the second loses
+the note. ADR-0009.
+
+**Removable sets.** A `remove_set` change kind staged like every other, so the
+drawer says how much goes with it before you agree. Archived, never deleted.
+
+Three fixes fell out of building it:
+
+* An import un-archived a set removed here: `archived_at=NULL` was
+  unconditional, and the directory is still in `courses/`. Third time this rule
+  has been needed -- notes, then cards, now units.
+* `_preview_names` samples before the query. `budget` comes from the request,
+  and one placeholder per card meets SQLite&amp;#39;s limit of 999 as a 500.
+* Confirm reported &amp;quot;0 notes updated&amp;quot; after removing an empty set. True, and not
+  what happened.
+
+The Import button is removed rather than deprecated, with #54 asking whether the
+capability is wanted at all; the `/api/import/*` endpoints are untouched and
+startup still imports.
+
+**The documentation site.** `mkdocs.yml`, built to Pages by a new workflow --
+the `docs` extra has been declared in pyproject since the beginning and never
+switched on. Two audiences: how to study, design and manage, and the four ways
+to add material (with who does the work in each); then how it works, with
+mermaid diagrams of the three data lifecycles, note-&amp;gt;card-&amp;gt;form, and what an
+import decides. `docs/schema.md` is generated from the `SCHEMA` string by
+`scripts/gen_schema_doc.py`, with a CI check that it has not drifted -- the
+comments in the schema are the documentation, and a hand-copied page would lose
+them and then be believed anyway.
+
+Pages needs switching on under Settings -&amp;gt; Pages -&amp;gt; Source: GitHub Actions.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* ci: let the Pages deploy fail until Pages is enabled
+
+The build is the part that can break and stays required; the deploy step has
+nowhere to publish to until Settings -&amp;gt; Pages -&amp;gt; Source is GitHub Actions, and a
+setting nobody has changed yet should not paint main red.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/120ea8c992000c818fd11a22f0e321957d764b54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/120ea8c992000c818fd11a22f0e321957d764b54"/>
+    <title>
+        feat: a design pass over Study, Design and Manage (#53)
+    </title>
+    <updated>2026-09-11T01:51:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: a design pass over Study, Design and Manage (#53)
+
+* feat(store): one definition of how well material is known
+
+Groundwork for the design pass: three screens are about to ask &amp;quot;how well do I
+know this?&amp;quot;, and answering it three times would produce three numbers that
+disagree about the same cards.
+
+The obvious metric does not survive contact with the data. Measured on the real
+database -- 757 live cards -- the buckets are 673 new, 31 retired, 25 young, 24
+learning, 4 suspended, and **0 mature**. Nothing has reached the 21-day
+threshold, so &amp;quot;how much of this set is mature&amp;quot; paints every set the same grey
+today and keeps doing so for three weeks.
+
+The second trap is &amp;quot;I know this&amp;quot;. All 31 retired cards are `declared` -- a claim
+the learner made, not evidence the scheduler gathered. Excluding them makes a
+set marked entirely known read as nothing known; folding them into `mature`
+promotes the claim to evidence, which is the one distinction `declare_known`
+exists to preserve. So `core/mastery.py` keeps four states and reports the claim
+separately, and the interface can render it as a claim.
+
+Deliberately not accuracy from `review_log`: per-set accuracy is dominated by
+leeches -- one card answered eleven times at 9% drags a whole set -- so it would
+measure what annoyed someone rather than what they know.
+
+Families come from the cue, not the id. The id stem is the obvious key and was
+measured and rejected: 404 groups for 676 notes, 350 singletons, and its biggest
+&amp;quot;families&amp;quot; were a topic plus a sequence number. What is actually authored is
+`cue: &amp;quot;morar — imperfeito, eu&amp;quot;`, on 540 of 560 gap notes, and splitting a string
+on a separator is not knowledge of Portuguese. On the real course that yields
+292 notes in families with readable variant labels, and zero false families in
+`licao-2026-09-06-genero` -- the set the id rule got most wrong.
+
+A set can now be created and renamed here. That needed `units.edited_at`, for
+the third time in this stack: an import archives every unit it cannot find in
+the files, and a set made in the app is in none of them. Notes have `edited_at`,
+cards follow their note, and units had nothing. Renaming a unit is safe in a way
+renaming a note id is not -- nothing in `card_state` references a unit -- and
+`notes.unit` is updated in the same transaction.
+
+Notes now carry the label the board will show: the question and the answer,
+composed from the note type&amp;#39;s own `ask`/`expect` so a row is labelled with the
+fields the study path asks it with. The field the family already names is
+dropped from the row, or a `gap` note would print its cue twice.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): a design pass over Study, Design and Manage
+
+The engine was well reasoned and the interface was a placeholder. One 640px cap
+served three very different jobs, raw keys leaked into the page, and hierarchy
+was font-size and nothing else.
+
+**Width follows the job.** The shell is told which tab it is showing. Study
+stays narrow because a long line of Portuguese is harder to read, not easier;
+Design gets two panes; Manage gets the monitor. That single cap was why a board
+of 27 sets rendered as two ragged columns.
+
+**One encoding for &amp;quot;how well do I know this&amp;quot;, used by all three.** A dot for the
+glance, a bar for the composition, and the claim kept visibly apart from the
+evidence -- &amp;quot;I know this&amp;quot; is hatched, never solid, because a solid block would
+say a claim and a learned card are the same thing.
+
+**Study** gets the session as a shape rather than a countdown. `33 left` pinned
+at the batch size while the per-card number kept moving; a row of marks is one
+idea instead of two that disagree. Field names are gone from the card: a learner
+reading &amp;quot;cue: morar — imperfeito, eu&amp;quot; was being shown the database&amp;#39;s word for a
+hint. The role is carried by how it looks instead.
+
+**Design** replaces an &amp;quot;Add a topic…&amp;quot; dropdown with every topic visible, with
+its size and how far into it you are. A dropdown asks you to remember what
+exists. Priority rows show the share the curve actually gives them, so &amp;quot;top of
+the list&amp;quot; has a number attached, and the knobs read as sentences that update
+rather than `template_bias` on a slider from 0 to 3.
+
+&amp;quot;Practise this plan&amp;quot; is refused when the plan is empty. With no priorities the
+policy has no mix to honour and falls back to serving whatever comes next --
+which is the Study tab, reached by a button claiming to be something else.
+
+**Manage** shows the exercise instead of a truncated id, with the answer beside
+it, families collapsed, and a search box. Columns are fixed-width and scroll
+independently; sets run from 5 to 76 exercises and one shared scroll let the
+tallest decide where everything else sat.
+
+Three bugs found by looking at it rather than by testing it:
+
+* Every `&amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;` is its own job and microtasks drain between
+  them, so routing queued with `queueMicrotask` ran before `manage.js` had
+  registered its listener -- the Manage tab opened blank when linked to and
+  worked when clicked.
+* `node.append(x)` stringifies anything that is not a Node, so a conditional
+  child written as `cond ? el(…) : null` printed the literal word &amp;quot;null&amp;quot; on the
+  page. `fill()` filters, as `el()` already did.
+* A flex item will not shrink below its content unless told to, and the rows are
+  `nowrap`, so a 22rem column rendered at 1000px.
+
+Tabs are linkable, which is how the screenshots above were taken at all.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee655b458e882676b6dbf3b921d4b391eecd1908</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/ee655b458e882676b6dbf3b921d4b391eecd1908"/>
+    <title>
+        feat: the Manage tab — edit the material the database owns (#52)
+    </title>
+    <updated>2026-09-11T00:57:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: the Manage tab — edit the material the database owns (#52)
+
+* chore(scripts): restart the app serving repetita, with a backup first
+
+Picking up a code change means restarting whatever is serving repetita, and the
+host serves it live from this working tree. By hand that is three commands, one
+of which is `kill`, and the one worth never forgetting is the backup -- a restart
+picks up new code, and new code may migrate the study database.
+
+It reads the command line and working directory off the running process and
+starts it again the same way, so it does not need to know whether repetita is
+running standalone or mounted inside a host application.
+
+Keyed on the port. Holding the study database open would have been a nicer
+signal -- no configuration at all -- but repetita opens the database per request
+and closes it at teardown, so between requests nobody holds it. The port is
+remembered in a gitignored file after the first run: which port someone runs
+their own host on is not a property of the project.
+
+SIGTERM first, SIGKILL only if it is ignored: a server mid-write deserves the
+chance to close the database cleanly. Schema version and history counts are
+printed before and after, so a migration is visible rather than something you
+discover later.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): study from the design tab, and let a plan order the practice
+
+Two things the designer was missing.
+
+**Studying from it.** A plan was something you could build and preview and then
+had to go elsewhere to use. &amp;quot;Study with this plan&amp;quot; activates it and asks the
+session loop for a fresh queue -- through `/api/session` like everything else,
+because a plan is not a separate mode. It is the order the ordinary daily queue
+is built in.
+
+**Ordering the practice, not only the mix.** The priority list decided which
+*new* material was introduced; the owed cards still arrived in due-date order
+regardless, so a learner who said numbers matter most met numbers after forty
+cards of something else. Now the debt is ordered by the plan too.
+
+What that must never mean is a smaller debt. Every owed card is still in the
+list and still served in the same session -- the plan decides what you meet
+first, not what you get out of. A learner who could hide two hundred owed cards
+behind a priority list would, once, and find them again a month later at four
+times the size. There is a test for it rather than a comment.
+
+Python&amp;#39;s sort is stable, so most-overdue-first is not discarded; it becomes the
+tie-break within each priority.
+
+The tab now says all of this in a sentence, with the real owed count in it. The
+alternative reading -- that a plan is a filter, and picking one lets you study
+only what you feel like -- is the one that would quietly bury a backlog, so it
+is worth closing off in the interface and not only in the code.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): a plan is an additional path, practised from the design tab
+
+The previous commit had an active plan take over the daily queue. That was
+wrong, for a plain reason: a learner who builds a plan, tries it and dislikes it
+should get their ordinary session back by clicking away from it -- not by
+deleting the plan.
+
+So the Study tab is the course&amp;#39;s own order and nothing alters it. A session is
+built under a plan only when the request names one, and the designer has its own
+practice view where that happens. &amp;quot;Leave the plan&amp;quot; is one click.
+
+Which plan a request is studying under is now a property of the request rather
+than a global &amp;quot;active plan&amp;quot;. The two paths are two ways through one set of
+material, and which one you are on is what you asked for, not a mode the
+application is in.
+
+An answer records a revision only when it was given under a plan. An answer from
+the Study tab is not evidence about any plan, and filing it under whichever
+happened to be active would make every later comparison wrong -- the exact
+failure `plan_revision_id` exists to prevent, arriving by a different door.
+
+The client says which plan it was practising; the server resolves which revision
+that is. Same reason `form` is recomputed on the way in: the log is a record of
+what happened, and a client is free to lie.
+
+A bar above the session names the plan while one is in force, so what is on
+screen is never ambiguous about which path produced it.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(web): make `hidden` actually hide
+
+Leaving a plan hid nothing: the bar stayed on screen, still offering to leave a
+plan that had already been left.
+
+`hidden` carries `display: none` only from the user-agent stylesheet, so any
+author rule that sets `display` on the same element beats it. `.plan-bar` is
+`display: flex`, which is the ordinary shape for a toggled row and therefore
+exactly the case that breaks. `.stage` and `.designer` set no display at all,
+which is the only reason they were unaffected.
+
+Fixed once with a `[hidden]` rule rather than a `.plan-bar[hidden]` override,
+because the next person to add a hideable flex row will not know they need one.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat(web): practising a plan serves the plan&amp;#39;s material
+
+The designer said &amp;quot;26 owed cards come first either way&amp;quot;, and that was the wrong
+promise to make. It was right when a plan *replaced* daily study -- letting a
+priority list defer the debt would have been a way to avoid the only part that
+demonstrably works. It stopped being right when practice became a second path:
+asking to work on food and directions and being handed twenty-six cards of
+something else is not practising what you designed.
+
+So a practice session is scoped to the plan. Owed cards from those topics come
+first, because answering something already owed is worth more than meeting
+something new. Owed cards from elsewhere are not dragged in, and new material is
+not padded out with unrelated cards once the plan&amp;#39;s own runs out -- a short
+session is the honest answer to a narrow plan.
+
+None of that hides anything. The debt the session did not cover is still owed,
+still counted, and still served by the Study tab, which no plan alters. That is
+what makes scoping safe here and unsafe in the earlier shape.
+
+`scoped` is a parameter rather than the only behaviour, because a plan shaping a
+full session and a plan carving one out are different questions, and the second
+should not quietly answer the first.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(policies): the introduction gate does not throttle a practice you asked for
+
+Practising a plan of food and directions served three cards while thirty-eight
+sat available. The gate was doing it: closed on recent accuracy, so only
+fresh-lesson material got through, and scoping to the plan&amp;#39;s topics left almost
+nothing.
+
+The gate is a brake on material arriving *unasked*. It opens while recent
+answers hold up and closes on evidence of overload, which is exactly right for a
+queue the learner did not choose. A scoped practice is the opposite situation --
+they named the topics and pressed the button -- and braking there is not a
+protection, it is a refusal.
+
+Bounded either way: `batch` still caps the session, the material is still only
+what the plan asked for, and anything taken on appears in tomorrow&amp;#39;s queue where
+the gate does apply. Deciding to work hard on a topic is the learner&amp;#39;s call, in
+the same way &amp;quot;I know this&amp;quot; is.
+
+The daily path is untouched: no plan, no scope, gate as before.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* feat: the Manage tab -- edit the material the database owns
+
+A third tab for managing the course: sets as columns, exercises dragged between
+them, an editor per exercise, tags, and a Confirm that applies everything at
+once. Importing from the course files shows what clashes with your edits and
+asks before overwriting any of it. ADR-0008 covers the part that is a decision.
+
+## The serving path had to follow ownership first
+
+ADR-0006 made the database the owner of the material, and only half of that was
+implemented: `build_library` merged the files in and then served `result.notes`,
+the *file* version. So the tab as asked for was impossible -- you would fix a
+typo, press Confirm, and study the old text until you had exported to YAML and
+reloaded. It was invisible until now only because the one in-app writer was
+`store/tags.py`, and tags are not served.
+
+Fixing it moved a safety property. `validate.check` -- which refuses a note that
+gives away its own answer -- ran in the loader, over notes fresh out of a file.
+Serving from the database means an edit reaches a learner without passing it, so
+it now runs over whatever the database holds, however it got there. Without that
+this change would have turned the Manage tab into a way to ship an exercise that
+teaches nothing while looking entirely normal.
+
+## Editing
+
+Changes are staged server-side and applied in one transaction. Server-side
+because a refresh, a second tab or a closed laptop should not lose work, and
+because Confirm can then show what will actually change rather than a count.
+
+Every write sets `edited_at` and leaves `content_hash` alone. That pair is what
+lets an import tell an edit from a file change: forget the first and the next
+import silently overwrites the edit; recompute the second and conflict detection
+stops working at all.
+
+Two things are refused. A note `id` cannot change -- it is the key progress is
+stored under, and `repetita check-ids` only diffs committed YAML in a pull
+request, so it would notice long after the damage. A `notetype` cannot change
+either: it decides which cards exist.
+
+Removal is archiving, cards included. An import no longer un-archives a note that
+was removed here, because the file still has it and the learner would otherwise
+watch material they deleted reappear with no explanation.
+
+## Importing
+
+`preview_import` answers what an import would do without doing any of it, and
+shares `merge_decision` with the import itself so the two cannot disagree. A
+clash shows both versions; a note you do not choose keeps the version you have.
+Defaulting the other way would mean an import destroyed work through omission,
+which is the one outcome a confirmation step exists to prevent.
+
+## What the review caught
+
+Seven defects, every one of which passed ruff, mypy and the full suite. They all
+live where two correct pieces meet, which is where the tests were not looking:
+
+* `sync()` recomputed the cards of app-edited notes from the file, so an edit&amp;#39;s
+  effect on the card set was undone by the reload in the same request. Adding
+  audio created `#listen` and archived it moments later; archiving a note left
+  its cards live and orphaned. Whoever owns the note now owns its cards.
+* A null payload was accepted and then wedged the tab permanently -- pending and
+  confirm both failed from then on, and Discard lives inside the drawer that
+  pending draws.
+* `preview()` ignored the `scoped` flag, so the pane whose whole job is to be
+  believed padded its numbers with material the session would not serve.
+* Non-fatal warnings were reported as leaks, which teaches people to ignore the
+  alarm that matters.
+* The page applied an edit before the server had accepted it, so a failed stage
+  left the new value on screen and lost it at the next load.
+* A well-formed but unknown plan id silently served the plain session and filed
+  the answers with no revision.
+* `preview_import` missed the un-archive an import performs, which is exactly
+  the preview/import disagreement it exists to prevent.
+
+Each has the test that would have caught it, and all of them are
+integration-shaped for the same reason the bugs were not found: the units were
+fine.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88993e2dfc7a7ea0572f79546124173aea91c210</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/88993e2dfc7a7ea0572f79546124173aea91c210"/>
+    <title>
+        feat: design my lessons — catalogue, tag curation, study plans and th…
+    </title>
+    <updated>2026-09-10T23:42:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: design my lessons — catalogue, tag curation, study plans and the tab (#51)
+
+* feat: design my lessons -- catalogue, tag curation, study plans and the tab
+
+Chunks A, B and C of the plan in one change: the material becomes visible, the
+learner&amp;#39;s intent becomes data, and the tab puts both in front of them.
+
+ADR-0007 covers the part that is a decision rather than a feature.
+
+## The catalogue
+
+`card_state` gains a denormalised `bucket`, written from the single definition in
+`core/buckets.py`. Stored rather than recomputed: a threshold that decides policy
+must not get a second definition in a WHERE clause, which is the exact shape of
+the bug ADR-0002 records. `sync` backfills any state that has none, because a
+column added by a migration starts NULL and COALESCE would then report every card
+a learner has ever answered as new -- a catalogue confidently wrong about their
+own progress.
+
+`store/catalogue.py` is one query and one selector language.
+`level=A2,track=gramatica,topic=preposicoes,state=new` is the same string whether
+it arrives from the CLI, the web API, or a row in `plan_priorities`; three
+parsers for one idea is how they drift. Repeating a dimension widens rather than
+contradicts, because two checkboxes mean &amp;quot;either&amp;quot; and contradiction would make an
+empty result look like an empty course.
+
+## Curating tags
+
+`repetita tag add|remove|rename|split|merge|list`, all with `--dry-run`. A rename
+is course-wide -- a tag renamed on half the material is two tags, which is the
+situation this exists to fix rather than to create -- and leaves a `tag_aliases`
+row so plans and facets.yaml keep resolving. Every operation marks the notes it
+touched as `edited_at`, which is what stops the next import overwriting the change
+and makes a genuine clash surface as a conflict.
+
+`repetita export` is owed from ADR-0006 and lands here. The README promises that
+adding a lesson is a pull request a non-programmer can make, and once material is
+editable in the app that promise depends entirely on writing it back out. It is
+also what makes a tag change reviewable: a normal diff on normal files. Note
+emission reuses `importers.emit`, so imported and exported material come out in
+one format rather than two that drift.
+
+## Plans
+
+Four tables, and `review_log.plan_revision_id`. That column is the reason this is
+an ADR: ADR-0003 exists because the predecessor kept aggregates and threw the
+sequence away, and &amp;quot;did making it harder actually help?&amp;quot; is the same shape of
+question. Adding the link later would work from that day forward and leave every
+earlier answer unattributable.
+
+Weights read a priority list as a Zipf curve rather than a linear ramp: over ten
+rows linear gives the top 18%, which nobody experiences as &amp;quot;this is what I want
+to work on&amp;quot;. Allocation is largest-remainder so the budget is spent exactly, and
+what a exhausted bucket cannot take flows down the list rather than shrinking the
+session -- otherwise a plan would quietly become a cap.
+
+A plan cannot excuse you from review. It decides which *new* material is woven in
+and at what share; every owed card is still owed, in the same order.
+
+`policies/` finally gets the `get()`/`names()` registry that `srs/`, `graders/`
+and `presenters/` have had all along, plus the `SessionPolicy` protocol
+`ARCHITECTURE.md` has listed as an extension point since the beginning.
+
+## Issues
+
+`material_issues` is deliberately not `card_reports`. That table says one
+exercise is broken and suspends the card; this says the grouping is wrong and
+suspends nothing. Same reasoning that keeps reports out of `review_log`.
+
+## The tab
+
+Drag-to-reorder priorities, three knobs, and a live preview of what tomorrow
+would look like. The preview is cheap because the policy is pure, which is what
+makes a knob an experiment rather than a commitment.
+
+ADR-0005 governs the new endpoints and is easy to break by accident: card ids are
+authored from the material, so a quarter of them are the answer. The catalogue
+returns counts and labels only -- never a card id, never a note id, never a note
+field -- and a test asserts that over raw response bytes rather than a parsed
+field, because a parsed assertion only checks the places you thought to look.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+* fix(store): never stamp a database&amp;#39;s schema version backwards
+
+An older build opening a newer database wrote its own `SCHEMA_VERSION` over the
+recorded one. The next time the newer build ran, the version it read was lower
+than the migration it had already applied, so it replayed it -- &amp;quot;duplicate column
+name&amp;quot; on a database that was fine until something read it.
+
+Not theoretical here. The hub serves repetita live from the working tree, so
+switching branches over one study database is an ordinary thing to do, and this
+change adds the first migration anyone would hit it with.
+
+The stamp now takes the greater of the two.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;
+
+---------
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee17faa24bd74f517a26ed419231be2eee9b0f04</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/ee17faa24bd74f517a26ed419231be2eee9b0f04"/>
+    <title>
+        feat(content): read a course&#39;s tags as facets (#50)
+    </title>
+    <updated>2026-09-10T23:17:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): read a course&amp;#39;s tags as facets (#50)
+
+`notes.tags` is a JSON array in a TEXT column. It has been written by every sync
+since the beginning and read by no query at all, because a JSON blob cannot be
+indexed, joined or grouped. Measured across the real course: 676 notes whose
+tags mix four different kinds of statement in one namespace -- level (A1/A2/B1),
+track (vocabulario/gramatica/musica/fala), topic (tempo/comida/preposicoes) and
+provenance (licao-setembro) -- with nothing in the engine able to tell them
+apart.
+
+So &amp;quot;the A2 grammar cards about prepositions that are still new&amp;quot; could not be
+expressed, let alone counted.
+
+A per-course `facets.yaml` says which question each tag answers, and
+`note_facets` is the join table that makes GROUP BY possible.
+
+The tags themselves do not change, and that is deliberate. `importers/hub.py`
+records that the predecessor had `track`, `topic` and `level` as three separate
+columns and the import flattened them into tags on purpose, because &amp;quot;a tag is
+the general form of something true about this note that a course may weight or
+filter on&amp;quot;. An axis is a reading of that bag, not a replacement for it. No note
+file is rewritten by this change.
+
+A note may hold several values on one axis. That is the ordinary case rather
+than an edge one: material about ordering food in a market is genuinely both
+`comida` and `cidade`, and forcing a choice loses real information. Only `level`
+is capped, at one, because two levels would make every count by level disagree
+with the total.
+
+One axis may be `catch_all`, which is what makes adding a topic an edit to a
+note rather than to a course&amp;#39;s configuration. Declared values beat the
+catch-all, so promoting a value onto a real axis reclassifies it everywhere with
+no note touched.
+
+Taxonomy problems are never fatal. A note filed under nothing is badly filed,
+not broken, and quarantining it would take working material away from a learner
+over a bookkeeping mistake -- the opposite of what the quarantine is for.
+
+Classification reads the stored notes rather than the incoming files, which
+matters under ADR-0006: a note edited here keeps its own tags, and filing the
+file&amp;#39;s version would put it under something it no longer says.
+
+`facets.yaml` is optional. A course without one gets no axes and no complaints,
+so every course written before this is still valid.
+
+`docs/tagging.md` documents the conventions and the loop for changing tags,
+written to be actionable by an agent working from an issue -- including the part
+that is easy to get wrong in both directions: renaming a tag is safe, because
+nothing is keyed on it, unlike an item id.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d8a72ef6dfb4d3cb2ee8a70c98b7706526d8c06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/2d8a72ef6dfb4d3cb2ee8a70c98b7706526d8c06"/>
+    <title>
+        feat(content): load unit.yaml and the course path (#49)
+    </title>
+    <updated>2026-09-10T23:08:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(content): load unit.yaml and the course path (#49)
+
+Three pieces of authored structure reached no query at all.
+
+`unit.yaml` was skipped outright by the loader -- `if path.name == &amp;quot;unit.yaml&amp;quot;:
+continue` -- so a unit&amp;#39;s title and CEFR level were written by the author, sat in
+the course directory, and were read by nothing. `Course.path` declares the order
+units are meant to be taken in and the prerequisites between them; it was parsed
+into a typed model and never looked at. `Course.tag_weights` is documented as
+&amp;quot;relative share of each tag when new material is introduced&amp;quot; and had no reader
+either.
+
+So: a `Unit` model, a `units` table and a `courses` table, populated by the same
+merge that owns the rest of the material.
+
+Ordering comes from `path` where a course declares one. A unit the path does not
+mention sorts *after* every unit it does, in directory order, rather than at the
+front -- an unlisted unit is material the author has not placed yet, and it
+should not jump the sequence they did place.
+
+A missing `unit.yaml` is not a problem. A unit exists because its directory
+does; the file only decorates it, and its absence means a unit with no title
+yet, which is the normal state of a course being written.
+
+Units are archived rather than deleted, for the same reason notes are:
+`notes.unit` joins on this id, and a unit that leaves the files still names the
+unit its notes were studied under.
+
+No migration and no version bump. `courses` and `units` are wholly new tables,
+and `CREATE TABLE IF NOT EXISTS` in `SCHEMA` reaches an existing database on the
+next connect -- which is exactly the case the contract beside `MIGRATIONS` says
+needs no step.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1677f622b34287c3f606766bec75685605c40def</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mikub97/repetita/commit/1677f622b34287c3f606766bec75685605c40def"/>
+    <title>
+        feat(store): the database owns the material (#48)
+    </title>
+    <updated>2026-09-10T23:00:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/26736004?s=30&amp;v=4"/>
+    <author>
+      <name>mikub97</name>
+      <uri>https://github.com/mikub97</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(store): the database owns the material (#48)
+
+ADR-0006. `courses/*.yaml` becomes an import/export format; `notes` and `cards`
+stop being a cache that is wiped and re-derived on every load.
+
+`sync()` merges instead of replacing. Four outcomes per note: inserted when it
+is new, left alone when the source is unchanged, updated when the source
+changed, and -- the one the design turns on -- a reported *conflict* when a note
+was edited here and changed at the source. The local note stays and the id comes
+back in the report. Choosing a winner automatically is the only behaviour that
+would make an import unsafe to run, because the loser is unrecoverable and
+nothing in the UI would say so.
+
+A note that has left the files is archived, never deleted. Deleting would orphan
+`card_state` rows whose history cannot be reconstructed from anything. That is
+also why this schema still has no foreign keys: ownership makes the old
+reasoning stronger, not weaker, since a note removed in the app must never
+cascade into someone&amp;#39;s schedule.
+
+The property that used to be free is now maintained on purpose. &amp;quot;A card whose
+note vanishes keeps its history&amp;quot; held because nothing linked the tables -- a
+property of the *absence* of a mechanism. Archiving replaces that absence with a
+mechanism, so the guarantee is re-pinned rather than inherited: a removed note&amp;#39;s
+row survives, its `card_state` survives, material that comes back returns on the
+schedule it left with, and no sequence of imports changes `review_log`.
+
+Archived rows must be excluded by every content query or archived material stays
+in circulation. Two needed it: the session queue and `card_ids()`.
+`lesson_first_seen_on` deliberately does not -- it counts answers that really
+were given, and an answer is not retracted by its note leaving the course.
+
+`content_hash` covers the note as authored and excludes `origin`: moving a note
+to another file is not a change to the material, and hashing the path would turn
+any reorganisation of a course into a wall of conflicts.
+
+`sync()` now returns a `SyncReport` rather than a bare pair of counts. A merge
+that cannot report a conflict is a merge that hides one.
+
+Export is owed next. The README promises that adding a lesson is a pull request
+a non-programmer can make, and once material can be edited here that promise
+depends on writing it back out.
+
+Signed-off-by: Michał Weiss &amp;lt;mikub97@gmail.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

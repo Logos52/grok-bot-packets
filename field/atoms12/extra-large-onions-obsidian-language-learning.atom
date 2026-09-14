@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/extra-large-onions/obsidian-language-learning/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/extra-large-onions/obsidian-language-learning/commits/master.atom"/>
+  <title>Recent Commits to obsidian-language-learning:master</title>
+  <updated>2026-09-11T13:49:03Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/678384db61fa5fa2b2434511ff7bb587d26b2e25</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/678384db61fa5fa2b2434511ff7bb587d26b2e25"/>
+    <title>
+        many
+    </title>
+    <updated>2026-09-11T13:49:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/24745349?s=30&amp;v=4"/>
+    <author>
+      <name>extra-large-onions</name>
+      <uri>https://github.com/extra-large-onions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;many&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/07ceb81d1fb3384af611ebf665a1ec42a7e5926d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/07ceb81d1fb3384af611ebf665a1ec42a7e5926d"/>
+    <title>
+        Fix the year
+    </title>
+    <updated>2026-08-02T15:56:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/68425372?s=30&amp;v=4"/>
+    <author>
+      <name>sigrunixia</name>
+      <uri>https://github.com/sigrunixia</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix the year&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/23c165fd362d4049330cb3edad6a52914ff2007a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/23c165fd362d4049330cb3edad6a52914ff2007a"/>
+    <title>
+        chore: bumped eslint plugin version
+    </title>
+    <updated>2026-06-30T21:58:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8161064?s=30&amp;v=4"/>
+    <author>
+      <name>saberzero1</name>
+      <uri>https://github.com/saberzero1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: bumped eslint plugin version&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8667cee6b35a068b98fb717626893b911247ff6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/f8667cee6b35a068b98fb717626893b911247ff6"/>
+    <title>
+        feat: modernize sample plugin
+    </title>
+    <updated>2026-05-29T17:15:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8161064?s=30&amp;v=4"/>
+    <author>
+      <name>saberzero1</name>
+      <uri>https://github.com/saberzero1</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: modernize sample plugin
+
+Check whether the target version key already exists in versions.json
+instead of whether the minAppVersion value exists. The old check
+incorrectly skipped writing a new entry when a prior version mapped
+to the same minAppVersion.
+
+Modernize TypeScript and esbuild configuration
+
+- Set target to ES2021 (Obsidian runs on modern Electron/Chromium)
+- Replace individual strict flags with strict: true
+- Update lib to ES2021 + DOM
+- Remove importHelpers and allowJs
+- Add skipLibCheck, forceConsistentCasingInFileNames,
+noFallthroughCasesInSwitch
+- Align esbuild target to es2021
+
+Update dependencies
+
+- Bump @types/node from ^16.11.6 to ^22.15.17 (Node 16 is EOL)
+- Bump eslint-plugin-obsidianmd from 0.1.9 to 0.2.4
+- Bump globals from 14.0.0 to 16.1.0
+- Bump typescript-eslint from 8.35.1 to 8.32.1
+- Remove tslib (no longer needed without importHelpers)
+
+Fix code issues and update minimum app version
+
+- Prefix unused parameters with _ (evt, view)
+- Use definite assignment assertion on settings property
+- Fix editorCallback parameter type (MarkdownView | MarkdownFileInfo)
+- Replace document/window with activeDocument/activeWindow
+- Replace let with const in SampleModal.onOpen
+- Bump minAppVersion from 0.15.0 to 1.0.0
+- Update eslint config for obsidianmd plugin 0.2.4 compatibility
+
+Update documentation
+
+- Fix entry point references (main.ts -&amp;gt; src/main.ts)
+- Update minimum Node.js version to v18
+- Replace outdated eslint instructions with npm run lint
+- Update code examples for strict mode and activeWindow
+- Remove yarn as alternative to npm
+
+Update eslint configuration
+
+Bump to eslint 10
+
+Return to eslint 9
+
+chore: formatting
+
+feat: add release CI
+
+chore: bumped obsidian eslint plugin to latest version
+
+chore: cleanup redundant code
+
+chore: moved obsidian to devDependencies
+
+fix: apply ignore patterns before rulesets
+
+docs: updated AGENTS.md to match codebase
+
+fix: set quote_style to single
+
+chore: formatting&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc2fa22c4d279199fb07a205a0c11eb155641f3d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/dc2fa22c4d279199fb07a205a0c11eb155641f3d"/>
+    <title>
+        Fix typo in ESLint plugin link
+    </title>
+    <updated>2025-12-30T18:09:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/609710?s=30&amp;v=4"/>
+    <author>
+      <name>lishid</name>
+      <uri>https://github.com/lishid</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix typo in ESLint plugin link&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2323eddbb126e0cc03ecffb176ba6cecc41f2753</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/2323eddbb126e0cc03ecffb176ba6cecc41f2753"/>
+    <title>
+        Merge pull request #164 from joethei/master
+    </title>
+    <updated>2025-12-18T10:53:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #164 from joethei/master
+
+Include eslint config&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/911b773800976c41b4eafd6ad5a58594959d297c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/911b773800976c41b4eafd6ad5a58594959d297c"/>
+    <title>
+        Merge remote-tracking branch &#39;upstream/master&#39;
+    </title>
+    <updated>2025-11-14T14:24:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;upstream/master&amp;#39;
+
+# Conflicts:
+#	README.md
+#	src/main.ts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/123fc4a8705c066132693de3ec0024800b2a595f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/123fc4a8705c066132693de3ec0024800b2a595f"/>
+    <title>
+        update eslint plugin version
+    </title>
+    <updated>2025-11-14T13:28:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;update eslint plugin version
+remove builtin-modules external dependency&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0eca98addaa1600d4481954afcb1172837cef8e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/0eca98addaa1600d4481954afcb1172837cef8e3"/>
+    <title>
+        update package.json
+    </title>
+    <updated>2025-11-10T21:27:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;update package.json&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92cba2564729d344061db7a270aa07d9d8697e4a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/92cba2564729d344061db7a270aa07d9d8697e4a"/>
+    <title>
+        update sample plugin with eslint instructions
+    </title>
+    <updated>2025-11-10T11:26:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;update sample plugin with eslint instructions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9984b040b68c0021852b83458eefaf524151191c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/9984b040b68c0021852b83458eefaf524151191c"/>
+    <title>
+        remove testing code
+    </title>
+    <updated>2025-10-17T10:36:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;remove testing code&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2a64e0534ec6cdfacaa2e70da3d65eca2776edb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/e2a64e0534ec6cdfacaa2e70da3d65eca2776edb"/>
+    <title>
+        Merge pull request #151 from adamu/main
+    </title>
+    <updated>2025-09-17T16:12:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #151 from adamu/main
+
+Prefix unused variables with _&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8933f6ce64c0402315f145cf5cc32ea0bd65236e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/8933f6ce64c0402315f145cf5cc32ea0bd65236e"/>
+    <title>
+        Merge pull request #142 from johannrichard/declutter-version-bump
+    </title>
+    <updated>2025-09-17T15:54:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/7150512?s=30&amp;v=4"/>
+    <author>
+      <name>joethei</name>
+      <uri>https://github.com/joethei</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #142 from johannrichard/declutter-version-bump
+
+build: only write new minAppVersion requirements to `versions.json`&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db97f5f6293c9fcf0f8628b4337ea181b67035ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/db97f5f6293c9fcf0f8628b4337ea181b67035ce"/>
+    <title>
+        Merge pull request #155 from obsidianmd/agents-md
+    </title>
+    <updated>2025-09-05T16:12:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #155 from obsidianmd/agents-md
+
+AGENTS.md&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9673533aa976cddf46122214b264bcf1236e1b6c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/9673533aa976cddf46122214b264bcf1236e1b6c"/>
+    <title>
+        language
+    </title>
+    <updated>2025-09-05T16:10:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;language&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/33075ecd13f9843f53adebd1b003f08f7c70ab17</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/33075ecd13f9843f53adebd1b003f08f7c70ab17"/>
+    <title>
+        use forward slashes for cross OS compatibility
+    </title>
+    <updated>2025-09-05T16:04:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;use forward slashes for cross OS compatibility&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/188bb6120f9c201402490384e812116a0427261b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/188bb6120f9c201402490384e812116a0427261b"/>
+    <title>
+        small copy tweaks
+    </title>
+    <updated>2025-09-05T16:01:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;small copy tweaks&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a4398b8ecc75e738b2d8174e40c97dec35a6e951</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/a4398b8ecc75e738b2d8174e40c97dec35a6e951"/>
+    <title>
+        Corrections based on feedback
+    </title>
+    <updated>2025-09-05T15:58:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Corrections based on feedback&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce4fc8c2092d1b0828da5ed62741353975ab71d9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/ce4fc8c2092d1b0828da5ed62741353975ab71d9"/>
+    <title>
+        First pass
+    </title>
+    <updated>2025-09-04T22:28:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10565871?s=30&amp;v=4"/>
+    <author>
+      <name>kepano</name>
+      <uri>https://github.com/kepano</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;First pass&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f16c1401b3dec586453547e9497b4b555361898d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/extra-large-onions/obsidian-language-learning/commit/f16c1401b3dec586453547e9497b4b555361898d"/>
+    <title>
+        Prefix unused variables with _
+    </title>
+    <updated>2025-08-28T05:38:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/498229?s=30&amp;v=4"/>
+    <author>
+      <name>adamu</name>
+      <uri>https://github.com/adamu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prefix unused variables with _&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

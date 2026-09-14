@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/nonkuri/obsidian-vivlio/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/nonkuri/obsidian-vivlio/commits/main.atom"/>
+  <title>Recent Commits to obsidian-vivlio:main</title>
+  <updated>2026-09-12T09:06:26Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f3aba1be3a9bc409ed597740ae1326d30bc97ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/0f3aba1be3a9bc409ed597740ae1326d30bc97ed"/>
+    <title>
+        0.11.1
+    </title>
+    <updated>2026-09-12T09:06:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.11.1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5617a006e731d7693e1cc814865fe10f9f9896a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/b5617a006e731d7693e1cc814865fe10f9f9896a"/>
+    <title>
+        docs: note the math fix in the release history and the manual
+    </title>
+    <updated>2026-09-12T09:06:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: note the math fix in the release history and the manual
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8150de8e78f933e515cc46c6fce44b9bc86a395</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/b8150de8e78f933e515cc46c6fce44b9bc86a395"/>
+    <title>
+        fix: typeset math instead of leaving LaTeX on the page
+    </title>
+    <updated>2026-09-12T09:00:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: typeset math instead of leaving LaTeX on the page
+
+VFM&amp;#39;s default math renderer keeps the LaTeX as text and loads MathJax from
+a CDN to set it in the reader. sanitizePlugin takes that script back out -
+a book does not run code - so every formula reached the page as bare
+`\(x\)` source, which the notation rules then read as ordinary text. An
+EPUB and a PDF have nowhere to run the script anyway, and a vault may have
+no network. Force `mathRenderer: &amp;quot;mathml&amp;quot;`, so Temml converts the LaTeX
+while the book is built, and warn when a book asks for another renderer.
+
+The blank-line counter then had to learn that &amp;lt;math&amp;gt; is not a block read
+off the manuscript: Temml&amp;#39;s fragment carries line numbers of its own,
+which begin again at one, and the paragraph after a formula came out a
+dozen blank lines down the page. A block with no source position ends the
+run instead of starting a new count from a position that means nothing.
+
+A packaged document carrying MathML now declares `properties=&amp;quot;mathml&amp;quot;`,
+which is how a reading system decides whether it can render the document,
+and without which the EPUB does not validate.
+
+Documents the syntax in both READMEs and the manual, including when a `$`
+is read as math and how to write a currency one.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc25974c043b832c4a82e30d8be22811c33dd358</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/cc25974c043b832c4a82e30d8be22811c33dd358"/>
+    <title>
+        0.11.0
+    </title>
+    <updated>2026-09-12T08:05:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.11.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8429800a3fa3a2a33650fa3d6ef199861445c73a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/8429800a3fa3a2a33650fa3d6ef199861445c73a"/>
+    <title>
+        fix: indent paragraphs in the horizontal manual theme
+    </title>
+    <updated>2026-09-12T08:05:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: indent paragraphs in the horizontal manual theme
+
+theme-techbook says nothing about the paragraph indent, so the manual theme
+kept theme-base&amp;#39;s `--vs--p-text-indent: 0`. The conversion removes the
+ideographic space a manuscript indents with (#15) on the understanding that
+the stylesheet does the indenting, so a horizontally set book lost its
+paragraph openings altogether while the same note kept them in novel.css.
+
+- manual.css states its own 1em; `paragraphIndent: 0` still flattens a book
+  that wants it
+- every selectable theme is checked for a non-zero effective indent, so a
+  theme cannot inherit the 0 again unnoticed
+- the settings manual says the mode decides which paragraphs and the length
+  comes from elsewhere; troubleshooting gains the symptom
+- SPEC records the decision and the 0.11.0 line
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a680bbed0054c620dd4ada8e674a2b300db518cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/a680bbed0054c620dd4ada8e674a2b300db518cf"/>
+    <title>
+        feat: edit a note&#39;s vivlio-* properties from the picker
+    </title>
+    <updated>2026-09-12T07:35:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: edit a note&amp;#39;s vivlio-* properties from the picker
+
+「このノートに設定を追加」を、ウィザードにならった編集モーダルにする。
+
+- 行の見出しをウィザードと同じ言葉にし、キー名は添え物にした
+  (KEY_LABELS / keyLabel)。ウィザードも同じ表から名前を引く
+- 値をその場で編集できるようにした。テーマ・判型などはドロップダウン、
+  真偽値はオン/オフ、ほかは入力欄。選択肢は keyChoices() ひとつに集約し、
+  ウィザードもそれを読む
+- 既にあるプロパティは現在の値を入れて並べ、チェックを外すと削除する。
+  入れ子で書かれているプロパティは編集不可として残す
+- 名前と説明で絞り込めるようにし、これから行う追加・変更・削除を
+  モーダル下部に全部出す
+- 書き換えるのはフロントマターの該当行だけ (frontmatterPatch)。
+  他のプロパティ・順序・本文は動かさない
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aab0dd0f73aacaf2122f78fed675e509c145b1b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/aab0dd0f73aacaf2122f78fed675e509c145b1b8"/>
+    <title>
+        0.10.2
+    </title>
+    <updated>2026-09-08T11:19:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.10.2&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0be046b905b6e1fa79b6997c8b298793ae5a02e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/0be046b905b6e1fa79b6997c8b298793ae5a02e5"/>
+    <title>
+        fix: package assets referenced by custom themes
+    </title>
+    <updated>2026-09-08T11:18:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: package assets referenced by custom themes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f22cf29e896fd9bbb7ef1c6b068ffd25898baa8f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/f22cf29e896fd9bbb7ef1c6b068ffd25898baa8f"/>
+    <title>
+        docs: update manual for named YAML workflows
+    </title>
+    <updated>2026-09-07T13:41:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: update manual for named YAML workflows&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01c5a2f5c471c78bee8d56751bb7058e1382d6c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/01c5a2f5c471c78bee8d56751bb7058e1382d6c0"/>
+    <title>
+        docs: update 0.10.1 samples and specification
+    </title>
+    <updated>2026-09-07T13:22:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: update 0.10.1 samples and specification&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/095bb3c469f33240f57dd155c0993fc0f1d15d72</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/095bb3c469f33240f57dd155c0993fc0f1d15d72"/>
+    <title>
+        release: 0.10.1
+    </title>
+    <updated>2026-09-07T12:44:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: 0.10.1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/667236f5e7f62fd48fc318f8a6d0a61cf7c9fa29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/667236f5e7f62fd48fc318f8a6d0a61cf7c9fa29"/>
+    <title>
+        fix: place Japanese colophon on final page
+    </title>
+    <updated>2026-09-07T12:44:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: place Japanese colophon on final page&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d6eb2fc0b143647b97a2510242eb6a752dc87244</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/d6eb2fc0b143647b97a2510242eb6a752dc87244"/>
+    <title>
+        release: 0.10.0
+    </title>
+    <updated>2026-09-07T12:14:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: 0.10.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3975c9e9a677051e30859e00e52302558051824a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/3975c9e9a677051e30859e00e52302558051824a"/>
+    <title>
+        fix: update selected YAML from setup wizard
+    </title>
+    <updated>2026-09-07T12:14:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: update selected YAML from setup wizard&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7ecfff070fba8fd6be2686c5be851e8f11590fef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/7ecfff070fba8fd6be2686c5be851e8f11590fef"/>
+    <title>
+        feat: export books with selected YAML config
+    </title>
+    <updated>2026-09-07T11:55:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: export books with selected YAML config&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e800244535fef50957cf55a1d1d0a890640d174c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/e800244535fef50957cf55a1d1d0a890640d174c"/>
+    <title>
+        docs: recommend Code Space for config editing
+    </title>
+    <updated>2026-09-07T10:08:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: recommend Code Space for config editing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4759c314e2aa6a2d41a452c8f5f2ddb21b7e260c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/4759c314e2aa6a2d41a452c8f5f2ddb21b7e260c"/>
+    <title>
+        0.9.0
+    </title>
+    <updated>2026-09-07T09:43:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;0.9.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/af7d62f10edad4f67ac1da86d0bb57c1c5c90bdc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/af7d62f10edad4f67ac1da86d0bb57c1c5c90bdc"/>
+    <title>
+        feat: make emphasis marks configurable
+    </title>
+    <updated>2026-09-07T09:42:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: make emphasis marks configurable&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b2e7d9bb081749aa0a1d79c8d47b5afd1868bbe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/8b2e7d9bb081749aa0a1d79c8d47b5afd1868bbe"/>
+    <title>
+        docs: explain per-note styles and ChatGPT theming
+    </title>
+    <updated>2026-09-06T05:47:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: explain per-note styles and ChatGPT theming&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f2aee615247ca66d2ed70a90fc7f241e61b8106</id>
+    <link type="text/html" rel="alternate" href="https://github.com/nonkuri/obsidian-vivlio/commit/0f2aee615247ca66d2ed70a90fc7f241e61b8106"/>
+    <title>
+        docs: publish 0.8.0 sample downloads
+    </title>
+    <updated>2026-09-06T05:20:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/290948908?s=30&amp;v=4"/>
+    <author>
+      <name>nonkuri</name>
+      <uri>https://github.com/nonkuri</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: publish 0.8.0 sample downloads&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/AndreaBonn/impara-italiano/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/AndreaBonn/impara-italiano/commits/main.atom"/>
+  <title>Recent Commits to impara-italiano:main</title>
+  <updated>2026-09-11T20:12:21Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/527ed24c178aca6e6aec07406da8893c17e06074</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/527ed24c178aca6e6aec07406da8893c17e06074"/>
+    <title>
+        docs: add a PayPal donation link to the three readmes
+    </title>
+    <updated>2026-09-11T20:12:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add a PayPal donation link to the three readmes
+
+PayPal has no dedicated key in FUNDING.yml, so the link goes under
+custom, which is what draws the Sponsor button on the repository page.
+
+The English and Italian readmes already closed on a &amp;quot;support the
+project&amp;quot; section asking for a star, so the donation goes inside it: a
+second heading would have said the same thing twice. The Polish readme
+had no such section and gets one written in Polish, not an English
+block translated word for word.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d3f304163ef854738938d10f9a28a296820549a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/1d3f304163ef854738938d10f9a28a296820549a"/>
+    <title>
+        ci: update badges [skip ci]
+    </title>
+    <updated>2026-09-11T15:05:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: update badges [skip ci]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/94d0c18248f75b29c1baf4042eea0ebad4c551ec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/94d0c18248f75b29c1baf4042eea0ebad4c551ec"/>
+    <title>
+        fix(chat): tell a spent budget apart from a dead network
+    </title>
+    <updated>2026-09-11T15:00:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(chat): tell a spent budget apart from a dead network
+
+Both exits were a bare cb(null) and the view drew the same &amp;quot;no answer came
+back, try again&amp;quot; for each. So a student whose session budget was gone got
+a network error, retried, had the turn refunded, watched the counter stay
+at twelve, and could repeat that until they reloaded the page without ever
+being told the conversation was over. A dead end that reads as a hiccup is
+worse than a dead end.
+
+The reason now rides back with the null, and the view acts on it: a message
+that names the real cause, says the exercise judge still works, and says
+reloading brings conversation back. The turn is not refunded and the box
+stays shut, because inviting a retry into a void is the course lying about
+what happens next.
+
+Found by a review of the session diff, confirmed by driving the budget to
+its ceiling with a transport that answered every single time: turn 41 came
+back null with the network demonstrably healthy.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a496d731b6a7e4dc0fe379a4c0c16aeccf33f50a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/a496d731b6a7e4dc0fe379a4c0c16aeccf33f50a"/>
+    <title>
+        ci: update badges [skip ci]
+    </title>
+    <updated>2026-09-11T14:48:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: update badges [skip ci]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/693fa23f458b4ada1081ed93bb5a6caded76c292</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/693fa23f458b4ada1081ed93bb5a6caded76c292"/>
+    <title>
+        feat(validate): measure the library word floor instead of promising it
+    </title>
+    <updated>2026-09-11T14:38:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(validate): measure the library word floor instead of promising it
+
+The 400-800 band was written in the plan and checked by nobody, which is
+how A1 shipped at 289 words and A2 at 381 with the phase closing green.
+The same shape as the Baseline table before baseline.mjs: a number kept by
+hand is a number that rots without anyone deciding to let it.
+
+Both bounds are enforced, not just the one that broke. Raising the ceiling
+is a decision to take in the plan, where it can be argued, rather than a
+line quietly crossed in the data.
+
+A library text is told from a short reading by which file declared it, not
+by counting its sentences: the two are the same data type on purpose, so a
+threshold on length would be guessing at what the directory already knows.
+
+Seen red at 289 words and at 830 before being seen green.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89331814d9efbe782707d0d40fe128eef57ae757</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/89331814d9efbe782707d0d40fe128eef57ae757"/>
+    <title>
+        fix(library): honour the word floor the plan wrote and never measured
+    </title>
+    <updated>2026-09-11T13:13:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(library): honour the word floor the plan wrote and never measured
+
+The plan asked every level for a text between 400 and 800 words. A1 stood
+at 289 and A2 at 381, and nothing measured it, so phase 4 closed green on
+a number it did not meet. Both texts are now inside the range, extended in
+their own register: A1 stays in the present with short sentences, A2 keeps
+its first-person narrative, where the added advice is split between general
+statements that have to stay in the present and the personal episodes that
+carry the passato prossimo the text exists to teach.
+
+Three criteria in the plan were rewritten rather than the code, because the
+code was right and the check was not. The self-assessment gate grepped for
+&amp;quot;controllo&amp;quot; and hit Cils.controlloScritta, the present/missing detection the
+same plan says to keep, so it could never go green. The S3 countermeasure
+banned innerHTML in views-chat.js, which is stricter than the risk: what
+matters is that no model output reaches it, and it does not, because the
+reply and the correction go through textContent.
+
+The .ics criterion is marked not verified instead of quietly assumed: the
+shape of the file has unit tests, the import into a real calendar does not.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/276189cfb5ec1b211b4d4d07a9faf6caec48d766</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/276189cfb5ec1b211b4d4d07a9faf6caec48d766"/>
+    <title>
+        feat(c1,c2): fill the three gaps the top of the course never covered
+    </title>
+    <updated>2026-09-11T12:45:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(c1,c2): fill the three gaps the top of the course never covered
+
+Three areas the course taught nowhere above B1, picked by checking which
+GRAMMAR_REF tags C1 and C2 never used. The epistemic future first, because
+&amp;quot;sarà stanco&amp;quot; means &amp;quot;he must be tired&amp;quot; and a learner who does not know
+that reads the sentence backwards with nothing to warn them. Then the
+non-finite clauses, which are the visible difference between correct
+Italian and Italian that reads like a translation. Then relatives beyond
+&amp;quot;che&amp;quot; together with verb government, in one unit because they are the same
+problem: without knowing that it is &amp;quot;tenere a&amp;quot;, you cannot build &amp;quot;a cui&amp;quot;.
+
+The exam moves to the end of each level, as it did for B2: the old level
+test samples units 1 to 3 and now says so, and the last unit of C1 and of
+C2 carries the level exam with twelve questions drawn from the whole level.
+
+C1 reaches 20 lessons, C2 reaches 16.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a5679cbe8fc9953c0c7d4c5236be0ffd48910df1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/a5679cbe8fc9953c0c7d4c5236be0ffd48910df1"/>
+    <title>
+        fix(b2): put the final exam back at the end of the level
+    </title>
+    <updated>2026-09-11T12:11:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(b2): put the final exam back at the end of the level
+
+Adding two units after unit 4 left &amp;quot;Esame finale B2&amp;quot; sitting in the
+middle of the level, with two units still to come after it. The title
+was also the smaller half of the problem: that test samples units 1 to 4
+only, so it claimed a coverage it never had once the level grew.
+
+So the exam moves rather than being renamed in place. Unit 4 keeps its
+twelve questions under an honest title (review of units 1-4), and the
+test of the last unit becomes the level exam, with two questions added
+from the units it did not previously touch: reported speech and a
+conditional in the passive.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca646e0ba769ea7f71aae6a9b537451c480901db</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/ca646e0ba769ea7f71aae6a9b537451c480901db"/>
+    <title>
+        feat(b2): teach concession and the connectives that hold a text together
+    </title>
+    <updated>2026-09-11T12:05:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(b2): teach concession and the connectives that hold a text together
+
+The unit splits the concessives by the mood they govern: benche/sebbene/
+nonostante take the congiuntivo, anche se takes the indicative, and pur +
+gerund is kept apart from pur di + infinitive, which looks alike and means
+the opposite. The third lesson covers the textual connectives (tuttavia,
+anzi, del resto, pertanto) because a B2 learner writes correct sentences
+and an unreadable paragraph without them.
+
+The five overlays come out of one generator so their shape cannot drift,
+but each {contrast} block is written for its own language rather than
+translated: German marks the hypothesis with Konjunktiv II, Polish has no
+mood change at all, French never takes the subjunctive after &amp;quot;meme si&amp;quot;.
+
+B2 reaches 24 lessons.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7432d3a6c950327699f2282a0b64f351ba9ecf5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/7432d3a6c950327699f2282a0b64f351ba9ecf5a"/>
+    <title>
+        feat(b2): add unit b2-02 on reported speech with deictic shifts
+    </title>
+    <updated>2026-09-11T11:44:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(b2): add unit b2-02 on reported speech with deictic shifts
+
+Reported speech was entirely absent from the course, and it is the
+first thing needed outside the classroom: retelling what someone else
+said. The basic grammar was already there (sequence of tenses, unit
+b2-u01); the new piece is the deictic shifts, &amp;quot;oggi&amp;quot; -&amp;gt; &amp;quot;quel giorno&amp;quot;,
+&amp;quot;qui&amp;quot; -&amp;gt; &amp;quot;lì&amp;quot;, &amp;quot;venire&amp;quot; -&amp;gt; &amp;quot;andare&amp;quot;, which no conjugation table teaches.
+
+B2 goes from 16 to 20 lessons. The contrastive blocks are WRITTEN for
+each of the five languages and not translated: Polish needs to know
+that Polish does not shift tenses, German that German marks mood
+instead of tense, French that the closeness between the two languages
+betrays exactly on the subjunctive.
+
+Three invented tags have been fixed, and not only in this unit: three
+reading-library texts also pointed at grammar entries that do not
+exist. An invented tag is not a syntax error, it is a raw label in the
+student&amp;#39;s error notebook.
+
+The gate that should have caught them did not load the library files,
+and readings.js ASSIGNED the list instead of appending to it, so it
+wiped out texts that had arrived earlier. It now appends, like the
+level files do, and the tag check now covers the library too.
+
+Every multiple-choice answer key has been checked against the correct
+option&amp;#39;s text in all five languages, because parity.mjs verifies list
+length, not list order.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca5c45ed0eb2efcb8179006be410352f3a0acc5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/ca5c45ed0eb2efcb8179006be410352f3a0acc5f"/>
+    <title>
+        feat(library): add six long readings, one per CEFR level
+    </title>
+    <updated>2026-09-11T11:27:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(library): add six long readings, one per CEFR level
+
+The course had 1514 exercises and 2252 Italian words to read in total:
+it taught a lot and gave little to consume, and that is the gap
+missing most from B1 up. Now there are six long texts, one per level,
+and extensive reading goes from 2252 to 4873 words.
+
+The library is NOT a new data type: a six-hundred-word text has the
+same shape as a czytanka, so no second view and no second global.
+LINGUAI.addReadings adds them to the same list and views-reading.js
+draws them without changing a line.
+
+They load with the level, not at startup, and do not sit in
+PRECACHE: ten times the prose of the short czytanki cannot load for
+someone who will never open it. The list draws what it has, pulls
+the rest, and redraws, the same as the coverage screen.
+
+Two differences on the long text, both for the same reason: no
+dictation past twenty sentences (dictation on thirty sentences is not
+a harder exercise, it is an exercise without an end), and a
+placeholder written DURING listening, because whoever closes the tab
+halfway is exactly who that is for.
+
+extract_strings.mjs now enumerates library-*.js files from the
+folder instead of reading them off a hand-kept list: a text added to
+a level nobody remembers would still get its recordings, instead of
+silently falling back to system synthesis.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0464385d4509eea2fe7620d32cb1be7e1b68aa02</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/0464385d4509eea2fe7620d32cb1be7e1b68aa02"/>
+    <title>
+        feat(chat): add unscored, judged-live conversation practice
+    </title>
+    <updated>2026-09-11T11:10:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(chat): add unscored, judged-live conversation practice
+
+The course had fourteen written conversations, each branch and
+acceptable reply and mistake-to-stop-on authored by a person. This is
+something else: an interlocutor that answers what the student actually
+says. There is no single correct reply, so nothing halts the scene: the
+correction lands beside the interlocutor&amp;#39;s answer, never in place of
+it.
+
+Nothing here is scored. No card, no streak, no XP, no lesson. There is
+no path from this screen into progress, which is also why the mode
+needs no equivalent of clamp: no verdict to bound in the first place.
+
+Turn history travels as the third field of the prompt and gets
+translated into three dialects, not four, because OpenAI and Groq
+share one. Stripped of history the request body comes out identical to
+before, which doubles as a regression test: the same functions still
+serve the judge, the one function the course cannot afford to lose.
+
+Session budget is kept separate from the judge&amp;#39;s. Sharing it would
+have switched off that other function in silence, and the student
+would only notice from an exercise that stops being graded, with
+nothing on screen connecting the two.
+
+A third consent, distinct and revocable: what leaves the device here
+is not one sentence but the whole scene transcript, and it resets on
+every turn. Accepting that one sentence gets checked is not accepting
+this. The conversation lives in page memory only and never reaches the
+backup file.
+
+The interlocutor has no recordings and cannot: its lines are born
+mid-conversation, not stored under data/core/, so system synthesis
+reads them aloud and the screen says so.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1caf4e0a67bf127a5ffc3f252e85d02c23a477aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/1caf4e0a67bf127a5ffc3f252e85d02c23a477aa"/>
+    <title>
+        feat(cils): add non-scoring review of exam writing and speaking
+    </title>
+    <updated>2026-09-11T10:43:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(cils): add non-scoring review of exam writing and speaking
+
+The exam simulator gave a real score for listening and reading and
+stayed silent on the two productions. Now a model reads them and
+gives two or three concrete points quoting the candidate&amp;#39;s own
+words, without grading them.
+
+The ban on scoring moves from the prompt into CODE (cils-report.js,
+on the model of LlmRules.clamp): any sentence with a fraction, a
+percentage, a number next to &amp;quot;points&amp;quot;, a &amp;quot;9 out of 12&amp;quot; or a verdict
+word in six languages is dropped. A model that ignores the
+instruction produces a shorter review, never a grade. This exam
+decides someone&amp;#39;s residence permit.
+
+The oral test arrives in two steps: recording during the test, text
+afterward, in an untimed review where the student replays it and
+writes what they said. Live transcription isn&amp;#39;t viable (audio.js:258
+closes on first silence, and two microphone streams don&amp;#39;t coexist).
+The report calls it &amp;quot;the student&amp;#39;s words&amp;quot;, never a transcript. This
+finally honors point 5 of ADR-009, by a different road.
+
+The self-assessment grid is gone from the oral test: it was option G,
+which ADR-009 had rejected and which still lived in the code anyway.
+
+Two defects found by looking at the render, not by a test: the
+report&amp;#39;s two buttons printed the raw i18n keys cils.again and
+cils.backToList, used in the code and defined in no language. A gate
+now compares the literal keys in code and markup against the
+dictionaries.
+
+The privacy notice now states that the essay and the oral review
+leave the simulator, and that the voice never does.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/47e907e64f2cc490a2900c7a9994a67ad1800874</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/47e907e64f2cc490a2900c7a9994a67ad1800874"/>
+    <title>
+        feat(retention): remind the course exists without notifications
+    </title>
+    <updated>2026-09-11T10:07:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(retention): remind the course exists without notifications
+
+The course had no way to get itself remembered: scheduled
+notifications vanished from the only browser that ever had them,
+and push needs a server this project deliberately doesn&amp;#39;t have.
+What&amp;#39;s left is four things and none of them a notification:
+a persistent badge, an icon counter, an install prompt, and an
+.ics file run by whatever calendar the student already opened.
+
+The counter is off by default and that&amp;#39;s a privacy decision, not
+a preference: it&amp;#39;s the one thing the course draws outside its own
+page, visible to anyone glancing at the phone.
+
+It counts cards due within a day across both decks, vocabulary and
+the error notebook. Within a day because the number is written when
+the student leaves and nobody updates it while they&amp;#39;re away, so &amp;quot;now&amp;quot;
+would show zero to someone who just finished reviewing. Both decks
+because the in-course counter next to &amp;quot;Powtórki&amp;quot; already sums them,
+and two counters with the same name can&amp;#39;t show two different numbers.
+
+ics.js is a pure function because this is a format that breaks
+silently and in someone else&amp;#39;s calendar app: a stray comma or
+newline doesn&amp;#39;t damage the line, it TERMINATES it, and the limit
+is 75 octets, not characters, which lands somewhere else once
+accented letters are in the mix.
+
+Every browser API used here is feature-detected before use; where
+it&amp;#39;s missing, the explanation takes the button&amp;#39;s place, never a
+dead control.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f817c21577027baadfaaf3b6c88e97cdb300099e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/f817c21577027baadfaaf3b6c88e97cdb300099e"/>
+    <title>
+        docs(claude): generate the baseline table instead of hand-writing it
+    </title>
+    <updated>2026-09-11T09:34:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(claude): generate the baseline table instead of hand-writing it
+
+The Baseline table in CLAUDE.md was maintained by hand and turned out
+wrong more than once without anyone deciding it should change (it said
+12 readings when there were 24). scripts/baseline.mjs now prints the
+real numbers, so updating the table is a copy of its output, and a stale
+table is a diff away from being caught. The source of truth is a
+deterministic script, not memory, and a missing global exits with code 1
+instead of silently printing zero.
+
+The comment in store.js claimed merge() drops keys outside the defaults,
+when it actually copies them through, which is why llmConsent and
+llmOrder survive a reload despite not being in defaultState().
+
+Plan artifacts for this work live in specs/006-input-e-produzione/.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa1721d1b80957ca5b5e278271363f15267d9b3c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/aa1721d1b80957ca5b5e278271363f15267d9b3c"/>
+    <title>
+        docs: the test and coverage figures match what the suite does today
+    </title>
+    <updated>2026-09-11T08:44:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: the test and coverage figures match what the suite does today
+
+Every number here was read off a run made now, not off the previous
+version of these files: 944 unit assertions in 40 files, 263 in Chromium,
+53 mutations over seven engine files, 99.3% unit coverage, 13 979 lines of
+engine. The figures they replace described the suite of an earlier release
+and had drifted without anybody deciding anything.
+
+The quality-gates section also says where the badges come from, so the next
+reader knows which numbers are typed by hand (these) and which are written
+by CI (the two in badges/).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b075589fe90e791a3dd45b4301a73754aec42a8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/8b075589fe90e791a3dd45b4301a73754aec42a8"/>
+    <title>
+        ci(badges): publish test and coverage badges for the profile page
+    </title>
+    <updated>2026-09-11T08:39:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci(badges): publish test and coverage badges for the profile page
+
+The profile README reads a shields.io endpoint badge per repository, and
+this one had none: its cells carried numbers typed by hand, which describe
+the suite as it was on the day somebody wrote them down.
+
+The two figures now come out of the runs the gates already do. The three
+test steps tee their output into reports/, badges.mjs reads the counts and
+the coverage from there, and CI commits the result on main. No second run:
+the DOM suite costs a minute and a half and a badge is not worth spending
+it twice.
+
+The unit count is read off the output of `npm test` rather than a TAP file,
+because `npm test -- --test-reporter=tap` silently does nothing: node
+ignores its own options after the glob. The alternative was a second npm
+script repeating the pattern of the test files in a place nothing keeps in
+step with this one.
+
+An unreadable report exits 1 instead of writing a grey badge: a green build
+carrying &amp;quot;N/A&amp;quot; is a failure nobody goes looking for.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89ec2666577368eb27aadc35f9ca96492c249a55</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/89ec2666577368eb27aadc35f9ca96492c249a55"/>
+    <title>
+        docs(ai): document the optional model check in readmes, manuals and s…
+    </title>
+    <updated>2026-09-11T07:50:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(ai): document the optional model check in readmes, manuals and security policy
+
+The clamp is documented as a property of the code (ok || promote in
+LlmRules.clamp), not as a promise made in the prompt: stated that way it
+survives a lying model and a swapped provider, which is the only form of
+the guarantee worth writing down.
+
+Three claims of &amp;quot;no outbound channel&amp;quot; became false when the LLM judge
+shipped and are corrected rather than softened: the intro of both
+readmes, the self-hosted-fonts bullet, and the threat model in both
+security policies.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/687773b7ef6745d0311d241e4d91fb099a7780b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/687773b7ef6745d0311d241e4d91fb099a7780b4"/>
+    <title>
+        fix(coverage): count the whole course, not the levels already in memory
+    </title>
+    <updated>2026-09-10T22:48:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(coverage): count the whole course, not the levels already in memory
+
+Levels arrive lazily. Entering the Coverage screen straight after opening
+the course measured A1 alone - 952 forms out of 1249 - and the caption
+calls that number the ceiling of the course, a thing that cannot grow. It
+grew anyway, quietly, for anybody who had walked through A2 first.
+
+Same fix search.js has used for the same problem: draw what is in memory,
+pull the missing levels, refresh the dictionary and draw again, with the
+existing toast when a level fails to load.
+
+SW_VERSION carries a fingerprint of the precached files, so it is
+regenerated here, once, for all four fixes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c310760d1f2b2f5c2edf29bdaf996857dfe559ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/AndreaBonn/impara-italiano/commit/c310760d1f2b2f5c2edf29bdaf996857dfe559ea"/>
+    <title>
+        fix(coverage): the student&#39;s deck now meets the frequency list
+    </title>
+    <updated>2026-09-10T22:47:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/128807483?s=30&amp;v=4"/>
+    <author>
+      <name>AndreaBonn</name>
+      <uri>https://github.com/AndreaBonn</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(coverage): the student&amp;#39;s deck now meets the frequency list
+
+A card key is normalised for identity - lower case, accents stripped - so
+&amp;quot;il caffè&amp;quot; is filed under &amp;quot;il caffe&amp;quot;. The frequency list is a list of bare
+forms that keep their accents, so the two sets met almost nowhere and the
+screen reported near-zero coverage for a deck that was full. Zero there
+reads as a result of studying, not as a fault.
+
+The student&amp;#39;s set is now built from card.it and through the same splitter
+as the course dictionary, exposed as Lemma.dodajHaslo: a second splitter
+would be a second answer to &amp;quot;what does an entry contribute&amp;quot;, and the two
+would drift apart word by word.
+
+The unit test pinned the raw key, which was the implementation rather than
+the intent its own comment stated. It now pins the intent.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

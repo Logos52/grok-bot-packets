@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/XnoahR/PhiCorvi/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/XnoahR/PhiCorvi/commits/main.atom"/>
+  <title>Recent Commits to PhiCorvi:main</title>
+  <updated>2026-09-13T14:16:18Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05e4fe2ce9bd0e9eb0f1db5c2d31ddd758fc6fa9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/05e4fe2ce9bd0e9eb0f1db5c2d31ddd758fc6fa9"/>
+    <title>
+        Naikkan ke 1.6.0
+    </title>
+    <updated>2026-09-13T14:16:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Naikkan ke 1.6.0
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011zcqoD2SxR6Qe4wTQFo4Kx&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da4af1c15ab4cc611e0365cb664d20feb9ff2ba8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/da4af1c15ab4cc611e0365cb664d20feb9ff2ba8"/>
+    <title>
+        Add-on: isi audio kata juga, bukan cuma kalimat
+    </title>
+    <updated>2026-09-13T14:13:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add-on: isi audio kata juga, bukan cuma kalimat
+
+Tiap target sekarang boleh punya dua pasangan: sentence -&amp;gt; audio seperti
+dulu, dan word -&amp;gt; word_audio yang baru. Kata dibacakan dari field
+bacaannya lebih dulu -- 引数 keluar ひきすう -- karena tidak ada mesin yang
+menebak itu dari kanjinya. Untuk JPMN dipakai WordReadingHiragana, bukan
+WordReading: yang terakhir berbentuk 単語[たんご], dan clean() membuang
+kurungnya sehingga yang tersisa justru kanjinya.
+
+Kata dikirim dengan nada=0. Bridge sekarang menghormatinya di /tts; kata
+tunggal tidak punya adegan untuk dinadai, dan di Irodori satu panggilan
+model bahasa per kata itu mahal untuk hasil yang dibuang. Bridge lama
+mengabaikan parameternya, jadi add-on baru aman bertemu bridge lama.
+
+Dua bug yang muncul persis saat dua pasangan berbagi note type:
+
+- pending() mencari target dengan next() per note type, jadi pasangan
+  kedua selalu menyaring dengan field audio pasangan pertama. Tiap entri
+  hasil resolved() sekarang membawa nama dan ordinalnya sendiri.
+
+- Note yang butuh dua kolom dimuat dua kali sebagai dua objek terpisah,
+  dan yang kedua dimuat sebelum yang pertama disimpan -- update_notes
+  menulis balik kolom kalimat yang masih kosong. Pekerjaan sekarang
+  dikelompokkan per note: satu objek, semua kolomnya.
+
+run_bulk mencatat ke log di tiap cabang. &amp;quot;Tidak jalan&amp;quot; tanpa log berarti
+menebak apakah yang kosong itu pencariannya, koneksinya, atau kartunya.
+
+Config bawaan dapat Retro (Kiku) dan pasangan word di semua note type.
+Anki menyimpan config pengguna terpisah, jadi target baru tidak masuk
+sendiri ke pemasangan lama -- config.md menjelaskan Restore Defaults.
+
+Diuji dengan koleksi Anki asli yang terpisah: sintaks &amp;quot;note:Retro (Kiku)&amp;quot;
+ketemu, 3 note x 2 kolom terisi lewat bridge, hash nama berkas dihitung
+ulang dan membuktikan kata dibaca dari bacaannya, jalur SentenceFurigana
+menghasilkan kalimat tanpa ruby.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_011zcqoD2SxR6Qe4wTQFo4Kx&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45f9d00bedfad76e3a055e4848368618a503e43b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/45f9d00bedfad76e3a055e4848368618a503e43b"/>
+    <title>
+        Version 1.5.0
+    </title>
+    <updated>2026-09-01T14:42:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version 1.5.0
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JowYQoznEbxQqNkJ1U6ZUb&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0381007f1c32410936bcc652ddad90842090f90f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/0381007f1c32410936bcc652ddad90842090f90f"/>
+    <title>
+        Read mined sentences with Fish Audio, hosted and without a card
+    </title>
+    <updated>2026-09-01T14:42:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read mined sentences with Fish Audio, hosted and without a card
+
+A third engine beside VOICEVOX and Irodori. It runs on Fish Audio&amp;#39;s servers, so
+it needs no graphics card and nothing to install -- which is the wall Irodori
+put in front of anyone without an NVIDIA card, and a 6 GB one at that.
+
+A voice here is a model id from their public library rather than a folder of
+recordings. That removes the problem that took the longest to see: every failed
+clone in testing failed because of its source material, not its settings, and
+material is exactly what an id spares you. Add voice takes the page link or the
+bare id and fetches the name from the catalogue, so a list of thirty-two hex
+characters never has to be read by a human.
+
+Measured against the chain it replaces: 1.2-3.0 s for a new sentence where
+Irodori plus the scene-tone call took about seventeen.
+
+The Reading tab now swaps its lower half to suit the engine instead of showing
+every engine&amp;#39;s settings at once. Server and Download engine mean nothing for an
+engine running on somebody else&amp;#39;s machine, and a row that cannot work should not
+be sitting there inviting a click. VOICEVOX shows neither.
+
+Three things the tests hold in place:
+
+The key never leaves this machine&amp;#39;s config. It is empty in the source and lives
+only in phicorvi_config.json, which is ignored; /status reports has_key and never
+the key, because that port answers anything on the machine.
+
+The mined sentence is never altered. Scene tone inserts emoji that only Irodori
+reads as delivery instructions -- let it run for Fish and they would be spoken as
+words, so it stays off and the sentence goes out exactly as mined.
+
+A failure still yields a card. Fish falling over drops to VOICEVOX, uncached and
+declared in X-Engine. That is what makes a free tier ending one day an
+inconvenience rather than a broken field in Anki.
+
+Also fixed: Fish returns WAV declaring a placeholder length of 0xFFFFFF.., so
+anything trusting the header reads a three-second clip as thirteen hours; the
+header is rewritten before the audio goes anywhere. And minsize rises 520 -&amp;gt; 560,
+measured: at 520 every tab overflowed by 54 px and the rightmost buttons sat
+outside the window with no way to reach them. That number was always a promise
+the layout could not keep.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01JowYQoznEbxQqNkJ1U6ZUb&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b041117bbe98b9aa7f33be987dafa05614930d6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/b041117bbe98b9aa7f33be987dafa05614930d6d"/>
+    <title>
+        Say that the exe and the add-on are not alternatives
+    </title>
+    <updated>2026-08-28T03:03:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say that the exe and the add-on are not alternatives
+
+A release carries two files and the README described only one of them,
+so the obvious reading is that they are two ways to install the same
+thing. They are not: the add-on sends a sentence to localhost:8772 and
+waits, which does nothing with the app closed. Yomitan never needs the
+add-on at all.
+
+Both Irodori guides now say the add-on is a prerequisite up front, next
+to the graphics card. Download engine puts the engine inside the add-on
+folder, so someone who skipped it gets the fallback location without
+ever being told there was a choice.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/859186407268a1eb0dced2bd088a347307adef1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/859186407268a1eb0dced2bd088a347307adef1b"/>
+    <title>
+        Version 1.4.1
+    </title>
+    <updated>2026-08-28T02:57:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version 1.4.1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3b980e7d84e77563206b25fe975af99c07987ba7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/3b980e7d84e77563206b25fe975af99c07987ba7"/>
+    <title>
+        Show the install progress that was already being computed
+    </title>
+    <updated>2026-08-28T02:50:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show the install progress that was already being computed
+
+The installer reported bytes for uv, the server source and the model
+weights, and a single static line for `uv sync` -- which is three
+quarters of the download and nearly all of the time. Its stderr was read
+after the process ended, so the longest phase of the install gave no
+sign of life at all. That is the same complaint answered for server
+startup, left standing somewhere ten times longer.
+
+It now reads uv&amp;#39;s output as it arrives and counts finished packages
+against announced ones. The denominator is the union of both: uv
+announces lazily, so a package that downloads fast enough appears only
+as &amp;quot;Downloaded&amp;quot;, and counting against announcements alone produced
+&amp;quot;6/4&amp;quot; and a bar that walked backwards. A bar that walks backwards reads
+as failure.
+
+The fraction was already there -- `lapor` took it, `_rentang` mapped
+each step onto a slice of the whole -- and the window threw it away.
+There is now a progress bar to receive it, hidden until an install runs.
+The slices are rebalanced to match the bytes: the weights had 36% of the
+bar for a quarter of the download, and `uv sync` had a single point.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/131bf3ef3b8defdd2abc6990e036df84f31adec7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/131bf3ef3b8defdd2abc6990e036df84f31adec7"/>
+    <title>
+        Say what the download actually costs
+    </title>
+    <updated>2026-08-28T02:39:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say what the download actually costs
+
+Both guides quoted 11 GB, which is the installer&amp;#39;s disk check, not the
+size. Measured: ~5 GB downloaded, ~6 GB used, and the model is 1.3 GB of
+that -- the other 7 GB is PyTorch and CUDA, the entry cost of any neural
+TTS. Quoting the safety margin as the price made it sound twice as
+expensive as it is.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca4a5cd86bba098bb577b1124bdb26d28aabe01c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/ca4a5cd86bba098bb577b1124bdb26d28aabe01c"/>
+    <title>
+        A guide for Irodori, in both languages
+    </title>
+    <updated>2026-08-28T02:33:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;A guide for Irodori, in both languages
+
+The release notes say what the feature is. Neither says what makes it
+work, which is not the settings: it is whether the reference recording is
+one person talking, without music behind them, for ten clean seconds.
+Every failed clone in testing came from the material, and none came from
+a setting.
+
+So both guides lead with the requirements and the download size, before
+the first button is pressed, rather than after eleven gigabytes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/255816c44cedce0b9025bb607a1abaa33972cc09</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/255816c44cedce0b9025bb607a1abaa33972cc09"/>
+    <title>
+        Drop three files nothing ever read
+    </title>
+    <updated>2026-08-28T02:27:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop three files nothing ever read
+
+app.log, d.mp3 and nande.mp3 rode along in two unrelated commits -- one
+adding the clipboard reader, one adding the CI smoke test. No module,
+document or workflow mentions any of them.
+
+Ignoring the extensions rather than the three names, since the way they
+arrived is the way the next one will.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84927930dfe69c646d24333f0f98c84ca748a1ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/84927930dfe69c646d24333f0f98c84ca748a1ea"/>
+    <title>
+        Version 1.4.0
+    </title>
+    <updated>2026-08-28T02:17:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version 1.4.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aae75d80484473b50e9b8001462120d11e0d312c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/aae75d80484473b50e9b8001462120d11e0d312c"/>
+    <title>
+        Read mined sentences with Irodori, and with the scene&#39;s tone
+    </title>
+    <updated>2026-08-28T02:14:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read mined sentences with Irodori, and with the scene&amp;#39;s tone
+
+VOICEVOX reads from a dictionary, which is why it stays the default: a rare
+word is spoken correctly rather than guessed at. What it cannot do is sound
+like anyone in particular, or like the scene the sentence came from.
+
+Irodori copies a voice from one recording and reads at the same time, so there
+is no conversion stage after it. A voice is now a folder of recordings under
+user_files/irodori/voice_model/, named after the character; the server is told
+their paths directly, because it does not scan subfolders itself. Only the
+first eight seconds are used, so the first file in a folder decides the voice.
+
+Scene tone marks each sentence with the emoji Irodori reads as delivery. The
+reply is only used when removing the emoji gives the sentence back character
+for character -- a model that paraphrases or &amp;quot;corrects&amp;quot; a rare kanji fails that
+check and is discarded. In a vocabulary tool, a card that reads back something
+other than what was mined is worse than a card read flatly. It runs on whole
+sentences only: a Yomitan word lookup has no scene to have a tone, and paying a
+model call for one bought about ten seconds of queue for nothing.
+
+The engine installs itself on request, into the add-on folder rather than
+beside the exe -- that is the folder every user has, and user_files survives
+add-on upgrades. uv brings its own Python, so the machine needs neither Python
+nor git. The add-on tells PhiCorvi where it lives over the bridge it already
+uses, which beats guessing at four platform layouts and two possible folder
+names.
+
+Settings move from one long scrolling panel into tabs. Everything that changes
+the sound is in the cache key, and /tts now says which engine actually spoke,
+because the fallback to VOICEVOX sounds like success.
+
+An earlier attempt lent the voice a different way: send every finished sentence
+through a voice-conversion model. It worked, and cost about twelve seconds a
+sentence for a second local service and one more generation of loss. Irodori
+does the same thing from a recording, in one stage, so that path is not part of
+this.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3344a3b02d387b368ebb2d3ae5a2f98f0fd985a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/d3344a3b02d387b368ebb2d3ae5a2f98f0fd985a"/>
+    <title>
+        Version 1.3.1
+    </title>
+    <updated>2026-08-24T11:33:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version 1.3.1
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ebc20c0be7df4b2f281126ba171cbccfbdf4f87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/5ebc20c0be7df4b2f281126ba171cbccfbdf4f87"/>
+    <title>
+        Move the sections the new card landed on top of
+    </title>
+    <updated>2026-08-24T08:30:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move the sections the new card landed on top of
+
+Inserting the sentence card took two rows and shifted the three sections after
+it, but not the three after those -- so the voice library was placed into rows
+5 and 6, where CONNECT and its card already were, and they drew over each other.
+
+Shifting three of six is worse than shifting none: it looks correct until the
+part you did not scroll to. Every section below now moves with it, and Tk
+reports one widget per row for all ten.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db41e815d8b576570fcec69ebbe773bae0afc31c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/db41e815d8b576570fcec69ebbe773bae0afc31c"/>
+    <title>
+        Follow the app&#39;s voice, make the switch reachable, make the buttons h…
+    </title>
+    <updated>2026-08-24T08:25:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Follow the app&amp;#39;s voice, make the switch reachable, make the buttons hittable
+
+Three faults, all of them the same shape: something the app appeared to control
+was actually decided elsewhere.
+
+The voice. The add-on carried its own speaker id, so every mined sentence came
+out in the whisper voice no matter what the app showed -- two places holding
+one setting, and the invisible one winning. It now sends no voice at all unless
+somebody pins one, and the bridge answers with X-Speaker so the filename still
+tells two voices apart. Reordering in the app is what picks the voice again.
+
+The switch. Turning off sentence audio meant editing JSON, so mining from video
+kept synthesising a second reading of audio that arrived with the card. It is a
+checkable item in a Tools submenu now, next to the bulk fill.
+
+The buttons. The clipboard toggle was a checkbox in a corner and &amp;quot;speak any
+text&amp;quot; was a text link in a section header -- 41px targets now, in their own
+card, which is where the two things people use while reading belong.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5445a0b0d1a7b22fab046412aa53085ffb8a1a95</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/5445a0b0d1a7b22fab046412aa53085ffb8a1a95"/>
+    <title>
+        Tell people when a new version is out
+    </title>
+    <updated>2026-08-23T05:11:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Tell people when a new version is out
+
+Neither piece could announce itself: the app had no version at all, and Anki
+only auto-updates add-ons it installed from AnkiWeb, so a file-installed one
+leaves checking GitHub by hand as the only way to find out.
+
+Both now read the /releases/latest redirect, not the API. The API allows 60
+unauthenticated calls an hour counted per IP, and behind a shared address --
+a phone network, a campus, a CDN -- that budget is regularly spent by
+strangers before the app ever asks; this repo&amp;#39;s own quota was exhausted while
+testing. The redirect has no such limit and needs no body.
+
+The app asks once at startup, the add-on once a day, and both stay silent
+unless there is genuinely something newer. check_updates turns it off.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dd65f0e0663a15ced088d6e79bfbd3e714488a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/2dd65f0e0663a15ced088d6e79bfbd3e714488a7"/>
+    <title>
+        Read the sentence from the furigana field when the plain one is empty
+    </title>
+    <updated>2026-08-23T05:00:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read the sentence from the furigana field when the plain one is empty
+
+Yomitan&amp;#39;s {sentence} gets switched off when a source hands it messy text, but
+the furigana version stays mapped -- the sentence is still there, only wrapped
+in ruby, which clean() already strips. Taking whichever field is populated
+beats asking someone to change a mining setup that works for them.
+
+A target&amp;#39;s &amp;quot;sentence&amp;quot; may now be a list, tried in order. On this collection it
+recovers eleven notes the plain field alone could not reach.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce80d105d5300e24862c65be10d90eaf001447df</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/ce80d105d5300e24862c65be10d90eaf001447df"/>
+    <title>
+        Say why the add-on did nothing
+    </title>
+    <updated>2026-08-23T04:47:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Say why the add-on did nothing
+
+Every path that ends in &amp;quot;do nothing&amp;quot; was silent, so a sweep that found no
+targets, a hook that fired too early and an add-on that never loaded at all
+looked identical from outside Anki: an empty audio field. Write each decision
+to user_files/phicorvi.log, and surface a crashed sweep instead of swallowing
+the traceback.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f33bc1c625203b1dcc69aee914c6ef224e33dcb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/3f33bc1c625203b1dcc69aee914c6ef224e33dcb"/>
+    <title>
+        Cap how much one automatic sweep takes on
+    </title>
+    <updated>2026-08-23T04:36:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cap how much one automatic sweep takes on
+
+&amp;quot;added:1&amp;quot; is everything added today, not just the card that triggered the
+sweep. After a fifty-word session that is a single silent background job with
+no progress bar and no cancel, holding VOICEVOX while you are still mining.
+Take auto_limit at a time and re-arm for the rest.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11964efbb267bd663f943a373d12d58776a5e8ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/XnoahR/PhiCorvi/commit/11964efbb267bd663f943a373d12d58776a5e8ef"/>
+    <title>
+        Fill Anki sentence-audio fields from the mined sentence
+    </title>
+    <updated>2026-08-23T04:31:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/95954236?s=30&amp;v=4"/>
+    <author>
+      <name>XnoahR</name>
+      <uri>https://github.com/XnoahR</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fill Anki sentence-audio fields from the mined sentence
+
+A word mined from a novel arrives with its sentence as text and nothing to
+listen to; novels have no recorded line to attach. This adds an Anki add-on that
+asks PhiCorvi to read the sentence, plus the /tts endpoint it talks to.
+
+The add-on goes through PhiCorvi rather than straight to VOICEVOX so it can get
+mp3 back: Anki&amp;#39;s Flatpak sandbox has no ffmpeg, and the same sentence as wav is
+eleven times the size, all of which syncs.
+
+ffmpeg writes through real files rather than a pipe. Piped mp3 has no Xing
+header, because ffmpeg cannot seek back to fill it in -- the audio is intact but
+every player reads the wrong duration and some truncate playback.
+
+The note_will_be_added hook swallows its own exceptions. It runs inside
+col.add_note(), so anything escaping would abort the add and break mining.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

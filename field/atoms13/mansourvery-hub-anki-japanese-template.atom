@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/mansourvery-hub/anki-japanese-template/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/mansourvery-hub/anki-japanese-template/commits/main.atom"/>
+  <title>Recent Commits to anki-japanese-template:main</title>
+  <updated>2026-09-12T21:02:16Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6e59885b498ca35f67b8443c8eb9b6bd583ea372</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/6e59885b498ca35f67b8443c8eb9b6bd583ea372"/>
+    <title>
+        Editorial redesign: calm Japanese reading interface and aesthetic polish
+    </title>
+    <updated>2026-09-12T21:02:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Editorial redesign: calm Japanese reading interface and aesthetic polish&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb0f27fca45b7694a304b531a0703f49692d8bd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/fb0f27fca45b7694a304b531a0703f49692d8bd9"/>
+    <title>
+        test_layout: font-independent overflow guarantee (CI has no CJK fonts)
+    </title>
+    <updated>2026-09-11T23:50:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test_layout: font-independent overflow guarantee (CI has no CJK fonts)
+
+CI runners have Chrome but no CJK fonts, so the Japanese definition
+fixture rendered with fallback tofu metrics and fit inside the 3-line
+cap — the truncator never fired. A fixed-height spacer inside the
+definition box makes scrollHeight &amp;gt; clientHeight true in every
+environment, so the truncator checks no longer depend on fonts.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75d9e9b08a6f2ba0a314da7b34b8db76a437e928</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/75d9e9b08a6f2ba0a314da7b34b8db76a437e928"/>
+    <title>
+        Minimal redesign: pure retrieval front, quiet hierarchical back
+    </title>
+    <updated>2026-09-11T23:02:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Minimal redesign: pure retrieval front, quiet hierarchical back
+
+Front: hidden behavioral probes; listening resolver (classic audio-only
+fields OR #listening tag) with the sentence front as universal fallback;
+no note: search clause ({{Type}} is scheduling type, not model).
+
+Back: word -&amp;gt; pitch -&amp;gt; meaning -&amp;gt; context-grid (sentence+picture)
+hierarchy; secondary info collapsed behind More; discreet Context/Word/
+Listening state label; F full-card furigana, T translation reveal.
+Tags bar + frequency/pitch badges removed (tags = behavioral metadata).
+
+Also: JS syntax gate in tests (unbalanced-brace regression caught by QA),
+mobile word-meta-row specificity fix, stale 6c comment, unused import,
+front-modes behavioral test suite.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ced95840a8089359399103960436a4876c48d11d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/ced95840a8089359399103960436a4876c48d11d"/>
+    <title>
+        Empty-field collapse everywhere: shell guards, degenerate-content rem…
+    </title>
+    <updated>2026-09-10T15:17:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Empty-field collapse everywhere: shell guards, degenerate-content removal, enclosure test and QUALITY rule&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d038b849cfdbf472883a8b90a51ef576cff7a93</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/9d038b849cfdbf472883a8b90a51ef576cff7a93"/>
+    <title>
+        Adopt self-describing methodology: PRODUCT/MVP/ARCHITECTURE/QUALITY/T…
+    </title>
+    <updated>2026-09-10T14:57:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Adopt self-describing methodology: PRODUCT/MVP/ARCHITECTURE/QUALITY/TEST_STRATEGY/PLAN, slim AGENTS.md, verify gate and CI&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ba5da752e5d185a1166169b22830dff895193bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/3ba5da752e5d185a1166169b22830dff895193bf"/>
+    <title>
+        Density pass: content-driven card height (viewport fill removed, stic…
+    </title>
+    <updated>2026-09-09T17:28:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Density pass: content-driven card height (viewport fill removed, sticky side dropped), tightened spacing tokens, typography hierarchy (headword 5.75rem &amp;gt; back sentence 3.5rem &amp;gt; front 5.25rem &amp;gt; definition &amp;gt; notes/translation), 3-line definition truncator with headroom-formula cap, compact 28vh listening view, quieter accordion/source; new tests/test_layout.py headless-Chrome suite wired into finish.sh (26 layout invariants: no viewport fill, no overflow, furigana containment, hierarchy, truncator, lightbox-safe image cap, touch targets)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d8317b576417405191a73eeebc5229b2dddf263</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/2d8317b576417405191a73eeebc5229b2dddf263"/>
+    <title>
+        finish.sh v2 flow: version stamps into CSS before the Anki sync so th…
+    </title>
+    <updated>2026-09-09T15:08:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;finish.sh v2 flow: version stamps into CSS before the Anki sync so the live template always matches the release tag&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0433bcdf2a8862eacd268b530237b6137f13345</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/b0433bcdf2a8862eacd268b530237b6137f13345"/>
+    <title>
+        finish.sh: stamp version into CSS before the Anki sync (live template…
+    </title>
+    <updated>2026-09-09T15:07:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;finish.sh: stamp version into CSS before the Anki sync (live template could lag one version); move tag bump+stamp to step 1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/63a299b870d0df9fe98b52bd7901a5a7f82a8f6f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/63a299b870d0df9fe98b52bd7901a5a7f82a8f6f"/>
+    <title>
+        finish.sh: release tag is remote-only (gh); fetch it instead of pushi…
+    </title>
+    <updated>2026-09-09T15:01:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;finish.sh: release tag is remote-only (gh); fetch it instead of pushing a nonexistent local tag&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/20ebbfef9cff1b6bf96bc8dcebff55e4fdfbca60</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/20ebbfef9cff1b6bf96bc8dcebff55e4fdfbca60"/>
+    <title>
+        Word header: word + frequency/pitch/audio now share one row on wide s…
+    </title>
+    <updated>2026-09-09T14:56:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Word header: word + frequency/pitch/audio now share one row on wide screens (space-between, baseline-aligned) instead of two stacked centered lines; version stamp added to CSS header and auto-rewritten by finish.sh on every release (amended pre-push so tree/tag/origin agree)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e6408b222e7a2f011313d5608220a5690892ae8f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/e6408b222e7a2f011313d5608220a5690892ae8f"/>
+    <title>
+        Widescreen fluid layout: body text (definition/translation/notes/exte…
+    </title>
+    <updated>2026-09-09T14:04:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Widescreen fluid layout: body text (definition/translation/notes/extended) now scales with viewport via clamp; raised reading-size caps (front 6.5rem, back sentence 4.5rem, headword 7rem); text-only side column gets a readable 180px-400px floor instead of a min-content sliver&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c77b3ada1116fa4cbb8b858c7a77c2b2440d087d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/c77b3ada1116fa4cbb8b858c7a77c2b2440d087d"/>
+    <title>
+        Cap side picture at 40vw so it shrinks with the window (main column k…
+    </title>
+    <updated>2026-09-08T19:59:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cap side picture at 40vw so it shrinks with the window (main column keeps the majority); block-level img removes mobile bottom gap&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e118ffa01fe53d5d2c550624d0a96d186eccbedf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/e118ffa01fe53d5d2c550624d0a96d186eccbedf"/>
+    <title>
+        Fix back card layout: side columns now shrink-wrap to the displayed i…
+    </title>
+    <updated>2026-09-08T19:18:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix back card layout: side columns now shrink-wrap to the displayed image width via min-content grid tracks&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f1db5aa2cbc8427ae4ce9caffcc44337bdb2980a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/f1db5aa2cbc8427ae4ce9caffcc44337bdb2980a"/>
+    <title>
+        Rewrite README: shorter, current (modes, compactor, truncator, live f…
+    </title>
+    <updated>2026-09-06T20:03:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rewrite README: shorter, current (modes, compactor, truncator, live fields)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc24a51f95d554f384f826c0ea921a87b147a7b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/fc24a51f95d554f384f826c0ea921a87b147a7b4"/>
+    <title>
+        Front: rebuild bold-less Sentence from cloze trio via JS
+    </title>
+    <updated>2026-09-06T19:53:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Front: rebuild bold-less Sentence from cloze trio via JS&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/faeb4717cc109c0f7477859a5c5243f741bb0ddc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/faeb4717cc109c0f7477859a5c5243f741bb0ddc"/>
+    <title>
+        fetch_anki_fields.py: include Anki field descriptions in snapshot
+    </title>
+    <updated>2026-09-06T19:36:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fetch_anki_fields.py: include Anki field descriptions in snapshot&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8e2eebe608e6a1503b670a51b9059065e6fcee6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/d8e2eebe608e6a1503b670a51b9059065e6fcee6"/>
+    <title>
+        Front: Frequency present without definitions shows sentence, not list…
+    </title>
+    <updated>2026-09-06T19:27:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Front: Frequency present without definitions shows sentence, not listening audio&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/39368f93992f4a97a2b689632c392a99d2f7a582</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/39368f93992f4a97a2b689632c392a99d2f7a582"/>
+    <title>
+        Make fetch_anki_fields.py executable
+    </title>
+    <updated>2026-09-06T19:20:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make fetch_anki_fields.py executable&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d93d42d0e03bf2c30bb85a560d4e101e2189c54f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/d93d42d0e03bf2c30bb85a560d4e101e2189c54f"/>
+    <title>
+        Agent field bootstrap: fetch_anki_fields.py, drop stale JapNoteType.json
+    </title>
+    <updated>2026-09-06T19:18:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Agent field bootstrap: fetch_anki_fields.py, drop stale JapNoteType.json&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/571104ca98ab8d4980c16ad770e349e4d2f2f667</id>
+    <link type="text/html" rel="alternate" href="https://github.com/mansourvery-hub/anki-japanese-template/commit/571104ca98ab8d4980c16ad770e349e4d2f2f667"/>
+    <title>
+        Definition truncator: 4-line default cap, one-way expand
+    </title>
+    <updated>2026-09-06T18:40:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/f8fe6ac7d7180ce9a550fcd981d25751?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>mohamed@example.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Definition truncator: 4-line default cap, one-way expand&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

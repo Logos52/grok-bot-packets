@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Blueturboguy07/freelingo/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Blueturboguy07/freelingo/commits/main.atom"/>
+  <title>Recent Commits to freelingo:main</title>
+  <updated>2026-09-12T00:07:24Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79149805ff593d87ba5b38cc2ad44958f37d9fa9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/79149805ff593d87ba5b38cc2ad44958f37d9fa9"/>
+    <title>
+        merge: P1 deps — ts-fsrs, bundle-safe ed25519 verifier, tools/soundbank
+    </title>
+    <updated>2026-09-12T00:07:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: P1 deps — ts-fsrs, bundle-safe ed25519 verifier, tools/soundbank
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ebbe84b3c539b5d507a9d60f90669310b5b01db6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/ebbe84b3c539b5d507a9d60f90669310b5b01db6"/>
+    <title>
+        P1 deps: ts-fsrs for the scheduler, a bundle-safe ed25519 verifier, a…
+    </title>
+    <updated>2026-09-12T00:05:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P1 deps: ts-fsrs for the scheduler, a bundle-safe ed25519 verifier, and tools/soundbank
+
+The one P1 task allowed to touch a manifest, so every dependency P1 needs lands here
+and no later task has to edit a lockfile.
+
+packages/core: ts-fsrs@5.4.2 (MIT, zero runtime dependencies, `engines.node &amp;gt;=20`). The
+plan names FSRS for `scheduler/`; a hand-rolled copy of a published algorithm is the kind
+of thing whose bugs only show up as a learner&amp;#39;s retention curve months later, so it is a
+real dependency, not vendored. It is pure TS, so `packages/core`&amp;#39;s purity gate is
+untouched.
+
+packages/schema: @noble/ed25519@3.2.0 + @noble/hashes@2.4.0 (both MIT, zero runtime
+dependencies). `packages/schema/keys/pack-signing.pub` has to be verified *on device*,
+where there is no `node:crypto` and, on React Native, no WebCrypto `subtle` either — so
+the async default hash path is not available and the sync sha512 hook is the shipping
+one. In @noble/ed25519 v3 that hook is `ed.hashes.sha512`, not v2&amp;#39;s `ed.etc.sha512Sync`:
+
+    import { sha512 } from &amp;#39;@noble/hashes/sha2.js&amp;#39;;
+    ed.hashes.sha512 = (...m) =&amp;gt; sha512(ed.etc.concatBytes(...m));
+
+P0&amp;#39;s hand-rolled SPKI parser stays exactly as it is; the verifier is the second half, and
+the schema task holds it against `node:crypto` in a test. Measured here before choosing
+it (node v24.18.0, this lockfile): noble verifies a `node:crypto` ed25519 signature,
+rejects a one-bit-tampered message, and `node:crypto` verifies a noble signature over a
+key it agrees is ed25519.
+
+Nothing was added to apps/mobile. P1 is an engine phase and needed no Expo package, so
+`npx expo install` was not run and the Reanimated/worklets pin is untouched
+(INV-PLAT-01). `patches/expo-modules-jsi@57.1.0.patch` and its `patchedDependencies`
+entry are untouched.
+
+tools/soundbank: a second uv project for the P1 sound-synthesis script — numpy 2.5.3 +
+soundfile 0.14.0, pinned to Python 3.12 like coursekit. It is separate from
+`tools/coursekit` so that `pack-ci.yml`&amp;#39;s `coursekit validate` never resolves numpy and a
+sound bake never resolves a morphology stack. **No Python audio codec**: encoding is the
+system ffmpeg (`/opt/homebrew/bin/ffmpeg`, with libopus; `opusenc` is not installed).
+Proved end to end before committing — numpy array -&amp;gt; `soundfile` WAV (24,044 B) -&amp;gt;
+`ffmpeg -c:a libopus -b:a 20k` -&amp;gt; 753 B, `ffprobe` reporting `codec_name=opus`,
+`sample_rate=48000`. `tools/coursekit/uv.lock` did not change; `uv sync` on it is green.
+
+Root scripts: `test:golden-migrations` added for the P1 migration corpus.
+`test:falsify`, `test:coverage-map` and `invariants:check` all still resolve and run.
+
+Verified: `pnpm install` then `pnpm install --frozen-lockfile` a no-op (179 ms, &amp;quot;Already
+up to date&amp;quot;); `pnpm lint`, `pnpm typecheck`, `pnpm test` 61/61 in 12 files;
+`invariants:check` in sync at 424 ids; `coverage-map` 6/6 owned ids with a test,
+INV-PLAT-01 among them; `uv sync` green for both uv projects.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97656701e8967e08747c52c35581b4fab407e35f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/97656701e8967e08747c52c35581b4fab407e35f"/>
+    <title>
+        P0: pin CI to Xcode 26.2 (17C52, same as local) and record the iOS proof
+    </title>
+    <updated>2026-09-11T23:49:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: pin CI to Xcode 26.2 (17C52, same as local) and record the iOS proof
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2d7b3abd1763cf210effb6faa70e34332aa35bc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/e2d7b3abd1763cf210effb6faa70e34332aa35bc"/>
+    <title>
+        P0: build expo-modules-jsi in Swift 5 language mode under Xcode 26.2
+    </title>
+    <updated>2026-09-11T23:07:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: build expo-modules-jsi in Swift 5 language mode under Xcode 26.2
+
+The SWIFT_RETURNS_RETAINED removal alone leaves seven &amp;#39;sending ... risks causing data
+races&amp;#39; errors that Swift 6.2.3 raises in Swift 6 language mode on expo-modules-jsi&amp;#39;s
+own JavaScriptRuntime.swift. The package is built in Swift 5 mode instead, with the
+three Swift-6-default features its code relies on re-enabled explicitly
+(BareSlashRegexLiterals, IsolatedDefaultValues, GlobalActorIsolatedTypesUsability).
+Verified: xcodebuild Release for the simulator now reports BUILD SUCCEEDED locally.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea3fa948ecc078d1efcea1d6471c9fb4519b60f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/ea3fa948ecc078d1efcea1d6471c9fb4519b60f5"/>
+    <title>
+        P0: patch expo-modules-jsi for Xcode 26.2 and run the Android maestro…
+    </title>
+    <updated>2026-09-11T22:53:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: patch expo-modules-jsi for Xcode 26.2 and run the Android maestro command on one line
+
+expo-modules-jsi@57.1.0 annotates two RuntimeScheduler constructors with
+SWIFT_RETURNS_RETAINED, which Swift 6.2.3+ (Xcode 26.2+) rejects; the annotation
+carries no meaning on a constructor (expo/expo#49214, #49426, #49667, #49941,
+#50061, #50062; the fix PR #49740 was closed unmerged). Applied as a pnpm patch so
+every install, local and CI, gets the same two-line change.
+
+reactivecircus/android-emulator-runner executes each script line as its own sh -c,
+so the backslash-continued maestro invocation reached Maestro as an empty path
+(CI round 3: &amp;#39;Flow path does not exist: .../\&amp;#39;). One line now.
+
+Also commits the P0 report as written at the checkpoint; the iOS row is updated once
+the patched build is proven.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29e8509c5ea0d104cf2eeaeb68465d6a64bbc252</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/29e8509c5ea0d104cf2eeaeb68465d6a64bbc252"/>
+    <title>
+        P0 CI round 3: expo-modules-jsi fails at BOTH ends of the Xcode range
+    </title>
+    <updated>2026-09-11T18:52:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0 CI round 3: expo-modules-jsi fails at BOTH ends of the Xcode range
+
+Round 2&amp;#39;s pin was half right and the wrong half was the measurable one. Both ends
+now measured rather than reasoned about:
+
+  * Xcode 26.2 (Swift 6.2.3) fails LOUDLY — RuntimeScheduler.h:53 and :61,
+    SWIFT_RETURNS_RETAINED on a type that is not a SWIFT_SHARED_REFERENCE, exit 65.
+    Reproduced locally and reduced to a 15-line repro with no Expo, no React Native.
+  * Xcode 16.4 (Swift 6.1, the image default, what round 2 pinned) fails QUIETLY at the
+    SAME phase. Run 34634498819: `[CP-User] Build ExpoModulesJSI xcframework` starts at
+    18:45:31, the next line is 18:45:47, and the build then prints `0 error(s), and 1
+    warning(s)` and exits 65. A script phase&amp;#39;s stdout does not reach Expo&amp;#39;s pretty
+    printer, so a build that failed reports no errors at all. 16.4 is too old to build a
+    framework SDK 57 compiles from source at pod time.
+
+The pin moves inside the range to 26.1.1 — the newest Xcode predating the 26.2 check,
+and the line Expo SDK 57 shipped against. iPhone 17 @ iOS-26-1 comes back with it.
+
+Also added `Why the build failed`, an `if: failure()` step that re-runs xcodebuild raw
+and tails 200 lines. The incremental build fails again in seconds at the same phase,
+this time with the phase&amp;#39;s own output. Round 2 cost a full CI round to learn one bit —
+&amp;quot;16.4 also fails&amp;quot; — because nothing printed why. That does not happen twice.
+
+Everything else from round 2 stands and is unrelated to the pin: the vitest per-project
+timeout, and `set -eu` for dash in the emulator action.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/801e0a37d2a86dcbea73bfe62d2743aaa4343699</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/801e0a37d2a86dcbea73bfe62d2743aaa4343699"/>
+    <title>
+        P0 CI round 2: the 5s vitest default and dash in the emulator action
+    </title>
+    <updated>2026-09-11T18:44:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0 CI round 2: the 5s vitest default and dash in the emulator action
+
+Both failures are from the first real run of these jobs (34634498780, 34634498819).
+Neither is visible locally, and neither says what it is.
+
+1. ci.yml RED: `Error: Test timed out in 5000ms` at streak.test.ts:68 and :173 — the
+   two four-zone properties, 40,000 cases each. They take ~3.5 s on this Mac and the
+   whole suite runs about 2.5x slower on ubuntu-latest, so 5,000 ms is the wrong side
+   of the line there and the right side here. 5,000 ms is vitest&amp;#39;s default, not a
+   decision anybody made about this suite; the P0 gate is the case count. So the
+   timeout is now named in vitest.config.ts at 60 s — about seven times the slowest
+   measured case, still short enough that a real hang is a failure rather than the
+   job&amp;#39;s 90 minutes.
+
+   The obvious repair for a slow property is to cut the runs, which is exactly what
+   PROPERTY_RUNS exists to prevent, so property-gates.test.ts now holds the timeout
+   too — and holds it PER PROJECT. A `testTimeout` at the top level of vitest.config.ts
+   is silently ignored by inline `projects`: probed with a test that sleeps 6 s, which
+   still failed at 5000ms. That mutant is killed by the new test; without it, this
+   &amp;quot;fix&amp;quot; would have been a no-op that looked exactly like a fix and cost another round.
+
+2. Android emulator RED: `sh: 1: set: Illegal option -o pipefail`, exit 2.
+   reactivecircus/android-emulator-runner runs `script:` with /usr/bin/sh — dash on
+   ubuntu-latest — so the block died on its first line, before adb. The job then
+   failed on a missing JUnit report, which reads as an emulator or a Maestro problem
+   and is neither. `set -eu` there (the script has no pipes); every other `run:` in the
+   workflow is bash and keeps pipefail.
+
+The gate file grew past its name and is now native-e2e-gates.test.ts: it holds the
+screenshot contract, the Xcode pin and the emulator shell — all three found by running
+the workflow, all three failing in a way that points somewhere else.
+
+Green in this run and kept: INV-PLAT-02 prebuild determinism, and `flows exist`.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab0f323f8c9efc7c0b9924e3539dff29cc133269</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/ab0f323f8c9efc7c0b9924e3539dff29cc133269"/>
+    <title>
+        P0: make the screenshot contract match what Maestro does, and pin the…
+    </title>
+    <updated>2026-09-11T18:38:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: make the screenshot contract match what Maestro does, and pin the iOS toolchain
+
+Three defects found by running the thing rather than reading it. All of them were
+invisible from a passing flow, which is the point.
+
+1. THE SCREENSHOT CONTRACT DID NOT WORK. Measured on Maestro 2.10.0 against
+   emulator-5554, 2026-09-11:
+     * `takeScreenshot` is always resolved inside Maestro&amp;#39;s OWN run directory, as
+       &amp;lt;run-dir&amp;gt;/&amp;lt;flow&amp;gt;/takeScreenshot/&amp;lt;the given path&amp;gt;.png. It is never relative to
+       the working directory, so no flow can write into e2e/artifacts/ however the
+       path is spelled.
+     * a flow-level `env:` default WINS over `maestro test -e NAME=...`. The flow
+       defaulted ARTIFACT_DIR, so CI&amp;#39;s value was discarded and every run on every sha
+       wrote the same literal e2e/artifacts/local/p0-db-path.png — inside the run
+       directory. Probed with -e ARTIFACT_DIR=ZZZ_OVERRIDE_MARKER: the marker never
+       appeared.
+   The jobs only avoided going red because --debug-output happened to nest the run
+   directory under ARTIFACT_DIR, so `find -name &amp;#39;*.png&amp;#39;` found a frame at a path that
+   named neither the sha nor the platform. Delete that one flag and the check fails on
+   a passing flow.
+   Now: the flow names its frame and nothing else, the jobs aim the run directory with
+   --test-output-dir, and a step copies each PNG up to $ARTIFACT_DIR/screenshots/
+   &amp;lt;flow&amp;gt;-&amp;lt;name&amp;gt;.png — flat, no timestamp — and fails the job if it collected none.
+   NOT --flatten-debug-output: on 2.10.0 that makes the run write into $HOME and never
+   create --test-output-dir at all (measured).
+
+2. THE iOS JOB WOULD HAVE BUILT ON A TOOLCHAIN THAT CANNOT BUILD THIS APP. Reproduced
+   here: under Xcode 26.2 (17C52, Apple Swift 6.2.3) the ExpoModulesJSI xcframework
+   phase fails with 2 errors, xcodebuild exit 65 —
+     RuntimeScheduler.h:53:26: &amp;#39;RuntimeScheduler&amp;#39; cannot be annotated with either
+     SWIFT_RETURNS_RETAINED or SWIFT_RETURNS_UNRETAINED because it is not returning a
+     SWIFT_SHARED_REFERENCE type
+   and again at :61. expo-modules-jsi@57.1.0&amp;#39;s own header against a tightened C++
+   interop check in Swift 6.2; the package builds that framework from source at pod
+   time, so there is no prebuilt slice to fall back to. The macos-15 image carries
+   Xcode 16.4 through 26.3 and the job took whatever was default, so this was one image
+   bump away from red for a reason no log would explain. XCODE_APP now pins 16.4
+   (Swift 6.1, the image default), the job fails loudly if that Xcode is absent rather
+   than drifting, SIMULATOR_OS moves to an 18.x runtime because 16.4 carries no iOS 26
+   one, and runner.txt records the Xcode that actually ran. The fix belongs upstream in
+   expo/expo; raise the pin when it lands, not hopefully.
+
+3. THE INVARIANT COVERAGE SCAN WALKED THE GENERATED NATIVE TREES. Its pattern matches
+   any .yaml, because Maestro flows are yaml and carry invariant ids — and
+   `expo prebuild` fills apps/mobile/ios with vendored ones. A prebuilt checkout
+   reported 27 test files instead of 12, fifteen of them CocoaPods dSYM relocation
+   maps. Nothing in a generated, gitignored tree may decide whether an invariant has an
+   owning test. Skipped by PATH, not by the names ios/android, so a future
+   packages/core/src/platform/ios test does not vanish in silence — verified both ways.
+
+packages/testkit/src/screenshot-contract.test.ts holds (1) and (2). It reads the
+workflow with whole-line comments stripped, because the comments quote the superseded
+spellings to warn people off them and the first draft of the gate flagged its own
+warning as a usage. Both mutants killed: restoring ${ARTIFACT_DIR} in the flow and
+-e ARTIFACT_DIR= in the workflow turns it red on two tests.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ad6f562f4fb5ad02a04cf7ba9bceb6aeab85580</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/5ad6f562f4fb5ad02a04cf7ba9bceb6aeab85580"/>
+    <title>
+        P0: the diagnostics surface must exist in the Release build the gate …
+    </title>
+    <updated>2026-09-11T18:22:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: the diagnostics surface must exist in the Release build the gate runs against
+
+native-e2e builds Release on both platforms on purpose — Release embeds the JS
+bundle, which is what makes `--no-bundler` honest. `__DEV__` is false there, and
+DevDiagnostics was gated on `__DEV__`, so the INV-PER-06 flow long-pressed the
+title and got nothing: `Assertion is false: id: dev-diagnostics is visible`
+(measured on emulator-5554, 32s). Two branches each did the right thing alone and
+the pair did not work.
+
+The gate is now `__DEV__ OR EXPO_PUBLIC_FREELINGO_E2E=1`. Metro inlines
+EXPO_PUBLIC_* at bundle time, so a store build that does not set it does not merely
+hide the screen — it does not contain the branch that opens it. The reference has
+to stay a literal `process.env.EXPO_PUBLIC_FREELINGO_E2E` member access, because a
+computed lookup is not substituted and would yield undefined in a release bundle
+with no error.
+
+The flag is set workflow-level in native-e2e.yml, not per-step: the Android build
+and flow run inside a third-party action&amp;#39;s `script:`, which never sees a step-level
+env of ours.
+
+packages/testkit/src/diagnostics-gate.test.ts holds the three halves together — the
+rule, App.tsx&amp;#39;s use of it, and the workflow setting it for both builds — because
+nothing else does. Remove one and the device gate goes quiet rather than red.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1799653aef7a3b5a9cfb06ea24a8a353dea383d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/1799653aef7a3b5a9cfb06ea24a8a353dea383d8"/>
+    <title>
+        P0: pack signing key custody, the ARTIFACT_DIR screenshot contract, a…
+    </title>
+    <updated>2026-09-11T17:36:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;P0: pack signing key custody, the ARTIFACT_DIR screenshot contract, and two stale READMEs
+
+The two P0 branches are merged. Three things they each left to the integration,
+because each sat in the other&amp;#39;s file lane:
+
+- Signing key. ed25519 generated at P0; the private half went straight into the
+  PACK_SIGNING_KEY Actions secret and was removed with rm -P, never printed. The public
+  half is committed and ships in the app. packages/schema/src/signing.ts is custody only
+  — the path, the secret name, and a parser that refuses anything that is not an ed25519
+  SPKI, hand-rolled because the app has no node:crypto and a parser that works only on
+  the test runner proves nothing about what ships. The test holds it against node:crypto
+  and checks it rejects a P-256 key, prose, an empty block and a truncation. It does NOT
+  claim INV-PACK-18: verify-before-install lands at P2 with the installer.
+
+- The screenshot contract. native-e2e fails a job if no .png reaches ${ARTIFACT_DIR},
+  and p0-db-path.yaml took no screenshot, so both device jobs would have gone red on a
+  passing flow. The flow now shoots last — after every assertion, so the frame is of a
+  screen that was checked — and carries a local default in its env: block so it still
+  runs from a checkout without arguments.
+
+- e2e/README.md still said &amp;#39;P0 status: no flows yet&amp;#39; and that the maestro step is
+  commented out until P3. False in every clause since the flow landed.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/973908581e00864d4adcbcd72814fafec0081e2d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/973908581e00864d4adcbcd72814fafec0081e2d"/>
+    <title>
+        merge: P0 persistence — WAL progress DB in Paths.document, migrations…
+    </title>
+    <updated>2026-09-11T17:32:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: P0 persistence — WAL progress DB in Paths.document, migrations, backup-exclusion module, DB-path flow
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c5d7007bd4057271ad1607d549e060a4bea64c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/1c5d7007bd4057271ad1607d549e060a4bea64c7"/>
+    <title>
+        merge: P0 e2e — property floor, meta-gates, real native-e2e jobs, pre…
+    </title>
+    <updated>2026-09-11T17:32:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;merge: P0 e2e — property floor, meta-gates, real native-e2e jobs, prebuild determinism
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46ec3806a06a3bb71834cc85b277c7142d50a274</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/46ec3806a06a3bb71834cc85b277c7142d50a274"/>
+    <title>
+        p0/persistence: make the device gate name the cache region, not just …
+    </title>
+    <updated>2026-09-11T17:29:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;p0/persistence: make the device gate name the cache region, not just the directory
+
+`.*/packs/?` passed for any path ending in `packs`, so the assertion would have stayed
+green if the packs directory ever moved next to the progress DB in the document region —
+which is precisely the regression INV-PACK-11 exists to catch. The assertion now names the
+region on each platform (`/Library/Caches` on iOS, `/cache` on Android) in the same
+single-alternation style as the `db-path` row above it, so the two device gates cannot
+drift apart.
+
+Also asserts `pre-migration-backup` is `none`. The flow launches with `clearState: true`,
+so the DB is created straight at the latest `user_version` and there is no earlier file to
+protect; a copy at that point would mean the pre-migration path fired on a database that
+never had a previous schema.
+
+Verified on the Pixel_3a_API_34 emulator (Android 14, arm64, emulator-5554): flow passed
+in 18s, 1/1. db-path file:///data/user/0/org.freelingo.app/files/freelingo-progress.db
+with -wal and -shm beside it, journal_mode wal, user_version 1, packs-dir
+file:///data/user/0/org.freelingo.app/cache/packs/ (created, empty), packs-excluded true,
+pre-migration-backup none. `npx expo prebuild --clean` regenerated both native trees and
+the config plugin wrote res/xml/backup_rules.xml and res/xml/data_extraction_rules.xml with
+android:fullBackupContent and android:dataExtractionRules on &amp;lt;application&amp;gt;.
+
+iOS is STILL not verified, for the same upstream reason and now with a 15-line repro that
+takes Expo and React Native out of the picture: under the only Xcode on this machine
+(26.2, Swift 6.2.3) a C++ class carrying a trailing SWIFT_SHARED_REFERENCE attribute cannot
+annotate its constructors SWIFT_RETURNS_RETAINED — the importer rejects them with &amp;quot;not
+returning a SWIFT_SHARED_REFERENCE type&amp;quot;. expo-modules-jsi@57.1.0 does exactly that in
+apple/Sources/ExpoModulesJSI-Cxx/include/RuntimeScheduler.h:53 and :61, and its xcframework
+is built from source at pod build time (the shipped slices are 20K stubs), so there is no
+prebuilt binary to fall back to. 57.1.0 is the newest release in the SDK 57 line. The fix
+belongs upstream; patching a dependency&amp;#39;s header to turn the gate green would be the kind
+of lie this repo&amp;#39;s gates exist to prevent.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4fb4a3ee2ace14c7f8947f1c7e8d3ecda6128717</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/4fb4a3ee2ace14c7f8947f1c7e8d3ecda6128717"/>
+    <title>
+        p0/persistence: open the progress DB on device and prove the path (IN…
+    </title>
+    <updated>2026-09-11T17:05:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;p0/persistence: open the progress DB on device and prove the path (INV-PER-06)
+
+The persistence layout stops being a table of constants and becomes something the
+app actually does, checked on a device rather than asserted in a unit test.
+
+packages/core/src/db/
+  `Db` (run/all/get/withExclusiveTransaction/close) — the interface both runtimes
+  implement. `@freelingo/schema` declares the identical one because it cannot import
+  core without a cycle; `apps/mobile/src/db/ExpoDb.ts` types its adapter as core&amp;#39;s and
+  hands it to schema&amp;#39;s `migrate()`, so `pnpm typecheck` catches any drift.
+
+  `persistence.ts` holds the decisions the app shell would otherwise make inline: the
+  per-platform persistent-path marker behind `dbPathIsPersistent`, the pre-migration
+  copy name `freelingo-pre-v&amp;lt;N&amp;gt;-&amp;lt;ISO8601&amp;gt;.db` (ISO 8601 *basic*, so no colon ever
+  enters a filename), and the pruner that keeps the two most recent copies and can
+  never name a file it did not create. Five new [INV-PER-06] tests, two of them
+  properties at 10,000 cases.
+
+apps/mobile/src/db/
+  `ExpoDb` opens the DB in `Paths.document`, sets `PRAGMA journal_mode = WAL` outside
+  any transaction, checkpoints and copies the file when a migration is pending, then
+  runs the schema registry against `PRAGMA user_version` inside ONE
+  `withExclusiveTransactionAsync`. The adapter&amp;#39;s `withExclusiveTransaction` joins an
+  open transaction rather than nesting, because SQLite has no nested transactions and
+  the outermost scope is the one that must commit (INV-CER-01).
+
+  `startPersistence` also creates `Paths.cache/packs` and asks the platform to keep it
+  out of device backup, returning every value it learned instead of logging it.
+
+apps/mobile/modules/backup-exclusion/
+  A local Expo module: iOS sets `URLResourceValues.isExcludedFromBackup` and returns
+  the flag it reads *back* off the file system, so a silent no-op cannot report
+  success; Android returns true because exclusion can only be declared, and declares
+  it — `app.plugin.js` writes res/xml/backup_rules.xml and data_extraction_rules.xml
+  excluding `cache/packs` and sets android:fullBackupContent and
+  android:dataExtractionRules on &amp;lt;application&amp;gt; (INV-PACK-11).
+
+DevDiagnostics + e2e/flows/p0-db-path.yaml
+  A dev-build-only screen behind a long press on the title, every row carrying a
+  testID, and the Maestro flow that reads them on the device.
+
+Two traps found only by building, both fixed in metro.config.js:
+  - `disableHierarchicalLookup` is for a hoisted monorepo. Under pnpm it breaks at the
+    first transitive import (&amp;quot;Unable to resolve expo-modules-core from expo/src/Expo.ts&amp;quot;).
+  - Metro does not understand the NodeNext `./db.js` specifiers the workspace packages
+    use; they are rewritten, and only for files under packages/.
+
+And one in apps/mobile/.gitignore: the root ignores every directory named ios/ or
+android/ at any depth (INV-PLAT-02), which silently swallowed the local module&amp;#39;s own
+native sources. They are source, not a prebuild output, and are re-included by name.
+
+Verified on a Pixel_3a_API_34 emulator (Android 14, arm64): db at
+/data/user/0/org.freelingo.app/files/freelingo-progress.db with -wal and -shm beside
+it, journal_mode wal, user_version 1, cache/packs created, packs-excluded true, and
+the whole Maestro flow green. The copy-and-prune path was exercised by temporarily
+adding migrations v2..v4: three copies taken, oldest deleted, exactly two left.
+
+iOS is NOT verified: expo-modules-jsi@57.1.0 fails to build under the only Xcode on
+this machine (26.2 / Swift 6.2.3) — see the report.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ab27dbe7e7626524e8aef246efe16881eb0d955</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/3ab27dbe7e7626524e8aef246efe16881eb0d955"/>
+    <title>
+        ci: do not turn one native-e2e failure into three errors
+    </title>
+    <updated>2026-09-11T16:37:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: do not turn one native-e2e failure into three errors
+
+`if: always()` also fires on cancellation, and the post-run checks wrote into an
+artefact directory that does not exist when the job dies before creating it — so a
+single early failure produced a missing-report error, a missing-runner.txt error and an
+if-no-files-found upload error on top of the real one. The checks now run on
+`!cancelled()` and create the directory before writing to it.
+
+Dropped `force-avd-creation: false`: there is no AVD cache yet, so it changes nothing
+and implies one exists.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e5c46525c2a05cc6841e06a0d7caafce8557ee4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/8e5c46525c2a05cc6841e06a0d7caafce8557ee4"/>
+    <title>
+        ci: real Maestro e2e on simulator and emulator, and a prebuild-drift …
+    </title>
+    <updated>2026-09-11T16:36:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: real Maestro e2e on simulator and emulator, and a prebuild-drift gate
+
+native-e2e.yml stops being a placeholder.
+
+flows-present (ubuntu, 10 s) counts the flows first and both device jobs `needs:` it.
+`maestro test` over an empty directory exits 0, which is the most expensive way this
+workflow could lie: two device builds, twenty minutes each, a green tick and nothing
+tested. A flow is a yaml with an `appId:` header, so e2e/flows/README.md is not counted
+as one. Exercised in all four states (missing dir, empty dir, prose-only yaml, real
+flow) before committing. It is RED until the persistence branch lands
+e2e/flows/p0-db-path.yaml, and that is the correct colour for &amp;quot;there are no flows&amp;quot;.
+
+ios-simulator (macos-15) and android-emulator (ubuntu + android-emulator-runner, API 34
+x86_64): temurin 21 for Maestro&amp;#39;s Java 17+ requirement, the curl installer on PATH,
+frozen-lockfile install, `expo prebuild --clean`, then `expo run:{ios,android}` in
+RELEASE — Release embeds the JS bundle, which is what makes `--no-bundler` honest;
+a Debug build with no Metro would launch to a red screen and fail every flow for the
+wrong reason. Flows screenshot into `${ARTIFACT_DIR}` (passed with `-e`, so no flow
+hard-codes a sha or platform); a step then fails the job if the JUnit report is missing
+or no png arrived. Artefacts are e2e-&amp;lt;sha&amp;gt;-ios / -android: upload-artifact@v4 refuses a
+duplicate name, so one shared e2e-&amp;lt;sha&amp;gt; would have dropped a platform.
+
+prebuild-determinism is INV-PLAT-02 as a job: nothing tracked under apps/mobile/{ios,
+android}, and two prebuilds of the same commit produce the same tree.
+
+Byte-for-byte would have been red on every run. Measured locally, twice: the two trees
+agree on 70 files and differ in exactly one 24-hex Xcode object id, minted afresh by
+expo-dev-client&amp;#39;s plugin for its &amp;quot;Strip Local Network Keys&amp;quot; build phase. Ids are
+arbitrary internal names, so the trees are compared up to a consistent renaming of them
+(scripts/canonicalise-pbxproj.py). Verified that canonicalisation still catches a changed
+build setting and a reordered build phase, and its --self-test asserts that in CI. The
+tree hash also covers entry types and symlink targets, so a rename, a dropped symlink and
+a new empty directory are drift as well. Ran the job&amp;#39;s step verbatim on this machine:
+both hashes 8dcab253…, working tree clean afterwards.
+
+Verified against the installed SDK 57 CLI rather than from memory: run:ios takes
+--configuration/-d, run:android takes --variant, both take --no-bundler, and prebuild now
+documents --no-clean (recreating is the default) while still accepting --clean.
+
+actionlint 1.7.12 + shellcheck clean on all five workflows.
+
+docs/ci.md records what each workflow proves and why the two comparisons are shaped the
+way they are; invariants-owned.json keeps its six ids and gains a phaseNote saying which
+sections P1 adds.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5dd2819243f0f5525829a94f2843c47ea41de747</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/5dd2819243f0f5525829a94f2843c47ea41de747"/>
+    <title>
+        test: every invariant property runs 10,000 cases, in every zone
+    </title>
+    <updated>2026-09-11T16:27:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: every invariant property runs 10,000 cases, in every zone
+
+Finishes the stopped agent&amp;#39;s partial change (cherry-picked as-is, then corrected).
+
+Kept: PROPERTY_RUNS as named config, the independent `referenceStreak`, the committed
+DST falsifier inputs, arbInstant.
+
+Corrected three things:
+
+- PROPERTY_RUNS_PER_ZONE was 2_500, i.e. the four-zone properties bought their wall-clock
+  by running a quarter of the cases in each zone. The P0 gate is &amp;quot;10,000 cases in four
+  zones&amp;quot;, so it is now PROPERTY_RUNS *per zone*.
+
+- The four-zone streak property drew 40 dates out of a four-year span. Measured over
+  2,500 cases, 2,429 of them had no day anywhere near today: 97% of the budget asserted
+  that zero equals zero. Days are now generated as civil-date OFFSETS from today, from
+  three shapes (a structural run + gap + older block, a dense coin-flip window, and the
+  old sparse shape at low weight). Measured over 20,000 samples: 65.9% anchored, 35.0%
+  with a run of 3+, 20.5% with a run of 10+, longest 31. That is what &amp;quot;tight generators,
+  not fewer runs&amp;quot; means, and it is cheaper per case as well.
+
+- Dropped a redundant `as LocalDay` cast.
+
+Added two meta-gates, because both failures above were invisible to a green suite:
+property-gates.test.ts fails if any numRuns in the tree is below PROPERTY_RUNS, and
+arbitraries.test.ts holds the generator&amp;#39;s shape floors (a property over a generator that
+cannot produce the interesting case is 10,000 cases of nothing).
+
+Killed two hand-written mutants of streakFromDays (non-contiguous count; two-days-ago
+anchors) with both DAY-01 tests; pnpm test 7.60s.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80bd32374d5766e7f7761011c0f33a857cb9f36c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/80bd32374d5766e7f7761011c0f33a857cb9f36c"/>
+    <title>
+        wip: integrate agent&#39;s partial numRuns/config change (recovered after…
+    </title>
+    <updated>2026-09-11T16:22:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;wip: integrate agent&amp;#39;s partial numRuns/config change (recovered after stop)
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c41643f75c715a91f1e51d4550e3b31d50c3261e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/c41643f75c715a91f1e51d4550e3b31d50c3261e"/>
+    <title>
+        docs: say that the invariant registry is generated, not hand-edited
+    </title>
+    <updated>2026-09-11T16:11:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: say that the invariant registry is generated, not hand-edited
+
+CONTRIBUTING told contributors to read docs/invariants.md but not that it is a
+copy with a drift gate, which is the part that bites: editing it looks harmless
+and quietly changes what test:coverage-map is checking against.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e368c8bab6f27e367a76365d8b10e6fefd2ce143</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Blueturboguy07/freelingo/commit/e368c8bab6f27e367a76365d8b10e6fefd2ce143"/>
+    <title>
+        core: give INV-CER-01 an engine-side test
+    </title>
+    <updated>2026-09-11T16:01:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/114044325?s=30&amp;v=4"/>
+    <author>
+      <name>Blueturboguy07</name>
+      <uri>https://github.com/Blueturboguy07</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;core: give INV-CER-01 an engine-side test
+
+The first nightly mutation run scored ceremony/commit.ts at 0.00 with every
+mutant marked &amp;quot;no coverage&amp;quot;. The only INV-CER-01 tests lived in the schema
+project — they exercise the exclusive transaction and call planCommit through
+it — but Stryker runs the core project alone, so the pure engine function was
+formally unexercised while test:coverage-map read green for the id.
+
+A gate that green-lights untested code is worse than no gate, so the pure half
+now has its own tests: the first commit carries the outcome verbatim, a replayed
+session_id awards nothing, and two 10,000-case properties for idempotence and
+value preservation.
+
+Mutation score for packages/core: 69.57 -&amp;gt; 75.36 overall, ceremony 0.00 -&amp;gt; 100.00.
+civil.ts stays at 69.23 until P1 lands the full zone rule.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01GjKXj51yvLrSnxgMyWyTod&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
