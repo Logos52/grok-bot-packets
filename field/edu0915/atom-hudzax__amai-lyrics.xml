@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hudzax/amai-lyrics/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hudzax/amai-lyrics/commits/main.atom"/>
+  <title>Recent Commits to amai-lyrics:main</title>
+  <updated>2026-09-15T00:11:21Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c108827a3d9f108f1cf368694d31eb289cf6f846</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/c108827a3d9f108f1cf368694d31eb289cf6f846"/>
+    <title>
+        Release v1.5.4
+    </title>
+    <updated>2026-09-15T00:11:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release v1.5.4&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b459a65b4486c4926842b285e6f951bc1a763ce3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/b459a65b4486c4926842b285e6f951bc1a763ce3"/>
+    <title>
+        Redesign instrumental break as ambient shimmer pill with dots only
+    </title>
+    <updated>2026-09-15T00:06:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Redesign instrumental break as ambient shimmer pill with dots only
+
+- Replace note glyphs with dots-only instrumental pill (icon/label removed)
+- Add Apple-style shimmer, breathe, and staggered dot-bounce animations
+- Make dot animator ambient CSS-driven, clear stale inline styles
+- Update musicalLine tests for pill structure&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c9d537f5fc9b4be08034c87219ad410ec81a14cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/c9d537f5fc9b4be08034c87219ad410ec81a14cf"/>
+    <title>
+        Give Tippy tooltips a themed glass bubble without arrow
+    </title>
+    <updated>2026-09-14T23:55:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give Tippy tooltips a themed glass bubble without arrow
+
+Spicetify.TippyProps renders bare .main-contextMenu-tippy with no client
+styling, so page and playbar tooltips showed as unstyled text. Route our
+tooltips through tippy&amp;#39;s default render with an amai-lyrics theme, add the
+missing bubble CSS (Spotify never loads tippy.css), and cover remaining
+TippyProps tooltips with a fallback rule.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a92925658b3a75384908db70ff55d9766db5563</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/8a92925658b3a75384908db70ff55d9766db5563"/>
+    <title>
+        Relocate lyrics-page view controls to pinned hover-reveal dock at bot…
+    </title>
+    <updated>2026-09-14T23:36:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Relocate lyrics-page view controls to pinned hover-reveal dock at bottom of side panel&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b7fad7323925b33a52b1d2b40ec5e97caac01be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/5b7fad7323925b33a52b1d2b40ec5e97caac01be"/>
+    <title>
+        Fix FastDOM batching: reject-safe async helper, direct rAF scroll loo…
+    </title>
+    <updated>2026-09-14T23:18:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix FastDOM batching: reject-safe async helper, direct rAF scroll loop, awaited teardown
+
+- Add src/utils/fastdomAsync.ts with measureAsync/mutateAsync (reject on
+  throw instead of hanging) and a global fastdom.catch error handler,
+  installed explicitly in app.tsx main()
+- ScrollIntoView: sync detached-node guard, fastdom.clear cancellation,
+  direct scrollTop writes in the rAF loop keyed off rAF timestamps,
+  skip zero-distance animations
+- ScrollToActiveLine: drop layout-free outer fastdom batch, run guards
+  synchronously into scrollIntoCenterView
+- PageView: sync PageRoot lookup, awaited destroy before flag flip with
+  full cleanup on missing node, createContextualFragment for PageHTML
+- pageContent/pageControls/pageButtons: replace hand-rolled promise
+  wrappers with mutateAsync/bare mutate, sync click feedback
+- NowPlayingBarBackground: pendingUrl dedup, isConnected guards across
+  the handoff, swaps batched via fastdom.mutate
+- Add fastdomAsync and scrollIntoView tests&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/458669475407797bc26c7a5a8293afbb468e78bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/458669475407797bc26c7a5a8293afbb468e78bf"/>
+    <title>
+        Release v1.5.3
+    </title>
+    <updated>2026-09-14T22:21:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release v1.5.3&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9867a51c35dd4848d18e4c4190a1e608e8967c62</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/9867a51c35dd4848d18e4c4190a1e608e8967c62"/>
+    <title>
+        fix(settings): restyle Amai preferences sections for Spotify 1.3
+    </title>
+    <updated>2026-09-14T22:18:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(settings): restyle Amai preferences sections for Spotify 1.3
+
+Spotify 1.3.x hashed or removed the Encore class names that the vendored
+spcr-settings markup copies (x-settings-*, x-toggle-*, main-dropDown-dropDown,
+TypeElement-viola-textSubdued-type). Spicetify&amp;#39;s css-map only maps theme CSS,
+so the extension&amp;#39;s sections lost every inherited style: rows collapsed to
+display:block (controls fell below their labels), toggles degraded to bare UA
+checkboxes with empty indicator spans, and the dropdown/input fell back to raw
+browser widgets.
+
+Move all preferences-page styling into src/css/Settings.css, scoped with
+:is(#amai-settings, #amai-dev-settings, #amai-info) so it cannot leak into
+Spotify&amp;#39;s own rows, and restate the native look with metrics taken from the
+shipped xpui-routes-desktop-settings.css: 2fr/1fr rows with a 24px gutter,
+subdued 14px labels, the 42x24 switch (20px knob, #1db954 when on), the 32px
+elevated dropdown that keeps the native caret, the Encore text input and the
+small secondary button.
+
+tests/settingsStyles.test.ts guards the seam: it extracts every hook class the
+renderer emits and asserts the stylesheet styles it, so a class without a rule
+cannot slip through again.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f0624b430e2d4c99fda9dbb95d778b7f5b2a234</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/6f0624b430e2d4c99fda9dbb95d778b7f5b2a234"/>
+    <title>
+        Release v1.5.2
+    </title>
+    <updated>2026-09-14T17:32:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release v1.5.2&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3cd74dd5ab1d08be0641b23238322416693cf77</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/f3cd74dd5ab1d08be0641b23238322416693cf77"/>
+    <title>
+        feat(playbar): replace Spicy icon with Amai note, transparent bg + ho…
+    </title>
+    <updated>2026-09-14T17:29:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(playbar): replace Spicy icon with Amai note, transparent bg + hover effects&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f1618342cc300400921983c5e94f17c484bd259</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/4f1618342cc300400921983c5e94f17c484bd259"/>
+    <title>
+        refactor(lyrics): fold playbar gradient into the ArtworkSurfaces seam
+    </title>
+    <updated>2026-09-14T17:10:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(lyrics): fold playbar gradient into the ArtworkSurfaces seam
+
+The playbar&amp;#39;s animated gradient ran a private artwork pipeline outside the
+ArtworkSurfaces seam: its own 500ms skip-debounce (mirroring the seam&amp;#39;s
+FAN_OUT_DELAY_MS), its own spotify:image: rewrite (copy #2 of 3, ignoring
+the shared normalizeImageUrl), and applyArtworkColors — structurally
+identical to ArtworkColors.applyArtworkAccents (same 140 luminance floor,
+same pad-to-5, same cached extractor). PlaybarLyrics.css already declared
+--color-1..5: var(--amai-accent-1..5), so the private writes shadowed a
+palette the seam already publishes with identical numbers.
+
+Deleting it is strictly subtractive: the cover-art path (fetch + decode +
+debounce) leaves the most-changed file in the repo, which had no tests.
+Adds a regression test asserting the overlay never writes --color-* inline
+and never fetches artwork, plus the jsdom requestAnimationFrame gap in the
+shared test stub.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/30b7be06491217d173cebc47e0fc72a3be59d7b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/30b7be06491217d173cebc47e0fc72a3be59d7b6"/>
+    <title>
+        Fix launch-waiter race in ArtworkSurfaces fan-out
+    </title>
+    <updated>2026-09-14T16:19:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix launch-waiter race in ArtworkSurfaces fan-out
+
+The debounced fan-out snapshotted the cover URL at schedule time and
+cleared the first-paint waiter unconditionally on fire. A song change
+during the launch gap could then either overwrite the waiter&amp;#39;s paint
+with a stale blank or cancel the waiter while still blank, leaving the
+theme empty until the next song change.
+
+Re-read live at fire time and only clear the waiter when there is an
+artwork URL to paint. Adds two regression tests covering both
+interleavings.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0b72b4f8940750da49e97b17564e235a7bce01f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/b0b72b4f8940750da49e97b17564e235a7bce01f"/>
+    <title>
+        Deepen playback-time and artwork surfaces; paint theme on launch
+    </title>
+    <updated>2026-09-12T23:20:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Deepen playback-time and artwork surfaces; paint theme on launch
+
+Playback-time (GetProgress.ts): shrink the interface to its deep seam.
+Unexport reanchorPosition and destroyGetProgressLoop (zero external
+callers), delete _DEPRECATED___GetProgress and SpotifyPlayer._DEPRECATED_.
+Teardown now flows through lifecycle; mock factories and the
+playbackPosition seam test cross the same small interface. The bespoke
+variable-rate loop stays off IntervalManager (documented on the seam).
+
+Artwork (new ArtworkSurfaces module): collapse the four-way debounced
+fan-out behind mount/applyArtwork/refreshStaticSurfaces/cancelPending/
+destroy with injectable adapters. SongChangeManager drops four debounced
+fields for one call; app.tsx drops ~110 lines of observers for mount().
+Fix launch gap where the theme stayed blank until the first song change:
+mount parks a one-shot waiter for the first artwork URL.
+
+Add CONTEXT.md PlaybackTime/ArtworkSurfaces terms.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18eecf174f1cc3680a3b90014378de4965a58537</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/18eecf174f1cc3680a3b90014378de4965a58537"/>
+    <title>
+        Release v1.5.1
+    </title>
+    <updated>2026-09-12T17:59:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release v1.5.1&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2cec906c47424d553e7de2e5ae5e52ee768dd5fc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/2cec906c47424d553e7de2e5ae5e52ee768dd5fc"/>
+    <title>
+        Perf: cut app-background steady-state cost (observer, hidden canvases…
+    </title>
+    <updated>2026-09-12T17:58:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Perf: cut app-background steady-state cost (observer, hidden canvases, GPU, selectors)
+
+- Narrow body observer to top-level childList, filter host adds, rAF-throttle,
+  enabled-check first; drop duplicate immediate songchange applies
+- Skip hidden sidebar/page canvas work while app canvas is live; repaint on
+  toggle-off via amai:appbg-changed through live instances (singleton)
+- App canvas: 100% + object-fit cover, frozen rotation, no mix-blend-mode
+- Replace :has() selectors (lib grid class via scoped observer, input pill,
+  plain about-artist descendant)
+- Scope random CSS vars to canvas element; cache-first lookups, no
+  Array.from/contains in hot paths; single storage read; drop placeholder
+  layers on load; single artwork metadata read per songchange&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7c4faf29007b8e2eecab7f804f445dd5e72c96c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/c7c4faf29007b8e2eecab7f804f445dd5e72c96c"/>
+    <title>
+        docs: refresh README hero, theme previews, and shorten intro
+    </title>
+    <updated>2026-09-12T15:58:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: refresh README hero, theme previews, and shorten intro&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b5319bbcc717acb57920903bfc5cd1512b38d80</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/9b5319bbcc717acb57920903bfc5cd1512b38d80"/>
+    <title>
+        docs: swap Amai Theme previews to theme_2 and theme_3
+    </title>
+    <updated>2026-09-12T15:51:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: swap Amai Theme previews to theme_2 and theme_3&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a63d66b6279897ab1b9058ab47c2b0a9c697a289</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/a63d66b6279897ab1b9058ab47c2b0a9c697a289"/>
+    <title>
+        docs: add Amai Theme preview to README
+    </title>
+    <updated>2026-09-12T15:46:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: add Amai Theme preview to README&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/86a36cb9430aead0cdeb4477db79909096d6175e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/86a36cb9430aead0cdeb4477db79909096d6175e"/>
+    <title>
+        Release v1.5.0
+    </title>
+    <updated>2026-09-12T15:38:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release v1.5.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/60e66e1eeb5a1dbafc742c886a32b576b39574c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/60e66e1eeb5a1dbafc742c886a32b576b39574c2"/>
+    <title>
+        Rename app background setting to Enable Amai Theme
+    </title>
+    <updated>2026-09-12T15:35:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rename app background setting to Enable Amai Theme&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e59698e646885cd7f52fdb1a530cd773b5a59fbd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hudzax/amai-lyrics/commit/e59698e646885cd7f52fdb1a530cd773b5a59fbd"/>
+    <title>
+        Add always-on app-frame artwork background with settings toggle
+    </title>
+    <updated>2026-09-12T15:32:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/14993133?s=30&amp;v=4"/>
+    <author>
+      <name>hudzax</name>
+      <uri>https://github.com/hudzax</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add always-on app-frame artwork background with settings toggle
+
+- New AppBackground manager renders the lyrics page artwork canvas behind
+  the whole Spotify frame (.Root, fallback top-container) with crossfade
+- Transparent frame/sidebar/topbar/playbar surfaces, glass panels for left
+  nav and playlist header areas, scrim overlays for bar legibility
+- Lyrics page goes transparent over the canvas (fullscreen keeps its own BG)
+- Toggle defaults off, persists via storage, synced on init/songchange&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

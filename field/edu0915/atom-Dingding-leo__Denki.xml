@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Dingding-leo/Denki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Dingding-leo/Denki/commits/main.atom"/>
+  <title>Recent Commits to Denki:main</title>
+  <updated>2026-08-23T12:27:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a72773e5aec027b22f81affd101f05d39b6c339</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/4a72773e5aec027b22f81affd101f05d39b6c339"/>
+    <title>
+        diagnostics: add a bounded full-library integrity audit (#49)
+    </title>
+    <updated>2026-08-23T12:27:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;diagnostics: add a bounded full-library integrity audit (#49)
+
+Add a manual, read-only, resource-bounded library audit for record shape, ownership relationships, scheduler provenance, internal media references, and deep media SHA-256 verification. Run it under the origin-wide maintenance lease, support safe cancellation including cross-realm AbortError handling, report warnings without auto-repair, and document the recovery contract. The exact final head passed production audit, version/security contracts, canonical FSRS vectors, strict TypeScript, zero-warning lint, all 260 tests, artifact validation, Chromium smoke, both native macOS app/DMG architectures, final Release checks, and CodeQL.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b865cd19a2459e6eb54bdc75b9671c8524a33f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/8b865cd19a2459e6eb54bdc75b9671c8524a33f2"/>
+    <title>
+        feat: let users request persistent storage protection (#48)
+    </title>
+    <updated>2026-08-23T01:52:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: let users request persistent storage protection (#48)
+
+Turn best-effort storage diagnostics into an explicit user action. Expose browser capability separately from current persistence, invoke StorageManager.persist() directly from the Settings button, update protected status only on a real true response, and keep denied or unavailable outcomes honest with backup guidance. The exact final head passed the complete Web, Chromium, dual-architecture macOS, aggregate Release checks, and CodeQL gates.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c90cb4720d0b3f382bded6f5febaec0b76d6e21e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/c90cb4720d0b3f382bded6f5febaec0b76d6e21e"/>
+    <title>
+        feat: expose storage health diagnostics (#47)
+    </title>
+    <updated>2026-08-23T01:35:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: expose storage health diagnostics (#47)
+
+Add a read-only Settings panel for origin-wide storage estimates, persistent-storage status, library counts, media-registry metadata, and backup recency. Keep media totals index-only to avoid deserializing binary payloads, distinguish origin-wide browser usage from Denki-only data, and show honest unavailable states after initial failures. The exact final head passed the complete Web, Chromium, dual-architecture macOS, aggregate Release checks, and CodeQL gates.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2e2e8039df63e08bf6cd0b96f11a962680da9480</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/2e2e8039df63e08bf6cd0b96f11a962680da9480"/>
+    <title>
+        security: bound portable backup resource usage (#46)
+    </title>
+    <updated>2026-08-23T01:02:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;security: bound portable backup resource usage (#46)
+
+Reject oversized backup files before reading, recheck actual UTF-8 bytes, bound table counts before traversal, cap individual and cumulative study text, and use a shared bounded parser/serializer for user and development backup paths. Existing schema, provenance, relationship, media-integrity, atomic replacement, and compatibility behavior remain intact. Production audit, version/security contracts, canonical FSRS vectors, strict TypeScript, zero-warning lint, complete tests, build, artifact validation, Chromium smoke, both macOS app/DMG architectures, final Release checks, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a57570864b6d066c9e623a16bd72880fe69c19f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/a57570864b6d066c9e623a16bd72880fe69c19f5"/>
+    <title>
+        backup: validate and preview portable restores before confirmation (#45)
+    </title>
+    <updated>2026-08-23T00:35:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;backup: validate and preview portable restores before confirmation (#45)
+
+Fully validate portable backups before presenting a destructive restore confirmation, show structured source/content/media/preference details, and apply the exact opaque one-shot plan under the existing cross-tab maintenance lease. Release the raw parsed object before confirmation, prevent conflicting Settings interactions, and keep confirmation controls accessible and non-submitting. Production audit, version/security contracts, canonical FSRS vectors, strict TypeScript, zero-warning lint, complete tests, Chromium smoke, both macOS app/DMG architectures, final Release checks, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0209aecd3eb9eb8194168c02b06fc9bcab14f184</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/0209aecd3eb9eb8194168c02b06fc9bcab14f184"/>
+    <title>
+        ci: gate releases on native macOS app and DMG builds (#43)
+    </title>
+    <updated>2026-08-22T04:56:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: gate releases on native macOS app and DMG builds (#43)
+
+Add dual-architecture macOS app and DMG validation to the required release gate, correct Tauri asset bases in CI, harden bundle identity validation, and preserve the canonical Web and FSRS checks.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9dfd106f477dd8e0735a4a01a6f370bc93c6f488</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/9dfd106f477dd8e0735a4a01a6f370bc93c6f488"/>
+    <title>
+        fix: hold the cross-tab lease during portable backup restore (#42)
+    </title>
+    <updated>2026-08-21T16:25:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: hold the cross-tab lease during portable backup restore (#42)
+
+Route the Settings portable-backup restore through Denki&amp;#39;s exclusive cross-tab maintenance lease, preserving the existing five-table transaction, preference rollback, migration-cursor cleanup, and reload behavior. Add tests proving the lock spans the complete async callback and prevents callback entry when another maintenance operation owns the lease. Production audit, version/security contracts, canonical FSRS vectors, strict TypeScript, zero-warning lint, the complete suite, build, artifact validation, Chromium release smoke, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f6c904255fbf8ff709cdb69c2668aeb15cb32aa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/6f6c904255fbf8ff709cdb69c2668aeb15cb32aa"/>
+    <title>
+        test: gate releases on real Chromium offline and cross-tab smoke (#41)
+    </title>
+    <updated>2026-08-21T16:17:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test: gate releases on real Chromium offline and cross-tab smoke (#41)
+
+Add a production Chromium release gate for service-worker control, complete precache coverage, true offline dashboard and HashRouter lazy-route reloads, plus real two-page maintenance write fencing and blocker lifecycle. The gate exposed and fixed network-first offline error handling and Vary-based cache misses inside one immutable release. Production audit, version/security contracts, canonical FSRS vectors, strict TypeScript, zero-warning lint, 221 unit/integration tests, build, artifact validation, both browser scenarios, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/86b5c0a7e2d0fbc8b105b435ccd58885564c1cf5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/86b5c0a7e2d0fbc8b105b435ccd58885564c1cf5"/>
+    <title>
+        coordination: fence exclusive maintenance across browser tabs (#40)
+    </title>
+    <updated>2026-08-21T15:49:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;coordination: fence exclusive maintenance across browser tabs (#40)
+
+Add an app-wide cross-tab maintenance lease using Web Locks plus a fenced IndexedDB fallback, publish a synchronous foreign-tab write fence for all five study tables, and block/reload stale tabs during media migration. Use memory-only owner identities so duplicated tabs cannot impersonate the owner, and join in-flight heartbeats before release so a lease cannot be resurrected. Production audit, version/security checks, canonical FSRS vectors, strict TypeScript, zero-warning lint, 220 tests, production build, artifact validation, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea20372dca36af5bfb55ee90c1427f9eb9e52f76</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/ea20372dca36af5bfb55ee90c1427f9eb9e52f76"/>
+    <title>
+        media: migrate embedded data URLs in resumable transactions (#39)
+    </title>
+    <updated>2026-08-21T15:15:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;media: migrate embedded data URLs in resumable transactions (#39)
+
+Add manual, resumable media deduplication for card content and deck notes. Each batch prepares and hashes media outside IndexedDB, then verifies source text and commits media plus rewritten references atomically. Add Settings progress, stop/resume handling, mixed-state backup recovery, and valid active-session coverage. Production audit, release/version/security checks, canonical FSRS vectors, TypeScript, zero-warning lint, the complete test suite, production build, artifact validation, and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3f5766d56a158eb4ded0d513dbb05c211dc3789</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/c3f5766d56a158eb4ded0d513dbb05c211dc3789"/>
+    <title>
+        export: embed verified registry media in deck CSV (#38)
+    </title>
+    <updated>2026-08-20T14:45:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;export: embed verified registry media in deck CSV (#38)
+
+Make deck CSV export self-contained by resolving and verifying runtime registry assets, re-embedding them as canonical base64 data URLs, and failing before download on malformed, missing, corrupt, or over-budget media. Preserve existing CSV quoting and spreadsheet-formula protections. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b085e56535e8a5830abd6fb542f65d96d73a5a1c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/b085e56535e8a5830abd6fb542f65d96d73a5a1c"/>
+    <title>
+        backup: preserve the full runtime media registry atomically (#37)
+    </title>
+    <updated>2026-08-20T14:19:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;backup: preserve the full runtime media registry atomically (#37)
+
+Upgrade portable backups to format v5 so classes, decks, cards, reviews, and verified runtime media are read consistently and restored in one transaction. Preserve embedded data URLs, registry references, and registry-only assets with explicit usage semantics and complete integrity validation. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a062deedf2024b093540930aad35565b75a68018</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/a062deedf2024b093540930aad35565b75a68018"/>
+    <title>
+        media: render verified registry references alongside legacy data URLs…
+    </title>
+    <updated>2026-08-19T12:35:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;media: render verified registry references alongside legacy data URLs (#36)
+
+Add the shared mixed-media renderer for verified denki-media references while preserving existing data URLs. Registry references remain inert through Markdown parsing and DOMPurify, become active only after SHA-256-backed registry resolution, and use lifecycle-managed object-URL leases with DOM-move, teardown, StrictMode/HMR, missing, corrupt, and resource-cap coverage. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/23c700baf101ddba4f5543c01f05f34b6db99e1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/23c700baf101ddba4f5543c01f05f34b6db99e1b"/>
+    <title>
+        media: add a verified runtime content registry (#35)
+    </title>
+    <updated>2026-08-19T12:11:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;media: add a verified runtime content registry (#35)
+
+Add database schema v6 with an empty content-addressed media table, structured-clone-safe ArrayBuffer persistence, passive MIME and SVG normalization, SHA-256 verification, strict denki-media references, concurrent-safe registration, and reference-counted object-URL leases. Existing cards and data URLs are not rewritten. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6486ef8dce702a1600e7d815495daff3b2b91f85</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/6486ef8dce702a1600e7d815495daff3b2b91f85"/>
+    <title>
+        backup: deduplicate embedded media with verified SHA-256 assets (#34)
+    </title>
+    <updated>2026-08-19T11:49:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;backup: deduplicate embedded media with verified SHA-256 assets (#34)
+
+Upgrade portable backups to format v4. Repeated supported base64 media in card fronts, card backs, and deck notes is externalized into a content-addressed table keyed by normalized MIME type and decoded bytes. Import validates canonical base64, byte length, SHA-256 integrity, reference completeness, and strict resource limits before replacing the library, while preserving v1-v3 compatibility. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aacf4a3e46f5d85a0bcbffd4ad2c5d902879c860</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/aacf4a3e46f5d85a0bcbffd4ad2c5d902879c860"/>
+    <title>
+        feat: expose validated release identity for diagnostics (#32)
+    </title>
+    <updated>2026-08-19T11:30:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: expose validated release identity for diagnostics (#32)
+
+Route the sidebar through a validated semantic-version and build-ID service, exposing the compact version visually and the exact immutable release identity through title and accessibility text. Release checks and CodeQL passed on the exact final head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/15f6237e73d392437aa26224aa4a3432453de686</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/15f6237e73d392437aa26224aa4a3432453de686"/>
+    <title>
+        feat: add per-card and per-review scheduler provenance (#30)
+    </title>
+    <updated>2026-08-19T02:14:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add per-card and per-review scheduler provenance (#30)
+
+Add database-v5 scheduler provenance for every card state and review transition, conservatively classify unversioned history, centralize current-lineage card initialization, and upgrade portable backups to v3 with strict per-row provenance and legacy compatibility. The exact production migration callback, 150-test suite, build, artifact gate, and CodeQL passed on the final PR head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3fc8f9df1965c52cf9275d4079e145b4c62364fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/3fc8f9df1965c52cf9275d4079e145b4c62364fd"/>
+    <title>
+        release: enforce one semantic version and immutable build identity (#29)
+    </title>
+    <updated>2026-08-19T01:50:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;release: enforce one semantic version and immutable build identity (#29)
+
+Establish version.json as Denki&amp;#39;s canonical semantic version, validate agreement with Tauri and Cargo, emit immutable version/build metadata, cache it offline, surface the running version, and bind Pages rebuild identity to the exact validated commit. Release checks, final artifact identity validation, and CodeQL passed on the exact PR head.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/15d7466538cfb9727e3e7cba5c41db58e2fad7dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/15d7466538cfb9727e3e7cba5c41db58e2fad7dd"/>
+    <title>
+        docs: codify architecture, contribution, and launch contracts (#28)
+    </title>
+    <updated>2026-08-18T14:36:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/193228693?s=30&amp;v=4"/>
+    <author>
+      <name>Dingding-leo</name>
+      <uri>https://github.com/Dingding-leo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: codify architecture, contribution, and launch contracts (#28)
+
+Add architecture and contribution contracts, strengthen the pull-request evidence template, replace obsolete launch claims with a truthful release-readiness checklist, and link the documentation from README. Release checks, final artifact validation, and CodeQL passed on the PR head; the only intervening main change was an independently validated type-declaration update with no file overlap.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7dbc2a2452499c283209eb4f679e9c811a099255</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dingding-leo/Denki/commit/7dbc2a2452499c283209eb4f679e9c811a099255"/>
+    <title>
+        deps: update DOMPurify type declarations (#22)
+    </title>
+    <updated>2026-08-18T14:34:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;deps: update DOMPurify type declarations (#22)
+
+Update @types/dompurify from 3.0.5 to 3.2.0 after rebasing onto current main. Release checks, final artifact validation, and CodeQL passed on the exact head.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

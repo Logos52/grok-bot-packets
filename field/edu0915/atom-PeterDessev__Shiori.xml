@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/PeterDessev/Shiori/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/PeterDessev/Shiori/commits/master.atom"/>
+  <title>Recent Commits to Shiori:master</title>
+  <updated>2026-07-27T01:06:11Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/052415d3e9c8fe8a7665670b30a32b8a728f6d48</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/052415d3e9c8fe8a7665670b30a32b8a728f6d48"/>
+    <title>
+        docs: document website and desktop regeneration
+    </title>
+    <updated>2026-07-27T01:06:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: document website and desktop regeneration
+
+Fill in the Regeneration section of CLAUDE.md and add scripts/ entry
+points for the multi-step desktop packaging (adoption steps 6-7):
+
+- Website: `cd site &amp;amp;&amp;amp; zola build` -&amp;gt; site/public (auto-deploys via
+  site.yml on push to master).
+- Desktop: local `cargo build/run --release -p shiori-gui`, plus
+  scripts/package-desktop.{sh,ps1} that build the release binary and
+  bundle it with the licenses and docs into the platform archive,
+  mirroring release.yml.
+- .gitignore: ignore the packaged /shiori-*.zip and /shiori-*.tar.gz
+  artifacts these scripts (and release.yml) produce at the repo root.
+
+Verified: `zola build` and scripts/package-desktop.ps1 both run clean;
+the release build embeds the Windows icon without warning.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e2abe5ad8e76595cf407f1681aba4d35fec9aa54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/e2abe5ad8e76595cf407f1681aba4d35fec9aa54"/>
+    <title>
+        chore: adopt Project Organization Standard layout
+    </title>
+    <updated>2026-07-26T21:00:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: adopt Project Organization Standard layout
+
+Move the Cargo workspace under software/ and documentation under docs/
+per keel&amp;#39;s Project Organization Standard v1.1, and repair everything that
+referenced the old root layout:
+
+- CI (ci.yml): run cargo in software/ (working-directory + rust-cache
+  workspaces), on both the lint and test jobs.
+- Release (release.yml): build in software/; package from
+  software/target/release while keeping root-level licenses and docs.
+- shiori-gui: re-point the icon include_bytes!/build.rs paths to the
+  repo-root assets/ (now one level further up); assets/ stays at root
+  because the GitHub-rendered README links it.
+- .gitignore: ignore /software/target instead of /target.
+- Docs (README, CONTRIBUTING, site architecture/getting-started): build
+  commands now cd into software/; crate paths prefixed with software/.
+- CLAUDE.md: fill in the project purpose line.
+
+Verified: cargo fmt/clippy(-D warnings)/test --workspace all pass on a
+clean build, and `zola build` succeeds.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f29ca4b4e5994744cac54b441b8559dce5ef800</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/6f29ca4b4e5994744cac54b441b8559dce5ef800"/>
+    <title>
+        feat(app): browse book sources without a search query
+    </title>
+    <updated>2026-07-26T20:42:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(app): browse book sources without a search query
+
+Each &amp;quot;Find books online&amp;quot; tab now shows a listing as soon as it opens,
+ranked by popularity where the source exposes one.
+
+- Gutenberg: an empty query browses the most-downloaded books, following
+  Gutendex&amp;#39;s `next` pages to ~100 (default sort is already -download_count).
+- Wikisource: browses the most-viewed mainspace works via `list=mostviewed`
+  (pageviews), collapsed to whole works, with the Main Page filtered out.
+- OPDS: an empty query lists the feed&amp;#39;s books, diving one level into a
+  popular/most-downloaded subfeed when the root is navigation-only (e.g.
+  Project Gutenberg), and reading OPDS 2.0 `groups[]` (e.g. Open Library).
+- Aozora: shows the first ~100 catalog works.
+- GUI: each tab auto-loads its listing once per (tab, language,
+  distributor) with a spinner, and reloads on a switch; Wikisource browse
+  rows show &amp;quot;N views/day&amp;quot;. Ignored live tests cover all four sources.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/71add70a4fde05893cadb6f55e715b0fe15fe4ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/71add70a4fde05893cadb6f55e715b0fe15fe4ce"/>
+    <title>
+        ci: lint on Linux, test on Windows/macOS; drop the Intel macOS build
+    </title>
+    <updated>2026-07-22T17:14:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: lint on Linux, test on Windows/macOS; drop the Intel macOS build
+
+- CI: cargo fmt + clippy run once on Linux (clippy also proves the Linux
+  build); tests run on Windows and macOS. The release-artifact build no
+  longer runs in CI — it is release-only.
+- Release: drop the macos-13 (Intel x86_64) target. GitHub&amp;#39;s Intel runners
+  queue for a very long time and block the whole release; ship Windows,
+  Linux, and macOS (Apple Silicon). The redundant fmt/clippy/test steps are
+  removed from the release jobs now that CI covers every platform.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a83f49974e5170182d16b31679026a60ba103cf6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/a83f49974e5170182d16b31679026a60ba103cf6"/>
+    <title>
+        Merge branch &#39;claude/multiplatform&#39;
+    </title>
+    <updated>2026-07-22T07:04:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/multiplatform&amp;#39;
+
+Shiori 0.4.0: Linux and macOS support. Everyday CI stays on Windows;
+every release builds, tests, and packages Windows, Linux, and macOS.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c0cc9cab008b980dddc596cd970adf4878367ecd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/c0cc9cab008b980dddc596cd970adf4878367ecd"/>
+    <title>
+        chore(release): Shiori 0.4.0
+    </title>
+    <updated>2026-07-22T07:04:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): Shiori 0.4.0
+
+Minor release: Linux and macOS support — Shiori now builds, is tested, and
+ships release binaries for Windows, Linux, and macOS (Apple Silicon and
+Intel).
+
+- Workspace version and the three pinned internal-crate deps -&amp;gt; 0.4.0.
+- Bump the network User-Agent to Shiori/0.4.0.
+- Promote the CHANGELOG [Unreleased] section to [0.4.0] and refresh links.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/14f2c87b4b94da6c873517b0111c554689e9a46a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/14f2c87b4b94da6c873517b0111c554689e9a46a"/>
+    <title>
+        ci: run everyday CI on Windows only, validate every platform at release
+    </title>
+    <updated>2026-07-22T06:56:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: run everyday CI on Windows only, validate every platform at release
+
+Cross-platform build+test on every push is expensive. Move the Linux and
+macOS validation into the release workflow, which already builds for every
+platform on each tag.
+
+- CI (push/PR) is Windows-only again: fmt, clippy, test, release build.
+- Each release job now runs fmt/clippy/tests on its own platform before
+  building and packaging, so a Linux or macOS break blocks the release
+  rather than shipping broken.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd46d744adf8ba22bfdf8f6fdd9be38dcd33bfec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/fd46d744adf8ba22bfdf8f6fdd9be38dcd33bfec"/>
+    <title>
+        ci: build, test, and release Shiori on Linux and macOS
+    </title>
+    <updated>2026-07-22T06:30:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: build, test, and release Shiori on Linux and macOS
+
+The code was already portable (cross-platform font paths, xdg-open for the
+data folder, rfd&amp;#39;s xdg-portal file dialogs); this wires up the pipeline.
+
+- CI runs fmt, clippy, tests, and a release build on ubuntu-latest,
+  windows-latest, and macos-latest (Linux installs the xcb/xkbcommon dev
+  libraries egui/winit/arboard need).
+- Release builds and packages Windows (.zip), Linux (.tar.gz), and macOS
+  aarch64 + x86_64 (.tar.gz), then publishes all four to one GitHub release.
+- Strip release binaries; document per-platform install and runtime needs.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/545b925b4a5d59640ed168d47e2649561aaf316d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/545b925b4a5d59640ed168d47e2649561aaf316d"/>
+    <title>
+        Merge branch &#39;claude/release-0.3.1&#39;
+    </title>
+    <updated>2026-07-22T05:55:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/release-0.3.1&amp;#39;
+
+Shiori 0.3.1: Koine and Modern Greek are fully separate book-search
+languages, with Koine-specific resources and consistent Koine naming.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f1b34af6a54db2043782a8ba2a722493711b9332</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/f1b34af6a54db2043782a8ba2a722493711b9332"/>
+    <title>
+        chore(release): Shiori 0.3.1
+    </title>
+    <updated>2026-07-22T05:55:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): Shiori 0.3.1
+
+Patch release: Koine (Ancient) Greek and Modern Greek are fully separate
+languages for book search, with Koine-specific resources and consistent
+&amp;quot;Koine Greek&amp;quot; naming.
+
+- Workspace version and the three pinned internal-crate deps -&amp;gt; 0.3.1.
+- Bump the network User-Agent to Shiori/0.3.1.
+- Promote the CHANGELOG [Unreleased] section to [0.3.1] and refresh the
+  compare links.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a6a73b41a0befbe1c8145d897d2c82244a6dc1cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/a6a73b41a0befbe1c8145d897d2c82244a6dc1cd"/>
+    <title>
+        fix(app): treat Koine and Modern Greek as separate book-search languages
+    </title>
+    <updated>2026-07-22T05:53:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(app): treat Koine and Modern Greek as separate book-search languages
+
+Koine (Ancient) Greek no longer borrows the Modern Greek Wikisource — the
+only Greek wiki is Modern Greek&amp;#39;s and it is not Koine-specific — so Koine
+and Modern Greek now share no book sources (like Turkish and French).
+Koine keeps its own Project Gutenberg filter (`grc`) and Koine-specific
+Libraries directory; Modern Greek keeps `el.wikisource`.
+
+Also rename the Build-from-Wiktionary &amp;quot;Ancient Greek&amp;quot; option to &amp;quot;Koine
+Greek&amp;quot; so the language reads as Koine everywhere (the corpus pack, LLM
+profile, and catalog already do).
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6819cf214ebef47793e45f27c66f169ca6783963</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/6819cf214ebef47793e45f27c66f169ca6783963"/>
+    <title>
+        style: rustfmt the book-search sources
+    </title>
+    <updated>2026-07-21T15:49:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: rustfmt the book-search sources
+
+The lint CI job runs `cargo fmt --check`; the hand-written book-search
+code (books.rs, opds.rs, use-ordering in lib.rs, …) wasn&amp;#39;t rustfmt-clean.
+Whitespace/layout only — no behavior change.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c787de07f41d774cc0386698e895eb58b50b0b29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/c787de07f41d774cc0386698e895eb58b50b0b29"/>
+    <title>
+        Merge branch &#39;claude/release-0.3.0&#39;
+    </title>
+    <updated>2026-07-21T08:04:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/release-0.3.0&amp;#39;
+
+Prepare the 0.3.0 release: whole-work Wikisource import plus the version
+bump, CHANGELOG, and User-Agent. Not tagged yet.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7ccb7f2a53ade9ec4a17e4af1a8e6dbd04f3a3e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/7ccb7f2a53ade9ec4a17e4af1a8e6dbd04f3a3e6"/>
+    <title>
+        chore(release): Shiori 0.3.0
+    </title>
+    <updated>2026-07-21T08:04:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): Shiori 0.3.0
+
+Bump the workspace to 0.3.0 (minor): per-language book search across
+Wikisource, Project Gutenberg, and user-added OPDS distributors, with
+whole-work Wikisource import.
+
+- Workspace version and the three pinned internal-crate deps -&amp;gt; 0.3.0.
+- Bump the network User-Agent to Shiori/0.3.0.
+- Promote the CHANGELOG [Unreleased] section to [0.3.0] (2026-07-21) and
+  refresh the compare links.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d004085c7c3c6a6da18cdc4f3581ff8ecf4dd9ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/d004085c7c3c6a6da18cdc4f3581ff8ecf4dd9ae"/>
+    <title>
+        feat(app): import whole Wikisource works instead of chapter fragments
+    </title>
+    <updated>2026-07-21T07:58:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(app): import whole Wikisource works instead of chapter fragments
+
+Wikisource stores a long book as an index page plus one `Work/Chapter`
+subpage per chapter, so search listed every fragment and import fetched
+only the thin index page.
+
+- Search collapses subpage hits under their root work, so a book shows
+  once with the parts&amp;#39; combined word count and most-relevant snippet.
+- Import fetches the whole work as a single EPUB from the Wikimedia
+  export tool (the site&amp;#39;s &amp;quot;Download as EPUB&amp;quot;), falling back to the
+  single page&amp;#39;s rendered HTML if the tool is unavailable.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea9b4aa48135a45b6962c2b54c8d6c30a8ce5e30</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/ea9b4aa48135a45b6962c2b54c8d6c30a8ce5e30"/>
+    <title>
+        Merge branch &#39;claude/multi-language-book-search-c2bb74&#39;
+    </title>
+    <updated>2026-07-21T04:47:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/multi-language-book-search-c2bb74&amp;#39;
+
+Per-language book search: the active language drives Wikisource, Project
+Gutenberg (Gutendex), and user-added OPDS distributors, with a language
+switcher in the book-search window and a bundled directory of free, legal
+libraries per language.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da2f86e470f205940b0126b893f0914b994fbdd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/da2f86e470f205940b0126b893f0914b994fbdd9"/>
+    <title>
+        docs: document per-language book search
+    </title>
+    <updated>2026-07-21T04:47:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: document per-language book search
+
+Update the README feature blurb and data-sources list, add an Unreleased
+CHANGELOG entry, and rewrite the Online Sources guide for the
+per-language Wikisource / Gutenberg / OPDS / Libraries tabs.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9d445eed6bf4e020ee0916f1cf4f3ef040261a4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/b9d445eed6bf4e020ee0916f1cf4f3ef040261a4"/>
+    <title>
+        feat(gui): per-language book search view with a language switcher
+    </title>
+    <updated>2026-07-21T04:47:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(gui): per-language book search view with a language switcher
+
+Rework the &amp;quot;Find books online&amp;quot; view around the active language:
+
+- A language switcher re-scopes every tab and where imports land, and
+  clears the previous language&amp;#39;s results.
+- Tabs adapt to the language: Aozora for Japanese, Wikisource and Project
+  Gutenberg where available, OPDS always, and a Libraries directory drawn
+  from the bundled catalog.
+- OPDS distributors are managed inline (add, remove, one-click
+  suggestions), searched per distributor.
+- Search results carry the language they were requested for and are
+  dropped if the user switches language before they arrive, so a book is
+  never shown or imported under the wrong language.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/90b5b4c09d53af83b1427ea722ac41066b0eabd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/90b5b4c09d53af83b1427ea722ac41066b0eabd9"/>
+    <title>
+        feat(gui): persist per-language OPDS distributors in settings
+    </title>
+    <updated>2026-07-21T04:47:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(gui): persist per-language OPDS distributors in settings
+
+Add OpdsCatalog {name, url} and a language-keyed opds_catalogs map to
+Settings (serde-default, so an existing settings.json still loads), with
+add/remove/lookup helpers that skip blanks and case-insensitive
+duplicates, plus a disk round-trip test.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dfd4d235ac0b8bb603e99182b11279102b04ead6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/PeterDessev/Shiori/commit/dfd4d235ac0b8bb603e99182b11279102b04ead6"/>
+    <title>
+        feat(app): per-language book search across Wikisource, Gutendex, and …
+    </title>
+    <updated>2026-07-21T04:46:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/8530925?s=30&amp;v=4"/>
+    <author>
+      <name>PeterDessev</name>
+      <uri>https://github.com/PeterDessev</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(app): per-language book search across Wikisource, Gutendex, and OPDS
+
+Generalize online book search from Japanese-only to per language.
+
+- Bundle the free digital-libraries catalog and add books.rs, mapping a
+  language code to its Wikisource subdomain, Gutendex language filter,
+  and catalog section (with region-subtag stripping and Ancient-Greek /
+  Norwegian special-casing).
+- Wikisource search and import now target the active language&amp;#39;s wiki
+  instead of a hardcoded ja.wikisource.org.
+- Add Gutendex (Project Gutenberg) search and import, filtered to the
+  active language, with Gutenberg license boilerplate stripped and
+  UTF-8/Latin-1 decoding.
+- Add OPDS search and import (opds.rs): OPDS 1.x Atom with OpenSearch
+  discovery and one-hop navigation-feed following, plus OPDS 2.0 JSON;
+  imports EPUB/PDF/HTML/text. Feed fetching is charset- and size-robust.
+- Ignored live smoke tests exercise all four sources against real servers.
+
+Co-Authored-By: Claude Opus 4.8 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/RyuuNeko1107/ja-furigana-dict/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commits/master.atom"/>
+  <title>Recent Commits to ja-furigana-dict:master</title>
+  <updated>2026-09-15T00:27:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77fe9cfba857c1327a904fcd202d84243d95406a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/77fe9cfba857c1327a904fcd202d84243d95406a"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-15T00:27:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c8cd618ccdd8f80b8c44ebe9a52b73745395c2f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/c8cd618ccdd8f80b8c44ebe9a52b73745395c2f9"/>
+    <title>
+        dict: 送り仮名つき誤読 第 3 弾 (失う / 冷やっこ / 臭え / 喋る / 燃ゆ / 研ぐ 他)
+    </title>
+    <updated>2026-09-15T00:27:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 送り仮名つき誤読 第 3 弾 (失う / 冷やっこ / 臭え / 喋る / 燃ゆ / 研ぐ 他)
+
+全漢字スイープ 送り仮名区分の続き:
+- [[kanji]] rule: 失う・失って=うしな / 失せろ=う、 冷たい=つめ / 冷める=さ / 冷える・冷やっこ=ひ、
+  臭え=くせ / 臭い・臭そう・臭すぎ=くさ / 臭う=にお、 喋る=しゃべ、 燃ゆ・燃える=も、 瞬く=またた、
+  扱う=あつか、 暗っ / 広っ / 遅っ / 遅なる に っ・な を追加
+- entry (Lindera token が別読み): 研いで・研いだ・研いでる (みがいで)、 煮干し (にぼしし)、
+  並んで・並んでる (なみんで)、 強豪、 毒親 (どくしん)、 懐かない、 熱すぎ・熱すぎぃ、 仕舞え、
+  新衣装、 扱いや、 臭え、 瞬く、 胡散臭え
+
+途中で出た退行は修正済み: 放された entry が 解放された / 追放された / 見放された を割ったので撤回、
+臭 の す が 消臭 を、 瞬 の か が 毎瞬 を割ったので条件を絞った。
+実コーパス A/B: 変化行を抽出確認。 corpus 4304 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1e5c9b5cc7aec106ca77902fdb0eff403dddcd50</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/1e5c9b5cc7aec106ca77902fdb0eff403dddcd50"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-15T00:13:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f594605c022c27d663c883be9925bdc36587e223</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/f594605c022c27d663c883be9925bdc36587e223"/>
+    <title>
+        dict: 国名・国際機関の英字表記を loanwords に追加 (WBC / G7 / NATO / America / Ukrain…
+    </title>
+    <updated>2026-09-15T00:13:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 国名・国際機関の英字表記を loanwords に追加 (WBC / G7 / NATO / America / Ukraine 他)
+
+英字のまま読み上げに渡っていた表記を 44 語追加:
+- 略語は文字読みが一意なものだけ: US / NATO / WHO / NZ / UAE / ASEAN / G7 / G20 / OPEC / IMF / WBC /
+  FIFA / IOC / NY / LA / DC。 JPN / KOR 等の 3 文字コードは読みが定まらないので入れない、
+  UN はローマ字の 「UN (うん)」 と衝突したので入れない
+- 英語の国名・都市名: America / England / Britain / Taiwan / Thailand / Vietnam / Ukraine / Israel /
+  Iran / Argentina / Netherlands / Sweden / Norway / Finland / Poland / Switzerland / Portugal /
+  Philippines / Indonesia / Singapore / Malaysia / Tokyo / Osaka / Kyoto / Paris / London / Seoul / Beijing
+- 高市 = タカイチ (こうし になっていた)
+
+実コーパス A/B (tts): 変化行を抽出確認。 corpus pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abb30d15d90c5988852cf77e70a563321e646646</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/abb30d15d90c5988852cf77e70a563321e646646"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-15T00:11:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f71914d7870cc952e26e9235b995e6f9c4141d85</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/f71914d7870cc952e26e9235b995e6f9c4141d85"/>
+    <title>
+        dict: 送り仮名つき誤読 第 2 弾 + 国名の略字 (米軍 / 英仏 / 露大統領 / 中韓)
+    </title>
+    <updated>2026-09-15T00:11:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 送り仮名つき誤読 第 2 弾 + 国名の略字 (米軍 / 英仏 / 露大統領 / 中韓)
+
+全漢字スイープ 送り仮名区分の続き:
+- [[kanji]] rule: 認める=みと / 堅い=かた / 荒ぶる=あら・荒れる・荒らす=あ / 細かい=こま・細かった=ほそ /
+  称える=たた / 奪う=うば / 痛え=いて / 返す・返る=かえ / 預ける=あず / 遅え=おせ / 許す=ゆる /
+  担ぐ=かつ / 伸びる=の / 狩の=かり / 軽っ に っ・や / 左耳・両耳=みみ / 青髪・黒髪・前髪=がみ
+- entry: 懐く・懐かれ / 邪な / 素晴しい / 盗撮され / 帰さない / 誘い / 薄っすら / 叶姉妹 / 爆盛り /
+  誤射 / 精密 / 緩和 / 甘じょっぱい / 認め・認めろ / 細かった・心細かった / 称える / 預け / 担いで・担いでる
+
+国名の略字:
+- 米 / 露 / 仏 は 別の国の略字や 軍 / 大統領 / 首相 / 政府 / 語 と並ぶ時だけ ベイ / ロ / フツ
+  (米軍 / 米露 / 英仏 / 仏大統領 / 露軍 / 露語)。 白米 / 夜露 / 大仏 / 仏教 / 米粉 は変わらない
+- 中 + 国の略字 = チュウ (中韓 / 中露)、 日比 = ニッピ / 日越 = ニチエツ / 西語 = セイゴ 等は entry
+
+実コーパス A/B: 変化 約 1,050 行を抽出確認、 途中の退行 (荒らす / 荒れん / 心細かった) は修正済み。 corpus pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a8379d0fc4806c5c9bc9d8ee47ae5b4ef73c13ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/a8379d0fc4806c5c9bc9d8ee47ae5b4ef73c13ef"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T23:51:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e1c51a07992cdcac470012df12ee99b8eef015d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/e1c51a07992cdcac470012df12ee99b8eef015d7"/>
+    <title>
+        dict: 送り仮名つき誤読の一括修正 (汚ねえ / 向いてる / 呪われ / 歩く / 甘かった 他)
+    </title>
+    <updated>2026-09-14T23:51:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 送り仮名つき誤読の一括修正 (汚ねえ / 向いてる / 呪われ / 歩く / 甘かった 他)
+
+全漢字スイープの 送り仮名 区分 (漢字 + 直後のひらがな) で、 字ごとの少数派の読みに入った語を修正。
+
+- [[kanji]] 送り仮名 rule 追加:
+  汚 (汚ねえ=きた / 汚え=きたね / 汚い・汚すぎ=きたな / 汚ない・汚な=きた / 汚す・汚れ=よご)、
+  腐 (腐る=くさ)、 故 (故に・故の=ゆえ)、 呪 (呪い・呪われ=のろ)、 歩 (歩く=ある / 歩む=あゆ、
+  数や漢語の後 = ホ)、 粘 (粘る=ねば)、 居 に ね / ぬ
+- unihan: 繋 = かける → つな (繋がる / 繋ぐ / 繋げる)
+- Lindera token が別読みを返す語形を entry: 向いて / 向いた / 向いてる (むかい → むい)、
+  甘かった (うまかった)、 居れば (おれば)、 千葉か (せんようか)、 恐るべし / 恐るべき、 熱そう、
+  恥ずい、 誘えば、 名乗れ、 激つよ、 汚れる / 汚れ (けがれ)、 腐らん (腐乱)、 呪われ、
+  側が / 横が (ソクガ / オウガ 1 token)、 硬え、 手洗いうがい 他。
+  向いて が 割る 出向いた / 上向いて と 今一歩 も併記
+
+実コーパス A/B: 変化 約 2,000 行を抽出確認、 途中で出た退行 (汚ない / 出向いた / 今一歩 / 上向いて) は修正済み。
+corpus 4260 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/547c0e4a265dd4c26eb2434a7a9bae3e8c0f4b9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/547c0e4a265dd4c26eb2434a7a9bae3e8c0f4b9f"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T22:36:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/17ffc445170640d25d7b2ec050eec80b0c3392ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/17ffc445170640d25d7b2ec050eec80b0c3392ed"/>
+    <title>
+        dict: 止めろ = トメロ / 止まれる = トマレル / 出始め = デハジメ / 今年初 = コトシハツ
+    </title>
+    <updated>2026-09-14T22:35:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 止めろ = トメロ / 止まれる = トマレル / 出始め = デハジメ / 今年初 = コトシハツ
+
+全漢字スイープの上位字 (止 / 時 / 初 / 出 / 日) の送り仮名区分で検出。
+- Lindera token が 止めろ = トドメロ / 止まれる = ヤマレル を返していた (実コメント 180 行超)
+- 出始め / 出始める / 出始めた / 出始めて が シュツハジメ
+- 今年初 が イマネンショ。 今年初めて を壊さないよう 今年初め も併記
+
+実コーパス A/B: 変化行を全件確認、 退行なし。 corpus 4244 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f6458926cfa83cab26fdb182bbdffe17b90eed5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/6f6458926cfa83cab26fdb182bbdffe17b90eed5"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T22:26:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46b7a564783f7969373f361786874d997c766edd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/46b7a564783f7969373f361786874d997c766edd"/>
+    <title>
+        dict: 何+助数詞 = ナン / 三敗 = さんぱい / 三足 = さんぞく
+    </title>
+    <updated>2026-09-14T22:26:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 何+助数詞 = ナン / 三敗 = さんぱい / 三足 = さんぞく
+
+- 何: 「何周年 / 何期生 / 何連勝 / 何球 / 何作目 / 何兆 / 何打席」 が ナニ になっていた。
+  助数詞の形 (周年 / 期生 / 連勝 / 球 / 作目 等) で後続する時だけ ナン。
+  期 / 作 / 着 / 足 / 勝 単体は 何期待 / 何作る / 何着る / 何足りない / 何勝手に と衝突するので入れない。
+  何票 = ナンピョウ / 何敗 = ナンパイ は連濁が要るので entry
+- counter 敗 / 足 に 3 の rule が無く さんはい / さんそく になっていた
+
+実コーパス A/B: 変化 208 行、 抽出確認で意図外の変化なし。 corpus pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a52f8d8427dc066d5f6881713a232b0ed543646c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/a52f8d8427dc066d5f6881713a232b0ed543646c"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T21:38:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b7a8f7b3786122e8cf39db7d5755f311033018c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/6b7a8f7b3786122e8cf39db7d5755f311033018c"/>
+    <title>
+        dict: 人数分 = ニンズウブン / 人数合わせ = ニンズウアワセ
+    </title>
+    <updated>2026-09-14T21:38:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 人数分 = ニンズウブン / 人数合わせ = ニンズウアワセ
+
+人数 entry があっても 「人数分 / 人数合わせ」 は 人 + 数分 / 人 + 数合わせ に割れて
+ひとすうふん / ひとかずあわせ になっていた (以前からの誤読)。
+実コーパス A/B: 変化 73 行、 全件 にんずうぶん / にんずうあわせ への改善。 corpus 4228 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/53b4556a5a002837640ab4d16647f07015d4583b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/53b4556a5a002837640ab4d16647f07015d4583b"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T20:10:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a749d508c2ced4b044fa9f0863cc44eedce147d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/5a749d508c2ced4b044fa9f0863cc44eedce147d"/>
+    <title>
+        dict: 助数詞+目=メ / 心配性 / 心因性 / 主戦力 / 人柱力
+    </title>
+    <updated>2026-09-14T20:10:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 助数詞+目=メ / 心配性 / 心因性 / 主戦力 / 人柱力
+
+- 目: [[kanji]] 目 は 漢字→モク 一本で、 「3試合目 / 2回戦目 / 5文字目 / 1問目 / 3列目 / 3部作目 /
+  2種類目」 等の順序の メ が モク になっていた。 助数詞の末字 (合/席/戦/問/列/作/類/点 等) の直後は メ。
+  同じ判定で 「本人目の前 / 基本目が合わない / 攻撃目線」 の 目 も メ に直る。
+  品目 / 項目 / 科目 / 注目 は jukugo が覆うので影響なし
+- 心配性 / 浮気性 = ショウ、 心因性 = シンインセイ、 違法性 = イホウセイ、 何時代 = ナンジダイ、
+  主戦力 = シュセンリョク、 人柱力 = ジンチュウリキ、 長州力 = チョウシュウリキ、 一言目 = ヒトコトメ
+
+実コーパス A/B: 変化行を抽出確認、 退行なし (鳥類目 のみ 分類学の モク が メ に)。 corpus 4226 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d746a63e6afe57ab22b9faaeb1d65f3be1736159</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/d746a63e6afe57ab22b9faaeb1d65f3be1736159"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T20:07:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/393166d787832e4fedd4e3104d9805725c98cabd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/393166d787832e4fedd4e3104d9805725c98cabd"/>
+    <title>
+        dict: 漢語+人=ジン / 副詞+手=テ / 漢語+者=モノ
+    </title>
+    <updated>2026-09-14T20:06:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 漢語+人=ジン / 副詞+手=テ / 漢語+者=モノ
+
+- 人: [[kanji]] 人 に 漢字 prev の分岐が無く、 後続が助詞だと ひと になっていた
+  (京都人は / 未来人が / 知識人 / 西洋人 / 地底人)。 漢字→ジン を追加。
+  副詞・代名詞 (結構 / 全然 / 今回 / 俺 / お前 / 様 等) の直後は ひと、
+  位取り漢数字 (何万人 / 数千人) は ニン を先に判定。
+  ニン 読みの 依頼人 / 同居人 / 処刑人 / 交渉人 / 行商人 / 大道芸人 と 十一人 / 十二人 は entry
+- 手: 「結構手が早い / 全部手で / 一旦手を止める」 が シュ になっていたので副詞 16 語の直後は テ
+- 者: 田舎者 / 邪魔者 / 調子者 / 浮気者 / 厄介者 / 乱暴者 / 無礼者 / 前科者 / 裏切者 = モノ、
+  大賢者 = ダイケンジャ、 大勇者 = ダイユウシャ、 人外 = ジンガイ
+
+実コーパス A/B: 変化行を抽出確認、 退行 1 行 (結構人数)。 corpus 4217 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0df0388f8daa3b6035d0450ed8654e2dc0ba453d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/0df0388f8daa3b6035d0450ed8654e2dc0ba453d"/>
+    <title>
+        chore: dedup compat + regen STATS [skip stats]
+    </title>
+    <updated>2026-09-14T20:00:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/15368?s=30&amp;v=4"/>
+    <author>
+      <name>github-actions</name>
+      <uri>https://github.com/github-actions</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: dedup compat + regen STATS [skip stats]&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc1d7b28a451f682c7fde43a7e16bc833008ba89</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RyuuNeko1107/ja-furigana-dict/commit/fc1d7b28a451f682c7fde43a7e16bc833008ba89"/>
+    <title>
+        dict: 姓+家=ケ / 副詞+家=イエ / 有名所 / 留置所
+    </title>
+    <updated>2026-09-14T20:00:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/161712074?s=30&amp;v=4"/>
+    <author>
+      <name>RyuuNeko1107</name>
+      <uri>https://github.com/RyuuNeko1107</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dict: 姓+家=ケ / 副詞+家=イエ / 有名所 / 留置所
+
+- 家: [[kanji]] 家 は 漢字→カ (専門家 / 政治家) なので 姓 + 家 が カ になっていた。
+  犬神家 / 徳川家 / 天皇家 / 園崎家 / 磯野家 / 衛宮家 / 大神家 等 22 姓を ケ で entry 化、
+  山岡家 = ヤマオカヤ (店名)、 自分家 = ジブンチ
+- 家: 「一旦家に / 結局家で / 今日家帰る」 = 副詞・時の語 11 語の直後は イエ
+- 所: 有名所 = ユウメイドコロ、 留置所 = リュウチジョ、 御三方 = オサンカタ
+
+実コーパス A/B: 変化行を全件確認、 退行なし。 corpus 4203 pass。
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pw4gBUPXcmook9kzaH4u1s&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Harsh-Upadhayay/kiroku/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Harsh-Upadhayay/kiroku/commits/main.atom"/>
+  <title>Recent Commits to kiroku:main</title>
+  <updated>2026-07-31T02:38:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/50e9db46e87875eaafda0479287270991391720c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/50e9db46e87875eaafda0479287270991391720c"/>
+    <title>
+        feat(deploy): add development stages for frontend and backend, update…
+    </title>
+    <updated>2026-07-31T02:38:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(deploy): add development stages for frontend and backend, update routing and service configurations&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/40246a8e2382f4e465c3507e28c5e461d26c774b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/40246a8e2382f4e465c3507e28c5e461d26c774b"/>
+    <title>
+        feat(deploy): public cutover — kiroku.neovara.uk only, drop internal …
+    </title>
+    <updated>2026-07-09T06:39:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(deploy): public cutover — kiroku.neovara.uk only, drop internal + legacy myanki route
+
+DNS is already repointed. Public IngressRoute (web entrypoint, cloudflared
+handles edge TLS) replaces the internal-only kiroku.in.neovara.uk route.
+Legacy myanki.neovara.uk alias dropped -- old-lab DNS is decommissioned so
+nothing depends on it. Renamed the IngressRoute kiroku-internal -&amp;gt; kiroku;
+ArgoCD prunes the old-named object automatically.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/df79480c442cff49fe275e61be36e56db94dba45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/df79480c442cff49fe275e61be36e56db94dba45"/>
+    <title>
+        fix(deploy): raise kiroku-api memory limit 512Mi -&gt; 1.5Gi
+    </title>
+    <updated>2026-07-09T06:14:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(deploy): raise kiroku-api memory limit 512Mi -&amp;gt; 1.5Gi
+
+Fixes an OOMKill (exit 137, 2026-07-09 06:05 UTC) hit on the first real
+sync-pull against the migrated production account. The original limit
+was sized from Prometheus samples of a near-empty test DB and only
+captured an OCR burst, not a full cold sync-pull serializing a real
+~14k-media-file library, which needs a substantially larger working set.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/28aa3d58a300608351d9e915b2e72a6a8740321c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/28aa3d58a300608351d9e915b2e72a6a8740321c"/>
+    <title>
+        feat(deploy): Kubernetes manifests for cluster migration
+    </title>
+    <updated>2026-07-09T05:31:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(deploy): Kubernetes manifests for cluster migration
+
+Deployments + Services for the Next.js frontend (kiroku) and Go API
+(kiroku-api), the api&amp;#39;s PVC, and an internal IngressRoute (path-routes
+/api -&amp;gt; api, everything else -&amp;gt; frontend) with a secure-headers Middleware.
+Consumed by the homelab-k8s cluster repo via a pointer ArgoCD Application.
+Images pinned to immutable sha- tags; resources sized from Prometheus data.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c43b70db9c808c5b75dd1f9850a1dfe378a8838</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/6c43b70db9c808c5b75dd1f9850a1dfe378a8838"/>
+    <title>
+        Merge pull request #61 from Harsh-Upadhayay/fix/import-media-local-an…
+    </title>
+    <updated>2026-07-04T22:45:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #61 from Harsh-Upadhayay/fix/import-media-local-and-ci-sse
+
+fix(anki): persist imported media locally; stop spurious seed prompt; fix SSE race&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d3f637f9b6c54f78f378cb58389e48d7584298ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/d3f637f9b6c54f78f378cb58389e48d7584298ba"/>
+    <title>
+        fix(anki): persist imported media locally; stop spurious seed prompt;…
+    </title>
+    <updated>2026-07-04T22:45:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki): persist imported media locally; stop spurious seed prompt; fix SSE race
+
+Three related bugs from the client-side-parse / P2P work.
+
+1. Source device showed no media after a client-side import. The parse
+   worker built the manifest but never saved the decoded blobs to the
+   local anki_media store, and with P2P-primary the media wasn&amp;#39;t
+   uploaded to the server either -- so the importing device&amp;#39;s own cards
+   resolved nothing (local miss -&amp;gt; /api/media/{hash} 404). The worker
+   now persists each blob as it&amp;#39;s decoded, pinned: written with no
+   LRU-meta entry, and enforceMediaCacheLimit only evicts hashes that
+   have meta, so a deck you imported here keeps its media offline
+   forever with no cloud upload and no dependency on a peer.
+
+   Media received over P2P (ReceiveTransferBanner, SeedMediaPanel) is
+   pinned the same way via a new saveMediaBlobPinned, since pure-P2P
+   media may exist nowhere else -- previously it went through the
+   LRU-capped saveMediaBlob and could be evicted and lost. Media lazily
+   fetched per-card from the server keeps using saveMediaBlob (LRU):
+   it&amp;#39;s server-backed, so evict-and-refetch is fine.
+
+2. The &amp;quot;Get your media&amp;quot; seed panel fired for essentially every deck,
+   new or existing. Its trigger was &amp;quot;any manifest hash missing from the
+   local cache&amp;quot; -- but with lazy fetch + a 50 MB LRU, missing-locally is
+   the normal resting state. It now fires only for media missing locally
+   AND absent from the server (bulk /api/media/check): i.e. genuinely
+   nowhere-reachable, the real pure-P2P-seeding case. Anything the
+   server has just lazy-fetches per card.
+
+3. CI Backend failure: TestSyncEventsStreamsPublishedEvents, context
+   deadline exceeded. The SSE handler flushed its &amp;quot;: connected&amp;quot; greeting
+   before subscribing to the hub, so a client pushing the instant it saw
+   the greeting could have its poke published before the handler was
+   listening (non-blocking Publish drops it). A real correctness gap,
+   not just a test flake. Subscribe now happens before the greeting, so
+   &amp;quot;greeting received&amp;quot; reliably means &amp;quot;subscribed.&amp;quot;
+
+Verified in real browsers against the Go backend: after a single-device
+client import, the source&amp;#39;s anki_media store holds the blobs and no seed
+prompt appears on reload; the two-device P2P transfer still lands media
+on the receiver; and the SSE test passes 20/20 locally.
+
+Closes #60
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f6e45030fd22917db14f1d4c52133661bfc20a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/8f6e45030fd22917db14f1d4c52133661bfc20a9"/>
+    <title>
+        Merge pull request #59 from Harsh-Upadhayay/feat/p2p-seed-new-devices
+    </title>
+    <updated>2026-07-04T11:20:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #59 from Harsh-Upadhayay/feat/p2p-seed-new-devices
+
+feat(p2p): seed a new device&amp;#39;s media P2P-first from any online device&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55fa619358082c2f46affee6471709354550d419</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/55fa619358082c2f46affee6471709354550d419"/>
+    <title>
+        feat(p2p): seed a new device&#39;s media P2P-first from any online device
+    </title>
+    <updated>2026-07-04T11:20:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(p2p): seed a new device&amp;#39;s media P2P-first from any online device
+
+Closes out the plan in docs/plans/2026-07-04-client-apkg-parse-p2p-media.md.
+A fresh device (new install, or a reinstall) syncs the collection and
+gets its mediaManifest, but starts with no cached media. The existing
+per-card lazy fetch from the cloud store already covers this -- that
+stays untouched as the permanent safety net -- but this adds a faster,
+proactive path: request the missing media P2P from any of the user&amp;#39;s
+other devices that happen to be online, not just the one that
+originally imported it.
+
+- SeedMediaPanel: shown once (per mount) when a device detects media
+  its own synced collection references but doesn&amp;#39;t have locally.
+  Creates a pull-mode signaling room and waits, bounded by the room&amp;#39;s
+  server-side TTL like MediaTransferPanel. No cloud-fallback state
+  machine needed here -- if P2P never lands, cards just keep working
+  via the existing lazy fetch, so this panel is a pure UX accelerator,
+  not something the app depends on.
+- SeedResponder: mounted app-wide, answers a pull room only if this
+  device actually has local media to offer (getAllStoredMediaRefs()
+  is non-empty). That &amp;quot;only if&amp;quot; matters: the device that originally
+  imported a deck reads media straight from the ephemeral .apkg File
+  during a P2P send and never persists its own copy (see
+  MediaTransferPanel), so it would otherwise try to answer with an
+  empty manifest. Skipping it routes seeding requests to whichever
+  device actually received and durably cached media.
+- getAllStoredMediaRefs() (anki-v3.ts): new export enumerating what&amp;#39;s
+  actually sitting in the anki_media IndexedDB store, since a
+  device&amp;#39;s local cache is a subset of its synced collection&amp;#39;s full
+  manifest (the 50MB LRU cap evicts entries).
+
+Verified with a real three-browser-context E2E: A imports and P2P-sends
+to B (matching PR7&amp;#39;s flow, so B ends up with a durable local media
+cache); a fresh third context C signs into the same account, syncs the
+collection, and its SeedMediaPanel discovers B (not A, which has
+nothing to offer) via SeedResponder and receives the media P2P --
+confirmed via IndexedDB record counts on both sides. 2/2 clean runs.
+
+Known limitation, called out rather than solved: no coordination if
+two devices could both answer the same pull room. Acceptable for a
+first cut.
+
+Closes #58
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b68837a34ca29a8d1faf6a9b16a8b162aa5ef89f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/b68837a34ca29a8d1faf6a9b16a8b162aa5ef89f"/>
+    <title>
+        Merge pull request #57 from Harsh-Upadhayay/feat/p2p-transfer-ui
+    </title>
+    <updated>2026-07-04T11:10:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #57 from Harsh-Upadhayay/feat/p2p-transfer-ui
+
+feat(p2p): make direct transfer the primary path for import media&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/421f6002022e68db7723ff2f0d07918659635e8f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/421f6002022e68db7723ff2f0d07918659635e8f"/>
+    <title>
+        feat(p2p): make direct transfer the primary path for import media
+    </title>
+    <updated>2026-07-04T11:09:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(p2p): make direct transfer the primary path for import media
+
+Wires the P2P engine (#54/#55) and signaling backend (#52/#53) into
+the actual import flow. Direct device-to-device transfer is now the
+primary way a deck&amp;#39;s media reaches another device; the cloud store
+stays available but only as a fallback when nobody answers.
+
+- importAnkiPackage&amp;#39;s client-parse path no longer auto-uploads to the
+  cloud (uploadMedia now defaults to false in client.ts/worker.ts) --
+  it returns an ImportOutcome with an optional pendingMediaTransfer
+  the UI drives. Extracted the upload-missing-media logic worker.ts
+  used to own into apkg/cloudMediaUpload.ts so both the worker and the
+  new UI fallback path share one retry/batching implementation.
+
+- MediaTransferPanel: shown on the importing device once parsing
+  finds media to move. Announces a P2P room and waits -- no hard
+  timeout on its own (bounded by the signaling room&amp;#39;s 10-minute TTL) --
+  with messaging that keeping both devices online is what makes this
+  fast, plus an escape hatch to switch to cloud upload immediately and
+  live transfer progress either way.
+
+- ReceiveTransferBanner: rendered app-wide, polls for an open room
+  from the user&amp;#39;s own other devices (piggybacked on the existing
+  sync-tick cadence, no new polling loop) and offers to receive.
+
+Per the user&amp;#39;s explicit call: a peer that never comes online should
+wait for P2P with clear &amp;quot;why it&amp;#39;s waiting&amp;quot; messaging rather than the
+app silently uploading to the cloud as a parallel default -- cloud is
+a genuine fallback, not a hedge that runs every time.
+
+peer.ts&amp;#39;s connect() now returns {promise, cancel} instead of a bare
+promise, needed so the panel&amp;#39;s &amp;quot;use cloud instead&amp;quot; button can abort a
+still-waiting handshake. Building this surfaced a real bug caught only
+by live-browser testing: canceling before any peer has answered closes
+an RTCPeerConnection that&amp;#39;s still in &amp;quot;new&amp;quot;/&amp;quot;checking&amp;quot; state, and Chrome
+does not reliably fire connectionstatechange for that case -- the
+promise would hang instead of rejecting. Fixed by racing a dedicated
+cancellation promise alongside the connection-state listener rather
+than depending on the event alone.
+
+Verified end-to-end with two real signed-in browser sessions against
+the actual UI and Go backend: importing a deck on device A showed the
+transfer panel, device B&amp;#39;s receive banner picked up the room and
+accepted, and real media bytes landed in B&amp;#39;s IndexedDB store (3/3
+clean runs). Separately verified the cloud-fallback button: clicking
+it immediately (before any peer joins) correctly cancels the P2P wait
+and lands the same blobs in the server&amp;#39;s content-addressed store.
+
+Closes #56
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/51ddff6ad6e34f2472b5ef9dea832d481f7c2daa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/51ddff6ad6e34f2472b5ef9dea832d481f7c2daa"/>
+    <title>
+        Merge pull request #55 from Harsh-Upadhayay/feat/p2p-transfer-client
+    </title>
+    <updated>2026-07-04T10:29:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #55 from Harsh-Upadhayay/feat/p2p-transfer-client
+
+feat(p2p): direct media transfer over WebRTC&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0209380211fa4cbbc7ce06b3da900c6c29e2513f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/0209380211fa4cbbc7ce06b3da900c6c29e2513f"/>
+    <title>
+        feat(p2p): direct media transfer over WebRTC
+    </title>
+    <updated>2026-07-04T10:28:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(p2p): direct media transfer over WebRTC
+
+Frontend transfer engine for direct device-to-device media (built on
+the signaling mailbox from #52). Three modules, no third-party WebRTC
+helper library:
+
+- signaling.ts: thin REST client over /api/p2p/rooms*.
+- peer.ts: an RTCPeerConnection wrapper. One connect() covers both the
+  offering and answering roles rather than two near-duplicate
+  functions, since the only real difference is who sends the offer vs
+  the answer -- ICE trickling, mailbox polling, and waiting for the
+  channel to open are identical either way.
+- transfer.ts: the DataChannel wire protocol -- manifest -&amp;gt; want-list
+  (diffed by the receiver against what it already has) -&amp;gt; chunked file
+  send with bufferedAmount backpressure -&amp;gt; ack -&amp;gt; done. Sender and
+  receiver are plain functions over a narrow DataChannelLike interface
+  (send/addEventListener/bufferedAmount), which is what makes them unit
+  testable against an in-memory mock channel pair instead of requiring
+  real WebRTC for every test.
+
+Not wired into any UI yet -- this is the transfer engine on its own,
+verified two ways:
+
+- Unit tests (mock channel pair): full transfer + correct bytes,
+  skipping already-had files, resolving immediately when nothing is
+  wanted, dropping a file that fails hash verification, and a
+  regression test for the bug below.
+- A real two-Chrome-tab E2E harness (bundled via esbuild, served
+  alongside the actual Go backend) driving connect()/runSender/
+  runReceiver with a genuine WebRTC handshake through the live
+  signaling routes. This caught a real bug the mock couldn&amp;#39;t: a data
+  channel can report readyState &amp;quot;open&amp;quot; a moment before the underlying
+  transport is symmetrically ready, occasionally dropping the very
+  first message sent right after open (~50% of runs in testing).
+  transfer.ts now retries the initial manifest send on an interval
+  until the receiver&amp;#39;s want-list arrives, which made 3/3 live-browser
+  runs pass cleanly after the fix (previously ~50%).
+
+Closes #54
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f4c2d4f99d8ea9acd0ff0bd430558f63d60d5080</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/f4c2d4f99d8ea9acd0ff0bd430558f63d60d5080"/>
+    <title>
+        Merge pull request #53 from Harsh-Upadhayay/feat/p2p-signaling
+    </title>
+    <updated>2026-07-04T10:09:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #53 from Harsh-Upadhayay/feat/p2p-signaling
+
+feat(p2p): signaling registry and routes for direct device transfer&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97c2c72b1dd9f339a9cf929627dd22d03215af2c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/97c2c72b1dd9f339a9cf929627dd22d03215af2c"/>
+    <title>
+        feat(p2p): signaling registry and routes for direct device transfer
+    </title>
+    <updated>2026-07-04T10:09:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(p2p): signaling registry and routes for direct device transfer
+
+WebRTC needs a way for two devices to exchange an SDP offer/answer and
+ICE candidates before they can open a direct peer connection between
+themselves. This is that handshake mailbox and nothing more — the
+server relays opaque JSON payloads and never joins the connection or
+sees the media that eventually flows over it.
+
+internal/signal: an in-memory Registry of throwaway rooms behind one
+mutex (every operation is a quick map/slice touch, so an RWMutex would
+add complexity without buying anything). Sequence numbers are assigned
+under the same lock as the append that needs them, so two concurrent
+posts can&amp;#39;t race for the same number. Append/After both refresh a
+room&amp;#39;s expiry, so a slow ICE negotiation can&amp;#39;t get reaped mid-handshake;
+an idle room is swept by a ticker-driven janitor a fixed interval after
+it goes quiet. Rooms carry a Mode (push: an importing device is
+offering media; pull: a new device is requesting it) — both directions
+share the exact same message protocol, so one Room type covers the
+import-transfer and cross-device-seeding scenarios from the P2P plan.
+
+internal/handlers/p2p.go wires five thin routes over it
+(POST/GET /api/p2p/rooms, DELETE/POST/GET on
+/api/p2p/rooms/{roomID}[/messages]), following the existing
+decode-delegate-map-status pattern and the writeUploadError-style
+sentinel-error mapping (ErrRoomNotFound -&amp;gt; 404).
+
+Nothing consumes this yet on the frontend — that&amp;#39;s the next PR. This
+is backend-only groundwork, verified with live curl round-trips
+(create, discover, post/read messages with own-echo exclusion, close,
+post-to-closed-room 404) against a running server in addition to the
+unit tests.
+
+Closes #52
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad9ee454306864690fcdc70adaf3b74eb0a3be44</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/ad9ee454306864690fcdc70adaf3b74eb0a3be44"/>
+    <title>
+        Merge pull request #51 from Harsh-Upadhayay/feat/live-sync-sse
+    </title>
+    <updated>2026-07-04T10:02:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #51 from Harsh-Upadhayay/feat/live-sync-sse
+
+feat(sync): live sync via SSE nudge, other devices update in ~1s&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1120f6680811d2be2705f5bf8287b5cb9e412aae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/1120f6680811d2be2705f5bf8287b5cb9e412aae"/>
+    <title>
+        feat(sync): live sync via SSE nudge, other devices update in ~1s
+    </title>
+    <updated>2026-07-04T10:01:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(sync): live sync via SSE nudge, other devices update in ~1s
+
+Devices found out about each other&amp;#39;s changes by polling /api/sync/pull
+every 15s (App.tsx), so a review on one device could take up to ~15-30s
+to appear on another that was already open. The merge logic in
+internal/sync/sync.go stays the single source of truth on purpose —
+porting it to the client would mean two implementations that drift, and
+would reintroduce a &amp;quot;both devices online at once&amp;quot; requirement for what
+is otherwise an async, offline-tolerant design (a device that&amp;#39;s asleep
+just catches up on its next connect).
+
+So this only shortens notification latency, not the architecture:
+device -&amp;gt; Go merge (unchanged) -&amp;gt; device, with the server nudging other
+connected devices instead of them waiting on their own clock.
+
+- internal/events: an in-memory Hub fans out content-free &amp;quot;state
+  changed&amp;quot; pokes (origin device id + timestamp) to a user&amp;#39;s connected
+  devices. Mutex-guarded subscriber map; Publish never blocks (a full
+  channel buffer just drops the poke — harmless, since the poll
+  fallback and pull-on-reconnect both cover any gap).
+- GET /api/sync/events (SSE, not WebSockets: plain HTTP, one-directional,
+  EventSource reconnects on its own). SyncPush publishes one poke per
+  successful merge, tagged with the pushing device&amp;#39;s clientId (added to
+  models.Meta) so that device can ignore its own echo.
+- Client opens an EventSource on login and pulls immediately on a poke
+  from another device. The 15s poll stays untouched as the fallback for
+  old browsers or SSE-hostile proxies. The push side needed no changes:
+  db.ts already debounces a push ~2.5s after a local mutation.
+
+Verified end-to-end with two real browser sessions against the Go
+backend: importing a deck on device A appeared on device B&amp;#39;s already-open
+Anki Decks tab in 505ms, versus up to 15s on the old poll-only path;
+confirmed durable via a fresh reload reading the same state back out of
+IndexedDB.
+
+Closes #50
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f337fc0b051144ed488468e1ec36ccdb29ead6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/3f337fc0b051144ed488468e1ec36ccdb29ead6d"/>
+    <title>
+        Merge pull request #49 from Harsh-Upadhayay/feat/client-apkg-parse
+    </title>
+    <updated>2026-07-04T05:11:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #49 from Harsh-Upadhayay/feat/client-apkg-parse
+
+feat(anki): parse .apkg in the browser, upload only missing media&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0d9c053a2769354d1662ca04f9000db5126340cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/0d9c053a2769354d1662ca04f9000db5126340cf"/>
+    <title>
+        feat(anki): parse .apkg in the browser, upload only missing media
+    </title>
+    <updated>2026-07-04T05:10:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anki): parse .apkg in the browser, upload only missing media
+
+Deck import no longer round-trips through the server. The .apkg is parsed
+in a Web Worker — @zip.js/zip.js for random-access unzip (no full-file
+buffering), sql.js (SQLite-in-WASM) for the collection, fzstd for the
+.anki21b format, and a hand-rolled ~100-line protobuf reader for the
+media manifest, mirroring the Go decoder. After parsing, one
+POST /api/media/check finds which blobs the store lacks and only those
+are PUT — a re-import of a known deck uploads nothing.
+
+This retires the biggest import pain: the chunked upload + background
+parse job + status polling existed solely because shipping hundreds of
+MB through Cloudflare and parsing server-side outlived the proxy
+timeout. That path is untouched and remains the automatic fallback for
+any client-parse failure (old browser, WASM OOM, malformed archive);
+localStorage &amp;quot;myanki:clientParse&amp;quot; can force either path.
+
+Parser parity between Go and TS is pinned by committed fixtures:
+tiny-legacy.apkg (.anki2 + JSON manifest) and tiny-modern.apkg
+(.anki21b + zstd + protobuf manifest) with golden JSON emitted by the
+Go parser (KIROKU_GEN_FIXTURES=1 regenerates). Both parsers must
+reproduce the goldens byte-for-byte; the TS suite also covers manifest
+decoding, proto field skipping, zstd passthrough and mime mapping.
+
+Memory stays flat on giant decks: media blobs stream through the hasher
+one at a time, and the upload pass re-reads only missing entries from
+the archive instead of retaining decoded blobs.
+
+Verified end-to-end in Chrome against the real Go backend: import of
+the fixture deck used the worker path (no /api/import-anki-package
+calls), landed both blobs in the content-addressed store under the
+expected hashes, and a second import produced zero PUTs.
+
+Closes #48
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/043369d366d241fea3eec5c9719afdb91bc2dd27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/043369d366d241fea3eec5c9719afdb91bc2dd27"/>
+    <title>
+        Merge pull request #47 from Harsh-Upadhayay/feat/media-upload-verify
+    </title>
+    <updated>2026-07-04T04:47:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #47 from Harsh-Upadhayay/feat/media-upload-verify
+
+feat(media): verify content hash on upload, stream to disk, add bulk check&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8680be471411ef91458e04a287869e387d79484</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Harsh-Upadhayay/kiroku/commit/e8680be471411ef91458e04a287869e387d79484"/>
+    <title>
+        feat(media): verify content hash on upload, stream to disk, add bulk …
+    </title>
+    <updated>2026-07-04T04:46:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/82091385?s=30&amp;v=4"/>
+    <author>
+      <name>Harsh-Upadhayay</name>
+      <uri>https://github.com/Harsh-Upadhayay</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(media): verify content hash on upload, stream to disk, add bulk check
+
+PUT /api/media/{hash} previously wrote whatever body arrived under whatever
+hash the URL claimed, buffering the whole blob in memory — one buggy client
+could poison the content-addressed store for every device. Now the body
+streams through sha256 into a temp file (io.MultiWriter, never fully in
+memory), is rejected on digest mismatch or oversize (413), and lands via
+atomic same-directory rename. Re-uploads of a stored hash short-circuit to
+200 without reading the body.
+
+Adds POST /api/media/check ({hashes} -&amp;gt; {missing}) so a client with
+thousands of deck media files plans uploads/downloads with one request
+instead of a HEAD per file.
+
+Media routes are now method-specific ServeMux patterns (GET also serves
+HEAD), replacing the hand-rolled method switch. Groundwork for client-side
+.apkg parsing, where the browser produces media blobs the server has never
+seen.
+
+Closes #46
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

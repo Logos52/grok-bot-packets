@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/0xzerolight/anki_miner/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/0xzerolight/anki_miner/commits/main.atom"/>
+  <title>Recent Commits to anki_miner:main</title>
+  <updated>2026-09-14T19:09:56Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9cf643aeeb167b9891ad54dedfeedec58ed8e93</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a9cf643aeeb167b9891ad54dedfeedec58ed8e93"/>
+    <title>
+        fix(packs): make the spaCy languages load in frozen builds
+    </title>
+    <updated>2026-09-14T19:09:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(packs): make the spaCy languages load in frozen builds
+
+- every spaCy language failed at import in all four frozen builds: spaCy is excluded, so stdlib modules only it imports (timeit, cProfile, pstats, zoneinfo) never entered the graph; pinned as hiddenimports
+- the _spacy pack subtracted every requirements.lock pin, but the lock also pins the [asr] extra&amp;#39;s closure, which the bundle excludes; weasel imports typer and httpx at `import spacy`
+- pin_language_pack.py now subtracts only lock pins the base install resolves to; regenerated _spacy adds typer, shellingham, annotated-doc, httpx, httpcore, h11, anyio (lock versions, nothing else moved)
+- typer/shellingham/annotated_doc join the spaCy excludes; the &amp;quot;huggingface_hub bundles typer&amp;quot; exception went stale when hf moved to the ASR pack&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b348249e0cada58e9af28c8967c930b8e264d6c4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/b348249e0cada58e9af28c8967c930b8e264d6c4"/>
+    <title>
+        chore(release): v3.3.0
+    </title>
+    <updated>2026-09-14T18:40:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): v3.3.0&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a873ae8d6a6909e1bfa2c7d2f44431f69a910420</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a873ae8d6a6909e1bfa2c7d2f44431f69a910420"/>
+    <title>
+        chore(i18n): translate the v3.3.0 strings across 11 catalogs
+    </title>
+    <updated>2026-09-14T18:39:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(i18n): translate the v3.3.0 strings across 11 catalogs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a06aaabe4be748bb3521420c1752d5256ea0c67f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a06aaabe4be748bb3521420c1752d5256ea0c67f"/>
+    <title>
+        docs(changelog): correct and complete the Unreleased block
+    </title>
+    <updated>2026-09-14T18:18:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): correct and complete the Unreleased block&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de295d9f3f818815df2ffce57d1401d420cfd513</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/de295d9f3f818815df2ffce57d1401d420cfd513"/>
+    <title>
+        docs(architecture): describe the spaCy languages and shared packs
+    </title>
+    <updated>2026-09-14T18:15:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(architecture): describe the spaCy languages and shared packs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f2e8ab3a7f380fe8d00a6dd4221d4eba9ba8abc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/1f2e8ab3a7f380fe8d00a6dd4221d4eba9ba8abc"/>
+    <title>
+        docs: list the eleven mining languages
+    </title>
+    <updated>2026-09-14T18:14:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: list the eleven mining languages&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83d4fc4f8044cdb11e7c4f2fb2d3a68489c09c6c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/83d4fc4f8044cdb11e7c4f2fb2d3a68489c09c6c"/>
+    <title>
+        fix(i18n): extract the first-visit deck dialog strings
+    </title>
+    <updated>2026-09-14T18:08:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(i18n): extract the first-visit deck dialog strings
+
+- a _t(text) wrapper hid every literal from pylupdate6, so the dialog&amp;#39;s strings (translated in 3.2.0 as the old prompt) left all catalogs and rendered English&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3625d50f6d4e842e1db9eb4c3ef16dca3143e855</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/3625d50f6d4e842e1db9eb4c3ef16dca3143e855"/>
+    <title>
+        chore(licenses): ship the de_core_news_sm MIT notice
+    </title>
+    <updated>2026-09-14T18:04:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(licenses): ship the de_core_news_sm MIT notice&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cd06807cd972b0f689ba7152053c3011952d640f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/cd06807cd972b0f689ba7152053c3011952d640f"/>
+    <title>
+        Merge feat: YouTube mining takes a pasted list of links
+    </title>
+    <updated>2026-09-14T17:54:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge feat: YouTube mining takes a pasted list of links&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/57a354df109edb2ba84c37e496088de058da4e78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/57a354df109edb2ba84c37e496088de058da4e78"/>
+    <title>
+        chore(i18n): translate the YouTube link list strings
+    </title>
+    <updated>2026-09-14T17:47:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(i18n): translate the YouTube link list strings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/933f4d89d6410e06867350bbb643cd126c16eb87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/933f4d89d6410e06867350bbb643cd126c16eb87"/>
+    <title>
+        docs(changelog): record the YouTube link list
+    </title>
+    <updated>2026-09-14T17:44:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): record the YouTube link list&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a6f6b1d1829a2f6aecd8504521cdc250dd15d664</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a6f6b1d1829a2f6aecd8504521cdc250dd15d664"/>
+    <title>
+        feat(youtube): mine a pasted list of links instead of adding one at a…
+    </title>
+    <updated>2026-09-14T17:44:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(youtube): mine a pasted list of links instead of adding one at a time&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1b5ea1c2b84ccb02e3d0e2fad0a56874beea05fb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/1b5ea1c2b84ccb02e3d0e2fad0a56874beea05fb"/>
+    <title>
+        feat(youtube): batch URL add with dedup, playlist backlog and probe cap
+    </title>
+    <updated>2026-09-14T17:35:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(youtube): batch URL add with dedup, playlist backlog and probe cap&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca8aff49b4a09582e80c2752bd3432ba0f42d5da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/ca8aff49b4a09582e80c2752bd3432ba0f42d5da"/>
+    <title>
+        Merge fix: curator Play starts the line from its beginning
+    </title>
+    <updated>2026-09-13T20:17:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge fix: curator Play starts the line from its beginning&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/844fde64df197feec91d9d9e62eb1b28cee81273</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/844fde64df197feec91d9d9e62eb1b28cee81273"/>
+    <title>
+        docs(changelog): record the curator Play start fix
+    </title>
+    <updated>2026-09-13T20:10:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): record the curator Play start fix&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8c9bea998926ced7820f372b5351f5c44676dd0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/b8c9bea998926ced7820f372b5351f5c44676dd0"/>
+    <title>
+        fix(curator): play a parked preview from the line&#39;s start
+    </title>
+    <updated>2026-09-13T20:10:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(curator): play a parked preview from the line&amp;#39;s start
+
+- 1f7f0f71 parks the preview on the screenshot frame (line start +
+  screenshot_offset, 1.0 s by default); Play unpaused there, so the
+  first second of every line went unheard
+- SubtitlePlayerWidget.set_play_from: next Play seeks to the origin;
+  a seek, frame step or new source voids it, Play consumes it&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a3202088c7884303792bd4e3d3940bb818c1d861</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/a3202088c7884303792bd4e3d3940bb818c1d861"/>
+    <title>
+        Merge feat/mining-lang-nl: Dutch mining
+    </title>
+    <updated>2026-09-13T19:37:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge feat/mining-lang-nl: Dutch mining&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee42d74adc8ae238b00be3cb347f3c2d573016da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/ee42d74adc8ae238b00be3cb347f3c2d573016da"/>
+    <title>
+        feat(search): find Dutch in settings search by its own name
+    </title>
+    <updated>2026-09-13T19:28:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(search): find Dutch in settings search by its own name&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/383a6ae44bb8097694ae175aa5679009f4fea144</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/383a6ae44bb8097694ae175aa5679009f4fea144"/>
+    <title>
+        feat(nl): find Dutch in settings search and record the stage
+    </title>
+    <updated>2026-09-13T19:28:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(nl): find Dutch in settings search and record the stage&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b62aff55932d409b4f28a636b73ebeb71f4505f8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/0xzerolight/anki_miner/commit/b62aff55932d409b4f28a636b73ebeb71f4505f8"/>
+    <title>
+        test(e2e): pin Dutch known-word contamination and the fold
+    </title>
+    <updated>2026-09-13T19:28:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/205416739?s=30&amp;v=4"/>
+    <author>
+      <name>0xzerolight</name>
+      <uri>https://github.com/0xzerolight</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(e2e): pin Dutch known-word contamination and the fold&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

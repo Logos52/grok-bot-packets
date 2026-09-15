@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/RobHelgeson/japanese-stories/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/RobHelgeson/japanese-stories/commits/main.atom"/>
+  <title>Recent Commits to japanese-stories:main</title>
+  <updated>2026-09-14T23:36:34Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ce952f37d7c6f0b776b07e576f9273a207ce7ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/5ce952f37d7c6f0b776b07e576f9273a207ce7ca"/>
+    <title>
+        Merge story ratings and feedback into the reader ⭐
+    </title>
+    <updated>2026-09-14T23:36:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge story ratings and feedback into the reader ⭐&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5af90cca3380b983064e154f3a637d7e5993a61e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/5af90cca3380b983064e154f3a637d7e5993a61e"/>
+    <title>
+        Rebuild docs/ for the review fixes 📚
+    </title>
+    <updated>2026-09-14T23:33:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rebuild docs/ for the review fixes 📚&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3f246726460834d7a0f4bae762242be9889d228</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/c3f246726460834d7a0f4bae762242be9889d228"/>
+    <title>
+        Fix what the review found, all three in the note 📝
+    </title>
+    <updated>2026-09-14T23:33:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix what the review found, all three in the note 📝
+
+Two of them lose typing, and both were in the seam between a box that is
+being typed into and a sync that is not waiting for it.
+
+push() and corePull() read the local store before opening their GET and
+merged against that snapshot, so anything typed while the round trip was
+open was written straight back out — one keystroke at a time, with the
+loss PATCHed to the gist behind it. They read after the round trip now,
+which is also right for a page turned mid-pull.
+
+paintR() skips a focused box so a pull cannot take a half-typed sentence
+away, but nothing repainted it afterwards: a note merged in while the box
+sat focused and empty was overwritten by the next keystroke. focusout
+repaints, which is what the comment already claimed.
+
+The third is a test rather than the product. 読み込み on a hidden box only
+opens and clears it, so the two-click idiom parsed an empty string and
+import-merges-rather-than-replaces passed without ever importing. The box
+is revealed explicitly now, in the manage suite and in the review suite
+that copied the idiom.
+
+Both new assertions fail against the pre-fix engine and pass after.
+156 assertions pass.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c6d255ee051d3d8f97bb2863dba83e1f1fb49ac4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/c6d255ee051d3d8f97bb2863dba83e1f1fb49ac4"/>
+    <title>
+        Rebuild docs/ for the ratings 📚
+    </title>
+    <updated>2026-09-14T23:05:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rebuild docs/ for the ratings 📚&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e8df0c421edbd10110c0d2354368763d83231c02</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/e8df0c421edbd10110c0d2354368763d83231c02"/>
+    <title>
+        Let the reader say what a story was worth ⭐
+    </title>
+    <updated>2026-09-14T23:05:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let the reader say what a story was worth ⭐
+
+Five stars and a 感想 box on every row of the contents page, neither
+behind 編集 — a rating is given on the way out of a story, not sat down
+to. Tapping the lit star takes it back off, which is the only undo there
+is. reviews.py is the reading end: it joins the ratings to the level,
+register and length each was a verdict on and prints the notes in full,
+and AUTHORING.md now runs it at Gate 1.
+
+Reviews are a second map in the same gist rather than fields on the
+progress record. A progress record is replaced whole by whichever side
+carries the later timestamp and every page turn bumps it, so a rating
+stored there would be erased the next time another device turned a page
+in the same story.
+
+Also fixes a latent race the new suite surfaced: two edits inside one
+millisecond carried the same `at`, the merge gives a tie to the remote,
+and the second edit then lost to the copy of the first its own push had
+already put in the gist — a stepper tap that silently undid itself.
+Edit stamps on the contents page are now monotonic; the merge rule still
+gives the remote a genuine tie so two devices converge. Frozen-clock
+assertion, which fails against the old code with page 25 for 24.
+
+152 assertions pass, 728 with --matrix.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85ee57115dd31d51efe849d5ef54a6494c6313d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/85ee57115dd31d51efe849d5ef54a6494c6313d7"/>
+    <title>
+        Sync reading progress to a secret gist, and make it correctable
+    </title>
+    <updated>2026-09-13T21:30:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sync reading progress to a secret gist, and make it correctable
+
+localStorage loses reading progress three ways, and only one of them is
+&amp;quot;two devices disagree&amp;quot;: WebKit deletes all script-writable storage after
+seven days of browser use without a visit, and a Home Screen web app
+starts with a storage container of its own. A secret gist answers all
+three, with no server, no open port and no account that wasn&amp;#39;t already
+open.
+
+New scripts/sync.js is the store, the merge rule and a GitHub gist
+client, shared by every reader and by the contents page. The reader
+pulls on open and pushes on the existing Store.defer flush, so a
+reading session costs one or two gist revisions rather than forty. A
+device connects by pasting a token and nothing else -- the gist is found
+by filename, so no gist id is ever carried between devices.
+
+The contents page gains an edit mode: mark a story read or unread, move
+the resume page, clear one story, export and import the whole record as
+JSON, and a link to the gist itself. Import merges by the same rule the
+sync does, so pasting a stale export cannot pull a story backwards.
+
+Two rules the manage UI forced, both about what can travel:
+
+- done set by reading is sticky and OR&amp;#39;d, but an OR cannot carry an
+  un-mark -- it restores it from whichever device was not told. A hand
+  correction writes doneAt, and the later doneAt then decides outright
+  in both directions.
+- A deletion cannot travel either, since an absent slug merges back to
+  whatever the gist still holds. Clearing writes a dated, page-less
+  tombstone instead.
+
+Two permanent-failure bugs found while writing the tests: connect()
+awaited the queued pull() it was itself holding, deadlocking the one
+path every new device takes; and a persisted ETag with a cold in-memory
+cache earned a 304 meaning &amp;quot;unchanged from nothing&amp;quot;, which the ETag then
+survived, so the device would never have synced again.
+
+Also adds a web manifest and icons. Installing to the Home Screen is
+what actually stops the seven-day purge, because a standalone web app
+has its own counter of days of use -- but it starts empty, so connect
+the token first or the install reads as data loss.
+
+docs/versions/ stays frozen and is now also sync-free: sync.js is
+written only by write_engine, never by the inline render() path, so an
+archived draft never pushes a slug only one device has a story for.
+
+698 harness assertions pass, matrix included, across new sync and manage
+suites driven by a fake gist API. Seven deliberate breaks of the new
+code are each caught by a named assertion. All seven data/&amp;lt;slug&amp;gt;.js are
+byte-identical and docs/versions/ is untouched.
+
+Not yet exercised against a live token. 📖&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/37ca0075be3ff9d08019e4bae42070864afa3298</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/37ca0075be3ff9d08019e4bae42070864afa3298"/>
+    <title>
+        Add 行かなかった人の地図, a level 5 folktale quest
+    </title>
+    <updated>2026-09-13T20:09:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add 行かなかった人の地図, a level 5 folktale quest
+
+The longest story in the corpus at 48 pages, and the first with a
+supernatural element. A dying man asks his granddaughter to walk the
+road he spent fifty years drawing and never once travelled. Every
+landmark is wrong, because the map records his father&amp;#39;s journey
+rather than the land, and a told journey does not update.
+
+grammar_focus is にとって, chosen because the construction and the
+theme are the same thing: one object meaning something different to
+each person who holds it. It lands on seven separate pages.
+
+folktale register carries the magic for free. The 主 on the 峠 costs
+nothing from the new word budget, since 主, 姿, 影, 声, 問う and 通す
+are all already known.
+
+Misses its page brief: 48 against 40, +20 percent. Recorded in the
+corpus entry rather than corrected. The brief was the thing that was
+wrong, picked off the requested range before the beat sheet existed.
+
+All other targets met. repeated_share 72.7 percent is the highest in
+the corpus; all 8 new words clear the 8 occurrence minimum.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e11d544512c16f00510bfbf27e3d9194418bcc0b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/e11d544512c16f00510bfbf27e3d9194418bcc0b"/>
+    <title>
+        Fix what the review found, starting with the one that mattered 🔍
+    </title>
+    <updated>2026-09-13T19:00:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix what the review found, starting with the one that mattered 🔍
+
+.w:hover was beating .w.lit. Both are (0,2,0) and the hover rule is the
+later one, so the light rendered at the hover tint — and the pointer is
+still on the word at the moment it is clicked, which meant a desktop
+single click produced no visible change at all until the cursor left.
+The light is the only feedback that gesture has. :not(.lit) on the hover
+rule, with a comment saying why it is load-bearing.
+
+lastAt = 0 was not a safe &amp;quot;sequence restart&amp;quot; sentinel. performance.now()
+is milliseconds since page load, so for the first 300ms of a session it
+still reads as &amp;quot;just now&amp;quot; and a third fast tap would re-enter the double
+branch instead of toggling off. Clear the node instead.
+
+Two harness rows could not fail, which is the worse kind of green:
+
+  light-drops-when-its-node-is-recycled asserted &amp;quot;#track .lit&amp;quot; finds
+  nothing after removing the lit node — but a detached node is not inside
+  #track whether the observer ran or not. Assert on the clone itself.
+
+  a-tap-in-the-reserve-summons-the-bars ran straight after reset(), which
+  goes through Track.goTo, which calls Chrome.show() unconditionally. The
+  bars were already up before the tap. Hide them first and assert the
+  precondition alongside the result.
+
+Both were mutation-tested: with the observer&amp;#39;s light(null) and Track&amp;#39;s
+Chrome.show() each disabled in turn, both rows now fail.
+
+And the reserve strip is documented. It is the only way left to summon
+the bars now that every tap on the text means something, and neither the
+key legend nor the README mentioned it. README also claimed Tab reaches
+every sentence; it reaches translated ones, because the others have
+nothing to open.
+
+665 assertions green with --matrix.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6c3795b8795f39277c74b7453e4fd9a79dbfe830</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/6c3795b8795f39277c74b7453e4fd9a79dbfe830"/>
+    <title>
+        Let the tap say what the buttons used to 👆
+    </title>
+    <updated>2026-09-13T18:43:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let the tap say what the buttons used to 👆
+
+One tap on a kanji word lights its reading in place. Two inside 300ms open
+the sheet with the gloss. A tap on the kana and punctuation between words
+does the same for the whole sentence, and its double tap gives the English.
+
+That is the whole of what the bar&amp;#39;s three gate buttons were for, so they
+go: the reading and the meaning stay one gesture apart rather than one
+button apart, and the page finally does something before anything is armed.
+
+build.py only wraps a kanji-bearing token in a .w, so particles, kana words
+and punctuation were already bare text inside the .s. Non-word is about half
+of every line, which is why the sentence gesture needed no markup at all.
+
+The detector keys on the resolved .w/.s inside Sheet rather than on the raw
+pointerdown target in Track: a word&amp;#39;s first tap can land on its ruby and the
+second on the kanji beside it, and comparing d.down would miss about half of
+all real double taps. Node identity also makes a recycled cell read as the
+fresh first tap it is. The first tap is not deferred, because lighting is
+additive and moves no layout, and the window is tested before the unlight
+branch so a fast repeat can never flicker off and on.
+
+lit and the panel come apart: the light outlives the sheet, which is what
+lets one tap mean &amp;quot;reading&amp;quot; on its own. Two fields and one invariant replace
+the lit/subject/sticky triad, enforced in light() alone.
+
+Gone with the gates: the trans and meaning prefs, their settings switches,
+the t/m keys, the 意 hint, the desktop hover preview, and the rule that kept
+the bars up while a gate was armed. Sheet reads no prefs now. Full-page
+ふりがな survives, in 設 and on f. Tab reaches every word and sentence and
+Enter opens the sheet, which is the keyboard&amp;#39;s double tap.
+
+Two things to judge on the device. The bars are harder to summon now that
+every tap on text is consumed: what falls through is the cell&amp;#39;s chrome
+reserves, the 16px gutters and the unfilled part of the page box, which is
+comfortable in 横書き and about 120-150px of an 844px phone in 縦書き
+flowing. And a fat-fingered miss now lights a sentence rather than doing
+nothing; if that reads as too eager the fix is a nearestWord() tried before
+the sentence.
+
+665 assertions green with --matrix, four of them new.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85573bbfc64bd6fd1136ccc5cc072ded89c2ba14</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/85573bbfc64bd6fd1136ccc5cc072ded89c2ba14"/>
+    <title>
+        Rebuild docs/ into the linked form 📚
+    </title>
+    <updated>2026-09-13T17:45:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rebuild docs/ into the linked form 📚
+
+The first build through render_linked. Six shells at ~5KB apiece where
+there were six documents of 200-280KB, one reader.css and one reader.js,
+and six data/&amp;lt;slug&amp;gt;.js carrying what used to be inlined six times over.
+18,500 lines out of the published tree.
+
+The corpus did not move. Checked key by key against HEAD~2&amp;#39;s inline DATA
+on all six: pages, sentences, tokens and every 苦手 / 新出 / unknown
+marking identical. One field differs, in all six and by the same amount —
+knownVocab 6502 → 6504, two cards matured past the 21-day interval since
+the last build. vocab.py reads ankimorphs.db live, so that number moves
+on its own schedule and has no mtime anywhere for staleness to notice.
+
+docs/versions/ is untouched, which is now the steady state rather than an
+omission: the five archived drafts keep the engine they published with.
+
+661 assertions pass against these readers, with --matrix.
+
+Still unverified on real iOS Safari, which is the target. Two things in
+particular want eyes on the phone rather than the emulator, because
+headless Chrome has no safe-area insets and so shows neither:
+
+- The header saving only pays where there is a notch to pay it. Screen
+  counts are unchanged at an emulated 390x844 and should drop on the
+  device, where the reclaimed 22px crosses a character boundary.
+- Centring short screens shifts the text block by up to half a column
+  between turns, and most screens are partial by design.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb1f0a60c9a22fbb35b294022537a411a9ebcd9d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/eb1f0a60c9a22fbb35b294022537a411a9ebcd9d"/>
+    <title>
+        Give the story back the space the chrome was borrowing 📖
+    </title>
+    <updated>2026-09-13T17:45:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give the story back the space the chrome was borrowing 📖
+
+Ten fixes off the first sustained read on the phone, in 縦書き 改行-off,
+which is the shipped default and the configuration none of this had been
+looked at in.
+
+The reported &amp;quot;space before every new sentence&amp;quot; is the 全角 paragraph
+indent, not a per-sentence gap. blockPlan groups narration runs correctly
+— page 1 of 迷子の手紙 is six sentences in three &amp;lt;p&amp;gt; — so the indent was
+firing twice on that screen, on the two narration paragraph openings, and
+reading as a defect because a column that starts a character low next to
+one that does not is what the eye actually sees. It is redundant in 縦書き
+anyway: a &amp;lt;p&amp;gt; is a block, so a paragraph already opens a new column and
+the column break IS the separation. That is the argument the stylesheet
+already made for 改行-on. Scoped to 横書き, where it is the only marker.
+
+The bar scrims were veiling live text. Both gradients were drawn at
+top: 100% / bottom: 100% — outside the bar and over the page box — while
+.cell pads by --top-h and --bar-h and never by --scrim. Roughly 20px off
+the head and foot of every column, permanently, whenever the chrome was
+up. Removed. If an edge is ever wanted back it has to be paid for out of
+the page box rather than borrowed from it.
+
+横書き leading 2.6 → 2. The 1.94em floor derived for 縦書き is geometry,
+not a fact about vertical text: rotate the page and ruby is still 0.44em
+on one side of the line and 傍点 0.5em on the other. 2.6 was spending an
+extra line of leading every four lines to buy nothing.
+
+目次 moves into the button bar, so the top bar carries no tap target and
+is sized to its own text: --top-h 114px → 92px on a phone with a notch,
+which is one more character per column. Two things that risked, both now
+asserted, both found by measuring rather than by reading the diff:
+
+- Seven 44px targets overflowed a 320pt bar by 10px, and the symptom is
+  次 half off the screen edge. The elastic 目次 padding and narrower bar
+  gutters fit it. An eighth control would look fine in the source.
+- The title sat 4.8px left of centre. Its start padding has to carry the
+  flex gap as well as the count&amp;#39;s width; the gap sits between title and
+  count and nowhere else.
+
+Tapping an open word closes it, with no timing window, which is the
+double-tap that was asked for and more forgiving than one on a phone —
+a second tap thirty seconds later works too. A dblclick listener would
+have been fighting the track, which owns pointer capture and suppresses
+the synthesised click. Gated on sticky, or the first real click on a
+word the mouse had merely passed over would close a sheet nobody opened.
+
+Chrome ships hidden. Stamped in init rather than by calling hide(), whose
+armed-gate refusal is right for an auto-hide mid-read and wrong at boot,
+where a gate left armed in a previous session would put the bars up.
+
+Short screens centre in the box (align-content). Extent is capped so a
+median authored page fills about 70%, so most screens are partial and one
+that is very short was hanging off the block-start edge — in vertical-rl
+that is the right, and a one-sentence screen read as right-aligned
+against empty paper. The cost is a shift of up to half a column between
+turns. .page.tight still overrides back to start.
+
+The disclosure sheet drops into the bar&amp;#39;s space when the bars fade,
+instead of floating a bar&amp;#39;s height above empty paper. The page box
+reserves --bar-h either way, so it covers less text, never more.
+
+Reflow on chrome-hide was considered and rejected. The page box being one
+constant rectangle is what makes the fade safe; a box that grew on hide
+would repaginate mid-read, which is the failure PageBox.suspend() already
+exists to prevent during a drag — and chrome hides on a drag.
+
+661 assertions pass, --matrix included.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7abd0bc6dfd3cf3c915a8e6ab75ae5f86171a49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/a7abd0bc6dfd3cf3c915a8e6ab75ae5f86171a49"/>
+    <title>
+        Link the engine instead of inlining it into every reader 🔗
+    </title>
+    <updated>2026-09-13T17:44:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Link the engine instead of inlining it into every reader 🔗
+
+A one-line CSS change rewrote 2.5MB and needed Ichiran and a live Anki to
+do it. rebuild.py globbed reader.* into the staleness set for every story,
+so touching reader.css marked all eleven readers stale, and each rebuild
+re-segmented the whole story to produce a DATA blob identical to the one
+already on disk. Self-containment was the right shape while a story was a
+file to mail; it stopped being worth that once the site was published.
+
+docs/ becomes one reader.css and one reader.js beside a ~5KB shell per
+story and its own data/&amp;lt;slug&amp;gt;.js. Classic &amp;lt;link&amp;gt; and &amp;lt;script src&amp;gt; only —
+fetch() and type=&amp;quot;module&amp;quot; are both blocked on file://, and classic scripts
+run in document order, which is what guarantees window.STORY exists before
+the engine reads it. A story still opens off the filesystem; it needs its
+siblings now, so it is a folder to copy rather than a file to mail.
+
+Three outputs with three dependency sets, which is the whole point:
+
+  data/&amp;lt;slug&amp;gt;.js   the story .txt, the afterword, the .py engine
+  &amp;lt;slug&amp;gt;.html      reader.html, build.py
+  reader.css/.js   reader.css, reader.js, build.py
+
+Only the first needs Ichiran and Anki. Editing the reader now rewrites two
+files in about a second with Anki closed, and re-segments nothing.
+
+render_split was already most of this and was labelled &amp;quot;not a shipping
+format&amp;quot;; it is now the same code path the live tree uses, with flat
+filenames for a one-story scratch directory. The __STORY_DATA__ →
+window.STORY substitution lives once, in build.write_engine, which
+rebuild.py imports rather than re-implementing — 01ffd51&amp;#39;s lesson.
+
+docs/versions/ is frozen rather than merely self-contained. Archived
+drafts leave the default rebuild loop entirely and keep the engine they
+published with, because an archive that re-renders with today&amp;#39;s code
+preserves the story and not the reading it shipped with. --versions
+rebuilds them anyway. This is a change in what the archive means: an
+engine fix will not reach an old draft. That is the intent and the cost.
+
+stats.read() now answers from either form, because both exist: data_of
+tries the inline blob first and falls back to the sidecar, so index.py and
+the harness do not have to know which shape a given reader took.
+
+Checked before the rebuild that follows:
+
+- A shell-only regeneration (touch reader.html) reproduces the full
+  build byte for byte, with no segmentation pass.
+- An engine-only change (touch reader.css) reports every story up to
+  date and writes only the two assets.
+- check_contracts now asserts the script order in the linked shell. It
+  is invisible in the markup and would fail every story at boot with
+  DATA undefined; the fixtures are rendered inline, so nothing else here
+  would have caught it.
+
+docs/ is unchanged in this commit; rebuild.py has not run.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/adf53b6f8c253fa87c44d7064fd9076cbc9e2e0f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/adf53b6f8c253fa87c44d7064fd9076cbc9e2e0f"/>
+    <title>
+        Rebuild the readers so the review fixes actually ship 📚
+    </title>
+    <updated>2026-09-13T02:53:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rebuild the readers so the review fixes actually ship 📚
+
+Nothing in 4aabd70 reached Pages: docs/ holds the engine inlined, so an
+engine change is not published until rebuild.py writes it. All eleven
+readers and the contents page, rebuilt against the same corpus.
+
+DATA changed by exactly one field, checked key by key against HEAD on all
+eleven: the new toc, index.html for the six current stories and
+../index.html for the five archived versions. Nothing else moved — no
+token&amp;#39;s weak, new or unknown marking, no page or sentence count, 既知語彙
+held at 6502. The rest of each file&amp;#39;s diff is the inlined engine.
+
+Verified after the build rather than before it:
+
+- 657 harness assertions pass against these readers, with --matrix.
+- stats.py --strict: all six stories report targets met.
+- 目次 resolves from both depths and lands on the contents page —
+  index.html from docs/ and ../index.html from docs/versions/, followed
+  in a real browser rather than read off the attribute. This is the first
+  build where that link comes from DATA instead of a dot in the slug, so
+  it is also the first where it could have been wrong.
+- The contents page&amp;#39;s own diff is the one line: 読了 now reads rec.done
+  rather than re-deriving page &amp;gt;= total.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4aabd70704bee3adeb423442aaa51b73eb409488</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/4aabd70704bee3adeb423442aaa51b73eb409488"/>
+    <title>
+        Merge branch &#39;review-fixes&#39;
+    </title>
+    <updated>2026-09-13T02:45:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;review-fixes&amp;#39;
+
+Twelve findings from a code review of PR #1, fixed. Three were reader-visible: the contents page painted 読了 a screen early on a split last page, an unguarded matchMedia listener would blank the reader on Safari before 14, and the drag offset jumped 16px when a swipe was dragged back through its own start point. Two were about what the harness proves rather than what the reader does. 657 assertions pass.
+
+docs/ is unchanged; rebuild.py has not run, so none of this is live on Pages yet.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01ffd51bb7940c1ddb6cc893287b5329f660e051</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/01ffd51bb7940c1ddb6cc893287b5329f660e051"/>
+    <title>
+        Make the harness assert the build rather than imitate it 🔬
+    </title>
+    <updated>2026-09-13T02:44:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make the harness assert the build rather than imitate it 🔬
+
+The module docstring says the page under test is byte-for-byte what
+build.py emits. It was not: build() re-implemented render()&amp;#39;s three
+substitutions and stats.ROW&amp;#39;s regex rather than calling them, so a fourth
+placeholder added to reader.html would ship in every reader and in none
+of these fixtures, and the suite would quietly measure a page build.py
+never produces. That is the exact failure the harness was written to
+prevent, reintroduced one level up.
+
+scripts/ was already importable — SRC is computed on line 45 — so the
+contract assertions stay (a marker that stopped matching exactly once is
+still a hard error, checked once per run in check_contracts) and
+build.render() does the substituting. The local function is now
+build_fixture, since `build` is the module.
+
+Two things the suite could not have caught, because of how it ended:
+
+tapAt(bareSpot(s)) passed a possibly-null point. The rescan loop above it
+can finish without assigning, leaving `s` on a node the track has already
+recycled — Prefs.setAll between the two re-splits every screen — and
+bareSpot then returns null. tapAt(null) dereferenced pt.x, the promise
+rejected, br.eval raised, and main()&amp;#39;s finally closed the browser with
+suite_marks, suite_persistence and suite_degradation never run. Every
+other fixture gap in this file returns a failed row; these three now do
+too, and the sentence is re-resolved against the live screen at each tap
+instead of carried across a re-split.
+
+apply_prefs wrote three fields. Prefs persist across navigations on one
+origin, so suite_persistence&amp;#39;s dark theme, left binding, 36px and three
+armed gates leaked forward into everything after it — and
+suite_degradation runs with storage throwing, so it could not overwrite
+them either. With --matrix that meant all 288 cells ran at binding left
+with 訳 and 意 armed, while the cell label claimed only
+viewport/mode/density/size. Chrome.hide() refuses to hide with a gate
+armed, so that path was dead for the whole matrix, and the right-bound
+turn direction — the 縦書き default, half the matrix — was never
+exercised at any point in the suite&amp;#39;s life. Every field is written now.
+
+Also here:
+
+- A new gesture case, drag-is-continuous-through-its-origin, which
+  reports jump: 14 against the pre-fix engine and under 1px after it.
+- The fixture directory is removed on the way out. It was created at
+  import and never cleaned, unlike Chrome&amp;#39;s profile, leaving ~1.7MB in
+  /var/folders per run and one run per --table or --matrix invocation
+  during a tuning session.
+- serve() takes directory= rather than issuing a bare os.chdir, which
+  moved the whole interpreter&amp;#39;s working directory — and build.py and
+  stats.py are imported here and resolve paths of their own.
+
+657 passed, 0 failed, with --matrix.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f1f423d13af5032665950b59641d6a117adf8b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/3f1f423d13af5032665950b59641d6a117adf8b6"/>
+    <title>
+        Let each fact be stated by whatever already knows it 🔑
+    </title>
+    <updated>2026-09-13T02:44:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let each fact be stated by whatever already knows it 🔑
+
+Three things the reader was re-deriving, each from something that only
+looked like evidence.
+
+読了. index.py decided a story was finished with `page &amp;gt;= total`, while
+the reader&amp;#39;s own rule also requires the last authored page&amp;#39;s LAST screen
+(reader.js Progress.mark). On shuden that page splits in two at 28px on a
+390x844 phone, so turning to screen 1 of page 23 painted the bar to 100%,
+printed 読了 and counted it in the 読了 N/M header with a screen still to
+go. The record already carried `done`; the contents page ignored it and
+re-derived the verdict from a convention written down in two places. It
+now reads the field, and Progress is the only thing that decides it.
+
+The 目次 link. A version build was identified by a dot in DATA.slug.
+build.py knows the story stem and rebuild.py chooses the output depth, so
+both knew this was a nested build and the reader had to infer it from a
+filename convention — which broke on both sides: a story slug carrying a
+dot would link out of docs/ entirely, and renaming the archive form from
+slug.v1 to slug-v1 would point every version build at a sibling
+index.html that does not exist. rebuild.py now passes --toc and build.py
+writes it into DATA.
+
+A full quota. Store.writeJSON treated every write exception as &amp;quot;this
+store is permanently unavailable&amp;quot;, which is right for Safari private
+browsing and wrong for QuotaExceededError. Twelve readers share one
+origin and one progress map that is never pruned, so one story filling it
+would have stopped the type size, the writing mode and the theme
+persisting as well, silently, for the rest of the session. Firefox names
+it NS_ERROR_DOM_QUOTA_REACHED, so the name is matched rather than the
+code.
+
+Also here, all in reader.js:
+
+- `reduced.addEventListener` ran unguarded at module-evaluation time
+  inside the Track IIFE. Chrome.bind guards the identical call for
+  prefers-color-scheme; on an engine whose MediaQueryList predates
+  addEventListener this one throws before the bootstrap runs at all, and
+  the symptom is a blank page on a target the README names by hand
+  (mailed, or dropped onto a tablet).
+- The live drag offset was discontinuous at dx === 0. `dx - Math.sign(dx)
+  * TAP_SLOP` is only correct on the half-line the gesture started on, so
+  dragging a live swipe back through its own start point moved the page
+  16px in one frame and flipped which neighbour was being revealed. The
+  slop is now fixed at the moment the gesture goes live.
+- Every interrupted snap leaked its transitionend listener. settle()
+  clears the transition before resetting the transform, which cancels it
+  — and cancellation fires transitioncancel, so the listener never ran
+  and never removed itself. A held arrow key registered one per key
+  repeat and dropped them all on the next snap that actually landed.
+- Ten exported members and two returned fields no call site ever read,
+  shipped inline in all twelve HTML files: Progress.clear, Prefs.reset,
+  Prefs.V/FONT_MIN/FONT_MAX, Store.disable, Track.invalidate/paint/busy/
+  setMouseDrag, PageBox.clearMeasure, Paginator.screenCounts, and
+  Progress.open&amp;#39;s `restored` and `done`.
+
+And four comments citing line numbers that had moved or a file that is
+not in the repository: README:21 and AUTHORING.md:109 in reader.css,
+plan:67 in reader.js and plan:78 in harness.py. Cited by section and by
+assertion name instead.
+
+Verified: 657 harness assertions pass. The 読了 change is checked in
+headless Chrome against six seeded progress records, two of which fail
+against the previous index.py; the drag change has a new harness case
+that reports jump: 14 — exactly 2 * TAP_SLOP — against the previous
+engine.
+
+Nothing here reaches docs/ until rebuild.py runs.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e9ecceccda724259497d801090b18f19f059b1dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/e9ecceccda724259497d801090b18f19f059b1dd"/>
+    <title>
+        Merge pull request #1 from RobHelgeson/reader-rebuild
+    </title>
+    <updated>2026-09-13T00:18:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1 from RobHelgeson/reader-rebuild
+
+Rebuild the reader for the phone: pagination, 縦書き, one disclosure sheet&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f7b5270c1e54017cedf473a405b8243e7ef531b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/7f7b5270c1e54017cedf473a405b8243e7ef531b"/>
+    <title>
+        Correct the documentation the rewrite falsified 📝
+    </title>
+    <updated>2026-09-12T23:59:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Correct the documentation the rewrite falsified 📝
+
+README.md and the instructions index.py prints on the contents page both
+taught hover-for-the-reading, click-to-pin, 訳-reveals-every-translation and
+click-a-line-for-one-translation. All four are now false, and the contents
+page is where every reader lands.
+
+Rewritten for what the reader actually does: tap a word for its reading in
+the sheet, 意 adds the meaning, 訳 arms translations and then a sentence tap
+shows its own, ふ reveals every reading, swipe or the arrows turn pages, 設
+holds the settings. The two disclosure gates are described as separate,
+because that separation is the point of the tool.
+
+Also corrects the marking description — 傍点 replaced the underlines — and
+notes that text is vertical by default, that a page never scrolls, and that
+preferences and reading position persist.
+
+And the footer, which has listed five stories since 煙突の煙 was added.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2a9e1db433bc25abcb954bab2ff9d0a2222fc45e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/2a9e1db433bc25abcb954bab2ff9d0a2222fc45e"/>
+    <title>
+        Show per-story progress on the contents page 📊
+    </title>
+    <updated>2026-09-12T23:58:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show per-story progress on the contents page 📊
+
+The readers now record where you stopped. This surfaces it.
+
+Progress cannot be baked in at build time — it lives in the reader&amp;#39;s
+localStorage on the device, not in the repo. So index.py emits a script that
+reads japanese-stories:progress at runtime and decorates each row. Pages
+serves the contents page and every reader from one origin, so the store the
+readers write is the store this reads.
+
+Each row carries data-slug and data-pages, and card() now computes the slug
+once and hands it to version_links(), so a row&amp;#39;s identity and its version
+hrefs cannot disagree.
+
+The page index stored is the AUTHORED one, never a screen index, so progress
+survives a change of type size, density or device — which is the reason the
+authored page had to stay the atom.
+
+Defensive by default: the whole thing is wrapped, since a mailed or file://
+copy throws on the accessor itself. A record that is not an object is skipped
+rather than trusted, so a version field added at the top level later cannot be
+read as a slug. rec.of is ignored in favour of the row&amp;#39;s own count, because it
+is only what that device believed last time. A page past the end clamps.
+
+Verified in headless Chrome against seeded storage: a mid-story record renders
+its bar and count, a done record and an over-the-end record both read 読了, a
+story with no record stays hidden, a string-valued record and an unknown slug
+are both ignored, and the header tallies 読了 2/6. The .prog[hidden] rule is
+mandatory and asserted — display:flex would otherwise beat the UA rule and
+show an empty bar on every unread story.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/069b3996a58aaaf913579caf9cae7c6ec0945ff7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/RobHelgeson/japanese-stories/commit/069b3996a58aaaf913579caf9cae7c6ec0945ff7"/>
+    <title>
+        Add the verification harness 🔬
+    </title>
+    <updated>2026-09-12T23:55:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30380092?s=30&amp;v=4"/>
+    <author>
+      <name>RobHelgeson</name>
+      <uri>https://github.com/RobHelgeson</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add the verification harness 🔬
+
+656 assertions over four mode x density cells, three viewports and
+22/28/36/40px, plus behaviour, 傍点 geometry, persistence and degradation
+suites. Drives Chrome over CDP with a hand-rolled websocket, since nothing
+is installable here.
+
+The harness this replaces was circular and that is why it shipped three
+blockers. It asked PageBox.overflows() on every live screen — the same
+predicate split() used to choose the boundary — so &amp;quot;0 overflowing&amp;quot; across
+162 pages was true by construction and could not fail. It also injected a
+style block pinning the track to an explicit box, replacing the layout root
+it was meant to be testing.
+
+This one asserts raw geometry against the live cell: scrollWidth against
+clientWidth, the bounding rect contained in its parent, documentElement
+scroll unchanged from baseline. A tight run is a failure, not a counter. It
+drives device metrics through CDP so the page is byte-for-byte what build.py
+emits, and holds one browser open across navigations so reload, cross-story
+and before-and-after checks are reachable.
+
+It also asserts build.py&amp;#39;s four substitution contracts on every run, so a
+marker that stopped matching exactly once fails loudly rather than silently
+shipping a broken reader.
+
+Lives in tools/ rather than scripts/, because rebuild.py globs scripts/*.py
+into DEPS and a harness there would mark every story stale on each run.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

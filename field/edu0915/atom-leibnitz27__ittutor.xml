@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/leibnitz27/ittutor/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/leibnitz27/ittutor/commits/master.atom"/>
+  <title>Recent Commits to ittutor:master</title>
+  <updated>2026-09-11T19:40:51Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/265f2ba75953e2dafb99ce9f86f2a3d13b57f9ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/265f2ba75953e2dafb99ce9f86f2a3d13b57f9ff"/>
+    <title>
+        Fix noun mutation losing singular_only guard, producing &quot;the musics a…
+    </title>
+    <updated>2026-09-11T19:40:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix noun mutation losing singular_only guard, producing &amp;quot;the musics are old&amp;quot;
+
+mutateDimension&amp;#39;s &amp;#39;noun&amp;#39; case swapped to a new noun but kept the
+current exercise&amp;#39;s number unchecked. A plural mutation chain that
+happened to swap onto a singular_only noun (musica, acqua, cibo...)
+inherited the plural, producing nonsense like &amp;quot;the musics are old&amp;quot; for
+an uncountable noun. Force singular when the incoming noun is
+singular_only, matching the guard the &amp;#39;number&amp;#39; dimension already had.
+
+Added a deterministic regression test (pins the noun pool to
+[gatto, musica] so the swap can&amp;#39;t land anywhere else) in test_engine.html.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QoJF2GoiB5sBeFauNRTt5y&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a92e1090ce30ec697e34041eca4f89f56c3c4b10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/a92e1090ce30ec697e34041eca4f89f56c3c4b10"/>
+    <title>
+        Fix inaccurate ginocchio/labbro glosses in hetero-gender-plurals doc
+    </title>
+    <updated>2026-09-10T22:03:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix inaccurate ginocchio/labbro glosses in hetero-gender-plurals doc
+
+Verified against Accademia della Crusca and Treccani. Two errors found:
+- labbro: i labbri was glossed as &amp;quot;individual lips, jar lips&amp;quot; -- wrong,
+  it never means lips at all, only wound edges or a container/perimeter
+  rim.
+- ginocchio: doc claimed a firm &amp;quot;knees together&amp;quot; vs &amp;quot;individual knees&amp;quot;
+  split matching braccio/dito/osso. Crusca says there&amp;#39;s no precise rule
+  here; the two plurals overlap and le ginocchia is just the more
+  common form, not a real semantic distinction.
+
+Also flags ciglio/grido/muro/uovo/sopracciglio as carried over from an
+earlier pass and not yet independently verified.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QoJF2GoiB5sBeFauNRTt5y&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7e095dc2a915f87252d142048ae6593bbbab3ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/a7e095dc2a915f87252d142048ae6593bbbab3ff"/>
+    <title>
+        Require authoritative lookup for grammar rules, not just vocabulary
+    </title>
+    <updated>2026-09-10T21:56:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Require authoritative lookup for grammar rules, not just vocabulary
+
+Add Accademia della Crusca (Italy&amp;#39;s language standards body) and
+Treccani&amp;#39;s grammar portal as required sources for verifying a grammar
+rule&amp;#39;s scope/exceptions before it becomes a data tag or engine branch
+-- not just for cross-checking vocabulary. Cite the specific lookup
+that confirmed the kinship-article-drop fix as the pattern to follow.
+Also fixes a stray wikilink-style reference left in
+possessive-kinship.md.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QoJF2GoiB5sBeFauNRTt5y&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3228ccfcccd99b7e3570143d6bda47973707328a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/3228ccfcccd99b7e3570143d6bda47973707328a"/>
+    <title>
+        Restore CRLF line endings in data/nouns.json
+    </title>
+    <updated>2026-09-10T21:30:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restore CRLF line endings in data/nouns.json
+
+The previous commit&amp;#39;s sed edit flattened this file&amp;#39;s line endings to
+LF, inflating the diff (~2900 lines) even though only the tag rename
+and new entries were intentional content changes. Restoring CRLF to
+match the file&amp;#39;s original convention and every other data/*.json file
+except rules.json.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QoJF2GoiB5sBeFauNRTt5y&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf4cb67641bc0c8cfc84b1a7ec39d597864c2dd8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/bf4cb67641bc0c8cfc84b1a7ec39d597864c2dd8"/>
+    <title>
+        Fix possessive article drop: kinship rule, not just nuclear family
+    </title>
+    <updated>2026-09-10T21:29:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix possessive article drop: kinship rule, not just nuclear family
+
+The article-drop rule for possessives + singular family nouns was
+scoped to a nuclear_family tag on only 6 nouns (madre, padre,
+fratello, sorella, marito, moglie). The real Italian rule covers
+singular unmodified kinship nouns generally — extended family too
+(mia zia, mio zio, mio nonno, mio cugino). Renamed the tag to
+kinship_article_drop, added the missing kinship nouns tagged
+accordingly, and fixed a dangling ruleId (possessive_nuclear had no
+matching entry in rules.json, so Explain showed nothing for these).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01QoJF2GoiB5sBeFauNRTt5y&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/15898a68fd366d2db145ed3ff18bff7e3d5d109d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/15898a68fd366d2db145ed3ff18bff7e3d5d109d"/>
+    <title>
+        Add nazione and patria nouns (tier 2, feminine)
+    </title>
+    <updated>2026-09-07T18:33:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add nazione and patria nouns (tier 2, feminine)
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d77cc092fd404de8b9f9432d8184256569d7a037</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/d77cc092fd404de8b9f9432d8184256569d7a037"/>
+    <title>
+        Add note field to nouns: surface noun.note in hint panel; add paese note
+    </title>
+    <updated>2026-09-07T18:31:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add note field to nouns: surface noun.note in hint panel; add paese note
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cd21196ba97032388a1f4392cc409c09baa65161</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/cd21196ba97032388a1f4392cc409c09baa65161"/>
+    <title>
+        Fix paese: swap en order to village/country
+    </title>
+    <updated>2026-09-07T18:27:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix paese: swap en order to village/country
+
+&amp;#39;Il mio paese&amp;#39; reads as hometown/village without context.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd07d2a326ee8bd292416363cc0b626c4189e763</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/bd07d2a326ee8bd292416363cc0b626c4189e763"/>
+    <title>
+        Add occupato (occupied/busy/taken) adjective
+    </title>
+    <updated>2026-09-07T18:23:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add occupato (occupied/busy/taken) adjective
+
+Not animate_only — works for both people and inanimate things.
+Note explains contrast with impegnato.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ddb02b37e716947a28755dca6cee8ae44987abb4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/ddb02b37e716947a28755dca6cee8ae44987abb4"/>
+    <title>
+        Add torrido (scorching/sweltering) adjective with etymology note
+    </title>
+    <updated>2026-09-07T18:14:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add torrido (scorching/sweltering) adjective with etymology note
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da9bac5b8d7b773cc19ddab343631043ba7161e5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/da9bac5b8d7b773cc19ddab343631043ba7161e5"/>
+    <title>
+        Add live GitHub Pages link to README
+    </title>
+    <updated>2026-09-06T09:16:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add live GitHub Pages link to README
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e3467d8074fa75cd94ef6473f27aca63834f9c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/4e3467d8074fa75cd94ef6473f27aca63834f9c6"/>
+    <title>
+        Add fleshed-out README
+    </title>
+    <updated>2026-09-06T09:16:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add fleshed-out README
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/76faa8e843acdde1af7d25a398fe48d129f23ed3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/76faa8e843acdde1af7d25a398fe48d129f23ed3"/>
+    <title>
+        Rename app from &#39;Il Tutor&#39; to &#39;Interrogami&#39;
+    </title>
+    <updated>2026-09-06T09:09:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rename app from &amp;#39;Il Tutor&amp;#39; to &amp;#39;Interrogami&amp;#39;
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/545a7f98b04df4bd7b3c0e0f28868aef130eba93</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/545a7f98b04df4bd7b3c0e0f28868aef130eba93"/>
+    <title>
+        Improve test coverage and add etymological notes to invariable adject…
+    </title>
+    <updated>2026-09-05T22:25:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Improve test coverage and add etymological notes to invariable adjectives
+
+- test_checker.html: add spelling heuristic suite, elision structural error
+  suite, and expectStructuralMessage assertion support (9 new cases)
+- test_engine.html: add nuclear family, tu owner, mutateDimension,
+  singular-only, and generateNext suites; import mutateDimension/generateNext
+  (~13 new cases)
+- adjectives.json: add user-facing &amp;#39;note&amp;#39; field to blu and rosa explaining
+  why they are invariable (French loanword; noun used as colour)
+- ui.js: surface adj.note as italic text inside the adjective paradigm
+  details panel when present
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/201c12c10f5ba29d6395bdda479b8dbfcee484ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/201c12c10f5ba29d6395bdda479b8dbfcee484ca"/>
+    <title>
+        Fix gender hints and add spelling error detection
+    </title>
+    <updated>2026-09-05T08:39:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix gender hints and add spelling error detection
+
+- buildNounPred and buildNounAdj now show (female)/(male) gender hints
+  for gendered noun variants (cagna, gatta etc.) and epicene nouns,
+  consistent with buildPossNounPred; use en_base for the prompt noun
+- checker.js: detect adjective spelling errors (edit distance ≤2, same
+  ending) and report &amp;quot;Spelling: &amp;#39;x&amp;#39; should be &amp;#39;y&amp;#39;&amp;quot; instead of a
+  misleading agreement message
+- checker.js: elision message now names the specific article that elides
+  (la/il/una) based on gender and definiteness
+- test_engine.html: add gender hint suite (34 tests, all passing)
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29f9003333bdfdc28680742af6db0f7ceae124c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/29f9003333bdfdc28680742af6db0f7ceae124c2"/>
+    <title>
+        Add article paradigm table and elision error detection
+    </title>
+    <updated>2026-09-05T07:54:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add article paradigm table and elision error detection
+
+- showIncorrect now shows an expandable article paradigm (singular/plural
+  with gender label) when an article token is wrong
+- Paradigm order follows sentence structure: article → possessive → adjective
+- checker.js detects elision mismatches (e.g. &amp;#39;la uva&amp;#39; vs &amp;#39;l&amp;#39;uva&amp;#39;) and
+  reports the specific article that elides (&amp;#39;la&amp;#39;/&amp;#39;il&amp;#39;/&amp;#39;una&amp;#39;) rather than
+  a generic word-count error
+- possessive_article rule example: added feminine plural (le mie scarpe)
+- STATE.md updated
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/038505f18d3c9837783a52608cdd046e9feaa54d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/038505f18d3c9837783a52608cdd046e9feaa54d"/>
+    <title>
+        Rename Explain button to Rules
+    </title>
+    <updated>2026-09-05T07:28:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rename Explain button to Rules
+
+More honest about what the panel does — reference rules for the
+exercise type, not a context-sensitive explanation.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13ad7ddacf1e1694cae22e259c8cc3a1207fa62b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/13ad7ddacf1e1694cae22e259c8cc3a1207fa62b"/>
+    <title>
+        Add possessive paradigm table to error feedback
+    </title>
+    <updated>2026-09-05T07:23:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add possessive paradigm table to error feedback
+
+Mirrors the adjective paradigm: a possessive error now shows an
+expandable &amp;#39;All forms of mio/tuo&amp;#39; table with m/f × sg/pl grid.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/08d93702a51e572a8719949be70581c67f45f755</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/08d93702a51e572a8719949be70581c67f45f755"/>
+    <title>
+        Add vertical padding above adjective paradigm details
+    </title>
+    <updated>2026-09-05T07:22:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add vertical padding above adjective paradigm details
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0562fe9bce5117f41b9573b4f2596e6a891c84a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/leibnitz27/ittutor/commit/e0562fe9bce5117f41b9573b4f2596e6a891c84a"/>
+    <title>
+        Show adjective paradigm table in error feedback
+    </title>
+    <updated>2026-09-05T07:21:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/4944144?s=30&amp;v=4"/>
+    <author>
+      <name>leibnitz27</name>
+      <uri>https://github.com/leibnitz27</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show adjective paradigm table in error feedback
+
+When an adjective token is wrong, an expandable &amp;#39;All forms of X&amp;#39;
+appears in the correction box — not the Explain panel. Handles
+4-form, 2-form, and invariable adjectives.
+
+Co-Authored-By: Claude Sonnet 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

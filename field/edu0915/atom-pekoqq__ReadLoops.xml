@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/pekoqq/ReadLoops/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pekoqq/ReadLoops/commits/main.atom"/>
+  <title>Recent Commits to ReadLoops:main</title>
+  <updated>2026-09-14T15:30:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b93405e66328e6f8300761fd20903bb93b8d6ac0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b93405e66328e6f8300761fd20903bb93b8d6ac0"/>
+    <title>
+        docs(changelog): add the 2.3.1 entry
+    </title>
+    <updated>2026-09-14T15:30:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): add the 2.3.1 entry
+
+The public repo&amp;#39;s changelog was still at 2.3.0 while the source of truth
+already had a detailed 2.3.1 section. Synced it over.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f026b09a4aa2d8b3905ec8b776f30e3eeb45e224</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/f026b09a4aa2d8b3905ec8b776f30e3eeb45e224"/>
+    <title>
+        fix: 专注顶光由两个异色球改为一整团居中放大的统一光晕
+    </title>
+    <updated>2026-09-14T14:53:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 专注顶光由两个异色球改为一整团居中放大的统一光晕
+
+- ::before 移到水平正中 scale1.7 brightness2.6 作唯一顶光；::after 淡出
+- 避免顶部并排冷暖两球；css v42&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/56211e6fc2c8b981f4bd35061f158a8c42be6b0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/56211e6fc2c8b981f4bd35061f158a8c42be6b0a"/>
+    <title>
+        feat: 专注态质感分层——顶部聚光增亮 + 四周聚焦暗角，日常保持含蓄
+    </title>
+    <updated>2026-09-14T14:47:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 专注态质感分层——顶部聚光增亮 + 四周聚焦暗角，日常保持含蓄
+
+- 专注时光团 brightness 增亮并 scale 微放大，形成顶部舞台光
+- 新增 .focus-shade 径向暗角收束视线，--focus-shade 四主题分别标定浓度
+- .app z-index:1，形成 底色&amp;lt;背景光-1&amp;lt;暗角0&amp;lt;内容1 层级；css v41&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0699bb17ade7601a89696d0f7ab0afa6bed7d17e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/0699bb17ade7601a89696d0f7ab0afa6bed7d17e"/>
+    <title>
+        feat: 进入专注时氛围光平滑上移汇聚到顶部，与水纹涟漪同时落定
+    </title>
+    <updated>2026-09-14T14:39:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 进入专注时氛围光平滑上移汇聚到顶部，与水纹涟漪同时落定
+
+- 氛围光拆为 body::before/::after 双光斑，用 transform 平移（渐变坐标无法过渡）
+- 日常对角光浓度不变；专注 transition 3s delay .3s 对齐涟漪(300ms+3s)，退出 .6s 回位
+- 光层 z-index 0→-1 严格压在内容下；静态资源 v40&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a2beae24469ee3e96dc9289e6cd86dee2efb420</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/4a2beae24469ee3e96dc9289e6cd86dee2efb420"/>
+    <title>
+        fix: 右侧引导箭头改为垂直居中（top:50%），css 版本号 v39
+    </title>
+    <updated>2026-09-14T13:44:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 右侧引导箭头改为垂直居中（top:50%），css 版本号 v39&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0afb11c1e887813f172845179242082f967d9af</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b0afb11c1e887813f172845179242082f967d9af"/>
+    <title>
+        feat: 计时与专注模式严格挂钩 + 右侧查词抽屉引导箭头
+    </title>
+    <updated>2026-09-14T13:33:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 计时与专注模式严格挂钩 + 右侧查词抽屉引导箭头
+
+- 计时器只在专注下运行(startTimer 根防线)；非专注空格/计时键=进专注并计时，专注内空格=暂停/继续
+- 退出专注复位计时按钮；移除划词绕过专注的直接 startTimer
+- 快捷键提示文案更新(两处)
+- 新增右侧浮动玻璃引导箭头，唤出抽屉后淡出并 localStorage 记忆，专注隐藏&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcd8b76aab211ba5acc9e4eba127785bc7e589a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/bcd8b76aab211ba5acc9e4eba127785bc7e589a3"/>
+    <title>
+        fix: 专注模式联动计时器，整句翻译重试/失败可恢复，logo hover 动效 (v2.3.1)
+    </title>
+    <updated>2026-09-14T13:07:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 专注模式联动计时器，整句翻译重试/失败可恢复，logo hover 动效 (v2.3.1)
+
+- toggleFocusMode 进入自动开始计时、退出暂停；删除引用未定义 toggleTimer 的坏空格分支
+- _chat 对网络/HTTP/空content(思考泄漏)最多重试2次；translate 路由 to_thread + 502明确原因
+- 划词长度上限 60→280；整句翻译失败面板内可点击重试
+- 侧边栏 logo hover 循环旋转+放大、按下回弹，reduced-motion 兜底&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e898338a6cd424b362beb268624d99e1b7dfbe2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/3e898338a6cd424b362beb268624d99e1b7dfbe2"/>
+    <title>
+        chore(brand): add tools/gen_icons.py reproducible icon generator
+    </title>
+    <updated>2026-09-14T01:19:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(brand): add tools/gen_icons.py reproducible icon generator&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea4bd107ac22290c510fad0a8eadf535b30e6c2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/ea4bd107ac22290c510fad0a8eadf535b30e6c2e"/>
+    <title>
+        feat(brand): redesign logo with full icon set, sidebar brand mark, RE…
+    </title>
+    <updated>2026-09-14T01:16:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(brand): redesign logo with full icon set, sidebar brand mark, README &amp;amp; social assets
+
+- icon.svg: gradient memory-loop mark (dim trail -&amp;gt; bright arrow)
+- add favicon 16/32 + favicon.ico, apple-touch-icon 180, PWA 192/512, maskable 512
+- sidebar: currentColor monochrome mark that follows all 4 themes; whole header links to GitHub
+- manifest: declare PNG icons; main.py: serve icon routes, read version from package metadata
+- README: centered logo + badges; assets/logo.png + assets/social-preview.png&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/10e3b5e6f155a229670385428c041fc306f8593c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/10e3b5e6f155a229670385428c041fc306f8593c"/>
+    <title>
+        docs(readme): add PyPI / Python / license / release badges
+    </title>
+    <updated>2026-09-14T00:45:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): add PyPI / Python / license / release badges&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a4c119a0cf801eb39176f6afeab6603d7fe85028</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/a4c119a0cf801eb39176f6afeab6603d7fe85028"/>
+    <title>
+        chore(packaging): enrich PyPI metadata — project URLs, classifiers, a…
+    </title>
+    <updated>2026-09-14T00:32:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(packaging): enrich PyPI metadata — project URLs, classifiers, author&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee51220a86c98f8b16301083100360f5c03fdafa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/ee51220a86c98f8b16301083100360f5c03fdafa"/>
+    <title>
+        fix(cli): force UTF-8 standard streams so Chinese output works on Win…
+    </title>
+    <updated>2026-09-13T23:25:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(cli): force UTF-8 standard streams so Chinese output works on Windows cp1252 consoles&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd44c9498b00d33b0d94b440b0857dc14564a75c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/bd44c9498b00d33b0d94b440b0857dc14564a75c"/>
+    <title>
+        chore(release): prep v2.3.0 — bump version, real clone URLs, sidebar …
+    </title>
+    <updated>2026-09-13T23:08:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(release): prep v2.3.0 — bump version, real clone URLs, sidebar logo links to GitHub&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0835fef5ad17e6ddf237a8254ddba71b2ebfe424</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/0835fef5ad17e6ddf237a8254ddba71b2ebfe424"/>
+    <title>
+        docs: changelog for v2.3.0 (UI/motion polish + sentence translation)
+    </title>
+    <updated>2026-09-13T22:42:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: changelog for v2.3.0 (UI/motion polish + sentence translation)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d08789b320b5d3f4851d5b63019c869051e76ff8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/d08789b320b5d3f4851d5b63019c869051e76ff8"/>
+    <title>
+        polish(ui): damped curve + kill the second source of ghosting
+    </title>
+    <updated>2026-09-13T22:20:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): damped curve + kill the second source of ghosting
+
+- #reader.page-fading used a transition; removing it tweened opacity back to
+  1 while page-enter started from 0, briefly showing the old frame. Both
+  phases are animations now.
+- new --ease-damped cubic-bezier(0.34, 1.28, 0.42, 1): a real overshoot that
+  settles back
+- content entrance 0.68 -&amp;gt; 0.78s, lift 14px, stagger 0.055s
+- page leave 0.16 -&amp;gt; 0.10s so the old page never lingers&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/172fc0e491d4ccf5cf3e8ee9cd84ff240f2a42a0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/172fc0e491d4ccf5cf3e8ee9cd84ff240f2a42a0"/>
+    <title>
+        fix(ui): eliminate page-switch ghosting; add damping to entrances
+    </title>
+    <updated>2026-09-13T22:02:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ui): eliminate page-switch ghosting; add damping to entrances
+
+1. Ghosting: switchPage did not await its (async) renderer, so the old page
+   faded back in and was swapped out only when data arrived.
+   -&amp;gt; switchPage is now async and awaits the renderer before fading in.
+
+2. Damping: --ease-silk is now cubic-bezier(0.22, 1.18, 0.36, 1) -- a slight
+   overshoot that settles back. Duration 0.68s, lift 12px, and all nine
+   entrance animations use the silk curve.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/809391521d9e50c1e8d169f91220895c551bcf6a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/809391521d9e50c1e8d169f91220895c551bcf6a"/>
+    <title>
+        polish(ui): apply the same entrance rhythm to every page
+    </title>
+    <updated>2026-09-13T21:52:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): apply the same entrance rhythm to every page
+
+- test page cards, option buttons, answer options and result card now use
+  the shared enterFade + staggerIn rhythm
+- removed a duplicate hand-written stagger loop in loadVocab that was
+  overwriting the shared delays
+- removed dead stagger code that sat after a return statement
+- staggerIn default step raised to 0.045s to match the silk tokens&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84e6b1846bcecdde8dced3dd9931700fd19c34ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/84e6b1846bcecdde8dced3dd9931700fd19c34ce"/>
+    <title>
+        polish(ui): silk, not snappy -- longer easing with a long tail
+    </title>
+    <updated>2026-09-13T21:46:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): silk, not snappy -- longer easing with a long tail
+
+- content entrance 0.42s -&amp;gt; 0.62s on the expo-out curve
+- page enter 0.32s -&amp;gt; 0.46s; page leave stays quick at 0.16s
+- lift 6px -&amp;gt; 8px, which reads as floating at the longer duration
+- stagger 0.03s -&amp;gt; 0.045s
+- added --ease-silk as the named curve; JS timings re-aligned&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45f0b835d1038cbc7a68490783e801e96db1b0be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/45f0b835d1038cbc7a68490783e801e96db1b0be"/>
+    <title>
+        polish(ui): retune motion -- container stays put, content lifts 6px
+    </title>
+    <updated>2026-09-13T21:41:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;polish(ui): retune motion -- container stays put, content lifts 6px
+
+- container cross-fades only (a moving container makes the page jump)
+- content keeps a small 6px lift instead of 12-14px + scale
+- durations tightened: out 0.18s / in 0.32s / content 0.42s
+- stagger 0.03s
+- JS switch timings now match the CSS (the old hardcoded 220/450ms left a
+  gap that read as a flicker)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5982697a03221192a1da17990166deabbc2da29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/d5982697a03221192a1da17990166deabbc2da29"/>
+    <title>
+        Revert &quot;fix(ui): remove layout shift on page switch; content fades in…
+    </title>
+    <updated>2026-09-13T21:38:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revert &amp;quot;fix(ui): remove layout shift on page switch; content fades in place&amp;quot;
+
+This reverts commit 2eb3d14ac2c543269b47ecad9c0366b955580e44.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

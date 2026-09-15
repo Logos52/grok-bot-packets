@@ -1,0 +1,106 @@
+# Unable to reconnect Grok Bot – SELF_SIGNED_CERT_IN_CHAIN and multiple connection failures
+url: https://forum.cursor.com/t/unable-to-reconnect-grok-bot-self-signed-cert-in-chain-and-multiple-connection-failures/171609
+created: 2026-09-14T12:32:53.380Z
+
+--- @Jean_Pierre_Soto_Ch1 2026-09-14T12:32:53.411Z (#1) ---
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+Hi, I’m having an issue reconnecting to Grok Bot in Cursor.
+
+The bot was working before, but now I’m unable to reconnect. I ran the Network Debugger / Check Access tool, and it shows that DNS resolution is working correctly, but most of the Cursor/Grok Bot services are failing.
+
+The main error I can see is:
+
+API TLS: TLS certificate untrusted: SELF_SIGNED_CERT_IN_CHAIN
+
+After that, the API connection fails with ConnectError, and several other services return TypeError, including:
+
+Auth page
+
+Auth UI
+
+Auth service
+
+Updates feed
+
+Updates download
+
+Feature flags
+
+Origin API
+
+Telemetry
+
+Voice realtime
+
+The debugger also shows the *.cursorvm.com computer endpoints as unavailable.
+
+I would like to reconnect Grok Bot, but I’m not sure whether the issue is caused by Cursor itself, my network configuration, a proxy/firewall, or a TLS certificate being injected somewhere in the connection.
+
+I have attached screenshots of the Network Debugger results.
+
+Could someone please help me identify what is causing the SELF_SIGNED_CERT_IN_CHAIN error and what I need to configure or reset in order to reconnect Grok Bot?
+
+If additional logs or diagnostic information are required, please let me know what I should provide.
+
+Thanks in advance for your help.
+
+Steps to Reproduce
+Steps to Reproduce
+
+Open Grok Bot and try to use/reconnect to Grok Bot.
+
+Grok Bot fails to connect and remains unavailable.
+
+Open the Network Debugger.
+
+Click Check Access to test the connection.
+
+DNS resolution succeeds, but the API TLS check reports: TLS certificate untrusted: SELF_SIGNED_CERT_IN_CHAIN.
+
+The API connection then fails with ConnectError.
+
+Multiple related services also fail with TypeError, including authentication, updates, feature flags, Origin API, telemetry, and Voice Realtime.
+
+The *.cursorvm.com computer endpoints are shown as unavailable.
+
+Retry reconnecting to Grok Bot, but the issue persists.
+
+Actual behavior:
+
+Grok Bot cannot reconnect, and the Network Debugger reports TLS certificate and connection errors across multiple Cursor services.
+
+Expected Behavior
+Grok Bot should connect normally and all required Cursor services should be reachable.
+
+Screenshots / Screen Recordings
+Screenshot 2026-09-14 072457.png595×746 14.6 KBScreenshot 2026-09-14 072451.png601×755 28.3 KB
+
+Operating System
+Windows 10/11
+
+Version Information
+For grok bot 0.47.0
+
+For AI issues: which model did you use?
+grok 4.6
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+--- @Jean_Pierre_Soto_Ch1 2026-09-14T14:52:53.038Z (#5) ---
+Update / resolved
+
+The issue was caused by Kaspersky HTTPS scanning (SSL/TLS inspection), not by Grok Bot or my Cursor account.
+
+Kaspersky intercepts HTTPS traffic and injects its own certificate into the chain. Network Debugger then reports:
+
+API TLS: TLS certificate untrusted: SELF_SIGNED_CERT_IN_CHAIN
+
+After that, Auth, Updates, Feature flags, Origin API, Telemetry, Voice realtime, and *.cursorvm.com all failed. DNS still worked because it isn’t HTTPS.
+
+Fix: disable Kaspersky HTTPS/SSL scanning (or exclude Cursor / Grok Bot), or briefly use another network without that interception. After that, Grok Bot reconnects normally.
+
+Hope this helps anyone hitting the same SELF_SIGNED_CERT_IN_CHAIN error.

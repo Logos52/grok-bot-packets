@@ -1,0 +1,112 @@
+# Grok Bot 0.47.0 — Bot not responding after Agent Computer reset; please check backend runner / Agent Computer
+url: https://forum.cursor.com/t/grok-bot-0-47-0-bot-not-responding-after-agent-computer-reset-please-check-backend-runner-agent-computer/171626
+created: 2026-09-14T14:43:55.292Z
+
+--- @looker_dakidaki 2026-09-14T14:43:55.328Z (#1) ---
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+Grok Bot is currently unusable on my account.
+
+Messages can be sent successfully in the chat UI, but multiple Bots give no response.
+
+My Grok Bot Agent Computer has already been reset and appears reachable/connected. My local Windows computer is also connected. Usage/tokens are available, and Privacy Mode is Active.
+
+However, the Bot execution layer still appears stuck: messages are sent, but no reply is generated.
+
+Please check whether the Grok Bot runner / Agent Computer associated with my account is stuck or in a partial backend state, and recover / reattach / reprovision it if necessary.
+
+Please preserve my existing Bots, configurations, conversations, and Agent Computer data if possible.
+
+Please do not ask me to repeatedly reset the Agent Computer. I have already completed a reset and the issue persists.
+
+Cursor account email available privately to support if needed.
+
+Steps to Reproduce
+Open Grok Bot on Windows.
+
+Open an existing Bot, for example my Chief of Staff Bot.
+
+Send a simple message such as “reply OK”.
+
+The message appears normally in the chat.
+
+The Bot never replies.
+
+The same issue occurs with multiple Bots.Already tried:
+
+Agent Computer reset
+
+Full app quit and reopen
+
+Verified local computer is connected
+
+Verified usage/tokens are available
+
+Verified Privacy Mode is Active
+
+Retried simple messages
+
+The issue persists.
+
+Expected Behavior
+Grok Bot should respond normally after I send a message and resume execution of existing Bot tasks.
+
+If the Agent Computer or backend runner is stuck, I expect it to be recovered or reattached without deleting my existing Bots, configurations, conversations, or project data.
+
+Screenshots / Screen Recordings
+image.png1050×764 75.5 KB
+
+Operating System
+Windows 10/11
+
+Version Information
+Grok Bot:
+
+Version: 0.47.0
+
+Release Track: stable
+
+OS: win32
+
+For AI issues: which model did you use?
+Grok Bot — Cursor-managed model selection (exact serving model unknown)
+
+For AI issues: add Request ID with privacy disabled
+164a7079-48a6-4260-ae28-a254ca71a758
+
+6cec31c7-fb78-40ea-ad70-c96eb894379b
+
+65cf528f-dbb3-4205-a97e-f1d3361258df
+
+Additional Information
+This affects multiple existing Grok Bots, not only one conversation.
+
+Privacy Mode is Active.
+
+Usage/tokens are available.
+
+The local Windows computer is connected.
+
+The Grok Bot Agent Computer has already been reset and appears reachable, but Bots still do not respond.
+
+I also fully quit and reopened the desktop app.
+
+Please check the account-side Grok Bot runner / shared Agent Computer state and recover or reprovision it on the backend if necessary.
+
+Please preserve my existing Bots, conversations, configurations, project files, and cloud computer data if possible.
+
+Please do not ask me to repeatedly reset the Agent Computer because the reset has already been completed and did not resolve the issue.
+
+Does this stop you from using Cursor
+Yes - Cursor is unusable
+
+--- @Colin 2026-09-14T15:45:12.155Z (#6) ---
+Hey @looker_dakidaki, thanks for the detailed report, and sorry for the confusion here.
+
+Your Agent Computer is healthy and nothing is stuck on our side. Your bots, conversations, configurations and computer data are all intact, and the reset you ran did not remove anything. Please don’t reset again.
+
+What actually happened is that your account reached its weekly included Grok Bot usage limit. Since then every message you send is being declined, and the app should be showing you a clear notice about that instead of just staying silent. It isn’t, and we’re fixing that. The usage you see as available on cursor.com is your Cursor plan usage, which is a separate pool from Grok Bot usage. Grok Bot Settings → Usage is the place to check the Grok Bot pool.
+
+If you’d like to keep working before then, you can turn on on-demand usage for this same account at cursor.com/dashboard, which lets Grok Bot continue past the included amount.

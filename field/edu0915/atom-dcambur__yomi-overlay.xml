@@ -1,0 +1,2130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/dcambur/yomi-overlay/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/dcambur/yomi-overlay/commits/main.atom"/>
+  <title>Recent Commits to yomi-overlay:main</title>
+  <updated>2026-09-14T09:28:17Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0000c355d21e7e1a80560ba8262eda2c425f80b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/0000c355d21e7e1a80560ba8262eda2c425f80b6"/>
+    <title>
+        fix: offer apps without a bundle id in the target picker (#21)
+    </title>
+    <updated>2026-09-14T09:28:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: offer apps without a bundle id in the target picker (#21)
+
+* fix(yomi): list and follow apps that have no bundle id
+
+The picker&amp;#39;s --list-all dropped every window whose owner had no bundle id,
+on the assumption that &amp;quot;no bundle id&amp;quot; means &amp;quot;not an application&amp;quot;. It does
+not. A bare executable is still an app with a Dock tile, named after its
+binary — and that is what every game run through CrossOver is: Wine names
+the process after the .exe and there is no Info.plist to carry an id. The
+skip hid all of them from the picker (issue #20). A Launcher made in
+CrossOver worked only because it wraps the game in a real .app.
+
+Measured 2026-09-10 with a bare AppKit executable named Game.exe:
+NSRunningApplication reports bundleIdentifier nil, localizedName &amp;quot;Game.exe&amp;quot;;
+--list-all returned 36 windows and none of them. After: 37, one with
+bundle &amp;quot;&amp;quot; and app &amp;quot;Game.exe&amp;quot;.
+
+The skip now asks the question it meant to ask — is the pid an application
+LaunchServices knows at all — which still excludes the window server and
+the agents, and stops excluding apps that merely lack an id. The Dock skip
+stays.
+
+Following such an app needs a name rather than an id, so --app NAME does
+for it what --bundle does for the rest, keyed on the application name SCK
+reports. Measured: `--app Game.exe --list` finds the same window --list-all
+lists, so the picker&amp;#39;s name and SCK&amp;#39;s agree. The display-capture fallback&amp;#39;s
+frontmost check reads the same name from NSWorkspace.
+
+* fix(settings): pick and save an app that has no bundle id
+
+The picker grouped windows by bundle id and saved the choice as one, so an
+app that --list-all now reports with bundle &amp;quot;&amp;quot; had no identity to be
+grouped or saved under, and yomi had nothing to follow.
+
+A target now carries either a bundle id or, for an app without one, the
+name on its Dock tile — the same fallback the helper reports and --app
+follows. The picker keys its rows on whichever the window has; config.js
+sanitises `app` the way it does `bundle`, labels by it, and hands it to yomi
+as --app. Every existing config still reads the same: `app` is null unless
+the user chose such a target.
+
+Covered by the settings suite with a Game.exe window beside Safari — chosen,
+applied, and saved as {bundle: null, app: &amp;#39;Game.exe&amp;#39;} — and by config.test.js
+for the sanitising.
+
+* test: a bare-executable rig for the target picker
+
+Golden cannot see --list-all, and the settings suite is handed its window
+list by the test, so nothing unattended could have caught the picker
+dropping apps without a bundle id. verify_picker.py builds the ground truth
+instead of faking it: a Mach-O with no Info.plist — the shape of every game
+run through CrossOver — opens a window, and the live window server is asked
+whether --list-all offers it and whether --app follows it.
+
+Measured: against the helper built from main it fails at step 1; against
+this branch both steps pass. YOMI_BIN points it at another build, as in
+golden.sh.
+
+* fix(yomi): name a listed app by LaunchServices, not the window server
+
+--list-all named each window&amp;#39;s app by kCGWindowOwnerName, which the window
+server truncates to 31 bytes — ten kanji. A game whose Dock name is longer
+was offered under a cut-off name that --app, which matches the application
+name SCK reports, could not resolve: listed, but not followable.
+
+Measured 2026-09-14 on a CrossOver process named 飼い犬勇者と魔王の城.exe:
+owner &amp;quot;飼い犬勇者と魔王の城.&amp;quot; (31 bytes), NSRunningApplication.localizedName
+&amp;quot;飼い犬勇者と魔王の城.exe&amp;quot; (34). `--app` with the first: no matching
+windows. With the second: the game&amp;#39;s window, id 44733.
+
+The pid → NSRunningApplication map was already there for the bundle id;
+the name now comes from the same place, so the picker shows the name yomi
+follows. The rig&amp;#39;s name is now longer than 31 bytes, so verify_picker.py
+fails on the old code — the old &amp;quot;Rig.exe&amp;quot; fit and matched both ways.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a3953730d6e0336e6bef6549a58ca9277575423d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/a3953730d6e0336e6bef6549a58ca9277575423d"/>
+    <title>
+        feat: deinflect adjectives too, and drop the last GPL dependency (#16)
+    </title>
+    <updated>2026-08-20T16:33:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: deinflect adjectives too, and drop the last GPL dependency (#16)
+
+* chore: vendor jp-verbs, an MIT deinflection table
+
+The app ships no runtime node_modules — build-release.sh copies app/vendor/
+into the bundle and nothing else — so a dependency has to be vendored to
+exist at runtime. Same arrangement the Yomitan tables have.
+
+Verbatim jp-verbs 1.1.0 apart from one line, recorded with its measurements
+in PROVENANCE.md: ADJECTIVE joins the word types that count as a finished
+deinflection. The table already carries 44 adjective rules and upstream walks
+all of them, then discards every result, because the package is about verbs.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* feat: deinflect adjectives too, and drop the last GPL dependency
+
+The deinflector was Yomitan&amp;#39;s japanese-transforms.js, vendored under GPL-3.0,
+which made the whole app a GPL derivative work. Swapped for the jp-verbs table
+added in the previous commit: MIT, no lexicon, same prefix-in / candidates-out
+shape, so lookup() is unchanged around it.
+
+What the reader gets: adjectives. 高くない, 高かった, 高くなかった and 高ければ
+all deinflected to nothing before and answer 高い now — the old table covered
+them, but this one covers them and the popup asks for them the same way.
+
+What it costs, measured on 転生してきた僕は信じられている, a full prefix scan:
+40 unique candidates against Yomitan&amp;#39;s 29, 0.19 ms against 0.10 ms. The extra
+candidates are junk like 信じらる that no dictionary has, so each is one
+indexed probe that returns nothing. Both numbers are far under one OCR pass.
+
+initTransformer() goes with it. It existed because japanese-transforms.js is
+ESM and had to be awaited before the first hover could arrive; jp-verbs is
+CommonJS, so the require is the load. That also takes ~4 s off the node suite.
+
+Route steps are renamed rather than lost: jp-verbs names a step for a reader
+(&amp;quot;ている・でいる Continuing State/Result&amp;quot;), and the popup wants a caption, so
+shortStep() keeps the Japanese and drops the English gloss.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* chore: drop vendor files the app never loads, refresh stale references
+
+Three .d.ts declarations (no TypeScript here) and upstream&amp;#39;s README, which
+PROVENANCE.md replaces. LICENSE stays: MIT requires the notice to travel with
+the copy.
+
+Also the three doc lines that still called the deinflector Yomitan&amp;#39;s. The
+other mentions are about the Yomitan dictionary FORMAT, which is what the app
+still reads, and are left alone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* chore!: relicense MIT, drop the refactor archaeology, unname commercial dicts
+
+BREAKING: the licence changes from GPL-3.0-or-later to MIT.
+
+Nothing copyleft has been in the tree since the deinflector swap, so GPL was
+an obligation the code no longer carried — and it is the one that makes App
+Store distribution impossible, because Apple&amp;#39;s Licensed Application EULA
+forbids the redistribution GPLv3 section 10 requires stay unrestricted.
+app/package.json stops claiming ISC at the same time; it never was.
+
+docs/history/ goes: 1,143 lines describing restructures that are finished.
+Step 4b-3 was NOT finished, and PLAN.md linked into it for the scope, so that
+scope now lives in PLAN.md itself — the six files worth typing first, and why
+stopping there is the point. Nothing live was in the rest.
+
+Commercial dictionary titles come out of the README and the settings window.
+The classifier keeps working, so a zip you own still imports and still labels
+itself; the app simply no longer advertises which ones it was built around.
+
+check-conventions.sh globs docs subdirectories instead of history/ by name,
+so an empty docs/ does not report its own unexpanded glob as a broken link.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b816bab33c6792f891a7fd75dca11062657b263a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/b816bab33c6792f891a7fd75dca11062657b263a"/>
+    <title>
+        feat: dictionary images, read straight out of the archives (#15)
+    </title>
+    <updated>2026-08-15T09:10:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: dictionary images, read straight out of the archives (#15)
+
+Closes #11. The previous PR stopped the broken-image boxes by rendering an
+image&amp;#39;s label as text; no picture was ever shown. This shows them: Jitendex&amp;#39;s
+illustrations, 旺文社&amp;#39;s stroke-order diagrams, 三省堂&amp;#39;s marks.
+
+Nothing is extracted. The issue planned to unpack media at import; measured
+first, that is 137 MB across 3,541 files (旺文社 alone 113 MB) on top of a
+549 MB index, a second copy to keep in step with the archive, and another
+thing to delete on removal. zip.js is lazy — it was made lazy so the settings
+list could stop reading 207 MB to learn eight names — so an image request is a
+seek and an inflate out of the .zip. The cost is an open archive per
+dictionary being read from: bounded at three, dropped whenever the installed
+set changes, and measured, because running out of descriptors is what stopped
+the app opening a dictionary two commits ago.
+
+Named monochrome marks stay text. 三省堂 draws its 一 二 三 divisions as 128px
+glyphs meant to be tinted to the text colour; tinting wants a CSS mask, and a
+mask URL is not something this page&amp;#39;s policy allows — the first attempt drew
+them as solid grey boxes, worse than the text they replaced. Unnamed line art
+is drawn and inverted so it is visible on a dark panel, and a full-page
+diagram is capped at 130px so it cannot take a tray that is 380px at its
+largest.
+
+Images can be turned off (Settings → Lookup). A dictionary is already large
+and not every reader wants pictures in a reading popup; with it off an image
+becomes the label it carries, which for a sense mark is the whole of its
+meaning. Live, like the rest of that tab.
+
+The policy widened by exactly one scheme: img-src yomi-media:. No network, no
+file://, no data:. A path out of dictionary data is only ever looked up in
+that archive&amp;#39;s own directory and never touches a real one, so traversal
+cannot happen — media.test.js proves that, that the bytes come back intact,
+and that the handles stay bounded across 120 requests.
+
+Verified end to end in a real window with the real preload and the real CSP:
+47 images requested, 47 loaded, 0 broken, no policy complaints.
+
+137 node + 11 renderer + 9 settings checks, 0 skipped.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72b6dce91fb79335948dd92e9956610435b7027d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/72b6dce91fb79335948dd92e9956610435b7027d"/>
+    <title>
+        feat: dictionaries you can manage, and a popup that reads every one o…
+    </title>
+    <updated>2026-08-15T08:45:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: dictionaries you can manage, and a popup that reads every one of them (#14)
+
+* fix: stop the freeze, unite the three dictionary lists, dedupe imports
+
+The freeze had two causes, both synchronous work on the main process.
+
+classify() read a dictionary&amp;#39;s whole first bank to look at the second
+field of its first record. BCCWJ&amp;#39;s first bank holds 1,000,219 records —
+about 100 MB of JSON parsed to read one word — so listing eight archives
+took 986 ms, on every refresh of the settings window. It now inflates a
+64 KB prefix and looks for the tag; 15 ms.
+
+zip.open() read the entire archive to list its names: 207 MB to learn
+eight of them. It now reads the tail, then exactly the central directory,
+then an entry&amp;#39;s bytes when something asks for them. Rewriting that broke
+every archive whose tail read covered the whole file — the reconstructed
+buffer prepended padding and shifted every offset — so the directory is
+parsed on its own, addressed from its own start.
+
+prune() ran on the main process. Deleting rows is seconds rather than the
+~80 a rebuild takes, but seconds of frozen overlay is still frozen, and a
+progress message cannot be painted by the process busy sending it. It
+runs in the worker the build already used.
+
+Three lists became one. A dictionary could appear in the priority list
+and the catalogue at once, and removing it left it behind in the third,
+still reorderable and answering nothing. Every dictionary is now one row:
+order on the left, what it is in the middle, the single action that
+applies on the right.
+
+That bug had a second half in config.js, which merged the saved list with
+the manifest and never dropped anything: a removed dictionary stayed in
+the priority list for ever. The saved list is now bounded by what the
+index actually holds, keeping the user&amp;#39;s order and which are switched
+off. knownDictionaries returns null rather than [] so &amp;quot;no manifest&amp;quot; and
+&amp;quot;an empty manifest&amp;quot; stay distinguishable.
+
+Importing the same dictionary under a different filename installed it
+twice — two labels, every sense duplicated. A Yomitan archive names
+itself in index.json and that is its identity, so an import or download
+drops any other copy of the same title. Under the same filename it always
+just overwrote, which was already right.
+
+* test: build the dictionaries the tests need instead of borrowing yours
+
+The dictionary suites read data/dicts/. That directory is gitignored and
+mostly commercial, so everywhere except this laptop they SKIPPED — CI ran
+two of the nine node suites and called it green, a fresh clone tested
+nothing, and keeping copyrighted archives on disk was a precondition for
+contributing. It also went stale the moment those archives were removed:
+lookup.test.js failed against an emptied index.db.
+
+A Yomitan archive is an index.json and some bank files in a zip, so the
+tests now write their own (test/unit/fixtures/make-dictionary.js). That
+covers more than the real dictionaries did, not less: a deliberately bad
+CRC, an unknown bank, two archives claiming one title, and all four
+glossary shapes — where any single real dictionary has one.
+
+The compatibility guarantee needed the old shape, and the honest way to
+get one is to run the old code: fixtures/legacy-index.js drives
+build-index.py&amp;#39;s own loaders over generated archives, so
+structured.test.js still compares the renderer against the flattener it
+replaced, and schema.test.js still proves lookup.js reads both schemas.
+build-index.py&amp;#39;s CREATE TABLE moves into create_schema() so the fixture
+cannot drift from it.
+
+91 checks, 0 skipped, and they pass in a clone with no data/ at all — so
+CI now runs all of them rather than two.
+
+Also here, found while writing the coverage:
+
+- Progress read &amp;quot;indexing 100%&amp;quot; the moment an install started. It was
+  reported per ARCHIVE — one dictionary is one step — and the popup drew
+  done + 1. Banks are the unit now, and done counts what has finished.
+- An emptied index kept every page it had: 448 MB answering nothing.
+  VACUUM after a prune, and delete the file when the last dictionary
+  goes.
+- Pitch and frequency dictionaries never reached the manifest, so the
+  settings list could not show them or take them out.
+
+* refactor: split the settings window into three files and enforce style with a hook
+
+settings.html was 528 lines: a stylesheet, a program and some markup in one
+file, which is why it read badly and why its CSP had to allow inline script
+and style. It is now settings.html / settings.css / settings.js, matching
+app/renderer, and the page runs under &amp;#39;self&amp;#39; for both — no &amp;#39;unsafe-inline&amp;#39;
+anywhere in the app.
+
+The stylesheet is one declaration per line, sectioned window-top-to-bottom,
+with the palette as named tokens (seven hex values were repeated across
+thirty rules). Two dead rules dropped. The declarations were diffed
+rule-by-rule against the old inline block: identical apart from the four
+classes replacing inline style attributes.
+
+settings.js gained sections, and lost the things that made it a mess:
+1048576 spelled out three times is now inMB(), and the percentage formula
+that existed in two copies — the copy that caused &amp;quot;indexing 100%&amp;quot; — is one
+function. The checkbox now leads the row and priority follows it.
+
+Enforcement, so this stops being a matter of who wrote the file:
+
+  tools/lint.sh    one script, run by tools/hooks/pre-commit AND by CI
+  eslint           layout and correctness, config at eslint.config.js
+  swift-format     layout, config at .swift-format
+  the compiler     Swift types, via ocr/build.sh, already in CI
+
+eslint found more than indentation. renderer.js assigned `lastKey` with no
+declaration anywhere — an implicit global that worked only because the file
+is not strict. app/main.js still imported seventeen things it stopped using
+when it was split up. permissions.js required child_process twice, shadowing
+itself. glyph-layer.js had its entire body at column zero inside its IIFE.
+
+Adopting swift-format meant reformatting all 25 Swift files at once.
+Verified byte-identical over the golden corpus first — 66 pages, 5116
+glyphs, 132 files, no diff — which is the only reason it is one commit.
+
+New: test/unit/settings.js loads the real page in a hidden Electron window
+with the real preload, and checks what a fake DOM cannot — that the three
+files find each other, that the CSP has no unsafe-inline, and that nothing
+is inline at runtime either. 6 checks. Full suite: 91 node + 11 renderer +
+6 settings, 0 skipped.
+
+* fix: the popup lost its typography when it gained the dictionary&amp;#39;s structure
+
+Keeping glossary structure instead of flattening it (§8) put the dictionary&amp;#39;s
+own ul/ol/li into the popup, and nothing styled them — so Jitendex went from
+three lines to half a screen of browser-default bullets. Fixed against
+Yomitan&amp;#39;s own compact glossary layout (its display.css and
+structured-content.css), and against the real DOM rather than a guess: the
+first attempt hung its rules off .sc-block, which popup.js never emits, so
+half of them matched nothing.
+
+  · one sense&amp;#39;s translations on one line — &amp;quot;origin; beginning; start&amp;quot;
+  · sense numbers in a gutter, with space before the text
+  · example sentences in their own tray, ruby given room, the looked-up
+    word tinted, the English dimmer
+  · part-of-speech as small pills, not list items
+  · no outer bullet beside a structured sense: it brought its own numbering
+  · spelling-variant tables and licence footers hidden, as the old index did
+    (build-index.py&amp;#39;s JM_SKIP) — the variants table renders as empty cells,
+    since its markers are images we do not extract yet
+  · body text a point larger
+
+structured.js now carries each node&amp;#39;s `data` through as data-sc-* attributes,
+which is the only thing that says which ul is a list of senses and which is a
+list of translations; Yomitan does the same. An image we cannot resolve
+renders its label instead of a broken-image box — 三省堂 ships every sense
+marker as an SVG.
+
+The dictionary form now heads the card, with the form found on the page under
+it: 始まる is the word to learn, 始まります is a fact about that sentence.
+
+Two ranking bugs behind the same symptom:
+
+  · 神 led with しん (score 0) over かみ (score 200). Entries were sorted by
+    dictionary alone, so the tie fell to rowid order. A term bank&amp;#39;s score is
+    its popularity marker; Yomitan sorts on it and now so do we.
+  · frequency chips ignored the priority list, so the arrows beside a
+    frequency dictionary changed nothing at all.
+
+Settings: dictionaries and the trigger now save the moment they change —
+neither needs the capture child restarted, and lookup.js re-reads the order
+per lookup. The footer button is therefore only shown on the target-window
+tab, where it does something, and says what: &amp;quot;Watch this window&amp;quot;.
+
+The dictionary list is grouped by state (installed, in priority order /
+available to download) rather than by provenance. Provenance grouping put a
+group boundary across one priority list, so an arrow could not move a row past
+it — which is what made the ordering look broken.
+
+Found by the new test harness: the fake element in dictlist.test.js did not
+drop children on innerHTML = &amp;#39;&amp;#39;, so every &amp;quot;did the rows move&amp;quot; assertion was
+reading two renders at once.
+
+* fix: lint.sh&amp;#39;s own shell bugs, and Swift formatting out of the CI gate
+
+Both found by the first CI run of the check script, which is the point of it.
+
+shellcheck is not installed on this laptop, so tools/lint.sh skipped it here
+and ran it on the runner — where it flagged the script itself: an unchecked
+`cd` (SC2164) and an unquoted `$(find)` that would split a path containing a
+space (SC2046).
+
+swift-format is now hook-only. It ships with Xcode, and the runner&amp;#39;s copy
+breaks lines differently from this machine&amp;#39;s: LiveTextEngine.swift:153 is
+clean locally and two errors there. A gate that fails on which Xcode you have
+is one nobody can act on. CI still compiles the Swift, which is the type
+check; formatting is enforced before the commit, where one developer&amp;#39;s
+version is consistent with itself.
+
+* ci: shellcheck must ignore the root node_modules too
+
+The lint tooling brought a node_modules to the repository root, and ajv ships
+shell scripts with warnings in them. The action was only told to ignore
+app/node_modules, so the first green lint run failed on a dependency&amp;#39;s code.
+
+* fix: queue dictionary work instead of refusing it
+
+&amp;quot;Import a .zip you own…&amp;quot; did nothing while a download or a removal was
+running. Not disabled — clickable, and silently ignored: the settings window
+held one global lock and dictAction() returned early.
+
+The lock existed for a real reason. Every one of these jobs writes index.db —
+a download rebuilds it, a removal prunes it — and two at once race over one
+file, a rebuild moving index.db.building into place while a prune has the same
+database open. But a window is the wrong place to enforce that: a second
+window, or a rebuild the main process starts on its own, sails straight past
+it.
+
+So the queue lives beside the index, in app/main/job-queue.js. Ask for
+whatever you like, whenever; it happens in turn. Every progress event now
+carries the job it belongs to, because with a queue the window can no longer
+assume that whatever is happening is the thing it last clicked — a row shows
+its own progress, a row waiting behind another says &amp;quot;waiting…&amp;quot;, and only a row
+with work outstanding is inert.
+
+The queue is its own file rather than a closure inside ipc.js so the tests
+exercise the queue the app runs. Six checks: no overlap, order preserved, a
+failure that does not poison the queue behind it, each caller getting its own
+result, and every event labelled.
+
+104 node + 11 renderer + 8 settings checks, 0 skipped.
+
+* chore: mark the lockfiles as generated
+
+A dependency bump reads as a thousand-line change otherwise. They stay
+committed, and have to: CI runs `npm ci`, which refuses to run without a
+lockfile (verified — it exits non-zero), and actions/setup-node keys its cache
+on one.
+
+* fix: a progress bar that redraws cannot animate, and imports need their own keys
+
+Two things the queue made visible.
+
+The &amp;quot;waiting…&amp;quot; bar never moved. It is drawn as a sliding fill, and a CSS
+animation restarts from the beginning every time its element is replaced — the
+whole list was rebuilt on every progress event, and a download reports many
+times a second, so the row behind it sat frozen at the left edge. The
+determinate bars had the same problem more quietly: their width transition
+never got to run either. Progress is now written INTO the bar on screen, and
+the list is only redrawn when the set of rows changes. Same lesson as the
+glyph layer (ARCHITECTURE §5): do not rebuild what you can write into.
+
+Importing blocked after the first archive. Every import shared the job key
+&amp;#39;import&amp;#39;, so a second one looked like the first still running and was refused.
+Each import now names its own job, and they queue like everything else.
+
+Three checks, in the shape the renderer suite uses — tag the live element and
+see whether it survived: an update lands in the same bar, a bar that becomes
+measurable drops its animation, and two imports are two jobs.
+
+* fix: one unreadable archive no longer strands the rest of a multi-select
+
+You asked what happens when three dictionaries are picked at once, so I
+checked instead of guessing. Three good ones were fine — three copies and ONE
+index rebuild, which is the point of doing them as a single job.
+
+With a bad one in the middle it was not fine. The loop returned on the first
+failure, so an archive already copied sat in dicts/ and out of the index: the
+settings window lists a row per archive, so it showed up installed, offered a
+Remove button, and answered nothing. Anything after it was never copied at
+all, and the message named no file.
+
+Every readable archive now goes in, whatever else fails; the ones that could
+not be read are reported by name (&amp;quot;could not read junk.zip&amp;quot;). The loop moved
+into dictionaries.importFiles() so the test drives the function the app runs —
+my first version of this test passed against a copy of the loop written the
+way it SHOULD work, which is exactly the trap the queue test avoided.
+
+Three checks: three at once, one bad in the middle, and the invariant that
+makes the list truthful — every archive on disk is one the index knows about.
+
+* fix: the popup styled one dictionary out of eleven
+
+Imported every dictionary — Jitendex, JMnedict, KANJIDIC, JPDB, BCCWJ, 三省堂,
+明鏡, 旺文社, 実用, 日本語文法辞典, NHK pitch — rendered 30 diverse entries from
+each through the real popup, and had five agents read the results: one per
+dictionary group, one on the combined view, one on the visual system.
+
+They all found the same root cause. The stylesheet was written against
+Jitendex&amp;#39;s node names (`data.content = &amp;quot;sense&amp;quot;`). 三省堂 says
+`data.name = &amp;quot;語釈&amp;quot;` for the same thing, 明鏡 says `data.meikyo`. So every rule
+fired for one dictionary and for nothing else: in the monolinguals, examples,
+cross-references, notes and spelling variants were all styled exactly like
+definitions, because none of them were styled at all.
+
+structured.js now translates each dictionary&amp;#39;s vocabulary into one set of
+roles (measured from the installed archives, not guessed) and the stylesheet
+styles roles. That single change is most of what follows:
+
+  · examples are quiet indented lines — a tray only when one carries its
+    translation, since a monolingual puts an example under every sense
+  · cross-references dim and small: they point away from this word, and at
+    full weight a Jitendex xref printed a second ① inside an entry
+  · notes, sense numbers, top-level divisions, part-of-speech tags all
+    distinguishable, in every dictionary
+
+Other defects the audits surfaced:
+
+  · newlines were dropped in structured entries, so 明鏡&amp;#39;s ❶❷❸ ran together
+    as one paragraph — the text carried them, nothing preserved them
+  · 348 empty spans per page from images we cannot draw. A marker&amp;#39;s filename
+    names it (一-fill.svg is the division 一); the rest leave nothing behind
+    rather than an empty element
+  · the hanging indent was applied to every line, including prose that starts
+    with no marker, so a wrapped line and a new sense began at the same x
+  · dictKind matched exact labels, so every imported dictionary fell through
+    to a script heuristic — 旺文社 was blue for some entries and green for
+    others, in one card
+  · 下 showed the accents of した, しも, もと and げ all hanging off げ
+  · KANJIDIC&amp;#39;s on/kun readings were duplicated into the pitch slot, implying
+    an accent an isolated character does not have
+  · 三省堂&amp;#39;s ＊＊ core-vocabulary rank read as stray markdown
+
+And the design pass, from the spec the fifth agent wrote: three tiers by size
+and brightness rather than by more boxes; headword, reading, pitch and
+frequency on one sticky line; the deinflection route (始まりました → 始まる
+‹-ます·-た›) under it; entries ordered bilingual → monolingual → grammar →
+kanji → names; reading groups as the divider inside a card, since 神 is かみ
+and しん and じん; a 2px spine in the dictionary&amp;#39;s kind colour instead of a
+rule between every pair; borderless chips; identical entries deduplicated;
+proper names demoted to one line at the foot.
+
+118 node + 11 renderer + 8 settings checks, 0 skipped. New: roles.test.js
+pins the vocabulary mapping, since a dictionary whose names stop being
+recognised degrades silently to unstyled prose.
+
+* fix: prose dictionaries get the same vocabulary as structured ones
+
+The grammar dictionary answers in plain text, and its structure is in the
+shape of its lines: [解説] [意味] [例文A] [接続] as headings, a ｜-separated
+table under the last one, the Japanese and its translation on consecutive
+lines. None of that was styled, so a 日本語文法辞典 entry was one grey wall
+while its neighbours had headings, numbered senses and example blocks.
+
+popup.js now reads a plain gloss line by line and classifies each — heading,
+quotation, table row, numbered sense, 「label：」 prefix — and the stylesheet
+gives those the SAME treatment as the equivalent roles in structured content.
+An example looks like an example whichever dictionary it came from, which is
+the whole point.
+
+Also from that pass:
+
+  · 旺文社 wrote 「筆順：」 before a stroke-order diagram we cannot draw, so a
+    colon introduced a two-line hole. A label introducing nothing is dropped.
+  · the ｜ split only handled the full-width form while the detection accepted
+    both, so every ASCII-piped table still showed its pipes
+  · 三省堂&amp;#39;s 大語義 WRAPS the senses it divides, so colouring the division
+    turned that dictionary&amp;#39;s definitions gold — one dictionary&amp;#39;s text a
+    different colour from its neighbours&amp;#39;. The colour goes on the marker.
+  · the pitch downstep was a full-height rule between two characters and read
+    as a text cursor inside the word; it is now a short drop off the end of
+    the overline
+  · Jitendex&amp;#39;s footnote markers into a bibliography we do not show are gone
+
+And the hardcoding you asked about. The kanji fallback was gated on the
+literal label &amp;quot;KANJIDIC&amp;quot;, so anyone who imported a different kanji dictionary
+had it indexed, listed and enabled — and never consulted. It now uses the
+kanji row&amp;#39;s own dict column. dictKind asks the entry&amp;#39;s STRUCTURE first (音/訓
+readings mean a kanji dictionary whatever it is called) and falls back to the
+script of the glosses; the names it knows are a shortcut, not the mechanism.
+
+Pitch and frequency were already recognised by what their banks contain
+rather than by name — kinds.test.js proves it for a pitch pack that is not
+NHK and a corpus that is neither JPDB nor BCCWJ, and proves that with no
+pitch dictionary installed nothing claims to know the accent.
+
+That suite immediately caught a regression in this same commit: adding `dict`
+to the kanji query threw on an index built by the Python builder, which has
+no such column — and it threw inside open(), failing the whole index rather
+than its kanji. The column is read only when it is there.
+
+124 node + 11 renderer + 8 settings checks, 0 skipped.
+
+* fix: six findings from reviewing this branch
+
+Two resource leaks, both real and both mine.
+
+classify() opened an archive and handed the handle back in its result, where
+no caller ever wanted it — so every call leaked a file descriptor. installed()
+classifies every archive and runs on each settings render, each catalogue()
+call and after each dictionary job: measured at 133 extra open files after
+twelve calls with eleven dictionaries. That ends at EMFILE, and a process out
+of descriptors cannot open a dictionary or spawn the capture helper. The four
+bank loaders leaked one each for the length of a build. Both now close, and
+two checks measure it — 60 classifications and a full build must leave
+nothing open.
+
+Frequency chips would have vanished for every existing user. The new
+visibility filter treats a source the config has never heard of as hidden, and
+frequency labels only started reaching the manifest in this same branch — so
+an upgraded install has JPDB in the index and not in its config, and every
+chip disappears until something happens to rewrite the manifest. Switched off
+still means hidden; never heard of now means shown.
+
+Adding the kanji `dict` column to the query broke opening a Python-built index
+outright: the prepare() throws inside open(), so the whole index fails rather
+than just its kanji, and every lookup returns null. Read only when the column
+is there. schema.test.js caught this one on the commit that introduced it.
+
+Two in the line classifier. A bare digit with an optional delimiter matched
+any line opening with a number, so 「2020年に…」 was given a sense marker&amp;#39;s
+hanging indent; a digit now has to be followed by something that makes it a
+marker. And a short line ending in a colon was dropped outright to hide
+旺文社&amp;#39;s 「筆順：」 — which also discarded labels whose content is on the next
+line. It reads as a heading now: the dangling colon is gone and the meaning
+is not.
+
+126 node + 11 renderer + 8 settings checks, 0 skipped.
+
+* fix: notice an index that changed underneath, and say when one has not
+
+明鏡 showed up in settings with no checkbox and no priority arrows, looking
+like it had failed to index. It had indexed fine. The index was rebuilt from
+outside the app, which changed that dictionary&amp;#39;s label, and the running
+process was still holding the config it read at startup — config.js caches it,
+and the list of dictionaries in a config is bounded by the manifest, so every
+dictionary whose label the rebuild changed silently dropped out of it. The
+window then drew a row from the archives on disk with no config entry behind
+it, and a row with nothing to enable or order loses its controls.
+
+Two fixes. cfg:get re-reads the manifest before answering, so an index
+rebuilt by anything other than this process is picked up — a rebuild from the
+command line, a second window, a restore from backup. And a row whose archive
+is genuinely not in the index now says so on its own line instead of quietly
+losing its controls, which was indistinguishable from a bug. It keeps its
+Remove button, which is the way out.
+
+127 node + 11 renderer + 8 settings checks, 0 skipped.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/09cf45813e51b1ecdd910d30a4259ba8fb11d103</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/09cf45813e51b1ecdd910d30a4259ba8fb11d103"/>
+    <title>
+        fix: remove a dictionary in seconds, and say what is happening (#13)
+    </title>
+    <updated>2026-08-14T19:55:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: remove a dictionary in seconds, and say what is happening (#13)
+
+* fix: remove a dictionary in seconds, and say what is happening
+
+Four things from using it.
+
+Removing took ~80 seconds because it rebuilt the whole index. The reason
+given for that — frequency ordering is global, so everything must be
+rebuilt — was wrong. Frequency rows carry the source they came from, so
+one dictionary&amp;#39;s removal cannot disturb another&amp;#39;s ranking and nothing is
+recomputed across dictionaries. Removal now deletes that dictionary&amp;#39;s
+rows: measured 930ms for the terms and 1,665ms for the glossaries left
+with nothing pointing at them, against ~80,000ms.
+
+Two things had to change for that to be possible. kanji and pitch had no
+column saying which dictionary a row came from, so those rows could not
+be found again; every table has one now. And the orphan sweep is an
+anti-join that took 4,192ms unindexed, so idx_terms_gloss exists — 580ms
+to build, once.
+
+test/unit/prune.test.js asserts the equivalence the whole thing rests on:
+an index with a dictionary pruned out holds exactly what an index built
+without that dictionary holds, compared table by table, including the
+frequency source that has to survive. An index built before the dict
+columns existed cannot be pruned, reports that, and is rebuilt instead.
+
+Removal had no feedback at all. It now reports its phase, and indexing
+reports a percentage rather than a bare word.
+
+An expanded app in the window list could never be collapsed — the click
+handler only ever added to the expanded set. It toggles, and the hint
+says which way the next click goes.
+
+Remove sits at the left of the row it acts on, where the eye starts,
+rather than drifting away from long dictionary titles.
+
+* test: check what the removal change could have broken
+
+Four specific ways the schema change could have gone wrong, each checked
+rather than assumed: an index built before the dict columns must refuse
+to be pruned and keep every table intact; the manifest derived from the
+database must match the order build() loaded dictionaries in, or removing
+one silently reorders the popup; pitch rows must still load after the
+insert gained a column; and lookup must still answer against an index
+carrying the new columns.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f4a9cbf4503510eb8f941dae19631007010d808</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/7f4a9cbf4503510eb8f941dae19631007010d808"/>
+    <title>
+        perf: drop Chromium&#39;s unused locales from the release bundle (#12)
+    </title>
+    <updated>2026-08-14T19:30:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf: drop Chromium&amp;#39;s unused locales from the release bundle (#12)
+
+46 MB of the 276 MB bundle was Chromium UI strings for 60-odd languages.
+This app renders its own interface and never shows one of them.
+
+Measured on a real build: 276 -&amp;gt; 229 MB on disk, 114 -&amp;gt; 102 MB as the zip
+a user actually downloads. Signature verifies, app launches.
+
+Two things make this easy to get wrong, both encoded in the comment. The
+path must be the real one inside Versions/A — a framework&amp;#39;s top-level
+Resources is a symlink and find(1) does not follow symlinks, so the
+obvious version silently deletes nothing and reports a saving of zero,
+which is exactly what my first attempt measured. And it has to run before
+codesign, or the signature covers files that are no longer there.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/531d440e63bf3a8072d5dda7f893c15473ba0dcf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/531d440e63bf3a8072d5dda7f893c15473ba0dcf"/>
+    <title>
+        feat: import dictionaries in the app, and ship without one (#10)
+    </title>
+    <updated>2026-08-14T19:21:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: import dictionaries in the app, and ship without one (#10)
+
+* feat: read dictionary archives and keep their glossary structure
+
+Groundwork for importing a dictionary from the Settings window, which is
+how someone uses a commercial monolingual the app can never ship.
+
+app/main/zip.js reads Yomitan archives with nothing but node:zlib — the
+central directory is a fixed layout and DEFLATE is in the stdlib, so the
+alternative was Yomitan&amp;#39;s zip.js as this app&amp;#39;s first runtime dependency.
+Verified against all twelve archives here, including the NHK pitch pack,
+whose CRCs do not match its contents; the Python builder carries the same
+tolerance for the same reason.
+
+app/main/index-builder.js stores each glossary&amp;#39;s STRUCTURE rather than
+flattening it to sense strings at index time. Flattening only works for
+formats someone taught the builder and degrades to a permissive walk for
+everything else — the walk that yields 「き」「ぞく」「［」 as three senses.
+Since the point is a dictionary nobody anticipated, the structure is kept
+and rendered at display time, as Yomitan does.
+
+Verbatim structure cost 1,670 MB against the old index&amp;#39;s 322 MB, so
+glossaries are deduplicated into their own table and deflated: measured
+1,068 MB of glossary across 2,005,802 rows of which only 463 MB was
+distinct, and structured JSON deflates to ~35%. That lands at 510 MB —
+188 MB more than flattening, for a dictionary format nobody has to
+anticipate. Both halves are asserted lossless.
+
+lookup.js reads either shape, decided once at open() by whether a glosses
+table exists. An index built by the old Python builder is still a good
+dictionary and must keep answering across an update. open() takes a path
+so that claim is testable, and close() lets a freshly imported index be
+picked up without a restart.
+
+Checks: test/unit/index-builder.test.js asserts glossaries round-trip
+byte-identical through dedupe and compression, that every usable record
+is indexed under every key it names, that kanji counts match the archive,
+that no term points at a missing glossary, and that a non-dictionary zip
+is reported rather than indexed. test/unit/schema.test.js opens a real
+old index and a freshly built new one and requires the same answer.
+
+* feat: render structured content, checked against what it replaces
+
+app/renderer/structured.js turns a stored glossary into DOM. Written
+against a census of what the twelve dictionaries here actually contain —
+14 tags, 7 style properties, two node types — rather than against the
+format in the abstract. Yomitan&amp;#39;s own generator is ~550 lines because it
+also carries their media pipeline, Anki rendering and language detection,
+and its contentManager interface would have to be stubbed to something
+this app has no use for.
+
+An unrecognised tag is not dropped: it becomes a neutral inline or block
+element and its children still render. A dictionary nobody has seen is
+the entire reason the structure is kept.
+
+The old index-time flattener is the oracle. It was written with real
+per-dictionary knowledge, so whatever text it displayed the renderer must
+still display; test/unit/structured.test.js asserts that over a fixed
+slice of 3,000 keys in key order — 7,918 senses across all eight
+dictionaries, none lost.
+
+Getting that check honest took four corrections, each a real finding:
+
+- textOf dropped images. 三省堂 sets sense markers (ⓑ) and part-of-speech
+  tags as SVG logos with the character in title, so an image that carries
+  a label is text to a reader.
+- Substring was the wrong relation. The new rendering carries MORE: the
+  old flattener dropped the bracketed headword 三省堂 prints between a
+  sense number and its text, storing 「① 円の形」 where the dictionary
+  reads 「①［円］円の形」. Subsequence, ordered.
+- Markers are not words. The old builder synthesised its own numbering
+  and read sense numbers out of listStyleType to inline them; the
+  renderer sets that as CSS and lets the browser draw the marker.
+- The checker itself was wrong outside the BMP: it walked the haystack by
+  code point and the needle by UTF-16 code unit, so 明鏡&amp;#39;s 𠤎 (U+2090E)
+  in あいくち could never match.
+
+* feat: add and remove dictionaries from the settings window
+
+Downloads the freely licensed ones by name and imports the ones a user
+owns, which is the only way 三省堂 or DOJG can ever reach the app — they
+cannot ship with it and cannot be offered for download.
+
+The catalogue mirrors what Yomitan itself recommends, checked against
+yomitan.wiki/dictionaries rather than assumed: Jitendex from
+stephenmk/stephenmk.github.io (the stephenmk/Jitendex path now redirects),
+JMnedict and KANJIDIC from the jmdict-yomitan daily builds, both
+frequency lists from Kuuuube. All five resolve live and were verified to
+return 200 with plausible sizes.
+
+Nothing is pinned by filename. The GitHub entries resolve the latest
+release when asked; the Kuuuube ones match a pattern against the repo
+tree and take the newest, because that repository keeps old versions
+beside new — JPDB v2.1 is still sitting next to v2.2, so a pinned name
+would have quietly fetched a stale build forever.
+
+The rebuild runs in a forked worker. node:sqlite is synchronous and a
+full rebuild is ~80 seconds; in the main process that freezes the tray,
+the settings window and the overlay panel, which is drawn over whatever
+the user is reading. ELECTRON_RUN_AS_NODE, so it is the same binary.
+
+popup.js renders whatever a dictionary wrote. Plain strings keep the
+formatting they had; structured content is built as DOM by structured.js
+and stubbed into the markup, since it cannot be expressed as a string.
+Without this an import would have replaced a working index with a
+structured one and every sense would have rendered as [object Object].
+
+config.js reads the manifest from wherever the index actually is — the
+user&amp;#39;s own wins, matching lookup.js — and can be told to forget its cache,
+so a dictionary imported now appears in the list without a restart.
+
+Downloads land on a .part file and are validated as a real Yomitan
+archive before being named, so a 404 page cannot install itself as a
+dictionary. remove() takes a basename, so a crafted name cannot reach out
+of the dictionaries folder.
+
+* feat: ship no dictionary, and let the app fetch or import one
+
+The release bundle carried a 189 MB index built from the freely licensed
+set. Now it carries none: measured 465 MB -&amp;gt; 276 MB, of which Electron is
+nearly all of what remains.
+
+This also removes the licensing question from the release rather than
+policing it. build-release.sh used to refuse to package an index whose
+manifest named a commercial dictionary, and release.yml built the index
+on a clean runner so it was free by construction. Neither is needed when
+nothing licensed is in the bundle at all — a stronger position than
+checking.
+
+A fresh install therefore has no dictionary, which is now a normal state
+rather than an error. main.js opens the settings window and says where to
+get one instead of naming a Python script the user does not have.
+config.js no longer falls back to the built-in list of nine names when no
+manifest exists, because showing a new install dictionaries it does not
+have is worse than showing none; an install predating the manifest is
+unaffected, since its own config.json already carries the list.
+
+Capture, OCR and the glyph layer all work before a dictionary exists.
+Only lookups have nothing to answer with.
+
+ARCHITECTURE section 8 said structure is extracted at index time and
+explained why, with the 「き」「ぞく」「［」 measurement that paid for it.
+That decision is reversed and the section now says what replaced it and
+what it cost: 1,670 MB verbatim, 510 MB after deduplicating and
+deflating, against 322 MB flattened. Section 13 documents where
+dictionaries come from, why a rebuild is total and why it runs in a
+forked worker. Section 6 no longer promises a bundled index.
+
+Images are deferred and said so: 10,732 img nodes across these
+dictionaries, only 35% carrying a usable title, and a renderer CSP of
+default-src &amp;#39;none&amp;#39;. They render as alt text until media extraction and a
+narrow protocol exist.
+
+Verified by building the bundle: 276 MB, and a find for *.db and
+dictionaries.json inside it returns nothing.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89edb9591e9869af92dcbf3efb67c3686dc3448c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/89edb9591e9869af92dcbf3efb67c3686dc3448c"/>
+    <title>
+        fix: run the release&#39;s Python steps through python3 (#9)
+    </title>
+    <updated>2026-08-14T17:19:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: run the release&amp;#39;s Python steps through python3 (#9)
+
+tools/build-index.py is committed 100644, so `run: tools/build-index.py`
+died with Permission denied after the merge to main (run 31815845246) —
+the first thing the release pipeline did on its first real outing.
+fetch-dicts.py only survived the same line by happening to carry the bit.
+
+setup.sh and the README both already invoke these as
+`python3 tools/...`, so this makes the workflow agree with the rest of
+the project and stops depending on a file mode at all.
+
+check-conventions.sh now fails on any workflow step that invokes a repo
+script bare without the executable bit committed. Verified by reverting
+the fix: the check catches it.
+
+No tag was left behind by the failed run — the release creates its tag
+via `gh release create --target` at the very end, so a build that dies
+partway leaves nothing to clean up.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/108ef0d666fd3610e0df6c36040c10a3b0e7c912</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/108ef0d666fd3610e0df6c36040c10a3b0e7c912"/>
+    <title>
+        feat: a downloadable app, released and versioned automatically (#8)
+    </title>
+    <updated>2026-08-14T15:42:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: a downloadable app, released and versioned automatically (#8)
+
+* feat: a downloadable app, and the release pipeline that builds it
+
+`tools/build-release.sh` produces a bundle that runs on a machine with no
+checkout, no Xcode and no dictionary download, and release.yml builds it
+on a tag once CI passes.
+
+The bundling is one extra candidate. bootstrap.js already probed
+$YOMI_OVERLAY_DIR, then a pointer file, then a hardcoded fallback;
+Contents/Resources is now tried LAST, so a developer&amp;#39;s pointer file still
+wins and &amp;quot;restart, don&amp;#39;t rebuild&amp;quot; is untouched (ARCHITECTURE §6).
+paths.js notices which happened and splits what was one `data/` into the
+two ideas it always was: read-only material inside the signed bundle
+(index, manifest, yomi) and what the user writes (config, an index of
+their own). In a checkout both resolve to `data/`, so development is
+byte-for-byte unchanged.
+
+lookup.js prefers a user index over the bundled one, so anyone can build
+index.db over their own dictionaries and drop it beside their config
+without touching a signed bundle.
+
+Licensing is why the release is built in CI rather than on a laptop. A
+runner starts clean, so fetch-dicts.py — which only knows how to download
+freely-licensed sources — is the only thing that puts a dictionary on
+disk. build-release.sh re-checks that before packaging, against both the
+zips present AND what dictionaries.json says is in the index, because a
+stale index outlives the zips it came from. Run here today it refuses,
+naming 三省堂, 明鏡, 旺文社, 実用, DOJG, どんなとき and NHK pitch.
+
+Signing is a drop-in: a Developer ID is used when the secrets exist and
+ad-hoc otherwise. Ad-hoc means the download is quarantined and the TCC
+identity changes per build, which the release notes say plainly.
+
+Verified end to end: a free index (189 MB, Jitendex + JMnedict +
+KANJIDIC) built from a clean tree, packaged to a 465 MB bundle, launched
+with no checkout in scope — the dictionary opened from Resources and the
+trigger came back as the default rather than this machine&amp;#39;s configured
+one, which is what proves config resolved to Application Support.
+
+* feat: work the release version out from the commits, and tag in the pipeline
+
+* docs: RELEASING.md — how a PR title becomes a version
+
+Squash-merge means the PR title IS the commit subject the release
+pipeline parses, which is the one thing an author needs to know and the
+one thing nothing currently said. Tabulates what to write for each
+digit, why an unrecognised prefix bumps the patch rather than being
+ignored, why 1.0.0 stays manual, and why there is no digit rollover.
+
+Indexed in docs/README.md and pointed at from CONVENTIONS&amp;#39; workflow
+section.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/49a141ddbff0590f379fb4650d38f39bf17ad42b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/49a141ddbff0590f379fb4650d38f39bf17ad42b"/>
+    <title>
+        docs: GROWTH.md — how much code a change is allowed to be (#7)
+    </title>
+    <updated>2026-08-14T07:28:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: GROWTH.md — how much code a change is allowed to be (#7)
+
+CONVENTIONS says how to write code here; nothing said how much of it to
+write, and a capture-loop optimisation came out at ~900 lines with ~350
+of them a feature that could not fire on real pages.
+
+Three questions before adding a mechanism (does it fire, can an existing
+one answer it, would deleting achieve the same), where a new thing goes
+given the pipeline layout, the naming patterns already in use so new code
+matches, and the diff self-check to run before opening a PR.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bfc083bb58e59f5daa0a780e1a7999dc5d458b6c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/bfc083bb58e59f5daa0a780e1a7999dc5d458b6c"/>
+    <title>
+        perf: cut a changed watch pass from ~1.8s to ~0.85s (#6)
+    </title>
+    <updated>2026-08-14T07:26:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf: cut a changed watch pass from ~1.8s to ~0.85s (#6)
+
+Four changes to the capture loop, each measured before and after. No
+recognised output moved: the golden corpus is byte-identical across all
+66 images, and CER over 106 ground-truth crops is unchanged at 0.0115.
+
+- One window enumeration per pass, not two. SCShareableContent costs
+  ~150ms and was paid by both chooseWindow and captureOnce. Cached and
+  invalidated by the compositing window set (CGWindowList, 0.5ms), never
+  by a timer alone — a window that appeared between refreshes would be
+  captured. Frames now come from CGWindowList every pass, since the
+  cached SCWindow&amp;#39;s own frame goes stale.
+
+- The Live Text mixed-content merge runs only when Vision left a mark
+  unaccounted for. It cost 1.35s against the 0.85s read it supplements,
+  on every changed pass, whether or not there was anything to merge.
+  38 committed-horizontal ground-truth pages: identical text on all 38,
+  skipped on 34, 0.69s -&amp;gt; 0.35s. On a full clean page, 1.8s -&amp;gt; 0.85s.
+  Needed a polarity-independent mask — inkMask read a dark-mode page as
+  100% ink, which would have defeated the gate for anyone reading dark.
+
+- A pass that emitted new text waits 0.1s, not the interval: the frame
+  it read was captured a whole pass ago. Bounded at three in a row so an
+  animated page cannot pin the recogniser.
+
+- buildPayload writes one string instead of a String per glyph joined
+  per line; jsonEscape stops allocating for text that needs no escaping.
+
+Session.noteOnce replaces the two &amp;quot;print only when this changes&amp;quot; fields
+the diagnostics had each grown, and the write half of logEngineOnce.
+
+Measured over a real reading session: page-turn cycle p50 3.62s -&amp;gt; 2.57s,
+recognition p50 2.18s -&amp;gt; 1.61s.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd0cb914d81d39dc04e6c22e7ccca0285344cb30</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/dd0cb914d81d39dc04e6c22e7ccca0285344cb30"/>
+    <title>
+        Bump the declared Electron range to ^43.3.0 (#5)
+    </title>
+    <updated>2026-08-13T21:27:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the declared Electron range to ^43.3.0 (#5)
+
+Dependabot&amp;#39;s #4 moved only package-lock.json, because ^43.2.0 already
+admits 43.3.0. But the version that actually ships is not the locked one:
+tools/build-app.sh reads devDependencies.electron out of package.json and
+passes it to @electron/packager, so the signed bundle stayed on 43.2.0
+while the lockfile said 43.3.0. Declaring the range keeps the two in step.
+
+43.3.0 is a patch move underneath: Node 24.18.0 -&amp;gt; 24.18.1, Chromium
+150.0.7871.129 -&amp;gt; .212, and the module ABI stays 148, so node:sqlite in
+app/main/lookup.js needs nothing (verified by running DatabaseSync under
+both builds).
+
+Packaging the new framework needs a build-app.sh run; the identity is
+stable, so the Screen Recording and Accessibility grants survive it.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c62a950a0710f8e15ee5952bbbe703a7bedb1b72</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/c62a950a0710f8e15ee5952bbbe703a7bedb1b72"/>
+    <title>
+        Build(deps): Bump actions/setup-node from 4 to 7 (#3)
+    </title>
+    <updated>2026-08-13T21:26:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build(deps): Bump actions/setup-node from 4 to 7 (#3)
+
+Bumps [actions/setup-node](https://github.com/actions/setup-node) from 4 to 7.
+- [Release notes](https://github.com/actions/setup-node/releases)
+- [Commits](https://github.com/actions/setup-node/compare/v4...v7)
+
+---
+updated-dependencies:
+- dependency-name: actions/setup-node
+  dependency-version: &amp;#39;7&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8272bea7664231f1c63db7204f2d1e353fca6d16</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/8272bea7664231f1c63db7204f2d1e353fca6d16"/>
+    <title>
+        Build(deps): Bump actions/checkout from 4 to 7 (#2)
+    </title>
+    <updated>2026-08-13T21:23:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build(deps): Bump actions/checkout from 4 to 7 (#2)
+
+Bumps [actions/checkout](https://github.com/actions/checkout) from 4 to 7.
+- [Release notes](https://github.com/actions/checkout/releases)
+- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/actions/checkout/compare/v4...v7)
+
+---
+updated-dependencies:
+- dependency-name: actions/checkout
+  dependency-version: &amp;#39;7&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fed915057a9f89c25b296c70c628ef99f81769f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/fed915057a9f89c25b296c70c628ef99f81769f5"/>
+    <title>
+        Build(deps-dev): Bump electron from 43.2.0 to 43.3.0 in /app (#4)
+    </title>
+    <updated>2026-08-13T21:23:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build(deps-dev): Bump electron from 43.2.0 to 43.3.0 in /app (#4)
+
+Bumps [electron](https://github.com/electron/electron) from 43.2.0 to 43.3.0.
+- [Release notes](https://github.com/electron/electron/releases)
+- [Commits](https://github.com/electron/electron/compare/v43.2.0...v43.3.0)
+
+---
+updated-dependencies:
+- dependency-name: electron
+  dependency-version: 43.3.0
+  dependency-type: direct:development
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f55a7f766d3bc996725a616b0429e27a4cca797e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/f55a7f766d3bc996725a616b0429e27a4cca797e"/>
+    <title>
+        Restructure: split the monolith, add unattended tests, harden IPC (#1)
+    </title>
+    <updated>2026-08-13T20:50:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restructure: split the monolith, add unattended tests, harden IPC (#1)
+
+* docs: refactoring diagnosis and executable integration plan
+
+REFACTOR.md is the diagnosis: per-file concern counts, the missing
+abstractions, and why the folder layout is shaped the way it is (paths.js
+deliberately conflates code and data location, which is what makes the
+restart-don&amp;#39;t-rebuild property in ARCHITECTURE section 6 work).
+
+REFACTOR-INTEGRATION.md is the procedure: ordered steps, each with an
+explicit gate, plus the sourced findings that changed the plan — Electron&amp;#39;s
+main/preload/renderer convention, sandbox already being on by default since
+Electron 20, package-by-feature&amp;#39;s single-delete modularity test, the Swift
+rule of threes, and phantom types as the standard idiom for coordinate
+spaces.
+
+* test: golden-master harness for the refactor
+
+Structural changes must not move a byte of kindleocr&amp;#39;s output. This makes
+that checkable instead of aspirational.
+
+--image is the right harness and already existed: it opens no
+ScreenCaptureKit session and needs no Screen Recording grant, so it runs
+headlessly and, verified here, while the overlay is running — a one-shot
+--dump capture would stall on the concurrent SCK session.
+
+Both stdout and stderr are recorded. The engine/orientation/furigana
+diagnostics are the only visible signal for policy decisions that leave the
+payload unchanged, so a stdout-only diff would pass an orientation probe
+that silently started committing horizontal.
+
+The corpus is a fixed 66-image list, not a find(1) walk: test/gt holds ~3800
+rendered pages. Every image from the hand-built categories plus every 100th
+epub page covers both orientations, furigana, mixed content and the native
+vertical path in 37s. Measured: 197 lines, 5116 glyphs, zero empty payloads,
+33 of 66 vertical-flagged.
+
+Determinism was verified, not assumed — Vision is nondeterministic between
+captures, but two full passes over fixed PNGs came back byte identical.
+
+The glyph floor exists because a harness that passes when nothing was
+recognised is a broken harness. check already catches total failure (an
+all-empty run cannot match a populated baseline), but record would freeze a
+broken baseline in and every later check would compare two identical piles
+of nothing.
+
+* refactor: one path resolver per language, layout unchanged
+
+Seven places independently knew the directory layout: paths.js, bootstrap.js,
+build-app.sh, setup.sh, build-index.py, fetch-dicts.py, main.js (the .venv
+path) and six test files (REPO/kindleocr). Any folder change had to be made
+correctly in all of them at once.
+
+paths.js was one constant, DATA_DIR, doing the work of seven ideas that happen
+to share a directory today — the app code, the renderer, the settings window,
+the preloads, the tray assets, the generated data, and the Python venv. That
+conflation is deliberate and load-bearing (ARCHITECTURE section 6: the bundle
+holds only a loader, so code and data resolve to the same place), but it means
+the layout cannot move without touching every consumer. Splitting the roots
+keeps the property and removes the coupling.
+
+paths.py and paths.sh give the Python and shell scripts the same service, each
+deriving every root from its own location. No literal path survives anywhere
+except one line per resolver, marked as the only line that knows the layout.
+
+Every root still resolves exactly where it did before: this commit moves no
+file and changes no behaviour. Verified byte-identical against the
+golden-master baseline (66 payloads, 5116 glyphs), every resolved path exists,
+and all JS/Python parses.
+
+Dead pathlib imports dropped from the two Python scripts that no longer
+construct paths themselves.
+
+* refactor: domain folder structure
+
+Pure move plus the layout lines in the three resolvers. No logic changed;
+git records every file as a rename, so history follows.
+
+  overlay/ held five unrelated things at one level — main-process code, the
+  renderer, the settings window, the dictionary build pipeline, a Python ML
+  sidecar, app packaging, and ~470 MB of generated data. Now:
+
+  ocr/Sources     the Swift helper (build with ocr/build.sh)
+  app/            main.js + main/ renderer/ settings/ preload/ assets/
+                  shell/ vendor/
+  tools/          build and side scripts, bundle inputs, the resolvers
+  data/           generated + licensed: index.db, dicts/, config.json, .venv
+  bin/            compiled helpers
+  docs/           ARCHITECTURE CONVENTIONS PLAN INTEGRATION REFACTOR*
+
+preload/ is top-level rather than beside the code it isolates because those
+two files are the entire trust boundary between the renderer and Node, and
+because Electron treats preload as a third process context with its own
+rules. Burying them next to what they expose is what made that boundary easy
+to overlook.
+
+icon.icns and extend.plist went to tools/, NOT app/shell/, despite being
+bundle inputs: electron-packager copies the shell directory wholesale into
+the .app, so anything parked there gets baked into the bundle. app/shell/
+still contains only the loader — that is ARCHITECTURE section 6, and it is
+what keeps the bundle hash stable and the TCC grants alive.
+
+.gitignore collapses from six artifact rules to data/ + bin/ +
+app/node_modules/: what is generated is now a property of the layout instead
+of a list that has to be kept in sync. overlay/dicts/.gitkeep went with it —
+data/ is wholly ignored and fetch-dicts.py creates the directory itself.
+
+ocr/build.sh replaces the inline swiftc line, and globs Sources/ so the
+step-4 file split needs no build change.
+
+Verified: golden-master byte identical with the moved binary AND again after
+a full rebuild through the new build script (66 payloads, 5116 glyphs); all
+eleven roots and every file resolved through them exist; every JS, Python and
+shell file parses; no doc link is broken.
+
+* refactor: split KindleOCR.swift into files by pipeline stage
+
+Mechanical extraction only. No renames, no signature changes, no logic edits.
+The one deliberate exception is access level: splitting a file breaks
+`private` at file scope, so inkMask and runs — used by BOTH Tategaki and
+Furigana — widen to internal. shoot keeps private; its only caller moved with
+it.
+
+2756 lines -&amp;gt; 18 files, largest now 485:
+
+  Capture/      WindowSelection Capture CropChannel
+  Recognition/  Orientation LiveTextEngine VisionEngine Recognizer Voting
+  Geometry/     Spaces Ink Tategaki Furigana
+  Model/        Line
+  Output/       Payload Diagnostics
+  CLI/          Options EventsCommand
+  Entry.swift
+
+Grouped by pipeline stage rather than by type, because Capture, Recognition,
+Tategaki and Furigana are problem-domain words here — the folder names should
+name what this tool does, not what kind of construct each file holds. A
+Models/Services/Utils split would have said nothing.
+
+Done as a verified partition rather than by eye: the 2757 lines were cut into
+65 contiguous blocks with no gaps or overlaps, each block assigned to exactly
+one file, and every non-blank source line then compared as a multiset against
+the original. The only two lines that differ are the two private declarations
+widened above.
+
+ocr/build.sh now discovers sources recursively. A read loop, not mapfile —
+macOS ships bash 3.2 — and sorted, so the compiler sees a stable order.
+
+Verified: compiles clean with no warnings, and golden-master byte identical
+(66 payloads, 5116 glyphs, 132 files).
+
+* docs: record two findings from the refactor, unfixed
+
+Both are behaviour changes, so neither belongs in a structural commit.
+
+1. The capture-recovery notice is unreachable in JSON watch mode — it sits
+   after the branch that continues, so the only path the overlay uses never
+   prints it and never resets the failure counter. Cost: you cannot tell
+   &amp;#39;failed once and recovered&amp;#39; from &amp;#39;still failing&amp;#39;. Hit this while
+   diagnosing a -3811 today and had to answer it with --list-all instead.
+
+2. setup.sh says rebuilding kindleocr costs nothing. Measured: it costs the
+   first capture after the rebuild, which is refused with -3801 before the
+   supervisor restarts the child and everything works. The grant does
+   survive; the docs are what is wrong. Which of the cdhash or the path
+   change triggers it is still open — both moved at once, and the note
+   records the experiment that would separate them.
+
+* refactor: split Main.main() into one file per subcommand
+
+Finishes the mechanical phase. Main.main() was 451 lines with all six
+subcommands inlined; it is now 52 lines of dispatch and nothing else.
+
+  CLI/PermissionCommand  --check-permission
+  CLI/ImageCommand       --image
+  CLI/EventsCommand      --events (joins the monitor it starts)
+  CLI/ListCommand        --list-all, --debug, --list, --frame
+  CLI/WatchCommand       --watch, plus waitNextPass, its only caller
+
+Bodies moved verbatim. The one unavoidable edit is indentation: every branch
+was over-indented by twelve spaces — the fossil of a switch that had been
+removed — and a body extracted into a top-level function has to sit at four.
+Dedent is uniform per block, which is what keeps the multi-line string
+literals in --list-all and --frame intact: Swift strips indentation relative
+to the closing delimiter, and the delimiter moves with the content.
+
+Ranges came from brace matching rather than reading, which caught one branch
+I had miscounted by six lines.
+
+Verified: compiles clean; golden-master byte identical. Golden only drives
+--image, though, so the four CLI paths it cannot see were checked by hand:
+--check-permission returns its JSON, --list-all parses with all nine keys,
+--list prints the target window, --frame emits valid JSON. The last two are
+where the dedented string literals live, so that was the check that mattered.
+
+* refactor: per-run recognition state becomes RecognitionSession
+
+Six file-scope vars — orientation, engineMode, debugDumpPath,
+flatReadNativeVertical, lastMixedNote, lastLoggedEngine — were never global
+facts. Each is what ONE run has learned: which way this page reads, whether
+the last flat read came back native-vertical, which diagnostics have already
+been printed.
+
+Keeping them global had a concrete cost. Nothing could set up a starting
+state, which is why --assume-horizontal exists as a production CLI flag: it
+is a constructor argument wearing a command-line flag&amp;#39;s clothes, and its own
+comment says so (&amp;#39;a one-shot --image run always starts at .unknown, so the
+committed-horizontal code paths are otherwise untestable headlessly&amp;#39;). It is
+now RecognitionSession(orientation: .horizontal), with the flag kept as the
+public spelling of it.
+
+A class, not a struct: recognizeAuto commits the orientation it discovers and
+recognize() reports back what shape the flat read had, and both must be
+visible to the caller afterwards.
+
+Two related fixes fall out. engineMode was a global that parseArgs wrote as a
+side effect — it is now Options.engine, a parsed option like every other, and
+the same for debugDumpPath. And buildPayload read lastLoggedEngine straight
+out of the air to fill the payload&amp;#39;s engine field; it now takes it as an
+argument, so the serializer no longer reaches into recognition state.
+
+The watch loop builds ONE session and keeps it, because orientation being
+sticky across passes is the point of caching it; --image builds one per run.
+
+Verified: golden-master byte identical (the engine field is in every payload,
+so this covers the threading). Golden cannot see the session-only flags, so
+those were checked by hand: --assume-horizontal skips the probe and takes the
+committed path with the furigana strip active, --engine vision forces Vision,
+and the default still probes livetext then vision before committing.
+
+Remaining file-scope state is capture-side (target, lastOccluders) and is a
+WindowTracker, not this change.
+
+* refactor: give the shared recognition shape a home of its own
+
+Vision and Live Text are both normalized to one intermediate shape — lines
+with per-character boxes in top-left normalized subject coordinates — so that
+everything downstream never learns which engine ran. That shape lived inside
+LiveText, which meant the Vision path returned [LiveText.RLine]: the Vision
+function&amp;#39;s return type was named after the other engine. Nothing was broken;
+the name was admitting the shared currency had no home.
+
+It has one now: RecognizedLine / RecognizedChar in Recognition/Engine.swift.
+
+Deliberately NOT the RecognitionEngine protocol the plan called for. Reading
+the call sites changed the answer:
+
+  - LiveText.analyze is async and returns nil for &amp;quot;failed this pass, fall
+    back&amp;quot;; visionLines throws and takes unrotate and wantChars, which have no
+    Live Text analogue. A common signature means dead parameters on one side.
+  - verticalRemainder calls Live Text by name on purpose. Vision reads no
+    vertical Japanese at all, so there is no engine-agnostic version of it.
+  - Choosing between them is a policy paid for in measurements (0.3% vs 0.6%
+    CER horizontal, 89% vs 66% placement on the reflow strip). A protocol
+    would sit above that if/else without removing it, and the if/else is the
+    product.
+
+One shared vocabulary, two named engines, an explicit policy — and the
+reasoning recorded in Engine.swift so it is not re-litigated.
+
+Verified: golden-master byte identical. The only LiveText references left
+outside its own file are the two intentional ones, plus the note explaining
+why they are intentional.
+
+* refactor: break recognize() into orchestration plus four named steps
+
+recognize() was 343 lines doing seven jobs. It is now 118 — of which about 75
+are the engine-policy comment block, which stays exactly where it is because
+it explains the dispatch it sits above.
+
+Extracted, bodies unchanged:
+
+  stripFurigana        -&amp;gt; Geometry/Furigana.swift, joining the ruby code it
+                          belongs to. Returns the cleaned image and the hints,
+                          instead of mutating two variables in an enclosing
+                          scope.
+  mapReflowedStrip     -&amp;gt; Recognition/Mapping.swift
+  mapFlatLines         -&amp;gt; Recognition/Mapping.swift
+  attachHints          -&amp;gt; Recognition/Mapping.swift
+
+Three mappers in one file, which is what earns it: each takes recognised
+boxes and puts them back on the page, and each was previously an anonymous
+block in the middle of a function doing something else.
+
+mapFlatLines takes fromLiveText where the block read `raw != nil` — same
+value, but a parameter has to say what it means, and what it means is &amp;quot;this
+read came from Live Text, so judge each line&amp;#39;s orientation on its own char
+quads&amp;quot;.
+
+Two slicing mistakes on the first attempt, both caught by the compiler rather
+than by review: stripEligible got declared twice, and the 16-line engine
+policy comment was dropped. Redone from brace-matched boundaries.
+
+Verified: golden-master byte identical.
+
+* docs: scope the phantom-typed rects and defer them
+
+Measured rather than estimated: 72 CGRect/CGPoint/CGSize sites across 16 of
+the 24 Swift files, spanning five coordinate spaces. A rect type worth having
+has to carry the whole surface the code uses, and half-applied it is worse
+than CGRect — some sites converting, some not, no guarantee anywhere. That
+makes it its own piece of work, not the tail of this one.
+
+The note records the hazard it would fix, which is live: RecognizedLine.box
+is normalised top-left, Line.box is normalised bottom-left, both are bare
+CGRect, and mapFlatLines converts between them inside one expression. Three
+comments warn about it; nothing enforces it.
+
+Also records the recommended first slice — type only the normalised pair and
+make NBox the sole conversion, six files rather than sixteen — and the fact
+that golden-master covers every one of those conversions, so a sign error
+fails loudly rather than silently misplacing glyphs.
+
+* refactor: rename the capture helper from kindleocr to yomi
+
+The name was a misnomer and contradicted the project&amp;#39;s own principle. The
+overlay works over any macOS window — browsers, manga readers, PDF viewers,
+fullscreen games — and CONVENTIONS.md says in as many words: &amp;quot;No per-app
+special cases. A fix that keys on a bundle id is the wrong fix.&amp;quot; The helper
+was named after one of its many targets.
+
+yomi (読み, &amp;quot;reading&amp;quot;) says what it does without naming a vendor, and matches
+the app it serves.
+
+111 occurrences across 24 files: the binary, the path resolvers in all three
+languages, the four test suites, the golden harness, and every doc. The
+KINDLEOCR variable in main.js, golden.sh, cer.py and cellbench.py becomes
+YOMI_BIN rather than bare YOMI, so it still reads as a path.
+
+Kept deliberately:
+
+  - defaultBundleIDs and the config default target. Kindle is still the
+    default target; it just is not the only one, which is the whole point.
+  - KindleOCR.swift where the historical docs name the pre-split file. That
+    file existed and the record should say so.
+  - The FOUND-BUGS note&amp;#39;s paths, which record what they actually were at the
+    time — the sweep had rewritten that history and it is restored.
+
+Verified: golden-master byte identical (the baseline contains no occurrence of
+either name, checked before renaming, so this was a real gate rather than a
+tautology), and the four CLI paths golden cannot see still work.
+
+* refactor: stop calling the target window &amp;quot;Kindle&amp;quot;
+
+Twenty comments and six user-facing strings described the thing being
+captured as &amp;quot;Kindle&amp;quot; — the overlay pinned to &amp;quot;the Kindle window&amp;quot;, focus
+staying &amp;quot;with Kindle&amp;quot;, clicks falling &amp;quot;through to Kindle&amp;quot;, a capture timeout
+blaming &amp;quot;Kindle in native fullscreen&amp;quot;. None of that is true. The overlay
+works over browsers, manga readers, PDF viewers and fullscreen games, and
+CONVENTIONS.md is explicit that keying on one app is the wrong shape.
+
+Reworded to &amp;quot;the target&amp;quot;, including the strings a user actually sees: the
+--frame help line, the --list &amp;quot;no matching windows found&amp;quot;, the capture-timeout
+error, the idle-hide log line, and the renderer&amp;#39;s window title.
+
+Left alone on purpose:
+
+  - Every measurement that was taken ON a Kindle page — the ruby fusion
+    (別天神+ことあまつかみ -&amp;gt; 前実), the per-slice projection finding zero
+    bands, the +1-char span shift on ruby-spread text, the 618-vs-6 vertical
+    read, the zoom-while-pinned popup bug. Those record where the number came
+    from, and CONVENTIONS says not to remove them.
+  - The default target and its bundle ids. Kindle is still the default; it is
+    just not the only one.
+  - README and settings.html listing Kindle as an example target, which is
+    what it is.
+
+Two things this surfaced, both left for their own commits because they are
+behaviour, not wording: the settings picker&amp;#39;s skip-list names a bundle id
+(local.kindleoverlay) that the app has not used since it was renamed to
+local.yomioverlay, and --debug still filters candidate windows on the literal
+string &amp;quot;kindle&amp;quot; — a per-app special case in exactly the place CONVENTIONS
+warns about.
+
+Verified: golden-master byte identical; no test parses any reworded string.
+
+* fix: settings picker was skipping a bundle id the app no longer has
+
+The window picker&amp;#39;s skip-list named local.kindleoverlay. The app&amp;#39;s bundle id
+is local.yomioverlay — build-app.sh sets it and setup.sh resets TCC against
+it — so the list filtered a nonexistent app and let the real one through.
+
+Effect: the overlay&amp;#39;s own settings window (560x520, past the 400x300 floor)
+appeared in its own target picker, offering the user the chance to point the
+overlay at itself.
+
+Found by the rename sweep, and kept out of it: renaming a string is
+structural, correcting which window gets filtered is behaviour.
+
+* test: unattended suites for lookup and the renderer
+
+Twenty tests that need no permission, no visible window and no network, so
+steps 5 and 6 stop depending on hands-on checking.
+
+lookup.test.js (9) runs in plain node against the real index.db. This code
+had no test at all despite being the hot path behind every popup: it covers
+deinflection (見つけた -&amp;gt; 見つける), multi-length grouping and the ranking
+order, glyph-counted matchLength, the single-kanji fallback with 音/訓 kept
+apart, NFKC normalisation of OCR codepoint twins, and the empty-input and
+maxLen edges. Assertions are about shape and order, not gloss wording — the
+dictionaries are user-supplied and their text is not ours to pin.
+
+renderer.js (11) drives app/renderer/index.html as a black box in a HIDDEN
+Electron window, through the real preload and the real IPC channel names,
+with payloads captured from the ground-truth corpus. It covers the rebuild
+gate from ARCHITECTURE section 5, which is the subtlest logic in the project
+and had no coverage: identical payload, a &amp;gt;85% similar payload refused, the
+bounded-refusal escape after three, a page turn, a pure re-layout, and a
+voted payload patched in place rather than rebuilt — plus placement, reset,
+dismiss, and a lookup refused inside a cover region.
+
+Two things make it honest. It uses the REAL preload and the real isolation
+settings, so it exercises the same trust boundary the app does. And rebuilds
+are observable from outside because a rebuild does layer.innerHTML = &amp;#39;&amp;#39;: a
+property set on a live span survives if and only if the layer was not
+rebuilt.
+
+That last point is why this exists NOW rather than after step 6. The renderer
+logic is inline in index.html and cannot be imported, so tests written after
+the extraction could not have guarded the extraction. Recorded first, same
+discipline as golden.sh.
+
+The first fixture had 2 lines, so changing one line put similarity at 50% and
+the layer correctly rebuilt — the test was wrong, not the code. Replaced with
+a 19-line payload from the corpus, where one changed line sits at 94.7%.
+
+Also fixes a stale ../overlay/node_modules path in test/README.md left over
+from the step-3 move.
+
+* test: characterize child supervision, and extract it into SupervisedChild
+
+Written before the step-5 split rather than after, so the extraction is
+guarded by what main.js already did rather than by what the new code happens
+to do. Fifteen assertions, each naming the behaviour it pins:
+
+  - NDJSON parsed per LINE, carrying a partial line across chunk boundaries.
+    A payload with two thousand glyph boxes is several kilobytes, so
+    `{&amp;quot;frame&amp;quot;:{&amp;quot;x&amp;quot;:0` is an ordinary read, not a hypothetical one.
+  - blank and unparseable lines skipped, not fatal
+  - an unexpected exit restarts; the backoff doubles and is capped; a healthy
+    result resets it
+  - stop() does NOT restart — the `deliberate` flag
+  - a STALE process exiting cannot schedule a restart over the live one
+  - a child that ignores SIGTERM is escalated to SIGKILL
+  - silence while still running trips the watchdog; a talking child does not
+  - a missing binary is reported, not thrown
+  - write() reaches the child&amp;#39;s stdin and is safe when there is none
+
+app/main/ndjson.js and app/main/supervised-child.js are added but not yet
+wired in; the next commit replaces the duplicated copies with them. The
+splitter existed three times (capture child, event monitor, tier-2 sidecar)
+and the restart logic twice, with the state spread across six module-scope
+variables plus a flag stapled onto the ChildProcess object.
+
+The stub child needs no binary, no permission and no window, so this runs
+unattended alongside the other suites.
+
+* refactor: both helper children become SupervisedChild instances
+
+startOCR and startEvents were near-identical: spawn, report a spawn failure,
+buffer NDJSON off stdout, restart on an unexpected exit with a backoff, skip
+the restart when we killed it deliberately. The NDJSON splitter was written
+out three times and the restart logic twice, with the state spread across six
+module-scope variables plus a `deliberate` flag stapled onto the ChildProcess.
+
+Now two constructions and two callbacks. main.js keeps only what is actually
+app-specific: onOcrLine, which routes payload / heartbeat / idle / crop and
+is the whole overlay in one function, and onTriggerEvent, which rebases a
+global click into window coordinates.
+
+The two children differ in exactly the two ways that were always real, and
+they are now stated rather than duplicated: the capture child escalates its
+backoff 1s→30s and carries a 120s silence watchdog; the event monitor uses a
+flat 2s and has none, because it either has Accessibility or it does not and
+there is nothing for a growing backoff to wait out.
+
+The watchdog moves inside the class, so the 30s setInterval and the four
+variables it read (ocr, ocrRestartTimer, ocrLastOutput, ocrWatchdogFired) are
+gone. stopChild is gone. Restart-on-retarget, the tray&amp;#39;s Restart capture, and
+the modifier-change restart are all one call now.
+
+exitHint keeps the capture child&amp;#39;s exit diagnostic pointing at its own stderr
+— that line has earned its keep and CONVENTIONS says so.
+
+Verified: 24 node assertions plus 11 renderer assertions green, and the child
+suite is the characterization written BEFORE this change. Still unverified by
+a launch — no automated coverage reaches the panel, the tray or the sidecar
+yet, so this needs a hands-on run before step 5 continues.
+
+* refactor: take the stylesheet and renderer script out of index.html
+
+index.html was 739 lines: 134 of CSS, 12 of markup, and a 583-line inline
+script. It is now 22 lines that say what the page is made of.
+
+Nothing moved but whitespace — the CSS and the script are byte-for-byte what
+they were, in overlay.css and renderer.js. Splitting renderer.js into its
+actual pieces is the next commit; doing both at once would have made the
+diff unreadable and the failure ambiguous.
+
+With nothing inline left, the CSP drops &amp;#39;unsafe-inline&amp;#39; from BOTH script-src
+and style-src. The renderer can now only run code that shipped with it. That
+was on the PLAN.md Stage 6 list as security hardening; it turned out to be a
+consequence of the split rather than a task of its own.
+
+Verified: all 11 renderer assertions green. They drive this page as a black
+box through the real preload, so they cover the move end to end.
+
+* refactor: split the renderer into layer, placement, hud and coordinator
+
+renderer.js was 583 lines holding six jobs. Now:
+
+  glyph-layer.js  the span layer and its rebuild gate
+  placement.js    where that layer sits, and what is drawn over it
+  hud.js          the transient status line
+  renderer.js     the decisions between them
+  popup.js        unchanged — it was already the right shape
+
+glyph-layer.js is the point of the exercise. One invariant used to be spread
+across eight module-scope variables and three hundred lines: contentSig must
+always describe what is actually in the DOM. Advancing it while keeping old
+spans is what let drift ratchet (ARCHITECTURE section 5). It now has a file
+to itself and a stated contract.
+
+apply() returns one of four named outcomes — identical / patched / kept /
+rebuilt — which were previously four unlabelled exits from one 149-line
+function. The caller uses that name instead of inferring: &amp;#39;rebuilt&amp;#39; is what
+invalidates the lookup key and refreshes the HUD.
+
+Deliberately an IIFE exposing a window namespace, not a class. That is the
+pattern popup.js already established, and more importantly it needed NO
+renaming inside the moved code — the risky part travels verbatim, and only
+the exits and the two lines that reached outside changed.
+
+Verified: all 11 renderer assertions green, unchanged. They were recorded
+against the pre-split index.html precisely so they could not be tuned to the
+new shape.
+
+* refactor: extract logging, tier-2, the window list and the settings window
+
+main.js 740 -&amp;gt; 542 lines, module-scope variables 17 -&amp;gt; 9.
+
+  log.js              the file-mirroring logger and the console hooks
+  tier2.js            the manga-ocr sidecar
+  window-list.js      the picker&amp;#39;s candidate filtering
+  settings-window.js  the app&amp;#39;s only ordinary window
+
+tier2 is the one worth naming. Nine module-scope variables, a pending map and
+a queue sat at the top of main.js for a single optional feature that is off
+by default. They are one session, so they are one factory now, and main.js
+asks it for exactly one thing: onCropReply.
+
+It takes ocrChild as a parameter rather than reaching for it, which states
+the real dependency — the crop is served by the watch process cropping its
+own last frame, because a second ScreenCaptureKit session would stall.
+
+Verified three ways: all 35 assertions green; and a load-time smoke test that
+actually ran main.js under Electron for five seconds, reaching &amp;quot;app ready&amp;quot;,
+building the tray, spawning both children, loading the deinflector and
+pushing trigger config to the renderer, with no reference errors. That is the
+check node --check cannot make, and it caught nothing only because two
+earlier slicing mistakes had already been fixed.
+
+* refactor: the panel becomes overlay-window.js
+
+main.js 542 -&amp;gt; 340 lines, module-scope variables 9 -&amp;gt; 4.
+
+Five variables described one window: win, interactive, idleTimer, and the
+last offset and cover signature sent to the renderer. Both of those last two
+exist only to avoid resending an unchanged value, which is the window
+module&amp;#39;s business and nobody else&amp;#39;s.
+
+onOcrLine&amp;#39;s job shrinks to routing. Where it previously reached into the
+BrowserWindow — checking visibility, re-applying collection behaviour after
+showing, deduplicating the offset, hashing the cover list — it now says
+trackTarget(frame, covers) and lets the panel decide. Same code, one caller.
+
+Two small things fixed in passing, both safe: noteActivity took a `win`
+parameter it never used and which shadowed the module&amp;#39;s own, and the
+retarget path in cfg:save open-coded what is now reset().
+
+Verified: 35 assertions green, and a five-second Electron smoke run that
+reached a real capture — [win] shown, [win] target frame, [win] covered by 0
+window(s), [ocr] emitted — so trackTarget was exercised end to end rather
+than merely parsed.
+
+* refactor: permissions and the tray move out; main.js becomes wiring
+
+main.js 361 -&amp;gt; 245 lines, and module-scope mutable state 4 -&amp;gt; ZERO. It now
+requires its parts, connects them, and handles shutdown.
+
+permissions.js owns the two grants and reports them. They fail differently,
+which is the reason both are checked: without Screen Recording nothing works
+at all, while without Accessibility the global trigger silently never fires
+and the log stays clean. reportSpawnFailure joins them — a missing binary is
+the third thing that can be wrong with the environment, and blaming Screen
+Recording for it sends the user to the wrong settings pane.
+
+tray.js reads permissions rather than being handed their state, and takes its
+two actions as handlers. That keeps the dependency one-way: permissions knows
+nothing about the tray, and notifies through a callback main supplies.
+
+Verified: 35 assertions green, plus a five-second Electron run reaching
+app ready, tray built, both children started, deinflector loaded and trigger
+config pushed to the renderer.
+
+* chore: trim the split&amp;#39;s overhead, and rewrite CONVENTIONS for the new shape
+
+Splitting one file into twenty-five buys per-file overhead. Some of that is
+unavoidable; a lot of it was mine.
+
+  - Swift imports: every extracted file got all six imports of the original.
+    Now each takes only what it uses — 128 import lines down to 64.
+  - The &amp;quot;Split from the original single-file OCR helper&amp;quot; line was repeated in
+    22 files. Git records that; the files do not need to.
+  - Four JS module headers were 12-16 lines of archaeology about which
+    variables used to live in main.js. That belongs in the commit message.
+
+Swift 3173 -&amp;gt; 3057 with the build and golden-master unchanged.
+
+CONVENTIONS.md is rewritten rather than patched. The principles were the good
+part and are kept verbatim — measure don&amp;#39;t infer, no per-app special cases,
+degrade honestly, cite the measurement, delete the mechanism. What changed:
+
+  - &amp;quot;Single file, no package manifest&amp;quot; was simply false. Replaced with the
+    rule that actually holds: one file per pipeline stage, a glob build, no
+    Package.swift, and the fact that `private` no longer reaches across files.
+  - Testing was one paragraph about the heavy suites. It is now the three
+    tiers with what each can and cannot see, plus the rule this refactor ran
+    on: record golden before a structural change, require byte-identical after.
+  - Added the two module shapes that now exist (main-process modules taking
+    their dependencies as arguments; renderer IIFEs exposing one window
+    namespace, because classic scripts share a global scope and load order is
+    load-bearing), and the layout rule that one file per language knows where
+    things are.
+  - Added &amp;quot;move code, or change code — never both&amp;quot;, which governed every
+    commit on this branch.
+  - Corrected a gotcha that was wrong: Electron CAN be driven from a plain
+    shell, including a hidden window with real Chromium layout. That is how
+    the renderer suite runs. What cannot be scripted is the packaged .app and
+    its TCC prompts.
+  - Added two things measured the hard way this session: nothing but the
+    loader may live in app/shell/, and mapfile is bash 4 while macOS ships 3.2.
+
+* feat: validate everything crossing the IPC boundary
+
+CONVENTIONS says to treat everything crossing IPC as untrusted. Nothing did.
+`lookup` forwarded whatever arrived into a prefix-scanning query loop, and
+`cfg:save` merged an arbitrary object into the file that supplies the capture
+child&amp;#39;s argv.
+
+This is not defence against a hostile renderer — it runs our own code behind
+contextIsolation and a sandbox. It is defence against a BUG in that code
+arriving as a shape nobody expected, which is the failure that costs an
+afternoon because it surfaces three layers away from its cause.
+
+  ipc.js      all seven handlers in one place, with structural guards, and a
+              one-line complaint per channel the first time one is rejected.
+              A silently ignored message is exactly what costs the afternoon.
+  config.js   sanitize() clamps the values that reach argv: bundle id, window
+              id, modifier, mode, hover delay, engine, interval, vote counts,
+              dictionary entries. Unknown keys pass through untouched so the
+              settings window can grow without this function knowing first.
+  tier2.js    the crop request must be finite numbers within plausible bounds;
+              a NaN became a crop command the watch process cannot parse.
+
+spawn() is called with an argv array and no shell, so none of this was a
+command-injection risk. What it prevents is a malformed setting producing a
+child that exits with a usage error the user then has to trace back to a
+settings field.
+
+Eight new assertions cover sanitize(), including that every real modifier is
+accepted — a whitelist that rejects a legitimate value is worse than none.
+
+Also verified, and now recorded rather than assumed: the renderer really is
+sandboxed. A probe with the panel&amp;#39;s exact webPreferences reports
+process.sandboxed === true and require(&amp;#39;fs&amp;#39;) failing in the preload. PLAN.md
+Stage 6&amp;#39;s &amp;quot;sandbox: true where possible&amp;quot; was already satisfied by Electron&amp;#39;s
+defaults; no code was needed.
+
+main.js is 224 lines and holds no ipcMain call at all.
+
+Found by the Electron smoke run, not by review: ipc.register() was placed
+before eventsChild was declared, and threw on load. node --check cannot see
+that.
+
+* docs: an index, an accurate architecture map, and the finished plans archived
+
+docs/ had grown to seven files with no way to tell which mattered, and 1125 of
+its 2509 lines were plans for work that is now done.
+
+  README.md    new. What each doc is for and when to read it, plus the five
+               things worth knowing if you read nothing else.
+  history/     REFACTOR and REFACTOR-INTEGRATION move here, each with a header
+               saying it describes the codebase BEFORE the restructure. They
+               are kept for the reasoning — the sourced findings and the
+               measurement behind each decision are why the current shape is
+               what it is — not as instructions.
+
+ARCHITECTURE&amp;#39;s file table listed seven files, three of which no longer hold
+what it claimed. Replaced with a tree of where things actually live and a
+table that points at the pieces, each cross-referenced to the load-bearing
+decision it implements. The nine decisions themselves are untouched: they are
+still true and still the most valuable thing in the repo.
+
+INTEGRATION kept nine references of the form KindleOCR.swift:1070 into a file
+that no longer exists. Repointed at the files that hold that code now. The
+line numbers are gone for good, which is fine — they were stale before the
+restructure too.
+
+PLAN now records the structure and testing work as done, marks the Stage 6
+security item done with what was actually measured, and carries forward the
+two things the restructure deliberately did NOT do: the phantom-typed rects
+(with the live hazard spelled out) and a smoke test for the four CLI paths
+golden cannot see. Both were only findable inside a 673-line plan document
+before; they are now in the file people read to decide what to work on.
+
+* ci: build the Swift helper, run the unit tests, check the conventions
+
+Two jobs, both free on a public repo.
+
+  checks (ubuntu)  node --check / bash -n / py_compile over everything,
+                   the two unit suites that need no generated data,
+                   shellcheck, and tools/check-conventions.sh
+  swift (macos)    ocr/build.sh — compiling IS the check — plus the four CLI
+                   paths the golden harness structurally cannot see
+
+check-conventions.sh enforces the rules from CONVENTIONS that a machine can:
+nothing but the loader in app/shell (electron-packager copies that directory
+wholesale into the signed bundle), no directory resolved outside paths.js, no
+module-scope mutable state in main.js, nodeIntegration never enabled, no
+unsafe-inline back in the renderer CSP, every doc link resolving, and no bash 4
+builtins — macOS ships 3.2, and mapfile fails at run time rather than parse
+time, so nothing else catches it. Each one is a mistake that either happened
+during this refactor or would quietly undo something the design depends on.
+
+Two things deliberately NOT in CI:
+
+  lookup.test.js needs data/index.db, ~370 MB and generated.
+  golden.sh needs test/gt/ AND is machine-local by nature: Vision&amp;#39;s model
+  version differs between macOS releases, so a byte-exact baseline recorded on
+  a laptop cannot be reproduced on a runner. It stays a local pre-commit gate,
+  which is what it was designed as.
+
+Writing the checks turned up three false positives in my own first draft —
+node_modules unexcluded, the CSP check matching the comment that says
+&amp;quot;no unsafe-inline&amp;quot;, and the bash 4 check matching its own explanation. Fixed;
+worth recording that a convention checker needs testing like anything else.
+
+Dependabot watches Electron monthly, since a major bump changes the bundled
+Node that node:sqlite comes from and can change sandbox defaults.
+
+* docs: rewrite the README in a human voice
+
+It read like it was generated, because in large part it was. Rewritten to
+sound like someone describing their own project: first person where that is
+honest, contractions, plainer sentences, fewer em-dashes (20 -&amp;gt; 9), and tables
+turned back into prose or plain lists where a table was never earning
+anything. 203 lines down to 121 saying the same things.
+
+Dropped the vocabulary that gave it away — &amp;quot;load-bearing&amp;quot; above all, which
+appeared here and still appears four times in the docs where it is actually
+carrying meaning.
+
+Two factual fixes while rewriting:
+
+  - The configuration section documented trigger.mode as &amp;quot;hover&amp;quot; and
+    hoverDelayMs as 70. Those are one machine&amp;#39;s settings, not the shipped
+    defaults, which config.js sets to &amp;quot;hold&amp;quot; and 250. This was wrong before
+    the rewrite too.
+  - The file/path table listed app/renderer/index.html as owning the glyph
+    layer and hit-testing, which stopped being true when the renderer was
+    split. Replaced with a sentence about the actual layout.
+
+I also cut an origin story the draft invented — a first-person account of why
+the project was started is not mine to write. There is a natural place for
+one in the opening if you want it.
+
+* ci: fix the two shellcheck warnings in check-conventions.sh
+
+The conventions checker failed the check it exists to run, which is fitting.
+
+  SC2164  cd &amp;quot;$PROJECT_ROOT&amp;quot; without || exit. A failed cd would have run every
+          check against whatever directory the runner happened to be in, and
+          reported a pass.
+  SC2010  ls | grep to list app/shell. Breaks on filenames with newlines or
+          leading dashes; find does the filtering itself.
+
+Both fixed rather than suppressed — a warning waived in the first week is a
+warning waived forever. The Swift job passed on macos-latest, so the helper
+compiles on a clean machine as well as this one.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dbbae8da59bdaad5ac711e3983b9d77595022c7c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/dbbae8da59bdaad5ac711e3983b9d77595022c7c"/>
+    <title>
+        Hide the overlay when the target window is not visible
+    </title>
+    <updated>2026-08-12T21:43:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/0e52261a4367d37cba15e2bc3e6a8b23?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>dcambur@Vladimirs-MacBook-Pro-m1.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Hide the overlay when the target window is not visible
+
+The panel joins every Space so it can float over a reader in native
+fullscreen, so swiping to another desktop carried the glyph layer and any
+open popup along with you and left them sitting on top of whatever was
+there. Nothing hid it for up to 8s — and nothing hid it at all when another
+window simply came up over the reader: capture excludes every other window,
+so a buried target still yields pristine pixels and looks exactly like one
+being read.
+
+- chooseWindow() subtracts the ordinary windows (layer 0, not transparent)
+  the window server composites in FRONT of a candidate before applying the
+  existing &amp;quot;≥50% visible&amp;quot; test, so a buried window is no longer &amp;quot;on screen&amp;quot;.
+- stillVisible() re-runs that test from CGWindowList alone — 0.5ms, no
+  SCShareableContent, no capture — and the watch loop asks it every 150ms
+  while it waits out the interval. Measured 0.15s from the target
+  disappearing to the idle marker, against 0.7s for the next heartbeat and
+  1.3s for the next OCR pass.
+- main.js hides on that marker immediately instead of waiting out
+  IDLE_HIDE_MS (now only the backstop for a watcher gone silent), and tells
+  the renderer to drop the popup with it.
+- Partial cover is not a reason to hide — half a page is still readable — so
+  payloads and heartbeats carry the covered regions frame-local as `covers`.
+  The renderer refuses lookups inside them and drops a popup whose word has
+  just been buried.
+
+Display bounds in that path come from CGDisplayBounds, not NSScreen: it runs
+off the main thread every 150ms, and NSScreen.frame is bottom-left-origin,
+which agrees with a window rect only on one display at 0,0.
+
+Measured with a two-window rig: target off the on-screen list ⟹ idle in
+0.15s; fully covered ⟹ no window reported; cover over the right half ⟹ still
+tracked, covers [{400,0,400×600}]; cover in a corner ⟹ [{580,180,220×300}];
+cover moved away ⟹ []. Selection still follows z-order in both directions.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27e54c0fbe51f0d0b9340a7b846b9f8fc747c848</id>
+    <link type="text/html" rel="alternate" href="https://github.com/dcambur/yomi-overlay/commit/27e54c0fbe51f0d0b9340a7b846b9f8fc747c848"/>
+    <title>
+        Yomi Overlay: Yomitan-style popup dictionary over any macOS window
+    </title>
+    <updated>2026-08-12T20:34:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/13540484?s=30&amp;v=4"/>
+    <author>
+      <name>dcambur</name>
+      <uri>https://github.com/dcambur</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Yomi Overlay: Yomitan-style popup dictionary over any macOS window
+
+ScreenCaptureKit + Vision/Live Text OCR of a single target window, an
+invisible per-glyph text layer positioned over the real pixels, and
+Yomitan&amp;#39;s own deinflector against a SQLite index built from Yomitan
+dictionary zips.
+
+Handles horizontal and vertical Japanese including mixed pages, strips
+furigana from the pixels before recognition, and majority-votes across
+re-reads of a static page.
+
+Paths are derived rather than written down so a clone works outside the
+original checkout. Dictionary data, the built index, and the ground-truth
+corpora are not redistributed — setup.sh fetches or regenerates them.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

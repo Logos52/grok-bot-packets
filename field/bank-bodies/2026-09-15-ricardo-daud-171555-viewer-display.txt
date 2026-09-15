@@ -1,0 +1,104 @@
+# Grok Bot Viewer Blank
+url: https://forum.cursor.com/t/grok-bot-viewer-blank/171555
+created: 2026-09-14T01:59:17.053Z
+
+--- @Ricardo_Daud 2026-09-14T01:59:17.081Z (#1) ---
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+Grok Bot computer view is blank; agent can still see the desktop.
+
+The in-app Computer / Take over viewer is blank.
+
+The bot can screenshot DISPLAY=:1 and confirms an IBKR Gateway login window is on screen (~790×610).
+
+Internal stack: Xvfb :1 → x11vnc 127.0.0.1:5900 → noVNC 0.0.0.0:6080.
+
+Container has no sshd; 6080 is not reachable from my Mac.
+
+I need the viewer (keyboard) to finish IB Gateway Paper login so API 4002 can open.
+
+Please do not reset the Agent Computer.
+
+Grok Bot version: 0.47.0
+
+App OS: macOS Apple Silicon
+
+Bot computer: Linux container
+
+Steps to Reproduce
+
+Open Grok Bot on macOS (Apple Silicon) and open the Computer / Take over view for this bot.
+
+The in-app viewer is blank (no desktop, no keyboard).
+
+In the same session, ask the bot to inspect its own display.
+
+The bot reports DISPLAY=:1 is up, IBKR Gateway login window is visible on the virtual desktop (~790×610), x11vnc on 127.0.0.1:5900 and noVNC on :6080.
+
+I still cannot see or type in that window from the Grok Bot app. The container has no sshd, so I cannot open :6080 from my Mac either.
+
+Expected Behavior
+Computer / Take over should show the bot’s virtual desktop and let me use the keyboard/mouse, so I can complete on-screen logins. Screenshots from the bot and the live viewer should match.
+
+Operating System
+MacOS
+
+Version Information
+Grok Bot 0.20.0
+
+Release Track: stable
+
+OS: darwin (macOS Apple Silicon)
+
+Bot computer: Linux container (viewer target)
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+--- @deanrie 2026-09-14T06:25:53.218Z (#5) ---
+Hey, @Ricardo_Daud, thanks for the detailed report.
+
+First, the good news. On our side, your bot’s computer is working fine and has been the whole time, so there’s no need to reset anything. Your bots, files, and the IB Gateway window are safe. What’s failing is the live screen connection from your Mac to that computer. That’s separate from the chat connection, so the bot can still see its own screen, but the viewer shows nothing.
+
+Please try these in order and tell me where anything changes:
+
+Fully quit Grok Bot (Grok Bot menu > Quit, not just closing the window), then open it again.
+
+Open the bot and click the screen preview (or the Take over button) to open Computer view. Wait 30 seconds.
+
+Tell me what the view shows exactly. Is it a completely black screen, a message like “Can’t reach …’s screen” with a Retry button, or “Starting desktop”?
+
+Connect your Mac to your phone’s hotspot instead of your normal Wi‑Fi, repeat steps 1 to 2, and tell me if the desktop appears.
+
+If you have the Grok Bot app on your phone, open the same bot there and tap its screen. If the desktop shows up on the phone, you can finish the IB Gateway login from there.
+
+Also, please tell me if you’re using a VPN, proxy, custom DNS (like 1.1.1.1 or 8.8.8.8 on your Mac or router), iCloud Private Relay, antivirus, or any security tools on your Mac.
+
+About the version, the report shows both 0.47.0 and 0.20.0. The current version is 0.47.0, and it matches what we see, so no update is needed.
+
+Let me know how it goes, and I’ll suggest the next steps based on what you see.
+
+--- @Ricardo_Daud 2026-09-14T12:08:17.965Z (#6) ---
+image1920×1794 94.3 KBJust blank
+
+--- @deanrie 2026-09-14T14:56:13.789Z (#7) ---
+Thanks for the screenshot, that’s the key detail. What you’re seeing isn’t a viewer bug or a black screen. The viewer is connected and is rendering the bot machine’s desktop (gray wallpaper, Chrome and a terminal at the bottom). So the live screen connection from your Mac is working fine.
+
+The problem is elsewhere. The IBKR Gateway window is not on the desktop that Take over is showing.
+
+From your description, the bot started a separate stack (Xvfb :1 → x11vnc 127.0.0.1:5900 → noVNC :6080) and launched IBKR on DISPLAY=:1. But Take over is showing the machine’s main desktop, the one in the screenshot. These are two different displays. The bot “sees” its window on :1, but in the viewer you’re looking at an empty main desktop. That’s why the bot screenshot and the live viewer don’t match.
+
+What to try:
+
+Ask the bot to open something visible (for example, a terminal) on the main desktop, the one shown in Take over. If it appears in the viewer, you’re finally looking at the same display.
+
+Then ask the bot to start IBKR Gateway on that same main display, without its own Xvfb :1 / x11vnc / noVNC.
+
+After that, the IBKR window should show up in Take over, and you can finish the Paper login using your keyboard.
+
+Based on the screenshot, the network side already looks fine, so you can pause the hotspot steps for now. This really looks like a display issue where IBKR is being launched. Let me know what happens.
+
+--- @Ricardo_Daud 2026-09-14T18:11:11.002Z (#8) ---
+Thanks…it worked. Anyway it would be useful to have a conector for this app as in Grok.

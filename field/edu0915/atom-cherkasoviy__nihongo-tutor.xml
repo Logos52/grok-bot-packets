@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/cherkasoviy/nihongo-tutor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/cherkasoviy/nihongo-tutor/commits/main.atom"/>
+  <title>Recent Commits to nihongo-tutor:main</title>
+  <updated>2026-09-13T18:16:42Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7a124fcc7cdf440a9de84d11f613d04247a64f49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/7a124fcc7cdf440a9de84d11f613d04247a64f49"/>
+    <title>
+        Merge pull request #10 from cherkasoviy/claude/fix-phantom-sessions
+    </title>
+    <updated>2026-09-13T18:16:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #10 from cherkasoviy/claude/fix-phantom-sessions
+
+Phantom practice sittings, tab overflow, placement transparency, /diag&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34b7b438e075e03f45ec610b54b2e333852baae5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/34b7b438e075e03f45ec610b54b2e333852baae5"/>
+    <title>
+        fix: cap what one step can contribute to active time
+    </title>
+    <updated>2026-09-13T16:49:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: cap what one step can contribute to active time
+
+active_ms was wall-clock between showing a step and answering it, uncapped.
+That is only &amp;quot;active&amp;quot; while the learner is looking at the screen — a locked
+phone, a tab switch or a metro stop accrued the whole gap.
+
+Two things read that number. streak.session_counts accepts twelve active
+minutes as an alternative to answering 60% of the plan, so uncapped, one tap
+and a long gap and a second tap earn the day on two answers.
+stats_service.minutes_7d reports it as study time.
+
+This belongs with the tab fix: keeping SessionRunner mounted means a shown
+step now survives tab switches by design, which is right for the bug being
+fixed and makes this path strictly easier to reach.
+
+Two minutes per step. The plan budgets about eight seconds a step, so a
+learner who reads the mnemonic, thinks, and comes back is still well inside
+it, while a forgotten screen contributes two minutes rather than two hours.
+
+The test fails without the cap; checked. No existing active_ms values are
+edited — they are the record of what happened.
+
+Also corrects the _recent_sessions comment, which had the rationale
+backwards. _finished_under_target gates a +1 *bump*, and only above 0.92
+7-day retention, so the phantom sittings were making an extra syllable
+marginally more likely, not shrinking the plan. The kind == daily filter is
+still right: a 40-second drill is not evidence of finishing a lesson with
+time to spare.
+
+And todays_daily now uses one_or_none, so if 0004_one_daily_per_day&amp;#39;s
+uniqueness ever stops holding this fails loudly instead of silently picking
+a row.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74556447b9285c6930717eaf476a8597fa854e61</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/74556447b9285c6930717eaf476a8597fa854e61"/>
+    <title>
+        feat: show what claiming syllables does, and why an empty day is empty
+    </title>
+    <updated>2026-09-13T16:05:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: show what claiming syllables does, and why an empty day is empty
+
+Claiming ~46 syllables queues ~92 verification cards at 12 a day, so roughly
+eight days of reviews starting tomorrow. That is good behaviour and the
+learner was told none of it — she ticked a box and the next fortnight
+changed shape.
+
+&amp;quot;Знаю все&amp;quot; now previews first: how many syllables, how many cards, that they
+are queued for checking rather than skipped, roughly how many per day and
+for how long, and how many are left alone because she has already been
+tested on them. The numbers come from a `preview` that walks the same items
+and the same already-reviewed skip as `mark_known`, so what she agrees to is
+what happens — a test asserts the two agree rather than trusting it.
+
+Single cells stay a direct toggle, and the hint now says so: tapping a
+claimed syllable again clears the claim and asks to be tested. That path
+already existed in `unmark_known`, which refuses to touch a card carrying a
+review log; nothing here weakens that.
+
+The finished screen said &amp;quot;На сегодня всё&amp;quot; and stopped, which reads as a dead
+end — worst for someone who has just claimed forty syllables and cannot see
+them queued. It now says how many cards come back tomorrow, or when the next
+one is due. Counted in the learner&amp;#39;s own local day, so &amp;quot;tomorrow&amp;quot; means what
+she means.
+
+Three tests in test_practice_sessions encoded the old &amp;quot;any call yields
+practice&amp;quot; contract; updated to ask for practice explicitly. The locked-door
+test now asserts both halves: coming back hands the finished lesson back,
+tapping for practice creates one.
+
+Also fixes `make openapi`, which redirected to $(BACKEND)/openapi.json from
+inside backend/ and had been writing to a directory that does not exist.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/06f256586b47d83e6d4927f0cf271b6eab34a096</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/06f256586b47d83e6d4927f0cf271b6eab34a096"/>
+    <title>
+        feat: /diag, so production can be inspected from a phone
+    </title>
+    <updated>2026-09-13T15:56:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: /diag, so production can be inspected from a phone
+
+The duplicate-practice bug took a day to find, and every question along the
+way — how big was her plan, did tapping around create sittings, how many
+syllables are claimed but unchecked — needed a laptop with psql. The owner
+is usually holding a phone.
+
+Admin-gated, read-only, one message: per learner the timezone and targets,
+cards by FSRS state, due-now, claimed-but-unverified, and today&amp;#39;s sittings
+with kind, outcome and planned/completed steps. Plus item counts by type
+with how many are active, which is how an empty `kana` table would announce
+itself instead of presenting as &amp;quot;the lesson is broken&amp;quot;.
+
+Each learner&amp;#39;s own local date decides which sittings count. A test pins that
+at an instant where Tokyo and Los Angeles are on different dates — my first
+attempt picked 09:00 UTC, which is the same day in both, so it proved
+nothing.
+
+No message content, no answers, not even a first name: a test asserts the
+learner&amp;#39;s name does not appear, because the whole point is that this output
+is safe to read in a chat.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b76cbab37b64a93dce0f542b15af70cca7810a7f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/b76cbab37b64a93dce0f542b15af70cca7810a7f"/>
+    <title>
+        fix: the tab bar wraps instead of widening the page
+    </title>
+    <updated>2026-09-13T15:54:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: the tab bar wraps instead of widening the page
+
+.tabs was a plain flex row with no wrap. Flex items default to
+min-width:auto, so four pills — five for an admin — could not shrink below
+their text and pushed the row past the viewport, dragging the whole page
+wider. Every horizontal scroll she hit came from here.
+
+Wrapping rather than scrolling, because a scroller hides tabs a learner has
+no reason to go looking for.
+
+Measured in a browser at both widths rather than eyeballed. At 320px, the
+narrowest phone worth supporting: with the fix, two rows, all five pills
+inside the viewport, scrollWidth == 320. Without it, one row and
+`allInside: false` — the last pills sit outside and are unreachable.
+
+That check also killed an overflow-x: hidden I had added to .screen: it made
+the page stop widening while leaving those tabs clipped and untappable,
+which is worse than the bug. Any future overflow should be visible, not
+silently cropped.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e04b7b8cf391802b536a5c0ea83d0f250dbb79fd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/e04b7b8cf391802b536a5c0ea83d0f250dbb79fd"/>
+    <title>
+        fix: a tab change no longer restarts the lesson
+    </title>
+    <updated>2026-09-13T15:51:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: a tab change no longer restarts the lesson
+
+App.tsx rendered SessionRunner behind `tab === &amp;#39;today&amp;#39;`, so every switch away
+unmounted it and every switch back remounted it — and SessionRunner starts
+the sitting in a mount effect. Checking the progress tab and coming back was
+therefore a request for a new session.
+
+It stays mounted and hidden now, which also means it keeps its current step,
+its revealed answer and its progress bar while the learner looks at her
+stats, instead of starting over.
+
+Extra practice loses its accidental trigger, so it gets a deliberate one: an
+&amp;quot;Ещё повторение&amp;quot; button on the finished screen, calling the endpoint that
+does create a sitting. Before, the only way to practise from the app was the
+bug.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3f27f407b3111c2df3f1a4040abc5f4ccce62f4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/b3f27f407b3111c2df3f1a4040abc5f4ccce62f4"/>
+    <title>
+        fix: opening the app no longer mints a practice sitting
+    </title>
+    <updated>2026-09-13T15:50:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: opening the app no longer mints a practice sitting
+
+The Mini App POSTs /api/session/today whenever its first tab mounts, and
+switching tabs unmounts it. So a learner checking her progress and coming
+back created a learning_sessions row every time. Practice draws from due
+cards, and kana introduced minutes earlier are still in FSRS learning steps
+measured in minutes — so the same syllables came round again in the same
+order. Production shows three such sittings inside three minutes.
+
+start_or_resume now treats &amp;quot;what should I be doing&amp;quot; and &amp;quot;give me more work&amp;quot;
+as different questions. Without want=practice it hands back today&amp;#39;s finished
+lesson as-is: a session with no current step, which is the truthful answer.
+Only want=practice creates anything, which is what /review and
+/api/session/practice already pass.
+
+Also filters _recent_sessions to daily. It feeds _finished_under_target,
+which shrinks tomorrow&amp;#39;s plan when recent sittings ran short — and practice
+sittings are short by construction, a handful of due cards, often under a
+minute. Counting them read a learner who did her full lesson *and* extra
+practice as someone who keeps running out of time.
+
+Both tests fail when their fix is reverted; checked, not assumed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/687693477ef75f34c04378c6ab2171f0ff5fbf9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/687693477ef75f34c04378c6ab2171f0ff5fbf9a"/>
+    <title>
+        Merge pull request #9 from cherkasoviy/claude/fix-api-command
+    </title>
+    <updated>2026-09-12T20:44:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/126102137?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasovzentist</name>
+      <uri>https://github.com/cherkasovzentist</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #9 from cherkasoviy/claude/fix-api-command
+
+uvicorn was running without --proxy-headers in production&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/87a0daa8be690ffb500633d8858d5a2f6b471a13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/87a0daa8be690ffb500633d8858d5a2f6b471a13"/>
+    <title>
+        fix: uvicorn was running without --proxy-headers in production
+    </title>
+    <updated>2026-09-12T20:09:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: uvicorn was running without --proxy-headers in production
+
+Found by deploying. The api command used a folded &amp;quot;&amp;gt;&amp;quot; scalar:
+
+    command: &amp;gt;
+      sh -c &amp;quot;alembic upgrade head &amp;amp;&amp;amp;
+             uvicorn ... --port 8000
+                     --proxy-headers --forwarded-allow-ips=&amp;#39;*&amp;#39; --no-server-header&amp;quot;
+
+A folded scalar collapses newlines only between lines at the same
+indentation; a *more indented* line keeps its newline. So sh received three
+lines, ran `alembic &amp;amp;&amp;amp; uvicorn ... --port 8000`, and then tried to execute
+`--proxy-headers --forwarded-allow-ips=&amp;#39;*&amp;#39; --no-server-header` as a command
+of its own:
+
+    sh: 3: --proxy-headers: not found
+
+Three consequences, none of which announce themselves:
+
+* uvicorn ran **without --proxy-headers**, so X-Forwarded-Proto from Caddy
+  was ignored — the app saw every request as http and every client IP as
+  Caddy&amp;#39;s container address.
+* --no-server-header was dropped too, so the upstream Server header leaked.
+* sh exited 127 after uvicorn died, replacing uvicorn&amp;#39;s real exit code. The
+  container reported &amp;quot;Restarting (127)&amp;quot; no matter what actually went wrong,
+  which is how this hid.
+
+One line now, and `exec` so uvicorn replaces sh and receives SIGTERM
+directly instead of sh swallowing it and compose waiting out the kill
+timeout.
+
+`docker compose config -q` validates this file happily, which is why CI
+never saw it — so CI now also rejects any multi-line service command.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc636fd0739baa9f55943ff1558ba4aa6027d684</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/fc636fd0739baa9f55943ff1558ba4aa6027d684"/>
+    <title>
+        Merge pull request #8 from cherkasoviy/claude/drop-stray-bundle
+    </title>
+    <updated>2026-09-12T19:25:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #8 from cherkasoviy/claude/drop-stray-bundle
+
+Drop a git bundle that was committed by accident&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ddbfa828b19df5f1d901e5434075d544afe6b36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/2ddbfa828b19df5f1d901e5434075d544afe6b36"/>
+    <title>
+        chore: drop a git bundle that was committed by accident
+    </title>
+    <updated>2026-09-12T19:22:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: drop a git bundle that was committed by accident
+
+27efcf2 staged nihongotutorphase0skeleton.bundle along with its intended
+changes — my mistake, a `git add -A` over a working directory that had the
+bundle sitting untracked in it. 174 KB of packed git history, checked into
+git.
+
+Nothing sensitive: it is this repository&amp;#39;s own Phase 0 history, already
+public here. But bundles are how work moves between machines, not source,
+so *.bundle is ignored now to stop the next one following it in.
+
+The blob stays in history; rewriting main to excise 174 KB is not worth
+invalidating every existing clone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d67f65ba9a79f65cb0ad8715f87f29470d4c6e82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/d67f65ba9a79f65cb0ad8715f87f29470d4c6e82"/>
+    <title>
+        Merge pull request #5 from cherkasoviy/claude/content-seed
+    </title>
+    <updated>2026-09-12T19:22:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #5 from cherkasoviy/claude/content-seed
+
+Core vocabulary tranche 1, and the content/audio contract&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/44beb07aeb9816de970f47e79f49cc42132acefd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/44beb07aeb9816de970f47e79f49cc42132acefd"/>
+    <title>
+        Merge pull request #7 from cherkasoviy/claude/plan-ai-route
+    </title>
+    <updated>2026-09-12T19:21:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #7 from cherkasoviy/claude/plan-ai-route
+
+Reach Claude through Vertex, and STT through Google&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2631bb783cd26be8c9300b4932dac5a6262c70c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/c2631bb783cd26be8c9300b4932dac5a6262c70c"/>
+    <title>
+        Merge pull request #6 from cherkasoviy/claude/deploy-runbook
+    </title>
+    <updated>2026-09-12T19:21:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #6 from cherkasoviy/claude/deploy-runbook
+
+Seed content on deploy, and a runbook for the first cutover&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf518975680163033c0e5122bb17a242b1dacff7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/bf518975680163033c0e5122bb17a242b1dacff7"/>
+    <title>
+        Merge pull request #4 from cherkasoviy/claude/progress-transfer
+    </title>
+    <updated>2026-09-12T19:21:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #4 from cherkasoviy/claude/progress-transfer
+
+Move a learner&amp;#39;s progress between databases&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c5b2dbe1a2df3b7af458e46adb0810f2c0025cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/7c5b2dbe1a2df3b7af458e46adb0810f2c0025cc"/>
+    <title>
+        Merge branch &#39;claude/deploy-runbook&#39; into claude/plan-ai-route
+    </title>
+    <updated>2026-09-12T18:54:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;claude/deploy-runbook&amp;#39; into claude/plan-ai-route
+
+# Conflicts:
+#	docs/PLAN.md
+#	infra/.env.example&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27efcf27b02904159e1d6685c20a2e1d803f22ad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/27efcf27b02904159e1d6685c20a2e1d803f22ad"/>
+    <title>
+        plan: reach Claude through Vertex, and STT through Google
+    </title>
+    <updated>2026-09-12T18:50:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;plan: reach Claude through Vertex, and STT through Google
+
+Direct Anthropic billing is not available to the owner, and neither is
+OpenAI&amp;#39;s, so two of the plan&amp;#39;s AI decisions were unreachable as written.
+Claude now goes through Vertex AI and STT through Google Cloud
+Speech-to-Text v2. Both authenticate with the same service account that
+already does TTS, so no Anthropic or OpenAI key exists anywhere in the
+deployment — one credential, one vendor.
+
+Vertex costs two things, and neither announces itself:
+
+Server-side `fallbacks` is first-party only, so a refusal on Vertex would
+have been a dead end. build_async_client registers the SDK&amp;#39;s
+BetaRefusalFallbackMiddleware instead, which needs an explicit fallback
+model because there is no &amp;quot;default&amp;quot; routing policy to defer to. The
+first-party path keeps the server-side parameter; sending it to Vertex
+would be an error, so the client tracks which route it is on.
+
+The Message Batches API is also unavailable, so offline seed generation
+pays full price rather than the 50% batch rate. Recorded in the plan
+against the task table that assumed the discount.
+
+STT v2 takes OGG_OPUS natively — no transcode — and its PhraseSet
+adaptation replaces OpenAI&amp;#39;s `prompt=&amp;lt;target sentence&amp;gt;` trick. 60 min/month
+free. openai_api_key is now dead config and is gone rather than left to
+invite someone to fill it in.
+
+Class names, the middleware signature, and the batches and fallback
+availability were checked against anthropic 1.4.0 as installed, not
+recalled.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/21c8d1fbccbf5de65648f3191d90e5e445117f9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/21c8d1fbccbf5de65648f3191d90e5e445117f9f"/>
+    <title>
+        content: put kanji in the examples, and use the plan&#39;s field names
+    </title>
+    <updated>2026-09-12T18:45:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;content: put kanji in the examples, and use the plan&amp;#39;s field names
+
+All 93 example sentences were kana-only while 69 of the 93 headwords carried
+kanji. That made example.reading a byte-for-byte copy of example.ja in every
+single row, and left the furigana toggle — which the plan turns on by default
+from the first vocabulary item — with nothing to render. 89 of the 93 now
+carry kanji; the four that do not are the ones whose headword is kana or
+katakana.
+
+No new vocabulary enters the sentences: every word was already there in kana,
+so this writes the same Japanese properly rather than making it harder. The
+examples stay at the `core` stage, where kanji is correct — the kana seeds
+are untouched, because the plan&amp;#39;s validation gate requires kana-only text
+during the bootcamp.
+
+Verified the readings rather than trusting the rewrite: Sudachi reproduces the
+pinned reading on 86 of 93 and disagrees on seven — 明日 as あす, 私 as
+わたくし, 日本 as にっぽん, 四人 as よんにん, 何時 as なんどき. Each is a real
+reading of the characters and the wrong one for this course, which is the
+argument for authoring `reading` instead of deriving it. Recorded in
+CONTENT.md, since it is the same case the audio section makes.
+
+`source`/`reviewed` were invented names for concepts vocab_lemmas already
+defines: now gloss_source (&amp;quot;claude&amp;quot;) and gloss_review_status (&amp;quot;needs_review&amp;quot;).
+
+Three sentences were duplicated across entries (39/63, 46/68, 13/90, 40/91);
+they are distinct now. Four first-person past-tense glosses forced a gender in
+Russian — those sentences moved to the present tense, and the remaining
+gendered glosses are neutral, since two learners of different genders share
+this content.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cbcf2fc6a9554d67410f76a06e6edbd95af3da43</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/cbcf2fc6a9554d67410f76a06e6edbd95af3da43"/>
+    <title>
+        Merge branch &#39;main&#39; into claude/content-seed
+    </title>
+    <updated>2026-09-12T18:43:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;main&amp;#39; into claude/content-seed&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ad47a9278e17bd36e2b2676fd3a72835cabd6ad8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cherkasoviy/nihongo-tutor/commit/ad47a9278e17bd36e2b2676fd3a72835cabd6ad8"/>
+    <title>
+        fix: carry the optimiser weights and the budget across as well
+    </title>
+    <updated>2026-09-12T18:38:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/30618200?s=30&amp;v=4"/>
+    <author>
+      <name>cherkasoviy</name>
+      <uri>https://github.com/cherkasoviy</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: carry the optimiser weights and the budget across as well
+
+The learner block claimed to move the learner&amp;#39;s settings and moved all but
+two of them. daily_budget_usd is cheap to lose — it is one number a learner
+can re-enter. fsrs_params is not: it is the personalised FSRS weight vector
+the monthly optimiser produces, and the only way to reproduce it is to have
+done the reviews again.
+
+Nothing writes fsrs_params yet (Phase 4), which is what made it easy to
+miss: a column that is null everywhere transfers correctly by accident, and
+the day it stops being null is the day the loss becomes real and silent.
+That is the worst possible shape for a bug in a tool whose entire job is not
+losing state.
+
+Both read with .get on import, so a payload written before they existed
+still applies, and a learner whose optimiser has never run is left alone
+rather than having null written over a default.
+
+The round-trip test now sets a 21-float weight vector and asserts it lands.
+Dropping the export line again fails it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

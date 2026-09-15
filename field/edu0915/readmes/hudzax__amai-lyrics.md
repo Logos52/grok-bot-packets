@@ -1,0 +1,117 @@
+# 🎶 Amai Lyrics
+
+![Amai Theme Preview](./previews/amai_theme_3.jpg)
+
+Welcome! **Amai Lyrics** is an extension for [Spicetify](https://spicetify.app/) that helps you enjoy Japanese and Korean songs on Spotify. It adds Furigana to help you read Kanji, shows Romaji and Korean Romanization so you can follow along, and provides line-by-line translations.
+
+Powered by Google's Gemini model — just add your own API key. See Features below for details.
+
+## 🌟 Features
+
+- **Lyrics Plus:** Line-by-line translations, Furigana for Kanji, Romaji for Japanese, and Romanization for Korean.
+- **Amai Theme:** Dynamic background from the current song's artwork. Toggle in settings.
+
+  ![Amai Theme Preview 1](./previews/amai-theme_2.jpg)
+  ![Amai Theme Preview 2](./previews/amai-theme_1.jpg)
+
+- **Playbar Lyrics:** Current line in the Spotify playbar with Furigana/Romaji support. Toggle in settings.
+
+  ![Playbar Lyrics Preview 1](./previews/playbar_lyrics_preview_1.png)
+  ![Playbar Lyrics Preview 2](./previews/playbar_lyrics_preview_2.png)
+  ![Playbar Lyrics Preview 3](./previews/playbar_lyrics_preview_3.png)
+
+## 🌍 Supported Translation Languages
+
+Amai Lyrics supports translations into the following languages:
+
+- **English**
+- **Spanish**
+- **French**
+- **German**
+- **Portuguese**
+- **Chinese (Simplified)**
+- **Thai**
+- **Indonesian**
+- **Malay**
+- **Japanese**
+- **Korean**
+
+You can change the translation language in Spotify's settings after installing the extension.
+
+## 💻 Supported Platforms
+
+Amai Lyrics works on **Windows**, **Linux**, and **macOS**. These are the platforms supported by Spicetify, which Amai Lyrics runs on.
+
+## 🚀 How to Install
+
+### Step 1: Install Spicetify (if you haven’t already)
+
+For Spicetify installation instructions, please refer to the [official Spicetify documentation](https://spicetify.app/docs/getting-started/).
+
+### Step 2: Download The Extension
+
+- Download [amai-lyrics-main.js](https://github.com/hudzax/amai-lyrics/releases/latest/download/amai-lyrics-main.js)
+
+### Step 3: Find Spicetify’s Config Folder
+
+- Open your terminal or PowerShell again.
+- Type this command and press **Enter**:
+
+  ```bash
+  spicetify config-dir
+  ```
+
+- This will open a folder on your computer. Inside, you’ll see an **Extensions** folder.
+
+### Step 4: Add Amai Lyrics to Extensions
+
+- Move or copy the **`amai-lyrics-main.js`** file you downloaded into the **Extensions** folder.
+
+  ![Config Folder Screenshot](./previews/config-dir.jpg)
+
+### Step 5: Enable it in Spicetify
+
+- In the terminal or PowerShell, run these two commands one by one:
+
+  ```bash
+  spicetify config extensions amai-lyrics-main.js
+  spicetify apply
+  ```
+
+- This tells Spicetify to use Amai Lyrics and refreshes Spotify.
+
+- **Restart Spotify** (close it completely and open it again).
+
+That’s it! You only need to do this once. Amai Lyrics will update itself automatically when new versions come out.
+
+## ⚙️ Set Up Your Gemini API Key
+
+Follow these steps to set up your Gemini API key:
+
+1. **Get your API key:**
+   - Visit [Google AI Studio](https://aistudio.google.com/app/apikey).
+   - Sign in and create an API key (it’s free).
+2. **Open Spotify settings:**
+   - Open Spotify.
+   - Go to **Settings** (click your profile picture > Settings).
+3. **Add your API key:**
+   - Scroll all the way down until you see the **API key** field.
+   - Paste your Gemini API key there.
+
+   ![Settings Screenshot](./previews/settings.jpg)
+
+   _Don’t worry, your key is stored only on your computer and used just for this extension._
+
+4. **See the lyrics:**
+   - Play a song.
+   - Click the lyrics icon at the bottom of Spotify.
+   - Wait a few seconds — the lyrics will appear with line-by-line translation, Furigana, Romaji, or Romanization!
+
+   ![Lyrics Toggle Screenshot](./previews/toggle-lyrics-page.png)
+
+---
+
+Copyright (C) 2024-2025 Spikerko (Original Spicy Lyrics)  
+Copyright (C) 2025-2026 hudzax (Modifications)  
+Based on Spicy Lyrics by Spikerko  
+Licensed under AGPLv3

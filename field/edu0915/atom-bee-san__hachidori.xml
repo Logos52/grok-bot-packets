@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bee-san/hachidori/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bee-san/hachidori/commits/main.atom"/>
+  <title>Recent Commits to hachidori:main</title>
+  <updated>2026-09-14T18:57:00Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a018e1b11b6ec10c27bd43bce0ece36dead33621</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/a018e1b11b6ec10c27bd43bce0ece36dead33621"/>
+    <title>
+        Test supported Chrome and automate releases (#172)
+    </title>
+    <updated>2026-09-14T18:57:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Test supported Chrome and automate releases (#172)
+
+* Test supported Chrome and automate release packaging
+
+* Harden release publishing and minimum Chrome checks&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8d60a793974e04b1c2ed94c1d52270ae568cb0c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/d8d60a793974e04b1c2ed94c1d52270ae568cb0c"/>
+    <title>
+        Merge pull request #174 from bee-san/feat/frequency-inline-row
+    </title>
+    <updated>2026-09-14T18:08:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #174 from bee-san/feat/frequency-inline-row
+
+Keep the primary frequency on the lookup count&amp;#39;s line&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b42e3f736bca979a664cf32d335f6496bd3f5b4a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/b42e3f736bca979a664cf32d335f6496bd3f5b4a"/>
+    <title>
+        reader: keep the frequency on the lookup count&#39;s line
+    </title>
+    <updated>2026-09-14T17:59:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;reader: keep the frequency on the lookup count&amp;#39;s line
+
+As an inline box the frequency capsule still dropped to its own row
+whenever its full width did not fit beside the count. The count and the
+capsule now share a flex row. The capsule starts at zero width and grows
+to its natural width, wrapping its own tags, so it leaves the line only
+when a single tag cannot fit.
+
+Frequency tags in the capsule keep their full width, so a narrow line
+wraps between tags instead of clipping values or dictionary names. The
+Freq: label moves into the first tag so a wrap never strands it, and
+the pill&amp;#39;s radius is 13px: unchanged on one line, a rounded box when
+wrapped.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzoimGPnrWLEEpuwQ1TJvw&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/017ed06063346ce54ee9d81754670d1dcef9d7ff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/017ed06063346ce54ee9d81754670d1dcef9d7ff"/>
+    <title>
+        Merge pull request #173 from bee-san/fix/compact-sankoku-senses
+    </title>
+    <updated>2026-09-14T17:54:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #173 from bee-san/fix/compact-sankoku-senses
+
+Show only the English gloss of Sanseido senses in compact definitions&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01d4b61c17f98e98731a882d4093d24d916778d5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/01d4b61c17f98e98731a882d4093d24d916778d5"/>
+    <title>
+        popup: show only the English gloss of Sanseido senses in compact defi…
+    </title>
+    <updated>2026-09-14T17:52:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;popup: show only the English gloss of Sanseido senses in compact definitions
+
+Sanseido-style dictionaries (sankoku en-jp, 三省堂国語辞典, 新明解国語辞典)
+mark sections with data.name, which the compact summary did not recognise.
+It fell back to leaf blocks, usually the example sentences, and picked up
+sense numbers, labels, furigana and the Japanese half of bilingual glosses.
+
+The glossary-marker discovery pass now also finds 語義 senses. Each sense
+contributes only its 語釈 gloss (including 副義 sub-senses), and a bilingual
+gloss keeps the English text before the bare space that opens the Japanese.
+ルビG furigana is left out like rt. Senses holding only a ⇨ reference and
+index entries that are bare sub-headword links contribute nothing, so the
+summary moves on as it does for Jitendex redirects.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Pume15JTCWZYxGMuJPKP44&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e168e2d1f08530770a8d26d91ced5188694f352e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/e168e2d1f08530770a8d26d91ced5188694f352e"/>
+    <title>
+        Put the primary frequency beside the lookup count (#171)
+    </title>
+    <updated>2026-09-14T17:39:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Put the primary frequency beside the lookup count (#171)
+
+* test: expect the primary frequency beside the lookup count
+
+The popup stacks &amp;quot;Looked up N times&amp;quot; and the Freq pill on separate rows,
+which wastes a line above the definitions. Check they share a row when
+the popup is wide enough.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzoimGPnrWLEEpuwQ1TJvw
+
+* reader: put the primary frequency beside the lookup count
+
+The metadata capsule was a block-level flex box, so it always started a
+new row under the lookup count. As an inline flex box it sits beside
+the count and still wraps below it when the popup is too narrow. Its
+bottom margin goes because inline margins no longer collapse into the
+definitions below, which keeps the old spacing when it wraps or stands
+alone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01MzoimGPnrWLEEpuwQ1TJvw
+
+---------
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e89c9f9b594218abf1f88c2b574e25c6fc132e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/5e89c9f9b594218abf1f88c2b574e25c6fc132e0"/>
+    <title>
+        perf: stage dictionary downloads before import (#170)
+    </title>
+    <updated>2026-09-14T17:35:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;perf: stage dictionary downloads before import (#170)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9563dfa138e2a0e3cce270a2dc6b260312db893</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/d9563dfa138e2a0e3cce270a2dc6b260312db893"/>
+    <title>
+        Explain recoverable lookup failures in the reader (#169)
+    </title>
+    <updated>2026-09-14T17:21:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Explain recoverable lookup failures in the reader (#169)
+
+* feat: explain recoverable lookup failures
+
+* test: cover actionable engine failures&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/582a5b90db18b86f2fa60a4ed2cf0ef50807b12e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/582a5b90db18b86f2fa60a4ed2cf0ef50807b12e"/>
+    <title>
+        Fix requests crossing Sharing host changes (#168)
+    </title>
+    <updated>2026-09-14T16:58:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix requests crossing Sharing host changes (#168)
+
+* fix: bind shared requests to their host link
+
+* refactor: share mutation failure classification&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4c931ba1a935a8fc250fadfffecf99bb99e52aba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/4c931ba1a935a8fc250fadfffecf99bb99e52aba"/>
+    <title>
+        fix: disable unsupported settings in overlay mode (#167)
+    </title>
+    <updated>2026-09-14T16:32:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: disable unsupported settings in overlay mode (#167)
+
+* fix: disable unsupported overlay capabilities
+
+* test: cover overlay capability boundaries
+
+* refactor: simplify overlay capture routing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f44c48985d7fef1370c58a7249c0dbf47b4293d1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/f44c48985d7fef1370c58a7249c0dbf47b4293d1"/>
+    <title>
+        feat: route linked Anki mining through the host (#166)
+    </title>
+    <updated>2026-09-14T15:53:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: route linked Anki mining through the host (#166)
+
+* feat: route linked Anki mining through the host
+
+* docs: explain host-owned linked Anki mining
+
+* fix: harden linked Anki for remote browsers
+
+* fix: close linked Anki remote-state races
+
+* fix: bind linked Anki browsing to the host
+
+* fix: close linked Anki remoteness gaps&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6bd09f87059549c5e3605af14d4aaeac933fdc91</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/6bd09f87059549c5e3605af14d4aaeac933fdc91"/>
+    <title>
+        Merge pull request #165 from bee-san/fix/overlay-local-settings
+    </title>
+    <updated>2026-09-14T15:04:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #165 from bee-san/fix/overlay-local-settings
+
+Keep overlay preferences local while Sharing and show mining capabilities&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea18e4b6a4e7a657928266d60bcb1ddfa8fc730e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/ea18e4b6a4e7a657928266d60bcb1ddfa8fc730e"/>
+    <title>
+        Merge pull request #163 from bee-san/feat/settings-anki-setup
+    </title>
+    <updated>2026-09-14T15:03:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #163 from bee-san/feat/settings-anki-setup
+
+Make Anki setup discovery reusable from Settings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a5922691ce690f22586f8feb2a1d257bb4316523</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/a5922691ce690f22586f8feb2a1d257bb4316523"/>
+    <title>
+        Merge pull request #159 from bee-san/fix/startup-settings-reuse
+    </title>
+    <updated>2026-09-14T14:57:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #159 from bee-san/fix/startup-settings-reuse
+
+Reuse saved theme and Sharing eligibility in startup&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ff8ccc5151d82a1e9ff70f5a6472c30bcfdd4fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/6ff8ccc5151d82a1e9ff70f5a6472c30bcfdd4fa"/>
+    <title>
+        Merge branch &#39;feat/settings-anki-setup&#39; into fix/overlay-local-settings
+    </title>
+    <updated>2026-09-14T14:57:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;feat/settings-anki-setup&amp;#39; into fix/overlay-local-settings
+
+# Conflicts:
+#	extension/anki-settings.js&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75ba87a869d43ee2f733d7a77074efcac036bb10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/75ba87a869d43ee2f733d7a77074efcac036bb10"/>
+    <title>
+        refactor: separate Anki form control rendering
+    </title>
+    <updated>2026-09-14T14:54:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: separate Anki form control rendering&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7b5c509e966f94bc0b1c70b1488f964727bd920b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/7b5c509e966f94bc0b1c70b1488f964727bd920b"/>
+    <title>
+        Merge pull request #158 from bee-san/fix/shared-recommended-install
+    </title>
+    <updated>2026-09-14T14:50:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #158 from bee-san/fix/shared-recommended-install
+
+Share recommended installation across startup and Settings&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/08e65b51c1f4c4f09eedb1a6d662da5af5427b3a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/08e65b51c1f4c4f09eedb1a6d662da5af5427b3a"/>
+    <title>
+        refactor: simplify overlay form and worker routing
+    </title>
+    <updated>2026-09-14T14:50:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor: simplify overlay form and worker routing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a998da1b5c77dc8fda5b96bdbc57dfb78d3dc55</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/4a998da1b5c77dc8fda5b96bdbc57dfb78d3dc55"/>
+    <title>
+        Merge branch &#39;fix/startup-settings-reuse&#39; into feat/settings-anki-setup
+    </title>
+    <updated>2026-09-14T14:48:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;fix/startup-settings-reuse&amp;#39; into feat/settings-anki-setup&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/219fdcd0947bb6d8981ea014fb8bb002be58ceeb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bee-san/hachidori/commit/219fdcd0947bb6d8981ea014fb8bb002be58ceeb"/>
+    <title>
+        Merge branch &#39;feat/settings-anki-setup&#39; into fix/overlay-local-settings
+    </title>
+    <updated>2026-09-14T14:44:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/10378052?s=30&amp;v=4"/>
+    <author>
+      <name>bee-san</name>
+      <uri>https://github.com/bee-san</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge branch &amp;#39;feat/settings-anki-setup&amp;#39; into fix/overlay-local-settings
+
+# Conflicts:
+#	extension/settings.js&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
