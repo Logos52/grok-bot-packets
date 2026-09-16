@@ -47,7 +47,7 @@ Confirmed **no agent folder** on 2026-09-03. Leftover packet dirs are archive, n
 
 | Bot | Was | Evidence | Leftover files | Status |
 |---|---|---|---|---|
-| Dcard | `7025c5cf…` · daily 06:00 Taipei harvest. First run 2026-08-28 Cloudflare-blocked. | No folder under `/home/box/agent-data/agents`. | `/workspace/dcard/` (2026-08-28 … 2026-09-01 + `latest.md`) | **Taken down.** Wedge still interested: maybe revive with his VPN so the bot can try a Dcard login in the browser. Do not recreate until he says so. |
+| Dcard | — | **PERMANENTLY DELETED 2026-09-16.** Do not recreate. Strip all handoffs. | `/workspace/dcard/` residual files only | Do not revive. |
 | Roll | `6e4bbaf9-b600-4ddc-a756-0144064bd2e1` · alarm tests 2026-08-28, then gone. | No agent folder. Dropped from teammates list. | `/workspace/roll/log.md` (two alarm lines) | **Taken down.** Not a revive candidate. |
 
 ---
@@ -95,7 +95,7 @@ Confirmed **no agent folder** on 2026-09-03. Leftover packet dirs are archive, n
 
 ## Stale pointers (not live)
 
-- `yuedu-sources.md` still says “Agent Dcard owns that site.” Dcard is down. Steward did not edit Yuedu’s file.
+- `yuedu-sources.md` Dcard handoffs stripped 2026-09-16. Dcard permanently deleted — do not recreate.
 - 後台 profile CLOCK section still lists `xingye weather`. Disk has draw + window only.
 
 ## How to update this file

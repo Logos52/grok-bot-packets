@@ -2,7 +2,7 @@
 
 **Locked 2026-08-13.** Packet language: **全部繁體**. No English gloss. No 简体 sources. No CCP organs. No progressive/activist outlets.
 
-**2026-08-28:** Dcard.tw is **not a live harvest**. Agent Dcard owns that site. Do not open dcard.tw. If 口語 shape is still needed, read `/workspace/dcard/latest.md` after that bot writes it. Own sources stay CNA / iThome / X.
+**2026-09-16:** Dcard is **permanently deleted**. Never open dcard.tw, never read `/workspace/dcard/`. Own 口語 sources = Taiwan X life posts. Own 書面 = CNA / iThome.
 
 **2026-08-13:** this file is the **source pin for tan channel 15 閱讀**, not a chat-packet recipe. The lesson is a graded rewrite + reader + 金多恩 in the tan yuedu library. Spec: tan `CHANNEL-YUEDU`. Partner-pack work stays a session product. The Grok Bot does not teach.
 
@@ -16,7 +16,7 @@ Cadence: Tue/Fri 07:30 Asia/Taipei. First-party fetches only. No Firecrawl. Pers
 
 | 種類 | 漢字 | 語體 | 從哪裡來 | 值不值得讀 |
 |------|------|------|----------|------------|
-| 台灣口語 | 繁 | 語氣詞、夾英文、故事形 | X 上台灣人的生活文；口語形可讀 `/workspace/dcard/latest.md`（agent Dcard 寫的，不是自己開站） | **主菜。** 那種生活中文 |
+| 台灣口語 | 繁 | 語氣詞、夾英文、故事形 | X 上台灣人的生活文 | **主菜。** 那種生活中文 |
 | 台灣新聞書面語 | 繁 | 中央社／科技報的句子 | CNA 生活／科技／產經；iThome | **配菜。** 當代 B3 末往上練閱讀，不是練說話 |
 | 雜誌書面語 | 繁 | 較長、有論點 | 天下雜誌（挑產業／兩岸事實，丟掉減肥點擊文） | 每包最多 1 則 |
 | 境外「普通話」電台 | 多半是**简体** | 對大陸廣播書面 | RFA Mandarin RSS（已抽樣：朱镕基、收护照） | **不要。** 繁體報表配簡體來源是兩套中文 |
@@ -27,13 +27,13 @@ Bot 寫 packet 時用台灣華語書面＋口語混寫（標題保留原文）�
 
 ---
 
-## A. 口語形 — 讀檔，不開站
+## A. 口語形 — 只用 X（Dcard 已刪）
 
-**禁止** 開 `dcard.tw`、六板 URL、或 Dcard API。那是 agent Dcard 的活。
+**禁止** 開 `dcard.tw`、六板 URL、Dcard API、或讀 `/workspace/dcard/`。Dcard bot 已永久刪除。不要等 Agent Dcard，也不要讀 `dcard/latest.md`。
 
-若還需要 口語 shape：讀 `/workspace/dcard/latest.md`（該 bot 寫好才有）。檔不在或過舊 → footer 寫 `dcard/latest 沒有／過舊`，改用自己的 X＋書面。不要用模型記憶假裝有一篇熱門文。不要把六板當 live harvest 再掃一遍。
+口語 shape：只用自己的 X（見 B）。不要用模型記憶假裝有一篇熱門文。
 
-取捨（讀檔時仍適用）：
+取捨：
 
 - 要：有情節的生活文（租屋、面試、同事、告白、家庭）。長度夠讀 3–8 分鐘。
 - 不要：時事／政治板、性別運動文、純靠北、標題黨、引戰、轉載大陸通稿。
@@ -43,7 +43,7 @@ Bot 寫 packet 時用台灣華語書面＋口語混寫（標題保留原文）�
 
 ## B. X.com — 自抓（口語短篇）
 
-Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源，不是 Dcard 的備援。
+Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源。
 
 每個 run 用這些查詢（Latest，至少 15 fav，去掉回覆）：
 
@@ -59,7 +59,7 @@ Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源，�
 
 - 要：台灣人在講自己的生活。繁體。有一段落，不是一句幹話。
 - 不要：藍綠戰、仇中口號當全文、幣圈、約會廣告、簡體大號、VTuber 宣發。
-- 每包最多 **3** 則 X。`/workspace/dcard/latest.md` 已有夠用的口語時，X 讓位。
+- 每包最多 **3** 則 X。
 
 帳號先不釘死。你之後點名誰，再寫進本檔。
 
@@ -131,13 +131,13 @@ Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源，�
 - 改 tsumugu 詞條
 - 付費牆繞過
 - 用模型記憶生假 URL
-- **開 dcard.tw 或掃六板**（那是 agent Dcard 的活）
+- **開 dcard.tw、掃六板、或讀 /workspace/dcard/**（Dcard 已永久刪除）
 
 ---
 
 ## 評分（維持 gold）
 
-興趣 1–5 × 練習價值 1–5。合計 ≥ 6 才進包。上限：READ 8（口語至少一半：X 自抓 ＋ 可選讀 dcard/latest.md）＋ meta 1。
+興趣 1–5 × 練習價值 1–5。合計 ≥ 6 才進包。上限：READ 8（口語至少一半：X 自抓）＋ meta 1。
 
 腳本欄位永遠是 `繁`。出現簡體標題 → 丟棄，不要「轉成繁體充數」。
 
@@ -145,7 +145,7 @@ Grok Bot 原生能搜。**禁止** `lang:zh` 無過濾。這是自己的源，�
 
 ## 每個 run 的取件順序
 
-1. 若需要口語形：讀 `/workspace/dcard/latest.md`（檔不在就跳過）。**不要開 dcard.tw。**
+1. 口語形：抓 X（見上）。**不要開 dcard.tw，不要讀 /workspace/dcard/。**
 2. X 兩條查詢（自抓）。
 3. CNA 生活／科技／產經 ＋ iThome。天下最多掃標題列。
 4. 寫 **整包繁體**。
@@ -168,7 +168,7 @@ python3 /workspace/bank/scripts/bank.py --root /workspace/bank --text --lane yue
 
 腳本不在時，手寫 `/workspace/bank/raw/yuedu/<id>.md`：`SCHEMA.md` 的 block、空一行、正文，別的都不要。
 
-- Dcard 來源（從 `/workspace/dcard/latest.md` 讀來的）加 `--private`。CNA／iThome／X 公開稿不加。
+- CNA／iThome／X 公開稿不加 `--private`。不要從 `/workspace/dcard/` bank（已刪除）。
 - `/workspace/bank/cards/` 是 Mac 的摘要：能讀、不寫。
 - 永不寫 `raw/private/`。永不碰 `/workspace/cast/`。
 - 只 bank **讀完全文且用進 packet** 的。掃過標題、未讀正文的不要 bank。

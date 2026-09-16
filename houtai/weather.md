@@ -1,44 +1,45 @@
-date: 2026-09-15
-checked_at: 2026-09-15T13:12 Asia/Taipei
+date: 2026-09-16
+checked_at: 2026-09-16T13:10 Asia/Tokyo
 cities:
-  Taipei:
-    lat: 25.033
-    lon: 121.565
-    max: 27.0
-    min: 24.3
-    now: 27.0
-    feels: 30.0
-    precip_mm: 4.0
-    normal_max: 31.47
-    normal_rain: 7.01
-    normal_n: 70
   Osaka:
     lat: 34.69
     lon: 135.50
-    max: 27.8
+    max: 24.3
     min: 22.0
-    now: 27.8
-    feels: 31.9
-    precip_mm: 1.9
-    normal_max: 29.5
-    normal_rain: 6.26
+    now: 23.9
+    feels: 27.6
+    precip_mm: 3.0
+    normal_max: 29.59
+    normal_rain: 5.69
     normal_n: 70
-source: open-meteo forecast; open-meteo archive (±3d Sep 15, 2016–2025); CWA RSS cwa_warning.xml; NCDR CAP JSON; NCDR EQ; JMA quake list + targetTc/TC2630
-cwa_key: no
-now_md: missing (his city default Taipei)
-warnings: CWA RSS 陸上強風特報 (桃園/新竹/苗栗/臺中/彰化/雲林/嘉義/屏東/臺東/澎湖/連江 — 無臺北市); CWA 大雨特報 東北部及新北山區 — 非臺北市; CWA/NCDR 高溫黃色 嘉義縣 only — 非臺北; no 海上/陸上 typhoon warning (TY_NEWS inactive; JMA TC2630 = TD near Truk → Minami-Torishima/Ogasawara track — Kansai not in forecast)
-quakes_TW: NCDR 063 09/14 06:44 規模4.9 臺灣東南部海域 (outside 24h window from check); 062 09/14 03:21 規模4.7 花蓮萬榮 (outside 24h); neither 規模≥5 nor 臺北震度≥3 in last 24h
-quakes_JP: 24h max M4.4 Fukushima coast 震度1; M4.0 Kumamoto 震度3 (Kumamoto only); no M≥5.0; no 大阪震度≥3
-water: no Taipei city water-restriction / 減壓供水 / 限水 stage; NCDR 停水 are local pipe works only
-holiday: not this routine
-outliers: none
-heat_gate_TPE: max≥34.47 or ≥36 or CWA 高溫 臺北 — no (27.0; 高溫 is 嘉義)
-rain_gate_TPE: ≥40mm or CWA 大雨/豪雨 臺北市 — no (4.0mm; 大雨 is 東北部/新北山區)
-cold_gate_TPE: max≤26.47 or ≤12 or CWA 低溫 — no (27.0)
-typhoon_gate: 海上/陸上 warning / Kansai in JMA track — no
-quake_gate: 24h 規模≥5 or 臺北震度≥3 / 大阪震度≥3 — no
-water_gate: Taipei restriction stage — no
-heat_gate_OSA: max≥32.5 or ≥36 — no (27.8)
-rain_gate_OSA: ≥40mm — no (1.9)
-cold_gate_OSA: max≤24.5 or ≤5 — no (27.8)
+  Ho_Chi_Minh:
+    lat: 10.82
+    lon: 106.63
+    max: 32.6
+    min: 24.3
+    now: 31.3
+    feels: 38.6
+    precip_mm: 6.5
+    normal_max: 30.35
+    normal_rain: 14.87
+    normal_n: 70
+source: open-meteo forecast; open-meteo archive (±3d Sep 16, 2016–2025); JMA quake list + TC2630 forecast
+now_md: missing (his city default Ho Chi Minh / Saigon 10.82,106.63 — not Taipei)
+warnings: JMA TC2630 = TD near Mariana → forecast 南鳥島近海 / northward — Kansai not in track; no Osaka typhoon warning
+quakes_JP: 24h notable M4.0 熊本県天草・芦北 06:09 JST maxi4 (熊本/鹿児島 only; EditorialOffice 大阪管区 is not 大阪震度); no M≥5.0; no 大阪震度≥3
+quakes_TW: n/a (his city not Taiwan)
+outliers:
+  Osaka: 冷 — max 24.3 ≤ normal−5 (24.59)
+  Ho_Chi_Minh: none
+heat_gate_OSA: max≥32.59 or ≥36 — no (24.3)
+rain_gate_OSA: ≥40mm — no (3.0)
+cold_gate_OSA: max≤24.59 or ≤5 — YES (24.3)
 snow_gate_OSA: no
+typhoon_gate_OSA: Kansai in track / warning — no
+quake_gate_OSA: M≥5 or 大阪震度≥3 — no
+heat_gate_SGN: max≥33.35 or ≥36 — no (32.6)
+rain_gate_SGN: ≥40mm — no (6.5)
+cold_gate_SGN: max≤25.35 or ≤18 — no (32.6)
+hold: packets to 星野 still held until setup (now.md missing)
+alert_draft: 大阪 | 冷 | 今天預報最高24度，比平常這時候涼5度
+alert_sent: no (hold)

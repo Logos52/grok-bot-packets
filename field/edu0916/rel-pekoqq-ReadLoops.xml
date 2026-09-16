@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:https://github.com/pekoqq/ReadLoops/releases</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/releases"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pekoqq/ReadLoops/releases.atom"/>
+  <title>Release notes from ReadLoops</title>
+  <updated>2026-09-14T15:30:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Repository/1368998983/v2.3.1</id>
+    <updated>2026-09-14T15:30:58Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/pekoqq/ReadLoops/releases/tag/v2.3.1"/>
+    <title>v2.3.1 — 品牌重设计 + 专注模式光效</title>
+    <content type="html">&lt;h3&gt;修复&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;专注模式与计时器脱节&lt;/strong&gt;：进入专注不再自动开始计时、退出专注也不停止 → &lt;code&gt;toggleFocusMode()&lt;/code&gt; 进入时（有文章且计时未跑）自动 &lt;code&gt;startTimer()&lt;/code&gt;，退出时 &lt;code&gt;pauseTimer()&lt;/code&gt;；再次进入从当前读数继续。按钮 / &lt;code&gt;F&lt;/code&gt; / &lt;code&gt;Esc&lt;/code&gt; / 自动专注 / 切视图退出等所有入口都汇聚到该函数，一处修复全覆盖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;清理坏的空格分支&lt;/strong&gt;：第一个 keydown 处理器调用了&lt;strong&gt;从未定义&lt;/strong&gt;的 &lt;code&gt;toggleTimer()&lt;/code&gt;（按空格先抛 ReferenceError，靠第二个处理器兜底）→ 删除重复分支，空格统一由后置处理器在「暂停 / 继续」间切换&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整句翻译偶发「翻译失败」&lt;/strong&gt;：根因有二——① deepseek-flash 偶发把正文输出到 &lt;code&gt;reasoning_content&lt;/code&gt;、&lt;code&gt;content&lt;/code&gt; 为空；② 网络抖动时同步 &lt;code&gt;httpx&lt;/code&gt; 无任何重试。&lt;code&gt;_chat()&lt;/code&gt; 现对网络/HTTP/空内容最多重试 2 次（退避 0.6s 递增），空内容（思考泄漏）判定为可恢复错误并重试&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整句选中长度被硬限制为 60 字符&lt;/strong&gt;：稍长的英文句子直接不弹翻译面板（表现为「选了没反应」）→ 放宽到 280&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;/api/words/translate&lt;/code&gt; 阻塞事件循环&lt;/strong&gt;：async 路由内直接跑同步 AI 调用 → 改 &lt;code&gt;asyncio.to_thread&lt;/code&gt;；失败返回 502 + 明确原因而非笼统空串；空文本直接 &lt;code&gt;ok:false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前端失败即死&lt;/strong&gt;：整句翻译失败只显示静态「翻译失败」→ 面板内给出原因提示与「点击重试」按钮（&lt;code&gt;requestSentenceTranslate&lt;/code&gt; / &lt;code&gt;renderTranslateRetry&lt;/code&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;交互变更 — 计时与专注模式严格挂钩&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;新不变量：计时器只在专注模式下运行&lt;/strong&gt;（&lt;code&gt;startTimer()&lt;/code&gt; 加 &lt;code&gt;if(!focusMode) return&lt;/code&gt; 根防线，任何入口都绕不过），非专注状态下计时不再走&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空格 / 计时按钮语义统一&lt;/strong&gt;（新增 &lt;code&gt;toggleTimerWithFocus()&lt;/code&gt;）：非专注时按空格或点计时键 = 进入专注并同步开始计时；已在专注中则只做暂停 / 继续；非阅读页 / 无文章不响应&lt;/li&gt;
+&lt;li&gt;退出专注必停计时并把按钮文案复位为「开始 [空格]」；移除划词 &lt;code&gt;showLookupPanel&lt;/code&gt; 里绕过专注的直接 &lt;code&gt;startTimer&lt;/code&gt;（划词自动进专注已会带动计时）&lt;/li&gt;
+&lt;li&gt;空状态 / 帮助的快捷键提示改为「空格 开始专注计时 · 暂停继续」「F 切换专注模式」（两处同步）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;增强&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;右侧查词抽屉新手引导箭头&lt;/strong&gt;：&lt;code&gt;.right-guide-arrow&lt;/code&gt; 浮动小玻璃圆钮（currentColor + 玻璃 token，四主题适配），入场后持续向右轻推提示；鼠标唤出右侧抽屉或点「查词」后向右淡出消失，并用 &lt;code&gt;localStorage(right_guide_seen)&lt;/code&gt; 记住，之后不再出现；专注模式下隐藏，带 reduced-motion 兜底&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;专注氛围光上移&lt;/strong&gt;：氛围光层由单元素双渐变重构为 &lt;code&gt;body::before/::after&lt;/code&gt; 两个可 &lt;code&gt;transform&lt;/code&gt; 平移的光斑（渐变圆心无法插值，只有 transform 能让光源滑动）；日常保持左上冷光/右下暖光的对角光且浓度不变，进入专注时两团光用 3s、延迟 0.3s 的缓动平滑上移、在顶部汇聚成顶光，&lt;strong&gt;与水纹涟漪（延迟 300ms + 时长 3s）同时开始、同时落定&lt;/strong&gt;，退出时 0.6s 跟手回位；光层 z-index 修正为 -1 严格压在内容之下&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;专注态质感分层（日常含蓄 / 专注聚焦）&lt;/strong&gt;：进入专注时只保留&lt;strong&gt;一整团居中、放大一圈的统一顶光&lt;/strong&gt;（&lt;code&gt;::before&lt;/code&gt; 移到水平正中、scale 1.7、brightness 2.6；另一团对角光 &lt;code&gt;::after&lt;/code&gt; 淡出，避免顶部并排两个冷暖异色「球」）；新增 &lt;code&gt;.focus-shade&lt;/code&gt; 聚焦暗角层（中央阅读卡处通透、向四周/底部轻微压暗，把视线收向文字），暗角浓度用新 token &lt;code&gt;--focus-shade&lt;/code&gt; 按四主题分别标定（深色 .42 / 纯黑 .58 / 纸质 .26 / 明亮 .15，浅主题不发脏）；&lt;code&gt;.app&lt;/code&gt; 抬到 z-index:1 形成「底色 &amp;lt; 背景光(-1) &amp;lt; 暗角(0) &amp;lt; 内容(1)」的清晰层级；顶光增亮与暗角淡入同为 3s 延迟 .3s，与涟漪一起落定，退出 .6s 回位&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;侧边栏 logo 鼠标交互&lt;/strong&gt;：hover 时循环环 0.85s 顺时针转一圈并轻微放大（复用 &lt;code&gt;--ease-damped&lt;/code&gt;，用 animation 避免离开时整圈倒转），按下 &lt;code&gt;:active&lt;/code&gt; 回弹到 0.86；新增 &lt;code&gt;prefers-reduced-motion&lt;/code&gt; 兜底。单色 currentColor 不变，四主题一致&lt;/li&gt;
+&lt;/ul&gt;</content>
+    <author>
+      <name>pekoqq</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/190154369?s=60&amp;v=4"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/1368998983/v2.3.0</id>
+    <updated>2026-09-14T00:45:35Z</updated>
+    <link rel="alternate" type="text/html" href="https://github.com/pekoqq/ReadLoops/releases/tag/v2.3.0"/>
+    <title>v2.3.0 — UI/动效打磨 + 划词整句翻译</title>
+    <content type="html">&lt;h2&gt;安装&lt;/h2&gt;
+&lt;p&gt;已发布到 PyPI：&lt;code&gt;pip install readloops&lt;/code&gt;，安装后执行 &lt;code&gt;readloops serve&lt;/code&gt; 启动。&lt;/p&gt;
+&lt;h2&gt;新增&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;划词翻译整句&lt;/strong&gt;：选中多个单词时调用 AI 翻译整段选中文本（新增 &lt;code&gt;POST /api/words/translate&lt;/code&gt; 与 &lt;code&gt;ai.py::translate_sentence&lt;/code&gt;）；选中单个单词仍走本地 ECDICT 词典，句子模式下隐藏「加入生词本」&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;侧边栏 logo 链接&lt;/strong&gt;：点击项目名跳转项目主页&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;空状态快捷键提示&lt;/strong&gt;：空列表中展示 &lt;code&gt;空格&lt;/code&gt; / &lt;code&gt;选中&lt;/code&gt; / &lt;code&gt;F&lt;/code&gt; 键位提示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;重构 — 设计 token 体系&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;按钮系统&lt;/strong&gt;：新增 &lt;code&gt;--btn-*&lt;/code&gt; 尺寸/圆角/内边距 token；&lt;code&gt;.toolbar-btn&lt;/code&gt; 成为全站共享基类（&lt;code&gt;.primary&lt;/code&gt; / &lt;code&gt;.danger&lt;/code&gt; / &lt;code&gt;.icon&lt;/code&gt; / &lt;code&gt;.large&lt;/code&gt;），合并此前两套不同的删除按钮设计&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动效系统&lt;/strong&gt;：新增 &lt;code&gt;--page-*&lt;/code&gt; / &lt;code&gt;--enter-*&lt;/code&gt; / &lt;code&gt;--ease-*&lt;/code&gt; token；新增 &lt;code&gt;staggerIn(selector, step, max)&lt;/code&gt; 作为成组元素错峰入场的统一入口&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;玻璃质感统一&lt;/strong&gt;：提高表面亮度，新增 &lt;code&gt;body::before&lt;/code&gt; 氛围光层（随主题切换配色）；弹窗、确认框、输入框由实色统一为玻璃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;修复&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;页面切换残影（两个根因）&lt;/strong&gt;：① 渲染函数为 async 但未 &lt;code&gt;await&lt;/code&gt;；② &lt;code&gt;transition&lt;/code&gt; 移除类时反向补间与淡入动画冲突 → 统一改用 &lt;code&gt;animation&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动专注模式回归&lt;/strong&gt;：非阅读页点击消耗一次性触发机会 → 增加视图判断&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计时栏在非阅读页也显示&lt;/strong&gt; → 改为仅阅读视图显示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;统计热力图入场「炸开」&lt;/strong&gt;：188 格各自缩放 → 容器整块淡入&lt;/li&gt;
+&lt;li&gt;清理两套互相覆盖的错峰逻辑与 &lt;code&gt;return&lt;/code&gt; 之后的死代码&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Windows 控制台中文输出崩溃&lt;/strong&gt;：默认代码页（cp1252 等）下 &lt;code&gt;readloops --help/init/doctor&lt;/code&gt; 会 UnicodeEncodeError → CLI 入口统一把标准流重配置为 UTF-8（含回归测试）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;动效&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;容器只做 opacity、不做位移，位移仅留给内容层&lt;/li&gt;
+&lt;li&gt;页面离开 0.10s / 进入 0.52s；内容入场 0.78s + 14px 位移 + 0.055s 错峰&lt;/li&gt;
+&lt;li&gt;新增 &lt;code&gt;--ease-damped: cubic-bezier(0.34, 1.28, 0.42, 1)&lt;/code&gt; 带回弹的阻尼缓动&lt;/li&gt;
+&lt;li&gt;主题切换改为 400ms 颜色过渡&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：本轮为纯表现层改动；唯一新增后端接口为 &lt;code&gt;POST /api/words/translate&lt;/code&gt;，无数据库变更。完整变更见 &lt;a href=&quot;https://github.com/pekoqq/ReadLoops/blob/main/docs/CHANGELOG.md&quot;&gt;CHANGELOG&lt;/a&gt;。&lt;/p&gt;</content>
+    <author>
+      <name>pekoqq</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/190154369?s=60&amp;v=4"/>
+  </entry>
+</feed>

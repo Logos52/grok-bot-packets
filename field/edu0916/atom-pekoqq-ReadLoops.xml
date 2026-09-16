@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/pekoqq/ReadLoops/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pekoqq/ReadLoops/commits/main.atom"/>
+  <title>Recent Commits to ReadLoops:main</title>
+  <updated>2026-09-15T22:12:18Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/755b5bf95034cdbc7d7b390da077536b180c1e95</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/755b5bf95034cdbc7d7b390da077536b180c1e95"/>
+    <title>
+        feat(vocab): 词汇差距闭环 —— 考试词表 + 定级测试 + 重遇机制 + 蒸馏修正
+    </title>
+    <updated>2026-09-15T22:12:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocab): 词汇差距闭环 —— 考试词表 + 定级测试 + 重遇机制 + 蒸馏修正
+
+设计依据是罗肖尼《如何永远学会一个单词？》的两条操作规则：
+① 95–98% 覆盖率的可理解文本 ② 在**变化的语境**中重遇同一生词 ≥12 次。
+对照发现项目只做了半条：①方向对但从不测量，②完全没实现。
+
+新增
+- tools/import_exam_tags.py：从 ECDICT 导入 tags/frq/bnc/collins/oxford（不重导词典），
+  打通四级 3829 / 六级 5295 / 考研 4735 / 雅思 4609 / 托福 6612。
+- app/services/placement.py + 前端：Yes/No 词汇量定级测试，20 档等宽抽样 +
+  伪词虚报校正，194 题 3–5 分钟。40 个伪词逐个校验过不在 ECDICT 中。
+  用 PAVA 保序回归约束掌握率单调不增。实测真实 4000 词 → 估计 4054（误差 1.4%）。
+- app/services/encounter.py + lexicon.py：重遇机制，口径是 COUNT(DISTINCT article_id)
+  即「跨了多少篇」。文章生成即幂等记录；除目标生词外还记正文里出现的已有学习词。
+- tools/crawl_exam_corpus.py：全量四六级真题语料，547 篇 / 301,313 词 / 零失败。
+
+修复
+- 生成 prompt 里两套风格源打架：硬编码基准是 205 篇旧数据（复合句 50% vs 实测 65%、
+  状语从句 30% vs 17%）→ 换成 273 篇实测值；生效画像来自《傲慢与偏见》且排在基准之前
+  → 降级为末尾的 OPTIONAL REGISTER NOTE 并声明基准优先；画像注入「低频词占比约 100%」
+  与 i+1 的覆盖率约束直接对立 → 刻意不再输出。
+- Article 漏传 target_words，导致 API 返回空列表且重遇拿不到目标词。
+
+方案文档见 docs/VOCAB-GAP-PLAN.md。版本 2.3.2 → 2.4.0（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/133785bd8aea9eeae3c319208cc68067a99f28b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/133785bd8aea9eeae3c319208cc68067a99f28b7"/>
+    <title>
+        fix(graph): 重建知识图谱并修正比例与动画
+    </title>
+    <updated>2026-09-15T20:56:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(graph): 重建知识图谱并修正比例与动画
+
+用户反馈图谱「比例和动画有问题」，用浏览器实测 + canvas 内省定位到五层根因：
+
+- 多 rAF 循环叠加：循环标志挂在每次都会重建的 graphState 上，切换一次筛选就
+  永久多一个物理循环（实测 30fps -&amp;gt; 238fps）。
+- 物理极限环：斥力无上限/无 dt 归一化/无速度上限/硬边界裁剪，节点速度峰值
+  9651px/帧。只靠阻尼在数学上收不了，改为 alpha 退火冷却 + 子步进。
+- 画布比例：wide-view 漏了知识库三页，且宽窄切换发生在渲染之后。
+- 内容比例：150 个短语节点连接度全为 0，被斥力推到画布边缘排成硬边。
+  rebuild 改为不产生孤立节点并新增「文档-&amp;gt;短语」边。
+- 数据噪声：phrases 表 198 条 &amp;amp;quot; 实体残留（quot says 频率榜首），同时污染
+  文章生成 prompt；词节点混入整句碎片。已清理并在构建时过滤。
+
+另：rebuild 改为全量重算（原为增量累加边权，反复重建会让权重无限膨胀）；
+图谱配色改读主题变量；短语改用独立色相；布局改为各向异性映射。
+
+验收：静止后 0.5s 位移 0.000px、贴边节点 0、切换筛选后 0fps（原 238fps）、
+画布 608-&amp;gt;1018px、无控制台错误；pytest 41 passed、ruff 全绿。
+
+同时移除文档中的活跃 API Key 片段，并忽略构建产物。
+版本 2.3.1 -&amp;gt; 2.3.2（未发布到 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84387515f9e840e295b523e986b14b242a549bea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/84387515f9e840e295b523e986b14b242a549bea"/>
+    <title>
+        style: fix ruff findings (unused import, import sorting)
+    </title>
+    <updated>2026-09-15T20:16:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: fix ruff findings (unused import, import sorting)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67ccbec91c143f0e2267825db753f3f3ad1bb18f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/67ccbec91c143f0e2267825db753f3f3ad1bb18f"/>
+    <title>
+        docs: 交接快照 2026-09-16——顶光涟漪熄灭定稿、知识库工作台、PyPI 2.3.1 已发布、两库一致核对
+    </title>
+    <updated>2026-09-15T20:13:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 交接快照 2026-09-16——顶光涟漪熄灭定稿、知识库工作台、PyPI 2.3.1 已发布、两库一致核对&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/498981aa68927e50b9e2edc02a35afc795ff9839</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/498981aa68927e50b9e2edc02a35afc795ff9839"/>
+    <title>
+        feat(vocab): AI batch recognition with editable preview
+    </title>
+    <updated>2026-09-14T18:31:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocab): AI batch recognition with editable preview
+
+- recognize mixed word lists with AI, falling back to conservative local parse
+- let user edit/deselect before confirming the batch write
+- existing dictionary entries are activated as learning words rather than
+  silently treated as duplicates
+- report new, activated and skipped counts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05f3a39ad2eb37728e3040151028659b83faa748</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/05f3a39ad2eb37728e3040151028659b83faa748"/>
+    <title>
+        fix(mineru): bypass broken local CLI with direct pipeline invocation
+    </title>
+    <updated>2026-09-14T18:18:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(mineru): bypass broken local CLI with direct pipeline invocation
+
+- direct Python pipeline -&amp;gt; middle JSON -&amp;gt; Markdown helper replaces the
+  failing local CLI/API polling layer
+- materials PDF parser uses it before pypdf
+- verified direct script, service parser and live import API
+- update knowledge-base and PDF handoff docs&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de1cacdc4fcec1a4a67351f3f86ec0eb78ba3d38</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/de1cacdc4fcec1a4a67351f3f86ec0eb78ba3d38"/>
+    <title>
+        fix(pdf): isolate ModelScope state and complete active profile wiring
+    </title>
+    <updated>2026-09-14T18:09:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(pdf): isolate ModelScope state and complete active profile wiring
+
+- ModelScope state stays in project data/mineru-{cache,home}, with a
+  pre-created session to avoid restricted ~/.modelscope writes
+- setup pre-downloads pipeline models
+- active style profile is connected to article generation as a
+  statistics-only prompt block
+- pypdf declared and verified through the real parser&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c15ca3924f34ccde498c28d80c99d3c131ae8005</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/c15ca3924f34ccde498c28d80c99d3c131ae8005"/>
+    <title>
+        feat(pdf): complete local PDF stack and connect active style profile
+    </title>
+    <updated>2026-09-14T18:00:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(pdf): complete local PDF stack and connect active style profile
+
+- pypdf declared for ordinary text PDFs
+- optional MinerU runs from an isolated compatible venv with clean env vars
+- setup detects the Apple Silicon/x86 Python mismatch and can use uv for an
+  arm64 Python 3.13
+- active style profiles are injected as statistics-only hints into article
+  generation, completing the material -&amp;gt; distill -&amp;gt; reader loop&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99dd31b9021ced26da75f4d0d14230ea5c0a8510</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/99dd31b9021ced26da75f4d0d14230ea5c0a8510"/>
+    <title>
+        feat(materials): MinerU as an out-of-process optional backend for PDF
+    </title>
+    <updated>2026-09-14T16:57:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(materials): MinerU as an out-of-process optional backend for PDF
+
+MinerU needs Python 3.10-3.13 and 20GB+ of disk, so it cannot live in the
+project environment. It gets its own venv and is invoked as a subprocess.
+
+- _parse_pdf tries MinerU, then pypdf, then returns an actionable install
+  hint instead of failing silently
+- tools/setup_mineru.sh installs it in one command, picking a compatible
+  Python and warning if free disk is under 20GB
+- pypdf covers the lightweight path
+- tools/mineru-env/ is gitignored&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4bacdb0135f9ab2a5ea860ad27c9918e384a2c82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/4bacdb0135f9ab2a5ea860ad27c9918e384a2c82"/>
+    <title>
+        feat(kb): bookshelf, material import, distillation and knowledge graph
+    </title>
+    <updated>2026-09-14T16:51:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(kb): bookshelf, material import, distillation and knowledge graph
+
+- bookshelf searches Project Gutenberg directly (Gutendex proved unreliable),
+  downloads to a local library dir, strips the boilerplate, dedupes by
+  (source, source_id)
+- material import handles pasted text, txt/md and epub with no new
+  dependencies; PDF uses MinerU or pypdf when available and otherwise
+  returns an actionable install hint
+- distillation stores statistics only (sentence length, subordination,
+  TTR, frequency bands) and can turn the active profile into a style hint
+- knowledge graph with word/phrase/article/material nodes and
+  contains/cooccur edges; rebuild is idempotent
+- new sidebar section and a canvas force-layout graph with type filter,
+  hover tooltip and drag-to-pin
+- all styling reuses existing design tokens
+- fix: $$ now returns an array (NodeList lacks filter/map)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0f12e108495fd61595fa3c58a0e0054d70cf144</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b0f12e108495fd61595fa3c58a0e0054d70cf144"/>
+    <title>
+        fix(focus): centre the top light on the content area, not the viewport
+    </title>
+    <updated>2026-09-14T16:11:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(focus): centre the top light on the content area, not the viewport
+
+- new --content-shift = sidebar-w / 2 added to the gather translate, so the
+  light lines up with the reading column instead of the viewport
+- body:has(.app.auto-sidebar-mode) resets it to 0 when the sidebar is
+  collapsed&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/379775b9412f70135e465ab0a26bf776d7e5e98f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/379775b9412f70135e465ab0a26bf776d7e5e98f"/>
+    <title>
+        fix(focus): fade the second glow out before the top light peaks
+    </title>
+    <updated>2026-09-14T16:05:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(focus): fade the second glow out before the top light peaks
+
+- ::after opacity transition 2.4s -&amp;gt; 1s so it is gone (1.3s) before the
+  merged top light reaches its brightest (1.44s); previously it was still
+  largely present at the peak and pulled the perceived centre off-axis&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/258218f44bc3cbe8b13f452ce76b31ab4eabd383</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/258218f44bc3cbe8b13f452ce76b31ab4eabd383"/>
+    <title>
+        fix(focus): the ambient glows no longer read as two floating balls
+    </title>
+    <updated>2026-09-14T16:02:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(focus): the ambient glows no longer read as two floating balls
+
+- element size 64vw/64vh -&amp;gt; 120vw/120vh with both centres pushed outside the
+  viewport, so only a soft arc of light enters the frame instead of a
+  complete visible circle
+- gradient falloff extended to 78%
+- focus keyframes corrected so the merged top light lands dead centre&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e4dba58aef92a01f188666b6d125de5472bfb6f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/3e4dba58aef92a01f188666b6d125de5472bfb6f"/>
+    <title>
+        feat(focus): let the merged top glow extinguish within the ripple window
+    </title>
+    <updated>2026-09-14T15:56:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(focus): let the merged top glow extinguish within the ripple window
+
+- body.focus-mode::before runs a focusGlow animation instead of a transition,
+  since a transition can only reach a single end value and cannot express
+  &amp;#39;brighten, then go out&amp;#39;
+- gathers to the centre at 38% (brightness 2.6), then falls to brightness(0)
+- timing aligned with the ripple (0.3s delay, 3s duration)
+- the second glow keeps fading, so the top stays a single merged light
+- reduced-motion skips the animation&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b93405e66328e6f8300761fd20903bb93b8d6ac0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b93405e66328e6f8300761fd20903bb93b8d6ac0"/>
+    <title>
+        docs(changelog): add the 2.3.1 entry
+    </title>
+    <updated>2026-09-14T15:30:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(changelog): add the 2.3.1 entry
+
+The public repo&amp;#39;s changelog was still at 2.3.0 while the source of truth
+already had a detailed 2.3.1 section. Synced it over.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f026b09a4aa2d8b3905ec8b776f30e3eeb45e224</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/f026b09a4aa2d8b3905ec8b776f30e3eeb45e224"/>
+    <title>
+        fix: 专注顶光由两个异色球改为一整团居中放大的统一光晕
+    </title>
+    <updated>2026-09-14T14:53:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 专注顶光由两个异色球改为一整团居中放大的统一光晕
+
+- ::before 移到水平正中 scale1.7 brightness2.6 作唯一顶光；::after 淡出
+- 避免顶部并排冷暖两球；css v42&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/56211e6fc2c8b981f4bd35061f158a8c42be6b0a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/56211e6fc2c8b981f4bd35061f158a8c42be6b0a"/>
+    <title>
+        feat: 专注态质感分层——顶部聚光增亮 + 四周聚焦暗角，日常保持含蓄
+    </title>
+    <updated>2026-09-14T14:47:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 专注态质感分层——顶部聚光增亮 + 四周聚焦暗角，日常保持含蓄
+
+- 专注时光团 brightness 增亮并 scale 微放大，形成顶部舞台光
+- 新增 .focus-shade 径向暗角收束视线，--focus-shade 四主题分别标定浓度
+- .app z-index:1，形成 底色&amp;lt;背景光-1&amp;lt;暗角0&amp;lt;内容1 层级；css v41&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0699bb17ade7601a89696d0f7ab0afa6bed7d17e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/0699bb17ade7601a89696d0f7ab0afa6bed7d17e"/>
+    <title>
+        feat: 进入专注时氛围光平滑上移汇聚到顶部，与水纹涟漪同时落定
+    </title>
+    <updated>2026-09-14T14:39:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 进入专注时氛围光平滑上移汇聚到顶部，与水纹涟漪同时落定
+
+- 氛围光拆为 body::before/::after 双光斑，用 transform 平移（渐变坐标无法过渡）
+- 日常对角光浓度不变；专注 transition 3s delay .3s 对齐涟漪(300ms+3s)，退出 .6s 回位
+- 光层 z-index 0→-1 严格压在内容下；静态资源 v40&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a2beae24469ee3e96dc9289e6cd86dee2efb420</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/4a2beae24469ee3e96dc9289e6cd86dee2efb420"/>
+    <title>
+        fix: 右侧引导箭头改为垂直居中（top:50%），css 版本号 v39
+    </title>
+    <updated>2026-09-14T13:44:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: 右侧引导箭头改为垂直居中（top:50%），css 版本号 v39&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0afb11c1e887813f172845179242082f967d9af</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b0afb11c1e887813f172845179242082f967d9af"/>
+    <title>
+        feat: 计时与专注模式严格挂钩 + 右侧查词抽屉引导箭头
+    </title>
+    <updated>2026-09-14T13:33:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: 计时与专注模式严格挂钩 + 右侧查词抽屉引导箭头
+
+- 计时器只在专注下运行(startTimer 根防线)；非专注空格/计时键=进专注并计时，专注内空格=暂停/继续
+- 退出专注复位计时按钮；移除划词绕过专注的直接 startTimer
+- 快捷键提示文案更新(两处)
+- 新增右侧浮动玻璃引导箭头，唤出抽屉后淡出并 localStorage 记忆，专注隐藏&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

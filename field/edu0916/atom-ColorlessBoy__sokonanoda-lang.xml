@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ColorlessBoy/sokonanoda-lang/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ColorlessBoy/sokonanoda-lang/commits/main.atom"/>
+  <title>Recent Commits to sokonanoda-lang:main</title>
+  <updated>2026-09-16T00:16:39Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a4dd3bf62e466e2411e41fe9e61867d41e0a1de2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/a4dd3bf62e466e2411e41fe9e61867d41e0a1de2"/>
+    <title>
+        feat(cache,vscode,highlight): 共享缓存+build / Infoview 稳定与反馈 / 高亮单一起源（0.…
+    </title>
+    <updated>2026-09-16T00:16:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(cache,vscode,highlight): 共享缓存+build / Infoview 稳定与反馈 / 高亮单一起源（0.49.0）
+
+用户四项（5 个 subagent 分头实现，见 STATUS 第七十九轮）：
+- 共享编译缓存下沉 front::compile::cache（report+output；key 含版本/二进制构建指纹/
+  prelude 模式/源文本；SOKONANODA_CACHE_DIR/NO_CACHE；原子写）；compile_all_with 一趟出两者。
+- sokonanoda build [--json|--clean] [&amp;lt;file&amp;gt;|&amp;lt;dir&amp;gt;…]：预热/清理 + hit/compiled/failed；
+  course 与批量 --json 走 compile_cached（冷热逐字节一致）；CLI 测试临时缓存目录隔离。
+- Infoview 稳定性根因：视图原带 when + 扩展容器 hideIfEmpty:true → 空容器被隐藏；
+  activate 先 await resolveServerForStart 才注册 provider → 期间无 provider。
+  修：视图无 when + visibility:visible；activationEvents + onView；provider/树同步先注册，
+  慢解析后置并推 status；openInfoview 先开辅助栏。
+- UI 反馈：webview 载入即骨架 + status（编译中/已就绪/等待文件）。
+- 声明列表：去掉无效点击跳转；名字后小字行号 L&amp;lt;n&amp;gt;（1-based）+ 类型提示；
+  editor/vscode/test-webview.js（Node DOM shim 8 项）并入 test:unit。
+- 高亮单一起源：SemanticKind::{ALL,as_str,tm_scope} 唯一表；runs_to_text/goal_text/goal_runs
+  单一文本生产者；hover 目标态改由 runs 投影；TM 语法补齐 variable.parameter 等 scope；
+  TM/CSS/LSP 三处穷尽测试；平台限制写入 docs/design/highlighting.md。
+- 文档：highlighting.md/compile-cache.md/webview-infoview.md/LESSONS/AGENTS/vscode-dev-guide/
+  TESTING/architecture/protocol/CHANGELOG/STATUS/HANDOVER/REQUIREMENTS/ROADMAP。
+- cargo test --workspace 全绿 + sokonanoda gate PASS；build 冷/热/clean/目录/课程冒烟通过。
+- 注：收尾误跑 cargo fmt --all 重排了冻结内核，已在推送前还原（见 LESSONS）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae8e0442ae484cc1626d01949396120891059162</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/ae8e0442ae484cc1626d01949396120891059162"/>
+    <title>
+        feat(lsp): 编译结果落盘缓存（olean 式）+ Infoview 类型换行/⊢/点击跳转（0.48.0）
+    </title>
+    <updated>2026-09-15T15:54:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(lsp): 编译结果落盘缓存（olean 式）+ Infoview 类型换行/⊢/点击跳转（0.48.0）
+
+用户四项：
+- Infoview 类型小行允许换行（原单行省略看不全）：.decl-ty 改 pre-wrap。
+- 目标用 ⊢ 开头：goal 代码块加前缀。
+- 点击跳转修复：点 webview 后 activeTextEditor 为空导致旧实现失效；改 plumb
+  文档 uri（onDecls(decls,uri) → setDecls → focusExercise{uri,range}）+ 扩展
+  jumpToRange（visibleTextEditors 优先，必要时 openTextDocument）。
+- 编译结果缓存：crates/lsp/src/cache.rs 以稳定 FNV 哈希 (CARGO_PKG_VERSION,
+  二进制构建指纹, prelude 模式, 源文本) 落盘内核 DocumentReport；refresh 命中即
+  跳过 session.update，miss 编译并落盘；诊断由 report_diagnostics 统一构造。
+  SOKONANODA_NO_CACHE=1 / SOKONANODA_CACHE_DIR 可控；测试环境自动禁用；内核仍是
+  唯一判定者。front 报告类型加 serde derive。
+- 测试：cache 单测 3；扩展契约更新（⊢/wrap/uri 跳转）。
+- 文档：新增 docs/design/compile-cache.md；architecture/TESTING/CHANGELOG/
+  HANDOVER/REQUIREMENTS/STATUS。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/73de0c7abd5b62be8978206899d1c42f3beda7a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/73de0c7abd5b62be8978206899d1c42f3beda7a1"/>
+    <title>
+        docs: 清理 6 处过期「待做」陈述（TODO 全清复核）
+    </title>
+    <updated>2026-09-15T15:31:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 清理 6 处过期「待做」陈述（TODO 全清复核）
+
+全仓库审计：无可执行 TODO（ROADMAP 无未勾选项、代码仅内核 1 处 FIXME 属冻结快照）。
+修掉已完成却仍写「待做/未做」的过期陈述：
+- architecture §144：binder 类型推断已做（0.45.0）。
+- ROADMAP「仍待办（I6–I9 与课程）」→ 全部落地，仅剩远期 L2/L3 与技术债。
+- docs/design/real-input-tests.md：加废弃横幅（char_steps 基建已删）。
+- docs/design/infrastructure.md：状态表标注为立项时计划，以 ROADMAP §10 为准。
+- docs/notes/research.md：提示模板 → soko:hint 已实现。
+- docs/design/site.md：「尚未启用 Pages」→ 2026-09-13 已启用。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e01497de6558d8b18fbcfb73c182df5fb2baac7f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/e01497de6558d8b18fbcfb73c182df5fb2baac7f"/>
+    <title>
+        feat(inductive): 带索引归纳（Vec A n）：声明 + 派生 recursor + match（0.47.0）
+    </title>
+    <updated>2026-09-15T15:14:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(inductive): 带索引归纳（Vec A n）：声明 + 派生 recursor + match（0.47.0）
+
+ROADMAP I6/§3 B 最后一项。内核本就支持 num_indices，前端补齐。
+- 安装：install_inductive_block 算 index_binders/num_indices（= ty 在 params 之外
+  的 Pi 望远镜），传入 add_inductive/RecursorData，存入 InductiveInfo；is_prop_block_ty
+  先剥索引望远镜。
+- 派生 recursor：motive = forall indices, Ind params indices -&amp;gt; Sort；rec 绑定序
+  params→motive→minors→indices→target；minor = motive &amp;lt;ctor 索引&amp;gt; (C 字段…)；
+  iota 自调用带字段索引实参；字段名替换同时作用于字段类型与 ctor 结果索引实参；
+  spine_of_codomain 处理 (x:Nat)-&amp;gt;Vec A x 式递归出现。
+- match：从 scrutinee 书写类型取索引实参；motive 先绑索引再绑 major；应用
+  Ind.rec params motive minors indices scrutinee。顺带修既有 latent bug：字段类型
+  引用前面字段（v : Vec A n）时按「字段原名→用户绑定名」substitution。
+- 边界：结果类型依赖索引不做（sound 拒绝）。
+- 测试/课程：front +3、CLI +1；unit5 带索引 Vec 节 + 练习 10（golden
+  (11,9,6)→(13,10,7)、汇总 checked 55→57 / open 42→43）。
+- 文档：新增 docs/design/indexed-inductives.md；architecture/TESTING/CHANGELOG/
+  HANDOVER/REQUIREMENTS/ROADMAP。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2ac1ca8697f4a4122ede714372451f768a8884c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/a2ac1ca8697f4a4122ede714372451f768a8884c"/>
+    <title>
+        feat(by): match 作为 tactic（0.46.0）+ judge 前缀修复
+    </title>
+    <updated>2026-09-15T14:57:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(by): match 作为 tactic（0.46.0）+ judge 前缀修复
+
+ROADMAP I6/§3 B「by 块内用 match」。
+- by 白名单加 match：match c with | p =&amp;gt; &amp;lt;项&amp;gt; …（臂体是项，同值位 match），以
+  当前目标为期望类型判定，语义等价 exact (match …)；parse_tactic 复用
+  parse_match，tactic_keyword_ahead 纳入 match。
+- 根因修复：judge_terms 合成文件原 src 为空，command.span().start 前缀切片拿不到
+  Color 等声明 → match 宇宙查询失败（elab-match-no-expected-type）。改为把真实
+  prefix_src 作为文件 src、合成声明 span 放到前缀之后；副产品 by exact match 也可用。
+- 测试：parser match_is_a_tactic_in_a_by_block；front by_block_with_match_tactic_checks
+  / by_block_with_exact_match_checks；CLI cli_by_match_tactic_checks_via_kernel。
+- 文档：by-tactics.md §2 + 0.46.0 更新、architecture、TESTING。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b7372a376af57d53855f947f9870b4360492a38c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/b7372a376af57d53855f947f9870b4360492a38c"/>
+    <title>
+        feat(elab): 应用位置从实参推断未注解 lambda binder（0.45.0）
+    </title>
+    <updated>2026-09-15T14:44:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(elab): 应用位置从实参推断未注解 lambda binder（0.45.0）
+
+ROADMAP I6 elaborator 最后一项。fun x =&amp;gt; … 在有期望类型时早已可推断；本轮补
+无期望类型的应用位置。
+- annotate_application_lambda（elab.rs）：做 Expr::App 前展平 spine f a1 … an；
+  头部是带未注解 binder 的 Lambda 时，用 kernel-backed judge_infer 推断实参类型
+  作为 binder 注解，源到源改写后交回正常路径；支持柯里化 (fun x y =&amp;gt; x) a b。
+- 边界：实参不足仍报 elab-untyped-binder（(fun x y =&amp;gt; x) 1、#check fun x =&amp;gt; x）。
+- 测试：front +3（应用/柯里化/实参不足）、CLI +1；既有 untyped_binder_* 不破。
+- 文档：architecture §elab、elaborator-let-match.md as-built、TESTING；STATUS 轮次
+  归档顺序修正。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2fed4e29e307db68cc02f7380f8cdee9db1a3b9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/2fed4e29e307db68cc02f7380f8cdee9db1a3b9f"/>
+    <title>
+        feat(infoview): 声明列表显示类型提示 + 点击跳转（0.44.0）
+    </title>
+    <updated>2026-09-15T14:30:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(infoview): 声明列表显示类型提示 + 点击跳转（0.44.0）
+
+用户要求：Infoview 的「声明」除名字外用小字写出类型做提示（注意排版，保持
+每行一个声明），并支持鼠标点击跳转。
+- 协议：soko/goals 每条声明增 ty（内核渲染的声明类型）+ ty_runs（front::
+  semantic runs，与 goal 同一分类源）；docs/protocol.md 同步。
+- Webview：声明项 = 名字 + kind/status 徽标一行，下面 .decl-ty 小字
+  （0.78em/暗色/等宽/单行省略）按 tok-* 着色；复用 codeBlock。
+- 点击：post focusExercise 带 range；扩展在 focusDeclaration + 聚焦练习树外，
+  把编辑器光标移到该声明并 reveal。
+- 测试：LSP goals_request_* 断言 ty/ty_runs（重建 + sort kind）；扩展契约
+  infoview_declaration_list_shows_types_and_jumps。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cb25fe4bad58c2febe7b3584b9b1e6821a89547d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/cb25fe4bad58c2febe7b3584b9b1e6821a89547d"/>
+    <title>
+        feat(lsp): 呈现面高亮统一——所有 .sokonanoda 文本走 sokonanoda 围栏（0.43.0）
+    </title>
+    <updated>2026-09-15T14:08:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(lsp): 呈现面高亮统一——所有 .sokonanoda 文本走 sokonanoda 围栏（0.43.0）
+
+用户追问「各个地方的高亮统一」后补做（HANDOVER §3 A″）。原则：着色只来自
+front::semantic（语义 token + TM 语法 + runs）。
+- LSP：CODE_LANG/code_block/goal_block；表达式/签名 hover 由 ```text 改
+  ```sokonanoda；声明 hover 的签名/洞期望类型/目标态用代码块；tactic hover 的
+  tactic 片段、半表达式 hover 的推断类型/目标、剩余目标都用代码块；补全
+  documentation 给出签名围栏。
+- 扩展：codeMarkdown/goalTooltip——练习树目标/假设 tooltip 用
+  MarkdownString.appendCodeblock(…, &amp;quot;sokonanoda&amp;quot;)。
+- 刻意纯文本（VS Code 不渲染 markdown/行内代码无语言）：诊断、inlay、tree
+  description、CodeAction 标题；文档写明（goal-rendering.md §7）。
+- 契约：code_fences_always_use_the_sokonanoda_language、
+  rendered_language_text_uses_the_sokonanoda_fence。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9dfec24cdab336e93b6dc48084d970bb227c8782</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/9dfec24cdab336e93b6dc48084d970bb227c8782"/>
+    <title>
+        feat(match): 模式编译器 v1——通配/嵌套/Nat 字面量/Bool 守卫（0.42.0）
+    </title>
+    <updated>2026-09-15T13:31:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(match): 模式编译器 v1——通配/嵌套/Nat 字面量/Bool 守卫（0.42.0）
+
+TODO I6/elaborator 组第 3 项。把「每构造子一条 arm」换成有序 arm + 列式模式
+编译；设计 docs/design/match-patterns.md。
+- AST/parser：Pattern{Wild,Num,Ident{name,args}}；MatchArm{pattern,guard,body}；
+  递归 parse_pattern；守卫 if 只在 arm 内识别（不升全局关键字）。
+- 编译器（源到源 canonical 化）：compile_pattern_body 选可反驳列、按构造子特化，
+  生成嵌套 Expr::Match，每层复用既有 motive/IH/level/recursor 构造（不手搓
+  de Bruijn）；守卫复用 prelude Bool 的 match。字段名取绑定名（幂等）、撞构造子
+  名换新鲜名；参数化字段先代入参数（some (a:A) 在 Option Nat → Nat）。
+- 语义：有序、首个匹配者胜；未知裸名=绑定（带子模式才 bad-arm）；覆盖不全/
+  守卫无兜底=elab-match-non-exhaustive；error hint 措辞更新。
+- 消费者：semantic（模式绑定着色+守卫）、proof::render_pattern、spine
+  （mentions/substitute 含守卫与模式阴影）、goals（hole/替身/依赖子目标；嵌套/
+  守卫退回常量 R）。
+- 测试：front +8、CLI +3；课程 unit5 嵌套模式节 + 练习 9（golden (10,8,4)→
+  (11,9,6)、汇总 checked 54→55 / open 41→42）。
+- 文档：architecture、match.md §10 Phase 6、match-patterns as-built、TESTING、
+  protocol、CHANGELOG、HANDOVER/REQUIREMENTS/LESSONS/ROADMAP；恢复被误删的
+  STATUS 轮 69 到归档。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/599495d11d0a5a2975a3e1ac073a074b98ca0382</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/599495d11d0a5a2975a3e1ac073a074b98ca0382"/>
+    <title>
+        test(front): 钉住裸名 Nat.add/Nat.succ 不无限展开（architecture §5.4 边界）
+    </title>
+    <updated>2026-09-15T12:32:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(front): 钉住裸名 Nat.add/Nat.succ 不无限展开（architecture §5.4 边界）
+
+补齐 HANDOVER §3 C「Nat.succ/Nat.add 边界」项：裸 #reduce Nat.add 必须终止为
+常量（自引用占位体只在实际应用时经原生快路径接管），#check 类型正确。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/16a54c821ab1648ee58fdbb85773d6d43a4790cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/16a54c821ab1648ee58fdbb85773d6d43a4790cf"/>
+    <title>
+        feat(prelude): 内置 Bool 作为真实可信归纳（0.41.0）
+    </title>
+    <updated>2026-09-15T12:30:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(prelude): 内置 Bool 作为真实可信归纳（0.41.0）
+
+TODO I6/elaborator 组第 1 项。与 Nat（0.36.0）同法：
+- prelude.rs::install_bool_prelude 调 install_inductive_block 装 Bool.true/
+  Bool.false + 派生 Bool.rec（非递归，两分支），登记 known + InductiveTable；
+  PRELUDE_NAMES 增 4 名。match b with | Bool.true =&amp;gt; … | Bool.false =&amp;gt; … 可用，
+  #reduce 走通用 iota；内核零改动（Bool.true/false name-cache 槽位早已存在）。
+- 闸：check.rs 增 explicit_bool（文件自带 inductive Bool 时让位，避免重复声明
+  panic）；session.rs PreludeShape 扩为四元组。
+- 测试：front +4（可用性/not 归约/组合/显式 Bool 让位）+ CLI +1；既有源内
+  inductive Bool（tt/ff）用例继续通过=闸生效。
+- 文档：architecture §5.4、match.md §10 Phase 5、TESTING、protocol 错误文案、
+  HANDOVER §C 勾选、ROADMAP I6、LESSONS 新增 prelude 闸规矩。
+- sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea71b3c687498f65e462cd5fdc0e994e49d8f58f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/ea71b3c687498f65e462cd5fdc0e994e49d8f58f"/>
+    <title>
+        docs(requirements): 记录 0.40.0 统一 goal 呈现 + 市场简介截断修复（§9）
+    </title>
+    <updated>2026-09-15T12:00:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(requirements): 记录 0.40.0 统一 goal 呈现 + 市场简介截断修复（§9）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ec01cc0404f0ec9476635a6cad2be2638f515004</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/ec01cc0404f0ec9476635a6cad2be2638f515004"/>
+    <title>
+        feat(infoview): 统一 goal 呈现（front::semantic runs）+ 落右侧 + engine 1.106 …
+    </title>
+    <updated>2026-09-15T11:28:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(infoview): 统一 goal 呈现（front::semantic runs）+ 落右侧 + engine 1.106 (0.40.0)
+
+用户：Infoview 弹「暂时不可用」困惑、希望默认在右侧；各处 goal 高亮各自
+独立不可维护，要求对齐 VS Code 代码框标准。参照 Lean4 Infoview（服务器
+下发结构化 tag + 客户端按主题渲染）。设计 docs/design/goal-rendering.md。
+
+- front::semantic：Run/tag_runs/tag_expr/declaration_kinds + SemanticKind::
+  {ALL,as_str}——单一分类源；5 个单测。
+- 协议：soko/stateAt 增 goal_runs/ty_runs（soko/goals 的 binders 同步），
+  旧字符串字段保留；docs/protocol.md 记词表。
+- Infoview：webview 渲染 tok-&amp;lt;kind&amp;gt;（仍仅 textContent），CSS 单一主题映射；
+  契约测试断言每个 SemanticKind 都有 .tok-* 类。
+- 落位/fallback：视图移入 viewsContainers.secondarySidebar 的 sokonanoda
+  容器（右侧），engines ^1.85.0→^1.106.0（1.106 起无需 proposed API）；
+  删除 waitReady/2s 握手与「暂时不可用」，失败静默回退树组。
+- 防漂移：TM 语法词表 == front::semantic（keywords+sorts+forall），删硬编码 Nat。
+- 门面：description 348→247 字符（&amp;gt;300 被市场硬截断）+ 护栏测试。
+- 测试：front semantic、lsp state_at runs、extension 契约 24 项；sokonanoda gate PASS。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d861b53efa698648f1f60370df89b94910d6a37</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/1d861b53efa698648f1f60370df89b94910d6a37"/>
+    <title>
+        fix(vscode): 市场简介超 300 字符被硬截断——改短并加护栏
+    </title>
+    <updated>2026-09-15T11:05:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(vscode): 市场简介超 300 字符被硬截断——改短并加护栏
+
+Marketplace 详情页把 package.json description 当短简介，&amp;gt;300 字符直接
+截断（无省略号、切在词中间）：0.39.1 的 348 字符被切成
+&amp;quot;...(Claude Code / ope&amp;quot;。改为 247 字符的完整句，长卖点留在 README。
+
+- crates/cli/tests/extension.rs::marketplace_description_fits_the_gallery_limit
+  断言 &amp;lt;=300 字符、ASCII、以句号结尾，防复发。
+- docs/vscode-dev-guide.md §7 记录 300 上限与教训。
+- 待随下一个版本 bump 一起发布（本次不改版本，不触发 release）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cbd12a08d6a647c86211e29b5867c60d7da5c5a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/cbd12a08d6a647c86211e29b5867c60d7da5c5a1"/>
+    <title>
+        docs(design): 统一 goal 呈现 + Infoview 落右侧设计（goal-rendering.md）+ CI 台账
+    </title>
+    <updated>2026-09-15T10:54:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(design): 统一 goal 呈现 + Infoview 落右侧设计（goal-rendering.md）+ CI 台账
+
+- goal-rendering.md：单一分类源（front::semantic）+ 结构化 (text,kind) 片段供
+  hover 与 Infoview 共用 + Infoview 移入 viewsContainers.secondarySidebar（右侧，
+  需 bump engine）+ 去掉「暂时不可用」握手判定（静默回退树组）；切片 S1–S7 + 验收。
+- CI-FAILURES：v0.39.1 upload-artifact FinalizeArtifact 403（服务端瞬时，rerun）。
+- HANDOVER：加 A′ 统一呈现 TODO、A 标记已完成；docs/README 设计列表挂链。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f044f24efb423370d48b0f2e56691f16fcdb8167</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/f044f24efb423370d48b0f2e56691f16fcdb8167"/>
+    <title>
+        fix(front): render_expr 给 Arrow domain 复合式补括号（judge_infer 往返健壮性，0.39.1）
+    </title>
+    <updated>2026-09-15T10:37:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(front): render_expr 给 Arrow domain 复合式补括号（judge_infer 往返健壮性，0.39.1）
+
+- proof::render_expr 的 Arrow 分支 domain 位改用 render_fun_position：Lambda/
+  Forall/Arrow/Plus/Let/Match 一律补括号，修掉内核类型文本→AST 往返把
+  (k:Nat) -&amp;gt; P k -&amp;gt; Q 右结合误读、腐蚀 telescope 的问题。
+- 影响 judge_infer 的所有消费方：依赖 match 的 level 查询、suggest、半表达式
+  hover —— 此前「结果类型引用依赖函数型 binder」的依赖 match 报
+  elab-match-no-expected-type，现内核通过。
+- 回归：render_expr_round_trips（Forall 作 domain）+ match_dependent_motive_
+  with_function_typed_binder_round_trips_safely。
+- 文档：match-dependent-motive §8、HANDOVER §3 A 勾选；版本 0.39.0→0.39.1。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c66bc54299b23cc45492eb8f60e112e4cfafae1b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/c66bc54299b23cc45492eb8f60e112e4cfafae1b"/>
+    <title>
+        docs: 新增 docs/HANDOVER.md 交接汇总（进度/TODO/限制/gotchas 索引）+ 入口挂链
+    </title>
+    <updated>2026-09-15T09:43:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 新增 docs/HANDOVER.md 交接汇总（进度/TODO/限制/gotchas 索引）+ 入口挂链
+
+- HANDOVER：30 秒接手、R53–R68 完成表、剩余 TODO（judge_infer 往返/B 带索引·match
+  tactic·模式/C I6 Bool·binder 推断/D 远期）、已知限制、环境 gotchas（内置 LSP、
+  旧扩展、缓存 vs 运行版本、marketplace flake、perf 误报）、文档索引。
+- AGENTS.md 阅读顺序加入 HANDOVER；docs/README 文档地图加入并修正归档轮次。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee87073489a6d66fe607186006dfb4af053f6657</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/ee87073489a6d66fe607186006dfb4af053f6657"/>
+    <title>
+        feat(front): match 依赖 motive——归纳法形状可用（0.39.0）
+    </title>
+    <updated>2026-09-15T09:28:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(front): match 依赖 motive——归纳法形状可用（0.39.0）
+
+- scrutinee 为裸局部变量 x 且结果类型 R 含 x → motive = fun t =&amp;gt; R[x:=t]
+  （substitute_names，shadow-aware）；分支期望 R[x:=&amp;lt;ctor 项&amp;gt;]、递归 branch 的
+  IH 类型 R[x:=&amp;lt;field&amp;gt;]；motive/分支/IH 类型在 binder 存活的 scope 内 elaborate。
+  否则常量 motive（完全兼容）。
+- 修 infer_expected_level：只纳入 R 依赖到的 binder（judge_binders_for），
+  修掉无关函数型 binder 破坏 judge_infer 望远镜 → 声明 binder 形式 level 失败。
+- goals 走查同步代入，分支 sorry 期望 R[x:=ctor]。
+- 测试：front match_dependent_*（含 nat_induction 声明 binder 形式）；CLI
+  cli_match_dependent_motive_checks_via_kernel；课程 unit5 加依赖 match 节 + 练习 8；
+  golden (9,7,4)→(10,8,4)、汇总 checked 53→54 / open 40→41。
+- 文档 architecture/TESTING + 设计 as-built；版本 0.38.0→0.39.0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fefe18108bf1a64390cfbc27d018fb4f2bcf8dee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/fefe18108bf1a64390cfbc27d018fb4f2bcf8dee"/>
+    <title>
+        feat(front): 参数化归纳声明（非带索引）+ match（0.38.0）
+    </title>
+    <updated>2026-09-15T08:15:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(front): 参数化归纳声明（非带索引）+ match（0.38.0）
+
+- parser/AST：InductiveBlock.params；inductive Option (A : Type) 可声明。
+- install_inductive_block：归纳类型 forall params；ctor forall (params++fields), C params；
+  add_inductive(num_params=params.len())；num_fields 字段-only（对齐内核元数据断言）。
+- derive_recursor：params 最外层、motive (t : Ind params) -&amp;gt; Sort u、minors
+  motive (C params fields)、iota lambda/自调用带 params；param 名入 hygiene。
+- match：Ind.rec.{level} &amp;lt;params&amp;gt; motive minors scrutinee；params 取 scrutinee 书写
+  源类型头部实参、字段 src_ty 做 params 替换；拿不到 → elab-match-parameterized-unsupported。
+- 测试：front +8（Option/List 派生递归子与 match、显式 rec/iota、iota 错拒绝）；
+  CLI +4；课程 unit5 Option 小节 + 练习 7；golden (7,6,3)→(9,7,4)、汇总 51→53/39→40。
+- 文档 architecture/TESTING + 设计 as-built；版本 0.37.0→0.38.0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d65e849b77725ed12b8736b900c8478710e7210a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColorlessBoy/sokonanoda-lang/commit/d65e849b77725ed12b8736b900c8478710e7210a"/>
+    <title>
+        feat(cli): watch stdin 客户端命令 subscribe/unsubscribe/ping（0.37.0）
+    </title>
+    <updated>2026-09-15T07:35:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://2.gravatar.com/avatar/c82230bcdb35c8e7bafbce02e0a3cb0f?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>penglingwei@bilibili.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(cli): watch stdin 客户端命令 subscribe/unsubscribe/ping（0.37.0）
+
+- watch（含 --doc/--workspace）边轮询边读 stdin JSON Lines：ping→pong
+  {id,protocol,engine}；subscribe/unsubscribe {file} 过滤事件（首个 subscribe
+  收窄白名单；默认全发兼容旧行为）；畸形/未知 → error 事件且流不中断；stdin
+  EOF 不杀 watch。
+- 非阻塞：后台线程 stdin().lines() + mpsc，每 tick try_recv 排空；仅 std，零新依赖。
+- 测试：tests/watch.rs ping/subscribe/unsubscribe/malformed 4 项 + 单测 2 项。
+- 文档 protocol/TESTING + 设计 as-built；版本 0.36.0→0.37.0。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

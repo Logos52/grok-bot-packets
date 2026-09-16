@@ -1,0 +1,15 @@
+---
+id: 2026-09-16-rockstar-games-grand-theft-auto-vi
+kind: article
+title: Grand Theft Auto VI
+source: "https://www.rockstargames.com/VI"
+author: Rockstar Games
+published: 2026-11-19
+captured: 2026-09-16
+via: grok-bot/Table
+lane: gaming
+status: raw
+private: false
+---
+
+Grand Theft Auto VI - Rockstar Games Skip to Main Content Homepage Pre-Order Now Expand Navigation Menu An Extended Look: Now Playing Coming November 19, 2026 Coming November 19, 2026 Pre-Order Now Pre-Order Now PlayStation 5 Xbox Series X|S Plays Best On PlayStation 5 PlayStation 5 Xbox Series X|S Pre-Order Now Plays Best On PlayStation 5 Scroll for more content. An Extended Look Now Playing label Watch Trailer 2 Watch Trailer 1 Ultimate Edition An exclusive collection of items threaded across all aspects of Jason and Lucia’s story. Learn More Pre-order Bonuses Vintage Vice City Pack Pre-order to get unique benefits that flash back to when the neon burned brightest. Learn More Vice City, USA. Jason and Lucia have always known the deck is stacked against them. But when an easy score goes wrong, they find themselves on the darkest side of the sunniest place in America, in the middle of a criminal conspiracy stretching across the state of Leonida — forced to rely on each other more than ever if they want to make it out alive. People & Places Only in Leonida Vice City, USA. The darkest side of the sunniest place in America. Explore More Downloads Media & Artwork Download and share official videos, screenshots, and more. See All Featured News View all Newswire posts View all Newswire posts Grand Theft Auto VI: An Extended Look — Now Playing August 27th, 2026 Pre-Order Grand Theft Auto VI on June 25 June 24, 2026 Grand Theft Auto VI is Now Set to Launch November 19, 2026 November 6, 2025 For more on PlayStation benefits, see playstation.com/GTAVIfeatures Get Rockstar Propaganda Get the latest game announcements, updates on special events and offers, and much more from Rockstar Games. X Instagram YouTube TikTok Facebook Twitch Discord Corporate Privacy Cookie Settings Cookie Policy Legal Do Not Sell or Share My Personal Information May contain content inappropriate for children. Visit esrb.org for rating information.
