@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Dilnazzzz/bridge/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Dilnazzzz/bridge/commits/main.atom"/>
+  <title>Recent Commits to bridge:main</title>
+  <updated>2026-09-10T02:39:34Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6ad971352d8f326d814dbd72e7cbd746efc07be2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/6ad971352d8f326d814dbd72e7cbd746efc07be2"/>
+    <title>
+        add MCP server, LLM eval harness, and CI
+    </title>
+    <updated>2026-09-10T02:39:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;add MCP server, LLM eval harness, and CI
+
+- mcp/server.mjs: Model Context Protocol server exposing the curriculum, word bank, progress, and reading-coverage analysis as tools for any MCP client (5 tools, read-only, stdio)
+- evals/: pedagogy eval harness for the tutor&amp;#39;s structured output — pure invariant assertions, a live runner (evals/run.ts) that scores the shipped model, and CI-safe fixture tests proving the assertions catch violations
+- .github/workflows/ci.yml: tests + build on every push
+- README: MCP + evals sections, CI badge&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/547d5b06932a7cfcd540398767d8ebac6f00ef13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/547d5b06932a7cfcd540398767d8ebac6f00ef13"/>
+    <title>
+        redesign: warm-paper design system with Fraunces/Inter, tabbed layout…
+    </title>
+    <updated>2026-09-10T02:02:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;redesign: warm-paper design system with Fraunces/Inter, tabbed layout (Learn/Story/Read/Progress), course progress bar, hands-free hero state button, lesson and mastery moment cards, styled French spans, a11y labels; add vitest suite (19 tests) and README screenshot&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6358ac89a56824a3e98c24a2b993e6491b79c989</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/6358ac89a56824a3e98c24a2b993e6491b79c989"/>
+    <title>
+        robust architecture: structured tutor output with pronunciation scori…
+    </title>
+    <updated>2026-09-10T01:29:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;robust architecture: structured tutor output with pronunciation scoring, server-side learner model with spaced-repetition scheduler, 48-node syllabus graph, checkpoints, story mode, and text-coverage tool&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8c87abb98232a3b9a80bbc17ea6eebec99b76796</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/8c87abb98232a3b9a80bbc17ea6eebec99b76796"/>
+    <title>
+        cognate network: build en-fr lexicon from MUSE dictionary and frequen…
+    </title>
+    <updated>2026-09-10T01:07:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;cognate network: build en-fr lexicon from MUSE dictionary and frequency lists, real head-start counts on onboarding, network coverage in word panel&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e2abac543ffe4d5f7e3903438fb322d03051bd2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/3e2abac543ffe4d5f7e3903438fb322d03051bd2"/>
+    <title>
+        hands-free voice loop, word glosses, and constant testing: tutor auto…
+    </title>
+    <updated>2026-09-10T01:04:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;hands-free voice loop, word glosses, and constant testing: tutor auto-listens after speaking, word bank carries meanings and travels with each request for warm-up reviews and periodic recall checks&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/52133dd10fdcda27d9334d895664fd6d476aa9ac</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/52133dd10fdcda27d9334d895664fd6d476aa9ac"/>
+    <title>
+        voice quality: rank real voices above novelty ones, per-language voic…
+    </title>
+    <updated>2026-09-10T00:57:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;voice quality: rank real voices above novelty ones, per-language voice picker with preview, correct mic region codes&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/710a03f8ec36644ae2387a77cd4118846e6a6c1a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/710a03f8ec36644ae2387a77cd4118846e6a6c1a"/>
+    <title>
+        voice input: mic button records target-language speech to the input b…
+    </title>
+    <updated>2026-09-10T00:54:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;voice input: mic button records target-language speech to the input box for review before sending&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd844f4acb2de8b82ae21057509de64d74736456</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/dd844f4acb2de8b82ae21057509de64d74736456"/>
+    <title>
+        bilingual voice output: tutor marks target-language spans with guille…
+    </title>
+    <updated>2026-09-10T00:51:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;bilingual voice output: tutor marks target-language spans with guillemets, API returns speech segments, browser speaks them with per-language voices&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/008797853ad0499ee6bbbe7ba8deff3bc776ab49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/008797853ad0499ee6bbbe7ba8deff3bc776ab49"/>
+    <title>
+        word bank + progress persistence: tutor reports learner-produced word…
+    </title>
+    <updated>2026-09-10T00:29:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;word bank + progress persistence: tutor reports learner-produced words, localStorage word bank with counter panel, resume/start-over flow&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/04d3ce13c126a99ca8b98dc0aacbcae089a5b18e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/04d3ce13c126a99ca8b98dc0aacbcae089a5b18e"/>
+    <title>
+        rename app to bridge; universal language-transfer framing
+    </title>
+    <updated>2026-09-10T00:24:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;rename app to bridge; universal language-transfer framing&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e4ee6c7197478eb5b12cfd8676bde52cc96e1b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/3e4ee6c7197478eb5b12cfd8676bde52cc96e1b7"/>
+    <title>
+        docs: product-focused README
+    </title>
+    <updated>2026-09-10T00:19:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: product-focused README&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62a08bce83fc3a0054eb1aa661964e4827432039</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Dilnazzzz/bridge/commit/62a08bce83fc3a0054eb1aa661964e4827432039"/>
+    <title>
+        feat: parler thinking-method french tutor v0
+    </title>
+    <updated>2026-09-10T00:16:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/76237763?s=30&amp;v=4"/>
+    <author>
+      <name>Dilnazzzz</name>
+      <uri>https://github.com/Dilnazzzz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: parler thinking-method french tutor v0&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

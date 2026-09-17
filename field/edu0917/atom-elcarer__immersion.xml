@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/elcarer/immersion/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/elcarer/immersion/commits/main.atom"/>
+  <title>Recent Commits to immersion:main</title>
+  <updated>2026-09-17T00:10:28Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4d3e34c511fa8a7dea98acf3f6b2cfb746f6f153</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/4d3e34c511fa8a7dea98acf3f6b2cfb746f6f153"/>
+    <title>
+        R2: горячие пути движения — нативная запись мимо DOM-контракта (sprit…
+    </title>
+    <updated>2026-09-17T00:10:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;R2: горячие пути движения — нативная запись мимо DOM-контракта (spritePos/moveSprite для сущностей: attrs/кэши+компоненты без setAttribute и касаний узла), animPlay пишет кадр акцессором, ecsRenderSync ведёт UI-сущности экрана результатов (кадр+позиция из компонентов)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65d269b855d910f71c26b3013fd59dfd4c5a0707</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/65d269b855d910f71c26b3013fd59dfd4c5a0707"/>
+    <title>
+        R1: рендер боевых сущностей из ECS-компонентов — ecsRenderSync примен…
+    </title>
+    <updated>2026-09-16T23:48:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;R1: рендер боевых сущностей из ECS-компонентов — ecsRenderSync применяет позицию/кадр раз в кадр (промежуточные состояния setAttribute больше не доходят до GPU), roundPixels мировым спрайтам против субпиксельного ползания при дробном масштабе камеры; applyStillTexture как общая точка кадра; план RENDER_MIGRATION.md (R0..R5) + baseline-кадры и тесты&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2869b27394b569985b7a2cbad52c942708341778</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/2869b27394b569985b7a2cbad52c942708341778"/>
+    <title>
+        План полного отказа от SVG-шима: рендер игры исключительно через ECS/…
+    </title>
+    <updated>2026-09-16T23:03:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;План полного отказа от SVG-шима: рендер игры исключительно через ECS/Pixi (R0..R5) — аудит DOM-поверхности, целевая архитектура, этапы с протоколом проверки&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ce6b9ab3c76df7393486e7551a947e5c93342cd3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/ce6b9ab3c76df7393486e7551a947e5c93342cd3"/>
+    <title>
+        Удалены старые полосы анимаций из билда (оригиналы — в forWork/legacy…
+    </title>
+    <updated>2026-09-16T22:41:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Удалены старые полосы анимаций из билда (оригиналы — в forWork/legacy_strips для перегенерации карты) + фикс ряби при скролле: тик 1:1 на 60Гц мониторах (битый ритм 62.5Гц давал двойной тик каждые ~0.4с) и целый размер растра (дробный масштаб мира ползал текселями)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a748aeec923499fbe818033cc33a6123c42395a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/a748aeec923499fbe818033cc33a6123c42395a3"/>
+    <title>
+        Анимации героев/врагов на спрайтшитах (лист + манифест, кадры = подок…
+    </title>
+    <updated>2026-09-16T21:34:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Анимации героев/врагов на спрайтшитах (лист + манифест, кадры = подокна клетки по карте sheetsMap) + E-3: системы animPlay/moveBullet/damage/damageHero/enemyMove/enemyAI на компонентах и группах ECS (animCounter/animStill, акцессоры-мост; genemy/gpet/gbullet/gfx с внутренними type-фильтрами 1:1)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cd3a9d974e0945d9485381b184fa1ab303be2d94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/cd3a9d974e0945d9485381b184fa1ab303be2d94"/>
+    <title>
+        Свечение drop-shadow только по краю силуэта (ring-запекание), transfo…
+    </title>
+    <updated>2026-09-16T19:51:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Свечение drop-shadow только по краю силуэта (ring-запекание), transform rotate для дротиков Валькирии, шрифт описания способностей 40→32&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/731dff5c3763fe921a5c3341b1e3b977f2ed3164</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/731dff5c3763fe921a5c3341b1e3b977f2ed3164"/>
+    <title>
+        Четвёртая волна фиксов шима: откат visiblePainted (pointer-events ори…
+    </title>
+    <updated>2026-09-16T19:14:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Четвёртая волна фиксов шима: откат visiblePainted (pointer-events оригинала), prepend в attachShim (y-sort стены/floatText), базлайн text и textHtml от левого-верхнего (подсказки/библиотека), domText (undefined в тултипах), дуги A для кулдаунов, redrawPoly на fill/stroke (миникарта), UI-исключение в ecsRenderSync (спрайты на экране очков)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03d7493635aacb17fc3409ab7188d24f59360519</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/03d7493635aacb17fc3409ab7188d24f59360519"/>
+    <title>
+        Третья волна фиксов шима: ползунок (preventDefault), свечение (CPU-си…
+    </title>
+    <updated>2026-09-16T17:23:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Третья волна фиксов шима: ползунок (preventDefault), свечение (CPU-силэуты-сиблинги), полоса использования (applySize+id), WebGPU возвращён, visiblePainted-клики, z-order attachShim&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d56de8bb1db13dfb609f7f18a722b84d9ccda013</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/d56de8bb1db13dfb609f7f18a722b84d9ccda013"/>
+    <title>
+        Фиксы DOM-шима по отчёту: 8 багов UI + чёрный экран (2 причины), WebGL
+    </title>
+    <updated>2026-09-16T12:46:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Фиксы DOM-шима по отчёту: 8 багов UI + чёрный экран (2 причины), WebGL
+
+- index.html: сброс margin body (белые полосы), canvas display:block
+- pixiBackend: num()-парсер «128px»-строк (ячейки/кнопки/чекбоксы)
+- createImage: texture до width/height (нативные размеры файлов)
+- anim-контракт: width на img = лист, clipRect постоянен; href/times
+  пересобирают кадры (смена анимаций героя/врагов)
+- wirePixiEvents: мост в _listeners (mousedown/click/mouseenter…)
+- baseInteractive: обработчики до _syncInteractive (клики по rect/полосам)
+- applyDropShadow: копии без собственного scale (распухание кнопок), anchor
+- layer.removeChild: text/html не уничтожаются (пул floatText + чёрный
+  экран «null._x»); attachShim реанимирует текстовые шимы
+- setupBackend: stage.renderGroup=null (маски HP-полос убивали отрисовку мира)
+- engine-копия: preference webgpu→webgl (тихая потеря девайса на GTX 1060)
+- drag: funcDrag получает реальные clientX/Y; funcDbl подключён
+- hitTestUI: NaN-bounds guard; getBBox анимов = окно кадра; firstChild
+  textHtml — виртуальный div (style.width)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd1c29d87a816faa324236948123a61319684000</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/bd1c29d87a816faa324236948123a61319684000"/>
+    <title>
+        Миграция рендера на PixiJS через ядро zero_engine + ECS-фундамент (M1…
+    </title>
+    <updated>2026-09-16T04:17:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Миграция рендера на PixiJS через ядро zero_engine + ECS-фундамент (M1-M7)
+
+- build/engine/: копия ядра zero_engine (pixi 8.19, engine.js, eventSystem.js)
+- scripts/pixiBackend.js: DOM-шим контракт svg.js поверх Pixi (слои, камера-viewBox,
+  пул спрайтов, clipPath-маски, текст/шрифты, drag&amp;amp;drop, glow, хит-тест)
+- scripts/svg.js: фасад с прежними экспортами — 78 игровых файлов не тронуты
+- scripts/ecsBridge.js: objectValues↔ECS (Proxy), компоненты etype/posX/posY/cullPad,
+  группа battle, renderSync (кульм по камере)
+- index.html/index.js: бут через init() ядра; тики 16мс из тикера ядра (V11-гарантия)
+- del.js/zoomFx.js/start.js: точечные патчи (Proxy-список, разрыв цикла импортов,
+  GPU-предзагрузка текстур)
+- Смоук-тест пройден: заставка→лобби→забег→бой→смерть→результаты (WebGPU)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/61617170968d00796e2f42e4790b3146bacce2f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/elcarer/immersion/commit/61617170968d00796e2f42e4790b3146bacce2f6"/>
+    <title>
+        Оригинал игры «Погружение» build 2.00 (SVG-рендер) + план миграции на…
+    </title>
+    <updated>2026-09-16T02:30:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/9cd77fd716ec43aac29eee48fba63e34?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>elcar32165@gmail.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Оригинал игры «Погружение» build 2.00 (SVG-рендер) + план миграции на zero_engine/ECS&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

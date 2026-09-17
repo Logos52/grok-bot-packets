@@ -1,1 +1,1 @@
-Nothing that changes today.
+Grok Build memory is live (16 Sep): background notes on conventions, decisions, and project facts (markdown topics; /memory browse, /dream merge) read back next session — try on one active project. https://x.ai/news/grok-build-memory

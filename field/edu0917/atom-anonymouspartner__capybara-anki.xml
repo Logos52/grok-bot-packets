@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/anonymouspartner/capybara-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/anonymouspartner/capybara-anki/commits/main.atom"/>
+  <title>Recent Commits to capybara-anki:main</title>
+  <updated>2026-09-17T00:03:30Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aeafc5a9ed721d6c459cd95828786106a3dcabc2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/aeafc5a9ed721d6c459cd95828786106a3dcabc2"/>
+    <title>
+        Merge pull request #12 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-17T00:03:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #12 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Lock supabase-js&amp;#39;s transitive modules&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27bec1ed0841dd5053875556a257d270f9cb1869</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/27bec1ed0841dd5053875556a257d270f9cb1869"/>
+    <title>
+        Lock supabase-js&#39;s transitive modules
+    </title>
+    <updated>2026-09-16T23:50:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Lock supabase-js&amp;#39;s transitive modules
+
+Type-checking the edge functions resolves supabase-js&amp;#39;s own dependency tree,
+which deno.lock only covered at the top level: the entry for
+@supabase/supabase-js@2.108.1 was pinned but its auth-js/functions-js/
+postgrest-js/realtime-js/storage-js submodules, and the phoenix, iceberg-js and
+tslib packages under them, were not. Running `deno check` over
+supabase/functions/*/index.ts records them, so CI would produce this same diff
+on its next run.
+
+No version moves — same 2.108.1 — this only adds integrity hashes for what was
+already being fetched, plus the two redirects esm.sh resolves for phoenix&amp;#39;s and
+iceberg-js&amp;#39;s caret ranges.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2431705b4596636b3de34a1ac70d88c756fdfd3d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/2431705b4596636b3de34a1ac70d88c756fdfd3d"/>
+    <title>
+        Merge pull request #11 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-16T23:40:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #11 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Import three of Anki&amp;#39;s real scheduling behaviours&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34be6b31950725d9981b2388eeff65c6abd76300</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/34be6b31950725d9981b2388eeff65c6abd76300"/>
+    <title>
+        Import three of Anki&#39;s real scheduling behaviours
+    </title>
+    <updated>2026-09-16T23:35:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Import three of Anki&amp;#39;s real scheduling behaviours
+
+Read against ankitects/anki&amp;#39;s own source rather than from memory, and limited
+to the three that a reviewer actually feels on this collection.
+
+Interval fuzz. Every card graduating on the same rating was getting the exact
+same interval, so a session&amp;#39;s worth of cards came back as one lump: measured,
+40 new cards learned in one sitting all landed on a single day. ts-fsrs already
+implements Anki&amp;#39;s fuzz ranges exactly (checked value-by-value against
+rslib/src/scheduler/states/fuzz.rs) — it was just switched off, on the grounds
+that randomness would break the &amp;quot;card_state is a fold over reviews&amp;quot; property in
+DESIGN.md 4.3. That turns out not to apply: Anki&amp;#39;s fuzz is a seeded draw, not a
+random one. Seeding it the way Anki does, on (card, reps), keeps replay
+bit-identical and additionally makes the interval printed on a rating button the
+interval the answer actually schedules — ts-fsrs&amp;#39; default seed mixes in the
+review timestamp, so the seconds spent deciding would otherwise change it.
+
+New cards mixed into reviews, Anki&amp;#39;s default new_mix. They were appended after
+every review, which with a real backlog means a new word is only reached on a
+day the whole review queue gets cleared. Intersperser is ported from
+rslib/src/scheduler/queue/builder/intersperser.rs rather than approximated,
+since the even spacing at the edges is the point.
+
+Learn-ahead, Anki&amp;#39;s learn_ahead_secs (1200). A card due in two minutes no longer
+reports nothing left to study; it is offered after the rest of the queue, never
+ahead of it. Two existing tests asserted the old behaviour here and now assert
+the distinction between a card minutes away and one days away.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea4b9e8e819fbe95919ec6bc160f051ab43178dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/ea4b9e8e819fbe95919ec6bc160f051ab43178dd"/>
+    <title>
+        Merge pull request #10 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-16T22:50:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #10 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Implement D17/D18 in the migration CLI (deck, spelling cards, pronunciation)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/52a785af34f4ec554c86f1d98a15c5cfdbeaec3f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/52a785af34f4ec554c86f1d98a15c5cfdbeaec3f"/>
+    <title>
+        Page through anki_reviews/anki_notes past PostgREST&#39;s 1000-row cap
+    </title>
+    <updated>2026-09-16T22:32:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Page through anki_reviews/anki_notes past PostgREST&amp;#39;s 1000-row cap
+
+getReviewsSince, getDailyCounts, getDueCandidates and getCardStateCounts
+all did one unbounded select each. PostgREST caps an unbounded select at
+its own server-side max-rows (1000 on this project) regardless of ORDER
+BY -- so a select ordered ascending silently returns the OLDEST rows,
+not the most recent, once a user&amp;#39;s history crosses that cap.
+
+Found live migrating a real ~3,800-review collection (2026-09-16):
+/sync/stats reported totalReviews: 1000 against an account with 3789
+real reviews, and getDailyCounts&amp;#39; &amp;quot;how many has this user already
+studied today&amp;quot; count was silently blind to everything after row 1000 --
+exactly the rows most likely to be today&amp;#39;s.
+
+Fixed by paging all four methods through PAGE_SIZE-sized .range() calls
+until a page comes back short. getDueCandidates/getCardStateCounts were
+still under the cap for this account (838 notes) but close enough,
+against an account whose note count only grows (bot dual-write, scan),
+that leaving them unbounded was just deferring the same bug.
+
+Verified live: /sync/stats now reports totalReviews: 3789 (matching
+`select count(*) from anki_reviews where user_id = ...` exactly) and a
+correct successRate; /sync/decks&amp;#39; Grammar (6/0/7) and Pronunciation
+(40/4/34) counts match the real AnkiDroid app&amp;#39;s own numbers for the
+same account. deno check and all 93 tests pass.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75b9e0440dcea7f5ad6bd5d98c82f2e83a98881b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/75b9e0440dcea7f5ad6bd5d98c82f2e83a98881b"/>
+    <title>
+        Capture card_state.last_review in the migration output
+    </title>
+    <updated>2026-09-16T15:57:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Capture card_state.last_review in the migration output
+
+card_state.due/state alone are enough to place a migrated card correctly
+in the due queue, but src/review/mutations.ts&amp;#39;s toFsrsCardState treats a
+card with no last_review as brand new -- discarding every bit of migrated
+stability/difficulty on that card&amp;#39;s very next real review, silently. The
+live schema&amp;#39;s own comment on this column already says as much (&amp;quot;Required
+to correctly resume FSRS scheduling, not optional bookkeeping&amp;quot;); the
+migration output just didn&amp;#39;t carry it.
+
+Derived from the same card&amp;#39;s own revlog already in scope during
+card_state construction (the latest reviewed_at), not guessed at -- and
+warns instead of silently leaving it null if a non-new card somehow has
+no revlog at all (which shouldn&amp;#39;t be possible: a card can only be
+non-new in Anki because it was reviewed).
+
+Verified against the real export: 1332/1332 non-new card_states now
+carry a real last_review, zero &amp;quot;no revlog rows found&amp;quot; warnings. 59
+tests (7 new), all against synthetic fixtures.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f07562ac77e9ecd374d737825ddf8143d2d43be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/0f07562ac77e9ecd374d737825ddf8143d2d43be"/>
+    <title>
+        Implement D17/D18 in the migration CLI: deck, spelling cards, pronunc…
+    </title>
+    <updated>2026-09-16T15:54:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Implement D17/D18 in the migration CLI: deck, spelling cards, pronunciation
+
+migration/&amp;#39;s Python CLI has read a real AnkiDroid export cleanly since the
+migration spike, but only ever recognized plain vocab notes as a single
+undifferentiated pile — no deck, always kind=&amp;#39;vocab&amp;#39;/has_spelling=false,
+and it silently discarded the real second card of every Capybara+ note
+(warned &amp;quot;expected 1 card&amp;quot;, then just picked one and moved on) and skipped
+every Capybara Pronunciation (shadowing) note outright. Both gaps were
+already named and tracked (docs/DESIGN.md, README&amp;#39;s own status table).
+
+Deck and card_kind now come from where a note&amp;#39;s card(s) actually live,
+found empirically against a real export: a plain Capybara note has one
+card, filed directly in its home deck (Ukrainian/English/Grammar); a
+Capybara+ note has two, one in that home deck and a second filed in
+Spelling — whichever card ISN&amp;#39;T in Spelling is the note&amp;#39;s home deck, and
+that&amp;#39;s also how a card is told apart as &amp;#39;recall&amp;#39; vs &amp;#39;spelling&amp;#39; (deck
+placement, not template order). Pronunciation notes get their own
+transform (TargetText-&amp;gt;lemma, Translation-&amp;gt;lemma_translation, Hint-&amp;gt;gloss,
+deck fixed to &amp;quot;Pronunciation&amp;quot;), including the real, malformed case this
+export actually has: 13 notes with an empty Language field and a garbled
+TargetText (a CSV dump pasted into the wrong field) — skipped, not
+guessed at, same principle as everywhere else in this package.
+
+Verified against the real export (2026-09-16): 1285 notes recognized (13
+skipped, all the malformed pronunciation ones), 1529 card_states (1285
+recall + 244 spelling, matching the 244 real Capybara+ notes exactly),
+decks Ukrainian 767 / English 266 / Grammar 61 / Pronunciation 191, zero
+notes with a card_kind set that disagrees with has_spelling. 52 tests
+(15 new), all against synthetic fixtures.
+
+Still not done, deliberately, per this package&amp;#39;s own invariant
+(__init__.py): it does not write to Postgres and it never will — that&amp;#39;s
+a separate, later step.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da801fb58aa8df4535be0b354469ffc6dd486524</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/da801fb58aa8df4535be0b354469ffc6dd486524"/>
+    <title>
+        Merge pull request #9 from anonymouspartner/claude/free-anki-copy-bs5vbc
+    </title>
+    <updated>2026-09-16T10:54:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #9 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Fix getDueCandidates/getCardStateCounts on real-size accounts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/345ee15348c1cbe68e9eb110a00c36e8d4dbe756</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/345ee15348c1cbe68e9eb110a00c36e8d4dbe756"/>
+    <title>
+        Fix getDueCandidates/getCardStateCounts breaking on real-size accounts
+    </title>
+    <updated>2026-09-16T10:46:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix getDueCandidates/getCardStateCounts breaking on real-size accounts
+
+Both built a fetch-notes-then-.in(noteIds) two-step query. PostgREST renders
+.in() as a literal comma-separated id list in the request URL, and with a
+few hundred real notes that URL is too long for the underlying HTTP client
+to send at all -- &amp;quot;error sending request&amp;quot;, not even a graceful 4xx. Never
+caught by tests (InMemoryStore has no URL to build) or earlier live checks
+(too few notes existed yet to hit it) -- found for real backfilling 572
+Ukrainian notes for one account just now.
+
+Fixed by embedding anki_card_state through its own FK to anki_notes.id in a
+single PostgREST query instead of a note-id list of any size. Verified live:
+/sync/decks and /sync/stats both correctly report the full 572-note account
+that broke before the fix.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/72e81e38b9e10e883506ff1e3897e52aa762366c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/72e81e38b9e10e883506ff1e3897e52aa762366c"/>
+    <title>
+        Merge pull request #8 from anonymouspartner/claude/free-anki-copy-bs5vbc
+    </title>
+    <updated>2026-09-16T10:21:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #8 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Host web/ on GitHub Pages, not Supabase; add CORS to sync/scan/pronounce&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/40b86e06857d0b7f91798d835c3bf1d5a2f9b3e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/40b86e06857d0b7f91798d835c3bf1d5a2f9b3e0"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39; into claude/free-anki-copy…
+    </title>
+    <updated>2026-09-16T10:12:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39; into claude/free-anki-copy-bs5vbc
+
+# Conflicts:
+#	supabase/functions/scan/index.ts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4bf003c04334903bc2448f04fb48653cbfd6d2be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/4bf003c04334903bc2448f04fb48653cbfd6d2be"/>
+    <title>
+        Move web/ off Supabase to GitHub Pages; add CORS to sync/scan/pronounce
+    </title>
+    <updated>2026-09-16T10:11:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move web/ off Supabase to GitHub Pages; add CORS to sync/scan/pronounce
+
+Supabase silently rewrites edge-function text/html responses to text/plain
+(confirmed live and against Supabase&amp;#39;s own docs), a hard platform limit that
+makes the app/ function&amp;#39;s approach to hosting web/ a dead end — deleted.
+web/ is now a plain static site published by .github/workflows/pages.yml to
+GitHub Pages, with web/config.js as the one per-instance line a new couple&amp;#39;s
+maintainer edits (PRODUCTION_API_BASE) since a static site has no
+server-side secret store the way an edge function does.
+
+That makes every real API call cross-origin, so sync/scan/pronounce all get
+CORS headers now (supabase/functions/_shared/cors.ts, open origin since this
+repo is couple-agnostic and the real access boundary is D13&amp;#39;s bearer token,
+not CORS). Redeployed and verified live: preflight and real responses both
+carry access-control-allow-origin against the actual project.
+
+web/demo-server.ts and the shell files (sw.js) revert to plain same-origin
+routing for local dev, where CORS and the Pages/subpath distinction don&amp;#39;t
+apply.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f0d2f7f75fd83fb4a2ff7e90dc7d4284ba2bd9b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/8f0d2f7f75fd83fb4a2ff7e90dc7d4284ba2bd9b"/>
+    <title>
+        Fix app&#39;s static-file serving; document the text/html rewrite blocker
+    </title>
+    <updated>2026-09-16T09:50:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix app&amp;#39;s static-file serving; document the text/html rewrite blocker
+
+Deno.readFile relative to import.meta.url doesn&amp;#39;t work in Supabase&amp;#39;s edge
+runtime — it flattens a deployed function&amp;#39;s own directory to
+/var/tmp/sb-compile-edge-runtime/&amp;lt;slug&amp;gt;/, discarding the original
+supabase/functions/app/ nesting, so &amp;quot;../../../web/...&amp;quot; reached nowhere real.
+Confirmed via this function&amp;#39;s own logs after the first version 404&amp;#39;d on
+every request. Fixed by embedding web/&amp;#39;s files as string constants
+(generated from the real files, not hand-typed) instead of reading them at
+request time.
+
+That fix surfaced a bigger, platform-level blocker while verifying with a
+real browser: Supabase rewrites every text/html GET response from an edge
+function to text/plain (their own docs, found only after deploying —
+&amp;quot;Edge Functions are designed for APIs... not serving web pages&amp;quot;). JS/CSS
+serve and execute correctly; the HTML pages themselves render as escaped
+text, not a page. Documented in this file&amp;#39;s own header rather than left
+silent — two real fixes exist (application/xhtml+xml, or a real static host
+with CORS added to sync/scan/pronounce), neither applied yet pending a
+decision on which.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9341ebc39629f1ce4ee3fc05836afd0be49d417</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/f9341ebc39629f1ce4ee3fc05836afd0be49d417"/>
+    <title>
+        Give web/ a real place to run: a static-file edge function, app
+    </title>
+    <updated>2026-09-16T09:40:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give web/ a real place to run: a static-file edge function, app
+
+Discovered while assessing whether the app was actually usable: web/app.js&amp;#39;s
+api() (and scan.js&amp;#39;s, stats.js&amp;#39;s) fetched same-origin relative paths with no
+base URL, and nothing in this repo hosted web/ anywhere. Checked Supabase&amp;#39;s
+own routing docs rather than assumed: a deployed edge function&amp;#39;s paths are
+always prefixed with its own slug, there is no way to serve anything at bare
+root on *.supabase.co.
+
+supabase/functions/app/ serves web/&amp;#39;s static files under /functions/v1/app/ —
+same Supabase project as sync/scan/pronounce (D6: one deploy target), so no
+CORS, no second hosting account, no per-instance base-URL config needed.
+app.js/scan.js/stats.js now build every API call as /functions/v1/&amp;lt;slug&amp;gt;/...
+(each has its own comment on this); sw.js&amp;#39;s cached shell paths and its
+API-skip check updated to match. web/demo-server.ts strips the same prefix so
+local dev stays a faithful stand-in instead of a second, diverging assumption
+about where things live.
+
+Verified with Playwright against the demo server, navigating the real
+prefixed path (/functions/v1/app/#t=...): deck list loads with real counts,
+reveal -&amp;gt; rate -&amp;gt; advance all work, every static file (index/scan/stats
+.html/.js, auth.js, offline.js, theme.css) serves correctly. deno check/test
+both pass unchanged (93 tests).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f23542c5dcda3aea5edcf520361a8f1753857e3d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/f23542c5dcda3aea5edcf520361a8f1753857e3d"/>
+    <title>
+        Deploy scan; add anki_notes&#39; dedup key for the upcoming bot dual-writ…
+    </title>
+    <updated>2026-09-16T09:33:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Deploy scan; add anki_notes&amp;#39; dedup key for the upcoming bot dual-write (#7)
+
+* Rename capybara-anki tables with anki_ prefix; apply schema to live project
+
+Checking the live Supabase project&amp;#39;s schema before applying anything found
+that &amp;quot;public&amp;quot;.&amp;quot;notes&amp;quot; was already taken by capybara-bot&amp;#39;s own /remember
+personal-notes feature. CREATE TABLE IF NOT EXISTS against that name would
+have silently no-opped instead of creating this app&amp;#39;s real notes table, so
+all four tables (notes, card_state, reviews, scheduler_config) are now
+anki_-prefixed to remove the risk of any further undetected collision.
+
+Applied to the live project on an explicit, in-the-moment request per
+capybara-bot&amp;#39;s CLAUDE.md. Verified first that no anki_* tables existed yet
+and that the migration only CREATEs (never ALTERs/DROPs), so it&amp;#39;s additive
+and reversible, and confirmed after applying that all pre-existing tables
+are untouched.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Implement PostgresStore against the live anki_* tables
+
+Writes the Store interface for real (supabase/functions/_shared/postgresStore.ts),
+backed by @supabase/supabase-js against the same esm.sh import capybara-bot&amp;#39;s own
+telegram-bot/index.ts uses (D6). sync/index.ts and pronounce/index.ts both drop
+their stub in favor of it.
+
+Per-user access has no column of its own on anki_notes (no user_id) — D2 scopes
+it by language instead, since decks are disjoint by language today. PostgresStore
+resolves each request&amp;#39;s users.learning_language and filters by it.
+
+getDailyCounts has no live analog of InMemoryStore&amp;#39;s reviewStateAtSubmission map
+(each request is stateless), so &amp;quot;new&amp;quot; is derived instead as &amp;quot;the first review
+anki_reviews has ever recorded for this (note_id, card_kind)&amp;quot; — the same condition
+that map was tracking, reconstructed from the append-only log itself.
+
+updateNote is a genuine UPDATE, never upsert({onConflict: &amp;quot;id&amp;quot;}) — capybara-bot
+hit exactly this bug on its own vocabulary table (see its backfill_translations
+comment): PostgREST turns that upsert into INSERT ... ON CONFLICT DO UPDATE, and
+Postgres validates NOT NULL constraints against the candidate row before it ever
+reaches the conflict check, so a partial patch missing lemma/language would fail
+outright every time.
+
+Verified against the live project (not guessed): a transaction, rolled back,
+exercising the composite-key upsert (note_id, card_kind), the PK-based idempotent
+insert (id), and the ON DELETE CASCADE from anki_notes — all three passed, and
+the tables are confirmed back at zero rows afterward.
+
+deno check and the full test suite (93 tests) both pass unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Update deno.lock with @supabase/supabase-js&amp;#39;s transitive module hashes
+
+Picked up while tracing the full dependency graph (deno info) to assemble
+the sync/pronounce edge function deploy bundles.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Wire scan/index.ts to the shared PostgresStore
+
+Its own separate stub PostgresStore (implementing just NoteCreator) predates
+sync/pronounce&amp;#39;s real one. Swapped for the shared supabase/functions/_shared/
+postgresStore.ts, which already implements NoteCreator&amp;#39;s createNote as part
+of the full Store interface — a drop-in fit, no other changes needed.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Add anki_notes&amp;#39; dedup key; deploy scan; document the bot as a content source
+
+- Deployed the scan edge function (code already fixed in a prior PR) — verified
+  live: unauthenticated requests 401, authenticated requests with a malformed
+  body 400 exactly as expected.
+- Added a UNIQUE (lemma, part_of_speech, language) constraint to anki_notes,
+  matching capybara-bot&amp;#39;s own vocabulary table&amp;#39;s dedup key. Needed before the
+  bot can safely write into anki_notes — without it, a recurring word would
+  mint a new flashcard every time it gets re-annotated, not just the first
+  time. Applied live; anki_notes was empty, so nothing could conflict.
+- Revised docs/DESIGN.md §2.2, which had gone stale: it said &amp;quot;no change to
+  index.ts is in scope,&amp;quot; written before anki_notes existed as a concept.
+  anki_notes.source&amp;#39;s own CHECK constraint already listed &amp;#39;bot&amp;#39; as a first-
+  class value by the time that table was designed — stronger, more specific
+  evidence of intent. The actual change (capybara-bot&amp;#39;s own repo, this same
+  commit) is a single additional upsert alongside the existing vocabulary one,
+  not a reconciliation job and not a second table this app reads.
+- §11 item 2 (backfilling the bot&amp;#39;s existing rows): split into its now-resolved
+  going-forward half and its still-open historical-backfill half (~11,300
+  existing vocabulary rows — a real decision about seeding fresh card_state
+  with no FSRS history to replay, left alone rather than guessed at).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6870b9acb0e493f15205753de22fb95a5abc4ce2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/6870b9acb0e493f15205753de22fb95a5abc4ce2"/>
+    <title>
+        Add anki_notes&#39; dedup key; deploy scan; document the bot as a content…
+    </title>
+    <updated>2026-09-16T09:28:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add anki_notes&amp;#39; dedup key; deploy scan; document the bot as a content source
+
+- Deployed the scan edge function (code already fixed in a prior PR) — verified
+  live: unauthenticated requests 401, authenticated requests with a malformed
+  body 400 exactly as expected.
+- Added a UNIQUE (lemma, part_of_speech, language) constraint to anki_notes,
+  matching capybara-bot&amp;#39;s own vocabulary table&amp;#39;s dedup key. Needed before the
+  bot can safely write into anki_notes — without it, a recurring word would
+  mint a new flashcard every time it gets re-annotated, not just the first
+  time. Applied live; anki_notes was empty, so nothing could conflict.
+- Revised docs/DESIGN.md §2.2, which had gone stale: it said &amp;quot;no change to
+  index.ts is in scope,&amp;quot; written before anki_notes existed as a concept.
+  anki_notes.source&amp;#39;s own CHECK constraint already listed &amp;#39;bot&amp;#39; as a first-
+  class value by the time that table was designed — stronger, more specific
+  evidence of intent. The actual change (capybara-bot&amp;#39;s own repo, this same
+  commit) is a single additional upsert alongside the existing vocabulary one,
+  not a reconciliation job and not a second table this app reads.
+- §11 item 2 (backfilling the bot&amp;#39;s existing rows): split into its now-resolved
+  going-forward half and its still-open historical-backfill half (~11,300
+  existing vocabulary rows — a real decision about seeding fresh card_state
+  with no FSRS history to replay, left alone rather than guessed at).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c3d4a6389c0b0e6d4e2da9386d8d95fefb71ca0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/7c3d4a6389c0b0e6d4e2da9386d8d95fefb71ca0"/>
+    <title>
+        Update deno.lock with supabase-js&#39;s transitive module hashes (#6)
+    </title>
+    <updated>2026-09-16T09:16:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Update deno.lock with supabase-js&amp;#39;s transitive module hashes (#6)
+
+* Rename capybara-anki tables with anki_ prefix; apply schema to live project
+
+Checking the live Supabase project&amp;#39;s schema before applying anything found
+that &amp;quot;public&amp;quot;.&amp;quot;notes&amp;quot; was already taken by capybara-bot&amp;#39;s own /remember
+personal-notes feature. CREATE TABLE IF NOT EXISTS against that name would
+have silently no-opped instead of creating this app&amp;#39;s real notes table, so
+all four tables (notes, card_state, reviews, scheduler_config) are now
+anki_-prefixed to remove the risk of any further undetected collision.
+
+Applied to the live project on an explicit, in-the-moment request per
+capybara-bot&amp;#39;s CLAUDE.md. Verified first that no anki_* tables existed yet
+and that the migration only CREATEs (never ALTERs/DROPs), so it&amp;#39;s additive
+and reversible, and confirmed after applying that all pre-existing tables
+are untouched.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Implement PostgresStore against the live anki_* tables
+
+Writes the Store interface for real (supabase/functions/_shared/postgresStore.ts),
+backed by @supabase/supabase-js against the same esm.sh import capybara-bot&amp;#39;s own
+telegram-bot/index.ts uses (D6). sync/index.ts and pronounce/index.ts both drop
+their stub in favor of it.
+
+Per-user access has no column of its own on anki_notes (no user_id) — D2 scopes
+it by language instead, since decks are disjoint by language today. PostgresStore
+resolves each request&amp;#39;s users.learning_language and filters by it.
+
+getDailyCounts has no live analog of InMemoryStore&amp;#39;s reviewStateAtSubmission map
+(each request is stateless), so &amp;quot;new&amp;quot; is derived instead as &amp;quot;the first review
+anki_reviews has ever recorded for this (note_id, card_kind)&amp;quot; — the same condition
+that map was tracking, reconstructed from the append-only log itself.
+
+updateNote is a genuine UPDATE, never upsert({onConflict: &amp;quot;id&amp;quot;}) — capybara-bot
+hit exactly this bug on its own vocabulary table (see its backfill_translations
+comment): PostgREST turns that upsert into INSERT ... ON CONFLICT DO UPDATE, and
+Postgres validates NOT NULL constraints against the candidate row before it ever
+reaches the conflict check, so a partial patch missing lemma/language would fail
+outright every time.
+
+Verified against the live project (not guessed): a transaction, rolled back,
+exercising the composite-key upsert (note_id, card_kind), the PK-based idempotent
+insert (id), and the ON DELETE CASCADE from anki_notes — all three passed, and
+the tables are confirmed back at zero rows afterward.
+
+deno check and the full test suite (93 tests) both pass unchanged.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Update deno.lock with @supabase/supabase-js&amp;#39;s transitive module hashes
+
+Picked up while tracing the full dependency graph (deno info) to assemble
+the sync/pronounce edge function deploy bundles.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Wire scan/index.ts to the shared PostgresStore
+
+Its own separate stub PostgresStore (implementing just NoteCreator) predates
+sync/pronounce&amp;#39;s real one. Swapped for the shared supabase/functions/_shared/
+postgresStore.ts, which already implements NoteCreator&amp;#39;s createNote as part
+of the full Store interface — a drop-in fit, no other changes needed.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d0d1e28350f25cc13db40e35c4ed5ce5687d13e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/1d0d1e28350f25cc13db40e35c4ed5ce5687d13e"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39; into claude/free-anki-copy…
+    </title>
+    <updated>2026-09-16T05:21:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39; into claude/free-anki-copy-bs5vbc
+
+# Conflicts:
+#	deno.lock&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bdece55dee27c5385f03f40ed5c06ac032de17e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/bdece55dee27c5385f03f40ed5c06ac032de17e7"/>
+    <title>
+        Wire scan/index.ts to the shared PostgresStore
+    </title>
+    <updated>2026-09-16T05:18:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Wire scan/index.ts to the shared PostgresStore
+
+Its own separate stub PostgresStore (implementing just NoteCreator) predates
+sync/pronounce&amp;#39;s real one. Swapped for the shared supabase/functions/_shared/
+postgresStore.ts, which already implements NoteCreator&amp;#39;s createNote as part
+of the full Store interface — a drop-in fit, no other changes needed.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

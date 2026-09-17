@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/SureshSurkheti/jlpt-practice/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/SureshSurkheti/jlpt-practice/commits/main.atom"/>
+  <title>Recent Commits to jlpt-practice:main</title>
+  <updated>2026-09-17T00:06:31Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e342fc83216efda7ae71dc11dddb69eb34fae043</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/e342fc83216efda7ae71dc11dddb69eb34fae043"/>
+    <title>
+        Real sittings first, practice papers at the bottom
+    </title>
+    <updated>2026-09-17T00:06:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Real sittings first, practice papers at the bottom
+
+Every level opened on Practice Test 27 and last December&amp;#39;s paper was
+twenty-five rows down. The index sorts on text, &amp;quot;practice-0027&amp;quot; starts
+with a p and &amp;quot;2024-12&amp;quot; with a 2, so the composed papers landed above the
+archive by accident rather than by decision.
+
+Sorted into two groups now: the dated papers newest first, then the
+numbered ones highest first. The groups are told apart by whether the key
+starts with a digit rather than by the origin tag, because n4-practice-1
+and -2 came in through the archive and are tagged archive while being
+numbered practice papers - on the tag they sorted above the 25 composed
+N4 papers, which is the same mistake the other way round.
+
+N2: December 2024 down to July 2010, then Practice Test 27 down to 3.
+N4 and N5 have no dated sittings, so they are numbered throughout, with
+the two scraped N4 papers now at the foot with the rest.
+
+It also decides which paper exam.html?level=N2 opens with no id: December
+2024 now, not Practice Test 27.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8f818a57e0a9c929680d4816b7aa8a182f8ee99b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/8f818a57e0a9c929680d4816b7aa8a182f8ee99b"/>
+    <title>
+        The advertising copy says what the site is now
+    </title>
+    <updated>2026-09-16T23:24:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The advertising copy says what the site is now
+
+It was still selling 141 papers and 13,505 questions, a site with no
+furigana, no scripts on the listening, and a glossary on three levels out
+of five. Every figure in it was measured again from the built data, and
+the things added since are in it: furigana over the whole paper on a
+button, a script on every listening question, word meanings on every
+paper including the listening, and the options that were never printed.
+
+  papers        141 -&amp;gt; 207        questions   13,505 -&amp;gt; 20,346
+  listenable    115 -&amp;gt; 199        Nepali      1,753 -&amp;gt; 1,473 (as built)
+  word meanings 125,767 -&amp;gt; 18,201 different words, glossed per paper
+
+Two blocks added: one for a repost, which leads with furigana and the
+scripts rather than with the paper count, and one for a listening-focused
+post, listening being the section most people lose the pass on.
+
+The counts the copy rests on were stale elsewhere in the file too - the
+opening line, the library row, the string count, the paper-by-level
+numbers, the two listening routes (118 composed papers and 28 archived
+questions now, not 32 and 799), and the glossary&amp;#39;s level range. EXAMS.md
+carried the same three.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d35b2e4c917daca636d8244f9972cdc61723b48</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/7d35b2e4c917daca636d8244f9972cdc61723b48"/>
+    <title>
+        Furigana over the words a word list could not decide
+    </title>
+    <updated>2026-09-15T07:43:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Furigana over the words a word list could not decide
+
+The button was drawing nothing over 人, 中, 日, 上 and the rest of the
+words that are read two ways - which on an N5 paper is most of the kanji
+on the page, so it read as a button that does not work. It was working:
+the table is keyed by surface and can hold one reading per word, and for
+those words it deliberately holds none.
+
+A longer key can hold what a shorter one cannot. The table now also
+carries a word with its kana neighbours - 人が ひとが, 中で なかで, 時まで
+じまで, and the inflections that decide 来ます from 来なく - taken from the
+tokenizer&amp;#39;s own reading of that word in that sentence. 17,632 of them,
+and the player already matched longest-first, so context wins wherever it
+is listed.
+
+Only kana neighbours, and only particles, auxiliaries, or a suffix the
+tokenizer has already analysed as part of the word. Joining two kanji
+words and concatenating their readings gets 二人 wrong (ににん, where the
+word is ふたり), 三百 wrong (さんひゃく for さんびゃく) and 水よう日 wrong
+(the tokenizer reads that 水 as みず): rendaku and 熟字訓 live at that
+seam. And a key carrying kana matches only where its kanji edge stands
+alone, or 人が would read 三人が and 4人が as ひと.
+
+Measured per kanji against the tokenizer over 77,000 annotations on
+twenty papers: 406 more correct readings, 9 more wrong ones, 415 fewer
+words left bare. The share of shown readings that are the tokenizer&amp;#39;s is
+unchanged at 99.7%. Ruby on a rendered paper: N5 170 -&amp;gt; 193, N4 614 -&amp;gt;
+659, N1 670 -&amp;gt; 681.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f6e713f89bc5642822aa868ef8db115577d7674d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/f6e713f89bc5642822aa868ef8db115577d7674d"/>
+    <title>
+        The site is allowed to frame its own pages again
+    </title>
+    <updated>2026-09-15T07:18:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The site is allowed to frame its own pages again
+
+&amp;quot;This content is blocked&amp;quot; in a phone preview was the site&amp;#39;s own policy
+refusing the site&amp;#39;s own page. Chrome names the directive:
+
+  Framing &amp;#39;https://nihongomock.com/exam.html?id=n2-2010-07&amp;#39; violates the
+  following Content Security Policy directive: &amp;quot;frame-src
+  https://drive.google.com https://*.google.com ...&amp;quot;
+
+frame-src was added for the Drive and YouTube players. Naming a directive
+replaces what default-src was providing for it, so listing those hosts
+silently dropped the &amp;#39;self&amp;#39; that default-src &amp;#39;self&amp;#39; had been giving - and
+any iframe pointing at one of the site&amp;#39;s own pages was refused. Anything
+that embeds the site in a frame of its own hits it: a mobile preview
+extension, which is where this turned up, and the first load surviving
+while every navigation after it failed.
+
+frame-src now lists &amp;#39;self&amp;#39; first. Nothing else about the policy changes;
+frame-ancestors still refuses everyone but the site itself.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/607f21c9ef254956ab32ea6052b5c3c324302d2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/607f21c9ef254956ab32ea6052b5c3c324302d2b"/>
+    <title>
+        The box you press is the box the player arrives in
+    </title>
+    <updated>2026-09-15T07:05:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The box you press is the box the player arrives in
+
+It was a white panel with a small button in it, which read as an empty
+gap in the bar and then swapped itself for a black player. Now the idle
+control is that player&amp;#39;s box: 68px, #1e1e1e, a white arrow and &amp;quot;Play the
+recording&amp;quot;. Nothing changes size or colour when the recording loads.
+
+And the wait before it plays is shorter by the handshake. Most of that
+wait is Google&amp;#39;s page and is not ours to shorten, but a cold press was
+also paying for a DNS lookup, a TCP connection and a TLS negotiation with
+a host the browser had never spoken to. warmDrive() opens those with
+rel=&amp;quot;preconnect&amp;quot; as the listening section is drawn, so they are paid
+while the reader is still on the instructions.
+
+Measured on a desktop connection, click to the frame&amp;#39;s load event: 1359ms
+cold, 1235ms warm, medians of four. On a phone the saving is larger - a
+handshake there is round trips, not milliseconds.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/824b19fa5f5683dfa5d455465fc18d6bc88598c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/824b19fa5f5683dfa5d455465fc18d6bc88598c6"/>
+    <title>
+        On a phone the player docks under the command bar, as it should
+    </title>
+    <updated>2026-09-15T06:30:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;On a phone the player docks under the command bar, as it should
+
+It was floating in the middle of the questions there. The stylesheet
+placed it at --header-h + --bar-h, which is where the command bar ends
+only while the site header is sticky. On a phone the header is not: it
+scrolls away and the command bar sticks to the top of the window on its
+own, so the sum put the player 109px below where it docks.
+
+floatSync() already measures that edge to decide which bar to float, so
+it now publishes it as --dock-h and the stylesheet uses that. Measured
+rather than added up, and there is no arrangement of the chrome it can be
+wrong about: 90px on a phone, 144 on a desktop, both exactly the command
+bar&amp;#39;s own bottom.
+
+The idle player also stopped reserving the height of a player it has not
+loaded. An empty 68px white box with a Play button adrift in it was a
+third of the bar on a phone; the bar is 79px now, from 112, and 50 on a
+desktop, from 83. The live frame keeps its 68.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8deaf94567c7d419a320b37bc3e7098b27e5b0a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/8deaf94567c7d419a320b37bc3e7098b27e5b0a3"/>
+    <title>
+        The controls sit in the middle, the bar is pinned from the start
+    </title>
+    <updated>2026-09-15T06:10:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The controls sit in the middle, the bar is pinned from the start
+
+Three things, all on the listening paper.
+
+The player&amp;#39;s controls were sitting high in their box with a gap under
+them. That is Drive&amp;#39;s doing: it keeps about 17px of empty page below the
+controls, so they land 8px above the middle of whatever box it is given -
+measured at 68, 76 and 140px, a fixed strip rather than a proportion. The
+frame is pushed down 8px to put them back in the middle, and the strip
+that uncovers at the top is painted #1e1e1e, sampled from Drive&amp;#39;s own
+page, so the join cannot be seen.
+
+The bar now follows you down the paper from the start, with nothing
+pressed. It used to wait until it was playing, on the grounds that a Play
+button trailing you down the page is clutter - but on a listening paper
+the Play button is the thing you are reaching for, and scrolling back to
+the head of the 問題 to find it is the greater clutter. Same for the
+YouTube stand-in on the papers where it is the only audio there is.
+
+And the word meanings now cover a listening question completely: the
+options recovered from the transcript, which had never been read at all,
+and the transcript itself with every filter off. A reading passage keeps
+the level filter - it runs to hundreds of words and is on the page to be
+read again - but a transcript is the only place the spoken words can be
+seen, and the words worth naming there are the ordinary ones that went
+past too fast. A noun and its suffix are also joined now when the pair is
+a headword: 消費者 was being explained as 消費, 必要性 as 必要.
+
+Per listening question on n2-2014-07: 28 words, now 38. Kanji of the
+recovered options that fall inside a glossed word: 92.9%, from 91.2%.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc6c047d41eb66d5294bd34c04cc16b009558cf6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/dc6c047d41eb66d5294bd34c04cc16b009558cf6"/>
+    <title>
+        One player height, and a smaller one, with nothing cropped
+    </title>
+    <updated>2026-09-15T05:31:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;One player height, and a smaller one, with nothing cropped
+
+The size button is gone. It was there because the two players Drive can
+draw want different room and a cross-origin frame will not say which one
+arrived - but a reader should not have to fix the page&amp;#39;s layout, and the
+answer was in the wrong direction anyway: both players fit in 76px, which
+is simply more than a strip of chrome should take from a bar that docks
+at the top of the screen.
+
+So the frame is still laid out at the 76px a whole player needs, and the
+whole frame is then scaled to 68. Shorter without cutting anything off,
+which a shorter frame would have done - 76px of player through a 68px
+window is 8px of missing controls, the bug this bar started with. On a
+phone the bar is 113px now, from 148.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c943ff4d1f52730c2b644552cda02f8ffc67ec39</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/c943ff4d1f52730c2b644552cda02f8ffc67ec39"/>
+    <title>
+        The player box is smaller, and its height is the reader&#39;s to set
+    </title>
+    <updated>2026-09-15T05:05:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The player box is smaller, and its height is the reader&amp;#39;s to set
+
+I had been sizing the box to the player my own browser gets. Signed out of
+Google, Drive draws a compact control strip and 76px is exactly right for it.
+Signed in - which is most people in Chrome, and is what your screenshots show -
+it draws a waveform display instead, which wants more room and is squeezed into
+76. The frame is cross-origin. Nothing on this side can ask which one arrived,
+so no single number is right for everyone, and every number I picked was right
+for one of us and wrong for the other.
+
+So the height is a control now, next to the player: Smaller takes the box from
+96px to 76, Bigger puts it back, the choice is remembered, and it moves every
+recording on the paper at once - they come from one account, so they are the
+same player. It appears only once something is playing; there is nothing to
+resize before that.
+
+And both containers are tighter than they were. The blue bar around the player
+was 10px of padding and a 14px gap; it is 7 and 10. The box inside it was 112px;
+it is 96. On a phone the player, its label and the size button were three
+stacked rows, which is a third of the screen for a strip of chrome - the label
+keeps its line and takes the button with it now, and the whole bar is 148px
+instead of 180.
+
+Checked at 1280 and 390 on n2-2010-07: 96px by default, 76 after one press,
+both remembered and applied to all five recordings, and the button hidden until
+a recording is running. Nothing else moved - zero frames until a play button is
+pressed, two distinct labels where a paper has both recordings, 問題1 to 問題2
+to 問題4 handing over as you scroll, no horizontal overflow, five site pages and
+four papers N1-N5 with no console errors, furigana and scripts unchanged.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/870feded8c791e6cb3ef73349a767ad011cefdf5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/870feded8c791e6cb3ef73349a767ad011cefdf5"/>
+    <title>
+        One number for the player box, and it is the compact one
+    </title>
+    <updated>2026-09-15T04:54:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;One number for the player box, and it is the compact one
+
+96px was the wrong way to stop the cropping. It stops it, but Drive reads the
+extra room as an invitation and draws its waveform display instead of its
+control strip - bigger, slower to read, and no better for finding your place
+in a listening test. You are right that it came out worse.
+
+The strip is the player worth having: a round play button, a scrubber, the
+time, a volume control, on black. Drive lays that out for 76px, so 76px is the
+number - and it is one number, used for both the iframe and the window it is
+seen through. That is what was actually broken. The frame was 76 and the
+window 60, and a player drawn to fit 76 does not survive being shown through
+60 of them: the top of the play button was simply outside the box. Neither
+number meant anything on its own; only the gap between them did.
+
+So there is no crop, and nothing to keep in step: --drive-h in exam.css is
+read by the stylesheet and handed to the iframe when it is created.
+
+Checked at 1280 and 390 on n2-2010-07: the strip draws in full, black, play
+button whole, 117px for the whole bar on a phone rather than 137. Nothing else
+moved - zero frames until a play button is pressed, two distinct labels where
+a paper carries both recordings, the handover from 問題1 to 問題2 to 問題4 as
+you scroll, no horizontal overflow, five site pages and four papers N1-N5 with
+no console errors.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74adb42c1eee4830c5a5d00ef498b6fad3394e4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/74adb42c1eee4830c5a5d00ef498b6fad3394e4f"/>
+    <title>
+        The player is not cropped any more
+    </title>
+    <updated>2026-09-15T04:30:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The player is not cropped any more
+
+The cut-off play button is a window we were holding too small, and it has been
+wrong for longer than the recent changes - it is not new, it is just newly
+visible now that the players are pressed rather than sitting there loading.
+
+The frame was 60px onto a 76px iframe. The 16px difference was measured, on
+three recordings, as empty field below Drive&amp;#39;s controls, so cropping it took
+the black box down to the part that had a player in it. That measurement holds
+for one of Drive&amp;#39;s two players. Signed in to a Google account, the preview
+draws a taller layout instead - a waveform with a large round play button - and
+60px cuts the top off that button. It does not read as a cropped player. It
+reads as a broken one.
+
+Which of the two a reader gets is decided inside a frame we cannot see into,
+on Google&amp;#39;s side, from their account and their experiments. So the window has
+to fit the larger of them: the frame is 96px now, the iframe is told the same
+height rather than carrying a number of its own, and whatever Drive draws is
+shown whole. Both players lay out inside it - the compact strip centres, the
+waveform one fits - and the two numbers can no longer drift apart, because
+there is one of them.
+
+Checked at 1280 and 390 on n2-2010-07, which has a recording in every 問題: the
+round play button is whole, the 問題5 recording now takes its turn floating
+where the shorter bar used to fall out of range, and there is no horizontal
+overflow on a phone. Press-to-load, the labels, the scripts, the furigana and
+the recovered options are all unchanged: zero frames until a play button is
+pressed, two distinct labels where a paper has both recordings, 問題1 to 問題2
+to 問題4 to 問題5 handing over as you scroll, five site pages and four papers
+N1-N5 with no console errors.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab1f07ee80a94efae93f56500d8e3b72c461a70a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/ab1f07ee80a94efae93f56500d8e3b72c461a70a"/>
+    <title>
+        No black boxes: the recording is fetched when it is asked for
+    </title>
+    <updated>2026-09-15T04:21:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;No black boxes: the recording is fetched when it is asked for
+
+The black rectangle is Drive&amp;#39;s own player. The frame is cross-origin, so what
+is inside it - its colours, its controls, its playback speed - is Google&amp;#39;s
+page, and we are looking at it through a window. It cannot be restyled, and
+the only way round it would be to play the file ourselves, which Drive refuses:
+cross-origin-resource-policy: same-site on every byte.
+
+What was ours to fix is that the window was being opened whether or not anybody
+wanted it. A frame per 問題, drawn at render time, is five Google pages loading
+at once on a paper with a recording each - so a listening paper opened as a row
+of black rectangles, loading, for recordings nobody had asked to hear. That is
+also the answer to why it sits there at first: five of them are queueing.
+
+Now the player is a button in the paper&amp;#39;s own colours, and the frame is created
+by the click that asks for it - the same way the YouTube bar has always worked.
+The click is a user gesture, which is what lets autoplay through, so pressing it
+plays rather than loading a second play button to press. While the frame is
+arriving the box says &amp;quot;Starting the player...&amp;quot; instead of sitting there black;
+a cross-origin frame tells us nothing about its contents but it does say when it
+has loaded, which is all that notice needs.
+
+And a player only follows the reader down the page once it is playing something.
+Before that it is a Play button, and a Play button that follows you around is
+clutter - the rule the YouTube bar already followed.
+
+**Both rows said the same thing.** On the 33 papers that carry a full upload as
+well as their own recording, the whole-test bar and the YouTube bar both read
+&amp;quot;Full recording - whole listening test&amp;quot;, because I had given the paper&amp;#39;s own
+file the YouTube bar&amp;#39;s label. The paper&amp;#39;s own one now says &amp;quot;Audio for the whole
+test&amp;quot;, and drops the tag that was repeating it.
+
+n2-2010-07 in the second screenshot was right, incidentally: five recordings,
+one per 問題, 7:02 for 問題1 - so &amp;quot;Audio for this section - 問題1&amp;quot; is what it is.
+Only papers with a single file get the whole-test treatment, and there the file
+is the 41-minute one.
+
+Checked in Chrome. n2-2010-07: five play buttons, zero frames until one is
+pressed, then one frame and the notice. n2-2014-07: two rows, two different
+labels, no frame until asked. Floating unchanged once started - the whole-test
+recording holds the top of the paper end to end, the per-問題 ones hand over
+問題1 to 問題2 to 問題4, the upload floats only where it is the only audio.
+Furigana, scripts and recovered options unchanged: 255 annotations, 10 reading
+questions held, &amp;quot;Tham khảo&amp;quot; gone, 32 folds and 33 word panels at 390px. Five
+site pages and four papers N1-N5: no console errors, no horizontal overflow.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29dbff57e7eba8d0e1a7f698f3f9c14875c02f9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/29dbff57e7eba8d0e1a7f698f3f9c14875c02f9a"/>
+    <title>
+        The player docks at the top, and the whole-test recording is whole again
+    </title>
+    <updated>2026-09-15T04:10:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The player docks at the top, and the whole-test recording is whole again
+
+Three things, and the first was my mistake twice over.
+
+**One file really is the whole test.** Last commit I made wholeListeningAudio()
+demand that every 問題 carry the file before treating it as a whole-test
+recording, because only one of them does. That was evidence about the page, not
+about the recording: the source embedded its player once, under 問題1, and left
+the other four bare. The file is 201407N2.m4a - one .m4a, 41 minutes, the whole
+sitting - so the heading it happened to be embedded under says nothing about
+what is in it, and drawing it inside 問題1 hid four 問題 worth of audio behind a
+heading and labelled it 問題1. Reverted.
+
+The label went with it. &amp;quot;Audio for this section&amp;quot;, beside a tag reading &amp;quot;whole
+listening test&amp;quot;, contradicted itself; the whole-test bar says &amp;quot;Full recording&amp;quot;
+now.
+
+**It docks at the top, not in the corner.** A player that belongs to the paper
+belongs against the command bar: flush, square along the top and rounded below,
+at the same width as the questions under it, so it reads as one piece of chrome
+and covers the margin above the paper rather than the paper. A corner box has
+to be dismissed before it stops sitting on the questions; this one never covers
+anything being read, so the dock button it needed is gone.
+
+A whole-test recording now follows you the length of the listening paper. A
+per-問題 recording follows you through its own 問題 and hands over. The YouTube
+upload still floats only where it is the only audio there is.
+
+**Why the recording cannot be an &amp;lt;audio&amp;gt; element.** You asked why the player
+sits there loading. The answer is not on our side, and it is worth writing
+down, because the file itself looks perfectly usable:
+
+    https://drive.usercontent.google.com/download?id=&amp;lt;id&amp;gt;&amp;amp;export=download
+    200, content-type: audio/mp4, accept-ranges: bytes,
+    access-control-allow-origin: *, 10,407,635 bytes, ftypM4A
+
+Real audio, range requests, CORS wide open - and a browser still refuses it,
+because the same response carries cross-origin-resource-policy: same-site.
+CORP is checked before CORS can help: the bytes may not be embedded by another
+site at all. Chrome reports MEDIA_ELEMENT_ERROR: Format error, and a fetch of
+it fails outright. The note in the source said ORB; it is CORP, and it is now
+recorded properly along with the probe that shows it.
+
+So the iframe stays, playback speed and keyboard seeking stay Drive&amp;#39;s to offer,
+and a stalled player stays invisible to us - the frame is Google&amp;#39;s and reports
+nothing back. What could be done was to name the other way in: &amp;quot;Not playing?&amp;quot;
+now also points at the full recording at the top of the section, on the 33
+papers that have one.
+
+Checked in Chrome at 1280 and 390. n2-2014-07: the whole-test recording docks
+under the command bar at the reading measure and stays there the length of the
+paper, through 問題1 to 問題5; the YouTube upload never floats. n2-2013-12,
+whose own file is the one dead recording: the upload docks instead. n2-2018-12,
+five recordings: 問題1 to 問題2 to 問題4 as you scroll, one at a time, the
+iframe alive across every handover, and alive across the float on both widths.
+Furigana, scripts and recovered options unchanged: 255 annotations, 10 reading
+questions still held back, &amp;quot;Tham khảo&amp;quot; still gone, 32 script folds and 33 word
+panels on n2-2016-07 at 390px. Five site pages and four papers N1-N5, no
+console errors, no horizontal overflow.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/035747f31300db8a782611736cf4ee53c9572b29</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/035747f31300db8a782611736cf4ee53c9572b29"/>
+    <title>
+        The paper&#39;s own recording is the one that follows you
+    </title>
+    <updated>2026-09-15T03:02:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The paper&amp;#39;s own recording is the one that follows you
+
+You asked why the audio had gone from N2 December 2013. I had taken it.
+Running build_exams.py rewrites every paper from the archived sources, and
+the full-recording links are stamped in afterwards by a separate command -
+so the rebuild in the last commit quietly dropped listeningFull from all 33
+papers that have one, and 33 listening sections lost their player. The tool&amp;#39;s
+own docstring says &amp;quot;run after build_exams.py, which would otherwise write the
+field away&amp;quot;, which is exactly the kind of instruction that is one day not
+followed.
+
+Restored, and build_exams.py now calls it itself. A step that has to be
+remembered is a step that will be forgotten, and this one fails silently: the
+papers rebuild, the site loads, and the audio is simply not there.
+
+**Which player floats.** The paper&amp;#39;s own recording, always - it is the real
+thing, and it is what somebody working through a 問題 is listening to. The
+YouTube upload is a stand-in for the sittings whose audio was never archived,
+so it goes to the corner only where it is the only audio there is; on a paper
+that has its own, it stays where it is drawn, at the head of the listening
+test, as one row with a Play button.
+
+There is a player per 問題 on 47 papers, so they hand over as you scroll, and
+only one is ever in the corner. Which 問題 you are on is decided at the middle
+of the reading area rather than at its top edge: measured at the top, a section
+counted as current until its last pixel had gone, so 問題1&amp;#39;s recording was still
+in the corner while 問題2&amp;#39;s heading, its instruction and its own player filled
+the screen - two players in view, and the floating one the wrong recording.
+
+**One recording is not one recording for the whole test.** wholeListeningAudio()
+took a single file to cover the sitting and drew it above the paper, labelled
+&amp;quot;whole listening test&amp;quot;. Counted across the library that is true of no paper at
+all: every one of the 28 with a single file has it on exactly one of its five
+or six 問題, because the source published 問題1 and stopped. So a 問題1
+recording sat above 問題5 with a label that contradicted the tag beside it. It
+is now drawn inside the 問題 it is a recording of, and the sections without one
+say the full recording above covers them, which they already knew how to say.
+
+**Three things that were plainly wrong to look at**, all in the same screen:
+
+- A figure that never arrives keeps the space it was promised and lays its
+  message over the hole. In an answer button there is no hole - min-height is
+  0 there - so the message was being centred on a box of no height and spilled
+  out of the button in both directions, over the option above and the one
+  below. Four failed pictures made an unreadable pile. In flow it just makes
+  the button as tall as the sentence.
+- The note under a section&amp;#39;s player was full width while the player itself was
+  centred on the reading measure, so the two were on different left edges.
+- The player was square along the top and rounded below, which is what a
+  control docked to the underside of the command bar looks like. It does not
+  dock there any more, and standing inside a 問題 that flat edge read as a box
+  that had lost its lid. Also: the 60px window that crops Drive&amp;#39;s player is cut
+  for the width it has in the paper, and at the 336px it gets in the corner
+  Drive draws a larger centred play button instead, so the crop took the top
+  off it.
+
+Checked in Chrome at 1280 and 390. n2-2014-07, which has its own 問題1
+recording and a YouTube fallback: the Drive player floats through 問題1 and
+lets go after it, the upload never floats. n2-2013-12, whose recording is the
+one dead file: the upload floats, and its player is back. n2-2018-12, five
+recordings: 問題1 to 問題2 to 問題4 as you scroll, never two at once, the
+iframe alive across every handover. Furigana, scripts and recovered options
+unchanged - 255 annotations on n2-2018-12, 10 reading questions still held,
+1,407 annotations inside an opened script, 32 script folds and 33 word panels
+on n2-2016-07 at 390px. Five site pages and four papers N1-N5: no console
+errors, no horizontal overflow.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2a52286e7cec533fe44804c528fe1fc1b91d227</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/c2a52286e7cec533fe44804c528fe1fc1b91d227"/>
+    <title>
+        Furigana on the papers, and the script under every listening question
+    </title>
+    <updated>2026-09-15T02:42:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Furigana on the papers, and the script under every listening question
+
+Four things you asked for. The furigana one turned out bigger than the
+report suggested.
+
+**The whole-test recording floats.** It sits above 問題1 and used to be
+gone by 2番: pausing it, or rewinding ten seconds, meant scrolling back
+to the head of the section and then finding your place again. Now it
+lifts out of the page once you scroll past it and parks in the corner -
+bottom right on a desktop, across the foot on a phone - and drops back
+into its slot when you scroll up to it. Stop dismisses it; Back to the
+paper returns it.
+
+It is the same element the whole time, only its position changes. Moving
+the iframe to another parent, or drawing a second floating copy, reloads
+YouTube&amp;#39;s player and restarts a forty-minute recording from zero. A slot
+holds the height it leaves so the paper does not jump underneath it. It
+floats rather than pins for the reason it stopped pinning: a 16:9 frame
+docked under the command bar holds the top of the screen all sitting.
+
+**Every listening question carries its script now**, on every paper,
+behind a fold that stays shut until it is asked for. It used to be drawn
+only where the recording would not play, on the reasoning that a script
+beside an unanswered question invites reading instead of listening -
+true, and the reader&amp;#39;s decision rather than the page&amp;#39;s. Reading along
+with a recording is how a great deal of listening is learned, and a
+script that unlocks only after marking cannot be used that way at all.
+
+It is printed as a script, too: one line per turn, the speaker held out
+to the left, and without &amp;quot;Tham khảo:&amp;quot; - the source site&amp;#39;s own Vietnamese
+label - at the head of all 2,444 of them.
+
+**The questions nobody printed.** 1,468 listening questions have four
+blank options, which is not damage: 問題3 and 問題4 print nothing on the
+question sheet and the choices are read out at the end of the recording.
+Marked, the paper therefore said &amp;quot;the answer was 3&amp;quot; against four empty
+buttons, with no way to find out what 3 had been without scrubbing back
+through the audio.
+
+They are in the transcript, because the transcript is of a recording
+that reads them out. add_spoken() lifts them back - 1,368 of the 1,436
+that have a transcript, with the question that was asked - and the
+player shows them once the question is marked, the right one marked and
+the one that was picked beside it. Before marking the buttons stay
+blank, because blank is the exercise.
+
+**Furigana.** The report was that many options have none. Measured: not
+one &amp;lt;ruby&amp;gt; in 20,346 questions. Zero, on every paper, in every option,
+prompt and passage - which is faithful, because the real N1, N2 and N3
+papers print none either, and useless when the paper is being learned
+from rather than sat. A word you cannot read is a word you cannot look
+up; you do not know how it sounds.
+
+tools/build_furigana.py reads every word of every paper with the same
+tokenizer the glossary uses and stores the reading it has in that paper:
+見て -&amp;gt; 見[み]て, 食べ物 -&amp;gt; 食[た]べ物[もの]. A word list rather than
+marked-up text, because the words of a paper repeat - 187,683 readings,
+5.6 MB, one file per paper, fetched only when somebody turns furigana
+on. The base of a reading is the kanji run in front of the bracket,
+which is what lets お金[かね] need no separator; all 187,683 forms
+round-trip through that rule.
+
+The ふ button in the command bar draws them, and remembers the choice.
+Off by default - a paper with furigana is an easier paper, and that is
+the reader&amp;#39;s call.
+
+Two things it will not do:
+
+- 問題1 and 問題2 of the vocabulary booklet keep their readings back
+  until the question is marked. Those ask how a word is read and how it
+  is written; furigana over the stem is the answer printed above the
+  question. In study mode the hold lifts on that question as it is
+  answered, and goes back on if you Try again.
+- A word read two ways is left bare. 人 is ひと alone and にん after a
+  number; 中 is なか and ちゅう. The browser matches the list against
+  the text longest word first with no tokenizer of its own, so those
+  would be wrong - and wrong furigana is worse than none, because the
+  reader cannot tell it is a guess and will learn it. 247 words are
+  dropped for it, and a single kanji only matches standing on its own,
+  so 二人 stays bare rather than becoming 二[に]人.
+
+Measured against the tokenizer over 72,672 annotations: 82% of kanji
+words get a reading, 0.34% differ from the tokenizer&amp;#39;s, the rest are
+identical. Before the two rules above it was 1.72% wrong.
+
+Checked in Chrome. Floating player at 1280 and 390: floats, docks, the
+iframe survives both, 16px clear of both edges, no console errors.
+Furigana on n1-2015-07, n2-2018-12, n3-2019-12, n3-practice-4,
+n4-practice-2, n5-practice-2 and n2-2016-07 - 255 to 1,636 annotations a
+paper, held on the 10 reading questions of n2-2018-12 until answered,
+text restored exactly on switching off, no horizontal overflow at 390.
+Listening: 29 of 30 questions on n2-2018-12 carry a fold, all shut, 13
+speaker turns in the one opened; &amp;quot;Tham khảo&amp;quot; gone from the page; word
+meanings sit on the listening questions as well. Five site pages clean.
+Question totals unchanged across the rebuild: 207 papers, 20,346
+questions, no paper&amp;#39;s count moved.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0bd42f71b3bed0ebcaa9dba8e55a7ade520614dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/0bd42f71b3bed0ebcaa9dba8e55a7ade520614dc"/>
+    <title>
+        The command bar fits on one row again
+    </title>
+    <updated>2026-09-14T05:28:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The command bar fits on one row again
+
+You asked whether the bottom of each page and the wrapped Submit button
+were right. Measured both.
+
+The page bottoms are right. The gap between the end of &amp;lt;main&amp;gt; and the
+footer is 40px on all thirteen page types - home, levels, library, study
+hub, about, quiz, review, progress, kanji, a guide, a word list, a paper
+and the 404 - with no variance at all. Nothing to do there.
+
+The bar was not right, and the reason was almost funny. It holds one row
+of controls plus the progress bar, and at 360px - a Galaxy, and most of
+the Android field - English wanted 325px against 324px available. One
+pixel. That pixel cost a whole row: 132px of command bar instead of 90px,
+at the top of a phone screen, for every question of every paper.
+
+It was not only English. Measured across twelve languages, seven missed
+the row at 360px - Indonesian by 30px, Nepali 13, Portuguese 12, Filipino
+11, Vietnamese 5, Bengali 3, English 1 - because &amp;quot;Submit exam&amp;quot; is
+&amp;quot;Kumpulkan ujian&amp;quot; in one language and four characters in another. And
+Indonesian missed it at 375, 390 and 414 too.
+
+The level chip goes below 481px, the way the section label already goes
+below 861px. It is 44px plus its gap, and it names the level you are
+sitting - which the setup screen said, the paper&amp;#39;s title says, and the
+result says again. Nothing about answering a question depends on reading
+it, which is not true of the timer or Submit beside it. Below 361px the
+bar also tightens its own gaps and padding, because Indonesian wants 18px
+more than the chip alone releases at 320px.
+
+Twelve languages by five widths - 320, 360, 375, 390, 414 - all sixty on
+one row. Tallest bar 97px, down from 139px.
+
+Exam player unchanged on three papers. Passage work from the last two
+commits intact: 0px overlap across 7,000px of scroll, all three touch
+states still right, --psg-h still measured. Bottom gaps still 40px on all
+thirteen. Lighthouse P98 A100 BP100 SEO100. CSP clean on 13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eec23ced7f9bb0a8be4e880a808b6c1fcdfa9fc6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/eec23ced7f9bb0a8be4e880a808b6c1fcdfa9fc6"/>
+    <title>
+        A finger on the passage scrolls the page again
+    </title>
+    <updated>2026-09-11T08:45:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;A finger on the passage scrolls the page again
+
+My own regression, from the commit before this one. I put
+overscroll-behavior: contain on the passage prose to stop the page moving
+while the passage was being read, and the cost was far worse than the
+cure: once you had read to the bottom of the passage, a drag anywhere on
+the yellow card scrolled nothing at all.
+
+That card is half the screen on a phone, so half the screen stopped
+answering a finger, with nothing to tell you to move your thumb off it.
+
+Reproduced with a real touch gesture rather than a scroll property, at
+390x844, on the passage the report came from:
+
+    before   inner 32/32   page 1264 -&amp;gt; 1264   did not move
+    after    inner 32/32   page 1264 -&amp;gt; 1585   moved 321px
+
+Default chaining is back, and all three states behave the way a nested
+scroller should on a phone:
+
+    read to the end        page takes over, moves 321px
+    unread                 the drag reads the passage, page holds still
+    short enough to fit    no scroller, page moves 310px
+
+The fixes from the previous commit are intact: whole-line cuts at 9, 6, 4
+and 7 lines across four screen sizes; nothing painting over the passage
+across 7,000px of scroll; --psg-h still measured at 394px and questions
+still landing clear of it. Exam player unchanged on three papers.
+Lighthouse P98 A100 BP100 SEO100. CSP clean on 13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d633513b42464f8ea1a94aea67522a24f1fe50c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/5d633513b42464f8ea1a94aea67522a24f1fe50c"/>
+    <title>
+        The passage stays under its own lid
+    </title>
+    <updated>2026-09-11T08:36:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;The passage stays under its own lid
+
+Three faults in one card, all of them visible in a reading block on a
+phone, all measured on N3 Practice Test 27.
+
+The question was painted over the passage. .q-passage is sticky and had
+no z-index, so it was painted in document order and the question block
+below it - later in the DOM - was drawn on top of the thing that was
+supposed to be staying in view. The question head began 82px above the
+bottom of the passage and covered it: passage text appeared to run on to
+the question&amp;#39;s grey background, and the flag ended up sitting in the
+middle of a sentence. Scanning 7,000px of a reading section, the worst
+overlap was 82px; it is 0 now.
+
+Every passage was sliced through the middle of a line. The cap was 42vh,
+which is a number with no relationship to the text: it left a 312px text
+area against a 32px line-height - 9.75 lines - so the tenth row of
+characters was always cut in half horizontally. It reads as a broken
+page, not as &amp;quot;there is more below&amp;quot;. The cap is counted in lines now, and
+lands on a whole one at every size tested: 9 lines on an upright phone,
+6 in a 600px window, 4 on a phone held sideways, and on a desktop the
+passage simply fits.
+
+The label and the Word meanings button scrolled away with the text. They
+were deliberately put at the top so a sticky box could not strand them
+out of reach, and then the box&amp;#39;s own inner scroll stranded them anyway,
+halfway up a paragraph. The prose scrolls now and the box does not, so
+they stay where they were put.
+
+A fade marks the cut while there is more under it, and clears the moment
+there is not - a fade that stayed after you reached the end would be
+telling you something untrue. Jumping to a question now clears the
+pinned passage too: its height is measured into --psg-h as each block is
+built, rather than guessed, because the cap changes with the screen.
+
+Exam player unchanged on three papers against the previous commit. The
+section switcher added in the last commit still behaves. Lighthouse P98
+A100 BP100 SEO100. CSP clean on 13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13419b9720e7c7e7fbb3114d087116475ca769dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/13419b9720e7c7e7fbb3114d087116475ca769dc"/>
+    <title>
+        A way out of a section, where the section ends
+    </title>
+    <updated>2026-09-11T08:19:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;A way out of a section, where the section ends
+
+You were right, and it is worse than it looked. Measured on N3 Practice
+Test 4 with all four sections chosen: the section switcher is drawn once,
+230px down a page that is 20,234px long, and it is static. Work through
+Language Knowledge, reach the end, and the only control that moves you to
+Reading is 18,586px behind you. What meets you at the bottom is &amp;quot;Mark
+this section&amp;quot; and &amp;quot;Submit exam&amp;quot;.
+
+And once a section was marked it was a dead end: that branch drew &amp;quot;End of
+paper&amp;quot; and a review hint and nothing else - under a comment in this file
+promising &amp;quot;nothing to submit here, just the way on to the next one&amp;quot;. The
+promise was written; the control never was.
+
+The switcher is drawn again at the foot now, under a rule and a line
+reading &amp;quot;Go to another section&amp;quot;, so the two answers are separated: the
+buttons above finish this section, the row below leaves it. The section
+you are on is disabled rather than hidden, so the row keeps its shape and
+you can see where you have been. It appears in all three end states -
+still working, section marked, whole sitting reviewed - and not at all on
+a single-section sitting, where there is nowhere else to go.
+
+Not pinned to the screen, which is what you suggested. Pinning would
+spend 44px of every phone screen across all 20,000px of scrolling to
+serve a need that arises once, at the end - which is exactly where this
+is instead. The copy at the foot is a plain group of buttons rather than
+a second tablist: two tablists driving the same content is a confusing
+thing to hand a screen reader. Both copies refresh together, so the
+per-section counts cannot drift apart.
+
+Verified on N3 Practice Test 4, four sections: at the bottom the row is
+on screen with Language Knowledge disabled and Reading and Listening
+live; pressing Reading switches section and lands at the top; marking a
+section leaves the row in place instead of a dead end; top and foot
+counts read identically. A one-section sitting has no row and still ends
+in &amp;quot;Submit exam&amp;quot;. Japanese reads ほかの科目へ.
+
+Twelve languages, 442 keys each. Exam player unchanged on three papers
+against the previous commit. Lighthouse P98 A100 BP100 SEO100. CSP clean
+on 13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd57989ca8e147d4c71110185b72570297d80ba8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/SureshSurkheti/jlpt-practice/commit/fd57989ca8e147d4c71110185b72570297d80ba8"/>
+    <title>
+        Build a row&#39;s mark buttons when the row arrives
+    </title>
+    <updated>2026-09-11T07:44:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/218550328?s=30&amp;v=4"/>
+    <author>
+      <name>oec-suresh</name>
+      <uri>https://github.com/oec-suresh</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build a row&amp;#39;s mark buttons when the row arrives
+
+A word list is up to 3,760 rows and each was given a checkmark-and-cross
+pair at load - three elements a row, 11,250 of them, for a control most
+readers touch on a couple of dozen words. On n1-words that was 30,090 DOM
+nodes against 18,807 elements of shipped HTML: a third of the page
+existed to offer a button nobody had asked for yet.
+
+They are built when the row comes near the viewport now, which is the
+deferral the rows already get for layout - the stylesheet hands
+off-screen rows to content-visibility, and this hands them their buttons
+on the same terms, a screenful ahead of the scroll. Focus and click fill
+a row too, so a row reached by keyboard or by a screen reader is never a
+row you cannot mark. Without IntersectionObserver every row is built as
+before. Only word lists have marks; kanji and grammar rows never called
+markButtons and are untouched.
+
+What it did NOT do is move the Lighthouse score. n1-words is P86 before
+and P86 after, LCP 3.8s both, measured against the previous commit on a
+second server. That number is set by downloading and parsing 727 KB of
+HTML, which happens before any of this runs, so it was never going to
+move - my reasoning about which nodes were costing the score was wrong.
+
+What it did do, averaged over three runs at 4x CPU throttling:
+
+    DOM nodes           30,092 -&amp;gt; 18,842    -37%
+    layout            1,193ms -&amp;gt; 861ms      -332ms
+    style recalc        269ms -&amp;gt; 229ms       -40ms
+    a keystroke in the search box
+                         47ms -&amp;gt; 34ms        -28%
+
+So it is a third off the work of scrolling and filtering a long list on a
+mid-range phone, and nothing off the first paint.
+
+Pagination was the alternative and it is the wrong trade: rel=next/prev
+has been unsupported since 2019, so eight pages of 470 words would
+compete with each other instead of ranking as one list, and the page&amp;#39;s
+own search, its four filters and find-in-page all work across the whole
+set today. P86 is what a crawlable 3,760-word list costs, and it is worth
+paying.
+
+Verified on n1-words: marking a word saves to storage and restyles the
+row; the Known and Still-learning filters each show their one word with
+its control; unmarking from inside a filter works; returning to All
+rebuilds 3,759 rows with 9 controls and the first row markable; a search
+narrowing to 22 rows leaves them markable. No page errors. CSP clean on
+13.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

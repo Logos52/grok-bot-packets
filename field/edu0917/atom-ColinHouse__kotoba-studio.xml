@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ColinHouse/kotoba-studio/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ColinHouse/kotoba-studio/commits/main.atom"/>
+  <title>Recent Commits to kotoba-studio:main</title>
+  <updated>2026-09-16T23:35:25Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cb32765fbe7031fa7715b979b9f152aa0a9577e1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/cb32765fbe7031fa7715b979b9f152aa0a9577e1"/>
+    <title>
+        fix(capture): put /ws/hook behind the capture gate (#112)
+    </title>
+    <updated>2026-09-16T23:35:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(capture): put /ws/hook behind the capture gate (#112)
+
+The inbound hook websocket was the one live capture source that neither
+respected the gate nor re-resolved the database. Every other source —
+clipboard, the outbound hook client, the region watcher, the hotkey — goes
+through gate.ingest(); this one wrote straight through, so a line arriving
+during a backup restore landed in the database being replaced.
+
+It now answers {&amp;quot;ok&amp;quot;: false, &amp;quot;error&amp;quot;: &amp;quot;paused&amp;quot;} instead of dropping the line
+silently: the peer is a program, and a silent success is worse for it than a
+refusal. The session is resolved per message rather than once per connection,
+because a Textractor connection stays open for a whole evening.
+
+The regression test for the database asserts how many times app.state.db is
+resolved, not where the row lands. SQLite reconnects a disposed engine to the
+same path, so a captured handle still writes the row on macOS — the real
+damage is a connection held open across the file swap, which does not
+reproduce here. Counting resolutions is what actually separates the two
+implementations, and both new tests fail without this change.
+
+Closes #89
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e29e0f3c37f20047235cca72e394bf2750774eeb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/e29e0f3c37f20047235cca72e394bf2750774eeb"/>
+    <title>
+        fix(system): restore and long jobs must not write together (#113)
+    </title>
+    <updated>2026-09-16T23:35:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(system): restore and long jobs must not write together (#113)
+
+JMdict install, pitch install, KANJIDIC import and the FSRS optimizer each
+open one session and hold it for minutes. Nothing stopped a backup restore
+from disposing and replacing the database underneath them.
+
+The gate already coordinates live capture against restore, so it gains the
+other half rather than a second primitive: a job claims the database on the
+request thread, so the caller gets a real error instead of a job that reports
+failure later, and releases it on the worker thread that ends it. Restore
+refuses outright while a claim is held rather than waiting — a JMdict import
+runs for minutes, and blocking a restore that long is not a better outcome
+than asking the user to try again.
+
+Jobs still run alongside each other; only restore is exclusive. Mutual
+exclusion also removes the stale-handle question for these four, since the
+database can no longer be replaced while they hold it.
+
+The claim is released if the thread fails to start. A leaked claim would
+refuse every future restore until the process is restarted, which is a worse
+failure than the one being fixed.
+
+Closes #91
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/02c30154c1fae15dd21a01d6eb7630490b27ee31</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/02c30154c1fae15dd21a01d6eb7630490b27ee31"/>
+    <title>
+        chore(lint): enforce the rules the code was already annotating for (#…
+    </title>
+    <updated>2026-09-16T17:52:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(lint): enforce the rules the code was already annotating for (#106)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d47ff1f098d79e35ff1a09539f07983f46f2be01</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/d47ff1f098d79e35ff1a09539f07983f46f2be01"/>
+    <title>
+        feat(overlay): show the current line inside the game (#108)
+    </title>
+    <updated>2026-09-16T17:50:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(overlay): show the current line inside the game (#108)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b1b5f6f22aadb0dbecfe1d5aef9effa322540f58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/b1b5f6f22aadb0dbecfe1d5aef9effa322540f58"/>
+    <title>
+        fix(dict): undo a frequency import that fails part way through (#110)
+    </title>
+    <updated>2026-09-16T17:49:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(dict): undo a frequency import that fails part way through (#110)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/250c90566d3732df19a52f87e5589b04d720d70d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/250c90566d3732df19a52f87e5589b04d720d70d"/>
+    <title>
+        docs: define issue label semantics for agents (#105)
+    </title>
+    <updated>2026-09-16T17:29:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: define issue label semantics for agents (#105)
+
+Section 7 told an agent how to consume `agent-ready` but nothing said how to
+apply it, so the queue&amp;#39;s index was being maintained by habit. Section 8 now
+writes the three dimensions down: exactly one type label, readiness, and the
+labels that are promises to other people.
+
+The point worth stating plainly is that `agent-ready` is a readiness state
+and not a byline. An issue is not ready because an agent wrote it, and a
+human can file a vague one; the label answers whether an unattended run can
+finish without asking anything, and nothing else.
+
+Writing it down surfaced a contradiction: §7 said a human decides the label,
+which would forbid what §8 describes. Resolved by moving the human checkpoint
+to where it protects the queue — an agent may classify an issue it opens, but
+may not then take that issue, because certifying your own find and building
+it leaves no human in the loop at any point.
+
+Two labels are new because the repository already needed them: eight issues
+titled `test(...)` and one titled `refactor(...)` were filed as `enhancement`
+for want of anywhere better. `japanese` is new too, and that is a bug fix —
+the japanese.md template already declared it, GitHub silently ignores labels
+that do not exist, so every issue filed through that template arrived with no
+label at all.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/90e8dcd57c1cce0378b1c7183ef41ecde4f2ebee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/90e8dcd57c1cce0378b1c7183ef41ecde4f2ebee"/>
+    <title>
+        feat(text): import EPUB light novels as sentence lines (#99)
+    </title>
+    <updated>2026-09-16T17:23:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(text): import EPUB light novels as sentence lines (#99)
+
+Light novels are the highest signal-to-noise text source there is, and an
+EPUB is already structured: following the spine turns a book into chapters of
+clean sentences. Ruby readings are kept beside the sentence rather than
+concatenated into it -- 食べ物たべもの would wreck tokenization -- and the
+import commits in batches, so a 100k-character book finishes without holding
+the book in memory.
+
+Bulk imports match duplicates by exact text hash only: the OCR re-capture
+heuristics (prefix growth, similarity) would drop a long narration sentence
+that differs from its neighbour by one character. That needs create_lines(),
+which stages a batch of lines and commits once.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ba31cf834ca4551d41d78ffb8439ccc81031cf44</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/ba31cf834ca4551d41d78ffb8439ccc81031cf44"/>
+    <title>
+        feat(learning): import KANJIDIC2 and show kanji progress (#104)
+    </title>
+    <updated>2026-09-16T17:23:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(learning): import KANJIDIC2 and show kanji progress (#104)
+
+* feat(learning): import KANJIDIC2 and show kanji progress
+
+Kanji have structure that word lists hide: a Chinese reader wants to know
+which jōyō characters they have covered, and which characters of a work fall
+outside the table. The import mirrors the JMdict one -- EDRDG download, same
+CC BY-SA attribution -- parsing the official kanjidic2.xml (the old
+/kanjidic/ URL 404s; /pub/Nihongo/ still serves it). The grid itself is one
+pass over the terms plus two queries, never one query per character.
+
+Assisted-by: opencode (deepseek-flash)
+
+* feat(ui): add the kanji grid and out-of-jōyō characters of a work
+
+The grid shades each jōyō character by mastery with the existing ink
+scale, clicking one lists the terms that contain it, and a work&amp;#39;s section
+shows its characters outside the table with occurrence counts. KANJIDIC2
+installs from the same EDRDG source as JMdict; the attribution now names
+it in Settings, the README and NOTICE.md.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ffe3061f68c1f21e6b3d6889d15dff0a6281510</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/1ffe3061f68c1f21e6b3d6889d15dff0a6281510"/>
+    <title>
+        feat(capture): read bound windows from their own pixels (#102)
+    </title>
+    <updated>2026-09-16T17:06:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): read bound windows from their own pixels (#102)
+
+A screen grab reads whatever is on top; the moment another window covers the
+game -- or, later, our own overlay sits over it -- the OCR sees the wrong
+picture. With a window bound, capture now asks the window to render itself
+via PrintWindow(PW_RENDERFULLCONTENT), crops the client area out of the
+frame, and treats an all-black answer as failure so the caller still falls
+back to the screen grab. REST collect, the hotkey collector and the watcher
+all pass the bound window.
+
+Verified on Windows 11 with PARQUET fully covered by the terminal: the screen
+grab returned empty text, the window grab read the live line and stored it
+with the cropped screenshot. Tests cover the preferred window path, the
+fallback and the watcher grabber.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5a0792ae06637ceec81651840da55772da3c2bce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/5a0792ae06637ceec81651840da55772da3c2bce"/>
+    <title>
+        feat(capture): keep a rolling media buffer for late backfills (#101)
+    </title>
+    <updated>2026-09-16T17:01:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): keep a rolling media buffer for late backfills (#101)
+
+The learner notices a missed word after the line already left the screen, so
+keep the last minute of frames (and audio, once a source exists) in memory and
+let POST /api/lines/{id}/backfill attach them to a line that already exists:
+the most recent frame not later than captured_at, within a configurable
+tolerance. A byte cap rather than a count bounds the memory, stopping the
+watcher releases it, and the buffer itself never touches the data directory.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8fb3fd0727157eea09a30dac2cfd43937f4e8da6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/8fb3fd0727157eea09a30dac2cfd43937f4e8da6"/>
+    <title>
+        feat(text): read mokuro output so manga becomes a source (#95)
+    </title>
+    <updated>2026-09-16T16:46:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(text): read mokuro output so manga becomes a source (#95)
+
+Manga is a major Japanese-learning medium and mokuro already solves the hard
+OCR part; importing its .mokuro volumes turns them into sessions of
+page-located lines. The upload accepts only the .mokuro file (no page images),
+so imported lines carry a page locator but no screenshot yet; the reader view
+will render the text instead.
+
+Field names were checked against mokuro 0.2.5 (master) and its 0.2.0-beta.6
+fixture; a mismatch raises bad_mokuro instead of importing half a volume. The
+line order stays mokuro&amp;#39;s own: the detector sorts each block&amp;#39;s lines and keeps
+re-sorting while splitting and merging, and re-deriving the order from box
+centres tore apart a column the fixture split into two stacked lines.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d088162e66fc4ccad52ac38dd81806aac01d7535</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/d088162e66fc4ccad52ac38dd81806aac01d7535"/>
+    <title>
+        feat(capture): follow the game window instead of fixed screen pixels …
+    </title>
+    <updated>2026-09-16T16:43:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): follow the game window instead of fixed screen pixels (#98)
+
+Manual pixel framing breaks the moment the window moves, and games are
+windows, not screens. A work can now be bound to a running window (the list
+comes from the OS -- process, title, size; nothing is guessed from a game&amp;#39;s
+name), and its dialogue box is stored relative to the client area, so moving
+the window, switching monitors or changing resolution keeps the same box.
+
+The hotkey collector and the region watcher resolve the binding on use, the
+watcher once per cycle; the last absolute region stays as a fallback for when
+the game is closed. Verified on Windows 11 with PARQUET: OCR read the live
+line from the bound dialogue box, collect stored it with a screenshot, and
+the watcher captured a line on its own.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc9f786d5a97335fa9b1583abacf817cff0bdd8b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/fc9f786d5a97335fa9b1583abacf817cff0bdd8b"/>
+    <title>
+        docs: cover M1&#39;s capture surfaces and per-platform install (#97)
+    </title>
+    <updated>2026-09-16T16:20:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: cover M1&amp;#39;s capture surfaces and per-platform install (#97)
+
+SECURITY.md still described M0&amp;#39;s threat model. Since it was written the app
+gained three capture surfaces it never mentioned, two of which a
+privacy-conscious reader has to be told about before they turn them on: the
+global shortcut installs an OS-level keyboard hook that receives events from
+every window, and the clipboard watcher polls the clipboard three times a
+second and ingests anything short and Japanese, whatever it was copied for.
+Screen capture is no longer only the moment you press a shortcut either —
+the region watcher runs until stopped.
+
+&amp;quot;Only the JMdict dictionary&amp;quot; was also no longer true: pitch accent data is
+fetched from Kanjium, and Yomitan packs, .apkg decks, subtitles and backups
+are all parsed from files that usually come off the internet. Said so, and
+said plainly that parsing untrusted input is where a bug is most likely.
+
+README assumed a reader who already has uv and Node. The audience is someone
+who wants to learn Japanese from a visual novel, so the prerequisites are now
+actual per-platform commands, and it says up front that there is no installer
+yet rather than letting people look for one. The phone section covers what
+actually goes wrong — AP isolation, the firewall prompt, and the fact that
+the port has no authentication at all.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d1ce1bdf0631338c88f2193ce1e680cfe9094e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/7d1ce1bdf0631338c88f2193ce1e680cfe9094e7"/>
+    <title>
+        build(package): ship a bundled Windows app and installer (#96)
+    </title>
+    <updated>2026-09-16T16:12:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build(package): ship a bundled Windows app and installer (#96)
+
+Windows users cannot be asked to run Python. make package-windows now builds
+the frontend, a PyInstaller onedir bundle and (optionally) an Inno Setup
+installer, and then proves the bundle works: the smoke test starts the frozen
+exe on a throwaway data dir and checks the SPA, a real Windows OCR round-trip
+and tokenization -- exactly the pieces PyInstaller breaks silently. The frozen
+SPA lookup now reads sys._MEIPASS instead of walking up from __file__.
+
+PyInstaller stays in its own packaging extra. Signing is scripted (thumbprint
+or PFX via KOTOBA_PFX_PASSWORD) but untested: this machine has no certificate.
+docs/CODE_SIGNING.md covers certificate sources, CI secrets and the macOS gap.
+
+Measured on Windows 11: bundle 321.8 MB (260 MB is the unidic-lite
+dictionary), installer 56.1 MB, install ~7 s, first start 1.6-2.9 s; install,
+run and silent uninstall tested for real. macOS .app and notarization are not
+part of this change.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9fc7ff5829d3ab21d253ff2eab948c2167091d47</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/9fc7ff5829d3ab21d253ff2eab948c2167091d47"/>
+    <title>
+        refactor(models): give every line a locator and a stable order (#88)
+    </title>
+    <updated>2026-09-16T15:37:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(models): give every line a locator and a stable order (#88)
+
+漫画与 EPUB 是文档式的（第几页 + 框 / 第几章 + 偏移），现有流式模型没有位置；「一种格式加两列」会让 `Line` 每接一种内容就迁移一次。`Line` 增加 `locator_json`（`{&amp;quot;kind&amp;quot;: …}`，kind 必填）与索引列 `ord`（作品内稳定顺序），`start_ms`/`end_ms`/`position_json` 原样保留；`schemas/lines.line_locator()` 在缺少 `locator_json` 时从旧字段合成（time / region），老数据照样可读。字幕导入成为第一个写入方（`kind=&amp;quot;time&amp;quot;` + cue 序号 ord）。列表与词条时间线排序改为 `ord` 优先、`captured_at` 兜底——导入整本书时时间戳几乎相同，不能再靠它排序。ADR 0003 记录取舍：为什么不按格式加列、不用多态表、选 JSON，以及代价（locator 内部字段无法建索引）。
+
+**验证**：`make check` 全绿（exit=0）：后端 ruff/format、`pytest` 175 passed + 1 skipped（本 PR 新增 5 条），前端 lint/typecheck/30 tests/build 通过；Alembic 自动生成只含这两列 + 索引，逐行看过（无 `UTCDateTime` 坑），在 dev 库 `upgrade head` 验证单一 head。测试：旧字段（time/region）合成 locator、`locator_json` 优先、坏 JSON 返回 None、`ord` 决定列表顺序（captured_at 相同时）、字幕导入写 locator 与 ord。
+
+**未能验证**：漫画/EPUB 的实际 locator 形态要等各自导入器；前端只是类型补齐，没有 UI 变化。
+
+Closes #51
+
+Assisted-by: opencode (deepseek/deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a01ae52074f44ae9b7e632b4926475070e9c283</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/8a01ae52074f44ae9b7e632b4926475070e9c283"/>
+    <title>
+        feat(capture): collect the current line from a global hotkey (#85)
+    </title>
+    <updated>2026-09-16T15:31:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): collect the current line from a global hotkey (#85)
+
+A global hotkey collects the current line without leaving the game: one
+configurable combination (default Ctrl+Shift+S) screenshots the saved region,
+OCRs it and stores the line, and failures -- no saved region, a backup restore
+in flight, macOS missing Accessibility -- show up in the settings status
+instead of failing silently. pynput is a new base dependency, imported lazily
+so a headless server still boots.
+
+Windows testing found two things only a real machine shows: pynput ignores
+synthetic input, so the check needs a human press; and a held Ctrl turns a
+letter into its control character before matching (a real Ctrl+S arrives as
+DC3), so control characters are normalised back first. Verified on Windows 11
+with the built-in OCR: a real Ctrl+Shift+S collected the rendered line with
+its screenshot. The matching check skips where no keyboard backend exists.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2ce04504aa2199f0d524aed190f7aa0169c15bd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/a2ce04504aa2199f0d524aed190f7aa0169c15bd"/>
+    <title>
+        fix(dict): tell frequency tables apart from dictionaries in settings …
+    </title>
+    <updated>2026-09-16T15:30:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(dict): tell frequency tables apart from dictionaries in settings (#87)
+
+设置页的词典列表已经不再受 `installed`（那是 JMdict 的标志）门槛限制，但导入时两种包都写成 `kind=&amp;quot;yomitan&amp;quot;`：频率表显示成「2 条」的词典，用户会以为导了一部只有两个词的词典。频率导入改存 `kind=&amp;quot;yomitan-freq&amp;quot;`，且只替换同 kind 的同名记录（同名的词条词典不再被频率导入删掉）；加一个**数据迁移**给拆分前导入的行按「有 term_frequencies、无 dict_entries」重标；设置页每行显示类型标签与真实计数单位（`N 条词条` / `N 条频率`），空状态文案改为「尚未安装 JMdict，也还没有导入其他词典」，不再把用户已导入的东西说没。JMdict 安装按钮与 `installed` 语义不动。
+
+**验证**：`make check` 全绿（exit=0）：后端 ruff/format、`pytest` 170 passed + 1 skipped（本 PR 新增 2 条，含同名词条+频率共存的回归），前端 eslint/prettier/`vue-tsc`/30 tests（新增 2 条 vitest）/build 通过。数据迁移在干净 dev 库上 `upgrade head` 验证单一 head；迁移测试覆盖的是新导入的 kind 与共存场景。前端 vitest 覆盖 `dictionaryKindLabel`/`dictionaryCountLabel`/`dictionaryListShows`（installed=false 但列表非空时仍渲染）。
+
+**未能验证**：没有组件测试基建（见 #69），所以「列表照样渲染」是通过纯函数 + vue-tsc 验证而不是真实挂载渲染；数据迁移没有在带旧数据的库上实测（迁移语句简单，只在干净库上跑过升级）。
+
+Closes #48
+
+Assisted-by: opencode (deepseek/deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bf69e2fe80f82bd093681a8dafe2528e83ae3a3f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/bf69e2fe80f82bd093681a8dafe2528e83ae3a3f"/>
+    <title>
+        fix(dict): attribute glosses to the dictionary they came from (#84)
+    </title>
+    <updated>2026-09-16T15:22:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(dict): attribute glosses to the dictionary they came from (#84)
+
+日中词典的中文释义被标成「英文释义」并署名 JMdict——M2 的全部意义就是让中文母语者导入社区日中词典，这样等于把他导的东西署名给一部他没装的词典，对 CC-BY-SA 的词典是实打实的署名错误。查词 DTO 现在带上 `dict_title` / `dict_kind`（`lookup()` join Dictionary）；收件箱编辑器的字段改成中性的「词典释义」并在旁边标出来源词典标题，`sense.origin` 通过 `senseOrigin()` 记录真实来源（标题 ≤16 字符用标题，否则退回 kind，因为 origin 列是 16 位），不再写死 `jmdict`；词条页的角标按每条 sense 的 origin 显示（`originLabel()`：JMdict/自填/Yomitan 词典/自定义标题）。已存数据不做迁移。**不猜语言**是刻意的：词典包没有可靠的语言标记（issue 明确划出范围）。
+
+**验证**：`make check` 全绿（exit=0）：后端 ruff/format、`pytest` 169 passed + 1 skipped（本 PR 新增 2 条），前端 eslint/prettier/`vue-tsc`/28 tests（新增 2 条 vitest）/build 通过。后端测试：导入自造 Yomitan 词典后 `GET /api/dict/lookup?q=水` 返回 `dict_title=&amp;quot;测试词典&amp;quot;`、`dict_kind=&amp;quot;yomitan&amp;quot;`；JMdict fixture 查词返回其自身标题与 kind。前端 vitest：`senseOrigin`（短标题用标题、超长退回 kind、中文释义记 user）、`originLabel` 映射。
+
+**未能验证**：没有用真实日中词典包验证标题长度/内容形态；浏览器里没实际点过；旧数据（`origin=&amp;quot;jmdict&amp;quot;` 的 Yomitan 释义）会继续显示 JMdict，直到用户重新建那条 sense。
+
+Closes #47
+
+Assisted-by: opencode (deepseek/deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80e862da6e38e2fd2a4078a68e8003cdcc981441</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/80e862da6e38e2fd2a4078a68e8003cdcc981441"/>
+    <title>
+        feat(review): show pitch on the card back and quiz it (#83)
+    </title>
+    <updated>2026-09-16T15:14:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(review): show pitch on the card back and quiz it (#83)
+
+音高数据进来了就得用得上。卡面**背面**对每个已记录音高画一条 `PitchLine`（纯 CSS/SVG，无第三方库）：按 mora 分段（拗音合一拍），高拍画线、降位断开、平板一路到底，并显示型名；**正面不显示**（reading 卡若在正面给读音就是泄题）。同一词多个音高全部展示。小测新增 `pitch` 题型：给词与读法、四选一选型（选择在服务端校验），沿用现有 quiz 结构；**没有音高数据时该题型自然不出题**，同一词有多个音高时跳过（答案有歧义）。小测仍走 `mode=&amp;quot;session_quiz&amp;quot;`，绝不碰 FSRS 调度（不变量 1，测试里断言卡的状态/到期时间不变）。
+
+**验证**：`make check` 全绿（exit=0）：后端 ruff/format、`pytest` 167 passed + 1 skipped（本 PR 新增 7 条），前端 eslint/prettier/`vue-tsc`/26 tests（新增 2 条 vitest）/build 通过。后端测试：卡面带 `pitches`（含 pattern/label）与无数据时为空数组、pitch 小测四项选择且答案不下发、对/错判分、答题后卡调度字段不变、无数据不产题、多音高跳过、`pitches_for` 的读法优先与无读法回退。前端 vitest：mora 切分（きょう/しゅう/コーヒー/がっこう/半角）与四种型的电平序列。
+
+**未能验证**：音高线的实际视觉效果（SVG 折线在真字下的观感）没在浏览器里看过；没有真实 Kanjium 全量数据下的题型出现的实机体验。
+
+Closes #35
+
+Assisted-by: opencode (deepseek/deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc285564a85d4d31417f1f14a160555a68e02126</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotoba-studio/commit/fc285564a85d4d31417f1f14a160555a68e02126"/>
+    <title>
+        feat(ui): give the Classical system a motion layer (#79)
+    </title>
+    <updated>2026-09-16T15:07:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(ui): give the Classical system a motion layer (#79)
+
+The design held up statically but every state change was a hard cut: the
+whole app had exactly one transition (a button background) and not a single
+&amp;lt;Transition&amp;gt;. Cards appeared, answers revealed, pages swapped and toasts
+vanished all in one frame, which is what made an otherwise careful design
+feel rough.
+
+The motion follows the paper-and-ink language rather than the spring-loaded
+one most UI kits ship: opacity leads, translation never exceeds 6px, and
+everything eases out — paper settles, it does not bounce. Durations are
+scaled for a tool someone uses for hours (120/200/320ms), not for a
+marketing page.
+
+The reveal is the one deliberate beat. Front and back now cross-fade with
+mode=&amp;quot;out-in&amp;quot; so the two faces can never share a frame — that is invariant
+§5.2 enforced by the transition rather than by hoping. Behind it the four
+zones rise in sequence, 70ms apart, so the answer lands before the context
+arrives instead of the whole back face dropping at once.
+
+Token ink density encodes learning state, so those colour changes are now
+transitions: a word moving from unknown to learning settles instead of
+snapping to a different grey.
+
+The existing prefers-reduced-motion block already zeroes every duration
+with !important, so this whole layer disables itself there.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

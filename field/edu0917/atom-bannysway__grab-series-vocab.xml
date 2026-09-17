@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bannysway/grab-series-vocab/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bannysway/grab-series-vocab/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bannysway/grab-series-vocab/commits/main.atom"/>
+  <title>Recent Commits to grab-series-vocab:main</title>
+  <updated>2026-09-16T14:25:44Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3dadbdebc4b76f4adaf5a5eb9fff09ac4dd6357</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bannysway/grab-series-vocab/commit/f3dadbdebc4b76f4adaf5a5eb9fff09ac4dd6357"/>
+    <title>
+        Narrow the &quot;no dialogue&quot; claim so that it is literally true
+    </title>
+    <updated>2026-09-16T14:25:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/119055643?s=30&amp;v=4"/>
+    <author>
+      <name>bannysway</name>
+      <uri>https://github.com/bannysway</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Narrow the &amp;quot;no dialogue&amp;quot; claim so that it is literally true
+
+Every README and notice said no repository here reproduces &amp;quot;a line of
+dialogue&amp;quot;. Auditing the published data against that sentence found it was
+99.94% true rather than 100%: of 15,867 headwords, 14 are clause-shaped and
+five of those are verbatim short lines from the show (the worst being an
+11-word pun).
+
+The claims that were already exact are kept, and they carry the message:
+no subtitle file, no transcript, no timing data, no example sentence, no
+dialogue translation. What is dropped is only the absolute that overstated
+the case. The headword bullet now reads &amp;quot;a word, a fixed phrase, or a short
+situational expression&amp;quot;, which describes what the data actually holds.
+
+Applied in the generator so all three corpora and all seven languages move
+together, and in the profile README in both languages.
+
+Found by asking the opposite question of the one the release audit asks. The
+audit looks for a leaked example sentence and passes; nobody had checked
+whether the entries that legitimately have no example field might still be
+sentences themselves.
+
+Also fixes two layout defects in the generated NOTICE: a heading that ran
+straight on from the preceding paragraph, and a line wrap that produced a
+one-word line.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d4eb7376dd11f595d5686d13601ac2f45f7241ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bannysway/grab-series-vocab/commit/d4eb7376dd11f595d5686d13601ac2f45f7241ef"/>
+    <title>
+        Build the corpus repositories, and add a matrix-wide validator
+    </title>
+    <updated>2026-09-16T14:16:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/119055643?s=30&amp;v=4"/>
+    <author>
+      <name>bannysway</name>
+      <uri>https://github.com/bannysway</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build the corpus repositories, and add a matrix-wide validator
+
+Adds the machinery for the rest of the matrix, and fixes three defects found
+while using it.
+
+Corpus repositories
+- tools/corpus_i18n/ — a compact README template in 7 languages, plus per-show
+  prose. The corpus README is a data page, not a manifesto, so it stays short.
+- tools/build_corpus_docs.py — puts READMEs, LICENSE (CC BY 4.0 with the
+  attribution wording spelled out), NOTICE.md and .gitignore next to the
+  exported data. `build_corpora.py` now runs it, so one command produces a
+  repository that can be pushed.
+- The per-show figures come from matrix.json like everywhere else. A language
+  module never contains a number.
+
+Defects fixed on the way
+- Corpus READMEs named `data/anki/nypd-blue-safe.csv`; the exporter writes
+  `anki-nypd-blue-safe.csv`. A reader&amp;#39;s first action would have failed. The
+  generator now resolves the real filenames from the slug, and `--check` fails
+  if a README ever names a file that is not on disk.
+- `grab export --format md|html` labelled everything in Chinese — table
+  headers, the search placeholder, the footer — in data files published to
+  seven language groups. Structural labels are now English
+  (Headword/Gloss/IPA), matching the `TV Vocab` deck-name decision. The gloss
+  content stays Chinese; that is data, and it is the top contribution ask.
+- A repair queue below 100 rows is no longer published. Three leftover rows
+  invite nobody to contribute, and an undocumented file in a public repository
+  is worse than no file. The rows stay in the master workspace.
+
+New: tools/validate_matrix.py
+The only check that sees what no single repository can see about itself —
+whether every repository links to every other one, whether any relative link
+resolves, whether the language bars are complete, whether any figure in prose
+has gone stale, and whether anything private reached any of them. The profile
+node is satisfied by either the profile repository or the profile page, since
+the repository is what GitHub renders at that page.
+
+Release checklist updated to run it. All five repositories pass: 0 errors.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e53038a2cad1bf7710e90f6ad26716a311c53785</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bannysway/grab-series-vocab/commit/e53038a2cad1bf7710e90f6ad26716a311c53785"/>
+    <title>
+        grab-series-vocab: an agent skill that builds a deduplicated TV vocab…
+    </title>
+    <updated>2026-09-16T14:00:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/119055643?s=30&amp;v=4"/>
+    <author>
+      <name>bannysway</name>
+      <uri>https://github.com/bannysway</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;grab-series-vocab: an agent skill that builds a deduplicated TV vocabulary corpus
+
+Turn a directory of subtitle files into a searchable vocabulary library
+(headword, gloss, IPA, difficulty) that exports to Anki, Markdown, or a
+single-file web page.
+
+The design decision that shapes everything: build the corpus first and treat
+every export as a view of it. A per-episode pipeline re-collects what it has
+already seen -- measured on 33,270 cards, 35.9% were duplicates, and duplicate
+cards are not merely wasted effort, they corrupt the review schedule.
+
+Architecture
+- library-first: one SQLite corpus, exports are views
+- schema-first: every ingested row is validated against entry.schema.json
+- deduplication by construction: the existing headwords are emitted as a
+  blocklist before any agent work is dispatched
+- two export modes: `full` keeps the example sentence for local study,
+  `safe` drops it. Only `safe` is ever published.
+
+Contents
+- skills/grab-series-vocab/  the skill (SKILL.md, schema, references, CLI)
+- tools/                     matrix.json as the single source of figures,
+                             7-language README generator, corpus builder,
+                             legacy importer, doc-figure sync, release audit
+- examples/demo/             fictional bilingual sample + expected output
+- docs/                      install, study method, pipeline, matrix map,
+                             corpus catalogue
+
+README in English, 中文, Español, 日本語, 한국어, Deutsch, Français.
+
+No subtitle text is published anywhere. tools/audit_public.py enforces that:
+it fails the build on a dialogue-bearing key in a published JSONL, on a
+subtitle cue timestamp, or on an English sentence sitting in a definition
+column, and it reads private terms from a gitignored local list rather than
+hard-coding them in the check itself.
+
+MIT. Vocabulary data in the companion corpora is CC BY 4.0.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

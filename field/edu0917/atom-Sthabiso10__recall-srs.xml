@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Sthabiso10/recall-srs/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Sthabiso10/recall-srs/commits/main.atom"/>
+  <title>Recent Commits to recall-srs:main</title>
+  <updated>2026-09-16T22:41:19Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c134997212640e741b982e911b879d67c22d1a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/2c134997212640e741b982e911b879d67c22d1a1"/>
+    <title>
+        Merge pull request #4 from Sthabiso10/feat/playground-rework-and-sess…
+    </title>
+    <updated>2026-09-16T22:41:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #4 from Sthabiso10/feat/playground-rework-and-session-queue-fix
+
+Rebuild the playground, and fix the session queue bug it was hiding&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8e1db9e0cf24ae7a2b7fd99e655797444f116f5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/8e1db9e0cf24ae7a2b7fd99e655797444f116f5f"/>
+    <title>
+        feat(docs): rebuild the playground around someone evaluating in a tab
+    </title>
+    <updated>2026-09-16T22:35:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(docs): rebuild the playground around someone evaluating in a tab
+
+The old page was a demo you could look at rather than one you could
+evaluate. Grade the eight Korean cards and it said &amp;quot;nothing due, come
+back tomorrow&amp;quot;, which is the algorithm being honest and a dead end for
+anyone deciding in a browser tab whether this library is worth an
+afternoon. The single thing that sells spaced repetition, cards coming
+back exactly when they should, was unreachable.
+
+It was also unratable. Nobody visiting has seen 빠르다, so the only
+truthful grade for every card is Again, every interval preview reads the
+same, and the scheduler looks like a timer.
+
+A time machine answers the first. Jump a day, three days, a week or a
+month and the cards you graded come back on the schedule FSRS chose.
+It shifts every stored timestamp backwards, which is indistinguishable
+from moving &amp;quot;now&amp;quot; forwards because FSRS only ever reads elapsed time and
+due-ness, and both survive a uniform shift exactly. The honest way would
+be to inject a clock, since the core exports `offsetClock` for precisely
+this, but `&amp;lt;SRSProvider&amp;gt;` has no clock prop yet; `demo-storage.ts` says
+so, and says why it is allowed to reach past the adapter when an app
+never is.
+
+World capitals and JavaScript trivia answer the second. You genuinely
+half-know eight capitals, so the grades spread and the intervals diverge.
+Korean stays for anyone who wants to watch a card they keep failing.
+
+The settings were a printed list: &amp;quot;FSRS, retention target 0.9, 10 cards
+per sitting, interleaved&amp;quot;. Every line of that was a real prop being
+described instead of offered. Retention, session length, order and
+language are now controls, and the generated snippet underneath tracks
+them, so what you tuned by clicking is what you paste. Language also
+gives `&amp;lt;RecallIntl&amp;gt;` its first outing anywhere in the docs.
+
+Layout no longer jumps. Three causes, all measured:
+
+  1. The playground was keying `&amp;lt;SRSProvider&amp;gt;` to force a fresh queue on
+     every deck switch, tearing down the subtree each time. The library
+     fix earlier in this branch makes the session rebuild itself, so the
+     key is gone and the DOM stays put.
+  2. The card (334px) and the dashboard (196px) collapsed to one-line
+     loading states, taking 400px of page with them and throwing the
+     scroll position away. Both hold a floor now. The loading text stays
+     transparent for 350ms, so a localStorage switch says nothing and a
+     slow remote adapter still explains itself.
+  3. The three deck blurbs wrapped to different line counts, shifting
+     everything below by 20px per click. Two lines are reserved.
+
+Measured across 298 samples and six deck switches at both mobile and
+desktop widths: zero movement. Same for the time machine. The only thing
+that still resizes is the code panel gaining three lines when
+`&amp;lt;RecallIntl&amp;gt;` wraps the tree, which is the code honestly being longer.
+
+Two things the theme was hiding. The card inherited this site&amp;#39;s absolute
+`line-height: 24px` into a 30px question; one-word Korean never revealed
+it, and the longer questions here would have rendered on top of each
+other, so every size states its own unitless ratio now. And a card face
+laid its meta pills flush against the word above them.
+
+Retention reading 0% after a good sitting is not a bug, it counts only
+mature reviews as Anki does, but it reads as broken to a newcomer. The
+dashboard says so, and the one-month jump makes the figure reachable.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/afad83bad7fc9a5a8bb3e6aa9c7771408c9ea0f7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/afad83bad7fc9a5a8bb3e6aa9c7771408c9ea0f7"/>
+    <title>
+        feat(react): reveal the answer with Space or Enter
+    </title>
+    <updated>2026-09-16T22:35:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(react): reveal the answer with Space or Enter
+
+`&amp;lt;RatingButtons&amp;gt;` has always bound the number keys to the grades, on the
+reasoning that serious learners grade with the keyboard and never touch
+the mouse. Nothing bound reveal, so they keyed the grade and then reached
+for the mouse to flip the next card, which is the keystroke they make
+more often than any other. Half a keyboard interface is worse than none,
+because it teaches a habit it then interrupts.
+
+Armed only while a card is on screen and still hidden, so it can never
+race the grade keys, and only in default mode, because a render prop owns
+its own keyboard the same way it owns its own markup. Both keys already
+mean &amp;quot;activate&amp;quot; on a focused button, link or field, and Space scrolls the
+page from anywhere else, so the handler leaves those alone rather than
+revealing twice or swallowing a deliberate keystroke. The button carries
+`aria-keyshortcuts` so the binding is discoverable rather than folklore.
+
+Opt out with `revealShortcut={false}`.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/36a3130a0a574890a150452a919aa29b91a94d2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/36a3130a0a574890a150452a919aa29b91a94d2e"/>
+    <title>
+        fix(react): rebuild the study queue when the card set is replaced
+    </title>
+    <updated>2026-09-16T22:34:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(react): rebuild the study queue when the card set is replaced
+
+A session held onto a queue built from cards that were no longer there.
+`useStudySession` latched a `seeded` ref on the first non-empty load and
+never rebuilt after it, so anything that replaced the card set afterwards
+left the learner grading the old one. Switching `deckId` kept the previous
+deck&amp;#39;s queue; so did swapping the adapter, and so did an explicit
+`refresh()` after a bulk import. The only escape was remounting the
+provider, which is what the docs playground had resorted to.
+
+The latch was not laziness. The hook had no way to tell apart the two
+reasons `cards` changes identity, and both arrive as a brand new Map:
+
+  1. the learner graded a card, and the queue must survive it;
+  2. these are different cards now, and the queue must be thrown away.
+
+Rebuild on both and the queue reshuffles under the learner on every
+single grade. Rebuild on neither and you get this bug. So the provider
+now publishes the distinction: `cardsVersion` moves once per completed
+load and never on a grade, and sessions key on that.
+
+A second half turned up while testing the first. `deckId` changes during
+render, but the load answering it lands an effect and a round trip later,
+and in that window the provider was serving the old deck&amp;#39;s cards as
+though they were the new deck&amp;#39;s. A card the learner had just navigated
+away from flashed up before the real one arrived. Cards now live in one
+state object alongside the deck they answer and the load they came from,
+so the three can never disagree, and the provider reports itself as
+loading until its cards match the deck being asked for. `autoLoad={false}`
+still resolves to &amp;quot;not loading, nothing held&amp;quot;.
+
+No scheduling maths is touched. A card graded Good five times in a row
+gets exactly the intervals it got before; what changes is only which
+cards are in the queue to be graded.
+
+Tests are the reason for the new jsdom devDependencies: the package had
+jest but no DOM, so a hook that only misbehaves across a provider
+boundary could not be covered at all. They drive the real provider rather
+than a stubbed context, because the failure lived in the conversation
+between the two and a stub would have passed against the broken version.
+Reverting the fix fails three of them and leaves &amp;quot;survives grading&amp;quot;
+green, which is the shape you want.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67b1a7d82430c65157f664d280bd6dab5814aab7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/67b1a7d82430c65157f664d280bd6dab5814aab7"/>
+    <title>
+        Merge pull request #3 from Sthabiso10/docs/copy-consistency-and-og-image
+    </title>
+    <updated>2026-09-16T21:23:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #3 from Sthabiso10/docs/copy-consistency-and-og-image
+
+docs: make the public copy match what actually ships, and add an OG card&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0bdca4cd7d0623e2c2e6d3ea64ed006fe460826</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/e0bdca4cd7d0623e2c2e6d3ea64ed006fe460826"/>
+    <title>
+        docs: make the public copy match what actually ships, and add an OG card
+    </title>
+    <updated>2026-09-16T21:21:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: make the public copy match what actually ships, and add an OG card
+
+Everything a visitor reads before installing was advertising work that is
+not finished, while quietly omitting work that is. Both directions cost
+trust on the way in, so this squares the copy with the code.
+
+SM-2 is scaffolded and throws, but was sold as working in the README
+subtitle, core&amp;#39;s npm description, core&amp;#39;s README, the docs OG description,
+the homepage hero pill and the repo description. It is now named only
+where the comparison is fair or the copy says outright that it throws.
+
+Two worse cases came out of the same sweep:
+
+  - SRSProvider&amp;#39;s `scheduler` prop documented &amp;quot;Defaults to SM-2&amp;quot;. The
+    default is FSRS. That JSDoc ships in the .d.ts, so editor tooltips
+    were pointing every user at the scheduler that throws.
+  - The algorithm page said the per-user weight optimiser &amp;quot;ships later&amp;quot;.
+    It is implemented in @recall-srs/core/optimizer. Replaced with the
+    real API and the hold-out validation it performs.
+
+The README&amp;#39;s own Status table had the same problem in reverse: retention
+curves, streaks, rating-button shortcuts and the optimiser were all
+listed as open work despite being implemented. Only SM-2, the weight
+verification and the three adapters are genuinely open.
+
+The skeleton adapters disclosed their status in the last line of each
+README, below the install and usage snippets, and not at all on npm.
+Anyone copying the install line got a package where every method throws.
+Status now leads: a warning block under each title pointing at
+localstorage instead, &amp;quot;Skeleton:&amp;quot; at the front of each npm description,
+and a badge on the adapter cards in the docs.
+
+VERSION in the docs nav was hand-typed and stale. It rendered 0.2.0 in
+the header, hero and footer while react was 0.3.0 and core 0.2.1. It now
+reads from the react manifest so it cannot drift again.
+
+Social card: there was no og:image anywhere, so every share of the repo
+or the docs rendered a blank card. Built with next/og rather than
+checked in as a PNG, so the headline cannot drift from the homepage.
+Two things it needs to survive `output: &amp;#39;export&amp;#39;`: `force-static`, or
+the route errors, and a pinned Content-Type, because the export writes
+the file with no extension and the existing nosniff header then makes
+every scraper drop it.
+
+The npm descriptions here only reach npm on the next publish.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d4b926bf006cbb6231c8db77c6632b818e3601a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/1d4b926bf006cbb6231c8db77c6632b818e3601a"/>
+    <title>
+        Merge pull request #2 from Sthabiso10/release/react-0.3.0-and-nav-fixes
+    </title>
+    <updated>2026-09-16T15:02:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #2 from Sthabiso10/release/react-0.3.0-and-nav-fixes
+
+Release react 0.3.0, and fix the docs navigation hierarchy and accent&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/70078a5bad15feeeca90edd9f1aa7028c19f20b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/70078a5bad15feeeca90edd9f1aa7028c19f20b9"/>
+    <title>
+        fix(docs): separate nav captions from nav controls, and fix the accent
+    </title>
+    <updated>2026-09-16T14:57:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(docs): separate nav captions from nav controls, and fix the accent
+
+Three things, all in the navigation rails.
+
+The group captions and the links beneath them were the same colour. A
+caption and a control looked identical, so &amp;quot;Concepts&amp;quot; read as something
+you could press. There are now three distinct levels: the caption drops
+to 11px on --fg-subtle, the items sit at 13px on --fg-secondary, and the
+active item keeps the raised pill and gains a marker bar.
+
+The accent was drifting purple. --accent-soft was Korean Sunday&amp;#39;s blue
+lifted to 0.72 lightness at 0.13 chroma, which washes out into periwinkle
+rather than reading as the brand colour. The brand blue itself cannot
+just be dropped in as text: at 0.58 lightness it only reaches 4.1:1
+against --raised, which is exactly what the active nav item sits on, so
+it would fail AA on the one item most people look at. The replacement,
+--accent-bright, keeps the full chroma, pulls the hue a touch off violet
+and lifts only as far as legibility needs: 5.4:1 on the page, 5.2:1 on a
+panel, 4.9:1 on a raised pill. Code keywords move into the same family
+for the same reason.
+
+Link underlines were inherited currentColor, so they carried whatever the
+old accent was. They are now an explicit accent tint at 35% that goes to
+full strength on hover, and they are always visible rather than appearing
+only on hover.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0aa50de4f29d6570fb5c44f4230862049a433a7a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/0aa50de4f29d6570fb5c44f4230862049a433a7a"/>
+    <title>
+        Release: react 0.3.0 with localisation
+    </title>
+    <updated>2026-09-16T14:54:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Release: react 0.3.0 with localisation
+
+Pins @changesets/cli back to 2.31.1. Changesets 3 requires Node 22.11+ and
+this machine runs Node 20, where its version guard is buggy: it checks for
+process.getBuiltinModule (Node 20 has it) then calls enableCompileCache
+(Node 20 does not), so it crashes instead of reporting an unsupported
+runtime.
+
+Worth revisiting — Node 20 reached end of life in April 2026, so the real
+fix is upgrading the runtime and restoring changesets 3.
+
+react goes minor for the RecallIntl API; the other five take a patch for
+README changes only. The React peer range stays ^18.2.0 || ^19.0.0 despite
+the devDependency moving to 19, so React 18 users are unaffected.
+
+Also repairs .gitignore. A `.claude/` entry had been appended as UTF-16,
+so git read the whole file as binary and every rule in it silently stopped
+working — which is how .claude/launch.json came to be tracked. Rewritten as
+UTF-8 with LF, deduplicated, and the file untracked again.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a579c31f2256002f61ba2de8c6a790bfb9925d49</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/a579c31f2256002f61ba2de8c6a790bfb9925d49"/>
+    <title>
+        Merge pull request #1 from Sthabiso10/docs/redesign-and-toolchain-upg…
+    </title>
+    <updated>2026-09-16T14:47:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #1 from Sthabiso10/docs/redesign-and-toolchain-upgrade
+
+Rebuild the docs site and upgrade the workspace toolchain&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1580629c132e25a74d2dc72b8afe479d5c3cd46</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/c1580629c132e25a74d2dc72b8afe479d5c3cd46"/>
+    <title>
+        docs: drop the em dashes and put the logo on every README
+    </title>
+    <updated>2026-09-16T14:43:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: drop the em dashes and put the logo on every README
+
+Two passes over the prose, kept together because they touch the same
+files.
+
+The em dashes are gone from the README, the contributing guide, the
+deploy notes and all six package READMEs. Each one was repunctuated
+rather than swapped for a character: a colon where a definition or list
+follows, a full stop where it was really two sentences, commas or
+brackets for a genuine aside. The comparison table&amp;#39;s &amp;quot;not supported&amp;quot;
+cells become a cross, which is clearer next to the ticks than a dash was.
+
+The logo goes at the top of the root README and each package README. The
+image URLs are absolute and point at raw.githubusercontent.com, because
+npm does not resolve relative image paths and would render a broken image
+on every package page.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e25f8edf0c6c8444fdfa39710ad872673699177</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/4e25f8edf0c6c8444fdfa39710ad872673699177"/>
+    <title>
+        feat(docs): rebuild the site as a three-column documentation shell
+    </title>
+    <updated>2026-09-16T14:43:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(docs): rebuild the site as a three-column documentation shell
+
+The site was a single centred column with a text-only nav, one prose
+wrapper and an unstyled code block. It read as scaffolding rather than as
+the front door of a published library.
+
+Structure:
+
+- A three-column docs shell: page tree, content, section list. The rail
+  is two elements on purpose. The outer column carries the surface and
+  the divider and is a plain flex child, so it stretches the height of
+  the section and stops where the footer begins. A sticky element cannot
+  do that, because at the end of a page it stays pinned at viewport
+  height and its background hangs in mid-air above the footer.
+- &amp;quot;On this page&amp;quot; builds itself from the rendered article and assigns the
+  heading ids, so pages stay plain JSX with no frontmatter to maintain.
+  It is keyed on the pathname because the layout survives client-side
+  navigation; without that the rail keeps the first page&amp;#39;s headings and
+  no later page ever gets ids.
+- Cmd-K search. The index is built on first open by fetching each page
+  and reading its headings out of the HTML, so it cannot drift from the
+  content and needs no build step.
+- Numbered steps, a prev/next pager and a section rail, all driven by
+  `lib/nav.ts` so a new page is one entry rather than four edits.
+
+Visual language, following Linear&amp;#39;s redesign notes: hierarchy comes from
+four surface elevations and four text levels rather than from large type
+or decoration, one typeface throughout with headings differing by weight
+and tracking, and 13px interface chrome against 15px prose.
+
+The accents are the two taegeuk colours carried over from Korean Sunday,
+used under the same rule that app follows: blue marks where you are and
+how far you have got, red is spent only on the action to take next. That
+is why the primary button and &amp;quot;Show answer&amp;quot; are red while navigation,
+links and the active section marker are blue.
+
+`lib/highlight.ts` is a small tokeniser rather than a syntax highlighting
+dependency. The site&amp;#39;s only dependencies are still next and react.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d489de493aca39b271ffa6ccd29fdce7a0fb3231</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/d489de493aca39b271ffa6ccd29fdce7a0fb3231"/>
+    <title>
+        feat: add the Recall logo and favicon assets
+    </title>
+    <updated>2026-09-16T14:43:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: add the Recall logo and favicon assets
+
+The site had no favicon, no touch icon and no mark anywhere, so a tab
+showed the default globe and the READMEs opened on a bare heading.
+
+Two forms of the mark are committed because they are used on backgrounds
+that are nothing alike:
+
+- Transparent PNGs under `packages/docs/public/brand/`, for the site,
+  which sits on a near-black canvas.
+- A dark rounded tile under `docs/media/`, for GitHub and npm, which
+  render READMEs on white. A transparent version there would show dark
+  fringing and the off-white wordmark would nearly vanish.
+
+`favicon.ico`, `icon.png` and `apple-icon.png` go in `app/` so Next&amp;#39;s
+file conventions emit the link tags, rather than hand-written head markup
+that can drift. The touch icon is opaque on #08090A because iOS
+composites it onto its own background.
+
+The source artwork was a screen capture, so the sizes stop at 128px. That
+is comfortably enough for a 48px favicon and a 20px header mark, both of
+which are heavy downscales, but it is not enough for a 512px store icon
+or a 1200x630 social card. Those are deliberately absent rather than
+shipped soft, and want a vector or 1024px export first.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ac0085b3c788373264523907b2dec88337c3ae3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/5ac0085b3c788373264523907b2dec88337c3ae3"/>
+    <title>
+        build: upgrade to Next 16, React 19, Tailwind 4 and ESLint 10
+    </title>
+    <updated>2026-09-16T14:43:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;build: upgrade to Next 16, React 19, Tailwind 4 and ESLint 10
+
+The docs site was on Next 14 and Tailwind 3, and the repo still used an
+`.eslintrc.json` that ESLint 10 no longer reads. This moves the whole
+workspace onto current majors and rewrites the theme for Tailwind&amp;#39;s
+CSS-first config, which is the same shape the other projects in this
+account already use.
+
+Two places do not go to the latest version, both because the toolchain
+around them caps it:
+
+- TypeScript stays on 5.9.3. typescript-eslint requires `&amp;lt;6.1.0` and
+  ts-jest requires `&amp;lt;7`, so TypeScript 7 breaks linting and the test run.
+- size-limit stays on 12.x. Version 13 and up need `fs/promises.glob`,
+  which lands in Node 22, and the packages still claim `&amp;gt;=18.17`.
+
+ESLint 10 itself needs Node &amp;gt;=20.19, so CI now skips the lint step on the
+Node 18 matrix row. Typecheck and tests still run there, which is what
+actually backs the core&amp;#39;s Node 18 support claim.
+
+Tailwind 4 moves the theme into CSS, so `tailwind.config.ts` is gone and
+the tokens live in `globals.css` under `@theme inline`. The component
+theme moves out to `recall-theme.css` and is now plain CSS with no
+Tailwind at all, so it can be copied into any project, which is the whole
+point of shipping a worked example.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/427417b6d8e6c8ef3daa15a214b5ac4c28c9e4ec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/427417b6d8e6c8ef3daa15a214b5ac4c28c9e4ec"/>
+    <title>
+        Credit Korean Sunday, with a link
+    </title>
+    <updated>2026-09-16T14:04:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Credit Korean Sunday, with a link
+
+Korean Sunday is the app Recall&amp;#39;s engine came from — DUSAN was an earlier
+project and should not have been named. It appeared in exactly one place,
+the docs-site footer; the published npm packages never mentioned it
+(verified by grepping all six 0.2.0 tarballs).
+
+The core package README gains the provenance too, since the npm page is
+where most people meet the library.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8cd5243ddba5673f5734b68813c0c360a6e9162</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/b8cd5243ddba5673f5734b68813c0c360a6e9162"/>
+    <title>
+        Add internationalisation to the default components
+    </title>
+    <updated>2026-09-16T14:00:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add internationalisation to the default components
+
+The engine was always language-agnostic — `question` and `answer` are
+opaque strings the scheduler never reads — but the components shipped
+hardcoded English, which is an odd thing to hand to people building
+language-learning apps. Translating the UI meant abandoning the default
+components for a render prop.
+
+Two layers:
+
+- Label props on StudyView (revealLabel, skipLabel, restartLabel) for
+  one-off wording on a single screen.
+- &amp;lt;RecallIntl locale strings&amp;gt; for the whole tree. `strings` is a deep
+  partial, so overriding three keys leaves the rest English rather than
+  blank. No provider needed: components fall back to English and the
+  runtime locale, so nothing breaks for existing users.
+
+Numbers go through Intl.NumberFormat with style:&amp;#39;unit&amp;#39; rather than string
+concatenation, so `locale` alone produces &amp;quot;3 j&amp;quot;, &amp;quot;3 T&amp;quot;, &amp;quot;3 dias&amp;quot; and the
+right decimal separator without this package shipping a translation table
+for every unit in every language. Intl.RelativeTimeFormat is the tempting
+alternative and wrong — it yields &amp;quot;in 3 days&amp;quot;, and a rating button needs a
+quantity, not a sentence. An invalid locale degrades to English instead of
+throwing mid-render.
+
+14 tests, run against real locales rather than a mocked Intl: the whole
+point is that the platform knows French and we do not.
+
+README also gains a &amp;quot;Where this came from&amp;quot; section — the engine comes from
+Korean Sunday, built for the gaps between Korean classes.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b379049a619c5036dc87bc5e586e04675609a696</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/b379049a619c5036dc87bc5e586e04675609a696"/>
+    <title>
+        Document the Vercel domain rename trap
+    </title>
+    <updated>2026-09-16T13:27:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Document the Vercel domain rename trap
+
+vercel alias set looks like it moves the production domain and does not:
+an alias is not a project domain, so Deployment Protection applies and
+visitors get a Vercel login page. vercel domains add is what actually
+works.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b2c9fdbf38e2d8ae8b5fc0a6a68a3adb6042ffb8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/b2c9fdbf38e2d8ae8b5fc0a6a68a3adb6042ffb8"/>
+    <title>
+        Point at recall-srs-docs.vercel.app
+    </title>
+    <updated>2026-09-16T13:24:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Point at recall-srs-docs.vercel.app
+
+Vercel had auto-generated &amp;#39;recall-srs-nu&amp;#39; because recall-srs.vercel.app
+was already taken by an unrelated project — the suffix was collision
+handling, not a choice. Renamed the project to recall-srs-docs so the
+alias reads properly.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d699c7f82484b64efeb29a1f599ff758d4de9c39</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/d699c7f82484b64efeb29a1f599ff758d4de9c39"/>
+    <title>
+        Link the README to the live docs site
+    </title>
+    <updated>2026-09-16T13:18:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Link the README to the live docs site
+
+The docs site is deployed at recall-srs-nu.vercel.app. The hero GIF now
+links to the playground, and &amp;quot;Try the live demo&amp;quot; is back in the nav row —
+it was removed earlier rather than shipped as a dead placeholder.
+
+Also sets the repository homepage so the link shows in GitHub&amp;#39;s sidebar.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e46b008aef514398427652cceb371e3ef91fb93d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Sthabiso10/recall-srs/commit/e46b008aef514398427652cceb371e3ef91fb93d"/>
+    <title>
+        Set framework null explicitly so Vercel serves the static export
+    </title>
+    <updated>2026-09-16T13:16:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/70531177?s=30&amp;v=4"/>
+    <author>
+      <name>Sthabiso10</name>
+      <uri>https://github.com/Sthabiso10</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Set framework null explicitly so Vercel serves the static export
+
+Omitting the key leaves the project&amp;#39;s saved framework (Next.js) in place,
+and the Next builder then looks for `next` in the root package.json,
+which a monorepo does not have. Explicit null overrides it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

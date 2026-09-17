@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/maitodesu/jlpt-grammar-decks/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/maitodesu/jlpt-grammar-decks/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/maitodesu/jlpt-grammar-decks/commits/main.atom"/>
+  <title>Recent Commits to jlpt-grammar-decks:main</title>
+  <updated>2026-09-15T11:50:51Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5ad44e297a1007cedf1004513d3aa2d506a5e3f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/maitodesu/jlpt-grammar-decks/commit/5ad44e297a1007cedf1004513d3aa2d506a5e3f5"/>
+    <title>
+        Render real furigana as ruby, with a click-only toggle
+    </title>
+    <updated>2026-09-15T11:50:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/69983214?s=30&amp;v=4"/>
+    <author>
+      <name>maitodesu</name>
+      <uri>https://github.com/maitodesu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Render real furigana as ruby, with a click-only toggle
+
+Decks now build from src/ rather than md/, so the {f|kanji|kana} macro
+survives as &amp;lt;ruby&amp;gt; instead of being flattened to parenthesised readings.
+deckrun&amp;#39;s leading leaves no room above a line, so the deck carries its own
+line-height and rt sizing; headings drop the readings, where tight leading
+would collide and the term is furigana&amp;#39;d in the body moments later.
+
+The toggle is deliberately click-only, leaving every key free for presenting,
+and remembers the choice per browser so it holds across chapters.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/89496c9ca37c1e3abc49afb45d89451a44afc740</id>
+    <link type="text/html" rel="alternate" href="https://github.com/maitodesu/jlpt-grammar-decks/commit/89496c9ca37c1e3abc49afb45d89451a44afc740"/>
+    <title>
+        Add a persistent back link from every deck page to the index
+    </title>
+    <updated>2026-09-15T11:21:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/69983214?s=30&amp;v=4"/>
+    <author>
+      <name>maitodesu</name>
+      <uri>https://github.com/maitodesu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a persistent back link from every deck page to the index
+
+A chapter page was a dead end: deckrun&amp;#39;s own chrome carries no way out. The
+link is a fixed overlay outside the slide canvas, so it survives navigation,
+and it is hidden in print so it stays out of PDF exports.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0d72de3f7fd7ce1fe49d4eeaf5aac43ac00134a6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/maitodesu/jlpt-grammar-decks/commit/0d72de3f7fd7ce1fe49d4eeaf5aac43ac00134a6"/>
+    <title>
+        JLPT N5-N3 grammar decks: 47 standalone chapter pages and site index
+    </title>
+    <updated>2026-09-15T11:17:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/69983214?s=30&amp;v=4"/>
+    <author>
+      <name>maitodesu</name>
+      <uri>https://github.com/maitodesu</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;JLPT N5-N3 grammar decks: 47 standalone chapter pages and site index
+
+Slides generated from the jlpt-grammar-enhanced mdBook source and rendered
+with deckrun, one self-contained HTML page per chapter.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -23,3 +23,4 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-10 | Nothing that changes today. |  |
 | 2026-09-11 | Cursor Projects is live (beta): left-nav coordinator for multi-month features/migrations — shared context across agents, Slack/schedule/PR subscriptions, cloud computer so laptop-close doesn't stop it. Try on one real body of work this week. https://cursor.com/changelog |  |
 | 2026-09-16 | Nothing that changes today. |  |
+| 2026-09-17 | Grok Build memory is live (16 Sep): background notes on conventions, decisions, and project facts (markdown topics; /memory browse, /dream merge) read back next session — try on one active project. https://x.ai/news/grok-build-memory |  |

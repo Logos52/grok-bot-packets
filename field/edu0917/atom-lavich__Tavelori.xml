@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/lavich/Tavelori/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/lavich/Tavelori/commits/main.atom"/>
+  <title>Recent Commits to Tavelori:main</title>
+  <updated>2026-09-16T20:30:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d39cc5e3acb3daea67d413b22911b5a9d74a5969</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/d39cc5e3acb3daea67d413b22911b5a9d74a5969"/>
+    <title>
+        Архивировать изменение group-lessons-into-courses
+    </title>
+    <updated>2026-09-16T20:30:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Архивировать изменение group-lessons-into-courses
+
+Все 16 задач закрыты и проверены. Требования о курсе как единице
+поставки, подписке на курс и группировке уроков влиты в опубликованные
+спеки content-delivery и lesson-library.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54f1dd3107276d54b16a6964ab70370405ebce78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/54f1dd3107276d54b16a6964ab70370405ebce78"/>
+    <title>
+        Собрать уроки в курсы с подпиской и автообновлением
+    </title>
+    <updated>2026-09-16T20:30:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Собрать уроки в курсы с подпиской и автообновлением
+
+Курс стал единицей поставки и подписки. «Учить курс» ставит все уроки
+разом, а подписанный курс после обновления каталога сам доустанавливает
+новые и подтягивает свежие версии — медиа по-прежнему по просмотру.
+Подписка возникает и от открытия любого урока курса, отписка ничего не
+удаляет. Свои наборы и импорт попадают в локальный курс «Мои слова».
+
+Экран «Уроки» группирует список: подписанные курсы, доступные, уроки без
+известного курса и «Мои слова» последними. У группы видно число уроков,
+источник, кнопку курса и ошибку обновления с повтором.
+
+Четыре браузерных сценария опирались на то, что установлен ровно один
+урок. Это перестало быть правдой: подписка тянет курс целиком. Проверки
+переписаны на устоявшееся состояние, а сценарию офлайна неустановленный
+урок теперь готовится явно.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d130678a90e1c745950cebd8b305bf09d67bf40f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/d130678a90e1c745950cebd8b305bf09d67bf40f"/>
+    <title>
+        Ввести курс в поставку и хранилище
+    </title>
+    <updated>2026-09-16T20:16:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ввести курс в поставку и хранилище
+
+Каталог отдаёт состав курсов, запись каталога и пакет несут courseId,
+урок обязан входить ровно в один курс — иначе публикация падает.
+
+База версии 4: таблица курсов, индекс курса у урока, локальный курс
+«Мои слова». Переход без сети раскладывает в него наборы пользователя,
+а поставляемому уроку курс проставляет первое обновление каталога:
+сохранённый пакет прежней сборки курса не знает.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b1ccb499cf6bd2a7ace4667b531666ecad2842d9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/b1ccb499cf6bd2a7ace4667b531666ecad2842d9"/>
+    <title>
+        Спроектировать группировку уроков в курсы
+    </title>
+    <updated>2026-09-16T20:06:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Спроектировать группировку уроков в курсы
+
+Уроки 1.1–2.2 — один курс школы LEEKE, но приложение о курсе ничего не
+знает: каталог плоский, установка и обновление поурочные. Записано
+изменение, которое делает курс единицей поставки и подписки: состав
+приходит из каталога, подписка и состояние живут в базе, свои наборы
+попадают в локальный курс «Мои слова».
+
+Расписание и дневной лимит на курс сюда не входят — это следующий шаг,
+потому что он упирается в отдельный вопрос: чей бюджет у слова, которое
+лежит в уроках двух курсов.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d2e6814c8b92283f88d1bab3ae7e761e18d78126</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/d2e6814c8b92283f88d1bab3ae7e761e18d78126"/>
+    <title>
+        Разбирать хвост прошедших занятий раньше подготовки к будущим
+    </title>
+    <updated>2026-09-16T19:41:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Разбирать хвост прошедших занятий раньше подготовки к будущим
+
+Урок помечается пройденным по прошедшей дате независимо от того,
+показали ли его слова. Такие слова уходили в конец очереди: план брал
+слова датированных уроков, а до прохода по остальным наборам дело
+доходило, только если дневной бюджет не добран. Пока впереди есть
+датированные уроки, хвост не попадал в план никогда и молча копился.
+
+Теперь слова прошедших занятий идут в очереди новых первыми, а их число
+входит в накопительный счёт до каждой будущей даты — предупреждение о
+нехватке лимита перестало молчать, когда хвост съедает бюджет. Экран
+«Сегодня» показывает, сколько слов из скольких занятий ещё не показывали.
+
+Эталон планировщика пересчитан и дополнен составом хвоста. Заодно спеки
+догнали код: записаны изменения о порядке очереди и об удалённой отметке
+Mastered, оба заархивированы.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/65fbde888168f5cc0f05ff596001520baba4230b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/65fbde888168f5cc0f05ff596001520baba4230b"/>
+    <title>
+        Вернуть экрану результата отступ под системную строку Telegram
+    </title>
+    <updated>2026-09-16T18:47:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Вернуть экрану результата отступ под системную строку Telegram
+
+Экран «Занятие завершено» задавал верхний отступ инлайновым
+paddingTop: 24, а это перекрывало правило .app&amp;gt;.screen:first-child
+вместе с var(--inset-top). Во весь экран заголовок вставал под часы и
+кнопки клиента: 24 пикселя вместо 117 при safeTop 47 и contentTop 46.
+
+Отступ перенесён в класс .roomy рядом с правилом, которое он расширяет,
+поэтому системная строка учитывается так же, как на остальных экранах
+без шапки. Браузер по-прежнему получает 24 пикселя.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4819c38197979d56bfdc2af5332abb33634eefec</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/4819c38197979d56bfdc2af5332abb33634eefec"/>
+    <title>
+        Архивировать изменение load-content-on-demand
+    </title>
+    <updated>2026-09-16T18:34:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Архивировать изменение load-content-on-demand
+
+Все задачи закрыты и проверены, дельта-спеки влиты в опубликованные:
+появились способности content-delivery и selective-data-access,
+обновлены lesson-library и local-first-app.
+
+Заглушки Purpose, которые оставляет архивация новым способностям,
+заменены на описание области: доставка контента по запросу и чтение
+локальной базы порциями под конкретный экран.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9e8ae595acff4932319bc2d5479bb4def3c91ecb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/9e8ae595acff4932319bc2d5479bb4def3c91ecb"/>
+    <title>
+        Достроить карточки уроков 1.3 и 1.4
+    </title>
+    <updated>2026-09-16T18:14:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Достроить карточки уроков 1.3 и 1.4
+
+61 слово переносилось из Quizlet без подготовки: они шли в занятие без
+транскрипции, примера и иллюстрации. Теперь у каждого есть IPA, разбор
+чтения, пример с переводом и своя картинка — как в уроках 2.1 и 2.2.
+
+Добавлены заметки там, где слово тянет за собой пару: η φίλη — мужской род
+ο φίλος, ο καρπός — второе значение «плод». Источник у подготовленных слов
+класса уточнён: список из набора LEEKE A2, фонетика и медиа — Lexi.
+
+Проверка «непроверенных слов» заменена на инвариант: карточка либо готова
+целиком, либо не претендует на готовность ни одним полем. Теперь все шесть
+уроков закрыты полностью — 189 слов из 189.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46e17b6eee20fa4f75610ab12c9e452c600db5ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/46e17b6eee20fa4f75610ab12c9e452c600db5ee"/>
+    <title>
+        Убрать отметку Mastered из поставляемого контента
+    </title>
+    <updated>2026-09-16T18:01:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Убрать отметку Mastered из поставляемого контента
+
+Поле приходило из выгрузки Quizlet и описывало чужой прогресс, а читал его
+только предпросмотр импорта: в планировании и FSRS оно не участвовало.
+Теперь `sourceMastered` живёт лишь в ImportRow — подсказкой в списке перед
+подтверждением, — а освоенность в Lexi считается только по ответам.
+
+Убраны `mastered` из исходников слов, `sourceMastered` из PackageWord, Word
+и SHIPPED_FIELDS. Ревизии слов и версии пакетов пересчитаны; установка
+обновления сравнивает только оставшиеся поставляемые поля, поэтому правки
+пользователя не затрагиваются.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/51da2c7932b9ccdf1b1a79bdc61f11f2a9cd5005</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/51da2c7932b9ccdf1b1a79bdc61f11f2a9cd5005"/>
+    <title>
+        Добавить уроки 2.1 и 2.2 с подготовленными карточками
+    </title>
+    <updated>2026-09-16T16:46:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Добавить уроки 2.1 и 2.2 с подготовленными карточками
+
+Перенесены два набора класса LEEKE A2: 2.1 — тело, природа, чувства и
+предметы стола (36 слов), 2.2 — глаголы движения и признаки (33 слова).
+Повторы связаны с уже существующими записями: η πλάτη, η καρδιά, το νερό,
+ο φίλος, η αγάπη в 2.1 и μεγάλος, μικρός в 2.2.
+
+Для всех новых слов подготовлены IPA, разбор чтения, пример с переводом и
+собственная иллюстрация; заодно достроены η πλάτη, μεγάλος и μικρός из
+уроков 1.3–1.4. τα λεφτά помечены заметкой как разговорный синоним
+τα χρήματα.
+
+Тесты, которые считали уроки и слова константами, переведены на размер
+каталога; требования к подготовленной карточке теперь опираются на флаг
+verified, а не на принадлежность урокам 1.1–1.2.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e5792b16f82c07cc3cf88cdfe1550d3350257165</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/e5792b16f82c07cc3cf88cdfe1550d3350257165"/>
+    <title>
+        Указать tavelori.app как адрес приложения в README и документации
+    </title>
+    <updated>2026-09-16T15:25:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Указать tavelori.app как адрес приложения в README и документации
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32b459a830388d03c6d27285ba71c779b48bb17d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/32b459a830388d03c6d27285ba71c779b48bb17d"/>
+    <title>
+        Брать базовый путь Pages из настроек сайта, а не из имени lexi
+    </title>
+    <updated>2026-09-16T14:58:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Брать базовый путь Pages из настроек сайта, а не из имени lexi
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/368e57bd537c39dbee36256433857f000f0ef9ce</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/368e57bd537c39dbee36256433857f000f0ef9ce"/>
+    <title>
+        Увеличить лимит времени теста размера снимка для CI
+    </title>
+    <updated>2026-09-16T14:56:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Увеличить лимит времени теста размера снимка для CI
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ab15d2c2ae0c7d6235a84f0622b85d87c33fbd33</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/ab15d2c2ae0c7d6235a84f0622b85d87c33fbd33"/>
+    <title>
+        Добавить запуск как Telegram Mini App с синхронизацией компактного пр…
+    </title>
+    <updated>2026-09-16T14:52:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Добавить запуск как Telegram Mini App с синхронизацией компактного прогресса
+
+Единая сборка для браузера и Telegram: платформенный адаптер с проверкой возможностей
+(BackButton, HapticFeedback, MainButton, CloudStorage), тема и отступы клиента, режимы запуска.
+Раздельные локальные профили веба и Telegram, компактный прогресс через CloudStorage
+с причинными версиями, конфликтами по выбору целой версии и лимитами 1024/4096.
+Честные отказы аудио и передачи файлов, устойчивость без service worker.
+Документация по BotFather, локальной разработке, снимку и смене адреса; тесты Vitest и
+Playwright с эмуляцией bridge.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/004b7ab4ec7ed34fd7d58ebd024ab6f97e068ca0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/004b7ab4ec7ed34fd7d58ebd024ab6f97e068ca0"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39; into lavich/load-content-o…
+    </title>
+    <updated>2026-09-16T11:03:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39; into lavich/load-content-on-demand
+
+# Conflicts:
+#	vite.config.ts&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/943add42c2e0302a614f5455ed4bf222aaaf630c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/943add42c2e0302a614f5455ed4bf222aaaf630c"/>
+    <title>
+        Назвать файлы слов и иллюстраций по-гречески
+    </title>
+    <updated>2026-09-16T10:23:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Назвать файлы слов и иллюстраций по-гречески
+
+Файлы в content/words и content/art получают имена вида το-σπίτι,
+идентификатор слова переезжает в поле id и остаётся прежним, чтобы
+прогресс и миграция пользователей не зависели от имён файлов. Новое слово
+без поля id получает идентификатор из имени файла. Убраны комментарии,
+пересказывающие код.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5043b85b1285c1165254c39da8e02a6000b6f199</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/5043b85b1285c1165254c39da8e02a6000b6f199"/>
+    <title>
+        Загружать контент по запросу из каталога пакетов
+    </title>
+    <updated>2026-09-16T10:16:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Загружать контент по запросу из каталога пакетов
+
+Словарь и иллюстрации вынесены из стартового JS в версионированные
+JSON-пакеты и отдельные медиа; исходники контента переведены в YAML
+(одно слово — один файл) с генератором на Node. Схема IndexedDB v2:
+связи lessonWords, метаданные пакетов, индексы выборок и офлайн-миграция
+wordIds. Каталог читается при запуске, урок устанавливается при открытии
+транзакционно, медиа подгружаются по запросу, обновление сохраняет
+локальные правки и удаления. useSnapshot заменён выборочными запросами
+для экранов, планировщика, сессии и статистики; полная копия версии 2
+с миграцией старых копий. Контент исключён из precache.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/79731ed5d0c9313ea3a91d7baea6200899487e4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/79731ed5d0c9313ea3a91d7baea6200899487e4f"/>
+    <title>
+        Перекрасить интерфейс в синий греческого флага
+    </title>
+    <updated>2026-09-16T09:08:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Перекрасить интерфейс в синий греческого флага
+
+Основной цвет, кольцо фокуса, иконка и цвет темы PWA — #0D5EAF,
+оттенок для наведения — #0A4C8E. Иллюстрации слов не меняются.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f0256f9b7abdacb71a0ee6d5aad3418ea27c879</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/9f0256f9b7abdacb71a0ee6d5aad3418ea27c879"/>
+    <title>
+        Сузить экран на широких окнах до 560px
+    </title>
+    <updated>2026-09-16T08:51:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Сузить экран на широких окнах до 560px
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/317c27df0238c4e9671ee710ec1dafee3ee6f2fc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/lavich/Tavelori/commit/317c27df0238c4e9671ee710ec1dafee3ee6f2fc"/>
+    <title>
+        Давать даты проведённым урокам по расписанию
+    </title>
+    <updated>2026-09-16T08:34:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/6541629?s=30&amp;v=4"/>
+    <author>
+      <name>lavich</name>
+      <uri>https://github.com/lavich</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Давать даты проведённым урокам по расписанию
+
+Дата первого занятия означает первый урок по порядку, включая
+проведённые; форма показывает, какой урок первый, а дата проведённого
+урока в списке пишется без «К».
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
