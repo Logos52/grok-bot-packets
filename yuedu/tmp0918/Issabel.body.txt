@@ -1,0 +1,2 @@
+開源通訊平臺Issabel的Web框架Issabel Framework被揭露存在重大漏洞CVE-2026-89026，可能導致未經身分驗證的遠端攻擊者執行作業系統指令。Issabel是開源電話交換機（PBX）及整合通訊平臺，用於企業電話、語音及其他通訊服務，資安漏洞情報業者VulnCheck在9月15日公告指出，所有早於修補程式碼commit b97dbaf的Issabel Framework版本均受前述漏洞影響，並指出Shadowserver基金會已在9月9日觀察到實際利用。Issabel已在8月1日提交修補程式碼，使用者應更新至包含該修補程式碼的版本。
+CVE-2026-89026的CVSS嚴重性評分達9.8分，問題源自pbxapi的index.php檔案內含所有安裝實例共用的硬編碼HS256 JSON Web Token（JWT）簽章金鑰，未經身分驗證的攻擊者可利用該金鑰偽造權杖，藉此呼叫管理端點manager/originate，進而可能導致執行任意作業系統指令。

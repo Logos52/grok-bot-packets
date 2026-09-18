@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Yud/JLPT-N5/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Yud/JLPT-N5/commits/main.atom"/>
+  <title>Recent Commits to JLPT-N5:main</title>
+  <updated>2026-09-17T16:37:20Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3cb87e6d9cdf48b6bf2460222bcff871782ea991</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/3cb87e6d9cdf48b6bf2460222bcff871782ea991"/>
+    <title>
+        Assign a fresh media asset id when content actually changes
+    </title>
+    <updated>2026-09-17T16:37:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Assign a fresh media asset id when content actually changes
+
+processMediaFile always reused a filename&amp;#39;s existing asset id, even when
+the new content genuinely differed from what was there before (exactly
+what happened when the zstd-decompress fix changed every file&amp;#39;s byte
+length). GET /api/media/:id serves responses with an &amp;quot;immutable&amp;quot; cache
+header — a promise that the bytes at a given id never change. Reusing the
+id on a real content change breaks that promise: any client that already
+cached the old response has no reason to ever re-fetch, which is exactly
+what made the previous fix look broken until the browser cache was
+cleared by hand.
+
+Now the id is only reused when the byte size matches what&amp;#39;s on record
+(the self-heal/no-op-retry case); a genuine change gets a fresh id, and
+the superseded object is deleted so it doesn&amp;#39;t linger unreferenced.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4def6806ae5c80143ff77a95e7fc900161add0e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/4def6806ae5c80143ff77a95e7fc900161add0e2"/>
+    <title>
+        Decompress individually zstd-compressed media entries
+    </title>
+    <updated>2026-09-17T16:23:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Decompress individually zstd-compressed media entries
+
+Found by pulling the actual broken asset out of production D1/R2 (via
+wrangler against the real account) rather than guessing further: the D1
+row and R2 object were both completely correct — right size, right
+content-type — but the object&amp;#39;s *content* was still zstd-compressed raw
+bytes, served as-is under an image/webp content type. `file` identified
+it as &amp;quot;Zstandard compressed data&amp;quot;; decompressing it by hand produced a
+perfectly valid WebP.
+
+Modern Anki packages compress every individual media entry with zstd,
+not just the collection database (confirmed: all 4,354 media entries in
+the real ~100MB sample deck are compressed) — ankiImport.js already had
+the exact right helper for this (maybeDecompress, already used for the
+collection database) but never applied it to media bytes, so every
+extracted file has always been raw still-compressed data. This affected
+audio as much as images; a byte-length match (which is all earlier
+manual verification checked) can&amp;#39;t distinguish &amp;quot;correct&amp;quot; from
+&amp;quot;consistently still-compressed on both sides.&amp;quot;
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/01a120d4219256f320de1dcf7278c6f19cdcfd62</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/01a120d4219256f320de1dcf7278c6f19cdcfd62"/>
+    <title>
+        Make per-file media processing safe to retry mid-chunk
+    </title>
+    <updated>2026-09-17T16:15:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make per-file media processing safe to retry mid-chunk
+
+Cloudflare Workflow steps retry their entire callback from the top on any
+transient failure, not just the part that failed. A chunk processes ~20
+files in a loop inside one step — if file 12 hits a transient D1/R2
+hiccup (far more likely on real distributed Cloudflare infrastructure
+than in Miniflare, which is why nothing local ever exercised this), the
+retry re-runs files 1-11 too. Those had already fully succeeded,
+including having their temp upload deleted as the last part of
+processing — so the retry immediately found &amp;quot;no upload&amp;quot; for file 1,
+which this code treated as unrecoverable and aborted the entire job on
+production&amp;#39;s first fresh, error-free-looking import of the 20-card deck.
+
+A missing temp upload is now only treated as an error when there&amp;#39;s also
+no existing media_assets row for it — otherwise it&amp;#39;s exactly what a
+retry replaying an already-finished file looks like, and processing
+returns success without redoing the (already correct) work.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a7a5af79d8ea244bffc2dbd5aa182c148309bc5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/4a7a5af79d8ea244bffc2dbd5aa182c148309bc5"/>
+    <title>
+        Self-heal media whose D1 row exists but R2 object doesn&#39;t
+    </title>
+    <updated>2026-09-17T15:50:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Self-heal media whose D1 row exists but R2 object doesn&amp;#39;t
+
+Re-import treated a media_assets row&amp;#39;s recorded size_bytes as proof the
+actual R2 object was there, with no way to notice otherwise. This is
+exactly the state the old CPU-time-limit crash could leave behind (the D1
+write completing while the R2 write for that file never fully landed) —
+confirmed against production: an image imported before this session&amp;#39;s
+Workflow fix was permanently broken because every later re-import kept
+treating its stale metadata as &amp;quot;already uploaded.&amp;quot;
+
+Re-import now confirms the R2 object actually exists (cached per unique
+filename, so a file shared across many cards costs one HEAD, not one per
+card) before skipping it; if missing, it&amp;#39;s added back to mediaNeeded so
+the next upload+process cycle repairs it in place.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1243c486fb426cd2fb66306e78792d2757b72112</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/1243c486fb426cd2fb66306e78792d2757b72112"/>
+    <title>
+        Deploy the media-import Workflow worker in CI
+    </title>
+    <updated>2026-09-17T14:48:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Deploy the media-import Workflow worker in CI
+
+Its own deployable unit (workflows/anki-import) that the main Pages
+project now depends on via a service binding — deployed before the
+Pages step so that binding&amp;#39;s target already exists when Pages picks up
+its config.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41cf62edf0032b2e740e3969e59b02ae5d141aa8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/41cf62edf0032b2e740e3969e59b02ae5d141aa8"/>
+    <title>
+        Poll the background media-processing job during deck import
+    </title>
+    <updated>2026-09-17T14:48:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Poll the background media-processing job during deck import
+
+Media upload is now a separate step from processing (previous
+commits): the browser uploads files, then hands the filename list to
+.../media/process and polls .../media/jobs/:id until the Workflow
+finishes, instead of getting the result inline from the old
+synchronous upload response. Adds a &amp;#39;processing&amp;#39; import status and a
+running done/total count for that phase.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/308070b9ec2048a1c726afaf5a2d20e63c4c48a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/308070b9ec2048a1c726afaf5a2d20e63c4c48a1"/>
+    <title>
+        Move deck media processing off the synchronous request path
+    </title>
+    <updated>2026-09-17T14:48:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Move deck media processing off the synchronous request path
+
+Replaces the old POST .../media handler (removed two commits ago) with
+three small endpoints: upload.js does a pure R2 put per file (no D1
+calls at all, so it no longer needs a subrequest-driven file-count
+cap); process.js records a media_import_jobs row and hands the file
+list to the media-import Workflow via a service binding
+(MEDIA_IMPORT_WORKFLOW_TRIGGER, wrangler.toml); jobs/[jobId].js is
+polled for status. The actual per-file work now happens inside that
+Workflow&amp;#39;s own CPU budget instead of the request&amp;#39;s.
+
+Also: extends deck deletion&amp;#39;s cascade to clean up media_import_jobs
+rows, and wires the Workflow worker into the D1-integration test
+project as an auxiliary worker (built from its own real wrangler.toml)
+so the service binding resolves in tests the same way wrangler&amp;#39;s local
+dev registry resolves it outside them.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/597d1a27d34a105750e5090ac675551ae3bfd414</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/597d1a27d34a105750e5090ac675551ae3bfd414"/>
+    <title>
+        Add media_import_jobs table and the standalone media-import Workflow …
+    </title>
+    <updated>2026-09-17T14:47:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add media_import_jobs table and the standalone media-import Workflow worker
+
+functions/api/decks/[deckId]/media.js processed a deck&amp;#39;s media
+synchronously inside one Pages Function invocation and crashed
+production twice at real-world scale — first on Cloudflare&amp;#39;s
+subrequest cap (fixed by batching), then on the CPU-time cap
+(&amp;quot;Error 1102: Worker exceeded resource limits&amp;quot;) even with smaller
+batches, because a few thousand files&amp;#39; worth of R2/D1 work just
+doesn&amp;#39;t fit in one invocation&amp;#39;s budget.
+
+Pages Functions can&amp;#39;t define a WorkflowEntrypoint directly, so this
+adds it as its own deployable Worker (workflows/anki-import),
+processing files in small chunks so each step gets a fresh CPU budget
+and a crash/retry doesn&amp;#39;t lose progress. media_import_jobs is the
+durable record of a run&amp;#39;s progress that the Pages Functions side (next
+commit) triggers and polls.
+
+Not yet wired up to anything — the Pages Functions side lands next.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/831c017e0dcc8b8feca0c5c061eb918c61bb6aa6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/831c017e0dcc8b8feca0c5c061eb918c61bb6aa6"/>
+    <title>
+        Extract per-file media processing into a shared, unit-testable module
+    </title>
+    <updated>2026-09-17T14:47:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Extract per-file media processing into a shared, unit-testable module
+
+The media-processing logic that used to live inline in
+functions/api/decks/[deckId]/media.js is about to move into a Workflow
+(a separate Worker Pages Functions can&amp;#39;t run directly), so it needs to
+be callable from both places without duplicating the D1/R2 quirks it
+already works around (instr() over LIKE, asset-id reuse on re-upload).
+Pulling it out first, with its own test, keeps that migration a pure
+move in the next commit rather than a move-and-rewrite.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a7d986f94a9af3873996c53cb82b9fbe6232df7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/9a7d986f94a9af3873996c53cb82b9fbe6232df7"/>
+    <title>
+        Fix media upload crashing on Cloudflare&#39;s subrequest limit
+    </title>
+    <updated>2026-09-17T13:49:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix media upload crashing on Cloudflare&amp;#39;s subrequest limit
+
+Batches were sized only by total byte count (research.md §3), which let a
+batch contain hundreds of small files — real Anki decks are mostly small
+audio clips, so a 20MB batch could hold 700+ of them. Each file processed
+by [deckId]/media.js costs several D1/R2 subrequests inside the same
+Worker invocation, and Cloudflare caps that at 50 per invocation on the
+Free plan (10,000 on Paid) — a large batch blew straight through it,
+surfacing only as an opaque &amp;quot;Worker threw exception&amp;quot; page in production
+(Miniflare, used for all local/CI testing, doesn&amp;#39;t enforce this limit, so
+nothing caught it before deploy).
+
+Batches are now also capped by file count, conservatively low enough to
+stay safe even on the Free plan regardless of which plan this is actually
+deployed on.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/81b152de2b6c5e53a8014967d076a658a0396195</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/81b152de2b6c5e53a8014967d076a658a0396195"/>
+    <title>
+        Fix three bugs found by a full round-trip against a real 1,501-card deck
+    </title>
+    <updated>2026-09-17T13:30:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix three bugs found by a full round-trip against a real 1,501-card deck
+
+- media.js: D1 rejects long/complex LIKE patterns (&amp;quot;LIKE or GLOB pattern
+  too complex&amp;quot;) — real Anki media filenames are often long content-hash
+  strings. Switched the media-reference-rewrite lookup from LIKE &amp;#39;%...%&amp;#39;
+  to instr(), a plain substring check with no such limit.
+- [deckId]/index.js: deleting a deck&amp;#39;s review history via
+  card_review_state WHERE card_id IN (?, ?, ...) hit D1&amp;#39;s ~100-bound-
+  parameter cap for any deck with more cards than that. Switched to a
+  subquery against cards (run before cards itself is deleted in the same
+  batch). Also chunks the R2 bulk-delete call, since a deck&amp;#39;s media count
+  isn&amp;#39;t bounded either.
+- import.js: re-importing a deck upserts front/back from the client&amp;#39;s
+  freshly re-parsed HTML, which still references raw filenames — this was
+  silently reverting any URL rewrite a previous import&amp;#39;s media upload had
+  already applied, breaking playback for anything that hadn&amp;#39;t changed.
+  Re-import now reapplies known rewrites itself before storing.
+
+None of these showed up against small synthetic fixtures — found by
+running the actual parser and API against the real ~100MB, 1,501-card
+sample deck end-to-end.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0abaad53e7823dd1174c05c19e4464120e47ff11</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/0abaad53e7823dd1174c05c19e4464120e47ff11"/>
+    <title>
+        Fix sql.js import in the real browser dev server
+    </title>
+    <updated>2026-09-17T13:20:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix sql.js import in the real browser dev server
+
+Excluding sql.js from Vite&amp;#39;s dependency pre-bundling (added to work around
+a Vitest-only wasm-loading quirk) also disabled the CJS-to-ESM interop that
+pre-bundling normally provides. sql.js&amp;#39;s browser build
+(sql-wasm-browser.js) is CommonJS-shaped with no native ESM export, so real
+browser dev broke with &amp;quot;does not provide an export named &amp;#39;default&amp;#39;&amp;quot;. The
+actual wasm-loading fix (instantiateWasm in ankiImport.js) doesn&amp;#39;t depend
+on this exclusion, so it&amp;#39;s just removed.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d8848d8609e0a094b105dc4543c74d6c35ed1c1c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/d8848d8609e0a094b105dc4543c74d6c35ed1c1c"/>
+    <title>
+        Add Anki deck import
+    </title>
+    <updated>2026-09-17T13:10:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Anki deck import
+
+Lets the owner upload an Anki .apkg export and study it with the same
+spaced-repetition review flow as the built-in decks. The file is parsed
+entirely client-side (JSZip + fzstd + sql.js) — handling both the legacy
+plain-SQLite package format and the newer Zstandard-compressed one — then
+uploaded in chunks to new D1-backed deck/card/media-asset tables and an R2
+bucket, staying under Cloudflare&amp;#39;s per-request body cap. Imported card ids
+are recognized by the existing review endpoints without changing the
+scheduler or its schema.
+
+Also wires the new R2 bucket&amp;#39;s creation into the deploy workflow
+(idempotent, alongside the existing D1 migration step) so no manual
+Cloudflare setup is needed before this ships.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3cd50872c09aae431999677977d9ebafacb5dfdd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/3cd50872c09aae431999677977d9ebafacb5dfdd"/>
+    <title>
+        Remove Dependabot config
+    </title>
+    <updated>2026-09-15T08:39:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Remove Dependabot config
+
+Dependencies are all exact-pinned already, so there&amp;#39;s nothing for
+version-bump PRs to do — they were just noise, and each one triggers a
+full deploy.yml run (pull_request has no branch filter), which is what
+looked like a false deploy failure earlier.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dddd9238f4e144c4356aeafd17006d00ee76191</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/2dddd9238f4e144c4356aeafd17006d00ee76191"/>
+    <title>
+        Lower production WaniKani sync threshold to Guru II
+    </title>
+    <updated>2026-09-15T07:32:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Lower production WaniKani sync threshold to Guru II
+
+Master (srs_stage 7) was too high a bar — few words have reached it yet,
+so the sync returned zero results. Guru II (6) matches local dev&amp;#39;s default
+and gives the quiz something to work with while more words mature.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa697c03467dc0e1b5aadfe6b1ff62dbe3c56cdd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/aa697c03467dc0e1b5aadfe6b1ff62dbe3c56cdd"/>
+    <title>
+        Add WaniKani-sourced listening quiz
+    </title>
+    <updated>2026-09-15T07:10:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add WaniKani-sourced listening quiz
+
+New pillar (#/listening-quiz): hear a native pronunciation recording of a
+word studied on WaniKani and type its English meaning. The word cache
+(meanings, readings, audio URLs) lives in D1, refreshed on demand via an
+in-app &amp;quot;Sync from WaniKani&amp;quot; button calling a new Pages Function
+(POST /api/wanikani-words/sync) that runs the WaniKani fetch server-side —
+nothing WaniKani-sourced, including the API key, ever touches the repo.
+
+Production&amp;#39;s WANIKANI_API_KEY is provisioned on every deploy from a GitHub
+Actions secret, validated and applied against a new
+.github/prod.template.yaml manifest (deploy.yml fails fast if it&amp;#39;s
+missing). Local dev gets its own sync script (npm run sync:wanikani)
+against local D1, and browser-side Cache Storage avoids re-fetching audio
+already played once.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3315f34042a994f4d15fedc21a414ebcde42443d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/3315f34042a994f4d15fedc21a414ebcde42443d"/>
+    <title>
+        Add Counting People (人) table to Kanji reference
+    </title>
+    <updated>2026-09-11T04:14:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Counting People (人) table to Kanji reference
+
+Third counter table alongside days-of-the-month and things (つ). Unlike
+those two, 人 mostly runs on ordinary Sino-Japanese numbers + にん, with
+its irregular zone at the start (ひとり/ふたり are fully native words)
+rather than the edges, plus a couple of one-off quirks (よにん drops
+よん&amp;#39;s ん; 七人 has two accepted readings).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Xpmn72o1rBv8in88XFAnAN&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d726646dbadc21194e7d889b2502b04023c0b596</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/d726646dbadc21194e7d889b2502b04023c0b596"/>
+    <title>
+        Stack nav dropdown children in a single column
+    </title>
+    <updated>2026-09-10T16:37:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stack nav dropdown children in a single column
+
+Nuxt UI&amp;#39;s horizontal UNavigationMenu grids dropdown children into two
+columns once there are enough of them, splitting e.g. Hiragana&amp;#39;s
+Reference/Flashcards/Writing Exercise across a row instead of a clean
+list. Override childList to grid-cols-1 to keep every pillar&amp;#39;s dropdown
+a single vertical column on desktop.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Xpmn72o1rBv8in88XFAnAN&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8457064877225620a58b29d33002a14a233b100e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/8457064877225620a58b29d33002a14a233b100e"/>
+    <title>
+        Add shared root column to Kanji counter reference tables
+    </title>
+    <updated>2026-09-10T16:37:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add shared root column to Kanji counter reference tables
+
+Both the days-of-the-month and つ-counter readings are built on the
+same native Japanese (wago) number roots. Showing the root alongside
+each reading makes it obvious which items are basically regular
+(root + suffix) versus true exceptions, instead of treating all ten
+entries as unrelated memorization.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Xpmn72o1rBv8in88XFAnAN&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a18d24ef5b8b30496eae4581f1d14c8b5a45e5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Yud/JLPT-N5/commit/1a18d24ef5b8b30496eae4581f1d14c8b5a45e5a"/>
+    <title>
+        Add Kanji reference pillar for tricky WaniKani counter readings
+    </title>
+    <updated>2026-09-10T14:14:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319785?s=30&amp;v=4"/>
+    <author>
+      <name>Yud</name>
+      <uri>https://github.com/Yud</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Kanji reference pillar for tricky WaniKani counter readings
+
+Days-of-the-month (一日〜十日) and the つ object counter (一つ〜十つ) both
+have irregular kun readings that don&amp;#39;t follow a simple pattern. Seeing
+the full 1-10 set side by side (with the exceptions flagged) makes them
+easier to spot than reviewing WaniKani&amp;#39;s cards one at a time.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01Xpmn72o1rBv8in88XFAnAN&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

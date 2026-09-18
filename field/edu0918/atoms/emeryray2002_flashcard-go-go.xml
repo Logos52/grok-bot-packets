@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/emeryray2002/flashcard-go-go/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/emeryray2002/flashcard-go-go/commits/main.atom"/>
+  <title>Recent Commits to flashcard-go-go:main</title>
+  <updated>2026-09-17T17:44:29Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/40486da752d8b93c7172866ae415c7487a4ffa6e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/40486da752d8b93c7172866ae415c7487a4ffa6e"/>
+    <title>
+        Add a CI badge to the README
+    </title>
+    <updated>2026-09-17T17:44:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a CI badge to the README
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5477961344b273fa8954d3ac4709e333c75c5cbe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/5477961344b273fa8954d3ac4709e333c75c5cbe"/>
+    <title>
+        Run the Go 1.22 floor check on Linux
+    </title>
+    <updated>2026-09-17T17:42:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Run the Go 1.22 floor check on Linux
+
+Go 1.22&amp;#39;s linker emits no LC_UUID, and the dyld on current macOS runners
+rejects the resulting binary when the race detector is linked in, so the
+matrix entry failed at &amp;#39;go test -race&amp;#39; with &amp;#39;missing LC_UUID load command&amp;#39;
+while gofmt, vet and build all passed. The incompatibility is in the
+toolchain, not in this code.
+
+Moving the floor check to Linux keeps it meaningful and also covers the
+README&amp;#39;s claim that the server runs off macOS, which makes the separate
+Linux build job redundant. macOS now runs one job on stable Go, including
+the grading tests that need JavaScriptCore.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/412f72789800ad4cd93e0cf834c2aaddb116d69d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/412f72789800ad4cd93e0cf834c2aaddb116d69d"/>
+    <title>
+        Prepare the project to be shared publicly
+    </title>
+    <updated>2026-09-17T17:38:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Prepare the project to be shared publicly
+
+The repo had never been published, so it carried a few things that only made
+sense on one machine:
+
+- templates/flashcards.html linked to a private Google Chat room and to an
+  internal directory page with a personal email address in it. Both are gone;
+  the About modal now points at the repo. Its keyboard-shortcut list also still
+  described the old two-key answer modal, so it now documents the 1-4 grades.
+- The launchd label was com.bray.flashcard. It is now
+  io.github.emeryray2002.flashcard, and both scripts boot out and delete the old
+  label so an upgrade cannot leave two servers fighting over port 17632.
+- go.mod declared &amp;quot;go 1.27.1&amp;quot;, which made anyone on an older toolchain download
+  a new one to build. The real floor is 1.22 (http.ServeMux patterns,
+  http.FileServerFS), and CI now tests that floor.
+
+install.sh also grew a macOS and Go preflight with an actionable message, PORT
+plumbed into the launchd job (it was honoured by the health check but not by the
+service, so PORT=N installed a server on 17632 and then verified port N), and a
+browser opened on first install only.
+
+New: README.md, LICENSE (MIT), THIRD-PARTY-NOTICES.md for the vendored frontend
+libraries, .gitattributes marking static/vendor as vendored, and a CI workflow
+running gofmt/vet/go test -race/test-grading.sh on macOS against Go 1.22 and
+stable, a Linux build, and a first-run check against an empty home directory.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a931d48aa431e20ce108a590a28cf3d38b610c25</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/a931d48aa431e20ce108a590a28cf3d38b610c25"/>
+    <title>
+        Document the question import format
+    </title>
+    <updated>2026-09-13T00:20:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Document the question import format
+
+Describes what the importer actually accepts, derived from reading
+parseJSONFile/showImportPreview/confirmImport rather than from the UI&amp;#39;s
+own description. Notable behaviours that are not obvious:
+
+- Answers are reduced to plain text (confirmImport reads them back out of
+  the preview as textContent), while questions keep sanitized HTML.
+- Fields other than question/answer are silently dropped, so an export
+  re-imports as content only: all scheduling state is lost.
+- One malformed entry aborts the entire file without naming it, hence the
+  validator snippet.
+- .xlsx is offered in the file picker but calls an undefined
+  readExcelFile, so that path always fails.
+
+Every snippet in the doc is verified to run.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d1e044e13869665329dc8b785eeebd3607c08174</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/d1e044e13869665329dc8b785eeebd3607c08174"/>
+    <title>
+        Fix a perfectly typed answer being graded Hard
+    </title>
+    <updated>2026-09-12T19:16:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix a perfectly typed answer being graded Hard
+
+showNextQuestion ran its per-card continuous-check pass after adopting the
+new card but before clearing the answer box, so the check compared the
+PREVIOUS card&amp;#39;s text against the NEW card&amp;#39;s answer. That never prefix-
+matches, so typoMade was set before the user typed anything and every card
+graded Hard instead of Good.
+
+Two independent fixes, since this function is called in three situations
+and only one of them is the user typing:
+
+- showNextQuestion clears the box and resets typoMade as soon as it adopts
+  the card, ahead of any inspection of it.
+- The typo branch is guarded on !showingNextQuestion &amp;amp;&amp;amp; !hintAnimation-
+  InProgress, so only real typing counts.
+
+Adds scripts/test-grading.sh, which drives the card-switch sequence on
+JavaScriptCore (present on every Mac, nothing to install) and checks all
+nine grade-derivation cases, including one that reproduces this bug with
+both fixes removed. A real typo, a hint, case differences and backspacing
+over a correct prefix are all covered.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9a572b0ea807bbc3771adda322f82862edc1615</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/b9a572b0ea807bbc3771adda322f82862edc1615"/>
+    <title>
+        Fix review findings; grade corrected typos as Hard; four-grade modal
+    </title>
+    <updated>2026-09-12T19:06:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix review findings; grade corrected typos as Hard; four-grade modal
+
+A subagent diff-tested srs.go against a converted py-fsrs reference over
+400 randomized review sequences: zero divergences. The port itself is
+sound, so every finding below is in the surrounding code.
+
+HIGH  A rejected PUT /api/config corrupted the live scheduler. cfg was a
+      shallow copy, and encoding/json writes into slice backing arrays in
+      place, so a body failing mid-parse had already overwritten the real
+      parameters and learning steps, then returned 400 without normalizing
+      or saving -- so data.json looked fine the whole time. Zeroed learning
+      steps then scheduled every failed card at due == now: an infinite
+      queue. Config now deep-copies before decoding. This path had no test.
+HIGH  postpone was a no-op on new cards: getQueue returned every new card
+      regardless of its due date, so a postponed card came straight back.
+MED   Any pending learning step, however distant, blocked &amp;quot;all caught up&amp;quot;.
+      A long final step (a supported config) left the UI counting down for
+      hours. Bounded by learningWaitWindow; the server now returns an
+      explicit waiting flag instead of the client re-deriving it.
+MED   The review log recorded reviews that failed to save -- the one
+      artifact that cannot be reconstructed. Now logged only on success.
+MED   No shared in-flight guard across grading paths, so Ctrl+E during
+      another path&amp;#39;s await could double-grade a card. gradeCard now holds
+      one guard covering all of them.
+MED   A failed grade was swallowed; the user saw the next card and assumed
+      the review had saved.
+LOW   Wait screen could freeze at &amp;quot;0s&amp;quot; (it called showNextQuestion inline
+      from inside the reentrancy guard); reviewCard lacked defer on unlock;
+      new_per_day 0 meant unlimited rather than none, the opposite of Anki;
+      topic badges did not match the queue&amp;#39;s own filters; two unreachable
+      srs.go edge cases hardened; dead lastQuestion removed.
+
+Requested behaviour changes:
+- A wrong character typed and corrected now grades Hard, not Good. Like
+  the hint, it is objective evidence the retrieval was not clean, and the
+  grade should reflect what happened rather than the final state of the
+  text box.
+- The self-assessment modal offers all four grades (keys 1-4, with Y/N
+  kept as aliases) instead of a binary. &amp;quot;Wrong text&amp;quot; spans everything from
+  a blank to a synonym you knew perfectly.
+
+Tests: regression coverage for every finding above, plus the reviews/day
+cap, became_leech, day rollover through HTTP, and migration card
+preservation. TestConcurrentReviewsDoNotRace now asserts statuses,
+counters and log rows -- it previously asserted nothing and would have
+passed if every request returned 500.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/535979ecf366406abdcc899272bcd7e7d08029c9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/535979ecf366406abdcc899272bcd7e7d08029c9"/>
+    <title>
+        Fix launchd bootstrap race in install.sh
+    </title>
+    <updated>2026-09-12T18:59:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix launchd bootstrap race in install.sh
+
+Deploying hit &amp;#39;Bootstrap failed: 5: Input/output error&amp;#39; and left the
+service down: launchd tears the old job down asynchronously, so the
+bootstrap that immediately follows bootout can land while the previous
+job is still going.
+
+Waits for the old job to disappear, retries the bootstrap, and then
+verifies the server actually answers on its port before reporting
+success - previously the script printed &amp;#39;Done. Flashcards is running&amp;#39;
+even when nothing was running.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e3160caa3cf8adfab4000c1b77916c7a3241d7f5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/e3160caa3cf8adfab4000c1b77916c7a3241d7f5"/>
+    <title>
+        Stop tracking the build binary and editor swap files
+    </title>
+    <updated>2026-09-12T18:55:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Stop tracking the build binary and editor swap files
+
+A 10MB compiled binary and a vim .swp file were swept in by git add -A.
+Neither belongs in the repo; .gitignore now covers both.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b676a6395d957dcaaab02a879813fbbe0428052</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/6b676a6395d957dcaaab02a879813fbbe0428052"/>
+    <title>
+        Add suspend/unsuspend and scheduling state to the Edit Questions list
+    </title>
+    <updated>2026-09-12T18:51:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add suspend/unsuspend and scheduling state to the Edit Questions list
+
+Suspending a card removed it from the queue with no way back: the toast
+told you to unsuspend from Edit Questions, but that list had no such
+control, and a suspended card appears nowhere else. The list now shows
+each card&amp;#39;s state, due date and leech flag, and offers suspend/unsuspend.
+
+Also adds sim_test.go, a year-long simulation against a synthetic learner
+who follows the model&amp;#39;s own forgetting curve. Targeting 80/90/95%
+retention measures 78.8/89.6/94.4% over 1428/2274/3450 mature reviews,
+which is the check that the interval and retrievability formulas agree
+with each other - something no single-formula unit test can catch.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d666351492c62a74d8ad01347b0e9f18c3a4376d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/d666351492c62a74d8ad01347b0e9f18c3a4376d"/>
+    <title>
+        Docs: rewrite CLAUDE.md for FSRS, add design doc and optimizer export
+    </title>
+    <updated>2026-09-12T18:50:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Docs: rewrite CLAUDE.md for FSRS, add design doc and optimizer export
+
+- CLAUDE.md: scheduling section, API table, the bury-vs-postpone split,
+  migration behaviour, and the two frontend layout constraints that are
+  easy to break (management row must stay outside #questionCard; grading
+  must reach gradeCard exactly once).
+- Documents the dev-port footgun: the launchd service owns 17632, so a dev
+  server started there loses the bind race and every subsequent curl
+  silently mutates live data. Dev now uses 17699.
+- docs/srs-redesign.md: why the old scheme was replaced, what FSRS does,
+  and the honest caveats (seeded state is a guess, defaults are population
+  averages, elapsed time is day-granular).
+- scripts/export-reviews.sh: converts reviews.jsonl to the optimizer&amp;#39;s CSV,
+  excluding migrated cards whose state was estimated rather than measured.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b5d2f866de41beff367cac376023370357bc31a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/6b5d2f866de41beff367cac376023370357bc31a"/>
+    <title>
+        Keep Add/Edit Questions reachable when no card is on screen
+    </title>
+    <updated>2026-09-12T18:47:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep Add/Edit Questions reachable when no card is on screen
+
+The management buttons sat inside #questionCard, which the new session
+screens hide wholesale. Any state without a card showing - &amp;#39;all caught
+up&amp;#39;, waiting on a learning step, or an error - therefore offered no way
+to add or edit cards. This bit immediately after migration, where a deck
+whose cards were all answered recently has nothing due for days.
+
+Moves the row outside #questionCard so it is always visible, adds Add/Edit
+to the session-complete screen, and guards Delete Question (which does
+need a current card) instead of letting it throw on null.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/568630fa6405c5dd89260071326f87981aa249e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/568630fa6405c5dd89260071326f87981aa249e6"/>
+    <title>
+        Frontend: drive study from the server queue, four-point grading, stats
+    </title>
+    <updated>2026-09-12T18:46:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Frontend: drive study from the server queue, four-point grading, stats
+
+Removes ~240 lines of client-side scheduling: populateAttentionSet, the
+70/30 attention-set coin flip, the exp(-0.39*factor) acceptance test, and
+the recentlySkipped/attentionSet bookkeeping. With them go three bugs:
+
+- ATTENTION_SET_BASE_PROBABILITY logged &amp;#39;Resetting to 0.4&amp;#39; but was never
+  reset; it ratcheted to 1.0 and stayed there.
+- sort(() =&amp;gt; Math.random() - 0.5) is a biased shuffle.
+- Two showNextQuestion() calls recursed from inside the function&amp;#39;s own try
+  block, so the reentrancy guard made them silent no-ops.
+
+Grading now maps the app&amp;#39;s existing signals onto the four-point scale:
+exact typed answer = Good, hint or self-graded-close = Hard, marked wrong
+= Again, Ctrl+E = Easy. Three of four come from real evidence rather than
+self-assessment, which is the usual weak point of SRS apps. Each grading
+control shows the interval it would grant.
+
+Also: session status line and a genuine &amp;#39;all caught up&amp;#39; state (previously
+unreachable - with no due dates the app served cards forever), a waiting
+screen for pending learning steps, bury/postpone/suspend/forget replacing
+the three skip buttons, leech warnings, a stats panel computed from the
+review log, and predicted retention replacing the mastery bar.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/96dc34fd26861fdabeaf7139d620d32ee43f5b96</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/96dc34fd26861fdabeaf7139d620d32ee43f5b96"/>
+    <title>
+        Replace factor scheduling with server-side FSRS queue, review log and…
+    </title>
+    <updated>2026-09-12T18:36:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Replace factor scheduling with server-side FSRS queue, review log and stats
+
+Backend half of the SRS redesign:
+
+- Cards carry FSRS state (state/due/stability/difficulty/step/reps/lapses)
+  instead of a single factor 1-10. Scheduling now happens in Go, not in the
+  browser.
+- GET /api/queue builds an ordered, capped, finite session: due learning
+  steps first, then review cards by ascending retrievability, with new cards
+  interleaved. Replaces the client-side weighted-random draw, which had no
+  due dates and never terminated.
+- POST /api/cards/{id}/review takes a 1-4 grade and replaces both
+  PUT /factor and POST /correct.
+- Every review appends to ~/.flashcard/reviews.jsonl. This is the durable
+  asset: the scheduler is replaceable, review history is not.
+- Bury stays in-memory (expires at rollover anyway); postpone is a persisted
+  due-date edit, because a card returning at its old due date after a
+  restart would be worse than the old behaviour.
+- Migration seeds FSRS state from factor, spreads overdue cards across days
+  to avoid a day-one wall, backs up to data.json.pre-fsrs.bak, and marks
+  every card Seeded so parameter fitting can exclude it.
+
+Two bugs the tests caught and fixed before they shipped: daily caps decoded
+to zero (= unlimited) for any file predating the config block, and the
+day-end boundary was inclusive, letting one extra card past the cap.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5cdd91787e842eef749d5e97eb6a1d3b88e2dd2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/5cdd91787e842eef749d5e97eb6a1d3b88e2dd2e"/>
+    <title>
+        Add FSRS-6 scheduler core with upstream conformance tests
+    </title>
+    <updated>2026-09-12T18:33:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add FSRS-6 scheduler core with upstream conformance tests
+
+Ports the Free Spaced Repetition Scheduler (the algorithm Anki has shipped
+since 23.10) from the py-fsrs reference implementation. Pure stdlib float
+math, no dependencies.
+
+Replaces nothing yet - this commit only adds srs.go, config.go and
+reviewlog.go alongside the existing code.
+
+Tests are golden vectors lifted from py-fsrs&amp;#39;s own test suite, so a
+transcription error in any single term is caught rather than silently
+producing plausible-looking intervals.
+
+Co-Authored-By: Claude Opus 5 (1M context) &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9075b46aa66166cfe2c7049066bd89f178a4234a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/emeryray2002/flashcard-go-go/commit/9075b46aa66166cfe2c7049066bd89f178a4234a"/>
+    <title>
+        Initial commit: flashcard app before SRS redesign
+    </title>
+    <updated>2026-09-12T18:23:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/62354532?s=30&amp;v=4"/>
+    <author>
+      <name>emeryray2002</name>
+      <uri>https://github.com/emeryray2002</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit: flashcard app before SRS redesign
+
+Snapshot of the Go rewrite as it stands: factor-based (1-10) weighted-random
+card selection implemented in the frontend, with no due dates, no review log,
+and no across-session scheduling.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

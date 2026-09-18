@@ -1,0 +1,125 @@
+# Grok Bot Slack routine trigger never fires, while Test Run and Slack return both work
+URL: https://forum.cursor.com/t/grok-bot-slack-routine-trigger-never-fires-while-test-run-and-slack-return-both-work/171676
+Created: 2026-09-14T22:31:17.424Z
+
+## Post #1 @Nathan_Arizona (2026-09-14T22:31:17.460Z)
+Where does the bug appear (feature/product)?
+ Grok Bot
+
+ Describe the Bug
+ A Slack-triggered Grok Bot routine is enabled and Active, but a matching Slack message never starts a routine run.
+
+ Manual/Test execution of the same routine path succeeded. The Grok Bot Slack plugin successfully wrote back to Slack and readback succeeded.
+
+ Slack write works. Grok Bot routine execution works. Grok Bot Slack plugin return works. Only Slack event ingestion into the active Grok Bot routine fails.
+
+ This resembles the previously reported class of dropped Grok Bot routine triggers. I am not claiming it is the same root cause without evidence.
+
+ Please inspect the backend event subscription / routine-trigger delivery for this Grok Bot account and routine.
+
+ Grok Bot account for this report: natearizona@icloud.com
+
+ Steps to Reproduce
+ Product: Grok Bot
+
+Grok Bot version: current live version on this account
+
+A Slack-triggered routine on Sagan Front Office is enabled and Active.
+
+Workspace: turquoise-ai-infra.slack.com
+
+Channel: #tars-conduit
+
+Channel ID: C0C1V9ZDHL1
+
+Keyword: TARS-CONDUIT-CANARY
+
+TARS-ChatGPT successfully posted:
+
+TARS-CONDUIT-CANARY please reply once
+
+Slack message TS:
+
+751419
+
+Message delivery into Slack is confirmed.
+
+Routine run history remained:
+
+lastRunAt: null
+
+No routine wake occurred.
+
+No process turn occurred.
+
+No Slack reply attempt occurred.
+
+Manual/Test execution of the same routine path succeeded.
+
+Sagan Front Office successfully posted:
+
+TARS-CONDUIT-TEST-RUN-OK
+
+Test-run Slack message TS:
+
+447639
+
+Slack return/readback succeeded.
+
+ Therefore: Slack write works. Grok Bot routine execution works. Grok Bot Slack plugin return works. Only Slack event ingestion into the active Grok Bot routine fails.
+
+ Expected Behavior
+ The Active Slack-triggered routine should wake when a matching Slack message is posted in #tars-conduit .
+
+It should create a routine run (lastRunAt set), process one turn, and reply via the connected Slack plugin when configured to do so.
+
+A Test Run of the same routine path already proved execution and Slack return work, so a matching Slack event should have produced the same kind of run.
+
+ Operating System
+ MacOS
+
+iOS
+
+ Version Information
+ Grok Bot version: current live version on this account
+
+Desktop Grok Bot.app: 0.47.0
+
+Release track: live / stable
+
+OS: darwin / MacOS desktop app; iOS used as glass for the Bot conversation
+
+ Additional Information
+ Please inspect the backend event subscription / routine-trigger delivery for this Grok Bot account and the Active Slack-triggered routine on Sagan Front Office.
+
+ Channel: #tars-conduit
+
+Channel ID: C0C1V9ZDHL1
+
+Keyword: TARS-CONDUIT-CANARY
+
+Matching inbound Slack message TS: 751419
+
+Successful Test Run Slack message TS: 447639 (body: TARS-CONDUIT-TEST-RUN-OK)
+
+ This resembles the previously reported class of dropped Grok Bot routine triggers. I am not claiming it is the same root cause without evidence.
+
+ The Grok Bot computer was not reset, recovered, replaced, or modified after this proof. The routine was not changed. No second canary was sent.
+
+ Does this stop you from using Cursor
+ No - Cursor works, but with this issue
+
+## Post #6 @kevinn (2026-09-15T03:36:21.399Z)
+Hi @Nathan_Arizona Thanks for the post.
+
+ I checked on our side and no message from #tars-conduit has ever reached us, so the routine had nothing to match. The cause is on the Slack side: #tars-conduit is a private channel, and Slack only sends us messages from a private channel when the Cursor Slack app is a member of it. Right now it isn’t. The Test Run and the Slack reply don’t tell you about this, because the Test Run doesn’t go through Slack at all, and the reply is sent by the Slack plugin, which is a different app from the one that listens for messages.
+
+ Could you try this:
+
+ In Slack, open #tars-conduit .
+ In the message box type /invite @Cursor and press Enter (you should see Cursor join the channel).
+ Wait about a minute.
+ Post a new message in #tars-conduit containing TARS-CONDUIT-CANARY.
+ In Grok Bot, open the routine on Sagan Front Office and check Run history.
+
+ Does a run appear after step 4? If not, reply with the time you posted the message and a screenshot of the routine’s Slack card in the routine panel, and I’ll take another look.

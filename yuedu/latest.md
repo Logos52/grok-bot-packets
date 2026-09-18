@@ -1,14 +1,11 @@
-## Yuedu packet · 2026-09-15
+## Yuedu packet · 2026-09-18
 
 ### READ
-- [中·繁] score=12 | 下班到家直接趴在地上／好想當一隻貓 | 為何讀：台中上班族下班口語——趴在地上、宇宙給錢、想當貓；短但語氣完整，練口語節奏 | https://x.com/bubuchachapoo/status/2099522130644013384 | 詞: 下班、趴、裝可愛、台中
-- [中·繁] score=20 | 遇到熊4步驟應變　林保署提醒不要爬樹、莫裝死 | 為何讀：應變指引、機會主義者、防熊噴霧——台灣生活書面步驟文，動詞密、好跟讀 | https://www.cna.com.tw/news/ahel/202609140224.aspx | 詞: 應變指引、裝死、防熊噴霧、機會主義者、生態給付
-- [中·繁] score=16 | 乖乖中壢廠遭賣　工會要求關廠補償金、不排除罷工 | 為何讀：關廠補償金、罷工投票、年資、最低工資——本土勞資敘事，口語可對讀的書面 | https://www.cna.com.tw/news/ahel/202609140262.aspx | 詞: 關廠補償金、罷工投票、資遣費、年資、最低工資
-- [中·繁] score=16 | 淡江大橋開放電輔自行車　研議加嚴行人及自行車道封閉標準 | 為何讀：電輔車、使用管理要點、強風特報、勸導——北台灣日常交通公告語 | https://www.cna.com.tw/news/ahel/202609140203.aspx | 詞: 電輔自行車、使用管理要點、強風特報、封閉、勸導
-
-### LEARN-META
-- score=16 | ChatGPT 無法分析你的華語發音 | 為何讀：Hacking Chinese 新方法文——AI 評發音的上限、聲調回饋哪裡不可信；報告用繁，原文英 | https://www.hackingchinese.com/no-chatgpt-cant-analyse-your-mandarin-pronunciation/
+- [中·繁] score=16 | 跟同事開會手抖／月台墊胃／回台灣買不到 | 為何讀：出差口語——開會手在抖、4點起床、月台墊胃、台式歐姆蛋捲；短段但語氣完整 | https://x.com/Aiolia00095/status/2099786776080773189 | 詞: 手在抖、墊胃、月台、台式歐姆蛋捲
+- [中·繁] score=20 | 勞工婚假10月起增加至14天　請假QA一次看 | 為何讀：婚假天數、請假規則、工資補助、例假不算——勞動書面QA，動詞密、好跟讀 | https://www.cna.com.tw/news/ahel/202609170090.aspx | 詞: 婚假、請假規則、工資補助、例假、休息日
+- [中·繁] score=16 | 手搖飲稽查　多家知名店家違規上榜共罰105萬 | 為何讀：腸桿菌科、咖啡因標示、GHP、產品責任險——台灣手搖日常食安書面 | https://www.cna.com.tw/news/ahel/202609170161.aspx | 詞: 腸桿菌科、現場調製、GHP、產品責任險、複抽驗
+- [中·繁] score=16 | 自然人第2戶購屋貸款最高可貸7成　18日起上路 | 為何讀：選擇性信用管制、貸款成數、購地貸款切結——本土房市管制鬆綁敘事 | https://www.cna.com.tw/news/afe/202609170249.aspx | 詞: 選擇性信用管制、貸款成數、購地貸款、不動產貸款集中度、自住
+- [中·繁] score=12 | 9/22雙北公車免費搭　北市再推10條小旅行路線 | 為何讀：無車日、刷卡機上鎖、一日公車小旅行、低碳通學——雙北日常交通活動語 | https://www.cna.com.tw/news/ahel/202609170154.aspx | 詞: 無車日、刷卡機、小旅行、低碳通學、YouBike
 
 ### Footer
-約 18 below threshold（彩券／氣象短訊、韓廠電費外電過短、零時差術語過密、華航 SAF 邊際、微信漏洞通稿偏外、GovTech 月報過雜、韓國個資罰則偏外電、X 語言政策長文／輕艇世錦賽／灣區房產／半導體分錢、VTuber／藍綠／幣圈）· X MCP failed_to_load → Latest 瀏覽器自抓（Query A～40／Query B～31，本週僅 1 則口語過線）· 天下 RSS 仍卡在 2021 · LEARN-META：HC 2026-09-13 發音／AI；TOCFL 僅命題講座；sc-top 連不上 · canary: packet 2026-09-15；newest 2026-09-14（X bubuchachapoo／CNA）／HC 2026-09-13
-dcard/latest 過舊（2026-09-01 檔仍是 Cloudflare 空殼，無口語正文）
+約 22 below threshold（政治／亞運布條、報導者連結、VTuber警片、半導體分錢、FIRE育兒、赤峰街漲租僅嵌文無主帖URL、ss4701ss仇中框架職場、Issabel CVE術語過密、央行利率短訊與二戶重複、Threads監護邊際、台鐵加開訂票偏疏運、ETS／GSN機房偏產業長、海洋酸化科學可讀但非主菜、天下仍2021）· X Latest 瀏覽器自抓（Query A～40／Query B～31，本週僅 1 則口語過線；赤峰街 @live_a_evil 鎖帳找不到）· 天下 RSS 仍卡在 2021 · LEARN-META：無（HC 模仿挑戰刊於 2026-09-06，上包已用發音文；TOCFL 僅操作說明；sc-top 連不上）· canary: packet 2026-09-18；newest 2026-09-17（CNA）／X 2026-09-15

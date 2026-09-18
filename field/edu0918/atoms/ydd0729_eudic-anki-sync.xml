@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ydd0729/eudic-anki-sync/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ydd0729/eudic-anki-sync/commits/main.atom"/>
+  <title>Recent Commits to eudic-anki-sync:main</title>
+  <updated>2026-09-17T18:11:54Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85aff88a0eb4ff0ea745af0698ee317ba08bd59b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/85aff88a0eb4ff0ea745af0698ee317ba08bd59b"/>
+    <title>
+        Wait for the packaged app in the release check
+    </title>
+    <updated>2026-09-17T18:11:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Wait for the packaged app in the release check
+
+A windowed Windows program does not keep the console attached, so the
+shell continued before the smoke test wrote its output file.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dbd8461542e0c9316e52e4b40c39141a12c3bd2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/2dbd8461542e0c9316e52e4b40c39141a12c3bd2"/>
+    <title>
+        Pin setup-uv to an existing tag
+    </title>
+    <updated>2026-09-17T18:09:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pin setup-uv to an existing tag
+
+astral-sh/setup-uv publishes exact versions without a moving v10 tag, so
+the workflows failed to resolve the action.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3652be174d39013f6f2aa086a0107c9595398edd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/3652be174d39013f6f2aa086a0107c9595398edd"/>
+    <title>
+        Build and publish releases from GitHub Actions
+    </title>
+    <updated>2026-09-17T18:08:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Build and publish releases from GitHub Actions
+
+CI runs the tests on Windows for pushes and pull requests. Pushing a v
+tag also packages the app, checks that the packaged program starts on a
+machine without Eudic or Anki, and publishes a release with
+EudicAnkiSync.exe attached.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f25fab6ea6e956cf067372c72b2ce20575b4d5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/1f25fab6ea6e956cf067372c72b2ce20575b4d5e"/>
+    <title>
+        Scale the GUI with display scaling and guide AnkiConnect setup
+    </title>
+    <updated>2026-09-17T17:38:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Scale the GUI with display scaling and guide AnkiConnect setup
+
+Sun Valley defines fonts in pixels, which Tk does not scale, so the text
+was smaller than before the restyle on a 150% display; convert the theme
+fonts to points and scale window size, paddings and the header icon by
+the screen DPI, clamping the window to the screen height. When
+AnkiConnect cannot be reached, diagnose whether Anki is running, whether
+the add-on is installed or disabled, or whether Anki needs a restart, and
+show the matching steps with buttons to copy the add-on code 2055492159
+or open its page.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e7de49ae43ad37841408db64801c3118d68f7dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/0e7de49ae43ad37841408db64801c3118d68f7dd"/>
+    <title>
+        Restyle the GUI with Sun Valley theme and add an icon
+    </title>
+    <updated>2026-09-17T17:22:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restyle the GUI with Sun Valley theme and add an icon
+
+Use sv-ttk with the system light or dark mode (and a matching Windows
+title bar), a header with Anki connection status, grouped sections, a
+switch for reverse sync, an accent sync button and result tiles above the
+log. Fonts use Microsoft YaHei UI so Chinese text does not fall back to
+SimSun. Add a generated app icon, bundle the theme data and icon in the
+PyInstaller build, and document the GUI and build steps.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ef0e9d906f19bc033708259c6f35b92b31802724</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/ef0e9d906f19bc033708259c6f35b92b31802724"/>
+    <title>
+        Add Tkinter GUI and PyInstaller build
+    </title>
+    <updated>2026-09-17T17:18:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Tkinter GUI and PyInstaller build
+
+The GUI lets users pick an existing Eudic study list, pick or create an
+Anki deck and choose dictionaries in Eudic order, then runs a dry run or
+sync on a background thread with progress, log and a confirmation dialog
+for reverse deletions. build_exe.py packages it as a one-file windowed
+EudicAnkiSync.exe; --smoke-test verifies a packaged build loads data.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/20ca2f6bdd3b8a7cb119b3d1b13e576d2f85e1f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/20ca2f6bdd3b8a7cb119b3d1b13e576d2f85e1f2"/>
+    <title>
+        Separate the sync core from console output
+    </title>
+    <updated>2026-09-17T17:14:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Separate the sync core from console output
+
+Introduce SyncOptions, a Reporter interface and sync() returning a
+SyncReport so a GUI can drive the same flow; the CLI now wraps it with a
+rich-based reporter. Store sync state under %LOCALAPPDATA%\EudicAnkiSync
+(migrating the old file next to the script) because a one-file build runs
+from a temporary directory, and start tasklist/ffmpeg without console
+windows.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/491c148f484950b49913d0e8f03747633e4168cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/491c148f484950b49913d0e8f03747633e4168cf"/>
+    <title>
+        Render dictionaries like the Eudic lookup page
+    </title>
+    <updated>2026-09-17T16:07:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Render dictionaries like the Eudic lookup page
+
+Load Eudic&amp;#39;s main.css and each dictionary&amp;#39;s root CSS/JS from the card
+template instead of the field, because the Anki editor strips &amp;lt;head&amp;gt;
+blocks when it saves a field, which left viewed notes unstyled. Wrap
+dictionaries in Eudic&amp;#39;s expBody/explain_wrap/expHead/expDiv structure
+with its collapse arrow and entry separator, follow Anki night mode with
+Eudic&amp;#39;s night theme, fall back to the system sans-serif font like Eudic&amp;#39;s
+webview, and compare media names case-insensitively so case-variant
+references in main.css are not re-uploaded on every run.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f38514b5b7dce34de2a3626db28bd6e8a88b4d87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/f38514b5b7dce34de2a3626db28bd6e8a88b4d87"/>
+    <title>
+        Revert &quot;Use python-lzo on Python 3.11 for LZO dictionaries&quot;
+    </title>
+    <updated>2026-09-17T15:49:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Revert &amp;quot;Use python-lzo on Python 3.11 for LZO dictionaries&amp;quot;
+
+This reverts commit 1418d369f028b630f5bb952bcced6da93addfe40.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1418d369f028b630f5bb952bcced6da93addfe40</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/1418d369f028b630f5bb952bcced6da93addfe40"/>
+    <title>
+        Use python-lzo on Python 3.11 for LZO dictionaries
+    </title>
+    <updated>2026-09-17T15:45:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Use python-lzo on Python 3.11 for LZO dictionaries
+
+python-lzo only ships Windows wheels up to CPython 3.11, so pin the
+project to 3.11 and let mdict-utils use it instead of the pure-Python
+LZO1X decoder, which is removed together with its unit test.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6cfaf6e91ff3ea8175a3f190e78bc23ea530da2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/b6cfaf6e91ff3ea8175a3f190e78bc23ea530da2"/>
+    <title>
+        Document reverse sync refusal on corrupt databases
+    </title>
+    <updated>2026-09-17T15:39:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Document reverse sync refusal on corrupt databases
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/147abf4fea6e142d3aa25b4d06d40417fd749f7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/147abf4fea6e142d3aa25b4d06d40417fd749f7d"/>
+    <title>
+        Read the study list from the local Eudic database
+    </title>
+    <updated>2026-09-17T15:39:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read the study list from the local Eudic database
+
+Drop the OpenAPI client: study lists, words and ratings now come from a
+read-only copy of study.db, scanned without the corrupt cus_studyrate
+indexes found in real Eudic databases. Reverse sync edits study.db the
+way Eudic does (remove the book membership, soft-delete and flag for
+upload) only while Eudic is closed and the database passes an integrity
+check, backing it up first and restoring Eudic&amp;#39;s header format. The
+Explanation field is no longer overwritten because the local database
+has no brief definitions.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9eb2fc6c32c002f5191363d7d5c5973ba443490b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/9eb2fc6c32c002f5191363d7d5c5973ba443490b"/>
+    <title>
+        Track Anki deletions precisely and document usage
+    </title>
+    <updated>2026-09-17T15:08:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Track Anki deletions precisely and document usage
+
+Extract the deleted-in-Anki detection into a tested helper that also
+forgets words removed on both sides, skip the study list lookup when the
+default book is used, and add a README describing setup, options and
+sync rules.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8348ce02f51b54d594f28836c3e1729a8d5c33da</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/8348ce02f51b54d594f28836c3e1729a8d5c33da"/>
+    <title>
+        Handle snd audio links and Eudic rate limiting
+    </title>
+    <updated>2026-09-17T15:03:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Handle snd audio links and Eudic rate limiting
+
+Treat snd:// links as audio resources so missing pronunciations are
+reported, back off for minutes when the OpenAPI answers 403/429, and hide
+progress bars for phases with nothing to write.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/23456f056a09a5875c02382914a36bd8c47350a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/23456f056a09a5875c02382914a36bd8c47350a9"/>
+    <title>
+        Add Eudic study list to Anki sync script
+    </title>
+    <updated>2026-09-17T14:54:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add Eudic study list to Anki sync script
+
+Reads the study list through the Eudic OpenAPI, dictionary order and
+expand settings from a read-only copy of the local study.db, and entries
+plus CSS, scripts, fonts and images from the configured MDX/MDD files.
+Dictionary styles are scoped per library, resources are uploaded as Anki
+media, notes are added or updated incrementally, and words deleted in
+Anki can optionally be removed from the Eudic study list.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc06b39077378dc7bf1fd6f10a1848d02e9a257c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ydd0729/eudic-anki-sync/commit/fc06b39077378dc7bf1fd6f10a1848d02e9a257c"/>
+    <title>
+        Initialize uv project for Eudic to Anki sync
+    </title>
+    <updated>2026-09-17T14:49:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/188989134?s=30&amp;v=4"/>
+    <author>
+      <name>ydd0729</name>
+      <uri>https://github.com/ydd0729</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initialize uv project for Eudic to Anki sync
+
+Python 3.14 script project managed by uv, with mdict-utils for MDX/MDD
+parsing, tinycss2 for stylesheet scoping, rich for console output and
+pytest as a dev dependency.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

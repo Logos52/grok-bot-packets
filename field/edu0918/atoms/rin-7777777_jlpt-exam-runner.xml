@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/rin-7777777/jlpt-exam-runner/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/rin-7777777/jlpt-exam-runner/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/rin-7777777/jlpt-exam-runner/commits/main.atom"/>
+  <title>Recent Commits to jlpt-exam-runner:main</title>
+  <updated>2026-09-17T08:15:20Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/213e63481417ad1b585dc87b62c7f99f11ab4fc7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rin-7777777/jlpt-exam-runner/commit/213e63481417ad1b585dc87b62c7f99f11ab4fc7"/>
+    <title>
+        docs: 三个 README 补充 Releases 下载入口
+    </title>
+    <updated>2026-09-17T08:15:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/224286512?s=30&amp;v=4"/>
+    <author>
+      <name>rin-7777777</name>
+      <uri>https://github.com/rin-7777777</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 三个 README 补充 Releases 下载入口
+
+v1.0.0 已发布，在「直接装 APK」一节加上 Releases 链接与
+附件文件名、sha256 说明，方便直接下载安装包。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b6882ac4d028e19ad399db7f166393461c5c770</id>
+    <link type="text/html" rel="alternate" href="https://github.com/rin-7777777/jlpt-exam-runner/commit/8b6882ac4d028e19ad399db7f166393461c5c770"/>
+    <title>
+        feat: JLPT 模拟考试 App（纯前端考试运行器）
+    </title>
+    <updated>2026-09-17T07:55:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/224286512?s=30&amp;v=4"/>
+    <author>
+      <name>rin-7777777</name>
+      <uri>https://github.com/rin-7777777</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: JLPT 模拟考试 App（纯前端考试运行器）
+
+一个纯前端、无后端、无听力的 JLPT 模拟考试运行器：导入 AI 生成的
+JSON 试卷 → 倒计时/不限时答题 → 按 JLPT 规则自动评分 → 逐题中文解析，
+用 Capacitor 打包成 Android APK。
+
+- www/：6 个页面 + 7 个模块（util / schema / score / store / prompt /
+  demo-paper / app），零框架、零打包器、零运行时依赖
+- docs/：SCHEMA.md（字段表 + 评分公式 + 容错规则）、PROMPT_TEMPLATE.md
+  （给 AI 的提示词）、BUILD_APK.md（打包/签名/排错）
+- samples/：n3-sample.json（可直接导入的示例卷）、paper.schema.json
+- tools/：serve.js（本地预览）、selftest.js（87 项单元测试）、
+  domtest.js（107 项 jsdom 端到端测试）、两个文档生成脚本
+- README：简体中文 / English / 日本語 三个版本
+
+验证：npm test 194 项全部通过；手机视口真实浏览器跑通全流程无报错；
+布局与对比度审计（360×800、320×568、深浅主题、6 个页面）全部达标；
+APK 内嵌资源与 www/ 源码 md5 完全一致。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

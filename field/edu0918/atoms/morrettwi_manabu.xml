@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/morrettwi/manabu/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/morrettwi/manabu/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/morrettwi/manabu/commits/master.atom"/>
+  <title>Recent Commits to manabu:master</title>
+  <updated>2026-09-17T08:47:23Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7eb2af860b1ba766b936ab8fc761df9fd3bfc033</id>
+    <link type="text/html" rel="alternate" href="https://github.com/morrettwi/manabu/commit/7eb2af860b1ba766b936ab8fc761df9fd3bfc033"/>
+    <title>
+        feat: Fase 3 — Aplikasi React Native + Expo lengkap
+    </title>
+    <updated>2026-09-17T08:47:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/11a250ed1f581c5ca52c1487e7759cad?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>manabu@dev.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: Fase 3 — Aplikasi React Native + Expo lengkap
+
+Bangun aplikasi Android sungguhan dari prototipe:
+
+Data pembelajaran (5 file):
+- Hiragana: 46 huruf dasar + dakuten + handakuten
+- Katakana: 46 huruf + dakuten + handakuten + yoon
+- Kanji: 80 kanji JLPT N5 dengan on/kun&amp;#39;yomi &amp;amp; contoh
+- Kosakata: 90+ kata JLPT N5 dikelompokkan per kategori
+- Tata Bahasa: 17 pola dasar dengan contoh kalimat
+
+Engine &amp;amp; utilitas (6 file):
+- srs.ts: algoritma SM-2 (SuperMemo 2) lengkap
+- storage.ts: wrapper AsyncStorage (XP, streak, statistik, pengaturan)
+- tts.ts: Text-to-Speech bahasa Jepang (expo-speech)
+- theme.ts: palet warna &amp;amp; konstanta visual
+- achievements.ts: 10 lencana pencapaian
+- useSRS.ts: React hook untuk sesi SRS
+
+Komponen UI (6 file):
+- Flashcard: kartu dengan animasi flip 3D (reanimated)
+- KanaCard: kartu huruf dengan audio
+- ProgressBar, RatingButtons, ScreenContainer, StatCard
+
+5 layar aplikasi (Expo Router):
+- Beranda: dashboard dengan target harian, streak, XP, level
+- Kana: grid Hiragana/Katakana dengan audio
+- SRS: sesi flashcard dengan penilaian &amp;amp; seeding otomatis
+- Kuis: pilihan ganda dengan timer 15s, bonus XP, bintang
+- Statistik: grafik mingguan, progres SRS, lencana
+
+Lainnya:
+- Aset ikon &amp;amp; splash (PIL generated)
+- README diperbarui dengan instruksi Expo
+- TypeScript: 0 error (tsc --noEmit lolos)
+- 100% gratis &amp;amp; sumber terbuka (MIT)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa41e8b413ecbc565d52bed267b7bde30d90b0ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/morrettwi/manabu/commit/aa41e8b413ecbc565d52bed267b7bde30d90b0ea"/>
+    <title>
+        Initial commit: Manabu (学ぶ) - Aplikasi Belajar Bahasa Jepang untuk An…
+    </title>
+    <updated>2026-09-17T08:14:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://1.gravatar.com/avatar/11a250ed1f581c5ca52c1487e7759cad?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>manabu@dev.local</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Initial commit: Manabu (学ぶ) - Aplikasi Belajar Bahasa Jepang untuk Android
+
+- Prototipe interaktif lengkap (index.html) dengan 5 layar fungsional:
+  - Beranda: dashboard dengan target harian, streak, XP
+  - Kana: grid Hiragana &amp;amp; Katakana dengan Text-to-Speech
+  - Kartu SRS: flashcard dengan animasi flip 3D
+  - Kuis: pilihan ganda dengan timer
+  - Statistik: grafik &amp;amp; pencapaian
+- Dokumentasi lengkap (README.md) dalam Bahasa Indonesia
+- Arsitektur teknis &amp;amp; roadmap pengembangan
+- Semua teknologi 100% gratis &amp;amp; sumber terbuka
+- Lisensi MIT&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

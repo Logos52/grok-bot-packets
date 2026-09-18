@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/jkw2lo/learn_chinese_hanzi_quest/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commits/main.atom"/>
+  <title>Recent Commits to learn_chinese_hanzi_quest:main</title>
+  <updated>2026-09-17T22:50:53Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/40c311a765c35d63e68f4e5ed8ec323c4166d557</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/40c311a765c35d63e68f4e5ed8ec323c4166d557"/>
+    <title>
+        Get the audio bundle out of the critical path, and teach 没
+    </title>
+    <updated>2026-09-17T22:50:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Get the audio bundle out of the critical path, and teach 没
+
+v1.3.0. Three things, from a look at what was actually costing the most.
+
+A first visit downloaded 1.33 MB before anything drew, and 859 KB of that was
+js/audio.js — base64 speech, loaded as a blocking script, that nothing needs in
+the first second. app.js fetches it after the first render now. Everything that
+reads a clip already guarded on HQ_AUDIO existing, so the seconds before it
+lands degrade to the system voice rather than to an error.
+
+That had a trap in it. The unlock listeners were bound with {once: true}, and a
+once listener is spent even on a call that returns early — so a click landing
+before the bundle arrived would have burned the only chance to unlock the audio
+element and left the whole visit silent. They stay armed now, at the cost of an
+early return per click. Verified: an early click no longer consumes the unlock,
+and a later one still works.
+
+Then a real curriculum hole. 55 of 348 example sentences could not be used as
+reading material because they contained a character the library never taught,
+and the worst of them was 没 — 没有 is among the commonest things anyone says in
+Chinese and it simply wasn&amp;#39;t there. Nor 哪 which, nor 怎 how, nor 吧.
+
+Sixteen characters go in where they belong rather than appended to the end: 没
+哪 怎 吧 into Sprout with the other negation and question words, 第 金 into
+Explorer with money and numbers, 儿 孩 先 岁 间 气 into Everyday with people and
+time, 京 床 桌 力 into The World. Records key on the character rather than its
+index, so inserting mid-curriculum is safe and only the STAGES end values move.
+Blocked sentences fell from 55 to 30; readable words rose to 622. 364
+characters, 575 clips, every component claim and stroke order still checks out.
+
+And the README&amp;#39;s opening section still told a future session to publish to a
+Claude Artifact that has been stale for a dozen versions, with no mention of the
+repo, the SSH remote, or the version bump that keeps a push from being invisible.
+It documents how this actually ships now.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a673564fbe7478e974c41d3676b3a6be1ef73cfb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/a673564fbe7478e974c41d3676b3a6be1ef73cfb"/>
+    <title>
+        Add a flashcard deck of words you can already read
+    </title>
+    <updated>2026-09-17T22:31:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add a flashcard deck of words you can already read
+
+Characters are only half of reading: knowing 大 and 人 separately does not get
+you 大人. A third deck collects every multi-character word in the library whose
+characters are all already yours, and fills itself as you go — 78 words at 72
+characters, 212 at 140.
+
+Words are listed under each character they contain, so they are deduplicated,
+and ordered by the last character to fall into place. Newest first means the
+deck opens on the combinations you have only just become able to read rather
+than on 一个 forever.
+
+The back names the parts — 大 big + 人 person — because seeing what a word is
+made of is the thing that makes it stick. Deck entries are now either a
+character (a plain string) or a word (its triple), and flashFace() reduces
+either to the same shape so the renderer doesn&amp;#39;t branch. Word cards carry no
+tone glyph: the mark draws a single contour, and 大人 has two syllables with two
+different ones, so one shape would be a lie.
+
+Shortening a meaning to fit needed more care than splitting on the first
+punctuation mark. Fourteen characters are pure grammar and glossed entirely
+inside brackets — 们 is &amp;quot;(plural marker for people)&amp;quot; — which that rule shortens
+to nothing, and 得 &amp;quot;(links verb to description); to obtain&amp;quot; shortened to a
+fragment with a stray bracket. shortMeaning() prefers what follows a leading
+parenthetical and falls back to its contents; all 348 now gloss cleanly.
+
+v1.2.0.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7714d76da01b31155a74bebdcee355b86b4a677</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/c7714d76da01b31155a74bebdcee355b86b4a677"/>
+    <title>
+        Placement credits are not &quot;learned today&quot;
+    </title>
+    <updated>2026-09-17T22:23:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Placement credits are not &amp;quot;learned today&amp;quot;
+
+Being placed at 69 characters filled the Learned today strip with all 69 and
+pointed the whole practice list at them: recognise these 69, pronounce these
+69, write out these 69. The intended day one — five new characters — was buried
+under a day&amp;#39;s work nobody asked for.
+
+Placement credits land today, so ensure() stamps `first` with today&amp;#39;s date
+whichever way a character arrives, and learnedToday() had no way to tell them
+apart. It now filters on `placed`, which is exactly the flag that separates
+&amp;quot;credited this morning&amp;quot; from &amp;quot;sat down and learnt it this morning&amp;quot;.
+
+Miss three of your first 72 and Today now shows those three plus the next two
+in the library — five characters, the same first session everybody gets. That
+half needed no change: nextNew() walks the curriculum in order and skips what
+you know, so the gaps you left come first by construction.
+
+Every task is scoped to those five except Read them in context, which tops up
+from characters you already read. A character learnt an hour ago usually has no
+sentence you can read yet — every other glyph in it is still unknown — so
+scoping reading strictly to today left that row locked most days. It is also
+the one task where the older characters are the point: reading in context means
+reading the context, and the context is everything you already know. Ticking
+still requires only today&amp;#39;s characters, so the inference in renderDone keeps
+comparing like with like.
+
+v1.1.1.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/726eebfcd20ce6267cfe7e0f76279dd6f7eb8bc3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/726eebfcd20ce6267cfe7e0f76279dd6f7eb8bc3"/>
+    <title>
+        Fix three audio bugs, duplicate quiz options, and give the word of th…
+    </title>
+    <updated>2026-09-17T22:07:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix three audio bugs, duplicate quiz options, and give the word of the week something to recall
+
+v1.1.0.
+
+Tapping a word in &amp;quot;Words you&amp;#39;ll meet it in&amp;quot; got worse the longer you browsed:
+it would play only the first character, then stop speaking at all. bindCard
+attaches its click handler to #svBody, which lives for the whole session while
+only its innerHTML is swapped — so every card opened stacked another listener.
+The second card fired each click twice, the third three times, and since every
+call starts by cancelling the phrase the last one just began, they cancelled
+each other. Bind once and replace the handler instead of piling one on.
+
+Separately, 现金 was silent. Clips were generated for the 348 taught characters
+only, but example words use characters from outside the curriculum — 金 in 现金,
+第 in 第一, 儿 in 女儿, 225 of them across 121 words. One missing clip made
+sayPhrase give up on the whole word and fall through to the system voice, which
+says nothing on a machine with no Chinese voice. make-audio.mjs now records
+every character the app can be asked to say, from words, sentences, the menu
+and the interest lists as well as the curriculum: 573 clips, 4.0 MB. A smoke
+check walks the data and fails if anything speakable has no clip. sayPhrase
+also steps over a gap rather than stopping at one, so a bundle that has drifted
+from the data is imperfect rather than mute.
+
+And a listening drill could play the wrong character. say() detached the phrase
+handler but left phraseTimer running, so a step queued by the previous card
+still fired and played its own character over the top — being marked wrong for
+answering what you actually heard. say() now cancels the phrase properly, and
+renderStep silences the previous card on the way in.
+
+Quiz options were only guaranteed distinct from the answer, not from each
+other, and characters share readings: 个 could be offered shì, shì, shì, gè.
+optionSet() deduplicates on the value the learner compares. Twenty thousand
+generated drills across all five multiple-choice kinds now produce no duplicate
+and always contain the answer.
+
+The word of the week no longer prints its own meaning. Working out 音乐 from 音
+and 乐 was the point, and the answer was sitting underneath — with a note that
+names the characters it explains, which forty of them do. Meaning and note are
+behind a reveal now, and nine notes that merely restated the English meaning
+were rewritten to say something worth reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4562e9c43b1416ef33a8897bb873ed191b288640</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/4562e9c43b1416ef33a8897bb873ed191b288640"/>
+    <title>
+        Version the app so a cached copy can be told from a stale deploy
+    </title>
+    <updated>2026-09-17T21:50:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Version the app so a cached copy can be told from a stale deploy
+
+Twice now a push has been live and invisible at the same time — once for the
+save icon, once for the placement quiz&amp;#39;s number keys. Both times the deploy was
+already correct and the browser was serving a cached js/app.js, and there was
+no way to tell that from the app itself.
+
+Every local asset now carries ?v=&amp;lt;version&amp;gt;, so the URL changes when the version
+does and the fetch is forced. The version lives in index.html and nowhere else:
+once in an inline script for the app to read, once in each asset&amp;#39;s query
+string. Deliberately not in a .js file — a cached script asked what version it
+is would always give the reassuring answer. index.html has no query string of
+its own and is the file browsers reliably revalidate.
+
+It shows in Settings, with a line about what a mismatch means, and at the foot
+of Record.
+
+tools/version.mjs bumps it: major/minor/patch or an explicit number, rewriting
+all six stamps and setting the date. Run bare it reports the current version
+and whether the stamps agree. A smoke check fails if the declared version and
+the stamps ever diverge, or if a local asset is added without one — a half-done
+bump is worse than no version at all, because the number on screen would claim
+a refresh that never happened.
+
+Starting at 1.0.0: the first version that can be identified from outside.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/932153c1618d896231cea8edf03e336c2844d781</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/932153c1618d896231cea8edf03e336c2844d781"/>
+    <title>
+        Keyboard control for the placement quiz
+    </title>
+    <updated>2026-09-17T21:46:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keyboard control for the placement quiz
+
+1-4 to answer, space for &amp;quot;I don&amp;#39;t know this one&amp;quot;, enter to start from the
+result screen — the same keys the study session already uses. The numbers are
+drawn in the corner of each option so the character stays optically centred.
+
+A question now latches the moment it is answered. The options are disabled on
+the way out but the skip button is not, so a held space counted one miss per
+key repeat: four presses ended the quiz three characters early, and the reveal
+delay made that easy to do by accident rather than by mashing. The latch also
+swallows number keys during the reveal, which could otherwise answer the
+question underneath before it had rendered.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/24e8e7cf6b69112a378300017188da49b0a56e5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/24e8e7cf6b69112a378300017188da49b0a56e5f"/>
+    <title>
+        Placement credits what it asked, and never builds a day-one backlog
+    </title>
+    <updated>2026-09-17T21:42:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Placement credits what it asked, and never builds a day-one backlog
+
+Being placed at 100 characters meant opening the app to sixty-odd cards on day
+one — a mixture of characters you knew cold and characters you had never seen.
+That is the worst possible first session: too long, and too uneven to be either
+satisfying or useful. It was also still guessing, since five characters stood
+for twenty and most of a credited range was never shown.
+
+The quiz now walks every character in curriculum order and stops once you have
+missed more than three. A character is credited if and only if you answered it
+correctly. Nothing is sampled and nothing is inferred.
+
+And credit stopped meaning homework. A credited character goes into the library
+as known — it counts for tier progress, Go deeper draws it, it inks itself in
+sentences and vocabulary, exactly as if it had been learnt in an earlier
+session. What it does not do is land in tomorrow&amp;#39;s queue: its first review sits
+twelve days out, fanned across twenty-four more. The exception is the tail, the
+last twelve you got right before you started missing, which are the shakiest
+things you know because you were at the edge of your range — those come back
+within the week at a lower level. That is the refresher, without the backlog.
+
+Day one after placement is now the day one everybody gets: five new characters,
+zero reviews, starting at the first character you actually missed. Verified end
+to end — 60 credited, 0 due, &amp;quot;5 new and 0 reviews still waiting&amp;quot;.
+
+The walk is exhaustive, so &amp;quot;That&amp;#39;s enough — start me here&amp;quot; appears after twelve
+questions and finishes on the spot, keeping everything answered so far.
+
+Also in this change:
+
+Buttons that set no background of their own kept the user agent&amp;#39;s light grey,
+which is invisible under light text in dark mode. That is what hid the
+unhighlighted half of every word in &amp;quot;Words you&amp;#39;ll meet it in&amp;quot;. The global reset
+now clears it.
+
+Finishing the day&amp;#39;s list, or every character in every Go deeper mode, gets a
+seal stamp, falling petals and five notes of a pentatonic scale — synthesised
+rather than bundled, because js/audio.js already demonstrated how a shipped
+asset goes missing. Both are latched, and the Go deeper latch clears when a new
+character makes the library incomplete so it can be earned again.
+
+Word of the week now knows what week it is. Nine festivals from 春节 to
+Christmas take precedence over the interest pool when one falls in the current
+ISO week. Lunar dates are tabled per year rather than computed — a year outside
+the table declines to fire instead of guessing. Festival history is never
+wiped, so six Christmases run without repeating.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3933c310eb785057b0005d5effbdff9824a971c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/3933c310eb785057b0005d5effbdff9824a971c0"/>
+    <title>
+        Merge remote-tracking branch &#39;origin/main&#39;
+    </title>
+    <updated>2026-09-17T21:18:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge remote-tracking branch &amp;#39;origin/main&amp;#39;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9dceac012b5da370bd3233907bb038e634df1879</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/9dceac012b5da370bd3233907bb038e634df1879"/>
+    <title>
+        MAin
+    </title>
+    <updated>2026-09-17T21:10:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;MAin&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/978bec69143a05aab618b018944aa9bfd95533d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/978bec69143a05aab618b018944aa9bfd95533d0"/>
+    <title>
+        Placement decides where to start, not what you know
+    </title>
+    <updated>2026-09-17T21:07:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Placement decides where to start, not what you know
+
+The quiz samples — five characters stand for twenty — and then credited the
+whole range at PLACED_LVL, including the characters it had never actually
+shown. Placed at 100 after 30 questions, that is 76 characters assumed on the
+strength of their neighbours and 24 with any evidence behind them, stored
+identically and indistinguishable afterwards.
+
+Those are two different claims and they are now credited differently. A
+character the quiz asked and you answered goes in at PLACED_LVL with its first
+review fanned over PLACED_SPREAD days. One it never asked goes in at level 0,
+flagged `unchecked`, fanned wider over CHECK_SPREAD. Level 0 is the bottom of
+the ladder, so the first time an unchecked character comes up it is an ordinary
+recognition card: right and it climbs like anything else, wrong and it is
+taught properly from there. grade() clears the flag either way, because the
+question has been settled.
+
+So nothing is assumed permanently — it is verified lazily, through the review
+machinery that already exists, rather than by making someone answer 348
+questions before they start. In testing a single session settled 74 of 76.
+
+The count is visible rather than silent: Today carries an Unchecked pill while
+any remain, and a character card credited this way says so on its face. The
+result screen no longer claims &amp;quot;you already read about 100 characters&amp;quot; — it
+reports what was asked, what was not, and what happens to the difference, and
+says outright that the quiz only decides where to start.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d496018a6da8bcfbc652abd853866b05a1cbb65e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/d496018a6da8bcfbc652abd853866b05a1cbb65e"/>
+    <title>
+        Group the library into three tiers, and gate the ones you haven&#39;t rea…
+    </title>
+    <updated>2026-09-17T20:54:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Group the library into three tiers, and gate the ones you haven&amp;#39;t reached
+
+The Library laid all 348 characters out in one sheet. That did two bad things:
+it made a beginner scroll past hundreds they had no business opening yet, and
+it let them open one anyway — out of order, without any of the parts it is
+built from.
+
+Three tiers now sit across the nine teaching stages, at the conventional
+literacy milestones: 200 for signs, prices and the shape of a sentence, 500 for
+most everyday writing, 1000 for roughly nine characters in ten on a page. The
+Library groups by tier, each collapsible, with the tier you are actually in
+left open and the rest shut — and a locked tier collapses to a single card
+saying what would open it, rather than 150 grey squares. The Record ladder is
+grouped the same way.
+
+A tier opens at 80% of the tier before it, and of every tier before that, so a
+gap early on can&amp;#39;t be stepped over. unlockedCeiling() gates nextNew(), so a
+session never deals a locked character; remainingNew(), so &amp;quot;study ahead&amp;quot; stops
+promising characters the gate would refuse; and the Learn this one now button,
+which becomes an explanation of which tier the character is in and what opens
+it. The card itself still reads in full — etymology, mnemonic, words, sentence,
+stroke order. It just isn&amp;#39;t one to start on yet.
+
+Two things deliberately reach past the gate. Placement credits beyond it,
+because proving you read 300 characters is exactly what should open tier 2 —
+and it does, with no special case, since the unlock is computed from what you
+know. And the word of the week routinely uses characters far beyond your tier,
+which is the point of it, and is safe because it is never a drill.
+
+Tiers and stages don&amp;#39;t line up — stage 7 straddles 200 — so each stage is filed
+under whichever tier its midpoint falls in. Listing a straddling stage under
+both tiers reads as a bug rather than as precision.
+
+Also: tierNeeds() returns the first unfinished tier, which is the right gate but
+the wrong sentence — it told someone on tier 1 that ninety more characters would
+open Fluent, which the third door was never going to honour. tierGateNote() now
+names the intermediate tier when the blocker isn&amp;#39;t the one immediately before.
+
+And the top-bar save button is a save icon rather than a download arrow.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d5b5ffcd78d32980d2f597663e8ee0a15870de9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/d5b5ffcd78d32980d2f597663e8ee0a15870de9a"/>
+    <title>
+        Auto-trackpad, placement quiz, interests, and a practice pool that ro…
+    </title>
+    <updated>2026-09-17T20:45:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Auto-trackpad, placement quiz, interests, and a practice pool that rotates
+
+Four things, all about the app meeting the learner where they actually are.
+
+Settings gains &amp;quot;Start the trackpad automatically&amp;quot;: every writing box arms
+itself as it appears rather than waiting for the 触控 button or T. Off by
+default, because pointer lock hides the cursor and doing that unasked is
+startling. It goes through padAuto(), which is allowed to fail — pointer lock
+generally wants a user gesture and a card arriving on the auto-advance timer
+hasn&amp;#39;t got one, so a refusal is expected rather than exceptional. It sets
+pad.quiet, which suppresses the &amp;quot;browser blocked pointer lock&amp;quot; note: an
+automatic attempt the browser turns down is not an error anyone needs to read
+about, and the manual button is still exactly where it was.
+
+A placement quiz, offered once at the end of the tour, walks the curriculum in
+order and finds where recognition gives out — five characters sampled across
+each twenty positions, four right to credit the window and move on. Someone
+who reads the first ~95 characters is placed at 100 after about thirty
+questions. Questions are meaning-to-character, not the reverse: recognising 山
+among four English words is easy to fake by elimination, picking it out of four
+plausible characters is not, and the distractors come from within thirty
+positions so they are of a piece. Credit is shallow on purpose — level 2,
+flagged as placed, first reviews fanned across five days so a hundred
+characters land as twenty a day rather than a wall, and nothing at all is due
+on day one. placeAt() may only ever add: a character already in the record is
+left strictly alone, or retaking after a month of study would knock it back to
+level 2 and reset its due date, which is a silent partial reset dressed up as
+a re-place.
+
+Then a name and any number of interests, feeding one real word a week from
+whatever you said you cared about — usually built from characters well past
+where you have reached, with a line about where it comes from. Interests
+deliberately do NOT reorder the curriculum: that order is load-bearing, 马 has
+to arrive before 妈 and 吗 whoever you are, and letting a preference reshuffle
+it would quietly break the thing that makes each character easier than the
+last. The word of the week runs beside the curriculum instead, and is never
+scheduled, graded, counted or added to the review queue — the moment it becomes
+homework it stops doing its job.
+
+And practice rounds rotate now. Sorting the whole library by weakness and
+taking the top N stopped working once the library got big: the same forty were
+always the weakest, so the same forty came round every time. Rounds are now 70%
+from the last forty characters introduced and 30% reaching back into everything
+older, and within either group what comes up is what has come up least —
+records carry `shown` (times asked) beside `skills` (times right), and weakness
+is only the tie-break. Ordering by weakness first pins a character you keep
+missing to the front of the queue permanently, which is how you see 难 six
+times in an evening. Over forty simulated rounds against two hundred
+characters the split holds at exactly 70%, 160 distinct characters come up, and
+no older character is asked more than three times.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/97480bf4e82b32b3f36a4f7864d4cc0e7ba2a2a0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/97480bf4e82b32b3f36a4f7864d4cc0e7ba2a2a0"/>
+    <title>
+        Separate Go deeper from today&#39;s list, and add stage 9
+    </title>
+    <updated>2026-09-17T20:30:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Separate Go deeper from today&amp;#39;s list, and add stage 9
+
+Go deeper was styled as a second half of Today&amp;#39;s practice, which framed it
+wrongly. Today&amp;#39;s list is scoped to the day&amp;#39;s characters, finishable, and it
+ticks; Go deeper is the whole library, unbounded, and can never be completed.
+Given the same treatment, a fraction that never reaches its denominator reads
+as failure rather than as work done.
+
+It is no longer a .sheet. It sits on inked ground with no tick boxes, and its
+reward is a count that only goes up: reps, tallied in 正 — five strokes, the
+tally mark used across China and Japan, one stroke per rep, so a finished 正
+is five and a row of them is the day&amp;#39;s work at a glance. It was chosen over
+stars or a growing tree because it is the genuine article rather than
+decoration, and because the seedling-to-tree metaphor already belongs to the
+stage ladder, where it means something else.
+
+Reps live in days[k].extra and are sealed off from every other counter:
+tallyExtra() fires only when session.practice is set and session.todo is not,
+so a row from today&amp;#39;s list never inflates them, and a rep never counts as a
+character revised or ticks anything off. Smoke checks hold both directions.
+
+Stage 9, 交流 Connect, adds 46 characters for what stages 1-8 left out: the
+courtesy words, the vocabulary of thinking and remembering, language and
+study, screens, and the shape of a working week. It closes some conspicuous
+gaps — 谢谢 and 再见 were not previously writable — and lets the app teach its
+own name, 汉字.
+
+The block is ordered so nothing needs a part it hasn&amp;#39;t met: 见 comes first and
+视 and 觉 are built on it, 音 precedes 意, 自 precedes 息, 己 precedes 记. Every
+comp claim is validated against Make Me a Hanzi; stroke data and speech clips
+are regenerated for all 348. The tour&amp;#39;s character count now comes from the
+data rather than being typed in, since it was already stale once.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/48ab4ef51f33ce6145769b14518ba735d411427e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/48ab4ef51f33ce6145769b14518ba735d411427e"/>
+    <title>
+        MAin
+    </title>
+    <updated>2026-09-17T20:08:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;MAin&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b9e9d8b0ba343ab01a68aac4f3bea9c47cc4d676</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/b9e9d8b0ba343ab01a68aac4f3bea9c47cc4d676"/>
+    <title>
+        Fix silent audio, buried saving, a reset that didn&#39;t, and counters th…
+    </title>
+    <updated>2026-09-17T19:56:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix silent audio, buried saving, a reset that didn&amp;#39;t, and counters that miscounted
+
+Four things reported after publishing to GitHub, all of which turned out to be
+the app failing quietly rather than failing loudly.
+
+Audio was silent because js/audio.js was in .gitignore, so anything served
+from a clone got a 404 for it — and a missing &amp;lt;script&amp;gt; fails with nothing in
+the console. The bundle is committed now. It is macOS `say` output, so the
+licensing caveat the ignore rule was protecting is spelled out in the README
+instead of enforced by making the app mute. When the bundle genuinely isn&amp;#39;t
+loaded, Settings now says so and gives the command to regenerate it.
+
+Reset did nothing at all in the published artifact. Every destructive action
+was guarded by `if (!confirm(...)) return;`, and a sandbox without allow-modals
+makes confirm() return false immediately — no dialog, no error, no console
+message — so the guard silently became `return;`. This also disabled Restore
+and made it impossible to close a session part-way through. Replaced with
+askConfirm(), an in-page dialog that works the same in a frame, a tab and on
+Pages, and that names what is about to be lost.
+
+Reset was also incomplete where it did run: Object.assign(state, blank()) only
+overwrites the keys blank() declares, so menuPick and lastBackup outlived it,
+and the practice diary (IndexedDB), the exercise book on screen and the tour
+were never touched at all. resetProgress() replaces the binding outright and
+the caller clears the other three. A smoke check asserts no key outlives a
+reset so this can&amp;#39;t rot as fields are added.
+
+Saving progress was three screens deep under Settings, and on an ordinary page
+its only path was the artifact host&amp;#39;s downloads capability, which doesn&amp;#39;t
+exist there — so it fell through to &amp;quot;copy this JSON out of a textarea&amp;quot;. It is
+now a top-bar button that does a real Blob download, and grows a gold dot once
+there is progress worth losing and no saved copy.
+
+The counters on Today disagreed about their own unit. &amp;quot;Reviewed today&amp;quot;
+incremented per answer while sitting beside New and Due, which count
+characters, so one character drilled four times read as four; it now counts
+distinct characters, and the hero ring is measured the same way. Today&amp;#39;s
+practice omitted the learn row and silently dropped locked steps from the
+denominator, so a five-row list read &amp;quot;3 of 3 done&amp;quot;; it now counts every
+actionable step and reports locked ones separately.
+
+Go deeper only moved on a character&amp;#39;s third correct answer, so a whole round
+of practice could change nothing on screen, and measured writing against every
+character known — which it can never reach, since a character without stroke
+data can&amp;#39;t be drilled. The ring now fills with every clean pass, each mode is
+measured against the characters it can actually ask about, and a segmented bar
+shows the spread across nought, one, two and three passes. Record&amp;#39;s Skills
+panel uses the same maths, over characters known rather than the whole library.
+
+Also fixed in passing: .pr-grid-3 was referenced in JS but never defined in
+CSS, so Go deeper laid out as three of four columns and left a quarter of the
+sheet empty; and the streak chip showed a cold 0 on first paint because
+renderStreakChip() was never called at boot.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2f0c776c5a0ee15d11bd4044fc6dbdb785463f10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/2f0c776c5a0ee15d11bd4044fc6dbdb785463f10"/>
+    <title>
+        README: how to pick this up in a new session
+    </title>
+    <updated>2026-09-17T19:09:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;README: how to pick this up in a new session
+
+Records the published artifact URL and the gotcha that it must be passed
+explicitly when republishing — otherwise a fresh conversation creates a
+duplicate artifact and the existing link is orphaned.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/087c92e74d7345c266def1fbe6608613d8e96529</id>
+    <link type="text/html" rel="alternate" href="https://github.com/jkw2lo/learn_chinese_hanzi_quest/commit/087c92e74d7345c266def1fbe6608613d8e96529"/>
+    <title>
+        Hanzi Quest: a practice notebook for reading Chinese
+    </title>
+    <updated>2026-09-17T19:07:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/315644384?s=30&amp;v=4"/>
+    <author>
+      <name>jkw2lo</name>
+      <uri>https://github.com/jkw2lo</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Hanzi Quest: a practice notebook for reading Chinese
+
+302 characters across seven core stages plus a kitchen topic pack, taught in
+an order where each one makes the next easier — 马 arrives just before 妈 and
+吗, so the phonetic-compound principle lands on its own.
+
+Every character carries real stroke-order animation, etymology separate from
+the mnemonic, grammar tags, the words it lives in, and a sentence. Recognition,
+pronunciation, recall and handwriting are tracked as four separate skills,
+because they are separate knowledge.
+
+Today is a finishable to-do list scoped to the day&amp;#39;s characters. &amp;quot;Read a Menu&amp;quot;
+teaches one character a day from a real restaurant menu that grows in
+difficulty as you do. Writing works with mouse, finger or a pointer-locked
+trackpad, and there&amp;#39;s a blank 米字格 exercise book with a practice diary stored
+as stroke vectors in IndexedDB.
+
+Three checks guard the data:
+  tools/smoke.mjs             contract, curriculum, scheduling, side quest
+  tools/check-components.mjs  every &amp;quot;Built from&amp;quot; claim vs Make Me a Hanzi
+  tools/check-strokes.mjs     every stroke, in order, vs upstream graphics
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

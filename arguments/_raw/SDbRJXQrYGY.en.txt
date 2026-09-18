@@ -1,0 +1,1039 @@
+[00:00] Generative media is along with coding
+[00:02] agent market what we call is token
+[00:04] market fit. Everyone's waiting for a
+[00:07] large consumer moment in AI. I believe
+[00:09] H3 Max makes it possible.
+[00:11] >> Were you surprised by the speed up and
+[00:14] the gain you could get from post
+[00:16] training this model?
+[00:17] >> We have a version called HDMax Turbo
+[00:19] that's public that can generate like a
+[00:21] 5second video in like 1.5 seconds. From
+[00:23] a cost standpoint it's also like 2x and
+[00:25] all of a sudden it unlock a whole new
+[00:27] workflow for Hollywood and professional
+[00:29] people. We have been very very focused
+[00:30] towards speed, performance, quality and
+[00:32] now we have a really good base model.
+[00:34] The next month or two is going to be
+[00:36] fully focused on
+[00:40] welcome Gork Banan to our podcast again.
+[00:44] Uh we did the last one last year. This
+[00:46] is long overdue and we have such an
+[00:48] exciting model to talk about which is
+[00:50] false um H3 Max. Um the day when it came
+[00:54] out I was calling it it's really in the
+[00:56] league of its own. Like it's so funny to
+[00:57] see the benchmarks where you have like
+[00:59] you know the dot of this model on the
+[01:02] far left or far right and then
+[01:03] everything else is like on the other
+[01:05] half
+[01:05] >> and that graph is actually log scale so
+[01:08] it's actually further but we had to to
+[01:11] to fit it in we had to do log scale
+[01:13] >> that is hilarious um and it you know the
+[01:17] >> the time the time portion the quality is
+[01:19] not Yeah
+[01:20] >> for sure the internet noticed for sure
+[01:22] there were so many viral tweets about it
+[01:24] like people really played around with
+[01:26] this model. Maybe just give us the
+[01:27] backstory of what inspired you to uh
+[01:30] post train this openweight model from
+[01:31] Miniax and how did you get the quality
+[01:35] and speed to where it is?
+[01:38] >> First of all, the Miniax H3 model is is
+[01:41] the first truly open-source
+[01:45] very capable like latest generation
+[01:48] video model out there. So even though we
+[01:50] work with some of the other model labs
+[01:52] to run inference for them, we never had
+[01:54] the had had this this capability like
+[01:57] had the right to add this capability on
+[01:59] top of it. So when Minimax came up with
+[02:01] their open very capable open source
+[02:03] model that is is truly last generation
+[02:07] can take references like very familiar
+[02:10] architecture to to any other video
+[02:12] model. We thought this is a great
+[02:14] opportunity to go all in and and see
+[02:16] what we can do. And again we did like
+[02:19] many different things that we are going
+[02:21] to talk about like that that combined
+[02:24] gave the results that that you show on
+[02:26] the graphs but yeah the the biggest
+[02:28] reason why everything came together for
+[02:31] this particular moment was because H3
+[02:34] was the first truly next generation
+[02:36] video model that's open source. What is
+[02:38] the idea like given like you know F has
+[02:42] been known to be like a general media
+[02:43] inference serving platform like what is
+[02:45] the idea to get into post- training
+[02:47] openweight model like
+[02:49] >> you know you talk quite a bit about uh
+[02:51] about it in the in the blog of like
+[02:52] combining the system work with you know
+[02:54] the model uh itself like maybe talk more
+[02:58] about um the work behind that
+[03:01] >> like generative media is is I would say
+[03:04] along with the coding agent market uh
+[03:08] what we call is is token market fit and
+[03:10] the way we define it is as can a single
+[03:13] person productively spend a lot of
+[03:16] tokens and and the the amount is like
+[03:20] 10k a month something like that. So
+[03:22] there is incredible amount of demand in
+[03:24] the market to to generate video to to
+[03:27] generate many things at the same time
+[03:30] and a person who is doing this for their
+[03:33] daily job they spend in front of a
+[03:34] computer and do this all day long and
+[03:37] they spend thousands of dollars lots of
+[03:40] tokens um and since around April the
+[03:44] whole industry and file itself we've
+[03:46] been compute constraint we we are
+[03:49] growing as much as we are adding compute
+[03:51] like there are things we do here and
+[03:54] there but the whole industry has been
+[03:56] compute constraint and we we've always
+[03:59] been looking for efficiencies where we
+[04:01] can relieve that a little bit so people
+[04:04] can can use this more. So that has been
+[04:07] the the idea behind everything we've
+[04:10] been doing since April and this just
+[04:12] came at the right time because this
+[04:14] makes everything maybe an order of
+[04:16] magnitude more efficient. So
+[04:19] >> gives more compute for for other other
+[04:22] models or even like more tokens can be
+[04:25] generated using using HDMax. I think
+[04:27] both would would agree on on that like
+[04:30] >> yeah like just from a systemwide
+[04:32] optimizations which is what we have been
+[04:33] doing for the past three four years you
+[04:36] can maybe make the model 2x 3x faster
+[04:39] while producing the same quality right
+[04:41] because it's at the end of the day same
+[04:42] model same architecture you have the
+[04:45] same constraints you're just trying to
+[04:46] optimize what uh what what you can get
+[04:49] out of an what you can get out of the
+[04:51] chip itself and there there is a roof
+[04:54] line there and like you know we we have
+[04:55] been approaching that roof line more and
+[04:58] more uh especially like you know lately
+[05:00] because our entire team has been
+[05:02] focusing on how do we get out more video
+[05:04] pixels from a single chip uh as much as
+[05:07] possible and this this new set of like
+[05:10] post-training related optimizations with
+[05:13] like you know system/model code design
+[05:17] enables us to go beyond that roof line
+[05:20] by an order of magnitude and like we we
+[05:22] just like felt the pressure we have been
+[05:23] working on it on top of open source
+[05:25] image models Before the video models we
+[05:28] did one version with ideoggram we did
+[05:30] one version with flux. So we have been
+[05:31] we have been like experimenting with how
+[05:33] do how can we build post training
+[05:35] infrastructure to take an existing model
+[05:38] build kernels and systems design around
+[05:40] it to run it very very fast for a
+[05:44] specialized version that can beat
+[05:45] anything else that we would get just by
+[05:47] running the model itself. And you know
+[05:50] combination of that plus you know just
+[05:51] like getting a frontier video model on
+[05:53] our hands and all this expertise we were
+[05:56] able to you know go by like an order of
+[05:57] magnitude in terms of speed.
+[05:59] >> Incredible. Let's let's dig into that.
+[06:01] Um I may get some of number numbers
+[06:03] wrong but um uh the
+[06:05] >> there's like efficiency numbers there's
+[06:07] cost numbers there's speed up numbers
+[06:10] like not not everything means efficiency
+[06:12] but it all adds up to be very efficient.
+[06:14] Yeah.
+[06:14] >> Yeah. I guess what what is stunning to
+[06:16] me is like there is like a magnitude
+[06:18] lower cost and also like much faster. I
+[06:22] think it was like 35x speed up
+[06:24] >> compared to the original minimax point.
+[06:26] >> Well, at the ELO score, you didn't
+[06:27] really sacrifice quality. So yeah, just
+[06:32] maybe reveal a little bit more of the
+[06:33] the the secret sauce behind of like is
+[06:36] this more of like um the the the type of
+[06:40] system work you have done that like did
+[06:42] you have to do like model architecture
+[06:43] change like is it some system work that
+[06:45] really brought down the the um uh the
+[06:49] cost and and latency and like
+[06:52] >> how about like the the next generation
+[06:54] of chips like uh GB200 fits into the the
+[06:56] the whole story. It it it's just a
+[06:59] compounding effect of like multiple
+[07:01] multiple different optimization
+[07:02] variables that we have been targeting.
+[07:04] The first one is obviously okay you go
+[07:06] from you go from like the base model to
+[07:09] a model that's like post train to be
+[07:11] like more efficient uh for for diffusion
+[07:13] models. This is just essentially how do
+[07:15] you go from like running 50 steps to
+[07:17] running something like 20 steps, right?
+[07:19] Like you're you're just like trying to
+[07:20] optimize that pipeline. But as as soon
+[07:22] as you go from 50 steps to 20 steps, you
+[07:24] lose quality. So you you need to target
+[07:26] in the optimization scene. Okay, I want
+[07:28] to improve the quality and then I want
+[07:29] to apply the optimization. So we have
+[07:31] like checkpoints of this that has
+[07:32] significantly higher quality but
+[07:34] obviously slower. So what we initially
+[07:36] did was okay, let's run our post
+[07:38] training and RL pipelines so that we can
+[07:40] improve the model's quality and then
+[07:42] apply the optimization stack on top of
+[07:43] it so that the end result gets you the
+[07:46] same quality or like even like higher
+[07:48] quality than the original model, but at
+[07:50] the same time you're like an order of
+[07:52] magnitude faster. So most of the gains
+[07:55] come from like you know post- training
+[07:57] this model uh to be like you know
+[08:00] compatible that you can run this on like
+[08:01] less amount of steps but on top of that
+[08:04] you add like all the kernels and systems
+[08:06] engineering work that you do that brings
+[08:08] your like hardware utilization from like
+[08:10] 30 40% which is like standard in like
+[08:12] many inference workloads to like 70 80%.
+[08:15] Like you're essentially trying to and 70
+[08:17] 80% on theical MFU which is like
+[08:19] impossible to reach. So you're
+[08:20] essentially at the roof line of what you
+[08:22] can get out. And then these models are
+[08:24] not just like a single oh you just give
+[08:25] a prompt and you get a video back.
+[08:27] There's like they're actually pipelines
+[08:28] underneath. You need to get like take a
+[08:30] prompt. You need to you know like use
+[08:32] run a LLM like a very large LM to go
+[08:34] expand that prompt to a format that the
+[08:37] model was initially trained at. Uh run
+[08:39] the generate the video in the latent
+[08:41] space and then decode those latency back
+[08:43] into pixels and then depending on the
+[08:46] workload there might be an upscaling
+[08:47] component involved. So there's like
+[08:48] multiple components and every single
+[08:50] component by default is unoptimized.
+[08:53] There's still like lots to be gained
+[08:54] there and like we just like looked at it
+[08:57] from a perspective of we are going to
+[08:59] get the maximum out of every single
+[09:01] component. This made us go around LLMs
+[09:03] at super high speeds right there there
+[09:05] there is that component but for a
+[09:07] different workload. This is not like
+[09:08] something like an agent decoding LM
+[09:09] workload where you have very high cache
+[09:11] rates where you have higher sessions.
+[09:12] It's a single shot. You take you give a
+[09:14] prompt you get a prompt back and there's
+[09:16] no caching. you're operating at low
+[09:17] batch sizes. So there's a completely
+[09:19] different set of optimizations on on the
+[09:21] prompt expression side, completely
+[09:22] different set of optimizations on the
+[09:23] diffusion model, completely different
+[09:25] set of optimizations on the VAE that you
+[09:27] take from latence to pixels. And you
+[09:29] just combine all of these to to have an
+[09:31] effect that compounds. From a hardware
+[09:33] standpoint, going from something like
+[09:35] hoppers to black walls, you see
+[09:37] something like 2 to 3x improvement by by
+[09:40] itself. But from from from a cost
+[09:42] standpoint, it's like pretty comparable
+[09:44] because the cost is also like in in that
+[09:46] league. So it I would say it only
+[09:49] reduces your like wall clock time but
+[09:51] like not just the efficiency itself. But
+[09:53] it it obviously helps if you want to go
+[09:55] significantly beyond real time like if
+[09:57] you want to generate you know 5 seconds
+[09:58] of video in less than you know 3 2
+[10:00] seconds then you need like some of these
+[10:02] like latest generation hardware uh today
+[10:05] uh to to unlock that possibility. Maybe
+[10:07] this is a detail of a question like is
+[10:09] the model being served on a single GPU
+[10:11] or like it's
+[10:12] >> it is like majority of the video models
+[10:14] today run in a single node configuration
+[10:16] which is 8 GPUs because once you start
+[10:18] scaling beyond 8 GPUs the efficiency
+[10:21] gets less and less because of the
+[10:22] communication overhead uh and com
+[10:25] existing both like the existing minimax
+[10:27] H3 endpoints as well as like other video
+[10:29] models are probably getting served at
+[10:31] like you know single node configuration
+[10:33] same with this it's like running on in
+[10:35] parallel across eight GPUs
+[10:37] And do you think there will be more
+[10:39] efficiency gains in there that you can
+[10:41] either you know optimize more of the
+[10:44] steps in between by sacrificing maybe
+[10:45] some of the um like narrow down the user
+[10:48] experiences let's say like the different
+[10:50] type of inputs and outputs or like as
+[10:53] you're thinking of parallelism like is
+[10:54] there more juice to squeeze maybe that's
+[10:56] the
+[10:57] >> we released a turbo version of H3 Max.
+[10:59] So initial idea was calling this H3
+[11:01] Turbo and like we're like we don't want
+[11:03] to call this Turbo because the quality
+[11:05] is like better than the original one,
+[11:06] right? Like that's like this this needs
+[11:07] to signify how good of an achievement it
+[11:09] is. So we released H3 Max but like a
+[11:12] week later we had like you know like our
+[11:14] team was like we can run the 2x faster
+[11:16] at like 97th percentile of quality. Like
+[11:18] we run evals they're like almost the
+[11:20] same, right? There's still like there's
+[11:21] like a notice like there's a small
+[11:22] noticeable uh loss in quality, but we we
+[11:25] have a version called HDMax Turbo that's
+[11:27] public that can generate like a 5second
+[11:29] video in like 1.5 seconds, which is like
+[11:32] insane. And that's also like 2x the 2x
+[11:35] like from a cost standpoint, it's also
+[11:37] like 2x less. So there like depends on
+[11:40] like how how okay you are with like
+[11:42] losing quality you know you can go down
+[11:44] and like today these models are so cheap
+[11:46] and so fast that I don't think people
+[11:48] need any faster or like any cheaper like
+[11:50] it's already like at at a point where uh
+[11:53] the the from a cost standpoint compared
+[11:56] to the frontier itself it's an order of
+[11:58] magnitude cheaper compared from like a
+[12:00] speed perspective it's more than an
+[12:02] order of magnitude faster and like you
+[12:05] just like enable all the experiences I
+[12:07] think we would need to Like I think we
+[12:09] would need to see what else levers that
+[12:11] people would need. But I my bet today is
+[12:14] we just need to improve quality more
+[12:16] than like the speed at these speeds
+[12:18] right like let's fix the speed and let's
+[12:19] try push for quality and controllability
+[12:22] of these models which is like you know
+[12:24] what we have been pushing in the past
+[12:25] two three weeks. I think controllability
+[12:27] is is key. Like when we first did it, we
+[12:30] did um text to video and then image to
+[12:33] video and then references came later
+[12:35] which which adds a ton of
+[12:37] controllability and it's basically the
+[12:39] default mode how people use these models
+[12:41] these days references and then we are
+[12:44] now adding different uh Laura's fine
+[12:47] tunes of of the base model as well. We
+[12:49] are working on like a lip syncing
+[12:51] version. We are working on a different
+[12:54] different camera angle Laura, different
+[12:56] style Lauras. So again, open source adds
+[13:00] a whole ecosystem around the model and
+[13:02] it really really helps.
+[13:04] >> Were you surprised by the speed up and
+[13:07] the gain you could get from post-
+[13:09] training this model? Like like I I I saw
+[13:11] it as a little bit of a surprise that
+[13:13] like one day I think it was a Saturday
+[13:14] you'll launch the model and the Sunday
+[13:16] people put it on Twitch it become a
+[13:17] realtime model. Like what I think that's
+[13:19] the interesting part of like when you
+[13:21] reduce We we did eval like we spent a
+[13:23] ton of money doing evals on our own. I
+[13:26] don't know like tens of thousands of
+[13:27] dollars even and like the results were
+[13:30] unbelievable and and then like the plan
+[13:34] was to just release the model without
+[13:36] doing external evals and then okay we
+[13:39] decided let's let's hold off let's not
+[13:42] let's not tell people that this is like
+[13:44] so much faster and so much better before
+[13:46] we have some external validation. So, so
+[13:49] we waited like 3 4 days to uh all these
+[13:53] other like eval platforms to actually
+[13:55] run the eval. So we we matched the
+[13:57] results that we have externally as well
+[14:00] and that's that's how we launched it
+[14:01] because as you said the results were a
+[14:04] little too good to be true and and it
+[14:06] was
+[14:08] >> I guess were you taken by surprise the
+[14:10] the real time uh use case that came out
+[14:12] of it or what are some examples that you
+[14:14] think this model has like unlocked of
+[14:17] the experiences the prior models
+[14:18] couldn't? This happens at fal once in
+[14:21] every couple of months where like the
+[14:23] whole company gets gets hold of
+[14:25] something and and the creativity just
+[14:30] explodes and everyone is just working on
+[14:33] a new little app or or a different
+[14:37] optimization Laura whatever it might
+[14:38] like the whole company gathered around
+[14:41] this this model and like some some
+[14:44] front- end engineers started working on
+[14:47] like interesting applications s we can
+[14:49] talk about our like world model
+[14:51] accelerator team which is which is brand
+[14:53] new. They they started working on the
+[14:56] the live uh experience
+[14:59] >> RTC
+[15:00] >> the web RTC live experience. So like
+[15:03] there were five six different parallel
+[15:05] little projects within the company and
+[15:07] like I I I think we broke a record on
+[15:10] Slack that day how many messages were
+[15:12] were sent in the company because like
+[15:15] and and and like we have a distributed
+[15:17] team. We have we have people all around
+[15:19] the world like mostly in San Francisco
+[15:22] but it's it's like incredible when you
+[15:25] see like the 24-hour development like
+[15:28] when people like work 16 17 hours and
+[15:31] then someone else wakes up and picks up
+[15:33] that like and that went on for like 3 4
+[15:36] days and that's that's when we released
+[15:39] all these projects.
+[15:40] >> Take me into that. So interesting
+[15:42] because um like you imagine like a model
+[15:45] or product launch being like planned out
+[15:47] like having again like having all these
+[15:49] like eval vendors being ready lined up
+[15:50] and you know ship something out and then
+[15:53] like you let the the world um or the
+[15:56] external users take it and then
+[15:58] experiment and like build experiences
+[16:00] put online. Yeah. It seems like you know
+[16:03] people internally who are very creative
+[16:04] just like took this dropped everything
+[16:06] they were doing like launched a
+[16:08] experience that got really popular on
+[16:10] Twitter. Do you want to tell us about
+[16:11] that one?
+[16:12] >> Yeah, of course. One of our engineers,
+[16:13] Rahan, um just just by himself
+[16:17] completely um started streaming a live
+[16:20] stream of continuous generations of H3
+[16:23] Max from his laptop. Like he was his
+[16:25] computer.
+[16:26] >> His computer. Exactly. He was doing some
+[16:28] like prompt tricks trying to keep like a
+[16:31] coherent story. Uh and then like he
+[16:33] started live streaming that on on
+[16:35] Twitch. In parallel, Level Zio, a famous
+[16:39] Twitter influencer at this point, had a
+[16:41] had a similar idea and he reached out to
+[16:44] us that he has a website ready. He wants
+[16:48] to like host the streaming himself and
+[16:50] and have a website that does infinite
+[16:53] streaming internally. Also, we had
+[16:56] another team who was working on a
+[16:59] continuous version of HDMAX. So HDMax is
+[17:02] like the the Rahans version and and
+[17:04] levels io version were independent
+[17:06] clips. It's still very fast but uh the
+[17:10] clip starts it ends and then you take
+[17:13] the last frame of the of the clip try to
+[17:15] put it in the next one and try to create
+[17:17] a work into like there's no memory like
+[17:21] the the second clip doesn't really
+[17:22] remember anything from the first clip
+[17:24] other than uh the last frame. But
+[17:27] internally we were the the ML team was
+[17:29] working on a version where it's the the
+[17:32] transition is more seamless. There is
+[17:33] like 2 minutes of memory. So like you're
+[17:36] in a scene and when when you direct the
+[17:39] the model or someone else enters the
+[17:41] room it actually like everyone looks at
+[17:43] that person entering and the scene is
+[17:46] continuous. So internally we were
+[17:47] working on that and then another team
+[17:50] was working on an experience we called
+[17:52] file live for the continuous version. So
+[17:55] we had three parallel efforts going on
+[17:58] that were all independently going viral
+[18:01] on Twitter right now.
+[18:02] >> And these were all like spontaneous like
+[18:04] you didn't like
+[18:05] >> you didn't plan for it for any of them.
+[18:07] Exactly. And they just became products
+[18:08] and experiences in the next in the
+[18:11] following days.
+[18:12] >> But Tom, let's talk about the how how we
+[18:14] made the model more continuous. That was
+[18:17] very surprising to me because I've I've
+[18:19] never seen uh that actually work on on a
+[18:23] video model before. So yeah, we so going
+[18:26] back we have been like very very focused
+[18:28] towards role models and essentially like
+[18:31] action controlled or like you know
+[18:33] actiondriven real-time continuous
+[18:35] streams of video and the problem till
+[18:38] like you know something like HDMax was
+[18:40] quality was not good enough at all. It
+[18:42] was just like you know you it degraded a
+[18:44] lot. It didn't remember the past before.
+[18:46] But we built the infrastructure. We
+[18:48] built the infrastructure that we can
+[18:49] like go stream video, have people
+[18:51] control it in real time, being able to
+[18:53] like multiplex it to multiple people,
+[18:55] very low latency. And at the same time,
+[18:58] our ML team was essentially trying to
+[19:00] take every single video model and try to
+[19:02] apply these set of like optimizations
+[19:03] and tricks to okay, how can we make this
+[19:05] gen instead of a 5-second video,
+[19:07] 15-second video, 30 secondond video. Uh,
+[19:09] but you were always like below the real
+[19:11] time factor. uh where you know you you
+[19:13] were always like you know you like you
+[19:16] never could generate like 5 seconds
+[19:17] under 5 seconds once HDMX unlocked it
+[19:19] the ML team was like this is insane
+[19:21] which are like separate teams internally
+[19:23] we have a research team we have an
+[19:24] inference team we have an ML team
+[19:26] they're like they they saw this and like
+[19:27] this is insane we can apply all these
+[19:29] like set of learnings that we had in
+[19:31] previous models where we attempted to do
+[19:32] this where instead of trying to generate
+[19:35] a 5-second chunk that's trying to
+[19:37] generate you know like a 50 like 10
+[19:38] second video uh and then the 5
+[19:42] from previous one is still attended. We
+[19:44] still remember it and like as the video
+[19:46] goes up, we can like extend that memory
+[19:48] up to 2 minutes. And you need to do
+[19:50] extremely clever optimizations because
+[19:52] attending to a 2-minut video is just
+[19:54] extremely extremely computensive. It
+[19:56] just like it goes up exponentially uh uh
+[19:59] from from like a compute standpoint. So
+[20:00] like we we we did like lots of
+[20:02] optimizations there, but at the end of
+[20:04] the state we were able to okay we can
+[20:06] remember back to 2 minutes which is like
+[20:07] generally good enough from a memory
+[20:09] perspective. And then obviously with
+[20:10] like prompt tracks you can still like
+[20:12] continuously uh remember more finer like
+[20:15] grain details above the 2-minute mark
+[20:17] and you can essentially stream
+[20:18] infinitely. We kept it at an hour uh
+[20:21] from that perspective and then that team
+[20:23] just like released that model under H3
+[20:25] max director which is public for people
+[20:27] to use and I think it's the only model
+[20:29] that can generate like you know up to 60
+[20:31] minutes continuous videos that is action
+[20:35] control. You can like you know start
+[20:36] with a prompt say uh like there's like
+[20:38] an office setting and someone is like
+[20:39] you know working and then like 30
+[20:41] seconds later it just imagines by
+[20:42] itself. 30 seconds later you can like
+[20:44] say a woman walks in through the door
+[20:46] like it it can take the prompt and
+[20:48] reflect it immediately which is the most
+[20:49] fun part
+[20:50] >> and the office is still the same office.
+[20:52] The camera can pan back to the original
+[20:54] person and the original person is still
+[20:56] there in the same state. Yeah. So, you
+[20:59] know, we we released that and it it got
+[21:02] like we we we did this like f live
+[21:04] website to just like demonstrate it
+[21:06] because it's like people need to see how
+[21:07] cool this is, right? This is a new
+[21:08] technology. I I don't think people were
+[21:10] like really aware and it it got also
+[21:12] like very viral immediately because we
+[21:14] also let people vote on what the next
+[21:16] action is. It was like you know uh like
+[21:18] a form of crowd source to like the chat
+[21:21] was controlling what whatever was
+[21:23] happening which which is fun but
+[21:24] obviously you know we we limited on like
+[21:26] the options and then they could pick oh
+[21:27] like a banana enters the office instead
+[21:29] of a moon and it's like more fun and
+[21:30] like people start like you know having
+[21:32] this and we start adding more channels
+[21:33] and like every channel had a concept.
+[21:35] There's like a channel where it's like
+[21:36] full chaos. There's a channel where it's
+[21:37] like cartoons from like 80s and like the
+[21:39] model is like extremely capable and it
+[21:42] just like remembers like so many
+[21:43] different concepts and there's like it
+[21:45] has like a big big memory. uh from from
+[21:47] like a styles and like you know concepts
+[21:50] perspective. So it it just became like a
+[21:52] very fun experience underneath.
+[21:55] >> Again like there's so many really
+[21:57] incredible experiences coming out of
+[21:58] this like H3 Max director was just
+[22:01] another huge surprise to me. It's like I
+[22:04] I I found it interesting in the in the G
+[22:05] media market that you it's not like you
+[22:08] know like language model you have like
+[22:09] this linear graph of like just
+[22:11] continuously compounding on like
+[22:14] >> you know intelligence capability and so
+[22:16] on like feels like in the field you're
+[22:18] operating in it's always like a few
+[22:21] >> months of like sort of quiet time but
+[22:24] like a lot of things are bubbling but
+[22:26] like in a very short period of time like
+[22:29] everything bursts like all these things
+[22:31] in com in combin ation come together of
+[22:34] like the the um uh base model being good
+[22:38] enough like you can get the latency down
+[22:40] to the point where you can like
+[22:42] >> references. Yeah.
+[22:43] >> Yeah. um like get the real-time
+[22:46] experience but also like apply
+[22:47] controllability on top of that real time
+[22:49] exper like this just opens so many you
+[22:52] know opportunities of like live
+[22:54] experiences where like end user can
+[22:56] control what's happening on the screen
+[22:58] which is incredible like uh we have
+[23:00] imagined a lot of these experiences but
+[23:02] never been able to like really play
+[23:03] around with it. Maybe just like tell us
+[23:05] more about what you're seeing from the
+[23:07] market of like how are people using like
+[23:10] um uh the director uh capability like
+[23:14] what are you uh seeing creators are
+[23:16] creating that you haven't seen before uh
+[23:18] and what do you think that unlocks as
+[23:20] far as you know what
+[23:22] >> people can do with the this this medium?
+[23:24] Yeah, it's been like almost three weeks
+[23:26] since we released H3 Max and already it
+[23:30] is the most popular video model on the
+[23:32] platform on on the file platform by like
+[23:35] double almost like little more than
+[23:38] double
+[23:39] >> um in terms of like volume. Um so in in
+[23:42] a lot of other platforms it's also
+[23:44] becoming uh the default model that
+[23:47] people interact with because it's so
+[23:49] fast so cheap it just makes sense if if
+[23:52] you if you come to a platform this is
+[23:54] the experience that that you want to
+[23:56] see. Um so in terms of like popularity
+[23:59] and volume it's it's taking over at
+[24:02] least from our uh vantage point. And for
+[24:06] for Max Director again there has been I
+[24:10] don't know tens of different versions of
+[24:12] these live streams. Some of them are uh
+[24:14] still going on and like becoming more
+[24:17] and more popular. We are trying to work
+[24:19] with
+[24:21] some like AI IP holders people who have
+[24:23] like AI shows on Instagram and Tik Tok
+[24:26] and and do trainer Laura on on their
+[24:29] style and do a live version of their
+[24:32] show. So uh we have couple lined up
+[24:34] already. So that's going to be very
+[24:36] exciting. Um and like the way people
+[24:40] like if you talk to uh a creative
+[24:43] technologist prompting with voice has
+[24:46] already become uh something that like
+[24:48] they use all the time is like using
+[24:50] whisper flow or the chat GPT voice mode.
+[24:53] Yep. and and now like you can keep
+[24:56] talking to the model and it it like
+[24:58] almost as if it's a real director in a
+[25:01] real movie set uh directing like the
+[25:04] camera directing people where to go. You
+[25:06] you can do that and like our creative
+[25:08] engineers started using these models
+[25:10] like that. So we'll see like a lot of
+[25:13] interesting experiences are built as we
+[25:16] speak. Very interesting as in like the
+[25:18] video is playing. The
+[25:19] >> video is playing you are like talking to
+[25:21] the video and uh what what's what's
+[25:24] being displayed changes accordingly.
+[25:26] Yeah,
+[25:26] >> that's incredible. Um, and talking about
+[25:29] like how the the memory piece holds now
+[25:32] like are again this may be a technical
+[25:35] detail like
+[25:37] the capability of remembering what
+[25:39] happened in the last scene or in the
+[25:41] last couple minutes of scene like are
+[25:42] you remembering that through like the
+[25:44] the the frames the images or is it like
+[25:46] through text? It it essentially um no
+[25:49] it's it's essentially the like it
+[25:51] remembers the raw video obviously very
+[25:52] very compressed because you can't attend
+[25:54] to the full video but it essentially
+[25:55] knows like most of the like the details
+[25:58] happened in the past 2 minutes from its
+[26:00] own generations and above the 2-minute
+[26:02] mark it has like think of it as like a
+[26:04] it has a evolving system prompt on top
+[26:06] of the 2-minut mark from 2 to 60 minutes
+[26:08] where it knows like the overall
+[26:09] structure overall detail. So it it
+[26:11] remembers like the last few scenes. If
+[26:13] you think a scene is like 15 30 seconds,
+[26:16] then it remembers like the last four to
+[26:18] eight scenes and then on top of that
+[26:20] there's like a continuously evolving
+[26:22] gradually evolving system prompt that
+[26:24] like keeps remembering the like the
+[26:26] overall uh coherence of the of the
+[26:28] world. Like everyone's waiting for a a
+[26:32] large consumer moment in AI.
+[26:36] Now it's like good enough and and cheap
+[26:38] enough that like a truly novel social AI
+[26:43] experience can be built on top of it.
+[26:45] Maybe let's talk more about the economic
+[26:47] side of this like what is the um uh I
+[26:53] guess one just like talking about
+[26:54] serving cost for like same uh minutes of
+[26:57] video uh with H it's3 max um and how has
+[27:02] it changed your thinking around like
+[27:05] your footprint of like inventory of
+[27:07] chips like how do you want to have um
+[27:09] like different uh steps of experiences
+[27:12] serving to the end user
+[27:13] >> but I mentioned this a little bit Like
+[27:15] everyone talks about how uh complex the
+[27:18] next generation LLMs are, but video
+[27:20] models are actually very complex as well
+[27:22] because the the pipeline has different
+[27:25] components and sometimes they require
+[27:27] different hardware configuration for
+[27:29] efficiency things like that. So the if
+[27:32] you were to do this even more efficient,
+[27:35] let's let's go maybe even cheaper, uh we
+[27:38] would probably run different parts of
+[27:40] the pipeline in in different types of
+[27:42] hardware. Um, another interesting thing
+[27:45] would be to um
+[27:48] run it on consumer hardware for people
+[27:50] to run it in their in their own machines
+[27:52] at home. Like optimizations don't
+[27:55] translate 100% but translate somewhat
+[27:59] somewhat close to that and then we can
+[28:01] do extra work to translate more of it.
+[28:04] Um so doing these optimizations in
+[28:08] different types of hardware and
+[28:10] combining the pipeline in a way that
+[28:12] it's even more efficient. Uh I think
+[28:14] that's what we are going to do in the in
+[28:15] the next coming weeks.
+[28:17] >> Amazing. So you will have uh people like
+[28:20] Rohan that can stream partially of the
+[28:23] experience from from his computer but
+[28:25] also having like the director and the
+[28:27] the control plane more living on the
+[28:30] >> Exactly. Yeah.
+[28:31] >> On the cloud makes sense. So we talk
+[28:33] about all the consumer experiences um
+[28:35] this model could unlock. Um and it seems
+[28:38] like Bottoan is happy with all the
+[28:40] efficiency uh like squeeze out of the
+[28:43] GPUs. Now we're talking more about how
+[28:45] do we like improve quality and
+[28:47] controllability of these models so that
+[28:48] like you know the high end of the market
+[28:50] the Hollywood creators uh directors can
+[28:53] can take this to the next level. Um I
+[28:56] saw some demos uh coincidentally like
+[28:58] you know this model came out of uh came
+[29:01] out the same week or week prior to Astra
+[29:03] people were combining the blender
+[29:05] experience with uh H3 uh Max from from
+[29:08] foul like um talk about how it's going
+[29:10] to impact the
+[29:11] >> the the the Hollywood world.
+[29:13] >> You using Blender with one one of these
+[29:16] AI models together is a extremely
+[29:19] popular workflow for for professional
+[29:21] work. Basically, you you you render a
+[29:24] low resolution of your scene, what you
+[29:27] want to do using using Blender previous
+[29:29] like nonAI technology, and then once you
+[29:32] add that video as a reference to an AI
+[29:35] model, you basically get close to 100%
+[29:38] controllability. Um, and this this is an
+[29:41] incredibly popular um, workflow for BFX
+[29:46] artists, people who are doing this
+[29:48] professionally because they want exact
+[29:51] they they want to get exactly what they
+[29:52] put in into into the model and as as you
+[29:55] mentioned uh, a week after we we
+[29:58] launched H3 Max uh, people starting
+[30:02] creating generating uh, these beautiful
+[30:05] scenes using an LLM model GPT Astra in
+[30:09] in Blender and all of a sudden it
+[30:11] unlocked a whole new pipeline using LM
+[30:14] to create a Blender scene and then
+[30:16] passing that to the H3 Max model or or
+[30:19] any video model. But it's it works very
+[30:22] well with H3 Max because it's extremely
+[30:23] fast and you can like try many things
+[30:26] all at once in parallel and that that
+[30:29] unlocked the whole new workflow for
+[30:31] Hollywood and professional people and it
+[30:33] gets you to like close to 100%
+[30:35] controllability. As as I said, we have
+[30:37] been very very focused towards speed,
+[30:39] performance, quality and now we have a
+[30:41] really good base model. I think the next
+[30:44] month or two is going to be fully
+[30:46] focused on okay how much controllability
+[30:49] we can add to these models so that
+[30:50] professionals at studios, professionals
+[30:53] who want to actually produce like
+[30:55] produce content that fits their use
+[30:58] cases perfectly can leverage these
+[31:00] models. Uh the team has been working on
+[31:02] an amazing you know like a lip
+[31:04] synchronization model where you know you
+[31:06] can just supply the audio you can supply
+[31:08] your your uh you can supply like a video
+[31:10] or an image reference and then it can
+[31:12] like synchronize the lips perfectly.
+[31:14] Same with like motion controls. Uh you
+[31:17] can just take a motion of someone
+[31:18] dancing and then apply to like your uh
+[31:21] AI generated character and it fits
+[31:22] perfectly. And this like you can like
+[31:25] get these results with like basic
+[31:27] prompting and you're going to get like
+[31:28] 80% 90% reliability. What we are
+[31:31] targeting is like 99.9% reliability in
+[31:34] the outputs so that you can actually
+[31:35] trust the model did every single uh
+[31:38] aspect of this generation perfectly and
+[31:40] that's like what we've been pushing. Uh
+[31:42] one big launch that we had last week was
+[31:44] the camera controls uh which is
+[31:46] essentially you can direct where the
+[31:49] camera is going within the video
+[31:51] perfectly to the to to the degree. Uh
+[31:54] >> and this is by like describing in the
+[31:56] prompt or like generating the
+[31:58] >> you just essentially like underneath you
+[31:59] give a JSON of like I want camera at
+[32:01] like 0000 at T0. I want camera at like
+[32:05] 90 degrees angle at T1. like you
+[32:07] essentially supply a a structured uh
+[32:11] structured description of where your
+[32:13] camera needs to be at any point in time
+[32:15] and then the model is like perfectly
+[32:17] conditioned to to regard it as like the
+[32:19] only source of truth and it doesn't like
+[32:20] hallucinate uh on like where the camera
+[32:23] should go and it just like you can
+[32:25] essentially reconstruct 3D scenes from a
+[32:28] single input like because the model
+[32:29] itself is like very good video model but
+[32:31] at the same time you know it's like
+[32:32] perfectly adheres to to the camera
+[32:34] itself
+[32:35] >> and this is because uh The base model
+[32:37] itself already has the understanding of
+[32:38] the camera angle that you can
+[32:41] >> it doesn't respect it. it just under
+[32:43] like you need to tune the model you need
+[32:45] to tune the model to a significant
+[32:47] degree and this is like what enables
+[32:48] like at large scale you know post
+[32:49] training infrastructure we now have the
+[32:51] infrastructure to take H3 max add any
+[32:55] capability to it same applies for any
+[32:56] new model right if there's a new video
+[32:58] model we we we essentially spend most of
+[33:00] the time building it as an
+[33:01] infrastructure than just like oneoff
+[33:03] training runs so that we get we can
+[33:05] build like services around this for not
+[33:08] just like you know open source models
+[33:09] but for like frontier closed source
+[33:11] models as well because we see in the
+[33:12] market. This is like the biggest gap is
+[33:14] just how controllable these models are.
+[33:16] Like first we start with text to video
+[33:18] where you put a prompt, you got a video
+[33:20] back was good, but like you never could
+[33:22] describe the perfect character for you.
+[33:24] And we had image to video where you know
+[33:25] we used an image editing model and then
+[33:27] generated like you know the first scene
+[33:28] and then the model was like obviously
+[33:30] much more fitting but you still couldn't
+[33:32] like say oh I want this new character
+[33:34] appear at like second three. You need to
+[33:35] put it to your first frame or like you
+[33:37] can't like you can prompt it but it was
+[33:39] never perfect. And then we added
+[33:40] reference to video where you know uh you
+[33:43] can provide like an initial starting
+[33:44] frame and you can also provide I want
+[33:46] these characters with these voices like
+[33:48] you know that's also like a big big
+[33:49] unlock where you can essentially say
+[33:51] this is the this is the voice for this
+[33:53] character and now like you know we
+[33:54] adding oh within the scene I want camera
+[33:57] to look at this degree at like t0 want
+[33:59] camera to look at this degree at like T3
+[34:01] and then we adding lighting controls
+[34:02] where you essentially say where the
+[34:04] light is coming from. These are all all
+[34:06] compounding on top of each other and
+[34:07] like we just have the unified
+[34:08] infrastructure to just apply this to any
+[34:10] model at this point.
+[34:11] >> That's incredible. Hollywood is our
+[34:12] fastest growing segment and um there
+[34:16] there's a lot of noise about how AI
+[34:18] might disrupt Hollywood but it Hollywood
+[34:20] usage was non-existent a year ago and in
+[34:23] in the past year it grew and now it's
+[34:26] it's the fastest growing segment like um
+[34:29] Amazon MGM studios in in their
+[34:32] conference they they released their NAR
+[34:34] uh tool it's it's mostly backed by file
+[34:38] infrastructure behind the scenes and we
+[34:40] are seeing incredible, incredible pull
+[34:43] coming from Hollywood and it's exactly
+[34:45] what they need these like small point
+[34:48] solutions rather than generating
+[34:50] everything from scratch. They want to be
+[34:51] able to extend the video a little bit.
+[34:54] They want to be able to change the the
+[34:56] camera controls. They want to change the
+[34:58] lighting and someone has to build these
+[35:01] solutions for them. What what Hollywood
+[35:03] needs and what the creators actually
+[35:05] need and what the research labs are
+[35:07] working on, there's a little bit of a
+[35:09] disconnect there. And we believe we can
+[35:11] come in and do these little post
+[35:14] training projects to to close that dep
+[35:16] gap because we work with uh all the
+[35:19] Hollywood studios and we hear from them
+[35:22] what what they need and these are
+[35:24] exactly the things they need. These
+[35:26] small point solutions that actually make
+[35:28] them more efficient, push out more more
+[35:31] video and uh AI can actually close that
+[35:34] gap very nicely. Maybe say in a little
+[35:37] bit different way like we have been
+[35:38] staring at this problem for the last
+[35:40] three years as well like we see like
+[35:42] companies trying to like build a you
+[35:44] know uh movie director like video model
+[35:49] like by uh either pre-train or
+[35:51] post-train on on the video side but what
+[35:54] I'm hearing is like different people
+[35:56] expressing the way they want the output
+[35:59] to come out very differently consumers
+[36:01] talk about it and then like write the
+[36:03] prompt and generate the results very
+[36:05] differently from a Hollywood director,
+[36:07] which is obvious, right? Like
+[36:09] professionals want to talk about like,
+[36:10] you know, these camera angles, they want
+[36:12] to talk about the lighting. like you
+[36:14] sort of have built a library or like a a
+[36:17] collection of
+[36:19] >> of um post-training like I would call it
+[36:23] data and toolkits that can apply these
+[36:27] any model that you can like grab the
+[36:30] weights on so that they adapted to like
+[36:33] a different audience where they can
+[36:35] express their creativity in a bit
+[36:36] different uh fashion to control the
+[36:39] model when it unlocks a lot of
+[36:42] capability underneath. and half the
+[36:44] problem was capabilities of the of these
+[36:46] models. We are solving that. The other
+[36:48] half of the problem was legal and data
+[36:51] residency things like that. We we we
+[36:53] made a ton of progress there as well. Uh
+[36:56] we now have have a system of people can
+[36:59] apply with with their own IP and we
+[37:01] unlock their own IP in in the models. We
+[37:04] are going to grow that and that's going
+[37:06] to be a very powerful thing we do with
+[37:10] Hollywood Studios. Also we we now have
+[37:13] seance US hosted as well. We already had
+[37:16] previously other Chinese models. Seance
+[37:19] was the missing part. Every Hollywood
+[37:21] studio wanted us to have it US hosted.
+[37:24] Now that's available. Um so there are no
+[37:27] no obstacles
+[37:29] in front of these Hollywood studios. Now
+[37:31] everything is ready and we we believe
+[37:34] they're going to 10x 100x their AI usage
+[37:37] in the coming months. It's such a
+[37:39] exciting world for uh movie lovers,
+[37:42] consumers, people who consume a lot of
+[37:45] video and and creative content
+[37:46] >> and uh we have our conference gener
+[37:49] generative media conference next next
+[37:50] week. Uh this is our second time we are
+[37:53] doing it. Last year it was mostly
+[37:55] consumer AI. There were like maybe
+[37:58] couple Hollywood executives here and
+[38:00] there just curious about it. And now
+[38:02] it's dominated by studios, new AI
+[38:05] studios who are like offshoots of the
+[38:08] bigger studios trying to do like only AI
+[38:11] AI shows but also like the the biggest
+[38:14] of the Hollywood studios are also there
+[38:16] because now they have big plans
+[38:18] integrating AI into their workflows into
+[38:21] their existing systems. So you can see
+[38:25] the change in the attendance of the
+[38:26] conference as well.
+[38:28] >> That's awesome. Well, for the audience,
+[38:30] check out uh the content coming out of
+[38:31] the the Gem Media conference. It's going
+[38:33] to be very very exciting. And thank you
+[38:36] so much for and banan coming on to our
+[38:38] show. It's super exciting time for GE
+[38:40] Media.
+[38:41] >> Thank you.

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/KSF1216/chinese-script-policy/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/KSF1216/chinese-script-policy/commits/main.atom"/>
+  <title>Recent Commits to chinese-script-policy:main</title>
+  <updated>2026-09-18T00:15:21Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/462cd3960422073b521ea2e776cc758dbde343ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commit/462cd3960422073b521ea2e776cc758dbde343ba"/>
+    <title>
+        dev/：把三支開發探針歸進專案，並讓 .tradzhignore 只放行本專案的 dev/
+    </title>
+    <updated>2026-09-18T00:15:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319604871?s=30&amp;v=4"/>
+    <author>
+      <name>KSF1216</name>
+      <uri>https://github.com/KSF1216</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;dev/：把三支開發探針歸進專案，並讓 .tradzhignore 只放行本專案的 dev/
+
+來源是 DshWorkspace 的三支一次性探針（那邊的 .tradzhignore 本來就為它們開了洞）：
+
+- dev/gaps.mjs：196 組「簡體 -&amp;gt; 正確繁體」的缺口探針，本地修正表就是這樣找出來的
+- dev/measure-tw.mjs：用語偏好層的實測探針（--wording 開與不開的差別）
+- dev/legacy/mktwfix.mjs：歷史 fixture 產生器，加了「不要跑」抬頭——它寫的還是舊鍵名，
+  重跑會蓋掉現在的 selftest-cases.json
+
+順手修掉前兩支的過時處：路徑改成以自身 repo 解析（任何 clone 都能跑）、
+tw-phrases.json -&amp;gt; tc-vocabulary.json、--tw-vocab -&amp;gt; --wording。實測兩支都跑得動
+（gaps：196 組中 5 組仍有落差；measure-tw 正常輸出）。
+
+.tradzhignore 的新規則刻意綁 **/chinese-script-policy/dev/** 而不是 **/dev/**：
+這份設定會隨工具出貨，用 **/dev/** 會讓使用者的 dev/ 被靜默跳過。
+故意拿掉規則驗過一次：檢查 FAIL（129 個簡體字）、exit 1，還原後 clean 且 hash 相同。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1047e16efebe96d27f8123ec8bda0574d369493a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commit/1047e16efebe96d27f8123ec8bda0574d369493a"/>
+    <title>
+        PUBLISHING.md：新增 §7「上架社群市集」；topics 用 dsh-plugin 換掉 opencc
+    </title>
+    <updated>2026-09-17T23:50:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319604871?s=30&amp;v=4"/>
+    <author>
+      <name>KSF1216</name>
+      <uri>https://github.com/KSF1216</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;PUBLISHING.md：新增 §7「上架社群市集」；topics 用 dsh-plugin 換掉 opencc
+
+查證結果：DSH 本體沒有 marketplace（checkout 裡檔名／目錄／文件全無），市集是社群做的，
+但共用同一份目錄 awesome-dsh-plugin（生成 awesome-dsh-plugin.com/plugins.json，實測 3,727 筆，
+我們原本不在裡面）。
+
+§7 記下：投稿＝一個 data/plugins/&amp;lt;owner&amp;gt;__&amp;lt;repo&amp;gt;.yml（README 是生成的）、收錄條件與我們的狀況、
+兩個坑（engines.dsh 的 peer-range prerelease 靜默排除、tarball latest/download 的腐化）、
+以及「repo 需滿 1 天」這道硬門檻——我們的 repo 09-18 07:23 重建，所以要 09-19 07:23 後才能送。
+
+topics：加 dsh-plugin（收錄必要），挪掉 opencc；npm 的 keywords 仍保留 opencc，
+因為那裡沒有 20 個上限，而 opencc 在本套件是準確的字（字表就是 OpenCC 編譯來的）。
+
+送 PR 的腳本：~/.dsh/dsh-market-submit.ps1（-DryRun 已驗證零副作用）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9813006b1bbcc8d64039c2f1d739b7165e249ee2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commit/9813006b1bbcc8d64039c2f1d739b7165e249ee2"/>
+    <title>
+        PUBLISHING.md：topics 更新（skill、deepseek-harness 換掉 charset、text-conver…
+    </title>
+    <updated>2026-09-17T23:43:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319604871?s=30&amp;v=4"/>
+    <author>
+      <name>KSF1216</name>
+      <uri>https://github.com/KSF1216</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;PUBLISHING.md：topics 更新（skill、deepseek-harness 換掉 charset、text-conversion）
+
+GitHub Topics 上限 20 且已用滿。量測後發現 `dsh` 本來就在裡面，缺的是獨立的 `skill`
+（npm 的 keywords 三個都有：dsh、skill、agent-skills）。拿最弱的 `charset`
+（已被 encoding-detection／big5／gb18030／hkscs 涵蓋）與 `text-conversion`
+換成 `skill` 與 `deepseek-harness`，讓 GitHub 與 npm 兩份關鍵字一致。
+
+實測方式：PUT /repos/{owner}/{repo}/topics 之後再 GET 重讀確認（不是只看 PUT 的回應）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4b67fe61bb4fedbd6ac117b793d34c89d86b271d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commit/4b67fe61bb4fedbd6ac117b793d34c89d86b271d"/>
+    <title>
+        1.1.1：把 npm 的 description 縮到 255 字元以內（純 ASCII），並記下兩個上限
+    </title>
+    <updated>2026-09-17T23:30:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319604871?s=30&amp;v=4"/>
+    <author>
+      <name>KSF1216</name>
+      <uri>https://github.com/KSF1216</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;1.1.1：把 npm 的 description 縮到 255 字元以內（純 ASCII），並記下兩個上限
+
+實測（2026-09-18，1.1.0 發布後）：registry 的 packument 與版本文件裡 description
+長度都是 255，而 tarball 裡的 package.json 是完整的 514 —— npm 只留前 255 個字元，
+所以 1.1.0 在 npm 頁面與搜尋結果上的說明斷在一半（…plus two filt）。
+
+根因是上一輪把「GitHub About 用的 342 字描述」直接塞進 package.json：
+npm 說明上限 255（而且不確定算字元還是位元組，所以保持純 ASCII）、GitHub About 上限 350，
+是兩件不同的事。現在：
+
+- package.json：version 1.1.1、description 248 字純 ASCII
+- PUBLISHING.md：§2 新增「npm 只留 255 字元」的實測與兩份獨立現成文字；
+  §3 狀態更新（repo 已重建為單一 commit、npm 1.0.0＋1.1.0）；§6 補 1.1.1 發布說明
+- test:api：新增守門（description ≤255 且純 ASCII，57 → 58 項）
+- dist/tradzh.html：版本字串隨之重建
+
+npm test exit 0、npm run audit clean、npm pack → chinese-script-policy-1.1.1.tgz（52 檔）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae401bf82e0bb016b7aa691b7a8a5a7e3c6eba8c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/KSF1216/chinese-script-policy/commit/ae401bf82e0bb016b7aa691b7a8a5a7e3c6eba8c"/>
+    <title>
+        chinese-script-policy 1.1.0：完整專案快照（重建後的單一提交）
+    </title>
+    <updated>2026-09-17T23:13:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/319604871?s=30&amp;v=4"/>
+    <author>
+      <name>KSF1216</name>
+      <uri>https://github.com/KSF1216</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chinese-script-policy 1.1.0：完整專案快照（重建後的單一提交）
+
+不綁定 harness 的中文用字規範：檢查是「兩條主軸二選一（要求繁體／要求簡體）＋
+兩條副軸過濾（粵語口語、日文專有字詞）」，轉換有三個可獨立執行的步驟
+（繁↔簡、粵語口語→書面語、日文新字體→中文），另有一層選用的用語偏好
+（--wording，一個開關，依方向自動挑繁體偏好／簡體偏好兩張表）。
+
+同一份內容可以當 DSH 技能、Agent Skill、npm 套件、命令列工具或網頁應用的函式庫；
+執行期零依賴，字表已編譯成內建 JSON 進版控，並附單檔離線網頁 dist/tradzh.html。
+
+這一版把 1.0.0 之後的修正全部收進來：用語偏好合成一個開關、軸向框架改正為
+「兩條主軸二選一 ＋ 兩條副軸過濾」、網頁應用入口（lib／core／tables）、
+可跑的示範服務、以及術語守門測試。提交歷史刻意壓成一個提交（重建時決定）。&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

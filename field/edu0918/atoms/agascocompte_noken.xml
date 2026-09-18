@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/agascocompte/noken/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/agascocompte/noken/commits/main.atom"/>
+  <title>Recent Commits to noken:main</title>
+  <updated>2026-09-17T14:59:36Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74a88bf3e21f9b05f61dbce484e8d6518b4e7f58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/74a88bf3e21f9b05f61dbce484e8d6518b4e7f58"/>
+    <title>
+        Importar una selección desde un CSV exportado
+    </title>
+    <updated>2026-09-17T14:59:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Importar una selección desde un CSV exportado
+
+Botón «Importar CSV» junto al de exportar: recupera en este navegador la
+selección que hiciste en otro (o la que te pase alguien).
+
+El CSV no lleva identificadores, así que cada fila se reconoce por las
+mismas columnas japonesas que escribió la exportación (hiragana,
+katakana y kanji). El español se ignora a propósito, por si se ha
+retocado en una hoja de cálculo. Lo que ya estaba marcado se conserva:
+la importación suma, no reemplaza.
+
+Comprobado el viaje de ida y vuelta con 41 filas (25 palabras, 11 verbos
+y 5 kanji): vuelven las 41 con la misma composición; al reimportar el
+mismo archivo dice «41 ya estaban»; con el español cambiado a mano y las
+filas desordenadas siguen reconociéndose las 41; y con un CSV ajeno
+avisa en vez de no hacer nada.
+
+Dos arreglos que salieron al montarlo:
+ · がんばります y おもいだします estaban a la vez como palabra y como
+   verbo, así que desde que los verbos salen en el vocabulario aparecían
+   dos veces en su lección (y hacían ambigua la importación). Se quedan
+   como verbo, que lleva conjugación, partícula y ejemplo.
+ · el hueco que se reserva bajo la barra ahora se mide de la propia
+   barra: con seis botones envueltos en cuatro filas, el móvil llegaba a
+   163px y el valor fijo de 150px volvía a tapar la última fila.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9ff1323a4bb22a65cf5f2bbde1b632e81d50ac5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/d9ff1323a4bb22a65cf5f2bbde1b632e81d50ac5"/>
+    <title>
+        Referencia: las dos tablas de expresiones de tiempo
+    </title>
+    <updated>2026-09-16T19:05:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Referencia: las dos tablas de expresiones de tiempo
+
+De «II. Expresiones de Tiempo» (pág. 173): día/mañana/noche
+(おととい…まいにち) y semana/mes/año (せんせんしゅう…まいとし), con la
+traducción de cada casilla como en el libro.
+
+La tarjeta ocupa toda la fila de la rejilla: dos tablas de tres columnas
+no caben legibles en los 320px de una columna. Para eso, las tarjetas
+admiten «ancha» en data/reference.js.
+
+Añadidas dos notas que el libro no da pero que son justo lo que se
+falla: けさ y こんばん rompen el patrón 〜のあさ/〜のばん, y en la segunda
+tabla las irregulares son まいつき y おととし.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d91e06fa739f0089f919408eafe22055bbd2988a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/d91e06fa739f0089f919408eafe22055bbd2988a"/>
+    <title>
+        Vocabulario: columna Romaji y los verbos dentro de su lección
+    </title>
+    <updated>2026-09-16T14:53:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Vocabulario: columna Romaji y los verbos dentro de su lección
+
+Columna Romaji nueva, calculada con el motor de moras que ya usaba el
+buscador, para poder leer la palabra de un vistazo.
+
+Los verbos seguían viviendo solo en su pestaña, así que estudiar «el
+vocabulario del tema 13» dejaba fuera los once verbos que el libro
+enseña en esa misma lista. Ahora cada verbo lleva en qué lecciones lo
+enseña el Minna y aparece también en Vocabulario, en forma ます y con
+enlace 動 a sus conjugaciones. 153 de los 159 quedan situados; los otros
+seis (さく, 勤める y los cuatro del Sōmatome) no salen en las listas del
+libro.
+
+Un verbo puede estar en varias lecciones —だす se enseña en la 13, la 16
+y la 17— y sale en todas ellas, pero una sola vez al ver todas juntas.
+Dentro de una lección van primero, como en el libro. Los catorce de la
+lámina «動き» de la 18 cuentan como referencia.
+
+Marcar un verbo desde Vocabulario o desde Verbos es lo mismo: es la
+misma entrada. Como ahora una entrada puede tener casilla en dos
+secciones, al marcar se sincronizan todas las copias; si no, la de la
+otra pestaña se quedaba sin marcar.
+
+De paso, masuKanji pasa a dom.js (lo usaban la exportación y ahora la
+tabla) y se acortan las introducciones de Vocabulario y Kanji, que en el
+móvil ocupaban una pantalla entera antes de llegar al contenido.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6e4decd666aef3ba56a6c4b2628690ef9e170093</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/6e4decd666aef3ba56a6c4b2628690ef9e170093"/>
+    <title>
+        Filtros para el examen: vocabulario frente a referencia, y kanji segu…
+    </title>
+    <updated>2026-09-14T22:21:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Filtros para el examen: vocabulario frente a referencia, y kanji seguros del N5
+
+Vocabulario: nuevo filtro «Sección» que separa la lista de vocabulario de
+cada lección de su hoja de «Palabras e informaciones de referencia», con
+recuento que se ajusta a la lección elegida y enlace propio
+(#/vocabulario?leccion=22&amp;amp;seccion=vocabulario). Las de referencia llevan
+la marca «ref» junto al número de lección.
+
+Clasificación hecha contra el libro (1ª edición, la única disponible):
+se leyeron las 25 hojas de referencia y las 50 páginas de vocabulario,
+y una palabra solo cuenta como referencia si NO está también en la lista
+principal (スーツ y セーター salen en las dos en la L22, y son vocabulario).
+Resultado: 834 de vocabulario y 290 de referencia.
+
+Correcciones encontradas por el camino:
+ · seis países que puse en la L1 son vocabulario de otras lecciones:
+   イタリア (3), メキシコ (6), オーストラリア (11), シンガポール (12),
+   ロシア (13) y ベトナム (16)
+ · おなか pasa a la L16 y うわぎ a la L17, que es donde las enseña el libro
+ · からて solo aparece en la hoja de referencia de la L19
+ · los colores 色赤青白黒黄色茶色 y ご兄弟・ご両親 estaban marcados como
+   Sōmatome pero salen en las hojas de referencia del Minna (L8 y L7)
+ · fuera dos duplicados que metí al completar la referencia: スパゲッティ
+   (ya estaba スパゲティー) y カレーライス (el libro dice カレー[ライス])
+
+Kanji: filtro por nivel con insignia en cada ficha. Sin lista oficial del
+N5 desde 2010, se cruzaron tres listas públicas (JLPT Sensei, 80;
+Japanesetest4you, 78; Nihongo Ichiban, 103 = la antigua del nivel 4):
+81 «seguros» (en al menos dos de las tres), 22 «posibles» (solo en la de
+103) y 64 por encima del N5.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67bc4664ce4fc8c31d749fb036c6c3a7fb83b6a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/67bc4664ce4fc8c31d749fb036c6c3a7fb83b6a1"/>
+    <title>
+        Test: los distractores salen del mismo sitio que la pregunta
+    </title>
+    <updated>2026-08-13T11:39:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Test: los distractores salen del mismo sitio que la pregunta
+
+Al examinarse solo de lo marcado, las opciones incorrectas venían del
+temario completo. Con una selección homogénea eso regala la respuesta:
+repasando solo los verbos del grupo III, cualquier opción de otro grupo
+se descarta de un vistazo sin saberse nada.
+
+Era una decisión mía y estaba mal razonada: solo pensé en la selección
+pequeña y variada (13 kanji), donde sacar los distractores del propio
+conjunto lo vuelve aprendible de memoria. Los dos casos son reales, así
+que ahora los distractores salen de la selección y solo se completan con
+el temario cuando no da para tres opciones distintas.
+
+Comprobado en los dos extremos: con los 27 verbos del grupo III marcados,
+20 preguntas sin una sola opción ajena; con solo 2 marcados, las 20
+preguntas siguen ofreciendo 4 opciones completando desde el temario.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e06d189cb4f6d2db4e1352e9b8a5924a0578dc8e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/e06d189cb4f6d2db4e1352e9b8a5924a0578dc8e"/>
+    <title>
+        Audio: documentar que el silencio en bucle es imprescindible
+    </title>
+    <updated>2026-08-12T11:47:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Audio: documentar que el silencio en bucle es imprescindible
+
+Probado en un iPhone real: con el audio en silencio reproduciéndose, la
+voz sigue sonando incluso con el móvil bloqueado, porque iOS trata la
+página como un reproductor. Sin él, la síntesis se corta al apagarse la
+pantalla.
+
+Parece un truco prescindible y es justo al revés, así que queda avisado
+en el código para que no se caiga en una limpieza futura. El Wake Lock
+sigue haciendo falta, pero para otra cosa: que la pantalla no se apague
+sola. Son dos mecanismos distintos para dos problemas distintos.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e6f31570d9512a1931bb9d901008e31cbbe5d019</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/e6f31570d9512a1931bb9d901008e31cbbe5d019"/>
+    <title>
+        Audio: avisar cuando el navegador no puede evitar el bloqueo de pantalla
+    </title>
+    <updated>2026-08-12T11:35:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Audio: avisar cuando el navegador no puede evitar el bloqueo de pantalla
+
+En el iPhone la pantalla se apagaba igual y el audio se cortaba, porque
+Chrome de iOS (WKWebView por dentro) no trae la API de Wake Lock. El
+código se tragaba el fallo en silencio, así que no había forma de saber
+por qué. Ahora, si no se consigue el bloqueo, la barra lo dice mientras
+suena, con la instrucción para desactivar el bloqueo automático desde
+los ajustes del móvil.
+
+Además se reproduce un audio en silencio en bucle mientras habla: donde
+no hay Wake Lock, tener un medio reproduciéndose de verdad es lo único
+que puede mantener viva la página. No lo garantiza, pero es gratis.
+
+Comprobado en los dos escenarios: con Wake Lock disponible no sale
+ningún aviso, y simulando un navegador sin ella aparece y el bucle
+sigue funcionando igual.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34bf645733b648530d4534692c0627251a67a1d6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/34bf645733b648530d4534692c0627251a67a1d6"/>
+    <title>
+        Audio: arreglar que en el iPhone no sonara nada
+    </title>
+    <updated>2026-08-11T22:53:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Audio: arreglar que en el iPhone no sonara nada
+
+En iOS todos los navegadores son WebKit por dentro, y WebKit solo deja
+hablar si la primera locución sale dentro del gesto que la pidió. El
+código pedía el Wake Lock con await antes de hablar, y ese await rompe
+la cadena del gesto: iOS ignoraba el speak() en silencio, no llegaba
+nunca el evento de fin y el bucle se quedaba esperando para siempre.
+Por eso se veía «Parar» y la palabra congelada.
+
+Ahora el bucle arranca sin ningún await por delante y el bloqueo de
+pantalla se pide después, sin esperarlo.
+
+Además, cada locución lleva un tope de tiempo: si el navegador se traga
+el evento de fin, se continúa con la siguiente en vez de dejar el
+reproductor colgado. Comprobado simulando ese fallo: antes se paraba en
+la primera, ahora sigue avanzando.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9af8ab3db081b333dd6e29d854c6bc14341fe29b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/9af8ab3db081b333dd6e29d854c6bc14341fe29b"/>
+    <title>
+        Escuchar en bucle lo que tengas marcado
+    </title>
+    <updated>2026-08-11T22:42:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Escuchar en bucle lo que tengas marcado
+
+Botón «▶ Escuchar» en la barra de selección: dice el japonés, deja un
+hueco para que intentes recordarlo, dice el español, y al acabar la
+vuelta baraja y vuelve a empezar sin límite. Sirve igual para verbos
+(forma ます), vocabulario y kanji (se lee la lectura, no el carácter,
+que solo no se puede pronunciar sin ambigüedad).
+
+Mientras suena se pide un Wake Lock para que el móvil no bloquee la
+pantalla: los navegadores suspenden la síntesis de voz al bloquear, así
+que sin esto se cortaría a los pocos segundos. La idea es dejarlo boca
+abajo, como con un vídeo.
+
+Del español se quitan solo los paréntesis que llevan japonés dentro,
+que la voz española destrozaría; los demás se conservan porque son los
+que desambiguan («ponerse (gafas)» sin el «gafas» no se distingue de
+着る ni de かぶる). Verificado sobre las 1500 entradas: no queda japonés
+en ningún texto que vaya a leer la voz española.
+
+Tres ritmos, que cambian a la vez la velocidad y los silencios.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/828b52f81e83850db18c96a64a8e4e2a4e681acc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/828b52f81e83850db18c96a64a8e4e2a4e681acc"/>
+    <title>
+        Quitar los últimos límites de ancho del texto
+    </title>
+    <updated>2026-08-05T14:05:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Quitar los últimos límites de ancho del texto
+
+Van fuera los cuatro max-width de 70ch que quedaban: la lista del examen
+N5 en la portada, los párrafos de explicación de Gramática, la nota de
+la chuleta de Verbos y la explicación bajo la respuesta de Ejercicios.
+Ahora todo el texto usa el ancho del contenedor, igual que las tablas y
+las cajas de ejemplo, que nunca estuvieron limitadas.
+
+Se conservan los max-width que dimensionan cajas y no texto: el campo de
+búsqueda, la configuración del test y la tarjeta de pregunta.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/736798ea427ee12e8113baebf413e810c2d68b72</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/736798ea427ee12e8113baebf413e810c2d68b72"/>
+    <title>
+        Inicio: saludar por el nombre correcto, y textos a todo el ancho
+    </title>
+    <updated>2026-08-05T13:59:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Inicio: saludar por el nombre correcto, y textos a todo el ancho
+
+El saludo decía アグス, que se lee «Agusu»; Arturo en katakana es
+アルトゥーロ.
+
+Se quita el max-width de 65ch de .lead: limitaba el texto introductorio
+a media pantalla en escritorio y partía la línea a mitad de página.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85b56db2611e754c9d86b67e561a5fce9983108f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/85b56db2611e754c9d86b67e561a5fce9983108f"/>
+    <title>
+        Limpieza: código muerto, duplicados y helpers compartidos
+    </title>
+    <updated>2026-08-05T13:10:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Limpieza: código muerto, duplicados y helpers compartidos
+
+Revisión de calidad tras varias sesiones de cambios.
+
+Código muerto (verificado con grep antes de borrar):
+ · ternarios `esHTML ? q : q` con las dos ramas iguales, y la propiedad
+   esHTML que nadie leía
+ · la rama `if (b.dataset.l)` de Gramática, resto de los chips L1–L25
+   que se quitaron hace unas sesiones
+ · la propiedad `glyph` en las 8 secciones: las pestañas llevan el kanji
+   escrito en index.html y nadie leía ese campo
+ · el selector .gresults .gitem.sel, dos guardas inalcanzables del test y
+   un $$ sin usar en app.js
+
+Duplicados unificados:
+ · katakana→hiragana estaba en dos sitios con rangos distintos (uno no
+   cubría ヷ-ヺ): ahora es N5.aHiragana en romaji.js
+ · la expresión del furigana 漢字[かんじ] estaba escrita tres veces:
+   N5.FURIGANA, N5.lectura y N5.sinFurigana en dom.js
+ · la insignia de fuente se generaba con el mismo markup en tres sitios:
+   N5.fuenteHTML
+ · check.mjs y huerfanas.mjs repetían el arranque y la lista de ficheros
+   de datos: tools/datos.mjs, que además lee scripts/dom.js para que las
+   fuentes válidas salgan de N5.FUENTES y no de una copia a mano
+ · el patrón «filtrar, puntuar y ordenar» estaba copiado en los cuatro
+   buscadores, con un array que era de items o de {pts,item} según
+   hubiera consulta: ahora N5.rankea devuelve siempre items
+
+Rendimiento (medido): 5,5 → 0,7 ms por pulsación. Se memoiza el troceo
+en moras, que se recalculaba entero en cada tecla, y puntuaEs descarta
+antes de compilar una expresión por candidato.
+
+Robustez:
+ · el contador de la barra cuenta selección resuelta contra los datos,
+   no ids guardados, que podían quedar huérfanos al editar data/
+ · el botón «Seleccionar» sale según la sección lo declare, no según
+   haya filas pintadas: con un filtro sin resultados desaparecía
+ · el router expone N5.afterRoute, así que export.js deja de depender de
+   un setTimeout para colarse detrás del manejador del router
+ · ?particula= se valida contra las pastillas existentes; uno inválido
+   dejaba el filtro sin forma de deshacerse
+ · check.mjs valida «fuente» también en verbos y gramática, donde ya se
+   usaba sin comprobarse
+ · los colspan de «Sin resultados» se derivan del número de cabeceras
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62bf670dcb5489615d16b51fe6033470264fd196</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/62bf670dcb5489615d16b51fe6033470264fd196"/>
+    <title>
+        Ordenar por relevancia también en los buscadores de sección
+    </title>
+    <updated>2026-08-05T12:51:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Ordenar por relevancia también en los buscadores de sección
+
+El arreglo de «oto» solo tocó el buscador global; los de Vocabulario,
+Verbos y Kanji seguían mostrando en el orden del fichero de datos, así
+que «ki» dejaba 木 en el puesto 41 de 73 resultados.
+
+La puntuación se saca a scripts/relevancia.js y la usan los cuatro. Con
+búsqueda manda la relevancia; sin ella se conserva el orden de siempre
+(por lección en vocabulario, alfabético en verbos, 1–160 en kanji), que
+es como se navega cuando no estás buscando nada.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/309caff11aae67e1bb9120ff0ee3bc5f5f5f14bd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/309caff11aae67e1bb9120ff0ee3bc5f5f5f14bd"/>
+    <title>
+        Definir las 5 palabras que la guía usaba sin explicar, y auditoría
+    </title>
+    <updated>2026-08-05T10:12:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Definir las 5 palabras que la guía usaba sin explicar, y auditoría
+
+期間, 場所, 気分, 将来 y 工場 aparecían en explicaciones y ejemplos de
+la propia guía pero no tenían entrada, así que no se podían buscar.
+No son vocabulario del Minna (salen en textos escritos para la guía),
+de modo que en vez de asignarles una lección inventada estrenan una
+segunda categoría de procedencia: «Extra», con su sigla ＋ y su opción
+en el filtro, junto a la de Sōmatome que ya existía. Los nombres
+propios (東京, 木村, 富士山…) se quedan fuera a propósito.
+
+Nuevo tools/huerfanas.mjs: cruza las palabras con furigana de todos los
+ejemplos contra las entradas definidas y lista las que faltan. Descarta
+el ruido esperado —nombres propios, la raíz de un verbo する definido
+(結婚 de けっこんする), okurigana (面白 de 面白い) y compuestas cuyas dos
+mitades ya están (日本料理 = 日本 + 料理)—. Ahora sale limpio.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d9af370df262fe4cb264f115c99e265a6ac3212</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/2d9af370df262fe4cb264f115c99e265a6ac3212"/>
+    <title>
+        Verbos: filtrar también por la partícula que rigen
+    </title>
+    <updated>2026-08-05T09:47:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Verbos: filtrar también por la partícula que rigen
+
+Nueva fila de pastillas bajo la de grupos, generada desde los datos y
+ordenada por frecuencia, con el número de verbos de cada una: 〜を 102,
+〜に 39, 〜が 17, 〜へ 9, 〜と 5, 〜で 4 y «Sin partícula» 13. Las que
+solo tiene un verbo (〜く de なる, 〜について de かんがえる) no salen.
+
+Los 32 verbos que rigen dos partículas («おくる 〜を／〜に») aparecen bajo
+cualquiera de las dos, que es lo que hace útil el filtro para estudiar.
+Se combina con el grupo y con la búsqueda, y admite enlace profundo:
+#/verbos?particula=に
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/229f793d5bd018d6d5854aa1ac7f1b5653a6b313</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/229f793d5bd018d6d5854aa1ac7f1b5653a6b313"/>
+    <title>
+        Buscador: ordenar los resultados por relevancia
+    </title>
+    <updated>2026-08-03T11:39:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Buscador: ordenar los resultados por relevancia
+
+Los resultados salían en el orden del fichero de datos y se cortaba en
+los cinco primeros, así que «oto» no encontraba 音 (sonido) —la única
+coincidencia exacta— porque quedaba la sexta, detrás de おととい,
+おとうさん, おとうと y de «fotografía» y «otoño», que contienen «oto»
+por dentro.
+
+Ahora cada candidato se puntúa (coincidencia exacta &amp;gt; empieza por &amp;gt;
+palabra del español &amp;gt; lo contiene) y se ordena antes de recortar. A
+igualdad de puntos se mantiene el orden de los datos, así que las
+búsquedas que ya iban bien no cambian.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/050e8b68edf1811be29b464c56087bbb3b381e5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/050e8b68edf1811be29b464c56087bbb3b381e5e"/>
+    <title>
+        Vocabulario: añadir おじ y おい, que faltaban por un fallo de deduplicación
+    </title>
+    <updated>2026-07-31T23:01:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Vocabulario: añadir おじ y おい, que faltaban por un fallo de deduplicación
+
+Al cruzar el Sōmatome con la app, la normalización quitaba la お inicial
+antes de comparar: おじ pasaba a じ («letra», que sí existe) y おい
+coincidía con おおい («muchos») tras el mismo recorte, así que las dos se
+descartaron como duplicadas. Quedaba la tía sin el tío y la sobrina sin
+el sobrino.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cf2a610525349ecacf9337688694a869f20ce593</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/cf2a610525349ecacf9337688694a869f20ce593"/>
+    <title>
+        Añadir el vocabulario y la gramática del Sōmatome N5
+    </title>
+    <updated>2026-07-31T22:57:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Añadir el vocabulario y la gramática del Sōmatome N5
+
+Nuevo campo «fuente» para el contenido que no viene del Minna: lleva
+lección null, se marca con 総 en la tabla y tiene su propia opción en
+el filtro, de forma que al filtrar «Lección 23» para un examen del
+Minna no se cuela nada ajeno.
+
+50 palabras del índice del Sōmatome que faltaban: colores como
+sustantivo (色赤青白黒黄色茶色, la app solo tenía los adjetivos),
+familia (主人・家内・おば・おじさん・孫・めい・いとこ y las formas
+honoríficas ご兄弟・ご両親), objetos (電子レンジ・本棚・茶碗・コップ…),
+adverbios y conectores (さっき・すぐに・ほとんど・けれど・だから…) y
+los interrogativos: 〜でも «cualquiera», 〜か (faltaban だれか・いつか)
+y 〜も＋negativo.
+
+4 verbos intransitivos con conjugación completa: 開く, 閉まる, 空く
+(おなかが〜) y 渇く (のどが〜); la app solo tenía las frases hechas.
+
+5 puntos de gramática: 疑問詞＋でも, 疑問詞＋も＋negativo, Vたあとで,
+けれど（も）・だから y las partículas finales ね・よ. Nuevo tema
+«Conectores».
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/067584041730e4ac284aa6686b60d96a19d3c6fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/067584041730e4ac284aa6686b60d96a19d3c6fa"/>
+    <title>
+        Buscador: los resultados de gramática muestran su significado
+    </title>
+    <updated>2026-07-31T22:42:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Buscador: los resultados de gramática muestran su significado
+
+El patrón por sí solo no dice nada («V てあげます»); ahora va seguido
+de la primera frase de la explicación, igual que el vocabulario
+muestra el español: «V てあげます — Hacer un favor a otro. · 第24課».
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc886a920dcd2aaee23db05b982325e1aef80061</id>
+    <link type="text/html" rel="alternate" href="https://github.com/agascocompte/noken/commit/fc886a920dcd2aaee23db05b982325e1aef80061"/>
+    <title>
+        Selección global, barra más legible y test sobre lo marcado
+    </title>
+    <updated>2026-07-29T18:59:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/38910658?s=30&amp;v=4"/>
+    <author>
+      <name>agascocompte</name>
+      <uri>https://github.com/agascocompte</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Selección global, barra más legible y test sobre lo marcado
+
+Interfaz:
+ · el modo selección pasa a un único botón en la cabecera, en vez de
+   uno repetido en Vocabulario, Verbos y Kanji; se oculta en las
+   secciones donde no hay nada que marcar
+ · el botón dice «Salir de selección» cuando está activo, que antes se
+   quedaba en «Seleccionar» sin indicar cómo salir (la clase .on que
+   se aplicaba no tenía ningún estilo asociado)
+ · la barra flotante usa una superficie propia (--float) que se
+   despega del papel y de las tarjetas, con el texto en --ink
+ · con left:50% el ancho disponible era media pantalla y el contenido
+   se partía en dos líneas: width:max-content lo arregla
+ · al ser fija tapaba el final de la página (el «Siguiente» del test
+   en móvil): se reserva hueco con body.con-selbar
+
+Test:
+ · «Solo lo que tengo marcado» reutiliza la selección del CSV, así se
+   puede uno examinar de los 13 kanji que toquen y de nada más
+ · los distractores salen siempre del temario completo aunque las
+   preguntas salgan de la selección; si no, se acertaría por descarte
+ · selector de dirección: al azar, japonés→español o español→japonés
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

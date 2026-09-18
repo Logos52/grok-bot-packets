@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/ColinHouse/kotobako/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/ColinHouse/kotobako/commits/main.atom"/>
+  <title>Recent Commits to kotobako:main</title>
+  <updated>2026-09-18T00:11:05Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/46f6f7a1ca0d6f7a2287ac5fe150c205e5233869</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/46f6f7a1ca0d6f7a2287ac5fe150c205e5233869"/>
+    <title>
+        ci: make user-visible changes update the CHANGELOG (#77) (#158)
+    </title>
+    <updated>2026-09-18T00:11:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: make user-visible changes update the CHANGELOG (#77) (#158)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cc3ed53772f4a10a46f28b7ed313377041b7b771</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/cc3ed53772f4a10a46f28b7ed313377041b7b771"/>
+    <title>
+        test(a11y): record the contrast and axe baselines (#76) (#159)
+    </title>
+    <updated>2026-09-17T23:58:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(a11y): record the contrast and axe baselines (#76) (#159)
+
+* build(frontend): add @axe-core/playwright for the a11y baseline
+
+axe needs a real browser (happy-dom does not give it enough DOM); it runs in
+the e2e suite next to the smoke test. Lock merged into the committed one as
+before; npm ci verified.
+
+Assisted-by: opencode (deepseek-flash)
+
+* test(a11y): record the contrast and axe baselines (#76)
+
+Contrast is information here, not decoration: the design encodes learning
+state in ink density. A test parses the tokens out of style.css and pins what
+today measures — light ink-50 (3.55-4.13) and ink-35 (2.38-2.77) miss AA on
+every layer, dark ink-35 (3.60-4.12) misses it; ink and ink-70 clear it in both
+themes. Changing a token now forces a deliberate edit to that table.
+
+axe runs over the four main pages in the e2e suite and pins the violation ids
+found today (color-contrast, link-in-text-block) as a ratchet: a new kind fails,
+and fixing one sends you back to the table. The review path is exercised with
+the keyboard alone (Space reveals, 3 rates) in the smoke test.
+
+docs/conventions.md records the numbers, the options (adjust the tokens, add a
+non-colour redundancy, or restrict those levels to non-essential text), that
+the axe baseline is not a clean bill of health, and the ruby/screen-reader
+limitation (ruby is announced as base then annotation; no aria override).
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/69d7bdf245152fc610314c26d0095968bd29943b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/69d7bdf245152fc610314c26d0095968bd29943b"/>
+    <title>
+        test(jp): pin the tokenizer property to offsets, not whitespace (#157)
+    </title>
+    <updated>2026-09-17T17:45:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(jp): pin the tokenizer property to offsets, not whitespace (#157)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c4bb960150d0cb2266e46ba8559aeb4dcc0e3b2c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/c4bb960150d0cb2266e46ba8559aeb4dcc0e3b2c"/>
+    <title>
+        ci: make protocol documents human-only (#74) (#156)
+    </title>
+    <updated>2026-09-17T17:24:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: make protocol documents human-only (#74) (#156)
+
+* ci: make protocol documents human-only (#74)
+
+The licence, the attribution, the security policy, the ADRs and AGENTS.md now
+have a guard instead of a memory: the pre-commit hook refuses them unless that
+commit sets KOTOBA_ALLOW_PROTECTED_DOCS=1 (never --no-verify), and CI fails a
+pull request that touches them until a human adds the protected-docs-reviewed
+label. A label is visible and auditable; a commit-message keyword is neither.
+
+This commit itself touches AGENTS.md, so it used the documented environment
+variable — the label for the merge is left to a human, which is the point.
+
+Assisted-by: opencode (deepseek-flash)
+
+* ci: give hygiene a full clone so its diffs are real
+
+Without a merge base, &amp;#39;origin/main...HEAD&amp;#39; on a shallow checkout returns
+nothing and the guard passes while proving nothing. The same fix makes the
+Conventional Commits step actually see the commits it claims to check.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e76e8c105a7d45b5b311fa1802e62ed74c604b7a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/e76e8c105a7d45b5b311fa1802e62ed74c604b7a"/>
+    <title>
+        docs: fill the M1/M2 documentation debt (#73) (#154)
+    </title>
+    <updated>2026-09-17T17:16:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: fill the M1/M2 documentation debt (#73) (#154)
+
+The CHANGELOG had no M1/M2 entries: the region watcher, the three hook
+connections, the clipboard watcher, engine compare, Yomitan dictionaries and
+frequency lists, known-word import, pitch accent and the FSRS optimizer were all
+missing from [Unreleased]. They are written as user-visible effects, not commit
+titles.
+
+The README gained a &amp;quot;What else it does&amp;quot; section covering the same capabilities
+(continuous companion, content sources, what to learn, personalized parameters)
+and names Uros O. alongside Kanjium in the CC BY-SA attribution — the licence
+requires the attribution, so it cannot stay in NOTICE.md alone.
+
+docs/conventions.md now records the two pits this round fell into: never capture
+app.state.db.session (restore_backup swaps it; use a lambda), and batch-commit
+importers must survive a mid-way failure (write entry_count = 0 until done, see
+services/dictionary/yomitan/). It also points at services/text/encoding.py as the
+one decode site for imports.
+
+Not touched, per the acceptance criteria: LICENSE, NOTICE.md, SECURITY.md,
+docs/adr/*, AGENTS.md §5.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f602723631892f153b13bdcbfb5e54bfbadfef6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/4f602723631892f153b13bdcbfb5e54bfbadfef6"/>
+    <title>
+        feat(brand): rename the project to Kotobako (#155)
+    </title>
+    <updated>2026-09-17T17:16:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(brand): rename the project to Kotobako (#155)
+
+&amp;quot;Studio&amp;quot; pointed at the wrong category. Android Studio, Visual Studio — a
+Studio is where you make something. This program does not make anything: it
+picks up a line you met, keeps the moment you met it in, and hands the word
+back when you are due to see it again. ことばこ is the box those lines go into.
+
+Renaming costs almost nothing today and will never be this cheap again: there
+are no releases, no downloads and no users, and GitHub redirects the old
+repository URL permanently. The import package stays `kotoba` — the root word is
+still exactly right, and it is wired into the Alembic script location, so moving
+it would risk the migration history to change a name no user ever sees.
+
+Names that are keys into somebody else&amp;#39;s system keep their old value, each with
+a comment saying why, because renaming them would strand data that already
+exists:
+
+- `MODEL_NAME = &amp;quot;KotobaStudio-v1&amp;quot;` is the note type inside the user&amp;#39;s Anki
+  collection; renaming it orphans every note exported before today.
+- the `kotoba-studio` tag on exported notes keeps a saved `tag:` search working.
+- the data directory and the keyring service do move, but the old ones are still
+  honoured: `default_data_dir()` returns the pre-rename directory when it exists,
+  and a key saved under the old service name is still read. Nothing is copied or
+  moved on the user&amp;#39;s behalf — an out-of-date directory name is a smaller
+  problem than an application that looks like it deleted your cards.
+
+Verified: `make check` green (323 backend, 77 frontend), and the data-directory
+fallback exercised over all four combinations of the two directories existing.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f833245948e5b86e524c5b3fab35569adf5ab7c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/4f833245948e5b86e524c5b3fab35569adf5ab7c"/>
+    <title>
+        fix(ci): drop the Pages enablement that GITHUB_TOKEN cannot perform (…
+    </title>
+    <updated>2026-09-17T16:54:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(ci): drop the Pages enablement that GITHUB_TOKEN cannot perform (#152)
+
+`enablement: true` was meant to save an admin a trip to the settings page. It
+cannot: creating a Pages site needs administration:write, which is not among the
+scopes GITHUB_TOKEN can be granted, so the job only traded one error for another
+— &amp;quot;Get Pages site failed&amp;quot; became &amp;quot;Resource not accessible by integration&amp;quot;.
+
+Pages is now switched to the Actions source on this repository and the workflow
+deploys, so the option is dead weight. The comment says what a fork has to do
+rather than implying the workflow handles it: a configuration that can never
+succeed is worse than none, because the next person debugs the wrong thing.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c781ce3a0cd1a3231308d1a9259270a18390950b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/c781ce3a0cd1a3231308d1a9259270a18390950b"/>
+    <title>
+        ci: Bump the actions group with 5 updates (#151)
+    </title>
+    <updated>2026-09-17T16:48:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;ci: Bump the actions group with 5 updates (#151)
+
+Bumps the actions group with 5 updates:
+
+| Package | From | To |
+| --- | --- | --- |
+| [actions/setup-node](https://github.com/actions/setup-node) | `4` | `7` |
+| [actions/upload-artifact](https://github.com/actions/upload-artifact) | `4` | `7` |
+| [actions/configure-pages](https://github.com/actions/configure-pages) | `5` | `6` |
+| [actions/upload-pages-artifact](https://github.com/actions/upload-pages-artifact) | `3` | `5` |
+| [actions/deploy-pages](https://github.com/actions/deploy-pages) | `4` | `5` |
+
+
+Updates `actions/setup-node` from 4 to 7
+- [Release notes](https://github.com/actions/setup-node/releases)
+- [Commits](https://github.com/actions/setup-node/compare/v4...v7)
+
+Updates `actions/upload-artifact` from 4 to 7
+- [Release notes](https://github.com/actions/upload-artifact/releases)
+- [Commits](https://github.com/actions/upload-artifact/compare/v4...v7)
+
+Updates `actions/configure-pages` from 5 to 6
+- [Release notes](https://github.com/actions/configure-pages/releases)
+- [Commits](https://github.com/actions/configure-pages/compare/v5...v6)
+
+Updates `actions/upload-pages-artifact` from 3 to 5
+- [Release notes](https://github.com/actions/upload-pages-artifact/releases)
+- [Commits](https://github.com/actions/upload-pages-artifact/compare/v3...v5)
+
+Updates `actions/deploy-pages` from 4 to 5
+- [Release notes](https://github.com/actions/deploy-pages/releases)
+- [Commits](https://github.com/actions/deploy-pages/compare/v4...v5)
+
+---
+updated-dependencies:
+- dependency-name: actions/setup-node
+  dependency-version: &amp;#39;7&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: actions
+- dependency-name: actions/upload-artifact
+  dependency-version: &amp;#39;7&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: actions
+- dependency-name: actions/configure-pages
+  dependency-version: &amp;#39;6&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: actions
+- dependency-name: actions/upload-pages-artifact
+  dependency-version: &amp;#39;5&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: actions
+- dependency-name: actions/deploy-pages
+  dependency-version: &amp;#39;5&amp;#39;
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: actions
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d39c94791657f84987eb0b2b86d51945cc117c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/6d39c94791657f84987eb0b2b86d51945cc117c7"/>
+    <title>
+        fix(docs): let the Pages job enable Pages, and clear the npm advisori…
+    </title>
+    <updated>2026-09-17T16:47:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(docs): let the Pages job enable Pages, and clear the npm advisories (#150)
+
+Two failures on main, both from the docs site landing.
+
+configure-pages 404s on a repository where Pages was never switched on, so the
+deploy job failed on its first run. `enablement: true` lets the action do the
+switch itself — the workflow is already in the repository and already holds
+`pages: write`, so making a human visit a settings page to finish the job was
+the wrong shape.
+
+Dependabot then failed twice on /docs. VitePress 1.6.4 is the current stable
+release and pins Vite 5, which pulls an esbuild carrying dev-server advisories;
+VitePress 2 is still alpha, so Dependabot could not resolve a fix and errored
+instead of opening a pull request. The advisories are build-time only —
+`npm audit --omit=dev` reports nothing and none of that code reaches the
+published site — but forcing esbuild &amp;gt;= 0.25 and Vite &amp;gt;= 6.4.3 costs nothing,
+builds the same 15 pages, and takes `npm audit` to zero, which keeps a real
+alert visible later. docs/README.md says when to drop the overrides.
+
+/docs was also the only npm manifest with no dependabot.yml entry, so security
+updates were the only way Dependabot ever touched it. It now gets the same
+monthly grouped treatment as /frontend and /backend.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a6d88471821d00bc19a4abab999adf5e953c3db</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/4a6d88471821d00bc19a4abab999adf5e953c3db"/>
+    <title>
+        test(jp): add property tests for the Japanese pipeline (#71) (#149)
+    </title>
+    <updated>2026-09-17T16:27:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(jp): add property tests for the Japanese pipeline (#71) (#149)
+
+* build(backend): add hypothesis for property tests
+
+Hand-written examples only cover cases someone thought of; the Japanese
+pipeline is where the unseen cases hide.
+
+Assisted-by: opencode (deepseek-flash)
+
+* build(frontend): add fast-check for the furigana property
+
+furigana() is a frontend function, so its property test cannot live in the
+backend&amp;#39;s hypothesis suite. fast-check is the same idea in JS. The lock was
+merged into the committed one (npm 11 inBundle pruning); npm ci verified.
+
+Assisted-by: opencode (deepseek-flash)
+
+* test(jp): add property tests for the Japanese pipeline (#71)
+
+Random Japanese input now hammers the five functions whose failures are hard to
+see: normalize_ocr is idempotent (a second pass that changes text poisons the
+hash), parse_subtitles either returns cues or raises ApiError (subtitle files
+come from the internet), tokenize covers every non-space character (offsets
+drive highlighting), mora_count ignores small kana and stays non-negative, and
+pitch&amp;#39;s pattern is always one of the four for any accent, out-of-range included.
+
+Two deviations from the issue, both because reality disagreed:
+
+- The tokenize property as literally written is false by design: whitespace is
+  not tokenized, which hypothesis found immediately (&amp;quot;: :&amp;quot; -&amp;gt; &amp;quot;::&amp;quot;). The test
+  now asserts what the pipeline guarantees (no lost non-space characters) and
+  the counterexample is frozen as a plain test, offsets included.
+- furigana() is a frontend function, so hypothesis cannot reach it; its
+  property test lives next to it in vitest with fast-check.
+
+Generators use Japanese characters only (kana, kanji, half-width kana,
+punctuation) and are bounded (200 examples, 80 for the tagger) so CI stays fast:
+the whole file runs in under two seconds.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e4b51bbc79906f28e4527ff735fc867f8e999e9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/0e4b51bbc79906f28e4527ff735fc867f8e999e9"/>
+    <title>
+        feat: give the project a public surface — one icon, a docs site, a re…
+    </title>
+    <updated>2026-09-17T16:23:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: give the project a public surface — one icon, a docs site, a rebuilt README (#148)
+
+* feat(brand): give every icon surface the same mascot
+
+Every icon slot carried something different, or nothing: the favicon drew 言
+as SVG &amp;lt;text&amp;gt; with a hard-coded Hiragino/Noto font stack — a machine without
+those fonts renders a fallback or tofu — the PWA icons were placeholders whose
+512 also served as the maskable one with no safe zone, the tray drew its own
+shape in code, and the PyInstaller spec set no icon at all, so the Windows
+executable and installer shipped with PyInstaller&amp;#39;s default.
+
+Now there is one piece of art. Large surfaces use the full illustration;
+16-64px use a close crop, because the full scene turns to mush below about
+48px while the crop still reads as a face. The tray loads its copy from
+package data, so tray, favicon, installer and README cannot drift apart.
+
+- assets/mascot.png, assets/kotoba.ico (16/24/32/48/64/128/256)
+- backend/kotoba/data/tray.png, named in core/resources.py like every other
+  bundled file; kotoba.spec collects data/*.png alongside data/*.json
+- favicon.png replaces favicon.svg (no font dependency), apple-touch-icon.png
+- pwa-512-maskable.png gets its own safe zone instead of reusing pwa-512
+- manifest theme_color now matches --bg (#f3f2f2) rather than #faf7f1, so the
+  splash screen does not seam against the icon
+
+Assisted-by: Claude Code (Opus 5)
+
+* docs: add a VitePress site and rebuild the README around it
+
+The README carried three audiences at once: a user deciding whether to install
+walked through winget commands, the architecture tree and the packaging recipe
+before reaching what the program is for. It also had no visual and no badges.
+
+The site&amp;#39;s root is docs/ itself, so the same markdown renders on GitHub and on
+the site — one copy, no drift, and every link in the README works today rather
+than after Pages is switched on.
+
+- README follows the shape AUTO-MAS and MaaFramework use: centred title, badge
+  row, then 介绍 / 原理 / 重要声明 / 使用方法 / 参与贡献 / 代码签名 / 隐私政策,
+  then 关于 with acknowledgements, contributors, star history and community.
+  Every heading and every section body is bilingual, which retires the separate
+  collapsed English block.
+- New pages moved out of the README: install, guide, mobile, platforms,
+  architecture. integrations is new — it documents the outward contract (the
+  hook protocol, the subtitle/EPUB/mokuro imports, the Anki exports) and says
+  plainly that the ~90 internal REST endpoints are not part of it.
+- The site&amp;#39;s ground is taken from the icon (#fcf1eb); the accent stays the
+  application&amp;#39;s gold. Body links use --gold-deep because #b68235 on that ground
+  is 3.2:1, under the 4.5:1 running text needs.
+- docs.yml builds and deploys to GitHub Pages on changes under docs/.
+- conventions.md linked ../AGENTS.md, which resolves on GitHub but is a dead
+  link once docs/ is a site root; the build catches this, so it is absolute now.
+
+Assisted-by: Claude Code (Opus 5)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe1937ac37bf2beaf25a48185c2acc7585cfba31</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/fe1937ac37bf2beaf25a48185c2acc7585cfba31"/>
+    <title>
+        fix(e2e): stop the server with the run so CI teardown cannot hang (#147)
+    </title>
+    <updated>2026-09-17T15:57:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(e2e): stop the server with the run so CI teardown cannot hang (#147)
+
+* build(frontend): add Playwright for the smoke test
+
+Chromium only: the smoke test is one path, not a browser matrix. The lock was
+merged into the committed one by hand again (npm 11 prunes inBundle entries and
+then rejects its own output); npm ci is verified.
+
+Assisted-by: opencode (deepseek-flash)
+
+* test(e2e): smoke the capture-to-review path in a browser (#70)
+
+One Playwright test walks the path no unit test proves end to end: create a
+source and import a small .srt over the API (subtitle import has no UI yet),
+then through the browser open the inbox, pick 猫 and make its cards, go to
+review, reveal and rate &amp;quot;记得&amp;quot;, and assert over the API that exactly the rated
+card gained a due date.
+
+The server is the real one, started by e2e/serve.mjs on a throwaway data
+directory under test-results/ (never the user&amp;#39;s KOTOBA_DATA_DIR) that is deleted
+with the run. No dictionary, no AI, no network: the term editor accepts a
+hand-written gloss, which keeps the fixture dictionary out of this test.
+
+The e2e job is its own CI job with traces and screenshots kept on failure; it is
+deliberately not part of `make check`, which stays fast. Run it locally with
+`make e2e`.
+
+Assisted-by: opencode (deepseek-flash)
+
+* fix(e2e): stop the server with the run so CI teardown cannot hang
+
+The smoke test passed on CI and then the job hung for 19 minutes: the server
+wrapper spawned uv detached, so uv and python were in their own process group
+and kept the inherited stdout open; Playwright&amp;#39;s teardown waited on a pipe that
+never closed and the job timed out. Spawning in the same group lets Playwright&amp;#39;s
+process-group kill take the server down, and the job timeout drops to 10
+minutes so a future hang fails fast instead of burning the runner.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a09c7fb5151fb149e9b8bfd382e6ab5e75eaae1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/8a09c7fb5151fb149e9b8bfd382e6ab5e75eaae1"/>
+    <title>
+        test(e2e): smoke the capture-to-review path in a browser (#70) (#146)
+    </title>
+    <updated>2026-09-17T15:31:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(e2e): smoke the capture-to-review path in a browser (#70) (#146)
+
+* build(frontend): add Playwright for the smoke test
+
+Chromium only: the smoke test is one path, not a browser matrix. The lock was
+merged into the committed one by hand again (npm 11 prunes inBundle entries and
+then rejects its own output); npm ci is verified.
+
+Assisted-by: opencode (deepseek-flash)
+
+* test(e2e): smoke the capture-to-review path in a browser (#70)
+
+One Playwright test walks the path no unit test proves end to end: create a
+source and import a small .srt over the API (subtitle import has no UI yet),
+then through the browser open the inbox, pick 猫 and make its cards, go to
+review, reveal and rate &amp;quot;记得&amp;quot;, and assert over the API that exactly the rated
+card gained a due date.
+
+The server is the real one, started by e2e/serve.mjs on a throwaway data
+directory under test-results/ (never the user&amp;#39;s KOTOBA_DATA_DIR) that is deleted
+with the run. No dictionary, no AI, no network: the term editor accepts a
+hand-written gloss, which keeps the fixture dictionary out of this test.
+
+The e2e job is its own CI job with traces and screenshots kept on failure; it is
+deliberately not part of `make check`, which stays fast. Run it locally with
+`make e2e`.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/966366e6a6b7211dab60287b4c2da2bf6e86c4e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/966366e6a6b7211dab60287b4c2da2bf6e86c4e6"/>
+    <title>
+        test(frontend): cover four components and the card-front invariant (#…
+    </title>
+    <updated>2026-09-17T14:50:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;test(frontend): cover four components and the card-front invariant (#69) (#145)
+
+* build(frontend): add component-test tooling
+
+@vue/test-utils mounts the components and happy-dom provides the DOM: it is
+lighter than jsdom and the tests assert text and events, never layout.
+vitest.config.ts gets the Vue plugin, without which .vue imports failed to
+transform.
+
+The lock was updated by hand-merge on top of the committed one: npm 11 prunes
+inBundle entries when it rewrites a lock and then rejects its own output in
+
+pm ci;
+pm ci is verified to pass with this file.
+
+Assisted-by: opencode (deepseek-flash)
+
+* test(frontend): cover four components and the card-front invariant
+
+Component mounting now works, and the four components that carry the product
+invariant and the heaviest interaction paths are covered:
+
+- CardFace: the front of a card never contains the reading, the gloss, a
+  sentence fragment, the screenshot or the audio (invariant §5.2), for reading,
+  meaning and cloze cards; the back does show them.
+- TermEditor: kanji words default to reading+cloze cards, kana words to
+  meaning+cloze; toggles and the confirmed payload are asserted; Ctrl+Enter
+  confirms, Escape cancels.
+- EngineCompare: a failed engine cannot be selected. Writing this test showed
+  the behaviour was missing — failed rows were ordinary clickable buttons — so
+  the fix is included here rather than pinning the bug.
+- Furigana: the reading is set above the kanji core only, okurigana stays out
+  of the ruby, kana-only words and empty readings stay plain.
+
+Assertions are on visible text and emitted events, not on class names or DOM
+structure.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/176cacc6adc58b10a62d9f33928d3d004512afa8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/176cacc6adc58b10a62d9f33928d3d004512afa8"/>
+    <title>
+        feat(capture): condensed audio, dialogue only, for the commute (#68) …
+    </title>
+    <updated>2026-09-17T14:36:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): condensed audio, dialogue only, for the commute (#68) (#144)
+
+`POST /api/sources/{id}/condensed` joins every timed line of a source into one
+track: cues closer than `gap_ms` (default 500ms) merge into a single segment
+before cutting, so an episode does not turn into hundreds of fragments with a
+click at every seam, and a short silence (default 200ms) is inserted between
+segments. The build runs as a background job with the JMdict-style progress
+snapshot, writes media/condensed/{source_id}.opus (regenerating replaces the old
+file only once the new one is complete), and reports how many lines were used
+while skipping the ones without a timeline. ffmpeg is still optional: without
+it the request fails readably before a job is started, and the video path goes
+through the same video_dirs allowlist as subtitle import.
+
+The merge rule is pinned by its own test — it is the difference between
+listening to an episode and listening to confetti.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a230ae7f39ac3c6d9902c26d27005039952fb47</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/1a230ae7f39ac3c6d9902c26d27005039952fb47"/>
+    <title>
+        feat(capture): cut the original voice and a still from the video (#67…
+    </title>
+    <updated>2026-09-17T14:16:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(capture): cut the original voice and a still from the video (#67) (#143)
+
+A subtitle import can now take a local video path and, per cue, cut the original
+audio (opus, with 250ms/500ms padding on both ends because subtitle times are
+navigation hints, not audio boundaries) and a still from the cue&amp;#39;s midpoint
+(the first frame is often a cut or black). Both land in the media directory and
+are written to Line.audio_path / screenshot_path. ffmpeg stays an optional
+external dependency: without it the import succeeds with text only and says so
+in the response. The path is checked against the user&amp;#39;s `video_dirs` setting
+before anything is read, so a LAN client cannot turn this into a file reader.
+Cue work runs through a pool capped at the CPU count, and one cue&amp;#39;s failure is
+counted in `media_failed` without taking the episode down.
+
+Tests drive the ffmpeg call through an injectable runner and assert the exact
+arguments; no real video is needed.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e9c016a699e19b92d8d5e6c9eeb65368d9b45be7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/e9c016a699e19b92d8d5e6c9eeb65368d9b45be7"/>
+    <title>
+        feat(desktop): add the pywebview shell and tray icon (#60) (#142)
+    </title>
+    <updated>2026-09-17T14:01:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(desktop): add the pywebview shell and tray icon (#60) (#142)
+
+* build(backend): add the optional desktop extra
+
+The desktop shell (#60) needs pywebview for the window and pystray for the
+tray. Both stay behind the new desktop extra so kotoba serve and CI never
+install a GUI toolkit.
+
+Assisted-by: opencode (deepseek-flash)
+
+* feat(desktop): add the pywebview shell and tray icon (#60)
+
+`kotoba desktop` runs the API in this process, waits for /api/health, then opens
+a window and a tray icon. The port is picked fresh when 8720 is taken, closing
+the window hides it (capture keeps running) while the tray can show it again,
+open the data directory, or quit for real. Quitting stops the in-process server,
+so uvicorn&amp;#39;s lifespan runs the same cleanup `kotoba serve` gets: watchers, hook
+and clipboard stop, the database is disposed, and there is no child process to
+orphan. pywebview and pystray are imported lazily and only through the optional
+`desktop` extra, so a machine without them can still run `kotoba serve`.
+
+The GUI itself is not driven by tests: the shell takes its desktop through a
+`DesktopUI` protocol, the tests drive the startup order and the quit path with
+fakes, and `LocalServer` is tested for real against a tiny ASGI app.
+
+Assisted-by: opencode (deepseek-flash)
+
+* fix(desktop): probe ports the way uvicorn&amp;#39;s listener binds (#60)
+
+The port test failed on Linux and macOS: after the health request the port
+still had a TIME_WAIT connection, and a plain bind() reports that as taken even
+though uvicorn (which sets SO_REUSEADDR) could have used it. The probe now sets
+SO_REUSEADDR on POSIX to match the listener; on Windows it stays off, where
+SO_REUSEADDR would let the probe bind over a live listener.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/600bfe9eee31bb0491a52eee3531cd3d73aa4a9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/600bfe9eee31bb0491a52eee3531cd3d73aa4a9a"/>
+    <title>
+        fix(capture): construct clipboard watcher once (#140)
+    </title>
+    <updated>2026-09-17T13:23:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/40535627?s=30&amp;v=4"/>
+    <author>
+      <name>HarshRajSinghania</name>
+      <uri>https://github.com/HarshRajSinghania</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(capture): construct clipboard watcher once (#140)
+
+* fix(capture): construct clipboard watcher once
+
+The lifespan assigned ClipboardWatcher twice. The second instance replaced the first; if start() is later wired into lifespan that would leave an unstoppable thread.
+
+Closes ColinHouse/kotoba-studio#86
+
+Assisted-by: Grok (xAI)
+
+* test(capture): assert clipboard watcher is constructed once
+
+Assisted-by: Grok (xAI)
+
+---------
+
+Co-authored-by: Harsh Raj Singhania &amp;lt;harshrajsinghania@proton.me&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e3cf95a5a554f02fc0ab48fc12f61b1314401fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/4e3cf95a5a554f02fc0ab48fc12f61b1314401fa"/>
+    <title>
+        feat(review): offline review with a mergeable sync model (#59) (#141)
+    </title>
+    <updated>2026-09-17T13:21:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(review): offline review with a mergeable sync model (#59) (#141)
+
+* build(frontend): add ts-fsrs for offline scheduling
+
+The phone needs to schedule reviews locally while offline; ts-fsrs is the
+JavaScript sibling of the backend&amp;#39;s py-fsrs, so both ends can share weights
+and desired retention.
+
+Assisted-by: opencode (deepseek-flash)
+
+* feat(review): offline review with a mergeable sync model (#59)
+
+Offline reviews now append to ReviewLog with a client-generated id, and a card&amp;#39;s
+FSRS state becomes a replay of those logs in time order, so two devices that
+reviewed the same card converge without comparing stability or difficulty. The
+merge is idempotent: re-uploading a batch skips known client ids, and a live
+review whose response was lost can be retried with the same id through the sync
+endpoint. The phone falls back to the cached queue when the server is
+unreachable, schedules locally with ts-fsrs using the backend&amp;#39;s weights and
+desired retention, and flushes its queue on reconnect. Trade-offs, including
+what can still be lost, are written down in docs/adr/0004-offline-sync.md.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/975640f253723dfbc2a8e7e70c768ab1bcca9edf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/ColinHouse/kotobako/commit/975640f253723dfbc2a8e7e70c768ab1bcca9edf"/>
+    <title>
+        feat(reader): 漫画阅读视图与整卷 zip 导入 (#139)
+    </title>
+    <updated>2026-09-17T12:37:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/107984291?s=30&amp;v=4"/>
+    <author>
+      <name>ColinHouse</name>
+      <uri>https://github.com/ColinHouse</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(reader): 漫画阅读视图与整卷 zip 导入 (#139)
+
+* feat(text): read mokuro volume zips with their page images
+
+The reader cannot put text boxes over a page it does not have. #52 shipped
+the .mokuro file only, so imported manga had no page images and no card
+screenshots; this takes the other upload option its issue allowed: the whole
+volume folder as a zip, with the .mokuro and the images inside.
+
+Pages are matched to images by natural filename order (2.jpg before 10.jpg),
+since the .mokuro format does not record image names. A count mismatch is
+rejected rather than silently misaligned, macOS resource-fork entries are
+ignored, and images are written under media/manga/&amp;lt;uuid&amp;gt;/0001.jpg by our own
+naming, never by the archive member&amp;#39;s name.
+
+Assisted-by: opencode (deepseek-flash)
+
+* feat(reader): expose a work&amp;#39;s pages with their text boxes
+
+The reader flips through pages, so it needs lines grouped by page rather than
+a flat newest-first list. Each block carries its locator box (percentages are
+the client&amp;#39;s job), whether it is already carded — the ink distinction in the
+view — and the page&amp;#39;s image when the import had one.
+
+Grouping is a service because it is query logic: one aggregate for encounter
+and card counts keeps a 300-page volume to a single query instead of loading
+every relation per line. Lines without a page locator (captures, subtitles)
+are not part of the reader and are skipped.
+
+Assisted-by: opencode (deepseek-flash)
+
+* refactor(inbox): share the term-building flow with the reader
+
+The manga reader opens the same pick-a-word → confirm-a-card flow as the
+inbox, and docs/conventions.md says logic needed in two places becomes a
+composable. Moving it now keeps the reader from growing a second copy of the
+analyze/encounter/explain calls; the inbox keeps the same behaviour, with
+selection left in useInboxLines and the flow state in useTermBuilder.
+
+Assisted-by: opencode (deepseek-flash)
+
+* feat(reader): page through manga with tappable text boxes
+
+The picture is the context: a manga line without its page is just text. The
+reader shows the imported page, overlays the transparent boxes mokuro already
+located, and clicking one opens the inbox word-picking flow unchanged —
+TokenChips, TermEditor and POST /api/encounters through useTermBuilder.
+
+Japanese manga turn right to left, so that is the default: left arrow (and a
+rightward swipe) advance, both reversible with a switch. Page images are
+requested one at a time, with only the two neighbours preloaded. Pinch zoom
+and one-finger drag take over when zoomed, so they never fight paging. A box
+whose line already has a card is filled with deeper ink; a volume imported
+without images degrades to a per-page text list instead of a blank page.
+
+Verified end to end against a running server with a synthetic two-page zip:
+desktop/mobile screenshots, box click → analyze → token chip → TermEditor,
+RTL arrow key, RTL swipe, pinch to scale 2.6 and no page turn while zoomed.
+
+Assisted-by: opencode (deepseek-flash)&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,29 @@
+---
+id: 2026-09-18-cloudcorezzh-拾词-offline-android-en-zh-ecdict
+kind: article
+title: "拾词: offline Android EN-ZH ECDICT + FSRS-6 vocab (fail-closed missing 考研 frequency)"
+source: "https://github.com/CloudcoreZZH/shici-android"
+author: CloudcoreZZH
+published: 2026-09-17
+captured: 2026-09-18
+via: grok-bot/Field
+lane: learning
+status: raw
+private: false
+---
+
+# 拾词 (Shí Cí) — CloudcoreZZH/shici-android
+Source: https://github.com/CloudcoreZZH/shici-android
+Created: 2026-09-17T16:30:03Z · pushed through 2026-09-17T16:36:11Z · v0.1.0 APK release
+Lane: education / quiet-when-nothing / teach-once / tutor-loop
+
+Named runner: 拾词 — native Android 16 offline EN↔ZH dictionary + FSRS-6 vocabulary study (Xiaomi 13 Pro target; Compose).
+
+Portable gates:
+- quiet-when-nothing / fail-closed: 考研义项频率 explicitly labeled missing — keeps ECDICT original sense order; does NOT fake exam-frequency from generic ECDICT tags
+- teach-once: same headword re-added creates an independent learning task; join-count permanent until user deletes; due queue sorts by join-count desc
+- tutor-loop: learn vs review separated; FSRS-6 official 21 params; interrupt-safe + idempotent grading; no network/ads/telemetry permissions
+
+ECDICT offline lookup (full ZH gloss, EN gloss, IPA, morphology). Offline system TTS. 25 automated tests + release static checks. No cloud backup; clear-personal-data wipes study DBs only.
+
+Day-0 NEW URL 2026-09-17. ZH UI for EN vocab — prefer-lang adjacent.

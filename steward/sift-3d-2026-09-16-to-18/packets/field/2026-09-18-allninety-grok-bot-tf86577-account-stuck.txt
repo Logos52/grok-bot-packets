@@ -1,0 +1,72 @@
+# T-F86577 — cannot connect on Windows, macOS, and iPhone since 11 Sep
+URL: https://forum.cursor.com/t/t-f86577-cannot-connect-on-windows-macos-and-iphone-since-11-sep/171962
+Created: 2026-09-17T06:03:28.272Z
+
+--- @allninety 2026-09-17T06:03:28.306Z ---
+Where does the bug appear (feature/product)?
+Grok Bot
+
+Describe the Bug
+T-F86577 — cannot connect on Windows, macOS, and iPhone since 11 Sep
+
+Steps to Reproduce
+This is not a local reproduce-on-demand bug. It is account-wide.
+
+Sign in to Grok Bot on Windows, macOS, or iPhone with this account.
+The app cannot connect. All bots stay unreachable.
+Retry / fully quit and reopen / Reset / Hard Reset all fail on every device.
+
+Expected Behavior
+Grok Bot connects on all devices and the existing bots load and respond.
+
+Screenshots / Screen Recordings
+IMG_0169.png1320×2868 142 KBIMG_0168.png1320×2868 294 KB
+
+Operating System
+Windows 10/11
+
+MacOS
+
+iOS
+
+Version Information
+iOS version 1.10.0(9930)
+
+Additional Information
+Ticket: T-F86577
+
+Timezone: SGT (UTC+8)
+
+Public status is Operational. This account is not.
+
+All Grok Bots are unreachable on Windows, macOS, and iPhone since 11 Sep 2026.
+
+Reset / Hard Reset already failed.
+
+On 14 Sep support said this was a backend issue with no self-serve fix and that engineering would handle it.
+
+On 16 Sep 10:13 SGT support said the situation was unchanged and the account was escalated / flagged for priority.
+
+A later auto-reply on T-F86577 treated this as the public incident and told me to wait for status.cursor.com.
+
+At 12:16 SGT on 17 Sep 2026, status.cursor.com shows Grok Bot Operational. The 16 Sep incident is marked Resolved at 16 Sep 20:57 UTC. 17 Sep has no incidents.
+
+At 12:17 SGT the same day, iPhone Bot Computer still shows:
+
+Update Computer = Unknown (“Couldn’t check for a newer version.”)
+Disk space = Unknown
+
+Windows and macOS still cannot connect. Every bot is still unreachable.
+
+Does this stop you from using Cursor
+No - Cursor works, but with this issue
+
+--- @mohitjain 2026-09-17T07:19:17.392Z ---
+Hey @allninety, sorry this has dragged on since the 11th. This is on our side, not your devices, network, or sign-in, which is why Retry, Reset and Hard Reset won’t clear it and the Bot Computer page keeps showing “Unknown.”
+
+Two quick things: the incident that resolved on the 16th was a separate, broader event, so “Operational” on the status page won’t match your account, which is stuck in its own state that we need to clear specifically. And please hold off on Reset, Recover and Update for now, since each one just starts another rebuild on our side and can slow the cleanup down. Your Bots, files and logins are stored separately from the computer, so they’re safe.
+
+I’ve passed your account (ticket T-F86577) to the team who handle this recovery.
+
+--- @allninety 2026-09-17T08:38:01.378Z ---
+Thanks for the update. I tried Reset as a recovery step. Now that I’ve seen your note, I will leave Reset, Recover, and Update alone. Thanks for letting me know. Looking forward to the recovery.

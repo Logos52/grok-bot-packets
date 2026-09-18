@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/DeuterioX/JLPT-FlashCard/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/DeuterioX/JLPT-FlashCard/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/DeuterioX/JLPT-FlashCard/commits/master.atom"/>
+  <title>Recent Commits to JLPT-FlashCard:master</title>
+  <updated>2026-09-17T20:32:33Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/117b34c6d61d8fd9dd50cd02df75373d48831460</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DeuterioX/JLPT-FlashCard/commit/117b34c6d61d8fd9dd50cd02df75373d48831460"/>
+    <title>
+        Kitsune Cards: flashcards de kana y vocabulario japonés
+    </title>
+    <updated>2026-09-17T20:32:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/17006728?s=30&amp;v=4"/>
+    <author>
+      <name>DeuterioX</name>
+      <uri>https://github.com/DeuterioX</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Kitsune Cards: flashcards de kana y vocabulario japonés
+
+App web de flashcards para practicar hiragana, katakana y vocabulario propio: se muestra un carácter o palabra en japonés y se responde escribiendo el romaji.
+
+Hiragana y Katakana precargados (59 grupos, 235 cartas) con dakuten, contracciones y extendidos. Al errar, la carta se queda hasta acertarla; revelar cuenta como error. Al terminar una ronda, la siguiente arranca sin apretar nada. Mazos propios con grupos con nombre y autocompletado de romaji. Estadísticas con ranking por tasa de error y repaso dirigido. Diccionario JMdict local con búsqueda FTS5 en castellano. Responsive para el browser del teléfono.
+
+Next.js 16 (SSR + API), React 19, Mantine 9, SQLite con better-sqlite3 + Drizzle, Zod 4. 170 tests unitarios y end to end con Playwright en escritorio y teléfono.
+
+Implementa docs/superpowers/specs/2026-09-15-jlpt-flashcards-design.md siguiendo el plan de 17 tareas en docs/superpowers/plans/2026-09-15-kana-drill.md. Cada tarea pasó por revisión y ronda de arreglos, más una revisión final de toda la rama.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ff5596570a13e439f6be521e4279c969db7df48d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DeuterioX/JLPT-FlashCard/commit/ff5596570a13e439f6be521e4279c969db7df48d"/>
+    <title>
+        docs: plan de implementación de Kana Drill en 17 tareas
+    </title>
+    <updated>2026-09-16T04:52:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/17006728?s=30&amp;v=4"/>
+    <author>
+      <name>DeuterioX</name>
+      <uri>https://github.com/DeuterioX</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: plan de implementación de Kana Drill en 17 tareas
+
+Cada tarea arranca con el test que falla y termina en un commit. Suma
+card_group.section al spec: la grilla va seccionada y no había de dónde
+sacar los encabezados.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/68dbd70b729a9f6eb6479beefca2ec87ade4e216</id>
+    <link type="text/html" rel="alternate" href="https://github.com/DeuterioX/JLPT-FlashCard/commit/68dbd70b729a9f6eb6479beefca2ec87ade4e216"/>
+    <title>
+        docs: diseño de Kana Drill (flashcards de kana y vocabulario)
+    </title>
+    <updated>2026-09-16T01:15:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/17006728?s=30&amp;v=4"/>
+    <author>
+      <name>DeuterioX</name>
+      <uri>https://github.com/DeuterioX</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: diseño de Kana Drill (flashcards de kana y vocabulario)
+
+Spec consolidado del brainstorming: stack Next.js + Mantine + SQLite/Drizzle,
+modelo de datos de 9 tablas con card_group como concepto de primera clase,
+motor del quiz, las 7 pantallas, responsive y el import de JMdict.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

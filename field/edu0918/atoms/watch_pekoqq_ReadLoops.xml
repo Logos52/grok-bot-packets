@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/pekoqq/ReadLoops/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/pekoqq/ReadLoops/commits/main.atom"/>
+  <title>Recent Commits to ReadLoops:main</title>
+  <updated>2026-09-16T21:36:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c8c6592953b5e43477353102c11c590a8219260</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/1c8c6592953b5e43477353102c11c590a8219260"/>
+    <title>
+        feat(mobile): 移动端适配 + Tailscale 远程访问 + 图谱触屏支持
+    </title>
+    <updated>2026-09-16T21:36:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mobile): 移动端适配 + Tailscale 远程访问 + 图谱触屏支持
+
+- readloops serve --lan：绑 0.0.0.0，自动列出地址（Tailscale 优先）
+- 侧边栏改覆盖式抽屉+遮罩（桌面端负 margin 推挤会挤掉手机正文）
+- 工具栏换行、触控目标 40px、正文满宽、栅格降列、查词面板底部弹出
+- 知识图谱补 touch 事件（原来只绑 mouse*，手机上拖不动）
+- 修层叠上下文 bug：遮罩原在 .app 外，被 .app 的 transform 隔离，盖住侧边栏点击
+
+验证：iPhone 390×844 下正文满宽 390/390、四页面零横向溢出、无控制台错误。
+回归 108 passed / 4 skipped。版本 2.6.6 → 2.7.0。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c9d9cd9702d6fddeec57617530d6847408ba10a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/2c9d9cd9702d6fddeec57617530d6847408ba10a"/>
+    <title>
+        fix(placement): 交互定稿——勾选 + 防抖
+    </title>
+    <updated>2026-09-16T21:31:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(placement): 交互定稿——勾选 + 防抖
+
+2.6.5 的「每词两按钮+必须答完」虽是数据上更严格，但用户根本做不下去（太累）。
+最终保留原勾选交互，只给同一张卡片加 350ms 防抖：快速点不同词不受影响，
+只有同一卡片的重复点击被忽略；撤销能力保留。版本 2.6.5 → 2.6.6。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/067e9cda8b65930f42c2cb17374ee008d45495a6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/067e9cda8b65930f42c2cb17374ee008d45495a6"/>
+    <title>
+        fix(placement): 修双击静默取消勾选的致命交互 bug
+    </title>
+    <updated>2026-09-16T21:16:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(placement): 修双击静默取消勾选的致命交互 bug
+
+勾选框的「切换」语义 + 双击 = 触发两次 toggle 回到未勾选，用户勾了数据里却没有。
+改成两个显式按钮（认识/不认识），点击只设置状态、幂等；本页未答完禁用下一页。
+回归 108 passed / 4 skipped。版本 2.6.4 → 2.6.5。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c009cb6e9659efc67c7ab29233a359facea7a238</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/c009cb6e9659efc67c7ab29233a359facea7a238"/>
+    <title>
+        fix(placement): 定级测试精度大修——逻辑斯蒂拟合 + 题量翻倍
+    </title>
+    <updated>2026-09-16T17:27:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(placement): 定级测试精度大修——逻辑斯蒂拟合 + 题量翻倍
+
+求和法有 +1000 词系统高估（每档噪声乘档宽再加总），换成逻辑斯蒂曲线拟合取中点；
+每档 8→16 题、伪词 34→40；改写提示语（原文逼用户少勾，漏掉 few/patient/radio）。
+端到端 MAE 630→183、SD 350→63。回归 108 passed / 4 skipped。
+版本 2.6.3 → 2.6.4。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a9b3c96b357e6dab58b79b7de23783dd4f50f695</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/a9b3c96b357e6dab58b79b7de23783dd4f50f695"/>
+    <title>
+        docs: 记录 PyPI 2.6.3 发布
+    </title>
+    <updated>2026-09-16T16:07:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 记录 PyPI 2.6.3 发布&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eb0fb0cceafdb38ddc033c42dad3f44104861361</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/eb0fb0cceafdb38ddc033c42dad3f44104861361"/>
+    <title>
+        fix(phrase): 修正两处已知释义错误
+    </title>
+    <updated>2026-09-16T15:59:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(phrase): 修正两处已知释义错误
+
+- work life：ECDICT 的 [机] 有效期间 是机械义项，真题里 17 处出现有 14 处是
+  work-life balance 的碎片 → 标为非词汇单位并排除
+- social media：维基条目名给的是台湾用词「社群媒体」→ 改用 Wikidata zh-hans
+  「社交媒体」。新增 Wikidata 阶段，本轮被限流打断，待冷却重跑。
+
+两处都做成 tools/enrich_phrases.py 里可复现的 MANUAL_FIXES，可审计。
+回归 108 passed / 4 skipped。版本 2.6.2 → 2.6.3。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/221333dcbe2e7406a9d6f0bd4af979f2164ea3f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/221333dcbe2e7406a9d6f0bd4af979f2164ea3f0"/>
+    <title>
+        fix(loop): 接上闭环最后一环 + 清除 phrases 双份事实源
+    </title>
+    <updated>2026-09-16T15:45:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(loop): 接上闭环最后一环 + 清除 phrases 双份事实源
+
+1) recognized 的词卡死：选词排除它们（对），但 smart_test 权重里没有 m_level，
+   于是既不被输入也不被考。已接上（recognized ×3 / recalled ×0.15）+ 新增
+   source=&amp;#39;recognized&amp;#39; 出题源与测试页入口。
+2) phrases 表废弃：三处遗漏统一到 words，SCHEMA 移除该表，迁移工具 DROP。
+3) 证据消失时掌握度等级不回退：refresh 只挑有证据的词，删文章连带删遇见记录后
+   等级卡在旧值。已修。
+
+顺带撤掉「语法测试·即将上线」，换成能用的「待提取练习」。
+回归 108 passed / 4 skipped。版本 2.6.1 → 2.6.2。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5d3791513efb2221499c1c10390406b8a204e585</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/5d3791513efb2221499c1c10390406b8a204e585"/>
+    <title>
+        docs(phrase): 补全 2.6.1 条目
+    </title>
+    <updated>2026-09-16T15:19:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(phrase): 补全 2.6.1 条目&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b93d5fa5ec576c4945795239fb583ffe87b17ec2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/b93d5fa5ec576c4945795239fb583ffe87b17ec2"/>
+    <title>
+        feat(phrase): 短语释义从真实词典来源补齐，剔除无收录的伪短语
+    </title>
+    <updated>2026-09-16T15:12:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(phrase): 短语释义从真实词典来源补齐，剔除无收录的伪短语
+
+只从真实来源取，逐条记录出处（words.meaning_source）：
+ECDICT 265 · 维基百科跨语言链接 115 · 英文维基词典 13，合计 393/1037。
+繁简转换用 OpenCC 公开映射表，不引入 pip 依赖。
+
+「词典里有没有条目」就是最好的筛选：查不到来源的 644 条是 young people/new study
+这类碰巧连在一起的高频词，不是词汇单位，硬造释义就是凭空创造 → 选词与图谱均排除。
+
+维基词典阶段被限流打断，已改用批量 prop=revisions（1000 条 → 20 次请求），
+待冷却后重跑。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0659ed29a3b486c069010f3ac48b37ba8963584b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/0659ed29a3b486c069010f3ac48b37ba8963584b"/>
+    <title>
+        feat(phrase): 短语升格为一等学习单位
+    </title>
+    <updated>2026-09-16T14:20:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(phrase): 短语升格为一等学习单位
+
+短语从 phrases 表并入 words（type=&amp;#39;phrase&amp;#39;），从此与单词共享遇见跟踪、掌握度模型、
+FSRS、选词分层与图谱节点 —— 真正同等对待，但各自成池互不挤占名额。
+
+- 选词里修了一个语义反向的 bug：单词 frq 是 COCA 排名（小=高频），短语 frequency
+  是真题次数（大=高频），同一句 ORDER BY rank ASC 让短语优先选到最低频的垃圾。
+- 图谱：词=实心点，短语=空心环（单色体系下靠形状区分）。
+- 短语节点改为优先收录用户自己接触过的。
+
+⚠️ 短语库没有释义，要进单词测试需先补。
+回归 103 passed / 4 skipped。版本 2.5.3 → 2.6.0（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c03397dd661ce3cf965815df0758538b69c4d72b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/c03397dd661ce3cf965815df0758538b69c4d72b"/>
+    <title>
+        style(graph): 知识图谱视觉重做——去 AI 味，对齐 Obsidian 观感
+    </title>
+    <updated>2026-09-16T12:57:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style(graph): 知识图谱视觉重做——去 AI 味，对齐 Obsidian 观感
+
+- 配色：四个饱和色相 → 单色 + 明度。节点亮度编码掌握度（想得起来/认得出来/
+  见过面/未接触），类别交给形状与大小。
+- 节点：平涂圆 → 径向柔光 + 实心核；浅色主题反向收紧（深色扩散在浅底上是墨渍）。
+- 连线：直线 → 轻微弧线，透明度 0.14 → 0.085。
+- 标签默认只标一个枢纽；悬停只标焦点与邻居并带占位检测。
+- 悬停聚焦非邻居压暗；信息浮层移到左下角固定。
+- 背景去掉玻璃盒边框，改径向纵深。
+- 尺寸拉开层级（短语 5.2 → 2.6 并压暗），让主体回到用户自己的词。
+- 收敛后自动铺满：填充率约一半 → 94%/99%。
+
+回归 99 passed / 4 skipped。版本 2.5.2 → 2.5.3（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c4f32cace9c9317f68aa5c965b89b235c1c5048</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/1c4f32cace9c9317f68aa5c965b89b235c1c5048"/>
+    <title>
+        fix(data): 删除语义全面复查
+    </title>
+    <updated>2026-09-16T12:32:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(data): 删除语义全面复查
+
+1) 删文章未清 word_encounters → 幽灵文章虚高重遇次数（实测积 13 条，journal 显示
+   跨 6 篇而实际 5 篇）。已修 + 前端提示说明影响。
+2) 删材料未清 style_profiles.material_ids 的孤儿引用。已修。
+3) 书架删除加目录包含校验，只删书库目录内的文件。
+复查确认：materials.delete 不删用户原文件 ✓；graph.clear 删派生缓存 ✓。
+
+回归 99 passed / 4 skipped。版本 2.5.1 → 2.5.2（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/45b5c1c98d940d243f3cfbdf235fd1d34b161cd2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/45b5c1c98d940d243f3cfbdf235fd1d34b161cd2"/>
+    <title>
+        fix(words): 生词本删除不再捣毁词典条目
+    </title>
+    <updated>2026-09-16T11:44:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(words): 生词本删除不再捣毁词典条目
+
+原来在生词本里点删除会 DELETE FROM words，把词从 18.6 万条词典里永久移除。
+改为按 words.source 分流：词典来源的词只复位成未学状态（清空 SRS、查词、
+测试、掌握度），只有用户自己添加的词才真删除。
+
+端到端实测：删词典词后条数 186060 → 186060 不变；删自建词才 -1。
+回归 97 passed / 4 skipped。版本 2.5.0 → 2.5.1（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e48845b7a74c260091f5f241fb171cd03d9fff9a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/e48845b7a74c260091f5f241fb171cd03d9fff9a"/>
+    <title>
+        feat(mastery): 掌握度模型 + 选词闭环（含文献依据）
+    </title>
+    <updated>2026-09-16T11:33:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(mastery): 掌握度模型 + 选词闭环（含文献依据）
+
+此前项目没有「掌握」这个概念：status=&amp;#39;known&amp;#39; 全代码库无一处写入，
+选词也不知道哪些词已经会了。
+
+核心：必须是「识别」与「回忆」两个维度。Pellicer-Sánchez (2015, SSLA) 实测
+8 次语境遇见后词形识别 86% / 意义识别 75%，但回忆只有 55%；van den Broek (2022)
+指出理解了也不一定能回忆。所以「没查过 + 见了几次」是识别级证据：
+能认出来 → 继续输入；能想起来 → 去做提取练习。
+
+参数由文献反推（每次干净遇见 +0.42 识别 / +0.30 回忆），等级由证据类型决定
+（recalled 必须有答题证据）。选词分四层并排除 recalled，新增目标考试设置。
+
+依据与推导见 docs/MASTERY-MODEL.md。版本 2.4.1 → 2.5.0（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/21576e493ca0acb610e14debb067450ac7c47d28</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/21576e493ca0acb610e14debb067450ac7c47d28"/>
+    <title>
+        feat(vocab): 词汇差距统计 + 补齐词典缺失的 11.9% 高频词
+    </title>
+    <updated>2026-09-16T10:50:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocab): 词汇差距统计 + 补齐词典缺失的 11.9% 高频词
+
+- app/services/vocab_gap.py：覆盖率**按词频档位给语料加权**，不是数词表。
+  实测 CET4 大纲词表只覆盖四级真题语料 15.8% 的 token（词表装的是内容词，
+  剩下 84% 是基础词与功能词），拿词表百分比当「能读懂多少」会严重失真。
+  缺口取期望值 Σ(1−掌握率)，不设硬阈值。
+- 未定级时自动铺默认假设（最高频 2500 词，source=&amp;#39;default&amp;#39;）并明确标注
+  「这不是测出来的」；统计页新增「词汇差距」区块（覆盖率仪表带 i+1 区间标记）。
+- 修复词典缺失 11.9% 的高频词：ECDICT 中 COCA 前 2 万有 2119 个不在库内。
+  根因是只看 frq —— 一批常见词 COCA 为 0 但 BNC 有排名（percent: frq=0/bnc=2802，
+  共 2967 个）。三处统一改为有效词频 COALESCE(NULLIF(frq,0), bnc)。
+  补入 5784 词，库 175776 → 186060；无法还原的 token 从 11.0% → 8.1%。
+- 性能：覆盖率首次计算 151s → 0.8s（改分批 IN 查询，188 倍）。
+
+实测（默认 2500 词）：四级真题覆盖率 78.9%、每 300 词 63 生词、未达 i+1；
+缺口 四级 2502 / 六级 4174 / 考研 3482 / 雅思 3580 / 托福 6026。
+
+版本 2.4.0 → 2.4.1（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/755b5bf95034cdbc7d7b390da077536b180c1e95</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/755b5bf95034cdbc7d7b390da077536b180c1e95"/>
+    <title>
+        feat(vocab): 词汇差距闭环 —— 考试词表 + 定级测试 + 重遇机制 + 蒸馏修正
+    </title>
+    <updated>2026-09-15T22:12:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocab): 词汇差距闭环 —— 考试词表 + 定级测试 + 重遇机制 + 蒸馏修正
+
+设计依据是罗肖尼《如何永远学会一个单词？》的两条操作规则：
+① 95–98% 覆盖率的可理解文本 ② 在**变化的语境**中重遇同一生词 ≥12 次。
+对照发现项目只做了半条：①方向对但从不测量，②完全没实现。
+
+新增
+- tools/import_exam_tags.py：从 ECDICT 导入 tags/frq/bnc/collins/oxford（不重导词典），
+  打通四级 3829 / 六级 5295 / 考研 4735 / 雅思 4609 / 托福 6612。
+- app/services/placement.py + 前端：Yes/No 词汇量定级测试，20 档等宽抽样 +
+  伪词虚报校正，194 题 3–5 分钟。40 个伪词逐个校验过不在 ECDICT 中。
+  用 PAVA 保序回归约束掌握率单调不增。实测真实 4000 词 → 估计 4054（误差 1.4%）。
+- app/services/encounter.py + lexicon.py：重遇机制，口径是 COUNT(DISTINCT article_id)
+  即「跨了多少篇」。文章生成即幂等记录；除目标生词外还记正文里出现的已有学习词。
+- tools/crawl_exam_corpus.py：全量四六级真题语料，547 篇 / 301,313 词 / 零失败。
+
+修复
+- 生成 prompt 里两套风格源打架：硬编码基准是 205 篇旧数据（复合句 50% vs 实测 65%、
+  状语从句 30% vs 17%）→ 换成 273 篇实测值；生效画像来自《傲慢与偏见》且排在基准之前
+  → 降级为末尾的 OPTIONAL REGISTER NOTE 并声明基准优先；画像注入「低频词占比约 100%」
+  与 i+1 的覆盖率约束直接对立 → 刻意不再输出。
+- Article 漏传 target_words，导致 API 返回空列表且重遇拿不到目标词。
+
+方案文档见 docs/VOCAB-GAP-PLAN.md。版本 2.3.2 → 2.4.0（未发布 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/133785bd8aea9eeae3c319208cc68067a99f28b7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/133785bd8aea9eeae3c319208cc68067a99f28b7"/>
+    <title>
+        fix(graph): 重建知识图谱并修正比例与动画
+    </title>
+    <updated>2026-09-15T20:56:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(graph): 重建知识图谱并修正比例与动画
+
+用户反馈图谱「比例和动画有问题」，用浏览器实测 + canvas 内省定位到五层根因：
+
+- 多 rAF 循环叠加：循环标志挂在每次都会重建的 graphState 上，切换一次筛选就
+  永久多一个物理循环（实测 30fps -&amp;gt; 238fps）。
+- 物理极限环：斥力无上限/无 dt 归一化/无速度上限/硬边界裁剪，节点速度峰值
+  9651px/帧。只靠阻尼在数学上收不了，改为 alpha 退火冷却 + 子步进。
+- 画布比例：wide-view 漏了知识库三页，且宽窄切换发生在渲染之后。
+- 内容比例：150 个短语节点连接度全为 0，被斥力推到画布边缘排成硬边。
+  rebuild 改为不产生孤立节点并新增「文档-&amp;gt;短语」边。
+- 数据噪声：phrases 表 198 条 &amp;amp;quot; 实体残留（quot says 频率榜首），同时污染
+  文章生成 prompt；词节点混入整句碎片。已清理并在构建时过滤。
+
+另：rebuild 改为全量重算（原为增量累加边权，反复重建会让权重无限膨胀）；
+图谱配色改读主题变量；短语改用独立色相；布局改为各向异性映射。
+
+验收：静止后 0.5s 位移 0.000px、贴边节点 0、切换筛选后 0fps（原 238fps）、
+画布 608-&amp;gt;1018px、无控制台错误；pytest 41 passed、ruff 全绿。
+
+同时移除文档中的活跃 API Key 片段，并忽略构建产物。
+版本 2.3.1 -&amp;gt; 2.3.2（未发布到 PyPI）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/84387515f9e840e295b523e986b14b242a549bea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/84387515f9e840e295b523e986b14b242a549bea"/>
+    <title>
+        style: fix ruff findings (unused import, import sorting)
+    </title>
+    <updated>2026-09-15T20:16:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: fix ruff findings (unused import, import sorting)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/67ccbec91c143f0e2267825db753f3f3ad1bb18f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/67ccbec91c143f0e2267825db753f3f3ad1bb18f"/>
+    <title>
+        docs: 交接快照 2026-09-16——顶光涟漪熄灭定稿、知识库工作台、PyPI 2.3.1 已发布、两库一致核对
+    </title>
+    <updated>2026-09-15T20:13:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 交接快照 2026-09-16——顶光涟漪熄灭定稿、知识库工作台、PyPI 2.3.1 已发布、两库一致核对&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/498981aa68927e50b9e2edc02a35afc795ff9839</id>
+    <link type="text/html" rel="alternate" href="https://github.com/pekoqq/ReadLoops/commit/498981aa68927e50b9e2edc02a35afc795ff9839"/>
+    <title>
+        feat(vocab): AI batch recognition with editable preview
+    </title>
+    <updated>2026-09-14T18:31:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/b0b053e92a161bc8889ef2418899d68b?d=https%3A%2F%2Fgithub.githubassets.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=g&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>readloops-dev@users.noreply.github.com</email>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(vocab): AI batch recognition with editable preview
+
+- recognize mixed word lists with AI, falling back to conservative local parse
+- let user edit/deselect before confirming the batch write
+- existing dictionary entries are activated as learning words rather than
+  silently treated as duplicates
+- report new, activated and skipped counts&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

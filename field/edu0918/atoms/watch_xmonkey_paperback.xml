@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/xmonkey/paperback/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/xmonkey/paperback/commits/main.atom"/>
+  <title>Recent Commits to paperback:main</title>
+  <updated>2026-09-17T00:24:14Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f0e8de1de3a300881a4aedac9db8a3ae4995c61</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/5f0e8de1de3a300881a4aedac9db8a3ae4995c61"/>
+    <title>
+        fix(anki): 空卡检查后移到占位符清理之后 + 去标签判空
+    </title>
+    <updated>2026-09-17T00:24:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki): 空卡检查后移到占位符清理之后 + 去标签判空
+
+原检查在清理前且只查字符串非空：纯打字题卡（front 只有
+[[type:...]]）清理后只剩空壳下划线、无题面，拦不住。
+现挪到 _inline_images 之后，用 _is_blank 判空——去标签无可见
+文本且不含 &amp;lt;img&amp;gt; 才跳过；纯图片卡（Image Occlusion 等）保护不误杀。
+test +2（67 过）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cdac1a90297454024f1df26375589ffbd6d561c1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/cdac1a90297454024f1df26375589ffbd6d561c1"/>
+    <title>
+        fix(anki): [[type:...]] 占位符区分正反面处理 + 取卡排除 buried/suspended
+    </title>
+    <updated>2026-09-17T00:05:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(anki): [[type:...]] 占位符区分正反面处理 + 取卡排除 buried/suspended
+
+- {{type:...}} 模板渲染残留的 [[type:Front]]/[[type:Type Answer]]：
+  front 替换成 cloze-blank 下划线（句中嵌时标出默写位，与 Cloze
+  挖空样式统一），back 直接删（答案卷要答案不要输入位）。
+  原 _SOUND_RE 改名 _PLACEHOLDER_RE（音频删），_TYPE_RE 单独拆出。
+- due_card_ids 查询加 -is:buried -is:suspended：is:due 会命中
+  due 日已过的埋藏卡（当天不出队但搜索命中，默写卷会泄 sibling 题），
+  挂起卡是用户明确不复习的，同理排除。
+- test +2（65 过）&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0e979c329a173aeb6bceb65b07e769f7ef191982</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/0e979c329a173aeb6bceb65b07e769f7ef191982"/>
+    <title>
+        feat(generate): 首页加「包含新卡」选项
+    </title>
+    <updated>2026-09-16T12:17:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(generate): 首页加「包含新卡」选项
+
+勾选后取卡查询从 is:due 变 (is:due or is:new)：deck 全部未学新卡
+也进默写卷（不受 Anki 每日新卡上限约束），适合先默写再入 Anki 流程。
+默认关闭维持原行为。勾选状态 localStorage 记忆。test +1（63 过）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9042885432e938e2103f1816db866c13ff817440</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/9042885432e938e2103f1816db866c13ff817440"/>
+    <title>
+        fix(layout): 字号三档拉大差异 0.75/1/1.3 + 修旧值恢复失效
+    </title>
+    <updated>2026-08-29T12:49:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix(layout): 字号三档拉大差异 0.75/1/1.3 + 修旧值恢复失效
+
+原 0.85/1/1.15 档间仅差 15% 肉眼难辨，改为 0.75/1/1.3。
+恢复 localStorage 时存的值若已不在选项（旧版字号档），select
+会被置空导致 --pb-font-scale 失效——无匹配 option 回默认档。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd1500a9b243abc1c21839e1c2cc9e3cd56a48dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/bd1500a9b243abc1c21839e1c2cc9e3cd56a48dd"/>
+    <title>
+        feat(answerkey): 错题模式右侧 1/3 订正区（一行三段书写线）
+    </title>
+    <updated>2026-08-29T12:49:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(answerkey): 错题模式右侧 1/3 订正区（一行三段书写线）
+
+勾选「只打印重来/困难」时 body 加 wrong-mode：卡片右侧显示
+33% 宽订正区，一行内三段下划线（去「订正」标签，控高度不涨页数），
+正面压缩到 36%、答案自适应。取消勾选恢复原布局。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f80cf2ad953e49c47b33e48b421a545fa0bb908f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/f80cf2ad953e49c47b33e48b421a545fa0bb908f"/>
+    <title>
+        feat(answerkey): 批改结果标记 + 只打印错题开关
+    </title>
+    <updated>2026-08-28T01:17:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(answerkey): 批改结果标记 + 只打印错题开关
+
+- 四档都在 idx 序号后加符号：✗重来 △困难 ✓记得 ★轻松
+- 重来/困难额外改 idx 底色 + 卡片左边条突出；记得/轻松不改卡片样式
+- 新增「只打印重来/困难」复选框：隐藏其余卡（display:none 不打印），
+  计数同步，序号保持原编号对应回原卷
+- main.py answerkey 传 graded；card_id|string 修 Jinja 无 str() 的 500&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ad3e85c24523c4ae6502c8f908b5fdc81054477</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/3ad3e85c24523c4ae6502c8f908b5fdc81054477"/>
+    <title>
+        style(results): 明细页改 grid 四栏，修短文本留白散乱
+    </title>
+    <updated>2026-08-28T01:17:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style(results): 明细页改 grid 四栏，修短文本留白散乱
+
+flex 平铺改 grid（序号 32px / 题面 1.4fr / 答案 1fr / 档位 76px），
+垂直居中，答案栏加右边框。短文本不再撑出大片留白。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f77d37cbff33a1126b1c12f3e182baffb24476d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/f77d37cbff33a1126b1c12f3e182baffb24476d8"/>
+    <title>
+        feat(results): 新增批改结果明细页 /session/{sid}/results
+    </title>
+    <updated>2026-08-06T11:54:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(results): 新增批改结果明细页 /session/{sid}/results
+
+逐卡展示 front/back + 档位色块（重来红/困难橙/记得绿/轻松蓝），
+顶部沿用全站汇总样式（✓ 完成 + 四档配色）。
+session 概览页完成态入口由「已全部批改完成」文字改为
+「📊 查看批改结果」按钮。results.html.j2 为新模板。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8427b976d510cc9652b7a5d791c811d3b4e0b7eb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/8427b976d510cc9652b7a5d791c811d3b4e0b7eb"/>
+    <title>
+        refactor(session): 抽 _ease_counts，progress() 也带 ease 分布
+    </title>
+    <updated>2026-08-06T11:54:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;refactor(session): 抽 _ease_counts，progress() 也带 ease 分布
+
+list_sessions 与 Session.progress() 复用同一个 _ease_counts(graded)，
+消除 list_sessions 内联统计重复。progress() 加 ease_counts 字段，
+让 session 概览页/结果页都能拿到四档分布（不再各自手算）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75cc7a74c86c86d0965e7a2989bb6d5c63093401</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/75cc7a74c86c86d0965e7a2989bb6d5c63093401"/>
+    <title>
+        feat(anki): 渲染时移除音频占位符（默写是纸笔场景）
+    </title>
+    <updated>2026-07-19T09:34:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(anki): 渲染时移除音频占位符（默写是纸笔场景）
+
+新增 _SOUND_RE 匹配 [anki:play:a:N] 与 [sound:...]，在 _inline_images
+入口统一清除——qa 路径与 Cloze 路径共用此出口，所有 note type 覆盖。
+仅新生成 session 生效，旧 session 已落盘不回填。test +2（62 过）。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f41aa3c7747c10e1654c823c6720ba694302ba5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/0f41aa3c7747c10e1654c823c6720ba694302ba5"/>
+    <title>
+        style(index): 历史 session 改两行展示 + 四态/四档配色
+    </title>
+    <updated>2026-07-18T01:41:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style(index): 历史 session 改两行展示 + 四态/四档配色
+
+完成态分两行：上行「✓ 完成（共 N）」，下行 12px 小字四档分布，
+四档沿用批改页语义色（重来红/困难橙/记得绿/轻松蓝）。
+非完成态按状态着色：有待补橙、进行中蓝、未开始灰。
+base.html.j2 加 .micro{12px} 字号档。&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fa903fc519476b99f1f9f42181afe378ba23255d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/fa903fc519476b99f1f9f42181afe378ba23255d"/>
+    <title>
+        feat(index): 历史 session 完成时显示 ease 分布统计
+    </title>
+    <updated>2026-07-18T01:29:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat(index): 历史 session 完成时显示 ease 分布统计
+
+list_sessions 返回 remaining + ease_counts（4 档计数），首页完成的
+session 显示「✓ 完成 · 重来 X · 困难 Y · 记得 Z · 轻松 W」，未完成
+仍显示 graded/total + pending。test_session.py 同步加测试（60 过）。
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d5291f8bbb47e224466c7763d6432d370d455e0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/2d5291f8bbb47e224466c7763d6432d370d455e0"/>
+    <title>
+        docs(readme): 加 Roadmap（i18n + addon）+ 删 SPEC_ADDON 破链接
+    </title>
+    <updated>2026-06-30T05:27:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): 加 Roadmap（i18n + addon）+ 删 SPEC_ADDON 破链接
+
+- 加 Roadmap 段：应用界面国际化（i18n）、Anki addon 化（暂缓）
+- 文档段删 SPEC_ADDON.md 引用（该文件已 .gitignore 不进 repo，链接破）
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc06ab3fd74c4f725ed8727101b04308e3089c7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/fc06ab3fd74c4f725ed8727101b04308e3089c7d"/>
+    <title>
+        docs(photo-grading): 顶部加一句英文摘要（英文用户知情）
+    </title>
+    <updated>2026-06-30T05:25:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(photo-grading): 顶部加一句英文摘要（英文用户知情）
+
+英文 README 链接到本文档（标注 Chinese），加一句英文让点进来的英文
+用户至少知道是测试中、去用手动批改，不会一脸懵。不全文翻译（OCR
+测试中、不推荐，中文场景为主）。
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/552cc4fcc97128d59f52658260562ced555ba282</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/552cc4fcc97128d59f52658260562ced555ba282"/>
+    <title>
+        docs: OCR 抽到 PHOTO_GRADING.md + 修复 AnkiConnect 链接（404）
+    </title>
+    <updated>2026-06-30T05:20:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: OCR 抽到 PHOTO_GRADING.md + 修复 AnkiConnect 链接（404）
+
+OCR 抽离（明确测试中状态，和主流程分开）：
+- 新建 PHOTO_GRADING.md（详细：配置/模型对比/流程/隐私），顶部强化
+  「测试中，不推荐日常使用」
+- README（中英）OCR 章节简化为警示 + 一句 + 链接 PHOTO_GRADING.md
+- 使用流程的 OCR 子项加链接
+
+AnkiConnect 链接修复：
+- foosoft.net/projects/anki-connect/ 已 404（项目 2025-11 从 GitHub
+  迁到 SourceHut，GitHub 仓库归档）
+- README 4 处替换为 AnkiWeb 安装入口 ankiweb.net/shared/info/2055492159
+  （用户装插件最直接，含 code 2055492159）
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b09b3158cb43343ca9eaecfbc2cc1e3f56cc7230</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/b09b3158cb43343ca9eaecfbc2cc1e3f56cc7230"/>
+    <title>
+        docs: README 加中文名「Anki 默写本」+ pyproject description 同步
+    </title>
+    <updated>2026-06-30T05:06:20Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: README 加中文名「Anki 默写本」+ pyproject description 同步
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6d971513f9277827bad06e0ad8082cfa7d874224</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/6d971513f9277827bad06e0ad8082cfa7d874224"/>
+    <title>
+        chore: .gitignore 加 SPEC_ADDON.md（addon 规划不入仓库，本地保留）
+    </title>
+    <updated>2026-06-30T03:34:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: .gitignore 加 SPEC_ADDON.md（addon 规划不入仓库，本地保留）
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03d1a10dd38ff37b5c9d72b95e5df3d18b3af834</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/03d1a10dd38ff37b5c9d72b95e5df3d18b3af834"/>
+    <title>
+        docs: 补 4 张截图 + 主 README 加打印效果引用
+    </title>
+    <updated>2026-06-30T03:32:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: 补 4 张截图 + 主 README 加打印效果引用
+
+- docs/screenshots/ 加 index / worksheet / worksheet_print / grade 4 张 PNG
+- 主 README（中英）加 worksheet_print 引用（打印效果，核心产物展示）
+- 删除 docs/screenshots/README.md（截图清单是开发待办，截图齐后过期，
+  主 README 的引用 + alt 已足够说明）
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f1ab63eead63539ff6fa74989e2779f39a27de76</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/f1ab63eead63539ff6fa74989e2779f39a27de76"/>
+    <title>
+        docs(readme): 加 FAQ 段（中英两版，8 条常见问题）
+    </title>
+    <updated>2026-06-26T08:18:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs(readme): 加 FAQ 段（中英两版，8 条常见问题）
+
+覆盖：AnkiConnect 连接、无到期卡片、OCR key 申请、图片显示、打印排版、
+严格模式默认、数据持久、平台支持（不支持 AnkiDroid/Mobile/Web）。
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/685b7cff2d01402bbe83d43fe59557b7aa135196</id>
+    <link type="text/html" rel="alternate" href="https://github.com/xmonkey/paperback/commit/685b7cff2d01402bbe83d43fe59557b7aa135196"/>
+    <title>
+        chore: 移除 SPEC_ANALYSIS.md 跟踪 + .gitignore 加测试图忽略
+    </title>
+    <updated>2026-06-26T06:33:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/1460691?s=30&amp;v=4"/>
+    <author>
+      <name>xmonkey</name>
+      <uri>https://github.com/xmonkey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: 移除 SPEC_ANALYSIS.md 跟踪 + .gitignore 加测试图忽略
+
+- SPEC_ANALYSIS.md：历史评审记录，git rm --cached 移除跟踪（保留本地
+  文件），加 .gitignore 防再跟踪
+- AUTO_GRADING_SPEC.md：早期未采用对比稿，本地删除（未跟踪，不进 git）
+- .gitignore 加 test*.jpg（防测试素材误提交）
+
+Co-Authored-By: Claude Opus 4.6 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

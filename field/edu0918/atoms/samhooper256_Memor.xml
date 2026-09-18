@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/samhooper256/Memor/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/samhooper256/Memor/commits/master.atom"/>
+  <title>Recent Commits to Memor:master</title>
+  <updated>2026-09-17T20:48:22Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eed2e4bdb9617bf9ec0dab6a5174ba1c1ca87693</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/eed2e4bdb9617bf9ec0dab6a5174ba1c1ca87693"/>
+    <title>
+        LICENSE: copyright holder is Sam Hooper
+    </title>
+    <updated>2026-09-17T20:48:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;LICENSE: copyright holder is Sam Hooper
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5baa140f9484e8730759e3584d98488664b27441</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/5baa140f9484e8730759e3584d98488664b27441"/>
+    <title>
+        Add MIT license
+    </title>
+    <updated>2026-09-17T20:47:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add MIT license
+
+Standard MIT text with Samuel Hooper as copyright holder, plus a License
+section in the README pointing at it. The bundled assets keep their own
+terms in ATTRIBUTIONS.md (all public domain, compatible with MIT).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7820d8f3de3ed485a8d042ad5a682c52ccee6370</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/7820d8f3de3ed485a8d042ad5a682c52ccee6370"/>
+    <title>
+        Replace bundled country boundaries with the unmodified Natural Earth …
+    </title>
+    <updated>2026-09-17T20:45:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Replace bundled country boundaries with the unmodified Natural Earth file
+
+Memor/Resources/world_countries.geojson (a bare [{name, geometry}] array
+with no provenance) is replaced by ne_50m_admin_0_countries.geojson: the
+unmodified Natural Earth &amp;quot;Admin 0 – Countries&amp;quot; 1:50m v5.1.2 GeoJSON
+FeatureCollection (public domain), credited in ATTRIBUTIONS.md with the
+upstream tag and SHA-256. The old file turns out to have been exactly
+this dataset reduced to NAME_EN + geometry — the new seed yields the
+same 242 names and identical geometry — so a fresh database matches an
+existing one.
+
+The seeder now parses the file through parseUploadedBoundaryFile (which
+gains a `nameProperty` parameter, default &amp;quot;name&amp;quot;; the seed passes
+NAME_EN), so it accepts a FeatureCollection and wraps the 123 plain
+Polygon features Natural Earth ships — the old strict Decodable shape
+would have failed on those. Set + boundary insertion is factored into
+insertBoundarySet, shared with user uploads; NormalizedGeometry moves
+beside it. Seeding is still a one-time no-op once a built-in set
+exists, so existing databases are untouched.
+
+Verified with a scratch harness running the extracted parser over the
+new file (242 features, name set and geometry equal to the old file,
+default key correctly rejects it) and a Debug build (new resource
+copied, stale world_countries.geojson removed from the bundle).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c75987ec704b68bf6418e7aa4f7afbe61c90538b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/c75987ec704b68bf6418e7aa4f7afbe61c90538b"/>
+    <title>
+        Add README with build requirements and signing setup for other machines
+    </title>
+    <updated>2026-09-17T20:20:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add README with build requirements and signing setup for other machines
+
+Covers the macOS/Xcode floor, the first-build package fetch, the
+required signing-team change on both targets (the project carries the
+author&amp;#39;s team ID), where the sandboxed database lives, and the optional
+Claude Desktop MCP configuration.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1803d609a3ea09826f71f32d2607f3682f802468</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/1803d609a3ea09826f71f32d2607f3682f802468"/>
+    <title>
+        CLAUDE.md: move account-specific distribution details to CLAUDE.local.md
+    </title>
+    <updated>2026-09-17T20:20:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;CLAUDE.md: move account-specific distribution details to CLAUDE.local.md
+
+The Apple ID, App Store Connect app ID, and ASC API key ID / issuer ID /
+.p8 path now live in the git-ignored CLAUDE.local.md, which Claude Code
+loads alongside CLAUDE.md. The Distribution section keeps the commands
+with placeholders and points at the local file, since CLAUDE.md is about
+to be published in a public repo.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/be02cb9295281ce05da17cd7621bb4150ccde7f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/be02cb9295281ce05da17cd7621bb4150ccde7f2"/>
+    <title>
+        Add .gitignore and stop tracking per-user Xcode scheme state
+    </title>
+    <updated>2026-09-17T20:20:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add .gitignore and stop tracking per-user Xcode scheme state
+
+Preparing the repo for a public GitHub remote. The ignore file covers
+xcuserdata, build products and archives, .DS_Store, Claude Code&amp;#39;s
+per-user settings.local.json and CLAUDE.local.md, and signing material
+(.p8/.p12/provisioning profiles). The tracked xcschememanagement.plist
+is per-user Xcode state; it is removed from the index only and stays on
+disk.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/449f766a8fbf81c96cfae67b3d62525c4aa6b658</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/449f766a8fbf81c96cfae67b3d62525c4aa6b658"/>
+    <title>
+        Local file scheme: quote-aware URL matching so apostrophes in filenam…
+    </title>
+    <updated>2026-09-14T23:47:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Local file scheme: quote-aware URL matching so apostrophes in filenames survive
+
+rewriteLocalFileResourceURLs stopped its match at either quote, so a file URL
+containing an apostrophe (file URLs keep &amp;#39; literal; song titles carry them)
+was only half-rewritten: the head was encoded, the tail spliced back raw, and
+a later &amp;amp; or %23 in the tail became a live delimiter after the handler&amp;#39;s single
+decode - &amp;quot;Rock &amp;#39;n&amp;#39; Roll &amp;amp; Blues.mp3&amp;quot; resolved to &amp;quot;Rock &amp;#39;n&amp;#39; Roll &amp;quot; and
+&amp;quot;Don&amp;#39;t #1.mp3&amp;quot; to &amp;quot;Don&amp;#39;t &amp;quot;. The terminator now depends on the delimiter: only
+&amp;quot; ends a match inside a double-quoted attribute (what the editor inserts), only
+&amp;#39; inside a single-quoted one, either for a bare URL. Verified by a scratch
+round trip of both names plus the earlier &amp;amp; / unicode / # / % cases; CLAUDE.md
+records the whole-URL + delimiter-encoding invariant. Pre-existing for images.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2fa39b01c18eda253d8f5765d09aa35ad8e5c8a3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/2fa39b01c18eda253d8f5765d09aa35ad8e5c8a3"/>
+    <title>
+        CLAUDE.md: the global wrapper token is {{#Content}}, not {{{Content}}}
+    </title>
+    <updated>2026-09-11T02:00:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;CLAUDE.md: the global wrapper token is {{#Content}}, not {{{Content}}}
+
+The code substitutes {{#Content}} (Utilities.swift generatePreviewHTMLForQuestion)
+and the seeded default global_query_html uses it too; the doc line was stale.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5b0045a351371cf5c6337d8fa34727b1d40f3a05</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/5b0045a351371cf5c6337d8fa34727b1d40f3a05"/>
+    <title>
+        Docs and copy: audio insertion, range-serving handler, Play Audio sho…
+    </title>
+    <updated>2026-09-11T01:59:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Docs and copy: audio insertion, range-serving handler, Play Audio shortcut
+
+CLAUDE.md: the local-file scheme handler&amp;#39;s HTTP/Range contract and its
+synchronous-by-design rule, the play-first-audio nonce pattern, the bookmark
+store covering audio, the two new shortcut-table rows, and the recipe note for
+Study actions that also apply in Query Preview. agents.md: field HTML may hold
+&amp;lt;audio&amp;gt; tags and bookmarks cover audio files. Settings: the folder-access
+section, caption and panel now say images and audio, since granted folders
+serve inserted .mp3 files through the same scope tiers.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ee983d337ac644286db0c57f3bb718de72ccb5a1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/ee983d337ac644286db0c57f3bb718de72ccb5a1"/>
+    <title>
+        Query Preview: Play Audio (A) plays the previewed page&#39;s first audio
+    </title>
+    <updated>2026-09-11T01:42:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Query Preview: Play Audio (A) plays the previewed page&amp;#39;s first audio
+
+The same customizable studyPlayAudio binding the Study monitor honors now
+works in the Query Preview window (like Edit Current Instance already does):
+it mints a play request for the preview&amp;#39;s QueryHTMLView, which restarts the
+FIRST &amp;lt;audio&amp;gt; on the page. Auto-repeats are swallowed inline since this monitor
+has no repeat pass; map, error and developer-mode branches have no web view
+and ignore the key.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cbfcacc2411b63b23eb1fd3fe99e6dda8e173c2b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/cbfcacc2411b63b23eb1fd3fe99e6dda8e173c2b"/>
+    <title>
+        Study mode: Play Audio (A) plays the shown query&#39;s first audio (custo…
+    </title>
+    <updated>2026-09-11T01:40:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Study mode: Play Audio (A) plays the shown query&amp;#39;s first audio (customizable)
+
+New ShortcutAction.studyPlayAudio (&amp;quot;Play Audio&amp;quot;, Study Mode category, default
+bare A) - the Settings tab picks it up automatically. In Study the key mints a
+fresh play request for QueryHTMLView, which restarts the FIRST &amp;lt;audio&amp;gt; on the
+displayed page: the question before reveal, the answer after. No reveal gate,
+since listening queries carry their audio on the question side; map queries
+have no web view and ignore it. Held keys are swallowed via the existing
+auto-repeat list. Bare A is also the PointMap editor&amp;#39;s Add Query default; the
+monitors are window-scoped and never coexist, same as the existing
+cross-category duplicate defaults.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b99cebc321182e49141ebd0a236a0c7d348102a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/2b99cebc321182e49141ebd0a236a0c7d348102a"/>
+    <title>
+        QueryHTMLView: play-first-audio request nonce
+    </title>
+    <updated>2026-09-11T00:47:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;QueryHTMLView: play-first-audio request nonce
+
+Adds the only Swift-to-page seam the query web views have: a
+playFirstAudioRequestID nonce prop (same shape as the PointMap locator pulse).
+Each fresh id makes QueryWebContainerView evaluate a script that restarts and
+plays the FIRST &amp;lt;audio&amp;gt; in document order; ids are deduped, seeded on container
+creation so a stale id never fires on mount, parked until the current load
+commits (the script itself waits for DOMContentLoaded while parsing), and
+cleared when new HTML arrives. Media is paused when the container leaves its
+window and when its window closes - the Query Preview is a Window scene, so
+closing it never unmounts the view. Debug builds make the web view inspectable
+so the handler&amp;#39;s Range/206 traffic can be checked in Safari&amp;#39;s Web Inspector.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6fb99a895e3a61fa91b9f5f80fd427eed3842856</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/6fb99a895e3a61fa91b9f5f80fd427eed3842856"/>
+    <title>
+        Instance editor: Insert Image or Audio (.mp3) through the same Cmd+O …
+    </title>
+    <updated>2026-09-11T00:45:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Instance editor: Insert Image or Audio (.mp3) through the same Cmd+O picker
+
+The Insert Image button and its Cmd+O shortcut now read &amp;quot;Insert Image or
+Audio&amp;quot; and the NSOpenPanel accepts images or .mp3 files. A picked audio file
+(detected by UTType conformance to public.audio) inserts
+&amp;lt;audio controls src=&amp;quot;file://...&amp;quot;&amp;gt;&amp;lt;/audio&amp;gt; at the caret of the focused field;
+images still insert &amp;lt;img&amp;gt;. The bookmark goes through the same
+grantImageFileAccess path, and the render-time file:// rewrite is tag-agnostic,
+so nothing else in the pipeline changes. The &amp;lt;audio&amp;gt; tag is closed with an
+empty body on purpose: it is a container element, and the display-value
+stripper keeps inner text.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c080a59e47ca457340d2da774b7218b64d76f019</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/c080a59e47ca457340d2da774b7218b64d76f019"/>
+    <title>
+        Query web views: allow gesture-less media playback explicitly
+    </title>
+    <updated>2026-09-11T00:44:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Query web views: allow gesture-less media playback explicitly
+
+The upcoming Play Audio shortcut starts &amp;lt;audio&amp;gt; from evaluateJavaScript, with
+no in-page user gesture. macOS already defaults
+mediaTypesRequiringUserActionForPlayback to none; set it explicitly on the
+shared configuration so playback never rests on a platform default. Applies to
+every Memor web view (Study, Query Preview, prewarm, Types preview, Graph).
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/95931e956ee31f8c57a8383431140a516c03b5b0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/95931e956ee31f8c57a8383431140a516c03b5b0"/>
+    <title>
+        Local file scheme handler: HTTP responses with byte-range (206) support
+    </title>
+    <updated>2026-09-11T00:43:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Local file scheme handler: HTTP responses with byte-range (206) support
+
+The flashcards-local-image handler answered every request with a plain
+URLResponse holding the whole file: no status code, no headers, Range ignored.
+Images never cared, but WebKit&amp;#39;s AVFoundation-backed &amp;lt;audio&amp;gt; loader issues
+Range requests and needs 206 + Content-Range (and Accept-Ranges) to play and
+seek. Answer with HTTPURLResponse everywhere: 200 whole file, 206 for a
+satisfiable single range, 416 when unsatisfiable, Content-Range derived from
+the bytes actually read. Only the requested slice is read, via FileHandle
+under withSecurityScopedFileAccess, so ranged requests no longer re-read whole
+files. Delivery stays synchronous, which is why stop() stays a no-op.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c7f8aa8c5b82b7380f7ca8e4718492e364398262</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/c7f8aa8c5b82b7380f7ca8e4718492e364398262"/>
+    <title>
+        AppDatabase: closure-based security-scoped file access (behavior-pres…
+    </title>
+    <updated>2026-09-11T00:41:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;AppDatabase: closure-based security-scoped file access (behavior-preserving)
+
+readSecurityScopedFile(at:) always read the whole file into Data. Generalize
+the same three-tier scope logic (retained scope -&amp;gt; re-resolved bookmark with
+stale refresh -&amp;gt; unscoped) into withSecurityScopedFileAccess(at:_:), which runs
+a caller-supplied closure under the scope so the scheme handler can soon open a
+FileHandle and read only a byte range. The handler&amp;#39;s one call site passes
+{ try Data(contentsOf: $0) }, so nothing changes yet. Doc comments record that
+grantImageFileAccess / image_file store bookmarks for ANY user-picked file.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2b4e7624026674524bec55c0563ab22f43794f31</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/2b4e7624026674524bec55c0563ab22f43794f31"/>
+    <title>
+        Local file scheme: percent-encode the file URL so &quot;&amp;&quot; in filenames su…
+    </title>
+    <updated>2026-09-11T00:20:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Local file scheme: percent-encode the file URL so &amp;quot;&amp;amp;&amp;quot; in filenames survives
+
+rewriteLocalFileResourceURLs carried the original file:// URL as one query-item
+value encoded with .urlQueryAllowed, which leaves &amp;amp; + = literal. A filename
+containing &amp;quot;&amp;amp;&amp;quot; therefore split the value at that character, the handler saw a
+truncated URL, and the read failed. Encode those three delimiters too; the
+handler already decodes via URLComponents.queryItems, so nothing else changes.
+Pre-existing for images; common in music filenames, so it would bite audio.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b8cb60dd7f5aa53b4bb18f403d54e57cd84ff4de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/b8cb60dd7f5aa53b4bb18f403d54e57cd84ff4de"/>
+    <title>
+        PointMap reverse queries: show the locator mini-map once the answer i…
+    </title>
+    <updated>2026-09-08T20:26:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;PointMap reverse queries: show the locator mini-map once the answer is revealed
+
+The bottom-left zoomed-in inset (query point in red) used to be forward-only.
+On a Name-&amp;gt;Point query it now appears after the user answers, and stays off
+before that so it can&amp;#39;t give the point away. The inset stays MOUNTED for
+every query with a highlighted point and is hidden via opacity instead of
+being unmounted: its MKMapView leaks VectorKit resources on teardown, and a
+reverse-only stack would otherwise rebuild it on every reveal/advance.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c4c26060350dd512273e72f11d1c0dfd9b9c5a79</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/c4c26060350dd512273e72f11d1c0dfd9b9c5a79"/>
+    <title>
+        Study mode: magenta locator rings on every advance to a PointMap forw…
+    </title>
+    <updated>2026-09-07T13:17:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Study mode: magenta locator rings on every advance to a PointMap forward query
+
+Three concentric magenta rings appear around the query point and fade out
+(1 - t^2) over one second whenever Study mode advances to a PointMap
+Forward query, so the eye lands on the point immediately. The pulse is
+driven by a fresh `pointMapLocatorPulseID` from loadNextQuery (nil for
+other kinds and on rating undo), so re-advancing after Cmd+Z pulses again
+while undoing back to an already-seen query does not. The map coordinator
+now reports the answer point&amp;#39;s position for forward queries pre-reveal
+too (`tracksAnswerPosition`); the tooltip keeps its own post-reveal gate,
+and reverse queries never report or pulse.
+
+Co-Authored-By: Claude Fable 5.1 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a75f8b9ad47eda58094b51fe03cd4018fe5a654</id>
+    <link type="text/html" rel="alternate" href="https://github.com/samhooper256/Memor/commit/9a75f8b9ad47eda58094b51fe03cd4018fe5a654"/>
+    <title>
+        BoundaryMap query map: apply the zero-size camera repair too
+    </title>
+    <updated>2026-08-26T00:46:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/60260374?s=30&amp;v=4"/>
+    <author>
+      <name>samhooper256</name>
+      <uri>https://github.com/samhooper256</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;BoundaryMap query map: apply the zero-size camera repair too
+
+Verification of the PointMap fix flagged that BoundaryMapInteractiveMapView
+has the identical defect class: created at frame .zero, region set before
+the first layout pass, region only re-issued on attachment change. Promote
+DeferredRegionMKMapView from PointMapQueryView.swift to Shared/ and make
+the BoundaryMap query map inherit it.
+
+Co-Authored-By: Claude Fable 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

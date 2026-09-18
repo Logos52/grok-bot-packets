@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/anonymouspartner/capybara-anki/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/anonymouspartner/capybara-anki/commits/main.atom"/>
+  <title>Recent Commits to capybara-anki:main</title>
+  <updated>2026-09-17T18:13:01Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dc2cc7f2a77c09b7244246a06751cfeec8685d36</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/dc2cc7f2a77c09b7244246a06751cfeec8685d36"/>
+    <title>
+        Restore the spelling card&#39;s letter-count dots and fix its label style…
+    </title>
+    <updated>2026-09-17T18:13:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restore the spelling card&amp;#39;s letter-count dots and fix its label style (#24)
+
+Wrong in two ways in #23, both caught by a real AnkiDroid screenshot
+rather than by reading the desktop template again:
+
+- The letter-count dots ARE part of &amp;quot;what the card looks like&amp;quot; — #23
+  called them invented UI and removed them on the reasoning that they&amp;#39;re
+  reviewer chrome, not template content. True, but irrelevant: they&amp;#39;re
+  real chrome, present in every {{type:lemma}} field AnkiDroid renders,
+  and the screenshot shows them. Restored, gated to the un-revealed state
+  (the real widget drops them once you&amp;#39;ve answered) and given their own
+  --type-hint token instead of reusing --btn-again, which was a rating
+  color pressed into service for an unrelated typing hint.
+- The &amp;quot;Spell the word for&amp;quot; label was a bordered pill — this app&amp;#39;s own
+  invention. The real template&amp;#39;s `.label` is plain uppercase, letter-spaced
+  text with no border. Restyled to match.
+
+
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6586b9ac53e892bc549f604d28a6e280afd5b0f8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/6586b9ac53e892bc549f604d28a6e280afd5b0f8"/>
+    <title>
+        Match the spelling card&#39;s fields to the real Capybara+ export (#23)
+    </title>
+    <updated>2026-09-17T17:40:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Match the spelling card&amp;#39;s fields to the real Capybara+ export (#23)
+
+renderSpellingReview was guessing at the front/back layout. Read directly
+off the real `Capybara+` note type&amp;#39;s own templates (the maintainer pasted
+both), it turns out to be wrong in three ways:
+
+- The front&amp;#39;s clue is {{example_translation}} — the TRANSLATED example, in
+  the language the reader already knows — not the target-language example
+  with the word blanked out. blankWord() was solving a problem the real
+  card doesn&amp;#39;t have; drop it (and the now-dead function).
+- The letter-count dot row doesn&amp;#39;t exist in the template at all — the
+  Capybara+ &amp;quot;typebox&amp;quot; is just Anki&amp;#39;s own {{type:lemma}} field, with no
+  length hint. Removed, including its CSS.
+- The front&amp;#39;s part-of-speech line is `{{part_of_speech}}` plus the
+  language name in parens, e.g. &amp;quot;noun (Ukrainian)&amp;quot; — not
+  &amp;quot;noun · uk&amp;quot;. Added the same uk/en → Ukrainian/English map the real
+  template&amp;#39;s own inline script uses.
+
+The back now mirrors {{FrontSide}} + the real fields: the answer word big
+and green (matching the export&amp;#39;s `.answer-word` color), the untouched
+{{example}} (safe to show whole now that the answer is revealed), and
+{{example_translation}} again below it — the real template shows the
+translation twice (once as the front&amp;#39;s clue, once again on the back),
+which looked like a mistake until checked against the actual card.
+
+Kept, deliberately not from the template: the &amp;quot;Correct&amp;quot;/&amp;quot;Not quite&amp;quot;
+verdict against the typed answer. Anki&amp;#39;s own type-in-answer does a live
+character diff inside the review app itself, not via any template field —
+there&amp;#39;s nothing here to port faithfully, so this stays as this app&amp;#39;s own
+substitute, shown rather than enforced (same reasoning as before).
+
+Verified against the demo server + a Playwright screenshot of the actual
+rendered front and back, not just read for plausibility.
+
+
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/05c875eff2dfc9d8c42c4eb0c894d579b6dd1aaa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/05c875eff2dfc9d8c42c4eb0c894d579b6dd1aaa"/>
+    <title>
+        Drop a comment my own edit left stranded (#22)
+    </title>
+    <updated>2026-09-17T17:04:33Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop a comment my own edit left stranded (#22)
+
+The getDailyCounts deck-scoping rewrite in #21 added its explanation above the
+new code but left the sentence it replaced sitting on top of it, so the same
+point was made twice in slightly different words.
+
+
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1bf9c42d34796ceb9bf45d6a46f63f65e805c683</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/1bf9c42d34796ceb9bf45d6a46f63f65e805c683"/>
+    <title>
+        Fix pronunciation audio, the missing Spelling and English decks (#21)
+    </title>
+    <updated>2026-09-17T17:03:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix pronunciation audio, the missing Spelling and English decks (#21)
+
+All three found by comparing the app against the real collection and a real
+export, rather than against what the code assumed.
+
+**Pronunciation had no reference audio.** Every one of the 190 pronunciation
+notes has audio_url NULL, so web/app.js rendered no &amp;lt;audio&amp;gt; element and a
+shadowing card had nothing to shadow. transform.py set it to None deliberately,
+commenting that media &amp;quot;was deliberately excluded from the export&amp;quot; -- true of the
+export it was written against, false of a real &amp;quot;Include media&amp;quot; .apkg, which
+carries 190 capy_pron_*.mp3 files referenced as [sound:...] from ReferenceAudio.
+
+migration/upload_pronunciation_audio.py carries them into a public-read
+pronunciation-audio bucket and links each to its note by (lemma, language, kind).
+Public-read because a plain &amp;lt;audio src&amp;gt; sends no Authorization header and a
+signed URL would expire while a card sat open; the bucket holds nothing else.
+It needs the service-role key, so it is a local CLI like the migration itself
+(D7) and the maintainer runs it. Idempotent: uploads upsert by path and the
+note update is a PATCH, so a partial run is repaired by running it again.
+
+Verified as far as it can be without that key: the read half runs against the
+real export (191 recordings found), and every text was hashed and compared
+against the live table -- 190 of 190 notes will match. Only the upload itself
+is unrun.
+
+**Spelling cards had no deck and no exercise.** Anki pins the Capybara+ note
+type&amp;#39;s second template to Capybara::Spelling (244 cards, template #1, confirmed
+in the export), so a note&amp;#39;s two cards sit in different decks. This app derived a
+card&amp;#39;s deck from its note, which folded every spelling card into Ukrainian and
+English and made the Spelling deck disappear from a list that otherwise matched
+AnkiDroid&amp;#39;s exactly. deckOfCard(noteDeck, cardKind) now decides that in one
+place, so the deck list, the queue and the daily counts cannot disagree -- no
+column needed, since a note has at most one spelling card.
+
+Worse, a spelling card rendered exactly like a recall card: the answer printed
+on the front, which makes the exercise meaningless. It now asks you to type the
+word, with the row of dots AnkiDroid shows, the word blanked out of its own
+example, and the answer graded on reveal. Grading is shown, not enforced -- the
+four rating buttons are still yours, because an accent typed without the right
+keyboard layout should not force an Again.
+
+**The English deck was invisible.** D2 assumed decks are disjoint by language and
+filtered every listing to the viewer&amp;#39;s learning_language. 199 English notes
+exist, and the uk learner could not see them -- while the AnkiDroid collection
+the two of them share showed him the deck, which is how this was found. The
+filter is gone. The consequence is the one D2 itself named: card_state is per
+card, so two people studying one card share its schedule; reviews.user_id still
+records who answered, so a replay can split it later if that ever matters.
+
+Also: microphone failures now say which failure it was. &amp;quot;Denied or unavailable&amp;quot;
+covered several very different problems, and the likeliest one in a Telegram
+Mini App is that the client exposes no navigator.mediaDevices at all -- worth
+saying plainly rather than blaming a permission nobody was ever prompted for.
+An empty recording is caught here too, instead of surfacing as Whisper&amp;#39;s
+&amp;quot;empty transcript&amp;quot;.
+
+Three tests added, including one asserting a deck row&amp;#39;s counts equal the queue
+that pressing it opens. 159 pass (was 156). Verified in Chromium: Spelling
+appears as its own deck, the prompt shows the translation with 11 dots for
+&amp;quot;письменниця&amp;quot;, the answer is absent from the front, and a wrong answer reveals
+both the word and what was typed.
+
+
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d34d34698f22e7967517c3b0bd64e2629e8b3bae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/d34d34698f22e7967517c3b0bd64e2629e8b3bae"/>
+    <title>
+        Make opening a deck fast, and import Anki&#39;s leeches + undo (#19)
+    </title>
+    <updated>2026-09-17T13:27:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make opening a deck fast, and import Anki&amp;#39;s leeches + undo (#19)
+
+* Read the due queue in batches instead of per card
+
+Opening a deck cost two Postgres round trips per due card. getDueQueueWithPreviews
+selected the queue, then asked getNote and getCardState once for each item in it,
+so the Ukrainian deck&amp;#39;s 96 due cards meant ~192 sequential queries inside the edge
+function before the first card could render.
+
+Store grows getNotes/getCardStates. The per-card methods stay — a single card is
+still a single lookup, and submitReview genuinely wants one row — but anything
+assembling a queue now asks in batches. Both return maps so callers never
+re-associate results positionally, and a missing id is simply absent, matching
+what the singular methods express as null.
+
+getCardStates filters on note_id and discards the kinds nobody asked for: PostgREST
+has no clean way to express &amp;quot;these specific (note, kind) pairs&amp;quot;, and D17 caps a note
+at two card_state rows, so the over-fetch is bounded at 2x and costs one query
+rather than one per pair.
+
+The same request was also re-asking settled questions. getDeckSummaries fans out
+over the deck list, and each branch independently re-resolved the user&amp;#39;s learning
+language, re-read their scheduler config, and re-scanned the same 48-hour review
+window. Those three are now memoized for the life of the store object, which
+sync/index.ts constructs per request and discards — long enough to stop repeating
+one request&amp;#39;s questions, too short to serve a stale config to the next. That
+lifetime is load-bearing and documented as such. The memo holds the promise rather
+than the value, so concurrent branches of a Promise.all share one in-flight query,
+and a rejection is evicted rather than cached.
+
+Measured against a counting stub client, with the daily limit capping the queue at
+40 cards:
+
+  GET /sync/decks                19 -&amp;gt; 8 queries
+  GET /sync/due?deck=Ukrainian   86 -&amp;gt; 6 queries
+
+The due path was 2 queries per card plus a fixed cost; it is now constant.
+
+Three tests added, including one that counts the reads rather than just checking
+the output, since a return to per-card fetching is invisible in every correctness
+test. 144 pass (was 141).
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Import Anki&amp;#39;s leeches, and add undo
+
+Two more behaviours from upstream, both chosen because they fit this schema
+without bending it.
+
+**Leeches.** rslib/src/scheduler/states/review.rs&amp;#39;s `leech_threshold_met`, ported
+exactly:
+
+    lapses &amp;gt;= threshold &amp;amp;&amp;amp; (lapses - threshold) % ceil(threshold / 2) == 0
+
+The half-threshold repeat is the part worth keeping: it fires AT the threshold
+and every half-threshold after, not once and never again, because a leech that
+was unsuspended and still isn&amp;#39;t sticking is still a leech. Anki&amp;#39;s own unit test
+(threshold 3 -&amp;gt; 3, 5, 7...) is pinned here as a test, and the default threshold 8
+gives 8, 12, 16 -- asserted end to end by driving a real card through the
+scheduler rather than hand-writing lapse counts.
+
+Only an answer that actually adds a lapse can announce one. Testing the count
+alone would re-announce on every later Good, since a card parked at 8 lapses
+reads as &amp;quot;at threshold&amp;quot; forever; Anki avoids this structurally by only evaluating
+inside answer_again.
+
+The default action is &amp;#39;tag&amp;#39;, not &amp;#39;suspend&amp;#39;. There is no tags table here, so
+tagging means the reviewer says so and changes no scheduling -- on a shared
+collection a card that silently vanishes mid-session is worse than one that
+speaks up. &amp;#39;suspend&amp;#39; is available and tested. Neither needs a schema change:
+detection is a pure function of card_state.lapses, and the two config columns are
+optional -- schedulerConfigFromRow reads them through a nullish fallback to the
+same defaults the migration writes, and `select *` omits a column that isn&amp;#39;t
+there, so the app behaves identically before and after it runs. The migration is
+included but NOT applied.
+
+**Undo.** The operation docs/DESIGN.md 4.3 was written for and never used. Since
+card_state is a fold over reviews, undo does not need a saved pre-image: delete
+the review and fold what remains. What comes back is byte-identical rather than
+approximate -- fuzz is seeded on (card, reps) and both wind back too -- which is
+asserted by snapshotting the whole row before the answer and comparing it whole
+afterwards.
+
+Two things it deliberately does not do. It does not clear `suspended`, for the
+same reason suspension is not part of the fold anywhere else: it is a judgement
+about the card, not a consequence of how it was answered. And it is scoped to the
+caller&amp;#39;s own reviews, so on a shared collection it can never delete a partner&amp;#39;s
+answer to the same card -- pinned by a test.
+
+Offline, an answer sits in the local outbox rather than on the server, so undo
+drops it from that queue instead of asking the server to delete a review it has
+never seen.
+
+UI: a one-line notice under the toolbar reporting what was recorded, with Undo
+beside it. It does not auto-dismiss on a timer -- the reason to read it is to
+notice you tapped the wrong button, and a toast that vanishes in three seconds is
+exactly what someone looking down at a keyboard misses. It clears when the next
+answer replaces it or when the deck is left.
+
+Verified in Chromium against the demo server: notice renders 74ms after the tap,
+Undo returns to the answered card unrevealed, re-rating it afterwards is accepted,
+and the notice clears on leaving the deck. 156 tests pass (was 144).
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Correct DESIGN.md 2.2: the bot&amp;#39;s card write follows /learn, not annotation
+
+The revision recorded on 2026-09-16 described capybara-bot mirroring its
+`vocabulary` table into `anki_notes`. Measured against the live project, that
+table holds 11,329 rows to `flashcards`&amp;#39; 776 — and /export, the path this
+replaces, has always been built from `flashcards`. Mirroring the wider set would
+have minted roughly fifteen cards for every one deliberately chosen.
+
+The write moved to /learn, /learn top and the grammar assistant (capybara-bot
+#83). This records why, so the wider target is not reintroduced as an
+optimisation later.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c90d9196ff2081ce40c7ee3d16a28a584ab83e64</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/c90d9196ff2081ce40c7ee3d16a28a584ab83e64"/>
+    <title>
+        Make rating instant, and run the reviewer as a Telegram Mini App (#18)
+    </title>
+    <updated>2026-09-17T11:28:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Make rating instant, and run the reviewer as a Telegram Mini App (#18)
+
+* Stop the reviewer waiting on /sync/decks after every rating
+
+Closes #16.
+
+The rating buttons were never the slow part. submitRating awaited the review
+POST, then awaited refreshStatsStrip() — a GET /sync/decks — and only then
+called advance(), so the next card could not render until both round trips
+finished. Measured live, three runs: /sync/decks took 3.94s, 2.90s, 3.99s.
+
+Two halves.
+
+The next card no longer waits for the deck counts. advance() runs as soon as
+the review is recorded and the strip refreshes in the background, updating in
+place a moment later. The write still blocks, because losing a review to make
+the UI feel faster is not a trade worth making.
+
+And /sync/decks itself was doing far more work than the question needs.
+getDailyCounts paged the user&amp;#39;s entire review history — 3,804 rows here — to
+find the ones from today, and getDeckSummaries calls it once per deck, so a
+single request pulled that history three times over. It now reads a 48-hour
+window: a study day is at most 24 hours long and the current one began at most
+24 hours ago, so nothing that counts toward today can fall outside it, with
+room to spare across a DST seam. Cards already being studied before the window
+opened are found with one targeted lookup over just the notes actually touched,
+which is what lets the seen-set stay seeded correctly. The counting rule is
+unchanged and still matches InMemoryStore: a review is &amp;quot;new&amp;quot; iff it is the
+first anki_reviews has ever recorded for its (note_id, card_kind). When nothing
+has been studied recently — the common case — the window comes back empty and
+no further query runs at all.
+
+Scoping to a deck also stopped listing the deck&amp;#39;s entire contents to build an
+id set. That select was unbounded, so it was one PostgREST max-rows cap away
+from silently dropping notes, the same bug already fixed twice in this file.
+It now asks only which of the touched notes are in the deck.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+* Run the reviewer as a Telegram Mini App
+
+Closes #17.
+
+The same pages, opened from inside capybara-bot, authenticate with Telegram&amp;#39;s
+signed initData instead of the device token. No install link to keep safe, no
+separate app to open.
+
+The credential is verified rather than compared, which is the whole difference
+between the two routes: a device token is a shared secret, initData is signed by
+Telegram with the bot&amp;#39;s token. src/telegramAuth.ts implements the published
+algorithm, checked against core.telegram.org rather than written from memory,
+because two of its steps are easy to get subtly wrong and both are pinned by
+tests: the bot token is the HMAC *message* while the literal string &amp;quot;WebAppData&amp;quot;
+is the *key*, and only `hash` is excluded from the check string — `signature`
+stays in, since excluding both belongs to the separate Ed25519 third-party flow.
+Tests sign their own fixtures the way Telegram does, so they exercise the real
+algorithm instead of asserting against a hash this same code produced.
+
+Nothing is stored server-side and nothing new is trusted. The Telegram account
+maps to a users.id through function secrets, the same way the device tokens
+already do, so src/auth.ts still needs no database and identity still lives in
+configuration. Verifying a signature uses TELEGRAM_BOT_TOKEN as an HMAC key and
+never calls Telegram&amp;#39;s API, so this does not become a second consumer of that
+token in the sense capybara-bot&amp;#39;s CLAUDE.md warns about.
+
+On the client, the app does not depend on telegram.org&amp;#39;s SDK having loaded — it
+is an offline-first PWA and a third-party script is exactly what won&amp;#39;t be there
+on a bad connection. Telegram also passes initData in the launch URL fragment,
+which needs nothing external to read, so auth.js prefers the SDK and falls back
+to the fragment, persisting it in sessionStorage to survive navigation between
+pages. That fallback is not theoretical: the browser check below ran with the
+SDK blocked, and the app authenticated anyway.
+
+Verified in Chromium against the demo server: the ordinary PWA path still loads
+its decks and still sends Bearer; a Mini App launch sends `tma` carrying the
+right account; the credential survives navigating to another page; a fresh tab
+with neither is correctly unauthenticated; and with both present Telegram wins.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0027f53a44b2609b25174eefe5e775cc37da65b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/0027f53a44b2609b25174eefe5e775cc37da65b2"/>
+    <title>
+        Merge pull request #15 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-17T07:41:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #15 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Enable row level security on the anki_* tables&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83a1047e6ae0e4c13747edde5cb992d4d4cb8090</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/83a1047e6ae0e4c13747edde5cb992d4d4cb8090"/>
+    <title>
+        Enable row level security on the anki_* tables
+    </title>
+    <updated>2026-09-17T07:39:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Enable row level security on the anki_* tables
+
+These were created without RLS, so the project&amp;#39;s anon key — public by design,
+safe to ship in a browser bundle, printed in the dashboard — could read and
+write every row. Verified against the live project before the fix: an anonymous
+PostgREST request returned all 1037 notes, 3804 reviews, 1278 card states and
+both scheduler_config rows, and writes were open too (that path is how the
+original Anki import was bulk-loaded). That is the whole vocabulary corpus plus
+a timestamped record of when two specific people study.
+
+No policies, deliberately, and not a stub to fill in later. Every legitimate
+reader and writer is an edge function built with SUPABASE_SERVICE_ROLE_KEY,
+which carries BYPASSRLS — checked all three before applying, not assumed. The
+browser never talks to PostgREST; web/ builds every request against
+/functions/v1 and holds no Supabase key. And D13 auth is a device bearer token
+resolved in src/auth.ts against function secrets, so it never becomes a JWT the
+database sees: auth.uid() is null for anything that could reach these tables,
+and a policy written against it would read as security while denying everyone.
+
+Verified after applying: anon reads return [], anon writes fail 42501, and
+/sync/decks, /sync/due and /sync/stats all still answer with unchanged data.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/974796b14f04abc88b38b6cdee4c55962d99a420</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/974796b14f04abc88b38b6cdee4c55962d99a420"/>
+    <title>
+        Merge pull request #14 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-17T07:30:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #14 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Report the all-time lapse count on the stats screen&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2d9f1dc0112c664ba738a69b4f0ce021b240d50d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/2d9f1dc0112c664ba738a69b4f0ce021b240d50d"/>
+    <title>
+        Report the all-time lapse count on the stats screen
+    </title>
+    <updated>2026-09-17T07:25:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Report the all-time lapse count on the stats screen
+
+successRate can&amp;#39;t answer the question it looks like it answers. 98.5% reads as
+excellent whether it comes from 56 failures or 5, and it is the count, not the
+rate, that decides whether the FSRS weights can be personalised: fitting the
+model needs examples of forgetting.
+
+This is the number to watch before trying to optimise again. Running the real
+FSRS-5 optimiser against this collection at 56 lapses out of 3789 reviews
+produced weights that beat the defaults on held-out log loss (0.0836 -&amp;gt; 0.0331)
+and scheduled a card 23 years out after five Good answers — a history with
+almost no failures teaches FSRS that nothing is ever forgotten, and log loss
+rewards it for believing that.
+
+Counts every Again, deliberately unlike Anki&amp;#39;s per-card lapses counter, which
+ignores a card failed during its learning steps. Every Again is what the
+optimiser trains on.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8839a20c0670ca00f4f9a8de1f8239ac4e96d739</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/8839a20c0670ca00f4f9a8de1f8239ac4e96d739"/>
+    <title>
+        Merge pull request #13 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-17T06:18:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #13 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Roll the study day over at a local hour, not midnight UTC&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8fc07fe783bc2df956f3cbc4d97a614de07d82a6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/8fc07fe783bc2df956f3cbc4d97a614de07d82a6"/>
+    <title>
+        Roll the study day over at a local hour, not midnight UTC
+    </title>
+    <updated>2026-09-17T06:05:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Roll the study day over at a local hour, not midnight UTC
+
+Everything that counts &amp;quot;today&amp;quot; — the daily new/review limits, the stats
+histogram, the streak — bucketed by midnight UTC. Anki doesn&amp;#39;t: the day rolls
+over at a configurable local hour, 4am by default, and the current day doesn&amp;#39;t
+count before it (rslib/src/scheduler/timing.rs). The visible symptom was a
+streak reading 0 against a review history AnkiDroid still counted, because at
+8pm Eastern it is already tomorrow in UTC and an evening&amp;#39;s reviews were being
+credited to a day that had not started.
+
+The boundary is expressed as a day key (YYYY-MM-DD), not an instant. Deciding
+which day a review falls in only ever needs the key, and keys sidestep the one
+genuinely hard part — converting a local wall-clock time back to UTC across a
+DST seam. Nothing here ever does that.
+
+time_zone is an IANA name rather than a stored offset because Eastern is UTC-4
+in July and UTC-5 in December; an offset would be right for half the year. Both
+columns are per-user, on the config row that is already per-user, because the
+two people this serves are not reliably in the same country.
+
+Additive throughout: the columns are nullable, the application falls back to
+(UTC, 4am) when they are unset or absent, so the new code is safe to run against
+a database that has not had the migration applied yet.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aeafc5a9ed721d6c459cd95828786106a3dcabc2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/aeafc5a9ed721d6c459cd95828786106a3dcabc2"/>
+    <title>
+        Merge pull request #12 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-17T00:03:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #12 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Lock supabase-js&amp;#39;s transitive modules&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/27bec1ed0841dd5053875556a257d270f9cb1869</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/27bec1ed0841dd5053875556a257d270f9cb1869"/>
+    <title>
+        Lock supabase-js&#39;s transitive modules
+    </title>
+    <updated>2026-09-16T23:50:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Lock supabase-js&amp;#39;s transitive modules
+
+Type-checking the edge functions resolves supabase-js&amp;#39;s own dependency tree,
+which deno.lock only covered at the top level: the entry for
+@supabase/supabase-js@2.108.1 was pinned but its auth-js/functions-js/
+postgrest-js/realtime-js/storage-js submodules, and the phoenix, iceberg-js and
+tslib packages under them, were not. Running `deno check` over
+supabase/functions/*/index.ts records them, so CI would produce this same diff
+on its next run.
+
+No version moves — same 2.108.1 — this only adds integrity hashes for what was
+already being fetched, plus the two redirects esm.sh resolves for phoenix&amp;#39;s and
+iceberg-js&amp;#39;s caret ranges.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2431705b4596636b3de34a1ac70d88c756fdfd3d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/2431705b4596636b3de34a1ac70d88c756fdfd3d"/>
+    <title>
+        Merge pull request #11 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-16T23:40:11Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #11 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Import three of Anki&amp;#39;s real scheduling behaviours&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/34be6b31950725d9981b2388eeff65c6abd76300</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/34be6b31950725d9981b2388eeff65c6abd76300"/>
+    <title>
+        Import three of Anki&#39;s real scheduling behaviours
+    </title>
+    <updated>2026-09-16T23:35:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Import three of Anki&amp;#39;s real scheduling behaviours
+
+Read against ankitects/anki&amp;#39;s own source rather than from memory, and limited
+to the three that a reviewer actually feels on this collection.
+
+Interval fuzz. Every card graduating on the same rating was getting the exact
+same interval, so a session&amp;#39;s worth of cards came back as one lump: measured,
+40 new cards learned in one sitting all landed on a single day. ts-fsrs already
+implements Anki&amp;#39;s fuzz ranges exactly (checked value-by-value against
+rslib/src/scheduler/states/fuzz.rs) — it was just switched off, on the grounds
+that randomness would break the &amp;quot;card_state is a fold over reviews&amp;quot; property in
+DESIGN.md 4.3. That turns out not to apply: Anki&amp;#39;s fuzz is a seeded draw, not a
+random one. Seeding it the way Anki does, on (card, reps), keeps replay
+bit-identical and additionally makes the interval printed on a rating button the
+interval the answer actually schedules — ts-fsrs&amp;#39; default seed mixes in the
+review timestamp, so the seconds spent deciding would otherwise change it.
+
+New cards mixed into reviews, Anki&amp;#39;s default new_mix. They were appended after
+every review, which with a real backlog means a new word is only reached on a
+day the whole review queue gets cleared. Intersperser is ported from
+rslib/src/scheduler/queue/builder/intersperser.rs rather than approximated,
+since the even spacing at the edges is the point.
+
+Learn-ahead, Anki&amp;#39;s learn_ahead_secs (1200). A card due in two minutes no longer
+reports nothing left to study; it is offered after the rest of the queue, never
+ahead of it. Two existing tests asserted the old behaviour here and now assert
+the distinction between a card minutes away and one days away.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea4b9e8e819fbe95919ec6bc160f051ab43178dd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/ea4b9e8e819fbe95919ec6bc160f051ab43178dd"/>
+    <title>
+        Merge pull request #10 from anonymouspartner/claude/free-anki-copy-bs…
+    </title>
+    <updated>2026-09-16T22:50:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/178240459?s=30&amp;v=4"/>
+    <author>
+      <name>anonymouspartner</name>
+      <uri>https://github.com/anonymouspartner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge pull request #10 from anonymouspartner/claude/free-anki-copy-bs5vbc
+
+Implement D17/D18 in the migration CLI (deck, spelling cards, pronunciation)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/52a785af34f4ec554c86f1d98a15c5cfdbeaec3f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/52a785af34f4ec554c86f1d98a15c5cfdbeaec3f"/>
+    <title>
+        Page through anki_reviews/anki_notes past PostgREST&#39;s 1000-row cap
+    </title>
+    <updated>2026-09-16T22:32:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Page through anki_reviews/anki_notes past PostgREST&amp;#39;s 1000-row cap
+
+getReviewsSince, getDailyCounts, getDueCandidates and getCardStateCounts
+all did one unbounded select each. PostgREST caps an unbounded select at
+its own server-side max-rows (1000 on this project) regardless of ORDER
+BY -- so a select ordered ascending silently returns the OLDEST rows,
+not the most recent, once a user&amp;#39;s history crosses that cap.
+
+Found live migrating a real ~3,800-review collection (2026-09-16):
+/sync/stats reported totalReviews: 1000 against an account with 3789
+real reviews, and getDailyCounts&amp;#39; &amp;quot;how many has this user already
+studied today&amp;quot; count was silently blind to everything after row 1000 --
+exactly the rows most likely to be today&amp;#39;s.
+
+Fixed by paging all four methods through PAGE_SIZE-sized .range() calls
+until a page comes back short. getDueCandidates/getCardStateCounts were
+still under the cap for this account (838 notes) but close enough,
+against an account whose note count only grows (bot dual-write, scan),
+that leaving them unbounded was just deferring the same bug.
+
+Verified live: /sync/stats now reports totalReviews: 3789 (matching
+`select count(*) from anki_reviews where user_id = ...` exactly) and a
+correct successRate; /sync/decks&amp;#39; Grammar (6/0/7) and Pronunciation
+(40/4/34) counts match the real AnkiDroid app&amp;#39;s own numbers for the
+same account. deno check and all 93 tests pass.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75b9e0440dcea7f5ad6bd5d98c82f2e83a98881b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/75b9e0440dcea7f5ad6bd5d98c82f2e83a98881b"/>
+    <title>
+        Capture card_state.last_review in the migration output
+    </title>
+    <updated>2026-09-16T15:57:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Capture card_state.last_review in the migration output
+
+card_state.due/state alone are enough to place a migrated card correctly
+in the due queue, but src/review/mutations.ts&amp;#39;s toFsrsCardState treats a
+card with no last_review as brand new -- discarding every bit of migrated
+stability/difficulty on that card&amp;#39;s very next real review, silently. The
+live schema&amp;#39;s own comment on this column already says as much (&amp;quot;Required
+to correctly resume FSRS scheduling, not optional bookkeeping&amp;quot;); the
+migration output just didn&amp;#39;t carry it.
+
+Derived from the same card&amp;#39;s own revlog already in scope during
+card_state construction (the latest reviewed_at), not guessed at -- and
+warns instead of silently leaving it null if a non-new card somehow has
+no revlog at all (which shouldn&amp;#39;t be possible: a card can only be
+non-new in Anki because it was reviewed).
+
+Verified against the real export: 1332/1332 non-new card_states now
+carry a real last_review, zero &amp;quot;no revlog rows found&amp;quot; warnings. 59
+tests (7 new), all against synthetic fixtures.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f07562ac77e9ecd374d737825ddf8143d2d43be</id>
+    <link type="text/html" rel="alternate" href="https://github.com/anonymouspartner/capybara-anki/commit/0f07562ac77e9ecd374d737825ddf8143d2d43be"/>
+    <title>
+        Implement D17/D18 in the migration CLI: deck, spelling cards, pronunc…
+    </title>
+    <updated>2026-09-16T15:54:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Implement D17/D18 in the migration CLI: deck, spelling cards, pronunciation
+
+migration/&amp;#39;s Python CLI has read a real AnkiDroid export cleanly since the
+migration spike, but only ever recognized plain vocab notes as a single
+undifferentiated pile — no deck, always kind=&amp;#39;vocab&amp;#39;/has_spelling=false,
+and it silently discarded the real second card of every Capybara+ note
+(warned &amp;quot;expected 1 card&amp;quot;, then just picked one and moved on) and skipped
+every Capybara Pronunciation (shadowing) note outright. Both gaps were
+already named and tracked (docs/DESIGN.md, README&amp;#39;s own status table).
+
+Deck and card_kind now come from where a note&amp;#39;s card(s) actually live,
+found empirically against a real export: a plain Capybara note has one
+card, filed directly in its home deck (Ukrainian/English/Grammar); a
+Capybara+ note has two, one in that home deck and a second filed in
+Spelling — whichever card ISN&amp;#39;T in Spelling is the note&amp;#39;s home deck, and
+that&amp;#39;s also how a card is told apart as &amp;#39;recall&amp;#39; vs &amp;#39;spelling&amp;#39; (deck
+placement, not template order). Pronunciation notes get their own
+transform (TargetText-&amp;gt;lemma, Translation-&amp;gt;lemma_translation, Hint-&amp;gt;gloss,
+deck fixed to &amp;quot;Pronunciation&amp;quot;), including the real, malformed case this
+export actually has: 13 notes with an empty Language field and a garbled
+TargetText (a CSV dump pasted into the wrong field) — skipped, not
+guessed at, same principle as everywhere else in this package.
+
+Verified against the real export (2026-09-16): 1285 notes recognized (13
+skipped, all the malformed pronunciation ones), 1529 card_states (1285
+recall + 244 spelling, matching the 244 real Capybara+ notes exactly),
+decks Ukrainian 767 / English 266 / Grammar 61 / Pronunciation 191, zero
+notes with a card_kind set that disagrees with has_spelling. 52 tests
+(15 new), all against synthetic fixtures.
+
+Still not done, deliberately, per this package&amp;#39;s own invariant
+(__init__.py): it does not write to Postgres and it never will — that&amp;#39;s
+a separate, later step.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_014UbPTTY8nipgewSYte9kjv&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

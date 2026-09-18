@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/bigfe-efe/dilhane/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/bigfe-efe/dilhane/commits/main.atom"/>
+  <title>Recent Commits to dilhane:main</title>
+  <updated>2026-09-17T22:33:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/746e76f999704a2f81b8472a374857586b396b52</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/746e76f999704a2f81b8472a374857586b396b52"/>
+    <title>
+        Kanji kartlarina ornek cumle ve kanji testi
+    </title>
+    <updated>2026-09-17T22:33:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Kanji kartlarina ornek cumle ve kanji testi
+
+Istek: kanjiyi ezberlerken basit cumlelerde gormek, o cumledeki
+kelimelerin dilbilgisini de ogrenmek, ve cumlede bosluk doldurma testi
+(hem yazarak hem sikli). N5 disina cikmadan.
+
+Cumleler (kanji-sentences.ts): 106 kanjinin her birine bir cumle.
+- Mevcut icerik (dilbilgisi ve kelime ornekleri) 106 kanjinin yalnizca
+  44&amp;#39;unu N5 sinirinda kaliyordu; sayilar, aile ve vucut kanjilerinin cogu
+  aciktaydi. Bu yuzden elle yazildi.
+- Cumleler KELIME DIZISI olarak yaziliyor; cumle metni ve kana okunusu o
+  kelimelerden URETILIYOR. Ikisi ayri yazilsaydi zamanla birbirinden ayri
+  duserdi: bir kelime degisince okunusu guncellemeyi unutmak yeterli.
+- Her kelimede yazilis, okunus, Turkce, tur ve dilbilgisi notu var. Edat
+  ve ekler tek tablodan geliyor, yani は&amp;#39;nin aciklamasi her yerde ayni.
+- Cumlelerde yalnizca N5 kanjisi gecer.
+
+Kanji testi (/kanji-testi): cumleden kanji cikarilir, ogrenci tamamlar.
+- Sikli ve yazarak kipleri, karisik secenegi.
+- Yazarak kipinde Japonca klavye gerekmiyor: kanjinin kendisi, kelimenin
+  kanasi ya da romajisi kabul ediliyor.
+- Celdiriciler AYNI TEMADAN: &amp;quot;Sayilar&amp;quot; sorusunda siklar da sayi, yoksa
+  anlamdan eleyip kanjiyi bilmeden dogru bulunuyordu.
+- Kanji cumlede birden cok geciyorsa hepsi bosluga cevriliyor; yoksa
+  cevap cumlenin icinde gorunuyordu.
+- Yanlis cevapta kanji, anlami, cumlenin tamami ve o kelimenin cozumlemesi
+  gosteriliyor.
+
+Cevap denetimi lib/answer.ts&amp;#39;e tasindi; dikte alistirmasi ve kanji testi
+artik ayni mantigi kullaniyor (iki kopya zamanla ayri duserdi).
+
+BULUNAN HATA: edat tablosunda は&amp;#39;nin okunusu &amp;#39;わ&amp;#39; yazilmisti ve kana
+satiri 「わたしわいちねんせいです」 cikiyordu -- okunus dogru ama YAZIM
+yanlis, ustelik ogretilen kuralin tam tersi. r alani artik yazilisi
+tutuyor, okunus bilgisi notta. へ&amp;#39;de de ayni duzeltme.
+
+Dogrulama:
+- 106 cumle; eksik kanji yok, her cumle kendi kanjisini iceriyor, N5 disi
+  kanji sizintisi yok, tekrar eden kanji yok, kana satirinda kanji yok,
+  edat/eklerin hepsinde not var.
+- Kartta cumle bolumu, kana, kalip ve 4 kelimelik cozumleme goruntulendi.
+- Test sikli kipte: bosluklu cumle, 4 sik, dogru sik isaretlendi, geri
+  bildirimde kelime cozumlemesi cikti. Yazarak kipte kelimenin kanasi
+  kabul edildi.
+- Ortak modul regresyonu: arigatougozaimasu kabul, arigatogozaimasu ret,
+  SUMIMASEN kabul; kanji/kana/romaji kabul, yanlis cevap ret.
+- Ders oynaticisi alistirmasi hala calisiyor. Typecheck temiz, temiz
+  sekmede konsol hatasiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d3af9094274d6d45582993d07dab780154a8c1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/7d3af9094274d6d45582993d07dab780154a8c1f"/>
+    <title>
+        Calis sayfasi sadelestirildi
+    </title>
+    <updated>2026-09-16T21:29:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Calis sayfasi sadelestirildi
+
+Kullanici sayfayi fazla karisik buldu ve dort araci kullanmadigini
+soyledi: Gun sonu, Hece sayma, Yazi calismasi, Dinleme ve video.
+
+Calis sayfasi:
+- Dort arac kaldirildi. Sayfalari yerinde duruyor, yalnizca baglantilari
+  yok; geri istenirse tek satirla doner.
+- Ustteki &amp;quot;onerilenler&amp;quot; izgarasi kaldirildi. Ayni araclari asagida IKINCI
+  KEZ listeliyordu ve asama bilgisi zaten kenar cubugunun altinda yaziyor.
+  Karmasanin asil kaynagi dort arac degil bu tekrardi.
+- Bes grup dorde indi ve kullanima gore dizildi: Kanji, Kelime, Sinav ustte;
+  alfabe bittigi icin &amp;quot;Kana ve yazim kurallari&amp;quot; en altta ve varsayilan
+  KAPALI (10 arac). Acik/kapali tercihi cihazda hatirlaniyor.
+- Istenen sekilde HER basligin altinda aciklama var; once iki grupta yoktu.
+- CSS kolonlari (cols-2) yerine gercek grid: kolonlar dikey doldurdugu icin
+  kartlarin okuma sirasi soldan saga degil yukaridan asagi gidiyordu.
+
+Gunluk plan (Bugun sayfasi):
+- &amp;quot;Yazi calismasi&amp;quot; her gun 10 dakikalik ATLANAMAZ gorevdi ve kullanilmayan
+  bir sayfaya gidiyordu; kaldirildi. Genki asamasinda yerine kanjinin
+  fiilen calisildigi yer geldi: Kanji kartlari.
+- &amp;quot;Dinleme (video)&amp;quot; ek gorevi kaldirildi. Dinleme sinavda ayri barajli
+  bolum oldugu icin not olarak birakildi: yerine uygulama ici dinleme
+  alistirmasi gelmeli.
+
+Dogrulama:
+- Dort grup, her birinin aciklamasi ve kartlari dogru; kaldirilan dort
+  arac sayfada hic gecmiyor; oneri izgarasi yok.
+- 1600px&amp;#39;te 4 sutun, yatay tasma yok. (Gizli panelde genislik 0 olcuyordu,
+  gorunum 1600x900&amp;#39;e ayarlanip yeniden olculdu.)
+- Kana grubu kapali acilir; acilinca 10 kart, yenilemeden sonra acik kalir,
+  kapatinca kayit bosalir.
+- Plan: alfabe ve katakana asamasinda yazi/video gorevi yok; Genki
+  asamasinda tekrar, dilbilgisi, kelime tekrari ve Kanji kartlari (10 dk).
+- Typecheck temiz, konsol hatasiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a4d551d8fc54763108875101d59a044ed5d4fccd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/a4d551d8fc54763108875101d59a044ed5d4fccd"/>
+    <title>
+        N5 kanji kartlari ve dongulu cizgi animasyonu
+    </title>
+    <updated>2026-09-15T22:24:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;N5 kanji kartlari ve dongulu cizgi animasyonu
+
+Iki istek: kanjilerin nasil cizildigini gif gibi gostermek, ve yalnizca N5
+kanjilerinden olusan, buyuk puntolu ogrenme kartlari.
+
+StrokeOrder:
+- autoPlay + loop: karakter ekrana girince cizer, bitince 1.5 sn bekleyip
+  bastan cizer. Gorunurluge bagli; kart listesinde yalnizca ekrandaki oynar.
+- &amp;quot;Dur&amp;quot; donguyu kalici durdurur, &amp;quot;Cizimi izle&amp;quot; geri acar.
+- prefers-reduced-motion BILEREK dikkate alinmiyor. Kullanicinin
+  Windows&amp;#39;unda animasyon efektleri kapali (ClientAreaAnimation = False),
+  Chrome bunu reduce olarak bildiriyor; ilk surumde cizim o makinede hic
+  donmeyecekti. Burada animasyon sus degil, ogrenilen seyin kendisi.
+
+Kanji sayfasi:
+- Detay penceresinde cizim en uste tasindi ve kendiliginden donuyor; once
+  pencerenin en dibindeydi ve dugmeye basmadan oynamiyordu.
+- Geri hedefi &amp;quot;/ja&amp;quot; idi (cok dilli surumden kalma olu yol), &amp;quot;/calis&amp;quot; oldu.
+
+Yeni sayfa /kanji-kartlar — ogrencinin kullandigi sablonla:
+anlam, onyomi + Latin, kunyomi + Latin, cizgi, ornekler, varsa not.
+
+Ornek secimi (kanji-cards.ts, ileride bu kartlara ozel sinav icin ayri):
+- Yalnizca BUTUN kanjileri N5 olan kelimeler. 背が高い, 富士山, 自転車
+  gibi N5 disi kanji iceren ornekler eleniyor.
+- Elle degil, havuzdan turetiliyor; boylece 一&amp;#39;in kartina 年&amp;#39;in ornegi
+  olan 一年 da geliyor.
+- Capraz ornekler, birlesen kanjinin ogrenme sirasina gore diziliyor ve
+  her ornek YENI bir es kanji getirmeli. Once 一月 varken 一か月 de
+  geliyor, ayni esi tekrarliyordu.
+- Notlar yalnizca gercekten not gerektiren 54 kanjide: duzensiz okunus
+  (今日, 一人, 大人), ses degisimi (三百, 六分), karisiklik (早い/速い,
+  父/お父さん).
+
+Dogrulama:
+- 106 kart, 一 = 1 numara, orneksiz kart 0, N5 disi kanji sizintisi 0.
+- 一: 一つ, 一人, 一月, 一万, 一年 — kullanicinin sablonuyla ayni.
+- Dongu sahte gozlemci/kareyle sinandi (onizleme paneli boyamadigi icin
+  gercek rAF/IO tetiklenmiyor): cizer, bekler, yeniden cizer, uc tur;
+  &amp;quot;Dur&amp;quot; sonrasi 3 sn boyunca yeniden baslamiyor.
+- Temiz sekmede konsol hatasiz, yatay tasma yok.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c5583a5ebe4218416937bc85798f56d88b35eb5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/c5583a5ebe4218416937bc85798f56d88b35eb5f"/>
+    <title>
+        Derse kanji hatirlaticisi
+    </title>
+    <updated>2026-09-08T22:49:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Derse kanji hatirlaticisi
+
+Dersler kanjiyi KULLANIYOR ama aciklamiyor: ogrenci 私は学生です satirini
+gorup 私 ve 学生&amp;#39;i sokemeden takiliyor, aciklama ise kanjinin ne oldugunu
+hic soylemiyordu.
+
+Ilerleme cubugunun altina acilir bir serit eklendi. Kapaliyken tek satir
+(49px) ve yalnizca karakterleri gosteriyor; acilinca her kanji icin
+Turkce anlam, on/kun okunuslari, cizgi sayisi ve bir ornek kelime.
+Kanjiyi tek basina gostermek hatirlatma degil -- anlam kelimeyle geliyor.
+
+Liste ELLE YAZILMIYOR, dersin metninden turetiliyor. Elle yazilsaydi
+icerik degistikce liste ile metin birbirinden ayri duserdi: bir ornege
+yeni kanji eklenince listeye eklemeyi unutmak yeterli. Ders govdesi
+JSON&amp;#39;a cevrilip taraniyor, boylece alistirma siklari ve aciklamalar dahil
+her yer kapsaniyor; kimlikle bagli kelime ve dilbilgisi kayitlari ayrica
+cozuluyor cunku derste yalnizca id olarak duruyorlar.
+
+N5 tablosunda olmayan kanji atlaniyor -- okunusu ve anlami elimizde
+olmadigi icin karakteri tek basina gostermek kafa karistirirdi.
+
+Dogrulama: ja-g1&amp;#39;de 36, ja-g5&amp;#39;te 44, ja-g0&amp;#39;da 2 kanji bulundu; anlam,
+on/kun, cizgi ve ornek kelime dogru geliyor. Kapali halde yatay tasma
+yok, icerigi asagi itmiyor. Temiz sekmede konsol hatasiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9035ff5b66b40285de68d6cdce11318448029c10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/9035ff5b66b40285de68d6cdce11318448029c10"/>
+    <title>
+        Diktede yakin cevabin farkini goster
+    </title>
+    <updated>2026-09-08T22:31:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Diktede yakin cevabin farkini goster
+
+&amp;quot;arigatogozaimasu&amp;quot; yazan ogrenci ありがとうございます&amp;#39;i gorup &amp;quot;ben de bunu
+yazdim, farkli yazdim diye elendim&amp;quot; sonucuna variyordu. Oysa tek bir う
+dusmustu. Yanlis cevapta sadece dogrusunu gostermek, farki bulmayi
+ogrenciye birakiyor -- Japoncada bir mora dusmesi kelimeyi bozar, yani
+tam da gorulmesi gereken hata.
+
+Artik geri bildirim ogrencinin yazdigini KANA olarak gosteriyor ve dogru
+cevapta eksik kalan karakterleri vurguluyor.
+
+Fark en uzun ortak alt dizi (LCS) ile bulunuyor; karakter karakter
+karsilastirmak bir harf kayinca sonrasinin tamamini yanlis gosterirdi.
+
+Kutu yalnizca YAKIN cevaplarda cikiyor: eksik karakter sayisi cevabin
+yarisini asarsa gosterilmiyor -- Turkce anlami yazan biri icin karakter
+karsilastirmasi gurultuden baska bir sey vermiyor.
+
+Dogrulama: tarayicida gercek alistirmayla.
+  arigatogozaimasu -&amp;gt; &amp;quot;Bir karakter eksik&amp;quot;, う vurgulanmis
+  tesekkur ederim  -&amp;gt; kutu hic cikmiyor
+Ayrica eslestirmenin kendisi dogrulandi: arigatougozaimasu, bosluklu ve
+buyuk harfli yazimlar kabul ediliyor; yalnizca eksik moralı olan reddediliyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/59616fc1b50e81c356c83e8f2a517f552302a542</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/59616fc1b50e81c356c83e8f2a517f552302a542"/>
+    <title>
+        N5 sinav hazirlik panosu
+    </title>
+    <updated>2026-09-07T07:54:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;N5 sinav hazirlik panosu
+
+Sinav 6 Aralik 2026, basvuru yapildi. N5 sayfasi bir tanitim sayfasiydi;
+artik sinav adayinin panosu.
+
+BULUNAN HATA: sayfadaki dort baglantidan UCU oluydu. Cok dilli surumden
+kalma /lessons/ja, /grammar/ja, /listen/ja yollari App&amp;#39;te yok --
+/lessons/ja ve /listen/ja ana sayfaya atiyor, /grammar/ja ise
+/grammar/:id ile eslesip var olmayan bir konu sayfasi aciyordu. TopBar&amp;#39;in
+back=&amp;quot;/ja&amp;quot; hedefi de olu. Ustelik en sinav-ilgili arac olan deneme sinavi
+(/n5-deneme) hic bagli degildi.
+
+Eklenenler:
+- Geri sayim ve FAZ PLANI. Fazlar takvimden degil kalan gunden turetiliyor
+  (bir gun aksatinca plan bozulmasin): 22+ gun Ogrenme, 21-8 Pekistirme,
+  7-0 Son duzluk. Esik keyfi degil -- son uc haftada ogrenilen yeni konu
+  sinav gunune kadar oturmuyor ve tekrari da aksatiyor, o yuzden o donemde
+  &amp;quot;yeni konu yok&amp;quot; acikca yaziyor.
+- Haftalik ders temposu: kalan ders / (kalan gun - 21).
+- Puanlama blogu. Sinav UC bolum uygulanip IKI blok puanlaniyor; her
+  blogun kendi asgarisi var (120&amp;#39;de 38, 60&amp;#39;ta 19, toplam 180&amp;#39;de 80).
+  Dinlemenin baraj oldugu acikca yaziyor.
+- Sinav tarihi bu sayfadan da girilebiliyor; aday once buraya geliyor.
+- Deneme sinavi en uste, son sonucla birlikte.
+
+Genki duzeni degistirilmedi: Genki I kabaca N5&amp;#39;i kapsiyor, sira zaten
+dogru. Eksik olan sira degil, sinava ozgu iskeleydi.
+
+Dogrulama: yedi baglantinin hepsi gezildi, hicbiri artik olu degil.
+Faz esikleri 90/30/22/21/8/7/0/-1 gunle sinandi. Kendi testim bir hesap
+hatasi yakaladi: &amp;quot;bu donem kac gun surüyor&amp;quot; 13 gun fazla cikiyordu
+(sonraki fazin fromDay&amp;#39;i esik sanilmisti), duzeltildi -- 90 gun kala
+Ogrenme donemi 69 gun. Konsolda hata yok.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e6a392ae388f34af98269304cfb53a155d6020d6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/e6a392ae388f34af98269304cfb53a155d6020d6"/>
+    <title>
+        Cevap eslestirme: Turkce buyuk harf ve romaji kabulu
+    </title>
+    <updated>2026-09-04T23:05:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Cevap eslestirme: Turkce buyuk harf ve romaji kabulu
+
+Iki ayri hata vardi, ikisi de dogru cevabi yanlis saydiriyordu.
+
+1) TURKCE I. JavaScript&amp;#39;in duz toLowerCase()&amp;#39;i &amp;quot;İ&amp;quot;yi &amp;quot;i&amp;quot; + BIRLESEN NOKTA
+   (U+0307) yapiyor -- goze ayni gorunen, farkli bir dizgi. Cevabi
+   &amp;quot;İyi aksamlar&amp;quot; olan bir alistirmada &amp;quot;iyi aksamlar&amp;quot; yazmak YANLIS
+   sayiliyordu. İ ile baslayan her cevap (İyi, İlk, İki, İngilizce)
+   tutturulamazdi. Karsilastirma artik Turkce kuralla kucultuyor ve
+   noktali/noktasiz i ayrimini tamamen kaldiriyor.
+
+2) ROMAJI KABUL EDILMIYORDU. Kodun kendi yorumu &amp;quot;romaji yazim da kabul
+   edilir&amp;quot; diyordu ama kod yalnizca kana karsilastiriyordu. Japonca
+   klavyesi olmayan biri icin dikte alistirmalari cozulemezdi:
+   すみません&amp;#39;e &amp;quot;sumimasen&amp;quot; yazmak yanlis sayiliyordu. Artik iki yonlu
+   deneniyor -- girdi kanaya cevrilerek ve cevap romajiye cevrilerek
+   (ekler duzeltilerek: わたしは &amp;quot;watashi wa&amp;quot;).
+
+Arayuz tarafi: dikte alistirmasinda ne yazilacagi artik yaziyor (&amp;quot;kana ya
+da romaji, Turkce anlami degil&amp;quot;) ve geri bildirim satirlari ETIKETLENDI.
+Etiketsizken Japonca metnin altindaki ceviri de beklenen cevap saniliyor,
+ogrenci Turkceyi yazip yanlis alinca hatayi buyuk/kucuk harfte ariyordu --
+bu bildirimin cikis noktasi tam olarak buydu.
+
+Dogrulama: 20 durumluk tablo -- capslock, Turkce İ, romaji, katakana
+girdi ve YANLIS cevaplarin hala yanlis kaldigi. Hepsi gecti. Tarayicida
+gercek dikte alistirmasi: &amp;quot;SUMIMASEN&amp;quot; dogru sayiliyor, &amp;quot;affedersiniz&amp;quot;
+hala yanlis ve kart artik &amp;quot;Dogrusu すみません / anlami: Affedersiniz&amp;quot;
+diyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b6ad95e070eea7485ca39087c81dd9b6bb6400a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/6b6ad95e070eea7485ca39087c81dd9b6bb6400a"/>
+    <title>
+        Dakuten: ji/zu ikili yaziminda HANGISINI sorusu cevaplaniyor
+    </title>
+    <updated>2026-09-04T22:49:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Dakuten: ji/zu ikili yaziminda HANGISINI sorusu cevaplaniyor
+
+Kart &amp;quot;ぢ/づ nadirdir&amp;quot; diyordu ama NE ZAMAN kullanildigini soylemiyordu.
+Ogrenciye kalan his &amp;quot;demek ki ezber&amp;quot; oluyor ve her ji&amp;#39;de duraksiyor --
+tam olarak bu soru soruldu.
+
+Eklenen: ikisi arasinda SES FARKI OLMADIGI (四つ仮名), varsayilanin her
+zaman じ/ず oldugu ve ぢ/づ&amp;#39;nun yalnizca iki durumda ciktigi -- birlesik
+kelimede tonlanma (はなぢ, みかづき) ve hece tekrari (ちぢむ, つづく).
+Kural resmidir: 現代仮名遣い, 1986. Klavye notu da eklendi, cunku &amp;quot;ji&amp;quot;
+tuslarinin じ vermesi varsayilanin hangisi oldugunu dogruluyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3f98c8dd029f770d131e12f1c77290380fb6daa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/f3f98c8dd029f770d131e12f1c77290380fb6daa"/>
+    <title>
+        Romaji: ek okunuslari duzeltildi ve isaretlendi
+    </title>
+    <updated>2026-09-04T22:46:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Romaji: ek okunuslari duzeltildi ve isaretlendi
+
+こんばんは &amp;quot;konbanha&amp;quot; gosteriliyordu; dogrusu &amp;quot;konbanwa&amp;quot; -- sondaki は
+konu ekidir (今晩は). Uygulama SEKIZ ayri yerde ham wanakana toRomaji
+cagiriyordu ve hepsi ayni yanlisi gosteriyordu.
+
+Duzeltmeyi sessizce yapmak da yanlis olurdu: kurali bilmeyen biri
+&amp;quot;こんばんは&amp;#39;nin sonu zaten wa okunur&amp;quot; sanip は→wa kuralini hic ogrenmez.
+Bu yuzden ne degistigi yaziliyor:  konbanwa (は→wa)
+
+- ja-phonetic&amp;#39;e romajiOf(): ekleri duzeltir VE neyi degistirdigini bildirir
+- ui&amp;#39;ye RomajiText bileseni; sekiz gosterim yeri buna cevrildi
+- を her zaman &amp;quot;o&amp;quot; (pratikte yalnizca nesne eki), へ ise は ile ayni
+  elemeden geciyor
+- Hece hece gosteren ekranda (KanaWords) okunus artik duzeltilmis
+  kopyadan uretiliyor; tek basina toRomaji&amp;#39;ye verilen は her zaman &amp;quot;ha&amp;quot;
+  cikiyordu
+
+AYRICA bir TTS hatasi bulundu ve duzeltildi: 「ちちとははとあね」de
+はは&amp;#39;nin ILK yarisi ek sanilip &amp;quot;chichi to WA ha to ane&amp;quot; okunuyordu.
+Mevcut kural yalnizca ikinci yariyi kolluyordu. ははは (haha wa) hala
+dogru calisiyor.
+
+Dogrulama: 514 okunus tarandi, 7 tanesi degisti. Ekranda romaji cikan
+508 kelime okunusunun tamami tek tek kontrol edildi -- yalnizca
+こんにちは ve こんばんは degisti, ikisi de dogru. はは, ごはん, はなす,
+おはよう, へや, へた, たいへん gibi は/へ iceren 30 kelime hic
+dokunulmadan kaldi. Kelime okunuslarinda を hic gecmiyor. Kalan bes
+degisiklik uzun okuma parcalarinda ve TTS&amp;#39;i ilgilendiriyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f2cacdd898489e73a90bf7086bebc3a1a33765a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/6f2cacdd898489e73a90bf7086bebc3a1a33765a"/>
+    <title>
+        N5 kanji canli duvar kagidi
+    </title>
+    <updated>2026-09-03T23:36:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;N5 kanji canli duvar kagidi
+
+106 JLPT N5 kanjisi, numarali cizgi sirasi canlandirmasiyla. Katakana
+surumunun sablonu kopyalanamadi, dort yerde ayrisiyor:
+
+1. Kanjide tek bir okunus YOK. Insan tek basina hito, uc kiside nin,
+   Japonda jin. Karakterin altina buyuk puntoyla tek okunus yazmak yanlis
+   bir sey ogretirdi; on&amp;#39;yomi ve kun&amp;#39;yomi ayri etiketli duruyor, asil yuk
+   de uc ornek kelimede: okunusun degistigini ancak yan yana duran
+   kelimeler gosterebilir.
+2. Kanada karakterin yanindaki cipa hiragana karsiligiydi; kanjide boyle
+   bir dayanak yok, yerine Turkce anlam kondu.
+3. Cizgi sayisi 1-18 arasi degisiyor. Sabit 1800 ms canlandirma 18 cizgili
+   yoo&amp;#39;da cizgi basina 100 ms&amp;#39;ye dusup izlenemez oluyordu; sure artik
+   cizgi sayisina gore olcekleniyor (1500-3400 ms) ve bekleme suresi
+   canlandirma bitmeden dolmuyor. Ayni sebeple numarali daireler kalabalik
+   karakterlerde kuculuyor, yoksa ust uste binip rakamlar okunmuyordu.
+4. Bekleme 9-12 saniye: okunacak sey artti.
+
+Siklik agirligi Japon okul sinifindan geliyor (1. sinif uc kat, 2. sinif
+iki kat) -- uydurma bir siklik listesi yerine hazir ve dogru bir sinyal.
+
+Yazi tipi uygulamayla ayni tercihi izliyor: 教科書体, yani kagida
+yazilanla ekrandaki bicim ayrismiyor.
+
+Wallpaper Engine&amp;#39;e dilhane-kanji olarak kopyalaniyor; katakana surumunun
+UZERINE YAZMIYOR, ikisi kutuphanede yan yana duruyor. Uygulamasiz yol icin
+de launcher eklendi (Kanji duvar kagidi.bat + launch-kanji.ps1).
+
+Dogrulama: tarayicida calistirildi. 106 kanjinin hepsinde tema, anlam, en
+az bir okunus ve en az bir ornek kelime var; cizgi sayisi ile nokta sayisi
+her karakterde esit. 18 cizgili yoo tam cizildi, numaralar okunur.
+Konsolda hata yok. Launcher dry-run ile dogrulandi.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/389f70cfb6c6e6237a6dcdd5ac1dd78de351ca73</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/389f70cfb6c6e6237a6dcdd5ac1dd78de351ca73"/>
+    <title>
+        Baskiya hazir Japonca yazi kagitlari
+    </title>
+    <updated>2026-09-03T23:10:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Baskiya hazir Japonca yazi kagitlari
+
+A4 kare kagit uretici. Ciktilar yazi-kagidi/ klasorunde:
+  1-masu-20mm-artili   9x12,  noktali arti kilavuz (juji rieder)
+  2-masu-15mm-artili   12x17, ayni kilavuz, daha yogun
+  3-masu-10mm          18x26, kelime/cumle icin
+  4-genko-yoshi-400    20x20 = 400 kare, orta bosluk ve ad/tarih basligi
+
+PDF elle uretiliyor (cizilen sey yalnizca duz cizgi, kutuphaneye gerek
+yok) cunku olcunun mutlak olmasi gerekiyor: tarayicidan HTML yazdirmakta
+surucu &amp;quot;sayfaya sigdir&amp;quot; deyip olcegi kaydirabiliyor, kare kagidin tek isi
+ise dogru olcu vermek.
+
+20x20 kare izgara A4&amp;#39;e tam oturmaz (sayfa 1:1.41, izgara 1:1); artan
+dikey bosluk basili genko yoshi&amp;#39;lerdeki gibi ad/tarih bandi olarak
+kullaniliyor.
+
+Dogrulama: pdf.js ile cozuldu, sayfa kutusu tam 210.0 x 297.0 mm; icerik
+akisindaki cizgi koordinatlarindan hucre araligi olculdu (20 / 15 / 10 mm
+ve genko icin 8.95 mm), hepsi tutuyor.
+
+PDF&amp;#39;ler .gitignore&amp;#39;da; ureten betik ile OKU.md surumleniyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aa2b46430715600113d309bd99ea1ec0fe718591</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/aa2b46430715600113d309bd99ea1ec0fe718591"/>
+    <title>
+        Yoon: adlandirma birlestirildi, hece sayilari duzeltildi
+    </title>
+    <updated>2026-09-03T22:25:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Yoon: adlandirma birlestirildi, hece sayilari duzeltildi
+
+Kana tablosunda gruba &amp;quot;Yoon&amp;quot;, kurallar sayfasinda ayni seye &amp;quot;Kucuk
+gayugyo&amp;quot; deniyordu; iki ayri konu sanildi. Kural artik adiyla aniliyor
+ve ikisinin ayni sey oldugu acikca yaziyor.
+
+Iki hece sayisi yanlisti ve uygulamanin KENDI sayacini yalanliyordu:
+  byouin   metinde 3 -&amp;gt; dogrusu 4  (byo-u-i-n)
+  biyouin  metinde 4 -&amp;gt; dogrusu 5  (bi-yo-u-i-n)
+Hece Sayma alistirmasi dogru sayiyordu, yani kural karti ile alistirma
+birbirine ters cevap veriyordu. Kalan bes iddia motorla karsilastirildi,
+hepsi tutuyor.
+
+Ayrica kyou&amp;#39;daki u&amp;#39;nun yoon&amp;#39;a dahil olmadigi acikca belirtildi: yoon iki
+karakterde biter, sonraki u ayri bir hecedir ve uzatma kuralina aittir.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1d527cef599774ab78992838a57cae0c26e0c098</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/1d527cef599774ab78992838a57cae0c26e0c098"/>
+    <title>
+        Japonca yazi tipi: varsayilan 教科書体
+    </title>
+    <updated>2026-09-03T22:17:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Japonca yazi tipi: varsayilan 教科書体
+
+Baski ve el yazisi bazi kanalari farkli cizer: ki ve sa&amp;#39;da alt kanca
+baskida bitisik, el yazisinda ayri; fu baskida tek parca gibi akarken el
+yazisinda dort ayri cizgi. Uygulama Yu Gothic kullaniyordu, yani ogrenci
+kagida yazdiginin karsiligini ekranda hic gormuyordu.
+
+- Varsayilan yigin artik kyokasho (Windows&amp;#39;ta UD Digi Kyokasho, yoksa
+  minco yedegi -- o da ayrik cizen bir gelenek)
+- Ayarlara &amp;quot;Japonca yazi tipi&amp;quot; secimi: Ders kitabi / Baski. Iki bicim yan
+  yana ornekle gosteriliyor, fark anlatilmadan goruluyor
+- Tercih localStorage&amp;#39;da; ilk cizimden once uygulaniyor ki sayfa yanlis
+  yazi tipiyle acilip zıplamasin
+
+Aile adi &amp;quot;UD Digi Kyokasho NP&amp;quot; olarak yaziliyor, &amp;quot;NP-R&amp;quot; olarak degil:
+tek kesim adi verilince tarayici kalin agirligi sentezleyip harfleri
+bulanıklastiriyor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42bdb1f3263cfdaada7b8c3814b6483366afdab3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/42bdb1f3263cfdaada7b8c3814b6483366afdab3"/>
+    <title>
+        Derste adim geri gitme
+    </title>
+    <updated>2026-09-03T21:58:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Derste adim geri gitme
+
+Ders yalnizca ileri akiyordu: yanlislikla Devam&amp;#39;a basan ogrenci anlatimi
+bir daha goremiyor, dersi bastan almaktan baska caresi kalmiyordu.
+
+- Ilerleme cubugunun altina Geri / Bastan denetimleri
+- Ayni soru ikinci kez cevaplandiginda puana girmez (scored kumesi);
+  yoksa geri gidip cevaplamak dogruluk oranini sisiriyordu
+- Yarim kalan ders acilirken ara skor da geri yukleniyor; onceden her
+  acilis sifirdan sayiyor, biten derste &amp;quot;1/1 dogru&amp;quot; gibi gercek soru
+  sayisiyla ilgisiz sonuclar yaziliyordu
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cefffea9be2dfee2d7c4d36c22d3d8b4f4593284</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/cefffea9be2dfee2d7c4d36c22d3d8b4f4593284"/>
+    <title>
+        Bitirme sinavlarina siksiz kip
+    </title>
+    <updated>2026-09-01T21:26:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bitirme sinavlarina siksiz kip
+
+Ayni gerekce: dort sik gorununce bilmedigi harfte bile eleyerek dogruya
+varilabiliyor. Kendi testine eklenen siksiz kip simdi bitirme sinavlarinda da
+var - ama mekanik bir cevrim degil, bolumler bastan kuruldu.
+
+Yeni soru tipi: KbdQ — okunusu (ya da kaynak kelimeyi) gor, kanayi ekran
+klavyesinden yaz. accepts listesi ayni okunuslu esleri kabul ediyor (じ/ぢ
+ikisi de &amp;quot;ji&amp;quot;) ama YALNIZCA ayni alfabeden: シ sorulmusken し yazmak sinavin
+olctugu alfabeyi atlamak olurdu.
+
+Siksiz plan (hiragana 70 / katakana 78 soru):
+  uretim  14  karakteri gor, okunusunu yaz
+  yazim   14  okunusu gor, karakteri klavyeden yaz            [yeni bolum]
+  ayirt   10  karisan ciftler - sikli surumde さ/き yan yana durup farki
+              gosteriyordu, burada karakteri sifirdan uretmen gerekiyor
+  dakuten  8  yarisi okunus, yarisi karakter yazma
+  yoon     6  ayni
+  kelime  12  yarisi okunusu yaz, yarisi kelimeyi bastan sona kanayla kur
+  kural    6  tuzakli kelimelerin okunusu (っ/ー/uzun unlu/ん)
+  kaynak   8  YALNIZCA katakana - kaynak kelimeyi gor, katakanasini yaz:
+              &amp;quot;coffee&amp;quot; -&amp;gt; コーヒー. Sikli surum &amp;quot;bu ne demek&amp;quot; diye soruyordu;
+              siksiz surum yonu tersine ceviriyor ve uzatma cizgisini, kucuk
+              ッ&amp;#39;yi ve genisletilmis kanayi ayni anda gerektiriyor.
+
+Soru sayisi bilerek KARAKTER SAYISINA BAGLANMADI - istenen buydu. Ayni
+karakter hem &amp;quot;okunusunu yaz&amp;quot; hem &amp;quot;klavyeden yaz&amp;quot; yonunden, ustelik karisan
+cift ve dakuten bolumlerinde bir kez daha cikabiliyor. Amac kapsamak degil
+zorlamak.
+
+Bolum aciklamalari da kipe gore degisiyor. &amp;quot;Kaynak kelime: katakana kelimenin
+hangi kelimeden geldigi&amp;quot; aciklamasi siksiz kipte YANLIS oluyordu, cunku orada
+yon tersine donuyor. Ekran ne sordugunu dogru yazmali.
+
+Motor 40 kurulumda denetlendi: siksiz kipte hicbir sikli soru uretilmiyor,
+her kbd sorusunun accepts&amp;#39;i dolu ve dogru cevabi iceriyor, hicbiri oteki
+alfabeden kana kabul etmiyor, klavye alfabesi dogru; hepsi dogru cevaplaninca
+%100 cikiyor. Tarayicida da acilis ekrani ve klavyeli bolumler denendi.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b255e3ef2807b69a74719a20683841b8353ff1c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/b255e3ef2807b69a74719a20683841b8353ff1c2"/>
+    <title>
+        Kendi testin: siksiz mod
+    </title>
+    <updated>2026-09-01T21:12:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Kendi testin: siksiz mod
+
+Gerekce kullanicidan: dort sik gorununce bilmedigi harfte bile eleyerek
+dogruyu bulabiliyor (&amp;quot;bunu tanimiyorum, demek ki degil&amp;quot;) ve sonuc gercek
+bilgisini gostermiyor.
+
+Yeni ayar: Karisik (mevcut, varsayilan) / Siksiz. Siksizde tum sikli ve
+eslestirmeli tipler dusuyor, geriye iki URETIM tipi kaliyor:
+- Yazma:            karakteri gor, okunusunu yaz
+- Yazma (karakter): okunusu gor, karakteri EKRAN KLAVYESINDEN yaz  [yeni]
+
+Ikincisi mcqChar&amp;#39;in siksiz hali. Klavye gojuon duzeninde (mevcut
+KanaKeyboard): karakteri hatirlamak ile tabloda yerini bilmek birbirini
+besliyor. Romaji yazip otomatik cevirmek isi klavyeye yaptirirdi, o yuzden
+yapilmadi.
+
+NEDEN BU AYAR VAR AMA SORU TIPLERI HALA AYARLANAMIYOR:
+Tipler bilerek zorunlu, kimse en kolayinda kalmasin diye. Bu ayar ise
+yalnizca ZORLASTIRIYOR; kolaya kacma riski olmadigi icin o kural burada
+gecerli degil. Kod icinde de boyle not dusuldu.
+
+Puanlama okunus uzerinden (じ/ぢ ikisi de &amp;quot;ji&amp;quot;) ama karisik alfabede alfabe de
+tutmali: シ sorulup し yazmak, tam olarak olculmek istenen ayrimi atlamak
+olurdu.
+
+Sonuc ekranindaki tavsiye moda gore degisiyor. &amp;quot;Sikli bolumlerde yuksek,
+yazmada dususse...&amp;quot; cumlesi siksiz testte anlamsiz kaliyordu; orada iki
+uretim yonu karsilastiriliyor (okuyabiliyorsun ama yazamiyorsun / tam tersi).
+
+Tarayicida dogrulandi: siksiz modda hicbir soruda sik yok, klavye 47 tusla
+geliyor, alfabe etiketi karisik secimde cikiyor, sonuc dokumu yalnizca iki
+uretim tipini gosteriyor. Varsayilan hala Karisik - mevcut davranis degismedi.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cdbc5e03f55d729eb704cc8853af3562b1df7e45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/cdbc5e03f55d729eb704cc8853af3562b1df7e45"/>
+    <title>
+        Gun sonu: ne calistigini isaretle, ertesi gun ondan test cik
+    </title>
+    <updated>2026-09-01T21:05:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Gun sonu: ne calistigini isaretle, ertesi gun ondan test cik
+
+Gunluk plan uygulamanin ONERISI; ama her zaman ona uyulmuyor. Bazi gunler
+kendi kafasina gore birkac satir calisiliyor ve o emek hicbir yere
+yazilmadigi icin ertesi gun tekrari da kurulamiyordu. Bu bolum planin yerine
+gecmiyor, yaninda duruyor.
+
+/gun-sonu
+- Iki alfabenin satirlarindan isaretleme (32 kart, 208 karakter), tek tek
+  harf de secilebiliyor.
+- Serbest not alani (&amp;quot;Genki 1. ders&amp;quot; gibi).
+- Kac kelime cikacagi ANINDA gosteriliyor: az cikiyorsa bugun birkac satir
+  daha isaretlemeyi dusunebilsin. Ornek: sa/ta/na/ha satirlari = 20 karakter,
+  26 kelime.
+- Gecmis gunler listesi; her satirda test durumu ve yuzdesi.
+- Ayni gune yeniden kaydedince test durumu SIFIRLANIYOR: icerik degistiyse
+  eski test o gunu artik temsil etmiyor.
+
+/gun-sonu-testi/:day — uc bolum, HEPSI SIKSIZ
+- Okunus:  karakteri gor, okunusunu yaz
+- Karakter: okunusu gor, kanayi ekran klavyesinden bul
+- Kelime:  okunusu gor, kelimeyi kanayla yaz
+Sikli soru burada ise yaramaz; sik gorunce taniyorsun ve &amp;quot;biliyorum&amp;quot; hissi
+veriyor, oysa aranan sey hatirlamak.
+
+Kelime bolumu YALNIZCA o harflerle yazilabilen kelimelerden kuruluyor
+(kana-words&amp;#39;teki wordsReadableWith; katakana icin ayni mantikta yeni bir
+kataWordsReadableWith yazildi - orada ー her zaman okunabilir, ッ ise ツ
+seciliyse cozulebilir). Boyle kelime yoksa bolum hic cikmiyor ve ekranda
+NEDEN cikmadigi yaziyor. Uydurma kelime gostermek ogretmez, yaniltir.
+Anlamlara girilmedi - istenen buydu.
+
+Test bugun degil ERTESI GUN aciliyor. Ayni gun test etmek tekrar sayilmaz;
+henuz unutmadigin seyi hatirlaman bir sey olcmez. Unutmanin basladigi ilk
+aralik yaklasik 24 saat.
+
+Gunluk plana da girdi: &amp;quot;Dunku calismanin testi&amp;quot;, bekleyen tekrarlardan sonra
+ama YENI DERSTEN ONCE. Dun ogrenilen bugun en kirilgan halinde; ustune yeni
+konu koymadan sabitlenmeli. Test bitince gorev kendiliginden dusuyor.
+
+Yanlis cikan karakterler tekrar listesine ekleniyor - gun sonu testi zaten
+&amp;quot;neyi unuttum&amp;quot; sorusunu cevapliyor, cevabi bosa gitmesin.
+
+DB v4: sessions tablosu (day, at, testedAt). testedAt indeksli cunku ana
+sayfa her acilista &amp;quot;test edilmemis gun var mi&amp;quot; diye soruyor.
+
+Tarayicida uctan uca dogrulandi: isaretleme, kayit, uc bolum, sonuc ekrani,
+oturumun test edilmis olarak isaretlenmesi, yanlislarin tekrar listesine
+girmesi ve gorevin ana sayfadan dusmesi. Test verileri sonra temizlendi.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6aa273d9bb7bab14118e2f5b8d53258affc563b3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/6aa273d9bb7bab14118e2f5b8d53258affc563b3"/>
+    <title>
+        Kendi testin: karisik (hiragana + katakana) secenegi
+    </title>
+    <updated>2026-09-01T20:46:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Kendi testin: karisik (hiragana + katakana) secenegi
+
+Alfabe secimi tek degerliydi ve karakter listesi de yalnizca o alfabeden
+kuruluyordu: byChar oteki alfabenin harflerini tanimadigi icin isaretli
+olsalar bile sessizce eleniyorlardi. Yani iki alfabeyi birlikte sinamak
+mumkun degildi.
+
+- Ucuncu secenek: Karisik. Iki alfabenin satirlari birlikte listeleniyor
+  (32 kart, 208 karakter).
+- Satir adlari iki alfabede AYNI geliyor (ア行 de &amp;quot;あ行 (a-satırı)&amp;quot; diye
+  adlandirilmis), o yuzden kart anahtari ve basligi alfabeyle birlikte
+  kuruluyor; karisikta karta ひらがな / カタカナ rozeti ekleniyor. Yoksa iki
+  ozdes kart goruluyordu.
+
+MCQ&amp;#39;DA BELIRSIZLIK: &amp;quot;shi hangisi?&amp;quot; sorusunun karisikta iki dogru cevabi olur,
+し ve シ. Eski kod ayni okunuslu esi celdiricilerden eliyordu - belirsizlik
+yoktu ama karisik testin EN DEGERLI sorusu da hic sorulmuyordu. Simdi tam
+tersi: es celdirici olarak ONE aliniyor ve soruya alfabe etiketi ekleniyor.
+Boylece &amp;quot;se · ひらがな&amp;quot; sorusunda hem せ hem セ sik olarak duruyor ve ayirt
+etme gercekten olculuyor.
+
+Karisiklik SECIME gore belirleniyor, ayara gore degil: kullanici karisik
+moddayken tek alfabeden harf secmisse etiket cikmiyor.
+
+Tarayicida dogrulandi: karisikta si/shi ciftleri sik olarak geliyor ve etiket
+her Hatirlama sorusunda goruluyor; tek alfabeli modda ne etiket ne de oteki
+alfabeden sik var (eski davranis korundu).
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1438ee16ae65a64ac2f3404ac6a6ca63a2d42182</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/1438ee16ae65a64ac2f3404ac6a6ca63a2d42182"/>
+    <title>
+        iPhone icin katakana duvar kagidi gorselleri
+    </title>
+    <updated>2026-09-01T19:16:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;iPhone icin katakana duvar kagidi gorselleri
+
+iOS&amp;#39;ta HTML duvar kagidi yok ve bunu degistirebilecegimiz bir yol da yok.
+Ama iOS 17&amp;#39;den beri &amp;quot;Fotograf Karistir&amp;quot; var: bir albumu secip kilit ekraninin
+oradan rastgele gorsel gostermesini saglayabiliyorsun. Her karakteri bir
+gorsel olarak uretince sonuc masaustundekine cok yakin oluyor - rastgele sira,
+duzenli degisim, hicbir uygulama kurmadan.
+
+- 104 PNG, 1290x2796. Her gorselde harf (numarali cizgi noktalariyla),
+  hiragana karsiligi, okunus, satir/cizgi sayisi, karisan cift uyarisi ve
+  ornek kelime.
+- Gorseller headless Chrome ile ciziliyor. Elde yazi cizecek bir font
+  rasterleyici yok; ayni HTML&amp;#39;i Chrome&amp;#39;a cizdirip ekran goruntusu aliyoruz.
+  Boylece masaustu surumuyle birebir ayni cizgi verisi ve renkler.
+- Yerlesim kilit ekranina gore: icerik %32-%88 araliginda. Ustu saate ve
+  widget&amp;#39;lara, alti el feneri/kamera dugmelerine birakildi.
+- Dosya adlari sirali ve turu iceriyor (001-temel-a). Temel 46 harfi ayirip
+  yalnizca onlari almak icin; dakuten ve yoon simdilik gurultu.
+
+ORTAK VERI MODULU: masaustu ve iPhone ureticileri artik scripts/lib/
+katakana-data.ts&amp;#39;i paylasiyor. Ayri dursalardi ozellikle 24 elle yazilmis
+karisan-cift ipucu zamanla birbirinden ayri duserdi. Masaustu ciktisi
+regenerate edilip karsilastirildi: veri birebir ayni, sablonda yalnizca
+beklenen iki satir degisti (d.k -&amp;gt; d.kind).
+
+Yazarken bir hata bulundu: yerlesim &amp;quot;padding: 32%&amp;quot; kullaniyordu ama CSS&amp;#39;te
+yuzdelik padding GENISLIGE gore hesaplanir. 1290px genislikte 413px ediyordu,
+yani ekranin %14,8&amp;#39;i - harf tam saatin ustune geliyordu. vh&amp;#39;ye cevrildi.
+Yoon karakterleri de iki kana genis oldugu icin sabit genislikte yariya
+iniyordu; genislik karakter sayisina gore ayarlandi.
+
+PNG&amp;#39;ler depoya girmiyor (58 MB, tek komutla uretiliyor); OneDrive zaten
+telefona senkronluyor. Kurulum: wallpaper/OKU-iphone.md
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1dcb791ad8e16f8972dda15be50db003a8a259c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/bigfe-efe/dilhane/commit/1dcb791ad8e16f8972dda15be50db003a8a259c2"/>
+    <title>
+        Duvar kagidi: cizgi baslangic noktalari numarali
+    </title>
+    <updated>2026-08-29T22:12:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/253372563?s=30&amp;v=4"/>
+    <author>
+      <name>bigfe-efe</name>
+      <uri>https://github.com/bigfe-efe</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Duvar kagidi: cizgi baslangic noktalari numarali
+
+Noktalar birbirinin ayni bos dairelerdi; kacinci cizgi oldugu ancak
+canlandirmayi bastan izleyerek anlasiliyordu. Duvar kagidina ortasindan bakan
+biri sirayi kaciriyordu - ki asil kullanim bu.
+
+- Her nokta artik icinde sira numarasi tasiyor (1-2-3...). Daire vurgu
+  renginde, rakam koyu: koyu zeminde en okunur birlesim.
+- Daire yaricapi 3.4&amp;#39;ten 6.4&amp;#39;e cikti (rakam sigsin), ama cizgi kalinligina
+  yakin tutuldu ki harfin onune gecmesin.
+- Numara HER KARAKTERDE 1&amp;#39;den basliyor. KYA gibi iki karakterli yoon&amp;#39;da
+  1-2-3-4-5 diye devam etseydi ikinci karakterin kendi cizgi sirasi yanlis
+  gorunurdu. Dogrulandi: SA -&amp;gt; 1,2,3 · KYA -&amp;gt; 1,2,3 + 1,2
+
+Ayrica dongude bir zamanlayici kacagi bulundu: show() icindeki solma
+zamanlayicisi takip edilmiyordu. Sekme gorunurlugu tam solma aninda degisirse
+dis zamanlayici temizleniyor ama ic olan yine show() cagiriyor ve iki dongu
+birden donmeye basliyordu - harfler beklenenin iki katı hizda geciyordu.
+Ikisi de ayni degiskende tutuluyor artik.
+
+Uretim scripti Wallpaper Engine klasorune de kopyaladi; uc dosyanin da guncel
+oldugu md5 ile dogrulandi.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

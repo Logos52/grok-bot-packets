@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/cooperability/BMX-bookmark-extractor/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/cooperability/BMX-bookmark-extractor/commits/main.atom"/>
+  <title>Recent Commits to BMX-bookmark-extractor:main</title>
+  <updated>2026-09-17T23:01:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/54c756f971bcb5f45f4686940a7c86d9d34fff2e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/54c756f971bcb5f45f4686940a7c86d9d34fff2e"/>
+    <title>
+        chore: cut FastAPI and Neo4j, promote app, land Anki ingest (#282)
+    </title>
+    <updated>2026-09-17T23:01:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/47398278?s=30&amp;v=4"/>
+    <author>
+      <name>cooperability</name>
+      <uri>https://github.com/cooperability</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: cut FastAPI and Neo4j, promote app, land Anki ingest (#282)
+
+* chore: cut retired FastAPI and Neo4j, land Anki ingest
+
+The TDD already retired the second service. Deleting it also retires
+the Dependabot tree that existed only to bump it. The parser reads
+the real exports to 457 records.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* docs: fold host troubleshooting and docs index into the overhaul
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* chore: pin Node 22, cut leftover scaffold, land the systems diagram
+
+isomorphic-dompurify 4.2.0 refuses Node 20, which is why Actions died at
+install. The README now shows built vs planned. OVERHAUL.md was a PR brief.
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+
+* fix(ingest): scope node ids to the owner, sanitize through the parser
+
+Review findings on PR 282.
+
+Blocking: sanitize.test.ts fed the raw CompSci export to sanitizeCardHtml.
+Anki writes RFC4180, so an internal quote is doubled on disk and the attribute
+reached the sanitizer as href=&amp;quot;&amp;quot;https://...&amp;quot;&amp;quot;; that parses as an empty href and
+the scheme guard correctly stripped it. The test was wrong about its own input,
+not the sanitizer. It now parses first and asserts on the parsed fields, which
+is the only input the sanitizer ever sees. 46 of 46 pass, was 43 of 44.
+
+Major: internalId digested the Anki GUID alone while nodes.id is a global text
+primary key. Anki GUIDs propagate through shared decks, so the second user to
+import one would collide with the first on every overlapping card. Both digests
+now carry the owner. Chosen over a composite primary key so the foreign keys in
+edges, review_state, review_log, harvests and quest_runs stay single-column.
+parseAnkiExport takes userId as a result.
+
+Content-Security-Policy via kit.csp rather than vercel.json, because SvelteKit&amp;#39;s
+hydration payload is an inline script only the framework can nonce. Measured on
+the dev SSR response: the header ships, the inline script carries a nonce, and
+every script and link on the page is covered.
+
+Also drops the identity /api rewrite in vercel.json and the redundant JSDoc
+@type in hooks.server.ts.
+
+Negative controls, worktree restored after each:
+  internalId ignoring userId    -&amp;gt; the 2 tenancy assertions go red
+  sanitizeCardHtml passthrough  -&amp;gt; 19 of 46 go red, the corpus test among them
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_016p7oRUDeobTUup9TvNEtqz
+
+* chore: record the Dev Container cut, single-source deploys, clear cruft
+
+Deprecate the Dev Container in the docs that outlive it. The files went in
+the first pass; TDD 3.4 and 12.2 now say it stays gone and why, so a model
+reading this tree does not rebuild it from a tutorial.
+
+Cut the second deploy path. The Actions deploy job and the Vercel Git
+integration both built every push. Actions now verifies only, and the
+workflow is renamed to match. Root Directory is a dashboard setting and
+still reads frontend, which is the one human step left.
+
+Cruft: TROUBLESHOOTING.md (three of four items said start Docker Desktop),
+.pre-commit-config.yaml (Python hook runner, no Python, eslint 9 against a
+tree on 10), .envrc and .envrc.example (RUST_LOG, DOMAIN_NAME, unread),
+src/lib/index.ts, the red scaffold client test harness and the deps it
+orphaned, and source_data/ArticleMetadata.csv (byte-identical to
+articles.csv).
+
+yarn test:server 46 of 46. yarn lint and yarn check green on Node 22.23.1.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* docs: record the measured Vercel project settings
+
+Read project prj_RnBD1bE2cYV61qnpATWrMV0qUnJI on 2026-09-16. Node.js is
+already 22.x and the preset is already SvelteKit, so the pending &amp;quot;set
+Node.js to 22&amp;quot; step was stale. Root Directory reading frontend is the only
+blocker, and the build log shows it aborting 0.6s after clone.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+
+* ci(verify): build the app in Actions
+
+Actions ran lint, typecheck and tests but never built. The only proof the
+app compiled came from the Vercel Git integration, so a project-settings
+fault and a genuine build break were indistinguishable from this repo.
+
+Verified on Node 22 from a cleared .svelte-kit: lint, check at 637 files /
+0 errors, 46 of 46 tests, and a full adapter-vercel build emitting
+.vercel/output with functions and static.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_019hADycB3TfRZ2CmtQFbygw
+
+---------
+
+Co-authored-by: Cursor &amp;lt;cursoragent@cursor.com&amp;gt;
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/df24253764a11d51e5d9cff6c16468b7c50ec13f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/df24253764a11d51e5d9cff6c16468b7c50ec13f"/>
+    <title>
+        chore(ai): drop the claugmentations sync workflow and vendored skills…
+    </title>
+    <updated>2026-08-25T07:26:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/47398278?s=30&amp;v=4"/>
+    <author>
+      <name>cooperability</name>
+      <uri>https://github.com/cooperability</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(ai): drop the claugmentations sync workflow and vendored skills (#277)
+
+The vendoring design is gone upstream. claugmentations now installs once into a user&amp;#39;s home directory, so the shared skills load in every repo without being committed to any of them; there is nothing here left to sync or check.
+
+The &amp;#39;claugmentations / check&amp;#39; job was failing on every open PR. Two reasons compounded: &amp;#39;claugmentations check&amp;#39; no longer means &amp;#39;is this repo in sync&amp;#39; -- it verifies an install root, which does not exist on a runner -- and Dependabot PRs receive no secrets, so CLAUGMENTATIONS_TOKEN was empty and the package checkout could not authenticate either.
+
+Unlike cooperability.com, nothing under .claude/ or .cursor/ in this repo was ever project-local: both trees held only the 13 vendored skills and a README describing the sync. They are removed whole, along with .claugmentations.json and the workflow. deploy.yml is untouched.
+
+
+Claude-Session: https://claude.ai/code/session_018HLoqcxZDzmkaBCEAQAQAy
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7903aa8132061460321764f96e50acd94e041d4c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/7903aa8132061460321764f96e50acd94e041d4c"/>
+    <title>
+        Add PRD and TDD for overhaul (#269)
+    </title>
+    <updated>2026-08-08T01:17:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/47398278?s=30&amp;v=4"/>
+    <author>
+      <name>cooperability</name>
+      <uri>https://github.com/cooperability</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add PRD and TDD for overhaul (#269)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/22bf7b6358fd52a6d5e9d4e8a43dbed28677148b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/22bf7b6358fd52a6d5e9d4e8a43dbed28677148b"/>
+    <title>
+        chore(ai): update shared skills to claugmentations v0.2.0 (#268)
+    </title>
+    <updated>2026-08-08T00:41:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/47398278?s=30&amp;v=4"/>
+    <author>
+      <name>cooperability</name>
+      <uri>https://github.com/cooperability</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(ai): update shared skills to claugmentations v0.2.0 (#268)
+
+Brings this repo to the thirteen-skill set and wires the sync workflow so it
+cannot silently fall behind again.
+
+New: shepherd-to-pr (one-shot scoped idea to graded draft PR), plan-feature,
+verified-change-loop, git-hygiene, extract-chat-insights.
+
+sanitize-pr-for-merge and rebase-squash-before-merge are replaced by
+premerge-cleanup, which consolidates them. Both carried a latent bug: squashing
+via `git reset --soft origin/main` is safe only on a freshly rebased branch, and
+on a diverged one it stages the inverse of every base commit the branch lacks —
+committing that silently reverts other people&amp;#39;s work. The replacement resets to
+the merge-base and verifies the diffstat is unchanged afterwards.
+
+.github/workflows/claugmentations-sync.yml fails a PR that edits a synced skill
+in place, and weekly opens a draft PR when upstream moves. It authenticates with
+CLAUGMENTATIONS_TOKEN, a fine-grained PAT scoped to read only the claugmentations
+repo, and deliberately omits --force so a bot can never overwrite a local edit.
+
+The skills remain stack-agnostic, so they apply to this Python/Docker/GraphQL
+repo unchanged. Anything needing a concrete build or test command stays local.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dd6f9fb586dc7e17f5f7fd2010fb0af8dd37e6e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/dd6f9fb586dc7e17f5f7fd2010fb0af8dd37e6e3"/>
+    <title>
+        Bump the pip group across 1 directory with 5 updates (#250)
+    </title>
+    <updated>2026-08-07T22:50:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the pip group across 1 directory with 5 updates (#250)
+
+Bumps the pip group with 5 updates in the /backend directory:
+
+| Package | From | To |
+| --- | --- | --- |
+| [lxml](https://github.com/lxml/lxml) | `6.0.2` | `6.1.0` |
+| [python-multipart](https://github.com/Kludex/python-multipart) | `0.0.22` | `0.0.27` |
+| [idna](https://github.com/kjd/idna) | `3.10` | `3.15` |
+| [python-dotenv](https://github.com/theskumar/python-dotenv) | `1.1.0` | `1.2.2` |
+| [urllib3](https://github.com/urllib3/urllib3) | `2.6.3` | `2.7.0` |
+
+
+
+Updates `lxml` from 6.0.2 to 6.1.0
+- [Release notes](https://github.com/lxml/lxml/releases)
+- [Changelog](https://github.com/lxml/lxml/blob/master/CHANGES.txt)
+- [Commits](https://github.com/lxml/lxml/compare/lxml-6.0.2...lxml-6.1.0)
+
+Updates `python-multipart` from 0.0.22 to 0.0.27
+- [Release notes](https://github.com/Kludex/python-multipart/releases)
+- [Changelog](https://github.com/Kludex/python-multipart/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/Kludex/python-multipart/compare/0.0.22...0.0.27)
+
+Updates `idna` from 3.10 to 3.15
+- [Release notes](https://github.com/kjd/idna/releases)
+- [Changelog](https://github.com/kjd/idna/blob/master/HISTORY.md)
+- [Commits](https://github.com/kjd/idna/compare/v3.10...v3.15)
+
+Updates `python-dotenv` from 1.1.0 to 1.2.2
+- [Release notes](https://github.com/theskumar/python-dotenv/releases)
+- [Changelog](https://github.com/theskumar/python-dotenv/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/theskumar/python-dotenv/compare/v1.1.0...v1.2.2)
+
+Updates `urllib3` from 2.6.3 to 2.7.0
+- [Release notes](https://github.com/urllib3/urllib3/releases)
+- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+- [Commits](https://github.com/urllib3/urllib3/compare/2.6.3...2.7.0)
+
+---
+updated-dependencies:
+- dependency-name: lxml
+  dependency-version: 6.1.0
+  dependency-type: direct:production
+  dependency-group: pip
+- dependency-name: python-multipart
+  dependency-version: 0.0.27
+  dependency-type: direct:development
+  dependency-group: pip
+- dependency-name: idna
+  dependency-version: &amp;#39;3.15&amp;#39;
+  dependency-type: indirect
+  dependency-group: pip
+- dependency-name: python-dotenv
+  dependency-version: 1.2.2
+  dependency-type: indirect
+  dependency-group: pip
+- dependency-name: urllib3
+  dependency-version: 2.7.0
+  dependency-type: indirect
+  dependency-group: pip
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a3cae7b8c79c24deb4c52420e69de740fec6d692</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/a3cae7b8c79c24deb4c52420e69de740fec6d692"/>
+    <title>
+        chore(ai): adopt shared agent skills from claugmentations (#267)
+    </title>
+    <updated>2026-08-07T22:31:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/47398278?s=30&amp;v=4"/>
+    <author>
+      <name>cooperability</name>
+      <uri>https://github.com/cooperability</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore(ai): adopt shared agent skills from claugmentations (#267)
+
+Adds the nine stack-agnostic git/GitHub workflow skills from the
+claugmentations package, mirrored for Claude Code and Cursor.
+
+These are portable by construction — they describe git, gh, and review
+workflows with no toolchain assumptions, so they apply to this Python/Docker
+stack unchanged. Anything needing a concrete build or test command stays local
+to this repo instead.
+
+.claugmentations.json records what is managed; the sync touches nothing else
+under .claude/ or .cursor/, so project-local skills can be added alongside.
+
+Co-authored-by: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0c82a5d04a230471c216b5aa591cae2f568c6862</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/0c82a5d04a230471c216b5aa591cae2f568c6862"/>
+    <title>
+        Bump @vitest/browser from 4.1.6 to 4.1.10 in /frontend (#258)
+    </title>
+    <updated>2026-07-31T19:58:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump @vitest/browser from 4.1.6 to 4.1.10 in /frontend (#258)
+
+Bumps [@vitest/browser](https://github.com/vitest-dev/vitest/tree/HEAD/packages/browser) from 4.1.6 to 4.1.10.
+- [Release notes](https://github.com/vitest-dev/vitest/releases)
+- [Changelog](https://github.com/vitest-dev/vitest/blob/main/docs/releases.md)
+- [Commits](https://github.com/vitest-dev/vitest/commits/v4.1.10/packages/browser)
+
+---
+updated-dependencies:
+- dependency-name: &amp;quot;@vitest/browser&amp;quot;
+  dependency-version: 4.1.10
+  dependency-type: direct:development
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/13ad0cf1e191f14b60422a348b70712af7b19248</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/13ad0cf1e191f14b60422a348b70712af7b19248"/>
+    <title>
+        Bump @vitest/browser from 4.0.18 to 4.1.6 in /frontend (#249)
+    </title>
+    <updated>2026-06-02T05:23:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump @vitest/browser from 4.0.18 to 4.1.6 in /frontend (#249)
+
+Bumps [@vitest/browser](https://github.com/vitest-dev/vitest/tree/HEAD/packages/browser) from 4.0.18 to 4.1.6.
+- [Release notes](https://github.com/vitest-dev/vitest/releases)
+- [Changelog](https://github.com/vitest-dev/vitest/blob/main/docs/releases.md)
+- [Commits](https://github.com/vitest-dev/vitest/commits/v4.1.6/packages/browser)
+
+---
+updated-dependencies:
+- dependency-name: &amp;quot;@vitest/browser&amp;quot;
+  dependency-version: 4.1.6
+  dependency-type: direct:development
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/682fbfaf494d498495147687b762ec80b850d9cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/682fbfaf494d498495147687b762ec80b850d9cd"/>
+    <title>
+        Bump pytest in /backend in the pip group across 1 directory (#238)
+    </title>
+    <updated>2026-06-02T05:23:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump pytest in /backend in the pip group across 1 directory (#238)
+
+Bumps the pip group with 1 update in the /backend directory: [pytest](https://github.com/pytest-dev/pytest).
+
+
+Updates `pytest` from 8.3.5 to 9.0.3
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.3.5...9.0.3)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-version: 9.0.3
+  dependency-type: direct:development
+  dependency-group: pip
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/989a77adc5d8df63742172ac5927dee0f53281bf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/989a77adc5d8df63742172ac5927dee0f53281bf"/>
+    <title>
+        Bump the pip group across 1 directory with 2 updates (#232)
+    </title>
+    <updated>2026-04-02T05:50:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the pip group across 1 directory with 2 updates (#232)
+
+Bumps the pip group with 2 updates in the /backend directory: [nltk](https://github.com/nltk/nltk) and [requests](https://github.com/psf/requests).
+
+
+Updates `nltk` from 3.9.3 to 3.9.4
+- [Changelog](https://github.com/nltk/nltk/blob/develop/ChangeLog)
+- [Commits](https://github.com/nltk/nltk/compare/3.9.3...3.9.4)
+
+Updates `requests` from 2.32.5 to 2.33.0
+- [Release notes](https://github.com/psf/requests/releases)
+- [Changelog](https://github.com/psf/requests/blob/main/HISTORY.md)
+- [Commits](https://github.com/psf/requests/compare/v2.32.5...v2.33.0)
+
+---
+updated-dependencies:
+- dependency-name: nltk
+  dependency-version: 3.9.4
+  dependency-type: direct:production
+  dependency-group: pip
+- dependency-name: requests
+  dependency-version: 2.33.0
+  dependency-type: direct:production
+  dependency-group: pip
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/96886348619302ae37d8ab543b14973b2be27ffe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/96886348619302ae37d8ab543b14973b2be27ffe"/>
+    <title>
+        Bump black in /backend in the pip group across 1 directory (#225)
+    </title>
+    <updated>2026-03-24T04:59:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump black in /backend in the pip group across 1 directory (#225)
+
+Bumps the pip group with 1 update in the /backend directory: [black](https://github.com/psf/black).
+
+
+Updates `black` from 26.1.0 to 26.3.1
+- [Release notes](https://github.com/psf/black/releases)
+- [Changelog](https://github.com/psf/black/blob/main/CHANGES.md)
+- [Commits](https://github.com/psf/black/compare/26.1.0...26.3.1)
+
+---
+updated-dependencies:
+- dependency-name: black
+  dependency-version: 26.3.1
+  dependency-type: direct:development
+  dependency-group: pip
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2337d711784ebecbd2f60531e329ca81b454be78</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/2337d711784ebecbd2f60531e329ca81b454be78"/>
+    <title>
+        Bump uvicorn from 0.32.1 to 0.41.0 in /backend (#212)
+    </title>
+    <updated>2026-02-26T07:58:52Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump uvicorn from 0.32.1 to 0.41.0 in /backend (#212)
+
+Bumps [uvicorn](https://github.com/Kludex/uvicorn) from 0.32.1 to 0.41.0.
+- [Release notes](https://github.com/Kludex/uvicorn/releases)
+- [Changelog](https://github.com/Kludex/uvicorn/blob/main/docs/release-notes.md)
+- [Commits](https://github.com/Kludex/uvicorn/compare/0.32.1...0.41.0)
+
+---
+updated-dependencies:
+- dependency-name: uvicorn
+  dependency-version: 0.41.0
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1fc5dec4184d877924e7a44a82faca58fcd6c75c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/1fc5dec4184d877924e7a44a82faca58fcd6c75c"/>
+    <title>
+        Bump jsdom from 27.4.0 to 28.1.0 in /frontend (#208)
+    </title>
+    <updated>2026-02-26T07:56:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump jsdom from 27.4.0 to 28.1.0 in /frontend (#208)
+
+Bumps [jsdom](https://github.com/jsdom/jsdom) from 27.4.0 to 28.1.0.
+- [Release notes](https://github.com/jsdom/jsdom/releases)
+- [Changelog](https://github.com/jsdom/jsdom/blob/main/Changelog.md)
+- [Commits](https://github.com/jsdom/jsdom/compare/27.4.0...28.1.0)
+
+---
+updated-dependencies:
+- dependency-name: jsdom
+  dependency-version: 28.1.0
+  dependency-type: direct:development
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5064dc963eb4cce64d900d68aedc932d4c935eb8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/5064dc963eb4cce64d900d68aedc932d4c935eb8"/>
+    <title>
+        Bump @chromatic-com/storybook from 3.2.7 to 5.0.1 in /frontend (#207)
+    </title>
+    <updated>2026-02-26T07:55:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump @chromatic-com/storybook from 3.2.7 to 5.0.1 in /frontend (#207)
+
+Bumps [@chromatic-com/storybook](https://github.com/chromaui/addon-visual-tests) from 3.2.7 to 5.0.1.
+- [Release notes](https://github.com/chromaui/addon-visual-tests/releases)
+- [Changelog](https://github.com/chromaui/addon-visual-tests/blob/v5.0.1/CHANGELOG.md)
+- [Commits](https://github.com/chromaui/addon-visual-tests/compare/v3.2.7...v5.0.1)
+
+---
+updated-dependencies:
+- dependency-name: &amp;quot;@chromatic-com/storybook&amp;quot;
+  dependency-version: 5.0.1
+  dependency-type: direct:development
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/acba077e935530db5438451ce38fe75792e0f0c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/acba077e935530db5438451ce38fe75792e0f0c6"/>
+    <title>
+        Bump the pip group across 1 directory with 2 updates (#216)
+    </title>
+    <updated>2026-02-26T07:53:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump the pip group across 1 directory with 2 updates (#216)
+
+Bumps the pip group with 2 updates in the /backend directory: [nltk](https://github.com/nltk/nltk) and [python-multipart](https://github.com/Kludex/python-multipart).
+
+
+Updates `nltk` from 3.9.2 to 3.9.3
+- [Changelog](https://github.com/nltk/nltk/blob/develop/ChangeLog)
+- [Commits](https://github.com/nltk/nltk/compare/3.9.2...3.9.3)
+
+Updates `python-multipart` from 0.0.20 to 0.0.22
+- [Release notes](https://github.com/Kludex/python-multipart/releases)
+- [Changelog](https://github.com/Kludex/python-multipart/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/Kludex/python-multipart/compare/0.0.20...0.0.22)
+
+---
+updated-dependencies:
+- dependency-name: nltk
+  dependency-version: 3.9.3
+  dependency-type: direct:production
+  dependency-group: pip
+- dependency-name: python-multipart
+  dependency-version: 0.0.22
+  dependency-type: direct:development
+  dependency-group: pip
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/700928e1b5fe809be1b0814c8f9a33a58f676909</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/700928e1b5fe809be1b0814c8f9a33a58f676909"/>
+    <title>
+        Bump isort from 5.13.2 to 8.0.0 in /backend (#211)
+    </title>
+    <updated>2026-02-26T04:15:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump isort from 5.13.2 to 8.0.0 in /backend (#211)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3e14c011f6d11641e8c121ba19a7a8611d5fba5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/f3e14c011f6d11641e8c121ba19a7a8611d5fba5"/>
+    <title>
+        Bump ruff from 0.5.7 to 0.15.2 in /backend (#214)
+    </title>
+    <updated>2026-02-24T06:33:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump ruff from 0.5.7 to 0.15.2 in /backend (#214)
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.5.7 to 0.15.2.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.5.7...0.15.2)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-version: 0.15.2
+  dependency-type: direct:development
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1f0df45ffc1b83cc7ed180e1cb014861c2677b7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/1f0df45ffc1b83cc7ed180e1cb014861c2677b7d"/>
+    <title>
+        Bump pandas from 2.3.3 to 3.0.1 in /backend (#215)
+    </title>
+    <updated>2026-02-24T06:30:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump pandas from 2.3.3 to 3.0.1 in /backend (#215)
+
+Bumps [pandas](https://github.com/pandas-dev/pandas) from 2.3.3 to 3.0.1.
+- [Release notes](https://github.com/pandas-dev/pandas/releases)
+- [Commits](https://github.com/pandas-dev/pandas/compare/v2.3.3...v3.0.1)
+
+---
+updated-dependencies:
+- dependency-name: pandas
+  dependency-version: 3.0.1
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/57ffc90ac6729d7f63c34a8269737e99c108e704</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/57ffc90ac6729d7f63c34a8269737e99c108e704"/>
+    <title>
+        Bump appleboy/ssh-action from 1.2.4 to 1.2.5 (#203)
+    </title>
+    <updated>2026-02-19T06:02:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump appleboy/ssh-action from 1.2.4 to 1.2.5 (#203)
+
+Bumps [appleboy/ssh-action](https://github.com/appleboy/ssh-action) from 1.2.4 to 1.2.5.
+- [Release notes](https://github.com/appleboy/ssh-action/releases)
+- [Commits](https://github.com/appleboy/ssh-action/compare/v1.2.4...v1.2.5)
+
+---
+updated-dependencies:
+- dependency-name: appleboy/ssh-action
+  dependency-version: 1.2.5
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fb60cba6f85ac44705f4c9379a41a1a43bf166c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/cooperability/BMX-bookmark-extractor/commit/fb60cba6f85ac44705f4c9379a41a1a43bf166c0"/>
+    <title>
+        Bump black from 24.10.0 to 26.1.0 in /backend (#201)
+    </title>
+    <updated>2026-02-19T04:52:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/in/29110?s=30&amp;v=4"/>
+    <author>
+      <name>dependabot</name>
+      <uri>https://github.com/dependabot</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Bump black from 24.10.0 to 26.1.0 in /backend (#201)
+
+Bumps [black](https://github.com/psf/black) from 24.10.0 to 26.1.0.
+- [Release notes](https://github.com/psf/black/releases)
+- [Changelog](https://github.com/psf/black/blob/main/CHANGES.md)
+- [Commits](https://github.com/psf/black/compare/24.10.0...26.1.0)
+
+---
+updated-dependencies:
+- dependency-name: black
+  dependency-version: 26.1.0
+  dependency-type: direct:development
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &amp;lt;support@github.com&amp;gt;
+Co-authored-by: dependabot[bot] &amp;lt;49699333+dependabot[bot]@users.noreply.github.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

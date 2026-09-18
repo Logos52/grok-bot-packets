@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Alfex4936/JLPT/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Alfex4936/JLPT/commits/main.atom"/>
+  <title>Recent Commits to JLPT:main</title>
+  <updated>2026-09-17T23:56:45Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ca3903a8e895b71d693fc2f8a85f0dc06aa7b7d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/3ca3903a8e895b71d693fc2f8a85f0dc06aa7b7d"/>
+    <title>
+        feat: word audio 2120 of 3718 (+80 clips)
+    </title>
+    <updated>2026-09-17T23:56:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: word audio 2120 of 3718 (+80 clips)
+
+Overnight trickle as older requests aged out of the rolling window.
+Checked: no filename outside kana, nothing under 800 bytes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9f639c085c5e5fb261baa1a479c4389d1d9dcbd3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/9f639c085c5e5fb261baa1a479c4389d1d9dcbd3"/>
+    <title>
+        fix: read the first card when entering a mode
+    </title>
+    <updated>2026-09-17T12:18:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: read the first card when entering a mode
+
+speak() was only wired to go(), grade(), 처음부터 and the V key, so the card
+you land on when entering a mode never got read. With 카드마다 자동 읽기 on,
+the setting held for every card except the first one you actually look at.
+
+enterMode now speaks after paint(). かな needs no special case -- speak()
+already refuses to read a drill glyph before the answer is shown, since that
+would hand over the answer.
+
+Verified: entering 단어 requests くろうと.opus and 한자 requests ふむ.opus
+immediately, both of which exist on disk, so it is the bundled voice rather
+than a fallback; entering かな stays silent; and stepping through three cards
+requests exactly one clip each, so nothing plays twice.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b89128f7d9dcf54dcf2396afeefff54219aa12ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/b89128f7d9dcf54dcf2396afeefff54219aa12ea"/>
+    <title>
+        style: hold the app to its own brief -- two radii, no boxes, one mean…
+    </title>
+    <updated>2026-09-17T12:10:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;style: hold the app to its own brief -- two radii, no boxes, one meaning for the accent
+
+The critique scored consistency 2 of 4, and the reason was that the app breaks
+rules it wrote down itself. assets/style.css line 4 has said from the start:
+&amp;quot;반경: 인터랙티브 요소 3px, 그 외 0. 카드 상자 없음(헤어라인 분리).&amp;quot;
+
+Seven radius values were in use. Three had no basis: a 2px slider track, and
+.5rem and .35rem that I added today on the volume popover and the article
+number box. All three are var(--r) or 999px now, so the rendered set is 3px,
+999px for pills, and 50% for knobs -- the declared set.
+
+Two surfaces were boxes in an app that says it has none. The round summary
+built its mistake list as a grid of equal accent-tinted tiles, which is both
+the brief&amp;#39;s violation and the craft floor&amp;#39;s &amp;quot;same-size cards as structure&amp;quot; --
+it made a mistake list read as a report card. It is hairline rows now, glyph
+and reading left, count right. The meaning mask was a dashed box with a sunken
+fill; it is a dashed underline on the page background.
+
+The accent had stopped meaning anything. It exists for one idea -- that a
+kanji&amp;#39;s Sino-Japanese reading matches the Korean one -- and reading mode was
+spending it on a column of six eye toggles plus four dock toggles, all lit at
+once. State toggles now read as &amp;quot;brighter&amp;quot; (--fg text, --fg-3 border, no fill)
+rather than coloured. Measured: reading mode went from ten accent-wearing
+elements to zero, and the word card carries exactly three -- the 한자음 badge,
+its value, and the progress bar. Settings buttons keep the accent, where only
+one per group is ever on and &amp;quot;this is the current value&amp;quot; is a real meaning.
+
+Verified in both themes across 단어 / 한자 / かな / 읽기: rendered radii are
+3px and 999px only, contrast failures 0 and functional text under 11px 0 (the
+one flagged item is #btnSpeak&amp;#39;s label inside its disabled parent at
+opacity .4, which 1.4.3 exempts), and a real drill round renders the mistake
+list as hairline rows with border 0, background transparent, radius 0.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/441420a8d0f67e99dce43c90d6e739e21f7fdb87</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/441420a8d0f67e99dce43c90d6e739e21f7fdb87"/>
+    <title>
+        feat: fix the six critique findings -- autofit floor, opacity contras…
+    </title>
+    <updated>2026-09-17T11:59:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: fix the six critique findings -- autofit floor, opacity contrast, tab order, audio state, the inverted ending
+
+Six issues the design critique found. It reports rather than fixes, so these
+were open until now.
+
+**Autofit had no lower bound.** app.js:1261 floored --scale at half the base
+value, which is a ratio, not a size. At 390x560 the word card put its four
+example lines at 8.65px, meta at 6.61px, meaning numerals at 6.15px, and
+nothing looked broken. The floor now comes from a measured probe: read the
+smallest functional text at the current scale and stop shrinking before it
+passes 11px. That lands at 0.724 instead of 0.569 and the example text at
+exactly 11px. When even the floor does not fit, the stage scrolls
+(`[data-tall=&amp;quot;1&amp;quot;]`) rather than shrinking text nobody can read. Six more
+`max(11px, …)` floors cover the places --scale multiplies: meta, 한자음, the
+meaning numerals, the kanji example rows.
+
+**Ancestor opacity was quietly discounting the contrast tokens.** Fixing
+--fg-3 to 4.52:1 does nothing when a parent carries opacity. Measured:
+`.art-row.is-next` composited --fg-2 from 7.43:1 down to 2.13:1 at .4 and
+1.43:1 at .22, with its border-top at 1.04:1; `.ex-h` fell to 3.83:1 at .82;
+`.hjp i.is-kun` to 3.82:1 at .85; the 훈/음 markers sat under .75. Dimming was
+the right intent with the wrong instrument -- it scales a value already at the
+floor. All four now dim with a colour step instead, and the preview row&amp;#39;s
+second tier uses size. The only opacity left is :disabled, the loading state,
+and a placeholder rule with no placeholder to style.
+
+**The closed settings panel stayed in the tab order.** It closed by transform
+alone, so 59 focusable controls sat off-screen and reachable, and a screen
+reader announced all of them. It now goes `visibility:hidden` with the
+transition delayed past the slide, so the animation still plays. Verified by
+calling .focus() on a button inside the closed panel: focus does not move,
+activeElement stays BODY. The other two overlays already used display:none.
+
+**Audio had no feedback and swallowed its own failures.** The most frequent
+action in the app changed nothing observable, and `a.play()[&amp;#39;catch&amp;#39;](function
+(){})` meant a blocked autoplay or a muted phone produced no sound, no
+message, and no fallback -- a rejected play() never fires onerror, so the
+device-TTS path never ran either. Playback now sets `data-speaking` on &amp;lt;html&amp;gt;
+from onplaying and clears it on end, which tints the speak button and the
+speaker; device TTS feeds the same state through utterance start/end; and a
+rejected play() falls back to TTS, or says so when there is no voice either.
+
+**The ending was inverted.** app.js:890 showed the full-screen round summary
+only when something had been missed. A perfect round got a 13px toast, so the
+only ceremonial screen in the app was the failure report -- 40px type over
+boxes counting mistakes. Both endings use the screen now: &amp;quot;한 바퀴 만점&amp;quot; in
+the accent with the retry button hidden, or &amp;quot;한 바퀴 완료&amp;quot; as before. While
+there, the two denominators got separated -- &amp;quot;5자 중 2자를 틀렸습니다 ·
+정답률 71%&amp;quot; counted glyphs on the left and attempts on the right, so the rate
+moved to its own line as &amp;quot;입력 n번 중 n번 정답&amp;quot;.
+
+**가리기 모드 masked an answer the card prints twice.** Verified: the meaning
+masked as &amp;quot;전문가&amp;quot; while the example read &amp;quot;그의 솜씨는 전문가 수준이다.&amp;quot; The
+example translation and the English gloss hide with it now.
+
+Verified at 390x560 with touch emulation, both themes, across 단어 / 한자 /
+かな / 읽기: 0 contrast failures and 0 functional text under 11px, this time
+measuring effective contrast with ancestor opacity multiplied in and the
+background resolved by walking to the first opaque ancestor -- the earlier
+pass compared against html&amp;#39;s transparent background, which is why it read
+clean. A real drill round to completion produces &amp;quot;한 바퀴 만점 / 5자를 한 번에
+다 맞혔습니다 / 입력 5번 중 5번 정답 · 100%&amp;quot; with the retry button hidden. A
+sentence clip takes data-speaking 0 -&amp;gt; 1 and back to 0 after its 8.11s.
+check-reading.js exits 0; CHECK=1 reports 396 clips and 0 anomalies. The
+detector is at its one known false positive.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/68f364eee222946f5e4ed1bde716436b36fa2dd1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/68f364eee222946f5e4ed1bde716436b36fa2dd1"/>
+    <title>
+        docs: keep the critique snapshot
+    </title>
+    <updated>2026-09-17T11:39:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;docs: keep the critique snapshot
+
+/impeccable polish reads the priority issues out of this instead of a
+copy-paste. 28/40, four P1s, first run for this target.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9d79606ae78d43cabc61eef0a769f6378f4d98f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/9d79606ae78d43cabc61eef0a769f6378f4d98f9"/>
+    <title>
+        fix: stop the 44px tap overlays stealing each other&#39;s taps
+    </title>
+    <updated>2026-09-17T10:39:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: stop the 44px tap overlays stealing each other&amp;#39;s taps
+
+The touch-target block I added an hour ago gave every dock button and switch a
+44x44 ::before hit box. On a single-row dock that is fine, and the comment I
+left said so -- &amp;quot;버튼 간격이 6px 이라 겹침도 없다&amp;quot; -- which was sound for the
+horizontal gap and blind to the vertical one. At 390px the reading dock wraps
+to two rows about 3.8px apart, and each row&amp;#39;s buttons claim 8.3px upward, so
+the rows ate each other.
+
+The misfiring zone was inside the painted button, not beside it.
+elementsFromPoint(130, 686) returned btnRate while sitting 2.1px above
+btnAllKo&amp;#39;s bottom edge -- 4.5px of 27px, 16.7% of the 번역 button&amp;#39;s height,
+where a tap changed the playback speed instead of toggling the translation.
+Four pairs collided in that mode, and #btnAllKo x #btnFuri collided by 1.5px
+regardless of wrapping, because min-width:44px overhangs any label narrower
+than 44px.
+
+Checked what actually needed the help, and it was one control:
+
+  reading dock buttons  34-56 x 27   AA pass
+  dock icon buttons     42 x 42      AA pass
+  settings switches     40 x 22      AA fail by 2px
+
+So the blanket expansion was buying AAA (2.5.5, 44px) for controls that
+already cleared AA (2.5.8, 24px), and paying for it with wrong-action taps.
+Only .sw keeps a hit box now, grown 3px each way to 28px -- its rows sit 34px
+apart, so nothing collides.
+
+Verified at 390x780x2 with touch emulation, which is what makes the rule
+apply at all (resizing desktop Chrome to 390px keeps hover:hover and does not
+reproduce it): 0 overlapping pairs and 0 controls under the AA floor across
+단어, かな, reading in both view modes, and settings open. All four reading
+dock buttons receive their own centre tap, (130,686) now resolves to
+btnAllKo, and sampling all 143 points inside 번역&amp;#39;s painted box sends none of
+them to another control.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80022f9ea4f27bd5b373a8d48abffed083a1e044</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/80022f9ea4f27bd5b373a8d48abffed083a1e044"/>
+    <title>
+        fix: clear the audit findings -- contrast, touch targets, two invisib…
+    </title>
+    <updated>2026-09-17T09:54:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: clear the audit findings -- contrast, touch targets, two invisible controls
+
+Ran the Impeccable audit over the app and fixed everything it found. Its
+detector went from 28 findings to 1, and that one is a verified false
+positive: body{overflow:hidden} is this app&amp;#39;s shell (the stage scrolls
+internally), and the volume popover opens upward into the stage, staying
+inside the viewport -- measured 169px wide and fully painted.
+
+Contrast, one token each way. --fg-3 failed WCAG AA in both themes: 3.30:1 in
+dark, 2.73:1 in light, across 36 places. Some of those were reading content,
+not chrome -- the example translation, the kana reading and the hangul
+pronunciation all sat at 3.55:1, which is a study app losing its own text.
+Dark goes #6c6a65 -&amp;gt; #82807b (4.52:1 on --bg-elev), light #8a8f93 -&amp;gt; #666b6f
+(4.51:1 on --bg-sunk). Hue held, only lightness moved, and both stay clearly
+apart from --fg-2 (6.90-7.63 dark, 5.64-6.74 light) so the three-step
+hierarchy survives. Verified: 0 failures across five screens in both themes,
+desktop and 390px.
+
+Two controls were invisible. #btnSpeak is a button whose only content is a
+.lbl that display:none hides under 400px -- an empty 24x18 box you could tap.
+It now carries a waveform SVG and an aria-label, 44x44 on touch. And the
+volume popover only had opacity:0 on touch while keeping its layout box, so it
+pushed 17px past a 390px viewport on the kana screen and gave the page a
+horizontal scrollbar. It is display:none there now. Both regressions were
+mine, from earlier today.
+
+Undersized text: the font-picker tile names (9.9px), the kanji example reading
+and hangul (10.4px), the 한자음 label (9.9px) and the kbd chips (9.2px) are
+functional labels and now floor at 11px. The kana grid labels went 9.6px -&amp;gt;
+11.2px and lost the opacity:.6 that was discounting their contrast a second
+time; their cells widened to match. Furigana rt stays at 10.2px on purpose --
+--rt is tuned so 濁点 and 半濁点 stay apart and the user has a size setting
+for it, and the rule is about functional text, not ruby.
+
+Touch targets, 56-71 under 44px per screen -&amp;gt; 0 failures at WCAG 2.5.8 (AA,
+24px) everywhere. Height came from real growth where there was room (panel
+buttons, the eye toggles, range tracks, the drill input, the wordmark), but
+the dock uses an invisible ::before that expands only the tap area: growing
+the dock visually pushed the reading footer to two rows, and this keeps it at
+one with the same 44px reach. #jumpIn is the single element left under
+44 (31x36); widening it grew the counter enough to wrap the footer again, and
+36px clears the AA floor by 12px, so it stays.
+
+prefers-reduced-motion no longer kills every transition with .001ms. That
+erased the feedback that tells you a switch flipped or a popover opened. Only
+the position-moving ones are cut now.
+
+Also, per the skill&amp;#39;s craft floor: the ☆/★ favourite glyph is now an SVG pair
+matching the other dock icons (unicode glyphs vary in width and stroke between
+fonts, and every neighbour was already drawn), the popover dropped its 28px
+shadow to keep the hairline -- this app&amp;#39;s own stated world is &amp;quot;no card boxes,
+hairline separation&amp;quot; and pairing both is a generated-UI tell -- and the
+browser surfaces nobody draws now follow the palette: ::selection, the
+scrollbar, link colour and underline offset.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5355152a0c08dbb9775fa9c10fa9df2687ea2258</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/5355152a0c08dbb9775fa9c10fa9df2687ea2258"/>
+    <title>
+        fix: attach the volume popover to the speaker button
+    </title>
+    <updated>2026-09-17T08:57:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: attach the volume popover to the speaker button
+
+It floated as a detached box with a dead 7px gap, and that gap was also a
+bug: crossing it left both the button and the popover unhovered, so the
+popover closed before the pointer arrived.
+
+- A caret now points down at the button, drawn as a border-colour triangle
+  with a background-colour one overlapping it by 1px so the bubble keeps its
+  outline.
+- A 9px strip covers the 7px gap while hovering, so the pointer never leaves
+  the hover target on the way up. It only exists during hover, so it does not
+  swallow clicks above the dock the rest of the time.
+- The popover scales from the button (transform-origin bottom center) instead
+  of sliding in from nowhere, and the button keeps its hover border while the
+  pointer is in the popover, so the two read as one control.
+
+The caret first came out white and upside down: `border-width:7px` in the
+later rule overrode `border-bottom-width:0` from the shared one, so the bottom
+border rendered in currentColor. Both widths are now written in one
+declaration.
+
+Verified with the button hovered: popover opacity 1 / pointer-events auto,
+gap 7px against a 9px bridge, caret borders 7px 7px 0 in --line over 6px 6px 0
+in --bg-elev, button border on --line.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0de16126d9526ea809337ae35f5c8936fc390192</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/0de16126d9526ea809337ae35f5c8936fc390192"/>
+    <title>
+        feat: volume slider on the speaker button, 0 mutes
+    </title>
+    <updated>2026-09-17T08:46:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: volume slider on the speaker button, 0 mutes
+
+Hovering the speaker in the dock now slides out a popover above it with the
+volume slider and the percentage. Click keeps toggling mute, so nothing about
+the old behaviour changed.
+
+Dragging to 0 mutes and raising from 0 unmutes, which needed one rule: S.vol
+never stores 0. Mute lives in S.tts as before, so the slider shows 0 while
+S.vol keeps the level to come back to -- mute then unmute returns to 45%, not
+to some default.
+
+Both sliders (dock and settings) go through setVol and redraw each other, so
+they cannot drift. The settings one no longer uses rng(), which wrote S.vol
+directly and knew nothing about muting.
+
+Touch gets no popover: with no hover, a tap would have to both open the
+popover and mute, and those want the same gesture. Phones have a hardware
+volume and the settings panel still has the slider -- YouTube makes the same
+call. Verified under touch emulation: hover:hover false, popover opacity 0 and
+pointer-events none, and the button still toggles mute; the 42x42 target and
+the footer layout are unchanged at 390px.
+
+Also dropped two more guards that assumed device TTS was the only sound
+source: the mute button was disabled and toggleMute() returned early when the
+machine had no Japanese voice, which left bundled clips playing with no way to
+stop them.
+
+Persistence checked past the 250ms save debounce: 45% -&amp;gt; {vol:0.45,tts:true},
+0 -&amp;gt; {vol:0.45,tts:false}, unmute -&amp;gt; {vol:0.45,tts:true}.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e3d878d31404a3a3e846c804cdd88281973bac94</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/e3d878d31404a3a3e846c804cdd88281973bac94"/>
+    <title>
+        fix: bundled word audio was switched off by two unrelated settings
+    </title>
+    <updated>2026-09-17T08:40:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: bundled word audio was switched off by two unrelated settings
+
+speak() only reached playClip when it had exactly one thing to say:
+
+    if (q.length === 1) { playClip(wordClip(t), t); return; }
+    speakChain(q, speakSeq);
+
+So turning on 단어 두 번 읽기 or 예문도 읽기 pushed a second item and the
+whole card fell to device TTS. Kanji mode lost it the same way via 예문도
+읽기. Either switch silently took bundled audio to 0%, which is why 60 cards
+in a row could play no Gemini voice.
+
+sayChain replaces that. Items carry {t, clip}; each one plays from a clip when
+the file exists and falls back to device TTS on its own error, so a chain can
+mix the two. Example sentences pass clip:0 -- no clips were made for them --
+so they go straight to the device voice with no wasted lookup.
+
+Also relaxed the guard at the top of speak(): it required voices.length, so a
+machine with no Japanese system voice played nothing even though the bundled
+clips were sitting right there. Only S.tts gates it now; a missing device
+voice is handled per item.
+
+Verified in Chrome across both modes and all four switch combinations -- every
+one attempts a clip now. One card with both switches on:
+  음원 じょじょに / 음원 じょじょに / 음원 じょこう→기기 / 음원 そろそろ→기기
+and in word mode 住: 음원 じゅう twice, then the example sentence straight to
+the device voice.
+
+Coverage, measured, for the record: kanji mode 2094/2142 = 98%. Word deck
+2820/9543 = 30%, capped at 51% once all 3718 kanji-example readings exist --
+the deck is 9543 words and only kanji examples were generated.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/85b79368d3b963a5cf59a98556482c705e7d4e1f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/85b79368d3b963a5cf59a98556482c705e7d4e1f"/>
+    <title>
+        feat: word audio 2040 of 3718 (+1020 clips)
+    </title>
+    <updated>2026-09-17T08:31:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: word audio 2040 of 3718 (+1020 clips)
+
+The 16:00 slots came back as the rolling window predicted, and the boundary
+fix held: 51 requests produced 1020 clips, so essentially nothing was
+discarded. Under the old slicer half the chunks died on geminate stops.
+
+Checked: no filename outside kana (・ allowed for する-verb readings),
+nothing under 800 bytes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1e8499ae07c7687c66cf15b2b805d97f22a4cd3b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/1e8499ae07c7687c66cf15b2b805d97f22a4cd3b"/>
+    <title>
+        fix: match r39239 sentence 2 to what the voice actually says
+    </title>
+    <updated>2026-09-17T03:58:57Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: match r39239 sentence 2 to what the voice actually says
+
+The voice ends that sentence 「とされています」 while the screen read
+「とされている」. The data was not at fault -- s[1].k held the plain form, so
+the model paraphrased it into polite speech on its own. A learner reading one
+form and hearing another learns the wrong thing.
+
+Three parts:
+
+The sentence text and its kana now carry 「とされています」. CC BY permits this
+(it is not NoDerivatives) but §3(a)(1)(B) wants the modification indicated, so
+ATTRIBUTION §6 now says the body text gets adjusted to the audio, lists this
+edit, and warns that data/reading.js is generated -- rebuilding the deck drops
+hand edits and they have to be fed back from that list.
+
+The article prompt now adds 「書かれている語尾をそのまま読み、です・ます調に
+言い換えないでください」. 「ニュースを読むように」 stays: dropping it changes
+the delivery and new clips would not sit next to the 395 already made.
+
+DATA_V and AUDIO_V are now separate. One shared value meant editing a single
+sentence re-downloaded all 16MB of audio; AUDIO_V stays at v=30 so existing
+caches survive, and only bumps when a clip is overwritten.
+
+Verified: check-reading.js exits 0 (46 articles, 350 sentences), CHECK=1
+reports 396 clips and 0 anomalies, and the card renders 「…とされています。」
+while still requesting r39239-2.opus?v=30.
+
+Not verified: that the clip says what the report says. There is no offline
+transcription here, so the other 395 clips cannot be swept for the same
+defect -- clip duration does not separate it from ordinary pausing (this
+sentence ranks 41st by excess length, behind clips that are simply slower).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/82725f309d898f0cf9cc462cf1bee3637e5541d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/82725f309d898f0cf9cc462cf1bee3637e5541d7"/>
+    <title>
+        feat: word audio 1020 of 3718 (+80 clips)
+    </title>
+    <updated>2026-09-16T23:35:53Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: word audio 1020 of 3718 (+80 clips)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b34ebc46c1404b559e357721f6deb42fbcc17268</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/b34ebc46c1404b559e357721f6deb42fbcc17268"/>
+    <title>
+        feat: speed control in the reading footer, 0.5x to 1.5x
+    </title>
+    <updated>2026-09-16T13:14:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: speed control in the reading footer, 0.5x to 1.5x
+
+The speed already existed as a slider buried in settings, and playClip was
+already applying it. What was missing was reaching it while reading.
+
+One button that cycles 0.5 / 0.75 / 1 / 1.25 / 1.5, plus [ and ] for a single
+step. Five buttons do not fit the footer. It drives the same S.rate as the
+settings slider rather than a reading-only copy, so the two cannot disagree --
+the slider and its label are written back on each change. Changing speed while
+a sentence is playing retunes the live clip instead of waiting for the next one.
+
+[ and ] survive Hangul input: 두벌식 puts no jamo on those keys, unlike the
+letter shortcuts that need the e.code fallback.
+
+Verified in Chrome:
+- button cycles 1 -&amp;gt; 1.25 -&amp;gt; 1.5 -&amp;gt; 0.5 -&amp;gt; 0.75 -&amp;gt; 1, [ and ] clamp at the ends
+- settings slider follows: rRate 150, vRate &amp;quot;1.50배&amp;quot;
+- at 0.5x a clip reports playbackRate 0.5 with preservesPitch true, so pitch
+  accent is not dropped an octave
+- pressing ] mid-sentence moves the playing clip from 0.5 to 1
+
+Footer at 390px needed the readacts gap and button padding tightened to keep
+one row with a fourth button (195px in the common case). The one case that
+still wraps -- one-sentence mode showing &amp;quot;문장 12/13&amp;quot; -- wraps identically
+with the button hidden, so it predates this.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b73a9844a5e98c01fd557c6b6a47b60b86228dc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/9b73a9844a5e98c01fd557c6b6a47b60b86228dc"/>
+    <title>
+        fix: the quota is a rolling 24h window -- keep the driver running
+    </title>
+    <updated>2026-09-16T12:32:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: the quota is a rolling 24h window -- keep the driver running
+
+I had this wrong twice. The docs say RPD &amp;quot;resets at midnight Pacific&amp;quot;, and
+the burst at 09-16 16:00 looked like confirmation. It wasn&amp;#39;t a reset: it was
+the 95 requests spent at 09-15 16:00 ageing out.
+
+Clip timestamps per hour, converted to requests:
+
+  09-15 17시 1  -&amp;gt;  09-16 17시 2
+  09-15 18시 5  -&amp;gt;  09-16 18시 4
+  09-15 19시 0  -&amp;gt;  09-16 19시 0
+  09-15 20시 2  -&amp;gt;  09-16 20시 1
+  09-15 21시 0  -&amp;gt;  09-16 21시 0
+
+Hours that spent nothing yesterday hand back nothing today. So the driver
+should stay up rather than being started at a guessed reset time -- it has to
+be running at the minute a slot frees. 140 clips appeared between 17:32 and
+20:40 today while mine was stopped, which is the cost of guessing.
+
+Also added an instance lock. Two sessions share this checkout, and two
+drivers would compute the same todo list and generate the same chunks twice.
+mkdir is the atomic primitive; a stale lock whose pid is gone gets cleared.
+Verified: second instance prints &amp;quot;이미 돌고 있다 (pid 8026)&amp;quot; and exits 1.
+
+Includes the 140 word clips (800 -&amp;gt; 940).&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e22380af6a9a4ffea411ea86366772f05ad7e45b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/e22380af6a9a4ffea411ea86366772f05ad7e45b"/>
+    <title>
+        fix: highlight the whole wordmark on hover, not just 낱말
+    </title>
+    <updated>2026-09-16T08:13:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: highlight the whole wordmark on hover, not just 낱말
+
+The mark is one click target that goes home, but only the bold 낱말 changed
+colour. With four modes listed beside it the reacting part no longer matched
+the thing being clicked.
+
+Hover and focus-visible now colour the mark, its b, and the mode list
+together. Disabled at home as before -- no colour change, default cursor.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/db3c213f7ca420bd8d92988eaa42c06b17428833</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/db3c213f7ca420bd8d92988eaa42c06b17428833"/>
+    <title>
+        feat: word audio 800 of 3718 (+640 clips)
+    </title>
+    <updated>2026-09-16T07:54:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;feat: word audio 800 of 3718 (+640 clips)
+
+Kanji mode and the word deck read these with the Gemini voice; everything
+else still falls back to device TTS per word, which is fine because each clip
+is independent -- no manifest, no half-finished card.
+
+Checked: no filename outside kana (the 14 with a 中点 are する-verbs whose
+reading carries it, e.g. そうだん・する at 1.12s, so the phrase is whole and
+not cut at the separator), and nothing under 800 bytes.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c80c49b7b52f41d137e897f23095d21fd995fb57</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/c80c49b7b52f41d137e897f23095d21fd995fb57"/>
+    <title>
+        chore: delete a chunk&#39;s wav once its clips are written
+    </title>
+    <updated>2026-09-16T07:54:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: delete a chunk&amp;#39;s wav once its clips are written
+
+2.5MB per chunk, 186 chunks for the full word pass, and the index shifts
+between runs so they accumulate rather than overwrite. Failed chunks stay --
+without the wav there is no way to see why the boundaries were missed.&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/40df61b5a26ba559d6b0716ad9bc31088347e8d0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/40df61b5a26ba559d6b0716ad9bc31088347e8d0"/>
+    <title>
+        fix: pick word boundaries by gap length, not by every silence
+    </title>
+    <updated>2026-09-16T07:50:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;fix: pick word boundaries by gap length, not by every silence
+
+Half of today&amp;#39;s requests were thrown away. The slicer cut at every detected
+silence, but a geminate consonant is real silence inside a word -- がっこう
+holds a ~0.15s stop -- so 20 words came back as 21 or 22 segments and the
+chunk was discarded. The log from one round: 19 of 39 chunks lost, 15 of them
+reporting &amp;quot;구간 21개인데 단어는 20개&amp;quot;.
+
+sliceWords now finds every silence, drops the leading and trailing ones, and
+uses only the n-1 longest as boundaries. Short internal stops lose to the
+~3s gaps the prompt asks for. A segment under 0.15s means the boundaries were
+chosen wrong, so the chunk is still discarded -- misaligned word audio is
+exactly what a learner cannot detect.
+
+Checked against the 37 chunk wavs this round left in TMPDIR:
+- chunks yielding a usable 20-way split: 17 -&amp;gt; 35
+- on the 17 the old method also handled, 19 of 20 segments match to the
+  millisecond; the 20th differs by 0.136s because the new code trims 0.14s
+  of leading silence the old one kept&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9da48d3529b1b79205a6d63e65ca52fd064a1718</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Alfex4936/JLPT/commit/9da48d3529b1b79205a6d63e65ca52fd064a1718"/>
+    <title>
+        chore: keep each round&#39;s log so a crash stays diagnosable
+    </title>
+    <updated>2026-09-16T07:23:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/2356749?s=30&amp;v=4"/>
+    <author>
+      <name>Alfex4936</name>
+      <uri>https://github.com/Alfex4936</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;chore: keep each round&amp;#39;s log so a crash stays diagnosable
+
+Round 1 of the word pass exited 1 -- not the daily-quota code 3 -- after
+writing 240 clips, and the reason was gone by the time I looked: each round
+overwrites the same log file. Rounds now append to a history file too.&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

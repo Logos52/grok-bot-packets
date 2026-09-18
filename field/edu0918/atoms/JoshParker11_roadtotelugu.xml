@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/JoshParker11/roadtotelugu/commits/main</id>
+  <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commits/main"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/JoshParker11/roadtotelugu/commits/main.atom"/>
+  <title>Recent Commits to roadtotelugu:main</title>
+  <updated>2026-09-17T23:17:39Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8372ab62220cdaa510e412c7b19b08e5396383fe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/8372ab62220cdaa510e412c7b19b08e5396383fe"/>
+    <title>
+        One HyperTTS exporter for any dataset, and clip directories a corpus …
+    </title>
+    <updated>2026-09-17T23:17:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;One HyperTTS exporter for any dataset, and clip directories a corpus can name
+
+The two existing exporters read their own corpus&amp;#39;s intermediate TSVs, so a third import meant a
+third copy — and every import after it another. The baked reader dataset already holds the guid,
+the spelling and the gloss, so reading that serves every corpus and cannot disagree with what
+the reader displays. Output is byte-compatible with the existing round trip, since
+ms_hypertts_import.py matches audio back by the guid in column one.
+
+Word clip directories were hardcoded to the two original corpora, which meant no third corpus
+could ever have pronunciation audio. A dataset now names its own, and sayWord tries the corpus
+in front of you first and then every other — a guid is a hash of the spelling, so whichever
+corpus recorded a word, the clip is the right one. That is also why 660 of the graded readers&amp;#39;
+2,666 forms need no recording at all: they are already voiced under the mini stories or the
+course.
+
+Left out of the word export deliberately: 159 Latin-only forms, because a Telugu neural voice
+reading &amp;quot;Hogwarts&amp;quot; is a mispronounced English word rather than a pronunciation guide, and these
+are the protected names the graded readers keep in Latin on purpose; and 29 the pipeline itself
+marked reference-only. 1,818 words and 925 sentences remain, resumable because a form with a
+clip is skipped.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fea32944353164cc83ebd3673ad6c1a4b813b8e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/fea32944353164cc83ebd3673ad6c1a4b813b8e3"/>
+    <title>
+        Import the graded readers, and make a word card answer about THIS occ…
+    </title>
+    <updated>2026-09-17T23:15:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Import the graded readers, and make a word card answer about THIS occurrence
+
+Three chapters of the Prisoner of Azkaban graded readers: 36 sections, 930 sentences, 2,666
+word forms, 6,650 occurrences, 260 constructions, in 1.7 MB. The library is now grouped —
+Mini Stories, Intensive Course, Discussions, and the book as one heading with its three
+chapters inside — because thirty-six scenes listed flat among the mini stories is a list you
+scroll past rather than read.
+
+THE OCCURRENCE IS A NEW UNIT IN THIS READER
+Until now a card belonged to a spelling, with `sn` holding senses. That was enough while a
+gloss was a property of a form. It is not enough here: this pipeline stores the contextual
+gloss, the grammatical role and the aligned English phrase on the OCCURRENCE — this word, in
+this sentence — and a form recurs across three chapters doing a different job each time.
+Flattening that would discard most of what was authored and would lead the card with a note
+from some other sentence, which is precisely the defect the graded-reader project&amp;#39;s own review
+of the earlier import identified.
+
+A token tuple therefore gains a fourth element, the occurrence index. Datasets built before
+occurrences existed have three elements, and a missing fourth reads as &amp;quot;no occurrence data,
+use the form&amp;quot; — the previous behaviour exactly, so nothing else changes.
+
+The card now answers in the order their data model asks for: what this form means here, which
+English it matches, what job it is doing, what base word to look up, and how the form is built
+— each morphological part with a plain-English category before its technical label, since a
+label only explains anything to someone who already knows it.
+
+Two departures from the mapping they proposed. Protected Latin is lexical: a token carrying
+formIds is a word whatever its script, so Harry and Hogwarts get real cards via the
+romanisation id fallback rather than going inert as the safe projection suggested. And
+romanisation is carried, not recomputed, because te2rom cannot know what their pinned profile
+decided about a loanword.
+
+Two fields are deliberately dropped. `resolution` is &amp;#39;tentative&amp;#39; for all 6,650 occurrences, so
+it belongs once on the dataset rather than on every card; and `roleInSentence` is &amp;#39;unresolved&amp;#39;
+for 71% of them, which rendered would put the word &amp;quot;unresolved&amp;quot; on three cards in four and read
+as a malfunction rather than as candour. Nothing here is approved: every bundle is draft by its
+own manifest, senses say so, and 1,632 unreviewed morphology parts are flagged as such.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2094466d27aa4430f53e7f44603c013fa2272a2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/c2094466d27aa4430f53e7f44603c013fa2272a2"/>
+    <title>
+        Count each offline set once, not once per text a word appears in
+    </title>
+    <updated>2026-09-17T22:50:31Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Count each offline set once, not once per text a word appears in
+
+The clip lists deduplicated within a story but not across a corpus, so a word occurring in
+three mini stories was offered three times: the panel advertised 671 files for the 444 distinct
+clips the mini stories actually have, and the progress counter ran against that inflated total.
+The download was never wrong — a repeat is a cache hit — but the number is the whole reason the
+panel exists, and one you cannot trust is worse than none when you are deciding what to take on
+a plane. Now 444, 4208 and 1022, which is what is there.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/02590d5712d186ea70756931fa2f3c23ff23d184</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/02590d5712d186ea70756931fa2f3c23ff23d184"/>
+    <title>
+        Work offline: cache the app and its texts, download audio on request
+    </title>
+    <updated>2026-09-17T22:30:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Work offline: cache the app and its texts, download audio on request
+
+The site needed a signal for everything, which makes it useless on a plane. Now a service
+worker stores the shell and all three baked datasets on first visit — 2.2 MB, so it happens
+without asking — and Stats gains an Offline panel for choosing which audio to keep.
+
+The worker lives at the repo root rather than in reader/, because a worker only intercepts
+requests inside its own scope and the reader loads ../STUDY/te2rom.js, ../GRAMMAR_LAB/verbs.js
+and ../ministories/lr/*.mp3 — all above itself. Registered from reader/ at scope &amp;#39;../&amp;#39;, a
+worker inside reader/ would have caught the page and none of its data.
+
+Two caches, and only the shell one carries a version. Audio never changes once generated and
+runs to 197 MB, so it lives in an unversioned cache that survives code updates; versioning them
+together would re-download a flight&amp;#39;s worth of audio because a stylesheet moved.
+
+Range requests are the whole difficulty. Safari does not fetch an audio file, it asks for byte
+ranges, and the Cache API cannot store a 206 — pass those through and audio never caches at
+all. So the full response is held and sliced here into the 206 the player expects. The
+arithmetic is tested against the seven range forms Safari sends, including the clamp when the
+requested end runs past EOF and the 416 when the start does.
+
+The download panel reports what it could not get. The first version swallowed every error and
+counted the item done, so it claimed &amp;quot;✓ 14 stored&amp;quot; for 15 tracks while story 3 — which fetched
+perfectly when asked again — would have been silently absent in the air. A 404 now means the
+clip does not exist, which is ordinary for most words; anything else is retried three times and
+then named. Clip sets are split per corpus so the course&amp;#39;s 147 MB can be declined on its own.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4b88de94c29568d0c90ac8b0a7a59f28ed650b03</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/4b88de94c29568d0c90ac8b0a7a59f28ed650b03"/>
+    <title>
+        Give the discussion a full vocabulary, from the generated annotations
+    </title>
+    <updated>2026-09-15T02:30:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Give the discussion a full vocabulary, from the generated annotations
+
+Definitions went from 305 of 1,022 word forms to all 1,022, and English from none of the 141
+lines to all of them. The annotation carries a meaning, a morphological breakdown and a note
+per word, which map onto slots the reader already renders: senses with their own draft notice,
+and a split shown as bold part plus label.
+
+It also fixes a crash that was already pushed. `l.p` is a LIST of [part, label] pairs — the
+reader maps over it — and build was assigning the part-of-speech STRING. 116 entries were in a
+shape that threw TypeError the moment their word card opened, invisible until a card was
+actually clicked, which nothing in the build or the data check does. The annotation&amp;#39;s parts are
+the right shape for that slot, so the fix and the feature are one change. The caption under it
+no longer claims the split was automatic, which was true for the mini stories and not here.
+
+What the importer refuses matters as much as what it takes. This annotator proposes repairs —
+నిజే read as నిజమే — and 45 of the 141 translations rest on such a proposed reading rather than
+on the words actually in the transcript. Writing those back would replace what was said with
+what a model guessed was meant. They are recorded in the notes column instead, to inform a
+correction made deliberately, and the transcript is untouched. An annotation whose lines do not
+match the segments is refused outright, since its line numbers would point at the wrong words.
+
+Every sense is status=draft, so the reader says it has not been checked by a native speaker.
+The annotation says the same of itself: contextual analysis, no dictionary check, no audio, no
+native review.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/42fc8026029749030085e6f78e8fb6ee5e410ce7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/42fc8026029749030085e6f78e8fb6ee5e410ce7"/>
+    <title>
+        Align lines to the audio by recognising it, not by counting characters
+    </title>
+    <updated>2026-09-14T01:38:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Align lines to the audio by recognising it, not by counting characters
+
+The old timings were off by a median 4.33 s, and 51 of 141 lines sat a full line or more from
+where they are spoken. They measured well because the check was the aligner&amp;#39;s own assumption
+restated: lines were spread by character weight, then scored on how closely duration tracked
+character count. A number like that can only confirm itself, and it cannot see being two turns
+out. Nothing consulted the audio.
+
+So recognise the audio. What faster-whisper hears is wrong in detail — సాధారనంగా for
+సాధారణంగా — but wrong at a known second, which is all an anchor needs to be. Matching is at
+character level because a Telugu word carries its case endings inside it: వాళ్ళకి and వాళ్ళు
+never match as tokens while sharing a stem that matches exactly. Each matched character is a
+position-to-time pair, and a line&amp;#39;s boundary is read off the curve through them.
+
+Three things this needed, each found by measurement rather than reasoning:
+
+  - A rate ceiling, which turned out to do most of the work. Recognition skips stretches, and
+    the next block it matches can sit 0.11 s after the last while the transcript between holds
+    349 characters; interpolating across that pair crushes those lines to nothing. Eight such
+    pairs here. Ordering filters cannot see it — the constraint is speed, so anchor pairs are
+    rejected above the recording&amp;#39;s own average times 1.2. Derived per resource, because a
+    constant tuned on one recording is wrong on the next.
+  - Pooled recognitions. Two runs mishear different words, so each anchors where the other
+    failed: 84 anchored lines to 105.
+  - Boundaries as shared state. A minimum span widened onto one row&amp;#39;s end runs past the next
+    row&amp;#39;s start, because both read the same number — the third time that bug appeared.
+
+Verified the only way that has ever worked here: cut spans out of the audio, recognise them
+blind, compare with what the line claims to say. Over a fixed 22-line sample, mean character
+similarity 82.4% and nothing under 40%, against 69.6% and five weak lines before the ceiling
+was derived. Two hypotheses died on that harness — pause-boundary dynamic programming, which
+optimised the same circular objective, and disabling the recognizer&amp;#39;s voice-activity filter,
+which produced fewer words rather than more.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ea690649938afffc5321623198452275a061bd54</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/ea690649938afffc5321623198452275a061bd54"/>
+    <title>
+        Import the chapter-1 discussion, readable line by line with its audio
+    </title>
+    <updated>2026-09-12T19:24:45Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Import the chapter-1 discussion, readable line by line with its audio
+
+First real resource through the import path, and it needed three things the tool did not have.
+
+A turn-per-line segmenter. The transcript is 141 utterances with no blank lines and punctuation
+on 84 of them, which is what a generated discussion looks like and which neither existing
+reader handles: sentences_of() sees one paragraph and merges every unpunctuated turn into its
+neighbour. The line break is the only structure the file has, so --lines trusts it.
+
+Alignment from the audio&amp;#39;s own pauses. No captions exist, and flat character weight drifts over
+sixteen minutes. silencedetect at -40dB finds 146 pauses against 141 lines — the turn
+boundaries — so segments are spread over the speech rather than the timeline and each boundary
+snaps to a real pause. That bounds the error: a segment can be wrong about where it starts but
+cannot drag the next forty with it. A pause can be claimed only once, which is the fix for both
+symptoms of one cause — two boundaries choosing the same pause collapsed 8 segments to zero
+length, and the minimum span that repaired them ran 8 others past where the next began.
+
+A build step. reader/data/&amp;lt;slug&amp;gt;.js in the shape the reader already consumes. Short because
+word identity is already shared: ids.guid(&amp;#39;W&amp;#39;, form) is the key both corpora use, so 305 of
+1,022 forms arrive with a definition, and any word already rated keeps its level, its SRS date
+and its clip.
+
+Three collisions surfaced once a third corpus existed, and the middle one predates it:
+  - the router&amp;#39;s id pattern, [a-z]*\d+, could not express a tag containing a digit, so
+    #/story/hp1d1 matched &amp;quot;hp1&amp;quot;, found nothing and fell back to the library
+  - read state was keyed by story NUMBER, so finishing mini story 1 also ticked course lesson 1.
+    Now keyed by id, with bare numeric keys migrated to the mini stories, since that is what
+    they meant when written and a collided write cannot be attributed afterwards
+  - the library tally read `STORIES.length - ms` as the course count, advertising 65 lessons
+
+Audio re-encoded to mono 64k: 30 MB to 7.9 MB, and speech loses nothing.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/214eb867969dfe5c8b5a7435518070b8ba7ef676</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/214eb867969dfe5c8b5a7435518070b8ba7ef676"/>
+    <title>
+        Per-chapter keep-in-English briefs for generating audio from one chapter
+    </title>
+    <updated>2026-09-12T15:49:05Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Per-chapter keep-in-English briefs for generating audio from one chapter
+
+Handing a generator the whole glossary is handing it a haystack: 158 terms, most of which any
+given chapter never mentions. The failure mode is not refusal — it quietly preserves the famous
+names and transliterates the rest, which is the precise inconsistency the glossary was built to
+prevent. So the brief is counted from the chapter&amp;#39;s own text and lists only what that chapter
+contains: 34 terms for chapter 1, grouped as people, places, institutions, creatures, spells,
+Quidditch, invented words.
+
+Classified and detected terms stay in separate sections. The classified ones carry the
+glossary&amp;#39;s judgement; the detected ones are this script&amp;#39;s capitalisation guess and include
+false positives. An unclassified name should still stay in English, so the guesses are worth
+listing — but not worth presenting as settled. Chapter 1 is the only chapter where that second
+list is short; chapter 5 has 67 entries, which is the glossary coverage gap made visible.
+
+bases() moves to module scope unchanged — write_brief needs the same plural folding that
+covered() uses, so that Muggles and Muggle resolve to one anchor.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/148d1318ec6a027a3040b24c8dd0137db10d057a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/148d1318ec6a027a3040b24c8dd0137db10d057a"/>
+    <title>
+        One import path for outside resources, instead of a new pipeline per …
+    </title>
+    <updated>2026-09-12T15:19:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;One import path for outside resources, instead of a new pipeline per corpus
+
+The two corpora here each got their own directory and their own tooling — ministories/ with
+ms_*.py, intensive/ with ic_*.py. Fourteen tools, of which maybe three hold reasoning that is
+really about Mini Stories or about the course; the rest is the same pipeline twice, diverged by
+accident. A third copy for the first podcast and the tooling becomes the project. So: one
+directory per resource, all the same shape, one tool that walks it — new, segment, align,
+analyze, status.
+
+Segmenting from captions rather than from punctuation is the path worth taking, and not for a
+subtle reason: sentence-final punctuation does not survive real transcripts. Auto-captions have
+none, and a transcript typed from audio keeps it only when the typist bothered. Splitting such
+a file on .?! under-splits badly — three minutes of audio behind one timestamp, one rating and
+one click-to-look-up. Cues already record where the speech broke, so they are merged up to a
+sentence ender or a width budget, which degrades instead of failing. Timings come free and
+exact. Without captions, timings are spread by character weight and marked est; a measured
+timing overwrites an estimate and clears the flag, because a column asserting the opposite of
+what the row holds is the stale-manifest bug again.
+
+analyze answers the question worth asking before spending an evening on an import: how much of
+this can you already reach, and how many new words occur often enough (8+) to be learnable from
+it at all. A resource where that second number is small is reading practice, not a vocabulary
+source.
+
+The reader needed one fix to accept any of this: a dataset now names its own tag and unit noun.
+The tag was /Intensive/.test(d.source), a two-corpus test wearing a general one&amp;#39;s clothes —
+every third dataset comes back &amp;#39;ms&amp;#39;, takes the mini stories&amp;#39; id prefix, and its story 1 becomes
+unreachable behind theirs, which is the exact bug that regex was added to fix.
+
+Resource directories are gitignored: someone else&amp;#39;s audio, someone else&amp;#39;s transcript, the same
+call already made for sources/local/ and translate/source/. meta.json carries a rights field so
+that question is answered before the effort, not after.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a26eb3c13cf68b25674d45f9443b201bd655f522</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/a26eb3c13cf68b25674d45f9443b201bd655f522"/>
+    <title>
+        Read the novel&#39;s chapter markers instead of guessing from capitals
+    </title>
+    <updated>2026-09-12T15:19:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Read the novel&amp;#39;s chapter markers instead of guessing from capitals
+
+The new copy of the source has intact CHAPTER markers, which the old scan had lost entirely —
+so split_chapters() was falling back to its all-caps heuristic for every boundary. That guess
+is only defensible when the file offers nothing better. An all-caps paragraph mid-chapter is
+not rare in this book: Hogwarts&amp;#39; equipment list, the Daily Prophet&amp;#39;s headlines. Run on a
+marked-up source it found 23 chapters in a 17-chapter novel, cutting at UNIFORM, COURSE BOOKS,
+OTHER EQUIPMENT and GRINGOTTS BREAK-IN LATEST.
+
+Markers win when there are two or more of them; the heuristic stays for the old scan. A run
+that does not end at 17 now says so rather than writing 23 files and looking successful.
+
+Also writes source/chapters/chNN.txt — the chapter as something to read, hand to a model or
+diff against, in the same paragraph-per-line shape read_source() parses, so a chapter file
+feeds back through the segmenter unchanged. Gitignored with the rest of source/.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9bcfe8dea4d32dbb6822d83958ca1146aaff31c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/9bcfe8dea4d32dbb6822d83958ca1146aaff31c0"/>
+    <title>
+        Shuffle every drill lap so the order stops being a cue
+    </title>
+    <updated>2026-09-12T08:00:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Shuffle every drill lap so the order stops being a cue
+
+The panel&amp;#39;s list is alphabetical, so lap one was an alphabetical march
+and each later lap kept that relative order. The card you just answered
+then works as a cue for the next, and a word you only know in third
+position is a word you do not know. Fisher-Yates at the start of every
+lap, including the lap built from the words you missed.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0a1fa5495e7cfe7bcf0414dd92b4d3c2a8714810</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/0a1fa5495e7cfe7bcf0414dd92b4d3c2a8714810"/>
+    <title>
+        Drill a text&#39;s vocabulary as flashcards until every word lands
+    </title>
+    <updated>2026-09-12T07:51:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drill a text&amp;#39;s vocabulary as flashcards until every word lands
+
+Priming a text before reading it wants a different loop from review: no
+daily limit, no scheduling, just every word in the list until you have
+said you understood it. Words you miss come back after the rest of the
+lap, and keep coming back, so a session ends when the text is clear
+rather than when a queue runs dry.
+
+Recognise shows Telugu and asks for meaning; Produce shows English and
+asks for Telugu, withholding the example sentence and the audio until you
+answer, since either would hand you the word. The example is drawn from
+the text you are reading and is the shortest line that uses the word — a
+forty-word speaker turn teaches a single word badly.
+
+Finding that line needs every lexicon index a guid occupies, not one:
+words in both corpora have an entry in each, BY_G is a plain Map and
+keeps only the last, and lines index their own dataset — so కథ in a mini
+story was illustrated by a lesson about songs.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9b2553f5667e547ab4fdab33b17905b55506d24</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/f9b2553f5667e547ab4fdab33b17905b55506d24"/>
+    <title>
+        Keep the 150-word reference page, unwired, behind the parked drawer
+    </title>
+    <updated>2026-09-11T06:25:03Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Keep the 150-word reference page, unwired, behind the parked drawer
+
+Generated by another agent against this reader&amp;#39;s own data, and worth
+keeping as a lookup: deep usage notes, recognition hints and per-word
+sentence breakdowns for 150 high-frequency words, with deep links back
+into reader routes that resolve.
+
+Its provenance checks out where it claims a source. All 124 guids it
+cites resolve in the reader, and of 132 sourced sentences 126 are
+verbatim clauses lifted from longer turns and 6 are whole lines — none
+altered.
+
+Two things it should not be trusted on, which is why the drawer entry
+says so rather than leaving it to be discovered. 32 of its examples are
+newly written Telugu rather than taken from the texts, which is the one
+thing this project does not do. And its &amp;quot;lexical sense checked&amp;quot; badge,
+on 140 entries, means an agent asserted the sense — not that anyone
+verified it; the same status as the batch glosses, with a label that
+reads stronger.
+
+Nothing feeds the reader from here. Its word selection would add little
+anyway: every target sampled sits in the corpus top 350 and already has
+a gloss, which is the band that recurs often enough to stick from
+reading. The band that wants deliberate study is 350-1600, which this
+does not cover.
+
+150 KB gzipped, one file, no build step.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a344bbac99133fa495bf0d357cc82dcbefff3a4f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/a344bbac99133fa495bf0d357cc82dcbefff3a4f"/>
+    <title>
+        Commit the course word clips so the speaker button works off this mac…
+    </title>
+    <updated>2026-09-02T06:47:44Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Commit the course word clips so the speaker button works off this machine
+
+4,251 clips, 74 MB. GitHub Pages can only serve what is committed, so
+until now every speaker button in the Intensive Course was dead anywhere
+but this laptop — the same reasoning that un-ignored the mini stories&amp;#39;
+word clips.
+
+Three lines again, because git will not descend into an excluded
+directory: un-exclude the parent, re-exclude the per-turn clips inside
+it, re-include only words/. The per-turn clips stay out — the reader
+plays intensive/lr/lesson_NN.mp3, which is built from them and is
+already committed.
+
+This is a deliberate acceptance of repo growth, not an oversight.
+Trajectory is roughly 350 MB once the remaining lessons and stories are
+voiced, and re-recording after a translation fix leaves the old copies
+in history for good: ministories/lr already carries 26 MB of blobs for a
+22 MB working tree after one such round. Day-to-day git is unaffected —
+status, commit and push touch the index and new objects, not history —
+so the real costs are clone time and permanence. Moving audio to release
+assets later is a history rewrite, and the decision to take that on can
+wait until the size actually bites.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/187b22458552b005fd98688b81c20b3d8094dc43</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/187b22458552b005fd98688b81c20b3d8094dc43"/>
+    <title>
+        Sync learning state between devices by code or file
+    </title>
+    <updated>2026-09-02T00:12:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Sync learning state between devices by code or file
+
+Stats gains a Sync panel: copy a code from one device, paste it into the
+other. Everything lives in localStorage, which is per-browser, so the
+phone and the laptop have each been keeping progress the other has never
+seen.
+
+MERGE, NEVER OVERWRITE. Both devices are real. An import that clobbers
+works until the first time it runs in the wrong direction and takes a
+day&amp;#39;s reading with it, so the only operation is a merge — safe in either
+direction, twice, or out of order. Verified idempotent: merging the same
+code three times leaves byte-identical state.
+
+Conflicts resolve on evidence rather than guesswork. WordLevels already
+stores [level, date] per word, so the newer mark wins on its own record.
+Only a same-date collision falls back to keeping the further-along mark,
+which is the one case the data cannot answer. The cost is a deliberate
+downgrade losing to a same-day promotion — a per-word clock would fix it
+and is not worth the bytes for something that resolves itself the next
+time you touch the word.
+
+Notes are never dropped. Where both sides wrote one and they differ,
+both are kept: a card briefly saying two things beats losing a sentence
+you wrote. rtt.known is rebuilt from the merged levels rather than
+merged separately, so the mirror cannot drift from what it mirrors.
+
+Checking is separate from applying. Import states what it would change
+and waits — added, advanced, left alone — because it is the one action
+here that can surprise you.
+
+A code is ~49 KB for 4,652 words, a third of the raw JSON, which is
+past comfortable pasting; hence Save as file and Load file alongside.
+Truncation is the likely failure since chat apps and mail clients mangle
+long strings, and it used to surface as the browser&amp;#39;s &amp;quot;Failed to fetch&amp;quot;.
+It now names itself and says to use the file.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/084fee3004d03c5be8a543b26927cbe8b34e61a9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/084fee3004d03c5be8a543b26927cbe8b34e61a9"/>
+    <title>
+        Fix the doubled vocabulary list, and make clicking a word commit and …
+    </title>
+    <updated>2026-09-02T00:04:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Fix the doubled vocabulary list, and make clicking a word commit and stick
+
+The known-word list was doubled because each dataset builds its own
+lexicon, so a word in both corpora has an entry in each — same guid,
+same meaning, two rows. One of them carried a story number and the other
+did not, which is where &amp;quot;story undefined&amp;quot; came from: only
+build_ms_reader recorded a first-met number, and the course builder
+recorded neither that nor an occurrence count. The table printed both
+straight out as &amp;quot;×undefined · story undefined&amp;quot;.
+
+The table now lists one row per word and says where it was met in words:
+&amp;quot;story 1 · lesson 13&amp;quot; for a word in both. Merged at render time rather
+than at load, because the token arrays index into their own dataset&amp;#39;s
+lexicon and the arrays cannot be collapsed. 4,652 rows down to 4,493,
+none duplicated, none undefined.
+
+Switching to sentence view landed on sentence one however far you had
+read, because only playback recorded which line you were on. A click
+records it too, so sentence view opens where you were looking.
+
+Clicking an untouched word now commits it at level 2 rather than 1.
+Level 1 is blue since the LingQ change, so committing at 1 turned a pale
+blue word solid blue — a real change that reads as nothing having
+happened. Amber is the point: a word you have touched should look
+touched.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/07b5f0b81a0794448694f89439890ea1be150fbe</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/07b5f0b81a0794448694f89439890ea1be150fbe"/>
+    <title>
+        Restore the progress bar&#39;s middle band, which my own change had erased
+    </title>
+    <updated>2026-09-01T23:51:00Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Restore the progress bar&amp;#39;s middle band, which my own change had erased
+
+Not intentional. The bar was known / levels-1-to-4 / untouched, with the
+middle band painted var(--l1). Painting level 1 blue to match LingQ
+turned --l1 into rgba(127,178,232,.40) against --new-b&amp;#39;s
+rgba(127,178,232,.38) — the same colour to the eye. The band was still
+being drawn; it had simply become invisible against the one beside it,
+so a lesson read as nothing but known and new.
+
+Four bands now, because level 1 genuinely is blue and has to stay apart
+from untouched: green known, amber for 2 to 4, solid blue for level 1,
+pale blue for never seen.
+
+The summary line gains &amp;quot;seen&amp;quot;, which is the question the bar exists to
+answer — how much of this lesson have I touched at all — and could not
+be read off it before.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abae93d97f392ce983b374d50f7fe504d25075ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/abae93d97f392ce983b374d50f7fe504d25075ed"/>
+    <title>
+        Rating moves one word right; searching stays on Tab
+    </title>
+    <updated>2026-09-01T23:45:07Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Rating moves one word right; searching stays on Tab
+
+Rating called nextBlue, which looks for the next word still needing a
+decision. Re-rating the first word of a sentence whose words were all
+already rated therefore found nothing nearby and jumped several
+sentences ahead — from sentence 1 to sentence 5 in the reported case.
+Correct by its own rule and useless in practice: you were revising that
+sentence, not looking for work.
+
+Rating is a cursor now. One word to the right, and on to the next
+sentence at the end of this one, whatever the words are marked. Tab and
+B still skip ahead to the next word that needs a decision, which is
+where a search belongs. Two gestures, one job each.
+
+The cursor itself was never stale — the reported symptom looked like a
+focus that had not updated, but the focused word was correct both before
+and after the click. What moved wrongly was the rule deciding where to
+go next.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a0b0118248972aae72b9a1b9d77181e7a154d10</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/9a0b0118248972aae72b9a1b9d77181e7a154d10"/>
+    <title>
+        Advance to the next word after rating one in sentence view
+    </title>
+    <updated>2026-09-01T23:27:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Advance to the next word after rating one in sentence view
+
+nextBlue looked for spans inside #readtext. Sentence view renders into
+.sview, so it found nothing and returned without moving — rating a word
+by keyboard there left the focus exactly where it was, which is the one
+place it needed to move.
+
+It now walks the sentence in front of you and then steps to the next
+sentence that still has an unrated word, so a lesson can be cleared
+without reaching for the mouse. Words already rated are skipped, so a
+second pass through a lesson only stops on what is left.
+
+It does not wrap in sentence view. Reaching the end should say so rather
+than quietly restarting, which looks identical to nothing happening. The
+reading view still wraps, because there it shows the whole lesson at
+once and wrapping is how you catch what you skipped.
+
+Tab and B are no longer excluded from sentence view — with one
+traversal, they are the same &amp;quot;next word that needs a decision&amp;quot; gesture
+in both.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b1fabb8db356b172a1d9ec05051d67766b43137</id>
+    <link type="text/html" rel="alternate" href="https://github.com/JoshParker11/roadtotelugu/commit/9b1fabb8db356b172a1d9ec05051d67766b43137"/>
+    <title>
+        Show the same meaning in the lists that the word card shows
+    </title>
+    <updated>2026-09-01T23:23:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/16564007?s=30&amp;v=4"/>
+    <author>
+      <name>JoshParker11</name>
+      <uri>https://github.com/JoshParker11</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Show the same meaning in the lists that the word card shows
+
+glossOf knew about a baked gloss and a verb form, but not about a
+registry card or a stem-and-suffix decomposition — and the word card
+rendered both of those in sections of its own. So 230 of the mini
+stories&amp;#39; 444 words showed a full definition when clicked and nothing at
+all in the sentence list, the lesson list and the vocabulary table.
+
+Worst on exactly the words that most need review: a registry card is
+written for the words nothing else could gloss, so the ones showing
+blank were the hardest ones.
+
+One order now, matching build_ms_reader.best_gloss so the reader and the
+Anki export cannot disagree either: your own saved note, the baked
+gloss, the registry card, the decomposition, the verb&amp;#39;s dictionary form.
+
+The mini stories&amp;#39; lists go from 230 blank to 0. The 168 still blank
+across both corpora are 126 OCR fragments, which are not words and have
+nothing to say, and the 42 the glossing batch did not finish.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>

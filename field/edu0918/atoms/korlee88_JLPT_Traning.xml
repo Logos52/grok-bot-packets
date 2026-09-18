@@ -1,0 +1,2877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/korlee88/JLPT_Traning/commits/claude/wonderful-goldberg-4fvr9x</id>
+  <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commits/claude/wonderful-goldberg-4fvr9x"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/korlee88/JLPT_Traning/commits/claude/wonderful-goldberg-4fvr9x.atom"/>
+  <title>Recent Commits to JLPT_Traning:claude/wonderful-goldberg-4fvr9x</title>
+  <updated>2026-09-17T23:23:34Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9e1570f98d309e4a8481ef3a23f68948af6398ae</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/9e1570f98d309e4a8481ef3a23f68948af6398ae"/>
+    <title>
+        Merge main into branch (realign after PR #19 squash-merge)
+    </title>
+    <updated>2026-09-17T23:23:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #19 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ad5b279078759a1a9e7982dc3ec65d8499e93de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/9ad5b279078759a1a9e7982dc3ec65d8499e93de"/>
+    <title>
+        Let the kanji quiz reveal a reading on tap, without it counting as re…
+    </title>
+    <updated>2026-09-17T23:23:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let the kanji quiz reveal a reading on tap, without it counting as recall (#19)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Drop the resolved caveat on batch 3&amp;#39;s two smudged entries
+
+The owner confirmed 貸す/かす/빌려주다 and 風/かぜ/바람 read correctly,
+so the note telling future sessions to suspect them first has served its
+purpose. The data itself is unchanged — only the stale warning goes, so
+the file doesn&amp;#39;t accumulate settled questions.
+
+The general practice that caught this (state which range you inferred
+when reporting a batch back) already lives in the bullet above it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Pick kanji-quiz distractors by shape so the answer isn&amp;#39;t guessable
+
+The kanji quiz drew its 3 wrong readings at random, which let the answer
+be found without reading the kanji at all: 売れる against れんしゅう/
+げんき/いちど is settled by the trailing れる alone.
+
+pickReadingDistractors() now prefers readings that survive that
+shortcut — same okurigana tail first, then a similar mora count, then
+the same opening mora, shuffling before the sort so equally-good
+candidates still vary. Measured over the current 107 entries, that cuts
+&amp;quot;answerable from the okurigana tail alone&amp;quot; from 24% to 8% and
+&amp;quot;answerable from length alone&amp;quot; from 43% to 1%. 起きる now reads
+およぐ / おくる / おもい / おきる instead of a mix of unrelated shapes.
+
+It also dedupes by reading. Preferring similar readings makes homophones
+prime candidates, and two entries sharing a reading would have rendered
+the same choice twice — kanji.json has no such pair yet, but the list
+grows daily and Japanese supplies plenty.
+
+vocab/listening keep the random picker: those quizzes ask for the
+meaning, where shape similarity doesn&amp;#39;t apply.
+
+test/smoke.js now checks the kanji round offers 4 distinct choices that
+are all real readings from the data, which is what the dedupe and the
+scoring could plausibly break.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Use the aspirated hangul forms for か행/た행 kana
+
+The owner spotted that the kana quiz answered か with 가 and asked
+whether 카 isn&amp;#39;t the accurate reading. Both had a basis — 가 is the
+외래어 표기법&amp;#39;s 어두 form, 카 its 어중·어말 form — but 카 is the better
+fit here, so か/き/く/け/こ and た/ち/て/と now use 카키쿠케코/타치테토 in
+both kana files. つ stays 쓰: the 표기법 gives it 쓰 in either position.
+
+Why the switch:
+
+- A lone kana has no word position, so applying the 어두 rule to it was
+  already an arbitrary pick rather than the standard being honoured.
+- Japanese word-initial voiceless stops fall between Korean 예사소리 and
+  거센소리; the 1986 committee called them closer to 예사소리 and that
+  reading is still contested.
+- Decisive: the 어두 form collides with dakuten. か=가 and が=가, た=다
+  and だ=다, ち=지 and ぢ=지 — the quiz would stop working the moment
+  が행 is added. The aspirated form keeps every pair distinct.
+
+CLAUDE.md said the opposite, so it&amp;#39;s rewritten with the reasoning to
+stop a future session &amp;quot;correcting&amp;quot; it back. It also now records that
+お/を share 오 legitimately (を really is /o/), and that pickDistractors
+doesn&amp;#39;t dedupe, so a future duplicate hangul value would show the same
+choice twice in the kana quiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Let the kanji quiz reveal a reading on tap, without it counting as recall
+
+Tapping the word (or the cue line under it) swaps #quiz-reveal from
+&amp;quot;글자를 누르면 읽는 법&amp;quot; to the reading, for kanji that are simply
+unreadable — looking it up and learning it beats guessing blind.
+
+The reading is the answer in this quiz, so the peek isn&amp;#39;t free:
+quiz.peeked makes selectAnswer record the item as not recalled even when
+the chosen answer is right, keeping it in the wrong-answer review queue.
+Otherwise peeking would clear precisely the words that still need
+drilling, quietly undermining the feature that resurfaces them.
+
+Only the kanji quiz wires this up — verified in a browser that the line
+stays hidden for vocab/hiragana/grammar/listening. renderQuestion resets
+the element, both handlers and quiz.peeked per question. The new CSS
+sets no `display`, so the [hidden] attribute keeps working and this
+can&amp;#39;t repeat the .quiz-replay bug.
+
+Tests cover the cue text, that tapping shows the current item&amp;#39;s reading,
+and that a peeked-then-answered-correctly kanji is still queued for
+review.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2cd7b741ce029e457814964bfbf45c477d88866c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/2cd7b741ce029e457814964bfbf45c477d88866c"/>
+    <title>
+        Let the kanji quiz reveal a reading on tap, without it counting as re…
+    </title>
+    <updated>2026-09-17T23:22:59Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Let the kanji quiz reveal a reading on tap, without it counting as recall
+
+Tapping the word (or the cue line under it) swaps #quiz-reveal from
+&amp;quot;글자를 누르면 읽는 법&amp;quot; to the reading, for kanji that are simply
+unreadable — looking it up and learning it beats guessing blind.
+
+The reading is the answer in this quiz, so the peek isn&amp;#39;t free:
+quiz.peeked makes selectAnswer record the item as not recalled even when
+the chosen answer is right, keeping it in the wrong-answer review queue.
+Otherwise peeking would clear precisely the words that still need
+drilling, quietly undermining the feature that resurfaces them.
+
+Only the kanji quiz wires this up — verified in a browser that the line
+stays hidden for vocab/hiragana/grammar/listening. renderQuestion resets
+the element, both handlers and quiz.peeked per question. The new CSS
+sets no `display`, so the [hidden] attribute keeps working and this
+can&amp;#39;t repeat the .quiz-replay bug.
+
+Tests cover the cue text, that tapping shows the current item&amp;#39;s reading,
+and that a peeked-then-answered-correctly kanji is still queued for
+review.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0096572915142ac3a16348332c976f40588abf8c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/0096572915142ac3a16348332c976f40588abf8c"/>
+    <title>
+        Merge main into branch (realign after PR #18 squash-merge)
+    </title>
+    <updated>2026-09-17T23:14:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #18 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e572b44dd8ef2b08cdef1531896e00f044440600</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/e572b44dd8ef2b08cdef1531896e00f044440600"/>
+    <title>
+        Use the aspirated hangul forms for か행/た행 kana (#18)
+    </title>
+    <updated>2026-09-17T23:14:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Use the aspirated hangul forms for か행/た행 kana (#18)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Drop the resolved caveat on batch 3&amp;#39;s two smudged entries
+
+The owner confirmed 貸す/かす/빌려주다 and 風/かぜ/바람 read correctly,
+so the note telling future sessions to suspect them first has served its
+purpose. The data itself is unchanged — only the stale warning goes, so
+the file doesn&amp;#39;t accumulate settled questions.
+
+The general practice that caught this (state which range you inferred
+when reporting a batch back) already lives in the bullet above it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Pick kanji-quiz distractors by shape so the answer isn&amp;#39;t guessable
+
+The kanji quiz drew its 3 wrong readings at random, which let the answer
+be found without reading the kanji at all: 売れる against れんしゅう/
+げんき/いちど is settled by the trailing れる alone.
+
+pickReadingDistractors() now prefers readings that survive that
+shortcut — same okurigana tail first, then a similar mora count, then
+the same opening mora, shuffling before the sort so equally-good
+candidates still vary. Measured over the current 107 entries, that cuts
+&amp;quot;answerable from the okurigana tail alone&amp;quot; from 24% to 8% and
+&amp;quot;answerable from length alone&amp;quot; from 43% to 1%. 起きる now reads
+およぐ / おくる / おもい / おきる instead of a mix of unrelated shapes.
+
+It also dedupes by reading. Preferring similar readings makes homophones
+prime candidates, and two entries sharing a reading would have rendered
+the same choice twice — kanji.json has no such pair yet, but the list
+grows daily and Japanese supplies plenty.
+
+vocab/listening keep the random picker: those quizzes ask for the
+meaning, where shape similarity doesn&amp;#39;t apply.
+
+test/smoke.js now checks the kanji round offers 4 distinct choices that
+are all real readings from the data, which is what the dedupe and the
+scoring could plausibly break.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Use the aspirated hangul forms for か행/た행 kana
+
+The owner spotted that the kana quiz answered か with 가 and asked
+whether 카 isn&amp;#39;t the accurate reading. Both had a basis — 가 is the
+외래어 표기법&amp;#39;s 어두 form, 카 its 어중·어말 form — but 카 is the better
+fit here, so か/き/く/け/こ and た/ち/て/と now use 카키쿠케코/타치테토 in
+both kana files. つ stays 쓰: the 표기법 gives it 쓰 in either position.
+
+Why the switch:
+
+- A lone kana has no word position, so applying the 어두 rule to it was
+  already an arbitrary pick rather than the standard being honoured.
+- Japanese word-initial voiceless stops fall between Korean 예사소리 and
+  거센소리; the 1986 committee called them closer to 예사소리 and that
+  reading is still contested.
+- Decisive: the 어두 form collides with dakuten. か=가 and が=가, た=다
+  and だ=다, ち=지 and ぢ=지 — the quiz would stop working the moment
+  が행 is added. The aspirated form keeps every pair distinct.
+
+CLAUDE.md said the opposite, so it&amp;#39;s rewritten with the reasoning to
+stop a future session &amp;quot;correcting&amp;quot; it back. It also now records that
+お/を share 오 legitimately (を really is /o/), and that pickDistractors
+doesn&amp;#39;t dedupe, so a future duplicate hangul value would show the same
+choice twice in the kana quiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32dddd7db7ac4c7453acb52da8d2e9167cfd3924</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/32dddd7db7ac4c7453acb52da8d2e9167cfd3924"/>
+    <title>
+        Use the aspirated hangul forms for か행/た행 kana
+    </title>
+    <updated>2026-09-17T23:14:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Use the aspirated hangul forms for か행/た행 kana
+
+The owner spotted that the kana quiz answered か with 가 and asked
+whether 카 isn&amp;#39;t the accurate reading. Both had a basis — 가 is the
+외래어 표기법&amp;#39;s 어두 form, 카 its 어중·어말 form — but 카 is the better
+fit here, so か/き/く/け/こ and た/ち/て/と now use 카키쿠케코/타치테토 in
+both kana files. つ stays 쓰: the 표기법 gives it 쓰 in either position.
+
+Why the switch:
+
+- A lone kana has no word position, so applying the 어두 rule to it was
+  already an arbitrary pick rather than the standard being honoured.
+- Japanese word-initial voiceless stops fall between Korean 예사소리 and
+  거센소리; the 1986 committee called them closer to 예사소리 and that
+  reading is still contested.
+- Decisive: the 어두 form collides with dakuten. か=가 and が=가, た=다
+  and だ=다, ち=지 and ぢ=지 — the quiz would stop working the moment
+  が행 is added. The aspirated form keeps every pair distinct.
+
+CLAUDE.md said the opposite, so it&amp;#39;s rewritten with the reasoning to
+stop a future session &amp;quot;correcting&amp;quot; it back. It also now records that
+お/を share 오 legitimately (を really is /o/), and that pickDistractors
+doesn&amp;#39;t dedupe, so a future duplicate hangul value would show the same
+choice twice in the kana quiz.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/abcdb6301c6853d3841c2a76fd4e953e8558f013</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/abcdb6301c6853d3841c2a76fd4e953e8558f013"/>
+    <title>
+        Merge main into branch (realign after PR #17 squash-merge)
+    </title>
+    <updated>2026-09-16T23:47:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #17 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9982be347f3681bbe143b0b80f60118432987943</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/9982be347f3681bbe143b0b80f60118432987943"/>
+    <title>
+        Pick kanji-quiz distractors by shape so the answer isn&#39;t guessable (#17)
+    </title>
+    <updated>2026-09-16T23:47:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pick kanji-quiz distractors by shape so the answer isn&amp;#39;t guessable (#17)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Drop the resolved caveat on batch 3&amp;#39;s two smudged entries
+
+The owner confirmed 貸す/かす/빌려주다 and 風/かぜ/바람 read correctly,
+so the note telling future sessions to suspect them first has served its
+purpose. The data itself is unchanged — only the stale warning goes, so
+the file doesn&amp;#39;t accumulate settled questions.
+
+The general practice that caught this (state which range you inferred
+when reporting a batch back) already lives in the bullet above it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Pick kanji-quiz distractors by shape so the answer isn&amp;#39;t guessable
+
+The kanji quiz drew its 3 wrong readings at random, which let the answer
+be found without reading the kanji at all: 売れる against れんしゅう/
+げんき/いちど is settled by the trailing れる alone.
+
+pickReadingDistractors() now prefers readings that survive that
+shortcut — same okurigana tail first, then a similar mora count, then
+the same opening mora, shuffling before the sort so equally-good
+candidates still vary. Measured over the current 107 entries, that cuts
+&amp;quot;answerable from the okurigana tail alone&amp;quot; from 24% to 8% and
+&amp;quot;answerable from length alone&amp;quot; from 43% to 1%. 起きる now reads
+およぐ / おくる / おもい / おきる instead of a mix of unrelated shapes.
+
+It also dedupes by reading. Preferring similar readings makes homophones
+prime candidates, and two entries sharing a reading would have rendered
+the same choice twice — kanji.json has no such pair yet, but the list
+grows daily and Japanese supplies plenty.
+
+vocab/listening keep the random picker: those quizzes ask for the
+meaning, where shape similarity doesn&amp;#39;t apply.
+
+test/smoke.js now checks the kanji round offers 4 distinct choices that
+are all real readings from the data, which is what the dedupe and the
+scoring could plausibly break.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/728f5a54c2dc00b418effa259f796a1e95b8381a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/728f5a54c2dc00b418effa259f796a1e95b8381a"/>
+    <title>
+        Pick kanji-quiz distractors by shape so the answer isn&#39;t guessable
+    </title>
+    <updated>2026-09-16T23:47:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Pick kanji-quiz distractors by shape so the answer isn&amp;#39;t guessable
+
+The kanji quiz drew its 3 wrong readings at random, which let the answer
+be found without reading the kanji at all: 売れる against れんしゅう/
+げんき/いちど is settled by the trailing れる alone.
+
+pickReadingDistractors() now prefers readings that survive that
+shortcut — same okurigana tail first, then a similar mora count, then
+the same opening mora, shuffling before the sort so equally-good
+candidates still vary. Measured over the current 107 entries, that cuts
+&amp;quot;answerable from the okurigana tail alone&amp;quot; from 24% to 8% and
+&amp;quot;answerable from length alone&amp;quot; from 43% to 1%. 起きる now reads
+およぐ / おくる / おもい / おきる instead of a mix of unrelated shapes.
+
+It also dedupes by reading. Preferring similar readings makes homophones
+prime candidates, and two entries sharing a reading would have rendered
+the same choice twice — kanji.json has no such pair yet, but the list
+grows daily and Japanese supplies plenty.
+
+vocab/listening keep the random picker: those quizzes ask for the
+meaning, where shape similarity doesn&amp;#39;t apply.
+
+test/smoke.js now checks the kanji round offers 4 distinct choices that
+are all real readings from the data, which is what the dedupe and the
+scoring could plausibly break.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1a7916161fcac3b5bb625d8e7a7b1915facc33b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/1a7916161fcac3b5bb625d8e7a7b1915facc33b8"/>
+    <title>
+        Merge main into branch (realign after PR #16 squash-merge)
+    </title>
+    <updated>2026-09-16T14:31:23Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #16 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4f0377622612aabc1f68b7cdd9cbe777322dab5e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/4f0377622612aabc1f68b7cdd9cbe777322dab5e"/>
+    <title>
+        Drop the resolved caveat on batch 3&#39;s two smudged entries (#16)
+    </title>
+    <updated>2026-09-16T14:31:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop the resolved caveat on batch 3&amp;#39;s two smudged entries (#16)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Drop the resolved caveat on batch 3&amp;#39;s two smudged entries
+
+The owner confirmed 貸す/かす/빌려주다 and 風/かぜ/바람 read correctly,
+so the note telling future sessions to suspect them first has served its
+purpose. The data itself is unchanged — only the stale warning goes, so
+the file doesn&amp;#39;t accumulate settled questions.
+
+The general practice that caught this (state which range you inferred
+when reporting a batch back) already lives in the bullet above it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bcbb575a072719c4619c804fe36c0bc51fc442c9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/bcbb575a072719c4619c804fe36c0bc51fc442c9"/>
+    <title>
+        Drop the resolved caveat on batch 3&#39;s two smudged entries
+    </title>
+    <updated>2026-09-16T14:30:48Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Drop the resolved caveat on batch 3&amp;#39;s two smudged entries
+
+The owner confirmed 貸す/かす/빌려주다 and 風/かぜ/바람 read correctly,
+so the note telling future sessions to suspect them first has served its
+purpose. The data itself is unchanged — only the stale warning goes, so
+the file doesn&amp;#39;t accumulate settled questions.
+
+The general practice that caught this (state which range you inferred
+when reporting a batch back) already lives in the bullet above it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/890618ad0b118069e700ae41d70eeef29373e575</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/890618ad0b118069e700ae41d70eeef29373e575"/>
+    <title>
+        Merge main into branch (realign after PR #15 squash-merge)
+    </title>
+    <updated>2026-09-16T14:06:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #15 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0a24cdd0046c30bcb9c6f3103e3193f7a2f8033</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/e0a24cdd0046c30bcb9c6f3103e3193f7a2f8033"/>
+    <title>
+        Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える) (#15)
+    </title>
+    <updated>2026-09-16T14:06:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える) (#15)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d65d1f4676f022e5769699e48baabe636b7ad512</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/d65d1f4676f022e5769699e48baabe636b7ad512"/>
+    <title>
+        Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+    </title>
+    <updated>2026-09-16T14:06:12Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add 기출 어휘 kanji-reading batch 3 (p.18 left column, through 考える)
+
+Third daily batch, read off the 9/16 mark at the foot of the column:
+the あ행 tail (起こす through 音楽) plus か행 up to 考える. 23 of the 24
+went in — 家族 was already in kanji.json from the original hand-authored
+set, and a duplicate `word` would corrupt the wrong-answer queue.
+
+Two entries were inferred rather than clearly read: the print is smudged
+for 貸す/かす/빌려주다 and 風/かぜ/바람. Each is pinned by the printed
+Korean meaning, the alphabetical slot (かじ -&amp;gt; かす -&amp;gt; かぜ), and the
+partial glyph, so the identification is solid, but both are flagged in
+CLAUDE.md as the first place to look if an entry ever reads wrong.
+
+お姉さん joins the existing 姉, and 起こす joins 起きる — different words
+with different readings, so both stay. 泳ぐ and 終わる also exist in
+vocab.json, which quizzes meaning rather than reading.
+
+kanji.json is now 107 entries.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a14ad0b5613140d83eddd2a6f4c52568e5c211cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/a14ad0b5613140d83eddd2a6f4c52568e5c211cb"/>
+    <title>
+        Merge main into branch (realign after PR #14 squash-merge)
+    </title>
+    <updated>2026-09-16T14:00:32Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #14 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6b3721f0a0515f60b4d6aa3c25970762f47788de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/6b3721f0a0515f60b4d6aa3c25970762f47788de"/>
+    <title>
+        Run kana and kanji quizzes at 20 questions per round (#14)
+    </title>
+    <updated>2026-09-16T14:00:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Run kana and kanji quizzes at 20 questions per round (#14)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5043ef171ac2d8979ee57b5f79f44b43b2e26c6d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/5043ef171ac2d8979ee57b5f79f44b43b2e26c6d"/>
+    <title>
+        Run kana and kanji quizzes at 20 questions per round
+    </title>
+    <updated>2026-09-16T13:59:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Run kana and kanji quizzes at 20 questions per round
+
+Round size was hardcoded to 10 for every quiz type. Kana and kanji are
+single-item recall and go quickly, so the owner wants longer rounds for
+those three; the other types stay at 10.
+
+- QUIZ_ROUND_SIZE gives hiragana/katakana/kanji 20, with
+  DEFAULT_ROUND_SIZE (10) covering everything else, so a future quiz
+  type gets a sane length without touching startQuiz().
+- The existing Math.min against the data file&amp;#39;s length still applies, so
+  독해 keeps asking 8 (reading.json has 8 entries).
+- test/smoke.js already read the round total off #quiz-progress, so it
+  adapted on its own; added EXPECTED_ROUND_SIZE so a silent change to
+  any type&amp;#39;s length fails the suite instead of passing unnoticed.
+
+Verified in the headless browser: 히라가나/가타카나/한자 now run 20
+questions and their completion badges read n/20; 단어·문법·청해 stay at
+10 and 독해 at 8.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2360fb35d3360f0d9fae30e43747dbe5a4287cc</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/c2360fb35d3360f0d9fae30e43747dbe5a4287cc"/>
+    <title>
+        Merge main into branch (realign after PR #13 squash-merge)
+    </title>
+    <updated>2026-09-15T14:48:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/81847?s=30&amp;v=4"/>
+    <author>
+      <name>claude</name>
+      <uri>https://github.com/claude</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Merge main into branch (realign after PR #13 squash-merge)&lt;/pre&gt;
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2e532b9cc2b83521471d4e36bf92c0b01a23b466</id>
+    <link type="text/html" rel="alternate" href="https://github.com/korlee88/JLPT_Traning/commit/2e532b9cc2b83521471d4e36bf92c0b01a23b466"/>
+    <title>
+        Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17 (#13)
+    </title>
+    <updated>2026-09-15T14:48:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars.githubusercontent.com/u/268955334?s=30&amp;v=4"/>
+    <author>
+      <name>korlee88</name>
+      <uri>https://github.com/korlee88</uri>
+    </author>
+    <content type="html">
+      &lt;pre style=&#39;white-space:pre-wrap;width:81ex&#39;&gt;Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17 (#13)
+
+* Add JLPT N4 study plan for Dec 6 exam
+
+12-week roadmap (Sep 13 - Dec 5) split into 3 phases: foundation,
+finish-textbook + skill reinforcement, and mock-exam repetition,
+plus a weekly breakdown, per-skill strategy, and a sample daily
+routine. Assumptions (baseline level, daily study time, textbook
+table of contents) are called out for the user to confirm/adjust.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Tailor study plan to actual textbook TOC and user&amp;#39;s starting level
+
+- Map weekly plan to real page ranges from the 동양북스 N4 table of
+  contents (문자·어휘 12-81, 문법 82-179, 독해 180-260, 청해 260-312,
+  부록 모의고사 313+)
+- Move katakana mastery to the top of Week 1 since it was only ~30%
+  known and would block vocab study immediately
+- Add a week to the grammar block since there&amp;#39;s no prior N5/formal
+  grammar study, and note the daily routine now uses the confirmed
+  1hr/weekday budget (weekend hours still unconfirmed)
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add daily checklist + quiz web app, deploy via GitHub Pages
+
+Static HTML/CSS/JS site (no build step, no framework):
+- 오늘 체크: today&amp;#39;s week/page range from the study plan, a 4-item
+  daily checklist persisted in localStorage, and a 14-day streak grid
+- 쪽지시험: vocab and grammar multiple-choice quizzes (10 random
+  questions), original N4-level content, not transcribed from the
+  동양북스 textbook
+- 전체 계획: read-only 12-week plan table
+- data/plan.json mirrors STUDY_PLAN.md&amp;#39;s weekly breakdown as the
+  app&amp;#39;s data source
+
+Verified with a headless-Chromium script: week/D-day logic across
+week boundaries and after the exam date, checkbox persistence across
+reload, and both quiz flows through to the score screen — no console
+errors.
+
+Adds a GitHub Actions workflow to deploy to GitHub Pages on push to
+main (needs a one-time Settings &amp;gt; Pages &amp;gt; Source = GitHub Actions,
+documented in README).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add CLAUDE.md, namespace data by level, add smoke test
+
+- CLAUDE.md: project goal/roadmap (N4 -&amp;gt; N3 -&amp;gt; N2 -&amp;gt; N1), commands,
+  architecture notes (including the GitHub Pages environment-protection
+  gotcha hit earlier), the level-data schema, and content-accuracy/
+  copyright rules — so future sessions can extend this consistently
+  as more levels get added
+- Move data/{plan,vocab,grammar}.json under data/n4/, add data/levels.json
+  as a registry; app.js now reads from data/&amp;lt;CURRENT_LEVEL&amp;gt;/ and
+  namespaces its localStorage key by level, so a future N3 build-out
+  doesn&amp;#39;t collide with N4&amp;#39;s data or history
+- Add package.json + test/smoke.js: a Playwright-driven regression
+  check (today/checklist/streak/plan table/both quizzes, plus date-
+  boundary logic) runnable via `npm test`, replacing the ad hoc script
+  used to verify the app earlier this session
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add kanji, reading, and listening quiz modes
+
+Splits the quiz tab into the full set of JLPT test areas: 단어(vocab),
+한자(kanji reading), 문법(grammar), 독해(reading), 청해(listening).
+
+- data/n4/kanji.json: 45 common N4 kanji compounds, quiz asks for the
+  reading instead of the meaning (reuses vocab.json&amp;#39;s shape)
+- data/n4/reading.json: 8 original short passages + comprehension
+  question, matching real N4 독해 style (never copied from the
+  textbook, per CLAUDE.md&amp;#39;s content policy)
+- data/n4/listening.json: 14 short spoken sentences; the quiz speaks
+  them via the browser&amp;#39;s Web Speech API (no audio files) and reveals
+  the transcript after answering, since TTS voice availability isn&amp;#39;t
+  guaranteed everywhere
+- Generalized app.js&amp;#39;s quiz engine to 5 modes behind one render/answer
+  flow, added a shared pickDistractors() helper so vocab/kanji/
+  listening don&amp;#39;t need hand-authored wrong choices
+- Found and fixed a real CSS bug while screenshot-checking the new UI:
+  `.quiz-replay { display: block }` was beating the browser&amp;#39;s default
+  `[hidden]{display:none}` (author stylesheet always wins over UA
+  stylesheet regardless of specificity), so the listening-only replay
+  button showed up on every quiz type. Fixed with a `:not([hidden])`
+  guard and added a regression check in test/smoke.js.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Track daily quiz completion and clarify the post-quiz screen
+
+- Each quiz-type button now shows a checkmark + today&amp;#39;s score once
+  that quiz has been completed today (e.g. &amp;quot;✓ 단어 쪽지시험 (7/10)&amp;quot;),
+  stored in localStorage under jlpt_quiz_results_&amp;lt;level&amp;gt;, day-keyed
+  the same way the daily checklist already is — so it resets on its
+  own at midnight with no explicit reset logic needed
+- Renamed the post-quiz button from &amp;quot;다시 하기&amp;quot; to &amp;quot;쪽지시험 목록으로&amp;quot;:
+  it already returned to the full quiz list (any of the 5 types),
+  but the old label read as &amp;quot;redo this same quiz&amp;quot; and hid that
+- Extended test/smoke.js: each quiz round now also asserts its
+  button shows the completion badge afterward, plus a same-page
+  date-mock check that the badge disappears again on the next day
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add hiragana/katakana quizzes, auto-check checklist from quiz results
+
+- data/n4/hiragana.json, katakana.json: the base 46-character gojuon
+  table each (no dakuten/combination sounds yet), quiz asks for the
+  romaji reading via the same pickDistractors() pattern as vocab/kanji
+- Added them to the quiz list ahead of vocab/kanji, matching the study
+  plan&amp;#39;s own order (kana first, since katakana was the known gap)
+- CHECKLIST_AUTO_MAP + autoCheckFromQuiz(): finishing a quiz now ticks
+  the matching 오늘 체크리스트 item if it isn&amp;#39;t already checked, so
+  quiz completion and the daily checklist don&amp;#39;t need double bookkeeping.
+  전날 내용 복습 has no quiz proxy and stays manual by design.
+- Extended test/smoke.js to cover both new quiz types and the
+  checklist auto-check mapping (including that it resets with
+  everything else on a new day); fixed a test-isolation bug where an
+  earlier persistence check and the new auto-check assertions were
+  both using checklist item 0
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Switch hiragana/katakana quiz answers to Korean hangul, not romaji
+
+Renamed the romaji field to hangul in both data files and updated
+app.js accordingly. Values follow 국립국어원&amp;#39;s 외래어 표기법 (word-
+initial form consistently, since these are single isolated
+characters, not words): か행/た행 use their unaspirated 어두 forms
+(가/기/구/게/고, 다/지/쓰/데/도), not the mid-word aspirated forms
+(카/타/쓰/테/토 — きゃ column stays consistent). ん shown as 응, a
+teaching convention since the official rule (always ㄴ batchim) only
+governs ん attached to a word. Verified the table against several
+independent searches rather than trusting memory alone, since a
+few of these are commonly misremembered (つ is 쓰 not 츠, す is 스
+not 수).
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Show an explanation after every quiz answer, not just grammar/listening
+
+Previously vocab/kanji/hiragana/katakana gave no feedback beyond the
+red/green highlight, and reading.json had no note field at all despite
+comprehension answers benefiting most from an explanation.
+
+- New explanationFor(type, item) in app.js centralizes what note each
+  quiz type shows after answering (right or wrong): word/reading/
+  meaning recap for vocab/kanji, char=hangul for hiragana/katakana,
+  the existing note field for grammar/reading, script+meaning for
+  listening (previously just the script).
+- Added a note to every data/n4/reading.json entry pointing at the
+  specific sentence that gives the answer, not just restating it.
+- .quiz-note needed white-space: pre-line for the listening note&amp;#39;s
+  two lines (script + meaning) to actually break — plain textContent
+  with \n collapses without it.
+- Extended test/smoke.js to check each quiz type&amp;#39;s post-answer note
+  content, not just that grammar/listening show one.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add casual meal-word pairs, resurface wrong answers in later quizzes
+
+- data/n4/vocab.json + kanji.json: added 朝ご飯/昼ご飯/晩ご飯 (あさご
+  はん/ひるごはん/ばんごはん) alongside the existing formal 朝食/昼食/
+  夕食, so the reading contrast between the two registers can actually
+  be drilled instead of just explained once in chat
+- New wrong-answer review queue: QUIZ_KEY_FIELD names the field that
+  uniquely identifies an entry per quiz type; recordAnswerOutcome()
+  tracks missed items in jlpt_wrong_items_&amp;lt;level&amp;gt; (not day-keyed —
+  accumulates until mastered) and buildQuizPool() puts every
+  currently-wrong item into a round first before topping up with
+  fresh ones. Leaky-bucket review, not full spaced repetition with
+  due dates.
+- test/smoke.js: added an end-to-end check that a missed vocab item
+  actually resurfaces in the next round, not just that the storage
+  functions exist
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Deepen reading-quiz explanations beyond a bare sentence pointer
+
+Each note previously just quoted the key sentence with a translation.
+Now every note also states the reasoning that connects it to the
+answer, and explains why the other choices fail (contradicted by the
+text, superseded old info, or simply never mentioned) — closer to how
+a tutor would walk through why an answer is correct, not just where
+to look.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add textbook 기출 어휘 kanji-reading batch 1 (あ행 1-20)
+
+First installment of a planned daily upload: the repo owner is working
+through the textbook&amp;#39;s own N4 기출 어휘 (frequently-tested vocabulary)
+한자 읽기 list, ~20 words/day, and wants each batch added to the kanji
+quiz. This is a word/reading/meaning list (dictionary-level facts), not
+the textbook&amp;#39;s exercise sentences or passages, so it&amp;#39;s fine per
+CLAUDE.md&amp;#39;s content policy.
+
+Covers 青い through 以上 (あ행, items 1-20 of the list). Skipped 安心 —
+already present in kanji.json with the same reading/meaning.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Double quiz prompt font size for kanji stroke visibility
+
+.quiz-prompt (the word/sentence shown in every quiz type) was 1.3rem —
+too small to make out kanji strokes clearly while studying. Bumped to
+2.6rem. The reading-passage variant (.quiz-prompt.passage) keeps its
+own 1rem override, so paragraph-length passages are unaffected.
+
+Verified visually at a phone-width viewport (390px): kanji/vocab/
+hiragana prompts render large and crisp with no overflow; grammar&amp;#39;s
+longer sentences now wrap across several lines but stay fully
+readable with no clipping or horizontal scroll.
+
+Co-Authored-By: Claude Sonnet 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Record the daily 기출 어휘 workflow and recent decisions in CLAUDE.md
+
+CLAUDE.md is what a future session reads first, but it had drifted behind
+the last few PRs. Brings it back in sync so the next session can pick up
+without re-deriving anything:
+
+- New &amp;quot;Daily 기출 어휘 batches&amp;quot; section: the ~20-words-a-day textbook
+  transcription loop, where the list currently stands (あ행 1-20 in,
+  next batch starts at 急ぐ), how to read the owner&amp;#39;s handwritten
+  progress marks, and the duplicate-key check that made batch 1 skip
+  安心 — a second entry with the same `word` would corrupt the
+  wrong-answer queue, not just repeat a question.
+- Clarified the copyright rule: a word/reading/meaning list is
+  dictionary-level fact and may be transcribed; the book&amp;#39;s own
+  sentences, exercises, and passages still may not.
+- Raised the documented bar for grammar/reading `note` fields to what
+  #9 actually established (why the answer holds AND why the other
+  choices fail), so it doesn&amp;#39;t regress to a bare sentence pointer.
+- Recorded why `.quiz-prompt` is 2.6rem, so it doesn&amp;#39;t get &amp;quot;tidied&amp;quot; back
+  down — the owner needs kanji strokes legible on a phone.
+- Recorded the silent-merge-duplication trap that bit twice, with the
+  post-merge checks that catch it.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+* Add 기출 어휘 kanji-reading batch 2 (あ행 21-39), completing p.17
+
+Second daily batch: items 21-39 of the textbook&amp;#39;s 한자 읽기 list
+(急ぐ through 送る), read off the 9/15 mark at the foot of the page.
+That finishes p.17 — the next photo should be a new page.
+
+Skipped 運転 and 運動; both were already in kanji.json from the
+original hand-authored set, and a second entry under the same `word`
+would corrupt the wrong-answer queue rather than just repeat a
+question. 17 of the 19 went in.
+
+急ぐ/動く/歌う/起きる/送る also exist in vocab.json — kept, since
+that file quizzes meaning and this one quizzes reading.
+
+Co-Authored-By: Claude Opus 5 &amp;lt;noreply@anthropic.com&amp;gt;
+Claude-Session: https://claude.ai/code/session_01KXrn3t8p6XTbLM1U9HS53a
+
+---------
+
+Co-authored-by: Claude &amp;lt;noreply@anthropic.com&amp;gt;&lt;/pre&gt;
+    </content>
+  </entry>
+</feed>
