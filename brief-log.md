@@ -25,3 +25,6 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-16 | Nothing that changes today. |  |
 | 2026-09-17 | Grok Build memory is live (16 Sep): background notes on conventions, decisions, and project facts (markdown topics; /memory browse, /dream merge) read back next session — try on one active project. https://x.ai/news/grok-build-memory |  |
 | 2026-09-18 | Nothing that changes today. |  |
+| 2026-09-19 | Nothing that changes today. |  |
+| 2026-09-20 | Nothing that changes today. |  |
+| 2026-09-21 | Nothing that changes today. |  |

@@ -1,0 +1,90 @@
+---
+id: 2026-09-21-chrisoh806-colin-grokbot-unavailable-hung-updating-at-43
+kind: article
+title: Grokbot unavailable — hung Updating at 43% / rehydrate fail (chrisoh806 hub)
+source: "https://forum.cursor.com/t/grokbot-unavailable-hung-on-updating-grok-bots-computer-at-43/172401"
+author: chrisoh806 / Colin
+published: 2026-09-20
+captured: 2026-09-21
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Grokbot unavailable - hung on Updating Grok Bot's computer at 43%
+url: https://forum.cursor.com/t/grokbot-unavailable-hung-on-updating-grok-bots-computer-at-43/172401
+created: 2026-09-20T06:34:49.107Z
+posts_count: 24
+
+## @chrisoh806 (post 1, 2026-09-20T06:34:49.134Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Grok Bot unavailable; stuck up “Updating Grok Bot’s Computer” dialog on Transferring your data phase at 43%. Been stuck here most of the day, unable to use anything while the update is running.
+
+## @system (post 2, 2026-09-20T06:34:58.246Z)
+Hi there! We detected that this may be a bug report, so we’ve moved your post to the Bug Reports category. To help us investigate and fix this faster, could you edit your original post to include the details from the template below? Bug Report Template - Click to expand Where does the bug appear (feature/product)? Editor, Tab &amp; Chat (autocomplete, Composer, in-editor agent) Terminal &amp; commands Models, pricing &amp; API keys (availability, Auto/Max, BYOK/Bedrock) MCP &amp; tools Cloud Agents &amp; Automations ( cursor.com/agents , scheduled/event) BugBot &amp; Code Review Cursor CLI Cursor Mobile Remote (SSH / Dev Containers / WSL) Account, billing &amp; login Something else… Describe the Bug A clear and concise description of what the bug is. Steps to Reproduce How can you reproduce this bug? We have a much better chance at fixing issues if we can reproduce them! … … … Expected Behavior What is meant to happen here that isn’t working correctly? Screenshots / Screen Recordings If applicable, attach images or videos (.jpg, .png, .gif, .mp4, .mov) Operating System Windows 10/11 MacOS Linux Version Information For Cursor IDE: Menu → About Cursor → Copy For Cursor CLI: Run agent about in your terminal IDE: Version: 2.xx.x VSCode Version: 1.105.1 Commit: ...... CLI: CLI Version 2026.01.17-d239e66 For AI issues: which model did you use? Model name (e.g., Sonnet 4, Tab…) For AI issues: add Request ID with privacy disabled Request ID: f9a7046a-279b-47e5-ab48-6e8dc12daba1 For Background Agent issues, also post the ID: bc-… Additional Information Add any other context about the problem here. Does this stop you from using Cursor? Yes - Cursor is unusable Sometimes - I can sometimes use Cursor No - Cursor works, but with this issue The more details you provide, the easier it is for us to reproduce and fix the issue. Thanks!
+
+## @chrisoh806 (post 4, 2026-09-20T06:39:22.184Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Grok Bot unavailable; stuck up “Updating Grok Bot’s Computer” dialog on Transferring your data phase at 43%. Been stuck here most of the day, unable to use anything while the update is running. Steps to Reproduce Bug is prominent, prevents usage and is persistent on all opens and restarts. Screenshots / Screen Recordings image 536×475 8.95 KB Operating System Windows 10/11
+
+## @Raymond_Weiss (post 6, 2026-09-20T00:02:51.967Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Different class of issue than the past 5 days, but my bots are now not responding again all the same as some computer update on the bots end has rendered them completely useless for several hours as the update seems stuck, exiting does nothing, resetting is impossible, not sure what to do. Steps to Reproduce Try talking Expected Behavior talk back, update finishes Operating System Windows 10/11 Version Information newest version Does this stop you from using Cursor No - Cursor works, but with this issue
+
+## @Laurent1 (post 9, 2026-09-20T02:29:25.125Z)
+I tried a Reset of my Grok Bot Computer and it’s been 2-3 hours now it’s stuck at Transferring your data. Tbh I only had a few small CSVs so… I tried uninstalling the app, signing out, nothing works. Can anyone point me in the right direction if it happened to you as well? This is quite frustrating I was in the middle of some urgent work. image 1005×716 18.5 KB
+
+## @Chris_Garbacz_Baysid (post 10, 2026-09-20T03:14:05.073Z)
+I’m having the same problem, it just started updating Groks computer and it’s stuck on 43%
+
+## @Darien_Anderson (post 11, 2026-09-20T03:21:16.869Z)
+same issue here image 537×484 15.9 KB
+
+## @Darien_Anderson (post 12, 2026-09-20T03:24:34.440Z)
+just after i posted this it stopped and went into recovery mode and seems to have reset and recovered
+
+## @Laurent1 (post 13, 2026-09-20T03:25:32.897Z)
+lucky you, mine didnt work with Recovery. still stuck
+
+## @Emmjayed (post 14, 2026-09-19T23:15:51.652Z)
+Can you help me unstick my grok bot? It stopped responding to me on mobile and desktop so I tried to update computer and now it’s stuck at 43% and won’t cancel. I’d like to preserve my data if at all possible, I’ve been using it to ingest quite a bit of info for me.
+
+## @Emmjayed (post 17, 2026-09-19T23:15:51.652Z)
+Can you help me unstick my grok bot? It stopped responding to me on mobile and desktop so I tried to update computer and now it’s stuck at 43% and won’t cancel. I’d like to preserve my data if at all possible, I’ve been using it to ingest quite a bit of info for me.
+
+## @Alex_Cao (post 18, 2026-09-20T02:35:06.313Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Grok Bot’s Computer update stuck at “Transferring your data” 43%. Stuck more than 1 hour. Progress does not move. No Recover button on screen. Already did: fully Quit + reopen. Did NOT Reset. Please recover/recreate Agent Computer on the backend. Keep bots, chats, files, and logins. OS: macOS 26.6.2 (25G83) Grok Bot version:版本：0.57.1 构建时间：2026-09-18T22:09:42.898Z 发布通道：stable 操作系统：darwin Account email: alexcao85@gmail.com Steps to Reproduce Grok Bot’s Computer update stuck at “Transferring your data” 43%. Stuck more than 1 hour. Progress does not move. No Recover button on screen. Already did: fully Quit + reopen. Did NOT Reset. Expected Behavior Please recover/recreate Agent Computer on the backend. Keep bots, chats, files, and logins. Operating System MacOS Version Information OS: macOS 26.6.2 (25G83) Grok Bot version:版本：0.57.1 构建时间：2026-09-18T22:09:42.898Z 发布通道：stable 操作系统：darwin Account email: alexcao85@gmail.com Does this stop you from using Cursor Yes - Cursor is unusable
+
+## @Alex_Cao (post 21, 2026-09-20T02:55:11.213Z)
+Resolved — Recover completed. Computer is connected and bots/files are fine. Please do not reset or recreate the Agent Computer. Thanks, this can be closed.
+
+## @Yanjun_Hu (post 22, 2026-09-20T03:13:11.740Z)
+I’ve run into the same issue here. How did you resolve it? Additional details for Cursor support: this is still unresolved on my account as of September 20, 2026. Grok Bot desktop version: 0.57.1 OS: macOS 26.6.2 (25G83) The computer update remains at 43%, on ‘Transferring your data’ (Chinese UI: 正在转移你的数据). ‘Getting ready’, ‘Backing up your data’, and ‘Recreating Grok Bot’s computer’ are marked complete. Starting the computer, cleanup, and reconnecting have not started. The update dialog only offers ‘Continue in Background’; no Recover button or error message is visible there. Chat messages remain queued as ‘Waiting to send’, so I cannot continue using the bot normally. Could the team check whether the cloud-computer migration is still progressing or has stalled, and advise the safest recovery path that preserves bots, files, and logins? I understand the original poster has recovered, but my computer is still stuck. I am avoiding a second Update or Reset while the current operation is running, as recommended in the recovery documentation.
+
+## @Yanjun_Hu (post 23, 2026-09-20T03:18:14.338Z)
+@Colin
+
+## @Chris_Garbacz_Baysid (post 24, 2026-09-20T03:26:10.910Z)
+Alex Cao: omputer is connected and bots/files are fi How did you resolve this??
+
+## @Joseph_Ridenour (post 25, 2026-09-20T05:40:16.862Z)
+FWIW I was having this same issue. I sent a support ticket in and got a response pretty immediately that this is a known issue. Within a few min the computer went into an “update failed” state, which then allowed me to recover and now I’m back in business.
+
+## @Chris_Garbacz_Baysid (post 26, 2026-09-20T03:23:15.246Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Hey guys, I’ve seen this bug mentioned a few times already but don’t know how to resolve it. I got the pop up saying Updating Grok Bots Computer and it’s just stuck at 43%. Steps to Reproduce It’s just on the main screen, I can’t do anything until the update finishes. Expected Behavior The update is supposed to finish, but it looks like it’s just spinning the wheel at 43% Screenshots / Screen Recordings Screenshot 2026-09-20 at 1.21.54 pm.png 1110×968 63.4 KB Operating System MacOS Version Information Grok Bot Version 0.57.1 Does this stop you from using Cursor Yes - Cursor is unusable
+
+## @Colin (post 29, 2026-09-20T08:12:36.164Z)
+Hi all, Thanks for the reports. We’re aware of an issue where some Grok Bot Computers are failing to fully rehydrate during recreation. Most boxes appear to be coming up on their own eventually, so please check your Grok Bots again. In the meantime, we’re actively investigating and will share an update as soon as we have more information.
+
+## @chrisoh806 (post 30, 2026-09-20T08:31:14.000Z)
+Thanks, it seems to have sorted itself out, I was able to restore and things are back to normal.
+
+## @Zomer_Yevgeny (post 31, 2026-09-20T12:46:58.753Z)
+how to fix this… right now i am stuck with that 43% thing for over an hour !!
+
+## @Antoinecar (post 32, 2026-09-20T17:34:15.974Z)
+I have the same issue, if it matters my client is MacOS Tahoe 26.6.2
+
+## @Antoinecar (post 33, 2026-09-20T17:38:15.054Z)
+resolved
+
+## @OrkaTV (post 34, 2026-09-20T21:56:44.036Z)
+Hey Grok Bot Team! I’m having the same issue - stuck at 43% update. How do I unstick it?

@@ -1,0 +1,15 @@
+---
+id: 2026-09-19-blizzard-entertainment-watch-the-world-of-warcraft-live
+kind: article
+title: Watch the World of Warcraft Live Q&A Now
+source: "https://worldofwarcraft.blizzard.com/en-us/news/24302544/watch-the-world-of-warcraft-live-qa-now"
+author: Blizzard Entertainment
+published: 2026-09-17
+captured: 2026-09-19
+via: grok-bot/Table
+lane: gaming
+status: raw
+private: false
+---
+
+Watch the World of Warcraft Live Q&A Now Watch the World of Warcraft Live Q&A Now September 17th by Blizzard Entertainment 21 Share Tweet 21 Comments We’ve gathered your questions for members from across the World of Warcraft development team to answer. Watch now for more insight into the BlizzCon 2026 reveals and a look at what’s ahead for modern WoW and WoW Forever. We look forward to joining you on the adventures that await you in Azeroth. 21 Comments Follow Warcraft

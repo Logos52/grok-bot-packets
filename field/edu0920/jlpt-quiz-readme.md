@@ -1,0 +1,113 @@
+# 日文測驗自動產生器
+
+從 Notion 的「日文文章」與「日文文法」頁面自動生成日文筆記複習測驗，
+用 GitHub Actions 每天重建、部署到 GitHub Pages。全程免費。
+
+---
+
+## 一、建立 Notion integration
+
+1. 開 <https://www.notion.so/my-integrations> → **New integration**
+2. 名稱隨意（例如 `jlpt-quiz`），Type 選 **Internal**，關聯到你的 workspace
+3. Capabilities 只要勾 **Read content** 就夠
+4. 複製 **Internal Integration Secret**（`ntn_` 或 `secret_` 開頭）
+
+## 二、把頁面分享給 integration
+
+到 Notion 打開「**日文文章**」頁面 → 右上角 `⋯` → **連線／Connections** →
+選剛才建立的 integration。子頁面會自動繼承權限，所以只要做這一次。
+
+> 「日文文法」是「日文文章」的子頁面，會一起繼承。若你日後把它移走，
+> 要另外對它做一次同樣的動作。
+
+## 三、建立 GitHub repo
+
+1. GitHub → **New repository**，名稱自取，可設 Private（Pages 對 Private repo 也能用）
+2. 把本資料夾的所有檔案上傳（保留目錄結構）：
+
+```
+scripts/build_quiz.py
+site/index.html
+.github/workflows/deploy.yml
+README.md
+```
+
+## 四、設定 Secret 與 Variables
+
+Repo → **Settings → Secrets and variables → Actions**
+
+**Secrets 分頁** → New repository secret：
+
+| Name | Value |
+|---|---|
+| `NOTION_TOKEN` | 第一步複製的 integration secret |
+
+**Variables 分頁** → New repository variable：
+
+| Name | Value |
+|---|---|
+| `ARTICLES_PAGE_ID` | `feec6a8276b64996a983402ca73738c4` |
+| `GRAMMAR_PAGE_ID` | `3ce0db2643d081c69f7fdb6e2e41f2b9` |
+
+## 五、開啟 GitHub Pages
+
+Repo → **Settings → Pages** → Source 選 **GitHub Actions**（不要選 Deploy from a branch）。
+
+## 六、第一次執行
+
+Repo → **Actions** → 左側選 `Build and deploy quiz` → **Run workflow**。
+
+跑完後網址會是 `https://<你的帳號>.github.io/<repo 名稱>/`，
+在 Actions 的 deploy 步驟裡也會直接顯示連結。
+
+之後每天台灣時間早上 7 點會自動重跑一次；想立刻更新就再按一次 Run workflow。
+
+---
+
+## 題目是怎麼生成的
+
+| 題型 | 來源 | 規則 |
+|---|---|---|
+| 語彙 | 日文文章及巢狀子頁面 | 手動標粗體／上色的詞或片語 → 從完整原句挖空，選項依表面詞形與長度分組 |
+| 文法 | 日文文法及其子頁面的例句 | 優先採例句標記，否則從文法標題推導 → 唯一命中才挖空；選項需有同類文法依據 |
+| 接續 | 接續方式表格 | 顯示表格中的具體例子 → 選出該例對應的接續形式，包含所有適合出題的列 |
+
+每次重建都重新讀取 Notion，完整取代題庫；新增、修改與刪除筆記會在下次成功重建後反映，沒有寫死的題目或舊題追加清單。段落、清單、toggle、callout 中的巢狀文字也會讀取；目前不解析 Notion 資料庫的列頁面。
+
+題目依筆記原句核對答案，屬於筆記複習，不保證每個誘答在所有日文語境下都不成立。無 AI 模型、無付費 API，生成器維持 Python 標準函式庫即可執行。
+
+幾個會影響生成結果的細節：
+
+- 時間戳（含 `[0:43]`、`（1:04）` 及時間區間）、數字標記、詞條模板與中文說明不會當成語彙題。
+- 缺少標點的語彙與文法例句會先自動整理：利用空白、換行、明確句尾與接續語補上句界、句號／問號與必要逗號，再出題。不改詞彙或活用，保護引號、讀音與標記答案；無法細分的片段保留上下文，不因缺標點就淘汰。這是規則式整理，無法保證還原說話者所有停頓。
+- 補標點的題目會在解答標示「補標點後的例句」，並可展開查看 Notion 原始段落。只整理產生的題庫，不回寫 Notion；括號不成對、挖空後沒有語境等情況仍會略過。
+- 詞與片語不設固定長度上限；多次出現、整句都被挖掉、同題幹卻有不同答案的題目會略過。
+- 文法頁面以 `【文法點】` 標題、`接續方式`、`例句`／`例文` 及緊接例句的 📝 引言辨識；解析區的其他表格不會誤當接續表。
+- 至少有 3 個不重複的合適誘答才出題。讀音或半形／全形括號的差異不算不同選項；選項不足時不硬湊。
+- 常見可互換的 `に／へ`、`と／や`、`から／より`、`が／の` 不互當錯誤選項；規則式解析仍無法判斷所有語意歧義。
+- 翻譯、原句與 Notion 來源連結在計分後顯示。日文讀音用 ruby 注音，填空使用獨立的 `［　］`，原句不再包上重複的引號與句號。
+
+網頁每次載入會從各題型輪流隨機抽取最多 10 題，同一原句一輪只出一次，選項也會重排。按「換一組題目」只會從已同步的題庫重抽，不會直接呼叫 Notion。
+
+## 更新與本機驗證
+
+維持每天台灣時間 07:00 自動重建（GitHub 排程可能延遲）。需要提前同步時，到 Actions → `Build and deploy quiz` → `Run workflow`。推送到 `main` 也會觸發；瀏覽器不持有 Notion token。
+
+本機將憑證放在已忽略的 `.env`（格式參考 `.env.example`），執行：
+
+```powershell
+python -m unittest discover -s tests -v
+node --test tests/test_ui.cjs
+python scripts/build_quiz.py
+python -m http.server 8000 --bind 127.0.0.1 --directory site
+```
+
+開啟 <http://127.0.0.1:8000>。前兩項測試不需 Notion 連線，CI 也會先跑測試再生成題庫。若讀取或出題失敗，不會覆寫本機既有題庫，CI 也不會部署空資料。
+
+## 排錯
+
+- **Actions 紅字 `Notion API 404`**：頁面沒分享給 integration，回第二步
+- **頁面顯示「題庫是空的」**：同上，或是 page ID 填錯
+- **Actions 綠燈但網站是舊的**：Pages 有快取，強制重新整理（Ctrl/Cmd + Shift + R）
+- **想改每輪題數**：編輯 `site/index.html` 最上方的 `PER_ROUND`
+- **想改更新頻率**：編輯 `.github/workflows/deploy.yml` 的 `cron`（時間是 UTC，台灣時間要減 8 小時）

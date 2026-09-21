@@ -1,150 +1,79 @@
-# Intake packet — MWF 6
-canary: window_start 2026-09-16T12:16:24+08:00 (Asia/Taipei) — window_end 2026-09-18T12:19:48+08:00 (Asia/Taipei)
-newest_item: 2026-09-18 (arxiv cs.AI/cs.CL Fri 18 + Thu 17 keyword-core title≥9; learningscientists 2026/9/17; x.ai Memory in Grok Build Sep 16)
+# Intake packet — MWF 7
+canary: window_start 2026-09-18T12:19:48+08:00 (Asia/Taipei) — window_end 2026-09-21T12:12:32+08:00 (Asia/Taipei)
+newest_item: 2026-09-21 (arxiv cs.AI/cs.CL Mon 21 keyword-core title≥9; x.ai Voice Transcribe 2.0 Sep 18 below; no new learnsci/RP)
 failed sources: none
 
-10 | ai | A Dual-Process Perspective on Nudge Susceptibility in LLM-Based GUI Agents | Nudge susceptibility in LLM-based GUI agents. | https://arxiv.org/abs/2609.19843
+10 | ai | AgenticRL: Agentic Reinforcement Learning with Self-Refinement for Complex UAV Navigation | Agentic RL with self-refinement for complex UAV tasks. | https://arxiv.org/abs/2606.03963
 bank-candidate (agentic)
-10 | ai | AgentPProf: Semantic Profiler for Long Horizon AI Agents | Semantic profiler for long-horizon AI agents. | https://arxiv.org/abs/2609.20301
+10 | ai | AgentVidBench: A Multi-Hop Video Question Answering Benchmark for Evaluating MLLM Agents | Multi-hop video QA benchmark for evaluating agents. | https://arxiv.org/abs/2609.21386
 bank-candidate (agentic)
-10 | ai | Agora: Git as Shared Memory for Collective AutoResearch | Git as shared memory for collective auto-research. | https://arxiv.org/abs/2609.18094
+10 | ai | AI-GRACE: A Use-Case Operationalization Framework for Agentic AI: From Organizational Objectives and Obligations to Deployment Capabilities and Architecture | Framework to operationalize agentic AI use-cases. | https://arxiv.org/abs/2609.21192
 bank-candidate (agentic)
-10 | ai | An Architecture for Long-Horizon Agents: Levels, Ticks and Cascaded Intelligence | Architecture levels/ticks for long-horizon agents. | https://arxiv.org/abs/2609.19519
+10 | ai | An Agentic Just-in-Time Adaptive Intervention System for Personalized Sleep Support: Proof-of-Concept Study with N of 1 Data | Agentic just-in-time adaptive intervention for sleep. | https://arxiv.org/abs/2609.21805
 bank-candidate (agentic)
-10 | ai | An Empirical Study of Harness Design for Coding Agents | Empirical harness design for coding agents. | https://arxiv.org/abs/2609.20804
+10 | ai | An Interpretable Memory Decision Controller for LLM Agents Based on Three-Signal Complementarity: Decoupling Confidence and Consistency | Interpretable memory decision controller for LLM agents. | https://arxiv.org/abs/2609.22043
 bank-candidate (agentic)
-10 | ai | Bad Genius: Counterfactual-Guided Harness Evolution Beyond Task-Specific Shortcuts | Counterfactual-guided harness evolution beyond shortcuts. | https://arxiv.org/abs/2609.18366
+10 | ai | ArenaFlow: From Trajectory Ranking to Hierarchical Credit Propagation for Open-Ended Agent RL | Trajectory ranking + hierarchical credit for open agent training. | https://arxiv.org/abs/2609.21378
 bank-candidate (agentic)
-10 | ai | Coding Agents with an Obstacle-Aware Harness for Safe Robot Manipulation | Obstacle-aware harness for coding agents on robots. | https://arxiv.org/abs/2609.20822
+10 | ai | AutoViewMem: Self-Configuring Orthogonal Views for Conversational Long-Term Memory | Self-configuring orthogonal views for conversational long-term memory. | https://arxiv.org/abs/2609.21940
 bank-candidate (agentic)
-10 | ai | Compiled Agency: Frontier General-Purpose Coding Agents Build Winning Game Players from Bare Interaction - from Flappy Bird to StarCraft II and Civilization | Frontier coding agents building from bare interaction. | https://arxiv.org/abs/2609.18996
+10 | ai | CIPL: A Channel-Aware Framework for Recoverable Privacy Leakage in LLM Agents | Privacy leakage recovery framework for LLM agents. | https://arxiv.org/abs/2609.21686
 bank-candidate (agentic)
-10 | ai | DeltaSelect: Affordable A/B Testing for Coding Agents | Affordable A/B testing for coding agents. | https://arxiv.org/abs/2609.19607
+10 | ai | CodeMidas: Scaling Agentic Coding RL Environments from Code Itself | Scaling agentic coding RL environments from code itself. | https://arxiv.org/abs/2609.22068
 bank-candidate (agentic)
-10 | learn | Designing Against Deskilling: Metacognitive Feedback Reduces Cognitive Offloading to LLM Assistants | Metacognitive feedback vs cognitive offloading to LLMs. | https://arxiv.org/abs/2609.20143
+10 | learn | CoLearn: An Agentic Tutor that Learns its Learner in a Human--AI Co-Learning Loop | Agentic tutor that models the learner in co-learning. | https://arxiv.org/abs/2609.21154
 bank-candidate (learning)
-10 | ai | EconSkills: Studying Skill Transfer and Retrieval for Web Agents on Live Economic Data | Skill transfer/retrieval for web agents on live data. | https://arxiv.org/abs/2609.19523
+10 | ai | Constraint Decay: The Fragility of LLM Agents in Backend Code Generation | Constraint decay — fragility of LLM agents in backend codegen. | https://arxiv.org/abs/2605.06445
 bank-candidate (agentic)
-10 | ai | ERPBench: A State-Grounded Evaluation Paradigm for Computer-Use Agents in Enterprise Software | Computer-use agents in enterprise software eval. | https://arxiv.org/abs/2609.17885
+10 | ai | Designer-RSI: Evolving Procedural Memory from User Traffic for Agentic Graphic Design | Evolving procedural memory from traffic for agentic graphic design. | https://arxiv.org/abs/2609.22086
 bank-candidate (agentic)
-10 | ai | From Rollout to Reset: A Graph-Based Harness for Autonomous Long-Horizon Manipulation Evaluation | Graph-based harness for long-horizon manipulation eval. | https://arxiv.org/abs/2609.19413
+10 | ai | GameLogicBench: Evaluating Coding Agents on Runtime Game Logic with Tick-Level State Assertions | Benchmark coding agents on runtime game logic. | https://arxiv.org/abs/2609.21562
 bank-candidate (agentic)
-10 | ai | How Do Agent Harnesses Create Value? Planning Information and Release Control in Stateful LLM Agents | When/why agent harnesses create value. | https://arxiv.org/abs/2609.20474
+10 | ai | LEGIT: Credentialing Protocol for Trustworthy AI Agent Marketplaces | Credentialing protocol for trustworthy AI agent marketplaces. | https://arxiv.org/abs/2609.21325
 bank-candidate (agentic)
-10 | ai | JustMem: Just-Enough Memory Access for Long-Term Conversations | Just-enough memory access for long-term chats. | https://arxiv.org/abs/2609.19877
+10 | ai | MemAudit: Auditing Long-Term Agent Memory via Hidden User-State Recovery | Audit long-term agent memory via hidden user-state recovery. | https://arxiv.org/abs/2606.24595
 bank-candidate (agentic)
-10 | ai | M-SQE: Multilingual Skill Quality Estimation for Enhancing Language Equality in Agentic Skill Use | Multilingual skill quality estimation for agentic skill use. | https://arxiv.org/abs/2609.18445
+10 | ai | MemoryArena: Benchmarking Agent Memory in Interdependent Multi-Session Agentic Tasks | Benchmark agent memory across interdependent multi-session tasks. | https://arxiv.org/abs/2602.16313
 bank-candidate (agentic)
-10 | ai | Memory Has Geometry: Non-Uniform Geometric Memory for Long-Horizon Personalized AI | Non-uniform geometric memory for long-horizon personal AI. | https://arxiv.org/abs/2609.17969
+10 | ai | NemotronLabs VoiceChat: An Open Full-duplex Speech-to-Speech Model with Tool Calling Capabilities | Open full-duplex speech-to-speech model with tool calling. | https://arxiv.org/abs/2609.21967
 bank-candidate (agentic)
-10 | ai | Memory in Grok Build | Grok Build now persists conventions/decisions/project facts across sessions via markdown memory. | https://x.ai/news/grok-build-memory
+10 | ai | RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents | Scalable verifiable envs for hybrid computer-use agents. | https://arxiv.org/abs/2609.22000
 bank-candidate (agentic)
-10 | ai | Red-Teaming Auto Mode: Improving Blocking Classifiers Against Malign Coding Agents | Blocking classifiers against malign coding agents. | https://arxiv.org/abs/2609.19587
+10 | ai | Teaching LLMs to Self-Evolve: Cultivating Core Meta-Skills with Reinforcement Learning | Teach LLMs to self-evolve core meta-skills with RL. | https://arxiv.org/abs/2607.21971
 bank-candidate (agentic)
-10 | ai | Reflect, Revise, Reuse: Training-Free Skill Evolution for GUI Agents | Training-free skill evolution for GUI agents. | https://arxiv.org/abs/2609.17653
+10 | ai | TrialAtlas: Multi-Agent Research Organization for Clinical Trial Design and Optimization | Multi-agent research org for clinical trial design. | https://arxiv.org/abs/2609.21859
 bank-candidate (agentic)
-10 | ai | Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks | Poisoning self-modifying AI coding agents. | https://arxiv.org/abs/2609.17817
+10 | ai | Verify, Don't Trust: Agentic Model Development for Video Discovery Retrieval at Scale | Agentic model development with verify-don't-trust for video retrieval. | https://arxiv.org/abs/2609.21257
 bank-candidate (agentic)
-10 | ai | Rollback the World, Keep the Reflection: Rollback-Induced Reflection for Long-Horizon LLM Agents | Rollback-induced reflection for long-horizon LLM agents. | https://arxiv.org/abs/2609.18304
+9 | ai | Authorization Revocation for Long-Running AI Agents: Root-Scoped Quiescence under Delegation and Asynchronous Execution | Authorization revocation for long-running AI agents. | https://arxiv.org/abs/2609.21284
 bank-candidate (agentic)
-10 | ai | SFT or RL for Tool-Calling Agents? A Controlled Study Across Data, Method, and Scale | SFT vs RL for tool-calling agents — controlled study. | https://arxiv.org/abs/2609.17848
+9 | ai | BI-Agent and BI-Bench: Towards Automating End-to-End Business Intelligence | BI-Agent + BI-Bench for end-to-end business intelligence agents. | https://arxiv.org/abs/2609.20886
 bank-candidate (agentic)
-10 | ai | SkillAA: Attribution-Guided Skill-Graph Updating with Targeted Validation and Rollback | Attribution-guided skill-graph updating with rollback. | https://arxiv.org/abs/2609.20455
+9 | ai | Boosting Deepresearch and LongContext Ability with Self-Generated Deepresearch Rollouts Traces | Self-generated deepresearch to boost deepresearch/long-context ability. | https://arxiv.org/abs/2609.20844
 bank-candidate (agentic)
-10 | ai | SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness | Recursive auto-research loops for efficient agent harness. | https://arxiv.org/abs/2609.20519
+9 | ai | Can Agents Design Better Chips with a Higher Level Abstraction? | Can agents design better chips with higher-level abstraction? | https://arxiv.org/abs/2609.21157
 bank-candidate (agentic)
-10 | ai | The Missing Complement: State-Conditioned Minimal Sufficient Evidence for Coding Agents | State-conditioned evidence for coding agents. | https://arxiv.org/abs/2609.20050
+9 | ai | DENSE: Distilling Agent Trajectories into Evidence-Grounded Shortcut Trees for Self-Refinement | Distill agent trajectories into evidence-grounded shortcut trees. | https://arxiv.org/abs/2609.21423
 bank-candidate (agentic)
-10 | ai | WetRobo: A Reproducible Robot Kit for Coding Agents in Biological Laboratories | Robot kit for coding agents in biological labs. | https://arxiv.org/abs/2609.18435
+9 | ai | Efficient Benchmarking in Production: A Study of an Evolving LLM Agent | Efficient production benchmarking of an evolving LLM agent. | https://arxiv.org/abs/2609.21267
 bank-candidate (agentic)
-10 | ai | WFM: Wiki Foundation Model for Complex Agentic Reasoning | Wiki foundation model for complex agentic reasoning. | https://arxiv.org/abs/2609.18182
+9 | ai | Explanation-Bound Tool Execution for AI Agents: Server-Verified Action Claims Without Trusting Model Rationales | Explanation-bound tool execution for AI agents. | https://arxiv.org/abs/2607.25364
 bank-candidate (agentic)
-10 | ai | When Self-Evolution Backfires: Pre-Commit Gating against Skill Contamination in LLM Agents | Gating against skill contamination in self-evolving agents. | https://arxiv.org/abs/2608.05810
+9 | ai | GameASG-Bench: Benchmarking Autonomous Software Generation for Game Development | Benchmark autonomous software generation for game development. | https://arxiv.org/abs/2609.21293
 bank-candidate (agentic)
-9 | ai | A Proposal for an Agentic AI Architecture to Support Multi-Domain Decision-Making in the Brazilian Armed Forces | Agentic AI architecture for multi-domain decisions. | https://arxiv.org/abs/2609.20080
+9 | ai | Intent-Governed Tool Authorization for AI Agents | Intent-governed tool authorization for AI agents. | https://arxiv.org/abs/2606.22916
 bank-candidate (agentic)
-9 | ai | A Study of the Reliability of Agentic AI-Generated Programs | Reliability of agentic AI-generated programs. | https://arxiv.org/abs/2609.18298
+9 | ai | SWE-Proof: Can Language Models Resolve Real-World Issues with Machine-Checked Proofs? | Can LMs resolve real-world issues with machine-checked proofs? | https://arxiv.org/abs/2609.21190
 bank-candidate (agentic)
-9 | ai | A Unified Evaluation Framework for Trustworthy Large Language Models, Agentic AI, and Multimodal Systems | Trustworthy eval framework spanning agentic AI. | https://arxiv.org/abs/2609.19524
+9 | ai | Value-Sensitive Delegation in Everyday AI Agent Use: Evidence from OpenClaw | Value-sensitive delegation in everyday AI agent use (OpenClaw). | https://arxiv.org/abs/2609.22067
 bank-candidate (agentic)
-9 | ai | Architectural Design, Not Only Model Intelligence, Governs Multi-Agent LLM Performance | Architecture vs model intelligence in multi-agent LLMs. | https://arxiv.org/abs/2602.03128
+9 | ai | Voice-Light: A Full-Duplex Cascaded Voice Agent with Causal Turn-Taking and Speculative Generation | Full-duplex cascaded voice agent with causal turn-taking. | https://arxiv.org/abs/2609.20995
 bank-candidate (agentic)
-9 | ai | ASLEval: Measuring Privacy Exposure Displacement in LLM Agent Sessions | Privacy exposure displacement in LLM agent sessions. | https://arxiv.org/abs/2609.18864
-bank-candidate (agentic)
-9 | ai | AURORA: A Natural Language-Driven Agentic Framework for Understanding, Reasoning, and Orchestrating Reliable Air-Ground Co-Simulation | NL-driven agentic framework for orchestrating… | https://arxiv.org/abs/2609.19527
-bank-candidate (agentic)
-9 | ai | AutoData: Agentic Search for Pre-training Data Selection | Agentic search for pre-training data selection. | https://arxiv.org/abs/2609.19754
-bank-candidate (agentic)
-9 | ai | BuildBench: Benchmarking LLM Agents on Compiling Real-World Open-Source Software | Benchmarking LLM agents on compiling real-world OSS. | https://arxiv.org/abs/2509.25248
-bank-candidate (agentic)
-9 | ai | CapMem: A Benchmark for Caption-Based Episodic Memory in Egocentric Video | Caption-based episodic memory benchmark. | https://arxiv.org/abs/2609.17688
-bank-candidate (agentic)
-9 | ai | CERA-MoA: Co-Evolving Routing Mechanisms with Continually Learning LLM Agents | Co-evolving routing with continually learning LLM agents. | https://arxiv.org/abs/2609.18779
-bank-candidate (agentic)
-9 | ai | Characterizing Web Search by Conversational LLM Agents: From Search Decisions and Strategies to Results and Responses | How conversational LLM agents do web search. | https://arxiv.org/abs/2609.19244
-bank-candidate (agentic)
-9 | ai | Chronicle: Cut-Point Replay for Regression Testing of LLM Agents | Cut-point replay for regression testing of LLM agents. | https://arxiv.org/abs/2609.20625
-bank-candidate (agentic)
-9 | ai | Closed-World Resolution Against Tool Hallucination in LLM Agents | Closed-world resolution against tool hallucination in LLM agents. | https://arxiv.org/abs/2609.19425
-bank-candidate (agentic)
-9 | ai | Cognitive Extensions for Dual-Process Language Agents: Memory and Self-Reflection in Interactive Environments | Memory + self-reflection for language agents. | https://arxiv.org/abs/2609.19128
-bank-candidate (agentic)
-9 | ai | Collaborative Memory for Multi-Agent VLM Systems | Collaborative memory across multi-agent VLM systems. | https://arxiv.org/abs/2609.17921
-bank-candidate (agentic)
-9 | ai | Collective Loss of Control in LLM Agent Systems: An Epidemic Account of Mutation, Contagion, and Recovery | Epidemic account of mutation/contagion in LLM agent systems. | https://arxiv.org/abs/2609.18460
-bank-candidate (agentic)
-9 | ai | Communication and Verification in LLM Agents towards Collaboration under Information Asymmetry | Collaboration under information asymmetry. | https://arxiv.org/abs/2510.25595
-bank-candidate (agentic)
-9 | ai | Compositional Policy Violations: When Step-Level Compliance Fails In Agentic AI Workflows | Step-level compliance fails in agentic workflows. | https://arxiv.org/abs/2609.18820
-bank-candidate (agentic)
-9 | ai | DataCanvas-EDU: An Agentic Framework for Instructor-Guided Synthetic Data Generation in Business Analytics Education | Agentic framework for instructor-guided synthetic data. | https://arxiv.org/abs/2609.19617
-bank-candidate (agentic)
-9 | ai | Designing Agentic AI Workflow Portfolios under Imperfect Selection and Compute Cost | Workflow portfolio design under imperfect selection. | https://arxiv.org/abs/2609.18126
-bank-candidate (agentic)
-9 | ai | Do AI Agents Understand Computer Architecture? | Whether AI agents understand computer architecture. | https://arxiv.org/abs/2609.19387
-bank-candidate (agentic)
-9 | ai | Dual-Axis Policy Optimization for LLM Agents: Bayesian Feedback Attribution and Trajectory Mass Normalization | Policy optimization for LLM agents. | https://arxiv.org/abs/2609.19830
-bank-candidate (agentic)
-9 | ai | Hypothesis-Driven Autonomous Materials Synthesis with Multimodal LLM Agents | Multimodal LLM agents for materials synthesis. | https://arxiv.org/abs/2609.18598
-bank-candidate (agentic)
-9 | ai | MaSCoD: A Multi-Agent Framework for Structural-Context-Guided Candidate Causal Graph Generation | Multi-agent structural-context causal graph generation. | https://arxiv.org/abs/2609.19944
-bank-candidate (agentic)
-9 | ai | Not All AI Agents Are Equal: Characterizing Resource and Performance Dynamics | Resource/performance dynamics across AI agents. | https://arxiv.org/abs/2609.19947
-bank-candidate (agentic)
-9 | ai | PersonalAI 2.0: Enhancing knowledge graph traversal/retrieval with planning mechanism for Personalized LLM Agents | KG traversal/retrieval with planning for personal AI. | https://arxiv.org/abs/2605.13481
-bank-candidate (agentic)
-9 | ai | Quantifying Overclaiming Propensity in Frontier LLM Agents | Overclaiming propensity in frontier LLM agents. | https://arxiv.org/abs/2609.20812
-bank-candidate (agentic)
-9 | ai | Rethinking Multi-Agent Collaboration: When More Is Less | When more agents hurts collaboration. | https://arxiv.org/abs/2609.19759
-bank-candidate (agentic)
-9 | ai | Self-State Attacks on Self-Hosted AI Agents: How Far Can OS Defenses Go? | OS defenses against self-state attacks on self-hosted AI agents. | https://arxiv.org/abs/2607.17986
-bank-candidate (agentic)
-9 | ai | Social Laws for Multi-agent Coordination in Stochastic Environments | Social laws for multi-agent coordination. | https://arxiv.org/abs/2609.18929
-bank-candidate (agentic)
-9 | ai | Social Simulacra in the Wild: AI Agent Communities on Moltbook | AI agent communities in the wild. | https://arxiv.org/abs/2603.16128
-bank-candidate (agentic)
-9 | ai | Symbolic Temporal Supervision of LLM Agents Using Contracts | Contract-based temporal supervision of LLM agents. | https://arxiv.org/abs/2609.18128
-bank-candidate (agentic)
-9 | ai | TuiML: Machine Learning for AI Agents | Machine learning tooling aimed at AI agents. | https://arxiv.org/abs/2609.17984
-bank-candidate (agentic)
-9 | learn | Varying Retrieval Practice to Promote Transfer of Learning: A Set of Experiments | Variable retrieval-application examples beat same-example practice for transfer. | https://www.learningscientists.org/blog/2026/9/17
-bank-candidate (learning)
-9 | ai | When AI Agents Commit: Cognitive Serializability Across Data, Evidence, Policy, and Authority | Cognitive serializability across data/evidence/policy/authority. | https://arxiv.org/abs/2609.20261
-bank-candidate (agentic)
-9 | ai | Where Should Agents Live? Energy-Memory Characterization of Agentic AI for the Edge-Cloud Continuum | Energy-memory tradeoffs for agentic AI edge–cloud. | https://arxiv.org/abs/2609.18283
-bank-candidate (agentic)
-9 | ai | Who Audits Whom, on What Substrate, with What Evidence? An Independence-Graded Audit Protocol for Agentic AI | Independence-graded audit protocol for agents. | https://arxiv.org/abs/2609.18272
-bank-candidate (agentic)
-9 | ai | Whom Do AI Agents Work For? Role Assignment Induces Sponsorship Bias in LLM Recommenders | Sponsorship bias from role assignment in LLM recommenders. | https://arxiv.org/abs/2609.17989
-bank-candidate (agentic)
-9 | ai | Workspace Models: Lightweight Robotic Memory via Saliency-Driven Supervision | Lightweight workspace memory via saliency-driven supervision. | https://arxiv.org/abs/2609.20820
+9 | ai | When Better Turns Do Not Make Better Agents: Diagnosing the Gap Between Next-Turn Metrics and Workflow Success | When better turns do not make better agents — diagnose the gap. | https://arxiv.org/abs/2609.21187
 bank-candidate (agentic)
 
-649 below threshold
-truncation: arxiv titles + abstracts when present on /new (Fri); pastweek titles for Thu 17; keyword-core then title-score ≥9 for packet; Wed 16 and earlier already stamped in MWF 4–5 — not rescored. Weekly usage: skipped full rescore of Mon–Wed.
-docs.x.ai/grok-bot/overview: already in seen (bounced); no newer docs listing pages queued.
-x.ai/news: listing OK via WebFetch; new post Memory in Grok Build (2026-09-16) packeted; older Sep 3–4 enterprise/procurement/designing already seen.
-anthropic: featured Scenarios for our Economic Future (institute/econ-scenarios) — macro economics, below threshold for ai/learn/wiki craft beats; other research cards already seen (no newer than prior sweeps).
-retrievalpractice.org: no dated new post in window.
-learningscientists: new 2026/9/17 varying retrieval → transfer; full-read + banked.
-bank: full-read learningscientists 2026/9/17 → banked learning lane; x.ai Memory already in bank (read from raw, no re-bank); arxiv listing-only — no arxiv bank writes.
+234 below threshold
+truncation: arxiv keyword-core then combined ≥9 (formal floor ≥6); Sat–Sun no arxiv listings; Fri 18 already packeted in MWF 6; weekly usage — no full arxiv abstract rescoring beyond Mon 21 /new+pastweek parse
+per-source: anthropic — claude-uplifts-biomolecular-modeling (2026-09-17, pre-window, missing from seen) stamped below; featured econ-scenarios already seen; x.ai — Voice Transcribe 2.0 (2026-09-18) below; docs.x.ai grok-bot overview skipped (bounced); learnsci — newest still 2026/9/17 already packeted; retrievalpractice — no dated new item; arxiv cs.AI+cs.CL Mon 21 only
+bank: no full-article bank writes this sweep (listing-only arxiv; editorial below not full-used)
+calibration: packet 7 of 10 — no cuts yet

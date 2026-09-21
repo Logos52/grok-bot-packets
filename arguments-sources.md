@@ -4,15 +4,18 @@
 # Public only. Weekly included usage only. Never write vault, tan, tsumugu, or GitHub.
 
 ## Products
-# INGEST (Triggernometry, a16z) — per new qualifying episode. Takeaways, arguments (claim → support → what is rejected), listed facts. Timestamped. 3–6 verbatim quotes ≤25 words. One paragraph at the end. Footer: url, length, text source (captions | official transcript | NOTES-ONLY).
+# INGEST (TRIGGERnometry, a16z, Design Theory) — per new qualifying episode. Takeaways, arguments (claim → support → what is rejected), listed facts. Timestamped. 3–6 verbatim quotes ≤25 words. One paragraph at the end. Footer: url, length, text source (captions | official transcript | NOTES-ONLY).
 # ASMON (Asmongold talk VODs only) — arguments plus one-sentence takeaway. No wiki-grade analysis. No full ingest dump. No listed-facts block, no quote block, no closing paragraph unless a single takeaway sentence. Footer still: url, length, text source. Skip highlight clips.
 
-## Pinned (fetch these — do not add more)
+## Pinned (fetch these — do not add more unless Wedge says so)
 - TRIGGERnometry · https://www.youtube.com/@Triggerpod
   Full INGEST. Do not thin unless Wedge says so.
 - a16z · https://www.youtube.com/@a16z
   Scope: The a16z Show / AI episodes. Skip promo shorts, news recaps, and non-AI/non-show filler.
   Full INGEST. Do not thin unless Wedge says so.
+- Design Theory · https://www.youtube.com/@Design.Theory
+  Full INGEST (essay / argument videos). Same depth as TRIGGERnometry/a16z.
+  Pinned 2026-09-20 via Wedge (eggbot relay). Seed video: https://www.youtube.com/watch?v=HgjXjPP_p3s
 - Asmongold talks · https://www.youtube.com/@asmontv
   Talk/argument VODs only. Skip highlight dumps, highlight clips, competitions, and clip compilations.
   If a video is not him making or testing an argument, skip it.

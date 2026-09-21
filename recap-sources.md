@@ -21,6 +21,7 @@
   Long-form deep-dive essays. English channel only. Skip shorts, clip dumps, and clones of Moon.
 - Frontpage · video: https://www.youtube.com/@frontpagechannel/videos
   Long-form, well-sourced. English channel only. Skip shorts, clip dumps, and clones of Frontpage.
+  INGEST style (2026-09-20 Wedge via eggbot): lead with claims / arguments / what is rejected (claim → support → what it pushes against). Keep only the few numbers that carry an argument; drop the rest of the quantitative inventory. Same packet shape otherwise (timestamps, short quotes). Do not re-ingest old Frontpage packets unless asked. Other pins unchanged.
 
 ## Catch-up / examples
 - The Economist Insider · Zanny Minton Beddoes · recorded/released 2026-07-23 · 85 min
