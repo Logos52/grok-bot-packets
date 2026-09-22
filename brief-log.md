@@ -28,3 +28,4 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-19 | Nothing that changes today. |  |
 | 2026-09-20 | Nothing that changes today. |  |
 | 2026-09-21 | Nothing that changes today. |  |
+| 2026-09-22 | Grok 4.7 is live in Cursor and Grok Build (21 Sep) — same $2/$6 as 4.6, stronger on long coding (CursorBench 46.3% vs 4.6 40.4%); switch default this week. https://x.ai/news/grok-4-7 |  |

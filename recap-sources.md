@@ -9,6 +9,15 @@
 # INGEST — per new episode. Takeaways, arguments, claims, timestamped, 3–6 quotes ≤25 words. First-party captions/transcript.
 # WIKI  — on demand only. Whole-part-whole. Causal thesis. Sources footer. Desk draft. Never vault/tan/tsumugu/GitHub.
 
+## Chat to Wedge (2026-09-22 via eggbot)
+# Human-report chat for LIST alerts / INGEST chat summaries — not the on-disk packet.
+# - short title; ≤7 bullets
+# - one idea per bullet, full words — no label: value telegrams
+# - arguments/claims before numbers (Frontpage: only numbers that carry a claim)
+# - no timestamps, paths, or canaries in chat; dense tape stays in /workspace/recap/*.md
+# - quiet when every pin is nothing-new
+# Pins/fences unchanged.
+
 ## Pinned (fetch these)
 - All-In Podcast · rss: https://allinchamathjason.libsyn.com/rss · video: https://www.youtube.com/@allin/videos
 # - Naval (parked since 2026-07-02; uncomment when it publishes again) · rss: https://naval.libsyn.com/rss · site feed: https://nav.al/feed · video: https://www.youtube.com/@NavalR/videos

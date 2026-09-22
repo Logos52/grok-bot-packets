@@ -1,5 +1,73 @@
-# Recap latest · last 7 days · rebuilt 2026-09-21 noon Asia/Taipei
+# Recap latest · last 7 days · rebuilt 2026-09-22 noon Asia/Taipei
 Packets: 14 (newest first)
+
+---
+<!-- 2026-09-21-all-in-naveen.md -->
+## Recap · All-In · 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology
+url: https://www.youtube.com/watch?v=yAsrMA_ADPc + https://allinchamathjason.libsyn.com/naveen-rao-4d-computing-ais-energy-wall-beating-biology  ·  length: 22:35  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Welcome Naveen Rao (00:00)**
+- 00:03 · Jason (intro) · Frames Naveen Rao as co-founder/CEO of Unconventional AI (AI chip startup); sold two deep-tech companies; definitional outlier founder.
+- 00:47 · Naveen · Anti-doomer: AI among the most transformational technologies humanity has created; will enable the next level of evolution; calls All-In Summit the "anti-doomer conference."
+- 01:16 · Naveen · Bio arc: early home computer ~1978; programmed as a kid; electrical engineer via sci-fi / intelligent-machine itch; later PhD in neuroscience to ask how to make computers intelligent — "technologist's dream" now that the world moved that way.
+- 02:11 · Naveen · Founded first AI chip company **Nervana Systems** (2014) when AI wasn't common vernacular; hard to convince anyone hardware mattered; sold "way too early" to Intel; started and ran Intel's AI group.
+- 02:43 · Naveen · Post-2020: next problem = infrastructure to train bigger LLMs → platformized GPUs at scale (MosaicML path); after ChatGPT (2022) became "best game in town" for people building own models; joined forces with Databricks (2023); claims that biz is ~**¼ of Databricks total revenue** today (with Ali's team).
+- 03:23 · Naveen · Unconventional AI = rethink foundations of how a computer works for singular purpose: **power efficiency**. Goal was 1000× power efficiency in 5 years; revised to **~3.5 years** because deep scientific problems solved faster (ironically via AI). Org is top-to-bottom: theorists (math PhDs / theoretical neuroscience) → models trained on real data → physical circuit architects → systems/boards/product.
+
+**Is energy really the problem? (04:45)**
+- 04:45 · Naveen · Google publicly: **>3.2 quadrillion tokens/month**. At ~**10 J/token** (lower end of model energy spectrum) → ~**12 GW** for one company's AI services alone.
+- 05:20 · Naveen · US puts ~**40 GW** into data centers; US ≈ half of world DC capacity → world under ~**100 GW** DC energy; 12 GW already into one company for AI — bigger models + growing demand → **run out of energy in ~3 years** (his estimate).
+- 05:52 · Naveen · Graphic: exponentially growing AI market (~**$1T by 2030**, maybe bigger) vs linearized energy supply — **the gap is the problem**; solve it with technology, not just more power plants.
+- 06:15 · Naveen · Data-center bottleneck shifted: floor space → networking → GPUs → **energy first** (get the power contract, then fill it with GPUs).
+- 06:40 · Naveen · ~**50% of the cost of serving a token** (e.g. ChatGPT) is energy; rest is hardware/floor-space capex. Business case: monetize every watt **1000× better** than existing hardware.
+- 07:08 · Naveen · Biology as proof: human brain ~**20 W**; monkey-scale brain ~**1 W** (≈ phone); rats/bats on milliwatts; **squirrel brain ~8 mW** yet near-perfect branch-jump accuracy — "you could run over 100 squirrel brains on your phone." Biology = right physical substrate for intelligence.
+- 08:08 · Naveen · Motto: don't truly understand something until you can create it. Synthetic systems are inefficient mainly because energy goes into **moving information around**.
+- 08:28 · Naveen · Human cortex moves ~**16 billion bits/s** across ~13–14B neurons; high-end GPU moves nearly **30 trillion bits/s** in/out of memory (outside chip; inside maybe 10–100× more) — bit-moving drives energy demand.
+- 09:03 · Naveen · Computing lineage: mechanical → analog → digital (1930s–40s). 1945 ENIAC operation still similar to today: external memory + compute, shuttle bits — built for **speed** (artillery trajectories faster than human calculators), not energy efficiency. Selling computers = "twice as fast as that other computer," no energy contemplation.
+- 10:00 · Naveen · Transistors up, but frequency / single-thread / now **efficiency** stopped scaling; Moore's law (smaller transistors → efficiency) has largely ended → must rethink the problem.
+
+**Cutting out the middleman: abstractions, dynamical systems & a new machine (10:24)**
+- 10:24 · Naveen · Intuition: **cut out the middleman**. Stack of lossy abstractions (digital 0/1 over analog transistors → … → neural nets). Brain has neurons but no linear algebra / floating-point — **physics of neurons** gives rise to intelligence; mimic that with semiconductors.
+- 11:28 · Naveen · Computation throughout nature: flocking birds, ant colonies — simple local rules → emergent intelligence (**dynamical systems theory**); brain works this way; they build circuits from these ideas.
+- 12:07 · Naveen · Metronome demo: many metronomes on a rolling plank synchronize via physics alone (scalable to hundreds) — physical dynamical system; can imagine more complex phase patterns from interconnection.
+- 13:07 · Naveen · Can such a system do generative AI? Released open-source simulated model **UNO** — image generation on coupled oscillators; first demo they could scale, train, and get useful image output; state-space trajectories differ by conditioned class (airplane/car/bird).
+- 14:13 · Naveen · Further science: **sparsity** — full all-to-all is N² (10→100 links; 1000→1M); throw away connections and you can **rescue** (even improve) behavior and trainability. Works in simulation **and** real physical systems — rare win: more efficient + more scalable + more performance ("holy grail").
+- 15:28 · Naveen · **First public reveal**: first physical dynamical computer ever built; company earnest from January (no team yet); taped out **June 1**; chip back in lab with results — first images generated from such hardware.
+- 16:09 · Naveen · Not image-only: can do sequence modeling / language models. Energy claim: ~**500 nJ per image** vs GPU-order **mJ** — many orders of magnitude more efficient because it doesn't shuttle information the von Neumann way. Proof positive it works.
+- 16:51 · Naveen · Evolution: CPU → GPU → compute-in-memory = still **von Neumann** (memory↔compute shuttle). Their **dynamical computer**: compute and memory unified; each element is memory; no memory interface.
+- 17:20 · Naveen · Brands this **4D computing**: time dimension in the dynamics + 3 physical dimensions (planar + die stacking).
+- 17:42 · Naveen · Implications of 1000× power efficiency: optimize **intelligence per watt**; thermodynamic limit exists; mammalian brains within ~1–2 orders of that limit; today's silicon ~**10 billion×** away from the limit. In ~3.5 years hit limits of 2D lithography; company goal: **beat biology** — compute everywhere including new robotic forms within ~a decade.
+- 18:33 · Naveen · Shift from giant gigawatt data centers → many small local DCs (more environmental / adaptive); enable billions of robots that dynamically assemble to solve problems.
+- 19:03 · Naveen · If AI is a $1T market and you disrupt cost 1000×, **Jevons paradox**: cheaper → consume more than the price drop; 1000× cheaper → consume more than 1000× → "largest market humanity's ever seen."
+
+**Chamath joins: path to product, porting, team (19:40)**
+- 19:34 · Chamath · Reaction: "extremely unexpected… pretty amazing." Asks path from early chip → hand/product given need for fabs/packagers ecosystem (Jensen earlier).
+- 20:09 · Naveen · Full product within **~2 years**. Product = new **data-center rack/system** (not a phone VM): tokens in / tokens out over network cable; inner guts completely different.
+- 20:32 · Chamath · Will existing model families / KV-cache abstraction world port? How do the rest of us take the efficiency curve?
+- 20:56 · Naveen · Sliding scale: how much better vs how much pain to move; aim to make move compelling. Port at the **model layer**, not ops layer — existing models will work, but fair bit of compute to transition.
+- 21:19 · Chamath · Does matmul exist on this machine?
+- 21:26 · Naveen · Can characterize as matmul analytically, but does **not** implement as matmul — implements as **time-varying behavior**; each timestep analyzable as current-state matrix × transition matrix.
+- 21:38 · Chamath · Who is the team — biologists + physicists?
+- 21:45 · Naveen · Theorists from dynamical-systems world (century-old field) + chip builders who **don't talk to each other** — facilitating that span is one of the hardest parts of the company.
+- 22:06 · Chamath · CUDA-like bridge between theorists and chip people?
+- 22:13 · Naveen · Built Python libraries (not CUDA) — a language to express time-varying elements with **stochastic** behavior.
+- 22:26 · Chamath · Closes: incredibly impressive / ambitious; thanks.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:58 Naveen: "I'm the opposite of a doomer. I think AI is one of the most transformational"
+- 06:56 Naveen: "I get a power contract I need to monetize every watt"
+- 08:08 Naveen: "I don't feel like we truly understand something until we can create it."
+- 15:36 Naveen: "This is actually the first physical dynamical computer ever built."
+- 17:49 Naveen: "So intelligence per watt is what we care about."
+- 18:20 Naveen: "the overarching goal of this company is to beat biology."
+
+### One paragraph
+All-In Summit talk by Unconventional AI CEO Naveen Rao (Nervana→Intel AI, then MosaicML→Databricks): AI will hit an **energy wall** in ~3 years — Google alone at 3.2Q tokens/mo × ~10 J/token ≈ 12 GW, while world DC power is under ~100 GW, and ~50% of token cost is already energy — so the gap vs a ~$1T-by-2030 market must be closed with **1000× more efficient hardware**, not just more power contracts. Thesis: von Neumann machines waste energy shuttling bits (GPU ~30T bits/s vs cortex ~16B); biology (20 W brain; 8 mW squirrel) proves a better substrate. Solution: cut lossy abstractions and build a **dynamical / 4D computer** (oscillator physics + sparsity + die stacking + time) — first physical prototype taped out June 1 after a Jan start, generating images at ~500 nJ vs mJ-class GPUs; open UNO demo preceded it. Goal in ~3.5 years: approach 2D-lithography limits and eventually **beat biology** on intelligence-per-watt, enabling many small local DCs and robot swarms (Jevons: 1000× cheaper compute → largest market ever). Chamath Q&A: ~2-year path to a tokens-in/out data-center rack; port at model layer (not ops); no native matmul — time-varying dynamics; team = dynamical-systems theorists + chip people bridged by Python libs.
+
+### Footer
+canary: published 2026-09-21T21:03:00Z (libsyn RSS) / YT uploadDate 20260921 · fetched 2026-09-22T04:08:00Z · length 22:35 (1355s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp-0922-naveen/yAsrMA_ADPc.en.srt · chapters from YT description used as section anchors · ASR name cleanup in body only (Ralph→Rao, Nirvana→Nervana, jewels→joules, gawatt→gigawatt, Chat GBT→ChatGPT, data bricks→Databricks, Alli→Ali, millowatts→milliwatts, vonoyman→von Neumann, Jieven's→Jevons, maple/mapm→matmul, stoastic→stochastic, goomer→doomer in intro clip) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---
 <!-- 2026-09-20-all-in-foroughi.md -->
@@ -366,53 +434,6 @@ All-In Summit with Meta president/vice chair Dina Powell McCormick: Richland Par
 canary: published 2026-09-17T16:54:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-18T04:05:00Z · length 43:51 (2631s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/dina.en.vtt · ASR name cleanup in body only (Dina Pal/Dena→Dina Powell McCormick, Satcha/Satia→Satya, Richmond→Richland Parish, McCormix→McCormick, Entury→Entergy, Shimoth→Chamath, Frink→Fink, Mary Bar→Mary Barra, Zach→Zuck, Daario→Dario, Natt→Nat Friedman, Saxs→Sacks, metagasses→Meta glasses) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---
-<!-- 2026-09-17-moon.md -->
-## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
-url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Open / McKinsey reach (00:00)**
-- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
-- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
-
-**Corporate Hall of Fame disasters (00:59)**
-- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
-- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
-
-**Purdue / OxyContin / opioid crisis (02:16)**
-- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
-- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
-- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
-
-**Saudi NEOM / surveillance / Jamal (04:40)**
-- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
-- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
-
-**China / Russia / US DoD double-dip / South Africa (07:00)**
-- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
-- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
-
-**Alumni network / recruitment / close (09:50)**
-- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
-- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
-- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
-- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
-- 02:44 Hearing: "We sell hope in a bottle."
-- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
-- 05:48 Moon: "will cost a light sum of $8.8 trillion."
-- 13:51 Promo: "We are insecure overachievers."
-- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
-
-### One paragraph
-Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
-
-### Footer
-canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
 <!-- 2026-09-17-all-in-gerstner.md -->
 ## Recap · All-In · 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem
 url: https://www.youtube.com/watch?v=PJrntzMA4iQ + https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem  ·  length: 18:10  ·  text: captions
@@ -458,6 +479,53 @@ All-In Summit market-check: Brad Gerstner argues 2026's AI trade is earnings- an
 
 ### Footer
 canary: published 2026-09-17T03:04:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-17T04:02:00Z · length 18:10 (1090s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/gerstner.en.vtt · ASR name cleanup in body only (Bersner/Gerster→Gerstner, Altimter→Altimeter, Satcha→Satya, Enthropic→Anthropic, gawatt→gigawatt) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+---
+<!-- 2026-09-17-moon.md -->
+## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
+url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Open / McKinsey reach (00:00)**
+- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
+- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
+
+**Corporate Hall of Fame disasters (00:59)**
+- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
+- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
+
+**Purdue / OxyContin / opioid crisis (02:16)**
+- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
+- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
+- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
+
+**Saudi NEOM / surveillance / Jamal (04:40)**
+- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
+- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
+
+**China / Russia / US DoD double-dip / South Africa (07:00)**
+- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
+- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
+
+**Alumni network / recruitment / close (09:50)**
+- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
+- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
+- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
+- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
+- 02:44 Hearing: "We sell hope in a bottle."
+- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
+- 05:48 Moon: "will cost a light sum of $8.8 trillion."
+- 13:51 Promo: "We are insecure overachievers."
+- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
+
+### One paragraph
+Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
+
+### Footer
+canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---
 <!-- 2026-09-16-fern.md -->
@@ -741,79 +809,3 @@ All-In Summit sits Gwynne Shotwell for a SpaceX operating tour — from seventh-
 
 ### Footer
 canary: published 2026-09-15T03:42:00Z (libsyn RSS) / YT uploadDate 2026-09-14T20:59:04-07:00 · fetched 2026-09-15T05:08:00Z · length 1:04:25 (3864s) · captions 1829 timed lines / ~11770 words from official YouTube English auto-generated (kind=asr) timedtext via box Chrome session after track registered (Android innertube later wrote srv3 XML saved as captions.json3/vtt under /workspace/recap/tmp-allin-0915/; browser timedtext stayed empty 0-byte during early polls; CC button still showed unavailable while track existed) · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (Gwen/Quinn→Gwynne, Daario→Dario, Terraab/Terra Fab→Terafab, XAI→xAI, direct to sell→direct to cell) · quotes verbatim from caption text · no ASR on box · no third-party transcript sites · recap-seen.json / latest.md left for parent · Jensen Huang sibling (S7CrlFLAmEA) not ingested
-
----
-<!-- 2026-09-14-all-in-jensen.md -->
-## Recap · All-In · 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump)
-url: https://www.youtube.com/watch?v=S7CrlFLAmEA + https://allinchamathjason.libsyn.com/jensen-huang-the-doomer-hoax-superintelligence-is-here-and-the-future-of-ai-ft-president-trump  ·  length: 0:46:46  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Jensen Huang joins The Besties! (00:00)**
-- 00:00 · Cold open / intro package · Preempted weekly show for Jensen (only Trump, Jesus, Jensen). Nvidia framed as full-stack AI factory; revenue +97% YoY; demand accelerating. Standing O; "GPU Jesus"; Jensen in new jacket — auctioned prior open jacket; wants serious talk with energy.
-
-**Thoughts on Dario's blog, Frontier Labs calling to slow down AI, and Doomer psychology (01:39)**
-- 01:39 · Chamath · Opens on Dario Amodei's weekend essay; jokes Hemingway / Pangram AI-assist check; notes frontier labs coalescing around the essay. Asks Jensen for high-level read.
-- 02:14 · Jensen · Separates threads in the essay: (1) safety is paramount — but safety vs leadership / America leading are false choices; can innovate fast and safely. (2) Internal control — Coxin (captions: coxin) "whistleblower" is serious; credits Coxin with courage; whistleblowing fine, but scientific extinction-style prediction "not grounded on science" even when said by a scientist. (3) Pause / pacing = voluntary tools if a lab feels out of control — possible clumsy research→engineering transition; only Coxin knows what he saw. Blog conflates control, regulation, and civilizational risk in one piece.
-- 04:24 · Chamath · Mom ("Jimoth"/Chamath) asks what "civilizational death" / 10% extinction means for normal people — quantization by smart people is what perturbs the public.
-- 04:53 · Jensen · "We shouldn't [explain it that way] because it's made up" — irresponsible for well-educated lab researchers to make alarming unscientific predictions. Track record of wrong AI doom/jobs forecasts: radiology would eliminate radiologists in 5 years → opposite (need more radiologists; AI automated scan reading); last-year claim 90% of code AI-generated in 6–12 months → wrong; 50% entry jobs wiped in 6–9 months → wrong; GPT-2 / Llama 3 "too unsafe to release"; half of white-collar jobs gone next year / jobs apocalypse. "Somebody has to take account for all of the stupid predictions." Predictions inconsistent with America winning the AI race.
-- 06:51 · Chamath · Analogizes to COVID "trust the experts" — asymmetric awareness that later failed on facts; war between trust-the-experts vs methodical prediction history.
-- 07:22 · Chamath · Why from inside the labs — psychology vs business/political incentive?
-- 07:38 · Jensen · Frontier labs = consequential companies, extraordinary people; works with them company-to-company but public discourse is "unfortunate." Prefers old mode: build in silence. Nvidia culture: employees don't speak for the org on a bad weekend / rage-quit tweets; no political/race/religion discourse inside — take it home; company a-political / bipartisan, help whichever US government succeed.
-
-**Sensible AI regulation and RSI (09:58)**
-- 09:58 · Chamath · Satya (same morning): before regulation that could stymie, get measurement, standardization, engineering right; translate research predictably; keep fear-mongering inside until ready. Demis: FINRA-like org; Dario's transnational control idea unclear. Where does Jensen land?
-- 10:38 · Jensen · Regulation should solve actual problems — so far actual problems have come from the frontier labs (they have the most compute, pioneering frontier work); unlikely high-schooler or startup is the source. Labs hair-on-fire building company + culture + tech + products at once. Four incidents one lab + one giant incident another: root-cause from engineering — what happened, what to institutionalize (sandboxes, runtimes, continuous monitors). Bets every case is within lab control to prevent again. Alternative ("we analyzed and have no idea / asking society for help") unlikely — if true, send engineers; doubts it.
-- 13:35 · Jason / Sacks · Chinese lab (GLM / Zhipu — captions: zpoo.com) raised ~$5B; announced priority recursive self-improvement (RSI) run (~$3B toward RSI per Jason).
-- 14:04 · Jensen · RSI is a system of sensible ideas (in-context, skills, reflection, RL, synthetic data, LoRA without retraining base, later retrain base) — already used to raise AI productivity including building AI. Phrase now "weaponized" to imply spiral out of control. Does not believe uncontrolled spiral: you can RSI inside, but product release still needs evals, regression tests, verification — control improves as labs move research→engineering; that enables safe internal RSI and good external products.
-
-**Hugging Face acquisition, future of Open Source, and the race with China (16:05)**
-- 16:05 · Chamath · Hugging Face deal = among most consequential acquisitions; asks first-principles open vs closed vs open weights.
-- 16:28 · Jensen · World needs both. Closed models like bottled water; water (and electricity) free in the right places — use the right water in the right places. Open needed for sovereignty, privacy, proprietary tech. Fact: last 6 months ~$400B venture into AI-native companies; ~80% use open models — without open, those dreams (different from frontier-lab dreams) can't be built. Winning AI race = every US company/industry/researcher/teacher/student/startup, not a few tech cos.
-- 18:20 · Chamath · Does it matter if open models come from China vs US?
-- 18:28 · Jensen · Nvidia contributing to open; vast majority of world's open-source contribution today from China (more engineers / volume; Tsinghua etc.). Once downloaded — Linux, Kubernetes, Chinese models — you fork it, it's yours. Race is who exploits the technology best: last industrial revolution inventors (Maxwell, Volta, Ampère) were European/non-American; US exploited socially better — wants same for this generation.
-- 20:04 · Chamath · Why are "the communists" getting their message out so successfully here?
-- 20:16 · Jensen · China narrative more practical — no civilizational-end / doomer groups; AI as economy/society advance. Frustrating: if doom were true, spend more time fixing than scaring people who can't act — "It's our job to build it."
-- 21:01 · Friedberg · Has so many people ever so vehemently said something demonstrably untrue / not based on science?
-- 21:20 · Sacks · Fear of frontier — never been there → easy to scare.
-- 21:27 · Jensen · Also life experience: early career before software boom = less typing; now engineers type all day. Mountain of engineering work ahead that isn't typing/coding — "favorite key is backspace"; best software is smallest software. Engineering busy before typing; will be after.
-
-**President Trump calls in live to discuss the Doomer Hoax (22:58)**
-- 22:58 · Live · Trump calls Jensen mid-segment (unplanned); Jensen on stage with besties / thousands. Brief gratitude that Trump "saw through" the complexity. Awkward speakerphone bit; Trump jokes Jensen can build un-copyable chips but not put him on speaker.
-- 24:42 · Trump · Calls AI doom narrative a "hoax"; China happiest if US slows; some US states happy too (permitting blocks — Google wanting Finland build after US permitting failure). Data centers = "oil of the next 20–25 years," bigger than internet; robots/AI won't take over world; be prudent but don't stop industry while "working on the next 10 years about how to destroy it." "Whoever wins AI wins." Communities dying → wealthy via data centers. Claims ~$20T investment into US in one year vs <<$1T under Biden over four. Praise for Jensen and David (Sacks). Crowd applauds.
-- 28:26 · Besties · Thought it might be a bit at first; was real. Anecdote: Oval dinner — Trump insisted they wake vacationing Jensen ("What's vacation?").
-- 28:18 · Chamath · Data-center / AI polling ~−80; anyone else in Oval would do the popular shut-down thing — how does Trump call the hoax?
-- 29:29 · Jensen · Many falling for it; story first anchored on national security (blown to bits), now on safety. If safety is goal: labs in control + good tests; third-party evaluators like financial auditors (multiple so none get "pilled"). Build safely, test safely; hold extraordinary companies to extraordinary standards — they want that.
-- 31:04 · Chamath · Tries to return to open source (was ~18 months behind a year ago).
-- 31:13 · Jensen · Hard to say things on a Trump call (joke). Message he wanted Trump to hear: AI creating enormous jobs — Trump's early ask was re-industrialize US, energy for next industrial revolution (no energy → no growth), supply chain. $400B VC in 6 months = jobs + compute + data-center demand. Spoke with Texas Gov. Abbott: be empathetic listeners to small communities while building data centers.
-
-**The AI boom and Nvidia's capital allocation strategy (31:29)**
-- 32:53 · Chamath · Nvidia as "bank of AI" — Cloverleaf (land/power/shell), BlackRock/Goldman financing stack; walk capital-allocation / ecosystem underwriting.
-- 33:26 · Jensen · New industrial revolution: electricity → internet → AI ("power anything, find anything, ask/know anything"). Intelligence is a production process → infrastructure must be built; then stack is mostly applications + data centers + construction + electricity/power — not just models/chips. Scans ecosystem for bottlenecks/constraints; invests so supply chain is ready when compute deploys (upstream: Corning/Wendell, Lumentum, TSMC, memory — worked early; now also downstream).
-- 34:57 · Chamath · Earnings migrate up stack to apps; Hugging Face → serving; OpenRouter / better Bedrock natural; hyperscalers move down — will Nvidia move up?
-- 36:14 · Jensen · Year+ ago Nvidia mostly ran OpenAI; now Meta, Grok, Gemini, Anthropic scaling on platform; many more labs (Ineffable, Reflection, Physical Intelligence, etc.) on Nvidia. Strategy: "go up as far as we need to and as low as possible" — help everyone succeed rather than take a slice. Without Nvidia cuDNN / Megatron Core, frameworks and large-scale training wouldn't exist; invent what's necessary then let a thousand flowers bloom.
-- 37:54 · Chamath · Pushback: need more hyperscaler-layer competition; NeoClouds good (Nebius etc.) but need 50–1000 of them.
-- 38:17 · Jensen · "Surprisingly uncompetitive"; fine with five hyperscalers. Early NeoCloud/NCP customers were hyperscalers — hyperscalers plan yearly, market too volatile, always almost wrong; regional clouds agile on local land/power/shell. Countries treating power as strategic (prefer own companies) — Nvidia helps local NeoClouds (Australia / Fermi etc., SE Asia) — scaling gigawatts (corrects "gigabytes").
-
-**Nvidia's Open Source model ambitions, thoughts on Elon's Terafab (40:21)**
-- 40:21 · Chamath · Nvidia going high on open source — Nemotron, Hugging Face, Poolside, Laguna; open self-driving stack. Frontier in five domains; going for gold open-source model? Can open catch closed frontier — is Nvidia the one?
-- 40:40 · Jensen · Build because they can and customers need it — not to disrupt. Alpamayo = first "thinking" self-driving stack (reasoning → less need for billions of road hours); every car/ag/truck/van will be autonomous; most OEMs too small for full stack — Nvidia builds stack, customers do last-mile. Same for biology models (ESM-2, OpenFold, AlphaFold 2, equivariant methods, Proteina/Complexa protein synthesis) — Lilly/Merck need it. "We don't wake up… to disrupt anybody… try to help everybody."
-- 42:25 · Friedberg · Competitive threats to core? Take on Elon's Terafab (~100M sq ft)?
-- 42:38 · Jensen · If anyone can, Elon can; discussed on flight with Trump ("person who sometimes calls you"). Can't discourage Elon — that's his superpower. Nvidia knows process/memory/SiS at scale (designs, doesn't fab) — can talk shop.
-- 43:43 · Friedberg · China advanced lithography / native?
-- 43:48 · Jensen · They'll get there by ~2030 — "just around the corner"; decades is Nvidia's planning horizon; 2–3 years is a click. China excellent at high-volume production — matter of time; "as far as they're concerned they're already there."
-- 44:34 · Jason · Elon, Grok, Gwen — America must run / speedrun; slowing down wrong strategy. Feels like AGI moment (as smart as any human).
-- 45:04 · Jensen · Already there on AGI; also already at superintelligence in narrow segments — self-driving (better than human, ~1/10 accident rate); protein synthesis / virtual screening. Having fun on the frontier: future is great; too good not to work even if many won't need to; urge labs on, tone down the drama, need all of America to come along. Close: standing ovation / "Jensen Huang."
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 04:53 Jensen: "Well, first of all, we shouldn't uh because it's made up."
-- 15:25 Jensen: "No. No, of course not. And the reason for that is because you could RSI all day long inside your company"
-- 16:48 Jensen: "closed models is kind of like bottled water. You know, water is free, you guys."
-- 24:42 Trump: "I'm telling you, it's all a hoax. The data centers are great and they make people wealthy"
-- 37:51 Jensen: "Our strategy is go up as far as we need to and as low as possible."
-- 45:18 Jensen: "that is super intelligent. super it's better it's better than a human"
-
-### One paragraph
-All-In Summit-style interview: Jensen Huang dismantles Dario's slowdown essay and Coxin-linked extinction rhetoric as unscientific "made up" predictions with a long wrong track record (radiology, coding %, entry jobs, GPT-2/Llama scare), while still treating whistleblowing and lab safety as serious — safety vs US leadership are false choices, and Nvidia bans employees from rage-quit org-speaking or workplace politics. On regulation he wants root-cause engineering at frontier labs (where compute/danger concentrate), not panic rules; RSI is prosaic tooling (skills/RL/LoRA) gated by evals, not an uncontrolled spiral. Hugging Face / open models are framed as bottled-vs-tap water: ~$400B / 6 months of AI-native VC is ~80% open, China leads open contribution but forks become yours, and the real race is who exploits AI socially (US vs Europe last industrial revolution). Mid-show Trump cold-calls, labels AI doom a China/permitting "hoax," defends data centers as next oil, and repeats "whoever wins AI wins"; Jensen later says the narrative shifted from national-security to safety and should be answered with lab control + multi-auditor evals, not pause. Capital allocation: Nvidia as ecosystem bottleneck-fixer (land/power/shell, Corning/TSMC, NeoClouds) going "up as far as needed, as low as possible" so many labs bloom on CUDA/Megatron — Nemotron/Alpamayo/bio models from customer need, not disruption; Elon's Terafab respected, China lithography ~2030. Close: AGI and narrow superintelligence (AV, proteins) already here — speedrun, tone down drama, bring all of America.
-
-### Footer
-canary: published 2026-09-14T21:24:00Z (libsyn RSS) · fetched 2026-09-15 ~04:21 UTC · captions from official YouTube English auto-subs via yt-dlp --skip-download --write-auto-sub --write-subs --sub-lang en (captions.en.vtt; 2681 timed cues; ~8721 words after dedupe) · show-notes chapters from libsyn RSS/og:description as section anchors · ASR name cleanup in body only (Wong/Hang/Long→Huang, Daario/Daria→Dario, Jimoth→Chamath, Chinua→Tsinghua, Laura→LoRA, Grock→Grok, Terraab→Terafab, Neotrons→Nemotron, Alpamo→Alpamayo, zpoo→Zhipu/GLM, NBS→Nebius, Lumenum→Lumentum, Wendle→Wendell, QDNN→cuDNN, gigabytes→gigawatts where self-corrected; Coxin kept as captioned) · quotes verbatim from caption text · no ASR on box · no third-party transcript sites · seen index / latest.md NOT updated (INGEST-only pass) · sibling Shotwell/Elon episode untouched · 2026-09-14-list.md untouched

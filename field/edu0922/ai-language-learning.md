@@ -1,0 +1,58 @@
+# ai-language-learning
+
+AI-powered Japanese and English learning web app
+
+## 語言小島 v0.2.0
+
+React + Vite + TypeScript + PWA，繁體中文、手機優先的小島學習介面。此版仍使用本機體驗檔案，不是真正的多人登入。
+
+### 課程與練習
+
+- 日文／英文 × 初階／中階／高階。每條路線 1 個世界、2 個單元、8 個關卡，各關 5 題，共 48 關、240 個題目實例。
+- src/data.ts 的 course() 建立語言 → 程度 → 世界 → 單元 → 關卡；questions() 提供關卡題目。48 個關卡有不同的主要句子，題目會在同課複習同一句，不代表 240 句完全不同教材。
+- 單字選擇、外語選中文、中文選外語、句子排列、聽力選擇、聽音辨字、跟讀與指定句口說。
+- 聽力題預設不顯示文字，可重播；裝置無法播放時可選文字提示，不阻擋繼續練習。語音使用裝置 speechSynthesis，聲音品質／可用性依裝置而異。
+- Checkpoint 與 BOSS 包含其他關卡的聽力複習。BOSS 目前是綜合題組，不是自然語言 AI 多輪對話。
+- 5 題中答對 3 題為 60% / 1 星、4 題為 80% / 2 星、全對為 100% / 3 星。低於 60% 不解鎖。
+- 每題答對 +10 XP，過關額外 +20 XP；最佳星星不重複累加。重玩可繼續累積 XP，沒有體力或每日練習上限。
+- 各體驗檔案的 XP、星星、連續天數、每日任務徽章、成就、錯題關卡複習和最近紀錄。
+- 舊版 localStorage learning-demo-v1 不清除：保留 XP、歷史、星星與解鎖，並標示舊版紀錄；新紀錄加 curriculumVersion:2。舊版已解鎖關卡可重新練習新題目。
+- PWA 安裝、靜態課程離線快取、可選擇套用新版本的提示。更新不會在答題途中強制重載。
+
+### 口說：內容比對與發音評估分開
+
+1. 瀏覽器支援時，勾選說明並按「開始語音辨識」，可實際辨識麥克風語音。未勾選不啟動。
+2. 聲音可能由瀏覽器送至其服務商處理，並非保證裝置端辨識或離線可用。APP 不將音訊存到 Supabase。
+3. 「錄音回放」另使用 MediaRecorder，只暫存於此頁，可播放、刪除；每段最多 60 秒，可無限重錄。結束、離開關卡或切到背景會停止麥克風；離開／刪除時釋放 Blob URL。錄音本身不自動評分。
+4. 權限遭拒、不支援辨識或服務連線失敗，可用文字輸入完成內容練習。
+5. 內容比對忽略標點、空白、大小寫及平假名／片假名差異，但不做語意理解，也不保證辨識錯字等於使用者說錯。
+6. Accuracy / Fluency / Completeness / 總分顯示「尚未評估」，不使用固定假分數冒充真實評估。
+7. 紀錄只保存文字、來源（browser / typed / demo）、內容結果、題目 ID；發音分數為 null。填入示範答案會明確標記，不能當成正式口說成績。
+
+Web Speech 相容性與服務端處理說明：[MDN SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)。錄音：[MDN MediaRecorder](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder)。
+
+### 尚未完成，不能當成已有
+
+Google Login、Supabase 雲端進度與 RLS、OpenAI 多輪 AI 對話、Azure 發音評估、完整多年級教材與更多世界。現有本機檔案沒有帳號安全隔離，同瀏覽器可切換他人檔案；清除瀏覽器資料會遺失進度。
+
+[共用後端設計與待確認事項](docs/backend-design.md)。現有 ai-translator 的表格、Auth、Functions、Secrets 均未因本版修改。完整 Auth redirect allowlist / Secrets metadata 仍需確認，才能安全串接 Google 登入與後端。
+
+### 開發與驗證
+
+Node.js 24，套件固定版本並提交 package-lock.json。
+
+```sh
+npm ci
+npm run dev
+npm run build
+npx playwright install chromium
+npm test
+```
+
+Playwright 有手機／桌面案例，涵蓋課程唯一性、五題流程、星星分級、獨立檔案、舊紀錄相容、權限拒絕、辨識文字、錄音資源清理與 PWA 離線。語音測試使用瀏覽器 API 替身驗證生命週期，不代表已在 iPhone 真實測過辨識或錄音品質。詳細見 [驗證紀錄](docs/validation.md)。
+
+### 部署
+
+GitHub Pages：`https://guoer11.github.io/ai-language-learning/`。
+
+PR 執行建置／測試；main 通過後部署，Vite base 為 /ai-language-learning/。Pages Source 必須選 GitHub Actions。v0.1.0 已安裝者若仍看到舊版，先關閉所有此 APP 分頁及主畫面視窗後重開，不需要清除學習資料。
