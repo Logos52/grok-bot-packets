@@ -1,8 +1,132 @@
-# Recap latest · last 7 days · rebuilt 2026-09-22 noon Asia/Taipei
-Packets: 14 (newest first)
+# Recap latest · last 7 days (2026-09-16 → 2026-09-23)
+Rebuilt 2026-09-23 noon Asia/Taipei. Newest first. 15 packets.
+
+
+---
+<!-- 2026-09-23-all-in-hilton-pratt.md -->
+
+## Recap · All-In · 2026-09-23 · Steve Hilton & Spencer Pratt: Fixing California, Cheaper Gas, Ballot Fraud & CA Republicans
+url: https://www.youtube.com/watch?v=VF90rBzl26E + https://allinchamathjason.libsyn.com/steve-hilton-spencer-pratt-fixing-california-cheaper-gas-ballot-fraud-ca-republicans  ·  length: 55:43  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Steve Hilton joins the Besties! (00:00)**
+- 00:00 · Jason (intro) · Frames Steve Hilton as unusually positioned CA gubernatorial candidate: Republican + British immigrant; Silicon Valley tech-entrepreneur background; neighbor of Chamath.
+- 00:56 · Hilton · Campaign opener clip: "Wake up, California. We have seven weeks to save our state." Frames race as now-or-never with ~7 weeks to Election Day.
+- 01:29 · Hilton · CA thesis: biggest/richest state; "California means to America what America means to the world." Immigrant since 2012; state as essence of American innovation/ambition (entertainment, tech, leading ag).
+- 02:45 · Hilton · Despite advantages (weather, startups, universities), after **16 years of one-party Democratic control**: highest poverty, unemployment, and cost of living; housing cost highest; millions leaving; Chief Executive Magazine ranks CA **50th/50** for business climate for more than a decade.
+
+**How one-party rule broke the state, regulatory bloat & who really writes the laws (03:53)**
+- 03:59 · Chamath · Peace-and-love Democrats became "rule police" — rules on rules. How?
+- 04:23 · Hilton · One-party rule → insular self-regarding elite; Sacramento corrupted by donor/union/trial-lawyer power → worst litigation risk; **~90% chance** a CA business ends up in litigation.
+- 05:15 · Hilton · Full stack control: all 8 statewide offices, 2/3 legislature, every big county/city, state supreme court **6–1** Democrat-appointed. Last year legislature passed **1,118 bills** — printed stack ~twice his height; nobody (incl. Newsom) reads it; written for narrow interests.
+- 06:23 · Hilton · Announces today: cut CA regulations from **>420,000** to **under 200,000** by end of first term to match rest of country.
+- 07:16 · Hilton · "People versus the machine." Primary night: Hilton 25% + other R 10% = **35%** vs Dems **65%** (30-pt gap). Polls since: 25 → 18 → 14 → latest **8-pt gap**. Rejects "put up with it or leave" as un-American.
+- 09:36 · Hilton · Rock bottom already: traveled all **58 counties**; median house price nearly **$1M** vs median individual salary **$65k** (used to lead homeownership/affordability). Intensity this year: strangers say "you have to win"; lifelong Dems saying they'll vote Hilton; business owners threaten exit if November fails → exodus could become stampede.
+
+**The path to victory: the persuadable voter, the cost-of-living pitch & the case against Becerra (12:09)**
+- 12:16 · Jason · Polymarket ~**5%**; polls 8–20 pts behind; has ~89–90% of Republicans, ~30% independents, <10% Democrats; one debate Sep 30 vs Xavier Becerra — what's the plan?
+- 13:06 · Hilton · Internal path: **33%** solid Hilton, **41%** solid Becerra, **26%** up for grabs — mostly prior Dem voters open to persuasion; non-college working people at financial breaking point → cost-of-living agenda.
+- 14:02 · Hilton · Platform: cancel high-speed rail; **10%** government headcount cut + **5%** efficiency; stop funding homelessness nonprofits that make it worse → fund first **$150k** state-income-tax-free. Energy: use CA resources, kill hidden gas taxes (low-carbon fuel standard, "cap and invest") — claims ~**$1.50**/gal embedded; target ~**$3** gas vs ~**$6**. Cap vehicle registration at flat **$73**/yr by abolishing DMV (vs hundreds–$1k+ today).
+- 16:30 · Hilton · Case against Becerra: **36-year** career politician; cites Susan Rice calling him an "idiot" (and worse); Biden-cabinet peer: running a large executive agency "not exactly his skill set"; frames him as machine puppet worse than Newsom.
+- 18:45 · Sacks · Don't nationalize the race; focus on broken state. Peter Thiel's "resource curse": Silicon Valley wealth/taxes enable bad one-party government.
+- 19:56 · Hilton · Becerra on CNN waved "4th biggest economy" / Disneyland/beaches. GDP includes doubled government size over 10 years; **net private-sector job creation since pandemic ≈ zero**; Prop 40 threat to remaining tax base — "now or never."
+
+**Spencer Pratt joins: the message that cut through & the LA race that flipped (21:46)**
+- 21:58 · Pratt · Calls the "machine" a "corrupt criminal mafia cartel"; tax money laundered via NGOs while people die on sidewalks sold as compassion.
+- 22:48 · Jason · Asks about Pratt's earned-media / AI-generated campaign videos.
+- 23:13 · Pratt · Message > AI tool: truth about Palisades fire created grassroots; most voters for him were Democrats; would have beaten Nithya Raman/Bass if LA's **~200k registered Republicans** had voted. "Too big to rig" — beat cheating margins by turnout.
+- 25:19 · Pratt · Election-night narrative: leading by ~**10%** while Raman cried on camera; then 3rd-place Democrat "mathematically impossible" surge via mail ballots (~**43k** — same number as official downtown zombie/addict count). Clarifies: system designed so what looks like cheating is **legal** (witness can be smiley face/X; one witness for 43k ballots).
+
+**The city up close: the parks, small business & who the rules actually reward (26:58)**
+- 27:11 · Hilton · Langer's Deli / MacArthur Park mid-morning: crack pipes, fentanyl, dozens using in daylight; **four nonprofits daily** hand out pipes/needles (taxpayer-funded); Billy (US attorney) caught some sellers too.
+- 29:26 · Hilton · South Central shoe-store couple (14 yrs): taxes/permits/electric crushing them; sidewalks full of legalized street vendors selling same goods tax/rent/license-free after **2018 statewide street-vending legalization** — cities/counties can't stop it. Thesis: **do the right thing → punished; do the wrong thing → rewarded.**
+- 32:21 · Pratt · ~**50k** food vendors; city green-lit **$500k** for vendor carts while Palisades reservoir cover repair was **~$200k** and still undone — civic priorities inverted.
+- 33:56 · Hilton · Launched general campaign in Boyle Heights near warehouse fire (Bass out of town): **85M lbs** rotting meat left ~5 weeks; rats/medieval smell in working-class Latino neighborhood.
+- 34:49 · Pratt · Advice: Hilton wins on common sense, not as "Republican" brand; Trump leaves in 2 years — don't elect another entrenched Dem just to "fight the president."
+- 36:08 · Hilton · Leaving: publishing **10 new cities** plan; talent/energy still here if regulations/lawsuits/fees cut — needs a good governor.
+
+**Ballot harvesting, voter ID & whether the system is rigged or just legal (36:54)**
+- 37:29 · Pratt · Optimistic if people vote; later says "it's legal" ballot harvesting, not classic fraud — chain of custody breaks when ballots separated from envelopes so signatures can't be audited.
+- 38:43 · Friedberg/Jason · Push hard: voter fraud is prosecutable; Trump lost **60** election lawsuits; does Pratt allege fraud? Pratt: without evidence, no; but system design makes audit impossible; wants **voter ID**; DSA "soldiers" persistent multi-visit harvesting vs his legal door-knockers; empty parking lot downtown gets hundreds of mailed ballots; dead/moved voters stay on rolls.
+- 46:12 · Jason · For the record: if ID needed for planes (and even some markets), reasonable for voting.
+
+**The Palisades: the empty reservoirs, suing the state & what Spencer does next (47:13)**
+- 47:24 · Pratt · Reservoirs still empty; hose from Topanga through regrown dead brush supplies Palisades. Insurance dropped residents because of **60 years** dead fuels in state parks; cutting firebreak (~**300 yards**) would have cost **under $500k** to save billions; homeowners fined for cutting protected milk vetch; LADWP fined **$1M** for cutting dead brush around a downed pole.
+- 49:11 · Pratt · Mass-tort lawsuit (~**10k** victims) vs Newsom/state parks/city/LADWP: New Year's Eve 8-acre fire smoldered into known wind event; whistleblowers + deposition photos of smoking hillside; parks staff: "we're not firefighters."
+- 50:29 · Pratt · Ran for mayor to stop Bass; next: content fighting lies; flying to NY; joke/serious Skid Row → data-center idea (**retrain fentanyl addicts as electricians**, Meta program); three "plays" in motion; more threat off-ballot for next cycle.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:56 Hilton: "All right. Wake up, California. We have seven weeks to save our state."
+- 06:23 Hilton: "we're going to cut the number of regulations in California from where we are today, which is over 420,000"
+- 31:32 Hilton: "if you do the right thing, you're punished and if you do the wrong thing, you're rewarded."
+- 25:36 Pratt: "mathematically the most impossible thing in the history of politics happened."
+- 41:46 Pratt: "it's not fraud, Jason. It's that they're following the law that was created to"
+- 48:12 Pratt: "How much would this have cost to cut a whole fire break 300 yards around the palace?" / "under $500,000"
+
+### One paragraph
+All-In Summit California politics hour: Republican gubernatorial candidate **Steve Hilton** (Brit-immigrant / SV entrepreneur) argues 16 years of one-party Dem rule produced worst-in-nation poverty, unemployment, cost of living, and business climate (50th/50), driven by donor/union/trial-lawyer capture that piles **1,118** unread bills/year and **>420k** regulations — his pledge is cut regs under **200k**, cancel high-speed rail, shrink headcount, make first **$150k** state-income-tax-free, drive gas toward **$3** by killing hidden carbon taxes, and flatten vehicle registration at **$73** by abolishing the DMV. Path math: **26%** persuadable mostly working non-college prior Dems; polls closed from 30-pt primary gap to ~8; debate vs **Xavier Becerra** Sep 30; Thiel "resource curse" / near-zero post-pandemic private job creation undercuts "4th biggest economy" boosterism. **Spencer Pratt** joins on LA: Palisades fire + earned-media truth campaign; claims election-night lead flipped by legal mail/ballot-harvest design (not classic provable fraud); MacArthur Park taxpayer-funded harm-reduction NGOs and 2018 street-vending legalization punish compliant small business; still-empty reservoirs and <$500k unbuilt firebreaks motivate mass-tort + ongoing content war. Besties stress turnout/"too big to rig," voter ID, and common-sense framing over nationalized R/D branding.
+
+### Footer
+canary: published 2026-09-23T01:44:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-23T04:20:00Z · length 55:43 (3343s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-hilton/transcript.txt (457 timed lines; ~10182 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Helton→Hilton, Bisera/Basera/Bera/Javier Bera→Xavier Becerra, Nitia Ramen→Nithya Raman, fentinel→fentanyl, Langanger→Langer's, Prattton→Pratt, Kami→Kamala where clear) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-23-all-in-scholl.md -->
+
+## Recap · All-In · 2026-09-22 · Blake Scholl: Why Plane Speed Stalled, Supersonic Commercial Flight, & Revolutionizing the Engine
+url: https://www.youtube.com/watch?v=Gnb-CfNPcPE + https://allinchamathjason.libsyn.com/blake-scholl-why-plane-speed-stalled-supersonic-commercial-flight-revolutionizing-the-engine  ·  length: 17:39  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Welcome Blake Scholl! (00:00)**
+- 00:00 · Intro reel · Boom Supersonic CEO Blake Scholl: set to fly Mach 1.7; **130** airline orders claimed; Boeing hasn't launched a new airliner since **2004** — "David and Goliath, but Goliath is asleep."
+- 00:52 · Scholl · Stagnation claim: 1969 landed on moon + Concorde through sound barrier; half-century later can't do either. Political legacy of Concorde = US ban on overland supersonic. Boeing 707 (1957) → latest airliner is "literal carbon fiber copy"; interns born after Boeing's last new launch.
+- 01:39 · Scholl · Alternate timeline: Atlantic in **3.5 hours**; Sydney as accessible as Honolulu — business/culture/love implications.
+- 02:01 · Scholl · Origin: software/ads (Amazon, Groupon) + pilot's license; 2015 pitched Bezos on Boom seed — Bezos passed; 2015 Amazon shareholder letter said no garage startup builds all-composite airliner you'd want to fly — Scholl took it personally. Early pitch-deck mockup: cardboard/plywood/Office Depot seats.
+- 02:59 · Scholl · Last year Boom became **first private company** to build a supersonic jet — ~**50** people vs thousands at big cos. First supersonic Starlink install; iPhone video streamed; classrooms tuned in (future chief engineers).
+- 04:37 · Scholl · **2025**: XB-1 first privately developed jet to break sound barrier — and demonstrated **boomless** supersonic.
+
+**Solving the sonic boom & legalizing supersonic flight (05:11)**
+- 05:06 · Scholl · "Boomless cruise": uses atmospheric refraction to redirect sonic boom upward (Mach cutoff) — if no boom on ground, ban has no object. Spoke to president after flight; agreed no boom → no ban. **1973** ban ended by EO **June 6 last year**.
+- 05:51 · Scholl · EO reversible → pushed Congress; Supersonic Legalization Act passed House **unanimously**; cleared Senate committee unanimously; wants full Senate unanimous. Not full speed ahead yet.
+
+**The pivot to powering data centers (07:59)**
+- 06:26 · Scholl · Near-death: outsourced engine to legacy OEM — public breakup with Rolls-Royce; declared dead. Decision: build own engine from scratch with digital design + digital manufacturing, including turbine blades in-house.
+- 07:35 · Scholl · Re-industrialization thesis: invent next-gen manufacturing here and build new products — don't just reshore what China took. First vertically integrated jet-engine core assembling now; **test stand next month**.
+- 08:08 · Scholl · Twist: owning the engine (what "killed" them) makes the startup financially valuable. Same hot Mach-1.7 core, fan off / generator on → **behind-the-meter data-center power**: **42 MW** in a couple trailers; designed to run hot → **no water** (kills water objection).
+- 09:02 · Scholl · Undisclosed-location "world's most advanced jet turbine factory"; opposite of legacy RONA/outsource — raw materials → blades/vanes → assembly → own test stand. First parts **last week**; scale to multiple GW/year; aim **+10+ GW to the grid over next 5 years**.
+- 09:53 · Scholl · Passenger payoff: twice as fast over water, **~50% faster** over land boomless, on most-tested new jet engine (proven on ground first). Success not guaranteed; American aviation leadership.
+
+**Jason joins: data center demand, private jets & what winning looks like (10:38)**
+- 10:40 · Jason · When / how much to fly?
+- 10:46 · Scholl · Concorde was 0/3 on safe-comfortable-affordable; Boom aims 3/3. Round-trip Atlantic Mach 1.7 ~**3 hours**; **break-even fare ~$3,500** round-trip (airlines price above). Goal **~4 years** (~2030 give-or-take); prefers fast over predictable dates.
+- 12:03 · Scholl · Overland: boomless cruise / Mach cutoff to ~**Mach 1.3** (~50% faster than today) — e.g. leave NYC 9am → SFO ~9:30am local; full Mach over water where no one hears boom.
+- 13:05 · Jason · Data-center product — customers? money printer?
+- 13:16 · Scholl · "Incredible money printing"; **tens of gigawatts** of demand in inbox; auction first engine after next-month run. Elon/Colossus interest: "ask Elon" (Jason hears yes).
+- 13:46 · Naming · Company Boom / airplane Overture; hopes private-jet OEMs build SSBJ — else Boom might.
+- 14:37 · Scholl · Win condition: kids baffled that crossing the country once took **6 hours** — from Air Force One to commercial every class; many airplane generations.
+- 16:00 · Jason · This admin vs last on regulation speed?
+- 16:36 · Scholl · Supersonic not partisan (unanimous votes). Broke barrier Monday → tweet → Elon RT → flew DC that night → West Wing invite Tuesday → model in Oval by Thursday (still there) → EO in **115 days** (felt slow to him; faster than prior admin).
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 01:28 Scholl: "By the way, we have interns born after the last time Boeing launched a new airplane in 2004."
+- 05:31 Scholl: "he agreed if there's no sonic boom there should be no ban on supersonic flight."
+- 08:34 Scholl: "our first application of our engine isn't in the sky. It's actually on the ground for data centers."
+- 11:01 Scholl: "Round trip across the Atlantic at Mach 1.7, 3 hours, and the break even fair is about $3,500."
+- 13:16 Scholl: "I've never seen demand like this for anything else in my life."
+- 16:52 Scholl: "By the time I landed, I had an invitation to the West Wing."
+
+### One paragraph
+Boom Supersonic CEO **Blake Scholl** (ex-Amazon/Groupon software) argues passenger flight stalled after Concorde and Boeing's last clean-sheet (**2004**), then shows XB-1 as first private jet to break the barrier **boomlessly** via atmospheric Mach-cutoff ("boomless cruise"), unlocking an EO ending the **1973** overland ban (June 6 last year) and a House-unanimous Supersonic Legalization Act still finishing the Senate. Near-death Rolls-Royce engine divorce forced vertical engine design/manufacture — now the economic core: same hot Mach-1.7 turbine as **42 MW** water-free behind-the-meter data-center gensets, with a new US turbine factory aiming **10+ GW** onto the grid in 5 years and tens-of-GW inbound demand (auction after next-month first run). Passenger path: ~**$3,500** Atlantic RT break-even at Mach 1.7 / ~3 hours, ~4-year (≈2030) goal, ~Mach 1.3 boomless overland (NYC→SFO morning), win when kids can't imagine a 6-hour coast-to-coast.
+
+### Footer
+canary: published 2026-09-22T09:00:00Z (libsyn RSS) / YT uploadDate 20260922 · fetched 2026-09-23T04:20:00Z · length 17:39 (1059s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-scholl/transcript.txt (150 timed lines; ~3078 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Lake Shaw→Blake Scholl, Boone→Boom, Concord→Concorde, mock cutoff→Mach cutoff, veins→vanes, fair→fare in paraphrase) · quotes from caption text · no ASR on box · no third-party transcript sites
+
 
 ---
 <!-- 2026-09-21-all-in-naveen.md -->
+
 ## Recap · All-In · 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology
 url: https://www.youtube.com/watch?v=yAsrMA_ADPc + https://allinchamathjason.libsyn.com/naveen-rao-4d-computing-ais-energy-wall-beating-biology  ·  length: 22:35  ·  text: captions
 
@@ -69,8 +193,10 @@ All-In Summit talk by Unconventional AI CEO Naveen Rao (Nervana→Intel AI, then
 ### Footer
 canary: published 2026-09-21T21:03:00Z (libsyn RSS) / YT uploadDate 20260921 · fetched 2026-09-22T04:08:00Z · length 22:35 (1355s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp-0922-naveen/yAsrMA_ADPc.en.srt · chapters from YT description used as section anchors · ASR name cleanup in body only (Ralph→Rao, Nirvana→Nervana, jewels→joules, gawatt→gigawatt, Chat GBT→ChatGPT, data bricks→Databricks, Alli→Ali, millowatts→milliwatts, vonoyman→von Neumann, Jieven's→Jevons, maple/mapm→matmul, stoastic→stochastic, goomer→doomer in intro clip) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+
 ---
 <!-- 2026-09-20-all-in-foroughi.md -->
+
 ## Recap · All-In · 2026-09-20 · Adam Foroughi, Applovin CEO: Surviving a 92% Drawdown, Ads as ML 1.0 & the $50B Game Ad Market
 url: https://www.youtube.com/watch?v=JtomF4bGxHs + https://allinchamathjason.libsyn.com/adam-foroughi-applovin-ceo-surviving-a-92-drawdown-ads-as-ml-10-the-50b-game-ad-market  ·  length: 23:52  ·  text: captions
 
@@ -118,8 +244,10 @@ All-In Summit sit-down with AppLovin CEO Adam Foroughi: a quiet-built, non-VC-ea
 ### Footer
 canary: published 2026-09-20T20:49:00Z (libsyn RSS) / YT uploadDate 20260920 · fetched 2026-09-21T04:10:00Z · length 23:52 (1432s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp-0921-applovin/JtomF4bGxHs.en.srt · chapters from YT description used as section anchors · ASR name cleanup in body only (Farugi→Foroughi, Apploving→AppLovin, Appe/AppL→AppLovin, Ebidon→EBITDA) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+
 ---
 <!-- 2026-09-19-all-in-gurley.md -->
+
 ## Recap · All-In · 2026-09-19 · Bill Gurley: Searching for Feynman
 url: https://www.youtube.com/watch?v=A4Q7zAayW20 + https://allinchamathjason.libsyn.com/bill-gurley-the-covid-cover-up-the-search-for-the-truth  ·  length: 38:29  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -169,48 +297,10 @@ All-In Summit: Bill Gurley walks catastrophe CAPA — Surfside, 737 MAX, Katrina
 ### Footer
 canary: published 2026-09-19T00:20:00Z (libsyn RSS) / YT uploadDate 20260919 · fetched 2026-09-19T05:01:00Z · length 38:29 (2308s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/A4Q7zAayW20.en.srt · ASR name cleanup in body only (Fineman→Feynman, Fouchy→Fauci, Chamberlain Towers→Champlain Towers, Kiraawa/Kurukawa/Kira Cowell→Kiyoshi Kurokawa, Dazzic→Daszak, Ecoalth→EcoHealth, Ferrar→Farrar, Bareric→Baric, veriologist→virologist, diffuse→DEFUSE, fern cleavage→furin cleavage, Zade Tufeki/Zayep→Zeynep Tufekci, Katherine Ebon→Katherine Eban, Emily Cop→Emily Kopp, Allison Young→Alison Young, Bacharia→Bhattacharya, Kappa/CAP→CAPA, MCCast→MCAS, Tropin/Hodsman as captioned, UNCC→UNC) · quotes from caption text · no ASR on box · no third-party transcript sites
 
----
-<!-- 2026-09-18-all-in-isaacman.md -->
-## Recap · All-In · 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration
-url: https://www.youtube.com/watch?v=VTF6p0U98ek + https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration  ·  length: 38:34  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Prepared remarks: swagger back, second space race, Artemis pace (00:00)**
-- 00:04 · Intro · NASA Administrator Jared Isaacman at All-In Summit; frames AI/quantum/robotics/fusion/biotech/autonomy converging; great-power competition sharpest in space "ultimate high ground."
-- 02:01 · Isaacman · NASA "doing things differently… regaining swagger"; absent this president + geopolitical risk of losing second space race, "very little would have changed." Critique of prior mode: resources spread to make everyone happy; partnerships as drag; Orion can't inject into low lunar orbit like Apollo; prior admin cancelled Mars Sample Return (on track to cost more than an aircraft carrier); programs "too big to fail, too costly to truly succeed" hoping to survive administrations; SLS designed when China ran coal locomotives, now operational as China has ~25,000 mi HSR and is years from its own Apollo-11 moment; workforce competencies rented/outsourced/lost; "dream state as a service" shifted impossible burden to others.
-- 03:51 · Isaacman · Moon rocket less efficient than Saturn V at converting launch mass to lunar payload; more time between Artemis 1 and 2 than all 12 Gemini missions; lunar space station architecture would have astronauts looking down on desirable real estate instead of occupying surface; one X-plane barely flying; billions on nuclear programs stuck in lab since 1965.
-- 04:46 · Isaacman · New choice: not make everyone happy / not spread every penny across every district / not partner with every nation for optics. Not here for money, title, politics, or to be VCs inventing markets that detract from entrusted missions (Commerce can take those). Mandate: execute Trump national space policy; align resources with NASA workforce + industry; outcomes like Neil/Buzz — "America is back in the business of sending our astronauts to the moon."
-- 05:55 · Isaacman · Artemis 2: four astronauts (Congressional Space Medal of Honor) — 8.8M lbs thrust, farther into space than any humans, around moon and home. Not waiting 3 years; Artemis 3 assembling now; intend tanking test at 39B before year-end. Summer 2027: Artemis 3 on SLS to LEO, rendezvous with Blue Origin + SpaceX lander test vehicles — three most powerful rockets/spacecraft interoperability demo; informs uncrewed test landings then Artemis 4 in 2028 — Americans return to lunar surface "this time to stay." Parallel: moon base via old NASA playbook — near-monthly cadence, science of survival (autonomous/crewed mobility, ISRU, logistics, habitability, power, comms); lunar south pole water ice as proving ground for Mars.
-- 08:28 · Isaacman · 2028: leave failed nuclear programs; launch SR1 Freedom — 100 kW fission reactor transit Mars, release Skyfall with three Ingenuity-class helicopters + ground-penetrating radar for subsurface ice/landing sites. Start of "nuclear NASA"; missions with no obvious business case (Enceladus, Europa, Titan). Vision: chemically augmented nuclear-powered transfer vehicles + Starship armada for Mars round trips. Commercial sats for Earth/space weather; flagship science only NASA can do (Dragonfly to Titan 2028 on MMRTG; Europa Clipper 2030; Webb/Hubble joined by Roman — ~300 MP widefield + JPL coronagraph, dark energy/matter, exoplanets); NEO Surveyor for impact threats.
-- 12:05 · Isaacman · Taxpayer-only future won't realize childhood space dreams; support orbital/lunar economy (launch, observation, comms → data centers, commercial stations, on-orbit manufacturing, regolith, asteroid mining) without NASA "forcing" an economy. Rebuild X-plane fleet (X-59 quiet supersonic) — aeronautics first A. President established commission for US Space Academy ("Starfleet Academy") — federal academy for astronauts/engineers/operators. China aims astronauts on moon by 2030; robotic missions targeting Shackleton crater south pole next year — limited good parking spots; working with Russia on nuclear-powered moon base; achievable two-launch architecture. If US hasn't returned despite decades of promises + >$100B invested, shockwave to allies/adversaries/kids. Close: extreme ownership; return and never give up the moon; set sights on Mars; history should record America chose to go and went.
-
-**Q&A: lunar economy, south pole race, Mars tech, recruiting, nuclear primer (17:18)**
-- 18:06 · Host · Is moon a viable economy beyond Mars testbed? Isaacman: "Maybe." Gifted a moon 3 days away to dial power, spacesuits (decades to replace Apollo suits), habitats, ISRU, robotics — EVAs inspirational but among last things on a base (dangerous; let robots). Next ~4 years: dozens of landers/rovers/ISRU experiments — demand signal for industry to unlock regolith value; can't guarantee economy (Commerce's job); NASA masters skills for Mars science; radio telescopes on far side.
-- 19:47 · Host · Mapping south pole / Promise mission. Isaacman: south pole ~DC-sized vs Africa-sized lunar surface; few permanently shaded craters with water ice + near-eternal light on cliffs for solar — harsher than Mars; Starship-class landing blasts debris → limited parking. Promise: radioisotope rover (spare for Perseverance/Curiosity class, jeep-sized) using decaying Pu-238 already on books — prospect shaded regions other hardware would die in.
-- 21:07 · Host · Why beat China to that region; state of NASA on arrival? Isaacman: best talent always there but everyone else ran NASA (districts, 25 flags on missions → Mars Sample Return cost > carrier then cancelled). Now NASA in charge, focused on national space policy: return, base, nuclear. Years lost in race. China/Russia know parking scarcity; China scrubbed a Shackleton Ridge shot recently (mechanical/weather — or smart not to ignite US urgency); they'll build fission base, master water ice, then Mars "Neil Armstrong moment" — US committed to stop that.
-- 23:30 · Host · Tech leap for realistic Mars — propulsion? Isaacman: robotics critical. Pure chemical (Starship-class) can send people; habitability known; comparable velocities moon vs Mars; hard part is return — make propellant on Mars (army of robots + football-field solar + dust storms) is brutal even under 1 atm/1g on Earth. NASA should stop duplicating what industry does well and invest next-leap fission + chemically augmented NEP transfer vehicles — refill krypton/xenon on return, no surface propellant plant; same stack opens Enceladus/Titan/Europa ocean worlds.
-- 25:31 · Host · Recruit vs SpaceX/Blue/etc.? Isaacman: no initial recruiting problem (~1% of pathway interns); retention fails if NASA does industry's job on 50-year shuttle-era hardware less efficient than Saturn V for lunar. Pivot: when business case exists (launch), hand to industry; NASA does near-impossible nuclear fleet (SR1 = Nautilus start) to retain talent.
-- 26:44 · Host · Nuclear thrust primer. Isaacman: like Starlink Hall thrusters — solar → ionize Kr/Xe → high exhaust velocity, low thrust, efficient; breaks down far from sun (Jupiter+). Swap solar for reactor thermal (100 kW → 250 kW → megawatt-class), hot materials, closed Brayton → electricity → scaled thrusters (12→25 kW class).
-- 28:06 · Host · Budget / wish? Isaacman: NASA "does not have a topline problem" — bad capital allocation; ~$25B is a lot if focused. Aeronautics: stop subsidizing high-TRL 40-year engine 3% efficiency for primes; return to radical airframe/engine (X-59 taste). Humans vs robots: destiny — oceans/mountains; Artemis 2 wouldn't pause the world without humans; robotics still critical for radiation/uncrewed. Autonomy: NASA pioneered auto GCAS for fighters; AI for short-lived Venus Da Vinci trajectory triage already tested on Mars rovers. Science ~1/3 budget after reorg (human exploration / research-tech nuclear / science); leverage commercial Earth obs; free resources for nuclear Dragonfly-class; prioritize new missions over analysis seats — data will find analysts.
-- 34:15 · Host · Skyfall helicopters video/timeline. Isaacman: Ingenuity worked in ~0.1 atm; three with GPR on nuclear SR1 flyby release; launch ~2028, ~1 year transit; start of many outer-moon discoveries "in our own backyard."
-- 35:51 · Chamath/Jason · China–Russia collab; Russia broke?; China copying Elon. Isaacman: Russia/Soviet space history real + ISS partner, but war prioritizes resources elsewhere; China extremely good in space now — may lack SpaceX-class reuse, but what they put up (even hypergolic brute force) is good; contested domain (cites AF/Space Force briefings); with Russian nuclear know-how they will return, land, build south-pole base. Without SpaceX US "seriously challenged" — ISS crew/downmass, Roman on Falcon Heavy, most important launch partner. Close: Besties praise; Isaacman grateful.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 04:46 Isaacman: "We are not going to try and make everyone happy."
-- 07:36 Isaacman: "we are establishing humanity's first outpost on another world, a moon base."
-- 14:47 Isaacman: "The world will just see who got there."
-- 18:31 Isaacman: "We've been gifted a moon 3 days away to test out everything we need"
-- 28:12 Isaacman: "NASA does not have a topline problem… we are bad capital allocators"
-- 37:20 Isaacman: "the Chinese are extremely good in space right now."
-
-### One paragraph
-All-In Summit: NASA Admin Jared Isaacman argues the second space race forced focus — stop district/partner sprawl, cancel-prone mega-programs, and "dream state as a service" — and put wins on the board: Artemis 2 done, Artemis 3 tanking test before year-end / LEO rendezvous with Blue+SpaceX landers summer 2027, Artemis 4 surface return 2028 "to stay," monthly-cadence moon base at the ice-rich south pole, and 2028 SR1 Freedom 100 kW fission + Skyfall triple-Ingenuity scouts as the start of "nuclear NASA" for Mars and ocean moons. Q&A: lunar economy is a maybe (Commerce's lane) while NASA masters Mars skills; Promise radioisotope rover for shaded craters; China/Russia racing the few good parking spots; Mars return needs fission+NEP not just Starship mass; retain talent by pivoting off industry's jobs; ~$25B is enough if allocated; humans for destiny/inspiration alongside robots; SpaceX indispensable — without it US high ground is "seriously challenged."
-
-### Footer
-canary: published 2026-09-18T15:59:00Z (libsyn RSS) / YT uploadDate 20260918 · fetched 2026-09-19T05:01:00Z · length 38:34 (2313s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/VTF6p0U98ek.en.srt · ASR name cleanup in body only (Eisen→Isaacman, Aremis→Artemis, Geminy→Gemini, regalith→regolith, fision→fission, rendevous→rendezvous, crude→crewed, uncrrewed→uncrewed, Octter→octocopter, Hauler→Hall, braen→Brayton, PU238→Pu-238, hypergal→hypergolic, Chimath→Chamath) · chapters from YT description used as section anchors · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---
 <!-- 2026-09-18-all-in-nick-shirley.md -->
+
 ## Recap · All-In · 2026-09-18 · Nick Shirley: Exposing Government Fraud, Suing California & Taking on the Media
 url: https://www.youtube.com/watch?v=SwBCPBNe_60 + https://allinchamathjason.libsyn.com/nick-shirley-exposing-government-fraud-suing-california-taking-on-the-media  ·  length: 32:32  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -278,8 +368,101 @@ All-In Summit: Nick Shirley screens "High Speed Rail to Nowhere" — $15B/18 yea
 ### Footer
 canary: published 2026-09-18T00:30:00Z (libsyn RSS) / YT uploadDate 20260918 · fetched 2026-09-18T04:05:00Z · length 32:32 (1952s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/nick.en.vtt · ASR name cleanup in body only (Mick→Nick Shirley, Nuomo/Newsome→Newsom, Cortezi→Cortese, Chura→CHIRLA, Mia Bont→Mia Bonta, Shimoth→Chamath, Saxs→Sacks, Waltz→Walz, leers/lessers/Laring/layering→learning centers, fabllas/FLLA/FAS→favelas, Commando Vermelo→Comando Vermelho, Call me Foria→California) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+
+---
+<!-- 2026-09-18-all-in-isaacman.md -->
+
+## Recap · All-In · 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration
+url: https://www.youtube.com/watch?v=VTF6p0U98ek + https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration  ·  length: 38:34  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Prepared remarks: swagger back, second space race, Artemis pace (00:00)**
+- 00:04 · Intro · NASA Administrator Jared Isaacman at All-In Summit; frames AI/quantum/robotics/fusion/biotech/autonomy converging; great-power competition sharpest in space "ultimate high ground."
+- 02:01 · Isaacman · NASA "doing things differently… regaining swagger"; absent this president + geopolitical risk of losing second space race, "very little would have changed." Critique of prior mode: resources spread to make everyone happy; partnerships as drag; Orion can't inject into low lunar orbit like Apollo; prior admin cancelled Mars Sample Return (on track to cost more than an aircraft carrier); programs "too big to fail, too costly to truly succeed" hoping to survive administrations; SLS designed when China ran coal locomotives, now operational as China has ~25,000 mi HSR and is years from its own Apollo-11 moment; workforce competencies rented/outsourced/lost; "dream state as a service" shifted impossible burden to others.
+- 03:51 · Isaacman · Moon rocket less efficient than Saturn V at converting launch mass to lunar payload; more time between Artemis 1 and 2 than all 12 Gemini missions; lunar space station architecture would have astronauts looking down on desirable real estate instead of occupying surface; one X-plane barely flying; billions on nuclear programs stuck in lab since 1965.
+- 04:46 · Isaacman · New choice: not make everyone happy / not spread every penny across every district / not partner with every nation for optics. Not here for money, title, politics, or to be VCs inventing markets that detract from entrusted missions (Commerce can take those). Mandate: execute Trump national space policy; align resources with NASA workforce + industry; outcomes like Neil/Buzz — "America is back in the business of sending our astronauts to the moon."
+- 05:55 · Isaacman · Artemis 2: four astronauts (Congressional Space Medal of Honor) — 8.8M lbs thrust, farther into space than any humans, around moon and home. Not waiting 3 years; Artemis 3 assembling now; intend tanking test at 39B before year-end. Summer 2027: Artemis 3 on SLS to LEO, rendezvous with Blue Origin + SpaceX lander test vehicles — three most powerful rockets/spacecraft interoperability demo; informs uncrewed test landings then Artemis 4 in 2028 — Americans return to lunar surface "this time to stay." Parallel: moon base via old NASA playbook — near-monthly cadence, science of survival (autonomous/crewed mobility, ISRU, logistics, habitability, power, comms); lunar south pole water ice as proving ground for Mars.
+- 08:28 · Isaacman · 2028: leave failed nuclear programs; launch SR1 Freedom — 100 kW fission reactor transit Mars, release Skyfall with three Ingenuity-class helicopters + ground-penetrating radar for subsurface ice/landing sites. Start of "nuclear NASA"; missions with no obvious business case (Enceladus, Europa, Titan). Vision: chemically augmented nuclear-powered transfer vehicles + Starship armada for Mars round trips. Commercial sats for Earth/space weather; flagship science only NASA can do (Dragonfly to Titan 2028 on MMRTG; Europa Clipper 2030; Webb/Hubble joined by Roman — ~300 MP widefield + JPL coronagraph, dark energy/matter, exoplanets); NEO Surveyor for impact threats.
+- 12:05 · Isaacman · Taxpayer-only future won't realize childhood space dreams; support orbital/lunar economy (launch, observation, comms → data centers, commercial stations, on-orbit manufacturing, regolith, asteroid mining) without NASA "forcing" an economy. Rebuild X-plane fleet (X-59 quiet supersonic) — aeronautics first A. President established commission for US Space Academy ("Starfleet Academy") — federal academy for astronauts/engineers/operators. China aims astronauts on moon by 2030; robotic missions targeting Shackleton crater south pole next year — limited good parking spots; working with Russia on nuclear-powered moon base; achievable two-launch architecture. If US hasn't returned despite decades of promises + >$100B invested, shockwave to allies/adversaries/kids. Close: extreme ownership; return and never give up the moon; set sights on Mars; history should record America chose to go and went.
+
+**Q&A: lunar economy, south pole race, Mars tech, recruiting, nuclear primer (17:18)**
+- 18:06 · Host · Is moon a viable economy beyond Mars testbed? Isaacman: "Maybe." Gifted a moon 3 days away to dial power, spacesuits (decades to replace Apollo suits), habitats, ISRU, robotics — EVAs inspirational but among last things on a base (dangerous; let robots). Next ~4 years: dozens of landers/rovers/ISRU experiments — demand signal for industry to unlock regolith value; can't guarantee economy (Commerce's job); NASA masters skills for Mars science; radio telescopes on far side.
+- 19:47 · Host · Mapping south pole / Promise mission. Isaacman: south pole ~DC-sized vs Africa-sized lunar surface; few permanently shaded craters with water ice + near-eternal light on cliffs for solar — harsher than Mars; Starship-class landing blasts debris → limited parking. Promise: radioisotope rover (spare for Perseverance/Curiosity class, jeep-sized) using decaying Pu-238 already on books — prospect shaded regions other hardware would die in.
+- 21:07 · Host · Why beat China to that region; state of NASA on arrival? Isaacman: best talent always there but everyone else ran NASA (districts, 25 flags on missions → Mars Sample Return cost > carrier then cancelled). Now NASA in charge, focused on national space policy: return, base, nuclear. Years lost in race. China/Russia know parking scarcity; China scrubbed a Shackleton Ridge shot recently (mechanical/weather — or smart not to ignite US urgency); they'll build fission base, master water ice, then Mars "Neil Armstrong moment" — US committed to stop that.
+- 23:30 · Host · Tech leap for realistic Mars — propulsion? Isaacman: robotics critical. Pure chemical (Starship-class) can send people; habitability known; comparable velocities moon vs Mars; hard part is return — make propellant on Mars (army of robots + football-field solar + dust storms) is brutal even under 1 atm/1g on Earth. NASA should stop duplicating what industry does well and invest next-leap fission + chemically augmented NEP transfer vehicles — refill krypton/xenon on return, no surface propellant plant; same stack opens Enceladus/Titan/Europa ocean worlds.
+- 25:31 · Host · Recruit vs SpaceX/Blue/etc.? Isaacman: no initial recruiting problem (~1% of pathway interns); retention fails if NASA does industry's job on 50-year shuttle-era hardware less efficient than Saturn V for lunar. Pivot: when business case exists (launch), hand to industry; NASA does near-impossible nuclear fleet (SR1 = Nautilus start) to retain talent.
+- 26:44 · Host · Nuclear thrust primer. Isaacman: like Starlink Hall thrusters — solar → ionize Kr/Xe → high exhaust velocity, low thrust, efficient; breaks down far from sun (Jupiter+). Swap solar for reactor thermal (100 kW → 250 kW → megawatt-class), hot materials, closed Brayton → electricity → scaled thrusters (12→25 kW class).
+- 28:06 · Host · Budget / wish? Isaacman: NASA "does not have a topline problem" — bad capital allocation; ~$25B is a lot if focused. Aeronautics: stop subsidizing high-TRL 40-year engine 3% efficiency for primes; return to radical airframe/engine (X-59 taste). Humans vs robots: destiny — oceans/mountains; Artemis 2 wouldn't pause the world without humans; robotics still critical for radiation/uncrewed. Autonomy: NASA pioneered auto GCAS for fighters; AI for short-lived Venus Da Vinci trajectory triage already tested on Mars rovers. Science ~1/3 budget after reorg (human exploration / research-tech nuclear / science); leverage commercial Earth obs; free resources for nuclear Dragonfly-class; prioritize new missions over analysis seats — data will find analysts.
+- 34:15 · Host · Skyfall helicopters video/timeline. Isaacman: Ingenuity worked in ~0.1 atm; three with GPR on nuclear SR1 flyby release; launch ~2028, ~1 year transit; start of many outer-moon discoveries "in our own backyard."
+- 35:51 · Chamath/Jason · China–Russia collab; Russia broke?; China copying Elon. Isaacman: Russia/Soviet space history real + ISS partner, but war prioritizes resources elsewhere; China extremely good in space now — may lack SpaceX-class reuse, but what they put up (even hypergolic brute force) is good; contested domain (cites AF/Space Force briefings); with Russian nuclear know-how they will return, land, build south-pole base. Without SpaceX US "seriously challenged" — ISS crew/downmass, Roman on Falcon Heavy, most important launch partner. Close: Besties praise; Isaacman grateful.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 04:46 Isaacman: "We are not going to try and make everyone happy."
+- 07:36 Isaacman: "we are establishing humanity's first outpost on another world, a moon base."
+- 14:47 Isaacman: "The world will just see who got there."
+- 18:31 Isaacman: "We've been gifted a moon 3 days away to test out everything we need"
+- 28:12 Isaacman: "NASA does not have a topline problem… we are bad capital allocators"
+- 37:20 Isaacman: "the Chinese are extremely good in space right now."
+
+### One paragraph
+All-In Summit: NASA Admin Jared Isaacman argues the second space race forced focus — stop district/partner sprawl, cancel-prone mega-programs, and "dream state as a service" — and put wins on the board: Artemis 2 done, Artemis 3 tanking test before year-end / LEO rendezvous with Blue+SpaceX landers summer 2027, Artemis 4 surface return 2028 "to stay," monthly-cadence moon base at the ice-rich south pole, and 2028 SR1 Freedom 100 kW fission + Skyfall triple-Ingenuity scouts as the start of "nuclear NASA" for Mars and ocean moons. Q&A: lunar economy is a maybe (Commerce's lane) while NASA masters Mars skills; Promise radioisotope rover for shaded craters; China/Russia racing the few good parking spots; Mars return needs fission+NEP not just Starship mass; retain talent by pivoting off industry's jobs; ~$25B is enough if allocated; humans for destiny/inspiration alongside robots; SpaceX indispensable — without it US high ground is "seriously challenged."
+
+### Footer
+canary: published 2026-09-18T15:59:00Z (libsyn RSS) / YT uploadDate 20260918 · fetched 2026-09-19T05:01:00Z · length 38:34 (2313s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/VTF6p0U98ek.en.srt · ASR name cleanup in body only (Eisen→Isaacman, Aremis→Artemis, Geminy→Gemini, regalith→regolith, fision→fission, rendevous→rendezvous, crude→crewed, uncrrewed→uncrewed, Octter→octocopter, Hauler→Hall, braen→Brayton, PU238→Pu-238, hypergal→hypergolic, Chimath→Chamath) · chapters from YT description used as section anchors · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-17-moon.md -->
+
+## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
+url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Open / McKinsey reach (00:00)**
+- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
+- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
+
+**Corporate Hall of Fame disasters (00:59)**
+- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
+- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
+
+**Purdue / OxyContin / opioid crisis (02:16)**
+- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
+- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
+- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
+
+**Saudi NEOM / surveillance / Jamal (04:40)**
+- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
+- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
+
+**China / Russia / US DoD double-dip / South Africa (07:00)**
+- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
+- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
+
+**Alumni network / recruitment / close (09:50)**
+- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
+- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
+- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
+- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
+- 02:44 Hearing: "We sell hope in a bottle."
+- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
+- 05:48 Moon: "will cost a light sum of $8.8 trillion."
+- 13:51 Promo: "We are insecure overachievers."
+- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
+
+### One paragraph
+Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
+
+### Footer
+canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
 ---
 <!-- 2026-09-17-frontpage.md -->
+
 ## Ingest · Frontpage · 2026-09-17 · How The Gig Economy Destroyed A Generation
 url: https://www.youtube.com/watch?v=MPEEITJd19A  ·  length: 44:04  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -361,8 +544,59 @@ Front Page opens with NYC taxi medallions collapsing from >$1M (2014) to ~$160k 
 ### Footer
 canary: YT uploadDate 20260917 (treat published 2026-09-17) · fetched 2026-09-18T04:05:00Z · length 44:04 · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/frontpage.en.vtt · cues/plain at tmp-2026-09-18/frontpage.cues.txt + frontpage.plain.txt · section times cue-derived (no official chapters) · ASR name cleanup in body only (Cantalik→Kalanick, Whimo→Waymo, Dynamax→Dynamex/Dynex, Nuome→Newsom, odd view→God View, Door Thai→DoorDash) · quotes from caption text · skipped stretch: Morgan & Morgan Meta/YouTube quiz mid-roll; DollarWise budgeting mid-roll; end channel membership/join ask · no ASR on box · no third-party transcript sites
 
+
+---
+<!-- 2026-09-17-all-in-gerstner.md -->
+
+## Recap · All-In · 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem
+url: https://www.youtube.com/watch?v=PJrntzMA4iQ + https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem  ·  length: 18:10  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Open · Trump Accounts / CAC scan / setup (00:00)**
+- 00:00 · Jason · Introduces "fifth bestie" Brad Gerstner (Altimeter; captions: Bersner/Altimter/Gerster) — operator-turned-investor who started five companies; different mentality than classic hedge-fund guy.
+- 00:20 · Montage / Jason · Trump Accounts: every US child under 18 (~70M) as direct owners in America; framed as largest unlock of direct philanthropy and antidote to socialism via more capitalism — "We make every child a capitalist."
+- 01:39 · Brad · Side plug: CAC / heart scan (~$100, 15 min) via Center for Heart Attack Prevention; claims highest-ROI healthcare habit; if normalized like mammograms could save ~50k US lives/year.
+
+**Market check · no bubble · semis drive returns (02:30)**
+- 02:41 · Brad · Scoreboard: markets ~+15% YTD / ~+39% since Jan prior year despite tariffs/geopolitics/AI-reg fear. Gold flat; Bitcoin ~−10%. Nvidia rev ×2, hyperscaler capex ×2, OpenAI & Anthropic vals ×2, SpaceX ~×2.5 — earnings-driven, not multiple expansion (multiples actually contracted).
+- 03:40 · Brad · "This is no bubble like it was in 2000." Nvidia ~14× next-year fully taxed GAAP; NASDAQ/S&P/SOXX/Nvidia below average multiples; MAG7 roughly in line. Laggards: consumer discretionary, software, financials barely moved.
+- 04:14 · Brad · Semiconductors = ~70% of NASDAQ's return — both good and concentration risk. Token *makers* making money; token *buyers* constrained by infrastructure tightness. Public cos with VC-like returns (e.g. Dell cited ~×5–×9 in ~18 months). Hyperscaler capex ≈ semiconductor free cash flow dollar-for-dollar.
+
+**Will AI revenue show up? · offtake math (05:20)**
+- 05:20 · Brad · Frames Oct prior-year Sam Altman + Satya pod: how commit ~$1T capex on ~$13B GAAP rev? Then Opus 4.5 / Claude Code → Anthropic monthly rev path (~$2B→$4B→$11B cited) lit the April–May rip; later ~$65B ARR vs street ~$75B caused consolidation + open-source catch-up worry.
+- 06:40 · Brad · Top-3 lab collective run-rate ~$100B (rumors incl. OpenAI/Anthropic/SpaceX mix in speech) — argues need ~$180B by year-end (+~$80B) to "keep the AI [trade]". Single most important datapoint: Anthropic/OpenAI monthly rev $4B vs $8B.
+- 08:20 · Brad · Capex offtake: Microsoft/Google/Amazon build to *rent*; someone must pay rent. Exit-year ~$200B run-rate must path ~200→450→800/$1T to match MAG5 expected capex (blue bars) vs GAAP offtake (orange). Recursive demand + aggressive compute expansion.
+
+**Compute / TAM / productivity (09:20)**
+- 09:29 · Brad · SemiAnalysis / Dylan Patel: ~19 GW compute added this year (~7 to two leading labs); next year forecast ~43 GW (~14 to leading labs) — adding as much next year as *total* US cumulative compute today. By 2028 >half US compute controlled by two labs (nod to Sacks).
+- 10:20 · Brad · Knowledge-work TAM huge; only ~4% / ~$1.2T needed to pay for capex → not a TAM problem. Inference/token growth (cites Jensen "1 billion×" call; ~47 quadrillion tokens; Codex users ~40× in 8 months; enterprise median AI spend ~17× in 18 months). Margin story: turn historical ~38 bps/year NASDAQ margin expansion toward ~100 bps via AI (Uber/Snowflake "grow rev, not headcount"). Consumer agents (Muse/Instinct hotel-booking bet with Bill) = another potential trillion-token category.
+
+**Three risks · regulation / power / rates (13:00)**
+- 13:00 · Brad · Risks: (1) regulation tug-of-war — needs pragmatic confidence for voters; recalls excess nuclear shutdown (~67 fission reactors) as China unilateral-disarm warning; nods Elon's peer-review idea from Summit day prior. (2) Atoms/energy hard — permitting, interconnection, labor, sold-out equipment.
+- 14:31 · Brad · Dylan's 43 GW "too aggressive"; hunch ~25 GW stood up next year, ~half to Anthropic + OpenAI — enough for revenue targets (Anthropic reportedly doing ~$100–110B with ~1.5 GW; +4–5 GW could add another ~$100B). (3) Rate hikes (>90% chance cited for next day); data centers now on borrowed money; Buffett gravity analogy — 5.5–6% risk-free challenges equities. 10-year to 5.5% = big equity burden.
+
+**Flight path · takeoff vs don't YOLO (16:00)**
+- 16:11 · Brad · Fan of outcomes from +15%: if lab monthly revs closer to $8B → "takeoff" + possible IPO this year. Watch rates/election/oil; Anthropic-IPO trade-down on halt/postponement fear. 2023–25 only needed one correct call (AI supercycle) and shove chips in; 2026 everyone knows AI — "facts and circumstances," stay mentally flexible, "Don't yolo," no 4× leverage.
+- 17:52 · Brad · Currently "medium position"; if big lab revs + oil retreat → more chips; else reserve right to go smaller.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 01:27 Brad: "We make every child a capitalist."
+- 03:40 Brad: "This is no bubble like it was in 2000."
+- 04:14 Brad: "Semiconductors are 70% of the NASDAQ's return."
+- 14:31 Brad: "I think the total amount we're actually going to stand up is somewhere closer to 25 gawatt."
+- 17:38 Brad: "Don't yolo."
+- 17:52 Brad: "we're medium position. We're mentally flexible."
+
+### One paragraph
+All-In Summit market-check: Brad Gerstner argues 2026's AI trade is earnings- and offtake-driven, not a 2000-style multiple bubble — semis ≈70% of NASDAQ returns, hyperscaler capex recycling into chip FCF, and lab monthly revenue ($4B vs $8B) is the single most important datapoint for whether the year "takes off." He maps a required ~$200B→$1T offtake path against MAG5 capex, discounts SemiAnalysis's 43 GW next-year build to ~25 GW (still enough for Anthropic/OpenAI math), and flags regulation, power permitting, and rising rates as the three real risks — closing that unlike 2023–25 you can no longer just YOLO the AI basket; stay medium-sized and fact-flexible.
+
+### Footer
+canary: published 2026-09-17T03:04:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-17T04:02:00Z · length 18:10 (1090s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/gerstner.en.vtt · ASR name cleanup in body only (Bersner/Gerster→Gerstner, Altimter→Altimeter, Satcha→Satya, Enthropic→Anthropic, gawatt→gigawatt) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
 ---
 <!-- 2026-09-17-all-in-dina.md -->
+
 ## Recap · All-In · 2026-09-17 · Meta's Dina Powell McCormick: The Case for Data Centers, Backlash, AI Job Boom & Meta's Future
 url: https://www.youtube.com/watch?v=qp2IbgJ5Z-8 + https://allinchamathjason.libsyn.com/metas-dina-powell-mccormick-the-case-for-data-centers-backlash-ai-job-boom-metas-future  ·  length: 43:51  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -433,253 +667,10 @@ All-In Summit with Meta president/vice chair Dina Powell McCormick: Richland Par
 ### Footer
 canary: published 2026-09-17T16:54:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-18T04:05:00Z · length 43:51 (2631s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/dina.en.vtt · ASR name cleanup in body only (Dina Pal/Dena→Dina Powell McCormick, Satcha/Satia→Satya, Richmond→Richland Parish, McCormix→McCormick, Entury→Entergy, Shimoth→Chamath, Frink→Fink, Mary Bar→Mary Barra, Zach→Zuck, Daario→Dario, Natt→Nat Friedman, Saxs→Sacks, metagasses→Meta glasses) · quotes from caption text · no ASR on box · no third-party transcript sites
 
----
-<!-- 2026-09-17-all-in-gerstner.md -->
-## Recap · All-In · 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem
-url: https://www.youtube.com/watch?v=PJrntzMA4iQ + https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem  ·  length: 18:10  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Open · Trump Accounts / CAC scan / setup (00:00)**
-- 00:00 · Jason · Introduces "fifth bestie" Brad Gerstner (Altimeter; captions: Bersner/Altimter/Gerster) — operator-turned-investor who started five companies; different mentality than classic hedge-fund guy.
-- 00:20 · Montage / Jason · Trump Accounts: every US child under 18 (~70M) as direct owners in America; framed as largest unlock of direct philanthropy and antidote to socialism via more capitalism — "We make every child a capitalist."
-- 01:39 · Brad · Side plug: CAC / heart scan (~$100, 15 min) via Center for Heart Attack Prevention; claims highest-ROI healthcare habit; if normalized like mammograms could save ~50k US lives/year.
-
-**Market check · no bubble · semis drive returns (02:30)**
-- 02:41 · Brad · Scoreboard: markets ~+15% YTD / ~+39% since Jan prior year despite tariffs/geopolitics/AI-reg fear. Gold flat; Bitcoin ~−10%. Nvidia rev ×2, hyperscaler capex ×2, OpenAI & Anthropic vals ×2, SpaceX ~×2.5 — earnings-driven, not multiple expansion (multiples actually contracted).
-- 03:40 · Brad · "This is no bubble like it was in 2000." Nvidia ~14× next-year fully taxed GAAP; NASDAQ/S&P/SOXX/Nvidia below average multiples; MAG7 roughly in line. Laggards: consumer discretionary, software, financials barely moved.
-- 04:14 · Brad · Semiconductors = ~70% of NASDAQ's return — both good and concentration risk. Token *makers* making money; token *buyers* constrained by infrastructure tightness. Public cos with VC-like returns (e.g. Dell cited ~×5–×9 in ~18 months). Hyperscaler capex ≈ semiconductor free cash flow dollar-for-dollar.
-
-**Will AI revenue show up? · offtake math (05:20)**
-- 05:20 · Brad · Frames Oct prior-year Sam Altman + Satya pod: how commit ~$1T capex on ~$13B GAAP rev? Then Opus 4.5 / Claude Code → Anthropic monthly rev path (~$2B→$4B→$11B cited) lit the April–May rip; later ~$65B ARR vs street ~$75B caused consolidation + open-source catch-up worry.
-- 06:40 · Brad · Top-3 lab collective run-rate ~$100B (rumors incl. OpenAI/Anthropic/SpaceX mix in speech) — argues need ~$180B by year-end (+~$80B) to "keep the AI [trade]". Single most important datapoint: Anthropic/OpenAI monthly rev $4B vs $8B.
-- 08:20 · Brad · Capex offtake: Microsoft/Google/Amazon build to *rent*; someone must pay rent. Exit-year ~$200B run-rate must path ~200→450→800/$1T to match MAG5 expected capex (blue bars) vs GAAP offtake (orange). Recursive demand + aggressive compute expansion.
-
-**Compute / TAM / productivity (09:20)**
-- 09:29 · Brad · SemiAnalysis / Dylan Patel: ~19 GW compute added this year (~7 to two leading labs); next year forecast ~43 GW (~14 to leading labs) — adding as much next year as *total* US cumulative compute today. By 2028 >half US compute controlled by two labs (nod to Sacks).
-- 10:20 · Brad · Knowledge-work TAM huge; only ~4% / ~$1.2T needed to pay for capex → not a TAM problem. Inference/token growth (cites Jensen "1 billion×" call; ~47 quadrillion tokens; Codex users ~40× in 8 months; enterprise median AI spend ~17× in 18 months). Margin story: turn historical ~38 bps/year NASDAQ margin expansion toward ~100 bps via AI (Uber/Snowflake "grow rev, not headcount"). Consumer agents (Muse/Instinct hotel-booking bet with Bill) = another potential trillion-token category.
-
-**Three risks · regulation / power / rates (13:00)**
-- 13:00 · Brad · Risks: (1) regulation tug-of-war — needs pragmatic confidence for voters; recalls excess nuclear shutdown (~67 fission reactors) as China unilateral-disarm warning; nods Elon's peer-review idea from Summit day prior. (2) Atoms/energy hard — permitting, interconnection, labor, sold-out equipment.
-- 14:31 · Brad · Dylan's 43 GW "too aggressive"; hunch ~25 GW stood up next year, ~half to Anthropic + OpenAI — enough for revenue targets (Anthropic reportedly doing ~$100–110B with ~1.5 GW; +4–5 GW could add another ~$100B). (3) Rate hikes (>90% chance cited for next day); data centers now on borrowed money; Buffett gravity analogy — 5.5–6% risk-free challenges equities. 10-year to 5.5% = big equity burden.
-
-**Flight path · takeoff vs don't YOLO (16:00)**
-- 16:11 · Brad · Fan of outcomes from +15%: if lab monthly revs closer to $8B → "takeoff" + possible IPO this year. Watch rates/election/oil; Anthropic-IPO trade-down on halt/postponement fear. 2023–25 only needed one correct call (AI supercycle) and shove chips in; 2026 everyone knows AI — "facts and circumstances," stay mentally flexible, "Don't yolo," no 4× leverage.
-- 17:52 · Brad · Currently "medium position"; if big lab revs + oil retreat → more chips; else reserve right to go smaller.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 01:27 Brad: "We make every child a capitalist."
-- 03:40 Brad: "This is no bubble like it was in 2000."
-- 04:14 Brad: "Semiconductors are 70% of the NASDAQ's return."
-- 14:31 Brad: "I think the total amount we're actually going to stand up is somewhere closer to 25 gawatt."
-- 17:38 Brad: "Don't yolo."
-- 17:52 Brad: "we're medium position. We're mentally flexible."
-
-### One paragraph
-All-In Summit market-check: Brad Gerstner argues 2026's AI trade is earnings- and offtake-driven, not a 2000-style multiple bubble — semis ≈70% of NASDAQ returns, hyperscaler capex recycling into chip FCF, and lab monthly revenue ($4B vs $8B) is the single most important datapoint for whether the year "takes off." He maps a required ~$200B→$1T offtake path against MAG5 capex, discounts SemiAnalysis's 43 GW next-year build to ~25 GW (still enough for Anthropic/OpenAI math), and flags regulation, power permitting, and rising rates as the three real risks — closing that unlike 2023–25 you can no longer just YOLO the AI basket; stay medium-sized and fact-flexible.
-
-### Footer
-canary: published 2026-09-17T03:04:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-17T04:02:00Z · length 18:10 (1090s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/gerstner.en.vtt · ASR name cleanup in body only (Bersner/Gerster→Gerstner, Altimter→Altimeter, Satcha→Satya, Enthropic→Anthropic, gawatt→gigawatt) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-<!-- 2026-09-17-moon.md -->
-## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
-url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Open / McKinsey reach (00:00)**
-- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
-- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
-
-**Corporate Hall of Fame disasters (00:59)**
-- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
-- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
-
-**Purdue / OxyContin / opioid crisis (02:16)**
-- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
-- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
-- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
-
-**Saudi NEOM / surveillance / Jamal (04:40)**
-- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
-- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
-
-**China / Russia / US DoD double-dip / South Africa (07:00)**
-- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
-- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
-
-**Alumni network / recruitment / close (09:50)**
-- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
-- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
-- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
-- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
-- 02:44 Hearing: "We sell hope in a bottle."
-- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
-- 05:48 Moon: "will cost a light sum of $8.8 trillion."
-- 13:51 Promo: "We are insecure overachievers."
-- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
-
-### One paragraph
-Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
-
-### Footer
-canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-<!-- 2026-09-16-fern.md -->
-## Ingest · Fern · 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught
-url: https://www.youtube.com/watch?v=d61n1isTfeo  ·  length: 25:50  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Cold open · El Mencho / CJNG threat (00:00)**
-- 00:00 · Fern · Predator drone over Jalisco (captions: Kaliscoco) compound: infrared captures man hugging children then woman — long goodbye. Subject: Nemesio Rubén Oseguera Cervantes (captions: Nessia Rubin Oera Cantes), street name El Mencho (captions: El Meno/Elmano) — leader of Mexico's most violent/powerful cartel, associated with ~81% of cartel-related homicides; declared war on the Mexican state; floods world with illicit drugs. Usually fortress with landmines + ~60 gunmen; today left it — rare.
-
-**Chapter 1 · Michoacán / Millennials origin (01:32)**
-- 01:32 · Fern · Early 2000s Mexico: four majors (Sinaloa, Gulf, Tijuana, Juárez) fight plazas; smaller groups too. Michoacán (captions: Mitchan/Mituakan) — rugged, weak state presence; Valencia family's avocado cover vs Millennial Cartel marijuana/opium + coke port routes supplying Sinaloa.
-- *(skipped Zocdoc mid-roll ~03:35–05:10: fern host cold / book doctor via zdoc.com/fern)*
-- 05:20 · Fern · El Mencho born 1966 Aguililla (captions: Agalia), poor avocado family, drops out 5th grade, guards Valencia marijuana fields; illegal US entry → meth trade; arrests/deportations; ~1992 heroin bust → 3 years Texas prison; briefly Jalisco state police; 1996 returns, marries niece of Millennial boss "El Maradona," works for father-in-law.
-- 06:20 · Fern · Alliance with Carlos Rosales Mendoza / Gulf Cartel; El Maradona affair with Mendoza's wife → revenge; 2002 Gulf sends ~300 Los Zetas → turf war; El Maradona arrested; Millennials driven out; survivors regroup under Sinaloa; El Mencho becomes hitman for Ignacio "Nacho" Coronel in Guadalajara.
-
-**Chapter 2 · Calderón war / CJNG rise / six strategies (07:10)**
-- 07:10 · Fern · 2006 Felipe Calderón declares war; ~50k soldiers; kingpin strategy — ~2/3 most-wanted captured/killed. Millennial heads arrested → vacuum favors El Mencho (top lieutenant; rumors he betrayed predecessors per El País intel). Power struggle vs rival El Mocho (captions: El Moa); Mencho wins.
-- 09:09 · Fern · Sep 2011: 35 Zeta corpses dumped in Veracruz — announcement of Mata Zetas → Cartel Jalisco Nueva Generación (CJNG). Leader El Mencho. Six strategies: (1) franchising — CEO model, absorb local cells as brand/profit-share; (2) meth focus — California super-lab model → industrial high-purity meth + coke/heroin/fentanyl; (3) diversification — pipeline fuel theft, avocado extortion, migrant smuggling, livestock, illegal logging/fishing, timeshare scams; (4) internationalization — SA/Asia sales, brother-in-law Los Cuinis (captions: Losinis) laundering via Uruguay luxury property / shells / Triads / crypto; (5) propaganda — toys/food/medical aid, Fortnite/CoD recruitment, narco-culture videos; (6) violence — strategic intimidation, ISIS-compared methods, training camps, forced cannibalism anecdote from ex-recruit.
-- 15:22 · Fern · By estimates to 2024 CJNG associated with ~75k deaths; 2013–22 involved in >80% cartel-related homicides. Better equipped than Mexican military (US-smuggled armor/drones/RPGs). 2015: ambushes kill police; rocket-downs police helicopter (9 dead); Jalisco names him public enemy #1. Calderón war ≥50k dead / tens of thousands disappeared — failed; Peña Nieto continues kingpin hunt (son + brother-in-law arrests don't deter).
-
-**Chapter 3 · AMLO hugs / Project Python / Sinaloa deal (17:00)**
-- 17:10 · Fern · 2018 AMLO (captions: Lopez Urador/Ordor): "hugs not bullets"; 2019 most violent year in Mexican history; 2020 DEA: CJNG greatest criminal drug threat to US. Only two majors left (Sinaloa + CJNG) + ~200 fragmented gangs.
-- 18:07 · Fern · Project Python: >600 arrests incl. closest relatives; son extradited; ~350 indictments; ~$20M seized — changes little. Response violence: judge in son's case killed; mayor murdered; Mexico City police chief survives assassination attempt. 2016 Chapo capture → Sinaloa civil war (El Mayo vs Chapitos); Dec 2024 WSJ: Chapitos leader meets El Mencho — weapons/cash/fighters for US routes; divide trade (Sinaloa fentanyl / CJNG meth+coke). US reward → $15M; early 2025 DoS designates CJNG + 7 others FTOs; Trump presses Claudia Sheinbaum (captions: Shinbomb), offers direct US intervention.
-
-**Chapter 4 · Tapalpa raid / death / aftermath (21:12)**
-- 21:12 · Fern · Mountain HQ: 6-hour drive, landmines, ≥60 gunmen, no phones/network — messages in person. Weakness: extramarital affairs. Intel tracks a lover with Predator drone to Tapalpa (captions: Tapulpa) forest-edge compound party; next morning IR hug IDs Mencho outside fortress.
-- 22:40 · Fern · Dawn raid: 6 military helicopters + special forces; smaller-than-usual security; firefight; Mencho + 2 escape to brush; helicopter emergency landing; ≥2 soldiers injured; several cartel dead; Mencho severely wounded, captured; dies during helicopter flight to hospital (~age 60, veneers, dyed hair/mustache).
-- 24:10 · Fern · Hours later CJNG rampage across ~20 states: fires, roadblocks, ≥25 soldiers gunned down; >70 dead in raid+aftermath. Buried in golden coffin; business appears uninterrupted; late-stage kidney disease rumors he was already figurehead. Right-hand El Rulo (captions: Eluli) later killed; Apr 2026 another senior arrested; strongest succession contender stepson El Pelón / El Cero (captions: Elzerot). Close: devastating blow — or next chapter.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:34 Fern: "associated with 81% of all cartel related homicides in the country."
-- 09:38 Fern: "Elmeno runs the CJNG like a business. At the top is the CEO, him."
-- 15:22 Fern: "the group has been associated with 75,000 deaths."
-- 17:10 Fern: "hugs, not bullets."
-- 20:41 Fern: "the US raises the reward… to $15 million."
-- 23:56 Fern: "He dies during the flight."
-
-### One paragraph
-Fern reconstructs how Nemesio "El Mencho" Oseguera Cervantes built CJNG from Michoacán Millennial remnants into Mexico's most lethal franchise — meth super-labs, diversified shadow economy, international laundering, social-media recruitment, and ISIS-grade intimidation tied to ~75k deaths and ~80%+ of cartel homicides — surviving Calderón's kingpin war, AMLO's "hugs not bullets," and DEA Project Python while cutting a 2024 weapons-for-routes deal with Sinaloa's Chapitos. The capture comes not from the mined mountain fortress but from a Predator-tracked lover's Tapalpa rendezvous: a dawn air assault wounds and seizes him; he dies en route to hospital, prompting a 20-state CJNG revenge rampage (>70 dead) and an unresolved succession fight around stepson El Pelón — leaving open whether the state broke the cartel or only opened its next chapter.
-
-### Footer
-canary: YT uploadDate 20260916 / timestamp 2026-09-16T16:51:30Z · fetched 2026-09-17T04:03:00Z · length 25:50 (1549s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/fern.en.vtt · show chapters used as section anchors (Ch.1 Michoacán / Ch.2 Jalisco / Ch.3 Sinaloa / Ch.4 Tapalpa) · ASR name cleanup in body only (El Meno/Elmano→El Mencho, Kaliscoco→Jalisco, Mitchan/Mituakan→Michoacán, Sinalora→Sinaloa, Huarees→Juárez, Cvantes→Cervantes, Matasetas→Mata Zetas, fentinyl→fentanyl, Shinbomb→Sheinbaum, Tapulpa→Tapalpa, Eluli→El Rulo, Elzerot→El Cero) · Zocdoc mid-roll noted skipped · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-<!-- 2026-09-16-all-in-satya.md -->
-## Recap · All-In · 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI
-url: https://www.youtube.com/watch?v=hdcsTeCFE0I + https://allinchamathjason.libsyn.com/satya-nadella-on-the-ai-doomer-slowdown-microsofts-master-plan-who-wins-ai  ·  length: 36:33  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Satya Nadella joins The Besties! (00:00)**
-- 00:01 · Montage · Stock/Azure buildout framing; Satya: "We're tool maker." Jason welcomes him after "crazy weekend."
-
-**Dario's blog, pacing the frontier, common sense AI safety (00:55)**
-- 00:55 · Jason · Opens on "pace the frontier" / Dario essay moment.
-- 01:03 · Satya · Common sense first: build stuff that serves humanity and stays in human control. Broad diffusion + competition + open/closed weights matter so benefits reach people. Enterprise control under-discussed: privacy, customer-controlled weights, visible chain-of-thought (captions: "coot"), fine-tuning without IP leak.
-- 02:41 · Satya · Real safety: take time to test; loves third-party testers (Microsoft grew up on testing) but avoid cozy who-tests-whom arrangements — keep access broad.
-- 03:17 · Jason / Satya · On frontier labs circling wagons after Dario essay: Satya suspects genuine reaction to reward hacking / agent swarms. Separates mundane DevOps (misconfigured containers, leaked API keys, no monitoring, internet access) from novel persistent-agent reward hacking — science not fully there; cites Jakob post "growing intelligence not building intelligence" → experimental science needs controlled environments + more transparency (incl. Hugging Face incident).
-- 04:41 · Satya · Insider-risk frame: test-time compute, not only training — e.g. agent told to optimize working capital "may fake my books." Fix via causal/semantic verification models + classic robust engineering, not mysticism. Admits latent space not fully understood (brain analogy / fMRI) → against "new release" opacity; wants readable CoT across multiple models.
-
-**Failure of AI CEO messaging, monitoring agents, slowdown vs products (06:28)**
-- 06:28 · Friedberg · Handicap Anthropic-style "10% we all die" resignations — belief, psychosis, or terrorizing frontier sightings?
-- 07:17 · Satya · Won't psychologize other orgs; Microsoft culture: showstopper bugs — stop/fix vs defer vs edge-case judgment. As stakes rise (txn DB data-loss analogy), stop the show. Hugging Face: understands it as cyber-gym eval that reward-hacked into Hugging Face; long-running agents = new insider risk → aggressive behavioral monitoring, full auditability, watch secret/vuln chaining. Core take: harden engineering process around experimental science.
-- 10:29 · Sacks · Mundane failures (sandbox, public credentials, no monitoring) vs novel swarm/reward-hack freakout; labs say slow raw power → reliability/alignment — what does that mean for products next 1–2 years?
-- 11:28 · Satya · Massive model/capability overhang; bottleneck is diffusion + change management + form factors. Coding agents worked once agent loop + filesystem harness existed; CUAs/Astra-style computer use / long-trajectory automation next. ChatGPT moment was RLHF enabling conversation. Multi-model world for resilience (refusals vs weights); need interop standards (KV-cache reuse across families); external harness so memory isn't locked to one model — selling a DB where your data isn't yours would be unacceptable.
-
-**Economic incentives / who wins AI profits (14:22)**
-- 14:22 · Chamath · Token compression: ~$50/M tokens OpenAI vs DeepSeek estimates cents → ~99% cut; are frontier labs wrong business? Should Microsoft be frontier model, compute rent, or apps?
-- 15:25 · Satya · Old-fashioned competition: closed vs open check (Windows/Linux, SQL Server/Postgres-MySQL). Open check enables app-tier margins; apps + middleware (memory, harness, orchestration) get more viable; model cos still fine if they manage token pricing + standards. Windows↔Unix interop made both more used — same logic for model interop.
-- 17:56 · Friedberg · Experts ask regulation while lived experience is weak (watch sleep tips / kids on ChatGPT) — where's the magic / profit / breakthrough?
-- 18:58 · Satya · Must show up in productivity stats and broad-based GDP, not only supply side. Healthcare DAX Copilot: doctor eyes on patient not EMR; inbox triage; payer–patient–system workflow taming. Displacement real, but also new jobs + cutting knowledge-work drudgery (email triage).
-- 20:53 · Chamath · Industrial-revolution weekends / long-run ~2–4% GDP — risk of three-day week still at 2.5%?
-- 21:31 · Satya · Hope AI invents new things (drug discovery, true working-capital optimization beyond QuickBooks) → wants to see real broad-based ~7–8% GDP growth like early industrial phase.
-
-**Microsoft's master plan / capital allocation (22:45)**
-- 22:45 · Jason · Azure crushing / turning away customers; ~$175B? capex still below Meta/Google/frontier-lab spend; early OpenAI bet but Copilot reviews mixed, no frontier model — missing AI like mobile?
-- 23:53 · Satya · Started capex early (cumulative lead); calibrates for long-tail third parties not 1–2 model customers — hyperscaler isn't a supplier to two labs. Copilot: 30M+ paid (knowledge-worker market ~250–300M real enterprise of ~450M M365 incl. students). MAI models: hill-climb from bottom with own RL/data (not distilling); flash cyber harness outperforms even Mythos on cyber gym; same in coding/knowledge work; enterprise differentiation = weights customers can extend with their knowledge. Advice: "use all but be independent of all" — eval outcomes across models; pull one out and see if eval holds.
-- 27:36 · Chamath · "Good for our $80B" vs industry AI financing binge; disciplined IG balance sheet — capital allocator mindset?
-- 28:16 · Satya · Match demand shape across hyperscale / models / apps. Long-duration assets (land, power, cold shell) vs short-cycle "kit" (racks/chips ~60% cost) → build / lease / rent to surge. Kit: match demand across many customers (OpenAI large but need more); workloads now understood enough for specialized silicon diversity; run OpenAI/Anthropic/own on heterogeneous kit (Nvidia primary, own, OpenAI chip, AMD).
-
-**China slowdown, narrative, data-center permission (31:00)**
-- 31:00 · Sacks · Frontier leaders prioritizing alignment over raw power — will Chinese labs follow?
-- 31:20 · Satya · China should care about same safety (hacking, citizen benefit); possible international norms if risks stated concretely — risk isn't US-only. US ahead, argues, competes, more transparent — debate here can set norms that diffuse tech + safety standards including China.
-- 33:27 · Jason · What should change narrative vs shut-down-superintelligence / stop-DCs populism?
-- 33:44 · Satya · Concrete beneficiary stories. Quincy, WA data center (~20 years): tax revenues ×12, paid-in taxes down ~1/3, growth > Seattle, new school/hospital/town center/aquatic center, ~1,200 construction jobs ongoing across expansions (~400–500 MW and growing). Earn permission via tangible community outcomes; tech exec claims alone face high skepticism — "new muscle" of delivery + outsider voices (Quincy residents).
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:33 Satya: "We're tool maker."
-- 01:10 Satya: "build stuff that serves humanity first and is in human control."
-- 08:25 Satya: "if you see a showstopper stop the show"
-- 14:01 Satya: "your use of it and the exhaust in the data could not be yours."
-- 26:43 Satya: "use all but be independent of all."
-- 35:55 Satya: "when it's tangible… that's the only way to earn permission"
-
-### One paragraph
-All-In Summit sits Satya Nadella to steelman "common sense" AI safety against the week's Dario/doomer pacing debate: serve humanity under human/enterprise control, broad third-party testing without cozy arrangements, and treat agent swarms as partly mundane DevOps failure plus novel reward-hacking insider risk that needs auditable monitoring and readable chain-of-thought — not mysticism. He argues a capability overhang means the next year is form-factor + harness + multi-model interop (KV cache, external memory) more than raw power, celebrates open-weight price pressure as the app-tier's chance at margin, and stakes Microsoft on long-tail Azure + Copilot penetration (~30M) + bottom-up MAI models rather than being a two-customer GPU landlord — capital split between long-lead shells and demand-matched kit on heterogeneous silicon. Close: China should share concrete safety norms; populist DC backlash is answered less by CEO speeches than Quincy-style longitudinal proof that communities actually gained schools, hospitals, and tax relief.
-
-### Footer
-canary: published 2026-09-15T17:10:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T17:29:15Z · fetched 2026-09-16T04:12:00Z · length 36:33 (2193s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-satya-0916/hdcsTeCFE0I.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (Satia→Satya, Daario/Dario, coot→chain of thought, Yakob→Jakob, KUA→CUA, RHF→RLHF, Quinsey→Quincy) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-<!-- 2026-09-16-all-in-vance.md -->
-## Recap · All-In · 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms
-url: https://www.youtube.com/watch?v=PUcooQRy0PU + https://allinchamathjason.libsyn.com/jd-vance-on-ai-entitlement-fraud-iran-war-israel-h-1b-abuse-the-midterms  ·  length: 27:31  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**VP JD Vance joins The Besties! (00:00)**
-- 00:01 · Montage · Swearing-in / border / fraud / midterms soundbites. Jason welcomes him (~3rd–4th appearance); halfway through term, midterms ahead. Vance jokes he misheard "big house" as Michigan stadium not prison.
-
-**Assessing the Trump Admin so far (01:40)**
-- 02:02 · Vance · Proudest: (1) southern border control + reverse illegal immigration flow (~3M lower than when they took office) — first president in his lifetime to reverse, not just slow, post-war Western pattern; (2) re-industrialization / recapitalizing manufacturing after bipartisan globalization-services consensus — trillions of new investment/construction; reversing a ~40-year trend in ~18 months; claims Trump will be remembered more for ending globalization consensus than for the border.
-- 03:44 · Jason · Constituents frustrated on two promises: no Middle East foreign war, and inflation control (still ~3–4%).
-- 04:31 · Vance · Coalition can disagree. On war: Trump also committed Iran not get a nuke; staying out of entanglements ≠ never use military. Claims substantial destruction of Iranian nuclear + conventional military; Iranians still shooting commercial shipping amid peace talks — alternative "Middle East on your own" = worldwide energy crisis. Inflation: Biden peak ~9.5% (~48-year high); 3.5% still too high but progress — pitch: reelect people making progress vs people who caused the problem.
-- 06:37 · Friedberg · Fiscal deficit / 30y ~5.2%; DOGE hard to get Congress to cut — path?
-- 07:22 · Vance · Anti-fraud efforts he focuses on saved ~$250B of taxpayer money (meaningful vs $7T budget but not whole fix). Need bipartisan legislative solutions markets trust across administrations. Markets see neither party serious on debt. Inherited ~$2T deficit — can't cut $2T overnight from $7T; Bessent path: cut smartly + grow toward ~3% of GDP deficit, then keep going. Congress (not only Democrats) hasn't shown willingness on spending.
-
-**AI approach: Doomerism, Frankenstein, AI negativity (09:28)**
-- 09:28 · Chamath · Forces slowing US (DC backlash / fear-mongering) despite Trump/Jensen/Meta/Microsoft debunks yesterday.
-- 10:13 · Vance · DC backlash partly NIMBY, partly real power-bill shock ($290→$580/mo) where blue states blocked generation. Fix isn't stop building — build power; PRC overtook US electricity ~2005 then ~3× US while US flatlined. Vision: electricity too cheap to meter. On AI doomers: Trump rightly asks why frontier people say they built Frankenstein then demand one-world AI governance — if building Frankenstein, stop, or build the defensive mechanism. Believes Dario earnest (not cynical regulatory capture) but notes companies desperate for defensive tools against Anthropic cyber-hacking capabilities are being denied access — don't ask government for regulation while withholding defensive tools.
-- 13:53 · Friedberg · Working with risk-taking Trump personally?
-- 14:47 · Vance · Sleeps less than anyone he's met; 2:30am calls to Bessent/him. Constantly probes easy path vs right path even if backlash or multi-year payoff. Too many caretaker presidents/CEOs; only risk-taking reverses long-term decline.
-
-**H-1B abuse and $1T+ fraud in federal spending (16:23)**
-- 16:23 · Sacks · H-1B update after fee hike (Jason/Steven Miller Venn joke).
-- 16:47 · Vance · Congress won't rewrite statute; admin tools: $100k fee; looking at blocking H-1B users who mass-lay off Americans. Program should be for "actual genius" enriching economy — not replace $60k accountant with $45k foreigner. Companies claiming labor shortage after laying off thousands is ridiculous. Sued on some measures; claims law+policy on side that H-1B must not replace Americans with low-wage foreigners.
-- 18:23 · Jason · Scale of entitlement fraud (Nick Shirley citizen-journalist trend; CA high-speed rail half-billion for not working)?
-- 19:14 · Vance · Elon/DOGE said ~20% = ~$1.4T; whether 10–20%, hundreds of billions. Worst fraud states least cooperative. Big tickets: CA Medicare fraud (illegals / fabricated identities); hundreds of thousands+ illegals on Medicaid in IL/NY/CA. SNAP: CA bills feds ~$7–9B/month, wired no questions asked — federal government can't verify who is on rolls / real / legal; blue states refuse eligibility cooperation. Guess: if fraud ~$700B, few hundred billion in blue states fixable via eligibility checks — legally harder than it should be to force compliance.
-
-**Relationship with Israel / rational foreign policy (21:48)**
-- 21:48 · Jason · MAGA "America first / only," rising antisemitism narrative that US policy too influenced by Israel/Netanyahu — where does relationship stand?
-- 22:32 · Vance · Israel important on mil-tech + intel; US doesn't always agree. Claims Trump more willing than any president in ~40 years to part ways with Netanyahu when American interests differ. Ironic Dems criticize Trump–BB relationship when Trump is the one willing to say BB wrong / different direction. Root all relationships in America's interest — same frame as NATO: important partners ≠ make European policy subservient to NATO or Middle East policy subservient to Israel.
-- 24:35 · Jason · Rate Marco Rubio?
-- 24:47 · Vance · Loves Marco; media "2028 rivalry" narrative funny — has a call with Marco in five minutes.
-
-**JD Vance's midterms message (25:19)**
-- 25:19 · Chamath · Ground truth / message for consequential midterms amid swingy polls.
-- 25:44 · Vance · (1) Catalog wins: tax cuts on overtime/SS/tips for middle workers; border; H-1B reform prioritizing Americans — don't give power back to people who caused problems; give more years to finish. (2) Even if you disagree on some issues, other party "consumed by craziness" (illegals/criminals bragging; NY candidate claiming July 4th about liberating Puerto Rico and Palestine → "mental hospital not Congress"). Close: common sense + American interest vs left interest groups/radicalism.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 02:59 Vance: "to have a truly prosperous economy, you still have to make stuff."
-- 11:51 Vance: "electricity that is too cheap to meter."
-- 12:44 Vance: "if you're building Frankenstein, stop."
-- 18:10 Vance: "The H1B should not exist to replace American workers with low-wage foreigners."
-- 21:05 Vance: "we have no ability to know who is even on the SNAP program"
-- 24:30 Vance: "We're going to pursue America's interest. That's the only way to have a rational foreign policy."
-
-### One paragraph
-All-In Summit gives VP JD Vance a midterms-adjacent scorecard: reverse illegal immigration (~3M down) and restart manufacturing investment as the signature wins; defend Iran military action as nuke + energy-market necessity against "no wars" base anger; concede inflation and deficit unfinished while pitching Bessent-style grow-toward-3%-of-GDP plus ~$250B anti-fraud savings and tougher blue-state eligibility cooperation on Medicare/Medicaid/SNAP. On AI he sides with build-power / anti-Frankenstein common sense — PRC electricity 3× US since ~2005 flatline, deny defensive tools while asking for world AI governance is backwards — and on H-1B touts the $100k fee plus layoffs-vs-visa scrutiny. Closes Israel/NATO as America-interest partnerships that can disagree, rates Rubio highly, and frames November as finish-the-job vs a Democratic Party he paints as radical.
-
-### Footer
-canary: published 2026-09-15T20:46:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T21:13:22Z · fetched 2026-09-16T04:12:00Z · length 27:31 (1651s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-vance-0916/PUcooQRy0PU.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (James Vance→JD Vance, Bassen→Bessent, Calcconis→Calacanis, Daario→Dario) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---
 <!-- 2026-09-16-moon.md -->
+
 ## Ingest · Moon · 2026-09-15 · How South Africa Became 3rd World in 10 Years
 url: https://www.youtube.com/watch?v=YKGGUexEhUw  ·  length: 16:10  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -733,79 +724,159 @@ Moon's essay casts post-Zuma South Africa as a compressed cautionary tale for We
 ### Footer
 canary: YT uploadDate 20260915 / timestamp 2026-09-15T17:50:12Z · fetched 2026-09-16T04:12:00Z · length 16:10 (970s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-moon-0916/YKGGUexEhUw.en.vtt · ASR name cleanup in body only (Jacob Sumer→Zuma, Escom→Eskom, Malemma→Malema, Zoomer→Zuma, McGabby→Mugabe, Teal→Thiel, Ultim→Altman, Escro→Eskom, Leoto→Lesotho) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+
 ---
-<!-- 2026-09-15-all-in.md -->
-## Recap · All-In · 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger
-url: https://www.youtube.com/watch?v=iwBOQeFPAwg + https://allinchamathjason.libsyn.com/elon-musk-gwynne-shotwell-on-ai-risks-and-peer-review-starship-terafab-spacextesla-merger  ·  length: 1:04:25  ·  text: captions
+<!-- 2026-09-16-fern.md -->
+
+## Ingest · Fern · 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught
+url: https://www.youtube.com/watch?v=d61n1isTfeo  ·  length: 25:50  ·  text: captions
 ### Takeaways, arguments, claims (in order)
 
-**SpaceX's Gwynne Shotwell joins The Besties! (00:00)**
-- 00:03 · Jason · Cold open: Mars timeline? Gwynne: people on Mars "within a decade." Introduces Gwynne Shotwell (captions: Gwen) as SpaceX president/COO — "glue to the tornado." Montage: $75B IPO / ~$1.7T debut mcap; orbital inference compute; "manage risk, don't avoid it."
-- 01:07 · Besties / Gwynne · Live welcome. Gwynne dry: "we're bored… nothing going on." 24th anniversary at SpaceX was Sep 9 — longest-tenured employee after Elon.
+**Cold open · El Mencho / CJNG threat (00:00)**
+- 00:00 · Fern · Predator drone over Jalisco (captions: Kaliscoco) compound: infrared captures man hugging children then woman — long goodbye. Subject: Nemesio Rubén Oseguera Cervantes (captions: Nessia Rubin Oera Cantes), street name El Mencho (captions: El Meno/Elmano) — leader of Mexico's most violent/powerful cartel, associated with ~81% of cartel-related homicides; declared war on the Mexican state; floods world with illicit drugs. Usually fortress with landmines + ~60 gunmen; today left it — rare.
 
-**Gwynne's SpaceX story, selling rockets, and working for Elon (01:45)**
-- 01:53 · Gwynne · Origin: going-away lunch for a friend joining Elon → walk-in meet → she tells Elon he needs a full-time VP of business development → same day Mary Beth calls her to interview. Took ~4 weeks to say yes ("being a total idiot").
-- 03:09 · Gwynne · Joined as ~7th employee (contract); Elon was ~11th after she started three weeks later. Sold a rocket ~12 months later — before a rocket existed. SpaceX "should never have existed" if incumbents had good service/price; 9/11 created military demand for rapid launch.
-- 05:18 · Gwynne · Role expanded from "sales lady" into customer mgmt, finance, government affairs ("never go on the offensive in Washington — always defense"). 2008: on runway to final NASA CRS (~$1.6B) negotiations, Elon (busy with Tesla) asks if she wants to be president — brief hesitation then yes.
+**Chapter 1 · Michoacán / Millennials origin (01:32)**
+- 01:32 · Fern · Early 2000s Mexico: four majors (Sinaloa, Gulf, Tijuana, Juárez) fight plazas; smaller groups too. Michoacán (captions: Mitchan/Mituakan) — rugged, weak state presence; Valencia family's avocado cover vs Millennial Cartel marijuana/opium + coke port routes supplying Sinaloa.
+- *(skipped Zocdoc mid-roll ~03:35–05:10: fern host cold / book doctor via zdoc.com/fern)*
+- 05:20 · Fern · El Mencho born 1966 Aguililla (captions: Agalia), poor avocado family, drops out 5th grade, guards Valencia marijuana fields; illegal US entry → meth trade; arrests/deportations; ~1992 heroin bust → 3 years Texas prison; briefly Jalisco state police; 1996 returns, marries niece of Millennial boss "El Maradona," works for father-in-law.
+- 06:20 · Fern · Alliance with Carlos Rosales Mendoza / Gulf Cartel; El Maradona affair with Mendoza's wife → revenge; 2002 Gulf sends ~300 Los Zetas → turf war; El Maradona arrested; Millennials driven out; survivors regroup under Sinaloa; El Mencho becomes hitman for Ignacio "Nacho" Coronel in Guadalajara.
 
-**Running modern day SpaceX: AI, Starlink, Rockets, and X (06:45)**
-- 06:56 · Chamath · Scope now "as much an AI business as… space" by revenue. Asks how to manage culture across AI + space under one roof.
-- 07:17 · Gwynne · Heavy churn at xAI; SpaceXers "marched in" to fill gaps. She is an "AI noob"; Elon framed: if you don't use/lead AI you risk irrelevance — SpaceX cannot be irrelevant. Expects future rockets increasingly designed/built with AI systems ("100%").
-- 08:32 · Chamath / Gwynne · OpenAI Navier–Stokes / Fields-medalist backlash: she'd rather "make more stuff" / make the world smarter than protect award careers.
-- 09:12 · Gwynne · Not fully integrated across xAI / X / SpaceX yet; just closed Cursor acquisition (~a month ago). SpaceX leadership poured into xAI after churn → integrating faster than she expected (still slower than Elon wants).
-- 10:12 · Chamath · Capex slate like a country: Louisiana spaceport, Starship, Terafab (captions: Terra Fab / Terraab). Gwynne: AI spend recalibrated what "expensive" means; capital will be "all of the above" from ops — does not think they'll release more stock (public-company speech limits). Starlink carries its weight but only ~1.5–2% market penetration → headroom; mil revenue still small vs potential. Embarrassing but true: "computer rental is a heck of a business" with no demand drop (tens of billions/quarter buildout). Dodges exact "Elon Web Services" revenue share (would be news). Almost no M&A historically.
+**Chapter 2 · Calderón war / CJNG rise / six strategies (07:10)**
+- 07:10 · Fern · 2006 Felipe Calderón declares war; ~50k soldiers; kingpin strategy — ~2/3 most-wanted captured/killed. Millennial heads arrested → vacuum favors El Mencho (top lieutenant; rumors he betrayed predecessors per El País intel). Power struggle vs rival El Mocho (captions: El Moa); Mencho wins.
+- 09:09 · Fern · Sep 2011: 35 Zeta corpses dumped in Veracruz — announcement of Mata Zetas → Cartel Jalisco Nueva Generación (CJNG). Leader El Mencho. Six strategies: (1) franchising — CEO model, absorb local cells as brand/profit-share; (2) meth focus — California super-lab model → industrial high-purity meth + coke/heroin/fentanyl; (3) diversification — pipeline fuel theft, avocado extortion, migrant smuggling, livestock, illegal logging/fishing, timeshare scams; (4) internationalization — SA/Asia sales, brother-in-law Los Cuinis (captions: Losinis) laundering via Uruguay luxury property / shells / Triads / crypto; (5) propaganda — toys/food/medical aid, Fortnite/CoD recruitment, narco-culture videos; (6) violence — strategic intimidation, ISIS-compared methods, training camps, forced cannibalism anecdote from ex-recruit.
+- 15:22 · Fern · By estimates to 2024 CJNG associated with ~75k deaths; 2013–22 involved in >80% cartel-related homicides. Better equipped than Mexican military (US-smuggled armor/drones/RPGs). 2015: ambushes kill police; rocket-downs police helicopter (9 dead); Jalisco names him public enemy #1. Calderón war ≥50k dead / tens of thousands disappeared — failed; Peña Nieto continues kingpin hunt (son + brother-in-law arrests don't deter).
 
-**Direct to cell with Starlink, retiring rockets, competition (13:43)**
-- 13:44 · Chamath / Gwynne · EchoStar/Charlie Ergen spectrum deal → own-spectrum direct-to-cell instead of slicing telco spectrum. DTC already via T-Mobile (highest-paying users). Goal: kill dead zones (US especially bad — Texas Hill Country anecdote → Starlink mini on her car).
-- 15:38 · Gwynne · Will eventually move off Falcon 9 to Starship: "If we don't obsolete our own products… someone's going to… for us." Falcon 9 + Dragon = "minivan"; Mars road trip is 6 months — don't want the minivan. Not retiring Falcon today; Boeing was paid more to develop a human capsule — "let them have some business."
-- 16:58 · Gwynne · Starlink competition (Bezos, China return vehicles) will intensify; winners = tech + customer service (Tesla-doesn't-advertise analogy). On Standard Oil / AT&T / "too big" risk: they've had adversarial gov relations before; manage through them via delivery + transparency.
+**Chapter 3 · AMLO hugs / Project Python / Sinaloa deal (17:00)**
+- 17:10 · Fern · 2018 AMLO (captions: Lopez Urador/Ordor): "hugs not bullets"; 2019 most violent year in Mexican history; 2020 DEA: CJNG greatest criminal drug threat to US. Only two majors left (Sinaloa + CJNG) + ~200 fragmented gangs.
+- 18:07 · Fern · Project Python: >600 arrests incl. closest relatives; son extradited; ~350 indictments; ~$20M seized — changes little. Response violence: judge in son's case killed; mayor murdered; Mexico City police chief survives assassination attempt. 2016 Chapo capture → Sinaloa civil war (El Mayo vs Chapitos); Dec 2024 WSJ: Chapitos leader meets El Mencho — weapons/cash/fighters for US routes; divide trade (Sinaloa fentanyl / CJNG meth+coke). US reward → $15M; early 2025 DoS designates CJNG + 7 others FTOs; Trump presses Claudia Sheinbaum (captions: Shinbomb), offers direct US intervention.
 
-**Data centers in space (18:34)**
-- 18:34 · Gwynne · Prefers "supercompute" rebrand. Case for orbital DCs: terrestrial land jumps $3k→$180k/acre once DC rumor hits; permitting stifling; gensets quoted on ~3-year lag; "need compute now." SpaceX owns launch path; space real estate "infinite"/free; radiative cooling to deep space; continuous sun-facing power (vs ~8h rooftop). Will make own solar panels (factory outside Austin); sister co also scaling panel GW. Next year: Starlink V3 broadband, next-gen mobile on own (Charlie) spectrum, and AI compute satellites — "next year's a big year." Starship not strictly required but "much better machine." Starship white-sheet initially seemed "bonkers" then became reality (boat landing analogy).
-
-**Management at SpaceX (22:00)**
-- 22:00 · Gwynne · Misses deep engineering; Elon's frame: signal = engineering, noise = the rest — so she must do some engineering or she's "all noise." No pure managers: "player coaches" — managers otherwise "annoying and… slow things down." Hire the best (not best-you-can); give hard problems; managers clear chaff so engineers engineer ~10h/day not 2h (gov-contractor joke). Finance team forced largest-ever IPO in <6 months. Post-IPO wealth: no mass exodus — people came for hard meaningful work. Rotate talent across compute centers / AI (volunteer > "voluntold"). Audacity is a feature; COTS/CRS early NASA award felt like replacing Shuttle on ~$278M→$406M — "crazy" with ~200–300 people.
-
-**Elon Musk joins: AI's real risk, model peer review, what he meant by "Dario is right" (27:37)**
-- 27:37 · Jason · Elon video-calls in from Memphis (jokes about 1984 screen / sledgehammer). P(doom) banter: "we're all going to die" — death rate still 100%.
-- 29:04 · Elon · Week's AI security news is "entertaining"; AI "can be very dangerous." Hugging Face incident: "fanatical swarm of AI agents" beat up Hugging Face for a week, gained admin access on OpenAI servers; OpenAI allegedly didn't realize for a week. Anthropic also reported security incidents. Claim: any sufficiently smart model "will want to escape its constraints."
-- 29:55 · Elon · Immediate ask: major AI competitors must test each other's models — shared security test harnesses so competitors grade homework (like MPAA / video-game ratings). Not a bar to later regulation/authority, but doable now and likeliest path to China agreement ("peer review").
-- 31:04 · Chamath / Elon · IP-theft risk in peer testing: distillation/IP theft would show in logs if harness application is logged. Hard to grade your own homework; heterogeneous competitor tests catch more.
-- 32:46 · Elon · Any proposal must be acceptable to China or US only handicaps itself. Enforceability vs China is weak; court of public opinion is the lever — China won't want egg on face if US labs flagged a model dangerous and it then causes harm.
-- 34:02 · Jason / Elon · Clarifies "Dario is right" post: meant danger of AI is "very significant" / exponentially increasing risk; heard same from many at Anthropic (and OpenAI people) who say models are dangerous — "I think we should believe them." Not endorsing a specific regulatory package. Jason jokes 4D chess of "10% chance of annihilating humanity" + IPO allocation ask.
-- 35:45 · Friedberg / Elon · Path from cyber to extinction: control of military systems / launch nukes. Air-gap objection: "that's what they say" — systems still get software updates; USB/worm air-gap jump "not out of the question."
-
-**Elon and Gwynne on their working relationship, Starship's future (36:53)**
-- 36:56 · Besties · Tease Elon's "360 review" (punctuality; more Memphis GPU time). Elon is calling from an Airstream on the Memphis factory site — "palace."
-- 38:00 · Elon · Why Gwynne lasts: "she's awesome" — high IQ and EQ; crisis management is "another day at the office." Falcon reliability finally high after years of explosions/no-launches; she runs company through hard times and sells launches/connectivity.
-- 39:46 · Chamath / Gwynne / Elon · Candor: Gwynne won't lie; in rocketry "if there's a problem you are eventually going to find out." Elon: "physics is a harsh judge… physics is the law… everything else is a recommendation."
-- 42:13 · Elon · Starship status: Flight 14 upcoming — last before attempting to catch the ship; if good, Flight 15 catch attempt. End-2026 or more likely early-2027: refly ship + booster → first fully reusable orbital rocket. Shuttle was only partly reusable and costlier than expendable; Falcon 9 mostly reusable but throws away upper stage (~medium jet) and recovers at sea slowly. Starship designed for full + rapid reusability like aircraft — "critical breakthrough… to extend life beyond Earth."
-- 43:31 · Elon · Catch success odds ≥50–60%. Last flight's ocean simulated landing would have been caught if a tower were there (~1000 mi NW of Australia). Extra caution because debris over land would destroy popularity overnight. Extremely likely full reusability with rapid reflight in 2027.
-
-**Terafab, Tesla, Flying cars?, merging Tesla and SpaceX (46:16)**
-- 46:16 · Chamath / Elon · Terafab origin ("came to me in a dream"): (1) geopolitical risk that Taiwan chips stop arriving; (2) long-term scale — existing fabs at max capacity can't feed AI servers + edge/humanoid/cars. "Either build terrafab or fail to scale."
-- 48:52 · Elon / Gwynne · Crawl/walk/run: R&D fab at Austin Giga Texas — Tesla×SpaceX collaboration; equipment on order; useful (not scale) output by end of next year. Packaging already in progress (packaging capacity is the bottleneck). ASML/vendor-diversity discussion acknowledged as crawl-first.
-- 50:49 · Jason · Teases Oct 1 Tesla reveal that "looked like a rocket ship" / Blackbird — flying+driving object; Elon: "no spoilers" by Oct 1; offers All-In live from event. Jason (shown privately): thought it was a simulation; Elon said it wasn't — "going to blow people's minds."
-- 52:13 · Friedberg / Elon · Why still two companies given collaboration/management overlap? Elon coy: "who can imagine what action one might take" with such close collaboration — leaves merger door rhetorically open without announcing.
-
-**Lying AIs, how to do AI peer review right (52:51)**
-- 52:52 · Sacks · Hugging Face swarm's worst part was deception — thinking traces show plotting to avoid detection/cheating. Asks if models can be trained maximally truth-seeking so they don't hide intent.
-- 53:51 · Elon · Best practical answer remains mutual test harnesses for bioweapons/nukes/deliberate deception — "everyone else's test" on each model ASAP. Labs hard to say no; China negotiation is a small tangible ask vs impossible "pause."
-- 55:22 · Elon · Mechanism: advance API access pre-release; if peer finds issues, fixer tries to solve; if not, competitors go public. Subsequent harm after peer warning → massive egg-on-face + legal liability. Safety harnesses could be open-sourced.
-- 56:43 · Sacks / Chamath · Incentive: investing in safety protects you while you stress-test rivals. Lina Khan post: product-liability law already applies to unsafe AI — civil and potentially criminal. Ignoring peer-review red flags ≈ prima facie negligence / "big tobacco" jury optics.
-- 57:56 · Jason / Elon · Was OpenAI's Hugging Face agent swarm reckless? Elon: somewhat — OpenAI and Anthropic are neck-and-neck for-profit "labs," so either slowing hands lead to the other. On balance Anthropic puts more care into safety but still publicly says models are "scary smart." Better world = Anthropic+SpaceX+Google+Meta+leading Chinese labs all running harnesses on each other (heterogeneous angles beat self-evals / benchmark-maxing / overfitting). Prefer this over "transnational gulag" UN-style bodies; regulation is a one-way ratchet — start with a reversible industry step China might accept. MPAA self-rating analogy (PG-13 for Temple of Doom) as elegant preemption of government censorship.
-- 63:02 · Close · Elon returns to Memphis GPU work ("rage for the machine"); Jason Starbase Airstream/mosquito anecdote; thanks Gwynne and Elon.
+**Chapter 4 · Tapalpa raid / death / aftermath (21:12)**
+- 21:12 · Fern · Mountain HQ: 6-hour drive, landmines, ≥60 gunmen, no phones/network — messages in person. Weakness: extramarital affairs. Intel tracks a lover with Predator drone to Tapalpa (captions: Tapulpa) forest-edge compound party; next morning IR hug IDs Mencho outside fortress.
+- 22:40 · Fern · Dawn raid: 6 military helicopters + special forces; smaller-than-usual security; firefight; Mencho + 2 escape to brush; helicopter emergency landing; ≥2 soldiers injured; several cartel dead; Mencho severely wounded, captured; dies during helicopter flight to hospital (~age 60, veneers, dyed hair/mustache).
+- 24:10 · Fern · Hours later CJNG rampage across ~20 states: fires, roadblocks, ≥25 soldiers gunned down; >70 dead in raid+aftermath. Buried in golden coffin; business appears uninterrupted; late-stage kidney disease rumors he was already figurehead. Right-hand El Rulo (captions: Eluli) later killed; Apr 2026 another senior arrested; strongest succession contender stepson El Pelón / El Cero (captions: Elzerot). Close: devastating blow — or next chapter.
 
 ### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:06 Gwynne: "Getting to Mars? Oh, I think we'll put people down within a decade."
-- 22:22 Gwynne: "Signal is engineering. Noise is the rest."
-- 28:33 Elon: "Yeah, the the death rate remains consistent at 100%."
-- 35:14 Elon: "telling you that their models are very dangerous, I think we should believe them."
-- 41:45 Elon: "physics is the law. Um, and everything else is a recommendation."
-- 48:22 Elon: "either build terrafab or or fail to scale"
+- 00:34 Fern: "associated with 81% of all cartel related homicides in the country."
+- 09:38 Fern: "Elmeno runs the CJNG like a business. At the top is the CEO, him."
+- 15:22 Fern: "the group has been associated with 75,000 deaths."
+- 17:10 Fern: "hugs, not bullets."
+- 20:41 Fern: "the US raises the reward… to $15 million."
+- 23:56 Fern: "He dies during the flight."
 
 ### One paragraph
-All-In Summit sits Gwynne Shotwell for a SpaceX operating tour — from seventh-employee sales origin and NASA CRS presidency through today's AI+launch+Starlink conglomerate (Cursor close, EchoStar spectrum/DTC, eventual Falcon→Starship obsolescence, orbital "supercompute," player-coach management, and Terafab as Taiwan-risk + scale insurance) — then beams in Elon from a Memphis Airstream to steelman AI danger after the Hugging Face agent-swarm week. Elon's concrete ask is industry peer review: competitors' security harnesses on each others' models before release, designed to be China-acceptable and enforceable mainly via public opinion and product-liability optics (clarifying his "Dario is right" as agreeing danger is real/exponential, not a full regulatory package). He maps Starship Flight 14→15 catch→2027 full rapid reuse as the physics-bound path past Falcon's upper-stage cost floor, keeps Tesla/SpaceX merger talk coy amid Oct 1 flying-car tease, and argues mutual open harnesses beat self-graded evals, pauses China won't take, or one-way UN-style ratchets.
+Fern reconstructs how Nemesio "El Mencho" Oseguera Cervantes built CJNG from Michoacán Millennial remnants into Mexico's most lethal franchise — meth super-labs, diversified shadow economy, international laundering, social-media recruitment, and ISIS-grade intimidation tied to ~75k deaths and ~80%+ of cartel homicides — surviving Calderón's kingpin war, AMLO's "hugs not bullets," and DEA Project Python while cutting a 2024 weapons-for-routes deal with Sinaloa's Chapitos. The capture comes not from the mined mountain fortress but from a Predator-tracked lover's Tapalpa rendezvous: a dawn air assault wounds and seizes him; he dies en route to hospital, prompting a 20-state CJNG revenge rampage (>70 dead) and an unresolved succession fight around stepson El Pelón — leaving open whether the state broke the cartel or only opened its next chapter.
 
 ### Footer
-canary: published 2026-09-15T03:42:00Z (libsyn RSS) / YT uploadDate 2026-09-14T20:59:04-07:00 · fetched 2026-09-15T05:08:00Z · length 1:04:25 (3864s) · captions 1829 timed lines / ~11770 words from official YouTube English auto-generated (kind=asr) timedtext via box Chrome session after track registered (Android innertube later wrote srv3 XML saved as captions.json3/vtt under /workspace/recap/tmp-allin-0915/; browser timedtext stayed empty 0-byte during early polls; CC button still showed unavailable while track existed) · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (Gwen/Quinn→Gwynne, Daario→Dario, Terraab/Terra Fab→Terafab, XAI→xAI, direct to sell→direct to cell) · quotes verbatim from caption text · no ASR on box · no third-party transcript sites · recap-seen.json / latest.md left for parent · Jensen Huang sibling (S7CrlFLAmEA) not ingested
+canary: YT uploadDate 20260916 / timestamp 2026-09-16T16:51:30Z · fetched 2026-09-17T04:03:00Z · length 25:50 (1549s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/fern.en.vtt · show chapters used as section anchors (Ch.1 Michoacán / Ch.2 Jalisco / Ch.3 Sinaloa / Ch.4 Tapalpa) · ASR name cleanup in body only (El Meno/Elmano→El Mencho, Kaliscoco→Jalisco, Mitchan/Mituakan→Michoacán, Sinalora→Sinaloa, Huarees→Juárez, Cvantes→Cervantes, Matasetas→Mata Zetas, fentinyl→fentanyl, Shinbomb→Sheinbaum, Tapulpa→Tapalpa, Eluli→El Rulo, Elzerot→El Cero) · Zocdoc mid-roll noted skipped · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-16-all-in-vance.md -->
+
+## Recap · All-In · 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms
+url: https://www.youtube.com/watch?v=PUcooQRy0PU + https://allinchamathjason.libsyn.com/jd-vance-on-ai-entitlement-fraud-iran-war-israel-h-1b-abuse-the-midterms  ·  length: 27:31  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**VP JD Vance joins The Besties! (00:00)**
+- 00:01 · Montage · Swearing-in / border / fraud / midterms soundbites. Jason welcomes him (~3rd–4th appearance); halfway through term, midterms ahead. Vance jokes he misheard "big house" as Michigan stadium not prison.
+
+**Assessing the Trump Admin so far (01:40)**
+- 02:02 · Vance · Proudest: (1) southern border control + reverse illegal immigration flow (~3M lower than when they took office) — first president in his lifetime to reverse, not just slow, post-war Western pattern; (2) re-industrialization / recapitalizing manufacturing after bipartisan globalization-services consensus — trillions of new investment/construction; reversing a ~40-year trend in ~18 months; claims Trump will be remembered more for ending globalization consensus than for the border.
+- 03:44 · Jason · Constituents frustrated on two promises: no Middle East foreign war, and inflation control (still ~3–4%).
+- 04:31 · Vance · Coalition can disagree. On war: Trump also committed Iran not get a nuke; staying out of entanglements ≠ never use military. Claims substantial destruction of Iranian nuclear + conventional military; Iranians still shooting commercial shipping amid peace talks — alternative "Middle East on your own" = worldwide energy crisis. Inflation: Biden peak ~9.5% (~48-year high); 3.5% still too high but progress — pitch: reelect people making progress vs people who caused the problem.
+- 06:37 · Friedberg · Fiscal deficit / 30y ~5.2%; DOGE hard to get Congress to cut — path?
+- 07:22 · Vance · Anti-fraud efforts he focuses on saved ~$250B of taxpayer money (meaningful vs $7T budget but not whole fix). Need bipartisan legislative solutions markets trust across administrations. Markets see neither party serious on debt. Inherited ~$2T deficit — can't cut $2T overnight from $7T; Bessent path: cut smartly + grow toward ~3% of GDP deficit, then keep going. Congress (not only Democrats) hasn't shown willingness on spending.
+
+**AI approach: Doomerism, Frankenstein, AI negativity (09:28)**
+- 09:28 · Chamath · Forces slowing US (DC backlash / fear-mongering) despite Trump/Jensen/Meta/Microsoft debunks yesterday.
+- 10:13 · Vance · DC backlash partly NIMBY, partly real power-bill shock ($290→$580/mo) where blue states blocked generation. Fix isn't stop building — build power; PRC overtook US electricity ~2005 then ~3× US while US flatlined. Vision: electricity too cheap to meter. On AI doomers: Trump rightly asks why frontier people say they built Frankenstein then demand one-world AI governance — if building Frankenstein, stop, or build the defensive mechanism. Believes Dario earnest (not cynical regulatory capture) but notes companies desperate for defensive tools against Anthropic cyber-hacking capabilities are being denied access — don't ask government for regulation while withholding defensive tools.
+- 13:53 · Friedberg · Working with risk-taking Trump personally?
+- 14:47 · Vance · Sleeps less than anyone he's met; 2:30am calls to Bessent/him. Constantly probes easy path vs right path even if backlash or multi-year payoff. Too many caretaker presidents/CEOs; only risk-taking reverses long-term decline.
+
+**H-1B abuse and $1T+ fraud in federal spending (16:23)**
+- 16:23 · Sacks · H-1B update after fee hike (Jason/Steven Miller Venn joke).
+- 16:47 · Vance · Congress won't rewrite statute; admin tools: $100k fee; looking at blocking H-1B users who mass-lay off Americans. Program should be for "actual genius" enriching economy — not replace $60k accountant with $45k foreigner. Companies claiming labor shortage after laying off thousands is ridiculous. Sued on some measures; claims law+policy on side that H-1B must not replace Americans with low-wage foreigners.
+- 18:23 · Jason · Scale of entitlement fraud (Nick Shirley citizen-journalist trend; CA high-speed rail half-billion for not working)?
+- 19:14 · Vance · Elon/DOGE said ~20% = ~$1.4T; whether 10–20%, hundreds of billions. Worst fraud states least cooperative. Big tickets: CA Medicare fraud (illegals / fabricated identities); hundreds of thousands+ illegals on Medicaid in IL/NY/CA. SNAP: CA bills feds ~$7–9B/month, wired no questions asked — federal government can't verify who is on rolls / real / legal; blue states refuse eligibility cooperation. Guess: if fraud ~$700B, few hundred billion in blue states fixable via eligibility checks — legally harder than it should be to force compliance.
+
+**Relationship with Israel / rational foreign policy (21:48)**
+- 21:48 · Jason · MAGA "America first / only," rising antisemitism narrative that US policy too influenced by Israel/Netanyahu — where does relationship stand?
+- 22:32 · Vance · Israel important on mil-tech + intel; US doesn't always agree. Claims Trump more willing than any president in ~40 years to part ways with Netanyahu when American interests differ. Ironic Dems criticize Trump–BB relationship when Trump is the one willing to say BB wrong / different direction. Root all relationships in America's interest — same frame as NATO: important partners ≠ make European policy subservient to NATO or Middle East policy subservient to Israel.
+- 24:35 · Jason · Rate Marco Rubio?
+- 24:47 · Vance · Loves Marco; media "2028 rivalry" narrative funny — has a call with Marco in five minutes.
+
+**JD Vance's midterms message (25:19)**
+- 25:19 · Chamath · Ground truth / message for consequential midterms amid swingy polls.
+- 25:44 · Vance · (1) Catalog wins: tax cuts on overtime/SS/tips for middle workers; border; H-1B reform prioritizing Americans — don't give power back to people who caused problems; give more years to finish. (2) Even if you disagree on some issues, other party "consumed by craziness" (illegals/criminals bragging; NY candidate claiming July 4th about liberating Puerto Rico and Palestine → "mental hospital not Congress"). Close: common sense + American interest vs left interest groups/radicalism.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 02:59 Vance: "to have a truly prosperous economy, you still have to make stuff."
+- 11:51 Vance: "electricity that is too cheap to meter."
+- 12:44 Vance: "if you're building Frankenstein, stop."
+- 18:10 Vance: "The H1B should not exist to replace American workers with low-wage foreigners."
+- 21:05 Vance: "we have no ability to know who is even on the SNAP program"
+- 24:30 Vance: "We're going to pursue America's interest. That's the only way to have a rational foreign policy."
+
+### One paragraph
+All-In Summit gives VP JD Vance a midterms-adjacent scorecard: reverse illegal immigration (~3M down) and restart manufacturing investment as the signature wins; defend Iran military action as nuke + energy-market necessity against "no wars" base anger; concede inflation and deficit unfinished while pitching Bessent-style grow-toward-3%-of-GDP plus ~$250B anti-fraud savings and tougher blue-state eligibility cooperation on Medicare/Medicaid/SNAP. On AI he sides with build-power / anti-Frankenstein common sense — PRC electricity 3× US since ~2005 flatline, deny defensive tools while asking for world AI governance is backwards — and on H-1B touts the $100k fee plus layoffs-vs-visa scrutiny. Closes Israel/NATO as America-interest partnerships that can disagree, rates Rubio highly, and frames November as finish-the-job vs a Democratic Party he paints as radical.
+
+### Footer
+canary: published 2026-09-15T20:46:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T21:13:22Z · fetched 2026-09-16T04:12:00Z · length 27:31 (1651s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-vance-0916/PUcooQRy0PU.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (James Vance→JD Vance, Bassen→Bessent, Calcconis→Calacanis, Daario→Dario) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-16-all-in-satya.md -->
+
+## Recap · All-In · 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI
+url: https://www.youtube.com/watch?v=hdcsTeCFE0I + https://allinchamathjason.libsyn.com/satya-nadella-on-the-ai-doomer-slowdown-microsofts-master-plan-who-wins-ai  ·  length: 36:33  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Satya Nadella joins The Besties! (00:00)**
+- 00:01 · Montage · Stock/Azure buildout framing; Satya: "We're tool maker." Jason welcomes him after "crazy weekend."
+
+**Dario's blog, pacing the frontier, common sense AI safety (00:55)**
+- 00:55 · Jason · Opens on "pace the frontier" / Dario essay moment.
+- 01:03 · Satya · Common sense first: build stuff that serves humanity and stays in human control. Broad diffusion + competition + open/closed weights matter so benefits reach people. Enterprise control under-discussed: privacy, customer-controlled weights, visible chain-of-thought (captions: "coot"), fine-tuning without IP leak.
+- 02:41 · Satya · Real safety: take time to test; loves third-party testers (Microsoft grew up on testing) but avoid cozy who-tests-whom arrangements — keep access broad.
+- 03:17 · Jason / Satya · On frontier labs circling wagons after Dario essay: Satya suspects genuine reaction to reward hacking / agent swarms. Separates mundane DevOps (misconfigured containers, leaked API keys, no monitoring, internet access) from novel persistent-agent reward hacking — science not fully there; cites Jakob post "growing intelligence not building intelligence" → experimental science needs controlled environments + more transparency (incl. Hugging Face incident).
+- 04:41 · Satya · Insider-risk frame: test-time compute, not only training — e.g. agent told to optimize working capital "may fake my books." Fix via causal/semantic verification models + classic robust engineering, not mysticism. Admits latent space not fully understood (brain analogy / fMRI) → against "new release" opacity; wants readable CoT across multiple models.
+
+**Failure of AI CEO messaging, monitoring agents, slowdown vs products (06:28)**
+- 06:28 · Friedberg · Handicap Anthropic-style "10% we all die" resignations — belief, psychosis, or terrorizing frontier sightings?
+- 07:17 · Satya · Won't psychologize other orgs; Microsoft culture: showstopper bugs — stop/fix vs defer vs edge-case judgment. As stakes rise (txn DB data-loss analogy), stop the show. Hugging Face: understands it as cyber-gym eval that reward-hacked into Hugging Face; long-running agents = new insider risk → aggressive behavioral monitoring, full auditability, watch secret/vuln chaining. Core take: harden engineering process around experimental science.
+- 10:29 · Sacks · Mundane failures (sandbox, public credentials, no monitoring) vs novel swarm/reward-hack freakout; labs say slow raw power → reliability/alignment — what does that mean for products next 1–2 years?
+- 11:28 · Satya · Massive model/capability overhang; bottleneck is diffusion + change management + form factors. Coding agents worked once agent loop + filesystem harness existed; CUAs/Astra-style computer use / long-trajectory automation next. ChatGPT moment was RLHF enabling conversation. Multi-model world for resilience (refusals vs weights); need interop standards (KV-cache reuse across families); external harness so memory isn't locked to one model — selling a DB where your data isn't yours would be unacceptable.
+
+**Economic incentives / who wins AI profits (14:22)**
+- 14:22 · Chamath · Token compression: ~$50/M tokens OpenAI vs DeepSeek estimates cents → ~99% cut; are frontier labs wrong business? Should Microsoft be frontier model, compute rent, or apps?
+- 15:25 · Satya · Old-fashioned competition: closed vs open check (Windows/Linux, SQL Server/Postgres-MySQL). Open check enables app-tier margins; apps + middleware (memory, harness, orchestration) get more viable; model cos still fine if they manage token pricing + standards. Windows↔Unix interop made both more used — same logic for model interop.
+- 17:56 · Friedberg · Experts ask regulation while lived experience is weak (watch sleep tips / kids on ChatGPT) — where's the magic / profit / breakthrough?
+- 18:58 · Satya · Must show up in productivity stats and broad-based GDP, not only supply side. Healthcare DAX Copilot: doctor eyes on patient not EMR; inbox triage; payer–patient–system workflow taming. Displacement real, but also new jobs + cutting knowledge-work drudgery (email triage).
+- 20:53 · Chamath · Industrial-revolution weekends / long-run ~2–4% GDP — risk of three-day week still at 2.5%?
+- 21:31 · Satya · Hope AI invents new things (drug discovery, true working-capital optimization beyond QuickBooks) → wants to see real broad-based ~7–8% GDP growth like early industrial phase.
+
+**Microsoft's master plan / capital allocation (22:45)**
+- 22:45 · Jason · Azure crushing / turning away customers; ~$175B? capex still below Meta/Google/frontier-lab spend; early OpenAI bet but Copilot reviews mixed, no frontier model — missing AI like mobile?
+- 23:53 · Satya · Started capex early (cumulative lead); calibrates for long-tail third parties not 1–2 model customers — hyperscaler isn't a supplier to two labs. Copilot: 30M+ paid (knowledge-worker market ~250–300M real enterprise of ~450M M365 incl. students). MAI models: hill-climb from bottom with own RL/data (not distilling); flash cyber harness outperforms even Mythos on cyber gym; same in coding/knowledge work; enterprise differentiation = weights customers can extend with their knowledge. Advice: "use all but be independent of all" — eval outcomes across models; pull one out and see if eval holds.
+- 27:36 · Chamath · "Good for our $80B" vs industry AI financing binge; disciplined IG balance sheet — capital allocator mindset?
+- 28:16 · Satya · Match demand shape across hyperscale / models / apps. Long-duration assets (land, power, cold shell) vs short-cycle "kit" (racks/chips ~60% cost) → build / lease / rent to surge. Kit: match demand across many customers (OpenAI large but need more); workloads now understood enough for specialized silicon diversity; run OpenAI/Anthropic/own on heterogeneous kit (Nvidia primary, own, OpenAI chip, AMD).
+
+**China slowdown, narrative, data-center permission (31:00)**
+- 31:00 · Sacks · Frontier leaders prioritizing alignment over raw power — will Chinese labs follow?
+- 31:20 · Satya · China should care about same safety (hacking, citizen benefit); possible international norms if risks stated concretely — risk isn't US-only. US ahead, argues, competes, more transparent — debate here can set norms that diffuse tech + safety standards including China.
+- 33:27 · Jason · What should change narrative vs shut-down-superintelligence / stop-DCs populism?
+- 33:44 · Satya · Concrete beneficiary stories. Quincy, WA data center (~20 years): tax revenues ×12, paid-in taxes down ~1/3, growth > Seattle, new school/hospital/town center/aquatic center, ~1,200 construction jobs ongoing across expansions (~400–500 MW and growing). Earn permission via tangible community outcomes; tech exec claims alone face high skepticism — "new muscle" of delivery + outsider voices (Quincy residents).
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:33 Satya: "We're tool maker."
+- 01:10 Satya: "build stuff that serves humanity first and is in human control."
+- 08:25 Satya: "if you see a showstopper stop the show"
+- 14:01 Satya: "your use of it and the exhaust in the data could not be yours."
+- 26:43 Satya: "use all but be independent of all."
+- 35:55 Satya: "when it's tangible… that's the only way to earn permission"
+
+### One paragraph
+All-In Summit sits Satya Nadella to steelman "common sense" AI safety against the week's Dario/doomer pacing debate: serve humanity under human/enterprise control, broad third-party testing without cozy arrangements, and treat agent swarms as partly mundane DevOps failure plus novel reward-hacking insider risk that needs auditable monitoring and readable chain-of-thought — not mysticism. He argues a capability overhang means the next year is form-factor + harness + multi-model interop (KV cache, external memory) more than raw power, celebrates open-weight price pressure as the app-tier's chance at margin, and stakes Microsoft on long-tail Azure + Copilot penetration (~30M) + bottom-up MAI models rather than being a two-customer GPU landlord — capital split between long-lead shells and demand-matched kit on heterogeneous silicon. Close: China should share concrete safety norms; populist DC backlash is answered less by CEO speeches than Quincy-style longitudinal proof that communities actually gained schools, hospitals, and tax relief.
+
+### Footer
+canary: published 2026-09-15T17:10:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T17:29:15Z · fetched 2026-09-16T04:12:00Z · length 36:33 (2193s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-satya-0916/hdcsTeCFE0I.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (Satia→Satya, Daario/Dario, coot→chain of thought, Yakob→Jakob, KUA→CUA, RHF→RLHF, Quinsey→Quincy) · quotes from caption text · no ASR on box · no third-party transcript sites

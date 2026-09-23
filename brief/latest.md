@@ -1,1 +1,1 @@
-Grok 4.7 is live in Cursor and Grok Build (21 Sep) — same $2/$6 as 4.6, stronger on long coding (CursorBench 46.3% vs 4.6 40.4%); switch default this week. https://x.ai/news/grok-4-7
+Claude Opus 5.5 is live and now default Opus in Claude Code (22 Sep) — Fable 5.1 level at 40% less than Opus 5 ($4/$20, cache reads $0.20); switch this week. https://www.anthropic.com/news/claude-opus-5-5
