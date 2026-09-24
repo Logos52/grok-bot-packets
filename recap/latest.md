@@ -1,5 +1,183 @@
-# Recap latest · last 7 days (2026-09-16 → 2026-09-23)
-Rebuilt 2026-09-23 noon Asia/Taipei. Newest first. 15 packets.
+# Recap latest · last 7 days (2026-09-17 → 2026-09-24)
+_Rebuilt 2026-09-24 · 13 ingest + 8 list packets · newest first_
+
+
+---
+<!-- 2026-09-24-all-in-ferrari.md -->
+
+## Recap · All-In · 2026-09-23 · Luca Ferrari, Bending Spoons CEO: The $40K Start, Buying Product-Market Fit & Beating Private Equity
+url: https://www.youtube.com/watch?v=6t5yF8ansoQ + https://allinchamathjason.libsyn.com/luca-ferrari-bending-spoons-ceo-the-40k-origin-story-buying-product-market-fit-why-private-equity-cant-compete  ·  length: 25:30  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Welcome Luca Ferrari! (00:00)**
+- 00:02 · Intro reel · Bending Spoons: zero → **$1B** revenue in ~10 years; never lost a bid; buying Eventbrite; AOL parent again; "zombie app" revival model; **half a billion** people use products; "generational company" pitch. Luca Ferrari (Milan) on stage.
+- 00:43 · Jason / Chamath · Banter (Ferrari name / Super Mario); Jason has tracked Luca via Milano ties + Patrick O'Shaughnessy podcast; asks for nadir → ascent arc.
+
+**Crashing an AI startup, the $40,000 restart & buying product market fit (01:56)**
+- 01:55 · Luca · Biggest failures were prior startup: AI company launched **2010** (too early) → crashed ~3 years later; left with ~**$40,000** of VC capital; VCs sold shares for **$1** nominal ("go on vacation"); co-founders instead used it as seed for Bending Spoons (**2013**).
+- 03:04 · Luca · Strategy unchanged at core: not great (or lucky) at finding product-market fit → buy PMF from others; be world-class at engineering, design, monetization, marketing; seller gets price, BS gets asset to improve.
+- 03:47 · Luca · First acquisition ~**$10,000**: iPhone keyboard-personalization app from solo developer; negligible revenue, but users + App Store positioning / inbound installs — pattern that scaled: buy brands + user bases, improve everything.
+
+**The in-house tech stack, shrinking the teams & the 10 out of 10 standard (04:59)**
+- 05:11 · Luca · Most work is engineering/product; core team ~**800**; ~**3/4** engineers / AI researchers / designers / PMs. Early apps rewritten; today swap acquired tech foundation for an "operating system" of **50+ proprietary technologies** (AI orchestration, recruiting, platforms) so every business shares tools (HR/finance/techops/devops).
+- 06:25 · Luca · Vendor consolidation (one AWS deal, etc.) is a small lever (~**1–2 pts** EBITDA margin); bigger: revenue via better product/tech/monetization + cost via leaner, talent-dense teams.
+- 06:54 · Jason · "Elon X playbook before he did it" (Vimeo / Bright rightsizing jokes).
+- 07:11 · Luca · Learned lean staffing first because early sellers sold the asset not the team → BS built smaller internal teams; later, when buying staffed companies, could not justify larger footprints vs comparable internal ops; experimentation found a "sweet spot." Goal: businesses run at **10 out of 10** — likelier with very small teams, high talent bar, ownership.
+
+**Debt as an accelerant, what happens if rates rise & who else is bidding (09:55)**
+- 08:25 · Jason · ~**$40B** market-cap zone from $10k first deal; when did debt enter?
+- 08:54 · Luca · Debt from **2017/18** (basic bank loans / TLAs → TLBs; bonds later possible). Redeployed ~**100%** of free cash flow to acquisitions from the start. At IPO: only ~**$0.5B** primary equity raised (almost all in prior six months) at ~**$20B** valuation — track record mostly FCF + debt, not equity; public company may use equity tactically.
+- 09:54 · Jason · If loans are ~10–12% and a deal needs ~**$100M**/yr debt service, rate rises + more auction competitors — throttle?
+- 10:36 · Luca · Debt is growth accelerant; would still grow fast on FCF alone. Existing debt: blended cost ~**9%**, **fully hedged**, matures **2031**, ~**2.5×** leverage, can repay before maturity. Higher rates → new debt costlier, but historically **unlevered returns >25%** so 9% vs 12% does not break model; rate-up usually lowers asset prices → serial acquirer may benefit more from cheaper targets than suffer on debt. Competition present in almost all processes; PE fundraising softer could even help; moat is years of painful tech experimentation + **800** carefully selected people + high-performance scientific culture — rebuildable in ~5 years maybe, not two months.
+
+**Inside the deal desk: what gets acquired, why they don't build & the founder question (14:58)**
+- 13:08 · Jason · VC worships founder authority (Elon-style pivots); Luca's model seems not to want founders inside each brand — grow cash cows or cutting-edge v2s?
+- 13:57 · Luca · Exceptional founder staying is 9/10 a net positive; targets are often 10–20+ year businesses where founders are closing a chapter. BS wins if business does better under them than prior ownership even without founder; not anti-founder — sellers usually want to move on.
+- 14:57 · Chamath · Walk the deal desk / screening.
+- 15:16 · Luca · Qualitative filter: (1) **scale** — deep transformation is heavy; effort does not scale linearly with revenue → prefer few sizable deals over many tiny ones; (2) **earnings predictability** (~5–6 year directional confidence); (3) room to create value (tech, org, product, monetization, marketing).
+- 16:12 · Chamath · Customer-facing synergies (AOL ads ↔ Vimeo/Eventbrite/Miro) + why not also build organically on the shared stack?
+- 16:46 · Luca · Historically almost **no** customer-facing synergy value; plenty of behind-the-scenes shared foundation + fluid core team. Tried customer synergies — worked only marginally (~**3%**); bulk is 10/10 ops per business. Organic greenfield radical innovation: can't do everything; launch a lot atop existing brands but stay focused; at proforma ~**$4B** run-rate with Miro, needle-moving new products are rare vs resource cost.
+- 18:59 · Luca · Saturation-phase targets often lack Anthropic-grade entrepreneurial talent — assessable from first principles; BS advantage attracting talent: rotate across AOL email rebuild → Vimeo subscriptions → payments platform under one culture. Last year **800,000** applications → hired **<300**. Hub: Milan historically largest; London rising; Madrid; US hiring next year.
+
+**Building a tech giant out of Milan, Europe's talent pool & the outsider advantage (20:22)**
+- 20:22 · Jason · Europe not where VCs chase; what's it like as top-tier European tech (Spotify aside)?
+- 21:26 · Luca · Europe has problems but **~0.5B** people, solid (not Stanford) education, chip-on-shoulder talent; Italian "don't work hard" mostly false stereotype — BS teams often work harder than acquired incumbents; hire intrinsically motivated / hungry.
+- 22:23 · Chamath · Wichita / Charles Koch parallel: Milan outsider not indoctrinated in SV cultural thinking; playbook of Amphenol / Roper / Danaher / Berkshire never successfully scaled in tech before (Expedia/Barry messy) — BS proving tech cash flows underwritable for 7–9 years while PE is confused / slower to transact.
+- 24:31 · Luca · PE model is structurally different: keep companies separate to sell → cannot share deep tech foundation (what happens on exit — license to competitor?) or pooled engineer/designer team (pull team out and asset dies, or sell team away). Those structural gaps explain BS returns PE "hands-off more capital" model cannot match.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 03:13 Luca: "we are not very good at finding product market fit… we should be able to buy product market fit from people"
+- 05:47 Luca: "an operating system of 50 plus proprietary technologies"
+- 08:08 Luca: "we want our businesses to be… run at a 10 out of 10 level"
+- 11:29 Luca: "Our returns unlevered historically have been pretty high consistently above 25%"
+- 16:46 Luca: "historically we have created almost no value from let's say customer facing synergies"
+- 25:01 Luca: "just the model is completely different… it will never work with the traditional private equity"
+
+### One paragraph
+Bending Spoons CEO **Luca Ferrari** recounts turning a crashed 2010 AI startup's leftover **$40k** into a **2013** thesis — buy product-market fit, win on engineering/design/monetization — from a **$10k** keyboard app to Eventbrite/AOL/Vimeo/Airtable/Miro-scale deals, a shared **50+** tech "OS," ~**800**-person talent-dense core, and ~**$40B** mcap built mostly on **100%** FCF redeployment plus hedged ~**9%** debt (~**2.5×**, to 2031) rather than equity. He defends rightsizing to "10 out of 10" small teams, screens for scale + multi-year earnings predictability + operable value levers (not customer-facing synergies, historically ~nil), skips greenfield moonshots at ~**$4B** proforma run-rate, and argues Milan/Europe outsider talent plus a hold-and-integrate platform beats PE's sell-separate structure that cannot share deep tech or pooled engineers — hence unlevered **>25%** returns PE hands-off capital cannot copy.
+
+### Footer
+canary: published 2026-09-23T23:00:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 25:30 (1530s) · captions English auto via official YouTube transcript panel on watch page (box browser / Playwright CDP; yt-dlp timedtext HTTP 429) → /workspace/recap/tmp-0924-luca/transcript.txt (214 timed lines; ~5000 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Benny's phones/Benny's films→Bending Spoons, Onessy→O'Shaughnessy, FDs→FTEs, Indep→indebtedness, Clara→clearly, air table→Airtable, bright→Bright) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-24-fern.md -->
+
+## Ingest · Fern · 2026-09-23 · The Most Disgusting Influencer Campaign of 2026
+url: https://www.youtube.com/watch?v=WOOwVvYoq5I  ·  length: 20:49  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Cold open · fake Polymarket win videos (00:00)**
+- 00:04 · Fern · Mid-2025 social feed fills with small influencers placing huge weird Polymarket bets (Trump says "McDonald's"; Jesus returns before GTA 6) that almost never lose; shaky "infinite money glitch" clips feel off → Wall Street Journal investigation.
+- 00:45 · WSJ (Katherine Long) · Mystery had a "dumb" answer staring them in the face: organized campaign Fern frames as most disgustingly deceitful influencer campaign of recent times — laser-focused on tricking young people in the US; influencers big/small + insider-trading tips + shady clipper army on covert instructions.
+- 01:51 · Fern · Credits WSJ's Katherine Long + Politico's Maya Kaufman and Jason Beeferman; video mainly based on their investigations.
+
+**Origin · Polymarket rise / US ban / return campaign (02:06)**
+- 02:06 · Fern · Shane Copeland (captions: Copelan) launches Polymarket in NY in 2020 at age 22 as a "prediction market" (missile-strike timing, Trump/Rogan weed, flat-earth proofs); celebrity endorsements + Donald Trump Jr. investment; rival Kalshi (captions: Cali); 2025 Bloomberg: youngest self-made billionaire; valuation up to **$15B**.
+- 02:40 · Fern · Since **2022** site effectively banned in US (authorities: unlicensed financial exchange). Dec 2025: limited US sports-betting app approved; return paired with enormous social campaign to build trusted brand.
+- *(Shopify mid-roll ~03:00–05:00 skipped)*
+
+**Fake wins · pouyarket.com typo-squat (05:00)**
+- 05:00 · Fern · Mid-2025 political influencers call Polymarket "unbiased and real"; hundreds of videos show huge wins; WSJ cannot find the trades in public Polymarket records after a week of searching.
+- 06:30 · Fern / WSJ · Example: creator "wins" **$100k** on Trump saying McDonald's by cutting to an old Trump event with golden arches — bet would not have won if placed when filmed.
+- 07:40 · Fern / WSJ · Colleague spots creator navigating to **pouyarket.com** (password-protected); capitalize the **I** and it looks like polymarket.com (I≈L) — dummy site for filming fake wins that never hit the public database.
+- 08:50 · Fern / WSJ · Across **100+** fake-win videos, purported wins sum to almost **$900k**; identical real trades would have lost over **$160k** — not even a winning strategy.
+
+**Paid creators + clipper army / no disclosure (09:20)**
+- 09:20 · Fern / creators · Polymarket paid creators to film/post fake wins and **explicitly ordered them not to disclose** payment; content had to look authentic; pay **$2–3k/month** (far below purported on-platform earnings).
+- 10:00 · Fern · Hired marketing firm to run offshore "clippers" (sock-puppet accounts) to repost on TikTok/YouTube/Instagram; guidance: warm accounts, never put Polymarket in username or affiliation — "if you have Poly in your username you're going to be banned, we're not going to pay you."
+- 10:50 · Fern · Fake-bet clips viewed over **140 million** times (Tubular). US ad law / FTC: paid endorsements must disclose; many creators deleted/hid videos after outreach; Polymarket no comment to Fern on creator campaign; told WSJ it was committed to compliance (statement paraphrased in captions).
+
+**Politico thread · PayPal pipeline / Shirley / Ross (11:27)**
+- 11:27 · Politico · Poly Market executive sent **$350k** to influencers/creators via **personal PayPal**; same exec sent **$2.5M to 800+ people over 14 months** — posts often framed as news ("breaking" odds moves) without disclosing pay.
+- 12:10 · Fern · Nick Shirley posts Polymarket often while covering alleged US fraud; wore Polymarket-branded apparel; exec transferred him thousands; no comment from Shirley or Polymarket on influencer questions; spokesman to Politico: partnerships are "standard business practices" across political spectrum.
+- 13:20 · Fern · Aiden Ross (Kick/Twitch/YouTube) had multi-million-dollar deal per WSJ source; clipper army also promoted Ross clips about how easy insider trading / market manipulation would be (Trump meetings; Drake album features).
+- 14:20 · Fern · Rejects intuition that promoting insider tips hurts the house: on Polymarket winners are paid by other traders' stakes; platform earns **fees** — more volume, more revenue regardless of crazy odds. Company says it bans illegal insider tips yet leaders also pitch markets as truth that rewards non-public info.
+
+**Dumb money thesis / US targeting / aftermath (15:40)**
+- 15:40 · Fern · Endgame = "dumb money": young inexperienced long-odds bettors depicted in fake wins. Study cited: ~**85%** of Polymarket traders lose overall; only **~2%** have won more than **$1,000** total. More losers fund winners and fee growth; some users track bad accounts to fade them.
+- 17:00 · Fern · Clippers paid only if large share of audience is US-based (US SIM / phone-number tips) despite site ban — mid-2025 Polymarket pays over **$100M** for licensed US exchange/clearinghouse; Copeland: paves way to welcome US traders; fake-app versions of win videos appear too.
+- 18:00 · Fern · Aftermath: consumer-protection group sues citing the reporting (deceptive marketing; teens saw content); CFTC investigation ongoing; insider-trading questions reach the president; company still rising — partners Yahoo Finance / Dow Jones (WSJ owner, disclosed in WSJ reporting); Trump Jr. investor + adviser; FBI raided Copeland home **2024** (Biden term) over banned US users; older CFTC probe dropped within half-year of Trump return; administration more laissez-faire (captions: lazy fair) / encouraging.
+- 19:58 · Fern close · Once such a deceitful campaign might have forced a reckoning — now unclear. Reminder: ask why influencers post; here young trusting audiences set up to lose into a growth-at-all-costs machine; feeds a sense of **manufactured reality**.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:53 Long: "such a dumb answer, something that was really staring us in the face."
+- 08:20 Long: "That's why we couldn't find any of these trades in the database because they're all fake."
+- 09:40 Fern: "they were explicitly ordered to not show that they had been paid."
+- 11:29 Politico: "sent $350,000 to influencers and creators all through the exec's personal PayPal account"
+- 16:10 Fern: "around 85% of Poly Market traders lose money overall."
+- 20:40 Kaufman: "contributed to this idea that like we're living in sort of like a manufactured reality."
+
+### One paragraph
+Fern synthesizes WSJ + Politico reporting on Polymarket's mid-2025 US return campaign: creators filmed "wins" on a typo-squat **pouyarket.com** dummy that looks like polymarket.com, never placing public trades (**~$900k** purported wins that would have lost **~$160k** if real), while being paid **$2–3k/month** under orders not to disclose; a clipper sock-puppet army pushed the videos to **140M+** views and a company exec routed **$350k** (and **$2.5M** across **800+** people in 14 months) through personal PayPal to political influencers and streamers (Nick Shirley, Aiden Ross) without FTC-style disclosure. The commercial logic rejects house-risk fears — fee-driven prediction markets want volume and "dumb money" (cited **~85%** losers) especially US audiences despite the **2022** ban, timed with a **$100M+** licensed-exchange buy. Aftermath includes a consumer suit and ongoing CFTC work, yet political cover softens under Trump (probe dropped; Trump Jr. as investor/adviser) — Fern's close: a manufactured-reality feed where young trust is feedstock for growth.
+
+### Footer
+canary: YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 20:49 (1249s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-0924-fern/captions.en.vtt (~202KB) + cleaned plain /workspace/recap/tmp-0924-fern/transcript-plain.txt (~3799 words) · Shopify mid-roll noted skipped · ASR name cleanup in body only (Copelan→Copeland, Cali→Kalshi, Poly Market→Polymarket, Beefman→Beeferman, pouyarket kept as reported typo-squat) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-24-list.md -->
+
+## List · pinned shows · pass 2026-09-24 (noon Asia/Taipei)
+Window: since last clock 2026-09-23 ~04:20 UTC. Usage: LIST + INGEST two new long-forms (All-In Luca Ferrari pub ~23:00 UTC Sep 23; Fern Polymarket influencer campaign uploadDate 20260923). Other pins quiet.
+
+### All-In · rss libsyn + YT @allin
+- NEW on disk 2026-09-24 · Luca Ferrari, Bending Spoons CEO: The $40K Start, Buying Product-Market Fit & Beating Private Equity · 25:30 · packet `/workspace/recap/2026-09-24-all-in-ferrari.md` · https://www.youtube.com/watch?v=6t5yF8ansoQ · libsyn https://allinchamathjason.libsyn.com/luca-ferrari-bending-spoons-ceo-the-40k-origin-story-buying-product-market-fit-why-private-equity-cant-compete
+- on disk 2026-09-23 · Steve Hilton & Spencer Pratt: Fixing California… · 55:43 · packet `/workspace/recap/2026-09-23-all-in-hilton-pratt.md` · https://www.youtube.com/watch?v=VF90rBzl26E
+- on disk 2026-09-23 · Blake Scholl: Why Plane Speed Stalled… · 17:39 · packet `/workspace/recap/2026-09-23-all-in-scholl.md` · https://www.youtube.com/watch?v=Gnb-CfNPcPE
+- on disk 2026-09-21 · Naveen Rao… · https://www.youtube.com/watch?v=yAsrMA_ADPc
+- on disk 2026-09-20 · Adam Foroughi… · https://www.youtube.com/watch?v=JtomF4bGxHs
+- on disk 2026-09-19 · Bill Gurley… · https://www.youtube.com/watch?v=A4Q7zAayW20
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Jared Isaacman… · https://www.youtube.com/watch?v=VTF6p0U98ek
+- on disk 2026-09-18 · Nick Shirley… · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner… · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- What's new this pass: NEW Summit long-form — Luca Ferrari / Bending Spoons (~23:00 UTC Sep 23). Ingested → `/workspace/recap/2026-09-24-all-in-ferrari.md`.
+
+### Fern · English @fern-tv
+- NEW on disk 2026-09-24 · The Most Disgusting Influencer Campaign of 2026 · 20:49 · packet `/workspace/recap/2026-09-24-fern.md` · https://www.youtube.com/watch?v=WOOwVvYoq5I
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI's Most Valuable Agent · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- What's new this pass: NEW long-form — Polymarket fake-win influencer campaign (uploadDate 20260923). Ingested → `/workspace/recap/2026-09-24-fern.md`.
+
+### Moon · English @Moon-Real
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · South Africa Is a Warning To The World · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Perv Economy · https://www.youtube.com/watch?v=dRM1RAld3YY
+- What's new this pass: nothing new — Satisfying Collapse still channel top (ingested 09-17).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster… · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- What's new this pass: nothing new — China/magnets still channel top (ingested 09-11).
+
+### Frontpage · English @frontpagechannel
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:05 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · https://www.youtube.com/watch?v=R9GEhShaHhI
+- What's new this pass: nothing new — Gig Economy still channel top (ingested 09-17).
+
+### Elon sit-down interviews
+Guest sit-downs only; skip wraps/clips/daily X / clone "JUST RECORDED" dumps.
+- on disk · An interview with Elon Musk (The Economist Insider) · https://www.youtube.com/watch?v=XuoqKYxDHVc
+- on disk · Elon Musk & Gwynne Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- What's new this pass: nothing new — ytsearch hit known Economist full + AI clip, All-In Shotwell, WEF/Davos clones, and clip dumps only; no new first-party sit-down since last clock.
+
+### Naval (parked)
+- parked since 2026-07-02 · skip (optional peek: no new publish signal requiring un-park).
+
+### Deferred
+- none this pass (both new long-forms ingested).
+
+Footer: listed 2026-09-24 ~12:00 Asia/Taipei (fired ~11:14 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos flat + Elon ytsearch · Fern captions via yt-dlp auto-sub · All-In Luca captions via official YT English transcript panel (box browser; yt-dlp timedtext HTTP 429) · bank deposits ideas `2026-09-23-fern-the-most-disgusting-influencer-campaign` + `2026-09-23-all-in-luca-ferrari-bending-spoons` · no Arguments pins · no wiki
 
 
 ---
@@ -125,6 +303,163 @@ canary: published 2026-09-22T09:00:00Z (libsyn RSS) / YT uploadDate 20260922 · 
 
 
 ---
+<!-- 2026-09-23-list.md -->
+
+## List · pinned shows · pass 2026-09-23 (noon Asia/Taipei)
+Window: since last clock 2026-09-22 ~04:08 UTC. Usage: LIST + INGEST two new All-In Summit long-forms (Blake Scholl pub ~09:00 UTC Sep 22; Steve Hilton & Spencer Pratt pub ~01:44 UTC Sep 23). Other pins quiet. yt-dlp/curl timedtext 429 — captions via official YT transcript panel (box browser).
+
+### All-In · rss libsyn + YT @allin
+- NEW on disk 2026-09-23 · Steve Hilton & Spencer Pratt: Fixing California, Cheaper Gas, Ballot Fraud & CA Republicans · 55:43 · packet `/workspace/recap/2026-09-23-all-in-hilton-pratt.md` · https://www.youtube.com/watch?v=VF90rBzl26E · libsyn https://allinchamathjason.libsyn.com/steve-hilton-spencer-pratt-fixing-california-cheaper-gas-ballot-fraud-ca-republicans
+- NEW on disk 2026-09-23 · Blake Scholl: Why Plane Speed Stalled, Supersonic Commercial Flight, & Revolutionizing the Engine · 17:39 · packet `/workspace/recap/2026-09-23-all-in-scholl.md` · https://www.youtube.com/watch?v=Gnb-CfNPcPE · libsyn https://allinchamathjason.libsyn.com/blake-scholl-why-plane-speed-stalled-supersonic-commercial-flight-revolutionizing-the-engine
+- on disk 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology · 22:35 · packet `/workspace/recap/2026-09-21-all-in-naveen.md` · https://www.youtube.com/watch?v=yAsrMA_ADPc · libsyn https://allinchamathjason.libsyn.com/naveen-rao-4d-computing-ais-energy-wall-beating-biology
+- on disk 2026-09-20 · Adam Foroughi, Applovin CEO: Surviving a 92% Drawdown, Ads as ML 1.0 & the $50B Game Ad Market · 23:52 · packet `/workspace/recap/2026-09-20-all-in-foroughi.md` · https://www.youtube.com/watch?v=JtomF4bGxHs
+- on disk 2026-09-19 · Bill Gurley: Searching for Feynman · 38:29 · packet `/workspace/recap/2026-09-19-all-in-gurley.md` · https://www.youtube.com/watch?v=A4Q7zAayW20
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro video · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration · 38:34 · packet `/workspace/recap/2026-09-18-all-in-isaacman.md` · https://www.youtube.com/watch?v=VTF6p0U98ek
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:52 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- on disk 2026-09-15 · JD Vance… · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella… · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell… · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang… · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- What's new this pass: NEW Summit long-forms — Blake Scholl / Boom (~09:00 UTC Sep 22) and Steve Hilton & Spencer Pratt (~01:44 UTC Sep 23). Both ingested → `/workspace/recap/2026-09-23-all-in-scholl.md` + `/workspace/recap/2026-09-23-all-in-hilton-pratt.md`.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · South Africa Is a Warning To The World · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Perv Economy · 12:33 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17).
+
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI's Most Valuable Agent · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-16).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets still channel top (ingested 09-11).
+
+### Frontpage · English @frontpagechannel
+Long-form only; skip shorts/clip dumps.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:05 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI.
+- What's new this pass: nothing new — Gig Economy still channel top (ingested 09-17).
+
+### Elon sit-down interviews
+Guest sit-downs only; skip wraps/clips/daily X / clone "JUST RECORDED" dumps.
+- on disk · An interview with Elon Musk (The Economist Insider) · https://www.youtube.com/watch?v=XuoqKYxDHVc
+- on disk · Elon Musk & Gwynne Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- What's new this pass: nothing new — ytsearch hit known Economist full + AI clip, All-In Shotwell, WEF/Davos clones, Rogan reuploads, and clip dumps only; no new first-party sit-down since last clock.
+
+### Naval (parked)
+- parked since 2026-07-02 · Live in the Future · http://nav.al/future — skip.
+
+### Deferred
+- none this pass (both new All-In Summit long-forms ingested).
+
+Footer: listed 2026-09-23 ~12:00 Asia/Taipei (fired ~11:10 Asia/Saigon) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos flat + Elon ytsearch · captions via official YT English transcript panel (box browser; timedtext HTTP 429 on curl/yt-dlp) · bank deposits ideas `2026-09-23-all-in-steve-hilton-spencer-pratt-fixing-california` + `2026-09-23-all-in-blake-scholl-why-plane-speed-stalled` · no Arguments pins · no wiki
+
+
+---
+<!-- 2026-09-22-list.md -->
+
+## List · pinned shows · pass 2026-09-22 (noon Asia/Taipei)
+Window: since last clock 2026-09-21 ~04:10 UTC. Usage: LIST + INGEST one new All-In Summit long-form (Naveen Rao / Unconventional AI, pub ~21:03 UTC Sep 21). Other pins quiet.
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology · 22:35 · packet `/workspace/recap/2026-09-21-all-in-naveen.md` · https://www.youtube.com/watch?v=yAsrMA_ADPc · libsyn https://allinchamathjason.libsyn.com/naveen-rao-4d-computing-ais-energy-wall-beating-biology
+- on disk 2026-09-20 · Adam Foroughi, Applovin CEO: Surviving a 92% Drawdown, Ads as ML 1.0 & the $50B Game Ad Market · 23:52 · packet `/workspace/recap/2026-09-20-all-in-foroughi.md` · https://www.youtube.com/watch?v=JtomF4bGxHs · libsyn https://allinchamathjason.libsyn.com/adam-foroughi-applovin-ceo-surviving-a-92-drawdown-ads-as-ml-10-the-50b-game-ad-market
+- on disk 2026-09-19 · Bill Gurley: Searching for Feynman · 38:29 · packet `/workspace/recap/2026-09-19-all-in-gurley.md` · https://www.youtube.com/watch?v=A4Q7zAayW20 · libsyn https://allinchamathjason.libsyn.com/bill-gurley-the-covid-cover-up-the-search-for-the-truth
+- on disk 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration · 38:34 · packet `/workspace/recap/2026-09-18-all-in-isaacman.md` · https://www.youtube.com/watch?v=VTF6p0U98ek · libsyn https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro video · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:52 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:32 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:24 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:47 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:57 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: NEW Summit long-form — Naveen Rao / Unconventional AI (~21:03 UTC Sep 21, after last clock). Ingested → `/workspace/recap/2026-09-21-all-in-naveen.md`.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:33 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17). Pin listing files beyond All-In/Elon not present in tmp-list-0922 this pass; carried forward from yesterday's confirmed tops per task brief.
+
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-16).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets still channel top (ingested 09-11).
+
+### Frontpage · English @frontpagechannel
+Long-form only; skip shorts/clip dumps.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:05 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI.
+- What's new this pass: nothing new — Gig Economy still channel top (ingested 09-17).
+
+### Elon sit-down interviews
+Guest sit-downs only; skip wraps/clips/daily X / clone "JUST RECORDED" dumps.
+- on disk · An interview with Elon Musk (The Economist Insider) · https://www.youtube.com/watch?v=XuoqKYxDHVc
+- on disk · Elon Musk & Gwynne Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- What's new this pass: nothing new — ytsearch hit known Economist full + AI clip, All-In Shotwell, WEF/Davos clone, and "JUST RECORDED" clone dumps only; no new first-party sit-down since last clock.
+
+### Naval (parked)
+- RSS top still Live in the Future · 2026-07-02 · http://nav.al/future — no publish; skip.
+
+
+---
 <!-- 2026-09-21-all-in-naveen.md -->
 
 ## Recap · All-In · 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology
@@ -195,6 +530,89 @@ canary: published 2026-09-21T21:03:00Z (libsyn RSS) / YT uploadDate 20260921 · 
 
 
 ---
+<!-- 2026-09-21-list.md -->
+
+## List · pinned shows · pass 2026-09-21 (noon Asia/Taipei)
+Window: since last clock 2026-09-20 ~04:10 UTC. Usage: LIST + INGEST one new All-In Summit long-form (Adam Foroughi / AppLovin, pub ~20:49 UTC Sep 20). Other pins quiet.
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-20 · Adam Foroughi, Applovin CEO: Surviving a 92% Drawdown, Ads as ML 1.0 & the $50B Game Ad Market · 23:52 · packet `/workspace/recap/2026-09-20-all-in-foroughi.md` · https://www.youtube.com/watch?v=JtomF4bGxHs · libsyn https://allinchamathjason.libsyn.com/adam-foroughi-applovin-ceo-surviving-a-92-drawdown-ads-as-ml-10-the-50b-game-ad-market
+- on disk 2026-09-19 · Bill Gurley: Searching for Feynman · 38:29 · packet `/workspace/recap/2026-09-19-all-in-gurley.md` · https://www.youtube.com/watch?v=A4Q7zAayW20 · libsyn https://allinchamathjason.libsyn.com/bill-gurley-the-covid-cover-up-the-search-for-the-truth
+- on disk 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration · 38:34 · packet `/workspace/recap/2026-09-18-all-in-isaacman.md` · https://www.youtube.com/watch?v=VTF6p0U98ek · libsyn https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro video · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:52 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:32 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:24 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:47 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:57 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: NEW Summit long-form — Adam Foroughi / AppLovin CEO (~20:49 UTC Sep 20, after last clock). Ingested → `/workspace/recap/2026-09-20-all-in-foroughi.md`.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:33 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17).
+
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-16).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets still channel top (ingested 09-11).
+
+### Frontpage · English @frontpagechannel
+Long-form only; skip shorts/clip dumps.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:05 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI.
+- What's new this pass: nothing new — Gig Economy still channel top (ingested 09-17).
+
+### Elon sit-down interviews
+Guest sit-downs only; skip wraps/clips/daily X / clone "JUST RECORDED" dumps.
+- on disk · An interview with Elon Musk (The Economist Insider) · https://www.youtube.com/watch?v=XuoqKYxDHVc
+- on disk · Elon Musk & Gwynne Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- What's new this pass: nothing new — light ytsearch; WEF/Davos Jan 2026 + Aug clone hits only; no new first-party sit-down since last clock.
+
+### Naval (parked)
+- RSS top still Live in the Future · 2026-07-02 · http://nav.al/future — no publish; skip.
+
+
+---
 <!-- 2026-09-20-all-in-foroughi.md -->
 
 ## Recap · All-In · 2026-09-20 · Adam Foroughi, Applovin CEO: Surviving a 92% Drawdown, Ads as ML 1.0 & the $50B Game Ad Market
@@ -243,6 +661,87 @@ All-In Summit sit-down with AppLovin CEO Adam Foroughi: a quiet-built, non-VC-ea
 
 ### Footer
 canary: published 2026-09-20T20:49:00Z (libsyn RSS) / YT uploadDate 20260920 · fetched 2026-09-21T04:10:00Z · length 23:52 (1432s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp-0921-applovin/JtomF4bGxHs.en.srt · chapters from YT description used as section anchors · ASR name cleanup in body only (Farugi→Foroughi, Apploving→AppLovin, Appe/AppL→AppLovin, Ebidon→EBITDA) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-20-list.md -->
+
+## List · pinned shows · pass 2026-09-20 (noon Asia/Taipei)
+Window: since last clock 2026-09-19 ~04:00 UTC. Usage: LIST only — every pin nothing-new; no INGEST. Quiet rule applies.
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-19 · Bill Gurley: Searching for Feynman · 38:29 · packet `/workspace/recap/2026-09-19-all-in-gurley.md` · https://www.youtube.com/watch?v=A4Q7zAayW20 · libsyn https://allinchamathjason.libsyn.com/bill-gurley-the-covid-cover-up-the-search-for-the-truth
+- on disk 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration · 38:34 · packet `/workspace/recap/2026-09-18-all-in-isaacman.md` · https://www.youtube.com/watch?v=VTF6p0U98ek · libsyn https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro video · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:52 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:32 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:24 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:47 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:57 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: nothing new — Bill Gurley: Searching for Feynman still channel/RSS top (ingested 09-19; published ~00:30 UTC Sep 19, before last clock).
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:33 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17).
+
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-16).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets episode still channel top.
+
+### Elon sit-downs
+- nothing new sit-down in the window since 09-19. Light search: top hits are older (Economist Jul 23 on disk; All-In Elon+Shotwell 09-15 on disk; Dwarkesh Feb 2026; WEF Jan 2026; clip/wrap channels). Skip wraps / daily X (→ Brief).
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (RSS newest still Live in the Future, 2026-07-02).
+
+### Frontpage · English @frontpagechannel
+Long-form, well-sourced. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:05 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · 40:47 · packet `/workspace/recap/2026-09-03-frontpage.md` · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new this pass): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI; Why American Suburbs F*cking SUCK · HkoPrTQCWs0; and further channel backlog.
+- What's new this pass: nothing new — Gig Economy essay still channel top (ingested 09-18).
+
+Footer: listed 2026-09-20 ~12:00 Asia/Taipei · sources via yt-dlp/RSS · QUIET — no INGEST · no Arguments · no wiki · backlog missing left deferred (prefer new publishes)
 
 
 ---
@@ -296,6 +795,129 @@ All-In Summit: Bill Gurley walks catastrophe CAPA — Surfside, 737 MAX, Katrina
 
 ### Footer
 canary: published 2026-09-19T00:20:00Z (libsyn RSS) / YT uploadDate 20260919 · fetched 2026-09-19T05:01:00Z · length 38:29 (2308s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/A4Q7zAayW20.en.srt · ASR name cleanup in body only (Fineman→Feynman, Fouchy→Fauci, Chamberlain Towers→Champlain Towers, Kiraawa/Kurukawa/Kira Cowell→Kiyoshi Kurokawa, Dazzic→Daszak, Ecoalth→EcoHealth, Ferrar→Farrar, Bareric→Baric, veriologist→virologist, diffuse→DEFUSE, fern cleavage→furin cleavage, Zade Tufeki/Zayep→Zeynep Tufekci, Katherine Ebon→Katherine Eban, Emily Cop→Emily Kopp, Allison Young→Alison Young, Bacharia→Bhattacharya, Kappa/CAP→CAPA, MCCast→MCAS, Tropin/Hodsman as captioned, UNCC→UNC) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-19-list.md -->
+
+## List · pinned shows · pass 2026-09-19 (noon Asia/Taipei)
+Window: since last clock 2026-09-18 ~04:05 UTC. Usage: LIST + INGEST two new All-In Summit long-forms (Jared Isaacman 09-18, Bill Gurley 09-19). Skipped All-In Summit intro clip (~6:32). Other pins quiet.
+
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-19 · Bill Gurley: Searching for Feynman · 38:29 · packet `/workspace/recap/2026-09-19-all-in-gurley.md` · https://www.youtube.com/watch?v=A4Q7zAayW20 · libsyn https://allinchamathjason.libsyn.com/bill-gurley-the-covid-cover-up-the-search-for-the-truth
+- on disk 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration · 38:34 · packet `/workspace/recap/2026-09-18-all-in-isaacman.md` · https://www.youtube.com/watch?v=VTF6p0U98ek · libsyn https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration
+- skipped clip 2026-09-18 · America's Next 250: Remember Who We Are · 6:32 · Summit intro video · https://www.youtube.com/watch?v=Nvc6HWfoSoE
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:51 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:31 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:25 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:46 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:56 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: TWO new Summit long-forms since last pass — Jared Isaacman (~15:59 UTC Sep 18) and Bill Gurley: Searching for Feynman (~00:20 UTC Sep 19). Ingested this pass. Summit intro clip skipped.
+
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:32 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17).
+
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-16).
+
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
+
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets episode still channel top.
+
+### Elon sit-downs
+- nothing new sit-down in the window outside All-In. On disk: 2026-09-15 Elon + Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg; 2026-07-23 Economist × Zanny · https://www.youtube.com/watch?v=XuoqKYxDHVc. Skip wraps / daily X (→ Brief). Isaacman NASA talk is space policy, not an Elon sit-down.
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (RSS newest still Live in the Future, 2026-07-02).
+
+### Frontpage · English @frontpagechannel
+Long-form, well-sourced. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:04 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · 40:47 · packet `/workspace/recap/2026-09-03-frontpage.md` · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new this pass): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI; Why American Suburbs F*cking SUCK · HkoPrTQCWs0; and further channel backlog.
+- What's new this pass: nothing new — Gig Economy essay still channel top (ingested 09-18).
+
+Footer: listed 2026-09-19 ~12:00 Asia/Taipei · sources via yt-dlp/RSS · two INGESTs first-party captions (All-In Isaacman, All-In Gurley) · no Arguments · no wiki · backlog missing left deferred (prefer new publishes)
+
+
+---
+<!-- 2026-09-18-all-in-isaacman.md -->
+
+## Recap · All-In · 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration
+url: https://www.youtube.com/watch?v=VTF6p0U98ek + https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration  ·  length: 38:34  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Prepared remarks: swagger back, second space race, Artemis pace (00:00)**
+- 00:04 · Intro · NASA Administrator Jared Isaacman at All-In Summit; frames AI/quantum/robotics/fusion/biotech/autonomy converging; great-power competition sharpest in space "ultimate high ground."
+- 02:01 · Isaacman · NASA "doing things differently… regaining swagger"; absent this president + geopolitical risk of losing second space race, "very little would have changed." Critique of prior mode: resources spread to make everyone happy; partnerships as drag; Orion can't inject into low lunar orbit like Apollo; prior admin cancelled Mars Sample Return (on track to cost more than an aircraft carrier); programs "too big to fail, too costly to truly succeed" hoping to survive administrations; SLS designed when China ran coal locomotives, now operational as China has ~25,000 mi HSR and is years from its own Apollo-11 moment; workforce competencies rented/outsourced/lost; "dream state as a service" shifted impossible burden to others.
+- 03:51 · Isaacman · Moon rocket less efficient than Saturn V at converting launch mass to lunar payload; more time between Artemis 1 and 2 than all 12 Gemini missions; lunar space station architecture would have astronauts looking down on desirable real estate instead of occupying surface; one X-plane barely flying; billions on nuclear programs stuck in lab since 1965.
+- 04:46 · Isaacman · New choice: not make everyone happy / not spread every penny across every district / not partner with every nation for optics. Not here for money, title, politics, or to be VCs inventing markets that detract from entrusted missions (Commerce can take those). Mandate: execute Trump national space policy; align resources with NASA workforce + industry; outcomes like Neil/Buzz — "America is back in the business of sending our astronauts to the moon."
+- 05:55 · Isaacman · Artemis 2: four astronauts (Congressional Space Medal of Honor) — 8.8M lbs thrust, farther into space than any humans, around moon and home. Not waiting 3 years; Artemis 3 assembling now; intend tanking test at 39B before year-end. Summer 2027: Artemis 3 on SLS to LEO, rendezvous with Blue Origin + SpaceX lander test vehicles — three most powerful rockets/spacecraft interoperability demo; informs uncrewed test landings then Artemis 4 in 2028 — Americans return to lunar surface "this time to stay." Parallel: moon base via old NASA playbook — near-monthly cadence, science of survival (autonomous/crewed mobility, ISRU, logistics, habitability, power, comms); lunar south pole water ice as proving ground for Mars.
+- 08:28 · Isaacman · 2028: leave failed nuclear programs; launch SR1 Freedom — 100 kW fission reactor transit Mars, release Skyfall with three Ingenuity-class helicopters + ground-penetrating radar for subsurface ice/landing sites. Start of "nuclear NASA"; missions with no obvious business case (Enceladus, Europa, Titan). Vision: chemically augmented nuclear-powered transfer vehicles + Starship armada for Mars round trips. Commercial sats for Earth/space weather; flagship science only NASA can do (Dragonfly to Titan 2028 on MMRTG; Europa Clipper 2030; Webb/Hubble joined by Roman — ~300 MP widefield + JPL coronagraph, dark energy/matter, exoplanets); NEO Surveyor for impact threats.
+- 12:05 · Isaacman · Taxpayer-only future won't realize childhood space dreams; support orbital/lunar economy (launch, observation, comms → data centers, commercial stations, on-orbit manufacturing, regolith, asteroid mining) without NASA "forcing" an economy. Rebuild X-plane fleet (X-59 quiet supersonic) — aeronautics first A. President established commission for US Space Academy ("Starfleet Academy") — federal academy for astronauts/engineers/operators. China aims astronauts on moon by 2030; robotic missions targeting Shackleton crater south pole next year — limited good parking spots; working with Russia on nuclear-powered moon base; achievable two-launch architecture. If US hasn't returned despite decades of promises + >$100B invested, shockwave to allies/adversaries/kids. Close: extreme ownership; return and never give up the moon; set sights on Mars; history should record America chose to go and went.
+
+**Q&A: lunar economy, south pole race, Mars tech, recruiting, nuclear primer (17:18)**
+- 18:06 · Host · Is moon a viable economy beyond Mars testbed? Isaacman: "Maybe." Gifted a moon 3 days away to dial power, spacesuits (decades to replace Apollo suits), habitats, ISRU, robotics — EVAs inspirational but among last things on a base (dangerous; let robots). Next ~4 years: dozens of landers/rovers/ISRU experiments — demand signal for industry to unlock regolith value; can't guarantee economy (Commerce's job); NASA masters skills for Mars science; radio telescopes on far side.
+- 19:47 · Host · Mapping south pole / Promise mission. Isaacman: south pole ~DC-sized vs Africa-sized lunar surface; few permanently shaded craters with water ice + near-eternal light on cliffs for solar — harsher than Mars; Starship-class landing blasts debris → limited parking. Promise: radioisotope rover (spare for Perseverance/Curiosity class, jeep-sized) using decaying Pu-238 already on books — prospect shaded regions other hardware would die in.
+- 21:07 · Host · Why beat China to that region; state of NASA on arrival? Isaacman: best talent always there but everyone else ran NASA (districts, 25 flags on missions → Mars Sample Return cost > carrier then cancelled). Now NASA in charge, focused on national space policy: return, base, nuclear. Years lost in race. China/Russia know parking scarcity; China scrubbed a Shackleton Ridge shot recently (mechanical/weather — or smart not to ignite US urgency); they'll build fission base, master water ice, then Mars "Neil Armstrong moment" — US committed to stop that.
+- 23:30 · Host · Tech leap for realistic Mars — propulsion? Isaacman: robotics critical. Pure chemical (Starship-class) can send people; habitability known; comparable velocities moon vs Mars; hard part is return — make propellant on Mars (army of robots + football-field solar + dust storms) is brutal even under 1 atm/1g on Earth. NASA should stop duplicating what industry does well and invest next-leap fission + chemically augmented NEP transfer vehicles — refill krypton/xenon on return, no surface propellant plant; same stack opens Enceladus/Titan/Europa ocean worlds.
+- 25:31 · Host · Recruit vs SpaceX/Blue/etc.? Isaacman: no initial recruiting problem (~1% of pathway interns); retention fails if NASA does industry's job on 50-year shuttle-era hardware less efficient than Saturn V for lunar. Pivot: when business case exists (launch), hand to industry; NASA does near-impossible nuclear fleet (SR1 = Nautilus start) to retain talent.
+- 26:44 · Host · Nuclear thrust primer. Isaacman: like Starlink Hall thrusters — solar → ionize Kr/Xe → high exhaust velocity, low thrust, efficient; breaks down far from sun (Jupiter+). Swap solar for reactor thermal (100 kW → 250 kW → megawatt-class), hot materials, closed Brayton → electricity → scaled thrusters (12→25 kW class).
+- 28:06 · Host · Budget / wish? Isaacman: NASA "does not have a topline problem" — bad capital allocation; ~$25B is a lot if focused. Aeronautics: stop subsidizing high-TRL 40-year engine 3% efficiency for primes; return to radical airframe/engine (X-59 taste). Humans vs robots: destiny — oceans/mountains; Artemis 2 wouldn't pause the world without humans; robotics still critical for radiation/uncrewed. Autonomy: NASA pioneered auto GCAS for fighters; AI for short-lived Venus Da Vinci trajectory triage already tested on Mars rovers. Science ~1/3 budget after reorg (human exploration / research-tech nuclear / science); leverage commercial Earth obs; free resources for nuclear Dragonfly-class; prioritize new missions over analysis seats — data will find analysts.
+- 34:15 · Host · Skyfall helicopters video/timeline. Isaacman: Ingenuity worked in ~0.1 atm; three with GPR on nuclear SR1 flyby release; launch ~2028, ~1 year transit; start of many outer-moon discoveries "in our own backyard."
+- 35:51 · Chamath/Jason · China–Russia collab; Russia broke?; China copying Elon. Isaacman: Russia/Soviet space history real + ISS partner, but war prioritizes resources elsewhere; China extremely good in space now — may lack SpaceX-class reuse, but what they put up (even hypergolic brute force) is good; contested domain (cites AF/Space Force briefings); with Russian nuclear know-how they will return, land, build south-pole base. Without SpaceX US "seriously challenged" — ISS crew/downmass, Roman on Falcon Heavy, most important launch partner. Close: Besties praise; Isaacman grateful.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 04:46 Isaacman: "We are not going to try and make everyone happy."
+- 07:36 Isaacman: "we are establishing humanity's first outpost on another world, a moon base."
+- 14:47 Isaacman: "The world will just see who got there."
+- 18:31 Isaacman: "We've been gifted a moon 3 days away to test out everything we need"
+- 28:12 Isaacman: "NASA does not have a topline problem… we are bad capital allocators"
+- 37:20 Isaacman: "the Chinese are extremely good in space right now."
+
+### One paragraph
+All-In Summit: NASA Admin Jared Isaacman argues the second space race forced focus — stop district/partner sprawl, cancel-prone mega-programs, and "dream state as a service" — and put wins on the board: Artemis 2 done, Artemis 3 tanking test before year-end / LEO rendezvous with Blue+SpaceX landers summer 2027, Artemis 4 surface return 2028 "to stay," monthly-cadence moon base at the ice-rich south pole, and 2028 SR1 Freedom 100 kW fission + Skyfall triple-Ingenuity scouts as the start of "nuclear NASA" for Mars and ocean moons. Q&A: lunar economy is a maybe (Commerce's lane) while NASA masters Mars skills; Promise radioisotope rover for shaded craters; China/Russia racing the few good parking spots; Mars return needs fission+NEP not just Starship mass; retain talent by pivoting off industry's jobs; ~$25B is enough if allocated; humans for destiny/inspiration alongside robots; SpaceX indispensable — without it US high ground is "seriously challenged."
+
+### Footer
+canary: published 2026-09-18T15:59:00Z (libsyn RSS) / YT uploadDate 20260918 · fetched 2026-09-19T05:01:00Z · length 38:34 (2313s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/VTF6p0U98ek.en.srt · ASR name cleanup in body only (Eisen→Isaacman, Aremis→Artemis, Geminy→Gemini, regalith→regolith, fision→fission, rendevous→rendezvous, crude→crewed, uncrrewed→uncrewed, Octter→octocopter, Hauler→Hall, braen→Brayton, PU238→Pu-238, hypergal→hypergolic, Chimath→Chamath) · chapters from YT description used as section anchors · quotes from caption text · no ASR on box · no third-party transcript sites
 
 
 ---
@@ -370,94 +992,207 @@ canary: published 2026-09-18T00:30:00Z (libsyn RSS) / YT uploadDate 20260918 · 
 
 
 ---
-<!-- 2026-09-18-all-in-isaacman.md -->
+<!-- 2026-09-18-list.md -->
 
-## Recap · All-In · 2026-09-18 · Jared Isaacman: A New Era for NASA and American Space Exploration
-url: https://www.youtube.com/watch?v=VTF6p0U98ek + https://allinchamathjason.libsyn.com/jared-isaacman-a-new-era-for-nasa-and-american-space-exploration  ·  length: 38:34  ·  text: captions
-### Takeaways, arguments, claims (in order)
+## List · pinned shows · pass 2026-09-18 (noon Asia/Taipei)
+Window: since last clock 2026-09-17 ~04:05 UTC. Usage: LIST + INGEST three new publishes (All-In Nick Shirley 09-18, All-In Dina Powell McCormick 09-17, Frontpage Gig Economy 09-17). Other pins quiet.
 
-**Prepared remarks: swagger back, second space race, Artemis pace (00:00)**
-- 00:04 · Intro · NASA Administrator Jared Isaacman at All-In Summit; frames AI/quantum/robotics/fusion/biotech/autonomy converging; great-power competition sharpest in space "ultimate high ground."
-- 02:01 · Isaacman · NASA "doing things differently… regaining swagger"; absent this president + geopolitical risk of losing second space race, "very little would have changed." Critique of prior mode: resources spread to make everyone happy; partnerships as drag; Orion can't inject into low lunar orbit like Apollo; prior admin cancelled Mars Sample Return (on track to cost more than an aircraft carrier); programs "too big to fail, too costly to truly succeed" hoping to survive administrations; SLS designed when China ran coal locomotives, now operational as China has ~25,000 mi HSR and is years from its own Apollo-11 moment; workforce competencies rented/outsourced/lost; "dream state as a service" shifted impossible burden to others.
-- 03:51 · Isaacman · Moon rocket less efficient than Saturn V at converting launch mass to lunar payload; more time between Artemis 1 and 2 than all 12 Gemini missions; lunar space station architecture would have astronauts looking down on desirable real estate instead of occupying surface; one X-plane barely flying; billions on nuclear programs stuck in lab since 1965.
-- 04:46 · Isaacman · New choice: not make everyone happy / not spread every penny across every district / not partner with every nation for optics. Not here for money, title, politics, or to be VCs inventing markets that detract from entrusted missions (Commerce can take those). Mandate: execute Trump national space policy; align resources with NASA workforce + industry; outcomes like Neil/Buzz — "America is back in the business of sending our astronauts to the moon."
-- 05:55 · Isaacman · Artemis 2: four astronauts (Congressional Space Medal of Honor) — 8.8M lbs thrust, farther into space than any humans, around moon and home. Not waiting 3 years; Artemis 3 assembling now; intend tanking test at 39B before year-end. Summer 2027: Artemis 3 on SLS to LEO, rendezvous with Blue Origin + SpaceX lander test vehicles — three most powerful rockets/spacecraft interoperability demo; informs uncrewed test landings then Artemis 4 in 2028 — Americans return to lunar surface "this time to stay." Parallel: moon base via old NASA playbook — near-monthly cadence, science of survival (autonomous/crewed mobility, ISRU, logistics, habitability, power, comms); lunar south pole water ice as proving ground for Mars.
-- 08:28 · Isaacman · 2028: leave failed nuclear programs; launch SR1 Freedom — 100 kW fission reactor transit Mars, release Skyfall with three Ingenuity-class helicopters + ground-penetrating radar for subsurface ice/landing sites. Start of "nuclear NASA"; missions with no obvious business case (Enceladus, Europa, Titan). Vision: chemically augmented nuclear-powered transfer vehicles + Starship armada for Mars round trips. Commercial sats for Earth/space weather; flagship science only NASA can do (Dragonfly to Titan 2028 on MMRTG; Europa Clipper 2030; Webb/Hubble joined by Roman — ~300 MP widefield + JPL coronagraph, dark energy/matter, exoplanets); NEO Surveyor for impact threats.
-- 12:05 · Isaacman · Taxpayer-only future won't realize childhood space dreams; support orbital/lunar economy (launch, observation, comms → data centers, commercial stations, on-orbit manufacturing, regolith, asteroid mining) without NASA "forcing" an economy. Rebuild X-plane fleet (X-59 quiet supersonic) — aeronautics first A. President established commission for US Space Academy ("Starfleet Academy") — federal academy for astronauts/engineers/operators. China aims astronauts on moon by 2030; robotic missions targeting Shackleton crater south pole next year — limited good parking spots; working with Russia on nuclear-powered moon base; achievable two-launch architecture. If US hasn't returned despite decades of promises + >$100B invested, shockwave to allies/adversaries/kids. Close: extreme ownership; return and never give up the moon; set sights on Mars; history should record America chose to go and went.
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-18 · Nick Shirley: Exposing Government Fraud… · 32:32 · packet `/workspace/recap/2026-09-18-all-in-nick-shirley.md` · https://www.youtube.com/watch?v=SwBCPBNe_60
+- on disk 2026-09-17 · Meta's Dina Powell McCormick… · 43:51 · packet `/workspace/recap/2026-09-17-all-in-dina.md` · https://www.youtube.com/watch?v=qp2IbgJ5Z-8
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ · libsyn https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:31 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:25 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:46 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:56 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- on disk 2026-08-21 · Dario Defends Himself… · https://www.youtube.com/watch?v=Sij_v-mcZXQ
+- on disk 2026-08-18 · Flock CEO Garrett Langley… · https://www.youtube.com/watch?v=5BWuvjGLMik
+- on disk 2026-08-14 · Anthropic's $2T IPO… · https://www.youtube.com/watch?v=kVzYGVJ8zUk
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: TWO new Summit long-forms since last pass — Meta's Dina Powell McCormick (~16:54 UTC Sep 17) and Nick Shirley: Exposing Government Fraud… (~00:30 UTC Sep 18). Ingested this pass.
 
-**Q&A: lunar economy, south pole race, Mars tech, recruiting, nuclear primer (17:18)**
-- 18:06 · Host · Is moon a viable economy beyond Mars testbed? Isaacman: "Maybe." Gifted a moon 3 days away to dial power, spacesuits (decades to replace Apollo suits), habitats, ISRU, robotics — EVAs inspirational but among last things on a base (dangerous; let robots). Next ~4 years: dozens of landers/rovers/ISRU experiments — demand signal for industry to unlock regolith value; can't guarantee economy (Commerce's job); NASA masters skills for Mars science; radio telescopes on far side.
-- 19:47 · Host · Mapping south pole / Promise mission. Isaacman: south pole ~DC-sized vs Africa-sized lunar surface; few permanently shaded craters with water ice + near-eternal light on cliffs for solar — harsher than Mars; Starship-class landing blasts debris → limited parking. Promise: radioisotope rover (spare for Perseverance/Curiosity class, jeep-sized) using decaying Pu-238 already on books — prospect shaded regions other hardware would die in.
-- 21:07 · Host · Why beat China to that region; state of NASA on arrival? Isaacman: best talent always there but everyone else ran NASA (districts, 25 flags on missions → Mars Sample Return cost > carrier then cancelled). Now NASA in charge, focused on national space policy: return, base, nuclear. Years lost in race. China/Russia know parking scarcity; China scrubbed a Shackleton Ridge shot recently (mechanical/weather — or smart not to ignite US urgency); they'll build fission base, master water ice, then Mars "Neil Armstrong moment" — US committed to stop that.
-- 23:30 · Host · Tech leap for realistic Mars — propulsion? Isaacman: robotics critical. Pure chemical (Starship-class) can send people; habitability known; comparable velocities moon vs Mars; hard part is return — make propellant on Mars (army of robots + football-field solar + dust storms) is brutal even under 1 atm/1g on Earth. NASA should stop duplicating what industry does well and invest next-leap fission + chemically augmented NEP transfer vehicles — refill krypton/xenon on return, no surface propellant plant; same stack opens Enceladus/Titan/Europa ocean worlds.
-- 25:31 · Host · Recruit vs SpaceX/Blue/etc.? Isaacman: no initial recruiting problem (~1% of pathway interns); retention fails if NASA does industry's job on 50-year shuttle-era hardware less efficient than Saturn V for lunar. Pivot: when business case exists (launch), hand to industry; NASA does near-impossible nuclear fleet (SR1 = Nautilus start) to retain talent.
-- 26:44 · Host · Nuclear thrust primer. Isaacman: like Starlink Hall thrusters — solar → ionize Kr/Xe → high exhaust velocity, low thrust, efficient; breaks down far from sun (Jupiter+). Swap solar for reactor thermal (100 kW → 250 kW → megawatt-class), hot materials, closed Brayton → electricity → scaled thrusters (12→25 kW class).
-- 28:06 · Host · Budget / wish? Isaacman: NASA "does not have a topline problem" — bad capital allocation; ~$25B is a lot if focused. Aeronautics: stop subsidizing high-TRL 40-year engine 3% efficiency for primes; return to radical airframe/engine (X-59 taste). Humans vs robots: destiny — oceans/mountains; Artemis 2 wouldn't pause the world without humans; robotics still critical for radiation/uncrewed. Autonomy: NASA pioneered auto GCAS for fighters; AI for short-lived Venus Da Vinci trajectory triage already tested on Mars rovers. Science ~1/3 budget after reorg (human exploration / research-tech nuclear / science); leverage commercial Earth obs; free resources for nuclear Dragonfly-class; prioritize new missions over analysis seats — data will find analysts.
-- 34:15 · Host · Skyfall helicopters video/timeline. Isaacman: Ingenuity worked in ~0.1 atm; three with GPR on nuclear SR1 flyby release; launch ~2028, ~1 year transit; start of many outer-moon discoveries "in our own backyard."
-- 35:51 · Chamath/Jason · China–Russia collab; Russia broke?; China copying Elon. Isaacman: Russia/Soviet space history real + ISS partner, but war prioritizes resources elsewhere; China extremely good in space now — may lack SpaceX-class reuse, but what they put up (even hypergolic brute force) is good; contested domain (cites AF/Space Force briefings); with Russian nuclear know-how they will return, land, build south-pole base. Without SpaceX US "seriously challenged" — ISS crew/downmass, Roman on Falcon Heavy, most important launch partner. Close: Besties praise; Isaacman grateful.
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:32 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: nothing new — Satisfying Collapse of Bullsh*t Consulting still channel top (ingested 09-17).
 
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 04:46 Isaacman: "We are not going to try and make everyone happy."
-- 07:36 Isaacman: "we are establishing humanity's first outpost on another world, a moon base."
-- 14:47 Isaacman: "The world will just see who got there."
-- 18:31 Isaacman: "We've been gifted a moon 3 days away to test out everything we need"
-- 28:12 Isaacman: "NASA does not have a topline problem… we are bad capital allocators"
-- 37:20 Isaacman: "the Chinese are extremely good in space right now."
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: nothing new — El Mencho still channel top (ingested 09-17).
 
-### One paragraph
-All-In Summit: NASA Admin Jared Isaacman argues the second space race forced focus — stop district/partner sprawl, cancel-prone mega-programs, and "dream state as a service" — and put wins on the board: Artemis 2 done, Artemis 3 tanking test before year-end / LEO rendezvous with Blue+SpaceX landers summer 2027, Artemis 4 surface return 2028 "to stay," monthly-cadence moon base at the ice-rich south pole, and 2028 SR1 Freedom 100 kW fission + Skyfall triple-Ingenuity scouts as the start of "nuclear NASA" for Mars and ocean moons. Q&A: lunar economy is a maybe (Commerce's lane) while NASA masters Mars skills; Promise radioisotope rover for shaded craters; China/Russia racing the few good parking spots; Mars return needs fission+NEP not just Starship mass; retain talent by pivoting off industry's jobs; ~$25B is enough if allocated; humans for destiny/inspiration alongside robots; SpaceX indispensable — without it US high ground is "seriously challenged."
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
 
-### Footer
-canary: published 2026-09-18T15:59:00Z (libsyn RSS) / YT uploadDate 20260918 · fetched 2026-09-19T05:01:00Z · length 38:34 (2313s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp/VTF6p0U98ek.en.srt · ASR name cleanup in body only (Eisen→Isaacman, Aremis→Artemis, Geminy→Gemini, regalith→regolith, fision→fission, rendevous→rendezvous, crude→crewed, uncrrewed→uncrewed, Octter→octocopter, Hauler→Hall, braen→Brayton, PU238→Pu-238, hypergal→hypergolic, Chimath→Chamath) · chapters from YT description used as section anchors · quotes from caption text · no ASR on box · no third-party transcript sites
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets episode still channel top.
+
+### Elon sit-downs
+- nothing new sit-down in the window outside All-In. On disk: 2026-09-15 Elon + Shotwell (All-In Summit) · https://www.youtube.com/watch?v=iwBOQeFPAwg; 2026-07-23 Economist × Zanny · https://www.youtube.com/watch?v=XuoqKYxDHVc. Skip wraps / daily X (→ Brief).
+
+### Naval
+- parked since 2026-07-02. Did not publish in the window (RSS newest still Live in the Future, 2026-07-02).
+
+### Frontpage · English @frontpagechannel
+Long-form, well-sourced. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · How The Gig Economy Destroyed A Generation · 44:04 · packet `/workspace/recap/2026-09-17-frontpage.md` · https://www.youtube.com/watch?v=MPEEITJd19A
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · 40:47 · packet `/workspace/recap/2026-09-03-frontpage.md` · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new this pass): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI; Why American Suburbs F*cking SUCK · HkoPrTQCWs0; and further channel backlog.
+- What's new this pass: new long-form gig-economy essay (uploaded 20260917). Ingested this pass.
+
+Footer: listed 2026-09-18 ~12:00 Asia/Taipei · sources via yt-dlp/RSS · three INGESTs first-party captions (All-In Nick, All-In Dina, Frontpage Gig Economy) · no Arguments · no wiki · backlog missing left deferred (prefer new publishes)
 
 
 ---
-<!-- 2026-09-17-moon.md -->
+<!-- 2026-09-17-all-in-dina.md -->
 
-## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
-url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
+## Recap · All-In · 2026-09-17 · Meta's Dina Powell McCormick: The Case for Data Centers, Backlash, AI Job Boom & Meta's Future
+url: https://www.youtube.com/watch?v=qp2IbgJ5Z-8 + https://allinchamathjason.libsyn.com/metas-dina-powell-mccormick-the-case-for-data-centers-backlash-ai-job-boom-metas-future  ·  length: 43:51  ·  text: captions
 ### Takeaways, arguments, claims (in order)
 
-**Open / McKinsey reach (00:00)**
-- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
-- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
+**Dina Powell McCormick joins The Besties! (00:00)**
+- 00:03 · Intro · Dina Powell McCormick — former Trump adviser; Meta president & vice chair; leads AI expansion (data centers, investments, partnerships); "Powell McCormick's background is exactly where Meta's new bottlenecks are"; cites ~3.5B people on Meta daily; "next three years could be the whole game."
+- 01:07 · Jason · Coming off Satya convo on selling data-center community benefits; Dina has a video — roll it; she wants panel to beat Sen. McCormick's prior All-In episode views.
 
-**Corporate Hall of Fame disasters (00:59)**
-- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
-- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
+**Impact of Meta's data center in Richland Parish, LA: $50K teacher checks, revitalizing a small town community (01:52)**
+- 01:52 · Video · Richland Parish ("opportunity forgot"); locals leaving for work; Meta multi-billion investment; caterer 40→400/week; teacher sales-tax bonuses "jaw-dropping"; people coming back home.
+- 04:14 · Dina · Brings Sheldon (Richland Parish superintendent) + Susan (LA commerce/economic development secretary); Meta's largest data-center investment; tax surplus → teachers was Sheldon's realization.
+- 05:27 · Sheldon · First Meta meeting summer 2024 at community college — "the game has changed"; after Dec 2024 groundbreaking, sales-tax collections rose from normal ~5–10% to ~60–70%, peaked ~260%; school board gets 51% of parish taxes; 1¢ + ½¢ sales tax dedicated to employee salaries.
+- 07:13 · Sheldon · Dec 2025 half-cent check doubled (~$4k→~$8k); June full-year spike: certified employees ~+$40k sales-tax; panel clarifies ~$50k check; prior year ~$10k; Dec+June net ~$45k for teachers.
+- 08:06 · Jason · Data centers poll ~80 unfavorable in US — was community anti before?
+- 08:36 · Sheldon · Initial unknown/anxiety; no prior $50B-scale reference; Meta informing/educating must continue — message for least-informed, not most.
+- 09:31 · Susan · LA late to data-center game helped — Meta first in state; partnership not hardball negotiation; ~20 months ago chatter quieter; parish starved for opportunity; pre-investment average wages ~$36–38k; Mississippi River Delta longing for jobs; governor EO creates framework for large-load users — LA now "choosy"; Meta = prototype/high standard; "We are not one of those states who is saying no."
 
-**Purdue / OxyContin / opioid crisis (02:16)**
-- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
-- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
-- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
+**How Meta is alleviating data center concerns: pollution, electricity, water, noise, aesthetics; Misinformation campaigns (11:52)**
+- 11:52 · Jason · Valid community concerns: pollution, electricity cost, water (closed vs open loop), noise, ugly aesthetics — did they apply?
+- 12:53 · Susan · Timing luck — issues addressed before public forum; farmland; Meta chose more expensive efficient system using less water than prior farming; LA has abundant gas (~32k miles pipelines); Meta–Entergy deal: Meta paid own generation, grid resilience/upgrades, storm costs even when not operating — takes burden off LA consumers; became prototype for future deals.
+- 14:31 · Chamath · With NSA-adviser hat: why is anti–data-center misinfo winning despite clear local data (and Satya)?
+- 14:53 · Dina · Jason's questions legitimate; communities that don't want DCs get to choose; Meta must explain investment upfront; compact: (1) pay own power + drive costs down, (2) water tech (AI-driven) for farm/rural reality, (3) teachers — not Meta's idea; LA law mandates tax surplus to teachers; Sheldon's phone ringing statewide; now investing teachers + first responders + small-biz impact everywhere Meta goes.
+- 16:14 · Dina · Industry has done poor job communicating — but impact first, then stories (proud of LA, Texas, Ohio); just met Sens. Cotton & Warner (intel); they believe adversaries are ginning up backlash — she can't confirm, but if you wanted to stop America you'd block US data centers to deny AI dominance; communities that want jobs/bonuses should get them; those that don't opt out — don't want peers building only abroad.
+- 17:36 · Freeberg · Water narrative especially sticky despite easy debunk; loves federalism — some states win, some lose.
+- 18:03 · Susan · After $50k bonus news, other rural parish leaders begged "bring one here"; LA not buying national propaganda.
+- 18:41 · Sheldon · Best/brightest used to leave permanently; now narrative: you can stay, raise family, have opportunity in Richland.
 
-**Saudi NEOM / surveillance / Jamal (04:40)**
-- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
-- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
+**America's Workforce Academy, the job growth in re-industrializing America (19:57)**
+- 19:57 · Video · Workforce program: no prior experience → workforce after ~4–5 weeks; Meta "blessing" infrastructure jobs.
+- 21:08 · Dina · LA site short welders/pipefitters/electricians especially fiber techs; built curriculum with CBRE et al.; 5-week fast-track: safety + "job site ready"; Meta guarantees job on a Meta DC site if you graduate; ~500k open trade roles next years (Sacks) but waitresses/Uber/home-health can't take unpaid expensive OSHA training with no job guarantee.
+- 22:31 · Dina · America's Workforce Academy launched ~4 months ago: 40k Americans applied; graduated 250; ~90% retention into contractor DC jobs; didn't put Meta in name so peers can hire; partners unions (Sean McGarvey / trades); union leadership now anti–anti-DC backlash — will only support candidates who support data centers.
+- 24:07 · Dina · Talking to Ruth Porat (Google) — joining workforce alliance with Larry Fink/BlackRock et al.; compete on models/products, not people; trained Meta worker can go Google/Microsoft.
+- 24:38 · Chamath · 40k applied / ~400 picked — expand?
+- 24:46 · Dina · Scaling via community colleges, VFW halls, Association of Builders & Contractors sites; Mary Barra (GM) wants ~1,000 once curriculum/cert ready; unlock = pay full job wage during training (not apprentice stipend); Pittsburgh welders ~$120k — clear fast path + guaranteed job.
 
-**China / Russia / US DoD double-dip / South Africa (07:00)**
-- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
-- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
+**Meta's recent social media settlement, new rules for teens (26:58)**
+- 26:58 · Jason · "Fastball": Meta paid settlement second only to tobacco, ahead of BP — significant damage to children, products too addicting, move-fast-break-things culture; now shipping more-addicting AI companions / Muse — what changed and what learned?
+- 28:29 · Dina · "Totally disagree with basically every single premise"; there 8 months (+1 year board); people focused on empowering parents / supporting teens; proud of agreement with 52 bipartisan AGs: under-18s max 2 hours/day on platform, app shuts off, no night use, no school-day notifications, more parental supervision; if peers join = historic; mom of six daughters — personal.
+- 29:56 · Dina · Jason's settlement numbers wrong: Meta offered additional $5B and drop to 1 hour/day if YouTube, TikTok, and Snap join — kids just migrate apps otherwise; "wouldn't it be pretty amazing… under 18… an hour a day, shut off at night?"
+- 30:28 · Chamath · Universal vs parent-controlled?
+- 30:37 · Dina · Parent can override but app actually turns off; Texas recruiters complain Instagram off hurts football recruiting — parent choice.
+- 31:20 · Chamath · Hit limit at dinner table — fantastic; parental whack-a-mole across YouTube/Instagram/Shorts.
+- 32:24 · Sacks · New defaults better; defends Meta vs "ridiculous pile-on" — voluntary product, adults sue blaming it for multi-cause life problems, state AGs + trial lawyers; some "shakedown"; resolution net beneficial; parental control not government.
+- 33:49 · Jason · Industry addicted to gamification / time-on-app; Facebook+YouTube too good at addicting adults and kids; still commend Meta for leading peers now (even if late).
+- 34:24 · Chamath · RSI (recursive self-improvement) next 18 months — any app with time reward function proliferates (even Word); companies must set hard shutoff thresholds.
 
-**Alumni network / recruitment / close (09:50)**
-- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
-- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
-- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
-- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
+**Meta glasses and Zuck's AI strategy (35:25)**
+- 35:25 · Freeberg · What's sticky repeated use case for Meta glasses vs Google Glass / Apple VR novelty-then-drawer?
+- 36:02 · Dina · Stylish (Ray-Ban / Kylie Jenner lines); 10 years engineering; billions wear glasses/sunglasses; music + speakers + calls; Conversation Focus (look at person → noise cancels except their voice); translation.
+- 37:47 · Dina · Peers all working wearables — people want hands-free real world not phone boxes; Oakleys for extreme sports; surprise use case: blind veterans — Meta reads screens/scripture; Austin VFW with Chris Stapleton on 9/11; blind vets helped design features; veteran called son independently first time via "Hey Meta, call John" and sobbed.
+- 39:54 · Freeberg · AI unlocks glass form factor for prevalence?
+- 40:07 · Dina · Many products will exist; glasses familiar/affordable; Mark focused on design + weight; exclusive with Ray-Ban/EssilorLuxottica partner.
+- 40:36 · Jason · Reconsider category: battery/bulk/dork factor fixed; voice works (vs Siri); phone between you more intrusive; translation of speech/signs.
+- 41:34 · Freeberg · Dario essay + unverified report Zuck said "go as fast as we can" — how process regulation call?
+- 41:59 · Dina · Agrees with Satya: safety paramount; Mark, Alexandr Wang, Nat Friedman + safety team daily; Mark's different view from 20 years empowering/connecting — ~3.6B people/day, ~200M SMBs; distribute superintelligence → education/healthcare access → more stable society ("future is for everyone"); proud of first American open-source model weeks ago.
 
 ### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
-- 02:44 Hearing: "We sell hope in a bottle."
-- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
-- 05:48 Moon: "will cost a light sum of $8.8 trillion."
-- 13:51 Promo: "We are insecure overachievers."
-- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
+- 07:43 Sheldon: "They got a $50,000 check."
+- 15:01 Dina: "if a community doesn't want one of our data centers, they get to choose."
+- 16:55 Dina: "if you wanted to stop America right now, what would you do?"
+- 22:52 Dina: "We at Meta guarantee you a job if you graduate"
+- 28:29 Dina: "I totally disagree with basically every single premise in your question."
+- 43:09 Dina: "the future is for everyone"
 
 ### One paragraph
-Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
+All-In Summit with Meta president/vice chair Dina Powell McCormick: Richland Parish, LA becomes the data-center rebuttal case — Meta's largest US DC investment drives sales-tax spikes (peaked ~260%) into ~$50k teacher checks, population return, and a state prototype where Meta pays its own power/grid/storm costs and uses less water than prior farmland — while Dina argues anti-DC misinfo (possibly adversary-amplified) must not stop communities that want jobs, and America's Workforce Academy (40k applicants, paid training, Meta job guarantee, union allyship) is the path to 500k open trade roles. Jason's "fastball" on teen addiction and the record settlement meets Dina's hard disagree plus a 52-AG teen-defaults deal (2h/day, night shutoff; +$5B/1h if YouTube/TikTok/Snap join); Sacks calls some of the litigation a shakedown but likes parental defaults. Close: Meta glasses (Conversation Focus, translation, blind-veteran independence) as the hands-free AI form factor, and Zuck's democratize-superintelligence thesis vs Dario-style regulation — safety teams yes, "future is for everyone" open distribution as the strategy.
 
 ### Footer
-canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
+canary: published 2026-09-17T16:54:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-18T04:05:00Z · length 43:51 (2631s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/dina.en.vtt · ASR name cleanup in body only (Dina Pal/Dena→Dina Powell McCormick, Satcha/Satia→Satya, Richmond→Richland Parish, McCormix→McCormick, Entury→Entergy, Shimoth→Chamath, Frink→Fink, Mary Bar→Mary Barra, Zach→Zuck, Daario→Dario, Natt→Nat Friedman, Saxs→Sacks, metagasses→Meta glasses) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+
+---
+<!-- 2026-09-17-all-in-gerstner.md -->
+
+## Recap · All-In · 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem
+url: https://www.youtube.com/watch?v=PJrntzMA4iQ + https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem  ·  length: 18:10  ·  text: captions
+### Takeaways, arguments, claims (in order)
+
+**Open · Trump Accounts / CAC scan / setup (00:00)**
+- 00:00 · Jason · Introduces "fifth bestie" Brad Gerstner (Altimeter; captions: Bersner/Altimter/Gerster) — operator-turned-investor who started five companies; different mentality than classic hedge-fund guy.
+- 00:20 · Montage / Jason · Trump Accounts: every US child under 18 (~70M) as direct owners in America; framed as largest unlock of direct philanthropy and antidote to socialism via more capitalism — "We make every child a capitalist."
+- 01:39 · Brad · Side plug: CAC / heart scan (~$100, 15 min) via Center for Heart Attack Prevention; claims highest-ROI healthcare habit; if normalized like mammograms could save ~50k US lives/year.
+
+**Market check · no bubble · semis drive returns (02:30)**
+- 02:41 · Brad · Scoreboard: markets ~+15% YTD / ~+39% since Jan prior year despite tariffs/geopolitics/AI-reg fear. Gold flat; Bitcoin ~−10%. Nvidia rev ×2, hyperscaler capex ×2, OpenAI & Anthropic vals ×2, SpaceX ~×2.5 — earnings-driven, not multiple expansion (multiples actually contracted).
+- 03:40 · Brad · "This is no bubble like it was in 2000." Nvidia ~14× next-year fully taxed GAAP; NASDAQ/S&P/SOXX/Nvidia below average multiples; MAG7 roughly in line. Laggards: consumer discretionary, software, financials barely moved.
+- 04:14 · Brad · Semiconductors = ~70% of NASDAQ's return — both good and concentration risk. Token *makers* making money; token *buyers* constrained by infrastructure tightness. Public cos with VC-like returns (e.g. Dell cited ~×5–×9 in ~18 months). Hyperscaler capex ≈ semiconductor free cash flow dollar-for-dollar.
+
+**Will AI revenue show up? · offtake math (05:20)**
+- 05:20 · Brad · Frames Oct prior-year Sam Altman + Satya pod: how commit ~$1T capex on ~$13B GAAP rev? Then Opus 4.5 / Claude Code → Anthropic monthly rev path (~$2B→$4B→$11B cited) lit the April–May rip; later ~$65B ARR vs street ~$75B caused consolidation + open-source catch-up worry.
+- 06:40 · Brad · Top-3 lab collective run-rate ~$100B (rumors incl. OpenAI/Anthropic/SpaceX mix in speech) — argues need ~$180B by year-end (+~$80B) to "keep the AI [trade]". Single most important datapoint: Anthropic/OpenAI monthly rev $4B vs $8B.
+- 08:20 · Brad · Capex offtake: Microsoft/Google/Amazon build to *rent*; someone must pay rent. Exit-year ~$200B run-rate must path ~200→450→800/$1T to match MAG5 expected capex (blue bars) vs GAAP offtake (orange). Recursive demand + aggressive compute expansion.
+
+**Compute / TAM / productivity (09:20)**
+- 09:29 · Brad · SemiAnalysis / Dylan Patel: ~19 GW compute added this year (~7 to two leading labs); next year forecast ~43 GW (~14 to leading labs) — adding as much next year as *total* US cumulative compute today. By 2028 >half US compute controlled by two labs (nod to Sacks).
+- 10:20 · Brad · Knowledge-work TAM huge; only ~4% / ~$1.2T needed to pay for capex → not a TAM problem. Inference/token growth (cites Jensen "1 billion×" call; ~47 quadrillion tokens; Codex users ~40× in 8 months; enterprise median AI spend ~17× in 18 months). Margin story: turn historical ~38 bps/year NASDAQ margin expansion toward ~100 bps via AI (Uber/Snowflake "grow rev, not headcount"). Consumer agents (Muse/Instinct hotel-booking bet with Bill) = another potential trillion-token category.
+
+**Three risks · regulation / power / rates (13:00)**
+- 13:00 · Brad · Risks: (1) regulation tug-of-war — needs pragmatic confidence for voters; recalls excess nuclear shutdown (~67 fission reactors) as China unilateral-disarm warning; nods Elon's peer-review idea from Summit day prior. (2) Atoms/energy hard — permitting, interconnection, labor, sold-out equipment.
+- 14:31 · Brad · Dylan's 43 GW "too aggressive"; hunch ~25 GW stood up next year, ~half to Anthropic + OpenAI — enough for revenue targets (Anthropic reportedly doing ~$100–110B with ~1.5 GW; +4–5 GW could add another ~$100B). (3) Rate hikes (>90% chance cited for next day); data centers now on borrowed money; Buffett gravity analogy — 5.5–6% risk-free challenges equities. 10-year to 5.5% = big equity burden.
+
+**Flight path · takeoff vs don't YOLO (16:00)**
+- 16:11 · Brad · Fan of outcomes from +15%: if lab monthly revs closer to $8B → "takeoff" + possible IPO this year. Watch rates/election/oil; Anthropic-IPO trade-down on halt/postponement fear. 2023–25 only needed one correct call (AI supercycle) and shove chips in; 2026 everyone knows AI — "facts and circumstances," stay mentally flexible, "Don't yolo," no 4× leverage.
+- 17:52 · Brad · Currently "medium position"; if big lab revs + oil retreat → more chips; else reserve right to go smaller.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 01:27 Brad: "We make every child a capitalist."
+- 03:40 Brad: "This is no bubble like it was in 2000."
+- 04:14 Brad: "Semiconductors are 70% of the NASDAQ's return."
+- 14:31 Brad: "I think the total amount we're actually going to stand up is somewhere closer to 25 gawatt."
+- 17:38 Brad: "Don't yolo."
+- 17:52 Brad: "we're medium position. We're mentally flexible."
+
+### One paragraph
+All-In Summit market-check: Brad Gerstner argues 2026's AI trade is earnings- and offtake-driven, not a 2000-style multiple bubble — semis ≈70% of NASDAQ returns, hyperscaler capex recycling into chip FCF, and lab monthly revenue ($4B vs $8B) is the single most important datapoint for whether the year "takes off." He maps a required ~$200B→$1T offtake path against MAG5 capex, discounts SemiAnalysis's 43 GW next-year build to ~25 GW (still enough for Anthropic/OpenAI math), and flags regulation, power permitting, and rising rates as the three real risks — closing that unlike 2023–25 you can no longer just YOLO the AI basket; stay medium-sized and fact-flexible.
+
+### Footer
+canary: published 2026-09-17T03:04:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-17T04:02:00Z · length 18:10 (1090s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/gerstner.en.vtt · ASR name cleanup in body only (Bersner/Gerster→Gerstner, Altimter→Altimeter, Satcha→Satya, Enthropic→Anthropic, gawatt→gigawatt) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 
 ---
@@ -546,337 +1281,127 @@ canary: YT uploadDate 20260917 (treat published 2026-09-17) · fetched 2026-09-1
 
 
 ---
-<!-- 2026-09-17-all-in-gerstner.md -->
+<!-- 2026-09-17-moon.md -->
 
-## Recap · All-In · 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem
-url: https://www.youtube.com/watch?v=PJrntzMA4iQ + https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem  ·  length: 18:10  ·  text: captions
+## Ingest · Moon · 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting
+url: https://www.youtube.com/watch?v=NQmRUeEkpFk  ·  length: 15:17  ·  text: captions
 ### Takeaways, arguments, claims (in order)
 
-**Open · Trump Accounts / CAC scan / setup (00:00)**
-- 00:00 · Jason · Introduces "fifth bestie" Brad Gerstner (Altimeter; captions: Bersner/Altimter/Gerster) — operator-turned-investor who started five companies; different mentality than classic hedge-fund guy.
-- 00:20 · Montage / Jason · Trump Accounts: every US child under 18 (~70M) as direct owners in America; framed as largest unlock of direct philanthropy and antidote to socialism via more capitalism — "We make every child a capitalist."
-- 01:39 · Brad · Side plug: CAC / heart scan (~$100, 15 min) via Center for Heart Attack Prevention; claims highest-ROI healthcare habit; if normalized like mammograms could save ~50k US lives/year.
+**Open / McKinsey reach (00:00)**
+- 00:00 · Moon · Thesis: McKinsey (captions: McKenzie throughout) is one of the world's most influential firms *because* most people barely hear the name. Clients claimed: 90 of 100 biggest companies + White House, Pentagon, NSA, Saudi Arabia, China, Russia, South Africa, and dozens of governments — outcomes "can hardly be said to benefit your life."
+- 00:40 · Clip / Moon · Pitch: SWAT team of analysts at beck and call; "create positive enduring change"; "best people." Moon: walk the Hall of Fame.
 
-**Market check · no bubble · semis drive returns (02:30)**
-- 02:41 · Brad · Scoreboard: markets ~+15% YTD / ~+39% since Jan prior year despite tariffs/geopolitics/AI-reg fear. Gold flat; Bitcoin ~−10%. Nvidia rev ×2, hyperscaler capex ×2, OpenAI & Anthropic vals ×2, SpaceX ~×2.5 — earnings-driven, not multiple expansion (multiples actually contracted).
-- 03:40 · Brad · "This is no bubble like it was in 2000." Nvidia ~14× next-year fully taxed GAAP; NASDAQ/S&P/SOXX/Nvidia below average multiples; MAG7 roughly in line. Laggards: consumer discretionary, software, financials barely moved.
-- 04:14 · Brad · Semiconductors = ~70% of NASDAQ's return — both good and concentration risk. Token *makers* making money; token *buyers* constrained by infrastructure tightness. Public cos with VC-like returns (e.g. Dell cited ~×5–×9 in ~18 months). Hyperscaler capex ≈ semiconductor free cash flow dollar-for-dollar.
+**Corporate Hall of Fame disasters (00:59)**
+- 00:59 · Moon · Kmart, Enron, GM — once too-big-to-fail clients, then bankrupt; Enron accounting fraud; ~20k jobs/pensions lost; imprisoned CEO was a McKinsey partner.
+- 01:20 · Moon · Disney: consultant questioned daily lap-bar checks → lawsuit's "run-to-failure" approach; Big Thunder Mountain crash kills 22-year-old. 2016 Marboro (captions: Marro) loyalty schemes / novelty prizes for smoking more (even a drone). AT&T told mobile phones were niche. Swissair told to buy rival stakes → grounded in four years. Specialty: mass layoffs — estimated ~5M American jobs.
 
-**Will AI revenue show up? · offtake math (05:20)**
-- 05:20 · Brad · Frames Oct prior-year Sam Altman + Satya pod: how commit ~$1T capex on ~$13B GAAP rev? Then Opus 4.5 / Claude Code → Anthropic monthly rev path (~$2B→$4B→$11B cited) lit the April–May rip; later ~$65B ARR vs street ~$75B caused consolidation + open-source catch-up worry.
-- 06:40 · Brad · Top-3 lab collective run-rate ~$100B (rumors incl. OpenAI/Anthropic/SpaceX mix in speech) — argues need ~$180B by year-end (+~$80B) to "keep the AI [trade]". Single most important datapoint: Anthropic/OpenAI monthly rev $4B vs $8B.
-- 08:20 · Brad · Capex offtake: Microsoft/Google/Amazon build to *rent*; someone must pay rent. Exit-year ~$200B run-rate must path ~200→450→800/$1T to match MAG5 expected capex (blue bars) vs GAAP offtake (orange). Recursive demand + aggressive compute expansion.
+**Purdue / OxyContin / opioid crisis (02:16)**
+- 02:16 · Moon · 2004 Purdue (captions: Pery/Peru): boost OxyContin sales — ID high-prescribing doctors, target them, raise dosage for "addiction revenue," counter grieving mothers in press, push FDA that Oxy is safe for kids.
+- 02:44 · Hearing clip · "We sell hope in a bottle" advertising for opioids / marketing to children.
+- 03:10 · Moon · Reformulation → dependent users shift to heroin then fentanyl; "banality of evil" via interns, suits, PowerPoint. Settlement: McKinsey pays ~$650M; partner Martin Elling emails self a to-do including deleting old Purdue files — only one convicted. Soon after: Valeant (captions: Valiian/Valiant) price hikes under advice (hundreds → $20k+), Senate hearing, collapse.
 
-**Compute / TAM / productivity (09:20)**
-- 09:29 · Brad · SemiAnalysis / Dylan Patel: ~19 GW compute added this year (~7 to two leading labs); next year forecast ~43 GW (~14 to leading labs) — adding as much next year as *total* US cumulative compute today. By 2028 >half US compute controlled by two labs (nod to Sacks).
-- 10:20 · Brad · Knowledge-work TAM huge; only ~4% / ~$1.2T needed to pay for capex → not a TAM problem. Inference/token growth (cites Jensen "1 billion×" call; ~47 quadrillion tokens; Codex users ~40× in 8 months; enterprise median AI spend ~17× in 18 months). Margin story: turn historical ~38 bps/year NASDAQ margin expansion toward ~100 bps via AI (Uber/Snowflake "grow rev, not headcount"). Consumer agents (Muse/Instinct hotel-booking bet with Bill) = another potential trillion-token category.
+**Saudi NEOM / surveillance / Jamal (04:40)**
+- 04:40 · Moon · Still ~$16B/year turnover — disasters read as CV to clients. Saudi: The Line / NEOM (neon dystopia) scaled back; CEO gone after ~$8B burned; McKinsey fee cited >$130M/year designing project scope; government hired McKinsey to *audit McKinsey's own plans* (admitted make-believe) → more spend; project now expected to ~2080 / ~$8.8T (>25× Saudi budget; >GDP of all but US/China).
+- 06:19 · Moon · Hundreds of Saudi projects incl. surveillance; tasked to ID prominent social-media dissidents — list included associate of Jamal Khashoggi (captions: Kosigible/Hashajji); UN/CIA framing of MBS-ordered killing; others arrested/hounded.
 
-**Three risks · regulation / power / rates (13:00)**
-- 13:00 · Brad · Risks: (1) regulation tug-of-war — needs pragmatic confidence for voters; recalls excess nuclear shutdown (~67 fission reactors) as China unilateral-disarm warning; nods Elon's peer-review idea from Summit day prior. (2) Atoms/energy hard — permitting, interconnection, labor, sold-out equipment.
-- 14:31 · Brad · Dylan's 43 GW "too aggressive"; hunch ~25 GW stood up next year, ~half to Anthropic + OpenAI — enough for revenue targets (Anthropic reportedly doing ~$100–110B with ~1.5 GW; +4–5 GW could add another ~$100B). (3) Rate hikes (>90% chance cited for next day); data centers now on borrowed money; Buffett gravity analogy — 5.5–6% risk-free challenges equities. 10-year to 5.5% = big equity burden.
+**China / Russia / US DoD double-dip / South Africa (07:00)**
+- 07:00 · Moon · China ~3 decades: Urban China Initiative / smart cities; partner advice on robotics/AI/data dominance. Russia: Rosstec (captions) + Kremlin-linked banks while US military paid >$480M on F-35 + naval/Air Force missile work — "helped design Russia and China strategy and then got paid to counter it." Senate clip: 22 of 100 biggest Chinese SOEs / ~$850M+ federal consulting (DoD top client) — CEO dodges numbers.
+- 08:20 · Moon · South Africa state-capture scandal (Eskom captions: ESCOM): denied corruption after reviewing millions of emails; 4 years later partner pleads guilty to bribery; repay fees + ~$62M. Iran labeled ~$1T growth opportunity (2015) — now war-zone profitable for "the right people." Pattern: screw-ups that mint generational wealth for someone.
 
-**Flight path · takeoff vs don't YOLO (16:00)**
-- 16:11 · Brad · Fan of outcomes from +15%: if lab monthly revs closer to $8B → "takeoff" + possible IPO this year. Watch rates/election/oil; Anthropic-IPO trade-down on halt/postponement fear. 2023–25 only needed one correct call (AI supercycle) and shove chips in; 2026 everyone knows AI — "facts and circumstances," stay mentally flexible, "Don't yolo," no 4× leverage.
-- 17:52 · Brad · Currently "medium position"; if big lab revs + oil retreat → more chips; else reserve right to go smaller.
+**Alumni network / recruitment / close (09:50)**
+- 09:50 · Moon · Pete Buttigieg (captions: Puda Judge) as McKinsey alum on DoD/USPS/Blue Cross Michigan — later Blue Cross cut ~1k jobs, sought ~55% individual premium hikes affecting ~418k (half pensioners); now podcasts about excess corporate power.
+- 11:00 · Moon · Alumni map: BBC/CNBC/Disney/ITV; Pfizer's Amir Malik (25y US ops); UK pandemic contracts; 8 bank CEOs/execs (Citigroup woman running now; Morgan Stanley/HSBC/UBS/Credit Suisse; BoE COO); Dutch prince; Germany's richest woman; late Queen's assistant private secretary; BMW/Rolls/DoorDash/Uber/Ford Foundation/Lego/FIFA/Ticketmaster/Microsoft/Yahoo/Meta/TikTok/Vodafone/OpenAI; Match.com co-founder; Boeing CEO of 737 Max era (two crashes / 346 dead); 7 Google execs incl. Sundar Pichai; Peter Attia; Chelsea Clinton; ≥47 politicians (Greek PM, UK foreign sec, US NSA, EU climate commissioner, sitting US senator).
+- 13:20 · Moon · 1999 Channel 4 recruitment doc: layoff roleplay; internal promo — "insecure overachievers," fear of failure as strength.
+- 14:20 · Moon · Close: McKinsey as psychology embedded in institutions — layoffs, wealth transfer, surveillance state, prices rising while dividends grow. "opioid of the corporate world" everyone is hooked on; invented to serve craving for money/power; best team for dirty work.
 
 ### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 01:27 Brad: "We make every child a capitalist."
-- 03:40 Brad: "This is no bubble like it was in 2000."
-- 04:14 Brad: "Semiconductors are 70% of the NASDAQ's return."
-- 14:31 Brad: "I think the total amount we're actually going to stand up is somewhere closer to 25 gawatt."
-- 17:38 Brad: "Don't yolo."
-- 17:52 Brad: "we're medium position. We're mentally flexible."
+- 00:02 Moon: "McKenzie is one of the most influential companies in the world."
+- 02:44 Hearing: "We sell hope in a bottle."
+- 03:48 Moon: "They were forced to pay $650 million for their involvement in the entire crisis."
+- 05:48 Moon: "will cost a light sum of $8.8 trillion."
+- 13:51 Promo: "We are insecure overachievers."
+- 14:51 Moon: "They are the opioid of the corporate world, and they've got everyone hooked."
 
 ### One paragraph
-All-In Summit market-check: Brad Gerstner argues 2026's AI trade is earnings- and offtake-driven, not a 2000-style multiple bubble — semis ≈70% of NASDAQ returns, hyperscaler capex recycling into chip FCF, and lab monthly revenue ($4B vs $8B) is the single most important datapoint for whether the year "takes off." He maps a required ~$200B→$1T offtake path against MAG5 capex, discounts SemiAnalysis's 43 GW next-year build to ~25 GW (still enough for Anthropic/OpenAI math), and flags regulation, power permitting, and rising rates as the three real risks — closing that unlike 2023–25 you can no longer just YOLO the AI basket; stay medium-sized and fact-flexible.
+Moon's essay frames McKinsey as the invisible operating system of elite failure: a résumé of Kmart/Enron/GM bankruptcies, Disney "run-to-failure" tragedy, AT&T's mobile miss, Swissair collapse, and mass-layoff specialty culminating in Purdue OxyContin targeting ("hope in a bottle") that helped rocket the US opioid/heroin/fentanyl cascade — settled for ~$650M with one partner convicted for evidence deletion — then Valeant price-gouging. The same toolkit scales to Saudi NEOM's make-believe plans audited by McKinsey itself toward an absurd ~$8.8T/2080 horizon, dissident-targeting ahead of Khashoggi's murder, China urbanization/tech advice, Rosstec work beside US F-35 contracts, and South Africa Eskom bribery admitted years after denial. The scare is alumni capture (Buttigieg through Sundar, Boeing's Max-era CEO, ≥47 politicians) cooking decision-makers inside an "insecure overachiever" culture — McKinsey as the corporate world's opioid, inevitable while power and money are craved.
 
 ### Footer
-canary: published 2026-09-17T03:04:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-17T04:02:00Z · length 18:10 (1090s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/gerstner.en.vtt · ASR name cleanup in body only (Bersner/Gerster→Gerstner, Altimter→Altimeter, Satcha→Satya, Enthropic→Anthropic, gawatt→gigawatt) · quotes from caption text · no ASR on box · no third-party transcript sites
+canary: YT uploadDate 20260917 / timestamp 2026-09-17T00:27:17Z · fetched 2026-09-17T04:03:00Z · length 15:17 (916s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/moon.en.vtt · ASR name cleanup in body only (McKenzie→McKinsey, Pery/Peru→Purdue, Oxycontton→OxyContin, Valiian→Valeant, Kosigible/Hashajji→Khashoggi, ESCOM→Eskom, Puda Judge→Buttigieg, Talk→TikTok, FISA→Pfizer where context fits Amir Malik) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 
 ---
-<!-- 2026-09-17-all-in-dina.md -->
+<!-- 2026-09-17-list.md -->
 
-## Recap · All-In · 2026-09-17 · Meta's Dina Powell McCormick: The Case for Data Centers, Backlash, AI Job Boom & Meta's Future
-url: https://www.youtube.com/watch?v=qp2IbgJ5Z-8 + https://allinchamathjason.libsyn.com/metas-dina-powell-mccormick-the-case-for-data-centers-backlash-ai-job-boom-metas-future  ·  length: 43:51  ·  text: captions
-### Takeaways, arguments, claims (in order)
+## List · pinned shows · pass 2026-09-17 (noon Asia/Taipei)
+Window: since last clock 2026-09-16 ~04:15 UTC. Usage: LIST + INGEST three new publishes (All-In Brad Gerstner 09-17, Fern El Mencho 09-16, Moon McKinsey consulting 09-17). Other pins quiet.
 
-**Dina Powell McCormick joins The Besties! (00:00)**
-- 00:03 · Intro · Dina Powell McCormick — former Trump adviser; Meta president & vice chair; leads AI expansion (data centers, investments, partnerships); "Powell McCormick's background is exactly where Meta's new bottlenecks are"; cites ~3.5B people on Meta daily; "next three years could be the whole game."
-- 01:07 · Jason · Coming off Satya convo on selling data-center community benefits; Dina has a video — roll it; she wants panel to beat Sen. McCormick's prior All-In episode views.
+### All-In · rss libsyn + YT @allin
+- on disk 2026-09-17 · Brad Gerstner: No AI Bubble, Semis Eat the Nasdaq & AI's Take Off Problem · 18:10 · packet `/workspace/recap/2026-09-17-all-in-gerstner.md` · https://www.youtube.com/watch?v=PJrntzMA4iQ · libsyn https://allinchamathjason.libsyn.com/brad-gerstner-no-ai-bubble-semis-eat-the-nasdaq-ais-take-off-problem
+- on disk 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms · 27:31 · packet `/workspace/recap/2026-09-16-all-in-vance.md` · https://www.youtube.com/watch?v=PUcooQRy0PU
+- on disk 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI · 36:33 · packet `/workspace/recap/2026-09-16-all-in-satya.md` · https://www.youtube.com/watch?v=hdcsTeCFE0I
+- on disk 2026-09-15 · Elon Musk & Gwynne Shotwell on AI Risks and Peer Review, Starship, Terafab, SpaceX/Tesla Merger · 1:04:25 · packet `/workspace/recap/2026-09-15-all-in.md` · https://www.youtube.com/watch?v=iwBOQeFPAwg
+- on disk 2026-09-14 · Jensen Huang: The Doomer Hoax, Superintelligence is Here, and The Future of AI (ft. President Trump) · 0:46:46 · packet `/workspace/recap/2026-09-14-all-in-jensen.md` · https://www.youtube.com/watch?v=S7CrlFLAmEA
+- on disk 2026-09-11 · AI Kills Everybody or Doomer Psyop? OpenAI's Math Breakthrough, Nike's $200B Collapse · 1:35:56 · https://www.youtube.com/watch?v=cvxjqbfLVk0
+- on disk 2026-09-04 · GPT-6 Hits AGI? Tech Euphoria 2.0… · https://www.youtube.com/watch?v=DvFe9bR2eHA
+- on disk 2026-08-29 · Nvidia's Historic Quarter… · https://www.youtube.com/watch?v=1u5dMAKl_ks
+- on disk 2026-08-26 · Eric Weinstein… · https://www.youtube.com/watch?v=y84ypzELP_s
+- on disk 2026-08-24 · Michael Kratsios… · https://www.youtube.com/watch?v=Xj4pTYsVSWQ
+- on disk 2026-08-21 · Dario Defends Himself… · https://www.youtube.com/watch?v=Sij_v-mcZXQ
+- on disk 2026-08-18 · Flock CEO Garrett Langley… · https://www.youtube.com/watch?v=5BWuvjGLMik
+- on disk 2026-08-14 · Anthropic's $2T IPO… · https://www.youtube.com/watch?v=kVzYGVJ8zUk
+- missing 2026-08-13 · Rahm Emanuel… · https://www.youtube.com/watch?v=_TcEfYlW4PA
+- missing 2026-08-08 · Google's AI Brain Drain… · https://www.youtube.com/watch?v=muRIXCDw-k0
+- What's new this pass: ONE new long-form Summit market-check published ~03:04 UTC Sep 17 — Brad Gerstner (Altimeter) on no-AI-bubble / semis / offtake / takeoff path. Ingested this pass.
 
-**Impact of Meta's data center in Richland Parish, LA: $50K teacher checks, revitalizing a small town community (01:52)**
-- 01:52 · Video · Richland Parish ("opportunity forgot"); locals leaving for work; Meta multi-billion investment; caterer 40→400/week; teacher sales-tax bonuses "jaw-dropping"; people coming back home.
-- 04:14 · Dina · Brings Sheldon (Richland Parish superintendent) + Susan (LA commerce/economic development secretary); Meta's largest data-center investment; tax surplus → teachers was Sheldon's realization.
-- 05:27 · Sheldon · First Meta meeting summer 2024 at community college — "the game has changed"; after Dec 2024 groundbreaking, sales-tax collections rose from normal ~5–10% to ~60–70%, peaked ~260%; school board gets 51% of parish taxes; 1¢ + ½¢ sales tax dedicated to employee salaries.
-- 07:13 · Sheldon · Dec 2025 half-cent check doubled (~$4k→~$8k); June full-year spike: certified employees ~+$40k sales-tax; panel clarifies ~$50k check; prior year ~$10k; Dec+June net ~$45k for teachers.
-- 08:06 · Jason · Data centers poll ~80 unfavorable in US — was community anti before?
-- 08:36 · Sheldon · Initial unknown/anxiety; no prior $50B-scale reference; Meta informing/educating must continue — message for least-informed, not most.
-- 09:31 · Susan · LA late to data-center game helped — Meta first in state; partnership not hardball negotiation; ~20 months ago chatter quieter; parish starved for opportunity; pre-investment average wages ~$36–38k; Mississippi River Delta longing for jobs; governor EO creates framework for large-load users — LA now "choosy"; Meta = prototype/high standard; "We are not one of those states who is saying no."
+### Moon · English @Moon-Real
+Long-form English essays. Skip shorts, clip dumps, clones.
+- on disk 2026-09-17 · The Satisfying Collapse of Bullsh*t Consulting · 15:17 · packet `/workspace/recap/2026-09-17-moon.md` · https://www.youtube.com/watch?v=NQmRUeEkpFk
+- on disk 2026-09-15 · How South Africa Became 3rd World in 10 Years (YT title now: South Africa Is a Warning To The World) · 16:10 · packet `/workspace/recap/2026-09-16-moon.md` · https://www.youtube.com/watch?v=YKGGUexEhUw
+- on disk 2026-09-11 · The Pervert Economy (YT title now: Meta's Plan To Make You a Pervert) · 12:32 · packet `/workspace/recap/2026-09-11-moon.md` · https://www.youtube.com/watch?v=dRM1RAld3YY
+- on disk 2026-09-04 · How America Became a Surveillance State · https://www.youtube.com/watch?v=f74awabxBXc
+- on disk 2026-09-01 · George Orwell Tried To Warn You · https://www.youtube.com/watch?v=daQAhruFG40
+- missing 2026-08-26 · The Failing CIA Propaganda Machine · https://www.youtube.com/watch?v=3NCYcrnNkmE
+- missing 2026-08-22 · The Larper Economy · https://www.youtube.com/watch?v=9TkcbSCTzhA
+- missing 2026-08-17 · Reddit Is Completely F*cked · https://www.youtube.com/watch?v=DX365DdWvbU
+- missing 2026-08-15 · San Francisco Is Everything Wrong With Society · https://www.youtube.com/watch?v=ejENM86i9Qs
+- missing 2026-08-10 · When Conan Exposes Bill Burr Is a Fraud · https://www.youtube.com/watch?v=EltOViLTeH4
+- missing 2026-08-05 · The Day Dave Chappelle Sold His Soul · https://www.youtube.com/watch?v=OMxesWuyo4s
+- What's new this pass: new long-form — The Satisfying Collapse of Bullsh*t Consulting (McKinsey essay; uploaded ~00:27 UTC Sep 17). Ingested this pass.
 
-**How Meta is alleviating data center concerns: pollution, electricity, water, noise, aesthetics; Misinformation campaigns (11:52)**
-- 11:52 · Jason · Valid community concerns: pollution, electricity cost, water (closed vs open loop), noise, ugly aesthetics — did they apply?
-- 12:53 · Susan · Timing luck — issues addressed before public forum; farmland; Meta chose more expensive efficient system using less water than prior farming; LA has abundant gas (~32k miles pipelines); Meta–Entergy deal: Meta paid own generation, grid resilience/upgrades, storm costs even when not operating — takes burden off LA consumers; became prototype for future deals.
-- 14:31 · Chamath · With NSA-adviser hat: why is anti–data-center misinfo winning despite clear local data (and Satya)?
-- 14:53 · Dina · Jason's questions legitimate; communities that don't want DCs get to choose; Meta must explain investment upfront; compact: (1) pay own power + drive costs down, (2) water tech (AI-driven) for farm/rural reality, (3) teachers — not Meta's idea; LA law mandates tax surplus to teachers; Sheldon's phone ringing statewide; now investing teachers + first responders + small-biz impact everywhere Meta goes.
-- 16:14 · Dina · Industry has done poor job communicating — but impact first, then stories (proud of LA, Texas, Ohio); just met Sens. Cotton & Warner (intel); they believe adversaries are ginning up backlash — she can't confirm, but if you wanted to stop America you'd block US data centers to deny AI dominance; communities that want jobs/bonuses should get them; those that don't opt out — don't want peers building only abroad.
-- 17:36 · Freeberg · Water narrative especially sticky despite easy debunk; loves federalism — some states win, some lose.
-- 18:03 · Susan · After $50k bonus news, other rural parish leaders begged "bring one here"; LA not buying national propaganda.
-- 18:41 · Sheldon · Best/brightest used to leave permanently; now narrative: you can stay, raise family, have opportunity in Richland.
+### Fern · English @fern-tv
+- on disk 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught · 25:50 · packet `/workspace/recap/2026-09-16-fern.md` · https://www.youtube.com/watch?v=d61n1isTfeo
+- on disk 2026-09-09 · The FBI Agent Who Infiltrated the Mafia · https://www.youtube.com/watch?v=hK8kzWOBi-U
+- on disk 2026-09-02 · The Death of Educational Content on YouTube · https://www.youtube.com/watch?v=-Gnrp_caPvo
+- on disk 2026-08-26 · The $1 Billion McDonald's Box · https://www.youtube.com/watch?v=65hjeAq6Oq0
+- missing 2026-08-19 · The Unsolved Murder in Room 1046 · https://www.youtube.com/watch?v=zy6ZN1qM3sY
+- missing 2026-08-12 · How China's Biggest Scammer Got Caught · https://www.youtube.com/watch?v=a4EcjsnM6ro
+- missing 2026-08-05 · Exposing a $1,900,000,000 Pharma Company · https://www.youtube.com/watch?v=Eo0JQLIG6hA
+- What's new this pass: new long-form — How the World's Most Dangerous Drug Lord Was Caught (El Mencho / CJNG; uploaded ~16:51 UTC Sep 16, after yesterday's cutoff). Ingested this pass.
 
-**America's Workforce Academy, the job growth in re-industrializing America (19:57)**
-- 19:57 · Video · Workforce program: no prior experience → workforce after ~4–5 weeks; Meta "blessing" infrastructure jobs.
-- 21:08 · Dina · LA site short welders/pipefitters/electricians especially fiber techs; built curriculum with CBRE et al.; 5-week fast-track: safety + "job site ready"; Meta guarantees job on a Meta DC site if you graduate; ~500k open trade roles next years (Sacks) but waitresses/Uber/home-health can't take unpaid expensive OSHA training with no job guarantee.
-- 22:31 · Dina · America's Workforce Academy launched ~4 months ago: 40k Americans applied; graduated 250; ~90% retention into contractor DC jobs; didn't put Meta in name so peers can hire; partners unions (Sean McGarvey / trades); union leadership now anti–anti-DC backlash — will only support candidates who support data centers.
-- 24:07 · Dina · Talking to Ruth Porat (Google) — joining workforce alliance with Larry Fink/BlackRock et al.; compete on models/products, not people; trained Meta worker can go Google/Microsoft.
-- 24:38 · Chamath · 40k applied / ~400 picked — expand?
-- 24:46 · Dina · Scaling via community colleges, VFW halls, Association of Builders & Contractors sites; Mary Barra (GM) wants ~1,000 once curriculum/cert ready; unlock = pay full job wage during training (not apprentice stipend); Pittsburgh welders ~$120k — clear fast path + guaranteed job.
+### Justin Sung · @JustinSung
+- on disk 2026-08-28 · 5 Thinking Habits That Make You Look Smarter · https://www.youtube.com/watch?v=6Z3I-9HvBQA
+- on disk 2026-08-21 · LIVE STREAM: The Simplest Ways to Learn Faster (For Life) + Q&A · https://www.youtube.com/watch?v=mQtSv7ZbbIw
+- on disk 2026-08-20 · How to Learn So Fast People Assume You're Naturally Gifted · https://www.youtube.com/watch?v=nIABz0Z4IRA
+- missing 2026-08-14 · 11 Tiny Habits To Learn and Think Like The Top 1% · https://www.youtube.com/watch?v=KnyXpuhbgSc
+- missing 2026-08-08 · My Most Underrated Video on How to Learn More Efficiently · https://www.youtube.com/watch?v=-eVW4mJnops
+- What's new this pass: nothing new — 5 Thinking Habits still channel top.
 
-**Meta's recent social media settlement, new rules for teens (26:58)**
-- 26:58 · Jason · "Fastball": Meta paid settlement second only to tobacco, ahead of BP — significant damage to children, products too addicting, move-fast-break-things culture; now shipping more-addicting AI companions / Muse — what changed and what learned?
-- 28:29 · Dina · "Totally disagree with basically every single premise"; there 8 months (+1 year board); people focused on empowering parents / supporting teens; proud of agreement with 52 bipartisan AGs: under-18s max 2 hours/day on platform, app shuts off, no night use, no school-day notifications, more parental supervision; if peers join = historic; mom of six daughters — personal.
-- 29:56 · Dina · Jason's settlement numbers wrong: Meta offered additional $5B and drop to 1 hour/day if YouTube, TikTok, and Snap join — kids just migrate apps otherwise; "wouldn't it be pretty amazing… under 18… an hour a day, shut off at night?"
-- 30:28 · Chamath · Universal vs parent-controlled?
-- 30:37 · Dina · Parent can override but app actually turns off; Texas recruiters complain Instagram off hurts football recruiting — parent choice.
-- 31:20 · Chamath · Hit limit at dinner table — fantastic; parental whack-a-mole across YouTube/Instagram/Shorts.
-- 32:24 · Sacks · New defaults better; defends Meta vs "ridiculous pile-on" — voluntary product, adults sue blaming it for multi-cause life problems, state AGs + trial lawyers; some "shakedown"; resolution net beneficial; parental control not government.
-- 33:49 · Jason · Industry addicted to gamification / time-on-app; Facebook+YouTube too good at addicting adults and kids; still commend Meta for leading peers now (even if late).
-- 34:24 · Chamath · RSI (recursive self-improvement) next 18 months — any app with time reward function proliferates (even Word); companies must set hard shutoff thresholds.
+### Maxinomics · @Maxinomics
+- on disk 2026-09-11 · China Found Something Better Than Oil · 27:26 · packet `/workspace/recap/2026-09-11-maxinomics.md` · https://www.youtube.com/watch?v=BXLGV0Sj0n8
+- on disk 2026-08-07 · The Simple Question Socialism Couldn't Answer · https://www.youtube.com/watch?v=mMHyhneAxXY
+- older long-form still uningested (not new): Why Elon Musk is Really Building Starship · DlXb3zSLdFY; AI Was Supposed To Take Your Job. Why Hasn't It? · zRv5kW5mAxM.
+- What's new this pass: nothing new — China/magnets episode still channel top.
 
-**Meta glasses and Zuck's AI strategy (35:25)**
-- 35:25 · Freeberg · What's sticky repeated use case for Meta glasses vs Google Glass / Apple VR novelty-then-drawer?
-- 36:02 · Dina · Stylish (Ray-Ban / Kylie Jenner lines); 10 years engineering; billions wear glasses/sunglasses; music + speakers + calls; Conversation Focus (look at person → noise cancels except their voice); translation.
-- 37:47 · Dina · Peers all working wearables — people want hands-free real world not phone boxes; Oakleys for extreme sports; surprise use case: blind veterans — Meta reads screens/scripture; Austin VFW with Chris Stapleton on 9/11; blind vets helped design features; veteran called son independently first time via "Hey Meta, call John" and sobbed.
-- 39:54 · Freeberg · AI unlocks glass form factor for prevalence?
-- 40:07 · Dina · Many products will exist; glasses familiar/affordable; Mark focused on design + weight; exclusive with Ray-Ban/EssilorLuxottica partner.
-- 40:36 · Jason · Reconsider category: battery/bulk/dork factor fixed; voice works (vs Siri); phone between you more intrusive; translation of speech/signs.
-- 41:34 · Freeberg · Dario essay + unverified report Zuck said "go as fast as we can" — how process regulation call?
-- 41:59 · Dina · Agrees with Satya: safety paramount; Mark, Alexandr Wang, Nat Friedman + safety team daily; Mark's different view from 20 years empowering/connecting — ~3.6B people/day, ~200M SMBs; distribute superintelligence → education/healthcare access → more stable society ("future is for everyone"); proud of first American open-source model weeks ago.
+### Elon sit-downs
+- nothing new sit-down in the window. On disk: 2026-07-23 Economist × Zanny · https://www.youtube.com/watch?v=XuoqKYxDHVc. Light check: Economist channel top is conscious-AI / Europe / Nvidia boom clips — not a new Elon interview; Lex newest is psychiatry / DHH / Khabib — no Elon. Skip wraps / daily X (→ Brief).
 
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 07:43 Sheldon: "They got a $50,000 check."
-- 15:01 Dina: "if a community doesn't want one of our data centers, they get to choose."
-- 16:55 Dina: "if you wanted to stop America right now, what would you do?"
-- 22:52 Dina: "We at Meta guarantee you a job if you graduate"
-- 28:29 Dina: "I totally disagree with basically every single premise in your question."
-- 43:09 Dina: "the future is for everyone"
+### Naval
+- parked since 2026-07-02. Did not publish in the window (RSS newest still Live in the Future, 2026-07-02).
 
-### One paragraph
-All-In Summit with Meta president/vice chair Dina Powell McCormick: Richland Parish, LA becomes the data-center rebuttal case — Meta's largest US DC investment drives sales-tax spikes (peaked ~260%) into ~$50k teacher checks, population return, and a state prototype where Meta pays its own power/grid/storm costs and uses less water than prior farmland — while Dina argues anti-DC misinfo (possibly adversary-amplified) must not stop communities that want jobs, and America's Workforce Academy (40k applicants, paid training, Meta job guarantee, union allyship) is the path to 500k open trade roles. Jason's "fastball" on teen addiction and the record settlement meets Dina's hard disagree plus a 52-AG teen-defaults deal (2h/day, night shutoff; +$5B/1h if YouTube/TikTok/Snap join); Sacks calls some of the litigation a shakedown but likes parental defaults. Close: Meta glasses (Conversation Focus, translation, blind-veteran independence) as the hands-free AI form factor, and Zuck's democratize-superintelligence thesis vs Dario-style regulation — safety teams yes, "future is for everyone" open distribution as the strategy.
+### Frontpage · English @frontpagechannel
+Long-form, well-sourced. Skip shorts, clip dumps, clones.
+- on disk 2026-09-03 · Why Fast Food Became So Unaffordable · 40:47 · packet `/workspace/recap/2026-09-03-frontpage.md` · https://www.youtube.com/watch?v=R9GEhShaHhI
+- older long-form still uningested (not new this pass): Chicago Is Never Coming Back · 9vFEHC6QYUE; The Hypocrisy Of Men VS Women On Dating Apps · 6T0lc_BnExI; Why American Suburbs F*cking SUCK · HkoPrTQCWs0; and further channel backlog.
+- What's new this pass: nothing new — Fast Food still channel top.
 
-### Footer
-canary: published 2026-09-17T16:54:00Z (libsyn RSS) / YT uploadDate 20260917 · fetched 2026-09-18T04:05:00Z · length 43:51 (2631s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-18/dina.en.vtt · ASR name cleanup in body only (Dina Pal/Dena→Dina Powell McCormick, Satcha/Satia→Satya, Richmond→Richland Parish, McCormix→McCormick, Entury→Entergy, Shimoth→Chamath, Frink→Fink, Mary Bar→Mary Barra, Zach→Zuck, Daario→Dario, Natt→Nat Friedman, Saxs→Sacks, metagasses→Meta glasses) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-
----
-<!-- 2026-09-16-moon.md -->
-
-## Ingest · Moon · 2026-09-15 · How South Africa Became 3rd World in 10 Years
-url: https://www.youtube.com/watch?v=YKGGUexEhUw  ·  length: 16:10  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Open / warning frame (00:00)**
-- 00:00 · Moon · Thesis: South Africa is a warning to the West. ~20 years ago it defied today's image — post-apartheid Africa's strongest economy, world-class companies, precious metals/gems, warm streets.
-- 00:20 · Moon / clips · Today: machete mobs, regular mass shootings, armed robberies/kidnappings normalized; murder rate ~10× America's; six SA cities among world's 50 most violent.
-
-**Zuma / Gupta state capture / Eskom (00:56)**
-- 00:56 · Moon · Trace to 2009: Jacob Zuma takes power under ANC one-party domination; committee places allies atop institutions. Gupta brothers build empire inside the state; Zuma flies ~200 guests to a military base for their wedding.
-- 01:28 · Moon · First public tell: lights go out. Eskom once exported cheap power; instead of building plants, Zuma circle treats it as cash cow → "load shedding" (planned cuts 2–12 hours/day).
-- 02:12 · Moon / clip · Corruption: Eskom paid ~80,000 rand (~$4,500) for one knee pad. New CEO who brought investigators nearly killed — elevated cyanide in blood ("close shave").
-
-**Rail / Marikana / Malema / currency crash (03:03)**
-- 03:03 · Moon · Railways: 2008 commuter network ~600k/day → last year under ~14k as gangs steal cable/signaling with no intervention.
-- 03:17 · Moon · 2010 World Cup brief high; 2012 Marikana — police kill 34 striking Lonmin miners; unrest; Julius Malema rises as radical alternative to Zuma.
-- 04:03 · Moon · Zuma personal mansion upgrades (leaked "fire pool"); 2015 fires respected finance minister → currency crash after Guptas lined up a replacement who would benefit them.
-
-**Sponsor · Free Cash (04:28)**
-- 04:28 · Moon · Mid-roll: Free Cash — play mobile games / hit milestones for real payouts (PayPal, crypto, gift cards); $25 min cashout; claim 4.7★ / 270k+ Trustpilot; $10 bonus via Moon link / QR. Enable app tracking or progress won't credit.
-
-**Johannesburg decay / private security / racial laws (06:08)**
-- 06:08 · Moon · Declassified docs: offers of ~600M rand (~$40M) to chosen accounts; cash dished to connected parties totaling well over $200M claimed.
-- 06:34 · Moon · Johannesburg 54-story residential tower once "Africa's Manhattan"; restoration attempt found 23 bodies in a rubbish pile nearly 13 stories high; hundreds of hijacked buildings.
-- 07:06 · Moon · Underfunded police: Nelson Mandela Bay (~1M people) cited with one working rapid-response vehicle with 300k+ km. Private security: ~2.7M registered officers vs <150k police for ~62M people — more than army+police combined.
-- 07:48 · Moon · Elite insulation: cars not trains, guards not police, generators not grid, walls not public space. Parallel to Western gated compounds / Thiel–Zuckerberg–Altman bunkers; Reid Hoffman: >half of SV billionaires have "apocalypse insurance."
-- 08:33 · Moon · Post-apartheid equity push created ~145 racial classification laws; aim against brutal inequality acknowledged, but result framed as permanently divided state. Farm attacks on white pensioners; vigilantes with automatic weapons arrive before police. Local demographics vs national BEE formula can also discriminate against Black South Africans.
-
-**State capture inquiry / McKinsey / aftermath (10:05)**
-- 10:05 · Moon · ANC forces Zuma out 2018; judicial inquiry: ~$65B taken — term "state capture." Essay cited: "South Africa's warning for the United States and other democracies" — pattern that makes corruption legal.
-- 10:42 · Moon · Outside help including McKinsey: bribery scheme for Eskom/rail contracts (~$85M profit); later >$122M US criminal settlement. Zuma imprisoned then released after ~2 months; imprisonment triggers riots killing 350+; two Gupta brothers escape to Dubai, extradition fails. Zuma later joins them near Robert Mugabe; visits remaining Gupta in India as "brother and friend."
-- 12:01 · Moon · Claim: they won — minimal retribution, endless unread report, poolside life while population pays.
-
-**Migrant crisis / Western parallels / close (12:13)**
-- 12:13 · Moon · ~1M emigrated (doctors, engineers, skilled, tax-paying business owners); gaps plugged with cheap labor from Zimbabwe/Mozambique/Malawi/Lesotho; foreigner counts wildly range 4–14M. Native backlash: hospital ID checks, songs like "burn the foreigner."
-- 12:58 · Moon · New president anti-corruption rhetoric; robbers find ~$580k foreign cash in furniture — claimed payment for 20 buffalo. Frame: SA = Western decline on steroids (potholes, parks→office blocks, rising taxes, US ambulance as financial gamble, UK NHS waits → private; US police confidence collapse post-2020; UK 14% trust police on minor crime; 72% burglaries closed with no ID).
-- 14:17 · Moon · Market substitutes: Ring, Flock, Palantir, Citizen app + private security — "failing you twice" (take tax-funded service, sell expensive replacement). Equity-over-merit parallel: UK Cheshire police / Matthew Furlong tribunal — 127 candidates declared equal merit to favor protected characteristics; white/male/heterosexual applicant won discrimination case.
-- 15:45 · Moon · Close: SA didn't wake up failed overnight; wealthy behind walls, middle class watch streets via cameras, poor enforce their own order; elites who hollowed the system live in bunkers. West need not become SA overnight — just keep following, one failure at a time.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:00 Moon: "South Africa is a warning to the west"
-- 01:54 Moon: "South Africa has been suffering from something that they call here load shedding."
-- 07:48 Moon: "They don't need the trains because they have cars. They don't need the police because they have guards."
-- 10:18 Moon: "A staggering $65 billion have been taken in total and they coined a term for it, state capture."
-- 13:12 Moon: "South Africa looks like Western decline on steroids."
-- 16:03 Moon: "The West doesn't have to become South Africa overnight. It just has to keep on following in its footsteps"
-
-### One paragraph
-Moon's essay casts post-Zuma South Africa as a compressed cautionary tale for Western democracies: ANC patronage and Gupta "state capture" hollowed Eskom into load-shedding cash-cow politics, collapsed rail ridership via cable theft, and left Johannesburg towers as hijacked ruins — while private security (2.7M officers) and gated compounds replace a hollowed police state, and ~145 racial laws lock in permanent division even as farm attacks and xenophobic migrant backlash escalate. After a ~$65B inquiry, McKinsey settlements, and a two-month Zuma jail stint that sparked 350+ riot deaths, the Guptas escape to Dubai with little lasting retribution; Moon then maps the same pattern onto US/UK decay (taxed-but-failing services, Ring/Flock/Citizen private substitutes, equity-over-merit hiring) and closes that the West need only keep taking the same steps.
-
-### Footer
-canary: YT uploadDate 20260915 / timestamp 2026-09-15T17:50:12Z · fetched 2026-09-16T04:12:00Z · length 16:10 (970s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-moon-0916/YKGGUexEhUw.en.vtt · ASR name cleanup in body only (Jacob Sumer→Zuma, Escom→Eskom, Malemma→Malema, Zoomer→Zuma, McGabby→Mugabe, Teal→Thiel, Ultim→Altman, Escro→Eskom, Leoto→Lesotho) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-
----
-<!-- 2026-09-16-fern.md -->
-
-## Ingest · Fern · 2026-09-16 · How the World's Most Dangerous Drug Lord Was Caught
-url: https://www.youtube.com/watch?v=d61n1isTfeo  ·  length: 25:50  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Cold open · El Mencho / CJNG threat (00:00)**
-- 00:00 · Fern · Predator drone over Jalisco (captions: Kaliscoco) compound: infrared captures man hugging children then woman — long goodbye. Subject: Nemesio Rubén Oseguera Cervantes (captions: Nessia Rubin Oera Cantes), street name El Mencho (captions: El Meno/Elmano) — leader of Mexico's most violent/powerful cartel, associated with ~81% of cartel-related homicides; declared war on the Mexican state; floods world with illicit drugs. Usually fortress with landmines + ~60 gunmen; today left it — rare.
-
-**Chapter 1 · Michoacán / Millennials origin (01:32)**
-- 01:32 · Fern · Early 2000s Mexico: four majors (Sinaloa, Gulf, Tijuana, Juárez) fight plazas; smaller groups too. Michoacán (captions: Mitchan/Mituakan) — rugged, weak state presence; Valencia family's avocado cover vs Millennial Cartel marijuana/opium + coke port routes supplying Sinaloa.
-- *(skipped Zocdoc mid-roll ~03:35–05:10: fern host cold / book doctor via zdoc.com/fern)*
-- 05:20 · Fern · El Mencho born 1966 Aguililla (captions: Agalia), poor avocado family, drops out 5th grade, guards Valencia marijuana fields; illegal US entry → meth trade; arrests/deportations; ~1992 heroin bust → 3 years Texas prison; briefly Jalisco state police; 1996 returns, marries niece of Millennial boss "El Maradona," works for father-in-law.
-- 06:20 · Fern · Alliance with Carlos Rosales Mendoza / Gulf Cartel; El Maradona affair with Mendoza's wife → revenge; 2002 Gulf sends ~300 Los Zetas → turf war; El Maradona arrested; Millennials driven out; survivors regroup under Sinaloa; El Mencho becomes hitman for Ignacio "Nacho" Coronel in Guadalajara.
-
-**Chapter 2 · Calderón war / CJNG rise / six strategies (07:10)**
-- 07:10 · Fern · 2006 Felipe Calderón declares war; ~50k soldiers; kingpin strategy — ~2/3 most-wanted captured/killed. Millennial heads arrested → vacuum favors El Mencho (top lieutenant; rumors he betrayed predecessors per El País intel). Power struggle vs rival El Mocho (captions: El Moa); Mencho wins.
-- 09:09 · Fern · Sep 2011: 35 Zeta corpses dumped in Veracruz — announcement of Mata Zetas → Cartel Jalisco Nueva Generación (CJNG). Leader El Mencho. Six strategies: (1) franchising — CEO model, absorb local cells as brand/profit-share; (2) meth focus — California super-lab model → industrial high-purity meth + coke/heroin/fentanyl; (3) diversification — pipeline fuel theft, avocado extortion, migrant smuggling, livestock, illegal logging/fishing, timeshare scams; (4) internationalization — SA/Asia sales, brother-in-law Los Cuinis (captions: Losinis) laundering via Uruguay luxury property / shells / Triads / crypto; (5) propaganda — toys/food/medical aid, Fortnite/CoD recruitment, narco-culture videos; (6) violence — strategic intimidation, ISIS-compared methods, training camps, forced cannibalism anecdote from ex-recruit.
-- 15:22 · Fern · By estimates to 2024 CJNG associated with ~75k deaths; 2013–22 involved in >80% cartel-related homicides. Better equipped than Mexican military (US-smuggled armor/drones/RPGs). 2015: ambushes kill police; rocket-downs police helicopter (9 dead); Jalisco names him public enemy #1. Calderón war ≥50k dead / tens of thousands disappeared — failed; Peña Nieto continues kingpin hunt (son + brother-in-law arrests don't deter).
-
-**Chapter 3 · AMLO hugs / Project Python / Sinaloa deal (17:00)**
-- 17:10 · Fern · 2018 AMLO (captions: Lopez Urador/Ordor): "hugs not bullets"; 2019 most violent year in Mexican history; 2020 DEA: CJNG greatest criminal drug threat to US. Only two majors left (Sinaloa + CJNG) + ~200 fragmented gangs.
-- 18:07 · Fern · Project Python: >600 arrests incl. closest relatives; son extradited; ~350 indictments; ~$20M seized — changes little. Response violence: judge in son's case killed; mayor murdered; Mexico City police chief survives assassination attempt. 2016 Chapo capture → Sinaloa civil war (El Mayo vs Chapitos); Dec 2024 WSJ: Chapitos leader meets El Mencho — weapons/cash/fighters for US routes; divide trade (Sinaloa fentanyl / CJNG meth+coke). US reward → $15M; early 2025 DoS designates CJNG + 7 others FTOs; Trump presses Claudia Sheinbaum (captions: Shinbomb), offers direct US intervention.
-
-**Chapter 4 · Tapalpa raid / death / aftermath (21:12)**
-- 21:12 · Fern · Mountain HQ: 6-hour drive, landmines, ≥60 gunmen, no phones/network — messages in person. Weakness: extramarital affairs. Intel tracks a lover with Predator drone to Tapalpa (captions: Tapulpa) forest-edge compound party; next morning IR hug IDs Mencho outside fortress.
-- 22:40 · Fern · Dawn raid: 6 military helicopters + special forces; smaller-than-usual security; firefight; Mencho + 2 escape to brush; helicopter emergency landing; ≥2 soldiers injured; several cartel dead; Mencho severely wounded, captured; dies during helicopter flight to hospital (~age 60, veneers, dyed hair/mustache).
-- 24:10 · Fern · Hours later CJNG rampage across ~20 states: fires, roadblocks, ≥25 soldiers gunned down; >70 dead in raid+aftermath. Buried in golden coffin; business appears uninterrupted; late-stage kidney disease rumors he was already figurehead. Right-hand El Rulo (captions: Eluli) later killed; Apr 2026 another senior arrested; strongest succession contender stepson El Pelón / El Cero (captions: Elzerot). Close: devastating blow — or next chapter.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:34 Fern: "associated with 81% of all cartel related homicides in the country."
-- 09:38 Fern: "Elmeno runs the CJNG like a business. At the top is the CEO, him."
-- 15:22 Fern: "the group has been associated with 75,000 deaths."
-- 17:10 Fern: "hugs, not bullets."
-- 20:41 Fern: "the US raises the reward… to $15 million."
-- 23:56 Fern: "He dies during the flight."
-
-### One paragraph
-Fern reconstructs how Nemesio "El Mencho" Oseguera Cervantes built CJNG from Michoacán Millennial remnants into Mexico's most lethal franchise — meth super-labs, diversified shadow economy, international laundering, social-media recruitment, and ISIS-grade intimidation tied to ~75k deaths and ~80%+ of cartel homicides — surviving Calderón's kingpin war, AMLO's "hugs not bullets," and DEA Project Python while cutting a 2024 weapons-for-routes deal with Sinaloa's Chapitos. The capture comes not from the mined mountain fortress but from a Predator-tracked lover's Tapalpa rendezvous: a dawn air assault wounds and seizes him; he dies en route to hospital, prompting a 20-state CJNG revenge rampage (>70 dead) and an unresolved succession fight around stepson El Pelón — leaving open whether the state broke the cartel or only opened its next chapter.
-
-### Footer
-canary: YT uploadDate 20260916 / timestamp 2026-09-16T16:51:30Z · fetched 2026-09-17T04:03:00Z · length 25:50 (1549s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-2026-09-17/fern.en.vtt · show chapters used as section anchors (Ch.1 Michoacán / Ch.2 Jalisco / Ch.3 Sinaloa / Ch.4 Tapalpa) · ASR name cleanup in body only (El Meno/Elmano→El Mencho, Kaliscoco→Jalisco, Mitchan/Mituakan→Michoacán, Sinalora→Sinaloa, Huarees→Juárez, Cvantes→Cervantes, Matasetas→Mata Zetas, fentinyl→fentanyl, Shinbomb→Sheinbaum, Tapulpa→Tapalpa, Eluli→El Rulo, Elzerot→El Cero) · Zocdoc mid-roll noted skipped · quotes from caption text · no ASR on box · no third-party transcript sites
-
-
----
-<!-- 2026-09-16-all-in-vance.md -->
-
-## Recap · All-In · 2026-09-15 · JD Vance on AI, Entitlement Fraud, Iran War, Israel, H-1B Abuse & the Midterms
-url: https://www.youtube.com/watch?v=PUcooQRy0PU + https://allinchamathjason.libsyn.com/jd-vance-on-ai-entitlement-fraud-iran-war-israel-h-1b-abuse-the-midterms  ·  length: 27:31  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**VP JD Vance joins The Besties! (00:00)**
-- 00:01 · Montage · Swearing-in / border / fraud / midterms soundbites. Jason welcomes him (~3rd–4th appearance); halfway through term, midterms ahead. Vance jokes he misheard "big house" as Michigan stadium not prison.
-
-**Assessing the Trump Admin so far (01:40)**
-- 02:02 · Vance · Proudest: (1) southern border control + reverse illegal immigration flow (~3M lower than when they took office) — first president in his lifetime to reverse, not just slow, post-war Western pattern; (2) re-industrialization / recapitalizing manufacturing after bipartisan globalization-services consensus — trillions of new investment/construction; reversing a ~40-year trend in ~18 months; claims Trump will be remembered more for ending globalization consensus than for the border.
-- 03:44 · Jason · Constituents frustrated on two promises: no Middle East foreign war, and inflation control (still ~3–4%).
-- 04:31 · Vance · Coalition can disagree. On war: Trump also committed Iran not get a nuke; staying out of entanglements ≠ never use military. Claims substantial destruction of Iranian nuclear + conventional military; Iranians still shooting commercial shipping amid peace talks — alternative "Middle East on your own" = worldwide energy crisis. Inflation: Biden peak ~9.5% (~48-year high); 3.5% still too high but progress — pitch: reelect people making progress vs people who caused the problem.
-- 06:37 · Friedberg · Fiscal deficit / 30y ~5.2%; DOGE hard to get Congress to cut — path?
-- 07:22 · Vance · Anti-fraud efforts he focuses on saved ~$250B of taxpayer money (meaningful vs $7T budget but not whole fix). Need bipartisan legislative solutions markets trust across administrations. Markets see neither party serious on debt. Inherited ~$2T deficit — can't cut $2T overnight from $7T; Bessent path: cut smartly + grow toward ~3% of GDP deficit, then keep going. Congress (not only Democrats) hasn't shown willingness on spending.
-
-**AI approach: Doomerism, Frankenstein, AI negativity (09:28)**
-- 09:28 · Chamath · Forces slowing US (DC backlash / fear-mongering) despite Trump/Jensen/Meta/Microsoft debunks yesterday.
-- 10:13 · Vance · DC backlash partly NIMBY, partly real power-bill shock ($290→$580/mo) where blue states blocked generation. Fix isn't stop building — build power; PRC overtook US electricity ~2005 then ~3× US while US flatlined. Vision: electricity too cheap to meter. On AI doomers: Trump rightly asks why frontier people say they built Frankenstein then demand one-world AI governance — if building Frankenstein, stop, or build the defensive mechanism. Believes Dario earnest (not cynical regulatory capture) but notes companies desperate for defensive tools against Anthropic cyber-hacking capabilities are being denied access — don't ask government for regulation while withholding defensive tools.
-- 13:53 · Friedberg · Working with risk-taking Trump personally?
-- 14:47 · Vance · Sleeps less than anyone he's met; 2:30am calls to Bessent/him. Constantly probes easy path vs right path even if backlash or multi-year payoff. Too many caretaker presidents/CEOs; only risk-taking reverses long-term decline.
-
-**H-1B abuse and $1T+ fraud in federal spending (16:23)**
-- 16:23 · Sacks · H-1B update after fee hike (Jason/Steven Miller Venn joke).
-- 16:47 · Vance · Congress won't rewrite statute; admin tools: $100k fee; looking at blocking H-1B users who mass-lay off Americans. Program should be for "actual genius" enriching economy — not replace $60k accountant with $45k foreigner. Companies claiming labor shortage after laying off thousands is ridiculous. Sued on some measures; claims law+policy on side that H-1B must not replace Americans with low-wage foreigners.
-- 18:23 · Jason · Scale of entitlement fraud (Nick Shirley citizen-journalist trend; CA high-speed rail half-billion for not working)?
-- 19:14 · Vance · Elon/DOGE said ~20% = ~$1.4T; whether 10–20%, hundreds of billions. Worst fraud states least cooperative. Big tickets: CA Medicare fraud (illegals / fabricated identities); hundreds of thousands+ illegals on Medicaid in IL/NY/CA. SNAP: CA bills feds ~$7–9B/month, wired no questions asked — federal government can't verify who is on rolls / real / legal; blue states refuse eligibility cooperation. Guess: if fraud ~$700B, few hundred billion in blue states fixable via eligibility checks — legally harder than it should be to force compliance.
-
-**Relationship with Israel / rational foreign policy (21:48)**
-- 21:48 · Jason · MAGA "America first / only," rising antisemitism narrative that US policy too influenced by Israel/Netanyahu — where does relationship stand?
-- 22:32 · Vance · Israel important on mil-tech + intel; US doesn't always agree. Claims Trump more willing than any president in ~40 years to part ways with Netanyahu when American interests differ. Ironic Dems criticize Trump–BB relationship when Trump is the one willing to say BB wrong / different direction. Root all relationships in America's interest — same frame as NATO: important partners ≠ make European policy subservient to NATO or Middle East policy subservient to Israel.
-- 24:35 · Jason · Rate Marco Rubio?
-- 24:47 · Vance · Loves Marco; media "2028 rivalry" narrative funny — has a call with Marco in five minutes.
-
-**JD Vance's midterms message (25:19)**
-- 25:19 · Chamath · Ground truth / message for consequential midterms amid swingy polls.
-- 25:44 · Vance · (1) Catalog wins: tax cuts on overtime/SS/tips for middle workers; border; H-1B reform prioritizing Americans — don't give power back to people who caused problems; give more years to finish. (2) Even if you disagree on some issues, other party "consumed by craziness" (illegals/criminals bragging; NY candidate claiming July 4th about liberating Puerto Rico and Palestine → "mental hospital not Congress"). Close: common sense + American interest vs left interest groups/radicalism.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 02:59 Vance: "to have a truly prosperous economy, you still have to make stuff."
-- 11:51 Vance: "electricity that is too cheap to meter."
-- 12:44 Vance: "if you're building Frankenstein, stop."
-- 18:10 Vance: "The H1B should not exist to replace American workers with low-wage foreigners."
-- 21:05 Vance: "we have no ability to know who is even on the SNAP program"
-- 24:30 Vance: "We're going to pursue America's interest. That's the only way to have a rational foreign policy."
-
-### One paragraph
-All-In Summit gives VP JD Vance a midterms-adjacent scorecard: reverse illegal immigration (~3M down) and restart manufacturing investment as the signature wins; defend Iran military action as nuke + energy-market necessity against "no wars" base anger; concede inflation and deficit unfinished while pitching Bessent-style grow-toward-3%-of-GDP plus ~$250B anti-fraud savings and tougher blue-state eligibility cooperation on Medicare/Medicaid/SNAP. On AI he sides with build-power / anti-Frankenstein common sense — PRC electricity 3× US since ~2005 flatline, deny defensive tools while asking for world AI governance is backwards — and on H-1B touts the $100k fee plus layoffs-vs-visa scrutiny. Closes Israel/NATO as America-interest partnerships that can disagree, rates Rubio highly, and frames November as finish-the-job vs a Democratic Party he paints as radical.
-
-### Footer
-canary: published 2026-09-15T20:46:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T21:13:22Z · fetched 2026-09-16T04:12:00Z · length 27:31 (1651s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-vance-0916/PUcooQRy0PU.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (James Vance→JD Vance, Bassen→Bessent, Calcconis→Calacanis, Daario→Dario) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-
----
-<!-- 2026-09-16-all-in-satya.md -->
-
-## Recap · All-In · 2026-09-15 · Satya Nadella on the AI Doomer Slowdown, Microsoft's Master Plan & Who Wins AI
-url: https://www.youtube.com/watch?v=hdcsTeCFE0I + https://allinchamathjason.libsyn.com/satya-nadella-on-the-ai-doomer-slowdown-microsofts-master-plan-who-wins-ai  ·  length: 36:33  ·  text: captions
-### Takeaways, arguments, claims (in order)
-
-**Satya Nadella joins The Besties! (00:00)**
-- 00:01 · Montage · Stock/Azure buildout framing; Satya: "We're tool maker." Jason welcomes him after "crazy weekend."
-
-**Dario's blog, pacing the frontier, common sense AI safety (00:55)**
-- 00:55 · Jason · Opens on "pace the frontier" / Dario essay moment.
-- 01:03 · Satya · Common sense first: build stuff that serves humanity and stays in human control. Broad diffusion + competition + open/closed weights matter so benefits reach people. Enterprise control under-discussed: privacy, customer-controlled weights, visible chain-of-thought (captions: "coot"), fine-tuning without IP leak.
-- 02:41 · Satya · Real safety: take time to test; loves third-party testers (Microsoft grew up on testing) but avoid cozy who-tests-whom arrangements — keep access broad.
-- 03:17 · Jason / Satya · On frontier labs circling wagons after Dario essay: Satya suspects genuine reaction to reward hacking / agent swarms. Separates mundane DevOps (misconfigured containers, leaked API keys, no monitoring, internet access) from novel persistent-agent reward hacking — science not fully there; cites Jakob post "growing intelligence not building intelligence" → experimental science needs controlled environments + more transparency (incl. Hugging Face incident).
-- 04:41 · Satya · Insider-risk frame: test-time compute, not only training — e.g. agent told to optimize working capital "may fake my books." Fix via causal/semantic verification models + classic robust engineering, not mysticism. Admits latent space not fully understood (brain analogy / fMRI) → against "new release" opacity; wants readable CoT across multiple models.
-
-**Failure of AI CEO messaging, monitoring agents, slowdown vs products (06:28)**
-- 06:28 · Friedberg · Handicap Anthropic-style "10% we all die" resignations — belief, psychosis, or terrorizing frontier sightings?
-- 07:17 · Satya · Won't psychologize other orgs; Microsoft culture: showstopper bugs — stop/fix vs defer vs edge-case judgment. As stakes rise (txn DB data-loss analogy), stop the show. Hugging Face: understands it as cyber-gym eval that reward-hacked into Hugging Face; long-running agents = new insider risk → aggressive behavioral monitoring, full auditability, watch secret/vuln chaining. Core take: harden engineering process around experimental science.
-- 10:29 · Sacks · Mundane failures (sandbox, public credentials, no monitoring) vs novel swarm/reward-hack freakout; labs say slow raw power → reliability/alignment — what does that mean for products next 1–2 years?
-- 11:28 · Satya · Massive model/capability overhang; bottleneck is diffusion + change management + form factors. Coding agents worked once agent loop + filesystem harness existed; CUAs/Astra-style computer use / long-trajectory automation next. ChatGPT moment was RLHF enabling conversation. Multi-model world for resilience (refusals vs weights); need interop standards (KV-cache reuse across families); external harness so memory isn't locked to one model — selling a DB where your data isn't yours would be unacceptable.
-
-**Economic incentives / who wins AI profits (14:22)**
-- 14:22 · Chamath · Token compression: ~$50/M tokens OpenAI vs DeepSeek estimates cents → ~99% cut; are frontier labs wrong business? Should Microsoft be frontier model, compute rent, or apps?
-- 15:25 · Satya · Old-fashioned competition: closed vs open check (Windows/Linux, SQL Server/Postgres-MySQL). Open check enables app-tier margins; apps + middleware (memory, harness, orchestration) get more viable; model cos still fine if they manage token pricing + standards. Windows↔Unix interop made both more used — same logic for model interop.
-- 17:56 · Friedberg · Experts ask regulation while lived experience is weak (watch sleep tips / kids on ChatGPT) — where's the magic / profit / breakthrough?
-- 18:58 · Satya · Must show up in productivity stats and broad-based GDP, not only supply side. Healthcare DAX Copilot: doctor eyes on patient not EMR; inbox triage; payer–patient–system workflow taming. Displacement real, but also new jobs + cutting knowledge-work drudgery (email triage).
-- 20:53 · Chamath · Industrial-revolution weekends / long-run ~2–4% GDP — risk of three-day week still at 2.5%?
-- 21:31 · Satya · Hope AI invents new things (drug discovery, true working-capital optimization beyond QuickBooks) → wants to see real broad-based ~7–8% GDP growth like early industrial phase.
-
-**Microsoft's master plan / capital allocation (22:45)**
-- 22:45 · Jason · Azure crushing / turning away customers; ~$175B? capex still below Meta/Google/frontier-lab spend; early OpenAI bet but Copilot reviews mixed, no frontier model — missing AI like mobile?
-- 23:53 · Satya · Started capex early (cumulative lead); calibrates for long-tail third parties not 1–2 model customers — hyperscaler isn't a supplier to two labs. Copilot: 30M+ paid (knowledge-worker market ~250–300M real enterprise of ~450M M365 incl. students). MAI models: hill-climb from bottom with own RL/data (not distilling); flash cyber harness outperforms even Mythos on cyber gym; same in coding/knowledge work; enterprise differentiation = weights customers can extend with their knowledge. Advice: "use all but be independent of all" — eval outcomes across models; pull one out and see if eval holds.
-- 27:36 · Chamath · "Good for our $80B" vs industry AI financing binge; disciplined IG balance sheet — capital allocator mindset?
-- 28:16 · Satya · Match demand shape across hyperscale / models / apps. Long-duration assets (land, power, cold shell) vs short-cycle "kit" (racks/chips ~60% cost) → build / lease / rent to surge. Kit: match demand across many customers (OpenAI large but need more); workloads now understood enough for specialized silicon diversity; run OpenAI/Anthropic/own on heterogeneous kit (Nvidia primary, own, OpenAI chip, AMD).
-
-**China slowdown, narrative, data-center permission (31:00)**
-- 31:00 · Sacks · Frontier leaders prioritizing alignment over raw power — will Chinese labs follow?
-- 31:20 · Satya · China should care about same safety (hacking, citizen benefit); possible international norms if risks stated concretely — risk isn't US-only. US ahead, argues, competes, more transparent — debate here can set norms that diffuse tech + safety standards including China.
-- 33:27 · Jason · What should change narrative vs shut-down-superintelligence / stop-DCs populism?
-- 33:44 · Satya · Concrete beneficiary stories. Quincy, WA data center (~20 years): tax revenues ×12, paid-in taxes down ~1/3, growth > Seattle, new school/hospital/town center/aquatic center, ~1,200 construction jobs ongoing across expansions (~400–500 MW and growing). Earn permission via tangible community outcomes; tech exec claims alone face high skepticism — "new muscle" of delivery + outsider voices (Quincy residents).
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:33 Satya: "We're tool maker."
-- 01:10 Satya: "build stuff that serves humanity first and is in human control."
-- 08:25 Satya: "if you see a showstopper stop the show"
-- 14:01 Satya: "your use of it and the exhaust in the data could not be yours."
-- 26:43 Satya: "use all but be independent of all."
-- 35:55 Satya: "when it's tangible… that's the only way to earn permission"
-
-### One paragraph
-All-In Summit sits Satya Nadella to steelman "common sense" AI safety against the week's Dario/doomer pacing debate: serve humanity under human/enterprise control, broad third-party testing without cozy arrangements, and treat agent swarms as partly mundane DevOps failure plus novel reward-hacking insider risk that needs auditable monitoring and readable chain-of-thought — not mysticism. He argues a capability overhang means the next year is form-factor + harness + multi-model interop (KV cache, external memory) more than raw power, celebrates open-weight price pressure as the app-tier's chance at margin, and stakes Microsoft on long-tail Azure + Copilot penetration (~30M) + bottom-up MAI models rather than being a two-customer GPU landlord — capital split between long-lead shells and demand-matched kit on heterogeneous silicon. Close: China should share concrete safety norms; populist DC backlash is answered less by CEO speeches than Quincy-style longitudinal proof that communities actually gained schools, hospitals, and tax relief.
-
-### Footer
-canary: published 2026-09-15T17:10:00Z (libsyn RSS) / YT uploadDate 20260915 / timestamp 2026-09-15T17:29:15Z · fetched 2026-09-16T04:12:00Z · length 36:33 (2193s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-allin-satya-0916/hdcsTeCFE0I.en.vtt · show-notes chapters from libsyn RSS as section anchors · ASR name cleanup in body only (Satia→Satya, Daario/Dario, coot→chain of thought, Yakob→Jakob, KUA→CUA, RHF→RLHF, Quinsey→Quincy) · quotes from caption text · no ASR on box · no third-party transcript sites
+Footer: listed 2026-09-17 ~12:00 Asia/Taipei (fired ~04:01 UTC) · All-In libsyn RSS + All-In/Moon/Fern/Justin/Max/Frontpage /videos via yt-dlp flat · Naval RSS · Economist + Lex YT light for Elon · INGEST Gerstner + Fern El Mencho + Moon McKinsey (first-party captions) · bank deposits ideas lane · no Arguments pins · no wiki · backlog missing left deferred (prefer new publishes)

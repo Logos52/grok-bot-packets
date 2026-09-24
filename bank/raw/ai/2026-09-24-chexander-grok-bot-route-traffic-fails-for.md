@@ -1,0 +1,23 @@
+---
+id: 2026-09-24-chexander-grok-bot-route-traffic-fails-for
+kind: article
+title: Grok Bot route traffic fails for split-horizon internal DEV hosts
+source: "https://forum.cursor.com/t/grok-bot-route-traffic-through-this-computer-fails-for-split-horizon-internal-dev-hosts/172715"
+author: Chexander
+published: 2026-09-22
+captured: 2026-09-24
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Grok Bot: “Route traffic through this computer” fails for split-horizon / internal DEV hosts
+URL: https://forum.cursor.com/t/grok-bot-route-traffic-through-this-computer-fails-for-split-horizon-internal-dev-hosts/172715
+Created: 2026-09-22T23:45:45.755Z
+
+## Post #1 @Chexander (2026-09-22T23:45:45.784Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Toggle ON on desktop (hostname 9VS4T44). UI shows routed traffic this session (e.g. “37 routed this session”). From Grok Bot’s computer, our internal DEV hostname (split-horizon DNS) fails: browser ERR_CONNECTION_CLOSED (“unexpectedly closed the connection”); curl TLS unexpected EOF. Bot DNS → public 38.97.236.88 Same host on my PC → internal 192.168.201.34 and HTTPS works Public internet-facing hosts work from the bot; this internal DEV host does not. Local egress tunnel present; HTTP CONNECT to DEV:443 returns 200, then TLS still dies. Steps to Reproduce On a desktop that can reach an internal/split-horizon host (ours resolves to 192.168.201.34 on the desktop, public IP on the bot), open Grok Bot. Settings → Computer. Confirm current computer selected; Execution on this computer allowed. Turn ON Network → “Route traffic through this computer”. From the bot computer (not desktop Shell), open a fresh browser tab to that DEV host and also resolve/curl it. Compare DNS + HTTPS on desktop vs bot computer. Expected Behavior Bot traffic egresses through the desktop. DEV loads (or at least resolves to the same internal IP as the desktop) and TLS succeeds. UI “routed this session” count increases. Operating System Windows 10/11 Version Information Grok Bot desktop 0.58 (Windows) For AI issues: which model did you use? n/a Additional Information Workaround: run DEV checks via Shell/browser on the registered desktop instead of the bot computer. In-app SendFeedback blocked in privacy mode. Does not block Cursor IDE; only Grok Bot computer path to internal DEV. Not an AI/model issue — Request ID field N/A unless required. Does this stop you from using Cursor No - Cursor works, but with this issue
+
+## Post #5 @deanrie (2026-09-23T04:41:13.916Z)
+Hey, thanks for the detailed report. Comparing DNS and CONNECT on desktop vs the bot computer really helped us narrow down the issue quickly. Right now, Route traffic through this computer only relays connections to public internet addresses. When a hostname on your desktop resolves to a private IP address 192.168.x.x, 10.x.x.x, or 172.16-31.x.x, the desktop side rejects that connection. That’s why CONNECT returns 200, then the TLS handshake gets closed. Public cloud hosts keep working, and the routed this session counter keeps increasing. The public IP you see from the bot computer is also expected. A lookup run on the bot computer goes through the cloud resolver, while routed traffic gets resolved on your desktop. Our docs currently imply internal hosts should be reachable this way, so I’ve shared both the behavior and the docs mismatch with the team. I can’t give an ETA yet, but I’ll reply in the thread if there’s an update. For now, your workaround is the right one. With Execution on this computer allowed, have the bot run DEV checks on your desktop using Shell or browser, instead of on its own computer.

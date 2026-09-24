@@ -1,0 +1,15 @@
+# Grok Bot Computer Cannot Initialize (New account)
+URL: https://forum.cursor.com/t/grok-bot-computer-cannot-initialize-new-account/172725
+Created: 2026-09-23T02:49:07.188Z
+
+## Post #1 @aliciar (2026-09-23T02:49:07.219Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Hi, It’s been 24 hours since I’ve created a cursor pro account and the Grok Bot Computer cannot be initialized. I’ve tried updating and resetting the computer but these did not work. Also, there is another user on the same network where Grok Bot works properly for them, therefore, it’s not a network problem. Additional, it seems bot names and settings are not propagating between MacOS and iOS apps. Steps to Reproduce N/A. Operating System MacOS iOS Version Information Grok Bot MacOS: 0.58.0 Grok Bot iOS: 1.11.1 (116669) Does this stop you from using Cursor Yes - Cursor is unusable
+
+## Post #4 @deanrie (2026-09-23T04:16:26.909Z)
+Hey @aliciar , thanks for the detailed report. This isn’t your network or your Mac. Your Grok Bot computer didn’t finish the very first startup, and in that state Reset and Update from the app can’t complete. Please don’t click Reset or Update for now. They won’t work in this state. Your account and the bots you created are safe. This is a known issue and we’re fixing it on our side. I’ve passed your case to the team so they can rebuild the computer. We’ll reply here as soon as it’s ready. After that, you’ll need to fully quit Grok Bot from the menu bar icon, then open it again. The fact that bot names and settings don’t sync between Mac and iPhone is most likely caused by the same thing. Those changes sync through the computer. Once the computer is back up, let me know if the names still don’t match across your devices.
+
+## Post #8 @mohitjain (2026-09-23T11:54:15.203Z)
+Hey @aliciar , your Grok Bot computer has been rebuilt on our side, so it should start up now. Fully quit Grok Bot (Quit from the menu bar or tray icon, not just closing the window) and reopen it, then give it a minute to finish first-time setup. Once it’s up, check whether your bot names and settings now match across your Mac and iPhone, since that should sort out once the computer is running. If anything’s still off, reply here and I’ll take another look.
+
+## Post #9 @aliciar (2026-09-23T14:51:37.640Z)
+Thanks for the quick fix, @mohitjain ! . Everything seems to be working fine now. If I notice any issues I’ll let you know.

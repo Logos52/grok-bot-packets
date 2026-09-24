@@ -1,30 +1,36 @@
-# Corpus thin change-scan — 2026-09-22
-Date: 2026-09-22 08:08 +0700 (Asia/Saigon)
+# Corpus thin change-scan — 2026-09-24
+Date: 2026-09-24 08:31 +0700 (Asia/Saigon)
 Repo: Logos52/logos52.github.io
-Range: `83ec03b22964eb57c4de7aad6954fd38c9b5e17f..784a606421ffebd8e6c08b59b81c2413314fa898`
-Current HEAD: `784a606421ffebd8e6c08b59b81c2413314fa898`
-Who: Git author/committer `logos52`; GitHub's public API associates all five commits with `@Logos52`. All five are unsigned.
+Range: `784a606421ffebd8e6c08b59b81c2413314fa898..d05e7397699f129d3cac2bea5d39adf9934cc3ab`
+Current HEAD: `d05e7397699f129d3cac2bea5d39adf9934cc3ab`
+Who: Git author `logos52` on all ten commits (unsigned in this window).
 
 ## Commits (Asia/Saigon, UTC+7)
-- `df273a987dfd5afbf14b096000355530cb96cea3` — logos52 — 2026-09-18 14:25:40 — Worldviews: South Africa is a Warning to the West; Bias QA for political pages
-- `7eecd7f8c65e300ba6acbae71f1a5cb57e7436ea` — logos52 — 2026-09-18 16:44:00 — Publish the working tree: eggbot-generated hubs and blurbs, new agentic pages, Eggbot Tight
-- `56009890414957c75ddd6399fe9714d7ae5f0a70` — logos52 — 2026-09-18 17:24:13 — Handoff for Grok: bias check on South Africa is a Warning to the West and the four September sections
-- `b0e32bb9197c41e9b1d8d0dbe7a8bb61be3c7cdd` — logos52 — 2026-09-20 17:29:03 — Cursor Cloud Agents: replace the page with the how-to
-- `784a606421ffebd8e6c08b59b81c2413314fa898` — logos52 — 2026-09-22 06:03:47 — Add Poteto Paved Path and Karpathy LLM-Wiki, with the talk slides.
+- `91d0873` — logos52 — 2026-09-22 15:03:53 — Poteto Paved Path: drop the sentence that defines an agent.
+- `7bdf2f5` — logos52 — 2026-09-22 15:07:48 — Poteto Paved Path: cut the prose back to the slides' own words.
+- `9a7ae1b` — logos52 — 2026-09-22 15:09:50 — Poteto Paved Path: restore the page-generator draft.
+- `c9f36ab` — logos52 — 2026-09-22 15:33:05 — Poteto Paved Path: plain rewrite, and slides redrawn without the webcam.
+- `26f0826` — logos52 — 2026-09-22 15:35:04 — Poteto Paved Path: use Lauren's kitchen drawing, without the webcam.
+- `6cded7a` — logos52 — 2026-09-22 15:36:24 — Publish the home updates and the note-page reading changes.
+- `a480721` — logos52 — 2026-09-22 15:39:08 — Poteto Paved Path: a short explainer and how-to, with the original slides and the webcam cropped out.
+- `85a3752` — logos52 — 2026-09-22 15:42:32 — Poteto Paved Path: rewrite the explainer in ordinary sentences.
+- `0debd2d` — logos52 — 2026-09-22 16:42:06 — Cut the writing generators so git cannot restore them.
+- `d05e739` — logos52 — 2026-09-22 16:45:13 — CLAUDE.md: drop the generator and the holdings rewrite pass.
 
 ## Meaningful signal
-- Added a South Africa/Rhodesia argument page and its dated research packet; expanded four AI pages with September 2026 material on regulation, serving-layer margins, diffusion, and radiology automation.
-- Published new Argument Validation, East Asian Exams, and agentic-system pages (Cursor Cloud Agents, Grok Bot Galaxy, Picking a computer, Using Grok Bot, and pstack), while refreshing hub blurbs and related-page links across existing wiki sections.
-- Replaced Cursor Cloud Agents with a task-oriented how-to. The intervening `5600989` commit added an internal handoff only and touched no wiki path.
-- Added Poteto Paved Path (verification, skills, codebase-as-memory, architecture, and gardener model), Karpathy LLM-Wiki (persistent compiled markdown instead of repeated question-time retrieval), 17 Poteto slide images, and a Karpathy cross-link from Raw to Wiki Compilation.
+- Rewrote Poteto Paved Path several times into a short ordinary-language explainer/how-to; all 17 poteto-slides JPGs were redrawn or swapped (webcam cropped out; Lauren's kitchen drawing used).
+- Published site/home and note-page reading changes (new folder page route, fold-related helpers, layout/backlinks/constellation updates) plus light touch-ups across ~14 other wiki markdown pages and journal surfaces.
+- Deleted the writing-generator stack under `02 - System/` (27 generator/handoff/specimen files removed) and trimmed WRITING-PIPELINE-CATALOG, Writing Standards, Owner Writing Samples, and CLAUDE.md so those generators cannot be restored from git.
 
-## Touched wiki paths
-New pages: `wiki/Argument Validation/Argument Validation.md`; `wiki/Research/All-In Summit and Moon Packet 2026-09-16.md`; `wiki/Systems/AI & Agentic Systems/Cursor Cloud Agents.md`; `wiki/Systems/AI & Agentic Systems/Grok Bot Galaxy.md`; `wiki/Systems/AI & Agentic Systems/Picking a computer.md`; `wiki/Systems/AI & Agentic Systems/Using Grok Bot.md`; `wiki/Systems/AI & Agentic Systems/pstack.md`; `wiki/Systems/Agentic Workflows/Karpathy LLM-Wiki.md`; `wiki/Systems/Agentic Workflows/Poteto Paved Path.md`; `wiki/Worldviews & the Political Order/East Asian Exams - The Arms Race.md`; `wiki/Worldviews & the Political Order/South Africa is a Warning to the West.md`.
+## Touched paths (summary)
+Wiki: updated `wiki/Systems/Agentic Workflows/Poteto Paved Path.md` and 17 files under `wiki/Systems/Agentic Workflows/poteto-slides/`; also touched Decision Making, four Design catalogs, Exam Execution, Experiences, How Chinese Characters Work, Vietnamese Grammar Primer, Money Condensed, two language-resource pages, Learning Condensed, and Agentic Engineering.
 
-Updated pages: `wiki/Bibliography.md`; `wiki/Concepts/Prohibition After Diffusion.md`; `wiki/Concepts/Regulatory Capture via Doom-Marketing.md`; `wiki/Concepts/The Margin Moves to the Serving Layer.md`; `wiki/Domains/Miscellaneous/Exam Execution.md`; `wiki/Experiences/Experiences.md`; `wiki/Language Research/Language Research.md`; `wiki/Language/Chinese/How Chinese Characters Work.md`; `wiki/Money/Investing and Budgeting Mindsets.md`; `wiki/Self Management/Time Management, Attention & Scheduling.md`; `wiki/Story Craft/Story Craft.md`; `wiki/Systems/AI & Agentic Systems/Agent Glossary.md`; `wiki/Systems/AI & Agentic Systems/Agentic Engineering.md`; `wiki/Systems/AI & Agentic Systems/Automation and the Job Iceberg.md`; `wiki/Systems/AI & Agentic Systems/Current Agentic LLM Stack.md`; `wiki/Systems/AI & Agentic Systems/Grok Bot Primer.md`; `wiki/Systems/AI & Agentic Systems/Grok Bot, Condensed.md`; `wiki/Techniques/Technique Training & Fundamentals.md`; `wiki/Techniques/Techniques - Learning Craft.md`; `wiki/Tsumugu/Tsumugu.md`; `wiki/Workflows/Raw to Wiki Compilation.md`; `wiki/Worldviews & the Political Order/Worldviews & the Political Order.md`.
+System purge: 27 deletes under `02 - System/` (generators, handoffs, Rejected Specimens, Writing Pipeline/Templates, etc.) plus edits to Writing Standards and Owner Writing Samples.
 
-Assets: 17 new JPGs under `wiki/Systems/Agentic Workflows/poteto-slides/` (`01-agenda.jpg` through `17-closing-list.jpg`). Total range: 33 markdown paths and 17 slide assets.
+Site/infra: Astro note/home/folder/graph changes under `src/`, `astro.config.ts`, `CLAUDE.md`, journal calendar/index and several journal notes, `kb-astro/CONTRACTS.md`, Workbench writing-pipeline catalog, personal positions.
 
-Canary = `784a606421ffebd8e6c08b59b81c2413314fa898`
+Total range: 92 paths (687 insertions, 3836 deletions).
+
+Canary = `d05e7397699f129d3cac2bea5d39adf9934cc3ab`
 
 Thin scan only; the five Monday audit checks were not run.
