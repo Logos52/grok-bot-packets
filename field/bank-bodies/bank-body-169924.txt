@@ -1,0 +1,21 @@
+# Grok Bot cannot access my local computer
+URL: https://forum.cursor.com/t/grok-bot-cannot-access-my-local-computer/169924
+Created: 2026-08-29T14:44:57.894Z
+
+## Post #1 @Russ (2026-08-29T14:44:57.970Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug “It’s a known Grok Bot bug, not Tailscale and not missing Administrator. Chat can stay up while the local-computer hook never registers. Staff’s own note: the helper starts, then drops its connection to their servers. There’s no attach button you can press.” Of course this failed after I registered for a 1 yr sub - coincidentally. Steps to Reproduce Always reproduceable. Expected Behavior Local computer access., which is set to “Always allow” Operating System Windows 10/11 Version Information Grok Bot 0.30 For AI issues: which model did you use? Built-in Does this stop you from using Cursor Yes - Cursor is unusable
+
+## Post #2 @deanrie (2026-08-29T15:53:48.317Z)
+Hey, thanks for the report. What you’re describing matches an issue we’re tracking. The helper that connects Grok Bot to your local computer starts, but doesn’t finish registration, so chat keeps working but local computer access stays unavailable. I’ve shared your case with the team. A reset like this usually helps: Fully quit Grok Bot. Right-click the tray icon and click Quit, not just closing the window. Open Task Manager and end any remaining Grok Bot processes. Launch Grok Bot again and give it a couple minutes to reconnect. If your local computer still doesn’t show up, sign out and sign back in in Grok Bot. That fully recreates the helper. Version 0.31.0 is also rolling out now, so it’s worth checking for an update and upgrading. This isn’t related to your subscription. On our side it’s active and looks fine. This is specifically about the helper reconnecting after an update. Let me know how it goes. If it still doesn’t help, we’ll dig deeper.
+
+## Post #3 @Russ (2026-08-30T17:09:02.666Z)
+Fixed, thank-you Dean
+
+## Post #4 @Cem_Guzel (2026-09-24T12:25:06.890Z)
+Same class of issue on Windows. Phone Grok Bot works on the same account; desktop does not. Windows Grok Bot 0.58.0 Splash: “Grok Bot is having trouble connecting” / retry greyed out In-app Check for Updates fails: “Could not check for updates” In-app Send Feedback also fails Network from this PC is fine: curl --noproxy “*” -I https://api2.cursor.sh → HTTP 200 nslookup test123.us8/us10.cursorvm.com OK (1.1.1.1) curl those hosts → 404 awselb/2.0 A Reset from the UI failed with the partial-state dialog. I did not retry Reset. Support ticket T-G14434. Sam said the cloud computer is healthy (phone works), this is a Windows client/session problem after the failed partial Reset, and passed it to a human. Please don’t Reset the Agent Computer. Happy to add screenshots. image 1602×1149 39 KB
+
+## Post #5 @deanrie (2026-09-24T13:45:50.745Z)
+Hey, thanks for the detailed diagnostic report. That really helps. Your case is different from the original topic in this thread. Your cloud computer looks healthy since the phone on the same account works. What’s failing is the Windows desktop client after an unsuccessful partial Reset. This looks like a client or session issue on the desktop side, not a network problem. Your curl and nslookup results look clean, and a 404 from awselb on the cursorvm hosts is a normal load balancer response. Since you already opened T-G14434 and a teammate joined, that’s the right channel. Please keep going there, and it’s also a good place to attach screenshots. For now, don’t touch Reset or Recover, since it already put things into a partial state. Here’s a safe, non-destructive way to reset the desktop session. Fully close Grok Bot. Right-click the tray icon and choose Quit, not just closing the window. In Task Manager, end any remaining Grok Bot processes. Launch it again and give it a couple minutes to reconnect. If that doesn’t help, sign out and sign in inside the app. This recreates the local session and unlike Reset it doesn’t touch the cloud computer. Let me know how it goes.
+
+## Post #6 @Russ (2026-09-24T15:23:00.000Z)
+The problem was fixed later that day. The issue can be considered closed.

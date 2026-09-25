@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-rail="en" data-script="trad" data-reading="py" data-gloss="en" data-theme="light" data-marks="off" data-page="home">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- FOUC: apply shared theme before CSS paint (same keys as static blog). -->
+  <script>(function(){try{var t,raw=localStorage.getItem("tsumugu.core.prefs");if(raw){var p=JSON.parse(raw);if(p&&(p.theme==="dark"||p.theme==="light"))t=p.theme;}if(!t){var m=localStorage.getItem("tsu-theme");if(m==="dark"||m==="light")t=m;}if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+  <title>Tsumugu Beta · Read Traditional Chinese</title>
+  <meta name="description" content="Graded readings for Traditional Chinese. English or Vietnamese support with ruby and the cognate bridge.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <script type="module" crossorigin src="/assets/index-D18pUNVr.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DzhD3GZ0.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#F5F6F8">
+  <meta name="theme-color" content="#0B0B0D" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <link rel="canonical" href="https://tsumugu.cc/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tsumugu Beta">
+  <meta property="og:title" content="Tsumugu Beta">
+  <meta property="og:url" content="https://tsumugu.cc/">
+  <meta property="og:description" content="Graded Traditional Chinese reader">
+</head>
+<body>
+  <div id="app">
+    <!-- New persistent shell header injected by AppShell / router -->
+    <header id="topnav"></header>
+
+    <!-- Multi-surface host. Router swaps content here or toggles sections. -->
+    <main id="surface" tabindex="-1" hidden></main>
+
+    <!-- Legacy reader host kept for compatibility during transition.
+         The reader surface mounts into .work / #prose when active.
+         Old direct controls may be moved into shell. -->
+    <div id="reader-host" hidden>
+      <!-- Reader-local controls (script/reading/gloss + actions). Rail/palette global in topnav. -->
+
+      <div class="work">
+      <div class="col">
+        <div class="readhead">
+          <div class="titlerow">
+            <span class="title-zh" id="titleZh"></span>
+            <span class="title-rom" id="titleRom"></span>
+          </div>
+          <div class="metarow">
+            <span class="chip band" id="bandChip"></span>
+            <span class="chip bind" id="bindChip"></span>
+            <span class="chip new" id="newChip"></span>
+          </div>
+        </div>
+
+        <p class="prose" id="prose"></p>
+      </div>
+
+      <!-- Side rail: lesson new-word tags only. Fake progress stats (words due /
+           known = 0) removed 2026-07-09 — re-add when WordStore metrics are wired. -->
+      <div class="rail">
+        <div class="rh vi-only">Bài này giới thiệu</div>
+        <div class="rh en-only">This passage introduces</div>
+        <div class="tagrow" id="tagrow"></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Catalog host injected/used by catalogView -->
+    <div id="catalog" class="tsg-catalog-host" hidden></div>
+  </div>
+
+  <footer class="site-footer tsg-footer" id="app-footer">
+    <!-- Shell replaces this with footer.ts once the app boots. -->
+    <div class="ft-min">
+      <span class="ft-brand"><span class="knot">紡</span><span class="word">Tsumugu</span><span class="beta-pill">Beta</span></span>
+      <nav class="ft-links ft-product" aria-label="Site">
+        <a href="#home">Home</a>
+        <a href="#library">Library</a>
+        <a href="#read">Reader</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://tsumugu-ed.com/">Dictionary</a>
+        <a href="#about">About</a>
+      </nav>
+      <nav class="ft-links ft-legal" aria-label="Legal">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#feedback">Feedback</a>
+        <span class="ft-copy">© Tsumugu</span>
+      </nav>
+    </div>
+  </footer>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a405b545ac481dd5',t:'MTc5MDI5NDAwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

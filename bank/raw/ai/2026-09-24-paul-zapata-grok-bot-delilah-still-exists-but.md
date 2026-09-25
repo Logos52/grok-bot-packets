@@ -1,0 +1,29 @@
+---
+id: 2026-09-24-paul-zapata-grok-bot-delilah-still-exists-but
+kind: article
+title: Grok Bot Delilah still exists but chat will not send; do not Reset
+source: "https://forum.cursor.com/t/grok-bot-delilah-still-exists-bot-id-641a7c54-but-chat-will-not-send-and-both-windows-and-iphone-lost-her-after-sign-out-reattach-to-the-existing-computer-do-not-reset/172862"
+author: Paul_Zapata
+published: 2026-09-24
+captured: 2026-09-24
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Grok Bot Delilah still exists (Bot ID 641a7c54) but chat will not send and both Windows and iPhone lost her after sign-out; reattach to the existing computer, do not Reset
+URL: https://forum.cursor.com/t/grok-bot-delilah-still-exists-bot-id-641a7c54-but-chat-will-not-send-and-both-windows-and-iphone-lost-her-after-sign-out-reattach-to-the-existing-computer-do-not-reset/172862
+Created: 2026-09-24T06:42:52.190Z
+
+## Post #1 @Paul_Zapata (2026-09-24T06:42:52.230Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug HUMAN ESCALATION — Ticket T-G2297 Account: gmail paulwes5446 Also notify: ATA mail pzapata at advancetradeaerospace Bot: Delilah Bot ID: 641a7c54-a3fd-4682-b60e-92a5c924576e Windows lost the sidebar after sign-out. iPhone still opened Delilah but new messages would not send. After another sign-in both clients went first-run. Please confirm Delilah still exists on the server and reattach BOTH clients to the EXISTING computer. Do NOT Reset. Do NOT provision a new computer. I have not created a replacement Bot. Steps to Reproduce Windows Grok Bot after shutdown/sign-out: sidebar showed “No saved Bots yet.” Leftover Delilah chat still opened from the desktop icon but messages Failed to send. iOS Sep 22: Delilah still listed (pink avatar). Computer view worked (Outlook open). New messages: “Not delivered / Something went wrong on our end.” Usage 30%. iOS Sep 23: signed out/in during a support message. Delilah disappeared. Both Windows and iPhone now show first-run / Meet your first Bot only. Expected Behavior Delilah stays on the roster. Existing chat accepts messages. Both clients reattach to the EXISTING computer and Bot ID 641a7c54-a3fd-4682-b60e-92a5c924576e. Do not Reset. Do not provision a new computer. Operating System Windows 10/11 Version Information Product: Grok Bot (not Cursor IDE) Windows: Grok Bot desktop on Windows 10/11 (PC name DESKTOP-JM7QERA) iOS: Grok Bot iPhone app Exact build: open Grok Bot → About Grok Bot → Copy Version and paste it here if the menu is available. If About is not reachable because of the first-run state, use this note instead of a fake Cursor IDE version. For AI issues: which model did you use? N/A — Grok Bot (no model picker). Not Cursor IDE. Not Sonnet / Tab. For AI issues: add Request ID with privacy disabled f9a7046a-279b-47e5-ab48-6e8dc12daba1 Additional Information Ticket T-G2297 already sent to Cursor support mail. Only auto-ack from Sam so far. Bot ID: 641a7c54-a3fd-4682-b60e-92a5c924576e Routine still present when last opened: Morning ATA status digest, weekdays 7:00 AM. Usage was 30% when send failed — not a quota block. Windows leftover Delilah chat still opened from the desktop Grok Bot icon after the sidebar wiped. Please reattach both clients to the existing computer. Do not Reset. Also notify pzapata at advancetradeaerospace.com Does this stop you from using Cursor No - Cursor works, but with this issue
+
+## Post #2 @deanrie (2026-09-24T07:48:13.808Z)
+Hey, thanks for the detailed report. First things first, nothing was deleted. Delilah and her data (chat, routine) are safe on the server. You did the right thing by not hitting Reset and not creating a new bot. What you’re seeing is a known issue we’re tracking. If you sign out and sign back in while the bot’s computer is temporarily unavailable, both clients can fall back into the first-run experience “Meet your first Bot” with an empty router. This is a display and sync problem, the bot itself doesn’t disappear. A couple important things while we look into it: Don’t press Reset and don’t run Update Agent Computer. Don’t create a new bot. It won’t help and it’ll only make recovery more confusing. We’ll check your account and restore the link to the existing computer and Bot ID 641a7c54-a3fd-4682-b60e-92a5c924576e . We already have the Request ID and the report details, so you don’t need to send anything else. We’ll reply here as soon as we have an update on our side. If Delilah shows up in the list again and starts responding, please let us know and include the time of the last message.
+
+## Post #3 @Paul_Zapata (2026-09-24T15:37:25.905Z)
+This is proof of the account existing, proof of delilah 3 1920×2560 509 KB proof of delilah1 1500×2000 852 KB proof of delilah 4 1920×2560 484 KB
+
+## Post #4 @deanrie (2026-09-24T17:51:05.667Z)
+Hey @Paul_Zapata , I’m back with a clearer picture after taking a detailed look at your account, and I need to correct my previous reply, it was wrong. Sorry about that. From the logs, the Delilah entry was deleted on September 20 at around 4:31 AM Pacific Time from the Grok app while signed in to your account. This did not happen because you signed out. After that, her chat could still open due to app cache, but there was nowhere for new messages to go, which is why you saw Not delivered / Something went wrong on our end. This was never about limits or usage. Good news about what you were worried about, your Grok Bot computer is still running and was never reset, so you don’t need to reconnect or rebuild anything. You did the right thing by not clicking Reset and not creating a new bot.

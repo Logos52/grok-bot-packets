@@ -1,0 +1,29 @@
+---
+id: 2026-09-24-chris-clarke-chief-of-staff-gone-silent-and
+kind: article
+title: Chief of Staff gone silent and wont stop previous turn
+source: "https://forum.cursor.com/t/chief-of-staff-gone-silent-and-wont-stop-previous-turn/172797"
+author: Chris_Clarke
+published: 2026-09-23
+captured: 2026-09-24
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Chief of Staff gone silent and wont stop previous turn
+URL: https://forum.cursor.com/t/chief-of-staff-gone-silent-and-wont-stop-previous-turn/172797
+Created: 2026-09-23T16:31:41.497Z
+
+## Post #1 @Chris_Clarke (2026-09-23T16:31:41.535Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug Chief of Staff Grokbot has decided to stop responding. He just says “Clarkie is working” but he doesn’t seem to be. All his workers below hims seem to be working fine though and messaging him and doing their jobs. Steps to Reproduce Apparently according to bot agent hes he’s stuck on a turn from about 14:48 UK.. Ive tried the usual steps of trying to ask him to stop and start a new turn. I also tried to stop him too update the computer but hes not wanting to stop! He started, then called a dead tool (ListAgents) looking up IDs, and the turn never finished. The UI kept saying “Clarkie is working.” He never actually messaged Carrie or Access Apps. Bot Manager agent has sent this " Do not call ListAgents (that tool does not exist)." as the chief of staff is trying to call that non existant tool Expected Behavior Chief of staff grokbot Clarkie runs the team and communicates usually directly with me. Operating System Windows 10/11 Version Information grokbot://app/v1/settings?id=update-status 0.58.0 For AI issues: which model did you use? grokbot://app/v1/settings?id=update-status 0.58.0 Does this stop you from using Cursor No - Cursor works, but with this issue
+
+## Post #2 @Waleed_Khalid (2026-09-23T16:53:28.931Z)
+Hello Team, Is there any way to fix the IDE bot not responding? None of the bots are working. image 611×187 4.81 KB
+
+## Post #3 @mohitjain (2026-09-24T07:05:21.466Z)
+Hey @Chris_Clarke , Clarkie’s back and has been running normally since about 17:27 UK yesterday. Briefly the model stopped responding on his turns, so he sat showing “working” without finishing. Stop did work each time, but your other bots’ queued messages immediately started a new turn, so it looked like he ignored it. The ListAgents call was a harmless red herring, not the cause, just a stale instruction on our side. If it happens again, right-click Clarkie, Copy Conversation ID, and reply with that ID and the time (UK) so we can jump straight on it. @Waleed_Khalid , this sounds like a separate issue, and “IDE bot” makes me think it’s the Cursor editor rather than the Grok Bot app. Could you open a new thread describing what happens when you send a message (and a Request ID if it’s the Cursor IDE)? We’ll pick it up there.
+
+## Post #4 @Waleed_Khalid (2026-09-24T15:10:20.892Z)
+Thanks a lot, Mohit, for replying. The issue is not only with the Grok bot — it affects everything and every bot. No matter which bot or agent you choose, or even if you set it to auto, it hangs and there is no response to any action I take. I ran the network diagnostic through the IDE and everything looks good. I’m not sure where or how to submit a support case. My team ID is 1259057 .

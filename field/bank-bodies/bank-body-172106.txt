@@ -1,0 +1,9 @@
+# Chat queue for Grok Bot before a usage reset
+URL: https://forum.cursor.com/t/chat-queue-for-grok-bot-before-a-usage-reset/172106
+Created: 2026-09-18T04:12:41.446Z
+
+## Post #1 @Taylor_Matson (2026-09-18T04:12:41.479Z)
+Feature request for product/service Chat Describe the request Chat queue for Grok Bot before a usage reset. I find myself hitting the usage limit typically before the weekly reset. It would be nice if I could create a queued message for every bot I had if I want that fires off as soon as my weekly usage has reset. In the mean time, I have to use the reminders app to hold onto those messages. I am aware that I can still send messages to my bots but there is no feedback from the app as to what the bots will or will not respond to after the reset. I have experienced bots both reacting and not reacting to those stale messages.
+
+## Post #2 @Colin (2026-09-24T18:32:42.044Z)
+Hey @Taylor_Matson , thanks for the suggestion! I’ve shared it with the team. To clarify what happens today: a message sent while your weekly usage is at 100% is not held or retried. The bot attempts a reply right away, that attempt is refused, and nothing re-sends it after the reset. The text stays in the chat, and the bot may pick it up as context in a later conversation, but there is no guarantee it will act on it. For now the reliable path is to resend the message after your usage resets. If you know the message ahead of time and still have headroom, you can also ask the bot to set up a one-time routine for a specific date and time, and it will run then.

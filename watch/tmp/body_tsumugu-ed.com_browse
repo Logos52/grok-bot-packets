@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-gloss="en" data-reading="pinyin" data-script="trad" data-writing="horizontal" data-seo-title-en="Browse · Tsumugu 記憶辭典" data-seo-title-vi="Duyệt · Tsumugu 記憶辭典" data-seo-desc-en="Browse the Tsumugu dictionary by level and kind: characters, words, and grammar." data-seo-desc-vi="Duyệt từ điển Tsumugu theo cấp và loại: chữ, từ và ngữ pháp.">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){
+try{
+var d=document.documentElement,p={};
+try{
+  var raw=localStorage.getItem('ted-prefs');
+  if(raw){var q=JSON.parse(raw);if(q&&typeof q==='object')p=q;}
+}catch(e){}
+var params=new URLSearchParams(location.search);
+var GM={en:'en',vi:'vi'},RM={py:'pinyin',zy:'zhuyin',hv:'hanviet'},SM={trad:'trad',simp:'simp'};
+function urlv(k,m){var v=params.get(k);return (v!=null&&m[v])?m[v]:null;}
+function viLang(){
+  try{
+    var ls=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||''];
+    for(var i=0;i<ls.length;i++){if(/^vi/i.test(ls[i]))return true;}
+  }catch(e){}
+  return false;
+}
+d.dataset.gloss=urlv('g',GM)||p.g||(viLang()?'vi':'en');
+d.dataset.reading=urlv('r',RM)||p.r||'pinyin';
+var locked=d.getAttribute('data-script-locked')==='1';
+d.dataset.script=urlv('s',SM)||(locked?(d.dataset.script||'trad'):(p.s||d.dataset.script||'trad'));
+d.dataset.theme=p.theme||'light';
+}catch(e){}
+})();</script>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=bb175a77a8">
+<title>Browse · Tsumugu 記憶辭典</title><meta name="description" content="Browse the Tsumugu dictionary by level and kind: characters, words, and grammar."><link rel="canonical" href="https://tsumugu-ed.com/browse"><meta property="og:title" content="Browse · Tsumugu 記憶辭典"><meta property="og:description" content="Browse the Tsumugu dictionary by level and kind: characters, words, and grammar."><meta property="og:type" content="website"><meta property="og:site_name" content="Tsumugu"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://tsumugu-ed.com/browse"><meta property="og:image" content="https://tsumugu-ed.com/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Tsumugu dictionary"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Browse · Tsumugu 記憶辭典"><meta name="twitter:description" content="Browse the Tsumugu dictionary by level and kind: characters, words, and grammar."><meta name="twitter:image" content="https://tsumugu-ed.com/assets/og.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Browse · Tsumugu 記憶辭典","url":"https://tsumugu-ed.com/browse","isPartOf":{"@type":"WebSite","name":"Tsumugu 記憶辭典","url":"https://tsumugu-ed.com/"}}</script>
+<link rel="stylesheet" href="assets/fonts.css?v=5c14e7b574">
+<link rel="stylesheet" href="assets/site.css?v=4e8e36db51">
+<link rel="stylesheet" href="assets/search.css?v=345328d921">
+</head>
+<body>
+<nav class="wrap">
+  <a class="wordmark" href="./"><img src="assets/logo-cao-vermillion-40.png" srcset="assets/logo-cao-vermillion-40.png 1x, assets/logo-cao-vermillion-80.png 2x" alt="紡" class="wm-glyph wm-light" width="20" height="20" loading="eager"><img src="assets/logo-cao-paper-40.png" srcset="assets/logo-cao-paper-40.png 1x, assets/logo-cao-paper-80.png 2x" alt="" aria-hidden="true" class="wm-glyph wm-dark" width="20" height="20" loading="eager"> Tsumugu</a>
+  <div class="navlinks">
+    <a href="./"><span data-gloss="en"><span class="s-trad">辭典 Dictionary</span><span class="s-simp">辞典 Dictionary</span></span><span data-gloss="vi"><span class="s-trad">辭典 Từ điển</span><span class="s-simp">辞典 Từ điển</span></span></a>
+    <a href="browse"><span data-gloss="en"><span class="s-trad">瀏覽 Browse</span><span class="s-simp">浏览 Browse</span></span><span data-gloss="vi"><span class="s-trad">瀏覽 Duyệt</span><span class="s-simp">浏览 Duyệt</span></span></a>
+    <a href="grammar"><span data-gloss="en"><span class="s-trad">語法 Grammar</span><span class="s-simp">语法 Grammar</span></span><span data-gloss="vi"><span class="s-trad">語法 Ngữ pháp</span><span class="s-simp">语法 Ngữ pháp</span></span></a>
+    <a href="method"><span data-gloss="en">方法 Method</span><span data-gloss="vi">方法 Phương pháp</span></a>
+    <a href="about"><span data-gloss="en"><span class="s-trad">關於 About</span><span class="s-simp">关于 About</span></span><span data-gloss="vi"><span class="s-trad">關於 Giới thiệu</span><span class="s-simp">关于 Giới thiệu</span></span></a>
+  </div>
+  <div class="spacer"></div>
+  <div class="prefs">
+    <button type="button" class="prefs-btn" id="prefsBtn" aria-haspopup="true" aria-expanded="false" aria-label="設 ⚙"><span data-gloss="en"><span class="s-trad">設 ⚙</span><span class="s-simp">设 ⚙</span></span><span data-gloss="vi"><span class="s-trad">設 ⚙</span><span class="s-simp">设 ⚙</span></span></button>
+    <div class="prefs-menu" id="prefsMenu" hidden>
+      <div class="prefs-row"><span class="prefs-lab"><span data-gloss="en">Language</span><span data-gloss="vi">Ngôn ngữ</span></span>
+        <span class="glosstog" role="group"><button type="button" data-g="en">EN</button><button type="button" data-g="vi">VN</button></span></div>
+      <div class="prefs-row"><span class="prefs-lab"><span data-gloss="en">Reading</span><span data-gloss="vi">Cách đọc</span></span>
+        <span class="readingtog" role="group"><button type="button" data-r="pinyin">拼</button><button type="button" data-r="zhuyin">ㄅ</button><button type="button" data-r="hanviet">越</button></span></div>
+      <div class="prefs-row"><span class="prefs-lab"><span data-gloss="en">Script</span><span data-gloss="vi">Chữ viết</span></span>
+        <span class="scripttog" role="group"><button type="button" data-s="trad">繁</button><button type="button" data-s="simp">简</button></span></div>
+      <div class="prefs-row"><span class="prefs-lab"><span data-gloss="en">Theme</span><span data-gloss="vi">Giao diện</span></span>
+        <button class="theme" id="themeBtn" type="button"><span class="tl-light"><span data-gloss="en">☾ 夜</span><span data-gloss="vi">☾ Đêm</span></span><span class="tl-dark"><span data-gloss="en">☀ 日</span><span data-gloss="vi">☀ Ngày</span></span></button></div>
+    </div>
+  </div>
+</nav>
+<div class="wrap bz">
+<section class="hero" style="padding:46px 0 6px">
+  <div class="kicker"><span data-gloss="en"><span class="s-trad">瀏覽 · Browse</span><span class="s-simp">浏览 · Browse</span></span><span data-gloss="vi"><span class="s-trad">瀏覽 · Duyệt</span><span class="s-simp">浏览 · Duyệt</span></span></div>
+  <h1 class="vh"><span data-gloss="en">Browse by level, kind, and family.</span><span data-gloss="vi">Duyệt theo cấp, loại và họ chữ.</span></h1>
+  <p class="sub"><span data-gloss="en">Looking up a known word is faster by search. Browse is for orientation: pick a level and a kind, then open a focused set.</span><span data-gloss="vi">Tra một từ đã biết thì tìm kiếm nhanh hơn. Duyệt là để định hướng: chọn một cấp và một loại, rồi mở một nhóm mục đã được khoanh vùng.</span></p>
+  <div class="bigsearch">
+  <div class="sbox">
+    <input id="q" data-rel="" placeholder="查 — search Chinese, pinyin, or English…" data-placeholder-en="查 — search Chinese, pinyin, or English…" data-placeholder-vi="查 · tìm chữ Hán, pinyin, hoặc tiếng Việt…" autocomplete="off" />
+    <button id="qgo"><span data-gloss="en">查 Look up</span><span data-gloss="vi">查 Tra</span></button>
+  </div>
+  <div class="sfacet-bar">
+    <button type="button" class="sfacet-kind" data-facet="component"><span data-gloss="en">component</span><span data-gloss="vi">thành phần</span></button>
+    <button type="button" class="sfacet-kind" data-facet="phonetic"><span data-gloss="en">phonetic</span><span data-gloss="vi">thành phần âm</span></button>
+    <button type="button" class="sfacet-kind" data-facet="band"><span data-gloss="en">band</span><span data-gloss="vi">cấp</span></button>
+  </div>
+  <div class="sfacets" id="sfacets"></div>
+  <div class="sresults" id="sresults"></div>
+</div>
+</section>
+<style>
+.bz .maplab{margin:38px 0 14px;display:flex;align-items:baseline;gap:12px}
+.bz .maplab .h{font-family:var(--sans);font-size:13px;font-weight:650}
+.bz .maplab .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.bz .map{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.bz .kc{background:var(--card);border:1px solid var(--rule);padding:18px 18px 8px;border-radius:var(--radius);overflow:hidden}
+.bz .kc-h{display:flex;align-items:baseline;gap:8px;border-bottom:1px solid var(--rule);padding:0 6px 12px;margin-bottom:6px}
+.bz .kc-h .g{font-family:var(--kai);font-size:22px}
+.bz .kc-h .t{font-family:var(--sans);font-size:13px;font-weight:650}
+.bz .kc-h .c{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--seal)}
+.bz .lr{display:flex;align-items:center;gap:9px;padding:8px 6px;border-bottom:1px dotted var(--rule);font-family:var(--sans);font-size:12.5px;text-decoration:none;color:inherit}
+.bz a.lr:hover .lv{color:var(--seal)}
+.bz .lr:last-child{border-bottom:none}
+.bz .lr .dot{width:6px;height:6px;border-radius:50%;flex:none;background:var(--rule2)}
+.bz .lr .dot.on{background:var(--seal)}
+.bz .lr .lv{color:var(--ink)}
+.bz .lr .ct{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--mut)}
+.bz .lr .ct.loom{color:var(--faint)}
+.bz .bnote{margin:28px 0 0;font-family:var(--sans);font-size:12px;color:var(--faint);line-height:1.7}
+@media(max-width:760px){.bz .map{grid-template-columns:1fr}}
+</style>
+<div class="maplab"><span class="h"><span data-gloss="en">The map</span><span data-gloss="vi">Bản đồ</span></span><span class="n"><span data-gloss="en">level × kind · counts read from the build</span><span data-gloss="vi">cấp × loại · số liệu lấy từ bản dựng</span></span></div>
+<div class="map">
+  <div class="kc"><div class="kc-h"><span class="g">字</span><span class="t"><span data-gloss="en">Characters</span><span data-gloss="vi">Chữ</span></span><span class="c">2662</span></div><a class="lr" href="browse-c-a1"><span class="dot on"></span><span class="lv">TOCFL 1</span><span class="ct">549</span></a><a class="lr" href="browse-c-a2"><span class="dot on"></span><span class="lv">TOCFL 2</span><span class="ct">599</span></a><a class="lr" href="browse-c-b1"><span class="dot on"></span><span class="lv">TOCFL 3</span><span class="ct">598</span></a><a class="lr" href="browse-c-b2"><span class="dot on"></span><span class="lv">TOCFL 4</span><span class="ct">467</span></a><a class="lr" href="browse-c-c1"><span class="dot on"></span><span class="lv">TOCFL 5</span><span class="ct">399</span></a><a class="lr" href="browse-c-c2"><span class="dot on"></span><span class="lv">TOCFL 6</span><span class="ct">48</span></a></div>
+  <div class="kc"><div class="kc-h"><span class="g"><span class="s-trad">詞</span><span class="s-simp">词</span></span><span class="t"><span data-gloss="en">Words</span><span data-gloss="vi">Từ</span></span><span class="c">7001</span></div><a class="lr" href="browse-w-a1"><span class="dot on"></span><span class="lv">TOCFL 1</span><span class="ct">435</span></a><a class="lr" href="browse-w-a2"><span class="dot on"></span><span class="lv">TOCFL 2</span><span class="ct">472</span></a><a class="lr" href="browse-w-b1"><span class="dot on"></span><span class="lv">TOCFL 3</span><span class="ct">782</span></a><a class="lr" href="browse-w-b2"><span class="dot on"></span><span class="lv">TOCFL 4</span><span class="ct">1841</span></a><a class="lr" href="browse-w-c1"><span class="dot on"></span><span class="lv">TOCFL 5</span><span class="ct">2817</span></a><a class="lr" href="browse-w-c2"><span class="dot on"></span><span class="lv">TOCFL 6</span><span class="ct">529</span></a></div>
+  <div class="kc"><div class="kc-h"><span class="g"><span class="s-trad">語法</span><span class="s-simp">语法</span></span><span class="t"><span data-gloss="en">Grammar</span><span data-gloss="vi">Ngữ pháp</span></span><span class="c">515</span></div><a class="lr" href="grammar"><span class="dot on"></span><span class="lv">TBCL 1</span><span class="ct">18</span></a><a class="lr" href="grammar"><span class="dot on"></span><span class="lv">TBCL 2</span><span class="ct">95</span></a><a class="lr" href="grammar"><span class="dot on"></span><span class="lv">TBCL 3</span><span class="ct">142</span></a><a class="lr" href="grammar"><span class="dot on"></span><span class="lv">TBCL 4</span><span class="ct">154</span></a><a class="lr" href="grammar"><span class="dot on"></span><span class="lv">TBCL 5</span><span class="ct">106</span></a></div>
+</div>
+<p class="bnote"><span data-gloss="en">Each cell opens that level and kind on its own page rather than the whole corpus at once. Grammar is browsed by what you want to say, on its own page.</span><span data-gloss="vi">Mỗi ô mở cấp và loại đó trên một trang riêng, thay vì cả kho cùng lúc. Ngữ pháp thì duyệt theo điều bạn muốn nói, ở trang riêng của nó.</span></p>
+</div>
+<footer class="wrap">
+  <span><span data-gloss="en"><span class="s-trad">Tsumugu 記憶辭典 · 紡ぐ, to spin thread</span><span class="s-simp">Tsumugu 记忆辞典 · 纺ぐ, to spin thread</span></span><span data-gloss="vi"><span class="s-trad">Tsumugu 記憶辭典 · 紡ぐ, se sợi</span><span class="s-simp">Tsumugu 记忆辞典 · 纺ぐ, se sợi</span></span></span>
+  <a href="about"><span data-gloss="en">Colophon &amp; license</span><span data-gloss="vi">Ghi chú ấn bản &amp; giấy phép</span></a>
+  <span class="spacer"></span>
+  <span>CC BY-NC-SA 4.0</span>
+</footer>
+<script src="assets/site.js?v=87f31f304d"></script>
+<script src="assets/search.js?v=f166abaabb"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a405b547aa661dd5',t:'MTc5MDI5NDAwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

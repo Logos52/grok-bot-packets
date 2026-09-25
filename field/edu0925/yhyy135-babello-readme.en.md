@@ -1,0 +1,135 @@
+<p align="center">
+  <img src="brand/babello-icon.png" alt="Babello" width="128" height="128">
+</p>
+
+<h1 align="center">Babello</h1>
+
+<p align="center">
+  A language-learning platform that runs entirely in your browser, one Practice at a time: Listening, Writing, and Reading on the way.
+</p>
+
+<p align="center">
+  <a href="README.md">简体中文</a> | English
+</p>
+
+Import a podcast episode, transcribe it with your own LLM keys, and study it like lyrics: the current line scrolls into view and lights up word by word as it plays, your own language sits under each line, and Japanese gets furigana and part-of-speech colouring. No server, no accounts — everything stays in your browser.
+
+## Features
+
+- **Listening**: paste a podcast RSS feed, pick an episode, and get a lyrics-style transcript that scrolls and highlights word by word as it plays.
+- **Translate while you listen**: only the part you are listening to is translated, so an episode you give up on five minutes in costs five minutes.
+- **Japanese readings**: furigana and part-of-speech colouring come from a local tokenizer and need no key.
+- **Writing**: write one sentence in the language you are studying and get back how it reads, what is wrong with it, and how a native speaker would say it.
+- **Bring your own models**: OpenAI, Gemini, Groq, SiliconFlow, DeepSeek, OpenRouter, or anything OpenAI-compatible.
+- **Your data stays in your browser**: keys, shelf, transcripts and audio live in IndexedDB, so several people can share one deployment and each pay their own bill.
+- **8 interface languages**: English, 简体中文, 繁體中文, 日本語, 한국어, Español, Français, Deutsch.
+- **Installable**: a PWA you can add to the home screen; what you have imported opens offline.
+
+## Deploy
+
+Babello is two independent parts, both on Cloudflare, and the free tier covers personal use:
+
+| Part      | What it is                                                                                                                                                                                                                                                                | Where     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| **Page**  | A static site that carries no configuration                                                                                                                                                                                                                               | Repo root |
+| **Proxy** | A Worker under two hundred lines that forwards bytes and stores nothing. A browser cannot do three things for itself: follow the redirect a podcast host answers with, reach a host that sends no CORS headers, and hand a transcription endpoint a slice of a large file | `worker/` |
+
+### One-click deploy (no wrangler needed)
+
+You need a Cloudflare account and a GitHub or GitLab account. The button copies the repo into your account and sets up automatic builds on Cloudflare, so every push redeploys.
+
+**1. Deploy the proxy**
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/yhyy135/babello/tree/main/worker)
+
+It asks for `PROXY_KEY`: a shared secret you hand to the people who should use the proxy. Make up a long random string (for example `openssl rand -hex 16`). **Do not leave it empty**, or anyone can use your proxy.
+
+When it finishes, note the proxy's address, of the form `https://babello-proxy.<your-subdomain>.workers.dev`.
+
+**2. Deploy the page**
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/yhyy135/babello)
+
+Nothing to fill in. You end up with `https://babello.<your-subdomain>.workers.dev`.
+
+**3. Connect them**
+
+Open the page, go to **Settings**, enter the proxy's address and `PROXY_KEY`, then the models — see [Configuration](#configuration).
+
+### Deploy from the command line
+
+```bash
+git clone https://github.com/yhyy135/babello.git
+cd babello
+npm ci                              # needs Node 22.18 or newer
+npx wrangler login
+
+# The page
+npm run build
+npx wrangler deploy
+
+# The proxy
+cd worker
+npx wrangler secret put PROXY_KEY   # not in wrangler.toml — that file is committed
+npx wrangler deploy
+```
+
+### Other static hosts
+
+The page runs on any static host: `npm run build` writes `dist/web`. The one requirement is that the host **must not** send `Content-Encoding: gzip` for `/kuromoji/dict/*`. Those files are gzip _content_ that the Japanese tokenizer unpacks itself; a server that decodes them first leaves the tokenizer hanging with no error to read. Cloudflare does not.
+
+## Configuration
+
+Open **Settings**. Three things to fill in.
+
+| Slot                    | Endpoint                                        | Used for                               |
+| ----------------------- | ----------------------------------------------- | -------------------------------------- |
+| **Text Model**          | `{base URL}/chat/completions`                   | Translation, ask-AI, and Writing       |
+| **Transcription Model** | `{base URL}/audio/transcriptions`               | Speech to text; must return timestamps |
+| **Proxy**               | The address you deployed above, and `PROXY_KEY` | Downloading podcasts, slicing audio    |
+
+Choosing a provider in Settings fills in its base URL. Groq (`whisper-large-v3-turbo`) is the transcription provider verified against a real episode; OpenAI, SiliconFlow and Gemini are implemented from their documentation and have not been run against a real one yet. **Test connection** tries both slots for real, so a typo shows up here and not halfway through an import.
+
+Both models are optional. With only the proxy filled in, an import gives you the audio and a player; add a transcription model later and press **Retry transcription** — the download is never paid for twice.
+
+**Native Language** decides what everything is translated into, and the interface follows it. The language you are studying is optional: leave it on auto-detect and one shelf can hold Japanese, Spanish and English episodes.
+
+## Usage
+
+- **Import**: paste a podcast RSS feed into the box on the library screen and pick an episode. The import runs in the page, so keep the tab open; if it stops, **Resume** picks up where it left off and never pays to transcribe twice. With no feed in mind, the bottom of the screen suggests shows in your target language, from Apple's podcast directory.
+- **Writing**: needs only the Text Model — no proxy, no audio. If the answer read your sentence as something you did not mean, say what you meant and it judges again, starting from the gap.
+- **Export your library**: browsers evict storage under disk pressure, so an export is the only copy of a transcript that survives. **Export** on the library screen writes one JSON file with your transcripts, shelf, playback positions and whatever has been translated — not the audio (it can be fetched again) and not your API keys. Importing only ever adds. To move to another device, **Export settings** in Settings carries the keys and models along.
+
+<details>
+<summary>Coming from Duolistening (2.x)</summary>
+
+3.0.0 renamed the app, and the rename moved the name of the database your library is kept in, so a library from 2.x shows as empty (nothing was deleted). **Before** you update:
+
+1. On the old build: **Export** on the library screen, and **Export settings** in Settings if you want the keys carried over.
+2. Update.
+3. **Import** the file, and paste the settings string back.
+
+A backup file and a settings string written by 2.x are both still read.
+
+</details>
+
+## Development
+
+```bash
+npm ci
+npm run dev:web     # http://localhost:5173
+npm test            # node:test, no framework
+npm run typecheck
+npm run build       # → dist/web
+```
+
+The transcription provider cannot reach `localhost`, so importing a real episode needs a deployed page.
+
+[CLAUDE.md](CLAUDE.md) is the map of the codebase, [CONTEXT.md](CONTEXT.md) defines the vocabulary it uses, and [docs/adr/](docs/adr/) records why the architecture is shaped the way it is.
+
+## Known limits
+
+- A library belongs to one browser: a phone and a laptop are two libraries, and the export is the only bridge.
+- The ask-AI popup asks one fixed question about one line and keeps no history; Writing keeps nothing, and a reload clears the page.
+- The recommendations reach Apple directly, once a day, so Apple learns which language you are studying; cover art comes from Apple's CDN too, so it is blank offline.
+- On iOS, adding the page to the home screen keeps its storage from being cleared, but standalone web apps have a history of losing audio when minimised or locked. Try it on your own phone first.

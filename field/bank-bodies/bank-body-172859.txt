@@ -1,0 +1,18 @@
+# Auto-review still prompts after Always allowed / standing approval
+URL: https://forum.cursor.com/t/auto-review-still-prompts-after-always-allowed-standing-approval/172859
+Created: 2026-09-24T05:02:56.732Z
+
+## Post #1 @TheAviv (2026-09-24T05:02:56.767Z)
+Where does the bug appear (feature/product)? Grok Bot Describe the Bug In Grok Bot, Auto-review keeps showing approval cards for the same trash tool after the user already gave standing approval in chat and after an Always allowed rule was created for that tool. A later similar action still arrives as Allowed once and pops another card. Expected: once Always allowed exists (or standing approval was given), same-class agent trash actions should not interrupt with more cards. Actual: cards keep appearing. Product: Grok Bot. Steps to Reproduce Give standing approval in chat, create an Always allowed rule for the same trash tool, then perform a similar trash action. Another approval card appears. Operating System Other Version Information Not provided. Does this stop you from using Cursor No - Cursor works, but with this issue
+
+## Post #2 @deanrie (2026-09-24T07:38:53.296Z)
+Hey, thanks for the detailed report. This is a known issue we’re tracking. The Always allow button saves the rule as a text instruction, not as a strict per-tool permission. Because of that, Auto-review might treat the next similar action as outside the rule and show the card again. That’s why you’re seeing a new prompt for the same trash action. As a temporary workaround, a broader manually written rule usually works better. In Grok Bot: Settings &gt; Auto-review &gt; Auto-review Rules, in the When Grok Bot wants to field enter something like move emails in my Gmail to trash, set It should to Allow automatically, then click Add Rule. The rules list has a size limit and evicts the oldest rules when it fills up, so it’s worth deleting the narrow trash rules that were added via Always allow so your new broader one doesn’t get pushed out. Also note that if rules conflict, Ask first takes priority. More on approvals: Cursor Documentation Approvals and Auto Review - Grok Bot security | Cursor Docs Use these controls and deployment details to decide whether Grok Bot is allowed in, and to limit what Bots can access, change, and retain. Rollout steps and the dashboard settings list live on Grok Bot for Teams and Enterprise. Common review... I’ve shared your case with the team. I’ll post here if there’s an update.
+
+## Post #3 @TheAviv (2026-09-24T13:29:26.000Z)
+Thanks Dean. Applied your workaround just now. Removed the narrow Always allow text instruction that was saved for the Gmail Multi trash_email tool. Added a broader manual Auto-review Allow rule: move emails in my Gmail to trash. Will retest the same Email trash class on the next real pass and report if the card still appears. LinkedIn send allow rules left alone. Appreciate the diagnosis that Always allow saves as a text instruction rather than a strict per-tool permission.
+
+## Post #4 @deanrie (2026-09-24T13:51:52.221Z)
+Great that you tried it. A broader rule usually holds up better than narrow Always allow entries, so this should reduce repeat cards for trash actions. Let me know how the retest goes on the next real run. If a card for the same class still shows up, post here and I’ll pass the details along. For now we’re keeping an eye on this issue, but I can’t share an ETA for strict per-tool approval yet.
+
+## Post #5 @TheAviv (2026-09-24T20:14:38.000Z)
+Thanks Dean. Will report after the next real Email trash pass, and post again if the same-class card still appears.
