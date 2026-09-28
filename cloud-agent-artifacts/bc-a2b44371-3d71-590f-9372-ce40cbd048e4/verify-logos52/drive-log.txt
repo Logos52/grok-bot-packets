@@ -1,0 +1,20 @@
+verify-logos52 maintain pass 2026-09-28
+instance: http://127.0.0.1:4321 (helpers/launch.sh, origin/main product overlay, skill helpers from this branch)
+doctor before: pass (see doctor-before.txt)
+
+Chrome serial session (computerUse), all mapped features:
+1 home: h1 LLM Knowledge Base; doors Understand Apply Learn Decode Explore; data-mode=spine; 6 domain chips; 4 topmind; 3 hub-card; Project Updates include Poteto Paved Path
+2 search: query "Vibe Coding"; first row Vibe Coding / Agentic; landed /wiki/Systems/AI--and--Agentic-Systems/Vibe-Coding/ h1 Vibe Coding
+3 wiki page: Understand door -> /wiki/Concepts/The-AI-Industrial-Revolution/ h1 The AI Industrial Revolution; type Concept; no dek element; crumb wiki -> /folder/wiki/; details.kb-related-more "10 more related pages"; prose link Agentic Engineering -> /wiki/Systems/AI--and--Agentic-Systems/Agentic-Engineering/
+4 wiki index: Chrome Notes -> /notes/; h2 Condensed and Hubs; Learning, Condensed -> note with dek
+5 map: Explore door -> /map/ h1 The vault; Map nav on; data-mode=full data-domain-labels; Learning heading -> /domains/learning/ h1 Learning; Notes nav on
+related: /graph/ h1 Vault graph; Notes nav on
+
+product gaps reconfirmed, not patched:
+- GET /notes/index/ -> 404
+- HUB_ENTRIES / live /notes/ hubs omit Using Grok Bot, pstack, Cursor Cloud Agents, Picking a computer
+
+mild under-specs not shipped (recipes passed without them):
+- spine selector path already enough for the home recipe
+- .domain__blurb present on map; recipe uses the h3 link
+- TYPE_LABELS richer than the documented subset; Understand asserts Concept

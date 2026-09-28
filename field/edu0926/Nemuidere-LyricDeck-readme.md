@@ -1,0 +1,90 @@
+# LyricDeck
+
+Turn song lyrics into Anki flashcards: Russian → English, with an optional Japanese → English mode. It runs locally in your browser and is free by default.
+
+## What it does
+
+- **Get lyrics.** Search [LRCLIB](https://lrclib.net) (free, no account) or paste them.
+- **Find cards.** You get words, repeated phrases and whole lines. Word forms are grouped (любви → любовь) using word types taken from the surrounding words.
+- **Review before exporting.**
+  - A slider picks the words you need to understand X% of the song.
+  - Small words (и, в, не, мой…) and very common Russian words can be hidden.
+  - Words you mark as known are remembered.
+  - Where a word could be read two ways, you pick the right one.
+- **Rich cards.**
+  - Front: the stressed dictionary form (любо́вь) with the form as sung.
+  - Back: the English, a grammar note ("genitive singular"), the verb's aspect pair, up to three song lines with the word in bold, and optionally their English.
+- **Export.** Download an `.apkg` file, or send the cards straight to a running Anki with AnkiConnect. Re-exporting updates existing cards instead of duplicating them.
+- **Translation.**
+  - Single words come from an offline dictionary.
+  - Phrases and lines use MyMemory (free).
+  - Claude is optional, through an API key or your own Claude Code login.
+
+## Setup
+
+Needs Python 3.12+ and [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/Nemuidere/LyricDeck.git
+cd LyricDeck
+uv sync
+uv run flask --app lyricdeck init-data   # one-time: downloads the dictionary (~25 MB)
+uv run flask --app lyricdeck run
+```
+
+Open http://127.0.0.1:5000.
+
+### Free translation limits
+
+MyMemory allows 5,000 characters a day, or 50,000 if you add your email under **Settings**. The usage box on that page shows how much is left. Translations are cached, so nothing is translated twice.
+
+### Claude (optional)
+
+Set it up under **Settings → Claude**. Nothing is sent to Claude until you press "Translate with Claude" on the review page.
+
+- **API key:** run `uv sync --extra claude` and paste a key from [platform.claude.com](https://platform.claude.com/settings/keys). Usage is billed per token, roughly 3–15 cents per song.
+- **Your Claude Code login:** for personal use with a Pro or Max plan. Install [Claude Code](https://code.claude.com), run `claude` once and log in. LyricDeck then runs your local `claude -p` command, which Anthropic covers with the plan's monthly Agent SDK credit. LyricDeck never reads your Claude credentials.
+
+### Japanese (optional)
+
+Japanese lives on its own part of the site. Switch with **RU | JA** at the top right, or go to http://127.0.0.1:5000/ja/. It has its own songs, known words, deck name and Anki note type, so Russian and Japanese decks never mix.
+
+It is a separate install, because its word dictionary (UniDic) adds about 250 MB:
+
+```bash
+uv sync --extra ja                                 # add --extra claude if you also use Claude with an API key
+uv run flask --app lyricdeck init-data --lang ja   # one-time: downloads JMdict (~11 MB)
+```
+
+Without these steps, Russian works as before and the Japanese pages just explain how to install it.
+
+- **Words** are split and grouped by dictionary form with fugashi + UniDic. A verb keeps its endings as sung: 歩いた is counted as 歩く, with the note "past". Compound verbs like 走り出す stay one word.
+- **Cards**
+  - Front: the word without readings, to test the kanji, and the form as sung.
+  - Back: furigana, the pitch-accent number, the English (from JMdict), a grammar note ("potential, negative, past"), and song lines with furigana.
+- **Hide common words** uses JMdict's frequency ranks: top 500 / 1000 / 2000 / 5000.
+- **Lyrics search** ranks texts in Japanese script first and flags romaji, which can't be analysed.
+
+### Send to Anki (optional)
+
+Install the [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on and keep Anki open, then use **Send to Anki** on the review page. Exporting an `.apkg` file works without it.
+
+## Limitations
+
+- **Dictionary forms are guessed.** The guess is usually right; the review screen is where you catch the misses.
+- **The dictionary data is from 2021.** It covered about 96% of words in a 15-song test. Slang and names may need Claude or a manual translation.
+- **Japanese readings come from UniDic (2013).** Some modern slang is split wrongly, special sung readings (運命 sung as さだめ) can't be detected, and passive and potential forms can't be told apart. The review screen is where you fix these.
+- **The free services are best-effort.** MyMemory and LRCLIB can be slow or rate-limited.
+- **Lyrics are copyrighted.** They are stored only in your local `data/` folder, which is not committed. Keep the decks you make for personal use.
+
+## Credits
+
+- **Dictionary:** [OpenRussian.org](https://en.openrussian.org) data (CC BY-SA 4.0).
+- **Word frequencies:** Lyashevskaya & Sharoff, *Russian National Corpus frequency dictionary* (2009).
+- **Word forms:** [pymorphy3](https://github.com/no-plagiarism/pymorphy3) and [spaCy](https://spacy.io) `ru_core_news_sm`.
+- **Japanese:** [JMdict](https://www.edrdg.org/wiki/index.php/JMdict-EDICT_Dictionary_Project), © Electronic Dictionary Research and Development Group, used under [CC BY-SA 4.0](https://www.edrdg.org/edrdg/licence.html). Word splitting, readings and pitch accent come from [fugashi](https://github.com/polm/fugashi) with [UniDic](https://clrd.ninjal.ac.jp/unidic/) (unidic-lite).
+- **Other services and libraries:** lyrics from [LRCLIB](https://lrclib.net), translation by [MyMemory](https://mymemory.translated.net), Anki packages by [genanki](https://github.com/kerrickstaley/genanki).
+
+## License
+
+GPL-3.0-or-later. See [LICENSE](LICENSE).

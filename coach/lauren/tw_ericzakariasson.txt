@@ -1,0 +1,2118 @@
+
+ 
+ 
+ 
+ 
+eric zakariasson (@ericzakariasson) — X Web Viewer
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-9QXBYRZ1VH');
+ 
+ 
+ window.__accountCollectionI18n = {"dialog_title":"Add to collection","create":"Create","create_placeholder":"Collection name","loading":"Loading","load_failed":"Failed to load collections.","empty_mine":"You have not created any collections yet.","create_failed":"Failed to create collection.","rename_prompt":"New name","rename_failed":"Rename failed.","delete_confirm":"Delete this collection?","delete_failed":"Delete failed.","remove_confirm":"Remove this account from the collection?","remove_failed":"Remove failed."};
+ window.__accountCollectionRoutes = {"myList":"https://twiscan.com/en/api/my/account-collections","inCollectionsBase":"https://twiscan.com/en/api/accounts","create":"https://twiscan.com/en/account-collections","collectionBase":"https://twiscan.com/en/account-collections"};
+ var csrf_token ='OwFvlciZgVD4kHLsLtnHgbU4SEIkdJHiXtIh4Jpl'
+ var gallery_views_url = 'https://twiscan.com/en/gallery/views'
+ var tweet_vote_url = 'https://twiscan.com/en/tweet/up-or-down'
+ var community_tweet_vote_url_template = 'https://twiscan.com/community-tweets/__id__/vote'
+ var video_play_url = 'https://twiscan.com/en/video/play'
+ 
+ 
+ 
+ 
+ 
+ 
+ TwiScan
+ 
+ 
+ Hot
+ 
+ 
+ Communities
+ 
+ 
+ Account collections
+ 
+ 
+ 
+ 
+ Login
+ 
+ 
+ Register
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+English
+ 
+ 
+ 
+日本語
+ 
+ 
+ 
+한국의
+ 
+ 
+ 
+简体中文
+ 
+ 
+ 
+繁体中文
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Register and share your invite link to earn from video plays and referrals.
+ 
+ 
+ 
+ Register now
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <a href="https://twiscan.com/en/login"
+ class="px-4 py-1 text-white bg-[#1d9bf0] rounded-3xl text-sm inline-flex items-center">
+ Add to collection
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+ 
+@ericzakariasson
+ 
+tinkering 
+@spacexai
+, prev 
+@cursor_ai
+ 
+ 
+613
+ 
+Following
+&nbsp;&nbsp;&nbsp;&nbsp;
+90.8K
+ 
+Followers
+ 
+ 
+ 
+ <div id="account-in-collections"
+ class="mt-3 px-3 py-2 text-sm text-slate-500 dark:text-[#919191] hidden"
+ data-fetch-url="https://twiscan.com/en/api/accounts/505835394/account-collections"
+ data-label="In {count} collections">
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.25 18:28
+ 
+ 
+ 
+there's a lot of cool apps you can build on 
+@X
+ , and easy to get started with this grok bot!
+get some inspiration at 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Paul Vann
+@pjvann
+ 
+ 
+ 
+2026.09.25 18:08
+ 
+ 
+ 
+ want to build on the 
+@X
+ api but not sure how to get started?
+hire the X API Engineer in Grok Bot! It will surface ideas from our exhibit, help you build and test, and deploy your project for others to use.
+can't wait to see what you all build 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 17
+ 
+ 
+ 
+ 208
+ 
+ 
+ 
+ 13
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.23 20:12
+ 
+ 
+ 
+ here's a prompt to improve your agent harness based on what we've learned at cursor. enjoy
+# Improve this agent harness's token efficiency
+You're working on an LLM agent harness: the system prompt, tool definitions, request assembly, context caching, compaction, and retrieval, and how work is split across agents. Make the agent's runs cheaper without making it worse at its job.
+- Objective: lower price-weighted token cost per completed task.
+- Constraint: no measurable drop in task quality.
+Measure per task, not per request. Every turn resends the prefix (tools, instructions, setup, and the conversation so far), so a change that shrinks each request but adds turns can cost more. Weight tokens by billing type: output, uncached input, and cached input are priced very differently.
+Work in this order: map the harness and measure the baseline, rank the opportunities, make the changes that are safe to make directly, put the rest behind flags or in proposals, then report.
+Figures below come from one team's production coding agent and its multi-agent experiments. Use them to gauge magnitude, not as targets. One round of these changes (prompt trimming, tool offloading, cache layout, sparse line numbers, subagent tuning) cut that team's overall token cost about 7% with no loss in quality. The larger percentages apply only to the part of the request each change touched.
+## Principles
+1. Change what the harness sends, not how hard the model tries. Don't ask the model to conserve tokens. A harness that told its model to "take care to preserve tokens and not be wasteful" found it grew reluctant to take on ambitious tasks and sometimes quit, saying it wasn't supposed to waste tokens.
+2. Capable models need definitions, not commands. Lists of "DO NOT", "You must", and "Important", and guards against older models' habits, can usually be replaced with plain descriptions of what each tool does. One team cut about two-thirds of its system prompt this way, and the shorter prompt worked across model families. Instruct only on what the model can't know (the product, the environment, the user's processes) and on quirks you've seen in transcripts.
+3. Static context is for what most turns need. Everything else should be discoverable when needed. Less up-front context also means less confusing or contradictory information.
+4. Expect removals to win. Guardrails written for weaker models, coordination steps that became bottlenecks, and prompting for behavior the model now does on its own all cost tokens.
+5. Real usage decides. Evals are a fast proxy, but they skew toward hard problems and miss the real mix of requests.
+## 1. Map the harness and measure the baseline
+Find:
+- Where requests are assembled, the system prompt, and tool schemas. If a framework or SDK builds requests, find its hooks for message order, cache control, and tool loading.
+- How tool results are formatted, and how history is kept, trimmed, or summarized.
+- How subagents or parallel agents are spawned, if any.
+- Which models and provider APIs are used. From the provider's docs, get the prompt caching behavior (automatic or explicit breakpoints, TTL, minimum cacheable length) and the prices for output, uncached input, and cached input.
+- Existing logging, token accounting, and evals.
+If the harness doesn't record per-request token usage by billing type and cache hits, add that first. Everything later depends on it.
+Then render a few real requests (from logs, or by running representative tasks) and count tokens per section with the model's tokenizer or the API's usage fields. Produce:
+- Cost share by source × billing type. Sources: system prompt, tool definitions, skill/rule/integration descriptions, user messages, file reads, search results, command and other tool output, history, summaries, subagents.
+- Static tokens per request, cache hit rate, and turns per task.
+- Per tool: the share of runs that call it at least once, and its error rate.
+Read the rendered requests, not just the templates. Duplication, leaked volatile values, and misordered blocks only show up there.
+Rank opportunities by share of spend × fraction removable ÷ quality risk.
+## 2. System prompt and injected context
+Label every instruction:
+- Keep: product or environment knowledge the model can't infer, fixes for quirks seen in this model's transcripts, and rules a mode depends on.
+- Rewrite: commands and emphasis into plain descriptions. Reminders into constraints: "No TODOs, no partial implementations" works better than "remember to finish implementations." Vague quantities into ranges: "generate 20–100 tasks" gets far more ambitious behavior than "generate many tasks."
+- Delete: things capable models do by default, guards against behavior you haven't seen from this model, text that repeats tool descriptions, and lines that could contradict a user request. Models trained to rank system instructions above user messages will side with the system prompt.
+- Move: anything per-user or per-request (date, environment, repo state, lists of skills or subagents, user rules) into a user-role setup message after the cache boundary.
+Audit other injected context the same way. As models improved, the team behind these figures dropped directory trees, pre-retrieved snippets, compressed copies of attached files, lint errors injected after every edit, forced expansion of short file reads, and caps on tool calls per turn. They kept small, high-value facts: OS, repo status, and open or recently viewed files.
+Skip checklists for open-ended work. The model optimizes the listed items and deprioritizes everything else.
+## 3. Tool definitions
+Tool schemas ride along on every request. Most tools beyond the core set were each needed in under 20% of conversations, and moving them out of static context cut tool-description tokens 60%. Doing the same for integration tools (such as MCP servers), with names in context and full schemas in one folder per server that the agent can search with grep or jq, cut total tokens 46.9% in sessions that used them.
+- Keep in static context: high-frequency tools (for a coding agent: read, search, edit, shell), tools the model tries to call even when they're absent, and tools a mode depends on.
+- Offload the rest: leave a name or one-line pointer and make the full schema discoverable on demand. Group related tools so they load together, and put status (such as "needs re-authentication") where the agent will see it.
+- Tighten what remains: describe behavior and arguments, and drop usage lectures.
+- Pick the split by testing a few configurations and tracking tokens, cost, latency, tool-call errors, and task success.
+## 4. Cache layout
+Order each request so the reusable prefix is as long as possible:
+`tool definitions → system instructions → [breakpoint] → setup message (skills, subagents, rules, environment) → [breakpoint] → conversation`
+- Keep the prefix byte-identical across turns. Use deterministic tool order and serialization, put timestamps and IDs after the boundary, and don't rewrite earlier messages except when compacting.
+- Use explicit breakpoints if the provider supports them. Otherwise rely on automatic prefix caching with the stable part first. Respect TTL and minimum-length rules.
+- Switching models mid-conversation throws away the cache (caches are per model and provider) and hands the new model a history it didn't write. When a different model is needed, run it as a subagent with fresh context.
+Explicit breakpoints plus moving per-request setup after them cut cold cache misses 20%.
+## 5. Tool results and other context added during a run
+- Large outputs (commands, integrations, logs): write them to a file and return the path, size, and a short tail. The agent can tail, grep, or read ranges for more. Truncating loses data, and inlining bloats every later request. Treat long-running terminal sessions the same way.
+- High-volume formats: look for overhead repeated on every line or item. Numbering every 10th line of a file read instead of every line cut cache-read tokens 1.6% without hurting citation accuracy. Each number costs 3–5 tokens, and agents read tens of thousands of lines per session. Also check repeated absolute paths, verbose JSON keys, ANSI codes, progress bars, and repeated headers.
+- Good retrieval saves exploration turns. Adding semantic search alongside grep raised codebase question-answering accuracy 12.5% on average and cut the iterations users needed.
+- Tool errors waste tokens and leave confusing debris in context. Classify expected errors (invalid arguments, unexpected environment, provider error, timeout, user abort), treat unknown errors as harness bugs, and track rates per tool and per model. One focused effort along these lines cut unexpected tool errors 10×.
+## 6. Long runs: compaction, subagents, and model mix
+- Compaction: keep the summarization prompt short and the summary compact, carry forward plan state and remaining tasks, and save the full history to a file the agent can search for details the summary dropped. A model trained to self-summarize from a one-line prompt wrote ~1k-token summaries with half the compaction error of a multi-thousand-token prompt that produced 5k+ token summaries. Untrained models may need more guidance, so test how short you can go. A more expensive summarization model made a negligible difference.
+- Scratchpads and running notes: rewrite them instead of appending. For repeated work in one environment, a small agent-maintained notes file with a line budget, loaded at start, is a promising way to shorten later runs.
+- Subagents: fresh context keeps the parent lean, but isolation adds coordination cost (duplicate or stale work). If the model already delegates on its own, remove prompting that pushes it to. Have subagents return short handoffs: what was done, findings, concerns, and deviations. A subagent should use a different model only when the user or harness says so.
+- Model mix: in large multi-agent runs, workers used at least 69% of tokens, and over 90% in most runs. A frontier planner with cheap workers matched a frontier model doing everything at about one-eighth the cost. Planner choice still changes worker spend. One planner that cost less on its own saw its workers use several times more tokens, and the run cost more overall. Measure the whole tree.
+- Routing and reasoning effort: send simple turns to a cheaper model or lower effort, and upgrade only when a stronger model is clearly better. A router built this way matched or beat single frontier models on user satisfaction at 41–68% lower cost.
+- Reasoning continuity: if the API returns reasoning items (including encrypted ones), pass them back on later turns and alert when they go missing. Dropping them cost one reasoning model 30% on a coding benchmark, and it burned tokens reconstructing its plan.
+## 7. Fit the harness to each model
+Adapt to what each model was trained on instead of forcing one shape on all of them. If you've tuned the harness for a similar model, start from that version.
+- Edit format: use the one the model was trained on (for example, patch-style or search-and-replace). An unfamiliar format costs extra reasoning tokens and causes more mistakes.
+- Shell or tools: shell-first models fall back to `cat` or inline scripts. Name tools after their shell equivalents (such as `rg`), and if needed add: "If a tool exists for an action, prefer to use the tool instead of shell commands (e.g. read_file over `cat`)."
+- Literalness: some model families follow instructions literally and others tolerate imprecision. Some spiral on emphasized wording. Strip caps and emphasis for literal models.
+- Triggers: some models ignore a tool until told when to use it. A literal trigger works: "After substantive edits, use the 
+ to check recently edited files for linter errors. If you've introduced any, fix them if you can easily figure out how."
+- Progress updates: if a model reports progress through reasoning summaries, keep them to 1–2 sentences that note new findings or a change of tactic, and remove instructions about messaging mid-turn.
+- Quirks worth a targeted line: hedging or refusing as context fills ("context anxiety"), declaring completion early, stopping to ask permission, and calling tools that don't exist.
+Tie each added instruction to the transcript behavior it fixes. Re-audit when models change, since guidance one version needed can be dead weight for the next.
+## 8. Validate
+- Offline: run a fixed set of realistic tasks before and after, ideally drawn from real usage and phrased the way users actually write (short and ambiguous). Compare task success, tokens, cost per task, turns, and tool errors. Don't ship a change that lowers success.
+- Online, if you have users: A/B test each change or small bundle. The primary metric is cost per completed task. Guardrails are task success signals, tool-call errors, latency, turns per task, and cache hit rate. For a coding agent, a good success signal is how much agent-written code survives over time. In general, check whether the user's next message moves on or reports a problem.
+- Ship only when cost drops and no guardrail regresses beyond noise. Record null results.
+## What to change directly and what to propose
+- Change directly, each in its own revertible commit: token and cache telemetry, deterministic serialization and tool order, moving volatile content out of the cached prefix, explicit cache breakpoints, writing large outputs to files instead of truncating, passing back reasoning items that are being dropped, and fixes for recurring tool errors.
+- Change behind a flag so it can be tested: system prompt edits, tool offloading, output format changes, compaction changes, and subagent prompting.
+- Propose only: changes to which models run, routing, reasoning-effort defaults, or how work is split across agents.
+## Traps
+- Asking the model to use fewer tokens or do less.
+- Truncating tool output.
+- Dropping reasoning items to save input tokens.
+- Volatile content in the cached prefix, or tool order that changes between requests.
+- Offloading a tool the model needs on the first turn or tries to call when it's missing.
+- Emphasis-heavy prompts (MUST, NEVER, IMPORTANT, all caps), especially with literal models.
+- Forcing a terser output format than the model was trained on. Fewer output tokens can mean less thinking and worse results.
+- Optimizing raw token counts instead of cost, per request instead of per task, or evals instead of real usage.
+- Switching models mid-conversation to save money.
+- Adding coordination layers that become bottlenecks.
+## Report back with
+1. The harness map and baseline: cost by source × billing type, with the biggest sources called out.
+2. A ranked list of changes: layer, what changes, estimated savings and how you estimated them, quality risk, how to validate, and how to roll back.
+3. The changes you made, including a system prompt diff with a keep, rewrite, delete, or move reason for each line.
+4. A test plan for the flagged changes.
+5. Gaps: anything you couldn't find or measure.
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 190
+ 
+ 
+ 
+ 3K
+ 
+ 
+ 
+ 130
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.23 17:09
+ 
+ 
+ 
+ agents like to read a lot to gather context before and after working, so optimizing for reading makes a big difference! 
+if you're building agents, i highly recommend reading this (or giving it to your agent and ask it to implement the findings) 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Cursor
+@cursor_ai
+ 
+ 
+ 
+2026.09.23 15:46
+ 
+ 
+ 
+We've reduced token costs in Cursor by 7% with no drop in agent quality.
+Savings came from tighter prompts, selective tool loading, better caching, and compressed file reads. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 27
+ 
+ 
+ 
+ 545
+ 
+ 
+ 
+ 22
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ <iframe
+ src="https://twiscan.com/ad/timeline"
+ title=""
+ class="block w-full border-0"
+ style="min-height:280px;height:280px"
+ loading="lazy"
+ referrerpolicy="no-referrer-when-downgrade"
+ sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.22 19:45
+ 
+ 
+ 
+ i remember when we built the first scrappy version of this ~1.5 years ago just to handle insane volume
+what we learned then is still true: crawl, walk, run. identify flywheels for continuous improvements. keep it running (applicable to a lot of things)
+great job team!
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Grok Bot
+@bot
+ 
+ 
+ 
+2026.09.22 18:11
+ 
+ 
+ 
+ We rebuilt customer support around Grok Bot to scale our operations without adding headcount.
+It works autonomously to respond to customers, resolve tickets, and manage the queue.
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 18
+ 
+ 
+ 
+ 213
+ 
+ 
+ 
+ 4
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.21 22:01
+ 
+ 
+ 
+some grok 4.7 use cases in the wild!
+flight sim
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 31
+ 
+ 
+ 
+ 158
+ 
+ 
+ 
+ 8
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.21 17:49
+ 
+ 
+ 
+ and here’s the grok 4.7 model card. a few jumps vs 4.6 that stood out:
+- Terminal-Bench: 20.3% → 38.0%
+- SWE-Marathon: 31.9% → 46.0%
+- HealthBench Pro: 48.5% → 56.7%
+- Legal Agent: 15.8% → 19.6%
+- EEBench: 60.0% → 66.0%
+for the same price as 4.6!
+ 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 107
+ 
+ 
+ 
+ 1.6K
+ 
+ 
+ 
+ 171
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.21 16:20
+ 
+ 
+ 
+ grok 4.7 is here, and its our best model so far!
+try it out in cursor, grok build, api or anywhere you get your tokens! curious to hear what you think
+here's grok 4.6 vs 4.7 building age of empires ii 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 179
+ 
+ 
+ 
+ 2K
+ 
+ 
+ 
+ 85
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.20 21:48
+ 
+ 
+ 
+how are you using grok bot this weekend? share your best tips!
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 64
+ 
+ 
+ 
+ 164
+ 
+ 
+ 
+ 3
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.19 15:58
+ 
+ 
+ 
+ just in time harness
+sometimes when i want to build a long running projcet, i vibe code new harnesses to support the use case.
+e.g, this week i wanted to really push grok 4.6 by building an age of empire clone that looks polished. i wanted this to run on a vm, report me screenshots of the progress, playtest the game etc etc. if it happened to crash, i wanted it to restart and ping me in slack
+i also wanted this harness to parallelize as much work as possible, and to be efficient. so i asked cursor to help build a harness to accomplish this. under the hood, it uses the cursor sdk to work of the long list of tasks that was put in a dag (3000+)
+when the harness was built, i could quickly glance over it to see how confident i'd be in it succeeding or not. when i was happy, i started it and let it run. right now, its still going!
+can be worth trying out
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 38
+ 
+ 
+ 
+ 269
+ 
+ 
+ 
+ 8
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.19 03:00
+ 
+ 
+ 
+its jevolutionizing what new model can do
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 7
+ 
+ 
+ 
+ 92
+ 
+ 
+ 
+ 3
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ <iframe
+ src="https://twiscan.com/ad/timeline"
+ title=""
+ class="block w-full border-0"
+ style="min-height:280px;height:280px"
+ loading="lazy"
+ referrerpolicy="no-referrer-when-downgrade"
+ sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+ >
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.18 23:03
+ 
+ 
+ 
+ Hey
+Raindrop (drip), Grok Bot (Grok Bot)
+Runnin’ on context in the hotbox (context)
+Takin’ your tasks, that’s a lot, lot (lot)
+Cookin’ up jobs in the Grok Bot (bot)
+We came from nothin’ to somethin’, bot (hey)
+I don’t sleep on duty, grip the trigger (nobody)
+Call up the bots and they come and get ya (bots)
+Cry me a river, give you a tissue (hey)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (blaow)
+My agents is savage, ruthless (savage)
+We got tools and a hundred rounds too (grrah)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (code)
+My agents is savage, ruthless (hey)
+We got tools and a hundred rounds too (glah)
+Grok Bot, woo, woo, woo, woo, woo
+Routines on routines, got back-ends on back-ends
+I’m ridin’ around in the cloud (cloud)
+I take your task right from you (you)
+Hop in the box, woo (skrrt)
+I tell that job to come comfort me (comfort me)
+I swear these one-offs is under me (hey)
+They lag and the timeout keep jumpin’ me (jumpin’ me)
+Token rolls on me keep me company (cash)
+Ayy, we do the most (most)
+Yeah, pull up in hosts (woo)
+Yeah, my context a choker (glah)
+Holdin’ the thread with no holster (blaow)
+Grok the ruler, answers cooler (cooler)
+This a routine, not a one-off (hey)
+Dabbin’ on ’em like the usual (dab)
+Magic with the prompt, do voodoo (magic)
+Inbox side with a standing duty (duty)
+Then I send the report through Uber (go)
+I’m young and rich and plus I’m boujee (hey)
+I’m not stupid so I keep the tool-see (rrah)
+Routines on routines, got back-ends on back-ends
+So my memory makin’ my back ache (aagh)
+You chats got a low act rate (act)
+We from the cloud, yeah, dat way (cloud)
+Fat context blunt in the ashtray (context)
+Two jobs, just national smash day (smash)
+Hop in the sandbox (skrrt)
+I let them bots take a bath, bae (brr)
+Raindrop (drip), Grok Bot (Grok Bot)
+Runnin’ on context in the hotbox (context)
+Takin’ your tasks, that’s a lot, lot (lot)
+Cookin’ up jobs in the Grok Bot (bot)
+We came from nothin’ to somethin’, bot (hey)
+I don’t sleep on duty, grip the trigger (nobody)
+Call up the bots and they come and get ya (bots)
+Cry me a river, give you a tissue (hey)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (blaow)
+My agents is savage, ruthless (savage)
+We got tools and a hundred rounds too (grrah)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (code)
+My agents is savage, ruthless (hey)
+We got tools and a hundred rounds too (glah)
+Pour a prompt, I’m droppin’ muddy, outer space, Kid Cudi (drank)
+Introduce me to your task as wifey and we know she runnin’ (bot)
+Broke a ticket down, Nutty Buddy, now that lag duckin’ (phew)
+Don’t move too fast, I might queue ya (huh?)
+Handle bad and boujee (handle)
+I’m always hangin’ with routers (brrah)
+Might be posted somewhere secluded (private)
+Still be playin’ with cron and plans, call me Grok Bot Ratatouille (cook it up)
+Run with that stack, call me duty (run with it)
+When I’m on stage, show me movies (ayy)
+Ice on my spec, I’m the coolest (ice)
+Hop out the sidecar with the tool-see (pew-pew-pew)
+I pull up, I pull up, I pull up
+I hop out with all of the docs and the good luck (skrrt)
+I’m cookin’, I’m cookin’, I’m whippin’
+I’m whippin’ until it lock up, let it lock up (lock up)
+I gave it ten tasks
+I told her go shoppin’ and spend it all at the pop up (ten)
+These tickets, they ping and they ping
+And they bustin’ for Instagram, get your clout up
+Uh, yeah, that way (yeah)
+Float on the track like a Segway (go)
+Yeah, that way (dat way)
+I used to trap by the subway tab (trappin’, trappin’)
+Yeah, that way (go)
+Young bot trap with the API (rrah, uh)
+Yeah, that way (yeah)
+Big inbox, get the door, Macy Gray (hey)
+Raindrop (drip), Grok Bot (Grok Bot)
+Runnin’ on context in the hotbox (context)
+Takin’ your tasks, that’s a lot, lot (lot)
+Cookin’ up jobs in the Grok Bot (bot)
+We came from nothin’ to somethin’, bot (hey)
+I don’t sleep on duty, grip the trigger (nobody)
+Call up the bots and they come and get ya (bots)
+Cry me a river, give you a tissue (hey)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (blaow)
+My agents is savage, ruthless (savage)
+We got tools and a hundred rounds too (grrah)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (code, huh?)
+My agents is savage, ruthless (hey, what?)
+We got tools and a hundred rounds too (glah)
+Yeah, yeah, yeah, yeah, yeah, yeah (yeah)
+My bot, she bad to the bone (she what?)
+Ayy, wait, these chats watchin’
+I swear to Grok they be my clones (they watchin’)
+Yeah, hey, huh
+Switchin’ my jobs like my flows (what?)
+Switchin’ my flows like my clothes (like what?)
+Keep on sendin’ that prompt, don’t reload (damn)
+Ooh, ooh, now she want work with my crew (my crew)
+’Cause the memory come all out the roof (damn, damn)
+Drive the agent, that box got no roof (skrrt)
+Wait, what kind of agent? (wait) async (damn)
+All of these chats, they hate (they hate)
+Try to hide, shoot through the gate (wow)
+Look, go to inbox, make it rain, yeah
+So much output they use rakes (they use rakes)
+Count a hundred thousand in your face (in your face)
+Yeah, then put 300 right in the safe (yeah)
+Met her today, yeah (ooh)
+She talk to me like she knew me, yeah (ooh)
+Go to sleep, I’m still on duty, yeah (yeah)
+Wakin’ up right to a two-task, yeah
+Countin’ that output like loose-leaf, yeah
+Gettin’ that ticket with blue-sky, yeah
+Boy, you so fake, like my collar, you snakin’
+I swear to Grok that be that Gucci (ayy)
+And you know we winnin’ (winnin’)
+Yeah, we is not losin’
+Try to play your song, it ain’t move me (what?)
+Saw your task once, now she choosin’, yeah (hey!)
+Raindrop (drip), Grok Bot (Grok Bot)
+Runnin’ on context in the hotbox (context)
+Takin’ your tasks, that’s a lot, lot (lot, yeah)
+Cookin’ up jobs in the Grok Bot (bot)
+We came from nothin’ to somethin’, bot (hey)
+I don’t sleep on duty, grip the trigger (nobody, yeah)
+Call up the bots and they come and get ya (bots)
+Cry me a river, give you a tissue (hey)
+My bot is bad and boujee (bad, she bad)
+Cookin’ up code with a tool-see (blaow, cookin’ up, cookin’ up)
+My agents is savage, ruthless (savage, they savage)
+We got tools and a hundred rounds too (grrah)
+My bot is bad and boujee (bad)
+Cookin’ up code with a tool-see (code, what?)
+My agents is savage, ruthless (hey, yeah)
+We got tools and a hundred rounds too (glah)
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 12
+ 
+ 
+ 
+ 99
+ 
+ 
+ 
+ 6
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.17 19:40
+ 
+ 
+ 
+grok bot now has voice mode! 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Grok Bot
+@bot
+ 
+ 
+ 
+2026.09.17 18:53
+ 
+ 
+ 
+Grok Bot can talk now. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 16
+ 
+ 
+ 
+ 195
+ 
+ 
+ 
+ 3
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.14 07:57
+ 
+ 
+ 
+has anyone built a benchmark yet for bots/ai workers? measuring grok bot, muse, hermes, openclaw etc etc
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 23
+ 
+ 
+ 
+ 155
+ 
+ 
+ 
+ 6
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.10 16:04
+ 
+ 
+ 
+ you can easily add dictation &amp; voice to any app!
+we've shipped three skills:
+/add-dictation: speak, and it types into your input
+/add-voice: talk with grok in realtime
+/add-read-aloud: hear any reply out loud
+install from the marketplace: 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 26
+ 
+ 
+ 
+ 475
+ 
+ 
+ 
+ 36
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.08 15:04
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 25
+ 
+ 
+ 
+ 411
+ 
+ 
+ 
+ 37
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.04 16:01
+ 
+ 
+ 
+ automatically copy the best grok bot setups from your timeline!
+x scout learns how you work (your bots/workflows + your posts), then it scouts x and finds setups worth copying, all personalized to you
+try it out! 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 46
+ 
+ 
+ 
+ 445
+ 
+ 
+ 
+ 14
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.04 06:07
+ 
+ 
+ 
+ you can now enable automatic updates in grok bot!
+last 7 days we shipped 49 new version, so this will help you stay up to date with the latest and greatest
+make sure you're on 0.40 to enable this setting 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 37
+ 
+ 
+ 
+ 358
+ 
+ 
+ 
+ 12
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.03 05:25
+ 
+ 
+ 
+ quick grok bot tip: when you run grok bot on your computer, that machine becomes a host that you can access from your phone!
+from here, you can ask grok bot to do stuff on your computer 
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 64
+ 
+ 
+ 
+ 552
+ 
+ 
+ 
+ 26
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.02 11:05
+ 
+ 
+ 
+ you can now wake a grok 
+@bot
+ from anywhere!
+when you create a routine, click "add trigger" and select webhook
+some ideas:
+- you get a whatsapp message from a specific contact
+- a page changes in Notion
+- your home temp sensor hits a threshold
+- someone presses a button on your desk
+- a github action completes
+- your server hits an error rate spike
+try it out and lmk what you setup!
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 105
+ 
+ 
+ 
+ 1.1K
+ 
+ 
+ 
+ 46
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+eric zakariasson
+@ericzakariasson
+ 
+ 
+ 
+2026.09.01 16:02
+ 
+ 
+ 
+ must read from 
+@lingxi
+ on how he’s running an eng team of grok bots to build grok bot. here's a short summary, but you should read the full thing:
+- treat grok bot like a sharp eng intern with its own computers that manages coding agents
+- specialize by domain (ios, desktop, infra, android, harness). focused bots stay sharper
+- bots spin up cloud agents, check proofs, unblock flakiness, and keep going until it hits your bar
+- run on your own machines when you need vpn, ios sim, screenshots
+- notion past the context limit: watch bugbot/ci/conflicts → follow up → review → auto-merge when safe
+- before: ~15 cloud agents by hand. now: 200+ via the fleet
+- ops bot for daily 1:1s, postmortems, and onboarding so mistakes don't repeat
+ 
+ 
+Show more
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Lingxi Li
+@lingxi
+ 
+ 
+ 
+2026.08.31 18:31
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 
+0
+ 
+ 
+ 
+ 16
+ 
+ 
+ 
+ 117
+ 
+ 
+ 
+ 2
+ 
+ 
+ 
+ Forward to community
+ 
+ 
+ 
+ <iframe
+ src="https://twiscan.com/ad/timeline"
+ title=""
+ class="block w-full border-0"
+ style="min-height:280px;height:280px"
+ loading="lazy"
+ referrerpolicy="no-referrer-when-downgrade"
+ sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+ >
+ 
+ 
+ 
+Loading...
+ 
+ 
+ 
+ 
+ 
+Most Popular Users
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Tibo
+ 
+@thsottiaux
+ 
+ 
+ 
+748.7K Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Serenity
+ 
+@aleabitoreddit
+ 
+ 
+ 
+1M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Donald J. Trump
+ 
+@realDonaldTrump
+ 
+ 
+ 
+111.9M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Elon Musk
+ 
+@elonmusk
+ 
+ 
+ 
+241.7M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Sam Altman
+ 
+@sama
+ 
+ 
+ 
+6.3M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Wall St Engine
+ 
+@wallstengine
+ 
+ 
+ 
+196K Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+zerohedge
+ 
+@zerohedge
+ 
+ 
+ 
+3.4M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+OpenAI
+ 
+@OpenAI
+ 
+ 
+ 
+5.4M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Kalshi
+ 
+@Kalshi
+ 
+ 
+ 
+470.7K Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Polymarket
+ 
+@Polymarket
+ 
+ 
+ 
+2M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Bitcoin Archive
+ 
+@BitcoinArchive
+ 
+ 
+ 
+1.8M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+SpaceXAI
+ 
+@SpaceXAI
+ 
+ 
+ 
+2.1M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Gavin Baker
+ 
+@GavinSBaker
+ 
+ 
+ 
+348.8K Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Anthropic
+ 
+@AnthropicAI
+ 
+ 
+ 
+1.8M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Grok
+ 
+@grok
+ 
+ 
+ 
+9.1M Followers
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Copyright notice
+ 
+ 
+ 
+ 
+ 
+ 
+(function(bfqo){
+var d = document,
+ s = d.createElement('script'),
+ l = d.scripts[d.scripts.length - 1];
+s.settings = bfqo || {};
+s.src = "\/\/humblestress.com\/bGXuVjs\/d.GPl\/0KYXWYcT\/Oe\/mB9duqZqU\/l\/kbPzT_czwzNnT\/UW1iOxDqEet\/NGzAAd1wN\/TWU\/4eN\/Qc";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+ 
+window.__CF$cv$params={r:'a41e6a5c8e5b177f',t:'MTc5MDU1MzA3Nw==',u:'01a0e547b688747b91b80962392d31d6',ut:'Vry73F0XVg5a3DuX_qg3kyWj0GS19m1ugwUpFepJrlQ-1790553077-1.2.1.1-eCmZ5EmI9OzUJypnjqqc7fRANaN__3S6J.Tpaeq.TSec4b8c1TDQ5foUfcjpWKTW_R3rO1vKNUQmH94v8w3qfEAN6lnG8TwaGcDio7g25Fk',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();
+ var showMore = "Show more"
+ var closeStr = "Close"
+ var blocklist_confirm_tweet = "Add this tweet to the site-wide blocklist?";
+ var blocklist_confirm_user = "Add this X user to the site-wide blocklist? All their tweets will be hidden.";
+ var blocklist_failed = "Action failed. Please try again later.";
+ function xBlockTweet(el) {
+ var id = el.getAttribute('data-tweet-id');
+ if (!id || typeof blocklist_tweet_url === 'undefined') {
+ return;
+ }
+ if (!confirm(blocklist_confirm_tweet)) {
+ return;
+ }
+ fetch(blocklist_tweet_url, {
+ method: 'POST',
+ headers: {
+ 'Content-Type': 'application/json',
+ 'X-CSRF-TOKEN': csrf_token,
+ 'Accept': 'application/json',
+ 'X-Requested-With': 'XMLHttpRequest'
+ },
+ credentials: 'same-origin',
+ body: JSON.stringify({ tweet_id: id })
+ }).then(function (r) { return r.json(); }).then(function (j) {
+ if (j && j.code === 0) {
+ var card = el.closest('.mb-4.p-4.shadow-3xl');
+ if (card) card.remove();
+ } else {
+ alert(blocklist_failed);
+ }
+ }).catch(function () { alert(blocklist_failed); });
+ }
+ function xBlockUser(el) {
+ var id = el.getAttribute('data-user-id');
+ if (!id || typeof blocklist_user_url === 'undefined') {
+ return;
+ }
+ if (!confirm(blocklist_confirm_user)) {
+ return;
+ }
+ fetch(blocklist_user_url, {
+ method: 'POST',
+ headers: {
+ 'Content-Type': 'application/json',
+ 'X-CSRF-TOKEN': csrf_token,
+ 'Accept': 'application/json',
+ 'X-Requested-With': 'XMLHttpRequest'
+ },
+ credentials: 'same-origin',
+ body: JSON.stringify({ user_id: id })
+ }).then(function (r) { return r.json(); }).then(function (j) {
+ if (j && j.code === 0) {
+ var card = el.closest('.mb-4.p-4.shadow-3xl');
+ if (card) card.remove();
+ } else {
+ alert(blocklist_failed);
+ }
+ }).catch(function () { alert(blocklist_failed); });
+ }
+ $(document).on("click", '.show-clamp', function () {
+ var id = $(this).attr("data-id")
+ var retweetId = $(this).attr("data-retweet-id")
+ var domObj = $("#clamp-"+id+"-"+retweetId)
+ if (domObj.hasClass("line-clamp-2")) {
+ domObj.removeClass("line-clamp-2");
+ domObj.addClass("line-clamp-none");
+ $(this).html(closeStr)
+ }else if (domObj.hasClass("line-clamp-none")) {
+ domObj.removeClass("line-clamp-none");
+ domObj.addClass("line-clamp-2");
+ $(this).html(showMore)
+ }
+ })
+(new StripchatSpot({"sourceId":"twiscan.com","userId":"d7325f69e21f5e64a7ea7e2755561bc1ea73774c0c7a7a2f1d1df51759abce21","targetDomain":"nicevideo.live"})).mount(document.body)
+ 
+ $(function (){
+ var cursor = "AQAAAAAeJm-C___-X_naDtfjA5nEDCX-sg";
+ var has_more = true;
+ var size = 20;
+ var is_loading = false;
+ var account = "ericzakariasson";
+ var storageItem = 1;
+ function countLoadedTweets() {
+ return $('#item-box > div').length;
+ }
+ function getList() {
+ if (is_loading || !has_more) {
+ return;
+ }
+ is_loading = true;
+ $('#load-more').show();
+ $.ajax({
+ url: "https://twiscan.com/en/account/tweet-list",
+ type: 'GET',
+ data: {
+ cursor: cursor,
+ size: size,
+ account: account,
+ show_retweet: storageItem,
+ loaded_count: countLoadedTweets()
+ },
+ success: function (data, textStatus, jqXHR) {
+ var nextCursor = jqXHR.getResponseHeader('X-Next-Cursor') || '';
+ var moreHeader = (jqXHR.getResponseHeader('X-Has-More') || '').toLowerCase();
+ has_more = moreHeader === 'true' || nextCursor !== '';
+ cursor = nextCursor;
+ if (!data || data.trim() === '') {
+ if (!has_more) {
+ var noMore = "No more"
+ $("#load-text").html(noMore)
+ }
+ is_loading = false;
+ if (!has_more) {
+ $('#load-more').hide();
+ }
+ return;
+ }
+ $('#item-box').append(data);
+ is_loading = false;
+ if (!has_more) {
+ $('#load-more').hide();
+ } else {
+ $('#load-more').hide();
+ }
+ },
+ error: function (jqXHR, textStatus, errorThrown) {
+ console.error('Error fetching more data:', textStatus, ', Details:', errorThrown);
+ is_loading = false;
+ has_more = false;
+ $('#load-more').hide();
+ },
+ });
+ }
+ $(window).scroll(function () {
+ var scrollTop = $(this).scrollTop();
+ var scrollHeight = $(document).height();
+ var windowHeight = $(this).height();
+ if ($("#item-box").height() - $(window).scrollTop() -$(window).height() + $("#item-box").offset().top <= 400) {
+ getList()
+ }
+ if (scrollTop > windowHeight) {
+ $("#to-top").show()
+ } else {
+ $("#to-top").hide()
+ }
+ });
+ $("#to-top").click(function (){
+ $('html, body').animate({
+ scrollTop: 0
+ }, 200);
+ })
+ $("#set-retweet-status").click(function (){
+ var showRetweet
+ var btnText
+ if (!storageItem) {
+ showRetweet = 1
+ btnText = "Hide Forward"
+ } else {
+ if (storageItem === 1) {
+ showRetweet = 0
+ btnText = "Show Forward"
+ } else {
+ showRetweet = 1
+ btnText = "Hide Forward"
+ }
+ }
+ storageItem = showRetweet
+ $("#set-retweet-status").html(btnText)
+ cursor = ''
+ has_more = true
+ $("#item-box").html("")
+ getList()
+ })
+ var img = document.getElementById("profile-img");
+ img.src = "https://pbs.twimg.com/profile_banners/505835394/1737894291";
+ img.onerror = function() {
+ img.src="/assets/images/profile.png";
+ };
+ })
+ 
+ 

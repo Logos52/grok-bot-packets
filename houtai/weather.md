@@ -1,25 +1,16 @@
-# weather 2026-09-25 Asia/Tokyo ~13:00
+# weather 2026-09-28 Asia/Tokyo ~13:15
 
 ## HIS CITY source
-now.md ## 大家現在 沈文：美國（剛到；未來沒有再見計劃） — country only, no city named → default Taipei (25.03, 121.57). Not Saigon.
+now.md ## 大家現在 沈文：美國（剛到；未來沒有再見計劃） — US / country only, no non-US city → SKIP his city. Osaka only. Do NOT fall back to Taipei.
 
 ## Osaka (34.69, 135.50)
-- forecast max 26.4 / min 18.8 / rain 0.1 mm / snow 0
-- current 25.2 (feels 27.8) at 13:00 JST
-- normal max (Sep 22–28, 10y) 27.90 / normal rain 5.38 (n=73)
-- delta max −1.5 → not 熱/冷; rain not 大雨; no snow
-- JMA quakes last 24h: 6 events, none M≥5.0, none 大阪震度≥3
-- JMA typhoon: #2626 スリゲ/Surigae (TS→TY track), center ~20.1N 129.9E (沖縄の南); forecast stays 沖縄の南→日本の南 (~28N 132E by +117h). Kansai/Osaka not in forecast track → no 颱風 alert
-- outliers: none
+- forecast max 24.6 / min 21.2 / rain 61.20 mm / snow 0.0
+- current 23.9 (feels 29.4) at 13:00 JST
+- normal max (Sep 25–Oct 1 ±±3 of Sep 28, 10y) 27.50 / normal rain 6.05 (n=70)
+- delta max −2.90 → not 熱 (≥normal+3 or ≥36); not 冷 (≤normal−5 or ≤5); rain 61.20 ≥40 → 大雨; no snow
+- JMA quakes last 24h: 6 events; none M≥5.0; none 大阪震度≥3 (maxi all 1; e.g. 岩手県沖 M3.3/3.4, 沖縄本島近海 M3.5) → no 地震
+- JMA typhoon: #2626 スリゲ/Surigae (TY, 非常に強い), center ~26.8N 131.3E (南大東島の北約110km), moving ENE; forecast track 日本の南 → 伊豆諸島近海 → 日本の東/千島. Closest to Osaka ~436 km at +69h. Kansai/Osaka not in forecast track; Osaka warning feed shows no active typhoon warning → no 颱風
+- outliers: 大雨
 
-## Taipei (HIS CITY default)
-- forecast max 33.0 / min 22.6 / rain 0.0 mm
-- current 32.6 (feels 36.4) at 12:00 CST
-- normal max (Sep 22–28, 10y) 30.08 / normal rain 7.51 (n=73)
-- delta max +2.92 → under 熱 threshold (+3 / ≥36); rain not 大雨; not 冷
-- CWA: no 海上/陸上 typhoon warning keywords in open typhoon feed (舒力基/SURIGAE tracked, far from Taiwan warnings)
-- CWA quakes: none in last 24h with 規模≥5.0 or 臺北市震度≥3
-- outliers: none
-
-## Alerts sent
-none
+## Alerts to send
+- 大阪 | 大雨 | 今天預報雨量61毫米
