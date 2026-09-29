@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lingua">
+<meta name="description" content="Learn Danish and French side by side, with English, Mandarin pinyin and Burmese.">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="apple-touch-icon.png">
+<title>Lingua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Noto+Sans:wght@400;500;600&family=Noto+Sans+Myanmar:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #f6f8fb;
+  --ink: #17202f;
+  --ink-2: #4b5669;
+  --ink-3: #8691a3;
+  --line: #d9dfe8;
+  --da: #c8102e;
+  --da-soft: #fbe7ea;
+  --fr: #1f4fa8;
+  --fr-soft: #e5ecf9;
+  --good: #1f7a4d;
+  --again: #b3261e;
+  --easy: #1f7a4d;
+  --tip: #fff6d9;
+  --tip-ink: #6b5410;
+  --shadow: 0 1px 2px rgba(23,32,47,.06), 0 6px 20px rgba(23,32,47,.06);
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Noto Sans", "Noto Sans Myanmar", system-ui, -apple-system, sans-serif;
+  --my: "Noto Sans Myanmar", "Myanmar Sangam MN", "Myanmar Text", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f141d; --surface: #182130; --surface-2: #1e2939; --ink: #e8edf5; --ink-2: #aab5c6; --ink-3: #6f7c90; --line: #2b3749;
+    --da: #ff5a6e; --da-soft: #3a1c24; --fr: #7ea6ff; --fr-soft: #1b2a47; --good: #4cc38a; --again: #ff7b72; --easy: #4cc38a;
+    --tip: #2e2a17; --tip-ink: #e9d48b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f141d; --surface: #182130; --surface-2: #1e2939; --ink: #e8edf5; --ink-2: #aab5c6; --ink-3: #6f7c90; --line: #2b3749;
+  --da: #ff5a6e; --da-soft: #3a1c24; --fr: #7ea6ff; --fr-soft: #1b2a47; --good: #4cc38a; --again: #ff7b72; --easy: #4cc38a;
+  --tip: #2e2a17; --tip-ink: #e9d48b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+}
+* { box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--ink); }
+body { font-family: var(--body); font-size: 15px; line-height: 1.45; padding-inline: 16px; padding-block: 12px 40px; }
+.app { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--fr); outline-offset: 2px; }
+.my { font-family: var(--my); line-height: 1.9; }
+
+header.bar { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+header.bar h1 { font-family: var(--display); font-weight: 800; font-size: 30px; letter-spacing: -.02em; margin: 0; flex: 1; text-wrap: balance; }
+header.bar h1.sub { font-size: 22px; }
+.icon-btn { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; min-width: 40px; height: 40px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; color: var(--ink-2); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.hero { background: var(--surface); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
+.hero-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pair { font-family: var(--display); font-weight: 600; font-size: 17px; }
+.pair .d { color: var(--da); } .pair .f { color: var(--fr); }
+.count { color: var(--ink-2); font-size: 13px; font-variant-numeric: tabular-nums; }
+.meter { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; display: flex; }
+.meter i { display: block; height: 100%; background: linear-gradient(90deg, var(--da), var(--fr)); border-radius: 99px; transition: width .3s; }
+.primary { border: 0; border-radius: 12px; padding: 13px 16px; font-weight: 600; background: var(--ink); color: var(--bg); width: 100%; }
+.primary:disabled { opacity: .4; cursor: default; }
+.sync { font-size: 12px; color: var(--ink-3); }
+
+.section-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 600; margin: 4px 2px -8px; }
+.list { background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; }
+.row { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; padding: 12px 16px; width: 100%; text-align: left; border: 0; background: none; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row:hover { background: var(--surface-2); }
+.row .emoji { font-size: 22px; text-align: center; }
+.row .t { font-weight: 600; }
+.row .n { color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+.row .mini { height: 4px; border-radius: 9px; background: var(--surface-2); margin-top: 6px; overflow: hidden; }
+.row .mini i { display: block; height: 100%; background: var(--fr); }
+.row .mini i.full { background: var(--good); }
+
+.tip { background: var(--tip); color: var(--tip-ink); border-radius: 14px; padding: 12px 14px; font-size: 14px; display: flex; gap: 10px; }
+.modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.mode { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px; text-align: left; display: flex; flex-direction: column; gap: 4px; box-shadow: var(--shadow); }
+.mode:hover { border-color: var(--ink-3); }
+.mode b { font-family: var(--display); font-size: 16px; }
+.mode span { font-size: 12px; color: var(--ink-2); line-height: 1.35; }
+@media (max-width: 440px) { .modes { grid-template-columns: 1fr; } }
+
+.phrase { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 12px 16px; border-top: 1px solid var(--line); }
+.phrase:first-child { border-top: 0; }
+.phrase .lines { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.phrase .da { color: var(--da); font-weight: 600; }
+.phrase .fr { color: var(--fr); font-weight: 600; }
+.phrase .k { color: var(--ink-2); font-size: 14px; }
+.phrase .side { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tag { font-size: 10px; font-weight: 600; letter-spacing: .06em; color: var(--ink-3); margin-right: 6px; display: inline-block; width: 18px; }
+.check { color: var(--good); font-size: 14px; }
+.speak { border: 1px solid var(--line); background: var(--surface-2); border-radius: 99px; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; color: var(--ink-2); }
+.speak svg { width: 18px; height: 18px; }
+
+.progress { height: 5px; background: var(--surface); border-radius: 9px; overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--ink); transition: width .25s; }
+.card { background: var(--surface); border-radius: 22px; box-shadow: var(--shadow); padding: 26px 20px; min-height: 340px; display: flex; flex-direction: column; align-items: stretch; gap: 16px; text-align: center; cursor: pointer; user-select: none; }
+.line .lab { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.line.lead .lab { color: var(--c); }
+.line .txt { font-size: 19px; }
+.line.lead .txt { font-family: var(--display); font-size: 26px; font-weight: 600; letter-spacing: -.01em; line-height: 1.2; text-wrap: balance; }
+.line.da { --c: var(--da); } .line.fr { --c: var(--fr); }
+.divider { height: 1px; background: var(--line); margin: 2px 24px; }
+.hint { color: var(--ink-3); font-size: 13px; margin-top: auto; }
+.big-speak { align-self: center; width: 110px; height: 110px; border-radius: 50%; border: 0; background: linear-gradient(135deg, var(--da-soft), var(--fr-soft)); color: var(--ink); display: grid; place-items: center; }
+.big-speak svg { width: 44px; height: 44px; }
+.again-btn { align-self: center; border: 1px solid var(--line); background: var(--surface-2); border-radius: 99px; padding: 8px 14px; font-size: 13px; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: center; }
+.again-btn svg { width: 16px; height: 16px; }
+.rates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.rates button { border: 0; border-radius: 12px; padding: 13px 8px; font-weight: 600; color: #fff; }
+.rates .r-again { background: var(--again); } .rates .r-good { background: var(--fr); } .rates .r-easy { background: var(--good); }
+.rates small { display: block; font-weight: 400; font-size: 11px; opacity: .85; }
+.keys { text-align: center; color: var(--ink-3); font-size: 12px; }
+@media (hover: none) { .keys { display: none; } }
+.done { text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center; padding: 40px 0; }
+.done .big { font-size: 64px; }
+.done h2 { font-family: var(--display); margin: 0; font-size: 26px; }
+.done p { color: var(--ink-2); margin: 0; }
+
+.panel { background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); padding: 4px 16px; }
+.set { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.set:first-child { border-top: 0; }
+.set label { font-weight: 500; }
+.set input[type=range] { flex: 1; min-width: 160px; accent-color: var(--fr); }
+.set input[type=checkbox] { width: 22px; height: 22px; accent-color: var(--fr); }
+.note { font-size: 13px; color: var(--ink-2); padding: 0 4px; }
+.danger { border: 1px solid var(--again); color: var(--again); background: none; border-radius: 10px; padding: 9px 14px; font-weight: 600; }
+.danger.solid { background: var(--again); color: #fff; }
+.ghost { border: 1px solid var(--line); background: none; border-radius: 10px; padding: 9px 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0;padding-top:max(12px,env(safe-area-inset-top))!important;padding-bottom:max(40px,env(safe-area-inset-bottom))!important}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+
+<script id="course" type="application/json">{"lessons":[{"id":1,"title":"Greetings","emoji":"👋","tip":"Danish 'Hej' works all day for hello. French uses 'Bonjour' until evening, then 'Bonsoir'.","items":[{"fr":"Bonjour","da":"Hej","en":"Hello","zh":"Nǐ hǎo","my":"မင်္ဂလာပါ"},{"fr":"Bonjour (le matin)","da":"Godmorgen","en":"Good morning","zh":"Zǎoshang hǎo","my":"မင်္ဂလာနံနက်ခင်းပါ"},{"fr":"Bonsoir","da":"Godaften","en":"Good evening","zh":"Wǎnshang hǎo","my":"မင်္ဂလာညနေခင်းပါ"},{"fr":"Bonne nuit","da":"Godnat","en":"Good night","zh":"Wǎn'ān","my":"ကောင်းသောညပါ"},{"fr":"Au revoir","da":"Farvel","en":"Goodbye","zh":"Zàijiàn","my":"နုတ်ဆက်ပါတယ်"},{"fr":"À demain","da":"Vi ses i morgen","en":"See you tomorrow","zh":"Míngtiān jiàn","my":"မနက်ဖြန် တွေ့မယ်"},{"fr":"Comment ça va ?","da":"Hvordan har du det?","en":"How are you?","zh":"Nǐ hǎo ma?","my":"နေကောင်းလား။"},{"fr":"Je vais bien, merci.","da":"Jeg har det godt, tak.","en":"I'm fine, thank you.","zh":"Wǒ hěn hǎo, xièxie.","my":"နေကောင်းပါတယ်၊ ကျေးဇူးပါ။"},{"fr":"Et toi ?","da":"Og dig?","en":"And you?","zh":"Nǐ ne?","my":"မင်းရော။"},{"fr":"Enchanté(e) !","da":"Rart at møde dig!","en":"Nice to meet you!","zh":"Hěn gāoxìng rènshi nǐ!","my":"တွေ့ရတာ ဝမ်းသာပါတယ်။"}]},{"id":2,"title":"Polite phrases","emoji":"🙏","tip":"Danish has no everyday word for 'please'. Danes add 'tak' (thanks) or ask politely with 'Kan du…?'. In French, 's'il vous plaît' is formal and 's'il te plaît' is informal.","items":[{"fr":"S'il vous plaît","da":"Vær så venlig","en":"Please","zh":"Qǐng","my":"ကျေးဇူးပြု၍"},{"fr":"Merci","da":"Tak","en":"Thank you","zh":"Xièxie","my":"ကျေးဇူးတင်ပါတယ်"},{"fr":"Merci beaucoup","da":"Tusind tak","en":"Thank you very much","zh":"Fēicháng gǎnxiè","my":"ကျေးဇူးအများကြီး တင်ပါတယ်"},{"fr":"De rien","da":"Selv tak","en":"You're welcome","zh":"Bú kèqi","my":"ရပါတယ်"},{"fr":"Pardon","da":"Undskyld","en":"Sorry","zh":"Duìbuqǐ","my":"တောင်းပန်ပါတယ်"},{"fr":"Oui","da":"Ja","en":"Yes","zh":"Shì","my":"ဟုတ်ကဲ့"},{"fr":"Non","da":"Nej","en":"No","zh":"Bù","my":"မဟုတ်ဘူး"},{"fr":"Excusez-moi, vous parlez anglais ?","da":"Undskyld, taler du engelsk?","en":"Excuse me, do you speak English?","zh":"Bù hǎoyìsi, nǐ huì shuō Yīngyǔ ma?","my":"တဆိတ်လောက်၊ အင်္ဂလိပ်လို ပြောတတ်လား။"},{"fr":"Je ne comprends pas.","da":"Jeg forstår det ikke.","en":"I don't understand.","zh":"Wǒ bù dǒng.","my":"နားမလည်ဘူး။"},{"fr":"Parlez lentement, s'il vous plaît.","da":"Kan du tale langsomt?","en":"Please speak slowly.","zh":"Qǐng shuō màn yìdiǎn.","my":"ဖြည်းဖြည်း ပြောပေးပါ။"}]},{"id":3,"title":"About me","emoji":"🙋","tip":"Names of languages are not capitalised in French or Danish: 'le français', 'dansk'.","items":[{"fr":"le nom","da":"et navn","en":"name","zh":"míngzi","my":"နာမည်"},{"fr":"je","da":"jeg","en":"I","zh":"wǒ","my":"ကျွန်မ"},{"fr":"tu","da":"du","en":"you","zh":"nǐ","my":"သင်"},{"fr":"le pays","da":"et land","en":"country","zh":"guójiā","my":"နိုင်ငံ"},{"fr":"une langue","da":"et sprog","en":"language","zh":"yǔyán","my":"ဘာသာစကား"},{"fr":"Comment tu t'appelles ?","da":"Hvad hedder du?","en":"What's your name?","zh":"Nǐ jiào shénme míngzi?","my":"နာမည် ဘယ်လိုခေါ်လဲ။"},{"fr":"Je m'appelle Anna.","da":"Jeg hedder Anna.","en":"My name is Anna.","zh":"Wǒ jiào Anna.","my":"ကျွန်မနာမည် Anna ပါ။"},{"fr":"Tu viens d'où ?","da":"Hvor kommer du fra?","en":"Where are you from?","zh":"Nǐ shì nǎ guó rén?","my":"ဘယ်နိုင်ငံက လာတာလဲ။"},{"fr":"Je parle anglais, mandarin et birman.","da":"Jeg taler engelsk, mandarin og burmesisk.","en":"I speak English, Mandarin and Burmese.","zh":"Wǒ huì shuō Yīngyǔ, Pǔtōnghuà hé Miǎndiànyǔ.","my":"အင်္ဂလိပ်၊ တရုတ်နဲ့ မြန်မာ စကား ပြောတတ်ပါတယ်။"},{"fr":"J'apprends le danois et le français.","da":"Jeg lærer dansk og fransk.","en":"I'm learning Danish and French.","zh":"Wǒ zài xué Dānmàiyǔ hé Fǎyǔ.","my":"ဒိန်းမတ်နဲ့ ပြင်သစ် စကား သင်နေပါတယ်။"}]},{"id":4,"title":"Numbers 1–10","emoji":"🔢","tip":"Danish 'en' and 'et' mean both 'one' and 'a'. The same goes for French 'un' and 'une'.","items":[{"fr":"un","da":"en","en":"one","zh":"yī","my":"တစ်"},{"fr":"deux","da":"to","en":"two","zh":"èr","my":"နှစ်"},{"fr":"trois","da":"tre","en":"three","zh":"sān","my":"သုံး"},{"fr":"quatre","da":"fire","en":"four","zh":"sì","my":"လေး"},{"fr":"cinq","da":"fem","en":"five","zh":"wǔ","my":"ငါး"},{"fr":"six","da":"seks","en":"six","zh":"liù","my":"ခြောက်"},{"fr":"sept","da":"syv","en":"seven","zh":"qī","my":"ခုနစ်"},{"fr":"huit","da":"otte","en":"eight","zh":"bā","my":"ရှစ်"},{"fr":"neuf","da":"ni","en":"nine","zh":"jiǔ","my":"ကိုး"},{"fr":"dix","da":"ti","en":"ten","zh":"shí","my":"ဆယ်"},{"fr":"Tu as quel âge ?","da":"Hvor gammel er du?","en":"How old are you?","zh":"Nǐ duō dà?","my":"အသက် ဘယ်လောက်လဲ။"},{"fr":"J'ai trois livres.","da":"Jeg har tre bøger.","en":"I have three books.","zh":"Wǒ yǒu sān běn shū.","my":"စာအုပ် သုံးအုပ် ရှိတယ်။"}]},{"id":5,"title":"Family","emoji":"👨‍👩‍👧","tip":"Nouns have gender in both languages. French: le/la (un/une). Danish: common 'en' and neuter 'et'. Learn each noun together with its article.","items":[{"fr":"la mère","da":"en mor","en":"mother","zh":"māma","my":"အမေ"},{"fr":"le père","da":"en far","en":"father","zh":"bàba","my":"အဖေ"},{"fr":"le frère","da":"en bror","en":"brother","zh":"xiōngdì","my":"ညီအစ်ကို"},{"fr":"la sœur","da":"en søster","en":"sister","zh":"jiěmèi","my":"ညီအစ်မ"},{"fr":"un enfant","da":"et barn","en":"child","zh":"háizi","my":"ကလေး"},{"fr":"la famille","da":"en familie","en":"family","zh":"jiātíng","my":"မိသားစု"},{"fr":"C'est ma mère.","da":"Det er min mor.","en":"This is my mother.","zh":"Zhè shì wǒ māma.","my":"ဒါ ကျွန်မရဲ့ အမေပါ။"},{"fr":"J'ai un frère et une sœur.","da":"Jeg har en bror og en søster.","en":"I have a brother and a sister.","zh":"Wǒ yǒu yí ge xiōngdì hé yí ge jiěmèi.","my":"ညီအစ်ကို တစ်ယောက်နဲ့ ညီအစ်မ တစ်ယောက် ရှိတယ်။"},{"fr":"Tu as des enfants ?","da":"Har du børn?","en":"Do you have children?","zh":"Nǐ yǒu háizi ma?","my":"ကလေးတွေ ရှိလား။"},{"fr":"Ma famille est grande.","da":"Min familie er stor.","en":"My family is big.","zh":"Wǒ de jiātíng hěn dà.","my":"ကျွန်မရဲ့ မိသားစုက ကြီးတယ်။"}]},{"id":6,"title":"Food","emoji":"🍞","tip":"To say 'I don't' in Danish, put 'ikke' after the verb: 'Jeg spiser ikke'. French wraps the verb: 'Je ne mange pas'.","items":[{"fr":"le pain","da":"et brød","en":"bread","zh":"miànbāo","my":"ပေါင်မုန့်"},{"fr":"une pomme","da":"et æble","en":"apple","zh":"píngguǒ","my":"ပန်းသီး"},{"fr":"le fromage","da":"en ost","en":"cheese","zh":"nǎilào","my":"ဒိန်ခဲ"},{"fr":"le poisson","da":"en fisk","en":"fish","zh":"yú","my":"ငါး"},{"fr":"le riz","da":"en ris","en":"rice","zh":"mǐfàn","my":"ထမင်း"},{"fr":"la viande","da":"kød","en":"meat","zh":"ròu","my":"အသား"},{"fr":"J'ai faim.","da":"Jeg er sulten.","en":"I'm hungry.","zh":"Wǒ è le.","my":"ဗိုက်ဆာတယ်။"},{"fr":"Je voudrais du pain, s'il vous plaît.","da":"Jeg vil gerne have brød, tak.","en":"I would like some bread, please.","zh":"Qǐng gěi wǒ yìxiē miànbāo.","my":"ပေါင်မုန့် ပေးပါ။"},{"fr":"Je ne mange pas de viande.","da":"Jeg spiser ikke kød.","en":"I don't eat meat.","zh":"Wǒ bù chī ròu.","my":"အသား မစားဘူး။"},{"fr":"Le poisson est bon.","da":"Fisken er god.","en":"The fish is good.","zh":"Yú hěn hǎochī.","my":"ငါးက စားလို့ကောင်းတယ်။"}]},{"id":7,"title":"Drinks","emoji":"☕","tip":"Danish 'Skål!' and French 'Santé !' both mean 'Cheers!'. When ordering, both languages just add 'please/tak' to the end.","items":[{"fr":"l'eau","da":"vand","en":"water","zh":"shuǐ","my":"ရေ"},{"fr":"le café","da":"en kaffe","en":"coffee","zh":"kāfēi","my":"ကော်ဖီ"},{"fr":"le thé","da":"en te","en":"tea","zh":"chá","my":"လက်ဖက်ရည်"},{"fr":"le lait","da":"mælk","en":"milk","zh":"niúnǎi","my":"နွားနို့"},{"fr":"une bière","da":"en øl","en":"beer","zh":"píjiǔ","my":"ဘီယာ"},{"fr":"le jus","da":"en juice","en":"juice","zh":"guǒzhī","my":"သစ်သီးဖျော်ရည်"},{"fr":"J'ai soif.","da":"Jeg er tørstig.","en":"I'm thirsty.","zh":"Wǒ kě le.","my":"ရေငတ်တယ်။"},{"fr":"Un café, s'il vous plaît.","da":"En kaffe, tak.","en":"A coffee, please.","zh":"Qǐng lái yì bēi kāfēi.","my":"ကော်ဖီ တစ်ခွက် ပေးပါ။"},{"fr":"Tu veux du thé ?","da":"Vil du have te?","en":"Do you want some tea?","zh":"Nǐ yào hē chá ma?","my":"လက်ဖက်ရည် သောက်မလား။"},{"fr":"L'eau est froide.","da":"Vandet er koldt.","en":"The water is cold.","zh":"Shuǐ hěn liáng.","my":"ရေက အေးတယ်။"}]},{"id":8,"title":"Colours","emoji":"🎨","tip":"Adjectives change with the noun. French: 'blanc' becomes 'blanche' for feminine nouns. Danish adds -t for 'et' nouns: 'hvid' becomes 'hvidt'.","items":[{"fr":"rouge","da":"rød","en":"red","zh":"hóngsè","my":"အနီရောင်"},{"fr":"bleu","da":"blå","en":"blue","zh":"lánsè","my":"အပြာရောင်"},{"fr":"vert","da":"grøn","en":"green","zh":"lǜsè","my":"အစိမ်းရောင်"},{"fr":"jaune","da":"gul","en":"yellow","zh":"huángsè","my":"အဝါရောင်"},{"fr":"noir","da":"sort","en":"black","zh":"hēisè","my":"အနက်ရောင်"},{"fr":"blanc","da":"hvid","en":"white","zh":"báisè","my":"အဖြူရောင်"},{"fr":"La voiture est rouge.","da":"Bilen er rød.","en":"The car is red.","zh":"Chē shì hóngsè de.","my":"ကားက အနီရောင်ပါ။"},{"fr":"Ma couleur préférée est le bleu.","da":"Min yndlingsfarve er blå.","en":"My favourite colour is blue.","zh":"Wǒ zuì xǐhuan lánsè.","my":"ကျွန်မ အကြိုက်ဆုံး အရောင်က အပြာပါ။"},{"fr":"La maison est blanche.","da":"Huset er hvidt.","en":"The house is white.","zh":"Fángzi shì báisè de.","my":"အိမ်က အဖြူရောင်ပါ။"},{"fr":"C'est de quelle couleur ?","da":"Hvilken farve er det?","en":"What colour is it?","zh":"Shì shénme yánsè?","my":"ဘာအရောင်လဲ။"}]},{"id":9,"title":"Days of the week","emoji":"📅","tip":"Days are written in lowercase in both French and Danish. Danish says 'på fredag' for 'on Friday'. French just says 'vendredi'.","items":[{"fr":"lundi","da":"mandag","en":"Monday","zh":"xīngqīyī","my":"တနင်္လာနေ့"},{"fr":"mardi","da":"tirsdag","en":"Tuesday","zh":"xīngqī'èr","my":"အင်္ဂါနေ့"},{"fr":"mercredi","da":"onsdag","en":"Wednesday","zh":"xīngqīsān","my":"ဗုဒ္ဓဟူးနေ့"},{"fr":"jeudi","da":"torsdag","en":"Thursday","zh":"xīngqīsì","my":"ကြာသပတေးနေ့"},{"fr":"vendredi","da":"fredag","en":"Friday","zh":"xīngqīwǔ","my":"သောကြာနေ့"},{"fr":"samedi","da":"lørdag","en":"Saturday","zh":"xīngqīliù","my":"စနေနေ့"},{"fr":"dimanche","da":"søndag","en":"Sunday","zh":"xīngqītiān","my":"တနင်္ဂနွေနေ့"},{"fr":"Aujourd'hui, c'est lundi.","da":"I dag er det mandag.","en":"Today is Monday.","zh":"Jīntiān shì xīngqīyī.","my":"ဒီနေ့ တနင်္လာနေ့ပါ။"},{"fr":"À vendredi !","da":"Vi ses på fredag!","en":"See you on Friday!","zh":"Xīngqīwǔ jiàn!","my":"သောကြာနေ့ တွေ့မယ်။"},{"fr":"Je travaille samedi.","da":"Jeg arbejder på lørdag.","en":"I'm working on Saturday.","zh":"Wǒ xīngqīliù gōngzuò.","my":"စနေနေ့ အလုပ်လုပ်တယ်။"}]},{"id":10,"title":"Time","emoji":"⏰","tip":"Danish word order: the verb is always second. So 'I morgen går jeg…' (Tomorrow go I…), not 'I morgen jeg går'.","items":[{"fr":"aujourd'hui","da":"i dag","en":"today","zh":"jīntiān","my":"ဒီနေ့"},{"fr":"demain","da":"i morgen","en":"tomorrow","zh":"míngtiān","my":"မနက်ဖြန်"},{"fr":"hier","da":"i går","en":"yesterday","zh":"zuótiān","my":"မနေ့က"},{"fr":"maintenant","da":"nu","en":"now","zh":"xiànzài","my":"အခု"},{"fr":"le matin","da":"en morgen","en":"morning","zh":"zǎoshang","my":"မနက်"},{"fr":"le soir","da":"en aften","en":"evening","zh":"wǎnshang","my":"ညနေ"},{"fr":"Quelle heure est-il ?","da":"Hvad er klokken?","en":"What time is it?","zh":"Xiànzài jǐ diǎn?","my":"အခု ဘယ်နှစ်နာရီလဲ။"},{"fr":"Il est huit heures.","da":"Klokken er otte.","en":"It's eight o'clock.","zh":"Bā diǎn le.","my":"ရှစ်နာရီ ရှိပြီ။"},{"fr":"Demain, je vais au travail.","da":"I morgen går jeg på arbejde.","en":"Tomorrow I'm going to work.","zh":"Wǒ míngtiān qù shàngbān.","my":"မနက်ဖြန် အလုပ်သွားမယ်။"},{"fr":"Hier, c'était dimanche.","da":"I går var det søndag.","en":"Yesterday was Sunday.","zh":"Zuótiān shì xīngqītiān.","my":"မနေ့က တနင်္ဂနွေနေ့ ဖြစ်ခဲ့တယ်။"}]},{"id":11,"title":"To be & to have","emoji":"🧩","tip":"Good news: Danish verbs never change with the person (jeg er, du er, hun er). French verbs do (je suis, tu es, elle est).","items":[{"fr":"je suis","da":"jeg er","en":"I am","zh":"wǒ shì","my":"ကျွန်မက … ပါ"},{"fr":"tu es","da":"du er","en":"you are","zh":"nǐ shì","my":"သင်က … ပါ"},{"fr":"il est / elle est","da":"han er / hun er","en":"he is / she is","zh":"tā shì","my":"သူက … ပါ"},{"fr":"j'ai","da":"jeg har","en":"I have","zh":"wǒ yǒu","my":"ကျွန်မမှာ … ရှိတယ်"},{"fr":"tu as","da":"du har","en":"you have","zh":"nǐ yǒu","my":"သင့်မှာ … ရှိတယ်"},{"fr":"nous avons","da":"vi har","en":"we have","zh":"wǒmen yǒu","my":"ကျွန်မတို့မှာ … ရှိတယ်"},{"fr":"Je suis fatigué(e).","da":"Jeg er træt.","en":"I am tired.","zh":"Wǒ hěn lèi.","my":"ပင်ပန်းတယ်။"},{"fr":"Elle est professeure.","da":"Hun er lærer.","en":"She is a teacher.","zh":"Tā shì lǎoshī.","my":"သူက ဆရာမ ပါ။"},{"fr":"Nous avons un chat.","da":"Vi har en kat.","en":"We have a cat.","zh":"Wǒmen yǒu yì zhī māo.","my":"ကျွန်မတို့မှာ ကြောင် တစ်ကောင် ရှိတယ်။"},{"fr":"Tu es danois(e) ?","da":"Er du dansk?","en":"Are you Danish?","zh":"Nǐ shì Dānmài rén ma?","my":"သင် ဒိန်းမတ်လူမျိုးလား။"}]},{"id":12,"title":"Everyday verbs","emoji":"🏃","tip":"Danish infinitives take 'at' (at spise = to eat), and the present tense just adds -r (spiser). French infinitives end in -er, -ir or -re.","items":[{"fr":"manger","da":"at spise","en":"to eat","zh":"chī","my":"စားတယ်"},{"fr":"boire","da":"at drikke","en":"to drink","zh":"hē","my":"သောက်တယ်"},{"fr":"aller","da":"at gå","en":"to go","zh":"qù","my":"သွားတယ်"},{"fr":"parler","da":"at tale","en":"to speak","zh":"shuō","my":"ပြောတယ်"},{"fr":"aimer","da":"at kunne lide","en":"to like","zh":"xǐhuan","my":"ကြိုက်တယ်"},{"fr":"dormir","da":"at sove","en":"to sleep","zh":"shuìjiào","my":"အိပ်တယ်"},{"fr":"J'aime le café.","da":"Jeg kan lide kaffe.","en":"I like coffee.","zh":"Wǒ xǐhuan kāfēi.","my":"ကော်ဖီ ကြိုက်တယ်။"},{"fr":"On mange à sept heures.","da":"Vi spiser klokken syv.","en":"We eat at seven.","zh":"Wǒmen qī diǎn chīfàn.","my":"ကျွန်မတို့ ခုနစ်နာရီမှာ ထမင်းစားတယ်။"},{"fr":"Il parle français.","da":"Han taler fransk.","en":"He speaks French.","zh":"Tā huì shuō Fǎyǔ.","my":"သူ ပြင်သစ်လို ပြောတတ်တယ်။"},{"fr":"Je vais dormir.","da":"Jeg går i seng.","en":"I'm going to bed.","zh":"Wǒ qù shuìjiào le.","my":"အိပ်တော့မယ်။"}]},{"id":13,"title":"Home","emoji":"🏠","tip":"In Danish, 'the' is added to the end of the noun: et hus becomes huset (the house), en dør becomes døren (the door).","items":[{"fr":"la maison","da":"et hus","en":"house","zh":"fángzi","my":"အိမ်"},{"fr":"une pièce","da":"et værelse","en":"room","zh":"fángjiān","my":"အခန်း"},{"fr":"la cuisine","da":"et køkken","en":"kitchen","zh":"chúfáng","my":"မီးဖိုချောင်"},{"fr":"un lit","da":"en seng","en":"bed","zh":"chuáng","my":"အိပ်ရာ"},{"fr":"une table","da":"et bord","en":"table","zh":"zhuōzi","my":"စားပွဲ"},{"fr":"une porte","da":"en dør","en":"door","zh":"mén","my":"တံခါး"},{"fr":"Où est la cuisine ?","da":"Hvor er køkkenet?","en":"Where is the kitchen?","zh":"Chúfáng zài nǎr?","my":"မီးဖိုချောင် ဘယ်မှာလဲ။"},{"fr":"Ma maison est petite.","da":"Mit hus er lille.","en":"My house is small.","zh":"Wǒ de fángzi hěn xiǎo.","my":"ကျွန်မရဲ့ အိမ်က သေးတယ်။"},{"fr":"Le livre est sur la table.","da":"Bogen ligger på bordet.","en":"The book is on the table.","zh":"Shū zài zhuōzi shang.","my":"စာအုပ်က စားပွဲပေါ်မှာ ရှိတယ်။"},{"fr":"Ferme la porte, s'il te plaît.","da":"Luk døren, tak.","en":"Close the door, please.","zh":"Qǐng guān mén.","my":"တံခါး ပိတ်ပေးပါ။"}]},{"id":14,"title":"In the city","emoji":"🏙️","tip":"'Il y a' (French) and 'der er' (Danish) both mean 'there is/are'. Questions just flip it: 'Er der…?'","items":[{"fr":"la rue","da":"en gade","en":"street","zh":"jiēdào","my":"လမ်း"},{"fr":"un magasin","da":"en butik","en":"shop","zh":"shāngdiàn","my":"ဆိုင်"},{"fr":"un restaurant","da":"en restaurant","en":"restaurant","zh":"cānguǎn","my":"စားသောက်ဆိုင်"},{"fr":"la gare","da":"en banegård","en":"train station","zh":"huǒchēzhàn","my":"ရထားဘူတာ"},{"fr":"un hôpital","da":"et hospital","en":"hospital","zh":"yīyuàn","my":"ဆေးရုံ"},{"fr":"une banque","da":"en bank","en":"bank","zh":"yínháng","my":"ဘဏ်"},{"fr":"Où est la gare ?","da":"Hvor er banegården?","en":"Where is the train station?","zh":"Huǒchēzhàn zài nǎr?","my":"ရထားဘူတာ ဘယ်မှာလဲ။"},{"fr":"Le magasin est ouvert.","da":"Butikken er åben.","en":"The shop is open.","zh":"Shāngdiàn kāimén le.","my":"ဆိုင် ဖွင့်ထားတယ်။"},{"fr":"Il y a un restaurant ici ?","da":"Er der en restaurant her?","en":"Is there a restaurant here?","zh":"Zhèr yǒu cānguǎn ma?","my":"ဒီမှာ စားသောက်ဆိုင် ရှိလား။"},{"fr":"J'habite à Paris.","da":"Jeg bor i Paris.","en":"I live in Paris.","zh":"Wǒ zhù zài Bālí.","my":"ပါရီမှာ နေတယ်။"}]},{"id":15,"title":"Getting around","emoji":"🚲","tip":"Danes cycle everywhere. 'At cykle' is a verb, so 'Jeg cykler på arbejde' means 'I cycle to work'.","items":[{"fr":"un vélo","da":"en cykel","en":"bicycle","zh":"zìxíngchē","my":"စက်ဘီး"},{"fr":"un bus","da":"en bus","en":"bus","zh":"gōngjiāochē","my":"ဘတ်စ်ကား"},{"fr":"un train","da":"et tog","en":"train","zh":"huǒchē","my":"ရထား"},{"fr":"un billet","da":"en billet","en":"ticket","zh":"piào","my":"လက်မှတ်"},{"fr":"à gauche","da":"til venstre","en":"(to the) left","zh":"zuǒbian","my":"ဘယ်ဘက်"},{"fr":"à droite","da":"til højre","en":"(to the) right","zh":"yòubian","my":"ညာဘက်"},{"fr":"Tournez à gauche.","da":"Drej til venstre.","en":"Turn left.","zh":"Wǎng zuǒ guǎi.","my":"ဘယ်ဘက် ချိုးပါ။"},{"fr":"Allez tout droit.","da":"Gå lige ud.","en":"Go straight ahead.","zh":"Yìzhí zǒu.","my":"တည့်တည့် သွားပါ။"},{"fr":"Un billet pour Paris, s'il vous plaît.","da":"En billet til Paris, tak.","en":"One ticket to Paris, please.","zh":"Yì zhāng qù Bālí de piào.","my":"ပါရီကို လက်မှတ် တစ်စောင် ပေးပါ။"},{"fr":"Je vais au travail à vélo.","da":"Jeg cykler på arbejde.","en":"I cycle to work.","zh":"Wǒ qí zìxíngchē shàngbān.","my":"စက်ဘီးနဲ့ အလုပ်သွားတယ်။"}]},{"id":16,"title":"Weather","emoji":"☀️","tip":"French uses 'il fait' for weather (il fait froid = it's cold). Danish uses 'det er' or a verb (det regner = it's raining).","items":[{"fr":"le soleil","da":"en sol","en":"sun","zh":"tàiyáng","my":"နေ"},{"fr":"la pluie","da":"en regn","en":"rain","zh":"yǔ","my":"မိုး"},{"fr":"le vent","da":"en vind","en":"wind","zh":"fēng","my":"လေ"},{"fr":"la neige","da":"en sne","en":"snow","zh":"xuě","my":"နှင်း"},{"fr":"chaud","da":"varm","en":"hot","zh":"rè","my":"ပူတယ်"},{"fr":"froid","da":"kold","en":"cold","zh":"lěng","my":"အေးတယ်"},{"fr":"Il pleut.","da":"Det regner.","en":"It's raining.","zh":"Xià yǔ le.","my":"မိုးရွာနေတယ်။"},{"fr":"Il fait froid aujourd'hui.","da":"Det er koldt i dag.","en":"It's cold today.","zh":"Jīntiān hěn lěng.","my":"ဒီနေ့ အေးတယ်။"},{"fr":"Le soleil brille.","da":"Solen skinner.","en":"The sun is shining.","zh":"Tàiyáng chūlái le.","my":"နေသာတယ်။"},{"fr":"Quel temps fait-il ?","da":"Hvordan er vejret?","en":"What's the weather like?","zh":"Tiānqì zěnmeyàng?","my":"ရာသီဥတု ဘယ်လိုလဲ။"}]},{"id":17,"title":"Body & health","emoji":"🩺","tip":"For pain, French says 'j'ai mal à…' (I have pain at…) and Danish says 'jeg har ondt i…' (I have pain in…).","items":[{"fr":"la tête","da":"et hoved","en":"head","zh":"tóu","my":"ခေါင်း"},{"fr":"la main","da":"en hånd","en":"hand","zh":"shǒu","my":"လက်"},{"fr":"un œil","da":"et øje","en":"eye","zh":"yǎnjing","my":"မျက်စိ"},{"fr":"le ventre","da":"en mave","en":"stomach","zh":"dùzi","my":"ဗိုက်"},{"fr":"un médecin","da":"en læge","en":"doctor","zh":"yīshēng","my":"ဆရာဝန်"},{"fr":"malade","da":"syg","en":"sick","zh":"shēngbìng","my":"နေမကောင်း"},{"fr":"J'ai mal à la tête.","da":"Jeg har hovedpine.","en":"I have a headache.","zh":"Wǒ tóu téng.","my":"ခေါင်းကိုက်တယ်။"},{"fr":"Je suis malade.","da":"Jeg er syg.","en":"I am sick.","zh":"Wǒ shēngbìng le.","my":"နေမကောင်းဘူး။"},{"fr":"J'ai besoin d'un médecin.","da":"Jeg har brug for en læge.","en":"I need a doctor.","zh":"Wǒ xūyào yīshēng.","my":"ဆရာဝန် လိုတယ်။"},{"fr":"J'ai mal au ventre.","da":"Jeg har ondt i maven.","en":"My stomach hurts.","zh":"Wǒ dùzi téng.","my":"ဗိုက်နာတယ်။"}]},{"id":18,"title":"Shopping","emoji":"🛍️","tip":"'Hvad koster det?' and 'Combien ça coûte ?' are the two phrases you'll use most in shops.","items":[{"fr":"l'argent","da":"penge","en":"money","zh":"qián","my":"ပိုက်ဆံ"},{"fr":"le prix","da":"en pris","en":"price","zh":"jiàgé","my":"ဈေးနှုန်း"},{"fr":"bon marché","da":"billig","en":"cheap","zh":"piányi","my":"ဈေးပေါတယ်"},{"fr":"cher","da":"dyr","en":"expensive","zh":"guì","my":"ဈေးကြီးတယ်"},{"fr":"acheter","da":"at købe","en":"to buy","zh":"mǎi","my":"ဝယ်တယ်"},{"fr":"une carte","da":"et kort","en":"(bank) card","zh":"kǎ","my":"ကတ်"},{"fr":"Combien ça coûte ?","da":"Hvad koster det?","en":"How much does it cost?","zh":"Duōshao qián?","my":"ဘယ်လောက်လဲ။"},{"fr":"C'est trop cher.","da":"Det er for dyrt.","en":"It's too expensive.","zh":"Tài guì le.","my":"ဈေးကြီးလွန်းတယ်။"},{"fr":"Je peux payer par carte ?","da":"Kan jeg betale med kort?","en":"Can I pay by card?","zh":"Kěyǐ shuā kǎ ma?","my":"ကတ်နဲ့ ပေးလို့ရလား။"},{"fr":"Je prends ça.","da":"Jeg tager den.","en":"I'll take this.","zh":"Wǒ yào zhège.","my":"ဒါ ယူမယ်။"}]},{"id":19,"title":"Feelings & describing","emoji":"😊","tip":"Most French adjectives come after the noun (une voiture rouge), but short common ones like beau, petit, grand and bon come before it (une belle ville). Danish adjectives always come before the noun, like in English.","items":[{"fr":"heureux / heureuse","da":"glad","en":"happy","zh":"gāoxìng","my":"ပျော်တယ်"},{"fr":"triste","da":"ked af det","en":"sad","zh":"nánguò","my":"ဝမ်းနည်းတယ်"},{"fr":"grand","da":"stor","en":"big","zh":"dà","my":"ကြီးတယ်"},{"fr":"petit","da":"lille","en":"small","zh":"xiǎo","my":"သေးတယ်"},{"fr":"beau / belle","da":"smuk","en":"beautiful","zh":"piàoliang","my":"လှတယ်"},{"fr":"bon / bonne","da":"god","en":"good","zh":"hǎo","my":"ကောင်းတယ်"},{"fr":"Je suis content(e) aujourd'hui.","da":"Jeg er glad i dag.","en":"I'm happy today.","zh":"Wǒ jīntiān hěn gāoxìng.","my":"ဒီနေ့ ပျော်တယ်။"},{"fr":"La ville est belle.","da":"Byen er smuk.","en":"The city is beautiful.","zh":"Zhè zuò chéngshì hěn piàoliang.","my":"မြို့က လှတယ်။"},{"fr":"C'est très bon !","da":"Det er meget godt!","en":"It's very good!","zh":"Fēicháng hǎo!","my":"အရမ်းကောင်းတယ်။"},{"fr":"Ne sois pas triste.","da":"Vær ikke ked af det.","en":"Don't be sad.","zh":"Bié nánguò.","my":"ဝမ်းမနည်းပါနဲ့။"}]},{"id":20,"title":"Question words","emoji":"❓","tip":"Danish question words all start with 'hv-' (hvad, hvem, hvor), like English 'wh-'. Questions put the verb next: 'Hvor bor du?'","items":[{"fr":"quoi ?","da":"hvad?","en":"what?","zh":"shénme?","my":"ဘာလဲ"},{"fr":"qui ?","da":"hvem?","en":"who?","zh":"shéi?","my":"ဘယ်သူလဲ"},{"fr":"où ?","da":"hvor?","en":"where?","zh":"nǎr?","my":"ဘယ်မှာလဲ"},{"fr":"quand ?","da":"hvornår?","en":"when?","zh":"shénme shíhou?","my":"ဘယ်တော့လဲ"},{"fr":"pourquoi ?","da":"hvorfor?","en":"why?","zh":"wèishénme?","my":"ဘာကြောင့်လဲ"},{"fr":"comment ?","da":"hvordan?","en":"how?","zh":"zěnme?","my":"ဘယ်လိုလဲ"},{"fr":"Qu'est-ce que c'est ?","da":"Hvad er det?","en":"What is this?","zh":"Zhè shì shénme?","my":"ဒါ ဘာလဲ။"},{"fr":"Qui est-il ?","da":"Hvem er han?","en":"Who is he?","zh":"Tā shì shéi?","my":"သူ ဘယ်သူလဲ။"},{"fr":"Où habites-tu ?","da":"Hvor bor du?","en":"Where do you live?","zh":"Nǐ zhù zài nǎr?","my":"ဘယ်မှာ နေလဲ။"},{"fr":"Pourquoi tu apprends le danois ?","da":"Hvorfor lærer du dansk?","en":"Why are you learning Danish?","zh":"Nǐ wèishénme xué Dānmàiyǔ?","my":"ဒိန်းမတ်စကား ဘာကြောင့် သင်နေတာလဲ။"}]}]}</script>
+<script>
+(() => {
+const COURSE = JSON.parse(document.getElementById('course').textContent);
+const ALL = COURSE.lessons.flatMap(l => l.items);
+const cid = p => p.da + '|' + p.fr;
+const isSentence = p => p.en.includes(' ') && /[.?!]$/.test(p.en);
+
+const ICON = {
+  speaker: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>',
+  gear: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+};
+
+const LANGS = {
+  da: { flag: '🇩🇰', name: 'Danish' }, fr: { flag: '🇫🇷', name: 'French' },
+  en: { flag: '🇬🇧', name: 'English' }, zh: { flag: '🇨🇳', name: 'Mandarin · pinyin' }, my: { flag: '🇲🇲', name: 'Burmese' },
+};
+const LEARN = ['da', 'fr'], KNOWN = ['en', 'zh', 'my'];
+const MODES = {
+  recognise: { title: 'Recognise', sub: 'See Danish & French, remember the meaning', prompt: LEARN, answer: KNOWN },
+  recall: { title: 'Recall', sub: 'See English, Mandarin & Burmese, say it in Danish & French', prompt: KNOWN, answer: LEARN },
+  listen: { title: 'Listen', sub: 'Hear Danish & French with no text, then check', prompt: [], answer: [...LEARN, ...KNOWN] },
+};
+
+// ---------- settings (per device) ----------
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+const settings = Object.assign({ autoPlay: true, rate: 0.85 }, store.get('lingua.settings', {}));
+const saveSettings = () => store.set('lingua.settings', settings);
+
+// ---------- progress (spaced repetition) ----------
+let cards = store.get('lingua.cards', {});   // id -> {r: reps, i: interval days, e: ease, d: due ms}
+let syncState = 'local';                     // 'local' | 'account' | 'error'
+let remote = null, saving = false, dirty = false;
+
+const st = p => cards[cid(p)] || { r: 0, i: 0, e: 2.5, d: 0 };
+const learned = p => st(p).r > 0;
+const due = p => { const s = st(p); return s.r > 0 && s.d <= Date.now(); };
+
+function record(rating, p) {
+  const s = { ...st(p) };
+  if (rating === 'again') { s.r = 0; s.i = 0; s.e = Math.max(1.3, s.e - 0.2); s.d = Date.now(); }
+  else if (rating === 'good') { s.i = s.r === 0 ? 1 : Math.max(1, s.i * s.e); s.r++; }
+  else { s.i = s.r === 0 ? 3 : Math.max(2, s.i * s.e * 1.3); s.e += 0.15; s.r++; }
+  if (rating !== 'again') s.d = Date.now() + s.i * 86400000;
+  cards[cid(p)] = s;
+  persist();
+}
+
+function persist() {
+  store.set('lingua.cards', cards);
+  if (!remote) return;
+  if (saving) { dirty = true; return; }
+  saving = true;
+  remote.set({ cards, updated: Date.now() })
+    .then(() => { syncState = 'account'; })
+    .catch(() => { syncState = 'error'; })
+    .finally(() => { saving = false; if (dirty) { dirty = false; persist(); } if (view.screen === 'home') render(); });
+}
+
+async function connect() {
+  try {
+    if (!window.claude?.use) return;
+    const [db, user] = await Promise.all([claude.use('db'), claude.use('user')]);
+    if (!db || !user) return;
+    const id = await user.id();
+    if (!id) return;
+    remote = db.doc('data/users/' + id + '/progress');
+    const snap = await remote.get();
+    const saved = snap.exists ? snap.data().cards : null;
+    if (saved && Object.keys(saved).length) {
+      // Keep whichever copy of each card was reviewed most recently.
+      const merged = { ...saved };
+      for (const [k, v] of Object.entries(cards)) if (!merged[k] || v.d > merged[k].d) merged[k] = v;
+      cards = merged;
+      store.set('lingua.cards', cards);
+    }
+    syncState = 'account';
+    if (Object.keys(cards).length) persist();
+    render();
+  } catch { remote = null; syncState = 'local'; }
+}
+
+// ---------- speech ----------
+const canSpeak = 'speechSynthesis' in window;
+let voices = [];
+function loadVoices() { voices = canSpeak ? speechSynthesis.getVoices() : []; }
+if (canSpeak) { loadVoices(); speechSynthesis.onvoiceschanged = () => { loadVoices(); if (view.screen === 'settings') render(); }; }
+function voiceFor(code) {
+  const m = voices.filter(v => v.lang.replace('_', '-').toLowerCase().startsWith(code.slice(0, 2)));
+  const rank = v => (/premium|enhanced|neural|natural/i.test(v.name) ? 2 : 0) + (v.lang.replace('_', '-').toLowerCase() === code.toLowerCase() ? 1 : 0);
+  return m.sort((a, b) => rank(b) - rank(a))[0] || null;
+}
+const clean = t => t.replace(/\s*\([^)]*\)/g, '');
+function speak(p) {
+  if (!canSpeak) return;
+  speechSynthesis.cancel();
+  for (const [k, code] of [['da', 'da-DK'], ['fr', 'fr-FR']]) {
+    const u = new SpeechSynthesisUtterance(clean(p[k]));
+    u.lang = code; u.rate = settings.rate;
+    const v = voiceFor(code); if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+}
+const hush = () => canSpeak && speechSynthesis.cancel();
+
+// ---------- tiny DOM helper ----------
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'html') el.innerHTML = v;
+    else if (k === 'class') el.className = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const c of kids.flat()) if (c != null && c !== false) el.append(c.nodeType ? c : document.createTextNode(c));
+  return el;
+}
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+// ---------- views ----------
+const view = { screen: 'home', lesson: null, session: null, confirmReset: false };
+const root = document.getElementById('app');
+function go(screen, extra = {}) { hush(); Object.assign(view, { screen, confirmReset: false }, extra); render(); window.scrollTo(0, 0); }
+
+function render() {
+  root.replaceChildren(...({ home, lesson, study, settings: settingsView })[view.screen]());
+}
+
+function home() {
+  const n = ALL.filter(learned).length, dueList = ALL.filter(due);
+  return [
+    h('header', { class: 'bar' },
+      h('h1', {}, 'Lingua'),
+      h('button', { class: 'icon-btn', 'aria-label': 'Settings', html: ICON.gear, onclick: () => go('settings') })),
+    h('section', { class: 'hero' },
+      h('div', { class: 'hero-top' },
+        h('div', { class: 'pair' }, h('span', { class: 'd' }, 'Dansk'), ' + ', h('span', { class: 'f' }, 'Français')),
+        h('div', { class: 'count' }, `${n} / ${ALL.length} learned`)),
+      h('div', { class: 'meter' }, h('i', { style: `width:${(n / ALL.length) * 100}%` })),
+      h('button', { class: 'primary', disabled: !dueList.length,
+        onclick: () => go('study', { session: { title: 'Review', mode: 'recognise', queue: shuffle(dueList), total: dueList.length, done: 0, revealed: false } }) },
+        dueList.length ? `Review ${dueList.length} due card${dueList.length > 1 ? 's' : ''}` : 'Nothing due for review yet'),
+      h('div', { class: 'sync' }, syncState === 'account' ? 'Progress is saved to your Claude account, so it follows you across devices.'
+        : syncState === 'error' ? 'Could not save to your account just now. Progress is kept on this device.'
+        : 'Progress is kept on this device.')),
+    h('div', { class: 'section-label' }, 'Lessons'),
+    h('nav', { class: 'list' }, COURSE.lessons.map(l => {
+      const k = l.items.filter(learned).length;
+      return h('button', { class: 'row', onclick: () => go('lesson', { lesson: l }) },
+        h('span', { class: 'emoji', 'aria-hidden': 'true' }, l.emoji),
+        h('span', {}, h('div', { class: 't' }, `${l.id}. ${l.title}`),
+          h('div', { class: 'mini' }, h('i', { class: k === l.items.length ? 'full' : '', style: `width:${(k / l.items.length) * 100}%` }))),
+        h('span', { class: 'n' }, `${k}/${l.items.length}`));
+    })),
+  ];
+}
+
+function phraseRow(p) {
+  return h('div', { class: 'phrase' },
+    h('div', { class: 'lines' },
+      h('div', { class: 'da' }, h('span', { class: 'tag' }, 'DA'), p.da),
+      h('div', { class: 'fr' }, h('span', { class: 'tag' }, 'FR'), p.fr),
+      h('div', { class: 'k' }, h('span', { class: 'tag' }, 'EN'), p.en),
+      h('div', { class: 'k' }, h('span', { class: 'tag' }, 'ZH'), p.zh),
+      h('div', { class: 'k' }, h('span', { class: 'tag' }, 'MY'), h('span', { class: 'my' }, p.my))),
+    h('div', { class: 'side' },
+      canSpeak && h('button', { class: 'speak', 'aria-label': 'Play Danish and French', html: ICON.speaker, onclick: () => speak(p) }),
+      learned(p) && h('span', { class: 'check', title: 'Learned' }, '✓')));
+}
+
+function lesson() {
+  const l = view.lesson, words = l.items.filter(p => !isSentence(p)), sents = l.items.filter(isSentence);
+  return [
+    h('header', { class: 'bar' },
+      h('button', { class: 'icon-btn', 'aria-label': 'Back to lessons', html: ICON.back, onclick: () => go('home') }),
+      h('h1', { class: 'sub' }, `${l.emoji} ${l.title}`)),
+    h('div', { class: 'tip' }, h('span', { 'aria-hidden': 'true' }, '💡'), h('span', {}, l.tip)),
+    h('div', { class: 'modes' }, Object.entries(MODES).map(([k, m]) =>
+      h('button', { class: 'mode', onclick: () => go('study', { session: { title: l.title, mode: k, queue: shuffle(l.items), total: l.items.length, done: 0, revealed: false } }) },
+        h('b', {}, m.title), h('span', {}, m.sub)))),
+    h('div', { class: 'section-label' }, 'Words'),
+    h('div', { class: 'list' }, words.map(phraseRow)),
+    sents.length > 0 && h('div', { class: 'section-label' }, 'Sentences'),
+    sents.length > 0 && h('div', { class: 'list' }, sents.map(phraseRow)),
+  ];
+}
+
+function line(k, p, lead) {
+  return h('div', { class: `line ${k}${lead ? ' lead' : ''}` },
+    h('div', { class: 'lab' }, `${LANGS[k].flag} ${LANGS[k].name}`),
+    h('div', { class: 'txt' + (k === 'my' ? ' my' : '') }, p[k]));
+}
+
+function study() {
+  const s = view.session, m = MODES[s.mode], p = s.queue[0];
+  const head = h('header', { class: 'bar' },
+    h('button', { class: 'icon-btn', 'aria-label': 'Close', html: ICON.close, onclick: () => go(view.lesson && s.title !== 'Review' ? 'lesson' : 'home') }),
+    h('h1', { class: 'sub' }, `${s.title} · ${m.title}`));
+  const bar = h('div', { class: 'progress' }, h('i', { style: `width:${(s.done / s.total) * 100}%` }));
+  if (!p) {
+    return [head, bar, h('div', { class: 'done' },
+      h('div', { class: 'big' }, '🎉'), h('h2', {}, 'Session complete'),
+      h('p', {}, 'Godt klaret! · Bien joué ! · Zuò de hǎo!'), h('p', { class: 'my' }, 'တော်လိုက်တာ!'),
+      h('button', { class: 'primary', style: 'max-width:220px', onclick: () => go(view.lesson && s.title !== 'Review' ? 'lesson' : 'home') }, 'Done'))];
+  }
+  const card = h('div', { class: 'card', role: 'button', tabindex: '0', 'aria-label': s.revealed ? 'Card' : 'Reveal answer', onclick: reveal },
+    s.mode === 'listen' && h('button', { class: 'big-speak', 'aria-label': 'Play again', html: ICON.speaker, onclick: e => { e.stopPropagation(); speak(p); } }),
+    s.mode === 'listen' && h('div', { class: 'hint', style: 'margin-top:0' }, canSpeak ? 'Danish, then French' : 'This browser cannot play speech'),
+    m.prompt.map(k => line(k, p, true)),
+    s.revealed && m.prompt.length > 0 && h('div', { class: 'divider' }),
+    s.revealed && m.answer.map(k => line(k, p, LEARN.includes(k))),
+    !s.revealed && h('div', { class: 'hint' }, 'Tap to reveal'),
+    canSpeak && s.mode !== 'listen' && (s.revealed || s.mode === 'recognise') &&
+      h('button', { class: 'again-btn', html: ICON.speaker + ' Play again', onclick: e => { e.stopPropagation(); speak(p); } }));
+  const controls = s.revealed
+    ? h('div', { class: 'rates' },
+        h('button', { class: 'r-again', onclick: () => rate('again') }, 'Again', h('small', {}, 'see it soon')),
+        h('button', { class: 'r-good', onclick: () => rate('good') }, 'Good', h('small', {}, 'got it')),
+        h('button', { class: 'r-easy', onclick: () => rate('easy') }, 'Easy', h('small', {}, 'too easy')))
+    : h('button', { class: 'primary', onclick: reveal }, 'Show answer');
+  return [head, bar, card, controls, h('div', { class: 'keys' }, 'Keys: Space to reveal · 1 Again · 2 Good · 3 Easy · P play')];
+}
+
+function reveal() {
+  const s = view.session;
+  if (!s || s.revealed || !s.queue[0]) return;
+  s.revealed = true;
+  if (s.mode === 'recall' && settings.autoPlay) speak(s.queue[0]);
+  render();
+}
+function rate(r) {
+  const s = view.session, p = s.queue.shift();
+  record(r, p);
+  if (r === 'again') s.queue.push(p); else s.done++;
+  s.revealed = false;
+  hush();
+  render();
+  if (s.queue[0] && settings.autoPlay && s.mode !== 'recall') speak(s.queue[0]);
+}
+function startAudio() {
+  const s = view.session;
+  if (s && s.queue[0] && settings.autoPlay && s.mode !== 'recall') speak(s.queue[0]);
+}
+
+function settingsView() {
+  const da = voiceFor('da-DK'), fr = voiceFor('fr-FR');
+  const voiceNote = !canSpeak ? 'This browser cannot play speech.'
+    : `Danish voice: ${da ? da.name : 'none found'} · French voice: ${fr ? fr.name : 'none found'}.`;
+  return [
+    h('header', { class: 'bar' },
+      h('button', { class: 'icon-btn', 'aria-label': 'Back', html: ICON.back, onclick: () => go('home') }),
+      h('h1', { class: 'sub' }, 'Settings')),
+    h('div', { class: 'section-label' }, 'Audio'),
+    h('div', { class: 'panel' },
+      h('div', { class: 'set' },
+        h('label', { for: 'autoplay' }, 'Play audio automatically'),
+        h('input', { type: 'checkbox', id: 'autoplay', checked: settings.autoPlay, onchange: e => { settings.autoPlay = e.target.checked; saveSettings(); } })),
+      h('div', { class: 'set' },
+        h('label', { for: 'rate' }, 'Speed'),
+        h('span', { 'aria-hidden': 'true' }, '🐢'),
+        h('input', { type: 'range', id: 'rate', min: '0.5', max: '1.1', step: '0.05', value: String(settings.rate), oninput: e => { settings.rate = +e.target.value; saveSettings(); } }),
+        h('span', { 'aria-hidden': 'true' }, '🐇')),
+      h('div', { class: 'set' },
+        h('span', {}, 'Test the voices'),
+        h('button', { class: 'ghost', onclick: () => speak({ da: 'Hej, jeg hedder Lingua.', fr: 'Bonjour, je m\'appelle Lingua.' }) }, 'Play'))),
+    h('p', { class: 'note' }, voiceNote + ' On iPhone, better voices are in the Settings app: Accessibility › Read & Speak › Voices. Download an Enhanced Danish and French voice, then reload this page.'),
+    h('div', { class: 'section-label' }, 'Progress'),
+    h('div', { class: 'panel' },
+      h('div', { class: 'set' },
+        view.confirmReset
+          ? [h('span', {}, 'Mark every card as new again?'),
+             h('span', { style: 'display:flex;gap:8px' },
+               h('button', { class: 'ghost', onclick: () => { view.confirmReset = false; render(); } }, 'Cancel'),
+               h('button', { class: 'danger solid', onclick: () => { cards = {}; persist(); go('home'); } }, 'Reset'))]
+          : [h('span', {}, 'Start over'), h('button', { class: 'danger', onclick: () => { view.confirmReset = true; render(); } }, 'Reset all progress')])),
+  ];
+}
+
+document.addEventListener('keydown', e => {
+  if (view.screen !== 'study' || e.target.tagName === 'INPUT') return;
+  const s = view.session;
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); reveal(); }
+  else if (s.revealed && e.key === '1') rate('again');
+  else if (s.revealed && e.key === '2') rate('good');
+  else if (s.revealed && e.key === '3') rate('easy');
+  else if ((e.key === 'p' || e.key === 'P') && s.queue[0]) speak(s.queue[0]);
+});
+
+// The first card of a session plays once the study screen opens (tap = user gesture).
+const _go = go;
+go = function (screen, extra) { _go(screen, extra); if (screen === 'study') startAudio(); };
+
+render();
+connect();
+})();
+</script>
+
+</body>
+</html>

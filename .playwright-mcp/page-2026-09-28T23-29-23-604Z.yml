@@ -1,0 +1,50 @@
+- generic [ref=f5e1]:
+  - generic:
+    - region "Notifications alt+T"
+  - generic:
+    - region "Notifications alt+T"
+  - dialog "Log in to X" [ref=f5e6]:
+    - generic [ref=f5e10]:
+      - generic [ref=f5e11]:
+        - button [ref=f5e14] [cursor=pointer]
+        - generic [ref=f5e29]:
+          - generic [ref=f5e30]:
+            - paragraph [ref=f5e33]: See what's happening
+            - paragraph [ref=f5e36]: "Select an option below:"
+          - generic [ref=f5e38]:
+            - generic [ref=f5e39]:
+              - button [ref=f5e40] [cursor=pointer]:
+                - paragraph [ref=f5e47]: Continue with phone
+              - generic [ref=f5e49]:
+                - generic [aria-hidden]:
+                  - generic: Continue with Google
+                - generic [ref=f5e51]:
+                  - button "Continue with Google. Opens in new tab" [ref=f5e53] [cursor=pointer]:
+                    - generic [ref=f5e55]: Continue with Google
+                  - iframe [ref=f5e65]:
+                    - button "Continue as Jay, nxlogos@gmail.com. Opens in new tab" [ref=f8e3] [cursor=pointer]:
+                      - generic [ref=f8e5]:
+                        - img "Jay's profile image" [ref=f8e6]
+                        - generic [ref=f8e7]:
+                          - generic [ref=f8e8]: Continue as Jay
+                          - generic [ref=f8e9]: nxlogos@gmail.com
+              - button [ref=f5e66] [cursor=pointer]:
+                - paragraph [ref=f5e73]: Continue with Apple
+            - paragraph [ref=f5e77]: or
+            - generic [ref=f5e80]:
+              - generic: Email or username
+              - textbox "Email or username" [active] [ref=f5e81]
+              - textbox
+      - generic [ref=f5e83]:
+        - paragraph [ref=f5e87]: Continue
+        - paragraph [ref=f5e91]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=f5e92] [cursor=pointer]:
+            - /url: https://x.com/tos
+          - text: ","
+          - link "Privacy Policy" [ref=f5e93] [cursor=pointer]:
+            - /url: https://x.com/privacy
+          - text: and
+          - link "Cookie Use" [ref=f5e94] [cursor=pointer]:
+            - /url: https://help.x.com/rules-and-policies/twitter-cookies
+          - text: .

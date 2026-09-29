@@ -1,0 +1,17 @@
+URL: https://www.ithome.com.tw/news/179207
+TITLE: 中國駭客UTA0565架設假網站，加入使用BlueMoon工具包的行列
+AUTHOR: 周峻佑
+PUBLISHED: 2026-09-24
+SOURCE: iThome
+
+兩週前，資安公司
+Proofpoint
+、
+Volexity
+揭露多組中國駭客串連Chrome與Windows零時差漏洞的攻擊行動，Proofpoint將利用這些弱點的工具包命名為BlueMoon，其中利用的漏洞包括：Chrome類型混淆漏洞CVE-2026-85046、沙箱逃逸漏洞CVE-2026-87491，以及Windows權限提升漏洞CVE-2026-85880。本週Volexity提出警告，
+有新的駭客組織加入利用相關漏洞行列
+，代表這組工具可能已在中國網路犯罪圈共享及利用。
+Volexity在揭露UTA0560、APT31（Violet Typhoon、TA412、JungleBamboo）利用上述的漏洞利用鏈之後，掌握第3組中國駭客UTA0565的攻擊行動，與先前公布的兩個組織最大的不同，在於UTA0565架設了假網站來欺騙使用者。相關攻擊發生在9月3日至4日，當時其中一封寄往亞洲政府機關的釣魚信，內容使用正體中文，呼籲收信人聲援被囚禁的香港大律師
+鄒幸彤
+（Chow Hang-tung），以傳揚該律師的信念為由引誘收信人點選連結。另一封釣魚信使用英文，駭客冒充美國智庫美國進步中心（Center for American Progress）。
+而這兩封信的共通點，就是都包含連往詐欺網域的連結，Volexity解析UTA0565的網站，確認其中的HTML元素實作上述的漏洞利用鏈，並指出UTA0565嵌入的二進位檔案，與該公司先前揭露的攻擊活動一致，而且，核心的漏洞利用邏輯、版本檢查，以及攻擊流程的順序也相同，最終於受害電腦植入名為CleanGulp的惡意程式。

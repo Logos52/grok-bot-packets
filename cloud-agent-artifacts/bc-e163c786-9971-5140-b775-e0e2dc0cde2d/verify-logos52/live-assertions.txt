@@ -1,0 +1,43 @@
+Live HTML against http://127.0.0.1:4321 on origin/main overlay d05e739 (2026-09-29).
+
+HOME /
+- h1.hero__title = LLM Knowledge Base
+- five a.door intents: Understand, Apply, Learn, Decode, Explore
+- Explore href /map/
+- Apply href /wiki/Systems/AI--and--Agentic-Systems/Vibe-Coding/
+- Understand href /wiki/Concepts/The-AI-Industrial-Revolution/
+- data-mode=spine, four .topmind__item
+
+MAP /map/
+- h1.map-head__title = The vault
+- Chrome Map .on
+- data-constellation-root data-mode=full data-domain-labels=true + canvas
+- h2 The six domains
+- six .domain__blurb paragraphs (present in DOM; not required by the live recipe)
+
+DOMAIN /domains/learning/
+- Chrome Notes .on
+- ul.moc present
+
+NOTES /notes/ 200; /notes 200; /notes/index/ 404
+- headings Condensed and Hubs
+- data-mode=full
+- Learning, Condensed present
+- Hubs omit Using Grok Bot, pstack, Cursor Cloud Agents, Picking a computer
+
+NOTE /wiki/Concepts/The-AI-Industrial-Revolution/
+- h1 The AI Industrial Revolution
+- pill Concept
+- no .kb-note-dek element
+- crumb wiki href /folder/wiki/
+- summary "10 more related pages"
+- backlinks summary "9 more"
+
+NOTE /wiki/Syntheses/Learning,-Condensed/
+- h1 Learning, Condensed
+- pill Condensed
+- .kb-note-dek present
+
+SEARCH target /wiki/Systems/AI--and--Agentic-Systems/Vibe-Coding/ 200
+Single-hyphen /wiki/Systems/AI-and-Agentic-Systems/Vibe-Coding/ 404
+Chrome drive reported first row title Vibe Coding, domain chip Agentic, landed on the note.

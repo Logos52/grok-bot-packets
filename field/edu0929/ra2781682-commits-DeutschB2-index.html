@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>د آلماني B2 لغاتونه</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6f8;--card:#fff;--tx:#12303a;--mut:#617a84;--pr:#0f766e;--pr2:#0e4f6e;--gd:#f5b942;--ok:#16a34a;--bad:#dc2626;--bd:#dde6ea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1a20;--card:#12272f;--tx:#e8f4f6;--mut:#8fb0ba;--bd:#21414c}}
+:root[data-theme="dark"]{--bg:#0b1a20;--card:#12272f;--tx:#e8f4f6;--mut:#8fb0ba;--bd:#21414c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Naskh Arabic",Tahoma,"Segoe UI",sans-serif;line-height:1.7}
+.de{direction:ltr;unicode-bidi:isolate;display:inline-block;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;padding:26px 16px 20px;text-align:center;border-bottom:4px solid var(--gd)}
+header h1{margin:0;font-size:clamp(24px,6vw,34px)}header p{margin:2px 0 12px;opacity:.9}
+.bar{max-width:520px;margin:auto;height:14px;background:rgba(255,255,255,.22);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gd);transition:width .4s}
+#pt{font-size:15px;margin-top:6px}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;max-width:920px;margin:auto}
+nav button{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 16px;border-radius:24px;font:700 16px inherit;font-family:inherit;cursor:pointer}
+nav button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+main{max-width:920px;margin:auto;padding:0 12px 12px}
+.tool{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+select,input{font:600 16px inherit;font-family:inherit;padding:10px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+.btn{border:0;border-radius:14px;padding:11px 20px;font:700 16px inherit;font-family:inherit;cursor:pointer;background:var(--pr);color:#fff}
+.btn.g{background:var(--ok)}.btn.r{background:var(--bad)}.btn.l{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:20px;box-shadow:0 8px 28px rgba(10,60,70,.1);text-align:center}
+.fc{perspective:900px;height:240px;cursor:pointer;margin:8px 0 16px}
+.fi{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.fc.f .fi{transform:rotateY(180deg)}
+.fs{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:clamp(26px,7vw,40px);font-weight:700;padding:12px}
+.fs.a{background:linear-gradient(135deg,#e6f6f4,#d5eef2);color:#0e4f6e;border:2px solid var(--gd)}
+.fs.b{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;transform:rotateY(180deg)}
+.fs small{font-size:14px;font-weight:400;opacity:.75;margin-top:6px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.q{font-size:clamp(24px,6vw,34px);font-weight:700;margin:6px 0 16px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts button,.tile{padding:16px 8px;min-height:64px;border-radius:14px;border:2px solid var(--bd);background:var(--card);color:var(--tx);font:700 16px inherit;font-family:inherit;cursor:pointer}
+.opts button.ok,.tile.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opts button.no,.tile.no{background:var(--bad);color:#fff;border-color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tile.sel{border-color:var(--gd);background:#fff7e0;color:#5b4200}.tile.ok{opacity:.5;pointer-events:none}
+.sc{color:var(--mut);font-weight:600;margin-bottom:8px}.fb{min-height:28px;font-weight:700;margin-top:10px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden}
+td{padding:10px 12px;border-bottom:1px solid var(--bd)}td:nth-child(3){color:var(--pr);font-weight:700}
+.sp{cursor:pointer;background:none;border:0;font-size:18px}.w{overflow-x:auto}
+#win{position:fixed;inset:0;background:rgba(6,20,26,.9);display:none;align-items:center;justify-content:center;padding:20px;z-index:9}
+#win .panel{max-width:460px;padding:34px 24px;border:3px solid var(--gd)}
+#win h2{font-size:clamp(28px,8vw,42px);margin:8px 0;color:var(--pr)}.star{font-size:70px;animation:bt 1.4s infinite}@keyframes bt{50%{transform:scale(1.15) rotate(8deg)}}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:14px}
+</style></head><body>
+<header><h1>📘 د آلماني B2 لغاتونه</h1><p>Aspekte neu B2 · د پښتو ترجمې سره</p><div class="bar"><i id="pb"></i></div><div id="pt"></div></header>
+<nav id="nav"></nav>
+<main><div class="tool"><select id="cat"></select><button class="btn l" id="th">🌓 بڼه</button><button class="btn l" id="rs">↺ له سره پیل</button></div><div id="v"></div></main>
+<div id="win"><div class="panel"><div class="star">🏆</div><h2>ستا ځانګړې بریا!</h2><p style="font-size:19px;font-weight:700;margin:6px 0">ټول لغاتونه دې زده کړل. ته ځانګړې/ځانګړی یې! ✨</p><p style="color:var(--mut)">پوره زحمت، پوره صبر او پوره بریا مبارک شه.</p><button class="btn" onclick="win.style.display='none'">ښه</button></div></div>
+<footer>په ځانګړې پاملرنې جوړ شوی ✨</footer>
+<script>
+const RAW={
+"ماډول ۳ – ټولنیزې اړیکې":"das Abteil=د اورګاډي کوپه;missverständlich=غلط پوهېدونکی;missverstehen=غلط پوهېدل;peinlich=شرمونکی;der Abstand=واټن;die Art=ډول;äußerst=ډېر زیات;bedenken=په پام کې نیول;der Begleiter=ملګری;die Freundlichkeit=مهربانتیا;das Gegenüber=مخامخ کس;das Lächeln=موسکا;die Öffentlichkeit=عامه ځای;die Privatsphäre=شخصي ژوند;üblich=معمول;die Spielregel=د لوبې قاعده;die Geste=اشاره;nonverbal=غیرلفظي;das Unverständnis=نافهمي;intolerant=بې زغمه;trennbar=جلا کېدونکی",
+"ماډول ۴ – مهاجرت او ښوونځی":"die Chancengleichheit=د فرصتونو برابري;der Migrationshintergrund=د مهاجرت شالید;völlig=بشپړ;die Schuluniform=د ښوونځي یونیفورم;die Einrichtung=اداره;ermöglichen=ممکن کول;die Lehrkraft=ښوونکی;der Pate=سرپرست;der Zugewanderte=مهاجر;sinnvoll=معقول;ausbremsen=ځنډول;die Diskriminierung=تبعیض;die Hochschulreife=د پوهنتون وړتیا;die Informatik=معلوماتي ټکنالوژي;der Kommilitone=د پوهنتون ملګری;gelegentlich=کله ناکله;der Gründer=بنسټګر;scheitern=ناکامېدل;der Schulabschluss=د ښوونځي فراغت;verbergen=پټول;die Wüste=صحرا;der Keks=بسکټ;nachdenklich=فکرمند;die Option=انتخاب;entsprechend=مناسب;annehmen=منل;einig=همغږی;entwickeln=وده کول;veranstalten=تنظیمول",
+"پورټرېټ – فلم او ژوند":"die Abstammung=نسب;auszeichnen=ډالۍ ورکول;begehrt=مطلوب;bürgerlich=مدني;das Diplom=ډیپلوم;der Drehbuchautor=د سناریو لیکوال;der Durchbruch=لوی پرمختګ;der Einwanderer=مهاجر;der Filmregisseur=د فلم رېژیسور;die Hauptrolle=اصلي رول;heimisch=ځایي;der Kinofilm=سینمایي فلم;kommerziell=سوداګریز;der Lebensweg=د ژوند لار;der Produzent=تولیدوونکی;die Scheinehe=جعلي واده;stets=تل;treu=وفادار;die Trophäe=ګوپۍ;das Vorbild=الګو;unerwartet=ناڅاپي",
+"۲ څپرکی – ماډول ۱: بدن ژبه":"das Piktogramm=انځوریزه نښه;der Anlass=مناسبت;kommunizieren=اړیکه نیول;die Auszeit=وقفه;die Gebärdensprache=د اشارو ژبه;die Schranke=خنډ;die Körpersprache=د بدن ژبه;die Emotion=احساس;verraten=افشا کول;wesentlich=اساسي;instinktiv=فطري;wahrnehmen=درک کول;deuten=تعبیرول;die Mimik=د مخ څرګندونې;bestimmen=ټاکل;eindeutig=روښانه;das Signal=سیګنال;angemessen=مناسب",
+"ماډول ۲ – ژبې او مغزو":"betroffen=اغېزمن;bilingual=دوه ژبی;einsprachig=یو ژبی;fehlerlos=بې غلطۍ;feststellen=څرګندول;geduldig=صبر لرونکی;das Gehirn=مغز;kinderleicht=ډېر اسان;das Kleinkind=کوچنی ماشوم;die Kompetenz=وړتیا;nachweisen=ثابتول;die Phase=پړاو;der Psychologe=ذهن پوه;schwerfallen=ستونزمن وي;der Sprachschatz=د ټکو زېرمه;überfordern=ډېر فشار راوړل;unterfordern=کم فشار راوړل;die Verhandlung=خبرې اترې;vertraut=آشنا;werben=تبلیغ کول;der Wissenschaftler=ساینسپوه;der Wunsch=هیله;zweisprachig=دوه ژبی;das Defizit=کمښت;der Gegner=مخالف;das Prinzip=اصل",
+"ماډول ۳ – ژبه او ځانګړتیاوې":"die Basis=بنسټ;entspannt=آرام;gründlich=ژور او بشپړ;die Lage=حالت;das Talent=استعداد;eilig=بېړنی;donnern=ګړنګول;witzig=ټوکمار;ratsam=مشوره کېدونکی;nichtssagend=بې معنا",
+"ماډول ۴ – انتقاد او شخړه":"die Kritik=انتقاد;der Respekt=درناوی;ruhig=آرام;aggressiv=تیري کوونکی;auffordern=غوښتنه کول;blamieren=شرمول;das Mitleid=زړه سوی;die Verbesserung=ښه والی;hinhören=غوږ نیول;der Konsens=همغږي;die Schwäche=کمزوري;auslösen=پیلول;die Aussicht=امید;der Austausch=تبادله;destruktiv=ویجاړوونکی;dreckig=ککړ;der Druck=فشار;erzeugen=تولیدول;hitzig=تود;die Konfliktlösung=د شخړې حل;konkret=مشخص;konstruktiv=جوړوونکی;die Problemlösung=د ستونزې حل;sicherlich=یقیناً;tatsächlich=په رښتیا;der Therapeut=درملوونکی;die Unstimmigkeit=ناهمغږي;die Verteilung=ویش;hinnehmen=زغمل;austeilen=انتقاد کول;die Berufsschule=مسلکي ښوونځی;draufhauen=ټکول;einstecken=(انتقاد) زغمل;der Gepäckermittler=د ورک شویو توښو څېړونکی;der Kabarettist=کاباره هنرمند;touren=سفر کول;zusammengehören=سره تړاو لرل;üben=(انتقاد) کول;verschuldet=پوروړی;die Sache=موضوع;die Aufgabenteilung=د دندو ویش;die Erledigung=بشپړول;die Erziehungsfragen=د روزنې پوښتنې;die Linie=کرښه;das Resümee=لنډیز;das Türenknallen=د دروازو ټکول;der Spielraum=آزادي",
+"ماډول ۳ – نور لغاتونه":"alkoholfrei=بې الکولو;atypisch=غیرمعمولي;das Desinteresse=بې پروايي;disqualifizieren=ردول;inhaltsleer=بې محتوا;irreal=غیرواقعي;der Nichtschwimmer=هغه څوک چې لامبو نه پوهېږي;jeglich=هر ډول;stellen=(پوښتنه) کول;das Teilthema=فرعي موضوع;die Nummer=شمېره;lexikalisch=لغوي;die Naturerscheinung=طبیعي پدیده;die Zeiterscheinung=د وخت پدیده;der Stellvertreter=نائب;verwunderlich=حیرانوونکی;ernst meinen=جدي وېل",
+"ماډول ۴ – نور لغاتونه":"das Schlüsselwort=کلیدي ټکی;die Kindergartenpflicht=د ماشومتون اجبار;eingehen=(په یو څه) غور کول;die Migrantenfamilie=د مهاجرو کورنۍ;das Migrantenkind=د مهاجر ماشوم;der Senior=مشر/بوډا;anfügen=زیاتول;die Ausländerquote=د بهرنیانو سهمیه;der Automobilhersteller=د موټر جوړوونکی;die Betriebswirtschaft=د سوداګرۍ اداره;farbenfroh=رنګین;fernliegen=لرې وي;das Feuerholz=د اور لرګي;flechten=ګنډل;führen=(سوداګري) پرمخ وړل;das Gemüsegeschäft=د سبزیجاتو دوکان;die Hausverwaltung=د ودانۍ مدیریت;infrage kommen=په پام کې راتلل;inmitten=په منځ کې;leuchten=روښانه کېدل;die Odyssee=اوږد ستونزمن سفر;der Preis=بیه;zerrissen=څېرې شوی;das Zöpfchen=کوچنۍ ګېږه;zusammenbinden=سره تړل;der Wanderarbeiter=مهاجر کارګر;weitergehen=ادامه ورکول;die Windeseile=ډېر ګړندی;der Anschluss=پیوستون;anhören=اورېدل;der Migrant=مهاجر",
+"پورټرېټ – نور لغاتونه":"der Amateur-Boxer=شوقي بوکسر;das Gangsterkino=د غنډو فلمونه;geprägt=اغېزمن شوی;gläubig=مومن;die Härte=سختي;die Hommage=درناوی;der Juryvorsitz=د قضاوت هیئت مشري;der Kiez=محله;die Kinokasse=د سینما ټکټ ځای;die Kleinkriminellenstudie=د کوچنیو جنایتکارو مطالعه;der Kneipenbesitzer=د میخانې خاوند;der Langspielfilm=اوږد فلم;das Melodram=میلودرام;das Migrationsdrama=د مهاجرت ډرامه;das Milieu=چاپېریال;der Muslim=مسلمان;passioniert=مینه ناک;der Regisseur=رېژیسور;schmerzlos=بې درده;der Spielfilm=فیچر فلم;voller=ډک;der Nonsens=بېکاره خبره;der Drehbuchpreis=د سناریو جایزه;entstammen=څخه راتلل;visuell=لیدلی",
+"۲ څپرکی – نور لغاتونه":"ausstrecken=اوږدول;der Stopp=درېدل;weisen=ښودل;das Körpersignal=د بدن سیګنال;vorgeben=ټاکل;allzu=ډېر;anlegen=جوړول;auszahlen=ګټور وي;der Autor=لیکوال;herumschlagen=په ستونزو اخته کېدل;das Großraumbüro=لوی دفتر;monolingual=یو ژبی;die Konzentrationsleistung=د تمرکز وړتیا;die Sprachenpolitik=د ژبو پالیسي;die Sprachentwicklung=د ژبې وده;der Sprachwissenschaftler=ژبپوه;die Startchance=د پیل چانس;der Trendforscher=د رجحان څېړونکی;umgehen=چلند کول;der Umgang=چلند;vorgehen=مخکې تګ;führen=(خبرې) پرمخ وړل"};
+const W=[];for(const c in RAW)RAW[c].split(";").forEach(s=>{const[g,r]=s.split("=");W.push({g,r,c,id:g})});
+const de=t=>`<span class="de">${t}</span>`,art=w=>(w.g.match(/^(der|die|das) /)||[])[1];
+const $=id=>document.getElementById(id),V=$("v");
+let known=new Set(),mode="cards",cat="*";
+try{known=new Set(JSON.parse(localStorage.getItem("kn2")||"[]"))}catch(e){}
+const save=()=>{try{localStorage.setItem("kn2",JSON.stringify([...known]))}catch(e){}};
+const pool=()=>W.filter(w=>cat=="*"||w.c==cat),sh=a=>[...a].sort(()=>Math.random()-.5);
+const say=t=>{try{const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}};
+function prog(){const p=Math.round(known.size/W.length*100);$("pb").style.width=p+"%";$("pt").textContent=`${known.size} له ${W.length} لغاتونو زده شول (${p}٪)`;if(known.size==W.length)$("win").style.display="flex"}
+const M={cards:"🃏 کارتونه",quiz:"❓ ازموینه",match:"🧩 جوړه کول",type:"✍️ لیکل",art:"🎯 آرټیکل",list:"📖 لیست"};
+$("nav").innerHTML=Object.keys(M).map(k=>`<button data-k="${k}">${M[k]}</button>`).join("");
+$("nav").onclick=e=>{if(e.target.dataset.k){mode=e.target.dataset.k;go()}};
+$("cat").innerHTML='<option value="*">ټول ('+W.length+')</option>'+Object.keys(RAW).map(c=>`<option>${c}</option>`).join("");
+$("cat").onchange=e=>{cat=e.target.value;go()};
+$("th").onclick=()=>{const d=document.documentElement;d.dataset.theme=getComputedStyle(d).getPropertyValue("--bg").trim()=="#0b1a20"?"light":"dark"};
+$("rs").onclick=()=>{if(confirm("ټوله پرمختګ پاک شي؟")){known.clear();save();go()}};
+function go(){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.k==mode));prog();({cards,quiz,match,type,art:artG,list})[mode]()}
+function cards(){let L=sh(pool().filter(w=>!known.has(w.id)));if(!L.length)L=sh(pool());let i=0;
+ const show=()=>{const w=L[i];V.innerHTML=`<div class="panel"><div class="sc">کارت ${i+1} له ${L.length} · کارت ته ټک ورکړه</div><div class="fc" id="fc"><div class="fi"><div class="fs a">${de(w.g)}<small>🔊 ټک ورکړه</small></div><div class="fs b">${w.r}<small>${w.c}</small></div></div></div>
+ <div class="row"><button class="btn l" id="nx">▶ راتلونکی</button><button class="btn g" id="kn">پوهېږم ✓</button><button class="btn r" id="st">لا زده کوم</button><button class="btn l" id="pv">◀ مخکینی</button></div></div>`;
+ $("fc").onclick=()=>{$("fc").classList.toggle("f");say(w.g)};
+ $("pv").onclick=()=>{i=(i+L.length-1)%L.length;show()};$("nx").onclick=()=>{i=(i+1)%L.length;show()};
+ $("st").onclick=()=>{known.delete(w.id);save();prog();i=(i+1)%L.length;show()};$("kn").onclick=()=>{known.add(w.id);save();prog();i=(i+1)%L.length;show()}};show()}
+function quiz(){let L=sh(pool()),i=0,s=0;
+ const show=()=>{if(i>=L.length){V.innerHTML=`<div class="panel"><h2>پایله: ${s} له ${L.length}</h2><button class="btn" onclick="go()">بیا پیل</button></div>`;return}
+ const w=L[i],o=sh([w,...sh(W.filter(x=>x!=w)).slice(0,3)]);
+ V.innerHTML=`<div class="panel"><div class="sc">پوښتنه ${i+1}/${L.length} · نمره ${s}</div><div class="q">${de(w.g)}</div><div class="opts">${o.map(x=>`<button>${x.r}</button>`).join("")}</div></div>`;
+ V.querySelectorAll(".opts button").forEach(b=>b.onclick=()=>{const ok=b.textContent==w.r;b.classList.add(ok?"ok":"no");if(ok){s++;known.add(w.id);save();prog()}else V.querySelectorAll(".opts button").forEach(x=>{if(x.textContent==w.r)x.classList.add("ok")});V.querySelectorAll(".opts button").forEach(x=>x.disabled=true);setTimeout(()=>{i++;show()},900)})};show()}
+function match(){const L=sh(pool()).slice(0,6);let t=sh(L.flatMap(w=>[{k:w.id,t:de(w.g)},{k:w.id,t:w.r}])),sel=null,done=0;
+ V.innerHTML=`<div class="panel"><div class="sc">آلماني لغت د ترجمې سره جوړ کړه</div><div class="grid">${t.map((x,i)=>`<button class="tile" data-i="${i}">${x.t}</button>`).join("")}</div><div class="fb" id="fb"></div><button class="btn" style="margin-top:12px" onclick="match()">نوې لوبه</button></div>`;
+ V.querySelectorAll(".tile").forEach(b=>b.onclick=()=>{if(!sel){sel=b;b.classList.add("sel");return}if(sel==b)return;const a=t[sel.dataset.i],c=t[b.dataset.i];
+  if(a.k==c.k){sel.className=b.className="tile ok";known.add(a.k);save();prog();if(++done==L.length)$("fb").textContent="🎉 ډېر ښه!"}
+  else{const s=sel;s.classList.remove("sel");s.classList.add("no");b.classList.add("no");setTimeout(()=>{s.className=b.className="tile"},500)}sel=null})}
+function type(){let L=sh(pool()),i=0;
+ const show=()=>{if(i>=L.length)i=0;const w=L[i];V.innerHTML=`<div class="panel"><div class="sc">آلماني لغت ولیکه</div><div class="q">${w.r}</div><input id="in" dir="ltr" style="width:100%;max-width:340px;text-align:center" autocomplete="off" placeholder="…"><div class="fb" id="fb"></div><div class="row"><button class="btn" id="ck">وګوره</button><button class="btn l" id="sk">پریږده</button></div></div>`;
+ const n=s=>s.toLowerCase().replace(/^(der|die|das) /,"").trim();
+ const chk=()=>{if(n($("in").value)==n(w.g)){$("fb").style.color="var(--ok)";$("fb").innerHTML="✓ سم دی: "+de(w.g);known.add(w.id);save();prog();i++;setTimeout(show,1000)}else{$("fb").style.color="var(--bad)";$("fb").textContent="✗ بیا هڅه وکړه"}};
+ $("ck").onclick=chk;$("in").onkeydown=e=>{if(e.key=="Enter")chk()};$("sk").onclick=()=>{$("fb").innerHTML="ځواب: "+de(w.g);i++;setTimeout(show,1400)};$("in").focus()};show()}
+function artG(){let L=sh(pool().filter(art)),i=0,s=0;if(!L.length){V.innerHTML='<div class="panel">په دې ډله کې اسمونه نشته.</div>';return}
+ const show=()=>{if(i>=L.length){V.innerHTML=`<div class="panel"><h2>پایله: ${s} له ${L.length}</h2><button class="btn" onclick="go()">بیا پیل</button></div>`;return}
+ const w=L[i];V.innerHTML=`<div class="panel"><div class="sc">کوم آرټیکل لري؟ · نمره ${s}</div><div class="q">${de("___ "+w.g.replace(/^(der|die|das) /,""))}</div><div class="sc">${w.r}</div><div class="row"><button class="btn" data-a="der">der</button><button class="btn" data-a="die">die</button><button class="btn" data-a="das">das</button></div><div class="fb" id="fb"></div></div>`;
+ V.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{const ok=b.dataset.a==art(w);if(ok)s++;$("fb").style.color=ok?"var(--ok)":"var(--bad)";$("fb").innerHTML=ok?"✓ سم دی!":"✗ سم دی: "+de(w.g);V.querySelectorAll("[data-a]").forEach(x=>x.disabled=true);setTimeout(()=>{i++;show()},1000)})};show()}
+function list(){V.innerHTML=`<input id="q" placeholder="🔍 لټون…" style="width:100%;margin-bottom:10px"><div class="w"><table id="t"></table></div>`;
+ const r=()=>{const q=$("q").value.toLowerCase();$("t").innerHTML=pool().filter(w=>(w.g+w.r).toLowerCase().includes(q)).map(w=>`<tr><td>${known.has(w.id)?"✅":""}</td><td>${de(w.g)}</td><td>${w.r}</td><td><button class="sp" data-s="${w.g}">🔊</button></td></tr>`).join("")};
+ r();$("q").oninput=r;$("t").onclick=e=>{if(e.target.dataset.s)say(e.target.dataset.s)}}
+go();
+</script></body></html>

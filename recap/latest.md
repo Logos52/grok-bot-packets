@@ -1,7 +1,8 @@
-# Recap latest · last 7 days (2026-09-21 → 2026-09-28)
-Rebuilt 2026-09-28 noon Asia/Taipei pass. Newest first. LIST files excluded.
+# Recap latest · last 7 days (2026-09-22 → 2026-09-29)
+Rebuilt 2026-09-29 noon Asia/Taipei pass. Newest first. LIST files excluded.
 
 Packets this window (10):
+- 2026-09-29-all-in-ek.md
 - 2026-09-27-moon.md
 - 2026-09-27-elon-cmg.md
 - 2026-09-27-justin-sung.md
@@ -11,7 +12,86 @@ Packets this window (10):
 - 2026-09-24-fern.md
 - 2026-09-23-all-in-scholl.md
 - 2026-09-23-all-in-hilton-pratt.md
-- 2026-09-21-all-in-naveen.md
+## Recap · All-In · 2026-09-28 · Daniel Ek: Life After Spotify, Broken Healthcare Incentives, Catching Disease Early & AI's Potential
+url: https://www.youtube.com/watch?v=JEUboZzZGM4 + https://allinchamathjason.libsyn.com/daniel-ek-life-after-spotify-broken-healthcare-incentives-catching-disease-early-ais-potential  ·  length: 51:16  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Daniel Ek joins the Besties! (00:00)**
+- 00:00 · Jason · All-In Interview hour with Spotify co-founder **Daniel Ek**; Spotify: **20 years**, **>700M** active users, **>300M** premium; Ek became executive chairman **Jan 1** this year. Hosts: Jason + Friedberg.
+- 00:50 · Jason · Known Ek ~20 years; partner (Martin / captions "Shaq") demoed Spotify at an internet summit when subscription music barely existed.
+
+**Starting Spotify: Beating piracy and betting his own money on the record labels (01:14)**
+- 02:00 · Ek · Joke frame: had hair at start, bald by end — hard journey. Founded Spotify **2006** at **23**; pre-iPhone, Facebook college-only, YouTube didn't exist.
+- 02:40 · Ek · Music industry in freefall from piracy (Napster, Kazaa); RIAA sued US downloaders. Sitting in Sweden: "no way to put the genie back in the bottle."
+- 03:04 · Ek · Co-founder **Martin** kept asking "what if" until Ek ran out of reasons not to try — product vision: "all the world's music at your fingertips."
+- 04:02 · Ek · Original global-from-day-one plan laughed at; lucked into Sweden as one of the **worst** music markets — early-2000s ultra-fast broadband, **no iTunes**, industry had lost ~**80%** of revenues → living in the piracy future.
+- 05:04 · Ek · He + partner put **all prior-startup money** on the table and told labels: we'll **guarantee next year's bonus/budget**; if it fails after a year, shut it down — you still made bonus; if it works, you win too. Years of negotiation → launch late **2008** (hit) → UK → US in **2011**.
+- 06:00 · Friedberg · Five years in the lab just to reach the US = lots of pain.
+
+**Neko Health: The Spotify playbook for healthcare, the $499 body scan, and why US healthcare waits until you're sick (06:10)**
+- 06:10 · Ek · Same journey again: **Neko** (captions Neco) founded **2018** in Sweden; **5 years** product R&D; tried Sweden → UK (**2023**) → now US launch — "exact Spotify playbook… this time in healthcare."
+- 06:53 · Ek · High pain tolerance / can't stop building; FT interview ~**2012/13** already talking healthcare — thought about it "a very very long time."
+- 07:58 · Ek · Most things tech-curve up-and-to-the-right; focuses on problems that aren't — healthcare: spending more, worse outcomes.
+- 08:29 · Ek · Had no money until Spotify IPO **2018** → not prolific angel; ~**12–13 years** all-in on Spotify before investing. Tried investing; loved **building** more; dinner with Jason: watching portfolio mismanaged / board impotence is painful.
+- 09:50 · Jason · Thesis: find amazing founder-CEOs, give money, never look again — or if you have agency, do it yourself.
+- 10:20 · Ek · US spends **~18% of GDP** on healthcare — largest budget line; heart disease alone = hundreds of billions / larger than Fortune 10 company revenues for one disease group.
+- 11:13 · Ek · Many causes; big clusters: cardiology/heart, skin cancer/melanoma; major umbrella = **chronic disease**. Discover early → largely preventable, low cost, low suffering — but we don't discover early because we **lack data**.
+- 12:15 · Ek · Industry agrees reactive → preventative; disagreement is how. Ek + co-founder **Hjalmar** (captions Yalmer): starts with **better data** → earlier discovery → virtuous flywheel. Holy grail = predictive multimodal + **longitudinal** data over time (Spotify lesson: more data → better next-song predictions).
+- 13:44 · Ek · Last 20 years: cheap sensors in smartphones + ML/AI → build more sensors + better prediction across modalities.
+- 15:13 · Ek · **Gen 2** experience: **$499**; vertically integrated end-to-end — own facilities, nurses/doctors, diagnostic hardware, software. Mission: "the most valuable hour you can invest in your health."
+- 16:06 · Ek · Visit ≈1 hour: draw blood (**53** markers) → skin rig (**>6,000** hi-res images indexing every mole/lesion/rash) → heart/circulation + grip strength + traditional markers → uninterrupted clinician time reviewing full results same hour. Launching NYC US; expanding months ahead.
+- 17:33 · Jason · How is this novel vs One Medical / Forward-style preventative centers?
+- 17:54 · Ek · Company **8 years** old; **>100,000** scans; publishes yearly outcomes (third-year survey): ~**1%** of members have a **serious undiagnosed** medical situation discovered. Many just improve lifestyle (stress/diet/sleep); worst-health members improve most once they see clear visual status + clinician remedies (e.g. smoking → quit).
+- 19:41 · Ek · Dermatology concrete: average Neko member has **~950 moles** — normal visit can't check all; Neko AI flags risk → human clinician review → staff expert dermatologists. Longitudinal catalog: year-over-year abnormal growth even best doctors can't remember. "Seamlessly… AI and amazing clinicians."
+- 22:14 · Ek · Not day-to-day CEO of Neko — co-founder Hjalmar is "brainchild" / does most work (parallel to Spotify's two CEOs while Ek is exec chair).
+- 22:38 · Jason · $499 cheap vs Function Health / Superpower blood-work ~$350–400; if every American did this yearly/every-other/every-third year, maybe **~2–8%** of total health spend — impact on forward budget?
+- 23:39 · Ek · Too early for conclusive budget math; recommends **annual** (dentist analogy — annual dental yes, annual full health often no). Can be **30–40 min** if no questions; $500 still a lot but good investment if affordable.
+- 25:29 · Jason · Unit economics vs insurance industrial complex?
+- 25:47 · Ek · Vertical integration cuts cost dramatically; **unit economics positive**; some clinics already **profitable** at this price — viable growth engine.
+- 26:34 · Ek · Not exclusive focus but major time sink; still exec chair of Spotify ("my baby"); also **Prima Materia** with partner — ambition "greatest co-founder you could possibly find."
+- 27:16 · Friedberg · Top US affordability: home, education, healthcare; education/housing maybe market-incentive fixable; healthcare structurally harder — e.g. **$15k** ER stitches, **$20k** drug that costs **$30** to make, **$6k** insurance bill for **8-min** / **$200k**/yr doctor. If emperor for a day, top three fixes beyond preventative?
+- 28:38 · Ek · Not US-system expert; classic "**show me the outcome, I'll show you the incentive**." System built for **infectious/acute** disease — incentives fix when symptoms explode; need preventative / long-term.
+- 29:23 · Ek · Employment-tied insurance + short job tenure (**~2–3 years**) → switch insurers → who invests when payback is **10–15–20 years**? Neko approach: **lower cost** so ROI isn't millions speculative over decades (maybe tens of thousands), plus **more multimodal longitudinal data** so efficacy is measurable; publish aggregate outcomes yearly; multi-country (Sweden/UK/US) unusual for healthcare data.
+- 31:44 · Jason · Stockholm vs UK findings (guess: Swedes fitter; UK more CVD/diabetes)?
+- 32:12 · Ek · Still early / **100k** scans — not ready for population-level claims; **4** clinical trials done, **2** underway, **4** more coming; partnering research community. Tech people overestimate healthcare dataset size — **10×–100×** more data would unlock conclusions industry-wide.
+- 33:24 · Jason · Wearables (Oura/Whoop/Fitbit/Apple) + blood correlation — partner or Neko wearable at $9.95?
+- 34:18 · Ek · Already import **Apple Health** (Aura/Whoop often write there); more wearable data → better 360 clinician view. Gen 2 already upgraded diagnostic stack vs typical med-device "R&D then sell same thing 10 years"; expect keep adding diagnostics inside price point — "just the beginning."
+
+**AI: Tech's failure to sell the upside, open vs. closed models, and regulating compute (36:04)**
+- 36:09 · Jason · View on "pacing the frontier"?
+- 36:17 · Ek · Everyone became instant COVID virologists / supply-chain / Ukraine military experts with extreme confidence and often wrong — including experts. Still early innings to steer AI outcomes; every great tech has extreme positives and negatives; **no strong opinion** on pace-or-not.
+- 37:58 · Ek · Healthcare + Spotify show amazing upside: future soundtrack-every-moment personalization; dermatology **950-mole** tracking. Industry does a "**terrible disservice**" amplifying fear and under-selling positive AI examples.
+- 39:27 · Friedberg · Open-source / open-weight value (e.g. **~13¢** vs **~$30**/M output tokens) vs regulation that might restrict open models?
+- 40:13 · Ek · Tech always cycles open↔closed (Windows/Linux, iOS/Android) and nets to **both**. Has positively advocated open-source models and will keep doing so. Spotify uses frontier models **and** fine-tuned own models — both for cost/efficiency and tunability.
+- 41:28 · Ek · Under-discussed factor: **amount of compute**, not just single-model intelligence. **100k GPUs** vs open model on a home PC → different power/risk; hard for home-PC open model to do "enormous cyber" if defenders have Mythos-class models. Suggest looking at **compute as a factor** for guardrails / certification (vs only software classification).
+- 42:44 · Friedberg · Compute as defensibility metric / certify compute access.
+- 42:59 · Jason · California-style static teraflop thresholds for "scary models" were blunt; Cray-era limited access to supercomputers for nukes/crypto as precedent — today a Cray ≈ kitchen appliance power.
+- 44:09 · Friedberg · Strong defensive compute + model equivalency = huge advantage; surprised it's thin in the public debate.
+
+**Back to Spotify: Podcasting's open standards and the Stardoll origin story (44:24)**
+- 44:24 · Jason · Two asks: (1) Spotify podcasting vs open RSS standards — keep supporting open?; (2) **Stardoll** origin (Jason: one of first Stockholm cos funded by US VCs; Ek intern/CTO).
+- 45:22 · Ek · Open and closed coexist. Spotify is a big podcast destination with platform-specific features (e.g. comments) **and** tools that aggregate/distribute podcasts to other platforms via **open standards**. Supporting both; innovating inside a standard needs others to agree → slower.
+- 46:38 · Jason · Feature lobby as 17-year podcaster: (a) live that respects RSS, (b) value4value / donations (PayPal etc.) that podcast OGs want — please support if worthy.
+- 47:18 · Ek · No longer his decision alone (exec chair) — will bring feature requests to the team.
+- 47:31 · Ek · **Stardoll** just before Spotify: entrepreneur **Mattias** + **Index Ventures** (Danny Rimer) took majority of Finnish "Paper Doll Heaven" (Turku) to rebrand/scale; Ek agreed ~**6–12 months** as favor hoping Rimer would fund Spotify (didn't). Page load was ~**4 minutes**; rearchitected + new tech team → **<1s** load → traffic exploded → Sequoia invested → Ek left to build Spotify.
+
+**Close (50:01)**
+- 50:01 · Jason/Ek · Try Neko: waitlist **nekohealth.com**; first US site **300 Lafayette** (NYC); expanding NYC venues + **Miami/Florida** + **DC** + broader US over **12–24 months**.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 05:04 Ek: "we basically took all of our own money… and we said to the record labels what if we would guarantee you… you'd keep your bonus"
+- 12:03 Ek: "if you discover things early… you're actually good… why don't we discover things early… we don't have enough data."
+- 18:10 Ek: "around 1% of our members have a serious underlying medical situation that is undiagnosed that we discover."
+- 28:45 Ek: "show me the outcome, I'll show you the incentive."
+- 39:10 Ek: "we as an industry have done a terrible disservice of not talking about all the really really… crazy positive stuff"
+- 41:45 Ek: "if I'm using a 100,000 GPUs for something… a lot more powerful than if I'm running an open-source model on my home PC."
+
+### One paragraph
+Spotify co-founder **Daniel Ek** (now exec chair) walks the All-In Interview through the **2006–2011** Spotify origin — Sweden's piracy/broadband crisis, years of label deals underwritten with the founders' own money as a bonus/budget **guarantee**, then UK→US — and argues **Neko Health** is the same playbook in healthcare: **2018** Sweden start, five years of product, UK then US, a vertically integrated **$499**/~1-hour Gen-2 scan (53 blood markers, **>6k** skin images indexing ~**950** average moles, heart/grip, same-hour clinician) with **>100k** scans and ~**1%** serious undiagnosed finds, positive unit economics, and a bet that **multimodal longitudinal data** (plus Apple Health wearables) is the missing piece because US care still spends **~18% of GDP** on a system whose incentives were built for acute/infectious disease while employment-tied insurance tenures kill **10–20 year** preventative ROI. On AI he refuses a strong pace-the-frontier stance, says tech under-sells positive uses (music personalization, mole tracking), wants **open and closed** to coexist (Spotify already mixes frontier + fine-tunes), and floats **compute volume** (100k GPUs vs home PC) as an under-discussed guardrail axis; closes with Spotify podcasting supporting open RSS distribution alongside proprietary features, a Jason feature lobby for live-RSS + donations, and the **Stardoll**/Index/Rimer pre-Spotify rewrite that cut **4-min** page loads to **<1s** before he left to build Spotify. US Neko: waitlist nekohealth.com, first clinic **300 Lafayette** NYC, then Miami/DC and national over **12–24 months**.
+
+### Footer
+canary: published 2026-09-28T22:16:00Z (libsyn RSS) / YT uploadDate ~20260928 · fetched 2026-09-29T04:13:00Z · length 51:16 (3076s) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright on port 9229; yt-dlp timedtext HTTP 429 / bot wall even with cookies) → /workspace/recap/tmp-0929/transcript.txt (396 timed lines; ~9435 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Freeberg→Friedberg, Daniel Mack→Daniel Ek, Neco/Niko/nikohalth→Neko/nekohealth, Yalmer→Hjalmar, Kazah→Kazaa, Genie→genie, Startle/Stardal→Stardoll, Turo→Turku, Danny Rhymer→Danny Rimer, Seoia→Sequoia, Horus Strait→Hormuz Strait, Primo Material→Prima Materia, Boro→Oura, Shaq left as captioned for partner refs) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ## Ingest · Moon · 2026-09-27 · When Shawn Ryan Realizes His Podcast is Compromised
 url: https://www.youtube.com/watch?v=G1K_p6vYNVE  ·  length: 28:01  ·  text: captions
@@ -550,70 +630,3 @@ All-In Summit California politics hour: Republican gubernatorial candidate **Ste
 
 ### Footer
 canary: published 2026-09-23T01:44:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-23T04:20:00Z · length 55:43 (3343s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-hilton/transcript.txt (457 timed lines; ~10182 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Helton→Hilton, Bisera/Basera/Bera/Javier Bera→Xavier Becerra, Nitia Ramen→Nithya Raman, fentinel→fentanyl, Langanger→Langer's, Prattton→Pratt, Kami→Kamala where clear) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-## Recap · All-In · 2026-09-21 · Naveen Rao: 4D Computing, AI's Energy Wall & Beating Biology
-url: https://www.youtube.com/watch?v=yAsrMA_ADPc + https://allinchamathjason.libsyn.com/naveen-rao-4d-computing-ais-energy-wall-beating-biology  ·  length: 22:35  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Welcome Naveen Rao (00:00)**
-- 00:03 · Jason (intro) · Frames Naveen Rao as co-founder/CEO of Unconventional AI (AI chip startup); sold two deep-tech companies; definitional outlier founder.
-- 00:47 · Naveen · Anti-doomer: AI among the most transformational technologies humanity has created; will enable the next level of evolution; calls All-In Summit the "anti-doomer conference."
-- 01:16 · Naveen · Bio arc: early home computer ~1978; programmed as a kid; electrical engineer via sci-fi / intelligent-machine itch; later PhD in neuroscience to ask how to make computers intelligent — "technologist's dream" now that the world moved that way.
-- 02:11 · Naveen · Founded first AI chip company **Nervana Systems** (2014) when AI wasn't common vernacular; hard to convince anyone hardware mattered; sold "way too early" to Intel; started and ran Intel's AI group.
-- 02:43 · Naveen · Post-2020: next problem = infrastructure to train bigger LLMs → platformized GPUs at scale (MosaicML path); after ChatGPT (2022) became "best game in town" for people building own models; joined forces with Databricks (2023); claims that biz is ~**¼ of Databricks total revenue** today (with Ali's team).
-- 03:23 · Naveen · Unconventional AI = rethink foundations of how a computer works for singular purpose: **power efficiency**. Goal was 1000× power efficiency in 5 years; revised to **~3.5 years** because deep scientific problems solved faster (ironically via AI). Org is top-to-bottom: theorists (math PhDs / theoretical neuroscience) → models trained on real data → physical circuit architects → systems/boards/product.
-
-**Is energy really the problem? (04:45)**
-- 04:45 · Naveen · Google publicly: **>3.2 quadrillion tokens/month**. At ~**10 J/token** (lower end of model energy spectrum) → ~**12 GW** for one company's AI services alone.
-- 05:20 · Naveen · US puts ~**40 GW** into data centers; US ≈ half of world DC capacity → world under ~**100 GW** DC energy; 12 GW already into one company for AI — bigger models + growing demand → **run out of energy in ~3 years** (his estimate).
-- 05:52 · Naveen · Graphic: exponentially growing AI market (~**$1T by 2030**, maybe bigger) vs linearized energy supply — **the gap is the problem**; solve it with technology, not just more power plants.
-- 06:15 · Naveen · Data-center bottleneck shifted: floor space → networking → GPUs → **energy first** (get the power contract, then fill it with GPUs).
-- 06:40 · Naveen · ~**50% of the cost of serving a token** (e.g. ChatGPT) is energy; rest is hardware/floor-space capex. Business case: monetize every watt **1000× better** than existing hardware.
-- 07:08 · Naveen · Biology as proof: human brain ~**20 W**; monkey-scale brain ~**1 W** (≈ phone); rats/bats on milliwatts; **squirrel brain ~8 mW** yet near-perfect branch-jump accuracy — "you could run over 100 squirrel brains on your phone." Biology = right physical substrate for intelligence.
-- 08:08 · Naveen · Motto: don't truly understand something until you can create it. Synthetic systems are inefficient mainly because energy goes into **moving information around**.
-- 08:28 · Naveen · Human cortex moves ~**16 billion bits/s** across ~13–14B neurons; high-end GPU moves nearly **30 trillion bits/s** in/out of memory (outside chip; inside maybe 10–100× more) — bit-moving drives energy demand.
-- 09:03 · Naveen · Computing lineage: mechanical → analog → digital (1930s–40s). 1945 ENIAC operation still similar to today: external memory + compute, shuttle bits — built for **speed** (artillery trajectories faster than human calculators), not energy efficiency. Selling computers = "twice as fast as that other computer," no energy contemplation.
-- 10:00 · Naveen · Transistors up, but frequency / single-thread / now **efficiency** stopped scaling; Moore's law (smaller transistors → efficiency) has largely ended → must rethink the problem.
-
-**Cutting out the middleman: abstractions, dynamical systems & a new machine (10:24)**
-- 10:24 · Naveen · Intuition: **cut out the middleman**. Stack of lossy abstractions (digital 0/1 over analog transistors → … → neural nets). Brain has neurons but no linear algebra / floating-point — **physics of neurons** gives rise to intelligence; mimic that with semiconductors.
-- 11:28 · Naveen · Computation throughout nature: flocking birds, ant colonies — simple local rules → emergent intelligence (**dynamical systems theory**); brain works this way; they build circuits from these ideas.
-- 12:07 · Naveen · Metronome demo: many metronomes on a rolling plank synchronize via physics alone (scalable to hundreds) — physical dynamical system; can imagine more complex phase patterns from interconnection.
-- 13:07 · Naveen · Can such a system do generative AI? Released open-source simulated model **UNO** — image generation on coupled oscillators; first demo they could scale, train, and get useful image output; state-space trajectories differ by conditioned class (airplane/car/bird).
-- 14:13 · Naveen · Further science: **sparsity** — full all-to-all is N² (10→100 links; 1000→1M); throw away connections and you can **rescue** (even improve) behavior and trainability. Works in simulation **and** real physical systems — rare win: more efficient + more scalable + more performance ("holy grail").
-- 15:28 · Naveen · **First public reveal**: first physical dynamical computer ever built; company earnest from January (no team yet); taped out **June 1**; chip back in lab with results — first images generated from such hardware.
-- 16:09 · Naveen · Not image-only: can do sequence modeling / language models. Energy claim: ~**500 nJ per image** vs GPU-order **mJ** — many orders of magnitude more efficient because it doesn't shuttle information the von Neumann way. Proof positive it works.
-- 16:51 · Naveen · Evolution: CPU → GPU → compute-in-memory = still **von Neumann** (memory↔compute shuttle). Their **dynamical computer**: compute and memory unified; each element is memory; no memory interface.
-- 17:20 · Naveen · Brands this **4D computing**: time dimension in the dynamics + 3 physical dimensions (planar + die stacking).
-- 17:42 · Naveen · Implications of 1000× power efficiency: optimize **intelligence per watt**; thermodynamic limit exists; mammalian brains within ~1–2 orders of that limit; today's silicon ~**10 billion×** away from the limit. In ~3.5 years hit limits of 2D lithography; company goal: **beat biology** — compute everywhere including new robotic forms within ~a decade.
-- 18:33 · Naveen · Shift from giant gigawatt data centers → many small local DCs (more environmental / adaptive); enable billions of robots that dynamically assemble to solve problems.
-- 19:03 · Naveen · If AI is a $1T market and you disrupt cost 1000×, **Jevons paradox**: cheaper → consume more than the price drop; 1000× cheaper → consume more than 1000× → "largest market humanity's ever seen."
-
-**Chamath joins: path to product, porting, team (19:40)**
-- 19:34 · Chamath · Reaction: "extremely unexpected… pretty amazing." Asks path from early chip → hand/product given need for fabs/packagers ecosystem (Jensen earlier).
-- 20:09 · Naveen · Full product within **~2 years**. Product = new **data-center rack/system** (not a phone VM): tokens in / tokens out over network cable; inner guts completely different.
-- 20:32 · Chamath · Will existing model families / KV-cache abstraction world port? How do the rest of us take the efficiency curve?
-- 20:56 · Naveen · Sliding scale: how much better vs how much pain to move; aim to make move compelling. Port at the **model layer**, not ops layer — existing models will work, but fair bit of compute to transition.
-- 21:19 · Chamath · Does matmul exist on this machine?
-- 21:26 · Naveen · Can characterize as matmul analytically, but does **not** implement as matmul — implements as **time-varying behavior**; each timestep analyzable as current-state matrix × transition matrix.
-- 21:38 · Chamath · Who is the team — biologists + physicists?
-- 21:45 · Naveen · Theorists from dynamical-systems world (century-old field) + chip builders who **don't talk to each other** — facilitating that span is one of the hardest parts of the company.
-- 22:06 · Chamath · CUDA-like bridge between theorists and chip people?
-- 22:13 · Naveen · Built Python libraries (not CUDA) — a language to express time-varying elements with **stochastic** behavior.
-- 22:26 · Chamath · Closes: incredibly impressive / ambitious; thanks.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:58 Naveen: "I'm the opposite of a doomer. I think AI is one of the most transformational"
-- 06:56 Naveen: "I get a power contract I need to monetize every watt"
-- 08:08 Naveen: "I don't feel like we truly understand something until we can create it."
-- 15:36 Naveen: "This is actually the first physical dynamical computer ever built."
-- 17:49 Naveen: "So intelligence per watt is what we care about."
-- 18:20 Naveen: "the overarching goal of this company is to beat biology."
-
-### One paragraph
-All-In Summit talk by Unconventional AI CEO Naveen Rao (Nervana→Intel AI, then MosaicML→Databricks): AI will hit an **energy wall** in ~3 years — Google alone at 3.2Q tokens/mo × ~10 J/token ≈ 12 GW, while world DC power is under ~100 GW, and ~50% of token cost is already energy — so the gap vs a ~$1T-by-2030 market must be closed with **1000× more efficient hardware**, not just more power contracts. Thesis: von Neumann machines waste energy shuttling bits (GPU ~30T bits/s vs cortex ~16B); biology (20 W brain; 8 mW squirrel) proves a better substrate. Solution: cut lossy abstractions and build a **dynamical / 4D computer** (oscillator physics + sparsity + die stacking + time) — first physical prototype taped out June 1 after a Jan start, generating images at ~500 nJ vs mJ-class GPUs; open UNO demo preceded it. Goal in ~3.5 years: approach 2D-lithography limits and eventually **beat biology** on intelligence-per-watt, enabling many small local DCs and robot swarms (Jevons: 1000× cheaper compute → largest market ever). Chamath Q&A: ~2-year path to a tokens-in/out data-center rack; port at model layer (not ops); no native matmul — time-varying dynamics; team = dynamical-systems theorists + chip people bridged by Python libs.
-
-### Footer
-canary: published 2026-09-21T21:03:00Z (libsyn RSS) / YT uploadDate 20260921 · fetched 2026-09-22T04:08:00Z · length 22:35 (1355s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en --convert-subs srt → /workspace/recap/tmp-0922-naveen/yAsrMA_ADPc.en.srt · chapters from YT description used as section anchors · ASR name cleanup in body only (Ralph→Rao, Nirvana→Nervana, jewels→joules, gawatt→gigawatt, Chat GBT→ChatGPT, data bricks→Databricks, Alli→Ali, millowatts→milliwatts, vonoyman→von Neumann, Jieven's→Jevons, maple/mapm→matmul, stoastic→stochastic, goomer→doomer in intro clip) · quotes from caption text · no ASR on box · no third-party transcript sites
-

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kanji Flashcards</title>
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --primary-dark: #357abd;
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-color: #2c3e50;
+      --subtext-color: #7f8c8d;
+      --correct-color: #2ecc71;
+      --incorrect-color: #e74c3c;
+      --accent-color: #f39c12;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 15px;
+    }
+
+    .game-container {
+      background-color: var(--card-bg);
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Top Navigation / Selector Bar */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .pack-badge {
+      background-color: #eef5fc;
+      color: var(--primary-color);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .change-pack-btn {
+      background: none;
+      border: 1px solid #dcdfe6;
+      color: var(--subtext-color);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .change-pack-btn:active {
+      background-color: #f0f0f0;
+    }
+
+    /* Stats display */
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: var(--subtext-color);
+      font-size: 15px;
+      background-color: #f8fafc;
+      padding: 10px 16px;
+      border-radius: 12px;
+    }
+
+    .stats span {
+      color: var(--text-color);
+      font-weight: 700;
+    }
+
+    /* Flashcard presentation */
+    .card-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0 25px 0;
+      min-height: 180px;
+    }
+
+    .kanji-display {
+      font-size: 96px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 0;
+      color: var(--text-color);
+      user-select: none;
+    }
+
+    .romaji-display {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    /* Option Tiles */
+    .options {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .tile {
+      flex: 1;
+      aspect-ratio: 1 / 1;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      padding: 8px;
+      word-break: break-word;
+      line-height: 1.2;
+    }
+
+    .tile:hover:not(:disabled) {
+      opacity: 0.95;
+      transform: translateY(-2px);
+    }
+
+    .tile:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .tile.incorrect {
+      background-color: var(--incorrect-color) !important;
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.85;
+    }
+
+    .tile.correct {
+      background-color: var(--correct-color) !important;
+      box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4);
+    }
+
+    /* Pack Selection Screen */
+    .pack-selector-screen h2 {
+      margin-top: 0;
+      color: var(--text-color);
+      font-size: 24px;
+    }
+
+    .pack-selector-screen p {
+      color: var(--subtext-color);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .pack-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pack-card {
+      background-color: #ffffff;
+      border: 2px solid #eef2f7;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pack-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(74, 144, 226, 0.12);
+    }
+
+    .pack-card:active {
+      transform: translateY(0);
+    }
+
+    .pack-info h3 {
+      margin: 0 0 4px 0;
+      font-size: 17px;
+      color: var(--text-color);
+    }
+
+    .pack-info p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--subtext-color);
+    }
+
+    .pack-count {
+      background-color: #f0f4f8;
+      color: var(--primary-color);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    /* Screen utilities */
+    .hidden {
+      display: none !important;
+    }
+
+    .btn-action {
+      margin-top: 20px;
+      background-color: var(--text-color);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+
+    .btn-action:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--subtext-color);
+      border: 1px solid #dcdfe6;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-container">
+    <!-- 1. PACK SELECTOR SCREEN -->
+    <div id="pack-screen" class="pack-selector-screen">
+      <h2>Select Kanji Pack</h2>
+      <p>Choose a 30-card deck to practice N5/N4 Kanji</p>
+      
+      <div class="pack-grid">
+        <div class="pack-card" onclick="selectPack(0)">
+          <div class="pack-info">
+            <h3>Pack 1: Basics & Numbers</h3>
+            <p>1–30 • Fundamental kanji & numbers</p>
+          </div>
+          <span class="pack-count">30 Cards</span>
+        </div>
+
+        <div class="pack-card" onclick="selectPack(1)">
+          <div class="pack-info">
+            <h3>Pack 2: Daily Life</h3>
+            <p>31–60 • Days, directions & common items</p>
+          </div>
+          <span class="pack-count">30 Cards</span>
+        </div>
+
+        <div class="pack-card" onclick="selectPack(2)">
+          <div class="pack-info">
+            <h3>Pack 3: Nature & Time</h3>
+            <p>61–90 • Elements, positions & time</p>
+          </div>
+          <span class="pack-count">30 Cards</span>
+        </div>
+
+        <div class="pack-card" onclick="selectPack(3)">
+          <div class="pack-info">
+            <h3>Pack 4: Actions & People</h3>
+            <p>91–120 • Verbs, family & descriptions</p>
+          </div>
+          <span class="pack-count">30 Cards</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. GAME SCREEN -->
+    <div id="game-screen" class="hidden">
+      <div class="header-bar">
+        <div class="pack-badge" id="current-pack-label">Pack 1</div>
+        <button class="change-pack-btn" onclick="showPackSelection()">Change Pack</button>
+      </div>
+
+      <div class="stats">
+        <div>Progress: <span id="progress">0</span> / <span id="total-cards">30</span></div>
+        <div>First-Try Score: <span id="score">0</span></div>
+      </div>
+
+      <div class="card-area">
+        <div class="kanji-display" id="kanji-display">日</div>
+        <div class="romaji-display" id="romaji-display">nichi / hi</div>
+      </div>
+
+      <div class="options" id="options-container">
+        <!-- 3 side-by-side square buttons injected by JS -->
+      </div>
+    </div>
+
+    <!-- 3. GAME OVER SCREEN -->
+    <div id="game-over-screen" class="hidden">
+      <h2 style="font-size: 28px; margin-bottom: 5px;">🎉 Pack Complete!</h2>
+      <p style="color: var(--subtext-color); margin-top: 0;" id="game-over-pack-title">Pack 1: Basics & Numbers</p>
+      
+      <div style="background: #f8fafc; padding: 20px; border-radius: 16px; margin: 20px 0;">
+        <h3 style="margin: 0 0 10px 0; font-size: 15px; color: var(--subtext-color);">First-Try Accuracy</h3>
+        <p style="font-size: 36px; font-weight: 800; color: var(--primary-color); margin: 0;">
+          <span id="final-score">0</span> / <span id="final-total">30</span>
+        </p>
+        <p style="font-size: 18px; font-weight: 700; color: var(--text-color); margin: 5px 0 0 0;">
+          (<span id="percentage">0</span>%)
+        </p>
+      </div>
+
+      <button class="btn-action" onclick="restartCurrentPack()">Play Pack Again</button>
+      <button class="btn-action btn-secondary" onclick="showPackSelection()">Choose Another Pack</button>
+    </div>
+  </div>
+
+  <script>
+    // 120 Essential N5-N4 Kanji split into 4 packs of 30 cards each
+    const kanjiPacks = [
+      // PACK 1: Basics & Numbers (1-30)
+      {
+        title: "Pack 1: Basics & Numbers",
+        cards: [
+          { kanji: "一", romaji: "ichi", english: "One" },
+          { kanji: "二", romaji: "ni", english: "Two" },
+          { kanji: "三", romaji: "san", english: "Three" },
+          { kanji: "四", romaji: "yon / shi", english: "Four" },
+          { kanji: "五", romaji: "go", english: "Five" },
+          { kanji: "六", romaji: "roku", english: "Six" },
+          { kanji: "七", romaji: "nana / shichi", english: "Seven" },
+          { kanji: "八", romaji: "hachi", english: "Eight" },
+          { kanji: "九", romaji: "kyuu / ku", english: "Nine" },
+          { kanji: "十", romaji: "juu", english: "Ten" },
+          { kanji: "百", romaji: "hyaku", english: "Hundred" },
+          { kanji: "千", romaji: "sen", english: "Thousand" },
+          { kanji: "万", romaji: "man", english: "Ten Thousand" },
+          { kanji: "円", romaji: "en", english: "Yen / Circle" },
+          { kanji: "日", romaji: "nichi / hi", english: "Sun / Day" },
+          { kanji: "月", romaji: "getsu / tsuki", english: "Moon / Month" },
+          { kanji: "火", romaji: "ka / hi", english: "Fire" },
+          { kanji: "水", romaji: "sui / mizu", english: "Water" },
+          { kanji: "木", romaji: "moku / ki", english: "Tree / Wood" },
+          { kanji: "金", romaji: "kin / kane", english: "Gold / Money" },
+          { kanji: "土", romaji: "do / tsuchi", english: "Soil / Earth" },
+          { kanji: "人", romaji: "jin / hito", english: "Person" },
+          { kanji: "子", romaji: "shi / ko", english: "Child" },
+          { kanji: "女", romaji: "jo / onna", english: "Woman" },
+          { kanji: "男", romaji: "dan / otoko", english: "Man" },
+          { kanji: "目", romaji: "moku / me", english: "Eye" },
+          { kanji: "口", romaji: "kou / kuchi", english: "Mouth" },
+          { kanji: "耳", romaji: "ji / mimi", english: "Ear" },
+          { kanji: "手", romaji: "shu / te", english: "Hand" },
+          { kanji: "足", romaji: "soku / ashi", english: "Foot / Leg" }
+        ]
+      },
+      // PACK 2: Daily Life & Directions (31-60)
+      {
+        title: "Pack 2: Daily Life & Directions",
+        cards: [
+          { kanji: "上", romaji: "jou / ue", english: "Up / Above" },
+          { kanji: "下", romaji: "ka / shita", english: "Down / Below" },
+          { kanji: "中", romaji: "chuu / naka", english: "Inside / Middle" },
+          { kanji: "大", romaji: "dai / oo", english: "Big" },
+          { kanji: "小", romaji: "shou / chii", english: "Small" },
+          { kanji: "本", romaji: "hon / moto", english: "Book / Origin" },
+          { kanji: "学", romaji: "gaku / mana", english: "Study / Learn" },
+          { kanji: "校", romaji: "kou", english: "School" },
+          { kanji: "生", romaji: "sei / iki", english: "Life / Student" },
+          { kanji: "年", romaji: "nen / toshi", english: "Year" },
+          { kanji: "何", romaji: "ka / nani", english: "What" },
+          { kanji: "前", romaji: "zen / mae", english: "Front / Before" },
+          { kanji: "後", romaji: "go / ushiro", english: "Back / After" },
+          { kanji: "左", romaji: "sa / hidari", english: "Left" },
+          { kanji: "右", romaji: "u / migi", english: "Right" },
+          { kanji: "東", romaji: "tou / higashi", english: "East" },
+          { kanji: "西", romaji: "sei / nishi", english: "West" },
+          { kanji: "南", romaji: "nan / minami", english: "South" },
+          { kanji: "北", romaji: "hoku / kita", english: "North" },
+          { kanji: "外", romaji: "gai / soto", english: "Outside" },
+          { kanji: "国", romaji: "koku / kuni", english: "Country" },
+          { kanji: "語", romaji: "go / kata", english: "Language" },
+          { kanji: "名", romaji: "mei / na", english: "Name" },
+          { kanji: "車", romaji: "sha / kuruma", english: "Car" },
+          { kanji: "駅", romaji: "eki", english: "Station" },
+          { kanji: "電", romaji: "den", english: "Electricity" },
+          { kanji: "天", romaji: "ten / ama", english: "Heaven / Sky" },
+          { kanji: "気", romaji: "ki", english: "Spirit / Mind" },
+          { kanji: "雨", romaji: "u / ame", english: "Rain" },
+          { kanji: "川", romaji: "sen / kawa", english: "River" }
+        ]
+      },
+      // PACK 3: Nature, Time & Properties (61-90)
+      {
+        title: "Pack 3: Nature & Time",
+        cards: [
+          { kanji: "山", romaji: "san / yama", english: "Mountain" },
+          { kanji: "花", romaji: "ka / hana", english: "Flower" },
+          { kanji: "空", romaji: "kuu / sora", english: "Sky / Empty" },
+          { kanji: "海", romaji: "kai / umi", english: "Sea / Ocean" },
+          { kanji: "時", romaji: "ji / toki", english: "Time / Hour" },
+          { kanji: "分", romaji: "fun / wakari", english: "Minute / Understand" },
+          { kanji: "半", romaji: "han", english: "Half" },
+          { kanji: "今", romaji: "kon / ima", english: "Now" },
+          { kanji: "朝", romaji: "chou / asa", english: "Morning" },
+          { kanji: "昼", romaji: "chuu / hiru", english: "Noon / Daytime" },
+          { kanji: "夜", romaji: "ya / yoru", english: "Night" },
+          { kanji: "白", romaji: "haku / shiro", english: "White" },
+          { kanji: "黒", romaji: "koku / kuro", english: "Black" },
+          { kanji: "赤", romaji: "seki / aka", english: "Red" },
+          { kanji: "青", romaji: "sei / ao", english: "Blue" },
+          { kanji: "高", romaji: "kou / takai", english: "High / Expensive" },
+          { kanji: "安", romaji: "an / yasui", english: "Cheap / Peaceful" },
+          { kanji: "新", romaji: "shin / atarashii", english: "New" },
+          { kanji: "古", romaji: "ko / furui", english: "Old" },
+          { kanji: "長", romaji: "chou / nagai", english: "Long / Chief" },
+          { kanji: "多", romaji: "ta / oozui", english: "Many / Much" },
+          { kanji: "少", romaji: "shou / sukosai", english: "Few / Little" },
+          { kanji: "早", romaji: "sou / hayai", english: "Early" },
+          { kanji: "広", romaji: "kou / hiroi", english: "Wide / Spacious" },
+          { kanji: "店", romaji: "ten / mise", english: "Shop / Store" },
+          { kanji: "屋", romaji: "oku / ya", english: "Roof / Shop" },
+          { kanji: "道", romaji: "dou / michi", english: "Road / Way" },
+          { kanji: "町", romaji: "chou / machi", english: "Town" },
+          { kanji: "社", romaji: "sha / yashiro", english: "Company / Shrine" },
+          { kanji: "友", romaji: "yuu / tomo", english: "Friend" }
+        ]
+      },
+      // PACK 4: Actions & People (91-120)
+      {
+        title: "Pack 4: Actions & People",
+        cards: [
+          { kanji: "見", romaji: "ken / miru", english: "See / Watch" },
+          { kanji: "行", romaji: "kou / iku", english: "Go" },
+          { kanji: "来", romaji: "rai / kuru", english: "Come" },
+          { kanji: "食", romaji: "shoku / taberu", english: "Eat" },
+          { kanji: "飲", romaji: "in / nomu", english: "Drink" },
+          { kanji: "買", romaji: "bai / kau", english: "Buy" },
+          { kanji: "書", romaji: "sho / kaku", english: "Write" },
+          { kanji: "読", romaji: "doku / yomu", english: "Read" },
+          { kanji: "聞", romaji: "bun / kiku", english: "Hear / Listen" },
+          { kanji: "話", romaji: "wa / hanasu", english: "Speak / Talk" },
+          { kanji: "立", romaji: "ritsu / tatsu", english: "Stand" },
+          { kanji: "座", romaji: "za / suwaru", english: "Sit" },
+          { kanji: "出", romaji: "shutsu / deru", english: "Exit / Leave" },
+          { kanji: "入", romaji: "nyuu / hairu", english: "Enter / Put in" },
+          { kanji: "会", romaji: "kai / au", english: "Meet" },
+          { kanji: "言", romaji: "gen / iu", english: "Say / Tell" },
+          { kanji: "思", romaji: "shi / omou", english: "Think" },
+          { kanji: "作", romaji: "saku / tsukuru", english: "Make" },
+          { kanji: "使", romaji: "shi / tsukau", english: "Use" },
+          { kanji: "知", romaji: "chi / shiru", english: "Know" },
+          { kanji: "住", romaji: "juu / sumu", english: "Reside / Live" },
+          { kanji: "売", romaji: "bai / uru", english: "Sell" },
+          { kanji: "待", romaji: "tai / matsu", english: "Wait" },
+          { kanji: "持", romaji: "ji / motsu", english: "Hold / Have" },
+          { kanji: "父", romaji: "fu / chichi", english: "Father" },
+          { kanji: "母", romaji: "bo / haha", english: "Mother" },
+          { kanji: "兄", romaji: "kei / ani", english: "Older Brother" },
+          { kanji: "弟", romaji: "dai / otouto", english: "Younger Brother" },
+          { kanji: "姉", romaji: "shi / ane", english: "Older Sister" },
+          { kanji: "妹", romaji: "mai / imouto", english: "Younger Sister" }
+        ]
+      }
+    ];
+
+    let currentPackIndex = 0;
+    let activeDeck = [];
+    let currentIndex = 0;
+    let firstTryScore = 0;
+    let isFirstAttempt = true;
+
+    // DOM References
+    const packScreen = document.getElementById('pack-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const gameOverScreen = document.getElementById('game-over-screen');
+    
+    const currentPackLabel = document.getElementById('current-pack-label');
+    const kanjiDisplay = document.getElementById('kanji-display');
+    const romajiDisplay = document.getElementById('romaji-display');
+    const optionsContainer = document.getElementById('options-container');
+    
+    const progressEl = document.getElementById('progress');
+    const totalCardsEl = document.getElementById('total-cards');
+    const scoreEl = document.getElementById('score');
+    
+    const gameOverPackTitle = document.getElementById('game-over-pack-title');
+    const finalScoreEl = document.getElementById('final-score');
+    const finalTotalEl = document.getElementById('final-total');
+    const percentageEl = document.getElementById('percentage');
+
+    function shuffleArray(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function showPackSelection() {
+      packScreen.classList.remove('hidden');
+      gameScreen.classList.add('hidden');
+      gameOverScreen.classList.add('hidden');
+    }
+
+    function selectPack(packIdx) {
+      currentPackIndex = packIdx;
+      startPackGame();
+    }
+
+    function restartCurrentPack() {
+      startPackGame();
+    }
+
+    function startPackGame() {
+      const selectedPack = kanjiPacks[currentPackIndex];
+      activeDeck = shuffleArray(selectedPack.cards);
+      currentIndex = 0;
+      firstTryScore = 0;
+
+      currentPackLabel.textContent = `Pack ${currentPackIndex + 1}`;
+      totalCardsEl.textContent = activeDeck.length;
+      scoreEl.textContent = firstTryScore;
+
+      packScreen.classList.add('hidden');
+      gameOverScreen.classList.add('hidden');
+      gameScreen.classList.remove('hidden');
+
+      loadCard();
+    }
+
+    function loadCard() {
+      isFirstAttempt = true;
+      progressEl.textContent = currentIndex + 1;
+
+      const currentCard = activeDeck[currentIndex];
+      kanjiDisplay.textContent = currentCard.kanji;
+      romajiDisplay.textContent = currentCard.romaji;
+
+      // Pool distractor answers from ALL 120 cards to ensure variety
+      const allCardsCombined = kanjiPacks.flatMap(pack => pack.cards);
+      const otherCards = allCardsCombined.filter(item => item.english !== currentCard.english);
+      const shuffledOthers = shuffleArray(otherCards);
+      const wrongOptions = [shuffledOthers[0].english, shuffledOthers[1].english];
+
+      // Combine right answer and two wrong options, then shuffle
+      const choices = shuffleArray([currentCard.english, ...wrongOptions]);
+
+      optionsContainer.innerHTML = '';
+      choices.forEach(optionText => {
+        const button = document.createElement('button');
+        button.classList.add('tile');
+        button.textContent = optionText;
+        button.onclick = () => checkAnswer(button, optionText, currentCard.english);
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedButton, selectedEnglish, correctEnglish) {
+      if (selectedEnglish === correctEnglish) {
+        selectedButton.classList.add('correct');
+        
+        if (isFirstAttempt) {
+          firstTryScore++;
+          scoreEl.textContent = firstTryScore;
+        }
+
+        // Lock all buttons during transition
+        const buttons = optionsContainer.querySelectorAll('.tile');
+        buttons.forEach(btn => btn.disabled = true);
+
+        setTimeout(() => {
+          currentIndex++;
+          if (currentIndex < activeDeck.length) {
+            loadCard();
+          } else {
+            endGame();
+          }
+        }, 500);
+
+      } else {
+        selectedButton.classList.add('incorrect');
+        selectedButton.disabled = true;
+        isFirstAttempt = false;
+      }
+    }
+
+    function endGame() {
+      gameScreen.classList.add('hidden');
+      gameOverScreen.classList.remove('hidden');
+
+      const packTitle = kanjiPacks[currentPackIndex].title;
+      gameOverPackTitle.textContent = packTitle;
+
+      finalScoreEl.textContent = firstTryScore;
+      finalTotalEl.textContent = activeDeck.length;
+      
+      const percentage = Math.round((firstTryScore / activeDeck.length) * 100);
+      percentageEl.textContent = percentage;
+    }
+  </script>
+</body>
+</html>

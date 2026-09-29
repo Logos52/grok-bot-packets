@@ -1,0 +1,12 @@
+URL: https://www.ithome.com.tw/news/179224
+TITLE: Google AI代理PageBreak找出自家Web應用程式逾500個XSS漏洞
+AUTHOR: 王珮瑤
+PUBLISHED: 2026-09-25
+SOURCE: iThome
+
+Google近日公布內部AI代理
+PageBreak的漏洞研究成果
+，這套AI代理由Google產品安全團隊開發，用於尋找Google第一方Web應用程式的安全漏洞。目前PageBreak已在這些Web應用程式找出超過500個跨站指令碼（XSS）漏洞，部分漏洞出現在敏感網域。PageBreak找出疑似漏洞後，會交由專門的驗證工具執行實際酬載，確認漏洞能否成功利用。Google表示，這項驗證機制讓PageBreak的誤判率接近零。
+大型語言模型（LLM）雖能協助尋找漏洞，但也可能提出大量疑似漏洞，其中包含誤判，產品團隊仍需逐一確認這些問題能否實際利用。PageBreak因此使用非AI撰寫的專用工具，驗證XSS、SQL注入、路徑穿越、遠端程式碼執行（RCE）及伺服器端請求偽造（SSRF）等疑似漏洞。PageBreak不會將這類尚未驗證的疑似漏洞送交產品團隊，藉此減少產品團隊處理誤判結果的負擔。
+Google也公布PageBreak找出的3個高嚴重性漏洞案例
+，這3個案例涉及的應用程式過去都曾由Google資安工程師及外部漏洞研究人員檢查，但當時並未發現相關漏洞。其中，PageBreak在admin.google.com發現一項XSS，但攻擊者若要成功利用漏洞，請求必須帶有有效簽章。PageBreak接著找到另一個端點，可讓該應用程式替帶有惡意內容的參數產生有效簽章。攻擊者便能取得這組簽章，用來建立漏洞利用URL，繞過原本的簽章保護並觸發XSS。Google認為，這類案例顯示LLM已逐漸能找出需要經過多個步驟才能成功利用的漏洞。
