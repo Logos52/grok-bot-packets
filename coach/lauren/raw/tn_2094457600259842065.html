@@ -1,0 +1,559 @@
+
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="shortcut icon" type="image/x-icon" href="/static/main/images/favicons/favicon.7d98ea7813bb.ico" /><style type="text/css">@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:400;src:url(/cf-fonts/v/inter/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:500;src:url(/cf-fonts/v/inter/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:600;src:url(/cf-fonts/v/inter/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:700;src:url(/cf-fonts/v/inter/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Inter';font-style:normal;font-weight:800;src:url(/cf-fonts/v/inter/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/symbols2/wght/normal.woff2);unicode-range:U+2000-2001,U+2004-2008,U+200A,U+23B8-23BD,U+2500-259F;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Fira Code';font-style:normal;font-weight:400;src:url(/cf-fonts/v/fira-code/5.2.7/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}</style><link href="/static/main/css/tailwind.702c22842d8a.css" rel="stylesheet" /><script src="https://unpkg.com/lucide@latest"></script><link rel="manifest" href="https://threadnavigator.com/site.webmanifest" /><style>
+  /* Theme colors live in tailwind.config.js (daisyui.themes) — single source of
+     truth since Sep 2026. Do NOT re-add inline [data-theme] overrides here; edit
+     the config and run `npm run build:css` instead. */
+  body { font-family: 'Inter', system-ui, sans-serif; }
+  ::selection {
+    background-color: rgba(99, 102, 241, 0.25); /* soft indigo, matches primary */
+    color: inherit;
+  }
+  /* Fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  ins.adsbygoogle[data-ad-status="unfilled"] {
+    display: none !important;
+  }
+</style><script>
+  (function () {
+    try {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  })();
+</script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4832350077542156"
+    crossorigin="anonymous"></script><title>The Complete Guide to pstack Pt. 1 — X article by @poteto | Thread Navigator</title><meta name="description" content="The Complete Guide to pstack Pt. 1 — by @poteto"><link rel="canonical" href="https://threadnavigator.com/thread/2094457600259842065/"><meta property="og:url" content="https://threadnavigator.com/thread/2094457600259842065/"><meta property="og:title" content="The Complete Guide to pstack Pt. 1"><meta property="og:description" content="The Complete Guide to pstack Pt. 1 — by @poteto"><meta property="og:type" content="article"><meta property="og:image" content="https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg"><meta name="twitter:image" content="https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg"><meta name="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Thread Navigator"><meta name="twitter:title" content="The Complete Guide to pstack Pt. 1"><meta name="twitter:description" content="The Complete Guide to pstack Pt. 1 — by @poteto"><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Complete Guide to pstack Pt. 1",
+  "description": "The Complete Guide to pstack Pt. 1 — by @poteto",
+  "image": "https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg",
+  "url": "https://threadnavigator.com/thread/2094457600259842065/",
+  "datePublished": "2026-09-01T02:09:44.578872+00:00",
+  "author": {
+    "@type": "Person",
+    "name": "@poteto"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Thread Navigator",
+    "url": "https://threadnavigator.com/"
+  }
+}
+</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://threadnavigator.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Topics",
+      "item": "https://threadnavigator.com/thread/topics/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tech \u0026 Development",
+      "item": "https://threadnavigator.com/thread/topics/tech-development/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "The Complete Guide to pstack Pt. 1",
+      "item": "https://threadnavigator.com/thread/2094457600259842065/"
+    }
+    
+  ]
+}
+</script></head><body class="min-h-screen bg-base-100 text-base-content"><header class="sticky top-0 z-50 bg-base-100/80 backdrop-blur-lg border-b border-base-200"><div class="max-w-6xl mx-auto px-4"><div class="navbar p-0 min-h-16"><!-- Logo --><div class="navbar-start"><a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight text-base-content hover:text-primary transition-colors no-underline"><i data-lucide="compass" class="w-6 h-6 text-primary"></i><span>Thread Navigator</span></a></div><!-- Center nav (desktop) --><div class="navbar-center hidden lg:flex"><ul class="flex items-center gap-1"><li><a href="/" class="btn btn-ghost btn-sm rounded-lg font-semibold gap-2 "><i data-lucide="home" class="w-4 h-4"></i> Home
+            </a></li><li><a href="/thread/" class="btn btn-ghost btn-sm rounded-lg font-semibold gap-2 text-primary bg-primary/10"><i data-lucide="compass" class="w-4 h-4"></i> Explore
+            </a></li><li><div class="dropdown dropdown-hover dropdown-bottom"><label tabindex="0" class="btn btn-ghost btn-sm rounded-lg font-semibold gap-2 "><i data-lucide="layers" class="w-4 h-4"></i> Topics
+                <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-60"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg mt-1 w-64 p-2 z-50"><li><a href="/thread/topics/ai-ml/" class="rounded-xl gap-3"><span>🤖</span> AI &amp; Machine Learning
+                    <span class="badge badge-ghost badge-xs ml-auto">1827</span></a></li><li><a href="/thread/topics/science-research/" class="rounded-xl gap-3"><span>🔬</span> Science &amp; Research
+                    <span class="badge badge-ghost badge-xs ml-auto">1728</span></a></li><li><a href="/thread/topics/finance-crypto/" class="rounded-xl gap-3"><span>💰</span> Finance &amp; Crypto
+                    <span class="badge badge-ghost badge-xs ml-auto">1460</span></a></li><li><a href="/thread/topics/news-politics/" class="rounded-xl gap-3"><span>📰</span> News &amp; Politics
+                    <span class="badge badge-ghost badge-xs ml-auto">1320</span></a></li><li><a href="/thread/topics/personal-life/" class="rounded-xl gap-3"><span>💭</span> Personal &amp; Life
+                    <span class="badge badge-ghost badge-xs ml-auto">1221</span></a></li><li><a href="/thread/topics/tech-development/" class="rounded-xl gap-3"><span>💻</span> Tech &amp; Development
+                    <span class="badge badge-ghost badge-xs ml-auto">1163</span></a></li><li><a href="/thread/topics/productivity/" class="rounded-xl gap-3"><span>⚡</span> Productivity
+                    <span class="badge badge-ghost badge-xs ml-auto">1047</span></a></li><li><a href="/thread/topics/sports/" class="rounded-xl gap-3"><span>🏆</span> Sports
+                    <span class="badge badge-ghost badge-xs ml-auto">1010</span></a></li><li class="border-t border-base-200 mt-1 pt-1"><a href="/thread/topics/" class="rounded-xl gap-3 text-primary font-semibold"><i data-lucide="compass" class="w-4 h-4"></i> All Topics
+                  </a></li></ul></div></li><li><a href="/videos/" class="btn btn-ghost btn-sm rounded-lg font-semibold gap-2 "><i data-lucide="video" class="w-4 h-4 text-error"></i> Videos
+            </a></li><li><a href="/mcp-server/" class="btn btn-ghost btn-sm rounded-lg font-semibold gap-2 "><i data-lucide="bot" class="w-4 h-4"></i> AI Agents
+            </a></li></ul></div><!-- Right side --><div class="navbar-end gap-2"><!-- Dark mode toggle --><label class="swap swap-rotate btn btn-ghost btn-circle btn-sm" title="Toggle theme"><input type="checkbox" id="toggleDarkMode" /><i data-lucide="sun" class="swap-on w-5 h-5"></i><i data-lucide="moon" class="swap-off w-5 h-5"></i></label><!-- User dropdown --><div class="dropdown dropdown-end"><label tabindex="0" class="btn btn-ghost btn-circle btn-sm" aria-label="Account menu"><i data-lucide="user" class="w-5 h-5"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg mt-3 w-56 p-2 z-50"><li><a href="/login/" class="rounded-xl gap-3"><i data-lucide="log-in" class="w-4 h-4"></i> Log In</a></li><li><a href="/register/" class="rounded-xl gap-3 text-primary font-bold"><i data-lucide="user-plus" class="w-4 h-4"></i> Sign Up</a></li></ul></div><!-- Mobile hamburger --><div class="dropdown dropdown-end lg:hidden"><label tabindex="0" class="btn btn-ghost btn-circle btn-sm"><i data-lucide="menu" class="w-5 h-5"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg mt-3 w-56 p-2 z-50"><li><a href="/" class="rounded-xl gap-3 "><i data-lucide="home" class="w-4 h-4"></i> Home</a></li><li><a href="/thread/" class="rounded-xl gap-3 text-primary"><i data-lucide="compass" class="w-4 h-4"></i> Explore</a></li><li><a href="/thread/topics/" class="rounded-xl gap-3 "><i data-lucide="layers" class="w-4 h-4"></i> Topics</a></li><li><a href="/videos/" class="rounded-xl gap-3 "><i data-lucide="video" class="w-4 h-4 text-error"></i> Videos</a></li><li><a href="/mcp-server/" class="rounded-xl gap-3 "><i data-lucide="bot" class="w-4 h-4"></i> AI Agents</a></li></ul></div></div></div></div></header><div class="max-w-6xl mx-auto px-4 py-8 min-h-screen"><main><!-- Progress bar (task progress: PDF/unroll generation) --><div id="progressBar" class="fixed top-0 left-0 right-0 z-50 h-1.5 bg-base-200" style="display: none;"><div class="progress-bar h-full bg-primary transition-all duration-300 rounded-r-full" style="width: 0%"></div></div><!-- Reading progress bar (scroll position) --><div id="readingProgressBar" class="fixed top-0 left-0 right-0 h-1 bg-primary/20 z-50 hidden"><div class="h-full bg-primary transition-all duration-150" style="width: 0%;"></div></div><!-- Reading font-size steps: applied via #thread[data-font-size] set by applyReadingFontSize() --><style>
+    #thread[data-font-size="sm"] .reading-text { font-size: 1rem; line-height: 1.5rem; }
+    #thread[data-font-size="lg"] .reading-text { font-size: 1.25rem; line-height: 1.75rem; }
+    #thread[data-font-size="sm"] .reading-chat-bubble { font-size: 0.875rem; line-height: 1.25rem; }
+    #thread[data-font-size="lg"] .reading-chat-bubble { font-size: 1.125rem; line-height: 1.75rem; }
+    #thread[data-font-size="sm"] .prose p,
+    #thread[data-font-size="sm"] .prose blockquote,
+    #thread[data-font-size="sm"] .prose li { font-size: 0.875rem; line-height: 1.5rem; }
+    #thread[data-font-size="lg"] .prose p,
+    #thread[data-font-size="lg"] .prose blockquote,
+    #thread[data-font-size="lg"] .prose li { font-size: 1.25rem; line-height: 1.75rem; }
+    #thread[data-font-size="sm"] .quote-card-text { font-size: 0.875rem; line-height: 1.5rem; }
+    #thread[data-font-size="md"] .quote-card-text { font-size: 1rem; line-height: 1.75rem; }
+    #thread[data-font-size="lg"] .quote-card-text { font-size: 1.125rem; line-height: 1.75rem; }
+
+    /* Reading Mode: distraction-free paper view */
+    body.reading-mode {
+        background-color: #f4ecd8 !important;
+        color: #5f4b32 !important;
+    }
+    body.reading-mode header,
+    body.reading-mode .thread-sidebar,
+    body.reading-mode .adsense-slot,
+    body.reading-mode footer,
+    body.reading-mode .thread-related-content {
+        display: none !important;
+    }
+    body.reading-mode #exitReadingModeBtn,
+    body.reading-mode #readingModeToolbar {
+        display: inline-flex !important;
+    }
+    body.reading-mode .thread-main-column {
+        max-width: 42rem;
+        padding-top: 3rem;
+    }
+    body.reading-mode .text-base-content,
+    body.reading-mode .prose,
+    body.reading-mode .reading-text,
+    body.reading-mode .chat-bubble {
+        color: #5f4b32 !important;
+    }
+    body.reading-mode .bg-base-100 {
+        background-color: #f4ecd8 !important;
+    }
+    body.reading-mode .bg-base-200,
+    body.reading-mode .chat-bubble {
+        background-color: #e9e0c8 !important;
+    }
+    body.reading-mode .text-primary,
+    body.reading-mode .prose a {
+        color: #7c6b45 !important;
+    }
+    body.reading-mode .border-primary {
+        border-color: rgba(95, 75, 50, 0.2) !important;
+    }
+    body.reading-mode .border-base-200,
+    body.reading-mode .border-base-300 {
+        border-color: rgba(95, 75, 50, 0.1) !important;
+    }
+    body.reading-mode .ring-base-300 {
+        --tw-ring-color: rgba(95, 75, 50, 0.2) !important;
+    }
+    body.reading-mode .highlight-btn {
+        background-color: rgba(244, 236, 216, 0.9) !important;
+    }
+    body.reading-mode .chat-bubble {
+        border-color: rgba(95, 75, 50, 0.1) !important;
+    }
+    body.reading-mode .chat-bubble[class*="bg-warning/"],
+    body.reading-mode .highlight-content[class*="bg-warning/"] {
+        background-color: rgba(217, 119, 6, 0.15) !important;
+        border-color: rgba(217, 119, 6, 0.2) !important;
+    }
+
+    /* Muted metadata colors */
+    body.reading-mode [class*="text-base-content/30"],
+    body.reading-mode [class*="text-base-content/40"] {
+        color: rgba(95, 75, 50, 0.4) !important;
+    }
+    body.reading-mode [class*="text-base-content/50"],
+    body.reading-mode [class*="text-base-content/60"] {
+        color: rgba(95, 75, 50, 0.5) !important;
+    }
+    body.reading-mode [class*="text-base-content/70"] {
+        color: rgba(95, 75, 50, 0.7) !important;
+    }
+    body.reading-mode [class*="text-base-content/85"] {
+        color: rgba(95, 75, 50, 0.85) !important;
+    }
+    body.reading-mode [class*="text-base-content/90"] {
+        color: rgba(95, 75, 50, 0.9) !important;
+    }
+
+    /* Quote cards */
+    body.reading-mode .quote-card {
+        background-color: rgba(95, 75, 50, 0.06) !important;
+        border-color: rgba(95, 75, 50, 0.15) !important;
+    }
+    body.reading-mode .quote-card [class*="bg-primary/"] {
+        background-color: rgba(95, 75, 50, 0.1) !important;
+    }
+
+    /* Floating buttons in reading mode */
+    body.reading-mode #exitReadingModeBtn,
+    body.reading-mode #exitReadingModeBtn:hover {
+        background-color: #e9e0c8 !important;
+        color: #5f4b32 !important;
+        border-color: rgba(95, 75, 50, 0.2) !important;
+        --tw-shadow-color: rgba(95, 75, 50, 0.1);
+    }
+    body.reading-mode #readingModeToolbar .btn {
+        color: #5f4b32 !important;
+    }
+    body.reading-mode #readingModeToolbar .btn-active {
+        background-color: #e9e0c8 !important;
+        color: #5f4b32 !important;
+        border-color: rgba(95, 75, 50, 0.2) !important;
+    }
+    body.reading-mode .menu-title {
+        color: rgba(95, 75, 50, 0.5) !important;
+        opacity: 1 !important;
+    }
+    body.reading-mode .menu li:not(.menu-title) > :not(ul, .menu-title, .btn):hover,
+    body.reading-mode .menu li:not(.menu-title) > :not(ul, .menu-title, .btn):focus,
+    body.reading-mode .menu li:not(.menu-title) > :not(ul, .menu-title, .btn):active {
+        background-color: rgba(95, 75, 50, 0.1) !important;
+        color: #5f4b32 !important;
+    }
+
+    /* Line spacing */
+    body.reading-mode.reading-line-spacing-compact .prose p,
+    body.reading-mode.reading-line-spacing-compact .reading-text,
+    body.reading-mode.reading-line-spacing-compact .chat-bubble {
+        line-height: 1.4 !important;
+    }
+    body.reading-mode.reading-line-spacing-normal .prose p,
+    body.reading-mode.reading-line-spacing-normal .reading-text,
+    body.reading-mode.reading-line-spacing-normal .chat-bubble {
+        line-height: 1.75 !important;
+    }
+    body.reading-mode.reading-line-spacing-spacious .prose p,
+    body.reading-mode.reading-line-spacing-spacious .reading-text,
+    body.reading-mode.reading-line-spacing-spacious .chat-bubble {
+        line-height: 2.25 !important;
+    }
+</style><div class="flex flex-col lg:flex-row gap-6"><!-- Main content --><div class="thread-main-column flex-1 lg:max-w-3xl mx-auto w-full"><button id="exitReadingModeBtn" type="button" onclick="toggleReadingMode()" class="fixed top-2 left-2 sm:top-4 sm:left-4 z-50 btn btn-primary btn-xs sm:btn-sm rounded-xl gap-1 sm:gap-2 hidden"><i data-lucide="x" class="w-3 h-3 sm:w-4 sm:h-4"></i><span class="hidden sm:inline">Exit Reading Mode</span><span class="sm:hidden">Exit</span></button><div id="readingModeToolbar" class="fixed top-2 right-2 sm:top-4 sm:right-4 z-50 hidden items-center gap-1 sm:gap-2"><div class="dropdown dropdown-end"><label tabindex="0" class="btn btn-ghost btn-xs sm:btn-sm rounded-full px-2"><i data-lucide="type" class="w-3 h-3 sm:w-4 sm:h-4"></i><i data-lucide="chevron-down" class="w-3 h-3 sm:w-4 sm:h-4"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg w-48 p-2 z-50"><li class="menu-title text-xs uppercase opacity-50">Font size</li><li class="flex"><div class="join w-full justify-between"><button type="button" class="join-item btn btn-ghost btn-xs flex-1" data-font-step="sm">A⁻</button><button type="button" class="join-item btn btn-ghost btn-xs flex-1" data-font-step="md">A</button><button type="button" class="join-item btn btn-ghost btn-xs flex-1" data-font-step="lg">A⁺</button></div></li><li class="menu-title text-xs uppercase opacity-50 mt-2">Line spacing</li><li><button type="button" class="justify-between" onclick="setReadingLineSpacing('compact')">Compact</button></li><li><button type="button" class="justify-between" onclick="setReadingLineSpacing('normal')">Normal</button></li><li><button type="button" class="justify-between" onclick="setReadingLineSpacing('spacious')">Spacious</button></li></ul></div></div><article id="thread"
+                 class="fade-in"
+                 data-thread-slug="2094457600259842065"
+                 data-total-posts="82"><script>
+        (function() {
+            try {
+                window.applyReadingFontSize = function(size, proseEl) {
+                    var thread = document.getElementById('thread');
+                    if (thread) thread.setAttribute('data-font-size', size);
+                    var article = proseEl || document.querySelector('#thread > article.prose');
+                    if (article) {
+                        article.classList.remove('prose-lg', 'prose-xl');
+                        if (size === 'md') article.classList.add('prose-lg');
+                        else if (size === 'lg') article.classList.add('prose-xl');
+                    }
+                };
+                window.applyReadingFontSize(localStorage.getItem('readingFontSize') || 'md');
+            } catch (e) {}
+        })();
+        </script><header class="mb-8"><div class="flex flex-wrap items-center gap-2 mb-3"><a href="/thread/topics/tech-development/" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-base-200 hover:bg-base-300 transition-colors text-xs font-bold no-underline"><span>💻</span> Tech &amp; Development
+                        </a></div><h1 class="text-2xl lg:text-4xl font-extrabold tracking-tight mb-4">The Complete Guide to pstack Pt. 1</h1><div class="flex justify-between items-center flex-wrap gap-3"><a href="/author/poteto/" class="flex items-center gap-2.5 no-underline hover:opacity-80 transition-opacity"><div class="avatar"><div class="w-9 h-9 rounded-full ring-1 ring-base-300"><img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_x96.jpg" alt="@poteto" class="object-cover" onerror="this.src='/static/main/images/favicons/favicon.7d98ea7813bb.ico'"></div></div><div class="flex flex-col leading-tight"><span class="text-base font-bold">lauren</span><span class="text-xs text-base-content/50">@poteto</span></div></a><div class="w-full sm:w-auto flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-base-content/50"><span class="flex items-center gap-1 whitespace-nowrap"><i data-lucide="eye" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                                2100 views
+                            </span><span class="flex items-center gap-1 whitespace-nowrap"><i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                                Sep 01, 2026
+                            </span><span class="flex items-center gap-1 whitespace-nowrap"><i data-lucide="clock" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+                                ~15 min read
+                            </span></div></div></header><div class="adsense-slot"><div class="my-4"><div class="text-center text-xs text-base-content/30 mb-2">Advertisement</div><!-- threadnavigator-allrounder-1 --><ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4832350077542156"
+             data-ad-slot="1215638659"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins><script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script></div></div><!-- Article: prose-style rendering --><article class="prose prose-lg prose-a:text-primary prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-primary-focus max-w-none mb-6"><script>
+                (function() {
+                    try {
+                        var el = document.currentScript.parentElement;
+                        if (window.applyReadingFontSize) window.applyReadingFontSize(localStorage.getItem('readingFontSize') || 'md', el);
+                    } catch (e) {}
+                })();
+                </script><div id="post-0" data-tweet-index="0" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">In this series of posts, I'm going to show you how I use <b><a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow">pstack</a></b><a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow"></a>, my personal set of skills for doing rigorous engineering work. It's allowed me to ship 2,000 PRs a month to production with high confidence.</p><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg" data-lightbox-url="https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HQ_0MA_aMAA9zMt.jpg" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-1" data-tweet-index="1" class="scroll-mt-20"><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HRD9GflbQAAKEXZ.jpg" data-lightbox-url="https://pbs.twimg.com/media/HRD9GflbQAAKEXZ.jpg" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HRD9GflbQAAKEXZ.jpg" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-2" data-tweet-index="2" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Personally, I have never put much emphasis into how many lines of code or how many PRs I was landing. Before agents, no one cared, and rightfully so, as raw productivity did not always equate to quality or a visible outcome for users. It was simply a vanity metric.</p></div><div id="post-3" data-tweet-index="3" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">But I've discovered through the course of building <b>pstack</b> that volume does matter, especially when you are able to maintain or even increase the level of quality of the product with agents. For example, I started working on Grok @Bot about 2 months ago, when it was still in its early days and the codebase was fresh but starting to grow. Despite the team growing and now landing hundreds of PRs a day into the Grok @Bot codebase, <b>pstack</b> has allowed me to keep the quality of the code high for everyone as I constantly monitor code, refactor, add new lints and checks, and also work on features.</p></div><div id="post-4" data-tweet-index="4" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><a target="_blank" href="https://x.com/i/status/2090546476464451907" color="blue" rel="nofollow">https://x.com/i/status/2090546476464451907</a></p></div><div id="post-5" data-tweet-index="5" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Being Grok @Bot's gardener and maintainer is something I was only able to do through <b>pstack</b>. Our early momentum after building the prototype was very high and many people were joining the team. I had a critical moment of opportunity to refactor the whole codebase, while it was being built and extended and with no downtime, into something with strong foundations. A codebase with high quality that scales no matter how many engineers (and most importantly, non-engineers) contribute to it. All of this work requires me to refactor and improve the foundations of Grok Bot as it's being built, and you can only do that when the foundations can keep up with the number of contributions.</p></div><div id="post-6" data-tweet-index="6" class="scroll-mt-20"><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HRACOM4awAAPxUR.jpg" data-lightbox-url="https://pbs.twimg.com/media/HRACOM4awAAPxUR.jpg" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HRACOM4awAAPxUR.jpg" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-7" data-tweet-index="7" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">The proof is in Grok @Bot itself. Over the next few weeks, I'll tell you everything you need to know to be able to build and maintain a high quality app using <b>pstack</b>.</p></div><div id="post-8" data-tweet-index="8" class="scroll-mt-20"><h2 class="font-extrabold text-2xl mt-10 mb-4 text-base-content">Part 1 – Verification is all you need</h2></div><div id="post-9" data-tweet-index="9" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">The most critical skill to have in your toolbox is a high quality verification skill. This skill is so important to have and maintain that I think of it more like critical infrastructure rather than "just" a skill. A good one will amplify the output of your whole team, including non-engineers. Done well, you will 100-1000x your whole team's output.</p></div><div id="post-10" data-tweet-index="10" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">If you're not familiar with the term, <i>verification</i> means that an agent can verify its own work. It can keep going until it succeeds at its task, because it can now close the loop without you being the bottleneck. If you're interested to know more of the story of how I created my first verification skill for Cursor, check out my previous post <i><a target="_blank" href="https://x.com/poteto/status/2069824386283319343" color="blue" rel="nofollow">Loops You Can Trust</a></i><a target="_blank" href="https://x.com/poteto/status/2069824386283319343" color="blue" rel="nofollow"></a>.</p></div><div id="post-11" data-tweet-index="11" class="scroll-mt-20"><h3 class="font-bold text-xl mt-8 mb-4 text-base-content">Let's build a verification skill together</h3></div><div id="post-12" data-tweet-index="12" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">To start, install pstack and then run <a target="_blank" href="https://github.com/cursor/plugins/blob/main/pstack/skills/create-verification-skill/SKILL.md" color="blue" rel="nofollow">/create-verification-skill</a>. I also recommend adding <a target="_blank" href="https://x.ai/bot/93gOz3op1UQdBdbekQFLK" color="blue" rel="nofollow">Dr Eggbot</a>, my bot that helps you create high quality bots, to your roster. Dr Eggbot ships with <b><a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow">pstack</a></b><a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow"></a>. It’ll teach coding bots how to use it, and it can also make non-coding bots with the same rigor.</p></div><div id="post-13" data-tweet-index="13" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">You can ask Dr Eggbot to create an engineer bot for you that you can then ask to run /create-verification-skill and set up a daily routine to run /maintain-verification-skill.</p></div><div id="post-14" data-tweet-index="14" class="scroll-mt-20"><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HRBrZTOagAET8Vw.jpg" data-lightbox-url="https://pbs.twimg.com/media/HRBrZTOagAET8Vw.jpg" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HRBrZTOagAET8Vw.jpg" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-15" data-tweet-index="15" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">While that runs, let's walk through what the skill does and how it makes a high quality verification skill for you.</p></div><div id="post-16" data-tweet-index="16" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I distilled all of our verification skills that we use to build Grok @Bot and Cursor into this skill as a sort of meta-skill. It teaches your agent how to create a high quality one for your own app.</p></div><div id="post-17" data-tweet-index="17" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Now this is where choice of tech stack is important. If you're building an app in Electron or for the web for example, you can take advantage of the rich debugging tools available for the JS ecosystem. For example, the <a target="_blank" href="https://chromedevtools.github.io/devtools-protocol/" color="blue" rel="nofollow">Chrome DevTools Protocol (CDP)</a> allows you to use the same tooling available in your browser's developer tools. Or if you're building an iOS app, making use of the simulator.</p></div><div id="post-18" data-tweet-index="18" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">You ideally want the ability to interact with your app, debug it, take perf traces, and any other debugging and development tooling that you might typically use if you were developing the app by hand. If you don't have a rich runtime to make use of, you may need to ask your agent to create tools for you (eg using lldb, or a custom package that runs as a sidecar in dev environments), or just make use of what you have available.</p></div><div id="post-19" data-tweet-index="19" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I personally feel that agentic verification is so important that I would unironically suggest building your own rich debugging tools, or even choosing a different tech stack, in order to have unfair advantages and extreme productivity in building software. As I mentioned earlier, giving agents the ability to verify their own work unlocks everyone in your organization to be able to contribute and validate that their changes actually work. The harder your tech stack is to debug and control, the more difficult it will be to use agents productively.</p></div><div id="post-20" data-tweet-index="20" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Make it Reproducible</b></p></div><div id="post-21" data-tweet-index="21" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">In <b>pstack</b>, we have a principle called <a target="_blank" href="https://github.com/cursor/plugins/blob/main/pstack/skills/principle-build-the-lever/SKILL.md" color="blue" rel="nofollow">"Build the Lever"</a>. What this means in the context of creating a skill, is that we prefer to give agents tools rather than just markdown. For verification skills, this means creating a small CLI that scripts interaction and debugging of your app in a small, agent friendly utility. This means that agents consume fewer tokens trying to do a task (run a CLI command instead of writing a throwaway script to click on something), and makes your verification skill more reproducible and testable.</p></div><div id="post-22" data-tweet-index="22" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Here's a hypothetical example of a CLI your agent might make for an Electron app:</p></div><div id="post-23" data-tweet-index="23" class="scroll-mt-20"><pre><code lang="shell"># health
+node .cursor/skills/verify-atlas/control-atlas.mjs doctor
+
+# open a blank thread and send
+node .cursor/skills/verify-atlas/control-atlas.mjs new-session
+node .cursor/skills/verify-atlas/control-atlas.mjs send "list open tasks in this project"
+
+# keyboard path
+node .cursor/skills/verify-atlas/control-atlas.mjs press "Meta+KeyN"
+
+# accessibility snapshot of the live UI
+node .cursor/skills/verify-atlas/control-atlas.mjs snapshot
+
+# screenshot for evidence
+node .cursor/skills/verify-atlas/control-atlas.mjs screenshot /tmp/atlas-proof.png
+
+# wait for streaming / layout to settle
+node .cursor/skills/verify-atlas/control-atlas.mjs wait-settle
+
+# flip a feature flag for the session
+node .cursor/skills/verify-atlas/control-atlas.mjs feature-flag rooms_v2 on</code></pre></div><div id="post-24" data-tweet-index="24" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Now, all agents can use this CLI to quickly navigate and debug your app. You'll also want to start thinking about the dev experience of building your app:</p></div><div id="post-25" data-tweet-index="25" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">seeding a dev database</li></div><div id="post-26" data-tweet-index="26" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">how to handle auth, test users, API calls against a test/staging environment</li></div><div id="post-27" data-tweet-index="27" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">installing and bringing up your dev environment in a consistent way</li></div><div id="post-28" data-tweet-index="28" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">All of this is stuff you've probably needed to think about anyway when you were writing code yourself. So think of this as your agents' main utility for doing dev work on your app. Keep it well maintained and tested!</p></div><div id="post-29" data-tweet-index="29" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Some other example commands you might want to consider:</p></div><div id="post-30" data-tweet-index="30" class="scroll-mt-20"><pre><code lang="markdown">- **Inspection:** `info`, `snapshot`, `screenshot`, `components`
+- **Navigation:** `home`, `new-session`, `select-project`, `select-runtime`, `scroll`
+- **Interaction:** `send`, `click`, `click-xy`, `aria-click`, `type`, `press`, `eval`, `upload-image`, `add-context`, `feature-flag`
+- **Performance:** `trace`, `profile`, `record`, `perf-metrics`, `wait-settle`
+- **Streaming:** `console`, `network-log`, `network-summary`
+- **Health &amp; cleanup:** `doctor`, `cleanup`, `watch --restart`</code></pre></div><div id="post-31" data-tweet-index="31" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Once you have this basic setup, you should already start to see a big improvement in your agents. They should be able to navigate around and debug your app with ease.</p></div><div id="post-32" data-tweet-index="32" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I recommend spending time here making this CLI good and error free before doing anything more advanced. You'll also want to think about (or ask your agent to) designing an agent friendly CLI. There are many resources online you can point your agent to, but the key properties I like are:</p></div><div id="post-33" data-tweet-index="33" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">the API is easy to compose - think John Ousterhout's deep modules philosophy</li></div><div id="post-34" data-tweet-index="34" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">any command with potentially destructive side effects should have a --dry-run option</li></div><div id="post-35" data-tweet-index="35" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">make use of subcommands to gradually disclose functionality rather than all at once</li></div><div id="post-36" data-tweet-index="36" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">error messages should be very descriptive and tell the agent what it should do instead</li></div><div id="post-37" data-tweet-index="37" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">rich --help text</li></div><div id="post-38" data-tweet-index="38" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">outputs returned in machine readable form (eg JSON)</li></div><div id="post-39" data-tweet-index="39" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Go faster with parallelism with <a target="_blank" href="https://cursor.com/docs/cloud-agent" color="blue" rel="nofollow">Cloud Agents</a> instead of worktrees</b></p></div><div id="post-40" data-tweet-index="40" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">When you've had some success running your verification skill to land a few PRs, you might start to wonder if you can parallelize more. For example, if an agent can now take your prompt and mostly drive it to a mergeable state, doesn't that free you up to run more agents?</p></div><div id="post-41" data-tweet-index="41" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Your first instinct will be to add worktree support, meaning that your agents can use git to create a tracked copy of the repo where they can make changes in isolation to the main checkout. In theory, this lets you run multiple agents at once without their changes clobbering over each other.</p></div><div id="post-42" data-tweet-index="42" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I would recommend against doing this. For one, it uses a lot of storage space and resources on your machine. You may be able to get away with running up to 10 agents in parallel with worktrees depending on the size of your repo and how powerful your machine is. But there's a far better way!</p></div><div id="post-43" data-tweet-index="43" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Cursor's <a target="_blank" href="https://cursor.com/docs/cloud-agent" color="blue" rel="nofollow">cloud agents</a> are agents that run on the cloud, on Cursor's infrastructure. These agents have access to a real computer, meaning that they can install dependencies, run your app, take videos and screenshots, and interact with your app like a real user can. If you've invested enough in the previous step to make your dev experience good, it shouldn't be a huge lift to be able to set up cloud agents. When you first set up your cloud environment, we send an agent to help you get it set up and running correctly. After the first build, we take a <a target="_blank" href="https://cursor.com/docs/cloud-agent/builds" color="blue" rel="nofollow">snapshot</a> which means that subsequent cloud agent runs always start up quickly.</p></div><div id="post-44" data-tweet-index="44" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I highly recommend taking the time to set cloud agents up, as it unlocks a massive increase in productivity in parallelism. In a later post I'll show you how I run hundreds of subagents in parallel in the cloud! But for now, set up your environment and get it to a state where you can start to feel confident about running all your agents in the cloud.</p></div><div id="post-45" data-tweet-index="45" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Keep agents smart with Feature Maps</b></p></div><div id="post-46" data-tweet-index="46" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">As your app grows more complex, agents need more guidance to be able to find features and interact with them. To do this, I've come up with something I call the Feature Map. As the name suggests, it's an easily searchable map of all the features available in your app, what it does, and how to get to it from a user's perspective.</p></div><div id="post-47" data-tweet-index="47" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Here's an <a target="_blank" href="https://github.com/poteto/verification-skill-example/blob/main/.cursor/skills/verify-atlas/references/features/README.md" color="blue" rel="nofollow">example Feature Map</a> that I've prepared for a fictional app called Atlas. It's just a couple of markdown file that are mentioned in the verification's SKILL.md.</p></div><div id="post-48" data-tweet-index="48" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">You can put this file anywhere, but in /create-verification-skill we automatically create a references/features directory alongside a README.md. The readme is the map itself: a high level overview of all the major features available, with links to specific details. An example feature looks something like this:</p></div><div id="post-49" data-tweet-index="49" class="scroll-mt-20"><pre><code lang="markdown"># Preferences
+
+Full-screen preferences overlay and its tab set.
+
+## Sub-features
+
+- settings-overlay: full-screen overlay opened from the gear or Cmd/Ctrl+,
+- settings-nav: left nav of tabs (General, Appearance, Models, Plan &amp; Usage, ...).
+- settings-search: in-overlay search (Cmd/Ctrl+K while settings is open).
+- theme-picker: quick theme control on Appearance.
+
+## How to get to it (user POV)
+
+Click the gear next to the account avatar, or press Cmd/Ctrl+,. Pick a tab from the left nav. Type in the preferences search box to jump. Escape or the close control dismisses.
+
+## Driving it with control-atlas
+
+bash
+node .cursor/skills/verify-atlas/control-atlas.mjs press "Meta+Comma"
+node .cursor/skills/verify-atlas/control-atlas.mjs snapshot
+node .cursor/skills/verify-atlas/control-atlas.mjs press "Escape"
+
+
+- Overlay root: look for a dialog/region named Preferences in the a11y tree.
+- Tabs: click by visible name. Plan &amp; Usage may be absent for some account states.
+- While settings is open, Cmd/Ctrl+K is preferences search, not the global palette (see `multi-surface-journeys.md`).
+
+## Gotchas
+
+- Closing settings mid-suite can leave focus nowhere useful. `new-session` or `home` recovers.
+- Some tabs are entitlement-gated. Skip with an explicit account reason.</code></pre></div><div id="post-50" data-tweet-index="50" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Don't worry about writing these yourself! When you run <b>/create-verification-skill</b>, your agent will automatically go through your app and catalog everything and create these references for you.</p></div><div id="post-51" data-tweet-index="51" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">The Feature Map, when combined with the CLI, is one of the main reasons why pstack's verification skills are so good. Agents now have context about every single feature and how to get to it, saving precious tokens in its context window and teaching it exactly what it's for and how to get there.</p></div><div id="post-52" data-tweet-index="52" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">You can think of the Feature Map as a form of "materialized memory". If you've been using agents for a while you're probably familiar with the concept of memory - typically these might be stored as simple markdown files (eg an Obsidian vault), or even something more complex like a vector database. Personally, I think your codebase is the ultimate form of memory. Code is a projection of the decision making you and your team have made and represents the source of truth for what's happened and how things actually work. A Feature Map is just a more compact form of that, designed to save tokens. And because it's just markdown inside of a skill, everyone contributing to your codebase benefits from this shared memory.</p></div><div id="post-53" data-tweet-index="53" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">This means that maintaining the verification skill is really important. I recommend running <b>/maintain-verification-skill</b> at least once a day to ensure that your agents always have the latest details on controlling your app. You may also find, as you use your verification skill more, that agents will automatically update them as they work on your app. /maintain-verification-skill catches whatever is missed.</p></div><div id="post-54" data-tweet-index="54" class="scroll-mt-20"><h2 class="font-extrabold text-2xl mt-10 mb-4 text-base-content">How to use your verification skill</h2></div><div id="post-55" data-tweet-index="55" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">For reference, here's an example verification skill created for a fictional app: <a target="_blank" href="https://github.com/poteto/verification-skill-example" color="blue" rel="nofollow">https://github.com/poteto/verification-skill-example</a>. As a reminder, run <b>/create-verification-skill </b>to make one, which includes a basic CLI and Feature Map.</p></div><div id="post-56" data-tweet-index="56" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Here's how I typically use it with <b>pstack</b>.</p></div><div id="post-57" data-tweet-index="57" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">First, of course, is to start your prompt with <b>/poteto-mode</b>. If you're using pstack through Cursor, you can also hit Opt + Enter instead of just Enter when you autocomplete /poteto-mode - this adds the skill as a <a target="_blank" href="https://cursor.com/changelog/08-19-26#custom-modes" color="blue" rel="nofollow">Custom Mode</a>, which pins the skill so your agent gets a reminder to use the skill on every new turn.</p></div><div id="post-58" data-tweet-index="58" class="scroll-mt-20"><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HRAqVoyb0AEwvnc.png" data-lightbox-url="https://pbs.twimg.com/media/HRAqVoyb0AEwvnc.png" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HRAqVoyb0AEwvnc.png" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-59" data-tweet-index="59" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">In Grok @Bot, install <a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow">the plugin</a>, then type /poteto-mode.</p></div><div id="post-60" data-tweet-index="60" class="scroll-mt-20"><div class="media-item mt-3 mb-2 w-full flex justify-center relative"><a rel="noopener noreferrer nofollow" href="https://pbs.twimg.com/media/HRArLIFa4AApHT3.png" data-lightbox-url="https://pbs.twimg.com/media/HRArLIFa4AApHT3.png" data-lightbox-type="photo" onclick="event.preventDefault(); openLightbox(this)" class="block rounded-2xl overflow-hidden shadow-sm hover:opacity-95 transition-opacity"><img src="https://pbs.twimg.com/media/HRArLIFa4AApHT3.png" class="max-w-full max-h-[500px] object-contain" alt="Media image" loading="lazy"></a></div></div><div id="post-61" data-tweet-index="61" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Example: Building new features</b></p></div><div id="post-62" data-tweet-index="62" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">For building new features, I typically use the verification skill alongside /poteto-mode to get the agent to verify its work. For example, I might prompt something like:</p></div><div id="post-63" data-tweet-index="63" class="scroll-mt-20"><blockquote class="border-l-4 border-primary pl-4 my-6 italic text-base-content/85 text-lg leading-relaxed">/poteto-mode build &lt;description of feature, any useful context&gt;. use /control-app to verify your changes and show me a video and screenshots as proof</blockquote></div><div id="post-64" data-tweet-index="64" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">With /control-app being the result of /create-verification-skill. In Grok @Bot, I would prompt something like:</p></div><div id="post-65" data-tweet-index="65" class="scroll-mt-20"><blockquote class="border-l-4 border-primary pl-4 my-6 italic text-base-content/85 text-lg leading-relaxed">spawn a cloud agent to use /poteto-mode to build &lt;description of feature, any useful context&gt;. use /control-app to verify your changes and show me a video and screenshots as proof</blockquote></div><div id="post-66" data-tweet-index="66" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">The minor difference here is that in Grok @Bot you tell your bot to spawn a cloud agent instead of doing the work itself. The main reason I prefer to do this is because it frees up your bot to do other things and keeps its context window clean. In that sense, I think of my bots more as coordinators who manage and supervise cloud agents. Cloud agents also mean that you can take advantage of the full array of models available in Cursor which have their own separate machine, so your bot's computer stays free for other things.</p></div><div id="post-67" data-tweet-index="67" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Example: Perf work</b></p></div><div id="post-68" data-tweet-index="68" class="scroll-mt-20"><blockquote class="border-l-4 border-primary pl-4 my-6 italic text-base-content/85 text-lg leading-relaxed">spawn a cloud agent to use /poteto-mode to improve the initial loading time of our app. first use /control-app to take a trace of the status quo, and identify opportunities for improvement. then do a targeted fix and use /control-app + a <a target="_blank" href="https://github.com/cursor/plugins/blob/main/pstack/skills/swarm/SKILL.md" color="blue" rel="nofollow">/swarm</a> to confirm the win</blockquote></div><div id="post-69" data-tweet-index="69" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><a target="_blank" href="https://github.com/cursor/plugins/blob/main/pstack/skills/swarm/SKILL.md" color="blue" rel="nofollow">/swarm</a> is one of the best skills to combine with your verification skill. It fans out any number of cloud agents to run your verification skill, so you can do things like confirm a perf win with a big enough sample size, or fuzz your app to ensure you didn't break or regress anything.</p></div><div id="post-70" data-tweet-index="70" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90"><b>Example: Automatically reproduce user reports</b></p></div><div id="post-71" data-tweet-index="71" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">When you're happy with your verification skill, you can put them inside of Grok @Bot routines, or <a target="_blank" href="https://cursor.com/docs/cloud-agent/automations" color="blue" rel="nofollow">Cursor Automations</a>. Routines and automations let you run things on schedule, or trigger whenever an event happens.</p></div><div id="post-72" data-tweet-index="72" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">For example, if you pipe in user feedback into Slack, and/or have your own internal feedback channel, you can have your bots listen to every report and automatically try to reproduce them with a cloud agent. If your verification skill and Feature Map is good enough, you may even then decide to auto-fix issues as well.</p></div><div id="post-73" data-tweet-index="73" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">There's a reason I said earlier that verification is the one of the most important skills in your toolbox. It gives you a foundation to build new skills and routines on top of. And most importantly, everyone in your team benefits.</p></div><div id="post-74" data-tweet-index="74" class="scroll-mt-20"><h2 class="font-extrabold text-2xl mt-10 mb-4 text-base-content">Invest in your verification skill</h2></div><div id="post-75" data-tweet-index="75" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Once you've created your verification skill, keep it sharp with /maintain-verification-skill. Keep improving the CLI and invest in the skill like you would critical infra. You may even want to put an oncall rotation on it - that's how important it is to unlock 100-1000x productivity for your team.</p></div><div id="post-76" data-tweet-index="76" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">This skill is the foundation for many other skills that we'll cover in the <b>pstack</b> guide, and composes beautifully with all of them.</p></div><div id="post-77" data-tweet-index="77" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">pstack: <a target="_blank" href="https://x.ai/bot/plugin/9717366" color="blue" rel="nofollow">https://x.ai/bot/plugin/9717366</a> (<a target="_blank" href="https://github.com/cursor/plugins/tree/main/pstack" color="blue" rel="nofollow">github link</a>)</li></div><div id="post-78" data-tweet-index="78" class="scroll-mt-20"><li class="ml-4 mb-2 text-base-content/90">Dr Eggbot: <a target="_blank" href="https://x.ai/bot/93gOz3op1UQdBdbekQFLK" color="blue" rel="nofollow">https://x.ai/bot/93gOz3op1UQdBdbekQFLK</a></li></div><div id="post-79" data-tweet-index="79" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">I recommend adding <a target="_blank" href="https://x.ai/bot/93gOz3op1UQdBdbekQFLK" color="blue" rel="nofollow">Dr Eggbot</a>, my bot that helps you create high quality bots, to your roster. Dr Eggbot ships with pstack. It’ll teach coding bots how to use it, and it can also make non-coding bots with the same rigor.</p></div><div id="post-80" data-tweet-index="80" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">You can ask Dr Eggbot to create an engineer bot for you that you can then ask to run /create-verification-skill and set up a daily routine to run /maintain-verification-skill.</p></div><div id="post-81" data-tweet-index="81" class="scroll-mt-20"><p class="text-lg leading-relaxed mb-4 text-base-content/90">Thanks for reading and stay tuned for Part 2!</p></div></article><!-- Sticky bottom signup bar --><div id="stickySignupBar" class="fixed bottom-0 left-0 right-0 shadow-2xl py-3 px-4 hidden z-50" style="background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);"><div class="max-w-6xl mx-auto flex items-center justify-between gap-3"><div class="flex items-center gap-2 text-white"><i data-lucide="bookmark" class="w-4 h-4"></i><span class="text-sm font-semibold hidden sm:inline">Save this thread — create a free account</span><span class="text-sm font-semibold sm:hidden">Save this thread</span></div><div class="flex gap-2 flex-shrink-0"><button type="button" id="signupStickyBtn" data-url="/register/?next=/thread/2094457600259842065/" onclick="navigateToDataUrl('signupStickyBtn')" class="btn btn-primary btn-sm rounded-full px-4 gap-1"><i data-lucide="user-plus" class="w-3 h-3"></i> Sign Up
+                            </button><button type="button" class="btn btn-ghost btn-sm text-white/50" onclick="localStorage.setItem('tn_sticky_signup_hidden', '1'); this.closest('#stickySignupBar').remove();" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button></div></div></div><script>
+                (function() {
+                    var bar = document.getElementById('stickySignupBar');
+                    if (!bar) return;
+                    var STORAGE_KEY = 'tn_sticky_signup_hidden';
+                    if (localStorage.getItem(STORAGE_KEY)) {
+                        bar.remove();
+                        return;
+                    }
+                    var shown = false;
+                    window.addEventListener('scroll', function() {
+                        if (!shown && window.scrollY > 600) {
+                            bar.classList.remove('hidden');
+                            shown = true;
+                            localStorage.setItem(STORAGE_KEY, '1');
+                        }
+                    }, {passive: true});
+                })();
+                </script></article></div><!-- Sidebar --><div class="thread-sidebar lg:w-72 flex-shrink-0"><div class="lg:sticky lg:top-24 space-y-4"><div class="card bg-base-100 border border-base-200 shadow-sm rounded-2xl p-4"><div class="flex items-center gap-2 mb-3 px-1"><i data-lucide="zap" class="w-4 h-4 text-base-content/50"></i><h6 class="font-bold text-xs text-base-content/50 uppercase tracking-wider">Actions</h6></div><div class="flex flex-col gap-2"><div class="dropdown w-full"><label tabindex="0" class="btn btn-ghost btn-sm rounded-xl gap-2 justify-start w-full "><i data-lucide="download" class="w-4 h-4"></i> Export
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-auto"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg w-full p-2 z-50"><li><button id="generatePdfLink" onclick="startPdfGeneration()" data-url="/pdf/generate/2094457600259842065/"><i data-lucide="file-text" class="w-4 h-4"></i> Save as PDF</button></li><li><button id="exportMarkdownBtn" onclick="startMarkdownExport()" data-url="/markdown/2094457600259842065/"><i data-lucide="code" class="w-4 h-4"></i> Markdown</button></li><li><button id="saveNotionBtn" onclick="startNotionSave()" data-url="/notion/save/2094457600259842065/" data-is-premium="false" data-is-authenticated="false"><i data-lucide="book-open" class="w-4 h-4"></i> Save to Notion
+                                
+                                <span class="badge badge-warning badge-xs font-bold ml-auto">PRO</span></button></li></ul></div><div class="dropdown w-full"><label tabindex="0" class="btn btn-ghost btn-sm rounded-xl gap-2 justify-start w-full "><i data-lucide="layers" class="w-4 h-4"></i> Repurpose
+                            <span class="badge badge-warning badge-xs font-bold">NEW</span><i data-lucide="chevron-down" class="w-3.5 h-3.5 ml-auto"></i></label><ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-2xl border border-base-200 shadow-lg w-full p-2 z-50"><li><button type="button" id="visualEditorBtn" data-url="/visualize/2094457600259842065/" onclick="navigateToDataUrl('visualEditorBtn')"><i data-lucide="palette" class="w-4 h-4"></i> Visual Editor</button></li><li><button type="button" id="carouselEditorBtn" data-url="/visualize/carousel/2094457600259842065/" onclick="navigateToDataUrl('carouselEditorBtn')"><i data-lucide="layers" class="w-4 h-4 text-amber-500"></i> Carousel Maker
+                                <span class="badge badge-warning badge-xs font-bold ml-auto">NEW</span></button></li></ul></div><div class="divider my-0 opacity-30"></div><button type="button" id="readingModeBtn" onclick="toggleReadingMode()" class="btn btn-ghost btn-sm rounded-xl gap-2 justify-start w-full "><i data-lucide="book-open-text" class="w-4 h-4"></i> Reading Mode
+                    </button><button type="button" id="updateThreadBtn" onclick="updateThread()" class="btn btn-ghost btn-xs rounded-xl gap-2 justify-start w-full text-base-content/50 " data-url="/thread/2094457600259842065/?refresh=true"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Update Thread
+                    </button></div></div><div class="w-full"><div class="card bg-base-100 border border-base-200 shadow-md rounded-2xl p-6"><div class="flex items-center gap-2 mb-4"><i data-lucide="grid-2x2" class="w-5 h-5 text-primary"></i><h5 class="font-bold text-base">What You Can Do</h5></div><ul class="space-y-3 mb-5"><li class="flex items-center gap-3"><i data-lucide="file-text" class="w-4 h-4 text-primary"></i><span class="text-sm">Export as PDF or Markdown</span></li><li class="flex items-center gap-3"><i data-lucide="book-open" class="w-4 h-4 text-primary"></i><span class="text-sm">Batch Export to Notion</span></li><li class="flex items-center gap-3"><i data-lucide="pen-tool" class="w-4 h-4 text-primary"></i><span class="text-sm">Bookmark & Highlight</span></li><li class="flex items-center gap-3"><i data-lucide="layers" class="w-4 h-4 text-primary"></i><span class="text-sm">LinkedIn & Instagram Carousel Maker</span></li></ul><a rel="nofollow" href="/register/" class="btn btn-primary rounded-full w-full font-bold gap-2 shadow-md">
+        Create Free Account <i data-lucide="arrow-right" class="w-4 h-4"></i></a><p class="text-xs text-base-content/50 text-center mt-3">Includes 7-day Premium trial</p></div></div><div class="mt-4"><div class="text-center text-xs text-base-content/30 mb-2">Advertisement</div><!-- Threadnavigator-Sidebar --><ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4832350077542156"
+             data-ad-slot="8331061638"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins><script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script></div></div></div></div><!-- Related Content Sections (placed after Actions/sidebar so key CTAs stay above the fold on mobile) --><div class="thread-related-content flex flex-col lg:flex-row gap-6 mt-10"><div class="flex-1 lg:max-w-3xl mx-auto w-full space-y-8"><div class="card bg-base-100 border border-base-200 shadow-sm rounded-2xl p-6"><div class="flex items-center gap-2 mb-4"><i data-lucide="compass" class="w-5 h-5 text-primary"></i><h3 class="text-lg font-bold">More in Tech &amp; Development</h3></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><a href="/thread/2104216919033192746/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        How to build motion design studio with Opus 5.5 ( Full-course ) 
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@0xMovez</span><span>•</span><span>223 views</span></div></a><a href="/thread/2104356640749187329/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        Claude Projects: How to set up a Project before you start working
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@dani_avila7</span><span>•</span><span>26 views</span></div></a><a href="/thread/2104039563719262546/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        万字长文 ｜超详细的 GitHub 教程，从入门到精通
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@xaiwind</span><span>•</span><span>43 views</span></div></a><a href="/thread/2102720919185617314/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        Megabrain (Jev) &amp; Six Grok Bots That Already Made Me Six Figures (Setup Guide)
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@savipww</span><span>•</span><span>349 views</span></div></a><a href="/thread/2102774731606991003/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        How to Use Jev to Build a Market Making Engine
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@RuujSs</span><span>•</span><span>102 views</span></div></a><a href="/thread/2100928718541853038/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        MiniMax Code CLI Is Now Open Source
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>@MiniMaxAgent</span><span>•</span><span>239 views</span></div></a></div><div class="mt-4 pt-4 border-t border-base-200"><a href="/thread/topics/tech-development/" class="btn btn-ghost btn-sm rounded-full gap-2 w-full">
+                View all Tech &amp; Development threads <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div></div><div class="card bg-base-100 border border-base-200 shadow-sm rounded-2xl p-6"><div class="flex items-center gap-2 mb-4"><i data-lucide="user" class="w-5 h-5 text-primary"></i><h3 class="text-lg font-bold">More from @poteto</h3></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><a href="/thread/2097732320606507506/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        The Complete Guide to pstack Pt. 2
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>1057 views</span><span>•</span><span>2 weeks, 5 days ago</span></div></a><a href="/thread/2058975157503570132/" class="block p-3 rounded-xl hover:bg-base-200 transition-colors no-underline"><p class="text-sm font-semibold text-base-content line-clamp-2 mb-1">
+                    
+                        How I Use Cursor
+                    
+                </p><div class="flex items-center gap-2 text-xs text-base-content/50"><span>379 views</span><span>•</span><span>1 month ago</span></div></a></div><div class="mt-4 pt-4 border-t border-base-200"><a href="/author/poteto/" class="btn btn-ghost btn-sm rounded-full gap-2 w-full">
+                View all threads from @poteto <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div></div></div><div class="hidden lg:block lg:w-72 flex-shrink-0"></div></div><!-- Premium Upgrade Modal for Notion --><dialog id="premiumNotionModal" class="modal"><div class="modal-box rounded-3xl text-center p-8"><div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="crown" class="w-8 h-8 text-primary"></i></div><h3 class="text-xl font-bold mb-3">Save Threads to Notion</h3><p class="text-base-content/60 mb-6">Upgrade to Premium to automatically save unrolled threads directly to your Notion workspace. Includes unlimited saves, visual editor, and ad-free experience.</p><div class="flex flex-col gap-2"><button type="button" id="premiumNotionBtn" data-url="/pricing/" onclick="navigateToDataUrl('premiumNotionBtn')" class="btn btn-primary rounded-full font-bold gap-2"><i data-lucide="zap" class="w-4 h-4"></i> Upgrade — $29 once, lifetime
+            </button><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest('dialog').close()">Maybe later</button></div></div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog><!-- Premium Upgrade Modal for Highlights --><dialog id="premiumHighlightModal" class="modal"><div class="modal-box rounded-3xl text-center p-8"><div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="highlighter" class="w-8 h-8 text-primary"></i></div><h3 class="text-xl font-bold mb-3">Highlight Key Tweets</h3><p class="text-base-content/60 mb-6">Upgrade to Premium to highlight individual tweets in any thread, then export just the highlights to Notion — like Readwise, for threads.</p><div class="flex flex-col gap-2"><button type="button" id="premiumHighlightBtn" data-url="/pricing/" onclick="navigateToDataUrl('premiumHighlightBtn')" class="btn btn-primary rounded-full font-bold gap-2"><i data-lucide="zap" class="w-4 h-4"></i> Upgrade — $29 once, lifetime
+            </button><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest('dialog').close()">Maybe later</button></div></div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog><!-- Notion Category Picker Modal --><dialog id="notionCategoryModal" class="modal"><div class="modal-box rounded-3xl p-8"><div class="text-center mb-6"><div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3"><i data-lucide="book-open" class="w-7 h-7 text-primary"></i></div><h3 class="text-xl font-bold mb-1">Save to Notion</h3><p class="text-sm text-base-content/60">Pick categories to organize this thread in your Notion database.</p></div><div class="flex flex-wrap gap-2 mb-4 justify-center"><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="Tech" class="hidden"> Tech
+            </label><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="AI" class="hidden"> AI
+            </label><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="Business" class="hidden"> Business
+            </label><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="Science" class="hidden"> Science
+            </label><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="Productivity" class="hidden"> Productivity
+            </label><label class="btn btn-outline btn-sm rounded-full px-4 category-pill cursor-pointer"><input type="checkbox" name="notion_category" value="Design" class="hidden"> Design
+            </label></div><div class="mb-6"><input type="text" id="notionCustomCategory" class="input input-bordered rounded-full w-full text-sm" placeholder="Or type a custom category..."></div><div class="flex flex-col gap-2"><button type="button" onclick="confirmNotionSave()" class="btn btn-primary rounded-full font-bold gap-2"><i data-lucide="save" class="w-4 h-4"></i> Save to Notion
+            </button><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest('dialog').close()">Cancel</button></div></div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog><!-- Signup Modal for Highlights (anonymous users) --><dialog id="signupHighlightModal" class="modal"><div class="modal-box rounded-3xl text-center p-8"><div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="highlighter" class="w-8 h-8 text-primary"></i></div><h3 class="text-xl font-bold mb-3">Sign Up to Highlight Tweets</h3><p class="text-base-content/60 mb-6">Create a free account to get a 7-day Premium trial, including the ability to highlight key tweets in any thread.</p><div class="flex flex-col gap-2"><button type="button" id="signupHighlightBtn" data-url="/register/?next=/thread/2094457600259842065/" onclick="navigateToDataUrl('signupHighlightBtn')" class="btn btn-primary rounded-full font-bold gap-2"><i data-lucide="user-plus" class="w-4 h-4"></i> Sign Up Free
+            </button><button type="button" id="loginHighlightBtn" data-url="/login/?next=/thread/2094457600259842065/" onclick="navigateToDataUrl('loginHighlightBtn')" class="btn btn-outline rounded-full gap-2"><i data-lucide="log-in" class="w-4 h-4"></i> Log In
+            </button><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest('dialog').close()">Maybe later</button></div></div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog><!-- Signup Modal for Notion save (anonymous users) --><dialog id="signupNotionModal" class="modal"><div class="modal-box rounded-3xl text-center p-8"><div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4"><i data-lucide="book-open" class="w-8 h-8 text-primary"></i></div><h3 class="text-xl font-bold mb-3">Sign Up to Save to Notion</h3><p class="text-base-content/60 mb-6">Create a free account to get a 7-day Premium trial, including saving unrolled threads directly to your Notion workspace.</p><div class="flex flex-col gap-2"><button type="button" id="signupNotionBtn" data-url="/register/?next=/thread/2094457600259842065/" onclick="navigateToDataUrl('signupNotionBtn')" class="btn btn-primary rounded-full font-bold gap-2"><i data-lucide="user-plus" class="w-4 h-4"></i> Sign Up Free
+            </button><button type="button" id="loginNotionBtn" data-url="/login/?next=/thread/2094457600259842065/" onclick="navigateToDataUrl('loginNotionBtn')" class="btn btn-outline rounded-full gap-2"><i data-lucide="log-in" class="w-4 h-4"></i> Log In
+            </button><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest('dialog').close()">Maybe later</button></div></div><form method="dialog" class="modal-backdrop"><button>close</button></form></dialog><!-- General-purpose action toast (success/error/warning) — see showToast() in main.js --><div id="actionToast" class="toast toast-bottom toast-center z-50 hidden"><div id="actionToastAlert" class="alert shadow-lg rounded-full text-sm font-semibold gap-2 py-2 px-4"><i data-lucide="check-circle" class="w-4 h-4 shrink-0" data-toast-icon="success"></i><i data-lucide="alert-circle" class="w-4 h-4 shrink-0 hidden" data-toast-icon="error"></i><i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 hidden" data-toast-icon="warning"></i><i data-lucide="info" class="w-4 h-4 shrink-0 hidden" data-toast-icon="info"></i><span id="actionToastMessage"></span></div></div><!-- Lightbox Modal --><div id="imageLightbox" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0"><button type="button" onclick="closeLightbox()" class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Close"><i data-lucide="x" class="w-6 h-6"></i></button><button id="lightboxPrev" type="button" onclick="prevLightbox()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Previous"><i data-lucide="chevron-left" class="w-8 h-8"></i></button><button id="lightboxNext" type="button" onclick="nextLightbox()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-2 rounded-full z-10 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Next"><i data-lucide="chevron-right" class="w-8 h-8"></i></button><div class="max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center"><img id="lightboxImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl hidden" alt="Enlarged view"><video id="lightboxVideo" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl hidden" playsinline></video></div></div><script>
+(function() {
+    let currentIndex = -1;
+    let threadMedia = [];
+    let lightboxInitialized = false;
+
+    function initLightbox() {
+        if (lightboxInitialized) return;
+        threadMedia = [];
+        const items = document.querySelectorAll('[data-lightbox-url]');
+        items.forEach(function(el, i) {
+            el.setAttribute('data-lightbox-index', i);
+            threadMedia.push({
+                url: el.getAttribute('data-lightbox-url'),
+                type: el.getAttribute('data-lightbox-type') || 'photo',
+                poster: el.getAttribute('data-lightbox-poster') || ''
+            });
+        });
+        lightboxInitialized = true;
+    }
+
+    function showLightbox(index) {
+        initLightbox();
+        if (!threadMedia.length) return;
+        if (index < 0) index = 0;
+        if (index >= threadMedia.length) index = threadMedia.length - 1;
+        currentIndex = index;
+
+        const m = threadMedia[currentIndex];
+        const lightbox = document.getElementById('imageLightbox');
+        const img = document.getElementById('lightboxImg');
+        const video = document.getElementById('lightboxVideo');
+
+        if (m.type === 'video' || m.type === 'animated_gif') {
+            img.classList.add('hidden');
+            img.src = '';
+
+            video.src = m.url;
+            if (m.poster) {
+                video.poster = m.poster;
+            } else {
+                video.removeAttribute('poster');
+            }
+
+            if (m.type === 'animated_gif') {
+                video.loop = true;
+                video.muted = true;
+                video.autoplay = true;
+                video.removeAttribute('controls');
+            } else {
+                video.loop = false;
+                video.muted = false;
+                video.autoplay = true;
+                video.setAttribute('controls', 'controls');
+            }
+
+            video.classList.remove('hidden');
+            video.load();
+            video.play().catch(function(err) { console.log('Autoplay blocked:', err); });
+        } else {
+            if (video) {
+                video.classList.add('hidden');
+                video.pause();
+                video.src = '';
+            }
+            img.src = m.url;
+            img.classList.remove('hidden');
+        }
+
+        lightbox.classList.remove('hidden');
+        setTimeout(function() {
+            lightbox.classList.remove('opacity-0');
+        }, 10);
+        updateLightboxNav();
+    }
+
+    function updateLightboxNav() {
+        const prev = document.getElementById('lightboxPrev');
+        const next = document.getElementById('lightboxNext');
+        if (!threadMedia.length || threadMedia.length <= 1) {
+            if (prev) prev.style.display = 'none';
+            if (next) next.style.display = 'none';
+            return;
+        }
+        if (prev) prev.style.display = (currentIndex > 0) ? 'block' : 'none';
+        if (next) next.style.display = (currentIndex < threadMedia.length - 1) ? 'block' : 'none';
+    }
+
+    window.openLightbox = function(el) {
+        initLightbox();
+        const index = parseInt(el.getAttribute('data-lightbox-index'), 10);
+        if (!isNaN(index) && threadMedia.length) {
+            showLightbox(index);
+        }
+    };
+
+    window.closeLightbox = function() {
+        const lightbox = document.getElementById('imageLightbox');
+        const video = document.getElementById('lightboxVideo');
+        if (video) {
+            video.pause();
+            video.src = '';
+        }
+        lightbox.classList.add('opacity-0');
+        setTimeout(function() {
+            lightbox.classList.add('hidden');
+        }, 300);
+    };
+
+    window.prevLightbox = function() {
+        if (currentIndex > 0) showLightbox(currentIndex - 1);
+    };
+
+    window.nextLightbox = function() {
+        if (currentIndex < threadMedia.length - 1) showLightbox(currentIndex + 1);
+    };
+
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('imageLightbox');
+        if (lightbox.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+    });
+
+    document.addEventListener('DOMContentLoaded', initLightbox);
+})();
+</script></main></div><footer class="border-t border-base-200 bg-base-100 mt-auto"><div class="max-w-6xl mx-auto px-4 py-8"><div class="flex flex-col md:flex-row items-center justify-between gap-4"><div class="flex items-center gap-2 text-sm font-semibold text-base-content"><i data-lucide="compass" class="w-4 h-4 text-primary"></i>
+        Thread Navigator
+      </div><nav class="flex flex-wrap items-center gap-4 text-sm"><a href="/about/" class="link link-hover opacity-70 hover:opacity-100">About</a><a href="/pricing/" class="link link-hover opacity-70 hover:opacity-100">Pricing</a><a href="/privacy/" class="link link-hover opacity-70 hover:opacity-100">Privacy</a><a href="/terms/" class="link link-hover opacity-70 hover:opacity-100">Terms</a><a href="/disclaimer/" class="link link-hover opacity-70 hover:opacity-100">Disclaimer</a></nav><div class="flex items-center gap-3"><script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#6366f1', 'Y8Y1RR543');kofiwidget2.draw();</script></div></div><!-- Topic hub interlinking: quiet index link, always rendered (the
+         un-orphan fallback). Hub crawl paths come from the header dropdown
+         (hidden until opened); the footer stays calm. --><div class="mt-6 pt-6 border-t border-base-200 text-center"><a href="/thread/topics/" class="link link-hover text-sm opacity-70 hover:opacity-100">
+        Browse by topic <span class="text-primary font-semibold">&rarr; View all topics</span></a></div><nav aria-label="Creation tools" class="flex flex-wrap justify-center items-center gap-4 mt-6 text-sm"><a href="/visualize/screenshot-maker/" class="link link-hover opacity-70 hover:opacity-100">Screenshot Maker</a><a href="/visualize/carousel-maker/" class="link link-hover opacity-70 hover:opacity-100">Carousel Maker</a></nav><div class="text-center mt-6 text-xs opacity-50">
+      Made with ❤️ for the reading community
+      <span class="mx-1">&middot;</span><a href="/changelog/" class="hover:underline font-mono">v2.9.0</a></div></div></footer><script>
+    const THREAD_STATUS = "completed";
+    const THREAD_SLUG = "2094457600259842065";
+    const TOTAL_POSTS = 82;
+    const IS_AUTHENTICATED = false;
+    const IS_PREMIUM = false;
+</script><script defer src="/static/thread/js/thread.94f3bc2f9576.js"></script><script defer src="/static/main/js/main.f5f4851948a6.js"></script><script>document.addEventListener('DOMContentLoaded', () => lucide.createIcons());</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42fa29d5f8c05bc',t:'MTc5MDczMzYzOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body></html>

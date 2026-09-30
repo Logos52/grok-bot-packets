@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PolyGlot Master</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --primary: #4f46e5;
+      --accent: #10b981;
+      --text: #1f2937;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container { width: 100%; max-width: 500px; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .nav-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    button.nav-btn {
+      background: #e0e7ff;
+      color: var(--primary);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+    }
+    .vocab-card {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .vocab-card:last-child { border-bottom: none; margin-bottom: 0; }
+    .vocab-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vocab-icon { font-size: 36px; }
+    .vocab-word { font-size: 20px; font-weight: bold; color: var(--primary); }
+    .vocab-phonetic { font-size: 13px; color: #6b7280; }
+    .examples-list {
+      background: #f9fafb;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    .examples-list li { margin-bottom: 6px; }
+    .examples-list li:last-child { margin-bottom: 0; }
+    .example-en { font-size: 12px; color: #6b7280; display: block; }
+    .matching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .match-btn {
+      background: #f3f4f6;
+      border: 2px solid #e5e7eb;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .match-btn.selected { border-color: var(--primary); background: #e0e7ff; }
+    .match-btn.matched { visibility: hidden; }
+    .sentence-box {
+      min-height: 48px;
+      border-bottom: 2px solid var(--primary);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 6px;
+      margin-bottom: 12px;
+    }
+    .word-pool { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .chip.selected { opacity: 0.3; }
+    button.action-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h2>PolyGlot 🦊</h2>
+    <select id="langSelect" onchange="changeLanguage(this.value)">
+      <option value="de">German 🇩🇪</option>
+      <option value="th">Thai 🇹🇭</option>
+    </select>
+  </header>
+
+<!-- Score Display -->
+  <div id="scoreBoard" style="text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 12px; color: #10b981;">
+    ⭐ Score: <span id="userScore">0</span> pts
+  </div>
+
+  <div class="nav-bar">
+    <button class="nav-btn" onclick="setView('vocab')">📖 Lessons</button>
+    <button class="nav-btn" onclick="setView('flashcards')">🎴 Flashcards</button>
+    <button class="nav-btn" onclick="setView('matching')">🧩 Match</button>
+    <button class="nav-btn" onclick="setView('sentence')">🧱 Reorder</button>
+    <button class="nav-btn" onclick="setView('typing')">⌨️ Type</button>
+  </div>
+
+  <div class="card" id="filterBar">
+    <label>Level: </label>
+    <select id="levelSelect" onchange="renderCurrentView()"></select>
+    <label style="margin-left:10px;">Category: </label>
+    <select id="categorySelect" onchange="renderCurrentView()"></select>
+  </div>
+
+  <div class="card" id="vocabView"></div>
+
+  <div class="card" id="matchingView" style="display:none;">
+    <h3>Match Word with Icon/Translation</h3>
+    <p style="font-size: 13px; color: #6b7280;">Select a word on the left, then its match on the right!</p>
+    <div class="matching-grid">
+      <div id="leftColumn"></div>
+      <div id="rightColumn"></div>
+    </div>
+  </div>
+
+  <div class="card" id="sentenceView" style="display:none;">
+    <h3 id="targetEnglish"></h3>
+    <div id="constructedSentence" class="sentence-box"></div>
+    <div id="wordPool" class="word-pool"></div>
+    <button class="action-btn" onclick="checkSentence()">Check Answer</button>
+    <div id="feedback" style="margin-top:10px; font-weight:bold;"></div>
+  </div>
+</div>
+
+ <!-- FLASHCARDS MODE (Cards + Quiz every 5 words) -->
+  <div class="card" id="flashcardView" style="display:none; text-align:center;">
+    <div id="flashcardProgress" style="font-size: 12px; color: #666; margin-bottom: 8px;"></div>
+    
+    <!-- Mode Carte classique -->
+    <div id="flashcardCardMode">
+      <div id="flashcardContent"></div>
+      <div style="display:flex; gap:10px; margin-top:16px;">
+        <button class="action-btn" style="flex:1; background-color: #ef4444;" onclick="answerFlashcard(false)">❌ Repeat later</button>
+        <button class="action-btn" style="flex:1; background-color: #10b981;" onclick="answerFlashcard(true)">✅ Got it (+10 pts)</button>
+      </div>
+    </div>
+
+    <!-- Mode Quiz Checkpoint (Tous les 5 mots) -->
+    <div id="flashcardQuizMode" style="display:none;">
+      <div style="font-size: 14px; color: #3b82f6; font-weight: bold; margin-bottom: 8px;">🎯 Checkpoint Quiz</div>
+      <div id="quizEnglishWord" style="font-size: 22px; font-weight: bold; margin-bottom: 12px;"></div>
+      <div id="quizOptionsGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px;"></div>
+      <div id="quizFeedback" style="margin-top: 12px; font-weight: bold;"></div>
+    </div>
+  </div>
+  
+  <!-- MODE CLAVIER (Rédaction libre) -->
+  <div class="card" id="typingView" style="display:none;">
+    <h3 id="typingTargetEnglish"></h3>
+    <input type="text" id="typingInput" placeholder="Écris la phrase ici..." style="width:100%; padding:12px; font-size:16px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; margin-bottom:12px;">
+    <button class="action-btn" onclick="checkTypingAnswer()">Vérifier</button>
+    <div id="typingFeedback" style="margin-top:10px; font-weight:bold;"></div>
+  </div>
+  
+<script src="data.js"></script>
+<script>
+  let currentLang = 'de';
+  let currentView = 'vocab';
+  let selectedLeft = null;
+  let selectedWords = [];
+  let currentSentenceIdx = 0;
+
+  function playSuccessSound() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
+      
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+    } catch (e) {}
+  }
+
+  function initApp() {
+    populateFilters();
+    renderCurrentView();
+  }
+
+  function changeLanguage(lang) {
+  currentLang = lang;
+  populateFilters();
+  if (currentView === 'flashcards') {
+    initFlashcardQueue();
+  } else {
+    renderCurrentView();
+  }
+}
+
+  function populateFilters() {
+    const levels = Object.keys(appData[currentLang].levels);
+    const levelSelect = document.getElementById('levelSelect');
+    levelSelect.innerHTML = levels.map(l => `<option value="${l}">${l}</option>`).join('');
+    updateCategories();
+  }
+
+  function updateCategories() {
+    const level = document.getElementById('levelSelect').value;
+    const categories = Object.keys(appData[currentLang].levels[level] || {});
+    const catSelect = document.getElementById('categorySelect');
+    catSelect.innerHTML = categories.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  function setView(view) {
+    currentView = view;
+    document.getElementById('vocabView').style.display = view === 'vocab' ? 'block' : 'none';
+    document.getElementById('flashcardView').style.display = view === 'flashcards' ? 'block' : 'none';
+    document.getElementById('matchingView').style.display = view === 'matching' ? 'block' : 'none';
+    document.getElementById('sentenceView').style.display = view === 'sentence' ? 'block' : 'none';
+    document.getElementById('typingView').style.display = view === 'typing' ? 'block' : 'none';
+
+    document.getElementById('filterBar').style.display = (view === 'sentence' || view === 'typing') ? 'none' : 'block';
+
+    if (view === 'flashcards') {
+      initFlashcardQueue();
+    } else {
+      renderCurrentView();
+    }
+  }
+
+  function renderCurrentView() {
+    if (currentView === 'vocab') renderVocab();
+    else if (currentView === 'matching') renderMatchingGame();
+    else if (currentView === 'sentence') renderSentence();
+  }
+
+  function renderVocab() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = (appData[currentLang].levels[level] && appData[currentLang].levels[level][cat]) || [];
+
+    const container = document.getElementById('vocabView');
+    container.innerHTML = words.map(item => `
+      <div class="vocab-card">
+        <div class="vocab-header">
+          <span class="vocab-icon">${item.icon}</span>
+          <div>
+            <div class="vocab-word">${item.word}</div>
+            <div class="vocab-phonetic">[${item.phonetic}] — ${item.translation}</div>
+          </div>
+        </div>
+        <ul class="examples-list">
+          ${item.examples.map(ex => `
+            <li>
+              ${ex.target}
+              <span class="example-en">${ex.english}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  function renderMatchingGame() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = (appData[currentLang].levels[level] && appData[currentLang].levels[level][cat]) || [];
+
+    const leftCol = document.getElementById('leftColumn');
+    const rightCol = document.getElementById('rightColumn');
+    leftCol.innerHTML = '';
+    rightCol.innerHTML = '';
+
+    const shuffledRight = [...words].sort(() => Math.random() - 0.5);
+
+    words.forEach(item => {
+      const btn = document.createElement('div');
+      btn.className = 'match-btn';
+      btn.innerText = item.word;
+      btn.dataset.id = item.id;
+      btn.onclick = () => selectLeft(btn);
+      leftCol.appendChild(btn);
+    });
+
+    shuffledRight.forEach(item => {
+      const btn = document.createElement('div');
+      btn.className = 'match-btn';
+      btn.innerText = `${item.icon} ${item.translation}`;
+      btn.dataset.id = item.id;
+      btn.onclick = () => checkMatch(btn);
+      rightCol.appendChild(btn);
+    });
+  }
+
+  function selectLeft(btn) {
+    document.querySelectorAll('#leftColumn .match-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedLeft = btn;
+  }
+
+  function checkMatch(rightBtn) {
+    if (!selectedLeft) return;
+    if (selectedLeft.dataset.id === rightBtn.dataset.id) {
+      playSuccessSound();
+      selectedLeft.classList.add('matched');
+      rightBtn.classList.add('matched');
+      selectedLeft = null;
+    } else {
+      rightBtn.style.borderColor = '#ef4444';
+      setTimeout(() => rightBtn.style.borderColor = '#e5e7eb', 500);
+    }
+  }
+
+  function renderSentence() {
+    const sentenceData = appData[currentLang].sentences[currentSentenceIdx];
+    document.getElementById('targetEnglish').innerText = `"${sentenceData.english}"`;
+    selectedWords = [];
+    updateSentenceDisplay();
+
+    const pool = document.getElementById('wordPool');
+    pool.innerHTML = '';
+    sentenceData.words.forEach(word => {
+      const chip = document.createElement('div');
+      chip.className = 'chip';
+      chip.innerText = word;
+      chip.onclick = () => {
+        if (chip.classList.contains('selected')) return;
+        chip.classList.add('selected');
+        selectedWords.push({ word, element: chip });
+        updateSentenceDisplay();
+      };
+      pool.appendChild(chip);
+    });
+  }
+
+  function updateSentenceDisplay() {
+    const box = document.getElementById('constructedSentence');
+    box.innerHTML = '';
+    selectedWords.forEach((item, idx) => {
+      const chip = document.createElement('div');
+      chip.className = 'chip';
+      chip.innerText = item.word;
+      chip.onclick = () => {
+        item.element.classList.remove('selected');
+        selectedWords.splice(idx, 1);
+        updateSentenceDisplay();
+      };
+      box.appendChild(chip);
+    });
+  }
+
+  function checkSentence() {
+    const sentenceData = appData[currentLang].sentences[currentSentenceIdx];
+    const userAttempt = selectedWords.map(w => w.word).join(' ');
+    const correctTarget = sentenceData.correctOrder.join(' ');
+    const feedback = document.getElementById('feedback');
+
+    if (userAttempt === correctTarget) {
+      playSuccessSound();
+      feedback.style.color = '#10b981';
+      feedback.innerText = '✨ Excellent!';
+      setTimeout(() => {
+        currentSentenceIdx = (currentSentenceIdx + 1) % appData[currentLang].sentences.length;
+        feedback.innerText = '';
+        renderSentence();
+      }, 1200);
+    } else {
+      feedback.style.color = '#ef4444';
+      feedback.innerText = '❌ Try again!';
+    }
+  }
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+
+  document.getElementById('levelSelect').addEventListener('change', updateCategories);
+  window.onload = initApp;
+  // --- NOUVEAUX MODES : CARTES ET CLAVIER ---
+  let currentFlashcardIdx = 0;
+
+  function setView(view) {
+    currentView = view;
+    document.getElementById('vocabView').style.display = view === 'vocab' ? 'block' : 'none';
+    document.getElementById('flashcardView').style.display = view === 'flashcards' ? 'block' : 'none';
+    document.getElementById('matchingView').style.display = view === 'matching' ? 'block' : 'none';
+    document.getElementById('sentenceView').style.display = view === 'sentence' ? 'block' : 'none';
+    document.getElementById('typingView').style.display = view === 'typing' ? 'block' : 'none';
+    document.getElementById('filterBar').style.display = (view === 'sentence' || view === 'typing') ? 'none' : 'block';
+    renderCurrentView();
+  }
+
+  function renderCurrentView() {
+    if (currentView === 'vocab') renderVocab();
+    else if (currentView === 'flashcards') renderFlashcard();
+    else if (currentView === 'matching') renderMatchingGame();
+    else if (currentView === 'sentence') renderSentence();
+    else if (currentView === 'typing') renderTyping();
+  }
+
+  // LOGIQUE MODE CARTES
+  function renderFlashcard() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = (appData[currentLang].levels[level] && appData[currentLang].levels[level][cat]) || [];
+    if (!words.length) return;
+
+    if (currentFlashcardIdx >= words.length) currentFlashcardIdx = 0;
+    const item = words[currentFlashcardIdx];
+
+    document.getElementById('flashcardContent').innerHTML = `
+      <div style="font-size:64px; margin-bottom:8px;">${item.icon}</div>
+      <div class="vocab-word" style="font-size:24px;">${item.word}</div>
+      <div class="vocab-phonetic" style="font-size:16px; margin-bottom:12px;">[${item.phonetic}] — ${item.translation}</div>
+      <ul class="examples-list" style="text-align:left;">
+        ${item.examples.map(ex => `<li>${ex.target}<span class="example-en">${ex.english}</span></li>`).join('')}
+      </ul>
+    `;
+  }
+
+  function nextFlashcard() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = appData[currentLang].levels[level][cat];
+    currentFlashcardIdx = (currentFlashcardIdx + 1) % words.length;
+    renderFlashcard();
+  }
+
+  function prevFlashcard() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = appData[currentLang].levels[level][cat];
+    currentFlashcardIdx = (currentFlashcardIdx - 1 + words.length) % words.length;
+    renderFlashcard();
+  }
+
+  // LOGIQUE MODE CLAVIER
+  function renderTyping() {
+    const sentenceData = appData[currentLang].sentences[currentSentenceIdx];
+    document.getElementById('typingTargetEnglish').innerText = `"${sentenceData.english}"`;
+    document.getElementById('typingInput').value = '';
+    document.getElementById('typingFeedback').innerText = '';
+  }
+
+  function checkTypingAnswer() {
+    const sentenceData = appData[currentLang].sentences[currentSentenceIdx];
+    const userAttempt = document.getElementById('typingInput').value.trim();
+    const correctTarget = sentenceData.correctOrder.join(' ');
+    const feedback = document.getElementById('typingFeedback');
+
+    if (userAttempt.toLowerCase() === correctTarget.toLowerCase()) {
+      playSuccessSound();
+      feedback.style.color = '#10b981';
+      feedback.innerText = '✨ Parfait !';
+      setTimeout(() => {
+        currentSentenceIdx = (currentSentenceIdx + 1) % appData[currentLang].sentences.length;
+        renderTyping();
+      }, 1200);
+    } else {
+      feedback.style.color = '#ef4444';
+      feedback.innerText = `❌ Essayez encore ! (Réponse attendue : ${correctTarget})`;
+    }
+  }
+  // --- DUOLINGO ENGINE & AUDIO ---
+  let userScore = 0;
+  let flashcardQueue = [];
+  let currentFlashcardItem = null;
+
+  let wordsLearnedCount = 0;
+  let recentLearnedWords = []; // Stocke la série de 5 mots
+  let quizBatchQueue = [];     // Liste des 5 quiz à enchaîner
+  let currentQuizTarget = null;
+  let quizTimerInterval = null;
+  let quizTimeLeft = 20;
+
+  function speakText(text, langCode) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = langCode === 'de' ? 'de-DE' : 'th-TH';
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  function addPoints(pts) {
+    userScore += pts;
+    document.getElementById('userScore').innerText = userScore;
+  }
+
+  // --- FLASHCARDS & SÉRIE DE 5 QUIZ ---
+  function initFlashcardQueue() {
+    const level = document.getElementById('levelSelect').value;
+    const cat = document.getElementById('categorySelect').value;
+    const words = (appData[currentLang].levels[level] && appData[currentLang].levels[level][cat]) || [];
+    flashcardQueue = [...words];
+    wordsLearnedCount = 0;
+    recentLearnedWords = [];
+    quizBatchQueue = [];
+    clearInterval(quizTimerInterval);
+    
+    document.getElementById('flashcardCardMode').style.display = 'block';
+    document.getElementById('flashcardQuizMode').style.display = 'none';
+    renderFlashcard();
+  }
+
+  function renderFlashcard() {
+    const container = document.getElementById('flashcardContent');
+    const progress = document.getElementById('flashcardProgress');
+
+    document.getElementById('flashcardCardMode').style.display = 'block';
+    document.getElementById('flashcardQuizMode').style.display = 'none';
+    clearInterval(quizTimerInterval);
+
+    if (flashcardQueue.length === 0) {
+      progress.innerText = "";
+      container.innerHTML = `
+        <div style="font-size:48px; margin-bottom:8px;">🎉</div>
+        <h3>Lesson Complete!</h3>
+        <p>You mastered all words in this set!</p>
+        <button class="action-btn" onclick="initFlashcardQueue()">Practice Again</button>
+      `;
+      return;
+    }
+
+    progress.innerText = `Remaining in loop: ${flashcardQueue.length} word(s)`;
+    currentFlashcardItem = flashcardQueue[0];
+
+    // Audio automatique
+    speakText(currentFlashcardItem.word.replace(/<[^>]*>?/gm, ''), currentLang);
+
+    container.innerHTML = `
+      <div style="font-size:64px; margin-bottom:8px;">${currentFlashcardItem.icon}</div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:8px;">
+        <span class="vocab-word" style="font-size:26px;">${currentFlashcardItem.word}</span>
+        <button onclick="speakText('${currentFlashcardItem.word.replace(/'/g, "\\'")}', '${currentLang}')" style="font-size:20px; background:none; border:none; cursor:pointer;">🔊</button>
+      </div>
+      <div class="vocab-phonetic" style="font-size:16px; margin-bottom:12px;">[${currentFlashcardItem.phonetic}] — ${currentFlashcardItem.translation}</div>
+      
+      <ul class="examples-list" style="text-align:left;">
+        ${currentFlashcardItem.examples.map(ex => {
+          const cleanExample = ex.target.replace(/<[^>]*>?/gm, '');
+          return `
+            <li style="margin-bottom: 8px;">
+              <div>${ex.target} <button onclick="speakText('${cleanExample.replace(/'/g, "\\'")}', '${currentLang}')" style="background:none; border:none; cursor:pointer;">🔊</button></div>
+              <span class="example-en">${ex.english}</span>
+            </li>
+          `;
+        }).join('')}
+      </ul>
+    `;
+  }
+
+  function answerFlashcard(isCorrect) {
+    if (!currentFlashcardItem) return;
+
+    if (isCorrect) {
+      playSuccessSound();
+      addPoints(10);
+      const learned = flashcardQueue.shift();
+      wordsLearnedCount++;
+      recentLearnedWords.push(learned);
+
+      // Si on a appris 5 mots (ou si la file est vide mais qu'on a révisé des mots)
+      if (recentLearnedWords.length === 5 || flashcardQueue.length === 0) {
+        if (recentLearnedWords.length >= 2) {
+          quizBatchQueue = [...recentLearnedWords];
+          // Mélanger l'ordre des 5 quiz
+          quizBatchQueue.sort(() => Math.random() - 0.5);
+          startNextQuizInBatch();
+          return;
+        }
+      }
+    } else {
+      const failedItem = flashcardQueue.shift();
+      flashcardQueue.push(failedItem);
+    }
+    renderFlashcard();
+  }
+
+  // --- LOGIQUE DES QUIZ AVEC MINUTEUR (20s) ---
+  function startNextQuizInBatch() {
+    if (quizBatchQueue.length === 0) {
+      // Fin de la série de 5 quiz
+      recentLearnedWords = [];
+      renderFlashcard();
+      return;
+    }
+
+    document.getElementById('flashcardCardMode').style.display = 'none';
+    document.getElementById('flashcardQuizMode').style.display = 'block';
+    document.getElementById('quizFeedback').innerText = '';
+
+    currentQuizTarget = quizBatchQueue.shift();
+
+    document.getElementById('quizEnglishWord').innerHTML = `
+      <div style="font-size:12px; color:#888;">Quiz (${5 - quizBatchQueue.length}/5)</div>
+      <div style="font-size:50px;">${currentQuizTarget.icon}</div>
+      <div>"${currentQuizTarget.translation}"</div>
+      <div id="quizTimer" style="font-size:18px; font-weight:bold; color:#ef4444; margin-top:6px;">⏱️ 20s</div>
+    `;
+
+    // Préparer les 4 options (la cible + d'autres mots récents/disponibles)
+    let pool = [...recentLearnedWords];
+    let options = [currentQuizTarget];
+
+    for (let item of pool) {
+      if (options.length >= 4) break;
+      if (item.id !== currentQuizTarget.id && !options.some(o => o.id === item.id)) {
+        options.push(item);
+      }
+    }
+    options.sort(() => Math.random() - 0.5);
+
+    const grid = document.getElementById('quizOptionsGrid');
+    grid.innerHTML = '';
+    options.forEach(item => {
+      const btn = document.createElement('button');
+      btn.className = 'nav-btn';
+      btn.style.padding = '12px';
+      btn.style.fontSize = '16px';
+      btn.innerText = item.word.replace(/<[^>]*>?/gm, '');
+      btn.onclick = () => checkQuizAnswer(item, btn);
+      grid.appendChild(btn);
+    });
+
+    // Lancer le minuteur de 20s
+    quizTimeLeft = 20;
+    clearInterval(quizTimerInterval);
+    quizTimerInterval = setInterval(() => {
+      quizTimeLeft--;
+      const timerEl = document.getElementById('quizTimer');
+      if (timerEl) timerEl.innerText = `⏱️ ${quizTimeLeft}s`;
+      if (quizTimeLeft <= 0) {
+        clearInterval(quizTimerInterval);
+        const feedback = document.getElementById('quizFeedback');
+        feedback.style.color = '#ef4444';
+        feedback.innerText = '⏰ Time\'s up!';
+        setTimeout(() => {
+          startNextQuizInBatch();
+        }, 1200);
+      }
+    }, 1000);
+  }
+
+  function checkQuizAnswer(selectedItem, btnElement) {
+    clearInterval(quizTimerInterval);
+    const feedback = document.getElementById('quizFeedback');
+    
+    if (selectedItem.id === currentQuizTarget.id || selectedItem.word === currentQuizTarget.word) {
+      playSuccessSound();
+      addPoints(15);
+      feedback.style.color = '#10b981';
+      feedback.innerText = '✨ Great job! (+15 pts)';
+      speakText(selectedItem.word.replace(/<[^>]*>?/gm, ''), currentLang);
+      setTimeout(() => {
+        startNextQuizInBatch();
+      }, 1200);
+    } else {
+      feedback.style.color = '#ef4444';
+      feedback.innerText = `❌ Wrong! (Correct: ${currentQuizTarget.word.replace(/<[^>]*>?/gm, '')})`;
+      btnElement.style.borderColor = '#ef4444';
+      setTimeout(() => {
+        startNextQuizInBatch();
+      }, 1800);
+    }
+  }
+  // --- FUNCTION POUR RÉCUPÉRER TOUTES LES PHRASES DES LEÇONS ---
+  function getAllLessonSentences() {
+    const sentences = [];
+    const levels = appData[currentLang].levels || {};
+    for (let lvl in levels) {
+      for (let cat in levels[lvl]) {
+        levels[lvl][cat].forEach(item => {
+          if (item.examples && item.examples.length > 0) {
+            item.examples.forEach(ex => {
+              const cleanTarget = ex.target.replace(/<[^>]*>?/gm, '');
+              sentences.push({
+                english: ex.english,
+                target: cleanTarget
+              });
+            });
+          }
+        });
+      }
+    }
+    return sentences.length > 0 ? sentences : [
+      { english: "Where is the train station?", target: currentLang === 'de' ? "Wo ist der Bahnhof?" : "สถานีรถไฟอยู่ที่ไหน" }
+    ];
+  }
+
+  // --- LOGIQUE TYPE (Saisie Clavier) ---
+  function renderTyping() {
+    const list = getAllLessonSentences();
+    if (currentSentenceIdx >= list.length) currentSentenceIdx = 0;
+    const item = list[currentSentenceIdx];
+    
+    document.getElementById('typingTargetEnglish').innerText = `"${item.english}"`;
+    document.getElementById('typingInput').value = '';
+    document.getElementById('typingFeedback').innerText = '';
+  }
+
+  function normalizeText(text) {
+    // Retire la ponctuation finale (. ! ?) et nettoie les espaces
+    return text.trim().replace(/[.!?]+$/, '').toLowerCase();
+  }
+
+  function checkTypingAnswer() {
+    const list = getAllLessonSentences();
+    const item = list[currentSentenceIdx];
+    const userAttempt = document.getElementById('typingInput').value;
+    const feedback = document.getElementById('typingFeedback');
+
+    if (normalizeText(userAttempt) === normalizeText(item.target)) {
+      playSuccessSound();
+      addPoints(15);
+      feedback.style.color = '#10b981';
+      feedback.innerText = '✨ Great job! (+15 pts)';
+      speakText(item.target, currentLang);
+      setTimeout(() => {
+        currentSentenceIdx = (currentSentenceIdx + 1) % list.length;
+        renderTyping();
+      }, 1200);
+    } else {
+      feedback.style.color = '#ef4444';
+      feedback.innerText = `❌ Try again! (Expected: ${item.target})`;
+    }
+  }
+</script>
+</body>
+</html>

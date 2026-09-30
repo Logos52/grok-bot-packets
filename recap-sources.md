@@ -54,3 +54,6 @@
 - Triggernometry, a16z, Asmongold (→ Arguments)
 - Wraps/recaps/clips about an Elon interview (ingest the interview, not the commentary)
 - Any show not on this list, however good
+
+## Note (2026-09-29, Wedge via eggbot)
+- Jensen Huang + Elon Musk joint talks (shared stage, panel, joint press Q&A) count under the "Elon interviews" sit-down pin above. Ingest the host's own first-party captions; if none, NOTES-ONLY from official show notes. Flag press Q&As / panels as not-a-sit-down in the packet header. Still skip clips, clones/reuploads and commentary about the talk.

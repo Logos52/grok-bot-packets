@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="referrer" content="no-referrer">
+<title>請稍候</title>
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    color: #66666A;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "PingFang TC", "Noto Sans TC", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+main {
+    width: 100%;
+    max-width: 22rem;
+    padding: 2rem 1.5rem 3rem;
+    text-align: center;
+}
+h1 {
+    margin: 0;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #10567B;
+    letter-spacing: 0.02em;
+}
+p {
+    margin: 1rem 0 1.75rem;
+    font-size: 0.9375rem;
+    color: #515156;
+}
+.widget {
+    display: flex;
+    justify-content: center;
+    min-height: 65px;
+}
+.error {
+    margin: 1.25rem 0 0;
+    font-size: 0.875rem;
+    color: #E56051;
+}
+</style>
+</head>
+<body>
+<main>
+    <h1>稍等一下</h1>
+    <p>正在確認您是真人，通常只要幾秒鐘就好。</p>
+    <div class="widget cf-turnstile"
+         data-sitekey="0x4AAAAAAESNj0ox_qocSjNa"
+         data-action="bot_gate"
+         data-language="zh-tw"
+         data-callback="onAuthGatePass"></div>
+    <p class="error" id="auth-gate-error" hidden>剛剛沒認出您，再試一次好嗎？</p>
+    <noscript>
+        <p class="error">請開啟瀏覽器的 JavaScript 才能完成確認。</p>
+    </noscript>
+</main>
+<script>
+// 通過後只要 reload 當前網址即可：ForwardAuth 會重新檢查，這次帶著 pass cookie
+// 就會放行。原始網址從頭到尾留在瀏覽器，不需要用參數帶回 server。
+function onAuthGatePass(token) {
+    fetch('/bot-gate/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'cf-turnstile-response=' + encodeURIComponent(token)
+    }).then(function (resp) {
+        // 只認 204。被 gate 的 host 若沒有服務 /bot-gate/*，那裡的 404 handler 可能
+        // 回 200 帶 JSON 錯誤，用 resp.ok 判斷會誤判成功而不停 reload。
+        if (resp.status === 204) {
+            window.location.reload();
+            return;
+        }
+        showError();
+    }).catch(showError);
+}
+
+function showError() {
+    document.getElementById('auth-gate-error').hidden = false;
+    if (window.turnstile) {
+        window.turnstile.reset();
+    }
+}
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</body>
+</html>

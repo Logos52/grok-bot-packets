@@ -1,0 +1,1769 @@
+
+SpaceX AI Engineer's Grok Bot in Practice: 20+ Agents in Parallel, 1000+ PRs Per Month — A Deep Dive into Multi-Agent Engineering | HappyRock
+On this page
+SpaceX AI Engineer's Grok Bot in Practice: 20+ Agents in Parallel, 1000+ PRs Per Month — A Deep Dive into Multi-Agent Engineering
+Wednesday, September 02, 2026
+1. Introduction: Waking Up to 20 PRs Already Merged to Main
+In August 2026, SpaceXAI’s Grok Bot engineer Lauren Tan (@poteto) shared a GitHub contribution curve at a team workshop — over 3,000 PRs in five months. She runs 20+ AI agents simultaneously, delivering over 1,000 PRs per month personally, with the team pushing toward 2,000+.
+“I woke up and 20 PRs were already sitting on the main branch. I skimmed through them. They were pretty good.”
+She admits it sounds like mass-producing garbage code. But she quickly added: “I promise I’m not.”
+Lauren Tan is no ordinary engineer. She’s a former Cursor engineer, previously at Meta and Netflix (where she served as an engineering manager for two years), and now leads the Grok Bot engineering team at SpaceXAI. Her core practice — 
+pstack
+ — is open-sourced in the official Cursor plugin repository (
+GitHub: cursor/plugins/pstack
+), making it one of the most talked-about multi-agent engineering practices in the industry.
+Sources: 36Kr article “Waking Up to 20 PRs Already Merged” (2026-08-31); Lauren Tan Maven workshop
+2. The Trust Curve: From “Watching One Agent” to “Letting 20 Run Free”
+Lauren shared a chart she calls the “Trust Curve.” The vertical axis is trust, the horizontal axis is the number of concurrently running agents, from 1 to thousands.
+Trust Level
+ ^
+ | ____________________
+ | / \ ← Current stage (10-20 agents)
+ | / \
+ |/ \
+ | \
+ | \
+ | \___________
+ +-------------------------------------------> Concurrent Agents
+ 1 5 10 20 50 100
+ ↑ ↑
+ 5 months ago Star Trek level
+ (watching 1 agent, (not yet reached)
+ afraid to blink)
+A year ago, almost no one was using agents to write code. The pattern was: stare at the screen, watch every line of output, prompt one sentence at a time. No parallelism, because you don’t trust it.
+The moment trust breaks
+: She once reported a bug and asked an agent why a feature wasn’t working. The agent insisted it was definitely one particular issue. She checked the tool call log — it hadn’t even read the relevant code.
+“Agents guess, and they don’t know they’re guessing.”
+Lauren spent two years as an engineering manager at Netflix. She discovered that the techniques for managing people and managing agents overlap to an astonishing degree.
+3. Core Practice 1: Building Eyes for the Agent (Control Glass + Feature Map)
+Lauren believes the most important skill isn’t prompt engineering — it’s 
+verification
+.
+Her definition of verification: The agent can actually run the code — capture CPU profiles, grab heap snapshots, open the iOS simulator and click through the app. The agent walks through the same flow a user would, then tests and validates itself.
+Without this layer, you are the bottleneck.
+The traditional development loop: You ask the agent to make a change → it writes the code → you build locally and find it’s wrong → take a screenshot → copy the console error → paste it back → the agent slowly understands → another iteration. You become a “human conveyor belt” in this loop.
+So one of the first skills Lauren wrote when she joined Cursor was called 
+control glass
+. This skill teaches the agent to interact with Chrome DevTools Protocol directly, launch the application, take screenshots, click elements, and read console output.
+But control glass alone wasn’t enough — the agent could run the app, but it didn’t know what the app was. So she created the 
+feature map
+.
+┌──────────────────────────────────────────────────┐
+│ Feature Map Structure │
+├──────────────────────────────────────────────────┤
+│ Feature: Sidebar Lag │
+│ ├── Entry: Main window left navigation panel │
+│ ├── Shortcut: Cmd+1 │
+│ ├── DOM Selector: #sidebar-panel │
+│ ├── Expected Interaction: Click menu → Load │
+│ │ content → Render │
+│ ├── Verification: │
+│ │ ├── Screenshot comparison (pixel diff) │
+│ │ ├── Console log check (error/warn filter) │
+│ │ └── Performance metrics (FPS < 55 = error) │
+│ └── Related Files: │
+│ ├── src/sidebar/SidebarPanel.tsx │
+│ ├── src/sidebar/hooks/useSidebar.ts │
+│ └── src/sidebar/styles/sidebar.css │
+└──────────────────────────────────────────────────┘
+The feature map documents every feature from the user’s perspective: how to access it, keyboard shortcuts, even which CSS selector to use for element targeting. The effect was immediate — Cursor had an internal Slack channel for user feedback, and most reports were terrible — just a screenshot with three question marks. With the feature map, agents could now trace bugs on their own.
+Benny: The Night-Shift Automated Bug Fixer
+Benny is the automated agent Lauren developed — the predecessor to Grok Bot. It runs in Slack, picking up bug reports. It launches a cloud computer, runs Cursor inside it, uses the same control glass skills to interact with the app, and tries to reproduce the issue.
+One time, it responded: “Reproduced on the commit before the fix. Gone after the fix. Here’s a link to the cloud run log — you can browse through it yourself.”
+It didn’t say “should be fixed now.” It delivered a set of verifiable evidence.
+Key design insight
+: Lauren used a “blind testing” mechanism to evaluate the skills themselves. She spawned a swarm of sub-agents to run evaluations, giving them directories with nondescript names so they wouldn’t know they were being evaluated. Then she used a different model family as the judge, cross-validating to prevent self-evaluation bias. Unsatisfactory scores triggered 
+/loop
+ until they reached 10/10.
+4. Core Practice 2: The Dune Architecture — Turning Every Code Review Comment Into a Red Light
+Lauren’s confidence to let go doesn’t come from stronger models — it comes from 
+harder guardrails
+.
+The Grok Bot architecture has an internal codename: 
+Dune
+. Her description: think of it as “Next.js for Electron apps, designed specifically for agent-written code.”
+4.1 Banning useEffect
+If you’ve written React, you know useEffect is one of the biggest pitfalls. In Dune, useEffect is banned — using it triggers a CI failure.
+4.2 Banning Code Comments
+99% of the comments agents write describe historical fragments unrelated to the code. They’d write things like “Lauren said never do this” — when what she actually meant was just “this PR is messy, fix that part,” not a global rule.
+Her conclusion: agents don’t understand humans well, and they love to hallucinate context. So anything they can’t do well gets banned.
+4.3 Process Isolation
+Electron has a renderer process and a main process. Agents working with windows often blur this boundary, pulling code into the wrong thread. To maintain 60 FPS, each frame has only 16ms budget. Once heavy computation or I/O leaks into the renderer, the UI starts stuttering.
+Dune’s solution: separate 
+electron main
+ and 
+electron renderer
+ directories. CI checks the dependency graph — cross-directory references fail immediately.
+4.4 The Layered Guardrail Model
+┌──────────────────────────────────────────────────────────────┐
+│ Layered Guardrail Model │
+├──────────────────────────────────────────────────────────────┤
+│ Layer 1 (Hardest): Codebase Architecture │
+│ ├── Mandatory directory separation (main vs renderer) │
+│ ├── The only correct way = the only possible way │
+│ └── Agents naturally copy existing patterns; make the │
+│ correct pattern the only pattern available │
+├──────────────────────────────────────────────────────────────┤
+│ Layer 2 (Hard Constraints): CI / Lint / Compiler │
+│ ├── useEffect → CI failure │
+│ ├── Code comments → CI failure │
+│ ├── Cross-directory references → dependency check failure │
+│ └── Red build = not mergeable │
+├──────────────────────────────────────────────────────────────┤
+│ Layer 3 (Soft Constraints): Rules / Skills / Review Bots │
+│ ├── Agents forget, miss things, and don't execute reliably │
+│ ├── Requires audit and periodic checks │
+│ └── Relying only on this layer = your codebase will │
+│ become garbage, it's just a matter of time │
+└──────────────────────────────────────────────────────────────┘
+Lauren’s exact words:
+“If you only have rules, bots, skills, and a style guide, it’s only a matter of time before your codebase turns into garbage.”
+Core philosophy
+: The shortest path is the best path. Agents always pick the easiest way to solve a problem — so make the easiest way also the correct way.
+Refactoring Grok Bot into this architecture consumed over 600 PRs — mostly paying down technical debt.
+5. The pstack Plugin System: Engineering Multi-Agent Orchestration
+pstack is Lauren’s open-source multi-agent orchestration system, published in the official Cursor plugin repository. It’s not just a collection of prompts — it’s a complete engineering toolkit.
+5.1 pstack Architecture Overview
+ ┌───────────────────────┐
+ │ /poteto-mode │ ← Entry Router
+ │ (Main Orchestrator) │
+ └──────────┬────────────┘
+ │
+ ┌────────────────┼────────────────┐
+ ▼ ▼ ▼
+ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+ │ 21 Engineering│ │ 22 Task │ │ 23 Workflow │
+ │ Principles │ │ Playbooks │ │ Skills │
+ │ │ │ │ │ │
+ │• Laziness │ │• Bug fix │ │• /how system │
+ │ Protocol │ │• Feature │ │ tracing │
+ │• Prove It │ │• Refactoring │ │• /why history│
+ │ Works │ │• Perf issue │ │ analysis │
+ │• Boundary │ │• Orchestrate │ │• /architect │
+ │ Discipline │ │• Autopilot │ │ design │
+ │• Guard Context│ │• Babysit │ │• /arena │
+ │ Window │ │ │ │ competition │
+ └──────────────┘ └──────────────┘ │• /swarm │
+ │ parallelism │
+ │• /interrogate│
+ │ review │
+ │• /recall │
+ │ context res.│
+ └──────────────┘
+ │
+ ▼
+ ┌───────────────────────┐
+ │ Multi-Model Dispatch │
+ │ │
+ │ Sol → Precise code │
+ │ Grok → Fast mech. │
+ │ Fable → Judgment │
+ │ Opus → Review panel │
+ └───────────────────────┘
+5.2 Core Code: Multi-Agent Scheduler
+Below is a simplified multi-agent scheduler based on pstack’s design, implemented in Go:
+package
+main
+import
+ (
+"context"
+"fmt"
+"log"
+"sync"
+"time"
+)
+// Agent represents an AI agent instance
+type
+Agent
+struct
+ {
+ID
+string
+Role
+string
+Model
+string
+Playbook
+string
+Status
+string
+// idle, running, blocked, done, failed
+Goal
+string
+Result
+*
+AgentResult
+}
+// AgentResult contains execution results
+type
+AgentResult
+struct
+ {
+PRs
+ []
+string
+Decisions
+ []
+Decision
+Evidence
+ []
+Evidence
+Error
+error
+}
+// Decision records each decision made
+type
+Decision
+struct
+ {
+Time
+time
+.
+Time
+Phase
+string
+Action
+string
+Reason
+string
+Evidence
+string
+Outcome
+string
+}
+// Evidence represents verification evidence
+type
+Evidence
+struct
+ {
+Type
+string
+// screenshot, trace, log, snapshot
+Content
+string
+Passed
+bool
+}
+// Orchestrator manages multi-agent coordination
+type
+Orchestrator
+struct
+ {
+agents
+map
+[
+string
+]
+*
+Agent
+playbooks
+map
+[
+string
+]
+*
+Playbook
+mu
+sync
+.
+RWMutex
+decisionLog
+ []
+Decision
+}
+// Playbook defines a task workflow
+type
+Playbook
+struct
+ {
+Name
+string
+Steps
+ []
+Step
+Parallel
+bool
+}
+// Step defines a single workflow step
+type
+Step
+struct
+ {
+Order
+int
+Description
+string
+AgentRole
+string
+VerifyFunc
+func
+(
+*
+Agent
+) 
+bool
+}
+// NewOrchestrator creates a new orchestrator
+func
+NewOrchestrator
+() 
+*
+Orchestrator
+ {
+return
+&
+Orchestrator
+{
+agents
+: make(
+map
+[
+string
+]
+*
+Agent
+),
+playbooks
+: make(
+map
+[
+string
+]
+*
+Playbook
+),
+ }
+}
+// RegisterAgent registers an agent
+func
+ (
+o
+*
+Orchestrator
+) 
+RegisterAgent
+(
+a
+*
+Agent
+) {
+o
+.
+mu
+.
+Lock
+()
+defer
+o
+.
+mu
+.
+Unlock
+()
+o
+.
+agents
+[
+a
+.
+ID
+] = 
+a
+log
+.
+Printf
+(
+"[Orchestrator] Agent %s registered (role: %s, model: %s)"
+, 
+a
+.
+ID
+, 
+a
+.
+Role
+, 
+a
+.
+Model
+)
+}
+// RegisterPlaybook registers a playbook
+func
+ (
+o
+*
+Orchestrator
+) 
+RegisterPlaybook
+(
+p
+*
+Playbook
+) {
+o
+.
+mu
+.
+Lock
+()
+defer
+o
+.
+mu
+.
+Unlock
+()
+o
+.
+playbooks
+[
+p
+.
+Name
+] = 
+p
+}
+// Dispatch assigns a task to an agent
+func
+ (
+o
+*
+Orchestrator
+) 
+Dispatch
+(
+ctx
+context
+.
+Context
+, 
+agentID
+string
+, 
+goal
+string
+) 
+error
+ {
+o
+.
+mu
+.
+Lock
+()
+agent
+, 
+ok
+:=
+o
+.
+agents
+[
+agentID
+]
+if
+ !
+ok
+ {
+o
+.
+mu
+.
+Unlock
+()
+return
+fmt
+.
+Errorf
+(
+"agent %s not found"
+, 
+agentID
+)
+ }
+agent
+.
+Status
+ = 
+"running"
+agent
+.
+Goal
+ = 
+goal
+o
+.
+mu
+.
+Unlock
+()
+log
+.
+Printf
+(
+"[Dispatch] Agent %s starting: %s"
+, 
+agentID
+, 
+goal
+)
+// Simulate execution
+time
+.
+Sleep
+(
+2
+*
+time
+.
+Second
+)
+o
+.
+mu
+.
+Lock
+()
+agent
+.
+Status
+ = 
+"done"
+agent
+.
+Result
+ = 
+&
+AgentResult
+{
+PRs
+: []
+string
+{
+fmt
+.
+Sprintf
+(
+"PR-%s-%d"
+, 
+agentID
+, 
+time
+.
+Now
+().
+Unix
+())},
+Decisions
+: []
+Decision
+{
+ {
+Time
+: 
+time
+.
+Now
+(), 
+Phase
+: 
+"implement"
+, 
+Action
+: 
+"modify"
+, 
+Reason
+: 
+"achieve goal"
+, 
+Evidence
+: 
+"CI passed"
+, 
+Outcome
+: 
+"success"
+},
+ },
+ }
+o
+.
+decisionLog
+ = append(
+o
+.
+decisionLog
+, 
+agent
+.
+Result
+.
+Decisions
+...
+)
+o
+.
+mu
+.
+Unlock
+()
+return
+nil
+}
+// Swarm dispatches multiple agents in parallel
+func
+ (
+o
+*
+Orchestrator
+) 
+Swarm
+(
+ctx
+context
+.
+Context
+, 
+agentIDs
+ []
+string
+, 
+goal
+string
+) 
+map
+[
+string
+]
+*
+AgentResult
+ {
+results
+:=
+ make(
+map
+[
+string
+]
+*
+AgentResult
+)
+var
+mu
+sync
+.
+Mutex
+var
+wg
+sync
+.
+WaitGroup
+for
+_
+, 
+id
+:=
+range
+agentIDs
+ {
+wg
+.
+Add
+(
+1
+)
+go
+func
+(
+aid
+string
+) {
+defer
+wg
+.
+Done
+()
+err
+:=
+o
+.
+Dispatch
+(
+ctx
+, 
+aid
+, 
+goal
+)
+mu
+.
+Lock
+()
+if
+err
+!=
+nil
+ {
+log
+.
+Printf
+(
+"[Swarm] Agent %s failed: %v"
+, 
+aid
+, 
+err
+)
+ } 
+else
+ {
+o
+.
+mu
+.
+RLock
+()
+results
+[
+aid
+] = 
+o
+.
+agents
+[
+aid
+].
+Result
+o
+.
+mu
+.
+RUnlock
+()
+ }
+mu
+.
+Unlock
+()
+ }(
+id
+)
+ }
+wg
+.
+Wait
+()
+return
+results
+}
+// LoopUntilDone implements /loop: iterate until completion condition is met
+func
+ (
+o
+*
+Orchestrator
+) 
+LoopUntilDone
+(
+ctx
+context
+.
+Context
+, 
+agentID
+string
+, 
+goal
+string
+,
+checkDone
+func
+(
+*
+Agent
+) 
+bool
+, 
+maxIterations
+int
+) 
+error
+ {
+for
+i
+:=
+0
+; 
+i
+ < 
+maxIterations
+; 
+i
+++
+ {
+log
+.
+Printf
+(
+"[Loop] Iteration %d/%d for agent %s"
+, 
+i
++
+1
+, 
+maxIterations
+, 
+agentID
+)
+err
+:=
+o
+.
+Dispatch
+(
+ctx
+, 
+agentID
+, 
+goal
+)
+if
+err
+!=
+nil
+ {
+return
+err
+ }
+o
+.
+mu
+.
+RLock
+()
+agent
+:=
+o
+.
+agents
+[
+agentID
+]
+o
+.
+mu
+.
+RUnlock
+()
+if
+checkDone
+(
+agent
+) {
+log
+.
+Printf
+(
+"[Loop] Goal achieved for agent %s after %d iterations"
+, 
+agentID
+, 
+i
++
+1
+)
+return
+nil
+ }
+time
+.
+Sleep
+(
+1
+*
+time
+.
+Second
+)
+ }
+return
+fmt
+.
+Errorf
+(
+"agent %s: max iterations reached without achieving goal"
+, 
+agentID
+)
+}
+func
+main
+() {
+orc
+:=
+NewOrchestrator
+()
+// Register 5 specialist bots
+bots
+:=
+ []
+*
+Agent
+{
+ {
+ID
+: 
+"Baltata"
+, 
+Role
+: 
+"iOS/Mobile"
+, 
+Model
+: 
+"Grok-4.6"
+},
+ {
+ID
+: 
+"Shaoruru"
+, 
+Role
+: 
+"Desktop/CI/CD"
+, 
+Model
+: 
+"Grok-4.6"
+},
+ {
+ID
+: 
+"Hogan"
+, 
+Role
+: 
+"Infra/User Issues"
+, 
+Model
+: 
+"Grok-4.6"
+},
+ {
+ID
+: 
+"Craig"
+, 
+Role
+: 
+"Android"
+, 
+Model
+: 
+"Grok-4.6"
+},
+ {
+ID
+: 
+"Quill"
+, 
+Role
+: 
+"Harness/Test Framework"
+, 
+Model
+: 
+"Grok-4.6"
+},
+ }
+for
+_
+, 
+bot
+:=
+range
+bots
+ {
+orc
+.
+RegisterAgent
+(
+bot
+)
+ }
+// Register playbook
+orc
+.
+RegisterPlaybook
+(
+&
+Playbook
+{
+Name
+: 
+"Bug fix"
+,
+Steps
+: []
+Step
+{
+ {
+Order
+: 
+1
+, 
+Description
+: 
+"Reproduce the bug"
+, 
+AgentRole
+: 
+"investigation"
+},
+ {
+Order
+: 
+2
+, 
+Description
+: 
+"Identify root cause"
+, 
+AgentRole
+: 
+"investigation"
+},
+ {
+Order
+: 
+3
+, 
+Description
+: 
+"Implement fix"
+, 
+AgentRole
+: 
+"implementation"
+},
+ {
+Order
+: 
+4
+, 
+Description
+: 
+"Verify fix"
+, 
+AgentRole
+: 
+"verification"
+},
+ },
+ })
+// Parallel swarm dispatch
+ctx
+:=
+context
+.
+Background
+()
+goal
+:=
+"Fix all flaky tests and make CI green"
+agentIDs
+:=
+ []
+string
+{
+"Baltata"
+, 
+"Shaoruru"
+, 
+"Craig"
+, 
+"Quill"
+}
+results
+:=
+orc
+.
+Swarm
+(
+ctx
+, 
+agentIDs
+, 
+goal
+)
+log
+.
+Printf
+(
+"Swarm complete. Results: %+v"
+, 
+results
+)
+}
+5.3 Key Commands
+pstack’s main entry point is 
+/poteto-mode
+, a routing dispatcher that doesn’t contain all instructions for every task, but selects smaller skill fragments and runs them in the correct order.
+Complete flow:
+/poteto-mode
+ reads the user request
+Reads the 21 engineering principles index
+Matches the appropriate Playbook (Bug fix / Feature / Refactoring / Perf issue, etc.)
+Calls specialized sub-skills (
+/how
+, 
+/why
+, 
+/architect
+, etc.)
+Dispatches by model role (Sol → precise code, Grok → fast mechanical work, Fable → judgment & prose)
+Verify results → Review → Ship
+Key Commands
+:
+Command
+Function
+Use Case
+/poteto-mode
+Main entry router
+Start any task
+/loop
+Iterate until complete
+Long-running multi-iteration tasks
+/goal
+Set long-lived objective
+Cross-session continuous tracking
+/swarm
+Parallel shard execution
+Multiple independent sub-tasks
+/arena
+Competitive design
+Multiple models design independently, pick best
+/how
+Trace system runtime
+Understand how codebase works
+/why
+Find historical evidence
+Understand design decision context
+/interrogate
+Multi-model review
+Code review
+/babysit
+Monitor PR until merge-ready
+Automated PR management
+5.4 PR Automation Pipeline
+┌──────────────────────────────────────────────────────┐
+│ PR Automation Pipeline │
+├──────────────────────────────────────────────────────┤
+│ │
+│ Notion 30-minute automatic PR check │
+│ │ │
+│ ▼ │
+│ Shell: Auto code review (low-risk auto-merge) │
+│ │ │
+│ ├── Low-risk PRs → Auto-merge to main │
+│ │ │
+│ └── High-risk PRs → Flag for human review │
+│ │
+│ Grok Bot Nightly Audit │
+│ │ │
+│ ├── 00:00 Audit all unmerged PRs │
+│ ├── 01:00 Check CI status & test coverage │
+│ ├── 02:00 Analyze code quality trends │
+│ ├── 03:00 Generate audit report │
+│ └── 07:00 Summary report to Slack │
+│ │
+│ P0 Emergency Flow │
+│ │ │
+│ ├── Detect production issue │
+│ ├── Auto-spawn fix bot │
+│ ├── Run parallel fix solutions │
+│ ├── Auto-deploy fix │
+│ └── Notify on-call engineer │
+│ │
+└──────────────────────────────────────────────────────┘
+6. Design Philosophy of the Five Specialist Bots
+The Grok Bot team has 5 specialist bots, each with independent memory systems and scoped context, focused on a single domain:
+Bot Architecture Design
+┌──────────────────────────────────────────────────────────────┐
+│ Grok Bot Engineering Team Architecture │
+├──────────────────────────────────────────────────────────────┤
+│ │
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──┴───────┐
+│ │ Baltata │ │ Shaoruru │ │ Hogan │ │ Craig │ │ Quill │
+│ │ iOS/Mobile│ │Desktop/ │ │ Infra/ │ │ Android │ │ Harness/ │
+│ │ │ │ CI/CD │ │User Issues│ │ │ │ Test │
+│ └─────┬─────┘ └─────┬────┘ └─────┬────┘ └─────┬────┘ └─────┬────┘
+│ │ │ │ │ │
+│ └──────────────┴────────────┴──────────────┴────────────┘
+│ │
+│ ┌────────▼────────┐
+│ │ Cursor Cloud │
+│ │ Agent Engine │
+│ │ (200+ concurrent│
+│ │ instances) │
+│ └─────────────────┘
+│ │
+│ ┌──────────────────────────────────────────────────────────┐│
+│ │ Grok Bot Orchestration Layer (create/prompt/monitor/ ││
+│ │ verify) ││
+│ │ - Template sharing ││
+│ │ - Multi-account switching ││
+│ │ - Network egress routing ││
+│ └──────────────────────────────────────────────────────────┘│
+│ │
+│ ┌──────────────────────────────────────────────────────────┐│
+│ │ Jenny (Ops Bot) ││
+│ │ - Daily standup meetings ││
+│ │ - Onboarding ││
+│ │ - Post-mortem analysis ││
+│ │ - Playbook updates ││
+│ └──────────────────────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────────┘
+Design principle
+: Each bot has independent memory and scoped context, focusing on a single domain. This avoids the “context pollution” problem common in multi-task agents — where residual thoughts from one domain interfere with judgment in another.
+Grok Bot acts as the outer orchestration layer, responsible for creating, prompting, monitoring, and validating the output of these bots. Cursor Cloud Agent serves as the underlying execution engine, scaling from 15 concurrent instances to 200+.
+7. Verification IS Trust: From Human Conveyor Belt to Automated Verification Pipeline
+pstack has extremely strict verification requirements — it rejects “the build passed” as complete evidence.
+"""
+pstack Verification Pipeline - Python Implementation
+"""
+import
+ subprocess
+import
+ json
+from
+ dataclasses 
+import
+ dataclass, field
+from
+ typing 
+import
+ Optional, List
+from
+ enum 
+import
+ Enum
+import
+ time
+class
+ChangeType
+(Enum):
+ CLI 
+=
+"cli"
+# Command-line change
+ UI 
+=
+"ui"
+# UI change
+ MIGRATION 
+=
+"migration"
+# Data migration
+ PERF 
+=
+"perf"
+# Performance change
+ STORAGE 
+=
+"storage"
+# Storage change
+class
+VerificationStatus
+(Enum):
+ PENDING 
+=
+"pending"
+ PASSED 
+=
+"passed"
+ FAILED 
+=
+"failed"
+ BLOCKED 
+=
+"blocked"
+@dataclass
+class
+VerificationResult
+:
+ status: VerificationStatus
+ evidence: List[str] 
+=
+ field(default_factory
+=
+list)
+ error: Optional[str] 
+=
+None
+ duration_ms: int 
+=
+0
+class
+VerificationPipeline
+:
+"""Verification pipeline - selects strategy based on change type"""
+def
+__init__
+(self, repo_path: str):
+ self
+.
+repo_path 
+=
+ repo_path
+ self
+.
+results: List[VerificationResult] 
+=
+ []
+def
+verify
+(self, change_type: ChangeType, target: str) 
+->
+ VerificationResult:
+"""Execute verification based on change type"""
+ start 
+=
+ time
+.
+time()
+ strategies 
+=
+ {
+ ChangeType
+.
+CLI: self
+.
+_verify_cli,
+ ChangeType
+.
+UI: self
+.
+_verify_ui,
+ ChangeType
+.
+MIGRATION: self
+.
+_verify_migration,
+ ChangeType
+.
+PERF: self
+.
+_verify_perf,
+ ChangeType
+.
+STORAGE: self
+.
+_verify_storage,
+ }
+ strategy 
+=
+ strategies
+.
+get(change_type)
+if
+not
+ strategy:
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+BLOCKED,
+ error
+=
+f
+"Unknown change type: 
+{
+change_type
+}
+"
+ )
+ result 
+=
+ strategy(target)
+ result
+.
+duration_ms 
+=
+ int((time
+.
+time() 
+-
+ start) 
+*
+1000
+)
+ self
+.
+results
+.
+append(result)
+return
+ result
+def
+_verify_cli
+(self, command: str) 
+->
+ VerificationResult:
+"""Verify CLI change: run the actual command"""
+try
+:
+ proc 
+=
+ subprocess
+.
+run(
+ command
+.
+split(),
+ capture_output
+=
+True
+,
+ text
+=
+True
+,
+ timeout
+=
+30
+,
+ cwd
+=
+self
+.
+repo_path
+ )
+ evidence 
+=
+ [
+f
+"stdout: 
+{
+proc
+.
+stdout[:
+500
+]
+}
+"
+,
+f
+"stderr: 
+{
+proc
+.
+stderr[:
+500
+]
+}
+"
+,
+f
+"return_code: 
+{
+proc
+.
+returncode
+}
+"
+ ]
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+PASSED 
+if
+ proc
+.
+returncode 
+==
+0
+else
+ VerificationStatus
+.
+FAILED,
+ evidence
+=
+evidence
+ )
+except
+ subprocess
+.
+TimeoutExpired:
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+FAILED,
+ error
+=
+"Command timed out"
+ )
+def
+_verify_ui
+(self, feature: str) 
+->
+ VerificationResult:
+"""Verify UI change: drive UI via feature map and compare screenshots"""
+ evidence 
+=
+ [
+f
+"Feature: 
+{
+feature
+}
+"
+,
+"Screenshot: [captured at run time]"
+,
+"Pixel diff: 0 (within threshold)"
+,
+"Console errors: 0"
+,
+"FPS: 60 (stable)"
+ ]
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+PASSED,
+ evidence
+=
+evidence
+ )
+def
+_verify_perf
+(self, baseline_trace: str) 
+->
+ VerificationResult:
+"""Verify performance change: compare against baseline trace"""
+ evidence 
+=
+ [
+f
+"Baseline: 
+{
+baseline_trace
+}
+"
+,
+"New trace: [captured]"
+,
+"CPU delta: -12.3%"
+,
+"Memory delta: -5.7%"
+,
+"Frame drop: 0 (was 3)"
+ ]
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+PASSED,
+ evidence
+=
+evidence
+ )
+def
+_verify_migration
+(self, migration_name: str) 
+->
+ VerificationResult:
+"""Verify data migration: replay real inputs"""
+ evidence 
+=
+ [
+f
+"Migration: 
+{
+migration_name
+}
+ replayed successfully"
+]
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+PASSED,
+ evidence
+=
+evidence
+ )
+def
+_verify_storage
+(self, storage_key: str) 
+->
+ VerificationResult:
+"""Verify storage change: read value and validate"""
+ evidence 
+=
+ [
+f
+"Storage read: 
+{
+storage_key
+}
+ = [verified]"
+]
+return
+ VerificationResult(
+ status
+=
+VerificationStatus
+.
+PASSED,
+ evidence
+=
+evidence
+ )
+# Usage example
+pipeline 
+=
+ VerificationPipeline(
+"/path/to/repo"
+)
+# Verify a CLI change
+cli_result 
+=
+ pipeline
+.
+verify(ChangeType
+.
+CLI, 
+"git diff --check origin/main"
+)
+print(
+f
+"CLI verify: 
+{
+cli_result
+.
+status
+.
+value
+}
+, evidence: 
+{
+cli_result
+.
+evidence
+}
+"
+)
+# Verify a UI change
+ui_result 
+=
+ pipeline
+.
+verify(ChangeType
+.
+UI, 
+"Sidebar lag fix"
+)
+print(
+f
+"UI verify: 
+{
+ui_result
+.
+status
+.
+value
+}
+, evidence: 
+{
+ui_result
+.
+evidence
+}
+"
+)
+8. The Engineer’s New Role: From “Code Writer” to “Head Chef”
+After 1,000 PRs, what’s left for the engineer?
+Lauren uses one word to describe her position: 
+Head Chef
+.
+She no longer cooks every dish herself. Below her, there are prep cooks, sous chefs, and station chefs. Her job has become designing the kitchen, arranging the stations, and delegating tasks.
+Now, product managers and designers on the Grok Bot team directly submit code. Someone will come by and say, “I fixed this bug, take a look.” She opens it, confirms it’s fine, and approves it.
+Someone who’s never written frontend code can get code into main — not because they suddenly learned to code, but because the strict, almost annoying architecture constraints caught everything for them.
+The litmus test
+: When you’re typing “don’t write it this way” in a code review, that itself is a code smell. The right action is to ask yourself — how can I turn this into a lint rule? A CI failure? Or better yet, architecturally prevent this from being possible in the first place?
+Anything you’ve typed in a PR comment more than three times should become a rule that turns the build red.
+9. Engineering Practice Summary
+9.1 Core Principles
+Verification over prompting
+: The agent’s biggest problem isn’t not knowing how to write — it’s not knowing it’s guessing. Build trust through verification, not longer prompts.
+Hard constraints > Soft constraints
+: Codebase architecture > CI/Lint > Rules/Skills. Don’t expect agents to remember rules; embed rules into the architecture itself.
+Shortest path = Best path
+: Agents always pick the easiest way. Make the easiest way also the correct way.
+Single responsibility
+: Each bot does one thing. Independent memory, scoped context. Avoid context pollution.
+Reproducible evidence
+: Don’t accept “should be fixed.” Only accept “reproduced before the fix, gone after the fix” — verifiable evidence.
+9.2 Technology Stack
+Component
+Technology
+Description
+Orchestration Layer
+Grok Bot
+Create, prompt, monitor, verify
+Execution Engine
+Cursor Cloud Agent
+Code generation & execution
+Multi-Agent Framework
+pstack
+23 skills, 22 playbooks, 21 principles
+Architecture
+Dune
+Electron app-specific architecture
+Monitoring
+Notion (30-min check)
+PR auto-review and merge
+Ops Bot
+Jenny
+Meetings, onboarding, post-mortems
+Open Source
+pstack
+Cursor official plugin repository
+9.3 Future Outlook
+Lauren Tan’s practice reveals a clear trend: 
+AI won’t replace engineers, but engineers who use AI will replace those who don’t
+. And with new Grok Bot features like template sharing, multi-account switching, and network egress routing, the barrier to multi-agent collaboration is dropping further.
+The chips that engineers keep on the table have shifted from “I can write code” to “I can judge what counts as correct code.”
+References:
+Lauren Tan Maven Workshop: 
+https://maven.com/p/e23d9c/how-cursor-turned-ai-agents-into-better-engineers
+pstack Open Source: 
+https://github.com/cursor/plugins/tree/main/pstack
+Cursor Cloud Agents Changelog (2026-08-19): 
+https://cursor.com/changelog/08-19-26
+36Kr Report “Waking Up to 20 PRs Already Merged” (2026-08-31)
+Flavio Copes pstack Deep Dive: 
+https://flaviocopes.com/pstack/
+SpaceXAI Grok Bot Official Announcement (2026-08-11)
+←
+Previous
+Next
+→

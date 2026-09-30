@@ -1,16 +1,15 @@
-# weather 2026-09-29 Asia/Tokyo ~13:11
+# weather 2026-09-30 Asia/Tokyo ~13:14
 
 ## HIS CITY source
 now.md ## 大家現在 沈文：美國（剛到；未來沒有再見計劃） — US / country only, no non-US city → SKIP his city. Osaka only. Do NOT fall back to Taipei.
 
 ## Osaka (34.69, 135.50)
-- forecast max 21.8 / min 18.6 / rain 50.30 mm / snow 0.0
-- normal max (Sep 26–Oct 2 ±3 of Sep 29, 10y) 27.42 / normal rain 5.10 (n=70)
-- delta max −5.62 → 冷 (≤normal−5); not 熱; rain 50.30 ≥40 → 大雨; no snow
-- JMA quakes last 24h: none M≥5.0; none 大阪震度≥3 (e.g. 和歌山県南部 M2.6 maxi1; 茨城県南部 M4.9 maxi4) → no 地震
-- JMA typhoon: #2626 スリゲ/Surigae (STS), center ~28.7N 134.3E 日本の南, moving NNE→ENE toward 日本の東. Dist Osaka now~676km / +12h~587 / +24h~520 / +45h~565. Kansai not in track; no active Osaka typhoon warning → no 颱風
-- outliers: 大雨, 冷
+- forecast max 26.5 / min 18.7 / rain 0.00 mm / snow 0.0
+- normal max (Sep 27–Oct 3 ±3 of Sep 30, 10y) 27.26 / normal rain 5.23 (n=70)
+- delta max −0.76 → not 冷 (need ≤22.26 or ≤5); not 熱 (need ≥30.26 or ≥36); rain 0 <40 → no 大雨; no snow
+- JMA quakes last 24h: none → no 地震
+- JMA typhoon: #2626 スリゲ/Surigae (TS), center ~30.6N 138.1E, track NNE→ENE away over Pacific (12h 31.9N 139.1E; 24h 33.5N 140.8E; 45h 39.3N 152.1E). Dist Osaka now~516km; Kansai not in track; Osaka forecast sunny / warnings cleared → no 颱風
+- outliers: none
 
 ## Alerts to send
-- 大阪 | 大雨 | 今天預報雨量50毫米
-- 大阪 | 冷 | 今天預報22度，比平常這時候冷6度
+(none — silent)

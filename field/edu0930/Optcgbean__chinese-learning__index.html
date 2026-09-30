@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中文學習樂園 — Robux Edition</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E📚%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <h1>🀄 中文學習樂園 <span class="sub">Chinese Learning Fun — Robux Edition</span></h1>
+        <button class="wallet" onclick="toggleWalletPanel()">
+            <span class="coin">💰</span>
+            <span id="walletBalance">0</span>&nbsp;Robux
+        </button>
+    </div>
+
+    <!-- WALLET PANEL -->
+    <div class="wallet-panel" id="walletPanel">
+        <h3>💰 Earnings History</h3>
+        <div id="txList"></div>
+        <div class="redeem-box">
+            <input type="number" id="redeemAmount" placeholder="Amount to redeem" min="0.5" step="0.5">
+            <input type="password" id="redeemPin" placeholder="Parent code" style="max-width:130px">
+            <button class="btn btn-primary" onclick="doRedeem()">Redeem</button>
+        </div>
+        <div id="redeemMsg" style="margin-top:8px; font-size:0.85rem;"></div>
+    </div>
+
+    <!-- PLAYER BAR -->
+    <div class="playerbar">
+        <span class="lvl-badge" id="levelBadge">Lv.1</span>
+        <span class="stat">🔥 <b id="comboBadge"></b></span>
+        <span class="stat" style="margin-left:auto" id="gameStats">✅ 0 | ❌ 0</span>
+    </div>
+
+    <!-- MENU -->
+    <div id="menuScreen">
+        <div class="word-set-select">
+            <label style="color:var(--muted); font-size:0.9rem">Vocab set:</label>
+            <select id="wordSetSelect" class="set-select" onchange="changeWordSet()"></select>
+        </div>
+        <div class="menu-grid">
+            <div class="game-card" onclick="showGame('flashcardGame')">
+                <div class="reward-tag">Practice · no reward</div>
+                <div class="icon">🃏</div><h3>Flashcards</h3>
+                <p>Flip the card, say the word, mark if you knew it.</p>
+            </div>
+            <div class="game-card" onclick="showGame('wordChoiceGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">🎯</div><h3>Word Choice</h3>
+                <p>See the English — pick the right Chinese word.</p>
+            </div>
+            <div class="game-card" onclick="showGame('matchingGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">🧩</div><h3>Matching Pairs</h3>
+                <p>Match Chinese words with their English meanings.</p>
+            </div>
+            <div class="game-card" onclick="showGame('listeningGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">👂</div><h3>Listening</h3>
+                <p>Listen carefully — which word did you hear?</p>
+            </div>
+            <div class="game-card" onclick="showGame('scrambleGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">🔀</div><h3>Word Scramble</h3>
+                <p>Unscramble the characters to spell the word.</p>
+            </div>
+            <div class="game-card" onclick="showGame('fillBlankGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">✏️</div><h3>Fill the Blank</h3>
+                <p>Complete the sentence with the missing word (incl. assessment sentences!).</p>
+            </div>
+            <div class="game-card" onclick="showGame('sentenceOrderGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">📋</div><h3>排句成段 Sentence Order</h3>
+                <p>Tap the story events in the right order — 狼來了, 守株待兔, 北風和太陽!</p>
+            </div>
+            <div class="game-card" onclick="showGame('elementsGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">🔍</div><h3>故事要素 Story Elements</h3>
+                <p>敘事六要素: is it 時間, 地點, 人物, 開始, 經過 or 結果?</p>
+            </div>
+            <div class="game-card" onclick="showGame('comprehensionGame')">
+                <div class="reward-tag">0.5💰</div>
+                <div class="icon">❓</div><h3>閱讀理解 Comprehension</h3>
+                <p>Reading comprehension MC — stories + vocab meanings from the assessment.</p>
+            </div>
+            <div class="game-card boss" onclick="showGame('bossGame')">
+                <div class="reward-tag">2.5💰/hit</div>
+                <div class="icon">👹</div><h3>BOSS BATTLE</h3>
+                <p>Insane demon mode! 5x Robux per hit — but the boss fights back. 10s per question!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHARED GAME CHROME -->
+    <div class="game-area" id="chrome">
+        <div class="progress-container"><div class="progress-bar" id="gameProgress"></div></div>
+        <div class="feedback" id="gameFeedback"></div>
+    </div>
+
+    <!-- 1. FLASHCARDS -->
+    <div class="game-area" id="flashcardGame">
+        <h2>🃏 Flashcards</h2>
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="flashcard-inner" id="fcInner">
+                <div class="fc-face fc-front">
+                    <div class="fc-zh" id="fcZh">字</div>
+                    <div class="fc-pinyin" id="fcFrontPinyin"></div>
+                    <div class="fc-hint">Tap to flip 🔊</div>
+                </div>
+                <div class="fc-face fc-back">
+                    <div class="fc-zh" id="fcEn" style="font-size:2.2rem">word</div>
+                    <div class="fc-pinyin" id="fcPinyin"></div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <button class="btn btn-success" onclick="fcMark(true)">✅ I knew it!</button>
+            <button class="btn btn-danger" onclick="fcMark(false)" style="margin-left:10px">❌ Didn't know</button>
+        </div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 2. WORD CHOICE -->
+    <div class="game-area" id="wordChoiceGame">
+        <h2>🎯 Word Choice</h2>
+        <div class="diff-row"><span class="diff-label">Difficulty:</span>
+            <button class="diff-btn" data-diff="easy" onclick="setDifficulty('easy')">Easy</button>
+            <button class="diff-btn active" data-diff="normal" onclick="setDifficulty('normal')">Normal</button>
+            <button class="diff-btn" data-diff="hard" onclick="setDifficulty('hard')">Hard <span class="mult">2x💰</span></button>
+        </div>
+        <div class="center" id="wcPrompt" style="font-size:1.4rem; margin:14px 0"></div>
+        <div class="options-grid" id="wcOptions"></div>
+        <div class="center"><button id="wcSubmit" class="submit-btn" onclick="submitWordChoice()" disabled>✔ Submit</button></div>
+        <div class="center" id="wcPinyinHint" style="color:var(--muted)"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 3. MATCHING -->
+    <div class="game-area" id="matchingGame">
+        <h2>🧩 Matching Pairs</h2>
+        <div class="match-grid" id="matchGrid"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 4. LISTENING -->
+    <div class="game-area" id="listeningGame">
+        <h2>👂 Listening Practice</h2>
+        <div class="diff-row"><span class="diff-label">Difficulty:</span>
+            <button class="diff-btn" data-diff="easy" onclick="setDifficulty('easy')">Easy</button>
+            <button class="diff-btn active" data-diff="normal" onclick="setDifficulty('normal')">Normal</button>
+            <button class="diff-btn" data-diff="hard" onclick="setDifficulty('hard')">Hard <span class="mult">2x💰</span></button>
+        </div>
+        <div class="center">
+            <button class="audio-btn-large" onclick="speak(listenState.answer)">🔊</button>
+            <p style="color:var(--muted); margin:8px 0">Tap to hear again</p>
+        </div>
+        <div class="options-grid" id="listeningOptions"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 5. SCRAMBLE -->
+    <div class="game-area" id="scrambleGame">
+        <h2>🔀 Word Scramble</h2>
+        <div class="diff-row"><span class="diff-label">Difficulty:</span>
+            <button class="diff-btn" data-diff="easy" onclick="setDifficulty('easy')">Easy</button>
+            <button class="diff-btn active" data-diff="normal" onclick="setDifficulty('normal')">Normal</button>
+            <button class="diff-btn" data-diff="hard" onclick="setDifficulty('hard')">Hard <span class="mult">2x💰</span></button>
+        </div>
+        <div class="scramble-hint" id="scrambleHint"></div>
+        <div class="tile-build" id="scrambleBuild"></div>
+        <div class="center" style="color:var(--muted)">Tap the characters in the correct order — tap a placed tile to send it back:</div>
+        <div class="tile-bank" id="scrambleTiles"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 6. FILL THE BLANK -->
+    <div class="game-area" id="fillBlankGame">
+        <h2>✏️ Fill the Blank</h2>
+        <div class="diff-row"><span class="diff-label">Difficulty:</span>
+            <button class="diff-btn" data-diff="easy" onclick="setDifficulty('easy')">Easy</button>
+            <button class="diff-btn active" data-diff="normal" onclick="setDifficulty('normal')">Normal</button>
+            <button class="diff-btn" data-diff="hard" onclick="setDifficulty('hard')">Hard <span class="mult">2x💰</span></button>
+        </div>
+        <div class="sentence-target" id="fbSentence"></div>
+        <div class="center">
+            <button class="speak-inline" onclick="speakFBQuestion()">🔊 Sentence</button>
+            <button class="speak-inline" onclick="speakFBAnswer()">🔊 Answer</button>
+        </div>
+        <div class="center" id="fbEnglish" style="color:var(--muted); margin:8px 0"></div>
+        <div class="word-bank center" id="fbBank" style="justify-content:center"></div>
+        <div class="center"><button id="fbSubmit" class="submit-btn" onclick="submitFillBlank()" disabled>✔ Submit</button></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 7. BOSS BATTLE -->
+    <div class="game-area" id="bossGame">
+        <h2>👹 BOSS BATTLE — Insane Demon Mode</h2>
+        <div class="boss-arena">
+            <div class="boss-name" id="bossName"></div>
+            <div class="boss-sprite" id="bossSprite">👹</div>
+            <div class="hp-label">BOSS HP</div>
+            <div class="hp-bar"><div class="hp-fill boss" id="bossHpFill"></div></div>
+            <div class="hp-label" id="bossHpText"></div>
+            <div class="hp-label" style="margin-top:10px">YOUR HP</div>
+            <div class="hp-bar"><div class="hp-fill player" id="playerHpFill"></div></div>
+            <div class="hp-label" id="playerHpText"></div>
+            <div class="boss-q" id="bossQuestion">What does this word mean?</div>
+            <div class="center" style="margin:6px 0"><button class="speak-inline" onclick="speakBossWord()">🔊 Listen (Mandarin)</button></div>
+            <div class="boss-timer" id="bossTimer"></div>
+            <div class="options-grid" id="bossOptions"></div>
+            <div class="center"><button id="bossSubmit" class="submit-btn" onclick="submitBoss()" disabled>⚔️ Attack!</button></div>
+        </div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">🏳️ Flee (keep your Robux)</button></div>
+    </div>
+
+    <!-- 9. SENTENCE ORDER -->
+    <div class="game-area" id="sentenceOrderGame">
+        <h2>📋 排句成段 Sentence Order</h2>
+        <div class="center" id="soStory" style="font-size:1.2rem; margin-bottom:14px"></div>
+        <div class="order-box" id="soChips"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 10. STORY ELEMENTS -->
+    <div class="game-area" id="elementsGame">
+        <h2>🔍 故事要素 Story Elements</h2>
+        <div class="center" style="margin-bottom:6px"><span class="lvl-badge" id="elStoryTag"></span></div>
+        <div class="el-item" id="elItem"></div>
+        <div class="options-grid" id="elCats" style="grid-template-columns:repeat(3,1fr); margin-top:16px"></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- 11. COMPREHENSION -->
+    <div class="game-area" id="comprehensionGame">
+        <h2>❓ 閱讀理解 Comprehension</h2>
+        <div class="center" id="compQuestion" style="font-size:1.25rem; margin:12px 0; font-weight:bold"></div>
+        <div class="center" style="margin-bottom:10px"><button class="speak-inline" onclick="speakCompQuestion()">🔊 Listen (Mandarin)</button></div>
+        <div class="options-grid" id="compOptions"></div>
+        <div class="center"><button id="compSubmit" class="submit-btn" onclick="submitComp()" disabled>✔ Submit</button></div>
+        <div class="nav-row"><button class="btn btn-secondary" onclick="backToMenu()">← Menu</button></div>
+    </div>
+
+    <!-- REWARD -->
+    <div class="reward-screen" id="rewardScreen">
+        <div class="reward-emoji">🎉</div>
+        <div class="reward-title">Great Job!</div>
+        <div class="reward-text" id="rewardText"></div>
+        <button class="btn btn-primary" onclick="backToMenu()" style="margin-top:22px">Continue</button>
+    </div>
+
+</div>
+
+<div id="robuxPopup">+0.5 💰 Robux!</div>
+
+<script src="js/data.js"></script>
+<script src="js/assess-data.js"></script>
+<script src="js/wallet.js"></script>
+<script src="js/games.js"></script>
+<script src="js/games2.js"></script>
+<script src="js/assess.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

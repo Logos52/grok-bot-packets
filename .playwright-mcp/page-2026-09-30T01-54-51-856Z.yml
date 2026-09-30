@@ -1,0 +1,50 @@
+- generic [ref=e1]:
+  - generic:
+    - region "Notifications alt+T"
+  - generic:
+    - region "Notifications alt+T"
+  - dialog "Log in to X" [ref=e6]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - button [ref=e21] [cursor=pointer]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - paragraph [ref=e40]: See what's happening
+            - paragraph [ref=e43]: "Select an option below:"
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - button [ref=e47] [cursor=pointer]:
+                - paragraph [ref=e54]: Continue with phone
+              - generic [ref=e56]:
+                - generic [aria-hidden]:
+                  - generic: Continue with Google
+                - generic [ref=e58]:
+                  - button "Continue with Google. Opens in new tab" [ref=e60] [cursor=pointer]:
+                    - generic [ref=e62]: Continue with Google
+                  - iframe [ref=e72]:
+                    - button "Continue as Jay, nxlogos@gmail.com. Opens in new tab" [ref=f3e3] [cursor=pointer]:
+                      - generic [ref=f3e5]:
+                        - img "Jay's profile image" [ref=f3e6]
+                        - generic [ref=f3e7]:
+                          - generic [ref=f3e8]: Continue as Jay
+                          - generic [ref=f3e9]: nxlogos@gmail.com
+              - button [ref=e73] [cursor=pointer]:
+                - paragraph [ref=e80]: Continue with Apple
+            - paragraph [ref=e84]: or
+            - generic [ref=e87]:
+              - generic: Email or username
+              - textbox "Email or username" [ref=e88]
+              - textbox
+      - generic [ref=e90]:
+        - paragraph [ref=e94]: Continue
+        - paragraph [ref=e98]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=e99] [cursor=pointer]:
+            - /url: https://x.com/tos
+          - text: ","
+          - link "Privacy Policy" [ref=e100] [cursor=pointer]:
+            - /url: https://x.com/privacy
+          - text: and
+          - link "Cookie Use" [ref=e101] [cursor=pointer]:
+            - /url: https://help.x.com/rules-and-policies/twitter-cookies
+          - text: .

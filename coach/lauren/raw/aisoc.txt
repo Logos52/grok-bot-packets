@@ -1,0 +1,101 @@
+
+Lauren Tan: 20 GrokBot agents, ~1,000 PRs a month, 600 refactors to get there | AI Socratic
+Skip to main content
+We value your privacy
+We use cookies to improve your experience and analyze site traffic. You can choose which cookies to allow.
+Privacy Policy
+Accept All
+Reject All
+Customize
+Back to News
+Lauren Tan: 20 GrokBot agents, ~1,000 PRs a month, 600 refactors to get there
+L
+Lauren Tan
+August 26, 2026
+Videos & Podcasts
+Agents
+Tools
+Vibe Coding
+Summary
+SpaceXAI's Lauren Tan merged roughly 1,000 PRs in a month rebuilding GrokBot's Dune architecture, then pushed over 600 refactoring PRs before trusting 10-20 agents to automate 90% of her routine, banning useEffect and code comments.
+Key points
+Lauren Tan (SpaceXAI, GrokBot/Cursor) says she runs 10-20 GrokBot agents automating 90% of her routine
+She merged roughly 1,000 PRs one month after joining Cursor, nearing 800 by day 12 of the next
+Pushed over 600 refactoring PRs to build Dune, an architecture making agent shortcuts the correct path
+Dune bans useEffect and plain code comments via CI, not coding standards agents must remember
+A Chief of Staff agent routes tasks to specialists (Inbox, Calendar, To-Do) that message each other
+The viral clip going around X — "I'm running 10-20 GrokBot agents that automate 90% of my routine, and I have a Chief of Staff agent who knows about all my other bots" — comes from a roughly hour-long workshop by 
+Lauren Tan
+ (@poteto), who works on GrokBot and Cursor at SpaceXAI, sits on the React compiler core team, and was previously an engineering manager at Netflix. The number that actually explains the setup is a different one: 
+more than 600 refactoring pull requests
+ she pushed 
+before
+ the agents could be trusted to merge anything on their own.
+Tan's own throughput figures, given live in the talk: she joined Cursor five months ago, spent the first month learning the codebase, merged roughly 
+1,000 PRs the following month
+, and was approaching 
+800 by day 12
+ of the month she was speaking in. One morning she woke to about 
+20 PRs that agents had merged automatically
+. "I almost never look at code anymore," she says — she reviews outcomes after the merge, not diffs before it.
+#
+The architecture came before the agents
+The reason she can do that is not a better prompt. GrokBot started as a quickly generated greenfield app: fast to build, but the structure drifted toward whatever was most convenient for the agent in the moment, and directories, dependencies and state management tangled. Her fix was to rebuild the environment agents work in — an Electron architecture the team calls 
+Dune
+ — on one design judgment: agents take shortcuts, so make the shortest path the correct one.
+A frame from the workshop covering Dune's guardrails. Credit: 
+XiaoHu Explains
+.
+In practice: feature colocation, hard process boundaries between Electron's main and renderer processes, CI that mechanically blocks cross-layer and cross-process imports, and lint or compile gates aimed at patterns agents repeatedly misuse. Two bans are memorable enough to travel — 
+useEffect
+ and 
+plain code comments
+, which agents kept adding without value. The transferable method is not the ban list; it is sealing a bad shortcut with a mechanical boundary instead of a coding standard the model has to remember every time.
+#
+Verification, not generation, is the bottleneck
+Tan's stated requirement for trusting an agent is that it can prove its work by execution: run the application, take CPU traces and heap snapshots, drive the iOS simulator, and observe the behavior a user would actually see. Agents drive real UI through developer tooling — Chrome DevTools Protocol for web and Electron, Apple simulator utilities for iOS. Early on that failed because the agent could take a trace and confidently blame the wrong component, so she added a 
+feature map
+ teaching it how to reach features: sidebar items, PR tabs, the DOM attributes to select on, keyboard shortcuts. Without it, she says, the agent flails.
+Those behaviors are bundled as skills in 
+pstack
+, her plugin now on the Cursor marketplace. To keep skills from rotting she runs 
+evals as unit tests for agents
+: a coordinator agent writes a rubric, spawns sub-agents in separate directories so they cannot easily tell they are being evaluated, and scores across a matrix of models. Build verification locally first, she argues, and only then scale to cloud agents — parallelizing before trust exists just burns tokens. Her cloud example is 
+Benny
+, an agent that ingests bug reports on its own cloud desktop and reproduces them, sometimes finding the bug already fixed on main.
+#
+The non-engineering half
+The personal setup is the part that went viral. One 
+Chief of Staff
+ orchestrator routes work to named specialists with permanent roles — Inbox Manager, Calendar Scheduler, To-Do Organizer — which can also message each other directly. Tool connections (Gmail, Drive, Calendar, Notion, Slack, Salesforce, HubSpot, GitHub) are account-level, so connecting once exposes the tool to every current and future bot. Skills are taught by demonstration through GrokBot's "Teach a Task" recording rather than written as prompts, then fire as routines on schedules or triggers. Guardrails are drawn at reversibility: bots draft email, nothing external leaves without approval.
+#
+Why it matters
+This is one of the first detailed public looks at how someone inside a frontier lab structures an agent team, and the value is the shape of the system, not the percentages. The caveats are real: these are demos from GrokBot's launch week — the product went to beta on 
+August 11, 2026
+ on Grok 4.6, three days before SpaceXAI closed its Cursor acquisition — and no auditable repo or PR list accompanies the numbers. PR counts measure delivery, not quality. Co-founder Jimmy Ba's separate claim that 90% of SpaceXAI engineers work through agent loops and ship about five times faster is company self-reporting of the kind we have 
+flagged before
+. The viral clips also disagree with each other on the roster — 10-20 agents in one, "a Chief of Staff, a PM agent and 20+ workers" in another, "a Chief of Staff, 3 managers and 16 workers" in a third — which is reason enough to watch the workshop instead of the thread.
+Sources
+Lauren Tan's GrokBot workshop (59 min)
+ · 
+XiaoHu's transcript breakdown
+ · 
+Coursiv's workflow write-up
+ · 
+detailed video summary
+ · 
+Lauren Tan and Roshan Sadanani on MTS
+ · 
+the Codez clip on X
+ · 
+John Mason's recommendation
+Related
+Cursor's agent swarm hit ~1,000 commits an hour building a browser
+Linear's bug autofix loop: 817 runs, 300+ bugs fixed in 30 days
+Seven anti-slop skills for coding agents: one linter, six cleanup prompts
+OpenAI declares its “automated research intern” reached, at 3.1 agent-workdays per human workday
+Vibe coding on X: Agents swarm and Memory
+Coding agents are learning to talk to each other
+About the Authors
+L
+Lauren Tan

@@ -1,0 +1,10 @@
+## Arguments · Asmongold · 2026-09-29 · This can't be real..
+url: https://www.youtube.com/watch?v=5ocUOJ2Zuaw  ·  length: 0:18  ·  text: captions
+### Arguments
+- 00:20 · **Claim:** UK two-tier justice is proven when terror-adjacent Fairford suspects walk on bail while boat-slasher Danny Tommo stays denied. **Support:** Counterterror chief confirms five men arrested near RAF Fairford under Explosives Act / prep-of-terror, then released on police bail with conditions; contrasts Tommo jailed for stabbing/deflating migrant dinghy. **Rejects:** "Surely they found nothing" as the comforting default.
+- 04:00 · **Claim:** Official "UK nationals / stealing petrol" soft-pedals don't erase the pattern of institutional untrustworthiness. **Support:** Sky/press: vans toward US air base used in Iran ops; 45–85 homes evacuated; bomb-disposal robot; fake company logos on vans; chat insists petrol thieves — Asmon: gasoline near a base isn't random; cites rape-gang coverups as prior lie pattern. **Rejects:** Drawing a bright line that the state would never bail terror-adjacent foreigners/nationals.
+- 10:00 · **Claim:** Import + denial politics make worse attacks "allowed to the extent they are allowed." **Support:** Trump clip praising UK arrest; Iran-link speculation; "more British Muslims joined ISIS than the British military" aside; betrayal-from-within framing for people who invent excuses. **Rejects:** Waiting for official absolution before forming a threat model.
+### Takeaway
+Asmongold treats RAF Fairford suspects walking on bail while a dinghy saboteur stays jailed as textbook two-tier UK enforcement and argues the state's past coverups mean you should not trust the petrol-thief soft landing.
+### Footer
+canary: published 2026-09-29 (upload_date 20260929; 2026-09-29 ICT calendar) · fetched ~2026-09-30T04:15:00Z (2026-09-30 12:15 ICT) · text: YouTube English auto captions via timedtext (WebFetch provider; box/CDP 429 on direct timedtext fetch) · section times estimated from structure / length 18:48 / 1128s (header 0:18) · ASR: RAF Fairford; Danny Tommo; Lawrence Taylor; Explosives Act; Iran · reaction clips + Asmon commentary mixed

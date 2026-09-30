@@ -1,0 +1,36 @@
+- generic [ref=f4e1]:
+  - generic:
+    - region "Notifications alt+T"
+  - generic [ref=f4e2]: X - The Everything App / X
+  - generic:
+    - region "Notifications alt+T"
+  - dialog "Log in to X" [ref=f4e6]:
+    - generic [ref=f4e103]:
+      - generic [ref=f4e104]:
+        - button [ref=f4e107] [cursor=pointer]
+        - generic [ref=f4e122]:
+          - paragraph [ref=f4e125]: Login
+          - generic [ref=f4e127]:
+            - generic [ref=f4e129]:
+              - generic: Username
+              - textbox "Username" [disabled] [ref=f4e130]: webigis
+            - generic [ref=f4e133]:
+              - generic: Password
+              - textbox "Password Show password" [active] [ref=f4e134]: cospa3-Munxyq-mivseq
+              - button "Show password" [ref=f4e135] [cursor=pointer]
+            - button [ref=f4e138] [cursor=pointer]:
+              - paragraph [ref=f4e140]: Forgot password?
+      - generic [ref=f4e142]:
+        - button [ref=f4e154] [cursor=pointer]:
+          - paragraph [ref=f4e158]: Continue
+        - paragraph [ref=f4e150]:
+          - text: By continuing, you agree to our
+          - link "Terms of Service" [ref=f4e151] [cursor=pointer]:
+            - /url: https://x.com/tos
+          - text: ","
+          - link "Privacy Policy" [ref=f4e152] [cursor=pointer]:
+            - /url: https://x.com/privacy
+          - text: and
+          - link "Cookie Use" [ref=f4e153] [cursor=pointer]:
+            - /url: https://help.x.com/rules-and-policies/twitter-cookies
+          - text: .

@@ -1,0 +1,2003 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>lauren (@poteto) — X Web Viewer</title>
+    <meta name="description" content="Grok @Bot at @SpaceXAI. Shipping with https://t.co/WDB4U1rwmu. React compiler core team, prev cursor, meta, netflix" />
+    <link rel="canonical" href="https://twiscan.com/en/x/poteto" />
+            <link rel="alternate" hreflang="en" href="https://twiscan.com/en/x/poteto" />
+            <link rel="alternate" hreflang="ja" href="https://twiscan.com/ja/x/poteto" />
+            <link rel="alternate" hreflang="ko" href="https://twiscan.com/ko/x/poteto" />
+            <link rel="alternate" hreflang="zh-Hans" href="https://twiscan.com/zh_CN/x/poteto" />
+            <link rel="alternate" hreflang="zh-Hant" href="https://twiscan.com/zh_TW/x/poteto" />
+            <link rel="alternate" hreflang="x-default" href="https://twiscan.com/en/x/poteto" />
+                <meta property="og:site_name" content="TwiScan" />
+            <meta property="og:type" content="website" />
+            <meta property="og:title" content="lauren (@poteto) — X Web Viewer" />
+            <meta property="og:description" content="Grok @Bot at @SpaceXAI. Shipping with https://t.co/WDB4U1rwmu. React compiler core team, prev cursor, meta, netflix" />
+            <meta property="og:image" content="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" />
+            <meta property="og:url" content="https://twiscan.com/en/x/poteto" />
+                <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="lauren (@poteto) — X Web Viewer" />
+            <meta name="twitter:description" content="Grok @Bot at @SpaceXAI. Shipping with https://t.co/WDB4U1rwmu. React compiler core team, prev cursor, meta, netflix" />
+            <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1">
+    <link rel="preload" as="style" href="https://twiscan.com/build/assets/app-B0LGqGRU.css" /><link rel="stylesheet" href="https://twiscan.com/build/assets/app-B0LGqGRU.css" />    <link rel="stylesheet" href="/assets/css/icons.css?v=1">
+    <script src="https://fastly.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QXBYRZ1VH"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9QXBYRZ1VH');
+    </script>
+            <script type="text/javascript">
+        window.__accountCollectionI18n = {"dialog_title":"Add to collection","create":"Create","create_placeholder":"Collection name","loading":"Loading","load_failed":"Failed to load collections.","empty_mine":"You have not created any collections yet.","create_failed":"Failed to create collection.","rename_prompt":"New name","rename_failed":"Rename failed.","delete_confirm":"Delete this collection?","delete_failed":"Delete failed.","remove_confirm":"Remove this account from the collection?","remove_failed":"Remove failed."};
+        window.__accountCollectionRoutes = {"myList":"https://twiscan.com/en/api/my/account-collections","inCollectionsBase":"https://twiscan.com/en/api/accounts","create":"https://twiscan.com/en/account-collections","collectionBase":"https://twiscan.com/en/account-collections"};
+        var csrf_token ='KjX1WZCxgckW7SmQKEshcEoFAukJ6h8av96nVQEf'
+        var gallery_views_url = 'https://twiscan.com/en/gallery/views'
+        var tweet_vote_url = 'https://twiscan.com/en/tweet/up-or-down'
+        var community_tweet_vote_url_template = 'https://twiscan.com/community-tweets/__id__/vote'
+        var video_play_url = 'https://twiscan.com/en/video/play'
+            </script>
+
+</head>
+<body class="dark:bg-dark-bg">
+    <div class="fixed top-0 left-0 right-0 z-50 flex flex-col bg-white shadow-3xl dark:bg-dark-bg">
+        <header class="site-header w-full shrink-0 p-3">
+            <div class="flex justify-between max-w-screen-xl mx-auto items-center px-2 md:max-w-[1080px] relative">
+            <div class="svg-wrap flex items-center gap-10">
+                <a href="https://twiscan.com/en" class="text-3xl font-bold font-mono dark:text-dark-font">
+                    TwiScan
+                </a>
+                <a class="text-base" href="https://twiscan.com/en/hot">
+                    Hot
+                </a>
+                <a class="text-base" href="https://twiscan.com/communities">
+                    Communities
+                </a>
+                <a class="text-base" href="https://twiscan.com/en/account-collections">
+                    Account collections
+                </a>
+            </div>
+            <div class="flex gap-2 items-center">
+                                    <a class="text-sm px-2 py-1 rounded border dark:text-dark-font dark:border-[#2f3336]" href="https://twiscan.com/en/login">
+                        Login
+                    </a>
+                    <a class="text-sm px-2 py-1 rounded border dark:text-dark-font dark:border-[#2f3336]" href="https://twiscan.com/en/register">
+                        Register
+                    </a>
+                                <button class="w-[30px] h-[30px] flex items-center justify-center rounded-full" id="switch-mode" aria-label="Switch color mode">
+                    <span class="icon-mask icon-sun w-[22px] h-[22px] dark:text-white" aria-hidden="true"></span>
+                </button>
+                <button class="w-[30px] h-[30px] flex items-center justify-center rounded-full" id="open-menu" aria-label="Open language menu">
+                    <span class="icon-mask icon-globe w-6 h-6 dark:text-white" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="hidden border absolute top-16 right-4 shadow-3xl h-menu bg-white dark:bg-dark-bg dark:border-[#2f3336]" id="menu">
+                <div class="py-2 px-2">
+                    <a class="block flex items-center p-3" href="https://twiscan.com/language/en">
+                        <div class="pr-8 dark:text-dark-font">English</div>
+                    </a>
+                    <a class="block flex items-center p-3" href="https://twiscan.com/language/ja">
+                        <div class="pr-8 dark:text-dark-font">日本語</div>
+                    </a>
+                    <a class="block flex items-center p-3" href="https://twiscan.com/language/ko">
+                        <div class="pr-8 dark:text-dark-font">한국의</div>
+                    </a>
+                    <a class="block flex items-center p-3" href="https://twiscan.com/language/zh_CN">
+                        <div class="pr-8 dark:text-dark-font">简体中文</div>
+                    </a>
+                    <a class="block flex items-center p-3" href="https://twiscan.com/language/zh_TW">
+                        <div class="pr-8 dark:text-dark-font">繁体中文</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        </header>
+        <div class="w-full shrink-0 border-t border-slate-200/80 bg-gradient-to-r from-[#1d9bf0]/12 via-violet-500/10 to-[#1d9bf0]/12 dark:border-[#2f3336] dark:from-[#1d9bf0]/20 dark:via-violet-500/15 dark:to-[#1d9bf0]/20">
+            <div class="max-w-screen-xl mx-auto flex flex-col items-center gap-2 px-3 py-2 text-center sm:flex-row sm:justify-between sm:text-left md:max-w-[1080px]">
+                <p class="text-xs text-slate-700 dark:text-dark-font sm:text-sm">
+                    Register and share your invite link to earn from video plays and referrals.
+                </p>
+                <div class="flex shrink-0 items-center gap-2">
+                                            <a href="https://twiscan.com/en/register" class="inline-flex h-8 items-center justify-center rounded-md bg-[#1d9bf0] px-3 text-xs font-medium text-white hover:opacity-90 sm:h-9 sm:px-4 sm:text-sm">
+                            Register now
+                        </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-fixed-stack-spacer" aria-hidden="true"></div>
+                    <div class="container mx-auto px-2 md:max-w-[1080px]">
+        <div id="click-under-page" hidden aria-hidden="true" data-target="https://twiscan.com/en/x/poteto" data-ad="/g"></div>
+        <div class="shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="w-full">
+                                    <img id="profile-img" class="w-full object-cover top-0 left-0 max-h-[240px] rounded-t-md" src="https://pbs.twimg.com/profile_banners/2832427459/1760377968">
+                            </div>
+            <div class="w-full px-4 pt-2 flex items-center justify-between">
+                <img class="w-2/12 border border-white rounded-full -mt-[8%] relative border-4" src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg">
+                <div class="flex gap-2 flex-wrap justify-end">
+                                            <a href="https://twiscan.com/en/login"
+                           class="px-4 py-1 text-white bg-[#1d9bf0] rounded-3xl text-sm inline-flex items-center">
+                            Add to collection
+                        </a>
+                                    </div>
+            </div>
+            <div class="px-4 mt-4 pb-2">
+                <div class="text-lg font-semibold dark:text-dark-font">lauren</div>
+                <div class="opacity-60 mt-1 text-sm dark:text-dark-font">@poteto</div>
+                <div class="my-4 opacity-80 text-base dark:text-dark-font whitespace-pre-wrap">Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/Bot">@Bot</a> at <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/SpaceXAI">@SpaceXAI</a>. Shipping with  React compiler core team, prev cursor, meta, netflix</div>
+                <div class="mt-2 pb-3 text-sm dark:text-dark-font">
+                    <span class="font-semibold">1K</span> <span class="opacity-85">Following</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="font-semibold">131.2K</span> <span class="opacity-85">Followers</span>
+                </div>
+            </div>
+
+        </div>
+        <div id="account-in-collections"
+             class="mt-3 px-3 py-2 text-sm text-slate-500 dark:text-[#919191] hidden"
+             data-fetch-url="https://twiscan.com/en/api/accounts/2832427459/account-collections"
+             data-label="In {count} collections"></div>
+        <div class="py-4 mt-3 md:flex md:gap-4 md:justify-between">
+            <div class="md:w-8/12">
+                <div class="w-full" id="item-box">
+                    <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2104972739253874836">9hours ago</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">happy grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a> day</div>
+<!-- media -->
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104972739253874836  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104972739253874836" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2104972739253874836" >
+            <span class="up_svg_2104972739253874836 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104972739253874836">0</span>
+        </div>
+        <div class="down_2104972739253874836  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104972739253874836" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2104972739253874836" >
+            <span class="down_svg_2104972739253874836 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104972739253874836">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            68
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            789
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            17
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/SpaceX" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1697749409851985920/HbrI04tM_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/SpaceX">
+            <div class="font-semibold text-sm dark:text-dark-font">SpaceX<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@SpaceX</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/SpaceX/2104654998034690329">2026.09.28 19:30</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">Liftoff of Starship's first orbital flight </div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="34743251" data-id="2104654998034690329">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTU8eCGWMAADqQ6.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTU8eCGWMAADqQ6.jpg?format=webp" data-type="image" data-index="0"></div>
+                                                <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTU8grvWQAAXhSn.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTU8grvWQAAXhSn.jpg?format=webp" data-type="image" data-index="1"></div>
+                                                <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTU8h5-XIAIE5s1.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTU8h5-XIAIE5s1.jpg?format=webp" data-type="image" data-index="2"></div>
+                                                <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTU8ja-XgAE6GwQ.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTU8ja-XgAE6GwQ.jpg?format=webp" data-type="image" data-index="3"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104654998034690329  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104654998034690329" data-type="up" data-click="0" data-uid="34743251" data-vote-key="2104654998034690329" >
+            <span class="up_svg_2104654998034690329 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104654998034690329">0</span>
+        </div>
+        <div class="down_2104654998034690329  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104654998034690329" data-type="down" data-click="0" data-uid="34743251" data-vote-key="2104654998034690329" >
+            <span class="down_svg_2104654998034690329 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104654998034690329">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            1.1K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            46.7K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            6.5K
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/elonmusk" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2103567689515954176/aR-Kjpp4_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/elonmusk">
+            <div class="font-semibold text-sm dark:text-dark-font">Elon Musk<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@elonmusk</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/elonmusk/2104709783999729911">2026.09.28 23:08</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">Now <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/Bot">@Bot</a> works as a team!</div>
+<!-- media -->
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104709783999729911  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104709783999729911" data-type="up" data-click="0" data-uid="44196397" data-vote-key="2104709783999729911" >
+            <span class="up_svg_2104709783999729911 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104709783999729911">0</span>
+        </div>
+        <div class="down_2104709783999729911  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104709783999729911" data-type="down" data-click="0" data-uid="44196397" data-vote-key="2104709783999729911" >
+            <span class="down_svg_2104709783999729911 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104709783999729911">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            504
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            3.3K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            420
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                    <div class="mb-4 overflow-hidden rounded-md border border-zinc-800 shadow-3xl dark:border-[#2f3336]">
+    <iframe
+        src="https://twiscan.com/ad/timeline"
+        title=""
+        class="block w-full border-0"
+        style="min-height:280px;height:280px"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+    ></iframe>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2104714676978479423">2026.09.28 23:27</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">this month i joined the four comma club </div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2832427459" data-id="2104714676978479423">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTVyyaIaAAEgxd5.png?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTVyyaIaAAEgxd5.png?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104714676978479423  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104714676978479423" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2104714676978479423" >
+            <span class="up_svg_2104714676978479423 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104714676978479423">0</span>
+        </div>
+        <div class="down_2104714676978479423  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104714676978479423" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2104714676978479423" >
+            <span class="down_svg_2104714676978479423 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104714676978479423">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            49
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            540
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            7
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/clairevo" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1565475442470965248/LBMzyamM_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/clairevo">
+            <div class="font-semibold text-sm dark:text-dark-font">claire vo 🖤<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@clairevo</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/clairevo/2104692897807556822">2026.09.28 22:01</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104692897807556822-0">
+        we've been very happily testing Team Bots at <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/cxodev">@cxodev</a> - our favorite is Quincy Quickquote that <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/zachdavis">@zachdavis</a> makes that has access to our CRM, contract platform, and historical quotes to put out custom proposals quickly (see what we did there?) 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104692897807556822" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="15383123" data-id="2104692897807556822">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTVe_dSbIAAVCER.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTVe_dSbIAAVCER.jpg?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104692897807556822  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104692897807556822" data-type="up" data-click="0" data-uid="15383123" data-vote-key="2104692897807556822" >
+            <span class="up_svg_2104692897807556822 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104692897807556822">0</span>
+        </div>
+        <div class="down_2104692897807556822  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104692897807556822" data-type="down" data-click="0" data-uid="15383123" data-vote-key="2104692897807556822" >
+            <span class="down_svg_2104692897807556822 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104692897807556822">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            2
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            22
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            4
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/n2parko" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1985965138101555200/J5pJBCvf_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/n2parko">
+            <div class="font-semibold text-sm dark:text-dark-font">n2parko<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@n2parko</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/n2parko/2104663299485020568">2026.09.28 20:03</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">Today we're launching Team Bots for Grok Bot </div>
+<!-- media -->
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104663299485020568  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104663299485020568" data-type="up" data-click="0" data-uid="2957723755" data-vote-key="2104663299485020568" >
+            <span class="up_svg_2104663299485020568 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104663299485020568">0</span>
+        </div>
+        <div class="down_2104663299485020568  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104663299485020568" data-type="down" data-click="0" data-uid="2957723755" data-vote-key="2104663299485020568" >
+            <span class="down_svg_2104663299485020568 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104663299485020568">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            33
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            571
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            40
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2104664283808428165">2026.09.28 20:07</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104664283808428165-0">
+        very excited to share one of my favorite new features! grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a> is now multiplayer. make a team bot which has access to your plugins, skills, credentials, and then add it to slack with one click. it's super easy!
+
+guess what i named my bot 🤪 i love chatting with it and firing off cloud agents
+
+much more to come
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104664283808428165" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2832427459" data-id="2104664283808428165">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTVEYv6aEAAdaXF.png?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTVEYv6aEAAdaXF.png?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+            <div class="p-4 mt-3 rounded-md border-zinc-800 bg-[#f9f9f9] dark:bg-dark-bg dark:border dark:border-[#2f3336]">
+            <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/bot" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2087219239275069440/KW6C403V_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/bot">
+            <div class="font-semibold text-sm dark:text-dark-font">Grok Bot<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@bot</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/bot/2104661562715967548">2026.09.28 19:56</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104661562715967548-2104661562715967548">
+        Introducing Team Bots, shared AI teammates that learn as your team works with them.
+
+Give your Team Bot the skills, plugins, and credentials it needs for its role, then work with it in Slack or Grok Bot. 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104661562715967548" data-retweet-id="2104661562715967548">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2085838061347217408" data-id="2104661562715967548">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104654684527251457/pl/mqHg__v5UAzgmoz5.m3u8?tag=29&amp;v=cfc" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+        </div>
+    
+    <div class="flex mt-5">
+        <div class="up_2104664283808428165  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104664283808428165" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2104664283808428165" >
+            <span class="up_svg_2104664283808428165 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104664283808428165">0</span>
+        </div>
+        <div class="down_2104664283808428165  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104664283808428165" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2104664283808428165" >
+            <span class="down_svg_2104664283808428165 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104664283808428165">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            97
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            1.2K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            96
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/bot" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2087219239275069440/KW6C403V_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/bot">
+            <div class="font-semibold text-sm dark:text-dark-font">Grok Bot<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@bot</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/bot/2104661562715967548">2026.09.28 19:56</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104661562715967548-0">
+        Introducing Team Bots, shared AI teammates that learn as your team works with them.
+
+Give your Team Bot the skills, plugins, and credentials it needs for its role, then work with it in Slack or Grok Bot. 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104661562715967548" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2085838061347217408" data-id="2104661562715967548">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104654684527251457/img/7ZvdEODvazICBcqM.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104654684527251457/pl/mqHg__v5UAzgmoz5.m3u8?tag=29&amp;v=cfc" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104661562715967548  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104661562715967548" data-type="up" data-click="0" data-uid="2085838061347217408" data-vote-key="2104661562715967548" >
+            <span class="up_svg_2104661562715967548 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104661562715967548">0</span>
+        </div>
+        <div class="down_2104661562715967548  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104661562715967548" data-type="down" data-click="0" data-uid="2085838061347217408" data-vote-key="2104661562715967548" >
+            <span class="down_svg_2104661562715967548 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104661562715967548">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            290
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            5.3K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            479
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2104646114427457941">2026.09.28 18:55</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104646114427457941-0">
+        in case you missed it over the weekend, grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a> can help with your finances! combined with the other connectors available in grok bot you can build custom dashboards for your business, budgeting tools for you and your family, and even find more ways to save you money
+
+try looking through all the subs you pay for and forgot about and save and make money today with grok bot!
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104646114427457941" data-retweet-id="0">Show more</div>
+<!-- media -->
+
+            <div class="p-4 mt-3 rounded-md border-zinc-800 bg-[#f9f9f9] dark:bg-dark-bg dark:border dark:border-[#2f3336]">
+            <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/bot" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2087219239275069440/KW6C403V_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/bot">
+            <div class="font-semibold text-sm dark:text-dark-font">Grok Bot<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@bot</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/bot/2103936247995752705">2026.09.26 19:54</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2103936247995752705-2103936247995752705">
+        Grok Bot now connects to your finances.
+
+Link your bank, card, and investment accounts with the new Finance integration, then ask Bot to help manage your spending, investments, and more. 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2103936247995752705" data-retweet-id="2103936247995752705">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2085838061347217408" data-id="2103936247995752705">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+        </div>
+    
+    <div class="flex mt-5">
+        <div class="up_2104646114427457941  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104646114427457941" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2104646114427457941" >
+            <span class="up_svg_2104646114427457941 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104646114427457941">0</span>
+        </div>
+        <div class="down_2104646114427457941  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104646114427457941" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2104646114427457941" >
+            <span class="down_svg_2104646114427457941 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104646114427457941">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            82
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            903
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            77
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2104575614263144794">2026.09.28 14:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104575614263144794-0">
+        6 things I learned from <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> and <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/pengzheng_">@pengzheng_</a> (eng and design leads for Grok Bot) on how to get the most out of your bots:
+
+1. Build the design system and one keyframe, then let your bot scale your designs
+
+Peng's design bot edits Figma directly through Figma MCP and uses a skill that knows his files and design system. He designs one keyframe, then asks the bot to extend it into every screen of the flow.
+
+2. Make an eng lead bot to manage your other eng bots
+
+Lauren's eng lead bot never writes code. Instead, it breaks projects into smaller tasks for her engineer bots, which spin up coding agents in the cloud. That's how she runs "really massive agent swarms."
+
+3. Give your bots a way to check their own work
+
+Lauren's bots test each change before merging, and the Grok Bot codebase is built so agents can safely change it. "Sometimes I actually don't even look at the PR until after it's landed."
+
+4. Put your PM, design, and eng bots in one group chat
+
+When Peng wants to test a product idea, he adds PM, designer, and engineer bots to the same chat for them to debate with him and flesh out the requirements.
+
+5. Complete a task with a bot manually, build a skill to capture best practices, then make it a routine
+
+Lauren watches the first run, corrects mistakes, and turns what worked into a skill. Once the skill works in one shot, she sets it up as a routine and stops babysitting the bot.
+
+6. Name your bots after food or something fun
+
+Lauren's bots have names like Daifuku, Gyoza, Matcha, Crumb, and Katsu. This is how she stays hungry all the time j/k.
+
+I had to make the image below for her (you're welcome <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> 🙂)
+
+📌 Watch the full episode now: 
+
+Also available as a written post: 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104575614263144794" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2104575614263144794">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTT0XiLbgAA44_v.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTT0XiLbgAA44_v.jpg?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104575614263144794  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104575614263144794" data-type="up" data-click="0" data-uid="84490044" data-vote-key="2104575614263144794" >
+            <span class="up_svg_2104575614263144794 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104575614263144794">0</span>
+        </div>
+        <div class="down_2104575614263144794  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104575614263144794" data-type="down" data-click="0" data-uid="84490044" data-vote-key="2104575614263144794" >
+            <span class="down_svg_2104575614263144794 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104575614263144794">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            24
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            355
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            31
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                    <div class="mb-4 overflow-hidden rounded-md border border-zinc-800 shadow-3xl dark:border-[#2f3336]">
+    <iframe
+        src="https://twiscan.com/ad/timeline"
+        title=""
+        class="block w-full border-0"
+        style="min-height:280px;height:280px"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+    ></iframe>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2104288769457394082">2026.09.27 19:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104288769457394082-0">
+        Here's how <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> (eng lead for Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a>) gets her eng lead bot to manage eng bots:
+
+"I actually mostly talk to my chief of staff, and then my chief of staff talks to the eng lead. I set these engineer bots up with Dr. Eggbot [a bot to create other bots].
+
+One of the things I told Dr. Eggbot to do is to make sure that the eng lead's job is really to break down tasks into smaller pieces and delegate and supervise other bots rather than do work on its own.
+
+You can see in the description, it even has the bot IDs in there. But it tells it to never do work on its own and always delegate to those four eng bots."
+
+📌 Watch the full episode here: 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104288769457394082" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2104288769457394082">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104288717888499712/img/Noiu7iXZ3IGXT4LR.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104288717888499712/img/Noiu7iXZ3IGXT4LR.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104288717888499712/pl/GJ447hnSUw-AVd3A.m3u8?tag=16&amp;v=a10" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104288769457394082  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104288769457394082" data-type="up" data-click="0" data-uid="84490044" data-vote-key="2104288769457394082" >
+            <span class="up_svg_2104288769457394082 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104288769457394082">0</span>
+        </div>
+        <div class="down_2104288769457394082  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104288769457394082" data-type="down" data-click="0" data-uid="84490044" data-vote-key="2104288769457394082" >
+            <span class="down_svg_2104288769457394082 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104288769457394082">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            21
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            385
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            26
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2104243442658501028">2026.09.27 16:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104243442658501028-0">
+        "I like to call it a Michelin kitchen [not a software factory]."
+
+From <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a>, eng lead for Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a>:
+
+"When you think about a Michelin-starred kitchen, you think about the quality and the craft that goes into making the meal.
+
+I think a lot of people, when you say factory, they have this connotation like it's mass manufactured, it's slop, it's low quality.
+
+And for a Michelin kitchen, there's still scale involved. A restaurant might have 50 seats or 100 seats, so you need to be able to produce quality at scale."
+
+📌 Watch my full episode with the Grok Bot team here: 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104243442658501028" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2104243442658501028">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104243420093202432/img/od8W79s9TKzhlenV.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104243420093202432/img/od8W79s9TKzhlenV.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104243420093202432/pl/cNl9kalwhEDfCn_f.m3u8?tag=16&amp;v=b8d" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104243442658501028  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104243442658501028" data-type="up" data-click="0" data-uid="84490044" data-vote-key="2104243442658501028" >
+            <span class="up_svg_2104243442658501028 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104243442658501028">0</span>
+        </div>
+        <div class="down_2104243442658501028  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104243442658501028" data-type="down" data-click="0" data-uid="84490044" data-vote-key="2104243442658501028" >
+            <span class="down_svg_2104243442658501028 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104243442658501028">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            14
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            137
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            8
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2104260894004039831">2026.09.27 17:24</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">had a lot of fun chatting with <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/petergyang">@petergyang</a> about our grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a> setups!</div>
+<!-- media -->
+
+            <div class="p-4 mt-3 rounded-md border-zinc-800 bg-[#f9f9f9] dark:bg-dark-bg dark:border dark:border-[#2f3336]">
+            <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2104213287353356531">2026.09.27 14:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104213287353356531-2104213287353356531">
+        "Everything I touch with my keyboard and mouse, I try to delegate to my bots."
+
+Here's my new episode with <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> and <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/pengzheng_">@pengzheng_</a>, the eng and design leads for Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a>, where they showed me the 14 bots they use for work and life, including:
+
+→ A design bot that turns one keyframe into a full user flow
+→ An eng lead bot that manages a team of eng bots
+→ How to trust your bots with more of your work
+
+Some quotes from both:
+
+"I like to call it the Michelin kitchen…when you say software factory, it has this connotation of mass manufactured slop."
+
+"Sometimes I actually don't even look at the PR until after it's landed and then I'm like, 'Oh, okay. Yeah, that looks good.'"
+
+"I think it ultimately comes back to trust. First, watch your bot work and correct it. Turn what worked into a skill. Once it nails the task in one shot, make it a routine."
+
+📌 Watch now: 
+
+Thanks to our sponsors:
+
+<a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/meetgranola">@meetgranola</a>: AI meeting notes that don’t suck 
+
+<a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/RiversidedotFM">@RiversidedotFM</a>: All-in-one AI studio for podcasts and video 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104213287353356531" data-retweet-id="2104213287353356531">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2104213287353356531">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104213221733462016/img/i1ADDfLnPsPKCbAg.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104213221733462016/img/i1ADDfLnPsPKCbAg.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104213221733462016/pl/f8ApOR9HQk0BzalC.m3u8?tag=16&amp;v=cfe" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+        </div>
+    
+    <div class="flex mt-5">
+        <div class="up_2104260894004039831  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104260894004039831" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2104260894004039831" >
+            <span class="up_svg_2104260894004039831 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104260894004039831">0</span>
+        </div>
+        <div class="down_2104260894004039831  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104260894004039831" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2104260894004039831" >
+            <span class="down_svg_2104260894004039831 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104260894004039831">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            21
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            452
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            17
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2104213287353356531">2026.09.27 14:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2104213287353356531-0">
+        "Everything I touch with my keyboard and mouse, I try to delegate to my bots."
+
+Here's my new episode with <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> and <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/pengzheng_">@pengzheng_</a>, the eng and design leads for Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a>, where they showed me the 14 bots they use for work and life, including:
+
+→ A design bot that turns one keyframe into a full user flow
+→ An eng lead bot that manages a team of eng bots
+→ How to trust your bots with more of your work
+
+Some quotes from both:
+
+"I like to call it the Michelin kitchen…when you say software factory, it has this connotation of mass manufactured slop."
+
+"Sometimes I actually don't even look at the PR until after it's landed and then I'm like, 'Oh, okay. Yeah, that looks good.'"
+
+"I think it ultimately comes back to trust. First, watch your bot work and correct it. Turn what worked into a skill. Once it nails the task in one shot, make it a routine."
+
+📌 Watch now: 
+
+Thanks to our sponsors:
+
+<a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/meetgranola">@meetgranola</a>: AI meeting notes that don’t suck 
+
+<a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/RiversidedotFM">@RiversidedotFM</a>: All-in-one AI studio for podcasts and video 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2104213287353356531" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2104213287353356531">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2104213221733462016/img/i1ADDfLnPsPKCbAg.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2104213221733462016/img/i1ADDfLnPsPKCbAg.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2104213221733462016/pl/f8ApOR9HQk0BzalC.m3u8?tag=16&amp;v=cfe" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2104213287353356531  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104213287353356531" data-type="up" data-click="0" data-uid="84490044" data-vote-key="2104213287353356531" >
+            <span class="up_svg_2104213287353356531 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2104213287353356531">0</span>
+        </div>
+        <div class="down_2104213287353356531  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2104213287353356531" data-type="down" data-click="0" data-uid="84490044" data-vote-key="2104213287353356531" >
+            <span class="down_svg_2104213287353356531 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2104213287353356531">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            25
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            379
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            33
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/bot" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2087219239275069440/KW6C403V_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/bot">
+            <div class="font-semibold text-sm dark:text-dark-font">Grok Bot<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@bot</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/bot/2103936247995752705">2026.09.26 19:54</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2103936247995752705-0">
+        Grok Bot now connects to your finances.
+
+Link your bank, card, and investment accounts with the new Finance integration, then ask Bot to help manage your spending, investments, and more. 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2103936247995752705" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="2085838061347217408" data-id="2103936247995752705">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTKt7P3aUAAZptd.jpg?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2103936247995752705  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103936247995752705" data-type="up" data-click="0" data-uid="2085838061347217408" data-vote-key="2103936247995752705" >
+            <span class="up_svg_2103936247995752705 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103936247995752705">0</span>
+        </div>
+        <div class="down_2103936247995752705  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103936247995752705" data-type="down" data-click="0" data-uid="2085838061347217408" data-vote-key="2103936247995752705" >
+            <span class="down_svg_2103936247995752705 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103936247995752705">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            559
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            6.2K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            533
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/theo" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1909353910130950147/EeSGdgA5_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/theo">
+            <div class="font-semibold text-sm dark:text-dark-font">Theo - t3.gg<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@theo</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/theo/2103641401619788069">2026.09.26 00:22</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap"><a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/NielsRogge">@NielsRogge</a> Cursor runs 10x better than it did at the start of the year wtf are you even saying man</div>
+<!-- media -->
+
+    
+    <div class="flex mt-5">
+        <div class="up_2103641401619788069  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103641401619788069" data-type="up" data-click="0" data-uid="786375418685165568" data-vote-key="2103641401619788069" >
+            <span class="up_svg_2103641401619788069 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103641401619788069">0</span>
+        </div>
+        <div class="down_2103641401619788069  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103641401619788069" data-type="down" data-click="0" data-uid="786375418685165568" data-vote-key="2103641401619788069" >
+            <span class="down_svg_2103641401619788069 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103641401619788069">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            33
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            1K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            10
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/poteto" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/poteto">
+            <div class="font-semibold text-sm dark:text-dark-font">lauren<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@poteto</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/poteto/2103894438397546787">2026.09.26 17:08</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">using opus 5.5 max fast to fix a typo</div>
+<!-- media -->
+
+            <div class="p-4 mt-3 rounded-md border-zinc-800 bg-[#f9f9f9] dark:bg-dark-bg dark:border dark:border-[#2f3336]">
+            <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/awkwardgoogle" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1843285954473164800/87Vfzdg0_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/awkwardgoogle">
+            <div class="font-semibold text-sm dark:text-dark-font">Interesting things<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@awkwardgoogle</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/awkwardgoogle/2103159239459885555">2026.09.24 16:26</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">Long-range hornet nest removal by a kid </div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="476199422" data-id="2103159239459885555">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]">
+                    <img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/amplify_video_thumb/2103159168798482432/img/bd8KRlKRLZX1fCLU.jpg?format=webp&amp;name=small" data-poster="https://pbs.twimg.com/amplify_video_thumb/2103159168798482432/img/bd8KRlKRLZX1fCLU.jpg?format=webp&amp;name=small" data-link="https://video.twimg.com/amplify_video/2103159168798482432/pl/vGVvokcObPdm0ZJT.m3u8?tag=29&amp;v=cfc" data-type="video" data-index="0">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white">
+                        <span class="icon-mask icon-play w-[50px] h-[50px]" aria-hidden="true"></span>
+                    </div>
+                </div>
+                        </div>
+        </div>
+    
+    <div class="flex mt-5">
+        <div class="up_2103894438397546787  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103894438397546787" data-type="up" data-click="0" data-uid="2832427459" data-vote-key="2103894438397546787" >
+            <span class="up_svg_2103894438397546787 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103894438397546787">0</span>
+        </div>
+        <div class="down_2103894438397546787  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103894438397546787" data-type="down" data-click="0" data-uid="2832427459" data-vote-key="2103894438397546787" >
+            <span class="down_svg_2103894438397546787 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103894438397546787">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            42
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            776
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            23
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/petergyang" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/petergyang">
+            <div class="font-semibold text-sm dark:text-dark-font">Peter Yang<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@petergyang</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/petergyang/2103881036711281043">2026.09.26 16:15</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2103881036711281043-0">
+        Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/bot">@bot</a> is still my favorite AI tool for actually getting work done in the cloud.
+
+Tomorrow, I'm sharing a new episode with <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/poteto">@poteto</a> and <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/pengzheng_">@pengzheng_</a>, the engineering and design leads for Grok Bot, about:
+
+→ The 14 bots they use for work and life
+→ Peng's design bot that turns one keyframe into a full user flow
+→ Lauren's eng lead bot that manages a team of eng bots
+
+Who better to learn Grok Bot from than the people who built it?
+
+📌 Subscribe to get the full episode tomorrow: 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2103881036711281043" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="84490044" data-id="2103881036711281043">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTJ8pywbYAAVPOK.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTJ8pywbYAAVPOK.jpg?format=webp" data-type="image" data-index="0"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2103881036711281043  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103881036711281043" data-type="up" data-click="0" data-uid="84490044" data-vote-key="2103881036711281043" >
+            <span class="up_svg_2103881036711281043 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103881036711281043">0</span>
+        </div>
+        <div class="down_2103881036711281043  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103881036711281043" data-type="down" data-click="0" data-uid="84490044" data-vote-key="2103881036711281043" >
+            <span class="down_svg_2103881036711281043 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103881036711281043">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            30
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            443
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            27
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/threepointone" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/2007466268979351552/eKsxKS5C_400x400.png" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/threepointone">
+            <div class="font-semibold text-sm dark:text-dark-font">sunil pai<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@threepointone</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/threepointone/2103807804180234725">2026.09.26 11:24</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 dark:text-dark-font whitespace-pre-wrap">I think I’m done mourning the death of programming. I’m ready to love again. I landed like 40 PRs while drinking with my friends in Scotland. This is the dream.</div>
+<!-- media -->
+
+    
+    <div class="flex mt-5">
+        <div class="up_2103807804180234725  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103807804180234725" data-type="up" data-click="0" data-uid="1593171" data-vote-key="2103807804180234725" >
+            <span class="up_svg_2103807804180234725 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103807804180234725">0</span>
+        </div>
+        <div class="down_2103807804180234725  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103807804180234725" data-type="down" data-click="0" data-uid="1593171" data-vote-key="2103807804180234725" >
+            <span class="down_svg_2103807804180234725 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103807804180234725">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            118
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            3K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            113
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                                <div class="mb-4 p-4 shadow-3xl box-border rounded-md border-zinc-800 dark:border dark:border-[#2f3336]">
+            <div class="flex items-center gap-1">
+            <span class="icon-mask icon-reposted w-6 h-5 text-[#999999]" aria-hidden="true"></span>
+            <div class="text-[#999999] text-sm">
+                <a href="https://twiscan.com/en/x/poteto">lauren&nbsp;Reposted</a>
+            </div>
+        </div>
+    
+    <!-- account -->
+<div class="flex items-center justify-between py-2">
+    <a href="https://twiscan.com/en/x/SawyerMerritt" class="h-[40px] w-[40px]">
+        <img src="https://pbs.twimg.com/profile_images/1837744842715082752/xH9vYixL_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+    </a>
+    <div class="flex flex-col flex-1 ml-4">
+        <a href="https://twiscan.com/en/x/SawyerMerritt">
+            <div class="font-semibold text-sm dark:text-dark-font">Sawyer Merritt<span class="text-[#333333] text-xs ml-1 dark:text-[#919191]">@SawyerMerritt</span></div>
+        </a>
+        <div class="text-sm text-[#919191]">
+            <a href="https://twiscan.com/en/x/SawyerMerritt/2103612173687861404">2026.09.25 22:26</a>
+        </div>
+    </div>
+</div>
+<!-- text -->
+    <div class="text-sm pt-2 line-clamp-2 dark:text-dark-font" id="clamp-2103612173687861404-0">
+        SpaceXAI has just introduced Grok <a target="_blank" class="text-[#2196f3]" href="https://twiscan.com/en/x/Bot">@Bot</a> Creator Rewards!
+
+Rewards will go out every two weeks. Rewards are based on usage:
+• How many people use your Bots. Are your Bots useful and popular?
+• How often your Bots are used. Are your Bots providing consistent value over time?
+
+For your templates to be eligible for rewards, you must:
+• Post about your public Bots (and specifically link to them) on X ≥ 2x per pay period
+• Have X Money set up
+• Payouts will be sent as part of X’s Original Content Rewards for now.
+ 
+In the last two weeks, I’ve earned $500 in rewards due to people using my Home Robots template 🔥
+
+More info: 
+    </div>
+    <div class="text-[#2196f3] cursor-pointer text-sm mt-2 show-clamp" data-id="2103612173687861404" data-retweet-id="0">Show more</div>
+<!-- media -->
+    <div class="grid grid-cols-2 gap-2 mt-2.5 gallery md:w-8/12" data-user_id="243013409" data-id="2103612173687861404">
+                                    <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTGIHruWgAAnRhB.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTGIHruWgAAnRhB.jpg?format=webp" data-type="image" data-index="0"></div>
+                                                <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTGIHruXIAAVylw.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTGIHruXIAAVylw.jpg?format=webp" data-type="image" data-index="1"></div>
+                                                <div class="relative imgRatio cursor-pointer before:content-[''] before:block before:pt-[100%]"><img class="absolute w-full h-full object-cover top-0 left-0" loading="lazy" src="https://pbs.twimg.com/media/HTGIHruXsAA03Cf.jpg?format=webp&amp;name=small" data-link="https://pbs.twimg.com/media/HTGIHruXsAA03Cf.jpg?format=webp" data-type="image" data-index="2"></div>
+                        </div>
+
+    
+    <div class="flex mt-5">
+        <div class="up_2103612173687861404  text-[#707070]  text-xs flex flex-row items-center cursor-pointer like-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103612173687861404" data-type="up" data-click="0" data-uid="243013409" data-vote-key="2103612173687861404" >
+            <span class="up_svg_2103612173687861404 icon-mask icon-thumbs-up w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="up_span_2103612173687861404">0</span>
+        </div>
+        <div class="down_2103612173687861404  text-[#707070]  text-xs flex flex-row items-center ml-5 cursor-pointer hate-btn group hover:text-[#1d9bf0]" onclick="upOrDown(this)" data-id="2103612173687861404" data-type="down" data-click="0" data-uid="243013409" data-vote-key="2103612173687861404" >
+            <span class="down_svg_2103612173687861404 icon-mask icon-thumbs-down w-[18px] h-[18px] mr-1 group-hover:text-[#1d9bf0]" aria-hidden="true"></span>
+            <span class="down_span_2103612173687861404">0</span>
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-reply w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            238
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-heart w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            2.7K
+        </div>
+        <div class="text-[#808080] text-xs flex flex-row items-center ml-5">
+            <span class="icon-mask icon-retweet w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+            260
+        </div>
+                    <a class="text-[#808080] text-xs flex flex-row items-center ml-5 hover:text-[#1d9bf0]" href="https://twiscan.com/en/login">
+                <span class="icon-mask icon-forward w-[18px] h-[18px] mr-1" aria-hidden="true"></span>
+                Forward to community
+            </a>
+                    </div>
+</div>
+                    <div class="mb-4 overflow-hidden rounded-md border border-zinc-800 shadow-3xl dark:border-[#2f3336]">
+    <iframe
+        src="https://twiscan.com/ad/timeline"
+        title=""
+        class="block w-full border-0"
+        style="min-height:280px;height:280px"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+    ></iframe>
+</div>
+                            </div>
+                <div id="load-more" class="text-center my-10 hidden">
+                    <div class="text-slate-400" id="load-text">Loading...</div>
+                </div>
+            </div>
+            <div class="w-4/12 hidden md:block">
+                                <div class="shadow-3xl rounded-md dark:border  dark:border-[#2f3336]">
+                    <div class="text-sm p-4 pb-0 dark:text-dark-font">Most Popular Users</div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/thsottiaux" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2093807917833281537/2yBgpwVV_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/thsottiaux">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Tibo</div>
+                                    <div class="text-xs dark:text-[#919191]">@thsottiaux</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/thsottiaux" class="text-xs">767.7K Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/realDonaldTrump" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/realDonaldTrump">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Donald J. Trump</div>
+                                    <div class="text-xs dark:text-[#919191]">@realDonaldTrump</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/realDonaldTrump" class="text-xs">111.9M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/aleabitoreddit" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1996176688414367744/LXfA_lIx_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/aleabitoreddit">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Serenity</div>
+                                    <div class="text-xs dark:text-[#919191]">@aleabitoreddit</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/aleabitoreddit" class="text-xs">1M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/elonmusk" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2103567689515954176/aR-Kjpp4_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/elonmusk">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Elon Musk</div>
+                                    <div class="text-xs dark:text-[#919191]">@elonmusk</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/elonmusk" class="text-xs">241.7M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/sama" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2046764873200394240/r7BxVezs_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/sama">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Sam Altman</div>
+                                    <div class="text-xs dark:text-[#919191]">@sama</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/sama" class="text-xs">6.3M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/zerohedge" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/72647502/tyler_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/zerohedge">
+                                    <div class="font-semibold text-sm dark:text-dark-font">zerohedge</div>
+                                    <div class="text-xs dark:text-[#919191]">@zerohedge</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/zerohedge" class="text-xs">3.4M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/wallstengine" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1691846947857178624/oZp5wB4r_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/wallstengine">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Wall St Engine</div>
+                                    <div class="text-xs dark:text-[#919191]">@wallstengine</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/wallstengine" class="text-xs">197.3K Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/nypost" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2073490215327715328/4wOfTM9__400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/nypost">
+                                    <div class="font-semibold text-sm dark:text-dark-font">New York Post</div>
+                                    <div class="text-xs dark:text-[#919191]">@nypost</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/nypost" class="text-xs">4.2M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/OpenAI" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1885410181409820672/ztsaR0JW_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/OpenAI">
+                                    <div class="font-semibold text-sm dark:text-dark-font">OpenAI</div>
+                                    <div class="text-xs dark:text-[#919191]">@OpenAI</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/OpenAI" class="text-xs">5.4M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/Polymarket" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2005664281002491904/bz2ZO_nU_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/Polymarket">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Polymarket</div>
+                                    <div class="text-xs dark:text-[#919191]">@Polymarket</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/Polymarket" class="text-xs">2M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/Kalshi" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2061243841957502981/FZGJ4D6K_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/Kalshi">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Kalshi</div>
+                                    <div class="text-xs dark:text-[#919191]">@Kalshi</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/Kalshi" class="text-xs">471.9K Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/BitcoinArchive" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1988731421440057344/K5XjVEkh_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/BitcoinArchive">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Bitcoin Archive</div>
+                                    <div class="text-xs dark:text-[#919191]">@BitcoinArchive</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/BitcoinArchive" class="text-xs">1.8M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/SpaceXAI" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/2074224934159876096/aelorWHq_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/SpaceXAI">
+                                    <div class="font-semibold text-sm dark:text-dark-font">SpaceXAI</div>
+                                    <div class="text-xs dark:text-[#919191]">@SpaceXAI</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/SpaceXAI" class="text-xs">2.1M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/FirstSquawk" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1039778545738964992/6fl6RNN0_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/FirstSquawk">
+                                    <div class="font-semibold text-sm dark:text-dark-font">First Squawk</div>
+                                    <div class="text-xs dark:text-[#919191]">@FirstSquawk</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/FirstSquawk" class="text-xs">569K Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="flex items-center justify-between p-4">
+                            <a rel="nofollow" href="https://twiscan.com/en/x/AnthropicAI" class="h-[40px] w-[40px]">
+                                <img src="https://pbs.twimg.com/profile_images/1798110641414443008/XP8gyBaY_400x400.jpg" alt="" loading="lazy" class="rounded-full w-full h-full">
+                            </a>
+                            <div class="flex flex-col flex-1 ml-2">
+                                <a rel="nofollow" href="https://twiscan.com/en/x/AnthropicAI">
+                                    <div class="font-semibold text-sm dark:text-dark-font">Anthropic</div>
+                                    <div class="text-xs dark:text-[#919191]">@AnthropicAI</div>
+                                </a>
+                                <div class="text-sm text-[#919191]">
+                                    <a rel="nofollow" href="https://twiscan.com/en/x/AnthropicAI" class="text-xs">1.8M Followers</a>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <footer class="max-w-screen-xl mx-auto px-2 py-6 text-center text-xs text-slate-500 dark:text-[#919191] md:max-w-[1080px]">
+        <a href="https://twiscan.com/en/legal/copyright" class="hover:underline dark:text-dark-font">
+            Copyright notice
+        </a>
+    </footer>
+        <div class="rounded-full bg-white index-2 p-2 fixed bottom-4 right-1/4 shadow-3xl cursor-pointer hidden" id="to-top">
+        <span class="icon-mask icon-arrow-up w-6 h-6" aria-hidden="true"></span>
+    </div>
+            <script>
+(function(bfqo){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = bfqo || {};
+s.src = "\/\/humblestress.com\/bGXuVjs\/d.GPl\/0KYXWYcT\/Oe\/mB9duqZqU\/l\/kbPzT_czwzNnT\/UW1iOxDqEet\/NGzAAd1wN\/TWU\/4eN\/Qc";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+</script>
+    <script>window.__CF$cv$params={r:'a42fa09c0c7805bc',t:'MTc5MDczMzU1Nw==',u:'01a0f0099e5b7755aac1e85a7cabdd8c',ut:'lOORM522nlD.Q4q_.7VhLc8F.t4yGukllGmw7eBQ2zQ-1790733557-1.2.1.1-MJ8X7iEBzltLy.G3no2bvb4AlLdYGr7T9ptSyGm8Cy7yuOtBO9T_5YQYHVdFxRckZ8OIeKeGU3RONa4So9zkMGc9HqCO0AosjDOGvVa1Ab8',i:60};(function(){if(!document.body)return;var s=document.createElement('script');s.src='/cdn-cgi/challenge-platform/scripts/precursor/main.js';document.head.appendChild(s);})();</script></body>
+<script src="/assets/js/app.js?v=31"></script>
+<script src="/assets/js/clickUnder.js?v=11"></script>
+<script src="/assets/js/mode.js?v=1"></script>
+<script>
+    var showMore = "Show more"
+    var closeStr = "Close"
+    var blocklist_confirm_tweet = "Add this tweet to the site-wide blocklist?";
+    var blocklist_confirm_user = "Add this X user to the site-wide blocklist? All their tweets will be hidden.";
+    var blocklist_failed = "Action failed. Please try again later.";
+    function xBlockTweet(el) {
+        var id = el.getAttribute('data-tweet-id');
+        if (!id || typeof blocklist_tweet_url === 'undefined') {
+            return;
+        }
+        if (!confirm(blocklist_confirm_tweet)) {
+            return;
+        }
+        fetch(blocklist_tweet_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrf_token,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({ tweet_id: id })
+        }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.code === 0) {
+                var card = el.closest('.mb-4.p-4.shadow-3xl');
+                if (card) card.remove();
+            } else {
+                alert(blocklist_failed);
+            }
+        }).catch(function () { alert(blocklist_failed); });
+    }
+    function xBlockUser(el) {
+        var id = el.getAttribute('data-user-id');
+        if (!id || typeof blocklist_user_url === 'undefined') {
+            return;
+        }
+        if (!confirm(blocklist_confirm_user)) {
+            return;
+        }
+        fetch(blocklist_user_url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrf_token,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({ user_id: id })
+        }).then(function (r) { return r.json(); }).then(function (j) {
+            if (j && j.code === 0) {
+                var card = el.closest('.mb-4.p-4.shadow-3xl');
+                if (card) card.remove();
+            } else {
+                alert(blocklist_failed);
+            }
+        }).catch(function () { alert(blocklist_failed); });
+    }
+    $(document).on("click", '.show-clamp', function () {
+        var id = $(this).attr("data-id")
+        var retweetId = $(this).attr("data-retweet-id")
+        var domObj = $("#clamp-"+id+"-"+retweetId)
+
+        if (domObj.hasClass("line-clamp-2")) {
+            domObj.removeClass("line-clamp-2");
+            domObj.addClass("line-clamp-none");
+            $(this).html(closeStr)
+        }else if (domObj.hasClass("line-clamp-none")) {
+            domObj.removeClass("line-clamp-none");
+            domObj.addClass("line-clamp-2");
+            $(this).html(showMore)
+        }
+    })
+</script>
+<script id="SCSpotScript" type="text/javascript" src="https://creative.nicevideo.live/widgets/Spot/lib.js"></script><script type="text/javascript">(new StripchatSpot({"sourceId":"twiscan.com","userId":"d7325f69e21f5e64a7ea7e2755561bc1ea73774c0c7a7a2f1d1df51759abce21","targetDomain":"nicevideo.live"})).mount(document.body)</script>
+    <script>
+        $(function (){
+            var cursor = "AQAAAACo02nD___-XzVXfl_i0nkf2yXPLA";
+            var has_more = true;
+            var size = 20;
+            var is_loading = false;
+            var account = "poteto";
+            var storageItem = 1;
+
+            function countLoadedTweets() {
+                return $('#item-box > div').length;
+            }
+
+            function getList() {
+                if (is_loading || !has_more) {
+                    return;
+                }
+                is_loading = true;
+
+                $('#load-more').show();
+
+                $.ajax({
+                    url: "https://twiscan.com/en/account/tweet-list",
+                    type: 'GET',
+                    data: {
+                        cursor: cursor,
+                        size: size,
+                        account: account,
+                        show_retweet: storageItem,
+                        loaded_count: countLoadedTweets()
+                    },
+                    success: function (data, textStatus, jqXHR) {
+                        var nextCursor = jqXHR.getResponseHeader('X-Next-Cursor') || '';
+                        var moreHeader = (jqXHR.getResponseHeader('X-Has-More') || '').toLowerCase();
+                        has_more = moreHeader === 'true' || nextCursor !== '';
+                        cursor = nextCursor;
+
+                        if (!data || data.trim() === '') {
+                            if (!has_more) {
+                                var noMore = "No more"
+                                $("#load-text").html(noMore)
+                            }
+                            is_loading = false;
+                            if (!has_more) {
+                                $('#load-more').hide();
+                            }
+                            return;
+                        }
+
+                        $('#item-box').append(data);
+                        is_loading = false;
+                        if (!has_more) {
+                            $('#load-more').hide();
+                        } else {
+                            $('#load-more').hide();
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.error('Error fetching more data:', textStatus, ', Details:', errorThrown);
+                        is_loading = false;
+                        has_more = false;
+                        $('#load-more').hide();
+                    },
+                });
+            }
+
+            $(window).scroll(function () {
+                var scrollTop = $(this).scrollTop();
+                var scrollHeight = $(document).height();
+                var windowHeight = $(this).height();
+
+                if ($("#item-box").height() - $(window).scrollTop() -$(window).height() + $("#item-box").offset().top <= 400) {
+                    getList()
+                }
+
+                if (scrollTop > windowHeight) {
+                        $("#to-top").show()
+                    } else {
+                        $("#to-top").hide()
+                    }
+            });
+
+            $("#to-top").click(function (){
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 200);
+            })
+
+            $("#set-retweet-status").click(function (){
+                var showRetweet
+                var btnText
+                if (!storageItem) {
+                    showRetweet = 1
+                    btnText = "Hide Forward"
+                } else {
+                    if (storageItem === 1) {
+                        showRetweet = 0
+                        btnText = "Show Forward"
+                    } else {
+                        showRetweet = 1
+                        btnText = "Hide Forward"
+                    }
+                }
+                storageItem = showRetweet
+                $("#set-retweet-status").html(btnText)
+
+                cursor = ''
+                has_more = true
+                $("#item-box").html("")
+                getList()
+            })
+
+            var img = document.getElementById("profile-img");
+            img.src = "https://pbs.twimg.com/profile_banners/2832427459/1760377968";
+            img.onerror = function() {
+                img.src="/assets/images/profile.png";
+            };
+
+        })
+    </script>
+    <script src="/assets/js/account-collection.js?v=1" defer></script>
+</html>

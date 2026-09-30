@@ -1,0 +1,234 @@
+
+Thread By @morganlinton - I've seen soooooo many people run...
+ Author
+ Morgan 
+@morganlinton
+bay area native now living in tahoe, cofounder/cto @boldmetrics, building evals @vulcanbench, early ...
+44,358
+Followers
+ Follow
+ More Threads by @morganlinton
+1 tweets • 5 days ago
+ Read Thread
+1 tweets • 7 days ago
+ Read Thread
+1 tweets • 10 days ago
+ Read Thread
+1 tweets • 29 days ago
+ Read Thread
+1 tweets • 1 month ago
+ Read Thread
+ Thread Stats
+13
+Tweets
+30 days ago
+Published
+ Tools
+Print Thread
+Save as PDF or print
+Listen to Thread
+AI-powered audio narration
+Share Thread
+Copy link to clipboard
+View Original
+See on X/Twitter
+Update Thread
+Refresh thread data
+Share Thread
+ Morgan 
+@morganlinton
+ Follow
+Aug 31
+•
+30 days ago
+•
+13 tweets
+•
+Read on X
+ Print
+Listen
+ Share
+ Share on X
+ Share on Facebook
+ Share on WhatsApp
+ Copy Link
+ View Original
+Sponsored
+ -->
+ -->
+I've seen soooooo many people run out of usage on Grok Bot, and a lot are making the same mistakes, which yes, will make your tokens go brrrrr.
+I'm running 12 Grok Bots now, and in the process, have been studying how to keep token usage low.
+Here's what I've learned. A Grok Bot make tokens go brrrr slower thread 🧵
+First, one key realization I had that you should have too if you haven't yet.
+Token waste on Grok Bots is almost never the model. 
+It’s context bloat.
+I see people making these mega bots, that do a bunch of different things, and run all kinds of stuff every hour or less.
+You're going to be reloading a lot of stuff, every turn, which uses a lot of tokens, and you don't need to be doing this, seriously, stop doing this.
+What I determined is, and it might seem kinda counter-intuitive, but you need more bots.
+Split bots into as small of atomic task units as you can. 
+Here's an example. Rather than an exercise tracker, that tracks all of the exercising I do, I have a Running Coach bot. It just tracks my running, that's it.
+So every time I message it, I don't have to worry about it carrying the context of my last weight lifting or paddle boarding session, it's just running, that's it.
+Write what you want the bot to do in the profile, don't sit there and let it interview you forever. 
+This is similar to when you're doing agentic coding and writing a spec. Write a super vague spec, and you'll spend a bunch of time answer question, using a lot of tokens on something you could have just solved spending a few minutes being more specific and detailed about what you're looking to do.
+I try to keep the chat I'm in, with a bot, high level, short, bc I want that bot to be available, not running a 10 minte job. 
+For bigger stuff, I send a self-contained brief and goes to a background worker, or a cloud agent if it’s repo work. 
+Those run in parallel, and then can report back. So I can keep yapping the whole time.
+But, don't get confused here, you don’t click “make a worker.” 
+You write the bot so it dispatches instead of trying to do everything itself, with tons of context bloat... 
+then you ask it for something big and it should kick that off instead of doing it in the main thread.
+Remember that cloud agents already have the code so you don't need to do a bunch of cloning and grepping, that's literally doulbing the work!
+Make sure whatever you're having Grok Bot do, it doesn't involve it using a site like a human. 
+This means connectors, connectors, connectors. 
+Screenshots should only be something you use to show something to your bot. 
+But if your bot is ever using screenshots to get data, i.e. it's going to sites, taking screenshots page-by-page, yeah, you're gonna burn tokens like crazy.
+In short, really avoid having your bot get data from a website by taking screenshots. I even put this in my bot descriptions and tell it to avoid at all costs.
+Make sure not to ever re-teach anything to your bot. If you find that you're telling your bot to do something, for a second time, that should be a skill.
+And here's where I see a lot of people really burn tokens like crazy, routines.
+A routine is something that runs without you asking. And if you let your bot just come up with how often a routine should run, you could burn through a lot of tokens in a day or two for no good reason.
+Anything your bot runs without you specifically telling you to needs to be audited in detail, more in the next post in the thread because this one deserves more attention.
+First, every routine costs something. So in general I like to think about how infrequently can a routine run.
+And, here's probably the biggest nugget in this whole thread, use event listeners rather than polling.
+Here's what I mean.
+An event listener is something that fires when an action happens, i.e. you're mentioned in Slack or a Linear ticket gets added or changed. 
+Scope tightly. One Slack channel, one repo, one PR, please, please, please, don't say, monitor all my Slack channels, or all my repos, or all my PRs. 
+A listening on everything is pretty much as bad as polling.
+Then, for routines, pick the least number of times daily it runs, try not to do anything hourly unless you really absolutely have to.
+Most of my routines run daily, max.
+Then, make sure each routine is cheap, these are your token go brrrrrrr cost center.
+Keep the prompts for routines super short, and point at skills when you can. 
+Also, tell your bot to stay quiet when there's nothing to share. Remember, a bot saying, "no updates" still uses tokens. 
+The TL;DR for this whole routine section is, use routines only when they can act, and only get what it needs, otherwise, keep quiet.
+And, as you're scaling bots, remember, context isn't infinite, your bots will forget things as context grows, but they're not getting dumber, they're still pretty smart.
+Use a specialist + dispatcher model to optimize for this.
+And honestly, I could write a whole thread just about optimizing specialist + dispatcher setups but this already feels way too long so I think I'm just going to end it here.
+Phew, okay, that ended up being a lot longer than I expected. Guess I had a lot to say on the topic!
+Nothing more for you here, this really just was kinda a stream of consciousness from me.
+If you have any questions, ask away, and now, hopefully, at least for a few more people, you won't be scratching your head wondering why your usage is going down so fast!
+I've seen soooooo many people run out of usage on Grok Bot, and a lot are making the same mistakes, which yes, will make your tokens go brrrrr.
+I'm running 12 Grok Bots now, and in the process, have been studying how to keep token usage low.
+Here's what I've learned. A Grok Bot make tokens go brrrr slower thread 🧵First, one key realization I had that you should have too if you haven't yet.
+Token waste on Grok Bots is almost never the model. 
+It’s context bloat.I see people making these mega bots, that do a bunch of different things, and run all kinds of stuff every hour or less.
+You're going to be reloading a lot of stuff, every turn, which uses a lot of tokens, and you don't need to be doing this, seriously, stop doing this.What I determined is, and it might seem kinda counter-intuitive, but you need more bots.
+Split bots into as small of atomic task units as you can. 
+Here's an example. Rather than an exercise tracker, that tracks all of the exercising I do, I have a Running Coach bot. It just tracks my running, that's it.
+So every time I message it, I don't have to worry about it carrying the context of my last weight lifting or paddle boarding session, it's just running, that's it.Write what you want the bot to do in the profile, don't sit there and let it interview you forever. 
+This is similar to when you're doing agentic coding and writing a spec. Write a super vague spec, and you'll spend a bunch of time answer question, using a lot of tokens on something you could have just solved spending a few minutes being more specific and detailed about what you're looking to do.I try to keep the chat I'm in, with a bot, high level, short, bc I want that bot to be available, not running a 10 minte job. 
+For bigger stuff, I send a self-contained brief and goes to a background worker, or a cloud agent if it’s repo work. 
+Those run in parallel, and then can report back. So I can keep yapping the whole time.
+But, don't get confused here, you don’t click “make a worker.” 
+You write the bot so it dispatches instead of trying to do everything itself, with tons of context bloat... 
+then you ask it for something big and it should kick that off instead of doing it in the main thread.Remember that cloud agents already have the code so you don't need to do a bunch of cloning and grepping, that's literally doulbing the work!Make sure whatever you're having Grok Bot do, it doesn't involve it using a site like a human. 
+This means connectors, connectors, connectors. 
+Screenshots should only be something you use to show something to your bot. 
+But if your bot is ever using screenshots to get data, i.e. it's going to sites, taking screenshots page-by-page, yeah, you're gonna burn tokens like crazy.
+In short, really avoid having your bot get data from a website by taking screenshots. I even put this in my bot descriptions and tell it to avoid at all costs.Make sure not to ever re-teach anything to your bot. If you find that you're telling your bot to do something, for a second time, that should be a skill.
+And here's where I see a lot of people really burn tokens like crazy, routines.
+A routine is something that runs without you asking. And if you let your bot just come up with how often a routine should run, you could burn through a lot of tokens in a day or two for no good reason.
+Anything your bot runs without you specifically telling you to needs to be audited in detail, more in the next post in the thread because this one deserves more attention.First, every routine costs something. So in general I like to think about how infrequently can a routine run.
+And, here's probably the biggest nugget in this whole thread, use event listeners rather than polling.
+Here's what I mean.
+An event listener is something that fires when an action happens, i.e. you're mentioned in Slack or a Linear ticket gets added or changed. 
+Scope tightly. One Slack channel, one repo, one PR, please, please, please, don't say, monitor all my Slack channels, or all my repos, or all my PRs. 
+A listening on everything is pretty much as bad as polling.
+Then, for routines, pick the least number of times daily it runs, try not to do anything hourly unless you really absolutely have to.
+Most of my routines run daily, max.Then, make sure each routine is cheap, these are your token go brrrrrrr cost center.
+Keep the prompts for routines super short, and point at skills when you can. 
+Also, tell your bot to stay quiet when there's nothing to share. Remember, a bot saying, "no updates" still uses tokens. 
+The TL;DR for this whole routine section is, use routines only when they can act, and only get what it needs, otherwise, keep quiet.And, as you're scaling bots, remember, context isn't infinite, your bots will forget things as context grows, but they're not getting dumber, they're still pretty smart.
+Use a specialist + dispatcher model to optimize for this.
+And honestly, I could write a whole thread just about optimizing specialist + dispatcher setups but this already feels way too long so I think I'm just going to end it here.Phew, okay, that ended up being a lot longer than I expected. Guess I had a lot to say on the topic!
+Nothing more for you here, this really just was kinda a stream of consciousness from me.
+If you have any questions, ask away, and now, hopefully, at least for a few more people, you won't be scratching your head wondering why your usage is going down so fast!
+I've seen soooooo many people run out of usage on Grok Bot, and a lot are making the same mistakes, which yes, will make your tokens go brrrrr.
+I'm running 12 Grok Bots now, and in the process, have been studying how to keep token usage low.
+Here's what I've learned. A Grok Bot make tokens go brrrr slower thread 🧵 ... First, one key realization I had that you should have too if you haven't yet.
+Token waste on Grok Bots is almost never the model. 
+It’s context bloat. ... I see people making these mega bots, that do a bunch of different things, and run all kinds of stuff every hour or less.
+You're going to be reloading a lot of stuff, every turn, which uses a lot of tokens, and you don't need to be doing this, seriously, stop doing this. ... What I determined is, and it might seem kinda counter-intuitive, but you need more bots.
+Split bots into as small of atomic task units as you can. 
+Here's an example. Rather than an exercise tracker, that tracks all of the exercising I do, I have a Running Coach bot. It just tracks my running, that's it.
+So every time I message it, I don't have to worry about it carrying the context of my last weight lifting or paddle boarding session, it's just running, that's it. ... Write what you want the bot to do in the profile, don't sit there and let it interview you forever. 
+This is similar to when you're doing agentic coding and writing a spec. Write a super vague spec, and you'll spend a bunch of time answer question, using a lot of tokens on something you could have just solved spending a few minutes being more specific and detailed about what you're looking to do. ... I try to keep the chat I'm in, with a bot, high level, short, bc I want that bot to be available, not running a 10 minte job. 
+For bigger stuff, I send a self-contained brief and goes to a background worker, or a cloud agent if it’s repo work. 
+Those run in parallel, and then can report back. So I can keep yapping the whole time.
+But, don't get confused here, you don’t click “make a worker.” 
+You write the bot so it dispatches instead of trying to do everything itself, with tons of context bloat... 
+then you ask it for something big and it should kick that off instead of doing it in the main thread. ... Remember that cloud agents already have the code so you don't need to do a bunch of cloning and grepping, that's literally doulbing the work! ... Make sure whatever you're having Grok Bot do, it doesn't involve it using a site like a human. 
+This means connectors, connectors, connectors. 
+Screenshots should only be something you use to show something to your bot. 
+But if your bot is ever using screenshots to get data, i.e. it's going to sites, taking screenshots page-by-page, yeah, you're gonna burn tokens like crazy.
+In short, really avoid having your bot get data from a website by taking screenshots. I even put this in my bot descriptions and tell it to avoid at all costs. ... Make sure not to ever re-teach anything to your bot. If you find that you're telling your bot to do something, for a second time, that should be a skill.
+And here's where I see a lot of people really burn tokens like crazy, routines.
+A routine is something that runs without you asking. And if you let your bot just come up with how often a routine should run, you could burn through a lot of tokens in a day or two for no good reason.
+Anything your bot runs without you specifically telling you to needs to be audited in detail, more in the next post in the thread because this one deserves more attention. ... First, every routine costs something. So in general I like to think about how infrequently can a routine run.
+And, here's probably the biggest nugget in this whole thread, use event listeners rather than polling.
+Here's what I mean.
+An event listener is something that fires when an action happens, i.e. you're mentioned in Slack or a Linear ticket gets added or changed. 
+Scope tightly. One Slack channel, one repo, one PR, please, please, please, don't say, monitor all my Slack channels, or all my repos, or all my PRs. 
+A listening on everything is pretty much as bad as polling.
+Then, for routines, pick the least number of times daily it runs, try not to do anything hourly unless you really absolutely have to.
+Most of my routines run daily, max. ... Then, make sure each routine is cheap, these are your token go brrrrrrr cost center.
+Keep the prompts for routines super short, and point at skills when you can. 
+Also, tell your bot to stay quiet when there's nothing to share. Remember, a bot saying, "no updates" still uses tokens. 
+The TL;DR for this whole routine section is, use routines only when they can act, and only get what it needs, otherwise, keep quiet. ... And, as you're scaling bots, remember, context isn't infinite, your bots will forget things as context grows, but they're not getting dumber, they're still pretty smart.
+Use a specialist + dispatcher model to optimize for this.
+And honestly, I could write a whole thread just about optimizing specialist + dispatcher setups but this already feels way too long so I think I'm just going to end it here. ... Phew, okay, that ended up being a lot longer than I expected. Guess I had a lot to say on the topic!
+Nothing more for you here, this really just was kinda a stream of consciousness from me.
+If you have any questions, ask away, and now, hopefully, at least for a few more people, you won't be scratching your head wondering why your usage is going down so fast! 
+Listen To This Thread
+ Missing some Tweet in this thread? You can try to 
+ Update
+More Threads by @morganlinton
+1 tweets • 5 days ago
+ Read Thread
+1 tweets • 7 days ago
+ Read Thread
+1 tweets • 10 days ago
+ Read Thread
+1 tweets • 29 days ago
+ Read Thread
+1 tweets • 1 month ago
+ Read Thread
+Unroll Another Thread
+Convert any Twitter threads to an easy-to-read article instantly
+Paste 
+Unroll Now
+Have you tried our Twitter bot?
+You can now unroll any thread without leaving Twitter/X. Here's how to use our Twitter bot to do it.
+Give us a follow on Twitter.
+ follow us 
+Drop a comment, mentioning us 
+@unrollnow
+ on the thread you want to Unroll. 
+Wait For Some Time, We will reply to your comment with Unroll Link.
+Please enter a valid URL from X.com or Twitter.
+Recent Threads
+GPT-6.1 Sol: near-Astra intelligence for a fifth of the price.
+It’s the most cost-efficient model...
+@OpenAI
+7 minutes ago
+ Read 5 Tweets
+GPT-6.1 by @OpenAI is now in the Arena!
+Head to Agent Arena to test it out, and your votes will sha...
+@arena
+12 minutes ago
+ Read 2 Tweets
+GPT-6.1 is a good model. And it’s unbelievably efficient. Included in all paid plans and on the AP...
+@thsottiaux
+15 minutes ago
+ Read 2 Tweets
+Plugin discovery on ChatGPT leads to massive adoption opportunity. Open ecosystems will win.
+@thsottiaux
+16 minutes ago
+ Read 2 Tweets
+🆕 Retro hardware looks incredible in this editorial style!
+Use one strong device, oversized type...
+@MrLarus
+18 minutes ago
+ Read 2 Tweets
+ Tweet Analytics
+Engagement Rate
+ View on X
+Please note: the data and statistics on this page were last updated 30 days ago
+0:00 / 0:00

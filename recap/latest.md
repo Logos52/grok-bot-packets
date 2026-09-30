@@ -1,7 +1,10 @@
-# Recap latest · last 7 days (2026-09-22 → 2026-09-29)
-Rebuilt 2026-09-29 noon Asia/Taipei pass. Newest first. LIST files excluded.
+# Recap latest · last 7 days (2026-09-23 → 2026-09-30)
+Rebuilt 2026-09-30 ~00:20 ET / ~12:20 Asia/Taipei (noon LIST pass). Newest first. LIST files excluded.
 
-Packets this window (10):
+Packets this window (13):
+- 2026-09-29-elon-jensen-cspan-accord-presser.md
+- 2026-09-29-elon-jensen-americagov-panel-NOTES-ONLY.md
+- 2026-09-29-elon-g20-innovation-ministerial-NOTES-ONLY.md
 - 2026-09-29-all-in-ek.md
 - 2026-09-27-moon.md
 - 2026-09-27-elon-cmg.md
@@ -10,8 +13,101 @@ Packets this window (10):
 - 2026-09-25-maxinomics.md
 - 2026-09-24-all-in-ferrari.md
 - 2026-09-24-fern.md
-- 2026-09-23-all-in-scholl.md
 - 2026-09-23-all-in-hilton-pratt.md
+- 2026-09-23-all-in-scholl.md
+
+## Ingest · Elon interviews (joint appearance: Elon + Jensen) · 2026-09-29 · Trump and AI Tech Executives Speak to Reporters After Meeting
+url: https://www.youtube.com/watch?v=FUb47LGZqcs  ·  length: 35:06  ·  text: captions (YouTube watch-page transcript)
+channel: C-SPAN (official upload of the White House press event)  ·  published: 2026-09-29 (US)
+format NOTE: NOT a sit-down interview. It is a Trump-led press Q&A after his White House meeting with ~40 AI/tech leaders and Cabinet officials. Jensen Huang and Elon Musk both speak from the group behind Trump; they do not talk to each other. Counts under the Elon sit-down pin as a Jensen+Elon joint appearance, flagged as press-Q&A.
+host/moderator: none (reporters shout questions; Trump fields most, hands off to others). Speakers heard: Trump, Jensen Huang, Elon Musk, Sundar Pichai, Mark Zuckerberg, Dario Amodei, Greg Brockman, Speaker Mike Johnson, an unnamed Senator.
+
+### Takeaways, arguments, claims (in order; no timestamps in the watch-page text, so --:--)
+
+**Framing: the signed accord and the rename (--:--)**
+- --:-- · Johnson · Document everyone signed will be circulated right after the press conference; declines questions so as not to upstage the president.
+- --:-- · Trump · Meeting was "a great meeting"; group of ~40; the CEOs "came together" on something "almost like a constitution"; he signed it too; calls it "a form of protection." Asked if binding: "morally binding."
+- --:-- · Trump · The term is now officially "SI" (super intelligence), not AI; "artificial" is a "fake word." Says the name change was made "by the biggest, the smartest" people.
+- --:-- · Trump · Bad actors "will get caught" (DOJ/FBI/CIA); expects "tremendous self policing"; floats a committee of ~10 people, drawn from this group, to "watch over the whole enterprise."
+- --:-- · Trump · Democrats calling AI a hoax: says the hoax is the Democrats' opposition, motivated by politics; compares to climate change; disputes Bill Gates "AI could kill up to a billion" framing.
+
+**Jensen Huang's argument (--:--)**
+- --:-- · Huang (asked if guardrails are unnecessary/industry can self-regulate) · No conflict between innovation, technology and safety; the industry is building new technologies to advance AI capability and new ones to advance AI safety at the same time; leaders are "moving together as one."
+- --:-- · Huang (prompted by Trump on the next-10-years question) · This is the largest industrial revolution in history and the largest infrastructure buildout; creating "a million jobs" in the US (chip plants, computer plants, factories); several hundred billion dollars of venture capital funding thousands of new companies that create jobs.
+- --:-- · Trump · Praises Huang: built "the most valuable" company in the stock market, new technology not oil and gas.
+
+**Elon Musk's argument (--:--)**
+- --:-- · Reporter · Asks about worry over "laptop jobs" and Musk's "age of abundance."
+- --:-- · Musk · Corrects himself: not AI but SI. Highlights positive benefits; by far most likely outcome is an age of abundance with universal high income rather than just universal basic income.
+- --:-- · Musk · With robots and super intelligence everyone in the world can have better medical care than anyone in the room, "including me."
+- --:-- · Musk · Jobs change; "being a computer used to be a job" (buildings of people doing calculations); digital computers took that over and nobody wants to go back; expects an evolution of roles; notes unemployment hasn't risen and there's "tremendous demand for people."
+
+**Other CEOs at the event (--:--)**
+- --:-- · Brockman (OpenAI) · Builds AI to benefit everyone; sees a renaissance of small business, science, drug development; supports the accord and coming together "to move forward safely."
+- --:-- · Amodei (Anthropic) · AI has incredible benefits (medical) but "very real risks"; how to address risks is "still under discussion"; if the industry works with the president "we can win safely."
+- --:-- · Zuckerberg (Meta) · Summarizes the accord ("White House accord ... on developing this technology safely" in the captions): internal controls to detect issues, layered auditing (internal risk review, external auditors/evaluators), boards of directors independently review the auditors' reports; "a start," not the end, and something the whole industry could join.
+- --:-- · Pichai (Google) · Moment is "historic"; extraordinary benefits (cites GDP growth) plus risks; the accord brings well-known processes/controls, like financial controls, to AI development.
+- --:-- · Unnamed Senator · Consensus: being the AI leader is the most important thing for national security ("winning the AI race is winning"); second principle: put American people first in that race.
+- --:-- · Johnson · Republicans say "we cannot lose the race to China"; the House passed the Ratepayer Protection Act (codifies Trump's pledge that AI infrastructure builders generate their own power and put power back on the grid); "trust is earned. It's not automatic."
+
+**Data centers, China, jobs (--:--)**
+- --:-- · Trump · Data centers bring communities money: taxes down, incomes and home values up; companies will form "partnerships" with communities and be "very generous" (schools, teacher pay). Says Meta is paying teachers in a Louisiana parish over $50,000 each.
+- --:-- · Trump · Wants data centers built in America; warns if the US is "stupid" and pushes builders abroad (mentions Finland, Europe) other countries "make a fortune."
+- --:-- · Trump · US leads by a lot; Europe "has none"; China second and "quite a ways back" — keep it that way; whoever wins SI wins. Says he and Elon "sat with President Xi" who "would love" to take every data center the US doesn't want.
+- --:-- · Trump · Off-topic exchanges (ICE, Iran oil/nuclear, Kim Jong-un, Republican candidates on data centers, midterm campaign tour) — no AI content.
+
+### Quotes (verbatim from caption text, ≤ 25 words each)
+- --:-- Huang: "There's no conflict between innovation, technology, and safety."
+- --:-- Huang: "the largest industrial revolution in history. And we're going through the single largest infrastructure buildout in human history."
+- --:-- Musk: "by far the most likely outcome is an age of abundance"
+- --:-- Musk: "we don't have just universal basic income, we have universal high income."
+- --:-- Musk: "everyone in the world can have better medical care than anyone here, including me."
+- --:-- Trump: "It's not AI, it's SI."
+
+### One paragraph
+After Trump's meeting with ~40 AI leaders and the signing of a self-regulation "accord," Trump fields press questions with Huang, Musk, Pichai, Zuckerberg, Amodei and Brockman behind him. Trump's line: rename AI to "super intelligence," trust "self policing" and mutual oversight over new rules, keep China behind, and sell data centers to communities as a windfall. Huang argues safety and innovation aren't in conflict and frames the buildout as the largest industrial revolution and a jobs engine. Musk argues the likely outcome is abundance and "universal high income," that robots plus super intelligence make top-tier medical care universal, and that jobs will evolve rather than vanish. Amodei alone stresses "very real risks." No Huang–Musk exchange occurs; each answers reporters separately.
+
+### Footer
+canary: YT id FUb47LGZqcs · C-SPAN upload · tab title "Trump and AI Tech Executives Speak to Reporters After Meeting" · 35:06 (yt-dlp flat-playlist of @CSPAN/videos) · fetched 2026-09-30T01:45:00Z · text route: yt-dlp --list-subs shows only auto-translated tracks (no manual subs); yt-dlp subtitle download failed (HTTP 429 / "sign in to confirm you're not a bot"), so used the official YouTube watch-page transcript text via WebFetch of the C-SPAN watch page (auto captions; no timestamps) · caveats: transcript begins mid-sentence and cuts off at the end, so the first and last seconds are missing; ASR errors ("Jan"=Jensen, "Sudundar"=Sundar, "Lowden"=Loudoun, "Mike"=Speaker Johnson) and speaker labels inferred from context; not run through ASR on the box · quotes copied from the caption text (stutters trimmed only by choosing fragments) · no third-party transcript sites · full text banked
+
+## Ingest · Elon interviews (joint talk: Elon + Jensen) · 2026-09-29 · "Hello, America" / America.gov launch event — Musk + Huang + Tom Brown afternoon panel · NOTES-ONLY
+status: NOTES-ONLY — no first-party captions obtainable for the panel; nothing about what Musk or Huang said is in this packet.
+event: White House / National Design Studio "Hello, America" America.gov launch, Andrew W. Mellon Auditorium, Washington DC, 2026-09-29
+host/guests: panel with Elon Musk, Jensen Huang and Anthropic co-founder Tom Brown (moderator not identified in anything I can cite). Panel participants come from FedScoop's report (fedscoop.com/trump-launches-ai-site-america-gov/), which is secondary and used ONLY to say the panel exists.
+
+### Where the first-party video is
+- The White House YouTube channel: https://www.youtube.com/watch?v=qyJL5gKhajE · title "Announcement on America.gov" · channel The White House · was_live · 8:38:21 · release_timestamp 2026-09-29T13:24:57Z (9:24 AM ET). yt-dlp (default + android clients): "no subtitles / no automatic captions"; later attempts got "sign in to confirm you're not a bot"; the watch-page fetch returned only the location line ("Washington, DC"), no description text and no transcript. Nothing usable.
+- C-SPAN's 58:34 upload https://www.youtube.com/watch?v=nXfKDuL8Q8c (title "President Trump, Elon Musk Announce AI-Powered "America.gov"") does have English CC (I pulled the vtt). Content = Trump's morning remarks, Oz, Rubio demos, then the lunch break announcement (ends "we will reconvene ... at 1:00"). No Musk or Huang in the caption text (0 hits), so it is not the panel and is not ingested.
+- Rebroadcast/clone uploads of the panel exist (Right Side Broadcasting Network "FULL: Elon Musk, Jensen Huang, Tom Brown Discuss the AI Revolution & What's Next - 09/29/26", 26:37, id 388P7IFSpwE; DWS News / DRM News "FULL PANEL" clones). Not the host's own upload; skipped per rules.
+
+### Official notes (whitehouse.gov, first-party) — none of it describes the panel
+- Fact Sheet: "President Donald J. Trump Streamlines Access to Government Services Through America.gov" (2026-09-29): America.gov is "a single digital point of entry"; can answer questions now; task completion (e.g. passport renewal, Medicare enrollment) "later this year"; EO directs GSA, National Design Studio, OMB to establish it and integrate Login.gov; excludes IRS tax filing and national-security-sensitive services; Americans spend "around 10 billion hours each year" on federal paperwork.
+- Fact Sheet: "President Donald J. Trump Inaugurates The Era of Super Intelligence" (2026-09-29): EO replaces the terms "Artificial Intelligence"/"AI" with "Super Intelligence"/"SI" across the executive branch.
+- Related first-party Elon+Jensen material from the same day that DOES have captions: the C-SPAN press Q&A packet `/workspace/recap/2026-09-29-elon-jensen-cspan-accord-presser.md`.
+
+### Quotes
+none — no first-party text of the panel was obtained.
+
+### Footer
+canary: fetched 2026-09-30T01:45:00Z · routes tried: yt-dlp --list-subs / --write-auto-subs (default, android, ios, tv, web_safari, mweb clients) on qyJL5gKhajE; YouTube watch-page fetch; whitehouse.gov fact sheets (fetched OK) · no ASR on box · no third-party transcript sites · nothing banked (no transcript exists)
+
+### Addendum (X route attempt, 2026-09-29 ~22:00 ET)
+- Could not locate any @America X post URL for the Musk/Huang/Brown panel: WebSearch (several queries) returned no x.com status link; x.com/America returns a login-walled JS shell to curl and 403 to WebFetch; yt-dlp has no profile extractor ("Unsupported URL"); X syndication timeline endpoint returned 429. No post URL => yt-dlp on the post was not possible. No captions/text obtained. Nothing banked, no INGEST packet written.
+
+## Ingest · Elon interviews · 2026-09-01 · G20 Innovation Ministerial fireside chat: OSTP Director Michael Kratsios with Elon Musk (virtual) · NOTES-ONLY
+status: NOTES-ONLY — no first-party captions/transcript obtainable. Not a Jensen+Elon talk (Huang did a separate fireside with Commerce Sec. Howard Lutnick on 2026-09-02).
+event: G20 Innovation Ministerial, Carolina Inn, Chapel Hill NC, 2026-09-01/02. Host of the Musk chat: Kratsios (OSTP).
+
+### What first-party sources say
+- whitehouse.gov "G20 Innovation Ministerial Concludes with Consensus Statement" (2026-09-02): the Ministerial was hosted by Commerce and OSTP; "OSTP Director Kratsios hosted fireside chats with Elon Musk, CEO of Tesla and SpaceX; David Sacks; Bob Mumgaard; Demis Hassabis; Mark Zuckerberg; and Michael Crow." "Secretary Lutnick hosted fireside chats with Jensen Huang ... Tom Brown ... Sam Altman ... and Alex Karp." Consensus statement has six pillars and the "Carolina Principles for Emerging Technologies." The release says nothing about what Musk said.
+- No official video with captions found: the White House, Commerce and OSTP YouTube channels have no upload I could find (WhiteHouse @streams/@videos scanned for g20/ministerial/musk/kratsios); the YouTube copies are all rebroadcasters (DWS News, The Sun, ANI, Reuters live, etc.); yt-dlp on those was blocked ("sign in to confirm you're not a bot"). Reposts and the Elon Musk Archive transcript and CNBC live blog are third-party, not used for content.
+
+### Quotes
+none — no first-party text of the talk was obtained.
+
+### Footer
+canary: fetched 2026-09-30T01:45:00Z · routes tried: whitehouse.gov release (OK), yt-dlp on channel listings and on rebroadcast ids (blocked), no official upload exists that I could find · no ASR on box · no third-party transcript sites used · nothing banked
+
 ## Recap · All-In · 2026-09-28 · Daniel Ek: Life After Spotify, Broken Healthcare Incentives, Catching Disease Early & AI's Potential
 url: https://www.youtube.com/watch?v=JEUboZzZGM4 + https://allinchamathjason.libsyn.com/daniel-ek-life-after-spotify-broken-healthcare-incentives-catching-disease-early-ais-potential  ·  length: 51:16  ·  text: captions
 
@@ -517,55 +613,6 @@ Fern synthesizes WSJ + Politico reporting on Polymarket's mid-2025 US return cam
 ### Footer
 canary: YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 20:49 (1249s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-0924-fern/captions.en.vtt (~202KB) + cleaned plain /workspace/recap/tmp-0924-fern/transcript-plain.txt (~3799 words) · Shopify mid-roll noted skipped · ASR name cleanup in body only (Copelan→Copeland, Cali→Kalshi, Poly Market→Polymarket, Beefman→Beeferman, pouyarket kept as reported typo-squat) · quotes from caption text · no ASR on box · no third-party transcript sites
 
-## Recap · All-In · 2026-09-22 · Blake Scholl: Why Plane Speed Stalled, Supersonic Commercial Flight, & Revolutionizing the Engine
-url: https://www.youtube.com/watch?v=Gnb-CfNPcPE + https://allinchamathjason.libsyn.com/blake-scholl-why-plane-speed-stalled-supersonic-commercial-flight-revolutionizing-the-engine  ·  length: 17:39  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Welcome Blake Scholl! (00:00)**
-- 00:00 · Intro reel · Boom Supersonic CEO Blake Scholl: set to fly Mach 1.7; **130** airline orders claimed; Boeing hasn't launched a new airliner since **2004** — "David and Goliath, but Goliath is asleep."
-- 00:52 · Scholl · Stagnation claim: 1969 landed on moon + Concorde through sound barrier; half-century later can't do either. Political legacy of Concorde = US ban on overland supersonic. Boeing 707 (1957) → latest airliner is "literal carbon fiber copy"; interns born after Boeing's last new launch.
-- 01:39 · Scholl · Alternate timeline: Atlantic in **3.5 hours**; Sydney as accessible as Honolulu — business/culture/love implications.
-- 02:01 · Scholl · Origin: software/ads (Amazon, Groupon) + pilot's license; 2015 pitched Bezos on Boom seed — Bezos passed; 2015 Amazon shareholder letter said no garage startup builds all-composite airliner you'd want to fly — Scholl took it personally. Early pitch-deck mockup: cardboard/plywood/Office Depot seats.
-- 02:59 · Scholl · Last year Boom became **first private company** to build a supersonic jet — ~**50** people vs thousands at big cos. First supersonic Starlink install; iPhone video streamed; classrooms tuned in (future chief engineers).
-- 04:37 · Scholl · **2025**: XB-1 first privately developed jet to break sound barrier — and demonstrated **boomless** supersonic.
-
-**Solving the sonic boom & legalizing supersonic flight (05:11)**
-- 05:06 · Scholl · "Boomless cruise": uses atmospheric refraction to redirect sonic boom upward (Mach cutoff) — if no boom on ground, ban has no object. Spoke to president after flight; agreed no boom → no ban. **1973** ban ended by EO **June 6 last year**.
-- 05:51 · Scholl · EO reversible → pushed Congress; Supersonic Legalization Act passed House **unanimously**; cleared Senate committee unanimously; wants full Senate unanimous. Not full speed ahead yet.
-
-**The pivot to powering data centers (07:59)**
-- 06:26 · Scholl · Near-death: outsourced engine to legacy OEM — public breakup with Rolls-Royce; declared dead. Decision: build own engine from scratch with digital design + digital manufacturing, including turbine blades in-house.
-- 07:35 · Scholl · Re-industrialization thesis: invent next-gen manufacturing here and build new products — don't just reshore what China took. First vertically integrated jet-engine core assembling now; **test stand next month**.
-- 08:08 · Scholl · Twist: owning the engine (what "killed" them) makes the startup financially valuable. Same hot Mach-1.7 core, fan off / generator on → **behind-the-meter data-center power**: **42 MW** in a couple trailers; designed to run hot → **no water** (kills water objection).
-- 09:02 · Scholl · Undisclosed-location "world's most advanced jet turbine factory"; opposite of legacy RONA/outsource — raw materials → blades/vanes → assembly → own test stand. First parts **last week**; scale to multiple GW/year; aim **+10+ GW to the grid over next 5 years**.
-- 09:53 · Scholl · Passenger payoff: twice as fast over water, **~50% faster** over land boomless, on most-tested new jet engine (proven on ground first). Success not guaranteed; American aviation leadership.
-
-**Jason joins: data center demand, private jets & what winning looks like (10:38)**
-- 10:40 · Jason · When / how much to fly?
-- 10:46 · Scholl · Concorde was 0/3 on safe-comfortable-affordable; Boom aims 3/3. Round-trip Atlantic Mach 1.7 ~**3 hours**; **break-even fare ~$3,500** round-trip (airlines price above). Goal **~4 years** (~2030 give-or-take); prefers fast over predictable dates.
-- 12:03 · Scholl · Overland: boomless cruise / Mach cutoff to ~**Mach 1.3** (~50% faster than today) — e.g. leave NYC 9am → SFO ~9:30am local; full Mach over water where no one hears boom.
-- 13:05 · Jason · Data-center product — customers? money printer?
-- 13:16 · Scholl · "Incredible money printing"; **tens of gigawatts** of demand in inbox; auction first engine after next-month run. Elon/Colossus interest: "ask Elon" (Jason hears yes).
-- 13:46 · Naming · Company Boom / airplane Overture; hopes private-jet OEMs build SSBJ — else Boom might.
-- 14:37 · Scholl · Win condition: kids baffled that crossing the country once took **6 hours** — from Air Force One to commercial every class; many airplane generations.
-- 16:00 · Jason · This admin vs last on regulation speed?
-- 16:36 · Scholl · Supersonic not partisan (unanimous votes). Broke barrier Monday → tweet → Elon RT → flew DC that night → West Wing invite Tuesday → model in Oval by Thursday (still there) → EO in **115 days** (felt slow to him; faster than prior admin).
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 01:28 Scholl: "By the way, we have interns born after the last time Boeing launched a new airplane in 2004."
-- 05:31 Scholl: "he agreed if there's no sonic boom there should be no ban on supersonic flight."
-- 08:34 Scholl: "our first application of our engine isn't in the sky. It's actually on the ground for data centers."
-- 11:01 Scholl: "Round trip across the Atlantic at Mach 1.7, 3 hours, and the break even fair is about $3,500."
-- 13:16 Scholl: "I've never seen demand like this for anything else in my life."
-- 16:52 Scholl: "By the time I landed, I had an invitation to the West Wing."
-
-### One paragraph
-Boom Supersonic CEO **Blake Scholl** (ex-Amazon/Groupon software) argues passenger flight stalled after Concorde and Boeing's last clean-sheet (**2004**), then shows XB-1 as first private jet to break the barrier **boomlessly** via atmospheric Mach-cutoff ("boomless cruise"), unlocking an EO ending the **1973** overland ban (June 6 last year) and a House-unanimous Supersonic Legalization Act still finishing the Senate. Near-death Rolls-Royce engine divorce forced vertical engine design/manufacture — now the economic core: same hot Mach-1.7 turbine as **42 MW** water-free behind-the-meter data-center gensets, with a new US turbine factory aiming **10+ GW** onto the grid in 5 years and tens-of-GW inbound demand (auction after next-month first run). Passenger path: ~**$3,500** Atlantic RT break-even at Mach 1.7 / ~3 hours, ~4-year (≈2030) goal, ~Mach 1.3 boomless overland (NYC→SFO morning), win when kids can't imagine a 6-hour coast-to-coast.
-
-### Footer
-canary: published 2026-09-22T09:00:00Z (libsyn RSS) / YT uploadDate 20260922 · fetched 2026-09-23T04:20:00Z · length 17:39 (1059s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-scholl/transcript.txt (150 timed lines; ~3078 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Lake Shaw→Blake Scholl, Boone→Boom, Concord→Concorde, mock cutoff→Mach cutoff, veins→vanes, fair→fare in paraphrase) · quotes from caption text · no ASR on box · no third-party transcript sites
-
 ## Recap · All-In · 2026-09-23 · Steve Hilton & Spencer Pratt: Fixing California, Cheaper Gas, Ballot Fraud & CA Republicans
 url: https://www.youtube.com/watch?v=VF90rBzl26E + https://allinchamathjason.libsyn.com/steve-hilton-spencer-pratt-fixing-california-cheaper-gas-ballot-fraud-ca-republicans  ·  length: 55:43  ·  text: captions
 
@@ -630,3 +677,53 @@ All-In Summit California politics hour: Republican gubernatorial candidate **Ste
 
 ### Footer
 canary: published 2026-09-23T01:44:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-23T04:20:00Z · length 55:43 (3343s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-hilton/transcript.txt (457 timed lines; ~10182 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Helton→Hilton, Bisera/Basera/Bera/Javier Bera→Xavier Becerra, Nitia Ramen→Nithya Raman, fentinel→fentanyl, Langanger→Langer's, Prattton→Pratt, Kami→Kamala where clear) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+## Recap · All-In · 2026-09-22 · Blake Scholl: Why Plane Speed Stalled, Supersonic Commercial Flight, & Revolutionizing the Engine
+url: https://www.youtube.com/watch?v=Gnb-CfNPcPE + https://allinchamathjason.libsyn.com/blake-scholl-why-plane-speed-stalled-supersonic-commercial-flight-revolutionizing-the-engine  ·  length: 17:39  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Welcome Blake Scholl! (00:00)**
+- 00:00 · Intro reel · Boom Supersonic CEO Blake Scholl: set to fly Mach 1.7; **130** airline orders claimed; Boeing hasn't launched a new airliner since **2004** — "David and Goliath, but Goliath is asleep."
+- 00:52 · Scholl · Stagnation claim: 1969 landed on moon + Concorde through sound barrier; half-century later can't do either. Political legacy of Concorde = US ban on overland supersonic. Boeing 707 (1957) → latest airliner is "literal carbon fiber copy"; interns born after Boeing's last new launch.
+- 01:39 · Scholl · Alternate timeline: Atlantic in **3.5 hours**; Sydney as accessible as Honolulu — business/culture/love implications.
+- 02:01 · Scholl · Origin: software/ads (Amazon, Groupon) + pilot's license; 2015 pitched Bezos on Boom seed — Bezos passed; 2015 Amazon shareholder letter said no garage startup builds all-composite airliner you'd want to fly — Scholl took it personally. Early pitch-deck mockup: cardboard/plywood/Office Depot seats.
+- 02:59 · Scholl · Last year Boom became **first private company** to build a supersonic jet — ~**50** people vs thousands at big cos. First supersonic Starlink install; iPhone video streamed; classrooms tuned in (future chief engineers).
+- 04:37 · Scholl · **2025**: XB-1 first privately developed jet to break sound barrier — and demonstrated **boomless** supersonic.
+
+**Solving the sonic boom & legalizing supersonic flight (05:11)**
+- 05:06 · Scholl · "Boomless cruise": uses atmospheric refraction to redirect sonic boom upward (Mach cutoff) — if no boom on ground, ban has no object. Spoke to president after flight; agreed no boom → no ban. **1973** ban ended by EO **June 6 last year**.
+- 05:51 · Scholl · EO reversible → pushed Congress; Supersonic Legalization Act passed House **unanimously**; cleared Senate committee unanimously; wants full Senate unanimous. Not full speed ahead yet.
+
+**The pivot to powering data centers (07:59)**
+- 06:26 · Scholl · Near-death: outsourced engine to legacy OEM — public breakup with Rolls-Royce; declared dead. Decision: build own engine from scratch with digital design + digital manufacturing, including turbine blades in-house.
+- 07:35 · Scholl · Re-industrialization thesis: invent next-gen manufacturing here and build new products — don't just reshore what China took. First vertically integrated jet-engine core assembling now; **test stand next month**.
+- 08:08 · Scholl · Twist: owning the engine (what "killed" them) makes the startup financially valuable. Same hot Mach-1.7 core, fan off / generator on → **behind-the-meter data-center power**: **42 MW** in a couple trailers; designed to run hot → **no water** (kills water objection).
+- 09:02 · Scholl · Undisclosed-location "world's most advanced jet turbine factory"; opposite of legacy RONA/outsource — raw materials → blades/vanes → assembly → own test stand. First parts **last week**; scale to multiple GW/year; aim **+10+ GW to the grid over next 5 years**.
+- 09:53 · Scholl · Passenger payoff: twice as fast over water, **~50% faster** over land boomless, on most-tested new jet engine (proven on ground first). Success not guaranteed; American aviation leadership.
+
+**Jason joins: data center demand, private jets & what winning looks like (10:38)**
+- 10:40 · Jason · When / how much to fly?
+- 10:46 · Scholl · Concorde was 0/3 on safe-comfortable-affordable; Boom aims 3/3. Round-trip Atlantic Mach 1.7 ~**3 hours**; **break-even fare ~$3,500** round-trip (airlines price above). Goal **~4 years** (~2030 give-or-take); prefers fast over predictable dates.
+- 12:03 · Scholl · Overland: boomless cruise / Mach cutoff to ~**Mach 1.3** (~50% faster than today) — e.g. leave NYC 9am → SFO ~9:30am local; full Mach over water where no one hears boom.
+- 13:05 · Jason · Data-center product — customers? money printer?
+- 13:16 · Scholl · "Incredible money printing"; **tens of gigawatts** of demand in inbox; auction first engine after next-month run. Elon/Colossus interest: "ask Elon" (Jason hears yes).
+- 13:46 · Naming · Company Boom / airplane Overture; hopes private-jet OEMs build SSBJ — else Boom might.
+- 14:37 · Scholl · Win condition: kids baffled that crossing the country once took **6 hours** — from Air Force One to commercial every class; many airplane generations.
+- 16:00 · Jason · This admin vs last on regulation speed?
+- 16:36 · Scholl · Supersonic not partisan (unanimous votes). Broke barrier Monday → tweet → Elon RT → flew DC that night → West Wing invite Tuesday → model in Oval by Thursday (still there) → EO in **115 days** (felt slow to him; faster than prior admin).
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 01:28 Scholl: "By the way, we have interns born after the last time Boeing launched a new airplane in 2004."
+- 05:31 Scholl: "he agreed if there's no sonic boom there should be no ban on supersonic flight."
+- 08:34 Scholl: "our first application of our engine isn't in the sky. It's actually on the ground for data centers."
+- 11:01 Scholl: "Round trip across the Atlantic at Mach 1.7, 3 hours, and the break even fair is about $3,500."
+- 13:16 Scholl: "I've never seen demand like this for anything else in my life."
+- 16:52 Scholl: "By the time I landed, I had an invitation to the West Wing."
+
+### One paragraph
+Boom Supersonic CEO **Blake Scholl** (ex-Amazon/Groupon software) argues passenger flight stalled after Concorde and Boeing's last clean-sheet (**2004**), then shows XB-1 as first private jet to break the barrier **boomlessly** via atmospheric Mach-cutoff ("boomless cruise"), unlocking an EO ending the **1973** overland ban (June 6 last year) and a House-unanimous Supersonic Legalization Act still finishing the Senate. Near-death Rolls-Royce engine divorce forced vertical engine design/manufacture — now the economic core: same hot Mach-1.7 turbine as **42 MW** water-free behind-the-meter data-center gensets, with a new US turbine factory aiming **10+ GW** onto the grid in 5 years and tens-of-GW inbound demand (auction after next-month first run). Passenger path: ~**$3,500** Atlantic RT break-even at Mach 1.7 / ~3 hours, ~4-year (≈2030) goal, ~Mach 1.3 boomless overland (NYC→SFO morning), win when kids can't imagine a 6-hour coast-to-coast.
+
+### Footer
+canary: published 2026-09-22T09:00:00Z (libsyn RSS) / YT uploadDate 20260922 · fetched 2026-09-23T04:20:00Z · length 17:39 (1059s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-scholl/transcript.txt (150 timed lines; ~3078 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Lake Shaw→Blake Scholl, Boone→Boom, Concord→Concorde, mock cutoff→Mach cutoff, veins→vanes, fair→fare in paraphrase) · quotes from caption text · no ASR on box · no third-party transcript sites
+

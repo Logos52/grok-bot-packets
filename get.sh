@@ -1,0 +1,1 @@
+a=$1; curl -sL --compressed -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36" -H "Accept-Language: en-US" "https://www.amazon.com/dp/$a" -o $a.html; echo "=========== $a"; python3 ex.py $a | grep -v '^CS:'

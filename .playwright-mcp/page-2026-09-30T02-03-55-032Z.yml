@@ -1,0 +1,73 @@
+- generic [ref=f24e2]:
+  - generic:
+    - generic:
+      - heading "To view keyboard shortcuts, press question mark View keyboard shortcuts" [level=2] [ref=f24e3]:
+        - generic [ref=f24e4]: To view keyboard shortcuts, press question mark
+        - link "View keyboard shortcuts" [ref=f24e5] [cursor=pointer]:
+          - /url: /i/keyboard_shortcuts
+      - generic:
+        - generic:
+          - button "Grok" [ref=f24e6] [cursor=pointer]
+          - button "Chat" [ref=f24e10] [cursor=pointer]
+      - generic [ref=f24e14]:
+        - button "Skip to home timeline" [ref=f24e15] [cursor=pointer]
+        - button "Skip to trending" [ref=f24e17] [cursor=pointer]
+        - banner [ref=f24e19]:
+          - generic [ref=f24e21]:
+            - generic [ref=f24e22]:
+              - heading [level=1] [ref=f24e24] [cursor=pointer]:
+                - link "X" [ref=f24e25]:
+                  - /url: /home
+              - navigation "Primary" [ref=f24e31]:
+                - link "Home" [ref=f24e32] [cursor=pointer]:
+                  - /url: /home
+                - link "Search and explore" [ref=f24e39] [cursor=pointer]:
+                  - /url: /explore
+                  - generic [ref=f24e40]: Explore
+                - link "Notifications" [ref=f24e46] [cursor=pointer]:
+                  - /url: /notifications
+                - link "Direct Messages" [ref=f24e53] [cursor=pointer]:
+                  - /url: /i/chat
+                  - generic [ref=f24e54]: Chat
+                - link "SuperGrok" [ref=f24e60] [cursor=pointer]:
+                  - /url: /i/grok
+                - link "History" [ref=f24e67] [cursor=pointer]:
+                  - /url: /i/history
+                - link "Profile" [ref=f24e74] [cursor=pointer]:
+                  - /url: /webigis
+                - button "More menu items" [ref=f24e81] [cursor=pointer]:
+                  - generic [ref=f24e82]: More
+              - link "Post" [ref=f24e89] [cursor=pointer]:
+                - /url: /compose/post
+            - button "Account menu" [ref=f24e98] [cursor=pointer]:
+              - generic [ref=f24e106]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic "Wedge":
+                        - img "Wedge"
+              - generic [ref=f24e110]:
+                - generic [ref=f24e112]:
+                  - generic [ref=f24e113]: Wedge
+                  - img "Verified account" [ref=f24e117]
+                - generic [ref=f24e120]: "@webigis"
+        - main [ref=f24e128]:
+          - generic "Home timeline" [ref=f24e133]:
+            - generic [ref=f24e135]:
+              - generic [ref=f24e140]:
+                - button "Back" [ref=f24e142] [cursor=pointer]
+                - progressbar [ref=f24e150]
+                - button "More" [ref=f24e156] [cursor=pointer]
+              - navigation [ref=f24e162]:
+                - generic [ref=f24e163]:
+                  - generic:
+                    - button "Previous" [disabled]
+                  - tablist [ref=f24e165]:
+                    - tab "Top" [ref=f24e166] [cursor=pointer]
+                    - tab "Latest" [selected] [ref=f24e170] [cursor=pointer]
+                    - tab "People" [ref=f24e175] [cursor=pointer]
+                    - tab "Media" [ref=f24e179] [cursor=pointer]
+                    - tab "Lists" [ref=f24e183] [cursor=pointer]
+                  - generic:
+                    - button "Next" [disabled]
+            - progressbar "Loading timeline" [ref=f24e189]

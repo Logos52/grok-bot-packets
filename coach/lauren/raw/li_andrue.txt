@@ -1,0 +1,323 @@
+
+Lauren's Guide to Supervising Coding Agents with pstack | Andrue Anderson posted on the topic | LinkedIn
+ Agree & Join LinkedIn
+ By clicking Continue to join or sign in, you agree to LinkedIn’s 
+User Agreement
+, 
+Privacy Policy
+, and 
+Cookie Policy
+.
+ Skip to main content
+Lauren's Guide to Supervising Coding Agents with pstack
+This title was summarized by AI from the post below.
+ Andrue Anderson
+ 2w
+ Report this post
+The hard part of agent coding is not prompting harder. It is supervising someone smarter than you.
+Lauren (@poteto) published "The Complete Guide to pstack Pt. 2" on how she does research, planning, prototyping, and architecture with pstack. She frames two failure modes she keeps seeing: agents misunderstand intent because the ask is underspecified, or they lack enough context to do the work correctly. Her fix is priming context, not micromanaging every line.
+One technique she likes: the indirect prompt. Ask the agent to restate a Slack thread in its own words before writing code, so you catch the wrong problem early without planting your own hypothesis. Skills like /teach (backed by /how for runtime mechanics and /why for historical intent across git, tickets, docs, Slack, monitors), plus /recall for prior chat context, are how she keeps a shared mental model when no human fits the whole codebase in their head anymore.
+She is skeptical of abstract plan modes. Prefer planning with code: README-driven targets shaped with a Diátaxis-aware /technical-writing skill, prototyping playbooks that build throwaway variants and verify them, and /architect that grounds the problem, sketches competing designs across model families, cross-judges, then implements or scraps when types need escape hatches. Treat her "thousands of PRs a month" claim as hers.
+If plan mode only produces a long checklist you never run, you do not have a plan. You have a comfort document.
+If you are designing the supervision layer for coding agents on a product team, DM me about AI agents and product strategy.
+https://lnkd.in/enfwQ9uS
+https://lnkd.in/eZW3EuVQ
+ lauren (@poteto) on X
+ https://x.com
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ More Relevant Posts
+ Remy Lee
+ 3w
+ Report this post
+We launched Dif today!
+Dif is our take on feature flags and A/B testing. It keeps the hypotheses, targeting, results, and decisions with the product’s code.
+Teams can test different versions, release features in stages, and give both people and coding agents the context from earlier work.
+We’re live on Product Hunt today. If this overlaps with work you do, we’d love to know what you think.
+ Niftic
+ 1,595 followers
+ 3w
+We launched Dif today
+The idea is simple: feature flags should live with the code they control.
+In Dif, flags are files in your repo, changes happen through PRs, Git stays the source of truth, and experiments can live alongside the flags they depend on.
+That unlocks a much cleaner workflow for teams, better history and context, easier self-hosting and, increasingly, makes the whole system much easier for coding agents to work with too.
+The self-hosted version is open source.
+Would love feedback from anyone using feature flags or experimentation heavily.
+We're live on Product Hunt today 👇
+https://lnkd.in/gqGi8ang
+ dif.sh: Markdown feature flags your coding agent installs for you | Product Hunt
+ producthunt.com
+ 3
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Niftic
+ 1,595 followers
+ 3w
+ Report this post
+We launched Dif today
+The idea is simple: feature flags should live with the code they control.
+In Dif, flags are files in your repo, changes happen through PRs, Git stays the source of truth, and experiments can live alongside the flags they depend on.
+That unlocks a much cleaner workflow for teams, better history and context, easier self-hosting and, increasingly, makes the whole system much easier for coding agents to work with too.
+The self-hosted version is open source.
+Would love feedback from anyone using feature flags or experimentation heavily.
+We're live on Product Hunt today 👇
+https://lnkd.in/gqGi8ang
+ dif.sh: Markdown feature flags your coding agent installs for you | Product Hunt
+ producthunt.com
+ 3
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Abdul Salam
+ 1mo
+ Report this post
+Have you noticed that with agentic workflows, git is catching up? Guess what, there is a fix. Jujutsu or JJ for short, is a new source code version control system, compatible with git, but ready for the new agentic era. It's still not v1, but the stack and concepts are powerful. 
+https://lnkd.in/gx-FnVEH
+#git
+#vcs
+#ai
+#agents
+#jujutsu
+#jj
+#agentic
+ Jujutsu (JJ) VCS Deep Dive (Part 1): Core Tenets, Mental Model & Architecture Under the Hood
+ abcubed3.dev
+ 1
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ John Moody
+ 1mo
+ Report this post
+I killed a working system because the code was ugly. That was the most expensive decision I made as a CTO.
+At Tatango we had a system long in the tooth. Patched, inconsistent, genuinely badly designed in places. I argued hard for a full rewrite instead of building on the bones of what was there. I won that argument.
+Here's what I didn't understand.
+The code was bad because it had been patched. And every one of those patches was a lesson — a production incident somebody had already survived, encoded as an ugly conditional nobody had time to document.
+That wasn't technical debt. That was institutional knowledge wearing a bad costume.
+We rewrote it clean. Then we learned every one of those lessons a second time, in production, against a schedule we'd already committed to.
+I'd defend this position now: don't rewrite unless it's genuinely necessary. And if you do, the ugly patches are your requirements document. Read them before you delete them.
+A rewrite isn't expensive because of the engineering hours. It's expensive because you're throwing away the only surviving record of what already went wrong.
+What's the ugliest code in your system — and do you actually know why it's shaped that way?
+ 4
+ 2 Comments
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Kazi Mainuddin Ahmed
+ 2w
+ Report this post
+The *NOT READING THE CODE* camp is straight up a disaster and a Tech-Debt machine waiting to blow up.
+Imagine *NOT KNOWING* what IS or ISN'T possible/fesable.
+This is why good devs are more efficient with VibeCoding.
+This is also why you should, most definitely, 
+LEARN TO CODE!
+ 1
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Omosona Alfred
+ 2w
+ Edited
+ Report this post
+A wall failed the strength test. Which batch of blocks is in it?
+The site engineer pulls the delivery notes. Everyone says the same thing: "latest batch".
+Latest as of when? Monday's latest? Thursday's?
+A dozen delivery notes. One word. Zero answers.
+The batch number was on the truck. Nobody wrote it down. "Latest" felt like information. It was a feeling.
+Docker's :latest tag works exactly like that. It isn't the newest build. It's whatever was pushed last without a name, and it moves. Deploy it, and "what is running in staging right now?" has no answer. Rollback becomes archaeology.
+My build's standards ban it. Every image is tagged with the git commit SHA: a batch number that never moves. Rollback is one command: I redeploy the previous SHA, and it only works because the tag never changed meaning.
+Write the batch number on the wall. Not "latest".
+#DevOps
+#Docker
+#CICD
+#LearnInPublic
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Manoj Kumar Singh
+ 1mo
+ Report this post
+I've seen developers burn an entire afternoon untangling a mess that a solid understanding of Git could have resolved in minutes. The tools we touch daily deserve more than surface-level familiarity.
+The source post nails it: most of us live in commit, push, pull, merge—and stay there. But the real leverage sits in the deeper commands. Interactive rebase, bisect, reflog, cherry-pick. These aren't tricks; they're the difference between shaping history and being shaped by it.
+Depth beats breadth, every time. It's a principle I hold close at Yunlimited. The engineers who truly master their everyday tools—rather than chasing the next shiny framework—consistently produce cleaner, more maintainable work. And they quietly raise the bar for everyone around them.
+My personal take: before learning another framework, master the tool you use a hundred times a day. The compounding return is unmatched.
+What's one Git technique that changed how you work? I'd love to hear.
+#Yunlimited
+#Git
+#DeveloperProductivity
+#Craftsmanship
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Banias Baabe
+ 2w
+ Report this post
+AI can help you ship more code.
+𝗽𝘀𝘁𝗮𝗰𝗸 is built to help you ship less, better code.
+Created by React core team member Poteto, it gives coding agents 23 playbooks for investigation, bug fixes, performance work, reviews, and shipping.
+I tried it out in combination with Matt's skills and it's the best set of skills for coding so far.
+🔗 Link: github(.)com/cursor/plugins/blob/main/pstack/
+ 11
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Sakibur Rahman
+ 2w
+ Report this post
+For anyone learning Go — Exercism's Go track is genuinely worth checking out.
+What makes it stand out:
+→ Real test-driven exercises — you write code, run tests, see if it actually works
+→ Concepts build progressively (types → slices → structs → concurrency)
+→ Free mentoring from experienced Go developers on your submitted solutions
+→ 165 exercises, 34 concepts — 100% free, no paywall
+Built-in browser editor with instructions, tests, and results all in one place — no setup required to get started.
+Great way to actually get hands-on with the language instead of passively consuming tutorials.
+🔗 
+exercism.org
+#golang
+#softwareengineering
+#learntocode
+#buildinpublic
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ Santosh Raj
+ 3w
+ Report this post
+Day 5/30: Strengthening the Basics in Go 🐹
+Today was all about practice rather than moving to a new topic.
+I spent time solving questions on pointer receivers and understanding how they work with structs.
+The goal was simple: make the basics strong before moving ahead.
+🔹 Pointer receivers
+🔹 Modifying struct values through methods
+🔹 Understanding value vs pointer behavior
+🔹 Practicing with small problems
+Still learning, still making mistakes, but the concepts are getting clearer with every problem I solve.
+Strong basics first. Then the next step. 🚀
+#Golang
+#GoLang
+#BuildInPublic
+#LearningInPublic
+#CodingJourney
+#GoProgramming
+ 10
+ 1 Comment
+ Like
+ Comment
+ Share
+Copy
+LinkedIn
+Facebook
+X
+ To view or add a comment, 
+sign in
+ 918 followers
+ 191 Posts
+ View Profile
+Connect
+ Explore related topics
+How to Use AI Agents to Optimize Code
+How to Boost Productivity With Developer Agents
+Reasons Behind Agentic AI Project Failures
+How to Overcome AI-Driven Coding Challenges
+How to Build AI Agents With Memory
+How to Boost Productivity With AI Coding Assistants
+How to Use Agent Mode to Automate Workflows
+How to Improve Agent Performance With Llms
+How to Improve Agentic AI Success Rates
+ Show more
+ Show less
+ Explore content categories
+Career
+Productivity
+Finance
+Soft Skills & Emotional Intelligence
+Project Management
+Education
+Technology
+Leadership
+Ecommerce
+User Experience
+ Show more
+ Show less
+ Sign in to view more content
+Create your free account or sign in to continue your search
+ Email or phone
+ Password
+Show
+Forgot password?
+ Sign in
+Sign in with Email
+ or
+ New to LinkedIn? 
+Join now
+ By clicking Continue to join or sign in, you agree to LinkedIn’s 
+User Agreement
+, 
+Privacy Policy
+, and 
+Cookie Policy
+.
+ 

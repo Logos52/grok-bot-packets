@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fonolotería</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #fffbf4;
+  --surface:   #ffffff;
+  --surface2:  #fdf6e8;
+  --border:    #e8dfc8;
+
+  --amber:     #e8a020;
+  --amber-dk:  #b87a00;
+  --amber-lt:  #fef3d6;
+  --orange:    #e05c1a;
+  --orange-lt: #fdeee6;
+  --teal:      #0e7c72;
+  --teal-lt:   #e0f4f2;
+  --navy:      #1b3a6b;
+  --navy-lt:   #e6edf8;
+  --gold:      #c98f00;
+  --gold-lt:   #fff8e1;
+
+  --text:      #1c1a14;
+  --muted:     #7a6e58;
+  --radius:    18px;
+  --radius-sm: 10px;
+  --shadow:    0 3px 18px rgba(28,26,20,.09);
+  --shadow-sm: 0 1px 6px rgba(28,26,20,.07);
+
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'Plus Jakarta Sans', system-ui, sans-serif;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+body { display: flex; flex-direction: column; align-items: stretch; min-height: 100%; }
+
+/* ── SCREENS ──────────────────────────────────────────── */
+.screen {
+  display: none; flex-direction: column; align-items: center;
+  min-height: 100%; padding: 22px 16px 56px; gap: 16px;
+  animation: fadeIn .22s ease;
+}
+.screen.active { display: flex; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; } }
+
+/* ── DECORATIVE STRIPE ───────────────────────────────── */
+.top-stripe {
+  width: 100%; max-width: 480px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--orange) 35%, var(--teal) 65%, var(--navy) 100%);
+  border-radius: 99px;
+  margin-bottom: 4px;
+}
+
+/* ── HEADER ──────────────────────────────────────────── */
+.app-header {
+  width: 100%; max-width: 480px;
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.app-header h1 {
+  font-family: var(--serif); font-size: 1.15rem;
+  font-weight: 400; color: var(--text); flex: 1;
+  letter-spacing: .01em;
+}
+.back-btn {
+  background: var(--surface2); border: 1.5px solid var(--border);
+  color: var(--navy); font-family: var(--sans); font-size: .9rem;
+  cursor: pointer; padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  touch-action: manipulation; font-weight: 700;
+}
+
+/* ── SECTION LABEL ───────────────────────────────────── */
+.section-label {
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  color: var(--muted); text-transform: uppercase;
+  align-self: flex-start; max-width: 480px; width: 100%;
+}
+
+/* ── HINT BAR ────────────────────────────────────────── */
+.hint {
+  width: 100%; max-width: 480px;
+  font-size: .8rem; color: var(--teal);
+  background: var(--teal-lt); border-radius: var(--radius-sm);
+  padding: 10px 14px; border-left: 3px solid var(--teal);
+  line-height: 1.5; font-weight: 500;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  display: block; width: 100%; max-width: 480px;
+  padding: 16px 20px; border-radius: var(--radius); border: none;
+  font-family: var(--sans); font-size: .97rem; font-weight: 700;
+  cursor: pointer; touch-action: manipulation;
+  transition: filter .12s, transform .1s;
+  text-align: center; letter-spacing: .01em;
+}
+.btn:active { transform: scale(.97); filter: brightness(.92); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--amber) 0%, var(--orange) 100%);
+  color: #fff; box-shadow: 0 4px 16px rgba(232,160,32,.32);
+}
+.btn-navy {
+  background: var(--navy);
+  color: #fff; box-shadow: 0 4px 16px rgba(27,58,107,.22);
+}
+.btn-teal {
+  background: var(--teal);
+  color: #fff; box-shadow: 0 4px 16px rgba(14,124,114,.22);
+}
+.btn-secondary {
+  background: var(--surface); color: var(--text);
+  border: 2px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.btn-ghost {
+  background: var(--surface2); color: var(--navy);
+  border: 2px solid var(--border);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--amber) 100%);
+  color: #fff; box-shadow: 0 4px 16px rgba(201,143,0,.28);
+}
+.btn-danger {
+  background: #fff4f4; color: #c0293a;
+  border: 2px solid #fad0d4;
+}
+.btn-row { display: flex; gap: 10px; width: 100%; max-width: 480px; }
+.btn-row .btn { flex: 1; font-size: .86rem; padding: 12px 6px; }
+
+/* ── HOME HERO ───────────────────────────────────────── */
+.home-hero {
+  max-width: 480px; width: 100%;
+  text-align: center; padding: 20px 0 8px;
+}
+.home-logo {
+  font-family: var(--serif);
+  font-size: 3.4rem; font-weight: 400;
+  color: var(--navy);
+  line-height: 1; margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.home-logo span { color: var(--amber); }
+.home-sub {
+  color: var(--muted); font-size: .88rem; line-height: 1.5;
+}
+.home-badge {
+  display: inline-block; margin-top: 10px;
+  background: var(--amber-lt); color: var(--amber-dk);
+  border-radius: 99px; padding: 4px 16px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+  border: 1.5px solid #f0d090;
+}
+
+/* ── HOW TO PLAY ─────────────────────────────────────── */
+/* Modal overlay */
+.modal-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(28,26,20,.55); backdrop-filter: blur(4px);
+  z-index: 200; align-items: center; justify-content: center;
+  padding: 24px 16px;
+}
+.modal-bg.active { display: flex; animation: fadeIn .22s ease; }
+.modal-box {
+  background: var(--surface); border-radius: var(--radius);
+  border: 2px solid var(--border); box-shadow: var(--shadow);
+  width: 100%; max-width: 460px;
+  max-height: 88vh; overflow-y: auto;
+  padding: 24px 20px 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.modal-title {
+  font-family: var(--serif); font-size: 1.6rem;
+  color: var(--navy); text-align: center;
+}
+.howto-rule {
+  background: var(--surface2); border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border); padding: 12px 14px;
+}
+.howto-rule h3 {
+  font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--amber-dk); margin-bottom: 5px;
+}
+.howto-rule p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+/* ── BOARD GRID ──────────────────────────────────────── */
+.board-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 9px; width: 100%; max-width: 480px;
+}
+
+/* ── FLIP CARD ARCHITECTURE ──────────────────────────── */
+/*
+  Strategy: the .board-cell-wrap has perspective.
+  .board-cell rotates on Y axis.
+  .cell-front  is the face shown at rest (rotateY 0).
+  .cell-back   is always rotateY(180deg) — shown when card is flipped to 180°.
+
+  Animation flipReveal goes: 0 → 180 (pause) → 360
+  At 180° the back is fully visible.
+  At 360° we're back to front. We reset transform to 0 after animation ends.
+*/
+.board-cell-wrap {
+  perspective: 700px;
+  min-height: 95px;
+  height: 95px;
+}
+.board-cell {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer; touch-action: manipulation;
+  transform: rotateY(0deg);
+}
+.board-cell.flipping {
+  animation: flipReveal 2.8s ease-in-out forwards;
+  cursor: default;
+}
+@keyframes flipReveal {
+  0%   { transform: rotateY(0deg);   }
+  35%  { transform: rotateY(180deg); }
+  65%  { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.cell-front, .cell-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 8px 6px; gap: 3px;
+  border: 2px solid var(--border);
+}
+.cell-front {
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transform: rotateY(0deg);
+}
+.cell-back {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: rotateY(180deg);
+}
+
+/* marked front */
+.board-cell.marked .cell-front {
+  background: var(--amber-lt);
+  border-color: var(--amber);
+}
+.board-cell.marked .cell-front::after {
+  content: 'v';
+  font-family: var(--sans); font-size: .65rem; font-weight: 900;
+  color: var(--amber-dk);
+  position: absolute; top: 5px; right: 7px;
+  /* checkmark via unicode */
+  content: '\2713';
+}
+
+/* front content */
+.cell-ipa {
+  font-family: var(--sans);
+  font-size: 1.85rem; font-weight: 800;
+  color: var(--navy); line-height: 1;
+}
+.board-cell.marked .cell-ipa { color: var(--amber-dk); }
+
+.feat-text {
+  font-size: .65rem; color: var(--text);
+  text-align: center; line-height: 1.6; white-space: pre-line;
+}
+.board-cell.marked .feat-text { color: var(--amber-dk); }
+
+/* back content */
+.cell-back-ipa {
+  font-family: var(--sans);
+  font-size: 1.85rem; font-weight: 800;
+  color: var(--amber); line-height: 1;
+}
+.cell-back-feat {
+  font-size: .6rem; color: rgba(255,255,255,.82);
+  text-align: center; line-height: 1.55; white-space: pre-line;
+  margin-top: 3px;
+}
+
+/* ── STATUS BAR ──────────────────────────────────────── */
+.status-bar {
+  width: 100%; max-width: 480px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: .78rem; color: var(--muted); padding: 0 2px;
+}
+.status-bar strong { color: var(--amber-dk); font-weight: 700; }
+
+/* ── LOTERÍA OVERLAY ─────────────────────────────────── */
+.overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(255,251,244,.93);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 18px; padding: 32px 24px; text-align: center;
+}
+.overlay.active { display: flex; animation: fadeIn .3s ease; }
+.overlay-title {
+  font-family: var(--serif);
+  font-size: 3.4rem; color: var(--orange);
+  animation: pop .4s cubic-bezier(.36,1.56,.64,1) both;
+  line-height: 1;
+}
+@keyframes pop { from { transform:scale(.4); opacity:0; } to { transform:scale(1); opacity:1; } }
+.overlay-sub { color: var(--muted); font-size: 1rem; }
+.overlay-btns { display:flex; flex-direction:column; gap:10px; width:100%; max-width:320px; }
+
+/* ── LISTA DE FONEMAS ────────────────────────────────── */
+.group-header {
+  width: 100%; max-width: 480px;
+  font-family: var(--serif); font-size: 1.1rem;
+  color: var(--navy); padding: 6px 2px;
+  border-bottom: 2px solid var(--amber);
+  margin-top: 10px;
+}
+.list-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--surface); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.list-table th {
+  font-size: .67rem; font-weight: 700; letter-spacing: .06em;
+  color: var(--muted); text-transform: uppercase;
+  padding: 9px 10px; text-align: left;
+  background: var(--surface2);
+  border-bottom: 2px solid var(--border);
+}
+.list-table td {
+  padding: 9px 10px; font-size: .8rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle; color: var(--muted);
+}
+.list-table tr:last-child td { border-bottom: none; }
+.list-table .td-ipa {
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--navy); font-family: var(--sans); width: 50px;
+}
+
+/* ── LOCUTOR CARD ────────────────────────────────────── */
+.locutor-card {
+  width: 100%; max-width: 480px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px 18px;
+  text-align: center;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 10px;
+  box-shadow: var(--shadow);
+}
+.card-counter {
+  font-size: .7rem; color: var(--muted);
+  letter-spacing: .06em; font-weight: 600;
+}
+.card-ipa {
+  font-family: var(--sans);
+  font-size: 4rem; font-weight: 900;
+  color: var(--navy); line-height: 1;
+  letter-spacing: -.02em;
+}
+.card-type-label {
+  font-size: .68rem; color: var(--teal);
+  letter-spacing: .08em; text-transform: uppercase;
+  background: var(--teal-lt); border-radius: 99px;
+  padding: 3px 14px; font-weight: 700;
+}
+.card-features { display:flex; flex-direction:column; gap:7px; width:100%; margin-top:4px; }
+.feat-chip {
+  background: var(--surface2); border: 1.5px solid var(--border);
+  border-radius: 99px; padding: 8px 16px;
+  font-size: .86rem; color: var(--text); font-weight: 600; text-align:left;
+}
+.feat-chip span { color: var(--muted); font-size: .7rem; font-weight:500; margin-right:6px; }
+
+/* ── NAV ROW ─────────────────────────────────────────── */
+.nav-row { display:flex; gap:10px; width:100%; max-width:480px; }
+.nav-row .btn { flex:1; padding:13px 8px; font-size:.9rem; }
+
+/* ── DECK PILLS ──────────────────────────────────────── */
+.deck-pills-wrap {
+  width:100%; max-width:480px;
+  background:var(--surface); border:2px solid var(--border);
+  border-radius:var(--radius); padding:12px 14px;
+  box-shadow:var(--shadow-sm);
+}
+.deck-pills-title {
+  font-size:.68rem; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:10px;
+}
+.deck-pills { display:flex; flex-wrap:wrap; gap:6px; }
+.dpill {
+  background:var(--surface2); border:1.5px solid var(--border);
+  border-radius:99px; padding:4px 11px;
+  font-size:.88rem; font-family:var(--sans); font-weight:700;
+  color:var(--muted); cursor:default;
+  transition:background .15s, border-color .15s, color .15s;
+}
+.dpill.done {
+  background:var(--teal-lt); border-color:var(--teal);
+  color:var(--teal); cursor:pointer;
+}
+.dpill.current {
+  background:var(--amber); border-color:var(--amber-dk);
+  color:#fff; font-weight:800;
+}
+
+/* ── GANADOR ─────────────────────────────────────────── */
+.summary-section {
+  width:100%; max-width:480px;
+  background:var(--surface); border:2px solid var(--border);
+  border-radius:var(--radius); padding:14px 16px;
+  box-shadow:var(--shadow-sm);
+}
+.summary-section h3 {
+  font-size:.68rem; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:10px;
+}
+.summary-chips { display:flex; flex-wrap:wrap; gap:6px; }
+.summary-chip {
+  background:var(--surface2); border:1.5px solid var(--border);
+  border-radius:var(--radius-sm); padding:4px 12px;
+  font-size:.95rem; font-family:var(--sans); font-weight:700; color:var(--text);
+}
+.summary-chip.current { border-color:var(--amber); color:var(--amber-dk); background:var(--amber-lt); }
+.summary-chip.remaining { color:var(--muted); }
+
+/* ── DIVIDER ─────────────────────────────────────────── */
+.divider { width:100%; max-width:480px; height:2px; background:var(--border); }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.app-footer {
+  width:100%; max-width:480px;
+  text-align:center; font-size:.7rem; color:#bbb0a0;
+  padding-top:4px; margin-top:auto;
+  font-style:italic;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HOME ══════════════════════════════════════ -->
+<div class="screen active" id="scr-home">
+  <div class="top-stripe"></div>
+  <div class="home-hero">
+    <div class="home-logo">Fono<span>lotería</span></div>
+    <p class="home-sub">Práctica de fonemas del español · AFI</p>
+    <span class="home-badge">23 fonemas · Español mexicano</span>
+  </div>
+
+  <p class="section-label">¿Qué quieres hacer?</p>
+  <button class="btn btn-primary" onclick="go('scr-player-menu')">Soy jugador</button>
+  <button class="btn btn-navy"    onclick="go('scr-locutor-menu')">Soy locutor</button>
+  <button class="btn btn-ghost"   onclick="openHowTo()">Cómo jugar</button>
+
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ PLAYER MENU ═══════════════════════════════ -->
+<div class="screen" id="scr-player-menu">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-home')">← Inicio</button>
+    <h1>Jugador</h1>
+  </div>
+  <p class="section-label">Elige tu modo</p>
+  <button class="btn btn-primary" onclick="startPlayerGame('ipa')">Lotería con símbolos AFI</button>
+  <button class="btn btn-navy"    onclick="startPlayerGame('feat')">Lotería con características</button>
+  <div class="divider"></div>
+  <button class="btn btn-ghost"   onclick="go('scr-list')">Inventario fonémico</button>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ PLAYER BOARD ══════════════════════════════ -->
+<div class="screen" id="scr-player-board">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-player-menu')">← Volver</button>
+    <h1 id="board-title">Tablero</h1>
+  </div>
+  <div class="hint" id="board-hint"></div>
+  <div class="status-bar">
+    <span>Marcadas: <strong id="marked-count">0</strong> / 12</span>
+    <span id="board-mode-label" style="font-size:.72rem;color:var(--muted)"></span>
+  </div>
+  <div class="board-grid" id="board-grid"></div>
+  <div class="btn-row">
+    <button class="btn btn-ghost"      id="btn-comprobar" onclick="comprobar()">Comprobar</button>
+    <button class="btn btn-secondary"  onclick="newBoard()">Nuevo tablero</button>
+  </div>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ LISTA ══════════════════════════════════════ -->
+<div class="screen" id="scr-list">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-player-menu')">← Volver</button>
+    <h1>Inventario fonémico</h1>
+  </div>
+  <div id="list-content" style="width:100%;max-width:480px;overflow-x:auto;display:flex;flex-direction:column;gap:0;"></div>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ LOCUTOR MENU ══════════════════════════════ -->
+<div class="screen" id="scr-locutor-menu">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-home')">← Inicio</button>
+    <h1>Locutor</h1>
+  </div>
+  <p class="section-label">Elige el modo de partida</p>
+  <button class="btn btn-primary" onclick="startLocutorGame('ipa')">Lotería con símbolos AFI</button>
+  <button class="btn btn-navy"    onclick="startLocutorGame('feat')">Lotería con características</button>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ LOCUTOR GAME ══════════════════════════════ -->
+<div class="screen" id="scr-locutor">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-locutor-menu')">← Volver</button>
+    <h1 id="loc-title">Mazo</h1>
+  </div>
+  <div class="hint" id="loc-hint"></div>
+
+  <div class="locutor-card" id="loc-card">
+    <div class="card-counter"    id="loc-counter">1 / 23</div>
+    <div class="card-ipa"        id="loc-ipa"></div>
+    <div class="card-type-label" id="loc-type-label"></div>
+    <div class="card-features"   id="loc-features"></div>
+  </div>
+
+  <div class="nav-row">
+    <button class="btn btn-ghost"   id="btn-prev" onclick="locMove(-1)">← Anterior</button>
+    <button class="btn btn-primary" id="btn-next" onclick="locMove(1)">Siguiente →</button>
+  </div>
+  <button class="btn btn-gold" onclick="go('scr-ganador')">Hay ganador</button>
+
+  <div class="deck-pills-wrap">
+    <div class="deck-pills-title">Mazo completo — toca una carta para regresar a ella</div>
+    <div class="deck-pills" id="deck-pills"></div>
+  </div>
+  <div style="height:16px"></div>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ GANADOR ═══════════════════════════════════ -->
+<div class="screen" id="scr-ganador">
+  <div class="top-stripe"></div>
+  <div class="app-header">
+    <button class="back-btn" onclick="go('scr-locutor')">← Volver</button>
+    <h1>Resumen de partida</h1>
+  </div>
+  <div class="summary-section">
+    <h3>Ya salieron</h3>
+    <div class="summary-chips" id="sum-done"></div>
+  </div>
+  <div class="summary-section">
+    <h3>Carta actual</h3>
+    <div class="summary-chips" id="sum-current"></div>
+  </div>
+  <div class="summary-section">
+    <h3>Faltan por salir</h3>
+    <div class="summary-chips" id="sum-remaining"></div>
+  </div>
+  <button class="btn btn-primary" onclick="go('scr-locutor')">Continuar partida</button>
+  <button class="btn btn-danger"  onclick="confirmNewGame()">Nueva partida</button>
+  <p class="app-footer">Suerte :)</p>
+</div>
+
+<!-- ══════════════ OVERLAY: ¡FONOLOTERÍA! ════════════════════ -->
+<div class="overlay" id="overlay-loteria">
+  <div class="overlay-title">¡Fonolotería!</div>
+  <div class="overlay-sub">¡Completaste tu tablero!</div>
+  <div class="overlay-btns">
+    <button class="btn btn-primary"   onclick="closeOverlay()">Continuar con este tablero</button>
+    <button class="btn btn-secondary" onclick="newBoardFromOverlay()">Generar nuevo tablero</button>
+  </div>
+</div>
+
+<!-- ══════════════ MODAL: CÓMO JUGAR ═════════════════════════ -->
+<div class="modal-bg" id="modal-howto" onclick="closeHowTo(event)">
+  <div class="modal-box">
+    <div class="modal-title">Cómo jugar</div>
+
+    <div class="howto-rule">
+      <h3>Objetivo</h3>
+      <p>Marcar 12 casillas en tu tablero antes que los demás. Gana quien complete su tablero y anuncie <strong>«¡Fonolotería!»</strong></p>
+    </div>
+
+    <div class="howto-rule">
+      <h3>Modo Jugador · Símbolos AFI</h3>
+      <p>Tu tablero muestra símbolos del AFI. Escucha los rasgos articulatorios que anuncia el locutor, identifica el fonema correspondiente y toca su casilla para marcarla. Toca de nuevo para desmarcarla.</p>
+    </div>
+
+    <div class="howto-rule">
+      <h3>Modo Jugador · Características</h3>
+      <p>Tu tablero muestra rasgos articulatorios. Cuando el locutor mencione un símbolo AFI, encuéntralo entre tus casillas y márcalo.</p>
+    </div>
+
+    <div class="howto-rule">
+      <h3>Comprobar</h3>
+      <p>El botón <strong>Comprobar</strong> voltea cada casilla marcada para mostrarte el símbolo y los rasgos correspondientes. Las casillas regresan a su estado normal automáticamente.</p>
+    </div>
+
+    <div class="howto-rule">
+      <h3>Modo Locutor</h3>
+      <p>Avanza por el mazo de 23 fonemas. En modo Símbolos AFI: lee los rasgos en voz alta. En modo Características: anuncia el símbolo AFI.</p>
+    </div>
+
+    <button class="btn btn-primary" onclick="closeHowTo()">Entendido</button>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════ */
+/*  DATA — 23 FONEMAS                                          */
+/* ════════════════════════════════════════════════════════════ */
+const PHONEMES = [
+  { ipa:'/i/', type:'vocal', height:'alta',      back:'anterior',  round:'no redondeada' },
+  { ipa:'/e/', type:'vocal', height:'semi-alta', back:'anterior',  round:'no redondeada' },
+  { ipa:'/a/', type:'vocal', height:'baja',      back:'central',   round:'no redondeada' },
+  { ipa:'/o/', type:'vocal', height:'semi-alta', back:'posterior', round:'redondeada'    },
+  { ipa:'/u/', type:'vocal', height:'alta',      back:'posterior', round:'redondeada'    },
+  { ipa:'/p/',  type:'cons', place:'bilabial',    manner:'oclusivo',          voicing:'sorda'  },
+  { ipa:'/b/',  type:'cons', place:'bilabial',    manner:'oclusivo',          voicing:'sonora' },
+  { ipa:'/t/',  type:'cons', place:'dental',      manner:'oclusivo',          voicing:'sorda'  },
+  { ipa:'/d/',  type:'cons', place:'dental',      manner:'oclusivo',          voicing:'sonora' },
+  { ipa:'/k/',  type:'cons', place:'velar',       manner:'oclusivo',          voicing:'sorda'  },
+  { ipa:'/ɡ/',  type:'cons', place:'velar',       manner:'oclusivo',          voicing:'sonora' },
+  { ipa:'/f/',  type:'cons', place:'labiodental', manner:'fricativo',         voicing:'sorda'  },
+  { ipa:'/s/',  type:'cons', place:'alveolar',    manner:'fricativo',         voicing:'sorda'  },
+  { ipa:'/θ/',  type:'cons', place:'interdental', manner:'fricativo',         voicing:'sorda'  },
+  { ipa:'/x/',  type:'cons', place:'velar',       manner:'fricativo',         voicing:'sorda'  },
+  { ipa:'/tʃ/',type:'cons', place:'postalveolar', manner:'africado',          voicing:'sorda'  },
+  { ipa:'/ʝ/',  type:'cons', place:'palatal',     manner:'fricativo',         voicing:'sonora' },
+  { ipa:'/m/',  type:'cons', place:'bilabial',    manner:'nasal',             voicing:'sonora' },
+  { ipa:'/n/',  type:'cons', place:'alveolar',    manner:'nasal',             voicing:'sonora' },
+  { ipa:'/ɲ/',  type:'cons', place:'palatal',     manner:'nasal',             voicing:'sonora' },
+  { ipa:'/l/',  type:'cons', place:'alveolar',    manner:'lateral',           voicing:'sonora' },
+  { ipa:'/ɾ/',  type:'cons', place:'alveolar',    manner:'vibrante simple',   voicing:'sonora' },
+  { ipa:'/r/',  type:'cons', place:'alveolar',     manner:'vibrante múltiple', voicing:'sonora' },
+];
+
+function getFeatures(ph) {
+  return ph.type === 'vocal'
+    ? [ph.height, ph.back, ph.round]
+    : [ph.place, ph.manner, ph.voicing];
+}
+function featLabels(ph) {
+  return ph.type === 'vocal'
+    ? [{label:'altura',val:ph.height},{label:'posterioridad',val:ph.back},{label:'redondeamiento',val:ph.round}]
+    : [{label:'punto',val:ph.place},{label:'modo',val:ph.manner},{label:'estado glótico',val:ph.voicing}];
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  STATE                                                      */
+/* ════════════════════════════════════════════════════════════ */
+const state = {
+  mode: null,
+  board: [],
+  marked: [],
+  deck: [],
+  deckPos: 0,
+  flipping: false,
+};
+
+/* ════════════════════════════════════════════════════════════ */
+/*  NAVIGATION                                                 */
+/* ════════════════════════════════════════════════════════════ */
+function go(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'scr-list')    renderList();
+  if (id === 'scr-ganador') renderGanador();
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  HOW TO PLAY MODAL                                          */
+/* ════════════════════════════════════════════════════════════ */
+function openHowTo()  { document.getElementById('modal-howto').classList.add('active'); }
+function closeHowTo(e) {
+  if (!e || e.target === document.getElementById('modal-howto')) {
+    document.getElementById('modal-howto').classList.remove('active');
+  }
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  UTILS                                                      */
+/* ════════════════════════════════════════════════════════════ */
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+function pick12() { return shuffle(PHONEMES).slice(0,12); }
+
+/* ════════════════════════════════════════════════════════════ */
+/*  PLAYER GAME                                                */
+/* ════════════════════════════════════════════════════════════ */
+function startPlayerGame(mode) {
+  state.mode    = mode;
+  state.board   = pick12();
+  state.marked  = Array(12).fill(false);
+  state.flipping = false;
+  renderBoard();
+  go('scr-player-board');
+}
+function newBoard() {
+  state.board   = pick12();
+  state.marked  = Array(12).fill(false);
+  state.flipping = false;
+  renderBoard();
+}
+function newBoardFromOverlay() { closeOverlay(); newBoard(); }
+
+function renderBoard() {
+  const mode = state.mode;
+  document.getElementById('board-title').textContent =
+    mode === 'ipa' ? 'Tablero · Símbolos AFI' : 'Tablero · Características';
+  document.getElementById('board-mode-label').textContent =
+    mode === 'ipa' ? 'AFI' : 'Rasgos';
+  document.getElementById('board-hint').textContent =
+    mode === 'ipa'
+      ? 'Escucha los rasgos del locutor y marca el símbolo correspondiente en tu tablero.'
+      : 'Escucha el símbolo que anuncia el locutor y busca sus rasgos en tu tablero.';
+
+  const grid = document.getElementById('board-grid');
+  grid.innerHTML = '';
+
+  state.board.forEach((ph, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'board-cell-wrap';
+
+    const cell = document.createElement('div');
+    cell.className = 'board-cell' + (state.marked[i] ? ' marked' : '');
+    cell.setAttribute('data-i', i);
+    cell.setAttribute('role', 'button');
+    cell.setAttribute('aria-pressed', state.marked[i]);
+    cell.addEventListener('click', () => toggleCell(i));
+
+    /* ── FRONT FACE ─────────────────────────────── */
+    const front = document.createElement('div');
+    front.className = 'cell-front';
+
+    if (mode === 'ipa') {
+      const sym = document.createElement('div');
+      sym.className = 'cell-ipa';
+      sym.textContent = ph.ipa;
+      front.appendChild(sym);
+    } else {
+      const txt = document.createElement('div');
+      txt.className = 'feat-text';
+      txt.textContent = getFeatures(ph).join('\n');
+      front.appendChild(txt);
+    }
+
+    /* ── BACK FACE ──────────────────────────────────────────────────────
+       The back is permanently rotated 180° so it shows when the card
+       rotates to 180°. It always carries BOTH the IPA symbol and the
+       features so the player sees the full answer during the flip.
+    ── */
+    const back = document.createElement('div');
+    back.className = 'cell-back';
+
+    const backIpa = document.createElement('div');
+    backIpa.className = 'cell-back-ipa';
+    backIpa.textContent = ph.ipa;               // always the symbol
+
+    const backFeat = document.createElement('div');
+    backFeat.className = 'cell-back-feat';
+    backFeat.textContent = getFeatures(ph).join('\n');  // always the features
+
+    back.appendChild(backIpa);
+    back.appendChild(backFeat);
+
+    cell.appendChild(front);
+    cell.appendChild(back);
+    wrap.appendChild(cell);
+    grid.appendChild(wrap);
+  });
+
+  updateMarkedCount();
+}
+
+function toggleCell(i) {
+  if (state.flipping) return;
+  state.marked[i] = !state.marked[i];
+  const cell = document.querySelector(`.board-cell[data-i="${i}"]`);
+  cell.classList.toggle('marked', state.marked[i]);
+  cell.setAttribute('aria-pressed', state.marked[i]);
+  updateMarkedCount();
+  if (state.marked.every(Boolean)) {
+    setTimeout(() => showOverlay('overlay-loteria'), 300);
+  }
+}
+
+function updateMarkedCount() {
+  document.getElementById('marked-count').textContent =
+    state.marked.filter(Boolean).length;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COMPROBAR — flip animation
+
+   The @keyframes flipReveal goes  0° → 180° (pause) → 360°.
+   At 180° the .cell-back (which is permanently rotateY(180°)
+   and has backface-visibility:hidden on the *front*) becomes
+   the visible face. At 360° we are back to front.
+
+   After the animation ends we remove the class so the card
+   snaps back to transform:rotateY(0deg) cleanly.
+════════════════════════════════════════════════════════════ */
+function comprobar() {
+  if (state.flipping) return;
+  const indices = state.marked.map((m,i)=>m?i:-1).filter(i=>i>=0);
+  if (indices.length === 0) return;
+
+  state.flipping = true;
+  document.getElementById('btn-comprobar').disabled = true;
+
+  const ANIM_MS  = 2800;   // must match @keyframes duration
+  const STAGGER  = 110;    // ms delay between each card
+
+  indices.forEach((idx, order) => {
+    const cell = document.querySelector(`.board-cell[data-i="${idx}"]`);
+    if (!cell) return;
+
+    setTimeout(() => {
+      // Force a reflow so removing+re-adding the class always restarts
+      cell.classList.remove('flipping');
+      void cell.offsetWidth;           // reflow trick
+      cell.classList.add('flipping');
+
+      // Remove class exactly when the animation finishes for this card
+      setTimeout(() => {
+        cell.classList.remove('flipping');
+      }, ANIM_MS);
+    }, order * STAGGER);
+  });
+
+  const totalDuration = ANIM_MS + (indices.length - 1) * STAGGER + 80;
+  setTimeout(() => {
+    state.flipping = false;
+    document.getElementById('btn-comprobar').disabled = false;
+  }, totalDuration);
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  OVERLAYS                                                   */
+/* ════════════════════════════════════════════════════════════ */
+function showOverlay(id) { document.getElementById(id).classList.add('active'); }
+function closeOverlay()  { document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('active')); }
+
+/* ════════════════════════════════════════════════════════════ */
+/*  LISTA DE FONEMAS                                           */
+/* ════════════════════════════════════════════════════════════ */
+function renderList() {
+  const vocales = PHONEMES.filter(p=>p.type==='vocal');
+  const cons    = PHONEMES.filter(p=>p.type==='cons');
+  let html = '';
+
+  html += `<div class="group-header">Vocales</div>`;
+  html += `<table class="list-table"><thead><tr>
+    <th>Fonema</th><th>Altura</th><th>Posterioridad</th><th>Redondeamiento</th>
+  </tr></thead><tbody>`;
+  vocales.forEach(ph => {
+    html += `<tr><td class="td-ipa">${ph.ipa}</td>
+      <td>${ph.height}</td><td>${ph.back}</td><td>${ph.round}</td></tr>`;
+  });
+  html += `</tbody></table>`;
+
+  html += `<div class="group-header" style="margin-top:14px">Consonantes</div>`;
+  html += `<table class="list-table"><thead><tr>
+    <th>Fonema</th><th>Punto</th><th>Modo</th><th>Estado glótico</th>
+  </tr></thead><tbody>`;
+  cons.forEach(ph => {
+    html += `<tr><td class="td-ipa">${ph.ipa}</td>
+      <td>${ph.place}</td><td>${ph.manner}</td><td>${ph.voicing}</td></tr>`;
+  });
+  html += `</tbody></table>`;
+
+  document.getElementById('list-content').innerHTML = html;
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  LOCUTOR GAME                                               */
+/* ════════════════════════════════════════════════════════════ */
+function startLocutorGame(mode) {
+  state.mode    = mode;
+  state.deck    = shuffle(PHONEMES);
+  state.deckPos = 0;
+  document.getElementById('loc-title').textContent =
+    mode === 'ipa' ? 'Mazo · Símbolos AFI' : 'Mazo · Características';
+  renderLocutorCard();
+  go('scr-locutor');
+}
+
+function locMove(dir) {
+  const np = state.deckPos + dir;
+  if (np < 0 || np >= PHONEMES.length) return;
+  state.deckPos = np;
+  renderLocutorCard();
+}
+
+function renderLocutorCard() {
+  const ph    = state.deck[state.deckPos];
+  const pos   = state.deckPos;
+  const total = PHONEMES.length;
+  const mode  = state.mode;
+
+  document.getElementById('loc-counter').textContent = `${pos+1} / ${total}`;
+
+  const ipaEl  = document.getElementById('loc-ipa');
+  const typeEl = document.getElementById('loc-type-label');
+  const featEl = document.getElementById('loc-features');
+  const card   = document.getElementById('loc-card');
+
+  document.getElementById('loc-hint').textContent = mode === 'ipa'
+    ? 'Di en voz alta los rasgos articulatorios para que los jugadores identifiquen el símbolo.'
+    : 'Di en voz alta el símbolo AFI para que los jugadores encuentren los rasgos en su tablero.';
+
+  ipaEl.textContent  = ph.ipa;
+  typeEl.textContent = ph.type === 'vocal' ? 'Vocal' : 'Consonante';
+
+  featEl.innerHTML = '';
+  featLabels(ph).forEach(f => {
+    const chip = document.createElement('div');
+    chip.className = 'feat-chip';
+    chip.innerHTML = `<span>${f.label}</span>${f.val}`;
+    featEl.appendChild(chip);
+  });
+
+  // AFI mode: rasgos first, IPA at end
+  // Feat mode: IPA first, rasgos at end
+  if (mode === 'ipa') {
+    card.appendChild(ipaEl);
+  } else {
+    typeEl.after(ipaEl);
+    card.appendChild(featEl);
+  }
+
+  document.getElementById('btn-prev').disabled = pos === 0;
+  document.getElementById('btn-next').disabled = pos === total - 1;
+
+  const pillsEl = document.getElementById('deck-pills');
+  pillsEl.innerHTML = '';
+  for (let i = 0; i < total; i++) {
+    const p = document.createElement('div');
+    if      (i < pos)   p.className = 'dpill done';
+    else if (i === pos) p.className = 'dpill current';
+    else                p.className = 'dpill';
+    p.textContent = state.deck[i].ipa;
+    if (i <= pos) {
+      p.style.cursor = 'pointer';
+      p.addEventListener('click', () => { state.deckPos = i; renderLocutorCard(); });
+    }
+    pillsEl.appendChild(p);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════ */
+/*  GANADOR                                                    */
+/* ════════════════════════════════════════════════════════════ */
+function renderGanador() {
+  const pos  = state.deckPos;
+  const deck = state.deck;
+
+  document.getElementById('sum-done').innerHTML = pos === 0
+    ? '<span style="color:var(--muted);font-size:.85rem">Ninguna todavía</span>'
+    : deck.slice(0,pos).map(p=>`<div class="summary-chip">${p.ipa}</div>`).join('');
+
+  document.getElementById('sum-current').innerHTML =
+    `<div class="summary-chip current">${deck[pos].ipa}</div>`;
+
+  const remaining = deck.length - pos - 1;
+  document.getElementById('sum-remaining').innerHTML = remaining === 0
+    ? '<span style="color:var(--muted);font-size:.85rem">¡Mazo agotado!</span>'
+    : deck.slice(pos+1).map(p=>`<div class="summary-chip remaining">${p.ipa}</div>`).join('');
+}
+
+function confirmNewGame() {
+  if (confirm('¿Iniciar una nueva partida? Se perderá el orden del mazo actual.')) {
+    startLocutorGame(state.mode);
+  }
+}
+
+/* INIT */
+console.assert(PHONEMES.length === 23, `Se esperaban 23 fonemas, hay ${PHONEMES.length}`);
+</script>
+</body>
+</html>
