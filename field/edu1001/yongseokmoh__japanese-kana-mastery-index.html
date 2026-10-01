@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일본어 오십음도 학습 (스마트 학습 모드)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #343a40;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --hiragana-color: #1c7ed6;
+            --katakana-color: #e64980;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans JP", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 140px; /* Space for sticky header */
+        }
+
+        .controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 15px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .toggles {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            background-color: #f1f3f5;
+            border: 1px solid #ced4da;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .toggle-btn.active {
+            background-color: #4dabf7;
+            color: white;
+            border-color: #339af0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .row-group {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .char-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+
+        .char-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 65px; /* 120% increased */
+            font-size: 36px; /* 120% increased */
+            font-weight: 500;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .char-item:not(.empty-item):active {
+            transform: scale(0.92);
+            background-color: #f1f3f5;
+        }
+
+        .hiragana { color: var(--hiragana-color); }
+        .katakana { color: var(--katakana-color); }
+        
+        .pronunciation {
+            font-size: 19px; /* 120% increased */
+            color: #495057;
+            font-weight: 400;
+            height: 36px; /* 120% increased */
+            pointer-events: none;
+        }
+
+        .empty-item {
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .hidden-content {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .audio-hint {
+            font-size: 12px;
+            color: #e03131;
+            margin-top: -5px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #868e96;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <h1>일본어 오십음도 (五十音図)</h1>
+        <div class="audio-hint">아이폰의 경우 '무음 모드(매너 모드)'를 해제해야 소리가 납니다 🔊</div>
+        <div class="toggles">
+            <div class="toggle-btn" id="toggle-katakana" onclick="toggleVisibility('katakana', this)">카타가나 가리기</div>
+            <div class="toggle-btn" id="toggle-pronunciation" onclick="toggleVisibility('pronunciation', this)">발음 가리기</div>
+        </div>
+    </div>
+
+    <div class="container" id="app">
+        <!-- Content will be injected by JavaScript -->
+    </div>
+
+    <footer>
+        계속 스크롤하여 모든 글자를 확인하세요.<br>
+        © Japanese Kana Mastery
+    </footer>
+
+    <script>
+        const data = [
+            { h: ['あ', 'い', 'う', 'え', 'お'], k: ['ア', 'イ', 'ウ', 'エ', 'オ'], p: ['아', '이', '우', '에', '오'] },
+            { h: ['か', 'き', 'く', 'け', 'こ'], k: ['カ', 'キ', 'ク', 'ケ', 'コ'], p: ['카', '키', '쿠', '케', '코'] },
+            { h: ['さ', 'し', 'す', 'せ', 'そ'], k: ['サ', 'シ', 'ス', 'セ', 'ソ'], p: ['사', '시', '스', '세', '소'] },
+            { h: ['た', 'ち', 'つ', 'て', 'と'], k: ['タ', 'チ', 'ツ', 'テ', 'ト'], p: ['타', '치', '츠', '테', '토'] },
+            { h: ['な', 'に', 'ぬ', 'ね', 'の'], k: ['ナ', 'ニ', 'ヌ', 'ネ', 'ノ'], p: ['나', '니', '누', '네', '노'] },
+            { h: ['は', 'ひ', 'ふ', 'へ', 'ほ'], k: ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ'], p: ['하', '히', '후', '헤', '호'] },
+            { h: ['ま', 'み', 'む', 'め', 'も'], k: ['マ', 'ミ', 'ム', 'メ', 'モ'], p: ['마', '미', '무', '메', '모'] },
+            { h: ['や', '', 'ゆ', '', 'よ'], k: ['ヤ', '', 'ユ', '', 'ヨ'], p: ['야', '', '유', '', '요'] },
+            { h: ['ら', 'り', 'る', 'れ', 'ろ'], k: ['ラ', 'リ', 'ル', 'レ', 'ロ'], p: ['라', '리', '루', '레', '로'] },
+            { h: ['わ', '', '', '', 'を'], k: ['ワ', '', '', '', 'ヲ'], p: ['와', '', '', '', '오'] },
+            { h: ['ん', '', '', '', ''], k: ['ン', '', '', '', ''], p: ['응', '', '', '', ''] },
+        ];
+
+        const container = document.getElementById('app');
+        
+        // TTS Setup
+        const synth = window.speechSynthesis;
+        let japaneseVoice = null;
+        let isAudioUnlocked = false;
+        
+        // iOS Safari Audio Unlock
+        function unlockAudio() {
+            if (!isAudioUnlocked) {
+                const unlockUtterance = new SpeechSynthesisUtterance('');
+                unlockUtterance.volume = 0;
+                synth.speak(unlockUtterance);
+                isAudioUnlocked = true;
+                document.body.removeEventListener('touchstart', unlockAudio);
+                document.body.removeEventListener('click', unlockAudio);
+            }
+        }
+        document.body.addEventListener('touchstart', unlockAudio);
+        document.body.addEventListener('click', unlockAudio);
+        
+        // Load voices
+        function loadVoices() {
+            const voices = synth.getVoices();
+            // Try to find a Japanese voice
+            japaneseVoice = voices.find(voice => voice.lang.includes('ja') || voice.lang.includes('JP'));
+        }
+        
+        loadVoices();
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = loadVoices;
+        }
+
+        function playAudio(text) {
+            if (!text) return;
+            
+            // Re-fetch voices just in case it was slow to load on iOS
+            if (!japaneseVoice) loadVoices();
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.9; 
+            if (japaneseVoice) utterance.voice = japaneseVoice;
+            
+            synth.cancel(); // Stop any ongoing speech
+            synth.speak(utterance);
+        }
+
+        data.forEach(group => {
+            const rowGroup = document.createElement('div');
+            rowGroup.className = 'row-group';
+
+            // Hiragana Row
+            const hRow = document.createElement('div');
+            hRow.className = 'char-row hiragana-row';
+            group.h.forEach(char => {
+                const item = document.createElement('div');
+                item.className = char ? 'char-item hiragana' : 'char-item empty-item';
+                item.textContent = char;
+                if (char) item.onclick = () => playAudio(char);
+                hRow.appendChild(item);
+            });
+
+            // Katakana Row
+            const kRow = document.createElement('div');
+            kRow.className = 'char-row katakana-row';
+            group.k.forEach(char => {
+                const item = document.createElement('div');
+                item.className = char ? 'char-item katakana' : 'char-item empty-item';
+                item.textContent = char;
+                if (char) item.onclick = () => playAudio(char);
+                kRow.appendChild(item);
+            });
+
+            // Pronunciation Row
+            const pRow = document.createElement('div');
+            pRow.className = 'char-row pronunciation-row';
+            group.p.forEach(char => {
+                const item = document.createElement('div');
+                item.className = char ? 'char-item pronunciation' : 'char-item empty-item';
+                item.textContent = char;
+                pRow.appendChild(item);
+            });
+
+            rowGroup.appendChild(hRow);
+            rowGroup.appendChild(kRow);
+            rowGroup.appendChild(pRow);
+
+            container.appendChild(rowGroup);
+        });
+
+        // Toggle logic
+        const state = {
+            katakana: true,
+            pronunciation: true
+        };
+
+        function toggleVisibility(type, btnElement) {
+            state[type] = !state[type];
+            btnElement.classList.toggle('active');
+            
+            const elements = document.querySelectorAll(`.${type}-row`);
+            elements.forEach(el => {
+                if (state[type]) {
+                    el.classList.remove('hidden-content');
+                } else {
+                    el.classList.add('hidden-content');
+                }
+            });
+            
+            // Update button text dynamically
+            if (type === 'katakana') {
+                btnElement.textContent = state.katakana ? '카타가나 가리기' : '카타가나 보이기';
+            } else if (type === 'pronunciation') {
+                btnElement.textContent = state.pronunciation ? '발음 가리기' : '발음 보이기';
+            }
+        }
+    </script>
+</body>
+</html>

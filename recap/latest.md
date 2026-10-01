@@ -1,20 +1,140 @@
-# Recap latest · last 7 days (2026-09-23 → 2026-09-30)
-Rebuilt 2026-09-30 ~00:20 ET / ~12:20 Asia/Taipei (noon LIST pass). Newest first. LIST files excluded.
+# Recap latest · last 7 days (2026-09-24 → 2026-10-01)
+Rebuilt 2026-10-01 ~00:07 ET / ~12:07 Asia/Taipei (noon LIST pass). Newest first. LIST files excluded.
 
 Packets this window (13):
+- 2026-10-01-elon-jensen-americagov-panel.md
+- 2026-10-01-all-in-jake-paul-chainsmokers.md
 - 2026-09-29-elon-jensen-cspan-accord-presser.md
 - 2026-09-29-elon-jensen-americagov-panel-NOTES-ONLY.md
 - 2026-09-29-elon-g20-innovation-ministerial-NOTES-ONLY.md
 - 2026-09-29-all-in-ek.md
 - 2026-09-27-moon.md
-- 2026-09-27-elon-cmg.md
 - 2026-09-27-justin-sung.md
+- 2026-09-27-elon-cmg.md
 - 2026-09-26-all-in.md
 - 2026-09-25-maxinomics.md
-- 2026-09-24-all-in-ferrari.md
 - 2026-09-24-fern.md
-- 2026-09-23-all-in-hilton-pratt.md
-- 2026-09-23-all-in-scholl.md
+- 2026-09-24-all-in-ferrari.md
+
+## Recap · Elon interviews (joint talk: Elon + Jensen) · 2026-09-29 · America.gov / "Hello, America" afternoon panel — Musk + Huang (+ Tom Brown) with Gavin Baker
+url: https://www.youtube.com/watch?v=8mf3rbRSaB8  ·  length: live stream (panel ~afternoon segment)  ·  text: captions
+format NOTE: NOT a sit-down interview. Shared-stage panel at the White House / National Design Studio "Hello, America" America.gov launch (Andrew W. Mellon Auditorium). Moderator: **Gavin Baker**. Guests: **Elon Musk**, **Jensen Huang**, later joined by Anthropic co-founder **Tom Brown**. Counts under the Elon sit-down pin as a Jensen+Elon joint appearance, flagged as panel. White House host upload qyJL5gKhajE still has no usable captions; this packet uses **USA TODAY**'s own live-stream upload (first-party outlet captions), same acceptance pattern as C-SPAN for the same day's accord presser.
+status: FULL captions (upgrades prior NOTES-ONLY packet `/workspace/recap/2026-09-29-elon-jensen-americagov-panel-NOTES-ONLY.md`)
+
+### Takeaways, arguments, claims (in order; no reliable absolute timestamps in watch-page text → --:--; narrative order)
+
+**Frame: America wins SI (--:--)**
+- --:-- · Baker · AI now branded **super intelligence**; question is whether America leads for ordinary Americans / national security / science.
+- --:-- · Huang · Super intelligence = complete reinvention of the computing stack (chips → trained software → applications). Generative compute needs **energy first** (land/power/shell → infrastructure). US already world-class at chip design and algorithms; must be "vigilant" on power delivery/generation. Credits Trump's **pro-energy** stance as what made data centers possible. Communities must be partnered into prosperity. Win path: best chips + lots of energy + algorithms + diffuse SI into manufacturing/healthcare/space so America is "enthusiastic."
+
+**Musk: power, China, orbital compute (--:--)**
+- --:-- · Musk · Need to scale energy generation and chip production. Winning on software/digital now; long-run competitor is **China** with **~3×** US electricity production. Central challenge: enough power + logic/memory fab in the US or a safe region.
+- --:-- · Baker · SpaceX discussing **~10 GW** (~25% of all power added in America); rocket engineers on turbines.
+- --:-- · Musk · US average ~**500 GW**; every **~5 GW** steady-state ≈ **1%** power and roughly **1% GDP** (intelligence-per-watt rising via better GPUs + algorithms). **10 GW** ≈ **~2% GDP**.
+- --:-- · Huang/Musk back-of-envelope · ~**$40–60B** economic output per GW / year (aligns with ~$300B per 1% / 5 GW).
+- --:-- · Musk · Long-term SpaceX: **orbital compute**; Google sending TPUs; prior H100 in orbit. Aim with Tesla: **~200 GW/year** solar manufacturing — space gets nameplate (always sunny) vs ground **1/5–1/8** plus huge batteries. Launch cost still high but affordable given compute returns. Starship: first orbital flight, deployed enormous Starlink V3 (737 wingspan; largest payload since Skylab); next year weekly/twice-weekly cadence. Starship also for Moon/Mars self-growing city (~**1M tons** to surface) and hundreds of GW/year of AI compute to orbit (200 GW/year ≈ **~40%** annual US energy consumption increase; maybe a terawatt someday).
+
+**SI factories, jobs, community (--:--)**
+- --:-- · Huang · Rename: not "data centers" (storage) but **SI factories** producing economic value. US buildout ~**10–20 GW/year** → on order of **~1M jobs** (power plants, construction, pipefitters, cooling). First re-industrialization in **~35–50 years**; want blue-collar + white-collar shape.
+- --:-- · Musk · Colossus / "Macrohard" regions: job shortage / over-employment, tax budget maybe doubled; half-price Starlink; **~$250M** water recycling plant — do things for the community and they reciprocate.
+- --:-- · Huang · Market forces now fund sustainable energy / SMR / batteries without government subsidy.
+
+**Safety: OpenShell / BlueField; Starship Monday (--:--)**
+- --:-- · Huang · Training relatively safe; evaluation/deployment need hard **containment** + **out-of-band monitoring** (another chip). Announced **OpenShell** (agent isolation / "browser for agents") and **BlueField** (continuous monitoring; escalate on policy breach). Analogy: early internet credit-card fear → made internet safe → Amazon/Netflix/Google/X. Safety and advancing capability are **not** false tradeoffs (autopilot = advanced *and* safer).
+- --:-- · Musk · Starship "going great"; first orbit + Starlink V3 deploy; cadence ramp next year.
+
+**Tom Brown / Opus; everyday SI; values; White House accord (--:--)**
+- --:-- · Brown (Anthropic) · Opus 5.5: more IQ / longer delegable tasks; huge amount of software written by models → products higher quality/cheaper.
+- --:-- · Huang · Personal use: Claude research reports in ~3 minutes vs 4–8 weekend hours.
+- --:-- · Musk · Organize lives / jobs; medical anecdotes where AI caught what doctors missed.
+- --:-- · Huang on values · SI are **tools**; wary of too much "judgment" (steak-knife analogy — cuts well or refuses based on moralized context); defender vs attacker in cyber can look alike — tool should activate for defender.
+- --:-- · Musk/Huang on lunch · Signed joint **SI safety** declaration: internal controls, documented intentions, internal + external audit, industry sharing / "grading each other's homework," board committees. Huang: has "teeth"; every company should embrace. Trump pulled the room together.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- --:-- Huang: "these are really SI factories, super intelligence factories."
+- --:-- Musk: "China has about three times the electricity production of the United States."
+- --:-- Musk: "orbital compute is going to be a very big deal."
+- --:-- Huang: "Safety and advancing a technology is one in the same thing."
+- --:-- Huang: "the SI are tools"
+- --:-- Musk: "grading each other's homework which is a lot better than if people just grade their own homework"
+
+### One paragraph
+On the America.gov launch afternoon stage, Gavin Baker hosts **Jensen Huang** and **Elon Musk** (Tom Brown joining mid-panel) on how America wins **super intelligence**. Huang reframes data centers as **SI factories**, puts **energy** at the base of a reinvented compute stack, credits pro-energy policy for the buildout, pitches **~10–20 GW/year** infrastructure as ~**1M** blue-collar-plus jobs and a 50-year re-industrialization, and pairs capability with **OpenShell** containment + **BlueField** monitoring so safety isn't a false tradeoff. Musk argues the binding constraint is power (China **~3×** US electricity), sketches **~5 GW ≈ 1% GDP**, and ties SpaceX/Tesla to **~200 GW/year** solar plus **orbital compute** on Starship (first orbit, Starlink V3, Moon/Mars tonnage). Brown adds Opus 5.5's longer tasks and model-written software; both CEOs cite everyday research/medical upside. They close on the White House lunch **SI safety** accord — layered internal/external audit and peer "homework grading" — as industry teeth rather than a panic regulatory regime. (Stream continues into JD Vance/Joe Gibbia on fraud and later panels; those are out of scope for this Elon+Jensen packet.)
+
+### Footer
+canary: USA TODAY live upload id 8mf3rbRSaB8 · title "Live: JD Vance talks AI with Elon Musk, Nvidia's Jensen Huang at 'America's Golden Age' event" · event 2026-09-29 · fetched 2026-10-01T04:07:00Z · text route: official YouTube watch-page transcript via WebFetch (yt-dlp subtitle download still bot-walled / sign-in; list-subs briefly showed en-orig earlier then download failed) · White House host qyJL5gKhajE still no captions · AP NBRcatReLD4 still bot-blocked · prior NOTES-ONLY kept on disk; this is the full caption upgrade · stream also contains Tony Robbins opener + Trump press fragments + Vance/Gibbia + Isaacman — only Musk/Huang/Brown panel ingested here · ASR errors in captions (Hang→Huang, gawatt→gigawatt, Enthropic→Anthropic, Reubens, Macro hard, Pus→Trump, etc.) cleaned in body · quotes from caption text · no ASR on box · no third-party transcript sites (singjupost etc. unused) · bank deposit this pass
+
+---
+
+## Recap · All-In · 2026-09-30 · Jake Paul & The Chainsmokers: Turning Fame into Funds, Jake Enters Politics? & Venture Bubble Signs
+url: https://www.youtube.com/watch?v=uzV45QvPKtU + https://allinchamathjason.libsyn.com/jake-paul-the-chainsmokers-turning-fame-into-funds-jake-enters-politics-venture-bubble-signs  ·  length: 52:49  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Jake Paul joins the Chamath! (00:00)**
+- 00:00 · Summit intro frames Jake Paul as attention-economy / boxing / content crossover; hosts Chamath (+ Jason energy).
+- --:-- · Chamath · Paul ~30; social-media native generation at the "tail end"; started on Vine before TikTok/YouTube dominance — walk the journey.
+- --:-- · Paul · Does not remember a time without followers; did it before it was cool, from passion, not as a career hack. People who are "authentically entertaining" and fill a niche win; many now chase influencer status because it looks like the best path.
+- --:-- · Paul · Loved creating stories, making people laugh, daily reminders to work hard / smile / chase dreams — that grew the audience.
+- --:-- · Chamath · Pressure when Vine died under him — restart?
+- --:-- · Paul · Top ~20 Viners told Vine/Twitter: pay us or we stop. Asked **$1M each per year**; Twitter offered **$1M total** to split among 20. They refused, left for Facebook/YouTube/Snapchat; Vine died within months. Lesson for business owners on not getting ripped off when you bring the content/views/fans.
+
+**Turning an audience into businesses, the boxing playbook & coming for the UFC (06:41)**
+- 06:41 · Chamath · Evolution of streaming/attention over ~15 years; sociology of kids who aspire to fame.
+- --:-- · Paul · Grew up knocking on friends' doors *and* having tech — balance iPad-kid generation may lack. Warns of clickbait/"YouTuber disease" (absurd claims for press/clicks); used to do that himself as a kid.
+- --:-- · On platforms filtering: YouTube alone can't fix it — like the AI race (US/Russia/China): if one platform clamps, viewership moves to Twitch/Kick/X/IG/TikTok. Needs platforms "come together."
+- --:-- · Business arc: entrepreneur before YouTube blow-up; SF Valley visits (Google/Twitter/Uber/hacker houses) → angel investing + social-media label **Team 10** (signed talent, content-house model, 20+ creators with millions of followers).
+- --:-- · Boxing: started as UK-brothers beef → signed to fight in ~3 months → pro gym next day → knockout in Manchester → biggest amateur PPV ever → doubled down. Moved LA → Puerto Rico to train with fewer distractions. Built-in **~100M** followers as distribution for every fight (vs boxers who stay unknown until 20–0). Replicated Team 10 model under **MVP**: **~400** fighters (boxing/MMA); targeting Dana White / UFC / "Sufa Boxing" framing.
+- --:-- · UFC critique: fighters paid **~15%** of revenue vs **~50/50** in other major leagues → fighters angry, big fights don't happen, Ali example **$600K** on White House card. Classic "your margin, my opportunity" — pay fighters more of gate/rev share, allow sponsorships, don't shelf them. Merged with **PFL**; Coke/Pepsi framing — first real UFC competitor.
+
+**Attention as capital, investing without the celebrity label & why politics is next (11:54)**
+- 11:54 · Portfolio: OpenAI, Cognition, SpaceX etc. Partner **Jeff Woo**. Thesis: attention economy; capital is a commodity; attention on a cap table is what founders need (Elon/X "first suggested follow" as attention pump).
+- --:-- · Downside of attention economy: people build for eyeballs instead of great things; inauthentic hot takes in journalism/content because views = money.
+- --:-- · Differentiator: reach *plus* marketing/brand help; claims involvement telling OpenAI **Sora** could be a social app and granting NIL for fan videos.
+- --:-- · Raised **$100M** "anti fund"; hates "celebrity VC" label — wants to be scored vs Sequoia on DPI/IRR over 5 years. Barbell: first-check / ground-floor talent ID **or** growth with proven founders (Sam, Palmer, etc.); fund already deployed, on fund four.
+- --:-- · Next 10–15 years: flywheel of fighting (attention) ↔ investing ↔ content ↔ foundation (**40** free kids' boxing gyms). Age-40 Jake: **politics** — satisfaction from helping people (women's boxing paydays / "WNBA of women's boxing"); future officeholders will have built-in social-native followings (Spencer Pratt / Trump / Nick Shirley as examples).
+
+**Drew Taggart & Alex Pall join the Besties! (20:46)**
+- 20:46 · The Chainsmokers (Drew Taggart, Alex Pall); Vegas Wynn residency ~8 years / Vegas ~10 years; platinum catalog.
+- --:-- · Origin: Alex's prior Chainsmokers partner fell out (~2011–12 NYC); Drew finishing Syracuse; "you seem cool, let's start a band" → 14 years, still best friends.
+- --:-- · Creative tension: signature sound vs Twitter trolls ("same song"); nostalgia wave (2016 era resurfacing in 2026); kids' Spotify playlists full of throwbacks (Elton etc.) — past remembered more favorably / "music was better."
+- --:-- · Music business: **~300,000** songs uploaded to Spotify **per day**; started 2012 pre-streaming. Early hustle: Hype Machine chart — remix artists already on blogs, Alex scraped blog writers (college kids) and sent personalized emails → ~30 #1s on that chart; growth-hack before TikTok.
+- --:-- · Labels: vicious cycle — first breakthrough offers first millions + peer precedent of signing away albums; precipice for artist who goes fully direct; AI/streaming/short attention making outcomes unclear. Live/DJ economics (esp. dance) are where income is for them vs pure digital.
+
+**From artists to investors: picking deals, playing the sixth man & what fame buys (30:35)**
+- 30:35 · Venture path: tech-positive career (Tilt for touring data etc.) → consumer-brand "catnip" checks → founders who put it all on the line beat "more water companies"; met Chesky, Houston, Seibel, Collisons.
+- --:-- · Firm (Mantis with Jeff/Drew/Milan + partners): focus cyber, AI infra, deep tech, health tech; **seed–Series A**; don't lead — "sixth man" / Robert Horry rings metaphor. Value-add: GTM, brand, relationships (played a company party → intro). AI made brand/defensibility more important.
+- --:-- · Chamath validates: music-business survival is harder than software; deal flow from fame + respect is real.
+
+**Advice for famous investors, whether fame helps or hurts & the non-obvious bets (37:33)**
+- 37:33 · Advice to Hollywood stars chasing VC: pay off the mortgage first; venture is long-duration/illiquid; top **~5%** of funds generate **~90%** of returns — must be in the best companies. Many celebrity "teams" don't show up for calls.
+- --:-- · Fame: helps LinkedIn/access; hurts LP fundraising ("not investing in the Chainsmokers fund"). Answer: come back next fund with numbers.
+- --:-- · Chamath: consistent DPI cuts through noise; short LP memory for everything except returns.
+- --:-- · Non-obvious bets: Chamath Uber seed story — 19/21 angels said no ("dirty real-world business"; "just sell software to cab companies"). Robinhood: joked at seed/A; Chamath never sold a share (bought more at **$9** public); execution/product vision can't be faked. Bias trap: they avoid music/entertainment apps (too close / too pessimistic).
+
+**Riding winners, getting cash back to investors & spotting bubble behavior (46:10)**
+- 46:10 · ~7 years in; first proper Fund-1 liquidity (**Underdog Fantasy** → HG/IG). LPs early on weren't there to "play it safe" → liberty to ride winners (e.g. Dandy international expansion).
+- --:-- · Follow-on concentration: credit Brian Singerman lecture; Founders Fund-style force-one-winner discipline is scary but signals were always there.
+- --:-- · Growth fund / SPVs debated; Chamath: late-stage family offices + early-stage sellers as companies stay private longer.
+- --:-- · Redefine unicorn as **$1B revenue** not paper valuation; one portfolio co ~**$700M** revenue.
+- --:-- · Bubble signal: double/triple-trench deals at big markups with **no change in underlying performance** — "that's bubble market behavior"; when you see that, take a little.
+- --:-- · Close: still perform; celebrity shiny-object phase wears off in ~3 months — difference is putting in the work ("overnight 15-year success").
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- --:-- Paul: "I never was like social media is the new wave. I was the wave."
+- --:-- Paul: "compare me to the Sequoias of the world, our DPI and IRR"
+- --:-- Paul: "I think politics."
+- --:-- Chainsmokers: "there are 300,000 songs being uploaded to Spotify every day."
+- --:-- Chainsmokers: "I consider unicorns a billion in revenue. I don't care about the paper value anymore."
+- --:-- Chainsmokers: "That's bubbles. That's bubble market behavior."
+
+### One paragraph
+Summit interview hour: **Jake Paul** walks Chamath through Vine-to-empire — the top-Viners' failed **$1M-each** pay demand that helped kill Vine, Team 10's creator factory, then boxing as audience-powered distribution (**~138M** Netflix Tyson view cited in intro; **~400** MVP fighters) and a PFL merger pitched as the first real UFC competitor because fighters only take **~15%** of UFC revenue. He rejects the "celebrity VC" label for a **$100M** barbell fund with Jeff Woo (OpenAI/Cognition/SpaceX etc.), treats attention as scarce capital founders want, claims a hand in OpenAI **Sora** as social, and says age-40 Jake is **politics** because helping people (women's boxing paydays) is the satisfaction peak. **The Chainsmokers** (Drew Taggart / Alex Pall) then narrate Hype-Machine remix hustles into a Vegas residency and **Mantis** (seed–A, cyber/AI infra/deep tech/health, "sixth man" not lead), warn that fame helps access but hurts LPs, advise stars to clear mortgages before VC, and — with Chamath's Uber/Robinhood war stories — stress non-obvious founder bets, riding winners until DPI is real, and treating multi-trench markups with no operating change as **bubble** behavior; they'd rather redefine unicorns by **$1B revenue** than paper marks.
+
+### Footer
+canary: published 2026-09-30T21:00:00Z (libsyn RSS) / YT id uzV45QvPKtU · fetched 2026-10-01T04:06:00Z · length 52:49 (3169s flat-playlist) · text route: official YouTube watch-page transcript via WebFetch of https://www.youtube.com/watch?v=uzV45QvPKtU (yt-dlp --list-subs / timedtext hit bot wall / "sign in to confirm you're not a bot") · chapters from libsyn og:description used as section anchors · no per-line caption timestamps in watch-page text → claims inside sections marked --:-- · ASR cleanup in body only (Clvicular→typical summit guest ref left as captioned context; Freedberg→Friedberg; Chain Smokers→Chainsmokers; Sufa→Dana White/UFC framing; Enthropic→Anthropic N/A here; NIL kept) · quotes from caption text · no ASR on box · no third-party transcript sites · bank deposit this pass
+
+---
 
 ## Ingest · Elon interviews (joint appearance: Elon + Jensen) · 2026-09-29 · Trump and AI Tech Executives Speak to Reporters After Meeting
 url: https://www.youtube.com/watch?v=FUb47LGZqcs  ·  length: 35:06  ·  text: captions (YouTube watch-page transcript)
@@ -70,6 +190,8 @@ After Trump's meeting with ~40 AI leaders and the signing of a self-regulation "
 ### Footer
 canary: YT id FUb47LGZqcs · C-SPAN upload · tab title "Trump and AI Tech Executives Speak to Reporters After Meeting" · 35:06 (yt-dlp flat-playlist of @CSPAN/videos) · fetched 2026-09-30T01:45:00Z · text route: yt-dlp --list-subs shows only auto-translated tracks (no manual subs); yt-dlp subtitle download failed (HTTP 429 / "sign in to confirm you're not a bot"), so used the official YouTube watch-page transcript text via WebFetch of the C-SPAN watch page (auto captions; no timestamps) · caveats: transcript begins mid-sentence and cuts off at the end, so the first and last seconds are missing; ASR errors ("Jan"=Jensen, "Sudundar"=Sundar, "Lowden"=Loudoun, "Mike"=Speaker Johnson) and speaker labels inferred from context; not run through ASR on the box · quotes copied from the caption text (stutters trimmed only by choosing fragments) · no third-party transcript sites · full text banked
 
+---
+
 ## Ingest · Elon interviews (joint talk: Elon + Jensen) · 2026-09-29 · "Hello, America" / America.gov launch event — Musk + Huang + Tom Brown afternoon panel · NOTES-ONLY
 status: NOTES-ONLY — no first-party captions obtainable for the panel; nothing about what Musk or Huang said is in this packet.
 event: White House / National Design Studio "Hello, America" America.gov launch, Andrew W. Mellon Auditorium, Washington DC, 2026-09-29
@@ -94,6 +216,8 @@ canary: fetched 2026-09-30T01:45:00Z · routes tried: yt-dlp --list-subs / --wri
 ### Addendum (X route attempt, 2026-09-29 ~22:00 ET)
 - Could not locate any @America X post URL for the Musk/Huang/Brown panel: WebSearch (several queries) returned no x.com status link; x.com/America returns a login-walled JS shell to curl and 403 to WebFetch; yt-dlp has no profile extractor ("Unsupported URL"); X syndication timeline endpoint returned 429. No post URL => yt-dlp on the post was not possible. No captions/text obtained. Nothing banked, no INGEST packet written.
 
+---
+
 ## Ingest · Elon interviews · 2026-09-01 · G20 Innovation Ministerial fireside chat: OSTP Director Michael Kratsios with Elon Musk (virtual) · NOTES-ONLY
 status: NOTES-ONLY — no first-party captions/transcript obtainable. Not a Jensen+Elon talk (Huang did a separate fireside with Commerce Sec. Howard Lutnick on 2026-09-02).
 event: G20 Innovation Ministerial, Carolina Inn, Chapel Hill NC, 2026-09-01/02. Host of the Musk chat: Kratsios (OSTP).
@@ -107,6 +231,8 @@ none — no first-party text of the talk was obtained.
 
 ### Footer
 canary: fetched 2026-09-30T01:45:00Z · routes tried: whitehouse.gov release (OK), yt-dlp on channel listings and on rebroadcast ids (blocked), no official upload exists that I could find · no ASR on box · no third-party transcript sites used · nothing banked
+
+---
 
 ## Recap · All-In · 2026-09-28 · Daniel Ek: Life After Spotify, Broken Healthcare Incentives, Catching Disease Early & AI's Potential
 url: https://www.youtube.com/watch?v=JEUboZzZGM4 + https://allinchamathjason.libsyn.com/daniel-ek-life-after-spotify-broken-healthcare-incentives-catching-disease-early-ais-potential  ·  length: 51:16  ·  text: captions
@@ -189,6 +315,8 @@ Spotify co-founder **Daniel Ek** (now exec chair) walks the All-In Interview thr
 ### Footer
 canary: published 2026-09-28T22:16:00Z (libsyn RSS) / YT uploadDate ~20260928 · fetched 2026-09-29T04:13:00Z · length 51:16 (3076s) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright on port 9229; yt-dlp timedtext HTTP 429 / bot wall even with cookies) → /workspace/recap/tmp-0929/transcript.txt (396 timed lines; ~9435 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Freeberg→Friedberg, Daniel Mack→Daniel Ek, Neco/Niko/nikohalth→Neko/nekohealth, Yalmer→Hjalmar, Kazah→Kazaa, Genie→genie, Startle/Stardal→Stardoll, Turo→Turku, Danny Rhymer→Danny Rimer, Seoia→Sequoia, Horus Strait→Hormuz Strait, Primo Material→Prima Materia, Boro→Oura, Shaq left as captioned for partner refs) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+---
+
 ## Ingest · Moon · 2026-09-27 · When Shawn Ryan Realizes His Podcast is Compromised
 url: https://www.youtube.com/watch?v=G1K_p6vYNVE  ·  length: 28:01  ·  text: captions
 ### Takeaways, arguments, claims (in order)
@@ -242,6 +370,59 @@ Moon argues the Shawn Ryan Show is compromised not by a single handler but by sc
 
 ### Footer
 canary: YT uploadDate 20260927 / timestamp 2026-09-27T19:26:12Z · fetched 2026-09-28T00:10:00Z · length 28:01 (1681s android) · captions English auto via yt-dlp --extractor-args youtube:player_client=android --write-auto-sub --sub-lang en → /workspace/recap/tmp-0928/moon-shawn.en.vtt (~49.6 KiB) cleaned to continuous timed text · quotes from caption text · ASR name cleanup in body only (Sha/Shan/Shaun→Shawn, Mcman Eagle→McMoneagle, Palanteer→Palantir, Londale→Lonsdale, Eperis→Epirus, Wy/Wolsey→Woolsey, Alzando→Elizondo, Melon→Mellon, Nutrino→Neutrino, Christurch→Christchurch, O'Neal→O'Neill, Bison→Bissonnette, Riper→Ripperger, Butler/diary→Bartlett/Diary of a CEO, Kiyaku→Kiriakou, Grush→Grusch, scop left as caption for "op") · no ASR on box · no third-party transcript sites
+
+---
+
+## Ingest · Justin Sung · 2026-09-27 · How To Think So Clearly People Assume You're Naturally Gifted
+url: https://www.youtube.com/watch?v=rQHA7EYq8sw  ·  length: 11:33  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Frame — thinking quality is process, not "try harder" (00:00)**
+- 00:00 · Justin · How well you think separates problem-solvers / fast learners; "think harder" is empty; frameworks from books help but are not enough.
+- 00:25 · Justin · As a cognitive performance coach, one underused skill produces more difference than other strategies: **hypothesize structure**.
+
+**What top performers do (00:49)**
+- 00:49 · Justin · Experts and top performers create organized structure; two experts may emphasize different points but both structure; people who struggle with complex decisions usually struggle to create structure.
+- 01:28 · Justin · Correctness of the first structure is not the point — the skill is actively organizing a complicated multi-point problem into hypothesized groups instead of chewing each point alone.
+
+**Why it works neuroscientifically (01:54)**
+- 01:54 · Justin · Three reasons it speeds thinking. (1) **Context**: brains love context; meaning = how a thing influences other things; without structure, life outside formal education is an unstructured mass — hours of mulling with no progress.
+- 03:09 · Justin · Even a wrong hypothesized structure gives focus so you can test whether that way of thinking is good.
+- 03:25 · Justin · (2) Wrong structure → **prediction error**, one of the brain's strongest growth signals.
+
+**Worked example — project software decision (03:41)**
+- 03:41 · Justin · Decision: change team project-management software; ~10 unstructured factors.
+- 04:12 · Justin · First hypothesis: **risks vs benefits** (permissions/security, training time, cost vs tracking, collaboration, workflows) — already easier; then regroup further.
+- 05:04 · Justin · Using the structure to decide often reveals failure: e.g. leaving workflows unchanged is itself the biggest risk; benefits flip into risks of inaction — risks-vs-benefits collapses.
+- 06:15 · Justin · Most people **stop** when the first structure fails. Fast thinkers treat failure as the point: learn why it was wrong (prediction error) and try another structure.
+- 06:55 · Justin · Fast effective thinkers are not necessarily faster — they are **willing to be wrong more often**, so they generate more prediction errors.
+- 07:11 · Justin · Second hypothesis: structure everything around **workflows** as the key bottleneck (recording/logging, project visibility → collaboration) → compare cost/time to fix in place vs on new platform.
+
+**Frameworks as starting points (08:16)**
+- 08:16 · Justin · Book/course frameworks help because they supply candidate structures; they are starting points; the missing step is changing the structure after learning from errors.
+- 08:44 · Justin · Newsletter CTA (Learning Drops, free 3–5 min) — skipped for argument; pitches teaching how he thinks so you can modify strategies when they fail.
+
+**Identity vs process (09:59)**
+- 09:59 · Justin · Quality of thinking becomes controllable process, not whether you "have good ideas"; stuck/slow/overwhelmed often gets mislabeled as identity ("I'm bad at planning") — usually wrong process.
+- 10:39 · Justin · When stuck: hypothesize more structures → more context + prediction errors → clearer thinking. Top performers do this automatically; most people don't.
+- 11:14 · Justin · Points to companion "think on paper" video as the complementary skill.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:41 Justin: "this skill is the ability to hypothesize structure"
+- 01:28 Justin: "It's not actually about whether the structure is correct or not."
+- 03:25 Justin: "if that structure is not correct, it creates something that we call a prediction error"
+- 06:55 Justin: "It's not necessarily that they are actually thinking faster. It's that they're willing to be wrong more frequently."
+- 08:32 Justin: "these structures are just a starting point for your thinking."
+- 10:32 Justin: "Most people are very capable of thinking clearly through uncertainties. They're just not using the right process."
+
+### One paragraph
+Justin argues clear thinking is less about collecting frameworks and more about one underused process: **hypothesize structure** — actively group a messy multi-factor problem so the brain gets context, then treat a failed structure as a **prediction error** (strong growth signal) rather than stopping. A software-switch example shows risks-vs-benefits collapsing when non-change becomes the real risk, then a workflows-centered restructure unlocking a usable cost comparison; fast thinkers are willing to be wrong more often. Book frameworks are candidate starting points; the missing step is rewriting them after error. Quality of thinking becomes a controllable process, not an identity ("I'm bad at planning").
+
+### Footer
+canary: YT datePublished 2026-09-26T01:55:34-07:00 · fetched 2026-09-27T04:10:00Z · length 11:33 (PT11M33S / 693s flat) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright scrape_one.mjs; yt-dlp bot wall / LOGIN_REQUIRED) → /workspace/recap/tmp-0927-justin/transcript.txt (87 timed lines; ~2166 words) · newsletter CTA noted skipped · quotes from caption text · no ASR on box · no third-party transcript sites
+
+---
 
 ## Ingest · Elon interviews · 2026-09-27 · Full: Exclusive CMG interview with Tesla CEO Elon Musk
 url: https://www.youtube.com/watch?v=34-5wOGmCKc  ·  length: 26:03  ·  text: captions
@@ -314,54 +495,7 @@ In a ~26-minute CMG/CGTN sit-down at Tesla HQ, Elon praises Xi-era Chinese prosp
 ### Footer
 canary: YT upload_date 20260925 · oembed author CGTN · fetched 2026-09-27T04:08:00Z · length 26:03 (1563s android) · captions English auto via yt-dlp --extractor-args youtube:player_client=android → /workspace/recap/tmp/34-5wOGmCKc.en.vtt (~50.8 KiB) cleaned to continuous timed text · quotes from caption text (ASR name cleanup none needed beyond Cybercat→Cybercab where host misspeaks) · no ASR on box · no third-party transcript sites · first-party CGTN upload
 
-## Ingest · Justin Sung · 2026-09-27 · How To Think So Clearly People Assume You're Naturally Gifted
-url: https://www.youtube.com/watch?v=rQHA7EYq8sw  ·  length: 11:33  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Frame — thinking quality is process, not "try harder" (00:00)**
-- 00:00 · Justin · How well you think separates problem-solvers / fast learners; "think harder" is empty; frameworks from books help but are not enough.
-- 00:25 · Justin · As a cognitive performance coach, one underused skill produces more difference than other strategies: **hypothesize structure**.
-
-**What top performers do (00:49)**
-- 00:49 · Justin · Experts and top performers create organized structure; two experts may emphasize different points but both structure; people who struggle with complex decisions usually struggle to create structure.
-- 01:28 · Justin · Correctness of the first structure is not the point — the skill is actively organizing a complicated multi-point problem into hypothesized groups instead of chewing each point alone.
-
-**Why it works neuroscientifically (01:54)**
-- 01:54 · Justin · Three reasons it speeds thinking. (1) **Context**: brains love context; meaning = how a thing influences other things; without structure, life outside formal education is an unstructured mass — hours of mulling with no progress.
-- 03:09 · Justin · Even a wrong hypothesized structure gives focus so you can test whether that way of thinking is good.
-- 03:25 · Justin · (2) Wrong structure → **prediction error**, one of the brain's strongest growth signals.
-
-**Worked example — project software decision (03:41)**
-- 03:41 · Justin · Decision: change team project-management software; ~10 unstructured factors.
-- 04:12 · Justin · First hypothesis: **risks vs benefits** (permissions/security, training time, cost vs tracking, collaboration, workflows) — already easier; then regroup further.
-- 05:04 · Justin · Using the structure to decide often reveals failure: e.g. leaving workflows unchanged is itself the biggest risk; benefits flip into risks of inaction — risks-vs-benefits collapses.
-- 06:15 · Justin · Most people **stop** when the first structure fails. Fast thinkers treat failure as the point: learn why it was wrong (prediction error) and try another structure.
-- 06:55 · Justin · Fast effective thinkers are not necessarily faster — they are **willing to be wrong more often**, so they generate more prediction errors.
-- 07:11 · Justin · Second hypothesis: structure everything around **workflows** as the key bottleneck (recording/logging, project visibility → collaboration) → compare cost/time to fix in place vs on new platform.
-
-**Frameworks as starting points (08:16)**
-- 08:16 · Justin · Book/course frameworks help because they supply candidate structures; they are starting points; the missing step is changing the structure after learning from errors.
-- 08:44 · Justin · Newsletter CTA (Learning Drops, free 3–5 min) — skipped for argument; pitches teaching how he thinks so you can modify strategies when they fail.
-
-**Identity vs process (09:59)**
-- 09:59 · Justin · Quality of thinking becomes controllable process, not whether you "have good ideas"; stuck/slow/overwhelmed often gets mislabeled as identity ("I'm bad at planning") — usually wrong process.
-- 10:39 · Justin · When stuck: hypothesize more structures → more context + prediction errors → clearer thinking. Top performers do this automatically; most people don't.
-- 11:14 · Justin · Points to companion "think on paper" video as the complementary skill.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:41 Justin: "this skill is the ability to hypothesize structure"
-- 01:28 Justin: "It's not actually about whether the structure is correct or not."
-- 03:25 Justin: "if that structure is not correct, it creates something that we call a prediction error"
-- 06:55 Justin: "It's not necessarily that they are actually thinking faster. It's that they're willing to be wrong more frequently."
-- 08:32 Justin: "these structures are just a starting point for your thinking."
-- 10:32 Justin: "Most people are very capable of thinking clearly through uncertainties. They're just not using the right process."
-
-### One paragraph
-Justin argues clear thinking is less about collecting frameworks and more about one underused process: **hypothesize structure** — actively group a messy multi-factor problem so the brain gets context, then treat a failed structure as a **prediction error** (strong growth signal) rather than stopping. A software-switch example shows risks-vs-benefits collapsing when non-change becomes the real risk, then a workflows-centered restructure unlocking a usable cost comparison; fast thinkers are willing to be wrong more often. Book frameworks are candidate starting points; the missing step is rewriting them after error. Quality of thinking becomes a controllable process, not an identity ("I'm bad at planning").
-
-### Footer
-canary: YT datePublished 2026-09-26T01:55:34-07:00 · fetched 2026-09-27T04:10:00Z · length 11:33 (PT11M33S / 693s flat) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright scrape_one.mjs; yt-dlp bot wall / LOGIN_REQUIRED) → /workspace/recap/tmp-0927-justin/transcript.txt (87 timed lines; ~2166 words) · newsletter CTA noted skipped · quotes from caption text · no ASR on box · no third-party transcript sites
+---
 
 ## Recap · All-In · 2026-09-26 · Anthropic IPO at Risk, Meta's Muse Pop, Token Prices Fall, Open Source Gains Share, Alignment Fails
 url: https://www.youtube.com/watch?v=cvP_1jmnkmM + https://allinchamathjason.libsyn.com/anthropic-ipo-at-risk-metas-muse-pop-token-prices-fall-open-source-gains-share-alignment-fails  ·  length: 1:34:24  ·  text: captions
@@ -441,6 +575,8 @@ Episode **290** pivots from Summit afterglow (spontaneous Trump-on-Jensen call a
 ### Footer
 canary: published 2026-09-26T02:02:00Z (libsyn RSS) / YT uploadDate ~20260925 (watch page "Sep 25, 2026") · fetched 2026-09-26T04:16:00Z · length 1:34:24 (5664s) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright; yt-dlp timedtext HTTP 429 / bot wall) → /workspace/recap/tmp-0926-allin/transcript.txt (765 timed lines; ~17156 words) · chapters from libsyn/YT description used as section anchors · ASR name cleanup in body only (Chimoth/Shimoth→Chamath, Freedberg→Friedberg, Saxs/Sachs→Sacks, Calakanis→Calacanis, Daario/Daria→Dario, Enthropic→Anthropic, Quen→Qwen, Xiaomé→Xiaomi, Astro/Open AAI as spoken, claw→Claw/Claude context-dependent, INE/INER sponsor as captioned) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+---
+
 ## Ingest · Maxinomics · 2026-09-25 · How One Group Ruined Airbnb For Everyone
 url: https://www.youtube.com/watch?v=aIK8f8nX8xs  ·  length: 28:47  ·  text: captions
 
@@ -506,6 +642,62 @@ Maxinomics argues Airbnb's fee hide-and-seek and "live like a local" pitch are d
 ### Footer
 canary: YT datePublished 2026-09-25T16:09:25-07:00 · fetched 2026-09-26T04:16:00Z · length 28:47 (PT28M47S / 1727s flat) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright; yt-dlp bot wall / timedtext 429) → /workspace/recap/tmp-0926-max/transcript.txt (300 timed lines; ~6052 words) · Zapier MCP mid-roll noted skipped · ASR name cleanup in body only (Sapir→Zapier, Titans Stadium as captioned) · quotes from caption text · no ASR on box · no third-party transcript sites
 
+---
+
+## Ingest · Fern · 2026-09-23 · The Most Disgusting Influencer Campaign of 2026
+url: https://www.youtube.com/watch?v=WOOwVvYoq5I  ·  length: 20:49  ·  text: captions
+
+### Takeaways, arguments, claims (in order)
+
+**Cold open · fake Polymarket win videos (00:00)**
+- 00:04 · Fern · Mid-2025 social feed fills with small influencers placing huge weird Polymarket bets (Trump says "McDonald's"; Jesus returns before GTA 6) that almost never lose; shaky "infinite money glitch" clips feel off → Wall Street Journal investigation.
+- 00:45 · WSJ (Katherine Long) · Mystery had a "dumb" answer staring them in the face: organized campaign Fern frames as most disgustingly deceitful influencer campaign of recent times — laser-focused on tricking young people in the US; influencers big/small + insider-trading tips + shady clipper army on covert instructions.
+- 01:51 · Fern · Credits WSJ's Katherine Long + Politico's Maya Kaufman and Jason Beeferman; video mainly based on their investigations.
+
+**Origin · Polymarket rise / US ban / return campaign (02:06)**
+- 02:06 · Fern · Shane Copeland (captions: Copelan) launches Polymarket in NY in 2020 at age 22 as a "prediction market" (missile-strike timing, Trump/Rogan weed, flat-earth proofs); celebrity endorsements + Donald Trump Jr. investment; rival Kalshi (captions: Cali); 2025 Bloomberg: youngest self-made billionaire; valuation up to **$15B**.
+- 02:40 · Fern · Since **2022** site effectively banned in US (authorities: unlicensed financial exchange). Dec 2025: limited US sports-betting app approved; return paired with enormous social campaign to build trusted brand.
+- *(Shopify mid-roll ~03:00–05:00 skipped)*
+
+**Fake wins · pouyarket.com typo-squat (05:00)**
+- 05:00 · Fern · Mid-2025 political influencers call Polymarket "unbiased and real"; hundreds of videos show huge wins; WSJ cannot find the trades in public Polymarket records after a week of searching.
+- 06:30 · Fern / WSJ · Example: creator "wins" **$100k** on Trump saying McDonald's by cutting to an old Trump event with golden arches — bet would not have won if placed when filmed.
+- 07:40 · Fern / WSJ · Colleague spots creator navigating to **pouyarket.com** (password-protected); capitalize the **I** and it looks like polymarket.com (I≈L) — dummy site for filming fake wins that never hit the public database.
+- 08:50 · Fern / WSJ · Across **100+** fake-win videos, purported wins sum to almost **$900k**; identical real trades would have lost over **$160k** — not even a winning strategy.
+
+**Paid creators + clipper army / no disclosure (09:20)**
+- 09:20 · Fern / creators · Polymarket paid creators to film/post fake wins and **explicitly ordered them not to disclose** payment; content had to look authentic; pay **$2–3k/month** (far below purported on-platform earnings).
+- 10:00 · Fern · Hired marketing firm to run offshore "clippers" (sock-puppet accounts) to repost on TikTok/YouTube/Instagram; guidance: warm accounts, never put Polymarket in username or affiliation — "if you have Poly in your username you're going to be banned, we're not going to pay you."
+- 10:50 · Fern · Fake-bet clips viewed over **140 million** times (Tubular). US ad law / FTC: paid endorsements must disclose; many creators deleted/hid videos after outreach; Polymarket no comment to Fern on creator campaign; told WSJ it was committed to compliance (statement paraphrased in captions).
+
+**Politico thread · PayPal pipeline / Shirley / Ross (11:27)**
+- 11:27 · Politico · Poly Market executive sent **$350k** to influencers/creators via **personal PayPal**; same exec sent **$2.5M to 800+ people over 14 months** — posts often framed as news ("breaking" odds moves) without disclosing pay.
+- 12:10 · Fern · Nick Shirley posts Polymarket often while covering alleged US fraud; wore Polymarket-branded apparel; exec transferred him thousands; no comment from Shirley or Polymarket on influencer questions; spokesman to Politico: partnerships are "standard business practices" across political spectrum.
+- 13:20 · Fern · Aiden Ross (Kick/Twitch/YouTube) had multi-million-dollar deal per WSJ source; clipper army also promoted Ross clips about how easy insider trading / market manipulation would be (Trump meetings; Drake album features).
+- 14:20 · Fern · Rejects intuition that promoting insider tips hurts the house: on Polymarket winners are paid by other traders' stakes; platform earns **fees** — more volume, more revenue regardless of crazy odds. Company says it bans illegal insider tips yet leaders also pitch markets as truth that rewards non-public info.
+
+**Dumb money thesis / US targeting / aftermath (15:40)**
+- 15:40 · Fern · Endgame = "dumb money": young inexperienced long-odds bettors depicted in fake wins. Study cited: ~**85%** of Polymarket traders lose overall; only **~2%** have won more than **$1,000** total. More losers fund winners and fee growth; some users track bad accounts to fade them.
+- 17:00 · Fern · Clippers paid only if large share of audience is US-based (US SIM / phone-number tips) despite site ban — mid-2025 Polymarket pays over **$100M** for licensed US exchange/clearinghouse; Copeland: paves way to welcome US traders; fake-app versions of win videos appear too.
+- 18:00 · Fern · Aftermath: consumer-protection group sues citing the reporting (deceptive marketing; teens saw content); CFTC investigation ongoing; insider-trading questions reach the president; company still rising — partners Yahoo Finance / Dow Jones (WSJ owner, disclosed in WSJ reporting); Trump Jr. investor + adviser; FBI raided Copeland home **2024** (Biden term) over banned US users; older CFTC probe dropped within half-year of Trump return; administration more laissez-faire (captions: lazy fair) / encouraging.
+- 19:58 · Fern close · Once such a deceitful campaign might have forced a reckoning — now unclear. Reminder: ask why influencers post; here young trusting audiences set up to lose into a growth-at-all-costs machine; feeds a sense of **manufactured reality**.
+
+### Quotes (verbatim, ≤ 25 words each, 3–6)
+- 00:53 Long: "such a dumb answer, something that was really staring us in the face."
+- 08:20 Long: "That's why we couldn't find any of these trades in the database because they're all fake."
+- 09:40 Fern: "they were explicitly ordered to not show that they had been paid."
+- 11:29 Politico: "sent $350,000 to influencers and creators all through the exec's personal PayPal account"
+- 16:10 Fern: "around 85% of Poly Market traders lose money overall."
+- 20:40 Kaufman: "contributed to this idea that like we're living in sort of like a manufactured reality."
+
+### One paragraph
+Fern synthesizes WSJ + Politico reporting on Polymarket's mid-2025 US return campaign: creators filmed "wins" on a typo-squat **pouyarket.com** dummy that looks like polymarket.com, never placing public trades (**~$900k** purported wins that would have lost **~$160k** if real), while being paid **$2–3k/month** under orders not to disclose; a clipper sock-puppet army pushed the videos to **140M+** views and a company exec routed **$350k** (and **$2.5M** across **800+** people in 14 months) through personal PayPal to political influencers and streamers (Nick Shirley, Aiden Ross) without FTC-style disclosure. The commercial logic rejects house-risk fears — fee-driven prediction markets want volume and "dumb money" (cited **~85%** losers) especially US audiences despite the **2022** ban, timed with a **$100M+** licensed-exchange buy. Aftermath includes a consumer suit and ongoing CFTC work, yet political cover softens under Trump (probe dropped; Trump Jr. as investor/adviser) — Fern's close: a manufactured-reality feed where young trust is feedstock for growth.
+
+### Footer
+canary: YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 20:49 (1249s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-0924-fern/captions.en.vtt (~202KB) + cleaned plain /workspace/recap/tmp-0924-fern/transcript-plain.txt (~3799 words) · Shopify mid-roll noted skipped · ASR name cleanup in body only (Copelan→Copeland, Cali→Kalshi, Poly Market→Polymarket, Beefman→Beeferman, pouyarket kept as reported typo-squat) · quotes from caption text · no ASR on box · no third-party transcript sites
+
+---
+
 ## Recap · All-In · 2026-09-23 · Luca Ferrari, Bending Spoons CEO: The $40K Start, Buying Product-Market Fit & Beating Private Equity
 url: https://www.youtube.com/watch?v=6t5yF8ansoQ + https://allinchamathjason.libsyn.com/luca-ferrari-bending-spoons-ceo-the-40k-origin-story-buying-product-market-fit-why-private-equity-cant-compete  ·  length: 25:30  ·  text: captions
 
@@ -561,169 +753,4 @@ Bending Spoons CEO **Luca Ferrari** recounts turning a crashed 2010 AI startup's
 ### Footer
 canary: published 2026-09-23T23:00:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 25:30 (1530s) · captions English auto via official YouTube transcript panel on watch page (box browser / Playwright CDP; yt-dlp timedtext HTTP 429) → /workspace/recap/tmp-0924-luca/transcript.txt (214 timed lines; ~5000 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Benny's phones/Benny's films→Bending Spoons, Onessy→O'Shaughnessy, FDs→FTEs, Indep→indebtedness, Clara→clearly, air table→Airtable, bright→Bright) · quotes from caption text · no ASR on box · no third-party transcript sites
 
-## Ingest · Fern · 2026-09-23 · The Most Disgusting Influencer Campaign of 2026
-url: https://www.youtube.com/watch?v=WOOwVvYoq5I  ·  length: 20:49  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Cold open · fake Polymarket win videos (00:00)**
-- 00:04 · Fern · Mid-2025 social feed fills with small influencers placing huge weird Polymarket bets (Trump says "McDonald's"; Jesus returns before GTA 6) that almost never lose; shaky "infinite money glitch" clips feel off → Wall Street Journal investigation.
-- 00:45 · WSJ (Katherine Long) · Mystery had a "dumb" answer staring them in the face: organized campaign Fern frames as most disgustingly deceitful influencer campaign of recent times — laser-focused on tricking young people in the US; influencers big/small + insider-trading tips + shady clipper army on covert instructions.
-- 01:51 · Fern · Credits WSJ's Katherine Long + Politico's Maya Kaufman and Jason Beeferman; video mainly based on their investigations.
-
-**Origin · Polymarket rise / US ban / return campaign (02:06)**
-- 02:06 · Fern · Shane Copeland (captions: Copelan) launches Polymarket in NY in 2020 at age 22 as a "prediction market" (missile-strike timing, Trump/Rogan weed, flat-earth proofs); celebrity endorsements + Donald Trump Jr. investment; rival Kalshi (captions: Cali); 2025 Bloomberg: youngest self-made billionaire; valuation up to **$15B**.
-- 02:40 · Fern · Since **2022** site effectively banned in US (authorities: unlicensed financial exchange). Dec 2025: limited US sports-betting app approved; return paired with enormous social campaign to build trusted brand.
-- *(Shopify mid-roll ~03:00–05:00 skipped)*
-
-**Fake wins · pouyarket.com typo-squat (05:00)**
-- 05:00 · Fern · Mid-2025 political influencers call Polymarket "unbiased and real"; hundreds of videos show huge wins; WSJ cannot find the trades in public Polymarket records after a week of searching.
-- 06:30 · Fern / WSJ · Example: creator "wins" **$100k** on Trump saying McDonald's by cutting to an old Trump event with golden arches — bet would not have won if placed when filmed.
-- 07:40 · Fern / WSJ · Colleague spots creator navigating to **pouyarket.com** (password-protected); capitalize the **I** and it looks like polymarket.com (I≈L) — dummy site for filming fake wins that never hit the public database.
-- 08:50 · Fern / WSJ · Across **100+** fake-win videos, purported wins sum to almost **$900k**; identical real trades would have lost over **$160k** — not even a winning strategy.
-
-**Paid creators + clipper army / no disclosure (09:20)**
-- 09:20 · Fern / creators · Polymarket paid creators to film/post fake wins and **explicitly ordered them not to disclose** payment; content had to look authentic; pay **$2–3k/month** (far below purported on-platform earnings).
-- 10:00 · Fern · Hired marketing firm to run offshore "clippers" (sock-puppet accounts) to repost on TikTok/YouTube/Instagram; guidance: warm accounts, never put Polymarket in username or affiliation — "if you have Poly in your username you're going to be banned, we're not going to pay you."
-- 10:50 · Fern · Fake-bet clips viewed over **140 million** times (Tubular). US ad law / FTC: paid endorsements must disclose; many creators deleted/hid videos after outreach; Polymarket no comment to Fern on creator campaign; told WSJ it was committed to compliance (statement paraphrased in captions).
-
-**Politico thread · PayPal pipeline / Shirley / Ross (11:27)**
-- 11:27 · Politico · Poly Market executive sent **$350k** to influencers/creators via **personal PayPal**; same exec sent **$2.5M to 800+ people over 14 months** — posts often framed as news ("breaking" odds moves) without disclosing pay.
-- 12:10 · Fern · Nick Shirley posts Polymarket often while covering alleged US fraud; wore Polymarket-branded apparel; exec transferred him thousands; no comment from Shirley or Polymarket on influencer questions; spokesman to Politico: partnerships are "standard business practices" across political spectrum.
-- 13:20 · Fern · Aiden Ross (Kick/Twitch/YouTube) had multi-million-dollar deal per WSJ source; clipper army also promoted Ross clips about how easy insider trading / market manipulation would be (Trump meetings; Drake album features).
-- 14:20 · Fern · Rejects intuition that promoting insider tips hurts the house: on Polymarket winners are paid by other traders' stakes; platform earns **fees** — more volume, more revenue regardless of crazy odds. Company says it bans illegal insider tips yet leaders also pitch markets as truth that rewards non-public info.
-
-**Dumb money thesis / US targeting / aftermath (15:40)**
-- 15:40 · Fern · Endgame = "dumb money": young inexperienced long-odds bettors depicted in fake wins. Study cited: ~**85%** of Polymarket traders lose overall; only **~2%** have won more than **$1,000** total. More losers fund winners and fee growth; some users track bad accounts to fade them.
-- 17:00 · Fern · Clippers paid only if large share of audience is US-based (US SIM / phone-number tips) despite site ban — mid-2025 Polymarket pays over **$100M** for licensed US exchange/clearinghouse; Copeland: paves way to welcome US traders; fake-app versions of win videos appear too.
-- 18:00 · Fern · Aftermath: consumer-protection group sues citing the reporting (deceptive marketing; teens saw content); CFTC investigation ongoing; insider-trading questions reach the president; company still rising — partners Yahoo Finance / Dow Jones (WSJ owner, disclosed in WSJ reporting); Trump Jr. investor + adviser; FBI raided Copeland home **2024** (Biden term) over banned US users; older CFTC probe dropped within half-year of Trump return; administration more laissez-faire (captions: lazy fair) / encouraging.
-- 19:58 · Fern close · Once such a deceitful campaign might have forced a reckoning — now unclear. Reminder: ask why influencers post; here young trusting audiences set up to lose into a growth-at-all-costs machine; feeds a sense of **manufactured reality**.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:53 Long: "such a dumb answer, something that was really staring us in the face."
-- 08:20 Long: "That's why we couldn't find any of these trades in the database because they're all fake."
-- 09:40 Fern: "they were explicitly ordered to not show that they had been paid."
-- 11:29 Politico: "sent $350,000 to influencers and creators all through the exec's personal PayPal account"
-- 16:10 Fern: "around 85% of Poly Market traders lose money overall."
-- 20:40 Kaufman: "contributed to this idea that like we're living in sort of like a manufactured reality."
-
-### One paragraph
-Fern synthesizes WSJ + Politico reporting on Polymarket's mid-2025 US return campaign: creators filmed "wins" on a typo-squat **pouyarket.com** dummy that looks like polymarket.com, never placing public trades (**~$900k** purported wins that would have lost **~$160k** if real), while being paid **$2–3k/month** under orders not to disclose; a clipper sock-puppet army pushed the videos to **140M+** views and a company exec routed **$350k** (and **$2.5M** across **800+** people in 14 months) through personal PayPal to political influencers and streamers (Nick Shirley, Aiden Ross) without FTC-style disclosure. The commercial logic rejects house-risk fears — fee-driven prediction markets want volume and "dumb money" (cited **~85%** losers) especially US audiences despite the **2022** ban, timed with a **$100M+** licensed-exchange buy. Aftermath includes a consumer suit and ongoing CFTC work, yet political cover softens under Trump (probe dropped; Trump Jr. as investor/adviser) — Fern's close: a manufactured-reality feed where young trust is feedstock for growth.
-
-### Footer
-canary: YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 20:49 (1249s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-0924-fern/captions.en.vtt (~202KB) + cleaned plain /workspace/recap/tmp-0924-fern/transcript-plain.txt (~3799 words) · Shopify mid-roll noted skipped · ASR name cleanup in body only (Copelan→Copeland, Cali→Kalshi, Poly Market→Polymarket, Beefman→Beeferman, pouyarket kept as reported typo-squat) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-## Recap · All-In · 2026-09-23 · Steve Hilton & Spencer Pratt: Fixing California, Cheaper Gas, Ballot Fraud & CA Republicans
-url: https://www.youtube.com/watch?v=VF90rBzl26E + https://allinchamathjason.libsyn.com/steve-hilton-spencer-pratt-fixing-california-cheaper-gas-ballot-fraud-ca-republicans  ·  length: 55:43  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Steve Hilton joins the Besties! (00:00)**
-- 00:00 · Jason (intro) · Frames Steve Hilton as unusually positioned CA gubernatorial candidate: Republican + British immigrant; Silicon Valley tech-entrepreneur background; neighbor of Chamath.
-- 00:56 · Hilton · Campaign opener clip: "Wake up, California. We have seven weeks to save our state." Frames race as now-or-never with ~7 weeks to Election Day.
-- 01:29 · Hilton · CA thesis: biggest/richest state; "California means to America what America means to the world." Immigrant since 2012; state as essence of American innovation/ambition (entertainment, tech, leading ag).
-- 02:45 · Hilton · Despite advantages (weather, startups, universities), after **16 years of one-party Democratic control**: highest poverty, unemployment, and cost of living; housing cost highest; millions leaving; Chief Executive Magazine ranks CA **50th/50** for business climate for more than a decade.
-
-**How one-party rule broke the state, regulatory bloat & who really writes the laws (03:53)**
-- 03:59 · Chamath · Peace-and-love Democrats became "rule police" — rules on rules. How?
-- 04:23 · Hilton · One-party rule → insular self-regarding elite; Sacramento corrupted by donor/union/trial-lawyer power → worst litigation risk; **~90% chance** a CA business ends up in litigation.
-- 05:15 · Hilton · Full stack control: all 8 statewide offices, 2/3 legislature, every big county/city, state supreme court **6–1** Democrat-appointed. Last year legislature passed **1,118 bills** — printed stack ~twice his height; nobody (incl. Newsom) reads it; written for narrow interests.
-- 06:23 · Hilton · Announces today: cut CA regulations from **>420,000** to **under 200,000** by end of first term to match rest of country.
-- 07:16 · Hilton · "People versus the machine." Primary night: Hilton 25% + other R 10% = **35%** vs Dems **65%** (30-pt gap). Polls since: 25 → 18 → 14 → latest **8-pt gap**. Rejects "put up with it or leave" as un-American.
-- 09:36 · Hilton · Rock bottom already: traveled all **58 counties**; median house price nearly **$1M** vs median individual salary **$65k** (used to lead homeownership/affordability). Intensity this year: strangers say "you have to win"; lifelong Dems saying they'll vote Hilton; business owners threaten exit if November fails → exodus could become stampede.
-
-**The path to victory: the persuadable voter, the cost-of-living pitch & the case against Becerra (12:09)**
-- 12:16 · Jason · Polymarket ~**5%**; polls 8–20 pts behind; has ~89–90% of Republicans, ~30% independents, <10% Democrats; one debate Sep 30 vs Xavier Becerra — what's the plan?
-- 13:06 · Hilton · Internal path: **33%** solid Hilton, **41%** solid Becerra, **26%** up for grabs — mostly prior Dem voters open to persuasion; non-college working people at financial breaking point → cost-of-living agenda.
-- 14:02 · Hilton · Platform: cancel high-speed rail; **10%** government headcount cut + **5%** efficiency; stop funding homelessness nonprofits that make it worse → fund first **$150k** state-income-tax-free. Energy: use CA resources, kill hidden gas taxes (low-carbon fuel standard, "cap and invest") — claims ~**$1.50**/gal embedded; target ~**$3** gas vs ~**$6**. Cap vehicle registration at flat **$73**/yr by abolishing DMV (vs hundreds–$1k+ today).
-- 16:30 · Hilton · Case against Becerra: **36-year** career politician; cites Susan Rice calling him an "idiot" (and worse); Biden-cabinet peer: running a large executive agency "not exactly his skill set"; frames him as machine puppet worse than Newsom.
-- 18:45 · Sacks · Don't nationalize the race; focus on broken state. Peter Thiel's "resource curse": Silicon Valley wealth/taxes enable bad one-party government.
-- 19:56 · Hilton · Becerra on CNN waved "4th biggest economy" / Disneyland/beaches. GDP includes doubled government size over 10 years; **net private-sector job creation since pandemic ≈ zero**; Prop 40 threat to remaining tax base — "now or never."
-
-**Spencer Pratt joins: the message that cut through & the LA race that flipped (21:46)**
-- 21:58 · Pratt · Calls the "machine" a "corrupt criminal mafia cartel"; tax money laundered via NGOs while people die on sidewalks sold as compassion.
-- 22:48 · Jason · Asks about Pratt's earned-media / AI-generated campaign videos.
-- 23:13 · Pratt · Message > AI tool: truth about Palisades fire created grassroots; most voters for him were Democrats; would have beaten Nithya Raman/Bass if LA's **~200k registered Republicans** had voted. "Too big to rig" — beat cheating margins by turnout.
-- 25:19 · Pratt · Election-night narrative: leading by ~**10%** while Raman cried on camera; then 3rd-place Democrat "mathematically impossible" surge via mail ballots (~**43k** — same number as official downtown zombie/addict count). Clarifies: system designed so what looks like cheating is **legal** (witness can be smiley face/X; one witness for 43k ballots).
-
-**The city up close: the parks, small business & who the rules actually reward (26:58)**
-- 27:11 · Hilton · Langer's Deli / MacArthur Park mid-morning: crack pipes, fentanyl, dozens using in daylight; **four nonprofits daily** hand out pipes/needles (taxpayer-funded); Billy (US attorney) caught some sellers too.
-- 29:26 · Hilton · South Central shoe-store couple (14 yrs): taxes/permits/electric crushing them; sidewalks full of legalized street vendors selling same goods tax/rent/license-free after **2018 statewide street-vending legalization** — cities/counties can't stop it. Thesis: **do the right thing → punished; do the wrong thing → rewarded.**
-- 32:21 · Pratt · ~**50k** food vendors; city green-lit **$500k** for vendor carts while Palisades reservoir cover repair was **~$200k** and still undone — civic priorities inverted.
-- 33:56 · Hilton · Launched general campaign in Boyle Heights near warehouse fire (Bass out of town): **85M lbs** rotting meat left ~5 weeks; rats/medieval smell in working-class Latino neighborhood.
-- 34:49 · Pratt · Advice: Hilton wins on common sense, not as "Republican" brand; Trump leaves in 2 years — don't elect another entrenched Dem just to "fight the president."
-- 36:08 · Hilton · Leaving: publishing **10 new cities** plan; talent/energy still here if regulations/lawsuits/fees cut — needs a good governor.
-
-**Ballot harvesting, voter ID & whether the system is rigged or just legal (36:54)**
-- 37:29 · Pratt · Optimistic if people vote; later says "it's legal" ballot harvesting, not classic fraud — chain of custody breaks when ballots separated from envelopes so signatures can't be audited.
-- 38:43 · Friedberg/Jason · Push hard: voter fraud is prosecutable; Trump lost **60** election lawsuits; does Pratt allege fraud? Pratt: without evidence, no; but system design makes audit impossible; wants **voter ID**; DSA "soldiers" persistent multi-visit harvesting vs his legal door-knockers; empty parking lot downtown gets hundreds of mailed ballots; dead/moved voters stay on rolls.
-- 46:12 · Jason · For the record: if ID needed for planes (and even some markets), reasonable for voting.
-
-**The Palisades: the empty reservoirs, suing the state & what Spencer does next (47:13)**
-- 47:24 · Pratt · Reservoirs still empty; hose from Topanga through regrown dead brush supplies Palisades. Insurance dropped residents because of **60 years** dead fuels in state parks; cutting firebreak (~**300 yards**) would have cost **under $500k** to save billions; homeowners fined for cutting protected milk vetch; LADWP fined **$1M** for cutting dead brush around a downed pole.
-- 49:11 · Pratt · Mass-tort lawsuit (~**10k** victims) vs Newsom/state parks/city/LADWP: New Year's Eve 8-acre fire smoldered into known wind event; whistleblowers + deposition photos of smoking hillside; parks staff: "we're not firefighters."
-- 50:29 · Pratt · Ran for mayor to stop Bass; next: content fighting lies; flying to NY; joke/serious Skid Row → data-center idea (**retrain fentanyl addicts as electricians**, Meta program); three "plays" in motion; more threat off-ballot for next cycle.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:56 Hilton: "All right. Wake up, California. We have seven weeks to save our state."
-- 06:23 Hilton: "we're going to cut the number of regulations in California from where we are today, which is over 420,000"
-- 31:32 Hilton: "if you do the right thing, you're punished and if you do the wrong thing, you're rewarded."
-- 25:36 Pratt: "mathematically the most impossible thing in the history of politics happened."
-- 41:46 Pratt: "it's not fraud, Jason. It's that they're following the law that was created to"
-- 48:12 Pratt: "How much would this have cost to cut a whole fire break 300 yards around the palace?" / "under $500,000"
-
-### One paragraph
-All-In Summit California politics hour: Republican gubernatorial candidate **Steve Hilton** (Brit-immigrant / SV entrepreneur) argues 16 years of one-party Dem rule produced worst-in-nation poverty, unemployment, cost of living, and business climate (50th/50), driven by donor/union/trial-lawyer capture that piles **1,118** unread bills/year and **>420k** regulations — his pledge is cut regs under **200k**, cancel high-speed rail, shrink headcount, make first **$150k** state-income-tax-free, drive gas toward **$3** by killing hidden carbon taxes, and flatten vehicle registration at **$73** by abolishing the DMV. Path math: **26%** persuadable mostly working non-college prior Dems; polls closed from 30-pt primary gap to ~8; debate vs **Xavier Becerra** Sep 30; Thiel "resource curse" / near-zero post-pandemic private job creation undercuts "4th biggest economy" boosterism. **Spencer Pratt** joins on LA: Palisades fire + earned-media truth campaign; claims election-night lead flipped by legal mail/ballot-harvest design (not classic provable fraud); MacArthur Park taxpayer-funded harm-reduction NGOs and 2018 street-vending legalization punish compliant small business; still-empty reservoirs and <$500k unbuilt firebreaks motivate mass-tort + ongoing content war. Besties stress turnout/"too big to rig," voter ID, and common-sense framing over nationalized R/D branding.
-
-### Footer
-canary: published 2026-09-23T01:44:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-23T04:20:00Z · length 55:43 (3343s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-hilton/transcript.txt (457 timed lines; ~10182 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Helton→Hilton, Bisera/Basera/Bera/Javier Bera→Xavier Becerra, Nitia Ramen→Nithya Raman, fentinel→fentanyl, Langanger→Langer's, Prattton→Pratt, Kami→Kamala where clear) · quotes from caption text · no ASR on box · no third-party transcript sites
-
-## Recap · All-In · 2026-09-22 · Blake Scholl: Why Plane Speed Stalled, Supersonic Commercial Flight, & Revolutionizing the Engine
-url: https://www.youtube.com/watch?v=Gnb-CfNPcPE + https://allinchamathjason.libsyn.com/blake-scholl-why-plane-speed-stalled-supersonic-commercial-flight-revolutionizing-the-engine  ·  length: 17:39  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Welcome Blake Scholl! (00:00)**
-- 00:00 · Intro reel · Boom Supersonic CEO Blake Scholl: set to fly Mach 1.7; **130** airline orders claimed; Boeing hasn't launched a new airliner since **2004** — "David and Goliath, but Goliath is asleep."
-- 00:52 · Scholl · Stagnation claim: 1969 landed on moon + Concorde through sound barrier; half-century later can't do either. Political legacy of Concorde = US ban on overland supersonic. Boeing 707 (1957) → latest airliner is "literal carbon fiber copy"; interns born after Boeing's last new launch.
-- 01:39 · Scholl · Alternate timeline: Atlantic in **3.5 hours**; Sydney as accessible as Honolulu — business/culture/love implications.
-- 02:01 · Scholl · Origin: software/ads (Amazon, Groupon) + pilot's license; 2015 pitched Bezos on Boom seed — Bezos passed; 2015 Amazon shareholder letter said no garage startup builds all-composite airliner you'd want to fly — Scholl took it personally. Early pitch-deck mockup: cardboard/plywood/Office Depot seats.
-- 02:59 · Scholl · Last year Boom became **first private company** to build a supersonic jet — ~**50** people vs thousands at big cos. First supersonic Starlink install; iPhone video streamed; classrooms tuned in (future chief engineers).
-- 04:37 · Scholl · **2025**: XB-1 first privately developed jet to break sound barrier — and demonstrated **boomless** supersonic.
-
-**Solving the sonic boom & legalizing supersonic flight (05:11)**
-- 05:06 · Scholl · "Boomless cruise": uses atmospheric refraction to redirect sonic boom upward (Mach cutoff) — if no boom on ground, ban has no object. Spoke to president after flight; agreed no boom → no ban. **1973** ban ended by EO **June 6 last year**.
-- 05:51 · Scholl · EO reversible → pushed Congress; Supersonic Legalization Act passed House **unanimously**; cleared Senate committee unanimously; wants full Senate unanimous. Not full speed ahead yet.
-
-**The pivot to powering data centers (07:59)**
-- 06:26 · Scholl · Near-death: outsourced engine to legacy OEM — public breakup with Rolls-Royce; declared dead. Decision: build own engine from scratch with digital design + digital manufacturing, including turbine blades in-house.
-- 07:35 · Scholl · Re-industrialization thesis: invent next-gen manufacturing here and build new products — don't just reshore what China took. First vertically integrated jet-engine core assembling now; **test stand next month**.
-- 08:08 · Scholl · Twist: owning the engine (what "killed" them) makes the startup financially valuable. Same hot Mach-1.7 core, fan off / generator on → **behind-the-meter data-center power**: **42 MW** in a couple trailers; designed to run hot → **no water** (kills water objection).
-- 09:02 · Scholl · Undisclosed-location "world's most advanced jet turbine factory"; opposite of legacy RONA/outsource — raw materials → blades/vanes → assembly → own test stand. First parts **last week**; scale to multiple GW/year; aim **+10+ GW to the grid over next 5 years**.
-- 09:53 · Scholl · Passenger payoff: twice as fast over water, **~50% faster** over land boomless, on most-tested new jet engine (proven on ground first). Success not guaranteed; American aviation leadership.
-
-**Jason joins: data center demand, private jets & what winning looks like (10:38)**
-- 10:40 · Jason · When / how much to fly?
-- 10:46 · Scholl · Concorde was 0/3 on safe-comfortable-affordable; Boom aims 3/3. Round-trip Atlantic Mach 1.7 ~**3 hours**; **break-even fare ~$3,500** round-trip (airlines price above). Goal **~4 years** (~2030 give-or-take); prefers fast over predictable dates.
-- 12:03 · Scholl · Overland: boomless cruise / Mach cutoff to ~**Mach 1.3** (~50% faster than today) — e.g. leave NYC 9am → SFO ~9:30am local; full Mach over water where no one hears boom.
-- 13:05 · Jason · Data-center product — customers? money printer?
-- 13:16 · Scholl · "Incredible money printing"; **tens of gigawatts** of demand in inbox; auction first engine after next-month run. Elon/Colossus interest: "ask Elon" (Jason hears yes).
-- 13:46 · Naming · Company Boom / airplane Overture; hopes private-jet OEMs build SSBJ — else Boom might.
-- 14:37 · Scholl · Win condition: kids baffled that crossing the country once took **6 hours** — from Air Force One to commercial every class; many airplane generations.
-- 16:00 · Jason · This admin vs last on regulation speed?
-- 16:36 · Scholl · Supersonic not partisan (unanimous votes). Broke barrier Monday → tweet → Elon RT → flew DC that night → West Wing invite Tuesday → model in Oval by Thursday (still there) → EO in **115 days** (felt slow to him; faster than prior admin).
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 01:28 Scholl: "By the way, we have interns born after the last time Boeing launched a new airplane in 2004."
-- 05:31 Scholl: "he agreed if there's no sonic boom there should be no ban on supersonic flight."
-- 08:34 Scholl: "our first application of our engine isn't in the sky. It's actually on the ground for data centers."
-- 11:01 Scholl: "Round trip across the Atlantic at Mach 1.7, 3 hours, and the break even fair is about $3,500."
-- 13:16 Scholl: "I've never seen demand like this for anything else in my life."
-- 16:52 Scholl: "By the time I landed, I had an invitation to the West Wing."
-
-### One paragraph
-Boom Supersonic CEO **Blake Scholl** (ex-Amazon/Groupon software) argues passenger flight stalled after Concorde and Boeing's last clean-sheet (**2004**), then shows XB-1 as first private jet to break the barrier **boomlessly** via atmospheric Mach-cutoff ("boomless cruise"), unlocking an EO ending the **1973** overland ban (June 6 last year) and a House-unanimous Supersonic Legalization Act still finishing the Senate. Near-death Rolls-Royce engine divorce forced vertical engine design/manufacture — now the economic core: same hot Mach-1.7 turbine as **42 MW** water-free behind-the-meter data-center gensets, with a new US turbine factory aiming **10+ GW** onto the grid in 5 years and tens-of-GW inbound demand (auction after next-month first run). Passenger path: ~**$3,500** Atlantic RT break-even at Mach 1.7 / ~3 hours, ~4-year (≈2030) goal, ~Mach 1.3 boomless overland (NYC→SFO morning), win when kids can't imagine a 6-hour coast-to-coast.
-
-### Footer
-canary: published 2026-09-22T09:00:00Z (libsyn RSS) / YT uploadDate 20260922 · fetched 2026-09-23T04:20:00Z · length 17:39 (1059s) · captions English auto via official YouTube transcript panel on watch page (box browser; yt-dlp/curl timedtext HTTP 429) → /workspace/recap/tmp-0923-scholl/transcript.txt (150 timed lines; ~3078 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Lake Shaw→Blake Scholl, Boone→Boom, Concord→Concorde, mock cutoff→Mach cutoff, veins→vanes, fair→fare in paraphrase) · quotes from caption text · no ASR on box · no third-party transcript sites
-
+---
