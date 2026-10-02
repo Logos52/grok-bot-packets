@@ -1,0 +1,10 @@
+## Arguments · Asmongold · 2026-10-01 · They tried to do another 9/11..
+url: https://www.youtube.com/watch?v=0ulfKoH0APg  ·  length: 0:19  ·  text: captions
+### Arguments
+- 00:30 · **Claim:** The FlyDubai Dubai→Tel Aviv incident was an attempted terror hijack, not a random cockpit "brawl." **Support:** Reports of Omani co-pilot stabbing Indian captain, nose-dive / building-crash intent claims, passenger pilots forcing entry after wounded captain opened door; plane dropped tens of thousands of feet before Saudi diversion. **Rejects:** MSM "violent altercation between two pilots" soft language as honest description.
+- 06:00 · **Claim:** Legacy media whitewashes terrorism with euphemism — distinct from ordinary left-wing labor politics. **Support:** Side-by-side CNN/WSJ-style "brawl"/"struggle" headlines vs stabbing-hijack facts; calls it "terrorist obfuscation," not union-leftism. **Rejects:** Treating downplay as neutral caution while facts are still fluid.
+- 17:40 · **Claim:** Civilization now splits destroyers vs conservers across nationality/religion — shared trait is hatred of the West. **Support:** Groups cartels, Antifa, European non-assimilating rioters, Iran proxies as one enemy class; FlyDubai as destroyer exemplar; "they're not all Muslims… They all collectively hate the West." **Rejects:** Narrow identity monocausalism; blackpill that nothing can be reined in worldwide.
+### Takeaway
+Asmongold treats the FlyDubai cockpit stabbing as a near-9/11 stopped by passengers and argues media "pilot brawl" framing is civilizational whitewash for people who hate the West.
+### Footer
+canary: published 2026-10-01 (upload_date 20261001; 2026-10-01 ICT calendar) · fetched ~2026-10-02T04:05:00Z (2026-10-02 12:05 ICT / noon Taipei ingest) · text: YouTube English auto captions via yt-dlp --write-auto-sub (VTT) · section times estimated from structure / length 19:46 / 1186s (header 0:19) · ASR: FlyDubai; Tel Aviv; Omani co-pilot; Indian captain; Saudi landing · reaction clips + Asmon commentary mixed

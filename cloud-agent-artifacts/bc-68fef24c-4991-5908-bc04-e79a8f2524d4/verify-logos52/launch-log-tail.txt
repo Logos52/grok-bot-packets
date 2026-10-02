@@ -1,0 +1,40 @@
+> node scripts/copy-public-notes.mjs
+
+copy-public-notes: 479 public notes copied → src/content/notes/ (815 .md scanned, 324 denied, 12 drafts skipped).
+copy-public-notes: 7 images mirrored into the collection.
+
+> llm-knowledge-base-site@5.0.0 copy-assets
+> node scripts/copy-assets.mjs
+
+
+> llm-knowledge-base-site@5.0.0 sync:tsumugu
+> node scripts/sync-tsumugu-status.mjs
+
+sync-tsumugu-status: source not found at /tsumugu-ed/project-status.html — keeping committed copy (CI/no-op).
+
+> llm-knowledge-base-site@5.0.0 dev
+> astro dev --host 0.0.0.0 --port 4321
+
+[astro] `markdown.remarkPlugins`, `markdown.rehypePlugins`, and `markdown.remarkRehype` are deprecated. Pass them to `unified({...})` from `@astrojs/markdown-remark` directly instead.
+[vite] connected.
+01:28:19 [types] Generated 1ms
+[vite] connected.
+
+ update  ▶ New version of Astro available: 7.3.5
+  Run npx @astrojs/upgrade to update
+
+01:28:19 [content] Syncing content
+01:28:32 [content] Synced content
+01:28:32 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v6.4.8 ready in 14251 ms
+┃ Local    http://localhost:4321/
+┃ Network  http://172.30.0.2:4321/
+01:28:32 watching for file changes...
+01:28:35 [200] / 1067ms
+01:28:35 [200] / 14ms
+01:28:43 [200] / 26ms
+01:28:43 [200] / 16ms
+01:28:43 [200] /notes/ 18ms
+01:28:58 [200] / 27ms
+01:28:58 [200] / 16ms
+01:28:58 [200] /notes/ 3ms

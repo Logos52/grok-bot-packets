@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive Japanese Hiragana quiz — practice Kana to Romaji and Romaji to Kana with multiple choice or typing modes." />
+  <title>🎌 Japanese Kana Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── SCREEN: MODE SELECT ── -->
+    <div id="screen-mode" class="screen active">
+      <div class="splash-header">
+        <div class="splash-flag">🎌</div>
+        <h1 class="splash-title">Kana Quiz</h1>
+        <p class="splash-subtitle">Master Japanese Hiragana & Katakana</p>
+      </div>
+      <div class="card">
+        <!-- 1. Script Selector -->
+        <div class="card-section">
+          <div class="card-label">1. WRITING SYSTEM</div>
+          <p class="card-hint">Choose your script</p>
+          <div class="segmented-control" id="script-options">
+            <button class="seg-btn selected" id="script-hiragana" data-value="hiragana">
+              <span class="seg-icon">あ</span>
+              <span class="seg-title">Hiragana</span>
+            </button>
+            <button class="seg-btn" id="script-katakana" data-value="katakana">
+              <span class="seg-icon">ア</span>
+              <span class="seg-title">Katakana</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- 2. Sound Sets -->
+        <div class="card-section">
+          <div class="sound-set-header">
+            <div>
+              <div class="card-label">2. SOUND SETS</div>
+              <p class="card-hint">Pick which categories to practice</p>
+            </div>
+            <div class="sound-set-toolbar">
+              <button class="btn-chip" id="btn-sets-all">All</button>
+              <button class="btn-chip" id="btn-sets-none">None</button>
+            </div>
+          </div>
+          <div class="sound-set-list" id="sound-sets">
+            <button class="sound-set-btn" id="set-main" data-category="main">
+              <span class="sound-set-check"></span>
+              <div class="sound-set-body">
+                <span class="sound-set-name">Main Kana (清音)</span>
+                <span class="sound-set-desc">46 basic sounds (A-O through Wa/Wo/N)</span>
+              </div>
+            </button>
+            <button class="sound-set-btn" id="set-diacritical" data-category="diacritical">
+              <span class="sound-set-check"></span>
+              <div class="sound-set-body">
+                <span class="sound-set-name">Diacritical Marks (濁音・半濁音)</span>
+                <span class="sound-set-desc">25 voiced sounds (Ga, Za, Da, Ba, Pa)</span>
+              </div>
+            </button>
+            <button class="sound-set-btn" id="set-contracted" data-category="contracted">
+              <span class="sound-set-check"></span>
+              <div class="sound-set-body">
+                <span class="sound-set-name">Contracted Sounds (拗音)</span>
+                <span class="sound-set-desc">33 combination sounds (Kya, Sha, Cha...)</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- 3. Quiz Direction -->
+        <div class="card-section">
+          <div class="card-label">3. QUIZ DIRECTION</div>
+          <p class="card-hint">Choose your question direction</p>
+          <div class="option-list" id="mode-options">
+            <button class="option-btn selected" id="mode-kana-to-roma" data-value="kana-to-roma">
+              <span class="option-icon" id="mode-icon-kana">あ</span>
+              <span class="option-body">
+                <span class="option-title" id="mode-title-kana-to-roma">Hiragana → Romaji</span>
+                <span class="option-desc">See kana character, type its romaji</span>
+              </span>
+            </button>
+            <button class="option-btn" id="mode-roma-to-kana" data-value="roma-to-kana">
+              <span class="option-icon">A</span>
+              <span class="option-body">
+                <span class="option-title" id="mode-title-roma-to-kana">Romaji → Hiragana</span>
+                <span class="option-desc">See romaji, find matching kana</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div id="answer-style-section" class="hidden">
+          <div class="divider"></div>
+          <p class="card-hint">How do you want to answer?</p>
+          <div class="option-list" id="style-options">
+            <button class="option-btn selected" id="style-choice" data-value="choice">
+              <span class="option-icon">🎯</span>
+              <span class="option-body">
+                <span class="option-title">Multiple Choice</span>
+                <span class="option-desc">Pick from A / B / C / D options</span>
+              </span>
+            </button>
+            <button class="option-btn" id="style-type" data-value="type">
+              <span class="option-icon">⌨️</span>
+              <span class="option-body">
+                <span class="option-title">Type Answer</span>
+                <span class="option-desc" id="style-type-desc">Type the kana character</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <button class="btn-primary" id="btn-mode-next">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: GROUP SELECT ── -->
+    <div id="screen-groups" class="screen">
+      <div class="screen-header">
+        <div class="screen-header-left">
+          <button class="btn-back" id="btn-groups-back">← Back</button>
+          <h2>Select Groups</h2>
+        </div>
+        <div id="groups-summary" class="badge-info">0 groups · 0 kana</div>
+      </div>
+      <div class="group-toolbar">
+        <button class="btn-chip" id="btn-select-all">Select All</button>
+        <button class="btn-chip" id="btn-clear-all">Clear All</button>
+      </div>
+      <div class="group-grid" id="group-grid"></div>
+      <div class="screen-footer">
+        <button class="btn-primary" id="btn-groups-next" disabled>Preview →</button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: PREVIEW ── -->
+    <div id="screen-preview" class="screen">
+      <div class="screen-header">
+        <div class="screen-header-left">
+          <button class="btn-back" id="btn-preview-back">← Back</button>
+          <h2>Session Preview</h2>
+        </div>
+        <div id="preview-count" class="badge-info"></div>
+      </div>
+      <div class="count-row">
+        <label class="count-label">Questions per round:</label>
+        <div class="count-ctrl">
+          <button class="btn-count" id="btn-count-dec">−</button>
+          <span class="count-display" id="q-count-display">30</span>
+          <button class="btn-count" id="btn-count-inc">+</button>
+        </div>
+      </div>
+      <div class="kana-flex" id="kana-preview-flex"></div>
+      <div class="screen-footer">
+        <button class="btn-primary" id="btn-start-quiz">Start Quiz →</button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN: QUESTION ── -->
+    <div id="screen-question" class="screen">
+      <div class="quiz-top-bar">
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+        <div class="quiz-top-row">
+          <button class="btn-quiz-exit" id="btn-quiz-exit" type="button" title="Exit Quiz">
+            <span class="btn-quiz-exit-icon">←</span> Exit
+          </button>
+          <div class="quiz-stats">
+            <span class="stat-pill pill-counter" id="q-counter">Q 1/30</span>
+            <span class="stat-pill pill-score" id="q-score">✓ 0</span>
+            <span class="stat-pill pill-streak" id="q-streak">🔥 0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="question-area">
+        <p class="question-label" id="question-label">What is the Romaji for:</p>
+        <div class="hero-char-wrap" id="hero-char-wrap">
+          <div class="hero-char" id="hero-char">あ</div>
+          <div class="hero-correct-reveal hidden" id="hero-correct-reveal"></div>
+        </div>
+        <div class="hero-sub" id="hero-sub"></div>
+      </div>
+
+      <div id="choice-area" class="choice-grid hidden">
+        <button class="choice-btn" id="choice-A" data-label="A"><span class="choice-key">A</span><span class="choice-char" id="ca"></span></button>
+        <button class="choice-btn" id="choice-B" data-label="B"><span class="choice-key">B</span><span class="choice-char" id="cb"></span></button>
+        <button class="choice-btn" id="choice-C" data-label="C"><span class="choice-key">C</span><span class="choice-char" id="cc"></span></button>
+        <button class="choice-btn" id="choice-D" data-label="D"><span class="choice-key">D</span><span class="choice-char" id="cd"></span></button>
+      </div>
+
+      <div id="type-area" class="type-area hidden">
+        <div class="type-input-wrap">
+          <input type="text" id="type-input" class="type-input" placeholder="Type your answer…" autocomplete="off" autocorrect="off" spellcheck="false" />
+          <button class="btn-submit" id="btn-type-submit">Submit</button>
+        </div>
+        <div class="type-feedback hidden" id="type-feedback"></div>
+      </div>
+
+      <div class="wrong-log-panel hidden" id="wrong-log-panel">
+        <button class="wrong-log-toggle" id="wrong-log-toggle" type="button">
+          <span id="wrong-log-toggle-label">❌ Mistakes <span id="wrong-log-count" class="wrong-log-count-badge">0</span></span>
+          <span class="wrong-log-chevron" id="wrong-log-chevron">▾</span>
+        </button>
+        <div class="wrong-log" id="wrong-log"></div>
+      </div>
+
+      <p class="question-hint" id="question-hint">Press A / B / C / D or click to answer</p>
+    </div>
+
+    <!-- ── SCREEN: ROUND SUMMARY ── -->
+    <div id="screen-summary" class="screen">
+      <div class="summary-hero">
+        <div class="summary-rank-icon" id="summary-rank-icon">🏆</div>
+        <div class="summary-grade" id="summary-grade">SS</div>
+        <div class="summary-grade-label" id="summary-grade-label">MASTER</div>
+      </div>
+      <div class="summary-stats-row">
+        <div class="stat-card">
+          <div class="stat-card-val" id="sum-score">—</div>
+          <div class="stat-card-lbl">Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-val" id="sum-accuracy">—</div>
+          <div class="stat-card-lbl">Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-val" id="sum-streak">—</div>
+          <div class="stat-card-lbl">Best Streak</div>
+        </div>
+      </div>
+      <div class="accuracy-bar-wrap">
+        <div class="accuracy-bar-fill" id="accuracy-bar-fill"></div>
+      </div>
+      <div id="mistakes-section" class="mistakes-section hidden">
+        <h3 class="mistakes-title">Missed Characters</h3>
+        <div class="mistakes-grid" id="mistakes-grid"></div>
+      </div>
+      <div class="summary-actions">
+        <button class="btn-primary" id="btn-again">Practice Again</button>
+        <button class="btn-secondary" id="btn-change-groups">Change Groups</button>
+        <button class="btn-ghost" id="btn-change-mode">Change Mode</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── KANA MODAL ── -->
+  <div id="kana-modal" class="kana-modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="kana-modal-card">
+      <button class="kana-modal-close" id="kana-modal-close" aria-label="Close">✕</button>
+      <div class="kana-modal-char" id="kana-modal-char">あ</div>
+      <div class="kana-modal-roma" id="kana-modal-roma">a</div>
+      <div class="kana-modal-label"></div>
+    </div>
+  </div>
+
+  <!-- ── EXIT CONFIRM MODAL ── -->
+  <div id="exit-modal" class="kana-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
+    <div class="exit-modal-card">
+      <div class="exit-modal-icon">⚠️</div>
+      <h3 id="exit-modal-title" class="exit-modal-title">Quit Quiz?</h3>
+      <p class="exit-modal-desc">Are you sure you want to exit? Your current session progress will be lost.</p>
+      <div class="exit-modal-actions">
+        <button class="btn-primary" id="btn-exit-cancel" type="button">Keep Playing</button>
+        <button class="btn-danger-outline" id="btn-exit-confirm" type="button">Exit to Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GO TO TOP BUTTON ── -->
+  <button id="btn-scroll-top" class="btn-scroll-top" aria-label="Go to top" title="Go to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

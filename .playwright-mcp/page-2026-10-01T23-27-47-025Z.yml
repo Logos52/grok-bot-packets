@@ -1,0 +1,61 @@
+- generic [ref=f9e2]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - button "Grok" [ref=f9e3] [cursor=pointer]
+          - button "Chat" [ref=f9e7] [cursor=pointer]
+      - generic [ref=f9e11]:
+        - banner [ref=f9e12]:
+          - generic [ref=f9e14]:
+            - generic [ref=f9e15]:
+              - heading [level=1] [ref=f9e17] [cursor=pointer]:
+                - link "X" [ref=f9e18]:
+                  - /url: /home
+              - navigation "Primary" [ref=f9e24]:
+                - link "Home" [ref=f9e25] [cursor=pointer]:
+                  - /url: /home
+                - link "Search and explore" [ref=f9e32] [cursor=pointer]:
+                  - /url: /explore
+                  - generic [ref=f9e33]: Explore
+                - link "Notifications" [ref=f9e39] [cursor=pointer]:
+                  - /url: /notifications
+                - link "Direct Messages" [ref=f9e46] [cursor=pointer]:
+                  - /url: /i/chat
+                  - generic [ref=f9e47]: Chat
+                - link "Grok" [ref=f9e53] [cursor=pointer]:
+                  - /url: /i/grok
+                - link "History" [ref=f9e60] [cursor=pointer]:
+                  - /url: /i/history
+                - link "Profile" [ref=f9e67] [cursor=pointer]:
+                  - /url: /webigis
+                - button "More menu items" [ref=f9e74] [cursor=pointer]:
+                  - generic [ref=f9e75]: More
+              - link "Post" [ref=f9e82] [cursor=pointer]:
+                - /url: /compose/post
+            - button "Account menu" [ref=f9e91] [cursor=pointer]:
+              - generic [ref=f9e103]:
+                - generic [ref=f9e105]:
+                  - generic [ref=f9e106]: Wedge
+                  - img "Verified account" [ref=f9e110]
+                - generic [ref=f9e113]: "@webigis"
+        - main [ref=f9e121]:
+          - generic "Home timeline" [ref=f9e126]:
+            - generic [ref=f9e128]:
+              - generic [ref=f9e133]:
+                - button "Back" [ref=f9e135] [cursor=pointer]
+                - progressbar [ref=f9e143]
+                - button "More" [ref=f9e149] [cursor=pointer]
+              - navigation [ref=f9e155]:
+                - generic [ref=f9e156]:
+                  - generic:
+                    - button "Previous" [disabled]
+                  - tablist [ref=f9e158]:
+                    - tab "Top" [ref=f9e159] [cursor=pointer]
+                    - tab "Latest" [selected] [ref=f9e163] [cursor=pointer]
+                    - tab "People" [ref=f9e168] [cursor=pointer]
+                    - tab "Media" [ref=f9e172] [cursor=pointer]
+                    - tab "Lists" [ref=f9e176] [cursor=pointer]
+                  - generic:
+                    - button "Next" [disabled]
+            - progressbar "Loading timeline" [ref=f9e182]

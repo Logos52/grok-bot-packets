@@ -1,0 +1,61 @@
+LOGOS52 WIKI VERIFICATION - CONCISE CHECKLIST
+============================================
+
+1. HOME / START HERE: ✓ PASS
+   URL: http://localhost:4321/
+   Heading: "LLM Knowledge Base"
+   Nav highlight: (none on home)
+   Door count: 5 ✓
+   Door intents: Understand, Apply, Learn, Decode, Explore ✓
+   Explore → /map/: "The vault", nav=Map ✓
+
+2. WIKI INDEX: ✓ PASS
+   URL: http://localhost:4321/notes/
+   Heading sections: Condensed, Hubs ✓
+   Nav highlight: Notes ✓
+   Learning, Condensed:
+     - h1: "Learning, Condensed"
+     - Type pill: "CONDENSED"
+     - Dek: YES
+
+3. WIKI PAGE: ✓ PASS
+   Understand door → The AI Industrial Revolution
+   URL: http://localhost:4321/wiki/Concepts/The-AI-Industrial-Revolution/
+   Heading: "The AI Industrial Revolution"
+   Nav highlight: (none/default)
+   Type pill: "CONCEPT"
+   Dek: YES
+   First crumb text: "WIKI"
+   First crumb href: "/wiki/"
+   Prose link → Agentic Engineering, Condensed
+   New URL: .../Agentic-Engineering,-Condensed/
+   New h1: "Agentic Engineering, Condensed"
+
+4. SEARCH: ✓ PASS
+   Query: "Vibe Coding"
+   First result title: "Vibe Coding"
+   First result domain chip: "AGENTIC"
+   Landed URL: .../Vibe-Coding/
+   Landed h1: "Vibe Coding"
+   Search index: Loaded (no delay)
+
+5. MAP: ✓ PASS
+   Map page:
+     URL: http://localhost:4321/map/
+     Heading: "The vault"
+     Nav highlight: Map ✓
+     Canvas: YES ✓
+   Learning domain:
+     URL: http://localhost:4321/domains/learning/
+     Heading: "Learning"
+     Nav highlight: Notes (expected) ✓
+     ul.moc: YES (list of entries)
+   Graph page:
+     URL: http://localhost:4321/graph/
+     Heading: "Vault graph"
+     Nav highlight: Notes ✓
+
+OVERALL: ALL FEATURES PASS ✓✓✓✓✓
+
+Mismatches vs expectations: NONE
+All quoted values verified as shown above.

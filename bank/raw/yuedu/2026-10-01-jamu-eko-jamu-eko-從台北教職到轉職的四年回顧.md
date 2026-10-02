@@ -1,0 +1,15 @@
+---
+id: 2026-10-01-jamu-eko-jamu-eko-從台北教職到轉職的四年回顧
+kind: thread
+title: "@jamu_eko 從台北教職到轉職的四年回顧"
+source: "https://x.com/jamu_eko/status/2104634534558150996"
+author: jamu_eko
+published: 2026-09-29
+captured: 2026-10-01
+via: grok-bot/Yuedu
+lane: yuedu
+status: raw
+private: false
+---
+
+4年了。剛從台北回到家鄉的徬徨、誤打誤撞初入教職的緊張、創作擺攤的奔波、到習慣新學校、離開教職轉換跑道—難以入眠的夜、看著螢幕大哭、用照片和文字紀錄快樂的瞬間，每一刻都是你陪我度過的。謝謝你，回頭看才發現我們一起經歷了很多呢！

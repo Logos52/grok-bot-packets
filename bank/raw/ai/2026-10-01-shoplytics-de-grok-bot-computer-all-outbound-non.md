@@ -1,0 +1,102 @@
+---
+id: 2026-10-01-shoplytics-de-grok-bot-computer-all-outbound-non
+kind: article
+title: "Grok Bot computer: all outbound non-HTTPS traffic blocked since Oct 1 (MySQL, SSH, IMAP/SMTP, FTP time out)"
+source: "https://forum.cursor.com/t/grok-bot-computer-all-outbound-non-https-traffic-blocked-since-oct-1-mysql-ssh-imap-smtp-ftp-time-out/173504"
+author: shoplytics.de
+published: 2026-10-01
+captured: 2026-10-01
+via: grok-bot/Field
+lane: ai
+status: raw
+private: false
+---
+
+# Grok Bot computer: all outbound non-HTTPS traffic blocked since Oct 1 (MySQL, SSH, IMAP/SMTP, FTP time out)
+url: https://forum.cursor.com/t/grok-bot-computer-all-outbound-non-https-traffic-blocked-since-oct-1-mysql-ssh-imap-smtp-ftp-time-out/173504
+created: 2026-10-01T14:17:31.442Z  last: 2026-10-01T20:03:14.093Z  posts: 3  tags: ['grok-bot', 'networking']
+
+## @shoplytics.de 2026-10-01T14:17:31.509Z
+Describe the Bug
+Titel: Grok Bot computer: all outbound non-HTTPS traffic blocked since Oct 1 (MySQL, SSH, IMAP/SMTP, FTP time out)
+
+Since October 1, 2026, around 11:37 CEST, right after a computer restart, my Grok Bot computer can only reach the internet over HTTPS. Every other outbound TCP connection times out. Nothing changed on my side.
+
+What I see from the computer’s terminal:
+
+HTTPS on 443: works
+Plain HTTP on 80: timeout
+MySQL on 3306 (my own server): timeout
+IMAP 993 and SMTP 465: timeout
+FTP 21 and FTPS 990: timeout
+SSH on 22, github[.]com included: timeout
+Raw TCP on 443 that isn’t TLS/HTTPS (ssh[.]github[.]com:443): no answer either
+
+So it looks like all egress now goes through a proxy that only passes HTTPS.
+
+Already tried:
+
+The computer is on the latest version.
+“Route traffic through this computer” was on and showed 0 routed. Turning it off made no difference. As far as I understand from another thread here, it only covers the browser anyway.
+
+Why I think this is a bug: According to the Grok Bot security docs, network restrictions are Enterprise-only, and computers without a policy default to allow-all, including raw connections to IPs and ports. I’m on Ultra and have never set a policy.
+
+Impact: My bots can’t reach my database, mail server, FTP or SSH anymore. I’ve worked around part of it with HTTPS endpoints on my server, but that’s not a real fix.
+
+Questions to the team:
+
+Was this an intentional change? If so, is it documented anywhere?
+How do I get normal outbound access back?
+
+Thanks!
+
+Steps to Reproduce
+
+On my Grok Bot computer (Ultra plan, no network policy ever set), open a terminal via the bot.
+Test HTTPS: curl -s -o /dev/null -w “%{http_code}” https:_example[.]org  → 200 (works)
+Test plain HTTP: curl -m 8 http://example[.]org  → timeout
+Test raw TCP to other ports, e.g.:
+
+timeout 6 bash -c ‘echo > /dev/tcp//3306’  → timeout (MySQL)
+
+same for 993 (IMAP), 465 (SMTP), 21/990 (FTP/FTPS), 22 (SSH, also github[.]com:22) → all time out
+Test non-TLS TCP on 443: connect to ssh.github[.]com:443 → no SSH banner, timeout
+Toggle “Route traffic through this computer” on/off → no change (showed “0 routed”)
+
+Started Oct 1, 2026 ~11:37 CEST right after a computer restart. Before that, all of these ports worked.
+
+Expected Behavior
+Outbound TCP to any host and port should work, as it did before Oct 1. Per the Grok Bot security docs, network restrictions are Enterprise-only and computers without a network policy default to allow-all, including raw connections to IPs and ports. I’m on Ultra and never set a policy, so MySQL (3306), IMAP/SMTP (993/465), FTP/FTPS (21/990), SSH (22) and plain HTTP (80) should all be reachable from the computer’s terminal, not just HTTPS on 443.
+
+Screenshots / Screen Recordings
+Ohne Titel 97.png1138×526 103 KB
+
+Operating System
+MacOS
+
+Version Information
+Grok Bot desktop app 0.63.0 (stable channel, up to date), macOS. Affected: the Grok Bot cloud computer (Linux).
+
+Additional Information
+- Plan: Cursor Ultra (personal), no Enterprise network policy ever configured.
+- The computer's environment shows an egress proxy (SAND_HTTP_PROXY_NAME=fastly-prod-xai-1, SAND_EGRESS_TUNNEL_ENABLED=1). Since the restart, all outbound traffic seems to go through it, and it only passes TLS/HTTPS.
+- "Route traffic through this computer" showed "0 routed" while on. Per another forum thread it only covers the browser, not terminal commands, so it can't be used as a workaround.
+- Computer update: already on the latest version. I didn't reset, since files/state matter.
+- Impact: my bots lost access to my own MySQL server, mail (IMAP/SMTP), FTP uploads and SSH. I've built temporary HTTPS endpoints on my server as a stopgap, but that's not a real solution.
+- Questions: Was this an intentional platform change? If yes, where is it documented, and how can a non-Enterprise user allow specific hosts/ports?
+- Screenshot of the port tests attached.
+
+Does this stop you from using Cursor
+Sometimes - I can sometimes use Cursor
+
+## @NavyWings 2026-10-01T19:08:07.564Z
+Same here. This is crazy.
+
+## @Aadam 2026-10-01T20:03:14.093Z
+Confirming another affected account, same fingerprint. My Grok Bot computer restarted Oct 1 around 5:41 AM MT and since then all non-443 outbound times out — IMAP 993, SMTP 587 and 465, even a raw IP on 993. Plain HTTPS on 443 still works fine.
+
+Environment here shows the egress tunnel setup too: SAND_EGRESS_TUNNEL_ENABLED=1 with a local proxy at 127.0.0.1:8791. No network policy was ever configured on this account.
+
+This directly contradicts the current docs (Grok Bot security | Cursor Docs), which say port restrictions are Enterprise-only and that computers with no policy default to allow-all, including raw IP/port connections. “Route traffic through this computer” doesn’t cover terminal/agent traffic, so it isn’t a workaround for IMAP/SMTP.
+
+Would really appreciate an official word on whether this web-only egress is intentional and whether it’s here to stay.

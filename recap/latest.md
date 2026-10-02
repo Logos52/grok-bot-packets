@@ -1,7 +1,7 @@
-# Recap latest · last 7 days (2026-09-24 → 2026-10-01)
-Rebuilt 2026-10-01 ~00:07 ET / ~12:07 Asia/Taipei (noon LIST pass). Newest first. LIST files excluded.
+# Recap latest · last 7 days (2026-09-25 → 2026-10-02)
+Rebuilt 2026-10-02 ~00:12 ET / ~12:12 Asia/Taipei (noon LIST pass). Newest first. LIST files excluded. Quiet pass — no new INGEST.
 
-Packets this window (13):
+Packets this window (11):
 - 2026-10-01-elon-jensen-americagov-panel.md
 - 2026-10-01-all-in-jake-paul-chainsmokers.md
 - 2026-09-29-elon-jensen-cspan-accord-presser.md
@@ -13,8 +13,6 @@ Packets this window (13):
 - 2026-09-27-elon-cmg.md
 - 2026-09-26-all-in.md
 - 2026-09-25-maxinomics.md
-- 2026-09-24-fern.md
-- 2026-09-24-all-in-ferrari.md
 
 ## Recap · Elon interviews (joint talk: Elon + Jensen) · 2026-09-29 · America.gov / "Hello, America" afternoon panel — Musk + Huang (+ Tom Brown) with Gavin Baker
 url: https://www.youtube.com/watch?v=8mf3rbRSaB8  ·  length: live stream (panel ~afternoon segment)  ·  text: captions
@@ -641,116 +639,5 @@ Maxinomics argues Airbnb's fee hide-and-seek and "live like a local" pitch are d
 
 ### Footer
 canary: YT datePublished 2026-09-25T16:09:25-07:00 · fetched 2026-09-26T04:16:00Z · length 28:47 (PT28M47S / 1727s flat) · captions English auto via official YouTube transcript panel on watch page (box Chrome CDP + Playwright; yt-dlp bot wall / timedtext 429) → /workspace/recap/tmp-0926-max/transcript.txt (300 timed lines; ~6052 words) · Zapier MCP mid-roll noted skipped · ASR name cleanup in body only (Sapir→Zapier, Titans Stadium as captioned) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-
-## Ingest · Fern · 2026-09-23 · The Most Disgusting Influencer Campaign of 2026
-url: https://www.youtube.com/watch?v=WOOwVvYoq5I  ·  length: 20:49  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Cold open · fake Polymarket win videos (00:00)**
-- 00:04 · Fern · Mid-2025 social feed fills with small influencers placing huge weird Polymarket bets (Trump says "McDonald's"; Jesus returns before GTA 6) that almost never lose; shaky "infinite money glitch" clips feel off → Wall Street Journal investigation.
-- 00:45 · WSJ (Katherine Long) · Mystery had a "dumb" answer staring them in the face: organized campaign Fern frames as most disgustingly deceitful influencer campaign of recent times — laser-focused on tricking young people in the US; influencers big/small + insider-trading tips + shady clipper army on covert instructions.
-- 01:51 · Fern · Credits WSJ's Katherine Long + Politico's Maya Kaufman and Jason Beeferman; video mainly based on their investigations.
-
-**Origin · Polymarket rise / US ban / return campaign (02:06)**
-- 02:06 · Fern · Shane Copeland (captions: Copelan) launches Polymarket in NY in 2020 at age 22 as a "prediction market" (missile-strike timing, Trump/Rogan weed, flat-earth proofs); celebrity endorsements + Donald Trump Jr. investment; rival Kalshi (captions: Cali); 2025 Bloomberg: youngest self-made billionaire; valuation up to **$15B**.
-- 02:40 · Fern · Since **2022** site effectively banned in US (authorities: unlicensed financial exchange). Dec 2025: limited US sports-betting app approved; return paired with enormous social campaign to build trusted brand.
-- *(Shopify mid-roll ~03:00–05:00 skipped)*
-
-**Fake wins · pouyarket.com typo-squat (05:00)**
-- 05:00 · Fern · Mid-2025 political influencers call Polymarket "unbiased and real"; hundreds of videos show huge wins; WSJ cannot find the trades in public Polymarket records after a week of searching.
-- 06:30 · Fern / WSJ · Example: creator "wins" **$100k** on Trump saying McDonald's by cutting to an old Trump event with golden arches — bet would not have won if placed when filmed.
-- 07:40 · Fern / WSJ · Colleague spots creator navigating to **pouyarket.com** (password-protected); capitalize the **I** and it looks like polymarket.com (I≈L) — dummy site for filming fake wins that never hit the public database.
-- 08:50 · Fern / WSJ · Across **100+** fake-win videos, purported wins sum to almost **$900k**; identical real trades would have lost over **$160k** — not even a winning strategy.
-
-**Paid creators + clipper army / no disclosure (09:20)**
-- 09:20 · Fern / creators · Polymarket paid creators to film/post fake wins and **explicitly ordered them not to disclose** payment; content had to look authentic; pay **$2–3k/month** (far below purported on-platform earnings).
-- 10:00 · Fern · Hired marketing firm to run offshore "clippers" (sock-puppet accounts) to repost on TikTok/YouTube/Instagram; guidance: warm accounts, never put Polymarket in username or affiliation — "if you have Poly in your username you're going to be banned, we're not going to pay you."
-- 10:50 · Fern · Fake-bet clips viewed over **140 million** times (Tubular). US ad law / FTC: paid endorsements must disclose; many creators deleted/hid videos after outreach; Polymarket no comment to Fern on creator campaign; told WSJ it was committed to compliance (statement paraphrased in captions).
-
-**Politico thread · PayPal pipeline / Shirley / Ross (11:27)**
-- 11:27 · Politico · Poly Market executive sent **$350k** to influencers/creators via **personal PayPal**; same exec sent **$2.5M to 800+ people over 14 months** — posts often framed as news ("breaking" odds moves) without disclosing pay.
-- 12:10 · Fern · Nick Shirley posts Polymarket often while covering alleged US fraud; wore Polymarket-branded apparel; exec transferred him thousands; no comment from Shirley or Polymarket on influencer questions; spokesman to Politico: partnerships are "standard business practices" across political spectrum.
-- 13:20 · Fern · Aiden Ross (Kick/Twitch/YouTube) had multi-million-dollar deal per WSJ source; clipper army also promoted Ross clips about how easy insider trading / market manipulation would be (Trump meetings; Drake album features).
-- 14:20 · Fern · Rejects intuition that promoting insider tips hurts the house: on Polymarket winners are paid by other traders' stakes; platform earns **fees** — more volume, more revenue regardless of crazy odds. Company says it bans illegal insider tips yet leaders also pitch markets as truth that rewards non-public info.
-
-**Dumb money thesis / US targeting / aftermath (15:40)**
-- 15:40 · Fern · Endgame = "dumb money": young inexperienced long-odds bettors depicted in fake wins. Study cited: ~**85%** of Polymarket traders lose overall; only **~2%** have won more than **$1,000** total. More losers fund winners and fee growth; some users track bad accounts to fade them.
-- 17:00 · Fern · Clippers paid only if large share of audience is US-based (US SIM / phone-number tips) despite site ban — mid-2025 Polymarket pays over **$100M** for licensed US exchange/clearinghouse; Copeland: paves way to welcome US traders; fake-app versions of win videos appear too.
-- 18:00 · Fern · Aftermath: consumer-protection group sues citing the reporting (deceptive marketing; teens saw content); CFTC investigation ongoing; insider-trading questions reach the president; company still rising — partners Yahoo Finance / Dow Jones (WSJ owner, disclosed in WSJ reporting); Trump Jr. investor + adviser; FBI raided Copeland home **2024** (Biden term) over banned US users; older CFTC probe dropped within half-year of Trump return; administration more laissez-faire (captions: lazy fair) / encouraging.
-- 19:58 · Fern close · Once such a deceitful campaign might have forced a reckoning — now unclear. Reminder: ask why influencers post; here young trusting audiences set up to lose into a growth-at-all-costs machine; feeds a sense of **manufactured reality**.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 00:53 Long: "such a dumb answer, something that was really staring us in the face."
-- 08:20 Long: "That's why we couldn't find any of these trades in the database because they're all fake."
-- 09:40 Fern: "they were explicitly ordered to not show that they had been paid."
-- 11:29 Politico: "sent $350,000 to influencers and creators all through the exec's personal PayPal account"
-- 16:10 Fern: "around 85% of Poly Market traders lose money overall."
-- 20:40 Kaufman: "contributed to this idea that like we're living in sort of like a manufactured reality."
-
-### One paragraph
-Fern synthesizes WSJ + Politico reporting on Polymarket's mid-2025 US return campaign: creators filmed "wins" on a typo-squat **pouyarket.com** dummy that looks like polymarket.com, never placing public trades (**~$900k** purported wins that would have lost **~$160k** if real), while being paid **$2–3k/month** under orders not to disclose; a clipper sock-puppet army pushed the videos to **140M+** views and a company exec routed **$350k** (and **$2.5M** across **800+** people in 14 months) through personal PayPal to political influencers and streamers (Nick Shirley, Aiden Ross) without FTC-style disclosure. The commercial logic rejects house-risk fears — fee-driven prediction markets want volume and "dumb money" (cited **~85%** losers) especially US audiences despite the **2022** ban, timed with a **$100M+** licensed-exchange buy. Aftermath includes a consumer suit and ongoing CFTC work, yet political cover softens under Trump (probe dropped; Trump Jr. as investor/adviser) — Fern's close: a manufactured-reality feed where young trust is feedstock for growth.
-
-### Footer
-canary: YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 20:49 (1249s) · captions English auto via yt-dlp --write-auto-sub --sub-lang en → /workspace/recap/tmp-0924-fern/captions.en.vtt (~202KB) + cleaned plain /workspace/recap/tmp-0924-fern/transcript-plain.txt (~3799 words) · Shopify mid-roll noted skipped · ASR name cleanup in body only (Copelan→Copeland, Cali→Kalshi, Poly Market→Polymarket, Beefman→Beeferman, pouyarket kept as reported typo-squat) · quotes from caption text · no ASR on box · no third-party transcript sites
-
----
-
-## Recap · All-In · 2026-09-23 · Luca Ferrari, Bending Spoons CEO: The $40K Start, Buying Product-Market Fit & Beating Private Equity
-url: https://www.youtube.com/watch?v=6t5yF8ansoQ + https://allinchamathjason.libsyn.com/luca-ferrari-bending-spoons-ceo-the-40k-origin-story-buying-product-market-fit-why-private-equity-cant-compete  ·  length: 25:30  ·  text: captions
-
-### Takeaways, arguments, claims (in order)
-
-**Welcome Luca Ferrari! (00:00)**
-- 00:02 · Intro reel · Bending Spoons: zero → **$1B** revenue in ~10 years; never lost a bid; buying Eventbrite; AOL parent again; "zombie app" revival model; **half a billion** people use products; "generational company" pitch. Luca Ferrari (Milan) on stage.
-- 00:43 · Jason / Chamath · Banter (Ferrari name / Super Mario); Jason has tracked Luca via Milano ties + Patrick O'Shaughnessy podcast; asks for nadir → ascent arc.
-
-**Crashing an AI startup, the $40,000 restart & buying product market fit (01:56)**
-- 01:55 · Luca · Biggest failures were prior startup: AI company launched **2010** (too early) → crashed ~3 years later; left with ~**$40,000** of VC capital; VCs sold shares for **$1** nominal ("go on vacation"); co-founders instead used it as seed for Bending Spoons (**2013**).
-- 03:04 · Luca · Strategy unchanged at core: not great (or lucky) at finding product-market fit → buy PMF from others; be world-class at engineering, design, monetization, marketing; seller gets price, BS gets asset to improve.
-- 03:47 · Luca · First acquisition ~**$10,000**: iPhone keyboard-personalization app from solo developer; negligible revenue, but users + App Store positioning / inbound installs — pattern that scaled: buy brands + user bases, improve everything.
-
-**The in-house tech stack, shrinking the teams & the 10 out of 10 standard (04:59)**
-- 05:11 · Luca · Most work is engineering/product; core team ~**800**; ~**3/4** engineers / AI researchers / designers / PMs. Early apps rewritten; today swap acquired tech foundation for an "operating system" of **50+ proprietary technologies** (AI orchestration, recruiting, platforms) so every business shares tools (HR/finance/techops/devops).
-- 06:25 · Luca · Vendor consolidation (one AWS deal, etc.) is a small lever (~**1–2 pts** EBITDA margin); bigger: revenue via better product/tech/monetization + cost via leaner, talent-dense teams.
-- 06:54 · Jason · "Elon X playbook before he did it" (Vimeo / Bright rightsizing jokes).
-- 07:11 · Luca · Learned lean staffing first because early sellers sold the asset not the team → BS built smaller internal teams; later, when buying staffed companies, could not justify larger footprints vs comparable internal ops; experimentation found a "sweet spot." Goal: businesses run at **10 out of 10** — likelier with very small teams, high talent bar, ownership.
-
-**Debt as an accelerant, what happens if rates rise & who else is bidding (09:55)**
-- 08:25 · Jason · ~**$40B** market-cap zone from $10k first deal; when did debt enter?
-- 08:54 · Luca · Debt from **2017/18** (basic bank loans / TLAs → TLBs; bonds later possible). Redeployed ~**100%** of free cash flow to acquisitions from the start. At IPO: only ~**$0.5B** primary equity raised (almost all in prior six months) at ~**$20B** valuation — track record mostly FCF + debt, not equity; public company may use equity tactically.
-- 09:54 · Jason · If loans are ~10–12% and a deal needs ~**$100M**/yr debt service, rate rises + more auction competitors — throttle?
-- 10:36 · Luca · Debt is growth accelerant; would still grow fast on FCF alone. Existing debt: blended cost ~**9%**, **fully hedged**, matures **2031**, ~**2.5×** leverage, can repay before maturity. Higher rates → new debt costlier, but historically **unlevered returns >25%** so 9% vs 12% does not break model; rate-up usually lowers asset prices → serial acquirer may benefit more from cheaper targets than suffer on debt. Competition present in almost all processes; PE fundraising softer could even help; moat is years of painful tech experimentation + **800** carefully selected people + high-performance scientific culture — rebuildable in ~5 years maybe, not two months.
-
-**Inside the deal desk: what gets acquired, why they don't build & the founder question (14:58)**
-- 13:08 · Jason · VC worships founder authority (Elon-style pivots); Luca's model seems not to want founders inside each brand — grow cash cows or cutting-edge v2s?
-- 13:57 · Luca · Exceptional founder staying is 9/10 a net positive; targets are often 10–20+ year businesses where founders are closing a chapter. BS wins if business does better under them than prior ownership even without founder; not anti-founder — sellers usually want to move on.
-- 14:57 · Chamath · Walk the deal desk / screening.
-- 15:16 · Luca · Qualitative filter: (1) **scale** — deep transformation is heavy; effort does not scale linearly with revenue → prefer few sizable deals over many tiny ones; (2) **earnings predictability** (~5–6 year directional confidence); (3) room to create value (tech, org, product, monetization, marketing).
-- 16:12 · Chamath · Customer-facing synergies (AOL ads ↔ Vimeo/Eventbrite/Miro) + why not also build organically on the shared stack?
-- 16:46 · Luca · Historically almost **no** customer-facing synergy value; plenty of behind-the-scenes shared foundation + fluid core team. Tried customer synergies — worked only marginally (~**3%**); bulk is 10/10 ops per business. Organic greenfield radical innovation: can't do everything; launch a lot atop existing brands but stay focused; at proforma ~**$4B** run-rate with Miro, needle-moving new products are rare vs resource cost.
-- 18:59 · Luca · Saturation-phase targets often lack Anthropic-grade entrepreneurial talent — assessable from first principles; BS advantage attracting talent: rotate across AOL email rebuild → Vimeo subscriptions → payments platform under one culture. Last year **800,000** applications → hired **<300**. Hub: Milan historically largest; London rising; Madrid; US hiring next year.
-
-**Building a tech giant out of Milan, Europe's talent pool & the outsider advantage (20:22)**
-- 20:22 · Jason · Europe not where VCs chase; what's it like as top-tier European tech (Spotify aside)?
-- 21:26 · Luca · Europe has problems but **~0.5B** people, solid (not Stanford) education, chip-on-shoulder talent; Italian "don't work hard" mostly false stereotype — BS teams often work harder than acquired incumbents; hire intrinsically motivated / hungry.
-- 22:23 · Chamath · Wichita / Charles Koch parallel: Milan outsider not indoctrinated in SV cultural thinking; playbook of Amphenol / Roper / Danaher / Berkshire never successfully scaled in tech before (Expedia/Barry messy) — BS proving tech cash flows underwritable for 7–9 years while PE is confused / slower to transact.
-- 24:31 · Luca · PE model is structurally different: keep companies separate to sell → cannot share deep tech foundation (what happens on exit — license to competitor?) or pooled engineer/designer team (pull team out and asset dies, or sell team away). Those structural gaps explain BS returns PE "hands-off more capital" model cannot match.
-
-### Quotes (verbatim, ≤ 25 words each, 3–6)
-- 03:13 Luca: "we are not very good at finding product market fit… we should be able to buy product market fit from people"
-- 05:47 Luca: "an operating system of 50 plus proprietary technologies"
-- 08:08 Luca: "we want our businesses to be… run at a 10 out of 10 level"
-- 11:29 Luca: "Our returns unlevered historically have been pretty high consistently above 25%"
-- 16:46 Luca: "historically we have created almost no value from let's say customer facing synergies"
-- 25:01 Luca: "just the model is completely different… it will never work with the traditional private equity"
-
-### One paragraph
-Bending Spoons CEO **Luca Ferrari** recounts turning a crashed 2010 AI startup's leftover **$40k** into a **2013** thesis — buy product-market fit, win on engineering/design/monetization — from a **$10k** keyboard app to Eventbrite/AOL/Vimeo/Airtable/Miro-scale deals, a shared **50+** tech "OS," ~**800**-person talent-dense core, and ~**$40B** mcap built mostly on **100%** FCF redeployment plus hedged ~**9%** debt (~**2.5×**, to 2031) rather than equity. He defends rightsizing to "10 out of 10" small teams, screens for scale + multi-year earnings predictability + operable value levers (not customer-facing synergies, historically ~nil), skips greenfield moonshots at ~**$4B** proforma run-rate, and argues Milan/Europe outsider talent plus a hold-and-integrate platform beats PE's sell-separate structure that cannot share deep tech or pooled engineers — hence unlevered **>25%** returns PE hands-off capital cannot copy.
-
-### Footer
-canary: published 2026-09-23T23:00:00Z (libsyn RSS) / YT uploadDate 20260923 · fetched 2026-09-24T04:19:00Z · length 25:30 (1530s) · captions English auto via official YouTube transcript panel on watch page (box browser / Playwright CDP; yt-dlp timedtext HTTP 429) → /workspace/recap/tmp-0924-luca/transcript.txt (214 timed lines; ~5000 words) · chapters from YT/libsyn description used as section anchors · ASR name cleanup in body only (Benny's phones/Benny's films→Bending Spoons, Onessy→O'Shaughnessy, FDs→FTEs, Indep→indebtedness, Clara→clearly, air table→Airtable, bright→Bright) · quotes from caption text · no ASR on box · no third-party transcript sites
 
 ---

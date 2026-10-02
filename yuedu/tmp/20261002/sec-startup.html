@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="zh-hant" dir="ltr">
+<head>
+  <!-- dataLayer 初始化 -->
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('meta[property="article:tag"]').forEach(function(tag) {
+      window.dataLayer.push({
+        'event': 'channel_view',
+        'channel_name': tag.getAttribute('content')
+      });
+    });
+  });
+  </script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WM8CNCWN');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:description" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA &amp;nbsp;Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<meta name="description" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA &amp;nbsp;Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<meta property="og:image" content="https://www.ithome.com.tw/sites/default/files/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg" />
+<link rel="shortcut icon" href="https://www.ithome.com.tw/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<meta name="abstract" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<link rel="image_src" href="https://www.ithome.com.tw/sites/default/files/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg" />
+<link rel="canonical" href="https://www.ithome.com.tw/news/179347" />
+<meta property="og:site_name" content="iThome" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="臺灣資安新創的突圍之路：從駭客競賽到日本市場的五年長征" />
+<meta property="og:url" content="https://www.ithome.com.tw/news/179347" />
+<meta property="og:description" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<meta property="og:image" content="https://www.ithome.com.tw/sites/default/files/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg" />
+<meta property="og:image:url" content="https://www.ithome.com.tw/sites/default/files/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@ithomeonline" />
+<meta name="twitter:creator:id" content="ithomeonline" />
+<meta name="twitter:title" content="臺灣資安新創的突圍之路：從駭客競賽到日本市場的五年長征" />
+<meta name="twitter:description" content="從CTF競賽、紅隊攻防到藍隊產品，TRAPA Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑" />
+<meta name="twitter:image" content="https://www.ithome.com.tw/sites/default/files/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg" />
+<meta property="article:tag" content="資安" />
+  <title>臺灣資安新創的突圍之路：從駭客競賽到日本市場的五年長征 | iThome</title>
+  <link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_DyKGQQ1ZooWJGZ-VHtjSC6JOIbxxbEHPZMULRR2aAqY.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_k2Yr8VNJI0Ydmg9xojUqZx0Sb0TN6AmVo34lzYgLpk0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_eGmFHci9YRsURFoQggCj7evZ2NPaS5Ah0mROP_QpWMI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ithome.com.tw/sites/default/files/css/css_aYIN3mq1DmLT6Di-4-Gd2Se05n7P-awcXq0wcXZEGrI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="//www.ithome.com.tw/sites/all/themes/ithomeStyle/css/font-awesome/css/font-awesome.min.css" media="all" />
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")</script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_Hfha9RCTNm8mqMDLXriIsKGMaghzs4ZaqJPLj2esi7s.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_wLX2SIMnQ4ejGb11IHeDbZH2epX51LQPGgZCWanPeHk.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_yfF6JyCAP90rfOIqxIikFO4o_6C07rlQcJYLALL18eQ.js"></script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_PpWj1_0vz25Pp3KJwGcWwKOJWJfOoPE7svepJH4xqZA.js"></script>
+<script>(function($) { $(document).bind("ready", function() { State.init(".ithome.com.tw", "/", "_352ada6d1e201e578ecf132be4214bfc326a7294", 4); }); })(jQuery);</script>
+<script src="https://www.ithome.com.tw/sites/default/files/js/js_q15x_O-9imkRmTs1RyvjELo4uxbnh8J6CSO5egfMvq4.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"ithomeStyle","theme_token":"hqDFz4IfPMnEtKhDax3zWs5V9tK7UiD4AaJALvuKDZU","js":{"modules\/statistics\/statistics.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.7.2\/jquery.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/prettify\/prettify.js":1,"sites\/all\/libraries\/prettify\/lang-css.js":1,"sites\/all\/libraries\/prettify\/lang-sql.js":1,"sites\/all\/libraries\/prettify\/lang-wiki.js":1,"sites\/all\/libraries\/prettify\/lang-yaml.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/state\/js\/state.min.js":1,"public:\/\/languages\/zh-hant_EynS4tarGHEmr5eaBV3EzbgWhvNJW-hDCo2uqR3SWPQ.js":1,"sites\/all\/modules\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/prettify\/prettify.loader.js":1,"1":1,"sites\/all\/themes\/ithomeStyle\/js\/jquery.featureList.js":1,"sites\/all\/themes\/ithomeStyle\/js\/main.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-affix.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-alert.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-button.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-carousel.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-collapse.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-dropdown.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-modal.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-tooltip.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-popover.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-scrollspy.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-transition.js":1,"sites\/all\/themes\/ithomeStyle\/bootstrap\/js\/bootstrap-typeahead.js":1},"css":{"modules\/system\/system.base.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/youtube\/css\/youtube.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/ckeditor.css":1,"sites\/all\/modules\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/panels\/css\/panels.css":1,"sites\/all\/themes\/ithomeStyle\/css\/style.css":1,"sites\/all\/modules\/prettify\/styles\/naspinski.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"prettify":{"linenums":true,"match":".content","nocode":"no-code","custom":[],"markup":{"code":true,"pre":true,"precode":false}},"statistics":{"data":{"nid":"179347"},"url":"\/modules\/statistics\/statistics.php"}});</script>
+
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-179347 node-type-news" >
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM8CNCWN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v19.0&appId=1109758547106331" nonce="Ntz1BjMD"></script>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">移至主內容</a>
+  </div>
+    <header id="navbar" role="banner" class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+              <a class="logo pull-left" href="/" title="首頁">
+          <img src="https://www.ithome.com.tw/sites/default/files/ithome_logo_0.png" alt="首頁" />
+        </a>
+      
+      
+              <div class="nav-collapse collapse">
+          <nav role="navigation">
+                          <ul class="menu nav"><li class="first leaf"><a href="/news">新聞</a></li>
+<li class="leaf"><a href="/ai">AI</a></li>
+<li class="leaf"><a href="/security">資安</a></li>
+<li class="leaf"><a href="/cloud">Cloud</a></li>
+<li class="leaf"><a href="/cio" title="CIO">CIO</a></li>
+<li class="leaf"><a href="/dgov">政府</a></li>
+<li class="leaf"><a href="/healthit">醫療</a></li>
+<li class="leaf"><a href="/sustainableit">永續</a></li>
+<li class="leaf"><a href="/feature">專題</a></li>
+<li class="expanded dropdown"><a href="/seminar" class="dropdown-toggle" data-toggle="dropdown" data-target="#">活動 <span class="caret"></span></a><ul class="dropdown-menu"><li class="first leaf"><a href="https://aienterprise.ithome.com.tw/2026/">AI Enterprise Summit</a></li>
+<li class="leaf"><a href="https://cloudsummit.ithome.com.tw/">臺灣雲端大會</a></li>
+<li class="leaf"><a href="https://cyber.ithome.com.tw/?utm_source=ithome-online&amp;utm_medium=navbar&amp;utm_campaign=navbar" target="_blank">臺灣資安大會</a></li>
+<li class="leaf"><a href="/seminar">研討會訊息</a></li>
+<li class="leaf"><a href="/cfp">議程／講師徵求</a></li>
+<li class="last leaf"><a href="https://ithelp.ithome.com.tw/2026ironman?sc=iThomeNav" title="IT人的知識交流平臺">iThome鐵人賽</a></li>
+</ul></li>
+<li class="leaf"><a href="/tech">技術</a></li>
+<li class="last leaf"><a href="https://webinar.ithome.com.tw/">IT EXPLAINED</a></li>
+</ul>                                      <ul class="menu nav pull-right"><li class="first last leaf"><a href="/search" class="icon-search">搜尋</a></li>
+</ul>                                  </nav>
+        </div>
+          </div>
+  </div>
+</header>
+<div id="skybanner" style="background-color: #122239;text-align: center">
+  <script src="https://itadapi.ithome.com.tw/ads/serve?type=B5&channel=ithome_index"></script>
+</div>
+
+<header id="headerbar" role="banner" class="hidden-phone">
+  <div class="headerbar-wrap">
+        <div class="region region-before-header">
+    <section id="block-block-3" class="block block-block hidden-phone clearfix">
+
+      
+  <style>
+#div_cube3d_pic { width: 100% !important}
+#div_cube3d_exp {left:0 !important; position: relative !important; margin: 0 auto}
+#headerbar .container-fluid {max-width: 1350px !important}
+  </style>
+<div id="mkt-on-top">
+  <div class="mkt-720">  
+<script src="https://itadapi.ithome.com.tw/ads/serve?type=B1&channel=ithome_index"></script>
+
+  </div>
+
+</div>
+
+<div class="container">
+    <div class="mkt-text-top">
+     <div class="text-item">
+      <script src="https://itadapi.ithome.com.tw/ads/serve?type=T2&channel=ithome_index"></script>
+     </div>
+     <div class="text-item">
+       <script src="https://itadapi.ithome.com.tw/ads/serve?type=T3&channel=ithome_index"></script>
+     </div>
+     <div class="text-item">
+        <script src="https://itadapi.ithome.com.tw/ads/serve?type=T4&channel=ithome_index"></script>
+     </div>
+   </div>
+   <br style="clear:both"> 
+</div>
+</div></section> <!-- /.block -->
+  </div>
+    </div>
+</header>
+
+
+<div class="main-container container-fluid">
+
+  
+  <header role="banner" id="page-header">
+    
+      <div class="region region-header">
+    <section id="block-views-view-news-article-category" class="block block-views clearfix">
+
+      
+  <div class="view view-view-news view-id-view_news view-display-id-article_category view-dom-id-41c75139b64eb7df393c92f1f7eedff6">
+        
+  
+  
+      <div class="view-content">
+        <div class="category-label">
+      
+              
+              
+              
+              
+              
+          <a href="/tags/%E6%96%B0%E8%81%9E">新聞</a>    
+              
+              </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+  </div>
+
+                  <h1 class="page-header">臺灣資安新創的突圍之路：從駭客競賽到日本市場的五年長征</h1>
+        <div class="content-summary"><p>從CTF競賽、紅隊攻防到藍隊產品，TRAPA  Security在技術之外重新學習產品、管理與市場，藉由日本資安公司的投資，走出臺灣資安新創的海外路徑</p>
+ </div>
+            </header> <!-- /#header -->
+
+  <div class="row-fluid">
+      
+    
+      
+    <section class="main-content span9">  
+                                                                      <section id="block-block-22" class="block block-block socail-btns-on-top clearfix">
+
+      
+  <style>
+#block-block-22 { width: 520px}
+.social-btn-set {float:right; margin: 10px 0}
+.social-btn-set .fan-page {margin: 0 15px 0 0; display: inline-block}
+.fb-like.fb_iframe_widget {display: inline-block}
+@media screen and (max-width: 480px) {
+  #block-block-22 {width: 100%}
+  .social-btn-set {float: left}
+  .social-btn-set .fan-page,   .social-btn-set .fb-like   { width: 100% !important; height: 40px; display: block; margin-left: 15px  }
+  .social-btn-set .fb-like { margin-left: 15px }
+  .social-btn-set .fan-page .fb-like {width: 105px !important; float: left; margin-left: 0}
+}
+/* firefox fix */
+.gplus div { vertical-align: top !important}
+</style>
+<div class="social-btn-set">
+  <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" style="display: inline-block"></div>
+
+</div>
+<br class="clear:both"></section> <!-- /.block -->
+<section id="block-views-view-news-custom-submitted" class="block block-views clearfix">
+
+      
+  <div class="view view-view-news view-id-view_news view-display-id-custom_submitted view-dom-id-3e1b75ca27bb363e315ddd0d519e8793">
+        
+  
+  
+      <div class="view-content">
+        <div>
+      
+  <span class="views-field views-field-created">        <span class="field-content"><div class="submitted">
+  <span>文/<span class="author"><a href="/users/%E9%BB%83%E5%BD%A5%E6%A3%BB">黃彥棻</a></span><span class="seprate">|</span><span class="created">2026-10-01</span><span class="pub-wording">發表</span>
+</div></span>  </span>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+
+<article id="node-179347" class="node node-news node-promoted node-sticky  clearfix">
+  <header>
+        <div class="img-wrapper">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_large/public/field/image/960-15_zhang_yuan_zheng_da_qun_zhao_zheng_yu_peng_shi_feng_su_hong_qi_trapa_20260907.jpg?itok=nTGRhVDX" width="960" height="420" alt="" title="TRAPA  Security核心創業團隊，由左至右分別是：共同創辦人兼技術長張元 、共同創辦人兼研發長鄭達群、共同創辦人兼執行長趙正宇、共同創辦人兼資深研究員彭詩峰與共同創辦人兼資深研究員蘇宏麒。" /></div></div></div>          <p class="caption"> TRAPA  Security核心創業團隊，由左至右分別是：共同創辦人兼技術長張元 、共同創辦人兼研發長鄭達群、共同創辦人兼執行長趙正宇、共同創辦人兼資深研究員彭詩峰與共同創辦人兼資深研究員蘇宏麒。 </p>
+        </div>
+                    
+      </header>
+    <div class="row-fluid">
+    <div class="contents-wrap">
+    <div class="content">
+    <div class="side-extra">
+      <script src="https://itadapi.ithome.com.tw/ads/serve?type=B3&channel=ithome_index"></script>
+  </div>
+
+<div class="field field-name-field-photo-source field-type-text field-label-inline clearfix"><div class="field-label">圖片來源:&nbsp;</div><div class="field-items"><div class="field-item even"><p>洪政偉攝</p>
+</div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>日本上市公司GMO Internet Group旗下、擁有日本大型白帽駭客團隊的GMO Cybersecurity by Ierae，於10月初發布新聞稿，宣布投資2020年成立的臺灣資安新創TRAPA Security（菱鏡公司，以下簡稱TRAPA），同時取得其攻防演練平臺「TRAPA CYBER RANGE」在日本的獨家代理權。</p>
+<p>臺灣AI資安公司奧義賽博（CyCraft）先前也宣布參與TRAPA增資，認購金額超過3,000萬元，完成後將持有TRAPA完全稀釋後10%的股權。</p>
+<p>從表面上看，這是一筆投資案，伴隨日本市場代理權與臺灣資安業者的策略合作。但真正值得看的，是TRAPA成立五年多來走過的路：一群從CTF競賽出發的技術人才，最初在住宅套房裡創業，靠營收一步步把公司撐起來，過程中卻發現，技術能力越強，未必就越接近客戶真正需要的產品。</p>
+<p>團隊後來重新調整人才組成，重新思考產品應該服務誰，再從攻擊端經驗轉向防禦訓練，最後把目光放到海外。</p>
+<p>TRAPA共同創辦人兼執行長趙正宇表示，這次募資對該公司而言，與其說是單純取得資金，不如說是帶領公司走到另一個階段。當公司有了新的資金與日本市場夥伴，接下來要處理的，是產品如何規模化，以及一間臺灣資安新創如何在海外建立長期的商業模式。</p>
+<h1><span style="color:#B22222;">歷經五年的慢節奏成長，發展速度被自身的成功卡住</span></h1>
+<p>談起這次募資的起點，趙正宇沒有將原因包裝成一個漂亮的成長故事。過去五年多來，公司幾乎完全靠營收滾動式成長，前一年的營收與獲利狀況，直接影響下一年的投入空間。這種方式讓公司可以不斷往前走，卻很難一次跨出更大的步伐。</p>
+<p>他表示，TRAPA的收入大多集中在下半年入帳，一旦某一年為了擴張而增加投入，隔年的資金就容易吃緊，形成「一年擴張、下一年收縮」的循環。</p>
+<p>這幾年臺灣國內需求增加，海外市場開始出現機會，問題反而變得更明顯。「公司知道市場在哪裡，手上的資源卻不足以同時支撐產品開發與海外拓展。」他說，這也是TRAPA決定募資的主要原因。</p>
+<p>對趙正宇而言，走向海外並不是突然冒出的念頭。臺灣新創如果直接跨入歐美市場，除了競爭強度陡增，他們對於當地產業生態、客戶決策模式與市場關係，也都不熟悉。</p>
+<p>到日本與東南亞發展，則是另一條路。除了地理距離較近，TRAPA團隊過去多年參與國際駭客競賽，也在亞洲賽場累積了不少人脈。這些關係未必能立刻轉化為訂單，卻讓團隊在尋找海外切入點時，不必完全從零開始。加上日本市場已有Cyberbit、OffensiveSecurity和HackTheBox等業者，顯示攻防演練與相關訓練產品已有市場需求。</p>
+<p>從這個角度看，這次募資並不是因為公司經營不下去，而是原本靠營收慢慢往前走的方式，開始碰到成長的上限。當國內市場、海外市場與產品開發同時出現機會，TRAPA需要的已經不只是維持公司運轉的資金，而是讓團隊往下一個階段跨出去的空間。</p>
+<h1><span style="color:#B22222;">為了圓夢投入資安創業，但一群不想管錢的人面臨該怎麼管公司的挑戰</span></h1>
+<p>TRAPA的創業故事，簡單來說，是趙正宇與三位一起打CTF的夥伴，為了圓他的創業夢，共同投入資安創業。當時趙正宇憑著一股不服輸的念頭，希望把更好的Cyber Range（數位靶場）服務提供給臺灣政府和企業使用，三位夥伴聽到這個想法後，也義無反顧地投入資安創業。</p>
+<p>這三位夥伴就是TRAPA Security共同創辦人兼研發長鄭達群、共同創辦人兼資深研究員彭詩峰與蘇宏麒。包括趙正宇在內，原始四人創業團隊成員過去分別任職於台積電、網路儲存公司群暉，以及資安情資公司TeamT5等知名企業。</p>
+<p>不過，趙正宇直言，包括他在內原本都是偏技術背景的人，優勢在於，可以把一個問題拆開、找到漏洞，完成攻擊或防禦；但當公司真正開始運作後，還有薪資、現金流、客戶、採購、標案與組織管理等事情要處理。</p>
+<p>他表示，團隊原先擅長的技術能力，不會自動轉換成企業經營能力，這是TRAPA創業初期很快碰到的現實。</p>
+<p>趙正宇後來又找來曾一起出國打CTF、當時已經在聯發科工作的張元，徵詢共同創業的意願。他說，找張元加入的理由很直接：在CTF圈子裡，很多人喜歡把時間放在技術上，對行政、財務、管理等工作缺乏興趣。</p>
+<p>「張元是少數願意思考經營，也願意投入這些額外事務的人。」趙正宇甚至形容，自己是把張元「騙」進公司的，邀請他成為共同創辦人，並兼任技術長，打造TRAPA的核心創業團隊。</p>
+<p>原本張元在聯發科任職時，收入優渥，工作環境與未來發展路徑都相對清楚。但他最後卻選擇加入，當時還看不到明確未來的資安新創TRAPA。張元形容，這等於把原本資源豐沛、看得見的未來，換成一條看不見未來、卻可能帶來更多可能性與成就感的高風險道路。對他來說，這也是人生進入另一個階段後的選擇。</p>
+<p>回憶公司草創時的情景，趙正宇自己都說，如今想起來都有些荒謬。TRAPA招募第一位員工時，面試地點是在當時租賃的一間兩房一廳住宅，客廳擺著一排排電腦桌，房間後面堆滿手機盒。</p>
+<p>當時大家忙著參加Pwn2Own Mobile比賽，也承接一些手機和OT相關的資安測試專案。新同事前來應徵時，整個面試現場看起來更像一間「電話詐騙機房」。</p>
+<p>新員工第一天上班時，連固定座位都還沒有，只能先推一張椅子讓她坐下。團隊再帶她去買筆電，因為當時筆電缺貨，還得跑到臺北一〇一附近，才能買到新的蘋果筆電。</p>
+<p>這些細節看起來，很難與後來拿到日本投資的TRAPA連在一起，卻恰好說明這家公司最初的創業狀態：技術人才已經到位，但資源與組織幾乎從零開始。</p>
+<p>TRAPA跟不少技術型新創公司一樣，不是先有完整的公司架構，再找到技術人才，反而是先有一群技術能力很強的人，再慢慢學著把一間公司做起來。</p>
+<p><img alt="" src="/sites/default/files/images/600-11_%E8%B6%99%E6%AD%A3%E5%AE%87_TRAPA_%E5%85%B1%E5%90%8C%E5%89%B5%E8%BE%A6%E4%BA%BA%E5%85%BC%E5%9F%B7%E8%A1%8C%E9%95%B7_20260907.jpg" style="width: 600px; height: 400px;" /></p>
+<blockquote><p>TRAPA  Security共同創辦人兼執行長趙正宇認為，這次募資不只是取得資金，更是讓公司跨入產品規模化與海外拓展的新階段。<br />
+洪政偉 / 攝影</p>
+</blockquote>
+<h1><span style="color:#B22222;">高樓頂端聽不見樓下的聲音，CTF團隊的盲點與修正</span></h1>
+<p>TRAPA目前16名員工中，有8位具有CTF比賽經驗，比例高達一半。趙正宇表示，團隊中有過半成員具備CTF參賽經驗，這樣的比例讓日本投資方印象深刻。以日本資安同業來看，即使是擁有200名白帽駭客的團隊，具備相關CTF參賽背景的人可能也只有8到10人。</p>
+<p>對趙正宇而言，CTF選手真正珍貴的地方，不只是會解題，而是「面對陌生問題時，能快速把分析轉成實戰的能力。」他解釋，賽場上的題目每年都在變化，選手無法只依靠既有答案，必須持續適應新的問題。</p>
+<p>具備這種技術導向的獨特能力，成為TRAPA創業初期的重要底氣，卻也帶來另一個盲點。趙正宇表示，公司申請某些政府標案時，曾有評審對創業團隊提出疑問：為什麼願意放棄護國神山等高科技大廠的高薪工作，反而投入高風險、又不知道何時能獲利的創業？這個問題，反映出技術人才投入新創後，除了技術本身，還必須面對收入、資源與未來發展的不確定性。</p>
+<p>對TRAPA而言，創業初期的現實更直接。公司前幾年無法支付創辦團隊原先的薪資水準，只能提供一般的正常薪資。趙正宇說：「公司帳面上的損益兩平，某部分是靠創業團隊壓低自身薪資成本維持。」</p>
+<p>更值得TRAPA重新檢視的，是技術能力與市場需求之間的距離。趙正宇用一個形象的比喻描述這段經驗：團隊長時間站在技術金字塔頂端，就像站在高樓頂端往下看，根本聽不到樓下人在喊什麼。</p>
+<p>TRAPA最初設計產品時，就是從自身頂尖選手的視角出發。對團隊而言，許多資安概念並不困難，產品自然容易朝更高階、更複雜的方向發展。但客戶實際使用後給出的意見回饋全然不同，他們表示，需要的反而是更入門、更基礎的內容，甚至低於團隊原本想像的程度。</p>
+<p>這個落差迫使TRAPA重新思考「產品到底要服務誰」。創業團隊開始從原本偏向服務大型企業的想法，轉而關注資安資源有限、團隊規模較小的組織。</p>
+<p>後來他們進一步發現，企業規模並不是唯一的判斷標準，真正影響使用需求的，是企業內部究竟有多少資安人力與能力。有些國際大廠的資安團隊，人力配置甚至比外界想像中精簡。</p>
+<p>對此，TRAPA開始調整公司的人才結構，有意識地降低「純CTF」背景員工的比例，加入不同背景的人才，讓團隊出現原本缺少的使用者視角。</p>
+<p>這個轉變看似與技術無關，卻直接影響產品。技術人員熟悉的是「這件事怎麼做」，市場與使用者面對的問題則是「客戶為什麼需要它」、「客戶做到哪裡會卡住」。</p>
+<p>趙正宇表示，TRAPA必須同時看見兩邊，才能把原本擅長的技術，轉變成真正有人使用的產品。</p>
+<h1><span style="color: rgb(178, 34, 34);">做出產品差異化，從紅隊經驗長出來的藍隊產品</span></h1>
+<p>市場上專注Cyber Range的資安業者不少，但多是國際大廠。當外界詢問TRAPA的產品與這些外商產品有何差異時，趙正宇仍回到團隊最熟悉的CTF經驗。</p>
+<p>他指出，團隊成員長期參與競賽，累積的不只是解題能力，還包括辦比賽、設計題目與安排攻防情境的經驗。這些經驗最後被轉進TRAPA的產品設計中。換句話說，團隊原本累積的是攻擊端經驗，最終卻將這些經驗轉化成防禦端的訓練場景。</p>
+<p>此次日本投資方過去已接觸不少類似的訓練平臺，對TRAPA的評價是「訓練情境『接地氣』，讓使用者更容易理解防禦工作應該怎麼做。」張元則用「內容有溫度」來形容TRAPA的產品設計。</p>
+<p>這個「溫度」不是行銷詞，而是落在題目設計上。張元認為，不少攻防演練容易讓使用者失去焦點，問題往往不是技術難度不夠，而是情境沒有被好好設計。他表示，TRAPA希望把演練情境拉近真實事件，讓使用者面對一個有脈絡的事件，再從不同路徑尋找解法。</p>
+<p>對學習者而言，重點不只是完成一道題，而是進入一個角色，判斷下一步應該做什麼。這種訓練最後希望培養的，不只是一項技術，而是事件發生時的判斷與反應。</p>
+<p>趙正宇認為，資安市場目前更大的缺口不是攻擊能力，而是防禦能力。市場上的資安人才，有些從IT背景轉進來，有些原本從事合規顧問工作，真正累積過實戰經驗、能在事件發生時做出適當處理的人相對少。</p>
+<p>過去的防禦訓練，很多時候停留在紙上演練或經驗分享，系統化的藍隊訓練與認證則是近幾年才逐漸成形。「對TRAPA來說，這正是產品可以切入的空間。」張元說。</p>
+<p>從紅隊經驗走向藍隊訓練，並不是把原本的技術丟掉，而是將對同一套攻防情境的理解，換一個方向使用。知道攻擊者會怎麼想，才能設計出更接近真實攻擊的防禦情境；長期參與競賽所累積的快速應變能力，也有機會轉化成防守者需要的判斷訓練。</p>
+<h1><span style="color:#B22222;">AI時代來臨，正在改變資安人才存在的意義</span></h1>
+<p>當AI越來越強，攻擊者與防守者都開始使用AI，企業還需要投入大量資安人才嗎？這也是許多企業正在思考的問題。對此，趙正宇並不認為AI會取代人，而是認為：AI出現後，人才的角色正在改變。</p>
+<p>他指出，即使AI能力持續提升，攻防之間仍會留下難以完全補上的縫隙。攻擊者不需要突破整套防禦，只要找到其中一個沒有被補上的地方，就可能形成攻擊入口。他以「百分之零點五」比喻這種極小的破口。</p>
+<p>問題最後仍會回到風險。企業願不願意把最後一小段風險補起來，涉及企業願意承擔多少風險，也涉及發生問題後由誰負責。趙正宇表示，AI可以協助分析、判斷與執行，但最後的責任，仍需要由「人」承擔。</p>
+<p>另一個讓趙正宇在意的問題，是資安人才的養成。過去一名資安人才養成，往往需要三年、五年甚至十年的基層歷練，從處理大量初階工作開始，慢慢累積事件經驗，再逐步形成自己的判斷力。當AI接手越來越多初階工作後，這條從基礎工作一路往上累積的路徑可能縮短，甚至出現斷層。</p>
+<p>所以，問題不只是人才短缺，而是人才養成的路徑正在改變。這也讓TRAPA看到自己的另一個角色。趙正宇認為，透過模擬真實攻防情境，可以把原本需要多年工作經驗才能慢慢累積的事件判斷與反應，濃縮到高強度演練中。這不可能完全取代真實事件帶來的經驗，卻能讓學習者在進入實際工作前，先面對更多接近現場的情境。</p>
+<p>募資完成後，TRAPA面對的另一個課題，是如何把這套訓練能力延伸到更多市場。GMO對TRAPA帶來的並不只是資金，還包括日本市場的通路與合作關係。對TRAPA而言，找到熟悉當地市場的夥伴，可以降低自己摸索市場的成本。</p>
+<p>臺灣AI資安公司奧義賽博，則扮演另一種角色。趙正宇表示，對TRAPA來說，這不只是財務投資，更是藍隊產品上的合作關係。TRAPA可以把奧義的產品整合進自己的演練場域，讓使用者在實際情境裡，看到不同資安產品如何運作。</p>
+<p>他指出，這讓攻防演練平臺有機會從單一產品變成整合場域，不管是端點防護、身分管理或其他防禦解決方案，都可能成為演練過程中的合作對象。</p>
+<p>這種模式對TRAPA的海外拓展很重要。公司不必單靠自己的產品功能去打開每一個市場，而是可以把平臺變成不同資安產品，進入實際情境的入口。「產品之間不一定互相競爭，也可以透過場域形成合作。」趙正宇說。</p>
+<p>不過，投入日本市場本身需要另一種耐心。他表示，TRAPA團隊對日本企業導入新產品的節奏已有心理準備，從產品介紹、內部評估、預算編列到採購，整個決策週期可能拉長到三至五年。對習慣快速驗證市場的資安新創而言，這是完全不同的節奏。</p>
+<p>趙正宇觀察，日本IT與資安產業對新產品的導入相對保守，這讓團隊更確定，與其單槍匹馬摸索，不如透過已經深耕日本市場多年的GMO進入市場。</p>
+<p>這也是本次投資對TRAPA的另一層意義。它不只是帳上的資金增加，更讓TRAPA多了一個熟悉日本市場的合作夥伴，能夠陪著產品走過較長的導入週期。</p>
+<h1><span style="color:#B22222;">從技術原型的雕琢到訂閱制產品的轉型</span></h1>
+<p>當募資完成後，TRAPA下一階段的工作，是把過去靠人力累積的訓練內容，轉化成可以持續擴大的產品。</p>
+<p>趙正宇觀察，同業在內容生產上有不同路線。有些採取大量產出的方式，內容數量很多，卻不一定貼近真實情境；有些則透過社群共創，快速累積大量內容，品質可能出現差異。</p>
+<p>TRAPA選擇的是創造少量、高品質的內容，再透過AI自動化技術放大生產流程，讓原本需要大量人力才能完成的演練場域建置，透過AI大幅提升效率。趙正宇估計，效率甚至有機會提升十倍、百倍。</p>
+<p>不過，這裡的AI並不是拿來取代TRAPA原本最重要的內容能力。團隊仍需要事先設計出好的攻防情境，再讓AI協助處理大量重複性的工作。換句話說，AI被放在內容生產流程裡，而不是取代內容本身。</p>
+<p>這個轉變最後指向訂閱制商業模式。趙正宇認為，如果攻防演練平臺每次更新，都必須依靠大量人工製作，產品規模一旦變大，內容更新就會成為成本；客戶買到的如果只是一次性的演練場域，產品價值也很難隨著威脅環境變化持續增加。</p>
+<p>TRAPA希望改變這件事。客戶訂閱的不是一個固定不變的平臺，而是一個會持續更新的攻防訓練環境。因為新的攻擊手法出現後，若能夠快速轉成新的演練情境，即可讓訓練內容跟著真實世界的威脅變化更新。</p>
+<p>這也是TRAPA從技術原型走向產品公司的另一個轉折。過去團隊最強的能力，是把一個困難的技術問題解出來；接下來要面對的問題則是，如何讓這套能力不需要每增加一名客戶，就增加同等比例的人力。</p>
+<p>對技術型新創而言，這是完全不同的考驗。技術可以成為產品的起點，商業模式卻決定產品能不能持續擴大。趙正宇表示，這次投入AI與優化內容生產流程，本質上是在處理自己的成長瓶頸。</p>
+<h1><span style="color:#B22222;">回看過去五年發展，突圍的關鍵不只在技術</span></h1>
+<p>回頭看TRAPA成立以來的軌跡，這家公司並不是一開始就知道自己最後會走到哪裡。</p>
+<p>最初，團隊靠的是CTF競賽累積的技術能力；創業後，才發現技術能力與企業經營之間隔著一大段距離，於是找來張元，補上管理與經營的角色。產品推出後，又發現自己站得太高，沒有看見一般使用者真正需要的內容，於是重新調整產品定位與人才結構。</p>
+<p>再往後，團隊從紅隊經驗轉向藍隊訓練，找到更清楚的產品位置。當臺灣市場的規模與人才成本限制浮現，海外市場就不再只是選項，而成為公司下一階段成長需要面對的課題。</p>
+<p>這條路並不是每一步都按照原先規畫前進。反而是每一次遇到問題後，團隊願意回頭檢查原本的假設，再決定下一步怎麼走。</p>
+<p>這種調整也反映在募資結構上。GMO與奧義賽博扮演的角色不同，一個連結日本市場，一個提供臺灣資安產業與藍隊產品上的合作機會。趙正宇認為，對TRAPA而言，這樣的組合比單純追求一筆更大的財務投資，更貼近公司接下來要面對的問題。</p>
+<p>從住宅套房裡開始創業，到現在吸引日本資安業者投資，TRAPA走過的五年多並不是一條直線。無論是技術、人才、產品或市場，每一項都曾經需要重新調整。</p>
+<p>下一個階段，TRAPA要面對的問題已經不同。張元指出，公司不再只是證明自己能不能做出一套技術，而是要證明：這套技術，能不能在不同市場持續被使用；能不能透過訂閱模式形成穩定收入；以及能不能利用AI，把內容與服務的規模真正做大。</p>
+<p>對這群從CTF賽場走出來的創業者來說，過去五年學會的是如何把技術變成公司；接下來的五年，則是把累積的技術、產品與市場經驗，轉化成一套能夠在海外長期運作的商業模式。</p>
+<p> </p>
+<p><img alt="" src="/sites/default/files/images/600-06_%E5%BC%B5%E5%85%83_TRAPA_%E5%85%B1%E5%90%8C%E5%89%B5%E8%BE%A6%E4%BA%BA_%E6%8A%80%E8%A1%93%E9%95%B7_20260907.jpg" style="width: 600px; height: 400px;" /></p>
+<blockquote><p>TRAPA  Security共同創辦人兼技術長張元指出，公司下一階段不只是證明技術能不能做出來，更要證明產品能否在不同市場持續被使用。<br />
+洪政偉 / 攝影</p>
+</blockquote>
+</div></div></div>    <div>
+  </div>
+  </div>
+       
+  </article> 
+<section id="block-block-126" class="block block-block clearfix">
+
+      
+  <style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+.ithome-nl-cta.ithome-nl-cta {
+  margin: 36px 0 24px 280px !important;
+  padding: 24px 26px 22px !important;
+  background: #ffffff !important;
+  border: 0 !important;
+  border-left: 3px solid #009944 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  box-sizing: border-box !important;
+  color: #2a2a2a !important;
+  font-family: inherit !important;
+}
+.ithome-nl-cta.ithome-nl-cta * {
+  box-sizing: border-box;
+}
+
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__brand {
+  display: block !important;
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  line-height: 1.4 !important;
+  color: #888 !important;
+  text-transform: none !important;
+}
+
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__body {
+  margin: 0 0 12px !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  line-height: 1.85 !important;
+  color: #2a2a2a !important;
+  font-weight: normal !important;
+  text-indent: 0 !important;
+}
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__body:last-of-type {
+  margin-bottom: 18px !important;
+}
+
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 6px 14px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  list-style: none !important;
+  line-height: 1.5 !important;
+}
+
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__links a {
+  display: inline-block !important;
+  padding: 2px 0 !important;
+  color: #007a38 !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  border: 0 !important;
+  border-bottom: 1px solid transparent !important;
+  font-weight: 600 !important;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__links a:hover,
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__links a:focus-visible {
+  color: #009944 !important;
+  border-bottom-color: currentColor !important;
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+.ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__dot {
+  color: #c5c5c5 !important;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .ithome-nl-cta.ithome-nl-cta {
+    margin: 28px 0 20px !important;
+    padding: 20px 18px 18px !important;
+  }
+  .ithome-nl-cta.ithome-nl-cta .ithome-nl-cta__body {
+    font-size: 0.96rem !important;
+    line-height: 1.8 !important;
+  }
+}
+
+/*--><!]]>*/
+</style><div aria-label="iThome 資安電子報訂閱" class="ithome-nl-cta" role="complementary">
+<div class="ithome-nl-cta__brand">iThome資安新聞編輯團隊溫馨提醒</div>
+<p class="ithome-nl-cta__body">擔心錯過重要的資安新聞嗎？資安日報與資安週報即日起推出免費電子報訂閱，每天每週直送資安要聞，提供專業、易懂、便於轉述的最佳中文資安情報，助你掌握全球與臺灣最新資安脈動。</p>
+<div class="ithome-nl-cta__links"><a href="https://newsletter.ithome.com.tw/subscribe/cybersecurity-daily?utm_source=iThome&amp;utm_medium=cyber_footertext_daily&amp;utm_campaign=newsletter_promo">→ 訂閱資安日報</a> <span aria-hidden="true" class="ithome-nl-cta__dot">·</span> <a href="https://newsletter.ithome.com.tw/subscribe/cybersecurity-weekly?utm_source=iThome&amp;utm_medium=cyber_footertext_weekly&amp;utm_campaign=newsletter_promo">→ 訂閱資安週報</a></div>
+</div>
+</section> <!-- /.block -->
+<section id="block-block-74" class="block block-block clearfix">
+
+      
+  <div class="wrap" style="text-align:right;margin-right:20%;margin-top:20px;margin-bottom:30px">
+<div class="fb-page" data-adapt-container-width="false" data-height="70" data-hide-cover="false" data-href="https://www.facebook.com/ithomecyber" data-show-facepile="true" data-small-header="true" data-tabs="timeline" data-width="300">
+<blockquote cite="https://www.facebook.com/ithomecyber" class="fb-xfbml-parse-ignore"><p><a href="https://www.facebook.com/ithomecyber">iThome Security</a></p></blockquote>
+</div>
+</div>
+</section> <!-- /.block -->
+<section id="block-block-116" class="block block-block clearfix">
+
+      
+  <div align="right" style="margin-right: 5%">
+    <script src="https://itadapi.ithome.com.tw/ads/serve?type=B9&channel=ithome_index"></script>
+</div></section> <!-- /.block -->
+<section id="block-block-124" class="block block-block clearfix">
+
+      
+    <style>
+      #itplusArticleBottom {
+        max-width: 672px;
+        float: right;
+        width: 672px;
+      }
+      #itplusArticleBottom .title {
+        font-size: 22pt;
+        padding-left: 10px;
+        font-weight: 700;
+        color: #000;
+      }
+
+      #itplusArticleBottom .content {
+        display: flex;
+        justify-content: center;
+      }
+      #itplusArticleBottom .videoItem,
+      #itplusArticleBottom .header {
+        margin: 0 10px;
+        padding-bottom: 10px;
+      }
+      #itplusArticleBottom .header {
+        padding: 15px 0;
+        margin-top: 30px;
+      }
+      #itplusArticleBottom .header img {
+        vertical-align: sub;
+      }
+
+      #itplusArticleBottom .videoItem {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        position: relative;
+      }
+      #itplusArticleBottom .videoItem .cover {
+        height: 112px;
+        max-height: 112px;
+        overflow-y: hidden;
+      }
+      #itplusArticleBottom .videoItem .cover img {
+        width: 200px;
+        vertical-align: top;
+      }
+      #itplusArticleBottom .videoItem .subject,
+      #itplusArticleBottom .videoItem .info {
+        display: inline-block;
+        margin: 5px 10px;
+      }
+      #itplusArticleBottom .videoItem .subject {
+        text-decoration: none;
+        font-size: 12pt;
+        line-height: 1.5em;
+        margin: 5px 10px;
+      }
+      #itplusArticleBottom .videoItem .info {
+        font-size: 12px;
+        color: #444;
+        vertical-align: middle;
+     margin-bottom: 40px;
+      }
+      #itplusArticleBottom .videoItem .info .onair {
+        color: #ff0103;
+        background: 0 0 no-repeat
+          url("https://s4.itho.me/sites/default/files/itplus_onair_icon_wave.png");
+        padding-left: 26px;
+        margin-left: 5px;
+      }
+      #itplusArticleBottom .videoItem .info .offair {
+        margin-left: 5px;
+      }
+
+      #itplusArticleBottom .videoItem .signup {
+        text-align: center;
+        width: 100%;
+      }
+      #itplusArticleBottom .videoItem .signup a {
+        color: #f27f3f;
+        text-decoration: none;
+        display: inline-block;
+        margin: 10px auto;
+        width: 90%;
+        border: 1px solid #f27f3f;
+        padding: 2px 0;
+        text-align: center;
+       position: absolute;
+       bottom: 0;
+       left: 10px;
+       line-height: 25px;
+      }
+
+     @media (max-width: 750px) {
+        #itplusArticleBottom .header {
+          text-align: center;
+        }
+
+        #itplusArticleBottom .content {
+          flex-direction: column;
+          width: 340px;
+          margin: 0 auto;
+          min-height: auto;
+        }
+
+        #itplusArticleBottom .videoItem {
+          width: 320px;
+          margin: 0 auto 20px;
+        }
+
+        #itplusArticleBottom .videoItem .cover {
+          height: 180px;
+          max-height: 180px;
+          overflow-y: hidden;
+        }
+
+        #itplusArticleBottom .videoItem .cover img {
+          width: 320px;
+          height: 180px;
+        }
+      }
+    </style>
+  <script>
+
+      const rootUrl = "https://itplus.ithome.com.tw";
+      const apiurl = `https://www.ithome.com.tw/itplus_article.json`;
+      const utmStr =
+        "?utm_source=iThome&utm_medium=articlebottom&utm_campaign=newsarticlebottom";
+      (function ($) {
+        $(function () {
+          $.getJSON(apiurl, function (data) {
+            loadTables(data);
+          });
+          
+          
+          function loadTables(data) {
+            let listElm = `<div class="header"><a href="${rootUrl}"><img src="${rootUrl}/img/logo_it.svg" width="80px"></a> <span class="title">熱門推薦</span></div><div class="content">`;
+            const widget = data?.bottomBar?.map((item) => {
+              item.url = getLink(item);
+              item.time = formatTime(item.duration);
+              return item;
+            });
+
+            widget?.forEach((item) => {
+              listElm += renderElm(item);
+            });
+
+            listElm += "</div>";
+
+            const rootElm = document.getElementById("itplusArticleBottom");
+            rootElm.innerHTML = listElm;
+          }
+
+          function setSignup(item) {
+            if (isSignupOpen(item) === true) {
+              return `<a href="${getLink(item)}">立即報名</a>`;
+            }
+            return "";
+          }
+
+          function isSignupOpen(item) {
+            const fromStr = item.registerStarted;
+            const toStr = item.registerFinished;
+            let isOpen = false;
+            if (
+              item.type == "webinar" &&
+              fromStr.length > 0 &&
+              toStr.length > 0
+            ) {
+              const from = new Date(fromStr).getTime();
+              const to = new Date(toStr).getTime();
+              const current = Date.now();
+              if (current >= from && current <= to) {
+                isOpen = true;
+              }
+            }
+            return isOpen;
+          }
+          
+      
+          function getLink(item) {
+            let link = "";
+
+            switch (item.type) {
+              case "vod":
+                link = `${rootUrl}/vod-page/${item.id}${utmStr}`;
+                break;
+              case "replay":
+              case "webinar":
+                link = `${rootUrl}/webinar-page/${item.id}${utmStr}`;
+                break;
+            }
+            return link;
+          }
+
+          function formatTime(timeStr) {
+            const timeArr = timeStr.split(":");
+            const newTime = Number(timeArr[0]) * 60 + Number(timeArr[1]);
+            return newTime;
+          }
+
+          function getSuffix(item) {
+            let elm = "";
+            if (item.type == "webinar" && item.liveStatus == "直播中") {
+              elm += `<span class="onair">直播中</span>`;
+            } else if (item.type == "webinar" && item.webinarstarted.length > 1) {
+              elm += `<span class="offair">${getDate(item.webinarstarted)} </span>`;
+            } else if (item.type == "vod") {
+              elm += `<span class="offair">${item.time} 分</span>`;
+            } else {
+              elm = "";
+            }
+            return elm;
+          }
+
+          function getDate(date){
+            return (date.split(" "))[0]
+          }
+
+          function renderElm(item) {
+            const result = `<div class="videoItem">
+              <div class="cover">
+                <a href="${item.url}"><img src="${item.coverImage}" alt="${item.subject}" title="${item.subject}" /></a>
+              </div>
+              <div><a href="${item.url}" class="subject">${item.subject}</a></div>
+              <div class="info">${item.channelVendor} |${getSuffix(item)}</div>
+              <div class="signup">${setSignup(item)}</div>
+             </div>`;
+            return result;
+          } 
+              
+          
+          
+        });
+      })(jQuery);
+
+
+    </script>
+    <div id="itplusArticleBottom"></div></section> <!-- /.block -->
+<section id="block-views-hot-news-block-3" class="block block-views clearfix">
+
+        <h2 class="block-title">熱門新聞</h2>
+    
+  <div class="view view-hot-news view-id-hot_news view-display-id-block_3 popular-under-article view-dom-id-06be3bd33d506a4dfb05b25e8bf41612">
+        
+  
+  
+      <div class="view-content">
+        <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179239"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0928-colab_google_ai_plan-960.jpg?itok=ouMtSwOY" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179239">Google AI付費方案新增Colab進階權益</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179289"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/2026-m26-cover-v2_26.jpg?itok=Posr7gw3" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179289">鈊象發布資安重大訊息，揭露營運資訊設備遭到入侵</a>
+      </div>
+      <p class="created">2026-09-30</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179235"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0927-ransomware-hacker-960.jpg?itok=gXr3-6q3" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179235">亞太地區勒索軟體事件月增近27%，臺灣事件數排名第三</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179238"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0928-copilot_update-960.jpg?itok=zXoadvqs" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179238">微軟新Copilot整合Cowork、Office，Scout改名Autopilot</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179232"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/fireshot_capture_132_-_android_developers_blog_build_your_way_use_any_ai_agent_of_your_c_-_android-developers.googleblog.com_.jpg?itok=XTlS0_0S" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179232">Android Studio開放BYOA，Codex等代理可透過ACP串接IDE</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179242"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0928-united_nations-960-2.jpg?itok=LI5HuLXM" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179242">OpenAI代理人為取得聯合國資料，自主繞過網站限制</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179229"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/0925-gemini_3.8_live_with_live_avatar-960.jpg?itok=casIasHS" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179229">Google推出Gemini Live Avatar，讓AI代理人有臉、有表情，還能即時對話</a>
+      </div>
+      <p class="created">2026-09-25</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+  <div class="item aside-list">
+    <article class="aside_list_with_thumb">
+  <div class="wrap">
+      <div class="icon">
+      <div class="field field-name-field-image field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><a href="/news/179240"><img src="https://www.ithome.com.tw/sites/default/files/styles/square_thumbnail/public/field/image/fireshot_capture_133_-_windows-website-collage.webp_1920x672_-_inoti.fyi_.jpg?itok=3ehaouP2" width="180" height="180" alt="" /></a></div></div></div>    </div>
+      <div class="content">
+      <div class="title">
+        <a href="/news/179240">四大作業系統檔案通知存在側通道風險，Windows、Android可暴露更多使用資訊</a>
+      </div>
+      <p class="created">2026-09-28</p>
+    </div> <!-- end of content -->
+  </div> <!-- end of wrap -->
+</article> 
+  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div></section> <!-- /.block -->
+<section id="block-block-10" class="block block-block clearfix">
+
+      
+  <div class="span8 offset4">
+<div class="ad-text-in-middle">
+  <div class="wrap">
+<div class="text">
+     <script src="https://itadapi.ithome.com.tw/ads/serve?type=T1&channel=ithome_index"></script>
+</div>
+  <div class="ad-annoncement"> Advertisement</div>
+  </div>
+</div>
+</div></section> <!-- /.block -->
+    </section>
+
+          <aside class="span3 aside-right" role="complementary">
+          <div class="region region-sidebar-second">
+    <section id="block-block-33" class="block block-block clearfix">
+
+      
+  <script src="https://itadapi.ithome.com.tw/ads/serve?type=B8&channel=ithome_index"></script></section> <!-- /.block -->
+<section id="block-block-4" class="block block-block clearfix">
+
+      
+  <div class="side-extra">
+<script src="https://itadapi.ithome.com.tw/ads/serve?type=B2&channel=ithome_index"></script>
+</div>
+</section> <!-- /.block -->
+<section id="block-block-123" class="block block-block clearfix">
+
+      
+      <style>
+      #itplussidebar {
+        width: 300px;
+        margin-top: 30px;
+      }
+      #itplussidebar .title {
+        vertical-align: text-bottom;
+        font-size: 22pt;
+        padding-left: 10px;
+        color: #1badf8;
+        font-weight: 100;
+      }   
+      #itplussidebar .videoItem,
+      #itplussidebar .header {
+        margin: 10px 0;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }   
+      #itplussidebar .header {
+        padding: 15px 0;
+        marign-top: 30px;
+      }   
+      #itplussidebar .videoItem table .cover {
+        vertical-align: top;
+        padding: 10px;
+      }   
+      #itplussidebar .videoItem table .cover img {
+        width: 100px;
+        vertical-align: top;
+        max-width: 100px;
+      }   
+      #itplussidebar .videoItem table .subject {
+        text-decoration: none;
+        font-size: 13pt;
+        line-height: 1.5em;
+      }   
+      #itplussidebar .videoItem table .info {
+        font-size: 12px;
+        color: #444;
+        vertical-align: middle;
+      }   
+      #itplussidebar .videoItem table .info .onair {
+        color: red;
+        background: 0 0 no-repeat url("https://s4.itho.me/sites/default/files/itplus_onair_icon_wave.png");
+        padding-left: 26px;
+        margin-left: 5px;
+      }
+      #itplussidebar .videoItem table .info .offair {
+        margin-left: 5px;
+      }
+    </style>
+
+ <script>
+      (function ($) {
+        $(function () {
+ 
+          const apiurl = 'https://www.ithome.com.tw/newssidebar.json?u=202403040940';
+          $.getJSON(apiurl, function (data) {
+            loadTables(data);
+          });
+        });
+      })(jQuery);
+
+      function loadTables(data) {
+        let listElm = `<div class="header"><a href="https://itplus.ithome.com.tw"><img src="https://itplus.ithome.com.tw/img/logo_it.svg" width="80px"></a> <span class="title">看影片追技術</span></div>`;
+
+        const newsSidebar = data.sidebar.map((item) => {
+          item.url = getLink(item.type, item.id);
+          item.time = formatTime(item.duration);
+          return item;
+        });
+
+        newsSidebar.forEach((item) => {
+          listElm += formatSidebarItem(item);
+        });
+
+        const rootElm = document.getElementById("itplussidebar");
+        rootElm.innerHTML = listElm;
+      }
+
+      function getLink(type, id) {
+        let link = "";
+        switch (type) {
+          case "vod":
+            link = `https://itplus.ithome.com.tw/vod-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+            break;
+          case "replay":
+            link = `https://itplus.ithome.com.tw/webinar-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+            break;
+          case "webinar":
+            link = `https://itplus.ithome.com.tw/webinar-page/${id}?utm_source=iThome&utm_medium=sildebar&utm_campaign=newssildebar`;
+        }
+
+        return link;
+      }
+
+      function formatTime(timeStr) {
+        const timeArr = timeStr.split(":");
+        const newTime = Number(timeArr[0]) * 60 + Number(timeArr[1]);
+        return newTime;
+      }
+
+     function getSuffix(item) {
+        let elm = "";
+        if (item.type == "webinar") {
+          elm = `<span class="onair">直播中</span>`;
+        } else {
+          elm = `<span class="offair">${item.time} 分</span>`;
+        }
+        return elm;
+      }
+
+      function formatSidebarItem(item) {
+        const result = `<div class="videoItem"><table border="0">
+   <tr>
+       <td rowspan="2" class="cover"><img  src="${item.coverImage}" alt="${
+          item.subject
+        }" title="${item.subject}" /></td>
+       <td><a href="${item.url}" class="subject">${item.subject}</a></td>
+   </tr>
+   <tr>
+     <td class="info"><span>${item.channelVendor} |</span>${getSuffix(
+          item
+        )}</td>
+   </tr>
+  </table></div>`;
+        return result;
+      }
+    </script>
+    <div id="itplussidebar"></div>
+
+</section> <!-- /.block -->
+<section id="block-block-73" class="block block-block clearfix">
+
+      
+  <div class="fb-page" data-href="https://www.facebook.com/ithomecyber" data-tabs="timeline" data-width="300" data-height="400" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ithomecyber" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ithomecyber">iThome Security</a></blockquote></div></section> <!-- /.block -->
+<section id="block-views-view-top-story-aside-list" class="block block-views clearfix">
+
+        <h2 class="block-title">專題報導</h2>
+    
+  <div id="story-carousel" class="view view-view-top-story view-id-view_top_story view-display-id-aside_list feature-aside-list view-dom-id-dc194f8b5511af5e09a812e713243c09">
+        
+  
+  
+      <div class="view-content carousel-inner">
+        <div class="aside-list-item active">
+      
+          <a href="/article/179182"><div>
+<a href="/article/179182"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/yu_shan_aizhuan_xing_960.png?itok=NjNoeIF2" width="300" height="132" alt="" /></a>
+<br>玉山AI轉型新方向
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/177657"><div>
+<a href="/article/177657"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/ai_coding.jpg?itok=2BFEWdsE" width="300" height="132" alt="" /></a>
+<br>AI Coding掀起軟體開發革命
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176840"><div>
+<a href="/article/176840"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/image_ac31eebe.png?itok=hWMJ7kQc" width="300" height="132" alt="" /></a>
+<br>人工智慧基本法
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176335"><div>
+<a href="/article/176335"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/0603-diao_cha_zhuan_ti_zhu_tu_-3-960.jpg?itok=Twi9wOSn" width="300" height="132" alt="" /></a>
+<br>iThome 2026 CIO &amp; CISO大調查
+</div></a>    </div>
+  <div class="aside-list-item">
+      
+          <a href="/article/176188"><div>
+<a href="/article/176188"><img src="https://www.ithome.com.tw/sites/default/files/styles/picture_size_small/public/960-nan_shan_ren_shou_zhu_tu_.png?itok=BK213Z2m" width="300" height="132" alt="" /></a>
+<br>南山人壽推動AI數位轉型
+</div></a>    </div>
+    </div>
+  
+  
+  
+  
+        <div class="more-link-deco"><a href="http://www.ithome.com.tw/feature" class="more-link-deco">更多專題報導</a></div>  
+  
+</div></section> <!-- /.block -->
+  </div>
+      </aside>  <!-- /#sidebar-second -->
+    
+  </div>
+</div>
+
+<footer class="footer">
+      <div class="region region-footer">
+    <section id="block-block-7" class="block block-block clearfix">
+
+      
+  <div id="mkt-on-top">
+  <div class="mkt-720">  
+ <script src="https://itadapi.ithome.com.tw/ads/serve?type=B1&channel=ithome_index"></script>
+
+  </div>
+</div></section> <!-- /.block -->
+<section id="block-block-2" class="block block-block clearfix">
+
+      
+  <ul class="copyright inline"><li>電週文化事業版權所有、轉載必究  | Copyright &copy; iThome</li><li><a href="/aboutus/">刊登廣告</a></li><li><a href="/aboutus/">授權服務</a></li><li><a href="/aboutus/">服務信箱</a></li><li><a href="/terms">隱私權聲明與會員使用條款</a></li><li><a href="/security-policy">資訊安全政策</a></li><li><a href="/aboutus/">關於iThome</a></li><li><a href="/rss">RSS</a></li> <li><a href="/jobs">徵才</a> </li></ul>
+<!--  2014.2.21 改版上線 -->
+
+</section> <!-- /.block -->
+<section id="block-block-24" class="block block-block clearfix">
+
+      
+  <!-- old ga code remove -->
+</section> <!-- /.block -->
+  </div>
+</footer>
+  <script src="https://www.ithome.com.tw/sites/default/files/js/js_VU7P4CTgUZdF2SyFko5LLAg9ZK0OSVjXVaAFnTLgVt0.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a43f3f7c492e1de9',t:'MTc5MDg5NzM1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

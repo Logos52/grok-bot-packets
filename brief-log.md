@@ -38,3 +38,4 @@ Old format deliveries completed: 12 (through Mon 2026-08-24). The “after ten b
 | 2026-09-29 | Claude Sonnet 5.5 is live and now the default Sonnet in Claude Code — switch for everyday coding this week. |  |
 | 2026-09-30 | Nothing that changes today. |  |
 | 2026-10-01 | Nothing that changes today. |  |
+| 2026-10-02 | Nothing that changes today. |  |

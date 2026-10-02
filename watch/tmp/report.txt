@@ -1,20 +1,20 @@
-Watch · Wed 2026-09-30 · slowest ~0.26s · CF as-of 2026-09-29
+Watch · Fri 2026-10-02 · slowest ~0.36s · CF as-of 2026-10-01
 
 REACH: All green · 5/5
-Actions: success. CF cache MISS / MISS / EXPIRED / MISS (not DYNAMIC).
+Actions: success. CF cache EXPIRED / MISS / EXPIRED / MISS (not DYNAMIC).
 
-AUDIENCE: ed 6 visits / 6 pv · 7d (was 9/13) · ext-ref 1 · cc 3 visits / 4 pv · 7d (was 8/12) · ext-ref 3 · gc (cc home): 0 pv · 7d (was 3)
+AUDIENCE: ed 9 visits / 11 pv · 7d (was 6/6) · ext-ref 2 · cc 30 visits / 30 pv · 7d (was 3/4) · ext-ref 5 · gc (cc home): 0 pv · 7d (was 0)
 
-SEARCH: ed 1 click / 2 impr · ~14d (was 1/2) · cc 0 clicks / 0 impr · ~14d (was 0/0)
+SEARCH: ed 1 click / 1 impr · ~14d (was 1/2) · cc 0 clicks / 0 impr · ~14d (was 0/0)
 
 CI:
-- Logos52/tsumugu-core · Deploy Tsumugu Core · failure · ~88d · https://github.com/Logos52/tsumugu-core/actions/runs/28697465339
-- Logos52/tsumugu-ed · validate corpus · failure · ~27d · https://github.com/Logos52/tsumugu-ed/actions/runs/33648836647
+- Logos52/tsumugu-core · Deploy Tsumugu Core · failure · ~90d · https://github.com/Logos52/tsumugu-core/actions/runs/28697465339
+- Logos52/tsumugu-ed · validate corpus · failure · ~29d · https://github.com/Logos52/tsumugu-ed/actions/runs/33648836647
 
-FLEET: Brief silent · Field silent · 多恩刊 silent · Yuedu silent · Corpus audit silent / wiki scan never · Arguments silent · Intake silent · Recap silent · Table silent · Steward backup silent · Xingye silent · 後台 silent · Watch ok
+FLEET: Field silent · 多恩刊 silent · Yuedu silent · Corpus audit silent / wiki scan never · Arguments silent · Intake silent · Recap silent · Table silent · Steward backup silent · Xingye silent · 後台 silent · Watch ok
 USAGE: opaque — no invent
 
 DECISIONS:
-- Audience cooled further (ed 9→6, cc 8→3, gc 3→0); not a 0-cliff on CF RUM.
-- CI still red: tsumugu-core Deploy Tsumugu Core ~88d, tsumugu-ed validate corpus ~27d.
+- cc RUM recovered hard (3→30 visits); ed 6→9; gc still 0.
+- CI still red: tsumugu-core Deploy Tsumugu Core ~90d, tsumugu-ed validate corpus ~29d.
 - Fleet lastRunAt on disk still past slot — MWF/daily bots silent; wiki scan never-fired.
